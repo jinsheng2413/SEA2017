@@ -44,7 +44,8 @@ coverage.xml
 docs/_build/
 /.idea
 /__pycache__
-*.png
-*.log
+/screenshots
+/img
+/reports
 *.html
 

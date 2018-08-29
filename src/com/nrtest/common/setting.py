@@ -41,7 +41,7 @@ class Setting(object):
     # BASE_PATH = r'D:\\PycharmProjects\\MyPython\\' if platform.system() == 'Windows' else r'/PycharmProjects/MyPython/'
     PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
 
-    BASE_PATH = PROJECT_PATH.split('src')[0]
+    BASE_PATH = PROJECT_PATH.split('\src')[0]
 
 
     # 报表路径
@@ -75,4 +75,4 @@ class Setting(object):
 if __name__ == '__main__':
     p = Setting()
 
-    print(Setting.BASE_PATH)
+    print(Setting.IMG_PATH)

@@ -20,7 +20,7 @@ import platform
 class ParseNrTest(object):
     @staticmethod
     def pattern():
-        return r'/' if platform.system() != 'Windows' else r'\\'
+        return r'/' if platform.system() == 'Windows' else r'\\'
 
 
 
@@ -106,11 +106,5 @@ class ParseNrTest(object):
 
 if __name__ == '__main__':
     nrTest = ParseNrTest()
-    # print(nrTest.getSections())
-    # print(nrTest.getSection())
-    print(nrTest.getSection('Base'))
-    print(nrTest.getOptions('LOG'))
-    print(nrTest.getSectionVals('LOG', False))
-    # print('LOG/maxBytes is {}'.format(ParseNrTest.parse().getInt('LOG','maxBytes')))
-    # print(nrTest.get('DefaultBrowser'))
-    # print(nrTest.get_config().items('Db_setup'))
+    print(nrTest.pattern())
+

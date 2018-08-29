@@ -569,6 +569,19 @@ class Page(object):
        print(len(f))
        return f
 
+    def save_img(self, img_name):
+        """
+            传入一个img_name, 并存储到默认的文件路径下
+        :param img_name:
+        :return:
+        """
+        # 调自己封装类com.nrtest.common下的BeautifulReport.py
+        path = Setting.IMG_PATH
+        # 调LIB下类D:\Python\Python36-32\Lib\BeautifulReport.py
+        # path = os.path.abspath(self.img_path)
+
+        self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
+
 if __name__ == '__main__':
     dr = webdriver.Chrome()
 

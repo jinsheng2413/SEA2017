@@ -14,6 +14,7 @@ from BeautifulReport import BeautifulReport
 from com.nrtest.common.setting import Setting
 curpath = os.path.dirname(os.path.realpath(__file__))
 
+
 def add_case(case_path=curpath, rule="test*.py"):
     '''加载所有的测试用例'''
     discover = unittest.defaultTestLoader.discover(case_path,

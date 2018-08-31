@@ -27,5 +27,7 @@ class CommonMenu_locators:
     BTN_LEFT_PLUS = (By.XPATH, '(//img[@class=\"x-tree-ec-icon x-tree-elbow-end-plus\"])[%s]')
     #公司加号
     BTN_COMPANY_PLUS = (By.XPATH,'(//img[@class=\"x-tree-ec-icon x-tree-elbow-plus\"])[%s]')
+    # 公司
+    BTN_COMPANY = (By.XPATH, '(//a[@class=\"x-tree-node-anchor\"])[%s]')
 
 

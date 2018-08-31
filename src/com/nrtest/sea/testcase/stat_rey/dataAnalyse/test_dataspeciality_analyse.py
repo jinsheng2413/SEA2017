@@ -38,7 +38,7 @@ class DataSpecialityAnalyse(unittest.TestCase,DataSpecialityAnalysePage):
         :return:
         """
 
-    @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img('txz.png')
     def test_dataspeciality_analyse(self):
         self.spread_org_no()
         self.tangshan_org_no()
@@ -56,5 +56,5 @@ class DataSpecialityAnalyse(unittest.TestCase,DataSpecialityAnalysePage):
         self.sleep_time(2)
         self.bin_search()
         self.sleep_time(2)
-        result = self.assert_context(*DataSpecialityAnalyseLocators.TAB_ONE)
+        result = self.assert_context(*DataSpecialityAnalyseLocators.TeAB_ONE)
         self.assertTrue(result)

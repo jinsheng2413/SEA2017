@@ -541,6 +541,7 @@ class Page(object):
         inputDt_XXX     日期输入框
         inputStr_XXX    文本输入框 --
         inputRSel_XXX   必选下拉选择：已定义/未定义
+        inputCSel_XXX
         """
         for item in tuple(cv.__dict__.items()):
             temp = item[0]
@@ -549,6 +550,8 @@ class Page(object):
                 obj(1)
             elif (temp.startswith('inputStr') and callable(obj)):
                 obj("")
+            elif (temp.startswith('inputCStr') and callable(obj)):
+                obj("c")
 
     def get_select_locator(self,locator,num ):
         '''

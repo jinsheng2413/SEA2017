@@ -26,6 +26,7 @@ from com.nrtest.sea.pages.other.common_page import Common_page
 import os
 from com.nrtest.common.setting import Setting
 
+
 logger = Logger(logger="Login").getlog()
 
 class Login:
@@ -36,7 +37,7 @@ class Login:
     def login(self):
         bool = True
         p = BaseTest()
-        dr = p.openBrowser('firefox')
+        dr = p.openBrowser('f')
         dr.maximize_window()
         dr.get(Setting.TEST_URL)
         while (bool):

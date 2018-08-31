@@ -20,7 +20,7 @@ import unittest
 import ddt
 
 
-@ddt.ddt
+#@ddt.ddt
 class TestLoadRankAnalyse(unittest.TestCase, DataAnalyseRankPage):
 
     @classmethod
@@ -50,12 +50,13 @@ class TestLoadRankAnalyse(unittest.TestCase, DataAnalyseRankPage):
 
     # 查询专变用户，排名为20的结果
     @BeautifulReport.add_test_img()
-    @ddt.data(*pg.lis)
+    #@ddt.data(*pg.lis)
     def test_rank_num_two(self, data):
         self.btn_org_no()
         self.sleep_time(2)
         self.inputStr_start_date(data[1])
         self.inputStr_end_date(data[2])
+        print(data[0])
         self.inputStr_rank_num(data[0])
         self.btn_search()
         self.sleep_time(2)

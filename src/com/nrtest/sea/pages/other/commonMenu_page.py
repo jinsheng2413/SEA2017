@@ -51,4 +51,4 @@ class CommonMenu_page(Page):
 
     #点击双向箭头
     def btn_left_arrow(self):
-        self.click(*SecurityCommonManPageLocators.BTN_LEFT_MENU)
+        self.click(*CommonMenu_locators.BTN_LEFT_MENU)

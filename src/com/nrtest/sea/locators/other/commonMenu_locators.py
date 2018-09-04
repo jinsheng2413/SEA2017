@@ -27,7 +27,15 @@ class CommonMenu_locators:
     BTN_LEFT_PLUS = (By.XPATH, '(//img[@class=\"x-tree-ec-icon x-tree-elbow-end-plus\"])[%s]')
     #公司加号
     BTN_COMPANY_PLUS = (By.XPATH,'(//img[@class=\"x-tree-ec-icon x-tree-elbow-plus\"])[%s]')
-    # 公司
+    # 市
     BTN_COMPANY = (By.XPATH, '(//a[@class=\"x-tree-node-anchor\"])[%s]')
+    #县
+    BTN_COUNTY = (By.XPATH,"//span[contains(text(),'直属用户')]/../../../../li[%s]")
+    #县和用户
+    BTN_COUNTY_AND_USER = (By.XPATH,"//span[contains(text(),'直属用户')]/../../../../li[%s]/ul/li[%s]")
+
+    # 【显示区】
+    TAB_ONE = (By.XPATH, '(//div[@class=\"x-grid3-row-checker\"])[%s]')
+    TAB_TWO = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[%s]')
 
 

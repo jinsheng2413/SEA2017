@@ -23,6 +23,7 @@ from selenium.webdriver.common.by import By
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 from com.nrtest.sea.pages.other.common_page import Common_page
+from com.nrtest.sea.pages.other.commonMenu_page import CommonMenu_page
 import os
 from com.nrtest.common.setting import Setting
 
@@ -85,3 +86,6 @@ class Login:
 if __name__ == '__main__':
     lg = Login('xixi','admin123!@#45')
     dr = lg.login()
+    p =CommonMenu_page(dr)
+
+    p.btn_left_tree(0,[])

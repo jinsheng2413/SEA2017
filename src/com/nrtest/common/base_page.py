@@ -541,6 +541,7 @@ class Page(object):
         inputDt_XXX     日期输入框
         inputStr_XXX    文本输入框 --
         inputRSel_XXX   必选下拉选择：已定义/未定义
+        inputCSel_XXX
         """
         for item in tuple(cv.__dict__.items()):
             temp = item[0]
@@ -549,6 +550,8 @@ class Page(object):
                 obj(1)
             elif (temp.startswith('inputStr') and callable(obj)):
                 obj("")
+            elif (temp.startswith('inputCStr') and callable(obj)):
+                obj("c")
 
     def get_select_locator(self,locator,num ):
         '''
@@ -568,6 +571,19 @@ class Page(object):
        f = self.driver.find_element_by_tag_name(value)
        print(len(f))
        return f
+
+    def save_img(self, img_name):
+        """
+            传入一个img_name, 并存储到默认的文件路径下
+        :param img_name:
+        :return:
+        """
+        # 调自己封装类com.nrtest.common下的BeautifulReport.py
+        path = Setting.IMG_PATH
+        # 调LIB下类D:\Python\Python36-32\Lib\BeautifulReport.py
+        # path = os.path.abspath(self.img_path)
+
+        self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
 
 if __name__ == '__main__':
     dr = webdriver.Chrome()

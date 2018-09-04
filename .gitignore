@@ -9,6 +9,8 @@ __pycache__/
 .Python
 env/
 build/
+
+
 develop-eggs/
 dist/
 eggs/
@@ -44,7 +46,8 @@ coverage.xml
 docs/_build/
 /.idea
 /__pycache__
-*.png
-*.log
+/screenshots
+/img
+/reports
 *.html
 

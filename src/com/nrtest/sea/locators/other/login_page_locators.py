@@ -20,3 +20,6 @@ class LoginPageLocators:
     BTN_ARROW = (By.XPATH,'//*[@id="index.loginExceptionWin"]/div[1]/div/div/div/div[1]')
     #验证码
     BTN_IDENTIFYING_CODE =(By.XPATH,'//*[@id="imageMask"]')
+    #
+    BTN_INFORMATAIN_PUS = (By.XPATH,"//span[contains(text(),'重要信息推出')]")
+

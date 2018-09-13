@@ -3,18 +3,23 @@
 '''
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: commonMenu_locators.py
+@file: menu_locators.py
 @time: 2018/8/28 0028 13:45
 @desc:
 '''
 from selenium.webdriver.common.by import By
-class CommonMenu_locators:
+class MenuLocators:
     #一级菜单
-    MENU_FIRST =(By.XPATH,"// *[@id =\"menu1\"]/tbody/tr/td[%s]")
+    MENU_LEVEL1 =(By.XPATH, "// *[@id =\"menu1\"]/tbody/tr/td[%s]")
     #二级菜单
-    MENU_SECOND = (By.XPATH,'//*[@id=\"smenu\"]//*[@class=\"x-toolbar-left-row\"]/td[%s]')
+    MENU_LEVEL2 = (By.XPATH, '//*[@id=\"smenu\"]//*[@class=\"x-toolbar-left-row\"]/td[%s]')
     #三级菜单
-    MENU_THREE = (By.XPATH,'//ul[@class=\"x-menu-list\"]/li[%s]')
+    MENU_LEVEL3 = (By.XPATH, '//ul[@class=\"x-menu-list\"]/li[%s]')
+    #四级菜单
+    MENU_LEVEL4 = (By.XPATH, '(//*[@class=\"x-menu x-menu-floating x-layer \"])[2]/ul/li[%s]')
+    #五级菜单
+    MENU_LEVEL5 = (By.XPATH, '(//*[@class=\"x-menu x-menu-floating x-layer \"])[3]/ul/li[%s]')
+
 
     # 【左边树】
     # 左边树按钮
@@ -30,12 +35,15 @@ class CommonMenu_locators:
     # 市
     BTN_COMPANY = (By.XPATH, '(//a[@class=\"x-tree-node-anchor\"])[%s]')
     #县
-    BTN_COUNTY = (By.XPATH,"//span[contains(text(),'直属用户')]/../../../../li[%s]")
+    BTN_COUNTY = (By.XPATH,"(//span[contains(text(),'直属用户')])[1]/../../../../li[%s]")
     #县和用户
-    BTN_COUNTY_AND_USER = (By.XPATH,"//span[contains(text(),'直属用户')]/../../../../li[%s]/ul/li[%s]")
+    BTN_COUNTY_AND_USER = (By.XPATH,"(//span[contains(text(),'直属用户')])[2]/../../../../li[%s]")
 
     # 【显示区】
     TAB_ONE = (By.XPATH, '(//div[@class=\"x-grid3-row-checker\"])[%s]')
     TAB_TWO = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[%s]')
+
+    TREE_MINUS = (By.XPATH,'//*[@class=\"x-tree-ec-icon x-tree-elbow-minus\"]')
+    TREE_END = (By.XPATH,'//*[@class=\"x-tree-ec-icon x-tree-elbow-end-minus\"]')
 
 

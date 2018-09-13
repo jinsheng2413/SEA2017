@@ -96,6 +96,8 @@ import datetime
 import time
 
 # create a logger instance
+from com.nrtest.sea.locators.other.menu_locators import MenuLocators
+
 logger = Logger(logger="Page").getlog()
 
 
@@ -116,7 +118,7 @@ class must_get_url(object):
 
 class Page(object):
 
-    def __init__(self, driver, base_url=Setting.TEST_URL, pagetitle=Setting.PAGE_TILE):
+    def __init__(self, driver , base_url=Setting.TEST_URL, pagetitle=Setting.PAGE_TILE):
         self.driver = driver
         self.base_url = base_url
         self.page_title = pagetitle
@@ -475,7 +477,7 @@ class Page(object):
         '''
         try:
             el = self.driver.find_elements(*Locator)
-            return len(el)
+            return el
 
         except NameError as e:
             logger.info("组员查找错误")
@@ -494,30 +496,14 @@ class Page(object):
         '''
 
         self.driver.refresh()
-        self.sleep_time(3)
-        con = self.driver.find_element_by_tag_name('body').text
-
-        if '登录异常' in con:
-            print("-----")
-            self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
-        if '账号异常信息' in con:
-            print("-----")
-            self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
-
-    def rightClick(self, *Locators):
-        '''
-        鼠标右击元素
-        :param Locators:
-        :return:
-        '''
         try:
-            # ****定位到要右击的元素**
-            right_click = self._find_element(*Locators)
-            # ****对定位到的元素执行鼠标右键操作
-            ActionChains(self.driver).context_click(right_click).perform()
+            self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
+            self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
+        except :
+            print('去除异常失败')
 
-        except NameError as e:
-            logger.info('右击失败')
+
+
 
     def clear(self, *Locators):
         '''
@@ -536,7 +522,7 @@ class Page(object):
 
     def clear_values(self,cv):
         """
-        inputNode_XXX   左边树节点
+
         inputSel_XXX    下拉选择框 --
         inputDt_XXX     日期输入框
         inputStr_XXX    文本输入框 --
@@ -584,6 +570,24 @@ class Page(object):
         # path = os.path.abspath(self.img_path)
 
         self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
+
+
+    # def closeTab(self):
+    #     # ****定位到要右击的元素**
+    #     right_click = self.driver.find_element(*(By.XPATH,'//*[@id=\"maintab__工作台\"]'))
+    #     # ****对定位到的元素执行鼠标右键操作
+    #     ActionChains(self.driver).context_click(right_click).perform()
+    #     self.driver.find_element(*(By.XPATH,"//div[@class=\"x-menu x-menu-floating x-layer \"]//*[contains(text(),'关闭其他所有页')]")).click()
+
+    def recoverLeftTree(self):
+        num = self.find_elements_num(*MenuLocators.TREE_MINUS)
+        counter =len(num)-1
+        while counter >= 0:
+            num[counter].click()
+            counter = counter - 1
+        self.click(*MenuLocators.TREE_END)
+
+
 
 if __name__ == '__main__':
     dr = webdriver.Chrome()

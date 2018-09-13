@@ -9,7 +9,15 @@
 '''
 from com.nrtest.common.parse_nrtest import ParseNrTest
 
+
 import os
+import sys
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+sys.path.insert(0, os.path.join(BASE_DIR, 'com'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 class Setting(object):
     def __init__(self):
@@ -68,11 +76,13 @@ class Setting(object):
     DB_HOST = parse.get('Db_setup','IP')
     #SID
     DB_NAME = parse.get('Db_setup','SID')
-    DEFAULT_USER = parse.get('USER','user_name')
-    DEFAULT_PASSWORD = parse.get('USER', 'password')
+    DEFAULT_USER = parse.get('Login','user_name')
+    DEFAULT_PASSWORD = parse.get('Login', 'password')
+    GROUP_USER = parse.get('Login','user_group')
 
 
 if __name__ == '__main__':
+
     p = Setting()
 
-    print(Setting.IMG_PATH)
+    print(Setting.GROUP_USER)

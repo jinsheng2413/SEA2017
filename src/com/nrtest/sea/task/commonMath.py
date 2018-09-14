@@ -24,4 +24,5 @@ def openLeftTree(treeNo):
     p.btn_left_tree(treeNo)
     return p.driver
 if __name__=="__main__":
+
     openMenu('99922120')

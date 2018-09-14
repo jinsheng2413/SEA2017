@@ -8,9 +8,6 @@
 @desc:
 '''
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.task.login import Login
-from com.nrtest.common.setting import Setting
-from com.nrtest.common.base_page import Page
 from com.nrtest.common import global_drv
 
 # 打开
@@ -22,7 +19,9 @@ def openMenu(menuNo):
     # 打开左边树
 
 
-def openLeftTree(self, treeNo):
-    p = MenuPage(self.driver)
+def openLeftTree(treeNo):
+    p = MenuPage(global_drv.get_driver())
     p.btn_left_tree(treeNo)
-    self.driver = p.driver
+    return p.driver
+if __name__=="__main__":
+    openMenu('99922120')

@@ -9,7 +9,7 @@
 '''
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.base_app.archivesMan.archivesQuery_locators import ArchivesQuery_locators
-class ArchivesQuery_pages(Page):
+class ArchivesQueryPages(Page):
     #【菜单】
     #确认
     def btn_confirm(self):
@@ -21,24 +21,24 @@ class ArchivesQuery_pages(Page):
 
     #【查询条件】
     # 用户类型
-    def inputCSel_user_cata(self,index):
+    def inputCSel_cons_type(self,index):
         if index is 'c':
-            self._find_element(*ArchivesQuery_locators.QRY_USER_CATA_CLEAR)
+            self._find_element(*ArchivesQuery_locators.QRY_CONS_TYPE_CLEAR)
         else:
-            self.click(*ArchivesQuery_locators.QRY_USER_CATA)
-            locator = self.get_select_locator(ArchivesQuery_locators.QRY_USER_CATA_VALUE, index)
+            self.click(*ArchivesQuery_locators.QRY_CONS_TYPE)
+            locator = self.get_select_locator(ArchivesQuery_locators.QRY_CONS_TYPE_VALUE, index)
             self.click(*locator)
-            self.click(*ArchivesQuery_locators.QRY_USER_CATA)
+            self.click(*ArchivesQuery_locators.QRY_CONS_TYPE)
 
 
 
     #抄表段号
-    def inputStr_readMeterNum(self,value):
-        self.input(value,*ArchivesQuery_locators.QRY_READ_METER_NUM)
+    def inputStr_sect_no(self,value):
+        self.input(value,*ArchivesQuery_locators.QRY_SECT_NO)
 
     #终端地址
-    def inputStr_terminalAddr(self,value):
-        self.input(value,*ArchivesQuery_locators.QRY_TERMINAL_ADDR)
+    def inputStr_tmnl_addr(self,value):
+        self.input(value,*ArchivesQuery_locators.QRY_TMNL_ADDR)
 
 
     #【操作区】
@@ -46,13 +46,13 @@ class ArchivesQuery_pages(Page):
         self.click(*ArchivesQuery_locators.BTN_QRY)
 
     # 用户编号
-    def btn_userNo_detail(self):
-        self.click(*ArchivesQuery_locators.TAB_ONE_USER_NO)
+    def btn_tab_cons_no(self):
+        self.click(*ArchivesQuery_locators.TAB_ONE_CONS_NO)
 
 
     #终端地址
-    def btn_termainal_addr(self):
-        self.click(*ArchivesQuery_locators.QRY_TERMINAL_ADDR)
+    def btn_tab_tmnl_addr(self):
+        self.click(*ArchivesQuery_locators.TAB_ONE_TMNL_ADDR)
 
 
 

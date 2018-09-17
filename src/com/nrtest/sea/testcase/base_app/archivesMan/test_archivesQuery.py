@@ -7,24 +7,32 @@
 @time: 2018/8/29 0029 14:26
 @desc:
 '''
-from com.nrtest.sea.task.archivesManage import *
-from com.nrtest.sea.pages.base_app.archivesMan.archivesQuery_pages import ArchivesQuery_pages
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.common.dictionary import Dict
+
+from com.nrtest.sea.pages.base_app.archivesMan.archivesQuery_pages import ArchivesQueryPages
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.base_app.archivesMan.archivesQuery_para import ArchivesQuery_para
+from com.nrtest.sea.data.base_app.archivesMan.archivesMan_para import ArchivesManData
+from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.locators.base_app.archivesMan.archivesQuery_locators import ArchivesQuery_locators
+
 from com.nrtest.sea.data.common.data_common import DataCommon
 import unittest
-class test_archivesManage(unittest.TestCase,ArchivesQuery_pages):
+from ddt import ddt,data,unpack
+@ddt
+class TestArchivesQuery(unittest.TestCase, ArchivesQueryPages):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = archivesQuery()
-        cls.orl = Oracle()
+        cls.driver = openMenu(ArchivesManData.para_archivesQuery)
+        cls.sleep_time(cls,2)
+        cls.exec_script(cls,ArchivesQuery_locators.js)
+
 
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
-        cls.driver.quit()
+        cls.refreshPage(cls)
 
     def setUp(self):
         """
@@ -39,16 +47,30 @@ class test_archivesManage(unittest.TestCase,ArchivesQuery_pages):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        self.clear_values(ArchivesQuery_pages)
+        self.clear_values(ArchivesQueryPages)
+        self.recoverLeftTree()
 
-    #用户类型
-    def test_aq_user_cata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesQuery_para.para_test_aq_user_cata)
-        self.inputSel_user_cata(lip[0][0])
+    def query(self, para):
+        print(para)
+        #打开左边树并点击
+        self.driver = openLeftTree(para['ORG_NO'])
+        #输入抄表段号
+        self.inputStr_sect_no(para['SECT_NO'])
+        #选择用户类型
+        self.inputCSel_cons_type(para['CONS_TYPE'])
+        #选择终端地址
+        self.inputStr_tmnl_addr(para['TNML_ADDR'])
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesManage_locators.TAB_ONE)
+        result = self.assert_context(*ArchivesQuery_locators.TAB_ONE)
         self.assertTrue(result)
+
+    @data(*DataAccess.getCaseData(ArchivesManData.para_archivesQuery))
+    def test_query(self,para):
+        self.query(Dict(para))
+
+
+
 
 

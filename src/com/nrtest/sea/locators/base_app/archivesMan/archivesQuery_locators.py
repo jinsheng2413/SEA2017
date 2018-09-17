@@ -14,15 +14,15 @@ class ArchivesQuery_locators:
     BTN_ARCHIVES_QUERY = (By.XPATH, "(//*[contains(text(),'档案查询')])[1]")
     #【查询条件】
     # 用户类型
-    QRY_USER_CATA_CLEAR = (By.XPATH,"(//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//label[contains(text(),'用户类型')]/../div/div/input)[1]")
-    QRY_USER_CATA = (By.XPATH,"(//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//label[contains(text(),'用户类型')]/../div/div/img)[1]")
-    QRY_USER_CATA_VALUE = (By.XPATH, "//div[@class=\"x-layer x-combo-list \"]/div/div[%s]/div/img")
+    QRY_CONS_TYPE_CLEAR = (By.XPATH, "(//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//label[contains(text(),'用户类型')]/../div/div/input)[1]")
+    QRY_CONS_TYPE = (By.XPATH, "(//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//label[contains(text(),'用户类型')]/../div/div/img)[1]")
+    QRY_CONS_TYPE_VALUE = (By.XPATH, "//div[@class=\"x-layer x-combo-list \"]/div/div[%s]/div/img")
 
     #抄表段号
-    QRY_READ_METER_NUM = (By.XPATH,'//*[@id="mrSectNo"]')
+    QRY_SECT_NO = (By.XPATH,'//*[@id="mrSectNo"]')
 
     #终端地址
-    QRY_TERMINAL_ADDR = (By.XPATH,'(//form[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder x-form\"])[4]//input[@class=\" x-form-text x-form-field \"]')
+    QRY_TMNL_ADDR = (By.XPATH,"//div[@class=\"x-form-item \"]//label[contains(text(),'终端地址')]/../div[1]/input")
 
     #【操作区】
     BTN_QRY = (By.XPATH,"//button[contains(text(),'查询')]")
@@ -30,8 +30,10 @@ class ArchivesQuery_locators:
     #【显示区】
     TAB_ONE = (By.XPATH,'(//*[@class=\"x-grid3-scroller\"])[1]/div/div[1]')
     #用户编号
-    TAB_ONE_USER_NO = (By.XPATH, '(//*[@class=\"x-grid3-scroller\"])[1]/div/div[1]/table/tbody/tr/td[2]/div/a')
+    TAB_ONE_CONS_NO = (By.XPATH, '(//*[@class=\"x-grid3-scroller\"])[1]/div/div[1]/table/tbody/tr/td[2]/div/a')
     #终端地址
-    TAB_ONE_TERMINAL_ADDR = (By.XPATH, '(//*[@class=\"x-grid3-scroller\"])[1]/div/div[1]/table/tbody/tr/td[7]/div/a')
+    TAB_ONE_TMNL_ADDR = (By.XPATH, '(//*[@class=\"x-grid3-scroller\"])[1]/div/div[1]/table/tbody/tr/td[7]/div/a')
+    #【js操作区】
+    js = "document.getElementById('consTypeCombox').removeAttribute(\"readOnly\")"
 
 

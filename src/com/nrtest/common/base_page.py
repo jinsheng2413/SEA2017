@@ -497,11 +497,18 @@ class Page(object):
 
         self.driver.refresh()
         try:
-            self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
-            self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
+            h = self.assert_context(*LoginPageLocators.BTN_CONFIRM)
+            if h is True :
+             self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
         except :
-            print('去除异常失败')
+            print('去除确定按钮失败或未出现')
 
+        try:
+            h = self.assert_context(*LoginPageLocators.BTN_ARROW)
+            if h is True :
+             self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
+        except :
+            print('去除左边弹出框失败或未出现')
 
 
 

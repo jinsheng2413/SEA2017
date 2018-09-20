@@ -19,6 +19,8 @@ from com.nrtest.common.setting import Setting
 
 import os
 
+
+
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
 
@@ -26,27 +28,27 @@ os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
 
 class DataAccess:
-
-    def getMenu(self, menuNo):
+    @staticmethod
+    def getMenu(menuNo):
 
         pyoracle = PyOracle.getInstance()
         str = pyoracle.callfunc('pkg_nrtest.get_menu_path', 'str', [menuNo])
 
         return str
-
-    def getLeftTree(self, treeNO):
+    @staticmethod
+    def getLeftTree(treeNO):
         pyoracle = PyOracle.getInstance()
         str = pyoracle.callfunc('pkg_nrtest.get_org_path', 'str', [treeNO])
         return str
-
-    def getCaseData(self, menuNo):
+    @staticmethod
+    def getCaseData(menuNo):
         pyoracle = PyOracle.getInstance()
         str = pyoracle.callfunc('pkg_nrtest.get_tst_case', 'str', [Setting.GROUP_USER, menuNo])
 
         return eval(str)
 if __name__=='__main__':
-    da =DataAccess()
-    str =da.getMenu('99922120')
+
+    str =DataAccess.getCaseData("99911400")
     print(str)
 
 

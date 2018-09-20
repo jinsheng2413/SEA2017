@@ -589,10 +589,13 @@ class Page(object):
     def recoverLeftTree(self):
         num = self.find_elements_num(*MenuLocators.TREE_MINUS)
         counter =len(num)-1
-        while counter >= 0:
-            num[counter].click()
-            counter = counter - 1
-        self.click(*MenuLocators.TREE_END)
+        if counter in (1,2):
+            pass
+        else:
+            while counter >= 0:
+                num[counter].click()
+                counter = counter - 1
+            self.click(*MenuLocators.TREE_END)
 
     def clickTabPage(self,name):
         try:

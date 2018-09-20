@@ -594,6 +594,15 @@ class Page(object):
             counter = counter - 1
         self.click(*MenuLocators.TREE_END)
 
+    def clickTabPage(self,name):
+        try:
+         locators = (By.XPATH,"(//*[@class=\"x-tab-strip-text \"])[contains(text(),'{}')]".format(name))
+         self.click(*locators)
+        except NoSuchElementException  as e:
+            print('点击{}tab页失败'.format(name))
+
+
+
 
 
 if __name__ == '__main__':

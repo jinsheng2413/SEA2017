@@ -157,4 +157,5 @@ class MenuPage(Page):
 if __name__ == '__main__':
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     p = MenuPage(lg.login())
-    p.click_menu('99922120')
+    p.click_menu('99913210')
+    p.clickTabPage('采集成功率统计')

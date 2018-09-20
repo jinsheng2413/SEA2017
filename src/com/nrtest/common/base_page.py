@@ -589,7 +589,7 @@ class Page(object):
     def recoverLeftTree(self):
         num = self.find_elements_num(*MenuLocators.TREE_MINUS)
         counter =len(num)-1
-        if counter in (1,2):
+        if counter in 1:
             pass
         else:
             while counter >= 0:

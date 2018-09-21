@@ -43,15 +43,19 @@ class DataAccess:
     @staticmethod
     def getCaseData(menuNo):
         pyoracle = PyOracle.getInstance()
-        str = pyoracle.callfunc('pkg_nrtest.get_tst_case', 'str', [Setting.GROUP_USER, menuNo])
+        qry = [Setting.GROUP_USER, menuNo]
+        str = pyoracle.callfunc('pkg_nrtest.get_tst_case', 'str', qry)
 
         #字符串转list
-        qryCond = eval(str)
+        rslt = eval(str)
+        if (len(rslt) == 0):
+            print('请确认以下配置项是否正确：\n1,配置文件（nari_test.conf）的user_group项：%s \n2,菜单编号：%s' % tuple(qry))
+        print('当前用例数据：\n', rslt)
 
         #dict转Dict ljf
-        for i in range(len(qryCond)):
-            qryCond[i] = Dict(qryCond[i])
-        return qryCond
+        for i in range(len(rslt)):
+            rslt[i] = Dict(rslt[i])
+        return rslt
 if __name__=='__main__':
 
     str =DataAccess.getCaseData("99911400")

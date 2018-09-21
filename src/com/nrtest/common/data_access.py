@@ -45,7 +45,13 @@ class DataAccess:
         pyoracle = PyOracle.getInstance()
         str = pyoracle.callfunc('pkg_nrtest.get_tst_case', 'str', [Setting.GROUP_USER, menuNo])
 
-        return eval(str)
+        #字符串转list
+        qryCond = eval(str)
+
+        #dict转Dict ljf
+        for i in range(len(qryCond)):
+            qryCond[i] = Dict(qryCond[i])
+        return qryCond
 if __name__=='__main__':
 
     str =DataAccess.getCaseData("99911400")

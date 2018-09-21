@@ -589,7 +589,7 @@ class Page(object):
     def recoverLeftTree(self):
         num = self.find_elements_num(*MenuLocators.TREE_MINUS)
         counter =len(num)-1
-        if counter in 1:
+        if counter is not int:
             pass
         else:
             while counter >= 0:
@@ -598,6 +598,11 @@ class Page(object):
                 self.click(*MenuLocators.TREE_END)
 
     def clickTabPage(self,name):
+        '''
+        输入tab页名称，选中tab页
+        :param name: tab页的中文名称
+        :return:
+        '''
         try:
          locators = (By.XPATH,"(//*[@class=\"x-tab-strip-text \"])[contains(text(),'{}')]".format(name))
          self.click(*locators)

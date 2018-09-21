@@ -595,7 +595,7 @@ class Page(object):
             while counter >= 0:
                 num[counter].click()
                 counter = counter - 1
-            self.click(*MenuLocators.TREE_END)
+                self.click(*MenuLocators.TREE_END)
 
     def clickTabPage(self,name):
         try:

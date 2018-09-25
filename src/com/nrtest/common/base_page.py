@@ -533,18 +533,20 @@ class Page(object):
         inputSel_XXX    下拉选择框 --
         inputDt_XXX     日期输入框
         inputStr_XXX    文本输入框 --
-        inputRSel_XXX   必选下拉选择：已定义/未定义
+        inputRSel_XXX   必选下拉选择：已定义/未定义,必须用下标
         inputCSel_XXX
         """
         for item in tuple(cv.__dict__.items()):
             temp = item[0]
             obj = getattr(self, temp)
-            if ((temp.startswith('inputSel_') or temp.startswith('inputRSel')) and callable(obj)):
-                obj(1)
+            if ((temp.startswith('inputSel_')) and callable(obj)):
+                obj('全部')
             elif (temp.startswith('inputStr') and callable(obj)):
                 obj("")
             elif (temp.startswith('inputCStr') and callable(obj)):
                 obj("c")
+            elif (temp.startswith('inputRSel'))and callable(obj):
+                obj(1)
 
     def get_select_locator(self,locator,num ):
         '''

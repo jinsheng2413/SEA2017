@@ -81,8 +81,7 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
     # @ddt.data(*DataCommon.do.getCaseData())
     @data(*DataAccess.getCaseData(SysConfigManData.para_SysDictMan))
     def test_que(self, para):
-        print(para['CATALOG_NAME'])
-        self.query(Dict(para))
+        self.query(para)
 
 
 if __name__ == '__main__':

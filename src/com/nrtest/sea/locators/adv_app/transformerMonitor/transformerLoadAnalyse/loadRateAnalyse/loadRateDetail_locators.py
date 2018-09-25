@@ -32,4 +32,4 @@ class LoadRateDetailcLocators:
     QUERY_DATE_JS = 'document.getElementById("loadDetailDate").removeAttribute("readonly");'
 
     # 【显示区】
-    TAB_ONE = (By.XPATH,"(//div[@class=\"x-grid3-scroller\"])[1]/div/div)[2]")
+    TAB_ONE = (By.XPATH,"(((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[2]")

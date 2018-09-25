@@ -60,44 +60,36 @@ class TestLoadRateStatic(unittest.TestCase, LoadRateStaticPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        # 分类名称
-        self.inputStr_catalog_name(para['CATALOG_NAME'])
-        # 生效日期
-        self.inputStr_start_date(para['START_DATE'])
-        # 失效日期
-        self.inputStr_end_date(para['END_DATE'])
-        # 维护类型
-        self.inputRSel_cons_type(para['EDIT_TYPE'])
-        # 维护人员
-        self.inputStr_editor(para['EDITOR'])
-        # 数据来源
-        self.inputRSel_data_source(para['DATA_SOURCE'])
-
-        self.btn_query()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(*LoadRateStaticLocators.TAB_ONE)
-        self.assertTrue(result)
-
-    # @ddt.data(*DataCommon.do.getCaseData())
-    # @data(*DataAccess.getCaseData(LoadRateStaticLocators.para_SysDictMan))
-    # def test_que(self, para):
-    # self.query(para)
-
-    def test_test(self):
         # 供电单位
-        openLeftTree('13401')
+        openLeftTree(para['ORG_NO'])
         # 用户类型
-        self.inputRSel_cons_type('全部')
+        self.inputRSel_cons_type(para['CONS_TYPE'])
         # 查询日期
-        self.inputStr_query_date('2018-9-1')
+        self.inputStr_query_date(para['QUERY_DATE'])
 
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LoadRateStaticLocators.TAB_ONE)
+        result = self.assert_context(*LoadRateStaticLocators.TABLE_DATA)
         self.assertTrue(result)
 
+    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_TradnsformerMonitor))
+    def test_que(self, para):
+        self.query(para)
+
+    # def test_test(self):
+    #     # 供电单位
+    #     openLeftTree('13401')
+    #     # 用户类型
+    #     self.inputRSel_cons_type('全部')
+    #     # 查询日期
+    #     self.inputStr_query_date('2018-9-1')
+    #
+    #     self.btn_query()
+    #     self.sleep_time(2)
+    #     # 校验
+    #     result = self.assert_context(*LoadRateStaticLocators.TAB_ONE)
+    #     self.assertTrue(result)
 
 if __name__ == '__main__':
     unittest.main()

@@ -32,5 +32,5 @@ class LoadRateStaticLocators:
     QUERY_DATE_JS = 'document.getElementsByTagName("input")[6].removeAttribute("readonly");'
 
     # 【显示区】
-    TAB_ONE = (By.XPATH,"(//div[@class=\"x-grid3-scroller\"])[1]/div/div)[1]")
+    TABLE_DATA = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[1]')
 

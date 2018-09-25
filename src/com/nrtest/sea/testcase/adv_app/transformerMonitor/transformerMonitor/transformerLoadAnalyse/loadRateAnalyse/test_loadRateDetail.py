@@ -29,8 +29,8 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
     def setUpClass(cls):
         print("开始执行")
         cls.driver = openMenu(TradnsformerMonitorData.para_TradnsformerMonitor)
-        cls.clickTabPage('负载率明细')
-        cls.driver.execute_script(cls,LoadRateDetailcLocators.QUERY_DATE_JS)
+        clickTabPage('负载率明细')
+        cls.exec_script(cls,LoadRateDetailcLocators.QUERY_DATE_JS)
 
 
     @classmethod
@@ -88,7 +88,7 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
 
     def test_test(self):
         # 供电单位
-        openLeftTree('13401')
+        self.driver = openLeftTree('13401')
         # 用户类型
         self.inputRSel_cons_type('全部')
         # 查询日期

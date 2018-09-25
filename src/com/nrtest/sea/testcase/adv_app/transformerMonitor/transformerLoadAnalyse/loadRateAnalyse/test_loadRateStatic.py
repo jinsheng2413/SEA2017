@@ -91,5 +91,6 @@ class TestLoadRateStatic(unittest.TestCase, LoadRateStaticPage):
     #     result = self.assert_context(*LoadRateStaticLocators.TAB_ONE)
     #     self.assertTrue(result)
 
+
 if __name__ == '__main__':
     unittest.main()

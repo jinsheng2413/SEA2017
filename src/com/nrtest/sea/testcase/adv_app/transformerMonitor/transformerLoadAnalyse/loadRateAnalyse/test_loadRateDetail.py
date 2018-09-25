@@ -30,8 +30,7 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
         print("开始执行")
         cls.driver = openMenu(TradnsformerMonitorData.para_TradnsformerMonitor)
         clickTabPage('负载率明细')
-        cls.exec_script(cls,LoadRateDetailcLocators.QUERY_DATE_JS)
-
+        cls.exec_script(cls, LoadRateDetailcLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -92,12 +91,12 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
         # 用户类型
         self.inputRSel_cons_type('全部')
         # 查询日期
-        self.inputStr_query_date('2018-9-1')
+        self.inputStr_query_date('2018-09-01')
 
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LoadRateDetailcLocators.TAB_ONE)
+        result = self.assert_context(*LoadRateDetailcLocators.TABLE_DATA)
         self.assertTrue(result)
 
 

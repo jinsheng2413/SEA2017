@@ -118,13 +118,10 @@ class must_get_url(object):
 
 class Page(object):
 
-    def __init__(self, driver , base_url=Setting.TEST_URL, pagetitle=Setting.PAGE_TILE):
+    def __init__(self, driver, base_url=Setting.TEST_URL, pagetitle=Setting.PAGE_TILE):
         self.driver = driver
         self.base_url = base_url
         self.page_title = pagetitle
-
-
-
 
     def fail_on_screenshot(function):
         """
@@ -421,7 +418,7 @@ class Page(object):
         logger.info('休眠：{0}s'.format(time))
         sleep(time)
 
-    def select(self, idx_or_text, *locators ):
+    def select(self, idx_or_text, *locators):
 
         '''
         选择下拉框
@@ -496,21 +493,17 @@ class Page(object):
         '''
 
         self.driver.refresh()
-        try:
-            h = self.assert_context(*LoginPageLocators.BTN_CONFIRM)
-            if h is True :
-             self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
-        except :
-            print('去除确定按钮失败或未出现')
+        sleep(2)
+        con = self.driver.find_element_by_tag_name('body').text
 
-        try:
-            h = self.assert_context(*LoginPageLocators.BTN_ARROW)
-            if h is True :
-             self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
-        except :
-            print('去除左边弹出框失败或未出现')
-
-
+        if '重要信息推出' in con:
+            bool = False
+            if '登录异常' in con:
+                print("-----")
+                self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
+            if '账号异常信息' in con:
+                print("-----")
+                self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
 
     def clear(self, *Locators):
         '''
@@ -527,7 +520,7 @@ class Page(object):
         else:
             return False
 
-    def clear_values(self,cv):
+    def clear_values(self, cv):
         """
 
         inputSel_XXX    下拉选择框 --
@@ -545,10 +538,11 @@ class Page(object):
                 obj("")
             elif (temp.startswith('inputCStr') and callable(obj)):
                 obj("c")
-            elif (temp.startswith('inputRSel'))and callable(obj):
+            elif (temp.startswith('inputRSel')) and callable(obj):
                 obj(1)
+
     @classmethod
-    def get_select_locator(self,locator,num ):
+    def get_select_locator(self, locator, num):
         '''
         
         :param idx: 
@@ -556,16 +550,16 @@ class Page(object):
         '''
         return (locator[0], locator[1] % num)
 
-    def bock_wait(self,Locator):
+    def bock_wait(self, Locator):
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(Locator))
 
     def implic_wait(self):
-       self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(10)
 
-    def Find_element_by_tag_name(self,value):
-       f = self.driver.find_element_by_tag_name(value)
-       print(len(f))
-       return f
+    def Find_element_by_tag_name(self, value):
+        f = self.driver.find_element_by_tag_name(value)
+        print(len(f))
+        return f
 
     def save_img(self, img_name):
         """
@@ -579,7 +573,6 @@ class Page(object):
         # path = os.path.abspath(self.img_path)
 
         self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
-
 
     # def closeTab(self):
     #     # ****定位到要右击的元素**
@@ -596,35 +589,52 @@ class Page(object):
         else:
             counter = len(num) - 1
             while counter >= 0:
-                if num[counter][1] is MenuLocators.TREE_END:
+                if num[counter] is MenuLocators.TREE_END:
                     self.click(*MenuLocators.TREE_END)
                 else:
                     num[counter].click()
                 counter = counter - 1
             self.click(*MenuLocators.TREE_END)
 
-    def clickTabPage(self,name):
+    def clickTabPage(self, name):
         '''
         输入tab页名称，选中tab页
         :param name: tab页的中文名称
         :return:
         '''
         try:
-         locators = (By.XPATH,"(//*[@class=\"x-tab-strip-text \"])[contains(text(),'{}')]".format(name))
-         self.click(*locators)
+            locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[contains(text(),'{}')]".format(name))
+            self.click(*locators)
         except NoSuchElementException  as e:
             print('点击{}tab页失败'.format(name))
 
+    @classmethod
+    def TableLineValue(self, i, l):
+        try:
+            str = "(//*[@class=\"x-grid3-row-table\"])[{0}]//td[{1}]".format(i, l)
+            changeStr = self._find_element(*(By.XPATH, str)).text
+            return changeStr
+        except NameError as e:
+            print('获取显示区文字失败')
 
+    @classmethod
+    def assertTableOne(self):
+        try:
+            bo = self.assert_context(*(By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[1]'))
+            if bo is True:
+                return True
+            else:
+                return False
 
+        except NameError as e:
+            print('获取显示区第一个列数据失败')
 
 
 if __name__ == '__main__':
     dr = webdriver.Chrome()
 
-
     p = Page(dr)
-    #jjjjjj
+    # jjjjjj
 
     p.clear_values(Page)
     p.base_url = 'hhhhhhhhhhh'

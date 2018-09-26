@@ -10,3 +10,5 @@
 class ArchivesMan_data:
   #基本应用--》档案管理--》载波档案矫正
    waveArchives_para = '99911500'
+  # 基本应用--》档案管理--》档案变更记录
+   archivesChangeRecord_para = '99911D00'

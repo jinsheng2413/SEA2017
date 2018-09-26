@@ -14,3 +14,5 @@ class ArchivesMan_data:
    archivesChangeRecord_para = '99911D00'
   # 基本应用--》档案管理--》巡检仪档案管理
    strategicArchivesMaintain_para = '99911900'
+  # 基本应用--》档案管理--》电能表状态维护
+   meterStateArr_para = '99911910'

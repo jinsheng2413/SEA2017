@@ -547,7 +547,7 @@ class Page(object):
                 obj("c")
             elif (temp.startswith('inputRSel'))and callable(obj):
                 obj(1)
-
+    @classmethod
     def get_select_locator(self,locator,num ):
         '''
         
@@ -590,14 +590,18 @@ class Page(object):
 
     def recoverLeftTree(self):
         num = self.find_elements_num(*MenuLocators.TREE_MINUS)
-        counter =len(num)-1
-        if counter is not int:
+        if self.assert_context(*MenuLocators.TREE_END) is False:
             pass
+
         else:
+            counter = len(num) - 1
             while counter >= 0:
-                num[counter].click()
+                if num[counter][1] is MenuLocators.TREE_END:
+                    self.click(*MenuLocators.TREE_END)
+                else:
+                    num[counter].click()
                 counter = counter - 1
-                self.click(*MenuLocators.TREE_END)
+            self.click(*MenuLocators.TREE_END)
 
     def clickTabPage(self,name):
         '''

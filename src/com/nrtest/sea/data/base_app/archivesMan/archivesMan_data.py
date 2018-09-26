@@ -12,3 +12,5 @@ class ArchivesMan_data:
    waveArchives_para = '99911500'
   # 基本应用--》档案管理--》档案变更记录
    archivesChangeRecord_para = '99911D00'
+  # 基本应用--》档案管理--》巡检仪档案管理
+   strategicArchivesMaintain_para = '99911900'

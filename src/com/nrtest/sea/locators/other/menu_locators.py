@@ -39,11 +39,12 @@ class MenuLocators:
     #县和用户
     BTN_COUNTY_AND_USER = (By.XPATH,"(//span[contains(text(),'直属用户')])[2]/../../../../li[%s]")
 
-    # 【显示区】
-    TAB_ONE = (By.XPATH, '(//div[@class=\"x-grid3-row-checker\"])[%s]')
-    TAB_TWO = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[%s]')
-
+    # 【左边树显示区】
+    TABLE_DATA = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[[1]]')
     TREE_MINUS = (By.XPATH,'//*[@class=\"x-tree-ec-icon x-tree-elbow-minus\"]')
     TREE_END = (By.XPATH,'//*[@class=\"x-tree-ec-icon x-tree-elbow-end-minus\"]')
+    # 【table显示区】
+    TAB_ONE = (By.XPATH, '(//table[@class=\"x-grid3-row-table\"])[1]')
+    TAB_VALUE = (By.XPATH, "//*[@class=\"x-grid3-row-table\"])[{0}]//td[1]")
 
 

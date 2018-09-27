@@ -106,7 +106,6 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
     def test_b_der_statistics(self,para):
         self.clickTabPage('采集成功率统计')
         self.query_statistics(para)
-        self.query_statistics(para)
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率→采集成功率明细
     def query_detail(self, para):

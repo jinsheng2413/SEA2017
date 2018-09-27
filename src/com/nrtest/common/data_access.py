@@ -50,7 +50,7 @@ class DataAccess:
         rslt = eval(str)
         if (len(rslt) == 0):
             print('请确认以下配置项是否正确：\n1,配置文件（nari_test.conf）的user_group项：%s \n2,菜单编号：%s' % tuple(qry))
-        print('当前用例数据：\n', rslt)
+        print('当前用例数据：\n', rslt, '\n')
 
         #dict转Dict ljf
         for i in range(len(rslt)):

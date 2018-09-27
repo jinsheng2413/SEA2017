@@ -124,7 +124,6 @@ class MenuPage(Page):
                 self.btn_select_user(int(items[3])+1)
         elif l is 1:
             self.btn_select_province()
-        self.sleep_time(2)
 
         return self.driver
 
@@ -144,13 +143,7 @@ class MenuPage(Page):
             self.get_select_locator(MenuLocators.TAB_TWO, num)
 
 
-    def recoverLeftTree(self):
-        num = self.find_elements_num(*MenuLocators.TREE_MINUS)
-        counter =len(num)-1
-        while counter >= 0:
-            num[counter].click()
-            counter = counter - 1
-        self.click(*MenuLocators.TREE_END)
+
 
 
 

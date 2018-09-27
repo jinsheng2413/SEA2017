@@ -3,16 +3,16 @@
 '''
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: loadRateStatic_locators.py
-@time: 2018/9/24 20:42
+@file: test_availableCapacityAnalyse.py
+@time: 2018/9/27 15:49
 @desc:
 '''
 
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse.loadRateDetail_page import \
-    LoadRateDetailPage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.availableCapacityAnalyse_page import \
+    AvailableCapacityAnalysePage
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse.loadRateDetail_locators import \
-    LoadRateDetailLocators
+from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.availableCapacityAnalyse_locators import \
+    AvailableCapacityAnalyseLocators
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.task.commonMath import *
@@ -21,16 +21,15 @@ import unittest
 
 
 # 高级应用--》配变负载分析--》负载率分析
-# 负载率明细
+# 负载率统计
 @ddt
-class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
+class TestLoadRateStatic(unittest.TestCase, AvailableCapacityAnalysePage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(TradnsformerMonitorData.para_TradnsformerMonitor)
-        clickTabPage('负载率明细')
-        cls.exec_script(cls, LoadRateDetailLocators.QUERY_DATE_JS)
+        cls.driver = openMenu(TradnsformerMonitorData.para_AvailableCapacityAnalyse)
+        cls.driver.execute_script(AvailableCapacityAnalyseLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -63,34 +62,35 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
 
         # 供电单位
         openLeftTree(para['ORG_NO'])
-        # 用户类型
-        self.inputRSel_cons_type(para['CONS_TYPE'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
+        # 负载率
+        self.inputStr_load_rate(para['LOAD_RATE'])
 
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LoadRateDetailLocators.TABLE_DATA)
+        result = self.assert_context(*AvailableCapacityAnalyseLocators.TABLE_DATA)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_TradnsformerMonitor))
+    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_AvailableCapacityAnalyse))
     def test_que(self, para):
         self.query(para)
 
     # def test_test(self):
     #     # 供电单位
     #     openLeftTree('13401')
-    #     # 用户类型
-    #     self.inputRSel_cons_type('全部')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-9-1')
+    #     self.inputStr_query_date('2018-09')
+    #     # 负载率
+    #     self.inputStr_load_rate('')
     #
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*LoadRateDetailLocators.TAB_ONE)
+    #     result = self.assert_context(*AvailableCapacityAnalyseLocators.TABLE_DATA)
     #     self.assertTrue(result)
+
 
 if __name__ == '__main__':
     unittest.main()

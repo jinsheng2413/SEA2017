@@ -178,7 +178,7 @@ class PyOracle(object):
                 rst = rst.strftime('%Y-%m-%d %H:%M:%S')
             conn.commit()
         except Exception as e:
-            print('callfun   ', e)
+            print('callfun   ', e, para)
             rst = None
             conn.rollback()
         finally:

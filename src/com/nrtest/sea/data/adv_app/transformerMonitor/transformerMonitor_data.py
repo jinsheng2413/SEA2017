@@ -10,3 +10,4 @@
 
 class TradnsformerMonitorData:
  para_TradnsformerMonitor = '99925110'
+ para_AvailableCapacityAnalyse = '99925120'

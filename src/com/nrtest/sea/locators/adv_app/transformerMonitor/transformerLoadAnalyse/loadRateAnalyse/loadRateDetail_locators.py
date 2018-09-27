@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By
 
 # 高级应用--》配变负载分析--》负载率分析
 #负载率明细
-class LoadRateDetailcLocators:
+class LoadRateDetailLocators:
     #【查询条件】
     # 供电单位
     ORG_NO = (By.XPATH,("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[2]"))

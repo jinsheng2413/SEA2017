@@ -13,6 +13,8 @@ from BeautifulReport import BeautifulReport
 
 # from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common import global_drv
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.common.setting import Setting
 
 
 def add_case(case_path='', rule='test*.py'):
@@ -33,6 +35,11 @@ def run(test_suit):
 
 if __name__ == "__main__":
     global_drv.__init()
+
+    #如果group_user为admin则全量刷新用例
+    if (Setting.GROUP_USER == 'admin'):
+       DataAccess.refresh_case()
+        
     # 用例集合
     # curpath = 'D:\pythonworkspace\SEA2017\src\com/nrtest\sea/testcase/adv_app\dataRecover'
     cases = add_case()

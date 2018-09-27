@@ -8,6 +8,7 @@
 @desc:
 '''
 
+
+# 基本应用→数据采集管理→采集质量分析→采集成功率
 class GatherSuccessRate_data:
-    # 基本应用→数据采集管理→采集质量分析→采集成功率
     para_GatherSuccessRate = '99913401'

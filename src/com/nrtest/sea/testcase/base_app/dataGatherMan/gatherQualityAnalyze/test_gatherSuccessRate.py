@@ -25,7 +25,7 @@ from com.nrtest.common.base_page import *
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率
-from com.nrtest.sea.testcase.adv_app.costControlManage.kl import ly
+
 
 
 @ddt.ddt
@@ -87,8 +87,8 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         self.assertTrue(result)
 
     @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
-    def test_der(self, para):
-        self.query(Dict(para))
+    def test_a_der(self, para):
+        self.query(para)
 
     # 基本应用→数据采集管理→采集质量分析→采集成功率→采集成功率统计
     def query_statistics(self, para):
@@ -101,11 +101,88 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         self.inputDt_statistics_date(para['STATISTICS_DATE'])
         # 点击查询按钮
         self.btn_statistics_search()
-        # 校验
-        result = self.assert_context(*GatherSuccessRateLocators.STATISTICS_CHECK)
-        self.assertTrue(result)
+        # # 校验
+        # result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
+        # self.assertTrue(result)
 
     @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
-    def test_der_statistics(self,para):
+    def test_b_der_statistics(self,para):
         self.clickTabPage('采集成功率统计')
-        self.query_statistics(Dict(para))
+        self.query_statistics(para)
+
+# 基本应用→数据采集管理→采集质量分析→采集成功率→采集成功率明细
+    def query_detail(self, para):
+        # 打开左边树并选择
+        self.sleep_time(2)
+        self.driver = openLeftTree(para['DETAIL_TREE_ORG_NO'])
+        # 用户类型
+        self.inputCSel_detail_cons_type(para['DETAIL_CONS_TYPE'])
+        # 查询时间
+        self.inputDt_detail_date(para['DETAIL_DATE'])
+        # 点击查询按钮
+        self.btn_detail_search()
+        # # 校验
+        # result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
+        # self.assertTrue(result)
+
+    @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
+    def test_c_der_detail(self,para):
+        self.clickTabPage('采集成功率明细')
+        self.query_detail(para)
+
+# 基本应用→数据采集管理→采集质量分析→采集成功率→连续抄表失败明细
+    def query_false(self, para):
+        # 打开左边树并选择
+        self.sleep_time(2)
+        self.driver = openLeftTree(para['FALSE_TREE_ORG_NO'])
+        # 用户类型
+        self.inputCSel_false_cons_type(para['FALSE_CONS_TYPE'])
+        # 查询时间
+        self.inputDt_false_date(para['FALSE_DATE'])
+        # 点击查询按钮
+        self.btn_false_search()
+        # # 校验
+        # result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
+        # self.assertTrue(result)
+
+    @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
+    def test_d_der_false(self,para):
+        self.clickTabPage('连续抄表失败明细')
+        self.query_false(para)
+
+#
+# # 基本应用→数据采集管理→采集质量分析→采集成功率→连续抄表失败明细→连续N天抄表失败明细
+#     @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
+#     def test_e_der_false(self,para):
+#         self.clickTabPage('连续抄表失败明细')
+#         self.clickTabPage('连续N天抄表失败明细')
+#         self.query_false(para)
+#
+# # 基本应用→数据采集管理→采集质量分析→采集成功率→连续抄表失败明细→应采集电表明细
+#     @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
+#     def test_f_der_false(self, para):
+#         self.clickTabPage('连续抄表失败明细')
+#         self.clickTabPage('应采集电表明细')
+#         self.query_false(para)
+
+# 基本应用→数据采集管理→采集质量分析→采集成功率→按时间统计
+    def query_date(self, para):
+        # 打开左边树并选择
+        self.sleep_time(2)
+        self.driver = openLeftTree(para['DATE_TREE_ORG_NO'])
+        # 用户类型
+        self.inputCSel_date_cons_type(para['DATE_CONS_TYPE'])
+        # 查询时间,开始
+        self.inputDt_data_start_date(para['DATE_START_DATE'])
+        #查询时间，结束
+        self.inputDt_data_end_date(para['DATE_END_DATE'])
+        # 点击查询按钮
+        self.btn_date_search()
+        # # 校验
+        # result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
+        # self.assertTrue(result)
+
+    @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
+    def test_g_der_date(self,para):
+        self.clickTabPage('按时间统计')
+        self.query_date(para)

@@ -11,12 +11,12 @@ from com.nrtest.common.oracle_test import Oracle
 
 import unittest
 
-from com.nrtest.sea.testcase.adv_app.costControlManage.test_elePricePara import TestElePricePara
+from com.nrtest.sea.testcase.base_app.dataGatherMan.gatherQualityAnalyze.test_gatherSuccessRate import TestGatherSuccessRate
 
 suite = unittest.TestSuite()
-#suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestElePricePara))
-tests = [TestElePricePara('test_epp_task_type')]
-suite.addTests(tests)
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestGatherSuccessRate))
+#tests = [TestGatherSuccessRate('test_epp_task_type')]
+#suite.addTests(tests)
 
 
 

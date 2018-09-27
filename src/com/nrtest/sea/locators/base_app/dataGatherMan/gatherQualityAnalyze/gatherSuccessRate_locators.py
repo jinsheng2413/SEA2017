@@ -42,8 +42,8 @@ class GatherSuccessRateLocators:
     STATISTICS_DATE = (By.XPATH,'//input[@id="readDate"]')
     #用户类型
     STATISTICS_CONS_TYPE = (By.XPATH,'//input[@id="readSortTypeCombo"]')
-    #用户类型—专变
-    STATISTICS_CONS_TYPE_VALUE = (By.XPATH,'//div[contains(text(),"专变")]')
+    #用户类型→值
+    STATISTICS_CONS_TYPE_VALUE = (By.XPATH,'(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     #查询按钮
     BTN_STATISTICS_SEARCH = (By.XPATH,'//table[@id="readSuccessRateQueryBtn"]')
 
@@ -55,8 +55,8 @@ class GatherSuccessRateLocators:
     DETAIL_DATE = (By.XPATH,'//input[@id="failDetail_statDate"]')
     #用户类型
     DETAIL_CONS_TYPE = (By.XPATH,'//input[@id="failDetail_consTypeCombox"]')
-    #用户类型—专变
-    DETAIL_CONS_TYPE_ZHUANBIAN = (By.XPATH,'//div[contains(text(),"专变")]')
+    #用户类型→值
+    DETAIL_CONS_TYPE_VALUE = (By.XPATH,'(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     #查询按钮
     BTN_DETAIL_SEARCH = (By.XPATH,'//table[@id="gatherFailDetailQueryBtn"]')
     #未抄数
@@ -67,17 +67,29 @@ class GatherSuccessRateLocators:
     BTN_CONTINUOUS_FALSE = (By.XPATH,'//span[contains(text(),"连续抄表失败明细")]')
 #页面元素
     # 查询日期
-    FALSE_DATE = (By.XPATH,'//label[contains(text(),"日期")]/../div/div/input')
+    FALSE_DATE = (By.XPATH,'(//label[contains(text(),"日期")]/../div/div/input)[3]')
     #用户类型
-    FALSE_CONS_TYPE = (By.XPATH,'(//label[contains(text(),"用户类型")]/../div/div/input)[2]')
-    #用户类型—专变
-    FALSE_CONS_TYPE_ZHUANBIAN = (By.XPATH,'//div[contains(text(),"专变")]')
+    FALSE_CONS_TYPE = (By.XPATH,'(//label[contains(text(),"用户类型")]/../div/div/input)[4]')
+    #用户类型→值
+    FALSE_CONS_TYPE_VALUE = (By.XPATH,'(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     #查询按钮
-    BTN_FALSE_SEARCH = (By.XPATH,'(//button[contains(text(),"查询")])[2]')
+    BTN_FALSE_SEARCH = (By.XPATH,'(//button[contains(text(),"查询")])[4]')
     #连续N天抄表失败明细
     BTN_FALSE_DETAIL = (By.XPATH,'//span[contains(text(),"连续N天抄表失败明细")]')
     #应采集电表明细
     BTN_GATHER_DETAIL = (By.XPATH,'//span[contains(text(),"应采集电表明细")]')
+
+# 基本应用→数据采集管理→采集质量分析→采集成功率→按时间统计
+    #查询日期，开始
+    DATE_START_DATE = (By.XPATH,'//input[@name="msq_startDate"]')
+    #查询日期，结束
+    DATE_END_DATE = (By.XPATH,'//input[@name="msq_endDate"]')
+    #用户类型
+    DATE_CONS_TYPE = (By.XPATH,'(//label[contains(text(),"用户类型")]/../div/div/input)[5]')
+    #用户类型→值
+    DATE_CONS_TYPE_VALUE = (By.XPATH,'(//div[@class="x-combo-list-inner"])[5]/div[%s]')
+    #查询按钮
+    BTN_DATE_SEARCH = (By.XPATH,'(//button[contains(text(),"查询")])[5]')
 
 #【JS属性】
     #用户类型，删除readonly属性
@@ -93,7 +105,13 @@ class GatherSuccessRateLocators:
     #采集成功率明细，查询日期，删除readonly属性
     DETAIL_DATE_JS = 'document.getElementById("failDetail_statDate").removeAttribute("readonly");'
     #采集成功率明细→连续抄表失败明细，查询日期，删除readonly属性
-    FALSE_DATE_JS = 'document.getElementsByTagName("input")[43].removeAttribute("readonly");'
+    FALSE_DATE_JS = 'document.getElementsByTagName("input")[65].removeAttribute("readonly");'
+    #按时间统计,查询日期开始，删除readonly属性
+    DATE_START_DATE_JS = 'document.getElementsByName("msq_startDate")[0].removeAttribute("readonly");'
+    #按时间统计,查询日期结束，删除readonly属性
+    DATE_END_DATE_JS = 'document.getElementsByName("msq_endDate")[0].removeAttribute("readonly");'
+    #按时间统计,用户类型，删除readonly属性
+    DATE_CONS_TYPE_JS = 'document.getElementsByTagName("input")[57].removeAttribute("readonly");'
 
 #【校验区】
     #表格数据

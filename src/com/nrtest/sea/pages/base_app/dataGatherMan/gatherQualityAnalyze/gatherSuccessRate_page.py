@@ -50,10 +50,10 @@ class GatherSuccessRatePage(Page):
         if index is 'c':
             self._find_element(*GatherSuccessRateLocators.STATISTICS_CONS_TYPE)
         else:
-            self.click(*GatherSuccessRateLocators.CONS_TYPE)
-            locator = self.get_select_locator(GatherSuccessRateLocators.CONS_TYPE_VALUE,index)
+            self.click(*GatherSuccessRateLocators.STATISTICS_CONS_TYPE)
+            locator = self.get_select_locator(GatherSuccessRateLocators.STATISTICS_CONS_TYPE_VALUE,index)
             self.click(*locator)
-            self.click(*GatherSuccessRateLocators.CONS_TYPE)
+            self.click(*GatherSuccessRateLocators.STATISTICS_CONS_TYPE)
     #查询按钮
     def btn_statistics_search(self):
         self.click(*GatherSuccessRateLocators.BTN_STATISTICS_SEARCH)
@@ -68,11 +68,14 @@ class GatherSuccessRatePage(Page):
         self.exec_script(GatherSuccessRateLocators.DETAIL_DATE_JS)
         self.input(content,*GatherSuccessRateLocators.DETAIL_DATE)
     #用户类型
-    def inputCSel_detail_cons_type(self):
-        self.click(*GatherSuccessRateLocators.DETAIL_CONS_TYPE)
-    #用户类型—专变
-    def inputCSel_detail_cons_type_zhuanbian(self):
-        self.click(*GatherSuccessRateLocators.DETAIL_CONS_TYPE_ZHUANBIAN)
+    def inputCSel_detail_cons_type(self,index):
+        if index is 'c':
+            self._find_element(*GatherSuccessRateLocators.DETAIL_CONS_TYPE)
+        else:
+            self.click(*GatherSuccessRateLocators.DETAIL_CONS_TYPE)
+            locator = self.get_select_locator(GatherSuccessRateLocators.DETAIL_CONS_TYPE_VALUE, index)
+            self.click(*locator)
+            self.click(*GatherSuccessRateLocators.DETAIL_CONS_TYPE)
     #查询按钮
     def btn_detail_search(self):
         self.click(*GatherSuccessRateLocators.BTN_DETAIL_SEARCH)
@@ -90,17 +93,42 @@ class GatherSuccessRatePage(Page):
         self.exec_script(GatherSuccessRateLocators.FALSE_DATE_JS)
         self.input(content,*GatherSuccessRateLocators.FALSE_DATE)
     #用户类型
-    def inputCSel_false_cons_type(self):
-        self.click(*GatherSuccessRateLocators.FALSE_CONS_TYPE)
-    #用户类型—专变
-    def inputCSel_false_cons_type_zhuanbian(self):
-        self.click(*GatherSuccessRateLocators.FALSE_CONS_TYPE_ZHUANBIAN)
+    def inputCSel_false_cons_type(self,index):
+        if index is 'c':
+            self._find_element(*GatherSuccessRateLocators.FALSE_CONS_TYPE)
+        else:
+            self.click(*GatherSuccessRateLocators.FALSE_CONS_TYPE)
+            locator = self.get_select_locator(GatherSuccessRateLocators.FALSE_CONS_TYPE_VALUE, index)
+            self.click(*locator)
+            self.click(*GatherSuccessRateLocators.FALSE_CONS_TYPE)
     #查询按钮
     def btn_false_search(self):
         self.click(*GatherSuccessRateLocators.BTN_FALSE_SEARCH)
     # 连续N天抄表失败明细
     def btn_false_detail(self):
         self.click(*GatherSuccessRateLocators.BTN_FALSE_DETAIL)
+
+# 基本应用→数据采集管理→采集质量分析→采集成功率→按时间统计
+    #查询日期，开始
+    def inputDt_data_start_date(self,content):
+        self.exec_script(GatherSuccessRateLocators.DATE_START_DATE_JS)
+        self.input(content,*GatherSuccessRateLocators.DATE_START_DATE)
+    #查询日期，结束
+    def inputDt_data_end_date(self,content):
+        self.exec_script(GatherSuccessRateLocators.DATE_END_DATE_JS)
+        self.input(content,*GatherSuccessRateLocators.DATE_END_DATE)
+    #用户类型
+    def inputCSel_date_cons_type(self,index):
+        if index is 'c':
+            self._find_element(*GatherSuccessRateLocators.DATE_CONS_TYPE)
+        else:
+            self.click(*GatherSuccessRateLocators.DATE_CONS_TYPE)
+            locator = self.get_select_locator(GatherSuccessRateLocators.DATE_CONS_TYPE_VALUE, index)
+            self.click(*locator)
+            self.click(*GatherSuccessRateLocators.DATE_CONS_TYPE)
+    #查询按钮
+    def btn_date_search(self):
+        self.click(*GatherSuccessRateLocators.BTN_DATE_SEARCH)
 
 #显示区
     #第一个单位

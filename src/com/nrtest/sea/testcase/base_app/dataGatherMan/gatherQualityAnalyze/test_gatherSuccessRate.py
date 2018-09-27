@@ -8,28 +8,24 @@
 @desc:
 '''
 
-from com.nrtest.common.dictionary import Dict
 import unittest
+
+import ddt
+
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_data import \
+    GatherSuccessRate_data
 from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_locators import \
     GatherSuccessRateLocators
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_page import \
     GatherSuccessRatePage
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_data import \
-    GatherSuccessRate_data
 from com.nrtest.sea.task.commonMath import *
-import ddt
-from com.nrtest.common.base_page import *
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率
-from com.nrtest.sea.testcase.adv_app.costControlManage.kl import ly
 
 
 @ddt.ddt
-
 class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
 
     @classmethod
@@ -88,7 +84,7 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
 
     @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
     def test_der(self, para):
-        self.query(Dict(para))
+        self.query(para)
 
     # 基本应用→数据采集管理→采集质量分析→采集成功率→采集成功率统计
     def query_statistics(self, para):
@@ -106,6 +102,6 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         self.assertTrue(result)
 
     @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
-    def test_der_statistics(self,para):
+    def test_der_statistics(self, para):
         self.clickTabPage('采集成功率统计')
-        self.query_statistics(Dict(para))
+        self.query_statistics(para)

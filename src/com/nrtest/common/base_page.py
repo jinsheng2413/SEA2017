@@ -172,7 +172,7 @@ class Page(object):
 
         try:
             # 利用显示等待判断元素是否已经出现
-            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(Locator))
+            WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(Locator))
             # 定位元素
             el = self.driver.find_element(*Locator)
 

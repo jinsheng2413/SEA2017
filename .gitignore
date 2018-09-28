@@ -50,4 +50,5 @@ docs/_build/
 /img
 /reports
 *.html
-
+login.py
+nari_test.conf

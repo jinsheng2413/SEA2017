@@ -10,8 +10,7 @@
 
 from selenium.webdriver.common.by import By
 
-# 高级应用--》配变负载分析--》负载率分析
-#负载率明细
+# 高级应用--》配变负载分析--》包装可用容量分析
 class AvailableCapacityAnalyseLocators:
     #【查询条件】
     # 供电单位

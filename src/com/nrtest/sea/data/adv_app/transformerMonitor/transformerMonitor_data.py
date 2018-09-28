@@ -11,3 +11,4 @@
 class TradnsformerMonitorData:
  para_TradnsformerMonitor = '99925110'
  para_AvailableCapacityAnalyse = '99925120'
+ para_ThreeUnbalanceAnaly = '99925130'

@@ -89,7 +89,7 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*LoadRateDetailLocators.TAB_ONE)
+    #     result = self.assert_context(*LoadRateDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)
 
 if __name__ == '__main__':

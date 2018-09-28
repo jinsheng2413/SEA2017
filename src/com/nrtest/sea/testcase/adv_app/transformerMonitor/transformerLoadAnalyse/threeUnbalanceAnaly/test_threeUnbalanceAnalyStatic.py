@@ -3,16 +3,16 @@
 '''
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: test_availableCapacityAnalyse.py
-@time: 2018/9/27 15:49
+@file: loadRateStatic_locators.py
+@time: 2018/9/24 20:42
 @desc:
 '''
 
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.availableCapacityAnalyse_page import \
-    AvailableCapacityAnalysePage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyStatic_page import \
+    ThreeUnbalanceAnalyStaticPage
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.availableCapacityAnalyse_locators import \
-    AvailableCapacityAnalyseLocators
+from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyStatic_locators import \
+    ThreeUnbalanceAnalyStaticLocators
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.task.commonMath import *
@@ -20,15 +20,16 @@ from ddt import ddt, data
 import unittest
 
 
-# 高级应用--》配变负载分析--》包装可用容量分析
+# 高级应用--》配变负载分析--》三相不平衡分析
+#三相不平衡统计
 @ddt
-class TestLoadRateStatic(unittest.TestCase, AvailableCapacityAnalysePage):
+class TestLoadRateStatic(unittest.TestCase, ThreeUnbalanceAnalyStaticPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(TradnsformerMonitorData.para_AvailableCapacityAnalyse)
-        cls.driver.execute_script(AvailableCapacityAnalyseLocators.QUERY_DATE_JS)
+        cls.driver = openMenu(TradnsformerMonitorData.para_ThreeUnbalanceAnaly)
+        cls.driver.execute_script(ThreeUnbalanceAnalyStaticLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -61,33 +62,33 @@ class TestLoadRateStatic(unittest.TestCase, AvailableCapacityAnalysePage):
 
         # 供电单位
         openLeftTree(para['ORG_NO'])
+        # 用户类型
+        self.inputRSel_cons_type(para['CONS_TYPE'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
-        # 负载率
-        self.inputStr_load_rate(para['LOAD_RATE'])
 
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*AvailableCapacityAnalyseLocators.TABLE_DATA)
+        result = self.assert_context(*ThreeUnbalanceAnalyStaticLocators.TABLE_DATA)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_AvailableCapacityAnalyse))
+    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_ThreeUnbalanceAnaly))
     def test_que(self, para):
         self.query(para)
 
     # def test_test(self):
     #     # 供电单位
     #     openLeftTree('13401')
+    #     # 用户类型
+    #     self.inputRSel_cons_type('专变')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
-    #     # 负载率
-    #     self.inputStr_load_rate('')
+    #     self.inputStr_query_date('2018-09-01')
     #
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*AvailableCapacityAnalyseLocators.TABLE_DATA)
+    #     result = self.assert_context(*ThreeUnbalanceAnalyStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
 
 

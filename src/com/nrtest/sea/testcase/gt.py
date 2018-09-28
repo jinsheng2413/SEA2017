@@ -39,7 +39,7 @@ if __name__ == "__main__":
     #如果group_user为admin则全量刷新用例
     if (Setting.GROUP_USER == 'admin'):
        DataAccess.refresh_case()
-        
+
     # 用例集合
     # curpath = 'D:\pythonworkspace\SEA2017\src\com/nrtest\sea/testcase/adv_app\dataRecover'
     cases = add_case()

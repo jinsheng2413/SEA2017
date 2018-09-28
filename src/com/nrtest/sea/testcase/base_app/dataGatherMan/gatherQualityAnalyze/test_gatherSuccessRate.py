@@ -13,8 +13,8 @@ import unittest
 import ddt
 
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_data import \
-    GatherSuccessRate_data
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gatherQualityAnalyze_data import \
+    GatherQualityAnalyze_data
 from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_locators import \
     GatherSuccessRateLocators
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_page import \
@@ -33,7 +33,7 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GatherSuccessRate_data.para_GatherSuccessRate)
+        cls.driver = openMenu(GatherQualityAnalyze_data.para_GatherSuccessRate)
         # cls.exec_script(cls,GatherSuccessRateLocators.CONS_TYPE_JS)
         # cls.exec_script(cls,GatherSuccessRateLocators.STATISTICS_CONS_TYPE_JS)
 
@@ -83,7 +83,7 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
         self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
+    @ddt.data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate))
     def test_a_der(self, para):
         self.query(para)
 
@@ -102,7 +102,7 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         # result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
         # self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
+    @ddt.data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate))
     def test_b_der_statistics(self,para):
         self.clickTabPage('采集成功率统计')
         self.query_statistics(para)
@@ -122,7 +122,7 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         # result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
         # self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
+    @ddt.data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate))
     def test_c_der_detail(self,para):
         self.clickTabPage('采集成功率明细')
         self.query_detail(para)
@@ -142,7 +142,7 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         # result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
         # self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
+    @ddt.data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate))
     def test_d_der_false(self,para):
         self.clickTabPage('连续抄表失败明细')
         self.query_false(para)
@@ -179,7 +179,7 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         # result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
         # self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(GatherSuccessRate_data.para_GatherSuccessRate))
+    @ddt.data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate))
     def test_g_der_date(self,para):
         self.clickTabPage('按时间统计')
         self.query_date(para)

@@ -68,5 +68,5 @@ class DataAccess:
 
 if __name__ == '__main__':
     # DataAccess.refresh_case()
-    str = DataAccess.getCaseData("99911400")
+    str = DataAccess.getCaseData("99912340")
     print(str)

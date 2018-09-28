@@ -11,7 +11,7 @@
 from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEditionApprove_locators import UpgradeEditionApproveLocators
 from com.nrtest.common.base_page import Page
 
-# 基本应用→终端管理→软件升级→升级版本管理
+# 基本应用→终端管理→软件升级→升级版本审批
 class UpgradeEditionApprovePage(Page):
     # 终端厂家
     def inputSel_tmnl_factory(self,index):

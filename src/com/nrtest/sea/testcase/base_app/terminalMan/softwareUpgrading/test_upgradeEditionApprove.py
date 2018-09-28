@@ -20,7 +20,7 @@ from com.nrtest.sea.task.commonMath import *
 import ddt
 from com.nrtest.common.base_page import *
 
-# 基本应用→终端管理→软件升级→升级版本审计
+# 基本应用→终端管理→软件升级→升级版本审批
 @ddt.ddt
 class TestUpgradeEditionApprove(unittest.TestCase,UpgradeEditionApprovePage):
     @classmethod

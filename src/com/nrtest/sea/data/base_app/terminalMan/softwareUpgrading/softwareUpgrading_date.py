@@ -17,3 +17,7 @@ class SoftwareUpgrading_data:
     RegularSporadicUpgradeApprove_para = '99912340'
     # 基本应用→终端管理→软件升级→升级任务执行
     UpgradeTaskExecution_para = '99912360'
+    # 基本应用→终端管理→软件升级→升级结果确认
+    UpgradeResultConfirmation_para = '99912370'
+    # 基本应用→终端管理→软件升级→集中计划升级
+    CentralizedPlanUpgrade_para = '99912350'

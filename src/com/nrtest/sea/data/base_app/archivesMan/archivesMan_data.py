@@ -20,3 +20,5 @@ class ArchivesMan_data:
     meterStateArr_para = '99911910'
     # 基本应用--》档案管理--》多表合一运行状态
     fourTabStatus_para = '99911930'
+    # 基本应用--》档案管理--》电表批量导出（冀北）
+    archivesAutoReview_para = '99911B00'

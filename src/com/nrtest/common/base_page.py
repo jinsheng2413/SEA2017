@@ -628,6 +628,15 @@ class Page(object):
 
         except NameError as e:
             print('获取显示区第一个列数据失败')
+    #点击确认
+    def btn_confirm(self):
+
+           try:
+            va = self.assert_context(*MenuLocators.BTN_CONFIRM)
+            if va is True:
+             self.click(*MenuLocators.BTN_CONFIRM)
+           except:
+               print('点击确认按钮失败')
 
 
 if __name__ == '__main__':

@@ -38,6 +38,8 @@ class MenuLocators:
     BTN_COUNTY = (By.XPATH,"(//span[contains(text(),'直属用户')])[1]/../../../../li[%s]")
     #县和用户
     BTN_COUNTY_AND_USER = (By.XPATH,"(//span[contains(text(),'直属用户')])[2]/../../../../li[%s]")
+    #确定
+    BTN_CONFIRM = (By.XPATH,"//*[contains(text(),'确定')]")
 
     # 【左边树显示区】
     TABLE_DATA = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[[1]]')

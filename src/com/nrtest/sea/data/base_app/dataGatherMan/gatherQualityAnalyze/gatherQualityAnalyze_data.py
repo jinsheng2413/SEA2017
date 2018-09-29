@@ -10,6 +10,8 @@
 
 
 
-class GatherQualityAnalyze_data:
+class gatherQualityAnalyze_data:
     # 基本应用→数据采集管理→采集质量分析→采集成功率
     para_GatherSuccessRate = '99913401'
+    # 基本应用→数据采集管理→采集质量分析→事件记录结果统计
+    eventRecResultStat_para = '99913280'

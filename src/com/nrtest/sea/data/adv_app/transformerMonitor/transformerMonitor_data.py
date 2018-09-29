@@ -12,3 +12,6 @@ class TradnsformerMonitorData:
  para_TradnsformerMonitor = '99925110'
  para_AvailableCapacityAnalyse = '99925120'
  para_ThreeUnbalanceAnaly = '99925130'
+ para_SpVoltAnalyse = '99925210'
+ para_OrgLowVoltDay = '99925220'
+ para_BcVoltMonitorPoint = '99925230'

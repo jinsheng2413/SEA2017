@@ -10,9 +10,9 @@
 
 from selenium.webdriver.common.by import By
 
-# 高级应用--》配变负载分析--》三相不平衡分析
-#三相不平衡统计
-class ThreeUnbalanceAnalyStaticLocators:
+# 高级应用--》配变监测分析--》电压质量分析--》专/公变电压质量分析
+#专/公变电压质量分析统计
+class SpVoltAnalyseStaticLocators:
     #【查询条件】
     # 供电单位
     ORG_NO = (By.XPATH,("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[1]"))
@@ -21,7 +21,7 @@ class ThreeUnbalanceAnalyStaticLocators:
     # 用户类型
     CONS_TYPE = (By.XPATH, '//div[@class=\"x-combo-list-inner\"]//div[contains(text(),"%s")]')
     # 查询日期
-    QUERY_DATE = (By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'日期')]/../div/div/input)[1]")
+    QUERY_DATE = (By.XPATH, "(//div[@class=\"x-form-element\"])[6]/div/input")
 
     #【按钮】
     # 查询
@@ -29,7 +29,7 @@ class ThreeUnbalanceAnalyStaticLocators:
 
     # 【js操作】
     # 查询日期，删除readonly属性
-    QUERY_DATE_JS = 'document.getElementsByTagName("input")[6].removeAttribute("readonly");'
+    QUERY_DATE_JS = 'document.getElementsByTagName("input")[9].removeAttribute("readonly");'
 
     # 【显示区】
     TABLE_DATA = (By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[1]")

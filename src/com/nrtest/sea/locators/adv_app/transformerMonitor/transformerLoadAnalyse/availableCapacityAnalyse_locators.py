@@ -29,4 +29,4 @@ class AvailableCapacityAnalyseLocators:
     QUERY_DATE_JS = 'document.getElementsByTagName("input")[5].removeAttribute("readonly");'
 
     # 【显示区】
-    TABLE_DATA = (By.XPATH,"(//div[@class=\"x-grid3-scroller\"])[1]/div/div")
+    TABLE_DATA = (By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[1]")

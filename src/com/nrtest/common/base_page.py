@@ -172,7 +172,7 @@ class Page(object):
 
         try:
             # 利用显示等待判断元素是否已经出现
-            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(Locator))
+            WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(Locator))
             # 定位元素
             el = self.driver.find_element(*Locator)
 
@@ -628,6 +628,15 @@ class Page(object):
 
         except NameError as e:
             print('获取显示区第一个列数据失败')
+    #点击确认
+    def btn_confirm(self):
+
+           try:
+            va = self.assert_context(*MenuLocators.BTN_CONFIRM)
+            if va is True:
+             self.click(*MenuLocators.BTN_CONFIRM)
+           except:
+               print('点击确认按钮失败')
 
 
 if __name__ == '__main__':

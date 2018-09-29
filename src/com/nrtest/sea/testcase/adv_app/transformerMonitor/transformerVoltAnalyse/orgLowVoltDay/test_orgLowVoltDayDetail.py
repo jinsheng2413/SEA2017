@@ -4,15 +4,15 @@
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: loadRateStatic_locators.py
-@time: 2018/9/27 16:42
+@time: 2018/9/24 20:42
 @desc:
 '''
 
 from selenium.webdriver.common.by import By
 
-# 高级应用--》配变负载分析--》三相不平衡分析
-#三相不平衡明细
-class ThreeUnbalanceAnalyDetailLocators:
+# 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
+#台区低电压日统计明细
+class SpVoltAnalyseDetailLocators:
     #【查询条件】
     # 供电单位
     ORG_NO = (By.XPATH,("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[2]"))
@@ -29,7 +29,7 @@ class ThreeUnbalanceAnalyDetailLocators:
 
     # 【js操作】
     # 查询日期，删除readonly属性
-    QUERY_DATE_JS = 'document.getElementById("threeUnbalanceDetailDate").removeAttribute("readonly");'
+    QUERY_DATE_JS = 'document.getElementById("svadDateTimeField").removeAttribute("readonly");'
 
     # 【显示区】
-    TABLE_DATA = (By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[2]/div/div)[1]")
+    TABLE_DATA = (By.XPATH,"(((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[2]")

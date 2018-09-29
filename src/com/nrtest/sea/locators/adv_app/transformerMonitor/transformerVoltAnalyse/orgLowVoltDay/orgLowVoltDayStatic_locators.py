@@ -10,9 +10,9 @@
 
 from selenium.webdriver.common.by import By
 
-# 高级应用--》配变负载分析--》三相不平衡分析
-#三相不平衡统计
-class ThreeUnbalanceAnalyStaticLocators:
+# 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
+#台区低电压日统计
+class SpVoltAnalyseStaticLocators:
     #【查询条件】
     # 供电单位
     ORG_NO = (By.XPATH,("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[1]"))
@@ -32,5 +32,5 @@ class ThreeUnbalanceAnalyStaticLocators:
     QUERY_DATE_JS = 'document.getElementsByTagName("input")[6].removeAttribute("readonly");'
 
     # 【显示区】
-    TABLE_DATA = (By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[1]")
+    TABLE_DATA = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[1]')
 

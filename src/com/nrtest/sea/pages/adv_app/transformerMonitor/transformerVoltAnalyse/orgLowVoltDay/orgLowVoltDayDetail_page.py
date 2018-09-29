@@ -4,32 +4,31 @@
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: loadRateStatic_locators.py
-@time: 2018/9/24 20:42
+@time: 2018/9/29 10:42
 @desc:
 '''
 
-from selenium.webdriver.common.by import By
+from com.nrtest.common.base_page import Page
+from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayDetail_locators import \
+    OrgLowVoltDayDetailLocators
 
-# 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
-#台区低电压日统计明细
-class SpVoltAnalyseDetailLocators:
-    #【查询条件】
+class OrgLowVoltDayDetailPage(Page):
     # 供电单位
-    ORG_NO = (By.XPATH,("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[2]"))
-    # 用户类型-下拉框
-    CONS_TYPE_SEL = (By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'用户类型')]/../div/div/img)[2]")
-    # 用户类型
-    CONS_TYPE = (By.XPATH, '//div[@class=\"x-combo-list-inner\"]//div[contains(text(),"%s")]')
-    # 查询日期
-    QUERY_DATE = (By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'日期')]/../div/div/input)[2]")
+    def inputStr_org_no(self, value):
+        self.openLeftTree(value)
 
-    #【按钮】
-    # 查询
-    BTN_QUERY = (By.XPATH, "(//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//button[contains(text(),'查询')])[2]")
+    # 开始日期
+    def inputStr_start_date(self, value):
+        self.input(value, *OrgLowVoltDayDetailLocators.START_DATE)
 
-    # 【js操作】
-    # 查询日期，删除readonly属性
-    QUERY_DATE_JS = 'document.getElementById("svadDateTimeField").removeAttribute("readonly");'
+    # 结束日期
+    def inputStr_end_date(self, value):
+        self.input(value, *OrgLowVoltDayDetailLocators.END_DATE)
 
-    # 【显示区】
-    TABLE_DATA = (By.XPATH,"(((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[2]")
+    # 台区名称
+    def inputStr_tg_name(self, value):
+        self.input(value, *OrgLowVoltDayDetailLocators.TG_NAME)
+
+    # 点击查询
+    def btn_query(self):
+        self.click(*OrgLowVoltDayDetailLocators.BTN_QUERY)

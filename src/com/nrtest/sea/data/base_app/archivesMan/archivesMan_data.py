@@ -22,3 +22,5 @@ class ArchivesMan_data:
     fourTabStatus_para = '99911930'
     # 基本应用--》档案管理--》电表批量导出（冀北）
     archivesAutoReview_para = '99911B00'
+    # 基本应用--》档案管理--》终端状态维护
+    tmnlStateArr_para = '99911600'

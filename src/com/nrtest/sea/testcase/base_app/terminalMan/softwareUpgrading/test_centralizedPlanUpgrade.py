@@ -3,29 +3,29 @@
 '''
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_regularSporadicUpgradeApprove.py
-@time: 2018/9/28 9:34
+@file: test_centralizedPlanUpgrade.py
+@time: 2018/9/29 10:54
 @desc:
 '''
 
 import unittest
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.regularSporadicUpgradeApprove_locators import RegularSporadicUpgradeApproveLocator
-from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.regularSporadicUpgradeApprove_page import RegularSporadicUpgradeApprovePage
+from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_locators import CentralizePlanUpgradeLocators
+from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_page import CentralizePlanUpgradePage
 from com.nrtest.sea.data.common.data_common import DataCommon
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
 from com.nrtest.sea.task.commonMath import *
 import ddt
 
-# 基本应用→终端管理→软件升级→常规零星升级审批
+# 基本应用→终端管理→软件升级→集中计划升级
 @ddt.ddt
-class TestRegularSporadicUpgradeApprove(unittest.TestCase,RegularSporadicUpgradeApprovePage):
+class TestUpgradeTaskExecution(unittest.TestCase,CentralizePlanUpgradePage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SoftwareUpgrading_data.RegularSporadicUpgradeApprove_para)
+        cls.driver = openMenu(SoftwareUpgrading_data.CentralizedPlanUpgrade_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -45,29 +45,49 @@ class TestRegularSporadicUpgradeApprove(unittest.TestCase,RegularSporadicUpgrade
         :return:
         """
         # # 去除查询干扰数据(要传入对应的page页面类)
-        # self.clear_values(RegularSporadicUpgradeApprovePage)
+        # self.clear_values(UpgradeTaskExecutionPage)
         # 回收左边树
         self.recoverLeftTree()
 
-
+# 集中计划升级
     def query(self, para):
         #打开左边树选择供电单位
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         #终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        #申请状态
-        self.inputSel_apply_status(para['APPLY_STATUS'])
+        #升级目的
+        self.inputSel_upgrade_purpose(para['UPGRADE_PURPOSE'])
         #终端用途
         self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
-        #申请开始日期
+        #开始时间
         self.inputDt_start_date(para['START_DATE'])
-        #申请结束日期
+        #结束时间
         self.inputDt_end_date(para['END_DATE'])
         #批次号
         self.inputStr_batch_no(para['BATCH_NO'])
         # 点击查询按钮
         self.btn_search()
 
-    @ddt.data(*DataAccess.getCaseData(SoftwareUpgrading_data.RegularSporadicUpgradeApprove_para))
+    @ddt.data(*DataAccess.getCaseData(SoftwareUpgrading_data.CentralizedPlanUpgrade_para))
     def test_der(self, para):
         self.query(para)
+
+#制定计划
+    def query_tab(self, para):
+        #打开左边树选择供电单位
+        self.driver = openLeftTree(para['TAB_TREE_ORG_NO'])
+        #终端厂家
+        self.inputSel_tab_tmnl_factory(para['TAB_TMNL_FACTORY'])
+        #终端类型
+        self.inputSel_tab_tmnl_type(para['TAB_TMNL_TYPE'])
+        #终端用途
+        self.inputSel_tab_tmnl_purpose(para['TAB_TMNL_PURPOSE'])
+        # 升级版本号
+        self.inputSel_tab_upgrade_version_no(para['TAB_UPGRADE_VERSION_NO'])
+        # 点击查询按钮
+        self.btn_tab_search()
+
+    @ddt.data(*DataAccess.getCaseData(SoftwareUpgrading_data.CentralizedPlanUpgrade_para))
+    def test_der_tab(self, para):
+        self.clickTabPage('制定计划')
+        self.query_tab(para)

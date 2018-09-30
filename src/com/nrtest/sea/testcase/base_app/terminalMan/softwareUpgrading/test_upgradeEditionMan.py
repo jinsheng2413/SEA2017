@@ -14,7 +14,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_locators import UpgradeEditionManLocators
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_page import UpgradeEditionManPage
 from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_data import UpgradeEditionMan_data
+from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
 from com.nrtest.sea.task.commonMath import *
 import ddt
 from com.nrtest.common.base_page import *
@@ -26,7 +26,7 @@ class TestUpgradeEditionMan(unittest.TestCase,UpgradeEditionManPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(UpgradeEditionMan_data.para_UpgradeEditionMan)
+        cls.driver = openMenu(SoftwareUpgrading_data.UpgradeEditionMan_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -66,7 +66,7 @@ class TestUpgradeEditionMan(unittest.TestCase,UpgradeEditionManPage):
         result = self.assert_context(*UpgradeEditionManLocators.CHECK)
         self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(UpgradeEditionMan_data.para_UpgradeEditionMan))
+    @ddt.data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionMan_para))
     def test_a_der(self, para):
         self.query(para)
 
@@ -90,7 +90,7 @@ class TestUpgradeEditionMan(unittest.TestCase,UpgradeEditionManPage):
         result = self.assert_context(*UpgradeEditionManLocators.UPGRADE_CHECK)
         self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(UpgradeEditionMan_data.para_UpgradeEditionMan))
+    @ddt.data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionMan_para))
     def test_b_der(self, para):
         self.clickTabPage('升级版本管理')
         self.query_upgrade(para)
@@ -115,7 +115,7 @@ class TestUpgradeEditionMan(unittest.TestCase,UpgradeEditionManPage):
         result = self.assert_context(*UpgradeEditionManLocators.EDITION_CHECK)
         self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(UpgradeEditionMan_data.para_UpgradeEditionMan))
+    @ddt.data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionMan_para))
     def test_c_der(self, para):
         self.clickTabPage('终端版本召测')
         self.query_edition(para)

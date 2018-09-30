@@ -15,7 +15,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEditionApprove_locators import UpgradeEditionApproveLocators
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionApprove_page import UpgradeEditionApprovePage
 from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.upgradeEditionApprove_data import UpgradeEditionApprove_date
+from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
 from com.nrtest.sea.task.commonMath import *
 import ddt
 from com.nrtest.common.base_page import *
@@ -27,7 +27,7 @@ class TestUpgradeEditionApprove(unittest.TestCase,UpgradeEditionApprovePage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(UpgradeEditionApprove_date.para_UpgradeEditionApprove)
+        cls.driver = openMenu(SoftwareUpgrading_data.UpgradeEditionApprove_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -68,6 +68,6 @@ class TestUpgradeEditionApprove(unittest.TestCase,UpgradeEditionApprovePage):
         # 点击查询按钮
         self.btn_search()
 
-    @ddt.data(*DataAccess.getCaseData(UpgradeEditionApprove_date.para_UpgradeEditionApprove))
+    @ddt.data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionApprove_para))
     def test_der(self, para):
         self.query(para)

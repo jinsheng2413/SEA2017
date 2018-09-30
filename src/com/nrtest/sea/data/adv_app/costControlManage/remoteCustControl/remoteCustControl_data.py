@@ -12,3 +12,5 @@ class RemoteCustControl_data:
     prePaidStatus_para = '99922230'
     Tab_One = '按指令执行统计'
     Tab_Two = '按用户执行统计'
+    # 高级应用--》费控管理--》远程费控--》新远程费控执行统计
+    NewPrePaidStatus_para = '99922280'

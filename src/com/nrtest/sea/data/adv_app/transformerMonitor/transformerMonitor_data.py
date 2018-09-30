@@ -15,3 +15,4 @@ class TradnsformerMonitorData:
  para_SpVoltAnalyse = '99925210'
  para_OrgLowVoltDay = '99925220'
  para_BcVoltMonitorPoint = '99925230'
+ para_PowerFactorCount = '99925300'

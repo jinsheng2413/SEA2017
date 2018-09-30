@@ -17,3 +17,5 @@ class gatherQualityAnalyze_data:
     eventRecResultStat_para = '99913280'
     # 基本应用→数据采集管理→采集质量分析→采集成功率综合统计
     collectSuccessRateStat_para = '99913270'
+    # 基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
+    collectSuccessRateJb_para ='99913260'

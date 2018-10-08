@@ -17,3 +17,5 @@ class SynthQuery_data:
     BatchDataQuery_para = '99941700'
     #统计查询→综合查询→全事件电表事件查询
     AllEventMeterEventQuery_para = '99941702'
+    #统计查询→综合查询→线路拓扑图
+    LineTopologyDiagram_para = '99941A20'

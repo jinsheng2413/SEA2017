@@ -13,15 +13,19 @@ from time import sleep
 import pytesseract as pt
 from PIL import Image
 
+from com.nrtest.common.yamlSetting import YamlSetting
 from com.nrtest.sea.pages.other.login_page import LoginPage
 from com.nrtest.common.base_test import BaseTest
 from com.nrtest.common.logger import Logger
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
-from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
+from selenium.webdriver.common.by import By
 from com.nrtest.common.setting import Setting
+from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
+from com.nrtest.sea.pages.other.common_page import Common_page
 
+from com.nrtest.common.setting import Setting
 
 logger = Logger(logger="Login").getlog()
 
@@ -33,7 +37,7 @@ class Login:
     def login(self):
         bool = True
         p = BaseTest()
-        dr = p.openBrowser('f')
+        dr = p.openBrowser('firefox')
         dr.maximize_window()
         dr.get(Setting.TEST_URL)
         while (bool):
@@ -46,7 +50,7 @@ class Login:
             elementWidth = baidu.location['x'] + baidu.size['width']
             elementHeight = baidu.location['y'] + baidu.size['height']
             picture = Image.open(Setting.SCREENSHOTS_PATH+'photo.png')
-            picture = picture.crop((left, top, elementWidth, elementHeight))
+            picture = picture.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
             picture.save(Setting.SCREENSHOTS_PATH+'photo2.png')
 
             image = Image.open(Setting.SCREENSHOTS_PATH+'photo2.png')
@@ -76,7 +80,21 @@ class Login:
                 logger.info('{0}登陆失败,点击刷新验证码'.format(self.username))
 
         return loginPage.driver
+    @classmethod
+    def cookieLogin(cls,username):
+        p = BaseTest()
+        dr = p.openBrowser('firefox')
+        dr.maximize_window()
+        dr.get(Setting.TEST_URL)
+        dr.add_cookie(YamlSetting.getCookie(username))
+        dr.get(Setting.TEST_URL+'/index.jsp')
+
+
 
 #fdsdf
 if __name__ == '__main__':
- pass
+  lg = Login('gchb','123')
+  dr = lg.login()
+  cookie = dr.get_cookies()
+  for i in cookie:
+      print(i)

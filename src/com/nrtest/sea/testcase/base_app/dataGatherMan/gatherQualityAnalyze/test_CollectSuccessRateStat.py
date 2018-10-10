@@ -7,8 +7,8 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gatherQualityAnalyze_data import \
-    gatherQualityAnalyze_data
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
+    GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.collectSuccessRateStat_page import \
     CollectSuccessRateStatPage,CollectSuccessRateStatLocators
 from com.nrtest.sea.task.commonMath import *
@@ -24,7 +24,7 @@ class TestDemo(unittest.TestCase,CollectSuccessRateStatPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(gatherQualityAnalyze_data.collectSuccessRateStat_para)
+        cls.driver = openMenu(GatherQualityAnalyze_data.collectSuccessRateStat_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -67,7 +67,7 @@ class TestDemo(unittest.TestCase,CollectSuccessRateStatPage):
         result = self.assert_context(*CollectSuccessRateStatLocators.TAB_ONE)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData(gatherQualityAnalyze_data.collectSuccessRateStat_para))
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.collectSuccessRateStat_para))
     def test_query(self, para):
         self.query(para)
 

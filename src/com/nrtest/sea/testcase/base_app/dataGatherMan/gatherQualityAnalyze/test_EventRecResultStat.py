@@ -7,8 +7,8 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gatherQualityAnalyze_data import \
-    gatherQualityAnalyze_data
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
+    GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.eventRecResultStat_Page import \
     EventRecResultStatPage ,EventRecResultStatLocators
 from com.nrtest.sea.task.commonMath import *
@@ -25,7 +25,7 @@ class TestEventRecResultStat(unittest.TestCase,EventRecResultStatPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(gatherQualityAnalyze_data.eventRecResultStat_para)
+        cls.driver = openMenu(GatherQualityAnalyze_data.eventRecResultStat_para)
         sleep(2)
         cls.exec_script(cls,EventRecResultStatLocators.START_DATE_JS)
         cls.exec_script(cls, EventRecResultStatLocators.END_DATE_JS)
@@ -75,7 +75,7 @@ class TestEventRecResultStat(unittest.TestCase,EventRecResultStatPage):
         result = self.assert_context(*EventRecResultStatLocators.TAB_ONE)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData(gatherQualityAnalyze_data.eventRecResultStat_para))
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.eventRecResultStat_para))
     def test_query(self, para):
         self.query(para)
 

@@ -23,3 +23,5 @@ class GatherQualityAnalyze_data:
     readCompleteRate_para = '99913220'
     readCompleteRate_tab = '采集完整率'
     readCompleteRateCount_tab = '采集完整率统计'
+    # 基本应用→数据采集管理→采集质量分析→采集及时率
+    readIntimeRate_para = '99913230'

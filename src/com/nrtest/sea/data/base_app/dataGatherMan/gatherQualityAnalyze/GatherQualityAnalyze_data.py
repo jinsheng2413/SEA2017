@@ -25,3 +25,8 @@ class GatherQualityAnalyze_data:
     readCompleteRateCount_tab = '采集完整率统计'
     # 基本应用→数据采集管理→采集质量分析→采集及时率
     readIntimeRate_para = '99913230'
+    # 基本应用→数据采集管理→采集质量分析→实时采集成功率
+    curCollectSuccessRate_para = '99913240'
+    curCollectSuccessRate_tab = '实时采集成功率'
+    curCollectSuccessRateCount_tab = '实时采集成功率统计'
+    curCollectSuccessRateDetail_tab = '实时采集失败明细'

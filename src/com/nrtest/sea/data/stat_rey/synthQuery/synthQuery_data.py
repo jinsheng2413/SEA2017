@@ -19,3 +19,13 @@ class SynthQuery_data:
     AllEventMeterEventQuery_para = '99941702'
     #统计查询→综合查询→线路拓扑图
     LineTopologyDiagram_para = '99941A20'
+    # 统计查询→综合查询→台区拓扑图
+    TgTopologyDiagram_para = '99941B00'
+    # 统计查询→综合查询→销户和拆表数据查询
+    DisassemblyTableDataQuery_para = '99941704'
+    # 统计查询→综合查询→抄表数据查询
+    MeterDataQuery_para = '99941910'
+    # 统计查询→综合查询→抄表成功率查询（河北）
+    MeterSuccessRateQuery_para = '99941930'
+    # 统计查询→综合查询→多表合一抄表数据查询
+    MultipleTableDataQuery_para = '99941A00'

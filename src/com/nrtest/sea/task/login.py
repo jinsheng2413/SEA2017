@@ -33,7 +33,7 @@ class Login:
     def login(self):
         bool = True
         p = BaseTest()
-        dr = p.openBrowser('f')
+        dr = p.openBrowser('c')
         dr.maximize_window()
         dr.get(Setting.TEST_URL)
         while (bool):
@@ -79,4 +79,5 @@ class Login:
 
 #fdsdf
 if __name__ == '__main__':
- pass
+ lg = Login('hx','123')
+ lg.login()

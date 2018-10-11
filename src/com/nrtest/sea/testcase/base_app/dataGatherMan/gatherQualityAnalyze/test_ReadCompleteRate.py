@@ -9,23 +9,24 @@
 '''
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.collectSuccessRateJb_page import \
-    CollectSuccessRateJbPage,CollectSuccessRateJbLocators
+from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadCompleteRate_page import ReadCompleteRatePage, \
+    ReadCompleteRateLocators
 from com.nrtest.sea.task.commonMath import *
 from com.nrtest.common.data_access import DataAccess
 from ddt import ddt, data
 import unittest
-CollectSuccessRateJbPage
-# 基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
+
+ReadCompleteRatePage
+
 
 @ddt
-class TestDemo(unittest.TestCase,CollectSuccessRateJbPage):
+class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GatherQualityAnalyze_data.collectSuccessRateJb_para)
+        cls.driver = openMenu(GatherQualityAnalyze_data.readCompleteRate_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -55,33 +56,35 @@ class TestDemo(unittest.TestCase,CollectSuccessRateJbPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
+        sleep(2)
+        self.exec_script(ReadCompleteRateLocators.START_DATE_JS)
+        self.exec_script(ReadCompleteRateLocators.END_DATE_JS)
+        clickTabPage(para['TAB_NAME'])
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #通信类型
-        self.inputSel_conmunicationtype(para['CONMUNICATION_TYPE'])
-        #通信方式
-        self.inputSel_conmunicationMode(para["CONMUNICATION_MODE"])
-        #终端厂家
-        self.inputSel_TmnlFactory(para["TMNL_FACTORY"])
-        #芯片厂家
-        self.inputSel_pieceFactory(para['PIECE_FACTORY'])
-        #通讯规约
-        self.inputSel_conmunicationGlue(para['CONMUNICATION_GLUE'])
-        #时间
-        self.inputStr_date(para['DATE'])
-        #相位
-        self.inputSel_phase(para['PHASE'])
+        # 用户类型
+        self.inputSel_userType(para["USER_TYPE"])
+        # 通信方式
+        self.inputSel_communicationMode(para['COMMNUCATION_MODE'])
+        # 终端厂家
+        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
+        # 蕊片厂家
+        self.inputSel_chipFactory(para['CHIP_FACTORY'])
+        # 开始时间
+        self.inputStr_start_time(para['START_TIME'])
+        # 结束时间
+        self.inputStr_end_time(para["END_TIME"])
 
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CollectSuccessRateJbLocators.TAB_ONE)
+        result = self.assert_context(*ReadCompleteRateLocators.TAB_ONE)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.collectSuccessRateJb_para))
+
+
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,GatherQualityAnalyze_data.readCompleteRate_tab))
     def test_query(self, para):
         self.query(para)
-
-
 

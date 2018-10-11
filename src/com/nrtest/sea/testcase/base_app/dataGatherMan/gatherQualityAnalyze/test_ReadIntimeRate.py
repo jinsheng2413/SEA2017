@@ -9,23 +9,21 @@
 '''
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.collectSuccessRateJb_page import \
-    CollectSuccessRateJbPage,CollectSuccessRateJbLocators
+from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadIntimeRate_page import ReadIntimeRatePage,ReadIntimeRate_Locators
 from com.nrtest.sea.task.commonMath import *
 from com.nrtest.common.data_access import DataAccess
 from ddt import ddt, data
 import unittest
-CollectSuccessRateJbPage
-# 基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
 
+# 基本应用→数据采集管理→采集质量分析→采集及时率
 @ddt
-class TestDemo(unittest.TestCase,CollectSuccessRateJbPage):
+class TestReadIntimeRate(unittest.TestCase,ReadIntimeRatePage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GatherQualityAnalyze_data.collectSuccessRateJb_para)
+        cls.driver = openMenu(GatherQualityAnalyze_data.readIntimeRate_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -58,28 +56,20 @@ class TestDemo(unittest.TestCase,CollectSuccessRateJbPage):
 
         #打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #通信类型
-        self.inputSel_conmunicationtype(para['CONMUNICATION_TYPE'])
-        #通信方式
-        self.inputSel_conmunicationMode(para["CONMUNICATION_MODE"])
+        #用户类型
+        self.inputSel_userType(para['USER_TYPE'])
         #终端厂家
-        self.inputSel_TmnlFactory(para["TMNL_FACTORY"])
+        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
         #芯片厂家
-        self.inputSel_pieceFactory(para['PIECE_FACTORY'])
-        #通讯规约
-        self.inputSel_conmunicationGlue(para['CONMUNICATION_GLUE'])
-        #时间
-        self.inputStr_date(para['DATE'])
-        #相位
-        self.inputSel_phase(para['PHASE'])
+        self.inputSel_chipFactory(para['CHIP_FACTORY'])
 
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CollectSuccessRateJbLocators.TAB_ONE)
+        result = self.assert_context(*ReadIntimeRate_Locators.TAB_ONE)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.collectSuccessRateJb_para))
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readIntimeRate_para))
     def test_query(self, para):
         self.query(para)
 

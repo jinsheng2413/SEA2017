@@ -50,5 +50,6 @@ docs/_build/
 /img
 /reports
 *.html
-login.py
+/task
+/src/com/nrtest/sea/task
 nari_test.conf

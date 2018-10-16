@@ -8,5 +8,7 @@
 @desc:
 '''
 class DataGatherMan_data:
-# 基本应用→数据采集管理→定制任务管理
+ # 基本应用→数据采集管理→定制任务管理
     gatherTaskCompile_para = '99913100'
+ # 基本应用→数据采集管理→电能表分级归类管理
+    metclassfiy_para = '99912500'

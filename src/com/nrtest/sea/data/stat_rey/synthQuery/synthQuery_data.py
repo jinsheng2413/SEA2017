@@ -29,3 +29,8 @@ class SynthQuery_data:
     MeterSuccessRateQuery_para = '99941930'
     # 统计查询→综合查询→多表合一抄表数据查询
     MultipleTableDataQuery_para = '99941A00'
+    # 统计查询→综合查询→抄表数据查询（冀北）
+    realData_para = '99941L00'
+    realData_rdetail_tab = '抄表明细'
+    realData_fdetail_tab = '抄表失败明细'
+

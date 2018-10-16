@@ -7,7 +7,7 @@
 @time: 2018/10/9 0009 12:48
 @desc:
 '''
-import yaml
+#import yaml
 import tkinter as tk
 from tkinter import filedialog
 from com.nrtest.common.setting import Setting

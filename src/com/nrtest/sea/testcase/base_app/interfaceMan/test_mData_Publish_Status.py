@@ -47,8 +47,6 @@ class Test_mData_Publish_StatusPage(unittest.TestCase, MDataPublishStatusPage):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # 去除查询干扰数据(要传入对应的page页面类)
-        self.clear_values(MDataPublishStatusPage)
         # 回收左边树
         self.recoverLeftTree()
 

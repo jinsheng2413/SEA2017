@@ -33,4 +33,6 @@ class SynthQuery_data:
     realData_para = '99941L00'
     realData_rdetail_tab = '抄表明细'
     realData_fdetail_tab = '抄表失败明细'
+    # 统计查询→综合查询→掌机工单查询
+    allCollectSuccessRate_para ='99941920'
 

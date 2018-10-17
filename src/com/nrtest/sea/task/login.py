@@ -50,7 +50,7 @@ class Login:
             elementWidth = baidu.location['x'] + baidu.size['width']
             elementHeight = baidu.location['y'] + baidu.size['height']
             picture = Image.open(Setting.SCREENSHOTS_PATH+'photo.png')
-            picture = picture.crop((left, top, elementWidth, elementHeight))
+            picture = picture.crop((left, top , elementWidth , elementHeight))
             picture.save(Setting.SCREENSHOTS_PATH+'photo2.png')
 
             image = Image.open(Setting.SCREENSHOTS_PATH+'photo2.png')
@@ -80,6 +80,7 @@ class Login:
                 logger.info('{0}登陆失败,点击刷新验证码'.format(self.username))
 
         return loginPage.driver
+
     @classmethod
     def cookieLogin(cls,username):
         p = BaseTest()
@@ -95,6 +96,7 @@ class Login:
 if __name__ == '__main__':
   lg = Login('gchb','123')
   dr = lg.login()
+  dr.add_cookie({'name':'user','value':'gchb'})
   cookie = dr.get_cookies()
   for i in cookie:
       print(i)

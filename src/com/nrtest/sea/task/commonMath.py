@@ -35,6 +35,4 @@ def clickTabPage(name,index =1):
 
 if __name__=="__main__":
 
-    openMenu('99912100')
-    sleep(4)
-    clickTabPage('装接',index=2)
+    openMenu('99941P00')

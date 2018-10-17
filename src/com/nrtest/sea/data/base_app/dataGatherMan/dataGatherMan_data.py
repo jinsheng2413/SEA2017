@@ -22,3 +22,5 @@ class DataGatherMan_data:
     terminalOnlineSpied_para = '99912910'
     # 基本应用→终端管理→终端在线监视
     terminalPassword_para = '99912700'
+    # 基本应用→终端管理→终端离线明细
+    terminalVersion_para = '99912950'

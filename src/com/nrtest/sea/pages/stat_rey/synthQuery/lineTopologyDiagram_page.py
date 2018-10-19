@@ -17,7 +17,7 @@ class LineTopoLogyDiagramPage(Page):
     def inputSel_line_name(self,index):
         self.click(*LineTopologyDiagramLocators.LINE_NAME)
         locator = self.get_select_locator(LineTopologyDiagramLocators.LINE_NAME_VALUE,index)
-        self.click(locator)
+        self.click(*locator)
     #查询按钮
     def btn_search(self):
         self.click(*LineTopologyDiagramLocators.BTN_SEARCH)

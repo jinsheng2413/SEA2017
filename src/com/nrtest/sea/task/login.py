@@ -37,7 +37,7 @@ class Login:
     def login(self):
         bool = True
         p = BaseTest()
-        dr = p.openBrowser('firefox')
+        dr = p.openBrowser('c')
         dr.maximize_window()
         dr.get(Setting.TEST_URL)
         while (bool):

@@ -29,3 +29,13 @@ class SynthQuery_data:
     MeterSuccessRateQuery_para = '99941930'
     # 统计查询→综合查询→多表合一抄表数据查询
     MultipleTableDataQuery_para = '99941A00'
+    # 统计查询→综合查询→全事件配置率统计
+    AllEventDistributionRateStatistics_para = '99941945'
+    #统计查询→综合查询→巡检仪数据查询
+    PatrolDataQuery_para = '99941K00'
+    #统计查询→综合查询→自动化抄表可用率
+    AutomatedMeterAvailability_para = '99941C00'
+    #统计查询→综合查询→白名单查询
+    WhiteListQuery_para = '99941O00'
+    #统计查询→综合查询→巡检仪综合查询
+    PatrolIntegratedQuery_para = '99941S00'

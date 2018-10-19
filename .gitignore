@@ -50,5 +50,14 @@ docs/_build/
 /img
 /reports
 *.html
-login.py
+/task
 nari_test.conf
+
+
+
+
+
+
+
+
+

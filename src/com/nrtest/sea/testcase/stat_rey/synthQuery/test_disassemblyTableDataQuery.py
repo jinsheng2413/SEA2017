@@ -10,6 +10,7 @@
 
 import unittest
 from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.locators.stat_rey.synthQuery.disassemblyTableDataQuery_locators import DisassemblyTableDataQueryLocators
 from com.nrtest.sea.pages.stat_rey.synthQuery.disassemblyTableDataQuery_page import DisassemblyTableDataQueryPage
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.task.commonMath import *
@@ -63,6 +64,10 @@ class TestDisassemblyTableDataQuery(unittest.TestCase,DisassemblyTableDataQueryP
         self.inputDt_end_date(para['END_DATE'])
         #查询按钮
         self.btn_search()
+        self.sleep_time(10)
+        #校验
+        result = self.assert_context(*DisassemblyTableDataQueryLocators.CHECK_FIRST)
+        self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(SynthQuery_data.DisassemblyTableDataQuery_para))
     def test_der(self, para):

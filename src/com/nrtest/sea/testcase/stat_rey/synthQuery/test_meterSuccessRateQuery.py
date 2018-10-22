@@ -54,7 +54,7 @@ class TestAllEventMeterEventQuery(unittest.TestCase,MeterSuccessRateQueryPage):
         # 终端类型
         self.inputCSel_factory_tmnl_type(para['FACTORY_TMNL_TYPE'])
         #查询按钮
-        self.btn_search()
+        self.factory_btn_search()
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.MeterSuccessRateQuery_para))
     def test_der(self, para):

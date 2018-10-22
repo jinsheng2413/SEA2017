@@ -20,7 +20,7 @@ class AutomatedMeterAvailabilityLocators:
     #查询日期
     DATE = (By.XPATH,'//label[contains(text(),"查询日期")]/../div/div/input')
     # 查询按钮
-    BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
+    BTN_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[4]')
 #全项采集失败明细
     #表计类型
     FAILED_METER_TYPE = (By.XPATH,'(//label[contains(text(),"表计类型")]/../div/div/img)[2]')

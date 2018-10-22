@@ -29,10 +29,14 @@ class DisassemblyTableDataQueryLocators:
     #结束时间
     END_DATE = (By.XPATH,'//label[contains(text(),"止")]/../div/div/input')
     #查询按钮
-    BTN_SEARCH = (By.XPATH,'//button[contains(text(),"查询")]')
+    BTN_SEARCH = (By.XPATH,'(//button[contains(text(),"查询")])[4]')
 
 # 【JS属性】
     # 开始时间，删除readonly属性
     START_DATE_JS = 'document.getElementsByTagName("input")[9].removeAttribute("readonly");'
     # 结束时间，删除readonly属性
     END_DATE_JS = 'document.getElementsByTagName("input")[10].removeAttribute("readonly");'
+
+#【校验区】
+    #第一行数据
+    CHECK_FIRST = (By.XPATH,'(//div[@class="x-grid3-body"])[1]/div[1]')

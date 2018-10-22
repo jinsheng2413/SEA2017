@@ -10,6 +10,7 @@
 
 import unittest
 from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.locators.stat_rey.synthQuery.orgNoDataQuery_locators import OrgNoDataQueryLocator
 from com.nrtest.sea.pages.stat_rey.synthQuery.orgNoDataQuery_page import OrgNoDataPage
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.task.commonMath import *
@@ -53,6 +54,9 @@ class TestUpgradeEffectStstistics(unittest.TestCase,OrgNoDataPage):
         self.inputDt_date(para['DATE'])
         #查询按钮
         self.btn_search()
+        #校验
+        result = self.assert_context(*OrgNoDataQueryLocator.CHECK_FIRST)
+        self.assertTrue(result)
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.OrgNoDataQuery_para))
     def test_der(self, para):

@@ -20,3 +20,7 @@ class OrgNoDataQueryLocator:
 #【JS属性】
     #日期，删除readonly属性
     DATE_JS = 'document.getElementsByTagName("input")[4].removeAttribute("readonly");'
+
+#【校验区】
+    #第一行数据
+    CHECK_FIRST = (By.XPATH,'//div[contains(text(),"1027.86%")]')

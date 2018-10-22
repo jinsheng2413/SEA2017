@@ -27,7 +27,7 @@ class AllEventMeterEventQueryLocators:
     #采集结束时间
     END_DATE = (By.XPATH,'//label[contains(text(),"采集结束时间")]/../div/div/input')
     #查询按钮
-    BTN_SEARCH = (By.XPATH,'//button[contains(text(),"查询")]')
+    BTN_SEARCH = (By.XPATH,'(//button[contains(text(),"查询")])[4]')
 
 #【JS属性】
     #采集开始时间，删除readonly属性

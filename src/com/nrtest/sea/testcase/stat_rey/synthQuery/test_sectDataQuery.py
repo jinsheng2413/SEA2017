@@ -18,7 +18,7 @@ import ddt
 
 # 统计查询→综合查询→抄表段数据查询
 @ddt.ddt
-class TestUpgradeEffectStstistics(unittest.TestCase,SectDataQueryPage):
+class TestSectDataQuery(unittest.TestCase,SectDataQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")

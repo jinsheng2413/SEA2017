@@ -20,12 +20,12 @@ class AllEventMeterEventQueryPage(Page):
     def inputSel_event_level(self,index):
         self.click(*AllEventMeterEventQueryLocators.EVENT_LEVEL)
         locator = self.get_select_locator(AllEventMeterEventQueryLocators.EVENT_LEVEL_VALUE,index)
-        self.click(locator)
+        self.click(*locator)
     #事件类型
     def inputSel_event_type(self,index):
         self.click(*AllEventMeterEventQueryLocators.EVENT_TYPE)
         locator = self.get_select_locator(AllEventMeterEventQueryLocators.EVENT_TYPE_VALUE,index)
-        self.click(locator)
+        self.click(*locator)
     #采集开始时间
     def inputDt_start_date(self,content):
         self.exec_script(AllEventMeterEventQueryLocators.START_DATE_JS)

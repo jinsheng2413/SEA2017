@@ -16,7 +16,7 @@ class AllEventDistributionRateStatisticsLocators:
     #时间
     DATE = (By.XPATH,'//label[contains(text(),"时间")]/../div/div/input')
     #查询按钮
-    BTN_SEARCH = (By.XPATH,'//button[contains(text(),"查询")]')
+    BTN_SEARCH = (By.XPATH,'(//button[contains(text(),"查询")])[4]')
 #全事件未配置明细
     #时间
     DATE_TAB = (By.XPATH,'(//label[contains(text(),"时间")]/../div/div/input)[2]')
@@ -25,7 +25,7 @@ class AllEventDistributionRateStatisticsLocators:
     # 终端类型→值
     TMNL_TYPE_VALUE = (By.XPATH,'//div[contains(text(),"全部")]/../div[%s]')
     # 查询按钮
-    BTN_SEARCH_TAB = (By.XPATH, '(//button[contains(text(),"查询")])[2]')
+    BTN_SEARCH_TAB = (By.XPATH, '(//button[contains(text(),"查询")])[5]')
 
 #【JS属性】
 #全事件配置率统计→时间，删除readonly属性

@@ -24,7 +24,7 @@ class MeterSuccessRateQueryLocators:
     #终端类型→值
     FACTORY_TMNL_TYPE_VALUE = (By.XPATH,'(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 查询按钮
-    FACTORY_BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
+    FACTORY_BTN_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[4]')
 
 #【JS属性】
     #日期，删除readonly属性

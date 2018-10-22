@@ -24,7 +24,7 @@ class MultipleTableDataQueryLocators:
     # 用户状态→值
     CONS_CONS_STATUS_VALUE = (By.XPATH,'//div[@class="x-combo-list-inner"]/div[%s]')
     #查询按钮
-    BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
+    BTN_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[4]')
 
 #【JS属性】
     #开始日期，删除readonly属性

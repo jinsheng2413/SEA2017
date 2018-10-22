@@ -33,6 +33,7 @@ def run(test_suit):
     result.report(filename='report.html', description='测试deafult报告')  # , log_path=Setting.REPORT_PATH)
 
 
+
 if __name__ == "__main__":
     global_drv.__init()
 

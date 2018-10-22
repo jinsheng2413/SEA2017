@@ -56,8 +56,6 @@ class DataAccess:
             rslt[i] = Dict(rslt[i])
         return rslt
 
-
-
     @staticmethod
     def refresh_case(user_no='', group_no=''):
         para = [Setting.GROUP_USER if user_no == '' else user_no,

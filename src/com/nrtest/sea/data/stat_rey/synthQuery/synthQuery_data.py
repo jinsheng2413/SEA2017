@@ -39,3 +39,9 @@ class SynthQuery_data:
     WhiteListQuery_para = '99941O00'
     #统计查询→综合查询→巡检仪综合查询
     PatrolIntegratedQuery_para = '99941S00'
+    #统计查询→综合查询→四表合一抄表成功率
+    FourTableMeterReadSuccessRate_para = '99941800'
+    #统计查询→综合查询→采集点综合查询
+    CPSynthQuery_para = '99941D00'
+    #统计查询→综合查询→黑名单查询
+    BlackListQuery_para = '99941P00'

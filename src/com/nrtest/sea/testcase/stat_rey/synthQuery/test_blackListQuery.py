@@ -3,26 +3,26 @@
 '''
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_whiteListQuery.py
-@time: 2018/10/19 14:47
+@file: test_blackListQuery.py
+@time: 2018/10/20 15:05
 @desc:
 '''
 
 import unittest
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.whiteListQuery_page import WhiteListQueryPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.blackListQuery_page import BlackListQueryPage
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.task.commonMath import *
 from ddt import ddt,data
 
-# 统计查询→综合查询→白名单查询
+# 统计查询→综合查询→黑名单查询
 @ddt
-class TestWhiteListQuery(unittest.TestCase,WhiteListQueryPage):
+class TestBlackListQuery(unittest.TestCase,BlackListQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SynthQuery_data.WhiteListQuery_para)
+        cls.driver = openMenu(SynthQuery_data.BlackListQuery_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -49,15 +49,13 @@ class TestWhiteListQuery(unittest.TestCase,WhiteListQueryPage):
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         #用户编号
         self.inputStr_cons_no(para['CONS_NO'])
-        #开始日期
-        self.inputStr_start_date(para['START_DATE'])
-        #结束日期
-        self.inputStr_end_date(para['END_DATE'])
+        #查询日期
+        self.inputStr_date(para['DATE'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         #查询按钮
         self.btn_search()
 
-    @data(*DataAccess.getCaseData(SynthQuery_data.WhiteListQuery_para))
+    @data(*DataAccess.getCaseData(SynthQuery_data.BlackListQuery_para))
     def test_der(self, para):
         self.query(para)

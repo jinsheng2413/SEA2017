@@ -41,6 +41,7 @@ coverage.xml
 
 # Django stuff:
 *.log
+.gitignore
 
 # Sphinx documentation
 docs/_build/
@@ -50,4 +51,8 @@ docs/_build/
 /img
 /reports
 *.html
+login.py
+task/
+nari_test.conf
+*.gitignore
 

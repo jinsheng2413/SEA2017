@@ -40,9 +40,9 @@ class DataAccess:
         return str
 
     @staticmethod
-    def getCaseData(menuNo):
+    def getCaseData(menuNo,tabName='',groupNo=''):
         pyoracle = PyOracle.getInstance()
-        qry = [Setting.GROUP_USER, menuNo]
+        qry = [Setting.GROUP_USER, menuNo,groupNo,tabName]
         str = pyoracle.callfunc('pkg_nrtest.get_tst_case', 'str', qry)
 
         # 字符串转list
@@ -74,5 +74,8 @@ class DataAccess:
 
 if __name__ == '__main__':
     # DataAccess.refresh_case()
-    str = DataAccess.getCaseData("99911400")
-    print(str)
+    str = DataAccess.getCaseData("99912100",tabName='终端调试')
+    print(len(str))
+    for i in  str[4:10]:
+        print(i)
+

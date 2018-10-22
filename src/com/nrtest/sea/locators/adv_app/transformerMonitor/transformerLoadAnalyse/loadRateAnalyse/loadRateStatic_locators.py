@@ -10,7 +10,7 @@
 
 from selenium.webdriver.common.by import By
 
-# 高级应用--》配变负载分析--》负载率分析
+# 高级应用--》配变监测分析--》配变负载分析--》负载率分析
 #负载率统计
 class LoadRateStaticLocators:
     #【查询条件】
@@ -32,5 +32,5 @@ class LoadRateStaticLocators:
     QUERY_DATE_JS = 'document.getElementsByTagName("input")[6].removeAttribute("readonly");'
 
     # 【显示区】
-    TABLE_DATA = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[1]')
+    TABLE_DATA = (By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[1]")
 

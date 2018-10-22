@@ -10,7 +10,7 @@
 
 from selenium.webdriver.common.by import By
 
-# 基本应用→终端管理→软件升级→升级版本管理
+# 基本应用→终端管理→软件升级→升级版本审批
 class UpgradeEditionApproveLocators:
     #终端厂家
     TMNL_FACTORY = (By.XPATH,'//label[contains(text(),"终端厂家")]/../div/div/img')

@@ -10,6 +10,7 @@
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.common import global_drv
 from selenium.webdriver.common.by import By
+from time import sleep
 
 # 打开
 def openMenu(menuNo):
@@ -26,12 +27,12 @@ def openLeftTree(treeNo):
     return p.driver
 
 # 打开
-def clickTabPage(name):
+def clickTabPage(name,index =1):
     p = MenuPage(global_drv.get_driver())
-    locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[contains(text(),'{}')]".format(name))
+    locators = (By.XPATH, "((//*[@class=\"x-tab-strip-text \"])[contains(text(),'{0}')])[{1}]".format(name,index))
     p.click(*locators)
     return p.driver
 
 if __name__=="__main__":
 
-    openMenu('99922120')
+    openMenu('99941P00')

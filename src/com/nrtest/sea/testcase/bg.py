@@ -11,10 +11,10 @@ from com.nrtest.common.oracle_test import Oracle
 
 import unittest
 
-from com.nrtest.sea.testcase.base_app.dataGatherMan.gatherQualityAnalyze.test_gatherSuccessRate import TestGatherSuccessRate
+from com.nrtest.sea.testcase.stat_rey.synthQuery.test_AllCollectSuccessRate import TestAllCollectSuccessRate
 
 suite = unittest.TestSuite()
-suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestGatherSuccessRate))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAllCollectSuccessRate))
 #tests = [TestGatherSuccessRate('test_epp_task_type')]
 #suite.addTests(tests)
 

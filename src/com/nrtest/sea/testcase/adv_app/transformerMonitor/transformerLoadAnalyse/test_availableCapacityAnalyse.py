@@ -20,8 +20,7 @@ from ddt import ddt, data
 import unittest
 
 
-# 高级应用--》配变负载分析--》负载率分析
-# 负载率统计
+# 高级应用--》配变负载分析--》包装可用容量分析
 @ddt
 class TestLoadRateStatic(unittest.TestCase, AvailableCapacityAnalysePage):
 

@@ -8,11 +8,11 @@
 @desc:
 '''
 
-from selenium import webdriver
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.task.login import Login
 
 global driver
+
 
 def __init():
     """
@@ -20,14 +20,10 @@ def __init():
     """
     global __driver
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
-    __driver =lg.login()
-
-
-
-
-
+    __driver = lg.login()
 
     print('complete global webdriver init.')
+
 
 def get_driver():
     """
@@ -36,9 +32,10 @@ def get_driver():
     try:
         return __driver
     except Exception as e:
-        #print(e)
+        # print(e)
         __init()
         return __driver
+
 
 def quit():
     """
@@ -47,8 +44,3 @@ def quit():
     print('closing global webdriver')
     __driver.quit()
     print('closed global webdriver')
-
-
-
-
-

@@ -58,6 +58,12 @@ class DataAccess:
 
     @staticmethod
     def refresh_case(user_no='', group_no=''):
+        """
+        用于默认刷新admin用户下的‘00000’用户组的测试用例
+        :param user_no: 测试用例用户
+        :param group_no: 测试用例组
+        :return:
+        """
         para = [Setting.GROUP_USER if user_no == '' else user_no,
                            '00000' if group_no == '' else group_no]
         pyoracle = PyOracle.getInstance()

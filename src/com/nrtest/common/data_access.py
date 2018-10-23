@@ -71,11 +71,25 @@ class DataAccess:
 
         return str
 
+    @staticmethod
+    def reflash_menu(p_menu_no=''):
+        """
+        刷新菜单关系（由坐标定位改为按名称定位）
+        :param p_menu_no: 父节点菜单编码，该值为空刷新全部菜单，否则刷新指定菜单
+        """
+        pyoracle = PyOracle.getInstance()
+        if (p_menu_no == ''):
+            pyoracle.callproc('pkg_nrtest.refresh_case')
+        else:
+            para = [p_menu_no]
+            pyoracle.callproc('pkg_nrtest.refresh_case', para)
 
 if __name__ == '__main__':
+    pass
     # DataAccess.refresh_case()
-    str = DataAccess.getCaseData("99912100",tabName='终端调试')
-    print(len(str))
-    for i in  str[4:10]:
-        print(i)
+    # str = DataAccess.getCaseData("99912100",tabName='终端调试')
+    # print(len(str))
+    # for i in  str[4:10]:
+    #     print(i)
+    #DataAccess.reflash_menu()
 

@@ -29,7 +29,7 @@ class DataAccess:
     def getMenu(menuNo):
 
         pyoracle = PyOracle.getInstance()
-        str = pyoracle.callfunc('pkg_nrtest.get_menu_path', 'str', [menuNo])
+        str = pyoracle.callfunc('pkg_nrtest.get_menu_path_by_name', 'str', [menuNo])
 
         return str
 

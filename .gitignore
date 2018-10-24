@@ -123,12 +123,12 @@ venv.bak/
 
 # My configurations:
 geckodriver.log
-.idea
+reports/*.html
+!hu.py
 .idea/
 logs/
 ocr/
 img/
 screenshots/
-reports/*.html
-!hu.py
+
 

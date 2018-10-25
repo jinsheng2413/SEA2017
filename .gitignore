@@ -122,8 +122,6 @@ venv.bak/
 # 然后再重新添加提交一下,.gitignore文件里的规则就可以起作用了.
 
 # My configurations:
-login.py
-*.gitignore
 geckodriver.log
 reports/*.html
 !hu.py

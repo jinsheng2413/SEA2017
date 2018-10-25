@@ -7,20 +7,18 @@
 @time: 2018/8/28 0028 13:45
 @desc:
 '''
+from time import sleep
+
 from selenium.webdriver import ActionChains
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.setting import Setting
-from com.nrtest.sea.data.base_app.archivesMan.archivesAnalysisOfAnomaly_para import ArchivesAnalysisOfAnomaly_para
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
-from com.nrtest.sea.task.commonMath import *
 from com.nrtest.sea.task.login import Login
 
 
 class MenuPage(Page):
-    # click_menu(ArchivesAnalysisOfAnomaly_para(1))
-
     def click_menu(self, menu_no, by_name=False):
         """
         定位级菜单element,并调用Base_Page类的click方法选择级菜单
@@ -29,16 +27,12 @@ class MenuPage(Page):
         :return: 返回driver
         """
 
-        #按菜单名定位菜单
+        # 按菜单名定位菜单
         if (by_name):
             self.click_menu_by_name(menu_no);
             return self.driver
 
-        # 静态函数可以直接调用，不需要实例化
-        # kl = DataAccess()
-        # coordinate = kl.getMenu(menu_no)
         coordinate = DataAccess.getMenu(menu_no, by_name)
-
         items = coordinate.split(';')
         l = len(items)
         for i in range(len(items)):
@@ -87,24 +81,32 @@ class MenuPage(Page):
         print(locator)
         self.click(*locator)
 
-    # 选中省份
     def btn_select_province(self):
+        """
+        选择省份
+        """
         self.click(*MenuLocators.BTN_LEFT_MENU_ELETRIC)
 
-    # 选择公司
     def btn_select_company(self, number):
+        """
+        选择公司
+        :param number:
+        """
         nb = number + 1
         lr = self.get_select_locator(MenuLocators.BTN_COMPANY, nb)
         self.click(*lr)
 
-        # 点击双向箭头
-
     def btn_left_arrow(self):
+        """
+        点击双向箭头
+        """
         self.click(*MenuLocators.BTN_LEFT_MENU)
 
-    # 选择县
-
     def btn_select_county(self, index):
+        """
+        选择县
+        :param index:
+        """
         lr = self.get_select_locator(MenuLocators.BTN_COUNTY, index)
         self.click(*lr)
 
@@ -112,9 +114,11 @@ class MenuPage(Page):
         op = self.assert_body('电网结构')
         return op
 
-    # 选择所
-
     def btn_select_user(self, index):
+        """
+        选供电所
+        :param index:
+        """
         lr = self.get_select_locator(MenuLocators.BTN_COUNTY_AND_USER, index)
         self.click(*lr)
 
@@ -124,15 +128,12 @@ class MenuPage(Page):
             print('------------------------------------')
         elif hp == False:
             self.btn_left_arrow()
-
         else:
             print('省份选择错误')
 
     # 选择左边树
-
     def btn_left_tree(self, tree_no):
-        kl = DataAccess()
-        tree = kl.getLeftTree(tree_no)
+        tree = DataAccess.getLeftTree(tree_no)
 
         # self.btn_suitable_arrow()
         items = tree.split(';')
@@ -170,13 +171,13 @@ class MenuPage(Page):
     def getSecondAssert(self, num):
         self.get_select_locator(MenuLocators.TAB_TWO, num)
 
-
     def closePages(self, page_name, isCurPage=True):
         """
         通过工作台或定位菜单页面，关闭当前页面或除当前页面外其他页面
         :param page_name: 当“工作台”时相当于清屏
         :param isCurPage:True-关闭其他所有页；False-关闭当前页
         """
+
         # ****定位到要右击的元素**
         loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
         print('当前页面', loc)
@@ -184,7 +185,7 @@ class MenuPage(Page):
         # 鼠标右键操作
         ActionChains(self.driver).context_click(right_click).perform()
 
-        #待定位右键菜单
+        # 待定位右键菜单
         forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
         loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
         print('待定位右键菜单', loc)
@@ -192,7 +193,7 @@ class MenuPage(Page):
 
     def clickAllMenu(self):
         menus = DataAccess.getAllMenu()
-        menus = [('999246000', '台区线损监测', 'advAppIcon;线损分析;线损统计分析;台区线损监测')]
+        # menus = [('999246000', '台区线损监测', 'advAppIcon;线损分析;线损统计分析;台区线损监测')]
         l = len(menus)
         for i in range(len(menus)):
             try:
@@ -204,10 +205,10 @@ class MenuPage(Page):
             except:
                 print('该菜单定位报错：', menu)
 
+
 if __name__ == '__main__':
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     p = MenuPage(lg.login())
-    #p.click_menu('99913210', True) #'99913210', True)
-    #p.clickTabPage('采集成功率统计')
+    # p.click_menu('99913210', True) #'99913210', True)
+    # p.clickTabPage('采集成功率统计')
     p.clickAllMenu()
-

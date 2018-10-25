@@ -170,32 +170,37 @@ class MenuPage(Page):
     def getSecondAssert(self, num):
         self.get_select_locator(MenuLocators.TAB_TWO, num)
 
-    def closeMenu(self, menu_name, isCurPage=True):
+
+    def closePages(self, page_name, isCurPage=True):
+        """
+        通过工作台或定位菜单页面，关闭当前页面或除当前页面外其他页面
+        :param page_name: 当“工作台”时相当于清屏
+        :param isCurPage:True-关闭其他所有页；False-关闭当前页
+        """
         # ****定位到要右击的元素**
-        # right_click = self._find_element(MenuLocators.CURRENT_MENU)
-        loc = (MenuLocators.CURRENT_MENU[0], \
-               MenuLocators.CURRENT_MENU[1] % menu_name)
+        loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
         print('当前页面', loc)
         right_click = self._find_element(*loc)
-        # ****对定位到的元素执行鼠标右键操作
+        # 鼠标右键操作
         ActionChains(self.driver).context_click(right_click).perform()
+
         #待定位右键菜单
-        loc = (MenuLocators.CLOSE_PAGES[0], \
-               MenuLocators.CLOSE_PAGES[1] % ('关闭当前页' if isCurPage == True else '关闭其他所有页'))
+        forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
+        loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
         print('待定位右键菜单', loc)
         self.click(*loc)
 
     def clickAllMenu(self):
-        #menus = DataAccess.getAllMenu()
-        menus = [('99913200', '多表合一数据召测', 'baseAppIcon;数据采集管理;多表合一数据召测')]
+        menus = DataAccess.getAllMenu()
+        menus = [('999246000', '台区线损监测', 'advAppIcon;线损分析;线损统计分析;台区线损监测')]
         l = len(menus)
         for i in range(len(menus)):
             try:
                 menu = menus[i]
                 print('即将定位该菜单：', menu)
                 self.click_menu_by_name(menu[2], True)
-                sleep(2)
-                self.closeMenu(menu[1])
+                sleep(1)
+                self.closePages(menu[1])
             except:
                 print('该菜单定位报错：', menu)
 

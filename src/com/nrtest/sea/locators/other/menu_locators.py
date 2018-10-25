@@ -11,22 +11,22 @@ from selenium.webdriver.common.by import By
 class MenuLocators:
     #一级菜单
     #通过菜单坐标定位
-    #MENU_LEVEL1 = (By.XPATH, "// *[@id =\"menu1\"]/tbody/tr/td[%s]")
+    MENU_LEVEL_IDX_1 = (By.XPATH, "// *[@id =\"menu1\"]/tbody/tr/td[%s]")
     #通过菜单名定位，下同
     MENU_LEVEL1 = (By.XPATH, '// *[@id ="menu1"]/tbody/tr//img[@id="%s"]')
     #二级菜单
-    #MENU_LEVEL2 = (By.XPATH, '//*[@id=\"smenu\"]//*[@class=\"x-toolbar-left-row\"]/td[%s]')
+    MENU_LEVEL_IDX_2 = (By.XPATH, '//*[@id=\"smenu\"]//*[@class=\"x-toolbar-left-row\"]/td[%s]')
     MENU_LEVEL2 = (By.XPATH, '//*[@id=\"smenu\"]//*[@class=\"x-toolbar-left-row\"]//*[@type=\"button\" and text() = \"%s\"]')
 
     #三级菜单
-    #MENU_LEVEL3 = (By.XPATH, '//ul[@class=\"x-menu-list\"]/li[%s]')
+    MENU_LEVEL_IDX_3 = (By.XPATH, '//ul[@class=\"x-menu-list\"]/li[%s]')
     MENU_LEVEL3 = (By.XPATH, '//ul[@class=\"x-menu-list\"]/li/a/span[text() = \"%s\")]')
 
     #四级菜单
-    #MENU_LEVEL4 = (By.XPATH, '(//*[@class=\"x-menu x-menu-floating x-layer \"])[2]/ul/li[%s]')
+    MENU_LEVEL_IDX_4 = (By.XPATH, '(//*[@class=\"x-menu x-menu-floating x-layer \"])[2]/ul/li[%s]')
     MENU_LEVEL4 = (By.XPATH, '//div[@class=\"x-menu x-menu-floating x-layer \"][2]/ul/li//*[text()= \"%s\"]')
     #五级菜单
-    #MENU_LEVEL5 = (By.XPATH, '(//*[@class=\"x-menu x-menu-floating x-layer \"])[3]/ul/li[%s]')
+    MENU_LEVEL_IDX_5 = (By.XPATH, '(//*[@class=\"x-menu x-menu-floating x-layer \"])[3]/ul/li[%s]')
     MENU_LEVEL5 = (By.XPATH, '//div[@class=\"x-menu x-menu-floating x-layer \"][2]/ul/li//*[text()= \"%s\"]')
 
 

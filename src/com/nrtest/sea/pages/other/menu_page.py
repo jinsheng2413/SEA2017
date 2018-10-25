@@ -40,7 +40,7 @@ class MenuPage(Page):
         items = coordinate.split(';')
         l = len(items)
         for i in range(len(items)):
-            locators = getattr(MenuLocators, 'MENU_LEVEL' + str(i + 1))
+            locators = getattr(MenuLocators, 'MENU_LEVEL_IDX_' + str(i + 1))
             idx = int(items[i])
             # if i == 0:
             idx = idx + 1 if i == 0 else idx

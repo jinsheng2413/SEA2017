@@ -38,11 +38,9 @@ class MenuPage(Page):
         for i in range(len(items)):
             locators = getattr(MenuLocators, 'MENU_LEVEL_IDX_' + str(i + 1))
             idx = int(items[i])
-            # if i == 0:
             idx = idx + 1 if i == 0 else idx
             loc = (locators[0], locators[1] % idx)
             if (l == 4 and i == 2) or (l == 5 and i in (2, 3)):
-                # pg = Page  #无效代码  ljf  2018-10-24
                 self.hover(*loc)
             else:
                 self.click(*loc)
@@ -64,10 +62,8 @@ class MenuPage(Page):
             locators = getattr(MenuLocators, 'MENU_LEVEL' + str(i + 1))
             loc = (locators[0], locators[1] % items[i])
             if (l == 4 and i == 2) or (l == 5 and i in (2, 3)):
-                # print('hover loc is ', loc)
                 self.hover(*loc)
             else:
-                # print('click loc is ', loc)
                 self.click(*loc)
         return self.driver
 
@@ -170,26 +166,6 @@ class MenuPage(Page):
 
     def getSecondAssert(self, num):
         self.get_select_locator(MenuLocators.TAB_TWO, num)
-
-    def closePages(self, page_name, isCurPage=True):
-        """
-        通过工作台或定位菜单页面，关闭当前页面或除当前页面外其他页面
-        :param page_name: 当“工作台”时相当于清屏
-        :param isCurPage:True-关闭其他所有页；False-关闭当前页
-        """
-
-        # ****定位到要右击的元素**
-        loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
-        print('当前页面', loc)
-        right_click = self._find_element(*loc)
-        # 鼠标右键操作
-        ActionChains(self.driver).context_click(right_click).perform()
-
-        # 待定位右键菜单
-        forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
-        loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
-        print('待定位右键菜单', loc)
-        self.click(*loc)
 
     def clickAllMenu(self):
         menus = DataAccess.getAllMenu()

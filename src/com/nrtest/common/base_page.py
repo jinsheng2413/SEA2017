@@ -76,25 +76,23 @@
         打开被测服务地址
 
 '''
-from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidElementStateException
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.keys import Keys  # 键盘按键包
-from selenium.webdriver.common.alert import Alert
-from com.nrtest.common.logger import Logger
-from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+import datetime
 import os
-from com.nrtest.common.setting import Setting
+import time
 from time import sleep
+
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException, InvalidElementStateException
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+
+from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
-import datetime
-import time
-
 # create a logger instance
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 
@@ -628,29 +626,45 @@ class Page(object):
 
         except NameError as e:
             print('获取显示区第一个列数据失败')
-    #点击确认
-    def btn_confirm(self):
 
-           try:
+    # 点击确认
+    def btn_confirm(self):
+        try:
             va = self.assert_context(*MenuLocators.BTN_CONFIRM)
             if va is True:
-             self.click(*MenuLocators.BTN_CONFIRM)
-           except:
-               print('点击确认按钮失败')
+                self.click(*MenuLocators.BTN_CONFIRM)
+        except:
+            print('点击确认按钮失败')
 
-    # def cleanScreen(self):
-    #  """
-    #     清屏操作：即关闭所有窗口
-    #  """
-    #  try:
-    #     right_click = self._find_element(*(By.XPATH,'//*[@id="maintab__工作台"]'))
-    #     ActionChains(self.driver).context_click(right_click).perform()
-    #     self.click(*(By.XPATH,'//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()=\'关闭其他所有页\']'))
-    #  except:
-    #      print('error:关闭其他页失败')
+    def closePages(self, page_name, isCurPage=True):
+        """
+        通过工作台或定位菜单页面，关闭当前页面或除当前页面外其他页面
+        :param page_name: 当“工作台”时相当于清屏操作：即关闭所有窗口
+        :param isCurPage:True-关闭其他所有页；False-关闭当前页
+        """
+
+        # ****定位到要右击的元素**
+        loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
+        print('当前页面', loc)
+        right_click = self._find_element(*loc)
+        # 鼠标右键操作
+        ActionChains(self.driver).context_click(right_click).perform()
+
+        # 待定位右键菜单
+        forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
+        loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
+        print('待定位右键菜单', loc)
+        self.click(*loc)
 
     def format_xpath(self, xpath, format_val):
+        """
+        格式化xpath：(By.XPATH,'//*[@id=abc]//*[contains(text(),\"%s\"])
+        :param xpath: 待格式化的xpath
+        :param format_val: 格式化值
+        :return:
+        """
         return (xpath[0], xpath[1] % format_val)
+
 
 if __name__ == '__main__':
     dr = webdriver.Chrome()

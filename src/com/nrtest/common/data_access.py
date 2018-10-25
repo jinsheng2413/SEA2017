@@ -34,6 +34,14 @@ class DataAccess:
         return str
 
     @staticmethod
+    def getAllMenu():
+
+        pyoracle = PyOracle.getInstance()
+        cur = pyoracle.callFCur('pkg_nrtest.get_all_menu')
+
+        return cur
+
+    @staticmethod
     def getLeftTree(treeNO):
         pyoracle = PyOracle.getInstance()
         str = pyoracle.callfunc('pkg_nrtest.get_org_path', 'str', [treeNO])
@@ -91,5 +99,5 @@ if __name__ == '__main__':
     # print(len(str))
     # for i in  str[4:10]:
     #     print(i)
-    #DataAccess.reflash_menu()
+    #print(DataAccess.getAllMenu())
 

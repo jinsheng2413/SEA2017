@@ -27,9 +27,9 @@ def openLeftTree(treeNo):
     return p.driver
 
 # 打开
-def clickTabPage(name,index =1):
+def clickTabPage(name):
     p = MenuPage(global_drv.get_driver())
-    locators = (By.XPATH, "((//*[@class=\"x-tab-strip-text \"])[contains(text(),'{0}')])[{1}]".format(name,index))
+    locators = (By.XPATH, "((//*[@class=\"x-tab-strip-text \"])[text()='{0}']]".format(name))
     p.click(*locators)
     return p.driver
 

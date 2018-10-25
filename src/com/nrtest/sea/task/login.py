@@ -13,7 +13,7 @@ from time import sleep
 import pytesseract as pt
 from PIL import Image
 
-from com.nrtest.common.yamlSetting import YamlSetting
+#from com.nrtest.common.yamlSetting import YamlSetting
 from com.nrtest.sea.pages.other.login_page import LoginPage
 from com.nrtest.common.base_test import BaseTest
 from com.nrtest.common.logger import Logger
@@ -37,7 +37,7 @@ class Login:
     def login(self):
         bool = True
         p = BaseTest()
-        dr = p.openBrowser('c')
+        dr = p.openBrowser(Setting.BROWSER)
         dr.maximize_window()
         dr.get(Setting.TEST_URL)
         while (bool):
@@ -81,14 +81,14 @@ class Login:
 
         return loginPage.driver
 
-    @classmethod
-    def cookieLogin(cls,username):
-        p = BaseTest()
-        dr = p.openBrowser('firefox')
-        dr.maximize_window()
-        dr.get(Setting.TEST_URL)
-        dr.add_cookie(YamlSetting.getCookie(username))
-        dr.get(Setting.TEST_URL+'/index.jsp')
+    # @classmethod
+    # def cookieLogin(cls,username):
+    #     p = BaseTest()
+    #     dr = p.openBrowser('firefox')
+    #     dr.maximize_window()
+    #     dr.get(Setting.TEST_URL)
+    #     dr.add_cookie(YamlSetting.getCookie(username))
+    #     dr.get(Setting.TEST_URL+'/index.jsp')
 
 
 

@@ -638,6 +638,15 @@ class Page(object):
            except:
                print('点击确认按钮失败')
 
+    #点击右键关闭其他按钮
+    def rightCloseOtherPage(self):
+     try:
+        right_click = self._find_element(*(By.XPATH,'//*[@id="maintab__工作台"]'))
+        ActionChains(self.driver).context_click(right_click).perform()
+        self.click(*(By.XPATH,'//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()=\'关闭其他所有页\']'))
+     except:
+         print('error:关闭其他页失败')
+
 
 if __name__ == '__main__':
     dr = webdriver.Chrome()

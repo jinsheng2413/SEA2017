@@ -35,12 +35,13 @@ class MenuPage(Page):
         # 静态函数可以直接调用，不需要实例化
         # kl = DataAccess()
         # coordinate = kl.getMenu(menu_no)
-        coordinate = DataAccess.getMenu(menu_no)
-
+        coordinate = DataAccess.getMenu(menu_no, by_name)
+        print('coordinate is ', coordinate)
         items = coordinate.split(';')
         l = len(items)
         for i in range(len(items)):
             locators = getattr(MenuLocators, 'MENU_LEVEL_IDX_' + str(i + 1))
+            print('locators is ', locators)
             idx = int(items[i])
             # if i == 0:
             idx = idx + 1 if i == 0 else idx
@@ -62,13 +63,16 @@ class MenuPage(Page):
         # 静态函数可以直接调用，不需要实例化
         # kl = DataAccess()
         # coordinate = kl.getMenu(menu_no)
-        coordinate = DataAccess.getMenu(menu_no)
+        coordinate = DataAccess.getMenu(menu_no, True)
 
         items = coordinate.split(';')
+        print('菜单路径：', items)
         l = len(items)
         for i in range(len(items)):
             locators = getattr(MenuLocators, 'MENU_LEVEL' + str(i + 1))
             loc = (locators[0], locators[1] % items[i])
+            print('loc is ', loc)
+
             if (l == 4 and i == 2) or (l == 5 and i in (2, 3)):
                 self.hover(*loc)
             else:
@@ -172,5 +176,5 @@ class MenuPage(Page):
 if __name__ == '__main__':
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     p = MenuPage(lg.login())
-    p.click_menu('99913210')
-    p.clickTabPage('采集成功率统计')
+    p.click_menu('99913210', True)
+    #p.clickTabPage('采集成功率统计')

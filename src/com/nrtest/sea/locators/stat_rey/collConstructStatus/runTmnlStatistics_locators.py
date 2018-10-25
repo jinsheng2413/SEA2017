@@ -30,10 +30,22 @@ class RunTmnlStatisticsLocators:
     DETAIL_TMNL_TYPE = (By.XPATH, '//label[contains(text(),"终端类型")]/../div/div/input')
     #终端类型→值
     DETAIL_TMNL_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
-    #终端规约
-    TMNL_PROTOCOL = (By.XPATH,'//label[contains(text(),"终端规约")]/../div/div/input')
-    #终端规约→值
-    TMNL_PROTOCOL_VALUE = (By.XPATH,'(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    #通讯规约
+    DETAIL_TMNL_PROTOCOL = (By.XPATH,'//label[contains(text(),"通讯规约")]/../div/div/input')
+    #通讯规约→值
+    DETAIL_TMNL_PROTOCOL_VALUE = (By.XPATH,'(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    #通讯方式
+    DETAIL_TMNL_WAY = (By.XPATH,'//label[contains(text(),"通讯方式")]/../div/div/input')
+    #通讯方式→值
+    DETAIL_TMNL_WAY_VALUE = (By.XPATH,'(//div[@class="x-combo-list-inner"])[4]/div[%s]')
+    #终端厂家
+    DETAIL_TMNL_FACTORY = (By.XPATH, '//label[contains(text(),"终端厂家")]/../div/div/input')
+    #终端厂家→值
+    DETAIL_TMNL_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[5]/div[%s]')
+    #终端状态
+    DETAIL_TMNL_STATUS = (By.XPATH, '//label[contains(text(),"终端状态")]/../div/div/input')
+    #终端状态→值
+    DETAIL_TMNL_STATUS_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[6]/div[%s]')
     #查询按钮
     BTN_DETAIL_SEARCH = (By.XPATH,'(//button[text()="查询"])[2]')
 

@@ -26,11 +26,11 @@ os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
 class DataAccess:
     @staticmethod
-    def getMenu(menuNo):
+    def getMenu(menuNo, by_name=False):
 
         pyoracle = PyOracle.getInstance()
-        str = pyoracle.callfunc('pkg_nrtest.get_menu_path_by_name', 'str', [menuNo])
-
+        fun_name = 'pkg_nrtest.get_menu_path' +  ('_by_name' if by_name == True else '')
+        str = pyoracle.callfunc(fun_name, 'str', [menuNo])
         return str
 
     @staticmethod
@@ -99,5 +99,6 @@ if __name__ == '__main__':
     # print(len(str))
     # for i in  str[4:10]:
     #     print(i)
-    print(DataAccess.getAllMenu())
+    # print(DataAccess.getAllMenu())
 
+    DataAccess.getMenu('99913210')

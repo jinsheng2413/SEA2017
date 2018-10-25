@@ -29,7 +29,7 @@ class MenuPage(Page):
 
         # 按菜单名定位菜单
         if (by_name):
-            self.click_menu_by_name(menu_no);
+            self.click_menu_by_name(menu_no)
             return self.driver
 
         coordinate = DataAccess.getMenu(menu_no, by_name)

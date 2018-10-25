@@ -121,10 +121,10 @@ class Page(object):
         self.base_url = base_url
         self.page_title = pagetitle
 
-    def fail_on_screenshot(function):
+    def fail_on_screenshot(func):
         """
         函数/方法报错截图处理
-        :param function:
+        :param func:
         :return:
         """
 
@@ -147,7 +147,7 @@ class Page(object):
         def wrapper(*args, **kwargs):
             instance, selector = args[0], args[1]
             try:
-                return function(*args, **kwargs)
+                return func(*args, **kwargs)
             except (TimeoutException, NoSuchElementException, InvalidElementStateException) as ex:
                 logger.error("Could not find the locator: [{}].".format(selector))
                 filename = "{}.png".format(get_current_time_str())
@@ -269,18 +269,18 @@ class Page(object):
         logger.info("关闭浏览器")
         self.driver.quit()
 
-    def hover(self, *locators):
+    def hover(self, *locator):
         """
         方法名：hover
         说明：鼠标移动到某个元素上
-        :param Locators: 元素的xpath
+        :param locator: 元素的xpath
         """
         try:
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locators))
-            above = self._find_element(*locators)
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
+            above = self._find_element(*locator)
             ActionChains(self.driver).move_to_element(above).perform()
         except NameError as e:
-            logger.error("悬停失败")
+            logger.error("悬停失败", e)
 
     def switch_frame(self, *locators):
         """
@@ -461,14 +461,14 @@ class Page(object):
         except NameError as e:
             logger.info("组员查找错误")
 
-    def find_elements_num(self, *Locator):
+    def find_elements_num(self, *locator):
         """
         #校验一组元素
-        :param Locator:
+        :param locator:
         :return: 查找元素个数
         """
         try:
-            el = self.driver.find_elements(*Locator)
+            el = self.driver.find_elements(*locator)
             return el
 
         except NameError as e:
@@ -492,7 +492,6 @@ class Page(object):
         con = self.driver.find_element_by_tag_name('body').text
 
         if '重要信息推出' in con:
-            bool = False
             if '登录异常' in con:
                 print("-----")
                 self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
@@ -551,7 +550,7 @@ class Page(object):
     def implic_wait(self):
         self.driver.implicitly_wait(10)
 
-    def Find_element_by_tag_name(self, value):
+    def find_element_by_tag_name(self, value):
         f = self.driver.find_element_by_tag_name(value)
         print(len(f))
         return f
@@ -604,7 +603,7 @@ class Page(object):
             print('点击{}tab页失败'.format(name))
 
     @classmethod
-    def TableLineValue(self, i, l):
+    def tableLineValue(self, i, l):
         try:
             str = "(//*[@class=\"x-grid3-row-table\"])[{0}]//td[{1}]".format(i, l)
             changeStr = self._find_element(*(By.XPATH, str)).text

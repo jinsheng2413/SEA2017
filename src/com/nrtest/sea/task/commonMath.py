@@ -13,9 +13,9 @@ from selenium.webdriver.common.by import By
 from time import sleep
 
 # 打开
-def openMenu(menuNo):
+def openMenu(menuNo,byName=False):
     p = MenuPage(global_drv.get_driver())
-    p.click_menu(menuNo)
+    p.click_menu(menuNo,byName)
     return p.driver
 
     # 打开左边树
@@ -29,10 +29,11 @@ def openLeftTree(treeNo):
 # 打开
 def clickTabPage(name):
     p = MenuPage(global_drv.get_driver())
-    locators = (By.XPATH, "((//*[@class=\"x-tab-strip-text \"])[text()='{0}']]".format(name))
+    locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[text()='{0}']".format(name))
+    print(locators)
     p.click(*locators)
     return p.driver
 
 if __name__=="__main__":
 
-    openMenu('99941P00')
+    pass

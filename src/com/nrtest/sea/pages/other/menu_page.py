@@ -13,6 +13,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.data.base_app.archivesMan.archivesAnalysisOfAnomaly_para import ArchivesAnalysisOfAnomaly_para
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
+from com.nrtest.sea.task.commonMath import *
 from com.nrtest.sea.task.login import Login
 
 

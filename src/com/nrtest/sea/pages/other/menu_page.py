@@ -36,12 +36,11 @@ class MenuPage(Page):
         # kl = DataAccess()
         # coordinate = kl.getMenu(menu_no)
         coordinate = DataAccess.getMenu(menu_no, by_name)
-        print('coordinate is ', coordinate)
+
         items = coordinate.split(';')
         l = len(items)
         for i in range(len(items)):
             locators = getattr(MenuLocators, 'MENU_LEVEL_IDX_' + str(i + 1))
-            print('locators is ', locators)
             idx = int(items[i])
             # if i == 0:
             idx = idx + 1 if i == 0 else idx
@@ -53,29 +52,26 @@ class MenuPage(Page):
                 self.click(*loc)
         return self.driver
 
-    def click_menu_by_name(self, menu_no):
+    def click_menu_by_name(self, menu_no, isPath=False):
         """
         定位级菜单element,并调用Base_Page类的click方法选择级菜单
         :param menu_no: 菜单编号
+        :param isPath: True-menu_no是已确定的菜单路径，False-menu_no是菜单编码
         :return:各级菜单名，如：基本应用;档案管理;档案同步  一级菜单下第一个菜单下的第二个子菜单
         """
+        menu_path = menu_no if isPath else DataAccess.getMenu(menu_no, True)
+        print('菜单路径：', menu_path)
+        items = menu_path.split(';')
 
-        # 静态函数可以直接调用，不需要实例化
-        # kl = DataAccess()
-        # coordinate = kl.getMenu(menu_no)
-        coordinate = DataAccess.getMenu(menu_no, True)
-
-        items = coordinate.split(';')
-        print('菜单路径：', items)
         l = len(items)
         for i in range(len(items)):
             locators = getattr(MenuLocators, 'MENU_LEVEL' + str(i + 1))
             loc = (locators[0], locators[1] % items[i])
-            print('loc is ', loc)
-
             if (l == 4 and i == 2) or (l == 5 and i in (2, 3)):
+                # print('hover loc is ', loc)
                 self.hover(*loc)
             else:
+                # print('click loc is ', loc)
                 self.click(*loc)
         return self.driver
 
@@ -172,9 +168,20 @@ class MenuPage(Page):
     def getSecondAssert(self, num):
         self.get_select_locator(MenuLocators.TAB_TWO, num)
 
+    def clickAllMenu(self):
+        menus = DataAccess.getAllMenu()
+        l = len(menus)
+        for i in range(len(menus)):
+            print('即将定位该菜单：', menus[i])
+            try:
+                self.click_menu_by_name(menus[i][2], True)
+            except:
+                print('该菜单定位报错：', menus[i])
 
 if __name__ == '__main__':
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     p = MenuPage(lg.login())
-    p.click_menu('99913210', True)
+    #p.click_menu('99913210', True) #'99913210', True)
     #p.clickTabPage('采集成功率统计')
+    p.clickAllMenu()
+

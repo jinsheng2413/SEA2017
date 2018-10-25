@@ -7,33 +7,46 @@
 @time: 2018/9/10 0010 10:59
 @desc:
 '''
-from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.common import global_drv
 from selenium.webdriver.common.by import By
-from time import sleep
 
-# 打开
-def openMenu(menuNo,byName=False):
+from com.nrtest.common import global_drv
+from com.nrtest.sea.pages.other.menu_page import MenuPage
+
+
+def openMenu(menuNo, byName=False):
+    """
+    打开指定菜单页面
+    :param menuNo: 菜单编号
+    :param byName:
+    :return:
+    """
     p = MenuPage(global_drv.get_driver())
-    p.click_menu(menuNo,byName)
+    p.click_menu(menuNo, byName)
     return p.driver
-
-    # 打开左边树
 
 
 def openLeftTree(treeNo):
+    """
+    打开左边树
+    :param treeNo:
+    :return:
+    """
     p = MenuPage(global_drv.get_driver())
     p.btn_left_tree(treeNo)
     return p.driver
 
-# 打开
+
 def clickTabPage(name):
+    """
+    打开Tab页
+    :param name:
+    """
     p = MenuPage(global_drv.get_driver())
     locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[text()='{0}']".format(name))
     print(locators)
     p.click(*locators)
-    return p.driver
+    #return p.driver
 
-if __name__=="__main__":
 
+if __name__ == "__main__":
     pass

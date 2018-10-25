@@ -7,6 +7,7 @@
 @time: 2018/8/28 0028 13:45
 @desc:
 '''
+from selenium.webdriver import ActionChains
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
@@ -169,15 +170,34 @@ class MenuPage(Page):
     def getSecondAssert(self, num):
         self.get_select_locator(MenuLocators.TAB_TWO, num)
 
+    def closeMenu(self, menu_name, isCurPage=True):
+        # ****定位到要右击的元素**
+        # right_click = self._find_element(MenuLocators.CURRENT_MENU)
+        loc = (MenuLocators.CURRENT_MENU[0], \
+               MenuLocators.CURRENT_MENU[1] % menu_name)
+        print('当前页面', loc)
+        right_click = self._find_element(*loc)
+        # ****对定位到的元素执行鼠标右键操作
+        ActionChains(self.driver).context_click(right_click).perform()
+        #待定位右键菜单
+        loc = (MenuLocators.CLOSE_PAGES[0], \
+               MenuLocators.CLOSE_PAGES[1] % ('关闭当前页' if isCurPage == True else '关闭其他所有页'))
+        print('待定位右键菜单', loc)
+        self.click(*loc)
+
     def clickAllMenu(self):
-        menus = DataAccess.getAllMenu()
+        #menus = DataAccess.getAllMenu()
+        menus = [('99913200', '多表合一数据召测', 'baseAppIcon;数据采集管理;多表合一数据召测')]
         l = len(menus)
         for i in range(len(menus)):
-            print('即将定位该菜单：', menus[i])
             try:
-                self.click_menu_by_name(menus[i][2], True)
+                menu = menus[i]
+                print('即将定位该菜单：', menu)
+                self.click_menu_by_name(menu[2], True)
+                sleep(2)
+                self.closeMenu(menu[1])
             except:
-                print('该菜单定位报错：', menus[i])
+                print('该菜单定位报错：', menu)
 
 if __name__ == '__main__':
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)

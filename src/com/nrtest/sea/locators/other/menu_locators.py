@@ -34,6 +34,11 @@ class MenuLocators:
     MENU_LEVEL_IDX_5 = (By.XPATH, '(//*[@class=\"x-menu x-menu-floating x-layer \"])[3]/ul/li[%s]')
     MENU_LEVEL5 = (By.XPATH, '//div[@class=\"x-menu x-menu-floating x-layer \"][3]/ul/li//*[text()= \"%s\"]')
 
+    #当前正在操作的菜单页面
+    CURRENT_MENU = (By.XPATH, '//*[@id=\"maintab__%s\"]')
+    #右键菜单：关闭当前页/关闭其他所有页
+    CLOSE_PAGES = (By.XPATH, '(//*[text()="%s"])[last()]')
+
     # 【左边树】
     # 左边树按钮
     BTN_LEFT_MENU = (By.XPATH, '//*[@id="mainwest-xcollapsed"]/div')

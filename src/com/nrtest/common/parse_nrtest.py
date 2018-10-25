@@ -22,8 +22,6 @@ class ParseNrTest(object):
     def pattern():
         return r'/' if platform.system() == 'Windows' else r'\\'
 
-
-
     def __init__(self, file=None):
         self.parse = configparser.ConfigParser()  # 注意大小写
 
@@ -31,10 +29,9 @@ class ParseNrTest(object):
         path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) \
                + self.pattern()[0] + ("setup") + self.pattern()[0]
 
-        file = path + "nari_test.conf" if file == None else file
-        a = os.path.abspath(file)
+        file = path + ("nari_test.conf" if file is None else file)
+        # a = os.path.abspath(file)
         self.parse.read(file, encoding='utf-8')  # 配置文件的路径
-
 
     def getSections(self):
         """
@@ -50,7 +47,7 @@ class ParseNrTest(object):
         :param section:
         :return:
         """
-        return self.parse.items(section);
+        return self.parse.items(section)
 
     def get(self, section, key):
         """
@@ -60,7 +57,6 @@ class ParseNrTest(object):
         :return:
         """
         return self.parse.get(section, key)
-
 
     def getInt(self, section, key):
         """
@@ -103,8 +99,6 @@ class ParseNrTest(object):
         return values if is_list else tuple(values)
 
 
-
 if __name__ == '__main__':
     nrTest = ParseNrTest()
     print(nrTest.pattern())
-

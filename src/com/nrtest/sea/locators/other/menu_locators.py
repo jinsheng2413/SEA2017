@@ -20,7 +20,7 @@ class MenuLocators:
 
     #三级菜单
     MENU_LEVEL_IDX_3 = (By.XPATH, '//ul[@class=\"x-menu-list\"]/li[%s]')
-    MENU_LEVEL3 = (By.XPATH, '//ul[@class=\"x-menu-list\"]/li/a/span[text() = \"%s\")]')
+    MENU_LEVEL3 = (By.XPATH, '//ul[@class=\"x-menu-list\"]/li/a//span[text()=\'%s\']')
 
     #四级菜单
     MENU_LEVEL_IDX_4 = (By.XPATH, '(//*[@class=\"x-menu x-menu-floating x-layer \"])[2]/ul/li[%s]')

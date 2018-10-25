@@ -13,6 +13,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.data.base_app.archivesMan.archivesAnalysisOfAnomaly_para import ArchivesAnalysisOfAnomaly_para
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
+from com.nrtest.sea.task.commonMath import *
 from com.nrtest.sea.task.login import Login
 
 
@@ -62,7 +63,8 @@ class MenuPage(Page):
 
         # 静态函数可以直接调用，不需要实例化
         # kl = DataAccess()
-        # coordinate = kl.getMenu(menu_no)
+        # coordinate = kl.getMenu(m
+        # enu_no)
         coordinate = DataAccess.getMenu(menu_no, True)
 
         items = coordinate.split(';')
@@ -71,8 +73,6 @@ class MenuPage(Page):
         for i in range(len(items)):
             locators = getattr(MenuLocators, 'MENU_LEVEL' + str(i + 1))
             loc = (locators[0], locators[1] % items[i])
-            print('loc is ', loc)
-
             if (l == 4 and i == 2) or (l == 5 and i in (2, 3)):
                 self.hover(*loc)
             else:
@@ -177,4 +177,4 @@ if __name__ == '__main__':
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     p = MenuPage(lg.login())
     p.click_menu('99913210', True)
-    #p.clickTabPage('采集成功率统计')
+    clickTabPage('采集成功率统计')

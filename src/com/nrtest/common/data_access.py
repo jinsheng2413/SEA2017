@@ -101,4 +101,4 @@ if __name__ == '__main__':
     #     print(i)
     # print(DataAccess.getAllMenu())
 
-    DataAccess.getMenu('99913210')
+    print(DataAccess.getMenu('99913210',True))

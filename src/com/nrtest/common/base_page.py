@@ -42,7 +42,7 @@
 9.方法名：back_parent_iframe
         回到iframe上一层
         :return:无
-10.方法名：back_home_ifrme
+10.方法名：back_home_iframe
         回到ifrmae开始的地方
         :return: 无
 11. 方法名：exec_script
@@ -231,20 +231,17 @@ class Page(object):
             self._open(self.base_url, self.page_title)
 
     def click(self, *locators):
-        '''
-        方法名：click
-        功能：点击元素
-
-        :param locators:元素的位置
-        :return:None
-        '''
+        """
+        点击(click)元素,如图标、按钮等
+        :param locators: 元素的位置
+        """
         try:
             el = self._find_element(*locators)
             el.click()
             logger.info('点击元素：{0}'.format(locators))
         except AttributeError as e:
             logger.error('点击元素失败')
-        return None
+        #return None
 
     def closeOldBrowser(self):
         """
@@ -305,9 +302,9 @@ class Page(object):
         self.driver.switch_to.parent_frame()
         return None
 
-    def back_home_ifrme(self):
+    def back_home_iframe(self):
         '''
-        方法名：back_home_ifrme
+        方法名：back_home_iframe
         回到ifrmae开始的地方
         :return:
         '''

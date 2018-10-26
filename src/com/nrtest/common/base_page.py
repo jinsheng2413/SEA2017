@@ -632,7 +632,7 @@ class Page(object):
         except:
             print('点击确认按钮失败')
 
-    def closePages(self, page_name, isCurPage=True):
+    def closePages(self, page_name='工作台', isCurPage=True):
         """
         通过工作台或定位菜单页面，关闭当前页面或除当前页面外其他页面
         :param page_name: 当“工作台”时相当于清屏操作：即关闭所有窗口

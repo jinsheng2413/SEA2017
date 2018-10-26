@@ -126,6 +126,10 @@ geckodriver.log
 reports/*.html
 !blank.py
 !hu.py
+!screenshots
+!logs
+!ocr
+!img
 screenshots/
 .idea/
 logs/

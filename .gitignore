@@ -131,7 +131,10 @@ reports/*.html
 !ocr
 !img
 .idea/
-
+screenshots/
+logs/
+ocr/
+img/
 
 
 

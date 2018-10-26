@@ -99,6 +99,6 @@ if __name__ == '__main__':
     # print(len(str))
     # for i in  str[4:10]:
     #     print(i)
-    # print(DataAccess.getAllMenu())
+    print(DataAccess.getAllMenu())
 
-    DataAccess.getMenu('99913210')
+    #DataAccess.getMenu('99913210')

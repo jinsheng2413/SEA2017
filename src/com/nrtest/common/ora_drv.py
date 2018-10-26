@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 李建方
 @license: (C) Copyright 2018, Nari.
 @file: ora_drv.py
 @time: 2018-09-10 11:14
 @desc:
-'''
+"""
 import datetime
 import os
 
@@ -15,9 +15,9 @@ from DBUtils.PooledDB import PooledDB
 
 from com.nrtest.common.parse_nrtest import ParseNrTest
 
-'''
+"""
 @功能：数据库连接池
-'''
+"""
 
 
 class ConnPool(object):
@@ -94,7 +94,7 @@ class PyOracle(object):
             else:
                 cursor.execute(sql)
 
-            if (isAll):
+            if isAll:
                 dataSet = cursor.fetchall()
             else:
                 dataSet = cursor.fetchone()
@@ -146,7 +146,7 @@ class PyOracle(object):
             cx_type = cx_Oracle.STRING
         return cx_type
 
-    def callfunc(self, fun, retType=str, para=()):
+    def callfunc(self, fun, retType='str', para=()):
         """
             调用Oracle函数
         :param fun: 要调用的oracle函数名
@@ -168,13 +168,13 @@ class PyOracle(object):
                 date2str：日期转字符串
                 dt2str:   时间转字符串
             '''
-            if (retType == 'int'):
+            if retType == 'int':
                 rst = int(rst)
-            elif (retType == 'date'):
+            elif retType == 'date':
                 rst = datetime.datetime.strptime(rst.strftime('%Y-%m-%d'), '%Y-%m-%d')
-            elif (retType == 'date2str'):
+            elif retType == 'date2str':
                 rst = rst.strftime('%Y-%m-%d')
-            elif (retType == 'dt2str'):
+            elif retType == 'dt2str':
                 rst = rst.strftime('%Y-%m-%d %H:%M:%S')
             conn.commit()
         except Exception as e:
@@ -190,7 +190,6 @@ class PyOracle(object):
             调用Oracle Procedure
         :param proc: 要调用的oracle函数名
         :param para: 调用参数
-        :param retType: Oracle函数返回数据类型
         """
         try:
             cursor, conn = self._pool.getconn()

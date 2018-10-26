@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: base_page.py
@@ -42,7 +42,7 @@
 9.方法名：back_parent_iframe
         回到iframe上一层
         :return:无
-10.方法名：back_home_ifrme
+10.方法名：back_home_iframe
         回到ifrmae开始的地方
         :return: 无
 11. 方法名：exec_script
@@ -75,33 +75,31 @@
 18.方法名：open_url
         打开被测服务地址
 
-'''
-from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidElementStateException
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.keys import Keys  # 键盘按键包
-from selenium.webdriver.common.alert import Alert
-from com.nrtest.common.logger import Logger
-from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+"""
+import datetime
 import os
-from com.nrtest.common.setting import Setting
+import time
 from time import sleep
+
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException, InvalidElementStateException
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+
+from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
-import datetime
-import time
-
 # create a logger instance
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 
 logger = Logger(logger="Page").getlog()
 
 
-class must_get_url(object):
+class MustGetUrl(object):
     """
     必须到达的URL
        参数：
@@ -123,10 +121,10 @@ class Page(object):
         self.base_url = base_url
         self.page_title = pagetitle
 
-    def fail_on_screenshot(function):
+    def fail_on_screenshot(func):
         """
         函数/方法报错截图处理
-        :param function:
+        :param func:
         :return:
         """
 
@@ -149,7 +147,7 @@ class Page(object):
         def wrapper(*args, **kwargs):
             instance, selector = args[0], args[1]
             try:
-                return function(*args, **kwargs)
+                return func(*args, **kwargs)
             except (TimeoutException, NoSuchElementException, InvalidElementStateException) as ex:
                 logger.error("Could not find the locator: [{}].".format(selector))
                 filename = "{}.png".format(get_current_time_str())
@@ -160,36 +158,36 @@ class Page(object):
 
         return wrapper
 
-    def _find_element(self, *Locator):
-        '''
+    def _find_element(self, *locator):
+        """
         方法名：_element
         功能：定位元素的具体某个元素WEBelement
 
         *注释：_代表类的私有属性或方法
-        :param Locators: 元素的位置
+        :param locator: 元素的位置
         :return: 返回定位的元素
-        '''
+        """
 
         try:
             # 利用显示等待判断元素是否已经出现
-            WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(Locator))
+            WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
             # 定位元素
-            el = self.driver.find_element(*Locator)
+            el = self.driver.find_element(*locator)
 
         except NameError as e:
-            logger.error(u'未找到元素:{0}'.format(Locator))
+            logger.error(u'未找到元素:{0}'.format(locator))
 
         return el
 
     def input(self, values, *locators):
-        '''
+        """
         方法名：input
         功能：文本框输入内容
 
         :param values: 文本框要输入的内容
         :param locators: 元素的位置
         :return: None
-        '''
+        """
         try:
             el = self._find_element(*locators)
             # 输入前清空文本框
@@ -228,25 +226,22 @@ class Page(object):
         :param is_trust:  是否一直等待到页面真正打开
         """
         if is_trust:
-            WebDriverWait(self.driver, Setting.WAIT_TIME).until(must_get_url(self.base_url))
+            WebDriverWait(self.driver, Setting.WAIT_TIME).until(MustGetUrl(self.base_url))
         else:
             self._open(self.base_url, self.page_title)
 
     def click(self, *locators):
-        '''
-        方法名：click
-        功能：点击元素
-
-        :param locators:元素的位置
-        :return:None
-        '''
+        """
+        点击(click)元素,如图标、按钮等
+        :param locators: 元素的位置
+        """
         try:
             el = self._find_element(*locators)
             el.click()
             logger.info('点击元素：{0}'.format(locators))
         except AttributeError as e:
             logger.error('点击元素失败')
-        return None
+        # return None
 
     def closeOldBrowser(self):
         """
@@ -274,18 +269,18 @@ class Page(object):
         logger.info("关闭浏览器")
         self.driver.quit()
 
-    def hover(self, *locators):
+    def hover(self, *locator):
         """
         方法名：hover
         说明：鼠标移动到某个元素上
-        :param Locators: 元素的xpath
+        :param locator: 元素的xpath
         """
         try:
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locators))
-            above = self._find_element(*locators)
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
+            above = self._find_element(*locator)
             ActionChains(self.driver).move_to_element(above).perform()
         except NameError as e:
-            logger.error("悬停失败")
+            logger.error("悬停失败", e)
 
     def switch_frame(self, *locators):
         """
@@ -298,21 +293,21 @@ class Page(object):
         return self.driver.switch_to_frame(locators[1])
 
     def back_parent_iframe(self):
-        '''
+        """
         方法名：back_parent_iframe
         回到iframe上一层
         :return:
-        '''
+        """
         logger.info('回到iframe上一层')
         self.driver.switch_to.parent_frame()
         return None
 
-    def back_home_ifrme(self):
-        '''
-        方法名：back_home_ifrme
+    def back_home_iframe(self):
+        """
+        方法名：back_home_iframe
         回到ifrmae开始的地方
         :return:
-        '''
+        """
         logger.info('回到ifrmae开始的地方')
         self.driver.switch_to.default_content()
 
@@ -350,15 +345,15 @@ class Page(object):
         """
         return self.driver.current_url()
 
-    def on_page(self, page_title):
-        """
-        方法名：on_page
-        通过title断言进入的页面是否正确。
-        使用title获取当前窗口title，检查输入的title是否在当前title中。
-        :param page_title:
-        :return: 返回比较结果（True 或 False）
-        """
-        return page_title in self.driver.title
+    # def on_page(self, page_title):
+    #     """
+    #     方法名：on_page
+    #     通过title断言进入的页面是否正确。
+    #     使用title获取当前窗口title，检查输入的title是否在当前title中。
+    #     :param page_title:
+    #     :return: 返回比较结果（True 或 False）
+    #     """
+    #     return page_title in self.driver.title
 
     def check_element_exists(self, *locator):
         """
@@ -383,11 +378,11 @@ class Page(object):
         return True if (self._find_element(*locator).is_selected()) else False
 
     def open_url(self):
-        '''
+        """
         方法名：open_url
         打开被测服务地址
         :return:
-        '''
+        """
         try:
             self.driver.maximize_window()
             self.driver.get(self.base_url)
@@ -397,11 +392,11 @@ class Page(object):
             logger.error("{0}打开网址失败".format(self.base_url))
 
     def assert_context(self, *locators):
-        '''
+        """
         断言
         :param asssert_values: 校验的值
         :return: 布尔返回值
-        '''
+        """
         try:
             f = self._find_element(*locators).is_displayed()
             return f
@@ -410,22 +405,22 @@ class Page(object):
 
     def sleep_time(self, time):
 
-        '''
+        """
         休眠
         :param time: 休眠时间
         :return: 无
-        '''
+        """
         logger.info('休眠：{0}s'.format(time))
         sleep(time)
 
     def select(self, idx_or_text, *locators):
 
-        '''
+        """
         选择下拉框
         :param locators: 元祖存放元素的xpath
         :param idx_or_text: 内容或下标
         :return:
-        '''
+        """
         try:
             if type(idx_or_text) == int:
                 Select(self._find_element(*locators)).select_by_index(idx_or_text)
@@ -453,51 +448,50 @@ class Page(object):
             logger.error("Failed to take screenshot! %s" % e)
             self.get_windows_img()
 
-    def find_elements(self, *Locator):
-        '''
+    def find_elements(self, *locator):
+        """
         #校验一组元素
-        :param Locator:
+        :param locator:
         :return: 查找元素个数
-        '''
+        """
         try:
-            el = self.driver.find_elements(*Locator)
+            el = self.driver.find_elements(*locator)
             return el
 
         except NameError as e:
             logger.info("组员查找错误")
 
-    def find_elements_num(self, *Locator):
-        '''
+    def find_elements_num(self, *locator):
+        """
         #校验一组元素
-        :param Locator:
+        :param locator:
         :return: 查找元素个数
-        '''
+        """
         try:
-            el = self.driver.find_elements(*Locator)
+            el = self.driver.find_elements(*locator)
             return el
 
         except NameError as e:
             logger.info("组员查找错误")
 
     def wait(self):
-        '''
+        """
         等待页面加载完成
         :return:
-        '''
+        """
         self.driver.implicitly_wait(Setting.WAIT_TIME)
 
     def refreshPage(self):
-        '''
+        """
         刷新页面
         :return:
-        '''
+        """
 
         self.driver.refresh()
         sleep(2)
         con = self.driver.find_element_by_tag_name('body').text
 
         if '重要信息推出' in con:
-            bool = False
             if '登录异常' in con:
                 print("-----")
                 self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
@@ -505,13 +499,13 @@ class Page(object):
                 print("-----")
                 self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
 
-    def clear(self, *Locators):
-        '''
+    def clear(self, *locator):
+        """
 
-        :param Locators:
+        :param locator:
         :return:
-        '''
-        self._find_element(*Locators).clear()
+        """
+        self._find_element(*locator).clear()
 
     def assert_body(self, value):
         t = self._find_element(*(By.TAG_NAME, 'body')).text
@@ -543,11 +537,11 @@ class Page(object):
 
     @classmethod
     def get_select_locator(self, locator, num):
-        '''
+        """
         
-        :param idx: 
-        :return: 返回locators
-        '''
+        :param num:
+        :return: 返回locator
+        """
         return (locator[0], locator[1] % num)
 
     def bock_wait(self, Locator):
@@ -556,7 +550,7 @@ class Page(object):
     def implic_wait(self):
         self.driver.implicitly_wait(10)
 
-    def Find_element_by_tag_name(self, value):
+    def find_element_by_tag_name(self, value):
         f = self.driver.find_element_by_tag_name(value)
         print(len(f))
         return f
@@ -597,11 +591,11 @@ class Page(object):
             self.click(*MenuLocators.TREE_END)
 
     def clickTabPage(self, name):
-        '''
+        """
         输入tab页名称，选中tab页
         :param name: tab页的中文名称
         :return:
-        '''
+        """
         try:
             locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[contains(text(),'{}')]".format(name))
             self.click(*locators)
@@ -609,7 +603,7 @@ class Page(object):
             print('点击{}tab页失败'.format(name))
 
     @classmethod
-    def TableLineValue(self, i, l):
+    def tableLineValue(self, i, l):
         try:
             str = "(//*[@class=\"x-grid3-row-table\"])[{0}]//td[{1}]".format(i, l)
             changeStr = self._find_element(*(By.XPATH, str)).text
@@ -628,15 +622,44 @@ class Page(object):
 
         except NameError as e:
             print('获取显示区第一个列数据失败')
-    #点击确认
-    def btn_confirm(self):
 
-           try:
+    # 点击确认
+    def btn_confirm(self):
+        try:
             va = self.assert_context(*MenuLocators.BTN_CONFIRM)
             if va is True:
-             self.click(*MenuLocators.BTN_CONFIRM)
-           except:
-               print('点击确认按钮失败')
+                self.click(*MenuLocators.BTN_CONFIRM)
+        except:
+            print('点击确认按钮失败')
+
+    def closePages(self, page_name='工作台', isCurPage=True):
+        """
+        通过工作台或定位菜单页面，关闭当前页面或除当前页面外其他页面
+        :param page_name: 当“工作台”时相当于清屏操作：即关闭所有窗口
+        :param isCurPage:True-关闭其他所有页；False-关闭当前页
+        """
+
+        # ****定位到要右击的元素**
+        loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
+        print('当前页面', loc)
+        right_click = self._find_element(*loc)
+        # 鼠标右键操作
+        ActionChains(self.driver).context_click(right_click).perform()
+
+        # 待定位右键菜单
+        forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
+        loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
+        print('待定位右键菜单', loc)
+        self.click(*loc)
+
+    def format_xpath(self, xpath, format_val):
+        """
+        格式化xpath：(By.XPATH,'//*[@id=abc]//*[contains(text(),\"%s\"])
+        :param xpath: 待格式化的xpath
+        :param format_val: 格式化值
+        :return:
+        """
+        return (xpath[0], xpath[1] % format_val)
 
 
 if __name__ == '__main__':

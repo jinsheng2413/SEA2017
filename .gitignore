@@ -124,11 +124,17 @@ venv.bak/
 # My configurations:
 geckodriver.log
 reports/*.html
-!hu.py
+!blank.py
+!screenshots
+!logs
+!ocr
+!img
 .idea/
+screenshots/
 logs/
 ocr/
 img/
-screenshots/
+
+
 
 

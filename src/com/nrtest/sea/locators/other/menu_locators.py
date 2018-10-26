@@ -39,7 +39,7 @@ class MenuLocators:
     CURRENT_MENU = (By.XPATH, '//*[@id=\"maintab__%s\"]')
     #右键菜单：关闭当前页/关闭其他所有页
     # '//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()=\'关闭其他所有页\']'
-    CLOSE_PAGES = (By.XPATH, '(//*[text()="%s"])[last()]')
+    CLOSE_PAGES = (By.XPATH, '//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()="%s"]')
 
 
 

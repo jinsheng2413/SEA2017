@@ -16,4 +16,8 @@ class CollConstructStatus_data:
     #统计查询→综合查询→采集建设情况→调试接入情况
     DebuggingAccess_para = '99942200'
     #统计查询→综合查询→采集建设情况→运行终端统计
-    RunTmnlStatistics = '99942310'
+    RunTmnlStatistics_para = '99942310'
+    #统计查询→综合查询→采集建设情况→运行电能表统计
+    RunMeterStatistics_para = '99942320'
+    #统计查询→综合查询→采集建设情况→调试接入情况2017
+    DebuggingAccess2017_para = '99942500'

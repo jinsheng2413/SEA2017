@@ -638,33 +638,37 @@ class Page():
         """
 
         # ****定位到要右击的元素**
-        loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
-        print('当前页面', loc)
-        right_click = self._find_element(*loc)
+        loc = self.format_xpath(MenuLocators.CURRENT_MENU,page_name)
+        right_click = self.driver.find_element(*loc)
         # 鼠标右键操作
         ActionChains(self.driver).context_click(right_click).perform()
 
         # 待定位右键菜单
         forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
         loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
-        print('待定位右键菜单', loc)
-        self.click(*loc)
+        self.driver.find_element(*loc).click()
 
-    def format_xpath(self, xpath, format_val):
+    @staticmethod
+    def format_xpath(xpath, format_val):
         """
         格式化xpath：(By.XPATH,'//*[@id=abc]//*[contains(text(),\"%s\"])
         :param xpath: 待格式化的xpath
         :param format_val: 格式化值
         :return:
         """
+        #print('xpath:', xpath, 'format val', format_val)
         return (xpath[0], xpath[1] % format_val)
 
 
 if __name__ == '__main__':
-    dr = webdriver.Chrome()
+    # dr = webdriver.Chrome()
+    #
+    # p = Page(dr)
+    # # jjjjjj
+    #
+    # p.clear_values(Page)
+    # p.base_url = 'hhhhhhhhhhh'
 
-    p = Page(dr)
-    # jjjjjj
-
-    p.clear_values(Page)
-    p.base_url = 'hhhhhhhhhhh'
+    forMenu = '关闭其他所有页' if False else '关闭当前页'
+    loc = Page.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
+    print(loc)

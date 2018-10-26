@@ -121,6 +121,11 @@ venv.bak/
 # 所以需要用rm命令清除一下相关的缓存内容.这样文件将以未追踪的形式出现.
 # 然后再重新添加提交一下,.gitignore文件里的规则就可以起作用了.
 
+#pylint 用法：
+#    生成配置文件模板：pylint --generate-rcfile
+#    执行检验：pylint --rcfile=D:\PycharmProjects\venv\pylint.conf D:\PycharmProjects\SEA2017\src\com\nrtest\common\ora_drv.py
+#    问题帮助：pylint --help-msg=bad-whitespace
+#    检测结果编码列表：http://pylint-messages.wikidot.com/all-codes
 # My configurations:
 geckodriver.log
 reports/*.html

@@ -130,11 +130,8 @@ reports/*.html
 !logs
 !ocr
 !img
-screenshots/
 .idea/
-logs/
-ocr/
-img/
+
 
 
 

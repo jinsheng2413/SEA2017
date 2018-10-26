@@ -10,17 +10,16 @@
 import datetime
 import os
 
-from DBUtils.PooledDB import PooledDB
 import cx_Oracle
+from DBUtils.PooledDB import PooledDB
 
 from com.nrtest.common.parse_nrtest import ParseNrTest
 
-"""
-功能：数据库连接池
-"""
-
 
 class ConnPool():
+    """
+    Oracle数据库连接池
+    """
     __pool = None
 
     def __enter__(self):

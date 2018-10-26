@@ -126,6 +126,13 @@ venv.bak/
 #    执行检验：pylint --rcfile=D:\PycharmProjects\venv\pylint.conf D:\PycharmProjects\SEA2017\src\com\nrtest\common\ora_drv.py
 #    问题帮助：pylint --help-msg=bad-whitespace
 #    检测结果编码列表：http://pylint-messages.wikidot.com/all-codes
+
+#    (C) 惯例。违反了编码风格标准
+#    (R) 重构。写得非常糟糕的代码。
+#    (W) 警告。某些 Python 特定的问题。
+#    (E) 错误。很可能是代码中的错误。
+#    (F) 致命错误。阻止 Pylint 进一步运行的错误。
+
 # My configurations:
 geckodriver.log
 reports/*.html

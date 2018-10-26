@@ -80,7 +80,6 @@ import os
 import time
 from time import sleep
 
-from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException, InvalidElementStateException
 from selenium.webdriver.common.action_chains import ActionChains
@@ -292,7 +291,7 @@ class Page():
         :param locators:元祖形式存在的iframe的id
         :return:
         """
-        logger.info('进入 %s 的iframe层' % locators)
+        logger.info('进入 %s 的iframe层', locators)
         return self.driver.switch_to_frame(locators[1])
 
     def back_parent_iframe(self):
@@ -401,13 +400,11 @@ class Page():
         :return: 布尔返回值
         """
         try:
-            f = self._find_element(*locators).is_displayed()
-            return f
+            return self._find_element(*locators).is_displayed()
         except:
             return False
 
     def sleep_time(self, times):
-
         """
         休眠
         :param times: 休眠时间
@@ -449,7 +446,7 @@ class Page():
             self.driver.get_screenshot_as_file(screen_name)
             logger.info("Had take screenshot and save to folder : /screenshots")
         except NameError as e:
-            logger.error("Failed to take screenshot! %s" % e)
+            logger.error("Failed to take screenshot! %s", e)
             self.get_windows_img(screen_name)
 
     def find_elements(self, *locator):
@@ -542,8 +539,9 @@ class Page():
 
     def get_select_locator(self, locator, num):
         """
-        
-        :param num:
+        用于下拉菜单选择元素定位
+        :param locator:xpath变量
+        :param num:带定位下拉序号
         :return: 返回locator
         """
         return (locator[0], locator[1] % num)
@@ -555,6 +553,11 @@ class Page():
         self.driver.implicitly_wait(10)
 
     def find_element_by_tag_name(self, value):
+        """
+        通过tag_name定位元素
+        :param value:
+        :return:
+        """
         f = self.driver.find_element_by_tag_name(value)
         print(len(f))
         return f
@@ -627,7 +630,7 @@ class Page():
             va = self.assert_context(*MenuLocators.BTN_CONFIRM)
             if va is True:
                 self.click(*MenuLocators.BTN_CONFIRM)
-        except:
+        except Exception as e:
             print('点击确认按钮失败')
 
     def closePages(self, page_name='工作台', isCurPage=True):
@@ -638,7 +641,7 @@ class Page():
         """
 
         # ****定位到要右击的元素**
-        loc = self.format_xpath(MenuLocators.CURRENT_MENU,page_name)
+        loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
         right_click = self.driver.find_element(*loc)
         # 鼠标右键操作
         ActionChains(self.driver).context_click(right_click).perform()
@@ -648,14 +651,16 @@ class Page():
         loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
         self.driver.find_element(*loc).click()
 
-    def format_xpath(self, xpath, format_val):
+    @staticmethod
+    def format_xpath(xpath, format_val):
         """
         格式化xpath：(By.XPATH,'//*[@id=abc]//*[contains(text(),\"%s\"])
         :param xpath: 待格式化的xpath
         :param format_val: 格式化值
         :return:
         """
-        #print('xpath:', xpath, 'format val', format_val)
+
+        # print('xpath:', xpath, 'format val', format_val)
         return (xpath[0], xpath[1] % format_val)
 
 
@@ -668,6 +673,6 @@ if __name__ == '__main__':
     # p.clear_values(Page)
     # p.base_url = 'hhhhhhhhhhh'
 
-    forMenu = '关闭其他所有页' if False else '关闭当前页'
-    loc = Page.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
+    menu_name = '关闭其他所有页' if False else '关闭当前页'
+    loc = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
     print(loc)

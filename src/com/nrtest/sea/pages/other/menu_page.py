@@ -178,8 +178,8 @@ class MenuPage(Page):
                 self.click_menu_by_name(menu[2], True)
                 sleep(1)
                 self.closePages(menu[1])
-            except:
-                print('该菜单定位报错：', menu)
+            except Exception as e:
+                print('该菜单定位报错：', menu, e)
 
 
 if __name__ == '__main__':

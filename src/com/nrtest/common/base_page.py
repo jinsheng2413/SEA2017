@@ -648,8 +648,7 @@ class Page():
         loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
         self.driver.find_element(*loc).click()
 
-    @staticmethod
-    def format_xpath(xpath, format_val):
+    def format_xpath(self, xpath, format_val):
         """
         格式化xpath：(By.XPATH,'//*[@id=abc]//*[contains(text(),\"%s\"])
         :param xpath: 待格式化的xpath

@@ -29,9 +29,9 @@ class DataAccess:
     def getMenu(menuNo, by_name=False):
 
         pyoracle = PyOracle.getInstance()
-        fun_name = 'pkg_nrtest.get_menu_path' +  ('_by_name' if by_name == True else '')
-        str = pyoracle.callfunc(fun_name, 'str', [menuNo])
-        return str
+        fun_name = 'pkg_nrtest.get_menu_path' + ('_by_name' if by_name else '')
+        menu_path = pyoracle.callfunc(fun_name, 'str', [menuNo])
+        return menu_path
 
     @staticmethod
     def getAllMenu():
@@ -44,17 +44,17 @@ class DataAccess:
     @staticmethod
     def getLeftTree(treeNO):
         pyoracle = PyOracle.getInstance()
-        str = pyoracle.callfunc('pkg_nrtest.get_org_path', 'str', [treeNO])
-        return str
+        org_path = pyoracle.callfunc('pkg_nrtest.get_org_path', 'str', [treeNO])
+        return org_path
 
     @staticmethod
-    def getCaseData(menuNo,tabName='',groupNo=''):
+    def getCaseData(menuNo, tabName='', groupNo=''):
         pyoracle = PyOracle.getInstance()
-        qry = [Setting.GROUP_USER, menuNo,groupNo,tabName]
-        str = pyoracle.callfunc('pkg_nrtest.get_tst_case', 'str', qry)
+        qry = [Setting.GROUP_USER, menuNo, groupNo, tabName]
+        tst_case = pyoracle.callfunc('pkg_nrtest.get_tst_case', 'str', qry)
 
         # 字符串转list
-        rslt = eval(str)
+        rslt = eval(tst_case)
         if (len(rslt) == 0):
             print('请确认以下配置项是否正确：\n1,配置文件（nari_test.conf）的user_group项：%s \n2,菜单编号：%s' % tuple(qry))
         print('当前用例数据：\n', rslt, '\n')
@@ -73,11 +73,11 @@ class DataAccess:
         :return:
         """
         para = [Setting.GROUP_USER if user_no == '' else user_no,
-                           '00000' if group_no == '' else group_no]
+                '00000' if group_no == '' else group_no]
         pyoracle = PyOracle.getInstance()
-        str = pyoracle.callproc('pkg_nrtest.refresh_case', para)
+        cases = pyoracle.callproc('pkg_nrtest.refresh_case', para)
 
-        return str
+        return cases
 
     @staticmethod
     def reflash_menu(p_menu_no=''):
@@ -92,8 +92,9 @@ class DataAccess:
             para = [p_menu_no]
             pyoracle.callproc('pkg_nrtest.refresh_case', para)
 
+
 if __name__ == '__main__':
-    pass
+
     # DataAccess.refresh_case()
     # str = DataAccess.getCaseData("99912100",tabName='终端调试')
     # print(len(str))
@@ -101,4 +102,4 @@ if __name__ == '__main__':
     #     print(i)
     print(DataAccess.getAllMenu())
 
-    #DataAccess.getMenu('99913210')
+    # DataAccess.getMenu('99913210')

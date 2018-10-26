@@ -76,7 +76,6 @@
         打开被测服务地址
 
 """
-import datetime
 import os
 import time
 from time import sleep
@@ -99,7 +98,7 @@ from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 logger = Logger(logger="Page").getlog()
 
 
-class MustGetUrl(object):
+class MustGetUrl():
     """
     必须到达的URL
        参数：
@@ -114,14 +113,17 @@ class MustGetUrl(object):
         return self.url == driver.current_url
 
 
-class Page(object):
+class Page():
+    """
+    本项目所有页面菜单的基类
+    """
 
     def __init__(self, driver, base_url=Setting.TEST_URL, pagetitle=Setting.PAGE_TILE):
         self.driver = driver
         self.base_url = base_url
         self.page_title = pagetitle
 
-    def fail_on_screenshot(func):
+    def fail_on_screenshot(self, func):
         """
         函数/方法报错截图处理
         :param func:
@@ -133,23 +135,24 @@ class Page(object):
             获取截图存放路径
             :return:
             """
-            if not os.path.exists(Setting.SNAPSHOT_DIRECTORY):
-                os.mkdir(Setting.SNAPSHOT_DIRECTORY)
-            return Setting.SNAPSHOT_DIRECTORY
+            if not os.path.exists(Setting.IMG_PATH):  # SNAPSHOT_DIRECTORY  #ljf
+                os.mkdir(Setting.IMG_PATH)
+            return Setting.IMG_PATH
 
         def get_current_time_str():
             """
             格式化时间
             :return:
             """
-            return datetime.strftime(datetime.now(), "%Y%m%d%H%M%S%f")
+            # return datetime.strftime(datetime.now(), "%Y%m%d%H%M%S%f")
+            return time.strftime(time.time(), "%Y%m%d%H%M%S%f")
 
         def wrapper(*args, **kwargs):
             instance, selector = args[0], args[1]
             try:
                 return func(*args, **kwargs)
             except (TimeoutException, NoSuchElementException, InvalidElementStateException) as ex:
-                logger.error("Could not find the locator: [{}].".format(selector))
+                logger.error("Could not find the locator: %s .", selector)
                 filename = "{}.png".format(get_current_time_str())
                 screenshot_path = os.path.join(get_snapshot_directory(), filename)
                 logger.debug(instance.selenium.page_source)
@@ -175,7 +178,7 @@ class Page(object):
             el = self.driver.find_element(*locator)
 
         except NameError as e:
-            logger.error(u'未找到元素:{0}'.format(locator))
+            logger.error(u'未找到元素--> %s', locator)
 
         return el
 
@@ -193,10 +196,10 @@ class Page(object):
             # 输入前清空文本框
             el.clear()
             el.send_keys(values)
-            logger.info('文本框输入：{0}'.format(values))
+            logger.info('文本框输入:%s', values)
         except AttributeError as e:
-            logger.error('输入错误{0}'.format(values))
-        return None
+            logger.error('输入错误:%s', values)
+        # return None
 
     def on_page(self, page_title):
         """
@@ -238,7 +241,7 @@ class Page(object):
         try:
             el = self._find_element(*locators)
             el.click()
-            logger.info('点击元素：{0}'.format(locators))
+            logger.info('点击元素：%s', locators)
         except AttributeError as e:
             logger.error('点击元素失败')
         # return None
@@ -289,7 +292,7 @@ class Page(object):
         :param locators:元祖形式存在的iframe的id
         :return:
         """
-        logger.info('进入{0}的iframe层'.format(locators))
+        logger.info('进入 %s 的iframe层' % locators)
         return self.driver.switch_to_frame(locators[1])
 
     def back_parent_iframe(self):
@@ -300,7 +303,7 @@ class Page(object):
         """
         logger.info('回到iframe上一层')
         self.driver.switch_to.parent_frame()
-        return None
+        # return None
 
     def back_home_iframe(self):
         """
@@ -386,10 +389,10 @@ class Page(object):
         try:
             self.driver.maximize_window()
             self.driver.get(self.base_url)
-            logger.info('打开被测试服务地址：{0}'.format(self.base_url))
+            logger.info('打开被测试服务地址：%s', self.base_url)
             return self.driver
         except NameError as e:
-            logger.error("{0}打开网址失败".format(self.base_url))
+            logger.error("%s打开网址失败", self.base_url)
 
     def assert_context(self, *locators):
         """
@@ -403,15 +406,15 @@ class Page(object):
         except:
             return False
 
-    def sleep_time(self, time):
+    def sleep_time(self, times):
 
         """
         休眠
-        :param time: 休眠时间
+        :param times: 休眠时间
         :return: 无
         """
-        logger.info('休眠：{0}s'.format(time))
-        sleep(time)
+        logger.info('休眠 %s 秒', times)
+        sleep(times)
 
     def select(self, idx_or_text, *locators):
 
@@ -422,12 +425,13 @@ class Page(object):
         :return:
         """
         try:
-            if type(idx_or_text) == int:
+            # if type(idx_or_text) == int:
+            if isinstance(idx_or_text, int):  # 数据类型判断新方法：isinstance
                 Select(self._find_element(*locators)).select_by_index(idx_or_text)
-                logger.info('按下标选择下拉框,选中第:{0}'.format(idx_or_text))
+                logger.info('按下标选择下拉框,选中第:%s', idx_or_text)
             else:
                 Select(self._find_element(*locators)).select_by_visible_text(idx_or_text)
-                logger.info('按内容选择元素，选中内容为:{0}'.format(idx_or_text))
+                logger.info('按内容选择元素，选中内容为:%s', idx_or_text)
 
         except NameError as e:
             logger.error("选择下拉框失败")
@@ -436,7 +440,7 @@ class Page(object):
 
     def get_windows_img(self, name):
         """
-        在这里我们把file_path这个参数写死，直接保存到我们项目根目录的一个文件夹.\Screenshots下
+        在这里我们把file_path这个参数写死，直接保存到我们项目根目录的一个文件夹Screenshots下
         """
         file_path = Setting.SHOT_PATH
         rq = time.strftime('%Y%m%d%H%M', time.localtime(time.time()))
@@ -446,7 +450,7 @@ class Page(object):
             logger.info("Had take screenshot and save to folder : /screenshots")
         except NameError as e:
             logger.error("Failed to take screenshot! %s" % e)
-            self.get_windows_img()
+            self.get_windows_img(screen_name)
 
     def find_elements(self, *locator):
         """
@@ -508,11 +512,12 @@ class Page(object):
         self._find_element(*locator).clear()
 
     def assert_body(self, value):
-        t = self._find_element(*(By.TAG_NAME, 'body')).text
-        if value in t:
-            return True
-        else:
-            return False
+        txt = self._find_element(*(By.TAG_NAME, 'body')).text
+        # if value in txt:
+        #     return True
+        # else:
+        #     return False
+        return bool(value in txt)
 
     def clear_values(self, cv):
         """
@@ -535,7 +540,6 @@ class Page(object):
             elif (temp.startswith('inputRSel')) and callable(obj):
                 obj(1)
 
-    @classmethod
     def get_select_locator(self, locator, num):
         """
         
@@ -544,8 +548,8 @@ class Page(object):
         """
         return (locator[0], locator[1] % num)
 
-    def bock_wait(self, Locator):
-        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(Locator))
+    def bock_wait(self, locator):
+        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(locator))
 
     def implic_wait(self):
         self.driver.implicitly_wait(10)
@@ -602,26 +606,20 @@ class Page(object):
         except NoSuchElementException  as e:
             print('点击{}tab页失败'.format(name))
 
-    @classmethod
     def tableLineValue(self, i, l):
         try:
-            str = "(//*[@class=\"x-grid3-row-table\"])[{0}]//td[{1}]".format(i, l)
-            changeStr = self._find_element(*(By.XPATH, str)).text
+            str_xpath = "(//*[@class=\"x-grid3-row-table\"])[{0}]//td[{1}]".format(i, l)
+            changeStr = self._find_element(*(By.XPATH, str_xpath)).text
             return changeStr
         except NameError as e:
             print('获取显示区文字失败')
 
-    @classmethod
     def assertTableOne(self):
         try:
-            bo = self.assert_context(*(By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[1]'))
-            if bo is True:
-                return True
-            else:
-                return False
-
+            return self.assert_context(*(By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[1]'))
         except NameError as e:
             print('获取显示区第一个列数据失败')
+            return False
 
     # 点击确认
     def btn_confirm(self):
@@ -640,17 +638,15 @@ class Page(object):
         """
 
         # ****定位到要右击的元素**
-        loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
-        print('当前页面', loc)
-        right_click = self._find_element(*loc)
+        loc = self.format_xpath(MenuLocators.CURRENT_MENU,page_name)
+        right_click = self.driver.find_element(*loc)
         # 鼠标右键操作
         ActionChains(self.driver).context_click(right_click).perform()
 
         # 待定位右键菜单
         forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
         loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
-        print('待定位右键菜单', loc)
-        self.click(*loc)
+        self.driver.find_element(*loc).click()
 
     def format_xpath(self, xpath, format_val):
         """
@@ -659,14 +655,19 @@ class Page(object):
         :param format_val: 格式化值
         :return:
         """
+        #print('xpath:', xpath, 'format val', format_val)
         return (xpath[0], xpath[1] % format_val)
 
 
 if __name__ == '__main__':
-    dr = webdriver.Chrome()
+    # dr = webdriver.Chrome()
+    #
+    # p = Page(dr)
+    # # jjjjjj
+    #
+    # p.clear_values(Page)
+    # p.base_url = 'hhhhhhhhhhh'
 
-    p = Page(dr)
-    # jjjjjj
-
-    p.clear_values(Page)
-    p.base_url = 'hhhhhhhhhhh'
+    forMenu = '关闭其他所有页' if False else '关闭当前页'
+    loc = Page.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
+    print(loc)

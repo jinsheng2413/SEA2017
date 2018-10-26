@@ -10,17 +10,17 @@
 import datetime
 import os
 
-import cx_Oracle
 from DBUtils.PooledDB import PooledDB
+import cx_Oracle
 
 from com.nrtest.common.parse_nrtest import ParseNrTest
 
 """
-@功能：数据库连接池
+功能：数据库连接池
 """
 
 
-class ConnPool(object):
+class ConnPool():
     __pool = None
 
     def __enter__(self):
@@ -39,7 +39,6 @@ class ConnPool(object):
             ip = parse.get("Db_setup", "IP")
             db = parse.get("Db_setup", "SID")
             maxcache = int(parse.get("Db_setup", "Maxcached"))
-
 
             dsn = ip + "/" + db
             self.__pool = PooledDB(creator=cx_Oracle, mincached=1, maxcached=maxcache,
@@ -63,7 +62,7 @@ class ConnPool(object):
         return cursor, conn
 
 
-class PyOracle(object):
+class PyOracle():
     pyOracle = None
 
     def __init__(self):
@@ -75,8 +74,8 @@ class PyOracle(object):
         return cls.inst
 
     @classmethod
-    def getInstance(self):
-        if PyOracle.pyOracle == None:
+    def getInstance(cls):
+        if PyOracle.pyOracle is None:
             PyOracle.pyOracle = PyOracle()
         return PyOracle.pyOracle
 
@@ -102,7 +101,7 @@ class PyOracle(object):
             print(e)
         finally:
             self._close(cursor, conn)
-            return dataSet
+        return dataSet
 
     # 增加
     def insert(self, sql='', para=()):
@@ -123,7 +122,7 @@ class PyOracle(object):
     def deleteMany(self, sql='', para=[]):
         return self._executeMany(sql, para)
 
-    '''
+    """
     DataAccess							cx_Oracle				Python
     VARCHAR2, NVARCHAR2, LONG		cx_Oracle.STRING		str
     CHAR							cx_Oracle.FIXED_CHAR	str
@@ -133,14 +132,14 @@ class PyOracle(object):
     TIMESTAMP						cx_Oracle.TIMESTAMP		datetime.datetime
     CLOB							cx_Oracle.CLOB			cx_Oracle.LOB
     BLOB							cx_Oracle.BLOB			cx_Oracle.LOB
-    '''
+    """
 
-    def _pytype2ora(self, type):
-        if type == 'str':
+    def _pytype2ora(self, to_type):
+        if to_type == 'str':
             cx_type = cx_Oracle.STRING
-        elif type in ('int', 'float'):
+        elif to_type in ('int', 'float'):
             cx_type = cx_Oracle.NUMBER
-        elif type in ('date', 'datetime', 'date2str', 'dt2str'):
+        elif to_type in ('date', 'datetime', 'date2str', 'dt2str'):
             cx_type = cx_Oracle.DATETIME
         else:
             cx_type = cx_Oracle.STRING
@@ -158,7 +157,7 @@ class PyOracle(object):
             cursor, conn = self._pool.getconn()
             tp = cursor.var(self._pytype2ora(retType))
             rst = cursor.callfunc(fun, tp, para)
-            '''
+            """
             retType：
                 str: 字符串
                 int：整型,不带小数点
@@ -167,7 +166,7 @@ class PyOracle(object):
                 datetime：时间
                 date2str：日期转字符串
                 dt2str:   时间转字符串
-            '''
+            """
             if retType == 'int':
                 rst = int(rst)
             elif retType == 'date':
@@ -183,7 +182,7 @@ class PyOracle(object):
             conn.rollback()
         finally:
             self._close(cursor, conn)
-            return rst
+        return rst
 
     def callproc(self, proc, para=()):
         """
@@ -213,7 +212,7 @@ class PyOracle(object):
             rst = None
         finally:
             self._close(cursor, conn)
-            return rst
+        return rst
 
     def callFCur(self, fun, para=[]):
         try:
@@ -226,7 +225,7 @@ class PyOracle(object):
             rst = None
         finally:
             self._close(cursor, conn)
-            return rst
+        return rst
 
     # 执行命令
     def _execute(self, sql='', para=()):
@@ -246,7 +245,7 @@ class PyOracle(object):
             conn.rollback()
         finally:
             self._close(cursor, conn)
-            return res
+        return res
 
     def _executeMany(self, sql='', para=[]):
         res = False
@@ -260,18 +259,18 @@ class PyOracle(object):
             conn.rollback()
         finally:
             self._close(cursor, conn)
-            return res
+        return res
 
-    def _executeManySql(self, list=[]):
+    def _executeManySql(self, ls=[]):
         """
         执行多条SQL
-        :param list: 参数格式 '[{"sql":"xxx","para":"xx"}....]'
+        :param ls: 参数格式 '[{"sql":"xxx","para":"xx"}....]'
         :return:
         """
         res = False
         try:
             cursor, conn = self._pool.getconn()
-            for order in list:
+            for order in ls:
                 sql = order['sql']
                 para = order['para']
                 if para:
@@ -285,4 +284,4 @@ class PyOracle(object):
             conn.rollback()
         finally:
             self._close(cursor, conn)
-            return res
+        return res

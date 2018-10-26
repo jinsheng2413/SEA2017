@@ -28,7 +28,8 @@ class Logger(object):
 
         log_name = Setting.LOG_PATH + Setting.PROJECT_NAME + '.log'
         vals = ParseNrTest().getSectionVals('LOG')
-        fh = RotatingFileHandler(filename = log_name, mode=vals[0], maxBytes=int(vals[1]), backupCount=int(vals[2]),encoding=vals[3])
+        fh = RotatingFileHandler(filename=log_name, mode=vals[0], maxBytes=int(vals[1]), backupCount=int(vals[2]),
+                                 encoding=vals[3])
         fh.setLevel(logging.INFO)
 
         # 创建一个handler，用于控制台输出
@@ -36,7 +37,8 @@ class Logger(object):
         sh.setLevel(logging.INFO)
 
         # 定义handler的输出格式
-        formatter = logging.Formatter('[%(asctime)s] %(levelname)s: %(name)s - %(funcName)s -> %(message)s', '%Y-%m-%d %H:%M:%S')
+        formatter = logging.Formatter('[%(asctime)s] %(levelname)s: %(name)s - %(funcName)s -> %(message)s',
+                                      '%Y-%m-%d %H:%M:%S')
         fh.setFormatter(formatter)
         sh.setFormatter(formatter)
 

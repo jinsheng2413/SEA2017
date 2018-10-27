@@ -282,7 +282,8 @@ class Page():
             above = self._find_element(*locator)
             ActionChains(self.driver).move_to_element(above).perform()
         except NameError as e:
-            logger.error("悬停失败", e)
+            logger.error("悬停失败：%s", e)
+
 
     def switch_frame(self, *locators):
         """
@@ -674,5 +675,5 @@ if __name__ == '__main__':
     # p.base_url = 'hhhhhhhhhhh'
 
     menu_name = '关闭其他所有页' if False else '关闭当前页'
-    loc = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
-    print(loc)
+    loc1 = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
+    print(loc1)

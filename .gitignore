@@ -123,11 +123,13 @@ venv.bak/
 
 #pylint 用法：
 #    生成配置文件模板：pylint --generate-rcfile
-#    执行检验：pylint --rcfile=D:\PycharmProjects\venv\pylint.conf D:\PycharmProjects\SEA2017\src\com\nrtest\common\ora_drv.py
+#    执行检验：pylint --rcfile=D:\PycharmProjects\venv\pylint.conf D:\PycharmProjects\SEA2017\src\com\nrtest\common\base_page.py
 #    问题帮助：pylint --help-msg=bad-whitespace
 #    检测结果编码列表：http://pylint-messages.wikidot.com/all-codes
 #    --output-format=parseable --disable=R,C0103 -rn --msg-template="{abspath}:{line}: [{msg_id}({symbol}), {obj}] {msg}" $FilePath$
+#    --rcfile=D:\PycharmProjects\venv\pylint.conf $FilePath$
 
+#    git-pylint-commit-hook
 #    (C) 惯例。违反了编码风格标准
 #    (R) 重构。写得非常糟糕的代码。
 #    (W) 警告。某些 Python 特定的问题。

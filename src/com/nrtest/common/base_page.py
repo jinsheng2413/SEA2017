@@ -210,7 +210,6 @@ class Page():
         return page_title in self.driver.title
 
 
-gggg
     def _open(self, url, page_title):
         """
         打开页面，并校验页面链接是否加载正确

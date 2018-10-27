@@ -122,6 +122,8 @@ class Page():
         self.base_url = base_url
         self.page_title = pagetitle
 
+
+uuu
     def fail_on_screenshot(self, func):
         """
         函数/方法报错截图处理

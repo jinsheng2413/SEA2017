@@ -515,7 +515,7 @@ class Page():
         #     return True
         # else:
         #     return False
-        return bool(value in txt)
+        return value in txt
 
     def clear_values(self, cv):
         """
@@ -625,8 +625,10 @@ class Page():
             print('获取显示区第一个列数据失败')
             return False
 
-    # 点击确认
     def btn_confirm(self):
+        """
+        点击确认按钮
+        """
         try:
             va = self.assert_context(*MenuLocators.BTN_CONFIRM)
             if va is True:

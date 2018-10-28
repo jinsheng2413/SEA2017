@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_demo.py
 @time: 2018/9/10 0010 9:21
 @desc:
-'''
+"""
 import unittest
 from time import sleep
 
@@ -51,12 +51,12 @@ class TestNewPrePaidStatus(unittest.TestCase, NewPrePaidStatusPage):
         self.recoverLeftTree()
 
     def InstructionQuery(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
         sleep(2)
         self.exec_script(NewPrePaidStatusLocators.START_DATE_ONE_JS)
         self.exec_script(NewPrePaidStatusLocators.END_DATE_ONE_JS)
@@ -79,12 +79,12 @@ class TestNewPrePaidStatus(unittest.TestCase, NewPrePaidStatusPage):
         self.assertTrue(result)
 
     def userQuery(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
         # 选择tab页
         clickTabPage(para["TAB_NAME"])
         sleep(2)

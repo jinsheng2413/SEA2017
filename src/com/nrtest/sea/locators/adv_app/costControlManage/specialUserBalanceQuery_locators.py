@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: specialUserBalanceQuery_locators.py
 @time: 2018/8/16 0016 14:42
 @desc:
-'''
+"""
 from selenium.webdriver.common.by import By
 
 

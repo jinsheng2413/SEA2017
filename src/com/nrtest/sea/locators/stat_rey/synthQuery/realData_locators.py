@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: realData_locators.py
 @time: 2018/10/12 0012 10:12
 @desc:
-'''
+"""
 from selenium.webdriver.common.by import By
 
 

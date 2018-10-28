@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_userDataQuery.py
 @time: 2018/8/13 0002 09:50
-'''
+"""
 
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.pages.other.common_page import Common_page

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: allEventMeterEventQuery_page.py
 @time: 2018/9/30 14:33
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.synthQuery.allEventMeterEventQuery_locators import AllEventMeterEventQueryLocators

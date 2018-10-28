@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 邵茜
 @license: (C) Copyright 2018, Nari.
 @file: dataspeciality_analyse_locators.py
 @time: 2018/8/15 11:35
 @desc:
-'''
+"""
 from selenium.webdriver.common.by import By
 
 

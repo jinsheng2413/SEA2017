@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: costControlManage_data.py
 @time: 2018/9/13 0013 10:51
 @desc:
-'''
+"""
 
 
 class CostControlManage_data:

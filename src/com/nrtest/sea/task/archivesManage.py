@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: archivesManage.py
 @time: 2018/8/28 0028 13:40
 @desc:
-'''
+"""
 
 from com.nrtest.sea.pages.other.commonMenu_page import CommonMenu_page
 

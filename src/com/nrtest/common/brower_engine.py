@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: brower_engine.py
@@ -12,15 +12,15 @@
          参数说明：chrome代表启动谷歌浏览器
            ie代表启动ie浏览器
            firefox代表启动火狐浏览器
-'''
+"""
 from selenium import webdriver
 
 from com.nrtest.common.logger import Logger
 
-'''
+"""
      
 
-    '''
+    """
 logger = Logger(logger="BrowserEngine").getlog()
 
 

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_upgradeEditionMan.py
 @time: 2018/9/25 17:02
 @desc:
-'''
+"""
 import unittest
 
 import ddt

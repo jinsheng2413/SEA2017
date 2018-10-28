@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_sectDataQuery.py
 @time: 2018/9/29 16:13
 @desc:
-'''
+"""
 
 import unittest
 

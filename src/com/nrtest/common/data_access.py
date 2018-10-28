@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: data_access.py
 @time: 2018/5/23 0023 14:04
 @desc:测试数据提取的数据库访问类
-'''
+"""
 
 import os
 

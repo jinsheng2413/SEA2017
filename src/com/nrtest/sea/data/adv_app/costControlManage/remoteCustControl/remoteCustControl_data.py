@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: remoteCustControl_data.py
 @time: 2018/9/29 0029 15:40
 @desc:
-'''
+"""
 
 
 class RemoteCustControl_data:

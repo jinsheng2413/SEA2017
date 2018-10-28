@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: upgradeEditionApprove_locators.py
 @time: 2018/9/27 15:38
 @desc:
-'''
+"""
 
 from selenium.webdriver.common.by import By
 

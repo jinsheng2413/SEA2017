@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: fourTableMeterReadSuccessRate_page.py
 @time: 2018/10/20 11:04
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.synthQuery.fourTableMeterReadSuccessRate_locators import \

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_costContolManage.py
 @time: 2018/8/2 0002 21:25
 @desc:
-'''
+"""
 import unittest
 
 from com.nrtest.common.BeautifulReport import BeautifulReport

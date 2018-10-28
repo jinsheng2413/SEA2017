@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: specialUserBalanceQuery_page.py
 @time: 2018/8/19 0019 9:04
 @desc:
-'''
+"""
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.costControlManage.specialUserBalanceQuery_locators import \
     SpecialUserBalanceQuery_locators

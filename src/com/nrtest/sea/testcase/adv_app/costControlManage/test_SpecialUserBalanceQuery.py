@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_SpecialUserBalanceQuery.py
 @time: 2018/8/19 0019 9:26
 @desc:
-'''
+"""
 
 import unittest
 

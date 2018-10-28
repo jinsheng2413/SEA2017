@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_allEventDistributionRateStatistics.py
 @time: 2018/10/18 9:49
 @desc:
-'''
+"""
 
 import unittest
 

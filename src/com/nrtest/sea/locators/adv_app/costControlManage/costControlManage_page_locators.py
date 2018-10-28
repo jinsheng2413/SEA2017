@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: costControlManage_page_locators.py
 @time: 2018/8/2 0002 18:54
 @desc:
-'''
+"""
 from selenium.webdriver.common.by import By
 
 

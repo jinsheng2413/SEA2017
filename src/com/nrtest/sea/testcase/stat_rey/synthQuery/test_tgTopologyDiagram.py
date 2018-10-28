@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_tgTopologyDiagram.py
 @time: 2018/10/9 10:31
 @desc:
-'''
+"""
 
 import unittest
 

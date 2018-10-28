@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_patrolIntegratedQuery_detail.py
 @time: 2018/10/19 16:41
 @desc:
-'''
+"""
 
 import unittest
 

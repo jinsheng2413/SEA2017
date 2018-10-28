@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_fourTableMeterReadSuccessRate.py
 @time: 2018/10/20 11:14
 @desc:
-'''
+"""
 
 import unittest
 

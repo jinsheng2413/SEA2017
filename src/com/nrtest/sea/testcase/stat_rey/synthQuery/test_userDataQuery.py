@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_userDataQuery.py
 @time: 2018/8/9 0002 11:21
-'''
+"""
 import unittest
 
 from com.nrtest.common.BeautifulReport import BeautifulReport

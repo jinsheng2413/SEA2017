@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_orgNoDataQuery.py
 @time: 2018/9/29 15:42
 @desc:
-'''
+"""
 
 import unittest
 

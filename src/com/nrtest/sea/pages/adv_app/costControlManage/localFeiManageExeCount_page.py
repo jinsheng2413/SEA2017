@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: localFeiManageExeCount_page.py
 @time: 2018/8/22 0022 15:39
 @desc:
-'''
+"""
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.costControlManage.localFeiManageExeCount_Locators import \
     LocalFeiManageExeCount_dis_count_Locators, LocalFeiManageExeCount_dis_detail_Locators

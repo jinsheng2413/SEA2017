@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: oracle_test.py
@@ -10,7 +10,7 @@
         说明：查询表所有数据
         :param sql: sql语句
         :return: 返回所有查询数据
-'''
+"""
 import os
 
 import cx_Oracle

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: curCollectSuccessRate_locators.py
 @time: 2018/10/11 0011 10:09
 @desc:
-'''
+"""
 from selenium.webdriver.common.by import By
 
 

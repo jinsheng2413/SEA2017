@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: sysConfigMan_locators.py
 @time: 2018/9/13 10:15
 @desc:
-'''
+"""
 
 from selenium.webdriver.common.by import By
 

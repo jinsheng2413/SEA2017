@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: upgradeEffectStatistics_locators.py
 @time: 2018/9/29 14:11
 @desc:
-'''
+"""
 
 from selenium.webdriver.common.by import By
 

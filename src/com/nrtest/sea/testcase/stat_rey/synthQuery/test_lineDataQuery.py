@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_lineDataQueryPage.py
 @time: 2018/8/17 0002 14:50
-'''
+"""
 
 import unittest
 

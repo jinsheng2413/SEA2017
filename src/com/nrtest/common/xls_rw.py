@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: xls_rw.py
@@ -27,7 +27,7 @@
 5.方法名：close
           说明：关闭excel
 
-'''
+"""
 from openpyxl import load_workbook
 
 
@@ -97,11 +97,11 @@ class XlsRw(object):
         # 获取最大行数
 
     def excel_table(self, filepath):
-        '''
+        """
         excel参数化时应用
         :param filepath:excl地址
         :return:返回读取数据：[{},{}]
-        '''
+        """
         t = XlsRw(filepath)
         lister = []
 

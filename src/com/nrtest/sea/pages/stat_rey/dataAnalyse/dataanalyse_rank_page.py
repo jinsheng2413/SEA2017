@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 邵茜
 @license: (C) Copyright 2018, Nari.
 @file: dataanalyse_rank_page.py
 @time: 2018/8/8 13:44
 @desc:
-'''
+"""
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.dataAnalyse.dataanalyse_rank_locators import DataAnalyseRankLocators
 

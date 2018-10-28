@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: lowUserBuyEleParaGiveOut_locators.py
 @time: 2018/8/22 0022 11:23
 @desc:
-'''
+"""
 from selenium.webdriver.common.by import By
 
 

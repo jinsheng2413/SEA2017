@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: TerminalDataQueryPage.py
 @time: 2018/8/13 0002 14:00
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.synthQuery.terminalDataQuery_locators import TerminalDataQueryLocators

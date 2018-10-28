@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: menu_common_man_pageLocators.py
 @time: 2018/6/4 0004 14:42
 @desc:
-'''
+"""
 from selenium.webdriver.common.by import By
 
 

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: bg.py
 @time: 2018/7/4 0004 17:15
 @desc:
-'''
+"""
 
 import unittest
 

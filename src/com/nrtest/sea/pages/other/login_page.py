@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: login_page.py
 @time: 2018/5/27 0027 9:01
 @desc:
-'''
+"""
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 

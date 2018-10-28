@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: common_page.py
 @time: 2018/6/25 0025 14:53
 @desc:
-'''
+"""
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.other.menu_common_man_pageLocators import SecurityCommonManPageLocators
 

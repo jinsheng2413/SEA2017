@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 邵茜
 @license: (C) Copyright 2018, Nari.
 @file: test_loadrankanalyse.py
 @time: 2018/8/9 14:05
 @desc:
-'''
+"""
 import unittest
 
 from com.nrtest.common.BeautifulReport import BeautifulReport

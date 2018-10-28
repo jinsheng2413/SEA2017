@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: elePricePara_pages.py
 @time: 2018/8/15 0015 14:36
 @desc:
-'''
+"""
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.costControlManage.elePricePara_locators import ElePricePara_locators
 

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: loadRateStatic_locators.py
 @time: 2018/9/24 20:42
 @desc:
-'''
+"""
 
 import unittest
 
@@ -56,11 +56,11 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, SpVoltAnalyseDetailPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
         # 供电单位
         openLeftTree(para['ORG_NO'])

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: custControlCommissioning_page.py
 @time: 2018/8/23 0023 10:57
 @desc:
-'''
+"""
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.costControlManage.custControlCommissioning_locators import \
     CustControlCommissioning_locators

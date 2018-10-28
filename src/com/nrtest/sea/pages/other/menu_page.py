@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: menu_locators.py
 @time: 2018/8/28 0028 13:45
 @desc:
-'''
+"""
 from time import sleep
 
 from com.nrtest.common.base_page import Page

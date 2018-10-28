@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_upgradeResultConfirmation.py
 @time: 2018/9/29 10:07
 @desc:
-'''
+"""
 
 # 基本应用→终端管理→软件升级→升级结果确认
 import unittest

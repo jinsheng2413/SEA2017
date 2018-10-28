@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_userCollectStatistics.py
 @time: 2018/10/24 14:19
 @desc:
-'''
+"""
 
 import unittest
 

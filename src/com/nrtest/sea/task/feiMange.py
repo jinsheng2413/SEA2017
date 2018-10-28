@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: feiMange.py
 @time: 2018/8/2 0002 18:40
 @desc:
-'''
+"""
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.adv_app.costControlManage.custControlCommissioning_locators import \
     CustControlCommissioning_locators

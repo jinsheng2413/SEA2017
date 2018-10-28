@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_mData_Publish_Status.py
 @time: 2018-09-21 10:47
 @desc:
-'''
+"""
 
 import unittest
 from time import sleep

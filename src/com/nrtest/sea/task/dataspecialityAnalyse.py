@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 邵茜
 @license: (C) Copyright 2018, Nari.
 @file: dataspecialityAnalyse.py
 @time: 2018/8/15 14:26
 @desc:
-'''
+"""
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.pages.other.common_page import Common_page
 from com.nrtest.sea.task.login import Login

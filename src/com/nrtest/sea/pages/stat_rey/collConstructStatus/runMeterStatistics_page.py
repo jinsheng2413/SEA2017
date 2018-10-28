@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: runMeterStatistics_page.py
 @time: 2018/10/25 15:08
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.collConstructStatus.runMeterStatistics_locators import RunMeterStatisticsLocators

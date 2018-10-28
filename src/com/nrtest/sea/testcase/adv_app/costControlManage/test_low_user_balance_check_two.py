@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_low_user_balance_check_one.py
 @time: 2018/8/10 0010 11:03
 @desc:
-'''
+"""
 import unittest
 
 from com.nrtest.common.BeautifulReport import BeautifulReport

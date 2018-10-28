@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_meterSuccessRateQuery.py
 @time: 2018/10/10 15:07
 @desc:
-'''
+"""
 
 import unittest
 

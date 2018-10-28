@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_elePricePara.py
 @time: 2018/8/16 0016 8:55
 @desc:
-'''
+"""
 import unittest
 
 from com.nrtest.common.BeautifulReport import BeautifulReport

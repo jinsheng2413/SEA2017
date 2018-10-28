@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: terminalDataQueryLocators.py
 @time: 2018/8/10 0002 09:30
-'''
+"""
 
 from selenium.webdriver.common.by import By
 

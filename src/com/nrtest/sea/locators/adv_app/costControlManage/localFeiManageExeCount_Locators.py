@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: localFeiManageExeCount_Locators.py
 @time: 2018/8/22 0022 14:25
 @desc:
-'''
+"""
 from selenium.webdriver.common.by import By
 
 

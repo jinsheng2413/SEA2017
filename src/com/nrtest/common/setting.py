@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 李建方
 @license: (C) Copyright 2018, Nari.
 @file: setting.py
 @time: 2018-05-30 19:03
 @desc:
-'''
+"""
 import os
 import sys
 

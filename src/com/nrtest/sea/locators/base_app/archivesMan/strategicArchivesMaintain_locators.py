@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: strategicArchivesMaintain_locators.py
 @time: 2018/9/26 0026 14:49
 @desc:
-'''
+"""
 from selenium.webdriver.common.by import By
 
 

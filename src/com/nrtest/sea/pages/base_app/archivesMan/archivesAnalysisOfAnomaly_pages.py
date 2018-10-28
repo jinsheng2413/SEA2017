@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: archivesAnalysisOfAnomaly_locators.py
 @time: 2018/8/29 0029 15:56
 @desc:
-'''
+"""
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.base_app.archivesMan.archivesAnalysisOfAnomaly_locators import *
 

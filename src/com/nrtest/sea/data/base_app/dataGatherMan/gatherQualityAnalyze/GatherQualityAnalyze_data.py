@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: GatherQualityAnalyze_data.py
 @time: 2018/9/17 16:36
 @desc:
-'''
+"""
 
 
 class GatherQualityAnalyze_data:

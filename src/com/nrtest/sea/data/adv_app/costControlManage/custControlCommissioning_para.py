@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: custControlCommissioning_para.py
 @time: 2018/8/23 0023 11:23
 @desc:
-'''
+"""
 
 
 class CcustControlCommissioning_para:

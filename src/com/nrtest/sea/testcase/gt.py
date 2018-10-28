@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: gt.py
 @time: 2018/6/5 0005 10:34
 @desc:
-'''
+"""
 import os
 import unittest
 from BeautifulReport import BeautifulReport
@@ -20,7 +20,7 @@ from com.nrtest.common.setting import Setting
 def add_case(case_path='', rule='test*.py'):
     if (len(case_path) == 0):
         case_path = os.path.dirname(os.path.realpath(__file__))
-    '''加载所有的测试用例'''
+    """加载所有的测试用例"""
     discover = unittest.defaultTestLoader.discover(case_path,
                                                    pattern=rule,
                                                    top_level_dir=None)

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪，李建方
 @license: (C) Copyright 2018, Nari.
 @file: logger.py
 @time: 2018-06-04 18:58
 @desc:
-'''
+"""
 import logging
 import os.path
 from logging.handlers import RotatingFileHandler
@@ -17,10 +17,10 @@ from com.nrtest.common.setting import Setting
 
 class Logger(object):
     def __init__(self, logger):
-        '''
+        """
             指定保存日志的文件路径，日志级别，以及调用文件
             将日志存入到指定的文件中
-        '''
+        """
 
         # 创建一个logger
         self.logger = logging.getLogger(logger)

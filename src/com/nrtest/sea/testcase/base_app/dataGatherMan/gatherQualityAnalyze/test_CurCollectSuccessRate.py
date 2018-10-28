@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_demo.py
 @time: 2018/9/10 0010 9:21
 @desc:
-'''
+"""
 import unittest
 
 from ddt import ddt, data
@@ -49,12 +49,12 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
         sleep(2)
         self.exec_script(CurCollectSuccessRateLocators.START_DATE_JS)
         self.exec_script(CurCollectSuccessRateLocators.END_DATE_JS)
@@ -71,12 +71,12 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         # self.assertTrue(result)
 
     def countQuery(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
         clickTabPage(GatherQualityAnalyze_data.curCollectSuccessRateCount_tab)
         sleep(2)
@@ -94,12 +94,12 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         # self.assertTrue(result)
 
     def detailQuery(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
         clickTabPage(GatherQualityAnalyze_data.curCollectSuccessRateDetail_tab)
         sleep(2)

@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_publicDataQueryPage.py
 @time: 2018/8/16 0002 10:20
-'''
+"""
 
 import unittest
 

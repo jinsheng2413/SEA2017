@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: lowUserMoneyCheck_Page.py
 @time: 2018/8/9 0009 13:55
 @desc:
-'''
+"""
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.costControlManage.lowUserMoneyCheck_locators import BalanceCheckLocator, \
     BalanceCountLocator

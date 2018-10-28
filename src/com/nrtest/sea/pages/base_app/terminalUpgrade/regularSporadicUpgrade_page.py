@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: regularSporadicUpgrade_page.py
 @time: 2018/9/26 16:12
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.base_app.terminalUpgrade.regularSporadicUpgrade_locators import \

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: test_sysDictMan.py
 @time: 2018/9/13 11:23
 @desc:
-'''
+"""
 import unittest
 
 from ddt import ddt, data
@@ -52,11 +52,11 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
         # 分类名称
         self.inputStr_catalog_name(para['CATALOG_NAME'])

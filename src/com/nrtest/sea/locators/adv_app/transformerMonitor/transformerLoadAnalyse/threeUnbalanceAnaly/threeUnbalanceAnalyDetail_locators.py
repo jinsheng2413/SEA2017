@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: loadRateStatic_locators.py
 @time: 2018/9/27 16:42
 @desc:
-'''
+"""
 
 from selenium.webdriver.common.by import By
 

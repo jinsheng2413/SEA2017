@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: login.py
 @time: 2018/5/22 0022 14:04
 @desc:
-'''
+"""
 from time import sleep
 
 import pytesseract as pt

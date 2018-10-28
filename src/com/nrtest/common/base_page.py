@@ -174,12 +174,12 @@ class Page():
             # 利用显示等待判断元素是否已经出现
             WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
             # 定位元素
-            el = self.driver.find_element(*locator)
+            element = self.driver.find_element(*locator)
 
         except NameError as e:
             logger.error(u'未找到元素--> %s', locator)
 
-        return el
+        return element
 
     def input(self, values, *locators):
         """
@@ -191,10 +191,10 @@ class Page():
         :return: None
         """
         try:
-            el = self._find_element(*locators)
+            element = self._find_element(*locators)
             # 输入前清空文本框
-            el.clear()
-            el.send_keys(values)
+            element.clear()
+            element.send_keys(values)
             logger.info('文本框输入:%s', values)
         except AttributeError as e:
             logger.error('输入错误:%s', values)
@@ -238,8 +238,8 @@ class Page():
         :param locators: 元素的位置
         """
         try:
-            el = self._find_element(*locators)
-            el.click()
+            element = self._find_element(*locators)
+            element.click()
             logger.info('点击元素：%s', locators)
         except AttributeError as e:
             logger.error('点击元素失败')
@@ -396,7 +396,7 @@ class Page():
     def assert_context(self, *locators):
         """
         断言
-        :param asssert_values: 校验的值
+        :param locators: 校验的值
         :return: 布尔返回值
         """
         try:
@@ -456,8 +456,8 @@ class Page():
         :return: 查找元素个数
         """
         try:
-            el = self.driver.find_elements(*locator)
-            return el
+            element = self.driver.find_elements(*locator)
+            return element
 
         except NameError as e:
             logger.info("组员查找错误")
@@ -469,8 +469,8 @@ class Page():
         :return: 查找元素个数
         """
         try:
-            el = self.driver.find_elements(*locator)
-            return el
+            element = self.driver.find_elements(*locator)
+            return element
 
         except NameError as e:
             logger.info("组员查找错误")
@@ -490,13 +490,13 @@ class Page():
 
         self.driver.refresh()
         sleep(2)
-        con = self.driver.find_element_by_tag_name('body').text
+        txt = self.driver.find_element_by_tag_name('body').text
 
-        if '重要信息推出' in con:
-            if '登录异常' in con:
+        if '重要信息推出' in txt:
+            if '登录异常' in txt:
                 print("-----")
                 self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
-            if '账号异常信息' in con:
+            if '账号异常信息' in txt:
                 print("-----")
                 self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
 
@@ -559,9 +559,9 @@ class Page():
         :param value:
         :return:
         """
-        f = self.driver.find_element_by_tag_name(value)
-        print(len(f))
-        return f
+        element = self.driver.find_element_by_tag_name(value)
+        # print(len(element))
+        return element
 
     def save_img(self, img_name):
         """
@@ -630,8 +630,8 @@ class Page():
         点击确认按钮
         """
         try:
-            va = self.assert_context(*MenuLocators.BTN_CONFIRM)
-            if va is True:
+            bl = self.assert_context(*MenuLocators.BTN_CONFIRM)
+            if bl:
                 self.click(*MenuLocators.BTN_CONFIRM)
         except Exception as e:
             print('点击确认按钮失败')

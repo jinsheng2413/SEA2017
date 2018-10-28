@@ -121,17 +121,17 @@ class PyOracle():
     def deleteMany(self, sql='', para=()):
         return self._executeMany(sql, para)
 
-    """
-    DataAccess							cx_Oracle				Python
-    VARCHAR2, NVARCHAR2, LONG		cx_Oracle.STRING		str
-    CHAR							cx_Oracle.FIXED_CHAR	str
-    NUMBER							cx_Oracle.NUMBER		int
-    FLOAT							cx_Oracle.NUMBER		float
-    DATE							cx_Oracle.DATETIME		datetime.datetime
-    TIMESTAMP						cx_Oracle.TIMESTAMP		datetime.datetime
-    CLOB							cx_Oracle.CLOB			cx_Oracle.LOB
-    BLOB							cx_Oracle.BLOB			cx_Oracle.LOB
-    """
+    # """
+    # DataAccess							cx_Oracle				Python
+    # VARCHAR2, NVARCHAR2, LONG		cx_Oracle.STRING		str
+    # CHAR							cx_Oracle.FIXED_CHAR	str
+    # NUMBER							cx_Oracle.NUMBER		int
+    # FLOAT							cx_Oracle.NUMBER		float
+    # DATE							cx_Oracle.DATETIME		datetime.datetime
+    # TIMESTAMP						cx_Oracle.TIMESTAMP		datetime.datetime
+    # CLOB							cx_Oracle.CLOB			cx_Oracle.LOB
+    # BLOB							cx_Oracle.BLOB			cx_Oracle.LOB
+    # """
 
     def _pytype2ora(self, to_type):
         if to_type == 'str':

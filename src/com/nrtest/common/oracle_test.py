@@ -98,7 +98,7 @@ if __name__ == '__main__':
 
     fy = {'case_name': 'test_a_first_new_add', 'po': '分类名称'}
     p.cursor.execute(
-        """select t.value_one,t.value_two from TEST_CASE t where  t.case_name =:case_name and t.value_one_name=:po""",
+        "select t.value_one,t.value_two from TEST_CASE t where  t.case_name =:case_name and t.value_one_name=:po",
         fy)
     a = p.cursor.fetchall()
     print(a[0][0])

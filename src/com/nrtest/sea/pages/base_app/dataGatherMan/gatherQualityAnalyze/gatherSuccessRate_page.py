@@ -33,7 +33,7 @@ class GatherSuccessRatePage(Page):
 
     # 用户类型
     def inputCSel_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*GatherSuccessRateLocators.CONS_TYPE)
         else:
             self.click(*GatherSuccessRateLocators.CONS_TYPE)
@@ -54,7 +54,7 @@ class GatherSuccessRatePage(Page):
 
     # 用户类型
     def inputCSel_statistics_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*GatherSuccessRateLocators.STATISTICS_CONS_TYPE)
         else:
             self.click(*GatherSuccessRateLocators.STATISTICS_CONS_TYPE)
@@ -79,7 +79,7 @@ class GatherSuccessRatePage(Page):
 
     # 用户类型
     def inputCSel_detail_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*GatherSuccessRateLocators.DETAIL_CONS_TYPE)
         else:
             self.click(*GatherSuccessRateLocators.DETAIL_CONS_TYPE)
@@ -108,7 +108,7 @@ class GatherSuccessRatePage(Page):
 
     # 用户类型
     def inputCSel_false_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*GatherSuccessRateLocators.FALSE_CONS_TYPE)
         else:
             self.click(*GatherSuccessRateLocators.FALSE_CONS_TYPE)
@@ -137,7 +137,7 @@ class GatherSuccessRatePage(Page):
 
     # 用户类型
     def inputCSel_date_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*GatherSuccessRateLocators.DATE_CONS_TYPE)
         else:
             self.click(*GatherSuccessRateLocators.DATE_CONS_TYPE)

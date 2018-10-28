@@ -544,6 +544,7 @@ class Page():
         :param num:带定位下拉序号
         :return: 返回locator
         """
+
         return (locator[0], locator[1] % num)
 
     def bock_wait(self, locator):

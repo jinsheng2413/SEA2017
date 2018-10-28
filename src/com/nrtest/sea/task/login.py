@@ -30,12 +30,12 @@ class Login:
         self.password = password
 
     def login(self):
-        bool = True
+        bl = True
         p = BaseTest()
         dr = p.openBrowser(Setting.BROWSER)
         dr.maximize_window()
         dr.get(Setting.TEST_URL)
-        while (bool):
+        while bl:
             WebDriverWait(dr, 30).until(EC.element_to_be_clickable(LoginPageLocators.BTN_IDENTIFYING_CODE))
 
             dr.save_screenshot(Setting.SCREENSHOTS_PATH + 'photo.png')
@@ -50,19 +50,19 @@ class Login:
 
             image = Image.open(Setting.SCREENSHOTS_PATH + 'photo2.png')
             text = pt.image_to_string(image)
-            str = text.replace(' ', '')
+            txt = text.replace(' ', '')
 
             loginPage = LoginPage(dr)
             loginPage.input_username(self.username)
             loginPage.input_password(self.password)
-            loginPage.input_identifying(str)
+            loginPage.input_identifying(txt)
             loginPage.btn_login()
             sleep(2)
             con = loginPage.driver.find_element_by_tag_name('body').text
 
             if '重要信息推出' in con:
-                bool = False
-                logger.info('{0}成功登陆系统'.format(self.username))
+                bl = False
+                logger.info('%s成功登陆系统' % self.username)
                 if '登录异常' in con:
                     print("-----")
                     loginPage.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
@@ -72,7 +72,7 @@ class Login:
 
             else:
                 loginPage.click(*LoginPageLocators.BTN_IDENTIFYING_CODE)
-                logger.info('{0}登陆失败,点击刷新验证码'.format(self.username))
+                logger.info('%s登陆失败,点击刷新验证码' % self.username)
 
         return loginPage.driver
 
@@ -89,8 +89,8 @@ class Login:
 # fdsdf
 if __name__ == '__main__':
     lg = Login('gchb', '123')
-    dr = lg.login()
-    dr.add_cookie({'name': 'user', 'value': 'gchb'})
-    cookie = dr.get_cookies()
+    drv = lg.login()
+    drv.add_cookie({'name': 'user', 'value': 'gchb'})
+    cookie = drv.get_cookies()
     for i in cookie:
         print(i)

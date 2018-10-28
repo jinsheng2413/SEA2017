@@ -18,7 +18,7 @@ from com.nrtest.common.setting import Setting
 logger = Logger(logger="BrowserEngine").getlog()
 
 
-class BaseTest(object):
+class BaseTest():
     # def __init__(self, browser):
     #     self.driver = self.openBrowser(browser)
     #     pass
@@ -56,19 +56,20 @@ class BaseTest(object):
 
             driver = webdriver.Chrome(chrome_options=option)
             # logger.info('启动谷歌浏览器')
-            return driver
+            # return driver
 
         elif 'f' in browser:
             driver = webdriver.Firefox()
             # logger.info('启动火狐浏览器')
-            return driver
+            #return driver
 
         elif 'i' in browser:
             driver = webdriver.Ie()
             # logger.info('启动IE浏览器.')
-            return driver
+        return driver
 
 
 if __name__ == '__main__':
-    t = BaseTest()
-    t.clear_values()
+    pass
+    # t = BaseTest()
+    # t.clear_values()

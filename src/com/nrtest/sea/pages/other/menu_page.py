@@ -26,7 +26,7 @@ class MenuPage(Page):
         """
 
         # 按菜单名定位菜单
-        if (by_name):
+        if by_name:
             self.click_menu_by_name(menu_no)
             return self.driver
 
@@ -118,9 +118,9 @@ class MenuPage(Page):
 
     def btn_suitable_arrow(self):
         hp = self.page_assert_body()
-        if hp == True:
+        if hp is True:
             print('------------------------------------')
-        elif hp == False:
+        elif hp is False:
             self.btn_left_arrow()
         else:
             print('省份选择错误')
@@ -133,22 +133,22 @@ class MenuPage(Page):
         items = tree.split(';')
         l = len(items)
 
-        if l is 2:
+        if l == 2:
             self.btn_plus(1)
             self.btn_select_company(int(items[1]))
             print(int(items[1]))
         elif l in (3, 4):
             self.btn_plus(1)
-            if int(items[1]) is 5:
+            if int(items[1]) == 5:
                 self.btn_plus(1)
             else:
                 self.btn_company_plus(items[1])
-            if l is 3:
+            if l == 3:
                 self.btn_select_county(int(items[2]) + 1)
             else:
                 self.btn_company_plus(int(items[2]) + int(items[1]))
                 self.btn_select_user(int(items[3]) + 1)
-        elif l is 1:
+        elif l == 1:
             self.btn_select_province()
 
         return self.driver

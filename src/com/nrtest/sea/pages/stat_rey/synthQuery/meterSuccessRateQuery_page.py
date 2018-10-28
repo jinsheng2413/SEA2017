@@ -22,7 +22,7 @@ class MeterSuccessRateQueryPage(Page):
 
     # 用户类型
     def inputCSel_factory_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
         else:
             self.click(*MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
@@ -32,7 +32,7 @@ class MeterSuccessRateQueryPage(Page):
 
     # 终端类型
     def inputCSel_factory_tmnl_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
         else:
             self.click(*MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)

@@ -25,7 +25,7 @@ class DisassemblyTableDataQueryPage(Page):
 
     # 用户类型
     def inputSel_user_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*DisassemblyTableDataQueryLocators.USER_TYPE)
         else:
             self.click(*DisassemblyTableDataQueryLocators.USER_TYPE)

@@ -17,7 +17,7 @@ class RunTmnlStatisticsPage(Page):
     # 终端运行状态统计
     # 用户类型
     def inputCSel_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*RunTmnlStatisticsLocators.CONS_TYPE)
         else:
             self.click(*RunTmnlStatisticsLocators.CONS_TYPE)
@@ -37,7 +37,7 @@ class RunTmnlStatisticsPage(Page):
     # 终端运行状态明细
     # 用户类型
     def inputCSel_detail_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_CONS_TYPE)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_CONS_TYPE)
@@ -47,7 +47,7 @@ class RunTmnlStatisticsPage(Page):
 
     # 终端类型
     def inputCSel_detail_tmnl_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_TMNL_TYPE)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_TYPE)
@@ -57,7 +57,7 @@ class RunTmnlStatisticsPage(Page):
 
     # 通讯规约
     def inputCSel_detail_tmnl_protocol(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_TMNL_PROTOCOL)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_PROTOCOL)
@@ -67,7 +67,7 @@ class RunTmnlStatisticsPage(Page):
 
     # 通讯方式
     def inputCSel_detail_tmnl_way(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_TMNL_WAY)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_WAY)
@@ -77,7 +77,7 @@ class RunTmnlStatisticsPage(Page):
 
     # 终端厂家
     def inputCSel_detail_tmnl_factory(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_TMNL_FACTORY)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_FACTORY)
@@ -87,7 +87,7 @@ class RunTmnlStatisticsPage(Page):
 
     # 终端状态
     def inputCSel_detail_tmnl_ststus(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_TMNL_STATUS)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_STATUS)

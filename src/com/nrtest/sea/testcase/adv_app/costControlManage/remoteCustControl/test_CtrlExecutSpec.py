@@ -18,8 +18,9 @@ from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.ctrlExecut
     CtrlExecutSpecLocators
 from com.nrtest.sea.task.commonMath import *
 
+
 # 高级应用--》费控管理--》远程费控--》专变用户远程费控执行
-CtrlExecutSpecPage
+# CtrlExecutSpecPage
 
 
 @ddt

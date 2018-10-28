@@ -111,9 +111,9 @@ class Common_page(Page):
     def btn_select_province_more(self):
 
         hp = self.page_assert_body()
-        if hp == True:
+        if hp is True:
             print('------------------------------------')
-        elif hp == False:
+        elif hp is False:
             self.click(*SecurityCommonManPageLocators.BTN_LEFT_MENU)
             self.click(*SecurityCommonManPageLocators.BTN_LEFT_MENU_ELETRIC)
         else:

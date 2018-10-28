@@ -52,6 +52,7 @@ class DataAccess:
         tst_case = pyoracle.callfunc('pkg_nrtest.get_tst_case', 'str', qry)
 
         # 字符串转list
+
         rslt = eval(tst_case)
         if len(rslt) == 0:
             print('请确认以下配置项是否正确：\n1,配置文件（nari_test.conf）的user_group项：%s \n2,菜单编号：%s' % tuple(qry))
@@ -97,5 +98,6 @@ if __name__ == '__main__':
     # print(len(str))
     # for i in  str[4:10]:
     #     print(i)
-    print(DataAccess.getAllMenu())
+    # print(DataAccess.getAllMenu())
     # DataAccess.getMenu('99913210')
+    pass

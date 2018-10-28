@@ -25,7 +25,7 @@ class BatchDataQueryPage(Page):
 
     # 用户类型
     def inputCSel_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*BatchDataQueryLocators.CONS_TYPE)
         else:
             self.click(*BatchDataQueryLocators.CONS_TYPE)

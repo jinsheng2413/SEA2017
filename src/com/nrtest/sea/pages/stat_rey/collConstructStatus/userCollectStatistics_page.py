@@ -17,7 +17,7 @@ from com.nrtest.sea.locators.stat_rey.collConstructStatus.userCollectStatistics_
 class UserCollectStatisticsPage(Page):
     # 用户类型
     def inputCSel_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*UserCollectStatisticsLocators.CONS_TYPE)
         else:
             self.click(*UserCollectStatisticsLocators.CONS_TYPE)

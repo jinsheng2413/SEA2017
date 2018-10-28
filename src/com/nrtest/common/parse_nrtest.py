@@ -20,7 +20,7 @@ import platform
 class ParseNrTest(object):
     @staticmethod
     def pattern():
-        return r'/' if platform.system() == 'Windows' else r'\\'
+        return r'\\' if platform.system() == 'Windows' else r'/'
 
     def __init__(self, file=None):
         self.parse = configparser.ConfigParser()  # 注意大小写

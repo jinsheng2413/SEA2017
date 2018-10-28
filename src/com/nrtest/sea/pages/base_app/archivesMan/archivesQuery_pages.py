@@ -24,7 +24,7 @@ class ArchivesQueryPages(Page):
     # 【查询条件】
     # 用户类型
     def inputCSel_cons_type(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*ArchivesQuery_locators.QRY_CONS_TYPE_CLEAR)
         else:
             self.click(*ArchivesQuery_locators.QRY_CONS_TYPE)

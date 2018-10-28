@@ -23,7 +23,7 @@ class DebuggingAccessPage(Page):
 
     # 装接方式
     def inputCSel_assembling_way(self, index):
-        if index is 'c':
+        if index == 'c':
             self._find_element(*DebuggingAccessLocators.ASSEMBLING_WAY)
         else:
             self.click(*DebuggingAccessLocators.ASSEMBLING_WAY)

@@ -62,8 +62,8 @@ class XlsRw(object):
         :param l: excel具体行数
         :return: 返回单元格读取内容
         """
-        str = self.ws.cell(i, l).value
-        return str
+        val = self.ws.cell(i, l).value
+        return val
 
     def read_row_out(self, row):
         """
@@ -74,24 +74,24 @@ class XlsRw(object):
         """
         line = self.ws.max_column
 
-        list = []
+        ls = []
         for i in range(1, line + 1):
-            str = self.ws.cell(row, i).value
-            list.append(str)
+            val = self.ws.cell(row, i).value
+            ls.append(val)
 
-        return list
+        return ls
 
     # 按行写入表格
-    def write_into_row(self, row, list):
+    def write_into_row(self, row, ls):
         """
         方法名：write_into_row
         说明按行写入excel表格
         :param row: 具体哪一行
-        :param list: 要写入的一行数据列表
+        :param ls: 要写入的一行数据列表
         """
-        self.ws.cell(row, 1).value = list[0]
-        for i in range(1, len(list)):
-            self.ws.cell(row, i + 1).value = list[i]
+        self.ws.cell(row, 1).value = ls[0]
+        for i in range(1, len(ls)):
+            self.ws.cell(row, i + 1).value = ls[i]
 
         self.wb.save(self.filename)
         # 获取最大行数

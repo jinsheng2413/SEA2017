@@ -17,14 +17,10 @@ from selenium import webdriver
 
 from com.nrtest.common.logger import Logger
 
-"""
-     
-
-    """
 logger = Logger(logger="BrowserEngine").getlog()
 
 
-class BrowserEngine(object):
+class BrowserEngine():
 
     # 启动浏览器
     def openBrowser(self, kinder):
@@ -39,6 +35,7 @@ class BrowserEngine(object):
         :param kinder:
         :return:
         """
+
         if 'c' in kinder:
             # 加启动配置
             option = webdriver.ChromeOptions()
@@ -46,14 +43,14 @@ class BrowserEngine(object):
 
             driver = webdriver.Chrome(chrome_options=option)
             logger.info('启动谷歌浏览器')
-            return driver
+            # return driver
 
         elif 'i' in kinder:
             driver = webdriver.Firefox()
             logger.info('启动ie浏览器.')
-            return driver
+            #return driver
 
         elif 'f' in kinder:
             driver = webdriver.Ie()
             logger.info('启动火狐浏览器')
-            return driver
+        return driver

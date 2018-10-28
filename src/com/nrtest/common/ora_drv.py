@@ -45,11 +45,10 @@ class ConnPool():
                                    dsn=dsn)
         return self.__pool.connection()
 
-    """
-    @summary: 释放连接池资源
-    """
-
     def __exit__(self, type, value, trace):
+        """
+        释放连接池资源
+        """
         self.cursor.close()
         self.conn.close()
         print(u"PT连接池释放con和cursor")
@@ -87,7 +86,8 @@ class PyOracle():
         dataSet = None
         try:
             cursor, conn = self._pool.getconn()
-            if len(para) > 0:
+            l = para is None if 0 else len(para)
+            if l > 0:
                 cursor.executemany(sql, para)
             else:
                 cursor.execute(sql)
@@ -107,7 +107,7 @@ class PyOracle():
         return self._execute(sql, para)
 
     # 增加多行
-    def insertMany(self, sql='', para=[]):
+    def insertMany(self, sql='', para=()):
         return self._executeMany(sql, para)
 
     # 更新
@@ -118,7 +118,7 @@ class PyOracle():
     def delete(self, sql='', para=()):
         return self._execute(sql, para)
 
-    def deleteMany(self, sql='', para=[]):
+    def deleteMany(self, sql='', para=()):
         return self._executeMany(sql, para)
 
     """
@@ -150,22 +150,18 @@ class PyOracle():
         :param fun: 要调用的oracle函数名
         :param para: 调用参数
         :param retType: Oracle函数返回数据类型
+                        int：整型,不带小数点
+                        float:浮点小数
+                        date：日期
+                        datetime：时间
+                        date2str：日期转字符串
+                        dt2str:   时间转字符串
         :return:
         """
         try:
             cursor, conn = self._pool.getconn()
             tp = cursor.var(self._pytype2ora(retType))
             rst = cursor.callfunc(fun, tp, para)
-            """
-            retType：
-                str: 字符串
-                int：整型,不带小数点
-                float:浮点小数
-                date：日期
-                datetime：时间
-                date2str：日期转字符串
-                dt2str:   时间转字符串
-            """
             if retType == 'int':
                 rst = int(rst)
             elif retType == 'date':
@@ -199,7 +195,7 @@ class PyOracle():
         finally:
             self._close(cursor, conn)
 
-    def callPCur(self, proc, para=[]):
+    def callPCur(self, proc, para=()):
         try:
             cursor, conn = self._pool.getconn()
             l_cur = cursor.var(cx_Oracle.CURSOR)
@@ -213,7 +209,7 @@ class PyOracle():
             self._close(cursor, conn)
         return rst
 
-    def callFCur(self, fun, para=[]):
+    def callFCur(self, fun, para=()):
         try:
             cursor, conn = self._pool.getconn()
             l_cur = cursor.var(cx_Oracle.CURSOR)
@@ -231,7 +227,8 @@ class PyOracle():
         res = False
         try:
             cursor, conn = self._pool.getconn()
-            if len(para) > 0:
+            l = para is None if 0 else len(para)
+            if l > 0:
                 cursor.execute(sql, para)
             else:
                 cursor.execute(sql)

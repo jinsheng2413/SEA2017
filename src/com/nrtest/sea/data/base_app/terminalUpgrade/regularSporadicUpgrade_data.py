@@ -8,6 +8,7 @@
 @desc:
 '''
 
+
 # 基本应用→终端升级→常规零星升级
 class RegularSporadicUpgrade_data:
     para_RegularSporadicUpgrade = '99916100'

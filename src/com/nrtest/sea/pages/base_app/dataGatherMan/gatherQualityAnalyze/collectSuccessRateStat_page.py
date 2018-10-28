@@ -20,4 +20,4 @@ class CollectSuccessRateStatPage(Page):
 
     # 查询
     def btn_qry(self):
-            self.click(*CollectSuccessRateStatLocators.BTN_QRY)
+        self.click(*CollectSuccessRateStatLocators.BTN_QRY)

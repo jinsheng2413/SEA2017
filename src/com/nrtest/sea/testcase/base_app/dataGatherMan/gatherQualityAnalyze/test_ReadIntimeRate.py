@@ -7,17 +7,21 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadIntimeRate_page import ReadIntimeRatePage,ReadIntimeRate_Locators
+from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadIntimeRate_page import ReadIntimeRatePage, \
+    ReadIntimeRate_Locators
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-import unittest
+
 
 # 基本应用→数据采集管理→采集质量分析→采集及时率
 @ddt
-class TestReadIntimeRate(unittest.TestCase,ReadIntimeRatePage):
+class TestReadIntimeRate(unittest.TestCase, ReadIntimeRatePage):
 
     @classmethod
     def setUpClass(cls):
@@ -54,13 +58,13 @@ class TestReadIntimeRate(unittest.TestCase,ReadIntimeRatePage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #用户类型
+        # 用户类型
         self.inputSel_userType(para['USER_TYPE'])
-        #终端厂家
+        # 终端厂家
         self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
-        #芯片厂家
+        # 芯片厂家
         self.inputSel_chipFactory(para['CHIP_FACTORY'])
 
         self.btn_qry()
@@ -72,6 +76,3 @@ class TestReadIntimeRate(unittest.TestCase,ReadIntimeRatePage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readIntimeRate_para))
     def test_query(self, para):
         self.query(para)
-
-
-

@@ -14,7 +14,6 @@ from com.nrtest.sea.locators.base_app.interfaceMan.interfaceMonitor_locators imp
 
 class InterfaceMonitorPage(Page):
 
-
     # 接口类型
     def inputSel_interfaceType(self, name):
         self.click(*InterfaceMonitor_Locators.QRY_INTERFACE_TYPE)
@@ -32,4 +31,4 @@ class InterfaceMonitorPage(Page):
 
     # 查询
     def btn_qry(self):
-            self.click(*InterfaceMonitor_Locators.BTN_QRY)
+        self.click(*InterfaceMonitor_Locators.BTN_QRY)

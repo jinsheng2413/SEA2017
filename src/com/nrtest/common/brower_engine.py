@@ -13,8 +13,9 @@
            ie代表启动ie浏览器
            firefox代表启动火狐浏览器
 '''
-from com.nrtest.common.logger import Logger
 from selenium import webdriver
+
+from com.nrtest.common.logger import Logger
 
 '''
      
@@ -56,4 +57,3 @@ class BrowserEngine(object):
             driver = webdriver.Ie()
             logger.info('启动火狐浏览器')
             return driver
-

@@ -25,7 +25,7 @@ class TerminalVersionPage(Page):
     def inputStr_queryTime(self, value):
         self.input(value, *TerminalVersionLocators.QRY_DATE)
 
-
         # 查询
+
     def btn_qry(self):
-            self.click(*TerminalVersionLocators.BTN_QRY)
+        self.click(*TerminalVersionLocators.BTN_QRY)

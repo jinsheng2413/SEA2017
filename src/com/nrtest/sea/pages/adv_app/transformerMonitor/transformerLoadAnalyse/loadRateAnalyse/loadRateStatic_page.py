@@ -9,11 +9,13 @@
 '''
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.task.commonMath import openLeftTree
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse.loadRateStatic_locators import LoadRateStaticLocators
+from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse.loadRateStatic_locators import \
+    LoadRateStaticLocators
+
+
 class LoadRateStaticPage(Page):
     # 供电单位
-    def inputStr_org_no(self,value):
+    def inputStr_org_no(self, value):
         self.openLeftTree(value)
 
     # 用户类型--打开并选择
@@ -23,9 +25,9 @@ class LoadRateStaticPage(Page):
         self.click(*locator)
 
     # 查询日期
-    def inputStr_query_date(self,value):
-        self.input(value,*LoadRateStaticLocators.QUERY_DATE)
+    def inputStr_query_date(self, value):
+        self.input(value, *LoadRateStaticLocators.QUERY_DATE)
 
-     # 点击查询
+    # 点击查询
     def btn_query(self):
         self.click(*LoadRateStaticLocators.BTN_QUERY)

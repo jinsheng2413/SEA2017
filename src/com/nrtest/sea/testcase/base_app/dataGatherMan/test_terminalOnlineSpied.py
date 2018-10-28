@@ -7,16 +7,19 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
-from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.terminalOnlineSpied_page import TerminalOnlineSpiedLocators,TerminalOnlineSpiedPage
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
+from com.nrtest.sea.pages.base_app.dataGatherMan.terminalOnlineSpied_page import TerminalOnlineSpiedLocators, \
+    TerminalOnlineSpiedPage
+from com.nrtest.sea.task.commonMath import *
 
 
 @ddt
-class TestTerminalOnlineSpied(unittest.TestCase,TerminalOnlineSpiedPage):
+class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
 
     @classmethod
     def setUpClass(cls):
@@ -24,11 +27,10 @@ class TestTerminalOnlineSpied(unittest.TestCase,TerminalOnlineSpiedPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataGatherMan_data.terminalOnlineSpied_para)
         sleep(2)
-        cls.exec_script(cls,TerminalOnlineSpiedLocators.TMNL_MANUFACTURER_JS)
+        cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_MANUFACTURER_JS)
         cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_PROTOCOL_JS)
         cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_STATE_JS)
         cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_TYPE_JS)
-
 
     @classmethod
     def tearDownClass(cls):
@@ -59,18 +61,18 @@ class TestTerminalOnlineSpied(unittest.TestCase,TerminalOnlineSpiedPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
         sleep(2)
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #终端厂商
+        # 终端厂商
         self.inputStr_TmnlManufactory(para['TMNL_MANUFACTORY'])
         print(para['TMNL_ADDR'])
-        #终端地址
+        # 终端地址
         self.inputSel_TmnlAddr(para['TMNL_ADDR'])
-        #终端状态
+        # 终端状态
         self.inputStr_TmnlState(para['TMNL_STATE'])
-        #终端规约
+        # 终端规约
         self.inputStr_TmnlProtocol(para["TMNL_PROTOCOL"])
-        #终端类型
+        # 终端类型
         self.inputStr_TmnlType(para['TMNL_TYPE'])
 
         self.btn_qry()
@@ -84,6 +86,3 @@ class TestTerminalOnlineSpied(unittest.TestCase,TerminalOnlineSpiedPage):
     @data(*(DataAccess.getCaseData(DataGatherMan_data.terminalOnlineSpied_para)))
     def test_query(self, para):
         self.query(para)
-
-
-

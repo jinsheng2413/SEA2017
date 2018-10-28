@@ -11,6 +11,7 @@
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.base_app.dataGatherMan.batchFetch_locators import BatchFetchLocators
 
+
 class BatchFetchPage(Page):
     # 任务名称
     def inputStr_taskName(self, value):

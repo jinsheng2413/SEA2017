@@ -12,8 +12,6 @@ from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.base_app.custMan.ctrlExecut_locators import CtrlExecutLocators
 
 
-
-
 class CtrlExecutPage(Page):
     # 用户编号
     def inputStr_userNo(self, value):
@@ -50,15 +48,13 @@ class CtrlExecutPage(Page):
         locator = self.get_select_locator(CtrlExecutLocators.QRY_CONTROL_TYPE_VALUE, name)
         self.click(*locator)
 
-
-    #执行状态
+    # 执行状态
     def inputSel_exeStatus(self, name):
         self.click(*CtrlExecutLocators.QRY_EXE_STATUS)
         locator = self.get_select_locator(CtrlExecutLocators.QRY_EXE_STATUS_VALUE, name)
         self.click(*locator)
 
-
-   #数据来源
+    # 数据来源
     def inputSel_dataCome(self, name):
         self.click(*CtrlExecutLocators.QRY_DATA_COME)
         locator = self.get_select_locator(CtrlExecutLocators.QRY_DATA_COME_VALUE, name)

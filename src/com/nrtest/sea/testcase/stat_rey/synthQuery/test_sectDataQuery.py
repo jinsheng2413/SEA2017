@@ -9,16 +9,18 @@
 '''
 
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.sectDataQuery_page import SectDataQueryPage
-from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.task.commonMath import *
+
 import ddt
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.sectDataQuery_page import SectDataQueryPage
+from com.nrtest.sea.task.commonMath import *
 
 
 # 统计查询→综合查询→抄表段数据查询
 @ddt.ddt
-class TestSectDataQuery(unittest.TestCase,SectDataQueryPage):
+class TestSectDataQuery(unittest.TestCase, SectDataQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -48,23 +50,23 @@ class TestSectDataQuery(unittest.TestCase,SectDataQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #抄表段编号
+        # 抄表段编号
         self.inputStr_sect_no(para['SECT_NO'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.SectDataQuery_para))
     def test_der(self, para):
         self.query(para)
 
-# 数据展示
+    # 数据展示
     def query_tab(self, para):
-        #抄表段编号
+        # 抄表段编号
         self.inputStr_sect_no(para['SECT_NO'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
         self.sleep_time(2)
-        #点击数据展示,查询按钮
+        # 点击数据展示,查询按钮
         self.btn_tab_search()
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.SectDataQuery_para))

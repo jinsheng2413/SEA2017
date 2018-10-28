@@ -7,26 +7,28 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
-from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.batchFetch_page import BatchFetchPage,BatchFetchLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
 import unittest
+from time import sleep
+
+from ddt import ddt, data
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
+from com.nrtest.sea.pages.base_app.dataGatherMan.batchFetch_page import BatchFetchPage, BatchFetchLocators
+from com.nrtest.sea.task.commonMath import *
 
 
 @ddt
-class TestDemo(unittest.TestCase,BatchFetchPage):
+class TestDemo(unittest.TestCase, BatchFetchPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DataGatherMan_data.batchFetch_para,True)
+        cls.driver = openMenu(DataGatherMan_data.batchFetch_para, True)
         sleep(2)
-        cls.exec_script(cls,BatchFetchLocators.START_DATE_JS)
+        cls.exec_script(cls, BatchFetchLocators.START_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -56,15 +58,15 @@ class TestDemo(unittest.TestCase,BatchFetchPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #任务名称
+        # 任务名称
         self.inputStr_taskName(para['TASK_NAME'])
-        #操作人
+        # 操作人
         self.inputStr_performer(para['PERFORMER'])
-        #开始时间
+        # 开始时间
         self.inputStr_startTime(para['START_TIME'])
-        #有效性
+        # 有效性
         self.inputSel_effectiveness(para['EFFECTIVENESS'])
 
         self.btn_qry()
@@ -72,10 +74,8 @@ class TestDemo(unittest.TestCase,BatchFetchPage):
         # 校验
         result = self.assert_context(*BatchFetchLocators.TAB_ONE)
         self.assertTrue(result)
+
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.batchFetch_para))
     def test_query(self, para):
         self.query(para)
-
-
-

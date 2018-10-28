@@ -7,16 +7,19 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
-from com.nrtest.sea.data.base_app.multiTableOne.multiTableOne import MultiTableOne
-from com.nrtest.sea.pages.base_app.multiTableOne.protocolLibManage_page import ProtocolLibManageLocatorsPage,ProtocolLibManageLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.multiTableOne.multiTableOne import MultiTableOne
+from com.nrtest.sea.pages.base_app.multiTableOne.protocolLibManage_page import ProtocolLibManageLocatorsPage, \
+    ProtocolLibManageLocators
+from com.nrtest.sea.task.commonMath import *
 
 
 @ddt
-class TestDemo(unittest.TestCase,ProtocolLibManageLocatorsPage):
+class TestDemo(unittest.TestCase, ProtocolLibManageLocatorsPage):
 
     @classmethod
     def setUpClass(cls):
@@ -24,8 +27,8 @@ class TestDemo(unittest.TestCase,ProtocolLibManageLocatorsPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(MultiTableOne.protocolLibManage_para)
         sleep(2)
-        cls.exec_script(cls,ProtocolLibManageLocators.START_DATE_JS)
-        cls.exec_script(cls,ProtocolLibManageLocators.END_DATE_JS)
+        cls.exec_script(cls, ProtocolLibManageLocators.START_DATE_JS)
+        cls.exec_script(cls, ProtocolLibManageLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -55,23 +58,23 @@ class TestDemo(unittest.TestCase,ProtocolLibManageLocatorsPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-       #协议名称
+        # 协议名称
         self.inputStr_protocolName(para['PROTOCOL_NAME'])
-        #厂商名称
+        # 厂商名称
         self.inputStr_manufacturerName(para['MANUFACTURER_NAME'])
-        #协议类型
+        # 协议类型
         self.inputStr_protocolType(para['PROTOCOL_TYPE'])
-        #表记类型
+        # 表记类型
         self.inputStr_surfaceType(para['SURFACE_TYPE'])
-        #维护时间
+        # 维护时间
         self.inputStr_maintenanceTmie(para['MANUFACTURER_TMIE'])
-        #结束时间
+        # 结束时间
         self.inputStr_endTime(para['END_TIME'])
-        #有效标志
+        # 有效标志
         self.inputSel_effectiveSign(para['EFFECTIVE_SIGN'])
-        #协议版本号
+        # 协议版本号
         self.inputStr_protocolVersionNo(para['PROTOCOL_VERSION_NO'])
-        #协议代码
+        # 协议代码
         self.inputStr_protocolCode(para['PROTOCOL_CODE'])
 
         self.btn_qry()
@@ -83,6 +86,3 @@ class TestDemo(unittest.TestCase,ProtocolLibManageLocatorsPage):
     @data(*DataAccess.getCaseData(MultiTableOne.protocolLibManage_para))
     def test_query(self, para):
         self.query(para)
-
-
-

@@ -8,20 +8,21 @@
 @desc:
 '''
 
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyStatic_page import \
-    ThreeUnbalanceAnalyStaticPage
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyStatic_locators import \
     ThreeUnbalanceAnalyStaticLocators
-from com.nrtest.common.dictionary import Dict
-from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyStatic_page import \
+    ThreeUnbalanceAnalyStaticPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt, data
-import unittest
 
 
 # 高级应用--》配变负载分析--》三相不平衡分析
-#三相不平衡统计
+# 三相不平衡统计
 @ddt
 class TestLoadRateStatic(unittest.TestCase, ThreeUnbalanceAnalyStaticPage):
 

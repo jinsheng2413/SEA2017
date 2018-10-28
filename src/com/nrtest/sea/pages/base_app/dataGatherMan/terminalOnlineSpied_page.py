@@ -34,5 +34,6 @@ class TerminalOnlineSpiedPage(Page):
         self.input(value, *TerminalOnlineSpiedLocators.QRY_TMNL_TYPE)
 
         # 查询
+
     def btn_qry(self):
-            self.click(*TerminalOnlineSpiedLocators.BTN_QRY)
+        self.click(*TerminalOnlineSpiedLocators.BTN_QRY)

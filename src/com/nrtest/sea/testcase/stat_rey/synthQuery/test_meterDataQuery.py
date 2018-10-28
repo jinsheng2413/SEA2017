@@ -9,14 +9,17 @@
 '''
 
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.meterDataQuery_page import MeterDataQueryPage
-from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.task.commonMath import *
+
 import ddt
 
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.meterDataQuery_page import MeterDataQueryPage
+from com.nrtest.sea.task.commonMath import *
+
+
 # 统计查询→综合查询→抄表数据查询
-class TestMeterDataQuery(unittest.TestCase,MeterDataQueryPage):
+class TestMeterDataQuery(unittest.TestCase, MeterDataQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -44,21 +47,19 @@ class TestMeterDataQuery(unittest.TestCase,MeterDataQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 抄表段号
         self.inputStr_sect_no(para['SECT_NO'])
-        #电表资产号
+        # 电表资产号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
-        #用户类型
+        # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
-        #查询日期
+        # 查询日期
         self.inputDt_date(para['DATE'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.AllEventMeterEventQuery_para))
     def test_der(self, para):
         self.query(para)
-
-

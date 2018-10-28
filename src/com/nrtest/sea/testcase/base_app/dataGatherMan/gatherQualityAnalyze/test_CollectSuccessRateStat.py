@@ -7,18 +7,21 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.collectSuccessRateStat_page import \
-    CollectSuccessRateStatPage,CollectSuccessRateStatLocators
+    CollectSuccessRateStatPage, CollectSuccessRateStatLocators
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-import unittest
+
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率综合统计
 @ddt
-class TestDemo(unittest.TestCase,CollectSuccessRateStatPage):
+class TestDemo(unittest.TestCase, CollectSuccessRateStatPage):
 
     @classmethod
     def setUpClass(cls):
@@ -56,9 +59,9 @@ class TestDemo(unittest.TestCase,CollectSuccessRateStatPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #输入查询时间
+        # 输入查询时间
         self.inputStr_checkDate(para['CHECK_DATE'])
 
         self.btn_qry()
@@ -70,6 +73,3 @@ class TestDemo(unittest.TestCase,CollectSuccessRateStatPage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.collectSuccessRateStat_para))
     def test_query(self, para):
         self.query(para)
-
-
-

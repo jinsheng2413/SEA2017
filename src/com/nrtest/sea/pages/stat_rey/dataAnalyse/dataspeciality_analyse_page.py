@@ -7,28 +7,32 @@
 @time: 2018/8/15 14:02
 @desc:
 '''
-from com.nrtest.sea.locators.stat_rey.dataAnalyse.dataspeciality_analyse_locators import DataSpecialityAnalyseLocators
 from com.nrtest.common.base_page import Page
+from com.nrtest.sea.locators.stat_rey.dataAnalyse.dataspeciality_analyse_locators import DataSpecialityAnalyseLocators
 
 
 class DataSpecialityAnalysePage(Page):
     # 点击唐山供电公司
     def spread_org_no(self):
         self.click(*DataSpecialityAnalyseLocators.SPREAD_ORG_NO)
+
     def tangshan_org_no(self):
         self.click(*DataSpecialityAnalyseLocators.TANGSHAN_ORG_NO)
 
     # 选择公变
     def select_cons_type(self):
         self.click(*DataSpecialityAnalyseLocators.SELECT_CONS_TYPE)
+
     def select_public(self):
         self.click(*DataSpecialityAnalyseLocators.SELECT_PUBLIC)
 
     # 时间
     def time(self):
         self.click(*DataSpecialityAnalyseLocators.TIME)
+
     def time_year1(self):
         self.click(*DataSpecialityAnalyseLocators.TIME_YEAR1)
+
     def time_year2(self):
         self.click(*DataSpecialityAnalyseLocators.TIME_YEAR2)
 
@@ -47,4 +51,3 @@ class DataSpecialityAnalysePage(Page):
     # 查询
     def bin_search(self):
         self.click(*DataSpecialityAnalyseLocators.BTN_SEARCH)
-

@@ -39,19 +39,17 @@ class MeterStateArrPage(Page):
     # def inputStr_screenConditionInput(self,value):
     #     self.input(value, *MeterStateArrLocators.QRY_SCREEN_CONDITION_INPUT)
 
-
     # # 电能表状态
     # def inputSel_meterStatus(self, name):
     #     self.click(*MeterStateArrLocators.QRY_METER_STATUS)
     #     locator = self.get_select_locator(MeterStateArrLocators.QRY_METER_STATUS_VALUE, name)
     #     self.click(*locator)
 
-
     # 查询
     def btn_tmnl_qry(self):
-            self.click(*MeterStateArrLocators.BTN_TMNL_QRY)
+        self.click(*MeterStateArrLocators.BTN_TMNL_QRY)
 
-            # 查询
+        # 查询
 
     def btn_meter_qry(self):
         self.click(*MeterStateArrLocators.BTN_METER_QRY)

@@ -9,8 +9,6 @@
 '''
 from time import sleep
 
-from selenium.webdriver import ActionChains
-
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.setting import Setting

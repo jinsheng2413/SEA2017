@@ -8,16 +8,17 @@
 @desc:
 '''
 
-from com.nrtest.common.dictionary import Dict
-from com.nrtest.sea.pages.base_app.interfaceMan.mDataPublishStatus_page import MDataPublishStatusPage
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.locators.base_app.interfaceMan.mDataPublishStatus import MDataPublishStatus_locators
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.data.base_app.interfaceMan.mDataPublishStatus_data import MDataPublishStatus_data
-from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
 import unittest
 from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.interfaceMan.mDataPublishStatus_data import MDataPublishStatus_data
+from com.nrtest.sea.locators.base_app.interfaceMan.mDataPublishStatus import MDataPublishStatus_locators
+from com.nrtest.sea.pages.base_app.interfaceMan.mDataPublishStatus_page import MDataPublishStatusPage
+from com.nrtest.sea.task.commonMath import *
+
 
 @ddt
 class Test_mData_Publish_StatusPage(unittest.TestCase, MDataPublishStatusPage):
@@ -27,14 +28,14 @@ class Test_mData_Publish_StatusPage(unittest.TestCase, MDataPublishStatusPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(MDataPublishStatus_data.para_MDataPublishStatus)
         sleep(2)
-        cls.exec_script(cls,MDataPublishStatus_locators.START_DATE_JS)
-        cls.exec_script(cls,MDataPublishStatus_locators.END_DATE_JS)
+        cls.exec_script(cls, MDataPublishStatus_locators.START_DATE_JS)
+        cls.exec_script(cls, MDataPublishStatus_locators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
         # 刷新浏览器
-        #cls.refreshPage(cls)
+        # cls.refreshPage(cls)
 
     def setUp(self):
         """
@@ -65,5 +66,5 @@ class Test_mData_Publish_StatusPage(unittest.TestCase, MDataPublishStatusPage):
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(MDataPublishStatus_data.para_MDataPublishStatus))
-    def test_query(self,para):
+    def test_query(self, para):
         self.query(para)

@@ -15,6 +15,8 @@ from com.nrtest.common.ora_drv import PyOracle
 from com.nrtest.common.setting import Setting
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
+
+
 # 或者os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
 
 

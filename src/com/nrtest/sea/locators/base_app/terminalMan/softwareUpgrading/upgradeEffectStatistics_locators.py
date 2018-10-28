@@ -10,9 +10,10 @@
 
 from selenium.webdriver.common.by import By
 
+
 # 基本应用→终端管理→软件升级→升级效果统计
 class UpgradeEffectStatisticsLocators:
-#终端升级统计
+    # 终端升级统计
     # 终端厂家
     TMNL_FACTORY = (By.XPATH, '//label[contains(text(),"终端厂家")]/../div/div/img')
     # 终端厂家→值
@@ -24,7 +25,7 @@ class UpgradeEffectStatisticsLocators:
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
 
-#终端升级明细
+    # 终端升级明细
     # 终端厂家
     DETAIL_TMNL_FACTORY = (By.XPATH, '(//label[contains(text(),"终端厂家")]/../div/div/img)[2]')
     # 终端厂家→值

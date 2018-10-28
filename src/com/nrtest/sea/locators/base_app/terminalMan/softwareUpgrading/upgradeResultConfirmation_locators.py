@@ -10,6 +10,7 @@
 
 from selenium.webdriver.common.by import By
 
+
 # 基本应用→终端管理→软件升级→升级结果确认
 class UpgradeResultConfirmationLocator:
     # 终端厂家
@@ -17,7 +18,7 @@ class UpgradeResultConfirmationLocator:
     # 终端厂家→值
     TMNL_FACTORY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 终端类型
-    TMNL_TYPE= (By.XPATH, '//label[contains(text(),"终端类型")]/../div/div/img')
+    TMNL_TYPE = (By.XPATH, '//label[contains(text(),"终端类型")]/../div/div/img')
     # 终端类型→值
     TMNL_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 终端用途
@@ -31,7 +32,7 @@ class UpgradeResultConfirmationLocator:
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
 
-# 【JS属性】
+    # 【JS属性】
     # 开始时间，删除readonly属性
     START_DATE_JS = 'document.getElementsByTagName("input")[11].removeAttribute("readonly");'
     # 结束时间，删除readonly属性

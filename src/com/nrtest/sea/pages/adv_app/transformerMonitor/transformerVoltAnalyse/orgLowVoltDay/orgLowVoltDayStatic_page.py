@@ -12,6 +12,7 @@ from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayStatic_locators import \
     OrgLowVoltDayStaticLocators
 
+
 class OrgLowVoltDayStaticPage(Page):
     # 供电单位
     def inputStr_org_no(self, value):

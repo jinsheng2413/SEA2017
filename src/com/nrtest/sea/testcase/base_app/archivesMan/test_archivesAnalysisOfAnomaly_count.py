@@ -7,14 +7,16 @@
 @time: 2018/8/30 0030 9:11
 @desc:
 '''
-from com.nrtest.sea.task.archivesManage import *
-from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_pages import *
-from com.nrtest.common.BeautifulReport import BeautifulReport
+import unittest
+
 from com.nrtest.common.oracle_test import Oracle
 from com.nrtest.sea.data.base_app.archivesMan.archivesAnalysisOfAnomaly_para import ArchivesAnalysisOfAnomaly_para
 from com.nrtest.sea.data.common.data_common import DataCommon
-import unittest
-class test_archivesAnalysisOfAnomaly_count(unittest.TestCase,ArchivesAnalysisOfAnomaly_count_pages):
+from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_pages import *
+from com.nrtest.sea.task.archivesManage import *
+
+
+class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOfAnomaly_count_pages):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -41,7 +43,7 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase,ArchivesAnalysisOfA
         """
         self.clear_values(ArchivesAnalysisOfAnomaly_count_pages)
 
-    #用户类型
+    # 用户类型
     def test_aaoa_user_cata(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_user_cata)
         self.inputStr_date(lip[0][1])
@@ -54,7 +56,7 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase,ArchivesAnalysisOfA
         result = self.assert_context(*ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
         self.assertTrue(result)
 
-    #时间查询
+    # 时间查询
     def test_aaoa_date(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
@@ -64,8 +66,7 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase,ArchivesAnalysisOfA
         result = self.assert_context(*ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
         self.assertTrue(result)
 
-
-    #用户类型异常明细
+    # 用户类型异常明细
     def test_aaoa_user_cata_anomals_detail(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
@@ -76,8 +77,7 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase,ArchivesAnalysisOfA
         self.assertTrue(result)
         self.btn_menu_archives_anomals_count()
 
-
-     #电表档案异常数
+    # 电表档案异常数
     def test_aaoa_meter_anomals_detail(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
@@ -90,6 +90,7 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase,ArchivesAnalysisOfA
         self.btn_menu_archives_anomals_count()
 
         # 终端档案异常数
+
     def test_aaoa_terminal_anomals_detail(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])

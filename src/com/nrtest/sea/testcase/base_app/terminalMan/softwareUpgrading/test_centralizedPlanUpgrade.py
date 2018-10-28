@@ -9,18 +9,19 @@
 '''
 
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_locators import CentralizePlanUpgradeLocators
-from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_page import CentralizePlanUpgradePage
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
-from com.nrtest.sea.task.commonMath import *
+
 import ddt
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
+from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_page import \
+    CentralizePlanUpgradePage
+from com.nrtest.sea.task.commonMath import *
+
 
 # 基本应用→终端管理→软件升级→集中计划升级
 @ddt.ddt
-class TestUpgradeTaskExecution(unittest.TestCase,CentralizePlanUpgradePage):
+class TestUpgradeTaskExecution(unittest.TestCase, CentralizePlanUpgradePage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -49,21 +50,21 @@ class TestUpgradeTaskExecution(unittest.TestCase,CentralizePlanUpgradePage):
         # 回收左边树
         self.recoverLeftTree()
 
-# 集中计划升级
+    # 集中计划升级
     def query(self, para):
-        #打开左边树选择供电单位
+        # 打开左边树选择供电单位
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #终端厂家
+        # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        #升级目的
+        # 升级目的
         self.inputSel_upgrade_purpose(para['UPGRADE_PURPOSE'])
-        #终端用途
+        # 终端用途
         self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
-        #开始时间
+        # 开始时间
         self.inputDt_start_date(para['START_DATE'])
-        #结束时间
+        # 结束时间
         self.inputDt_end_date(para['END_DATE'])
-        #批次号
+        # 批次号
         self.inputStr_batch_no(para['BATCH_NO'])
         # 点击查询按钮
         self.btn_search()
@@ -72,15 +73,15 @@ class TestUpgradeTaskExecution(unittest.TestCase,CentralizePlanUpgradePage):
     def test_der(self, para):
         self.query(para)
 
-#制定计划
+    # 制定计划
     def query_tab(self, para):
-        #打开左边树选择供电单位
+        # 打开左边树选择供电单位
         self.driver = openLeftTree(para['TAB_TREE_ORG_NO'])
-        #终端厂家
+        # 终端厂家
         self.inputSel_tab_tmnl_factory(para['TAB_TMNL_FACTORY'])
-        #终端类型
+        # 终端类型
         self.inputSel_tab_tmnl_type(para['TAB_TMNL_TYPE'])
-        #终端用途
+        # 终端用途
         self.inputSel_tab_tmnl_purpose(para['TAB_TMNL_PURPOSE'])
         # 升级版本号
         self.inputSel_tab_upgrade_version_no(para['TAB_UPGRADE_VERSION_NO'])

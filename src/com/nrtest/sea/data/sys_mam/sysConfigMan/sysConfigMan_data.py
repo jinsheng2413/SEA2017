@@ -8,5 +8,6 @@
 @desc:
 '''
 
+
 class SysConfigManData:
- para_SysDictMan = '99952100'
+    para_SysDictMan = '99952100'

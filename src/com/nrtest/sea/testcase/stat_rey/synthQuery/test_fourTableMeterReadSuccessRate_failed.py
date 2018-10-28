@@ -9,15 +9,19 @@
 '''
 
 import unittest
+
+from ddt import ddt, data
+
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.fourTableMeterReadSuccessRate_page import FourTableMeterReadSuccessRatePage
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.fourTableMeterReadSuccessRate_page import \
+    FourTableMeterReadSuccessRatePage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
+
 
 # 统计查询→综合查询→自动化抄表可用率→四表合一抄表失败明细
 @ddt
-class TestAutomatedMeterAvailability_Failed(unittest.TestCase,FourTableMeterReadSuccessRatePage):
+class TestAutomatedMeterAvailability_Failed(unittest.TestCase, FourTableMeterReadSuccessRatePage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -41,19 +45,19 @@ class TestAutomatedMeterAvailability_Failed(unittest.TestCase,FourTableMeterRead
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        #回收左边树
+        # 回收左边树
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #表计类型
+        # 表计类型
         self.inputSel_failed_meter_type(para['FAILED_METER_TYPE'])
-        #终端地址
+        # 终端地址
         self.inputStr_failed_tmnl_addr(para['FAILED_TMNL_ADDR'])
-        #日期
+        # 日期
         self.inputDt_failed_date(para['FAILED_DATE'])
-        #查询按钮
+        # 查询按钮
         self.failed_btn_search()
 
     @data(*DataAccess.getCaseData(SynthQuery_data.FourTableMeterReadSuccessRate_para))

@@ -10,23 +10,22 @@
 from com.nrtest.common.logger import Logger
 
 logger = Logger(logger="test").getlog()
+
+
 class test:
 
+    def f(self):
+        print('-----------------------')
+        logger.info('cdscsdacsdc')
 
- def f(self):
-     print('-----------------------')
-     logger.info('cdscsdacsdc')
+    def t(self):
+        print('-----------------------')
 
- def t(self):
-     print('-----------------------')
-
-
- def j(self):
-     print('-----------------------')
+    def j(self):
+        print('-----------------------')
 
 
-
-l =test()
+l = test()
 l.f()
 l.j()
 l.t()

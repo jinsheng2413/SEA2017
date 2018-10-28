@@ -8,21 +8,21 @@
 @desc:
 '''
 
-from com.nrtest.common.dictionary import Dict
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.locators.base_app.terminalUpgrade.regularSporadicUpgrade_locators import RegularSporadicUpgradeLocators
-from com.nrtest.sea.pages.base_app.terminalUpgrade.regularSporadicUpgrade_page import RegularSporadicUpgradePage
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.data.base_app.terminalUpgrade.regularSporadicUpgrade_data import RegularSporadicUpgrade_data
-from com.nrtest.sea.task.commonMath import *
+
 import ddt
-from com.nrtest.common.base_page import *
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.terminalUpgrade.regularSporadicUpgrade_data import RegularSporadicUpgrade_data
+from com.nrtest.sea.locators.base_app.terminalUpgrade.regularSporadicUpgrade_locators import \
+    RegularSporadicUpgradeLocators
+from com.nrtest.sea.pages.base_app.terminalUpgrade.regularSporadicUpgrade_page import RegularSporadicUpgradePage
+from com.nrtest.sea.task.commonMath import *
+
 
 # 基本应用→终端升级→常规零星升级
 @ddt.ddt
-class TestUpgradeEditionMan(unittest.TestCase,RegularSporadicUpgradePage):
+class TestUpgradeEditionMan(unittest.TestCase, RegularSporadicUpgradePage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -51,22 +51,22 @@ class TestUpgradeEditionMan(unittest.TestCase,RegularSporadicUpgradePage):
         # 回收左边树
         self.recoverLeftTree()
 
-    def query(self,para):
-        #打开左边树选择供电单位
+    def query(self, para):
+        # 打开左边树选择供电单位
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #终端厂家
+        # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        #终端类型
+        # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
-        #终端用途
+        # 终端用途
         self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
-        #升级版本号
+        # 升级版本号
         self.inputSel_upgrade_version_no(para['UPGRADE_VERSION_NO'])
-        #起始终端地址
+        # 起始终端地址
         self.inputStr_tmnl_addr_start(para['TMNL_ADDR_START'])
-        #结束终端地址
+        # 结束终端地址
         self.inputStr_tmnl_addr_end(para['TMNL_ADDR_END'])
-        #终端资产号
+        # 终端资产号
         self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 点击查询按钮
         self.btn_search()
@@ -75,5 +75,5 @@ class TestUpgradeEditionMan(unittest.TestCase,RegularSporadicUpgradePage):
         self.assertTrue(result)
 
     @ddt.data(*DataAccess.getCaseData(RegularSporadicUpgrade_data.para_RegularSporadicUpgrade))
-    def test_der(self,para):
+    def test_der(self, para):
         self.query(para)

@@ -8,12 +8,11 @@
 @desc:
 '''
 
-from com.nrtest.sea.locators.base_app.interfaceMan.mDataPublishStatus import MDataPublishStatus_locators
 from com.nrtest.common.base_page import Page
+from com.nrtest.sea.locators.base_app.interfaceMan.mDataPublishStatus import MDataPublishStatus_locators
 
 
 class MDataPublishStatusPage(Page):
-
 
     # 业务系统
     def inputSel_BusinessSystem(self, index):

@@ -13,7 +13,6 @@ from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.eventRe
     EventRecResultStatLocators
 
 
-
 class EventRecResultStatPage(Page):
     # 开始时间
     def inputStr_start_timme(self, value):
@@ -29,7 +28,6 @@ class EventRecResultStatPage(Page):
     def inputStr_end_time(self, value):
         self.input(value, *EventRecResultStatLocators.QRY_END_TIME)
 
-
     # 查询
     def btn_qry(self):
-            self.click(*EventRecResultStatLocators.BTN_QRY)
+        self.click(*EventRecResultStatLocators.BTN_QRY)

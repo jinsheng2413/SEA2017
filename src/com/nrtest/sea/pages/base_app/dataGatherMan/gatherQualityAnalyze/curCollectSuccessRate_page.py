@@ -34,19 +34,18 @@ class CurCollectSuccessRatePage(Page):
     def inputStr_startTime(self, value):
         self.input(value, *CurCollectSuccessRateLocators.QRY_START_TIME)
 
-    #结束时间
+    # 结束时间
     def inputStr_endTime(self, value):
         self.input(value, *CurCollectSuccessRateLocators.QRY_END_TIME)
 
-
     # 查询
     def btn_qry(self):
-            self.click(*CurCollectSuccessRateLocators.BTN_QRY)
+        self.click(*CurCollectSuccessRateLocators.BTN_QRY)
 
-    #统计查询
+    # 统计查询
     def btn_count_qry(self):
         self.click(*CurCollectSuccessRateLocators.BTN_QRY_COUNT)
 
     # 明细查询
     def btn_detail_qry(self):
-            self.click(*CurCollectSuccessRateLocators.BTN_QRY_DETAIL)
+        self.click(*CurCollectSuccessRateLocators.BTN_QRY_DETAIL)

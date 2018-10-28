@@ -8,21 +8,21 @@
 @desc:
 '''
 
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyDetail_page import \
-    LoadRateDetailPage
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyDetail_locators import \
     ThreeUnbalanceAnalyDetailLocators
-from com.nrtest.common.dictionary import Dict
-from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyDetail_page import \
+    LoadRateDetailPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt, data
-import unittest
-from time import sleep
 
 
 # 高级应用--》配变负载分析--》三相不平衡分析
-#三相不平衡明细
+# 三相不平衡明细
 @ddt
 class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
 
@@ -91,6 +91,7 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
     #     # 校验
     #     result = self.assert_context(*LoadRateDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)
+
 
 if __name__ == '__main__':
     unittest.main()

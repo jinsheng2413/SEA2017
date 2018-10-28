@@ -8,6 +8,7 @@
 @desc:
 '''
 
+
 class SoftwareUpgrading_data:
     # 基本应用→终端管理→软件升级→升级版本管理
     UpgradeEditionMan_para = '99912310'
@@ -21,5 +22,5 @@ class SoftwareUpgrading_data:
     UpgradeResultConfirmation_para = '99912370'
     # 基本应用→终端管理→软件升级→集中计划升级
     CentralizedPlanUpgrade_para = '99912350'
-    #基本应用→终端管理→软件升级→升级效果统计
+    # 基本应用→终端管理→软件升级→升级效果统计
     UpgradeEffectStatistics_para = '99912380'

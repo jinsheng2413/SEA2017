@@ -122,7 +122,6 @@ class Page():
         self.base_url = base_url
         self.page_title = pagetitle
 
-
     def fail_on_screenshot(self, func):
         """
         函数/方法报错截图处理
@@ -210,7 +209,6 @@ class Page():
         """
         return page_title in self.driver.title
 
-
     def _open(self, url, page_title):
         """
         打开页面，并校验页面链接是否加载正确
@@ -285,7 +283,6 @@ class Page():
             ActionChains(self.driver).move_to_element(above).perform()
         except NameError as e:
             logger.error("悬停失败：%s", e)
-
 
     def switch_frame(self, *locators):
         """

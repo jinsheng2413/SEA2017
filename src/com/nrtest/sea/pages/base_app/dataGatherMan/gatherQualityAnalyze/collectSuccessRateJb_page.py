@@ -49,6 +49,7 @@ class CollectSuccessRateJbPage(Page):
         self.click(*CollectSuccessRateJbLocators.QRY_PIECE_FACTORY)
         locator = self.get_select_locator(CollectSuccessRateJbLocators.QRY_PIECE_FACTORY_VALUE, name)
         self.click(*locator)
+
     # 日期时间
     def inputStr_date(self, value):
         self.input(value, *CollectSuccessRateJbLocators.QRY_DATE_TIME)
@@ -59,7 +60,6 @@ class CollectSuccessRateJbPage(Page):
         locator = self.get_select_locator(CollectSuccessRateJbLocators.QRY_CONMUNICATION_TYPE_VALUE, name)
         self.click(*locator)
 
-
     # 查询
     def btn_qry(self):
-            self.click(*CollectSuccessRateJbLocators.BTN_QRY)
+        self.click(*CollectSuccessRateJbLocators.BTN_QRY)

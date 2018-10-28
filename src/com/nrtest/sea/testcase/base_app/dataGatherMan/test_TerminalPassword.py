@@ -7,16 +7,21 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
-from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.TerminalPassword_page import TerminalPasswordPage,TerminalPasswordLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
+from com.nrtest.sea.pages.base_app.dataGatherMan.TerminalPassword_page import TerminalPasswordPage, \
+    TerminalPasswordLocators
+from com.nrtest.sea.task.commonMath import *
+
+
 # 基本应用→终端管理→终端在线监视
 
 @ddt
-class TesterminalPassword(unittest.TestCase,TerminalPasswordPage):
+class TesterminalPassword(unittest.TestCase, TerminalPasswordPage):
 
     @classmethod
     def setUpClass(cls):
@@ -24,7 +29,7 @@ class TesterminalPassword(unittest.TestCase,TerminalPasswordPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataGatherMan_data.terminalPassword_para)
         sleep(2)
-        cls.exec_script(cls,TerminalPasswordLocators.JS)
+        cls.exec_script(cls, TerminalPasswordLocators.JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -45,7 +50,7 @@ class TesterminalPassword(unittest.TestCase,TerminalPasswordPage):
         """
 
         # 回收左边树
-        #self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         '''
@@ -55,9 +60,9 @@ class TesterminalPassword(unittest.TestCase,TerminalPasswordPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #输入日期
+        # 输入日期
         self.inputStr_date(para['DATE'])
 
         self.btn_qry()
@@ -69,6 +74,3 @@ class TesterminalPassword(unittest.TestCase,TerminalPasswordPage):
     @data(*DataAccess.getCaseData(DataGatherMan_data.terminalPassword_para))
     def test_query(self, para):
         self.query(para)
-
-
-

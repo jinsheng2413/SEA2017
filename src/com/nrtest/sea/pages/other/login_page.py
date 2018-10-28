@@ -9,16 +9,21 @@
 '''
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
+
+
 class LoginPage(Page):
-    #输入用户名
-    def input_username(self,username):
+    # 输入用户名
+    def input_username(self, username):
         self.input(username, *LoginPageLocators.QRY_USERNAME)
-    #输入密码
-    def input_password(self,password):
+
+    # 输入密码
+    def input_password(self, password):
         self.input(password, *LoginPageLocators.QRY_PASSWWORD)
-    #输入验证码
-    def input_identifying(self,code):
-        self.input(code,*LoginPageLocators.INPUT_IDENTIFYING)
-    #点击登录按钮
+
+    # 输入验证码
+    def input_identifying(self, code):
+        self.input(code, *LoginPageLocators.INPUT_IDENTIFYING)
+
+    # 点击登录按钮
     def btn_login(self):
         self.click(*LoginPageLocators.BTN_LOGIN)

@@ -32,5 +32,6 @@ class PowerSortAnalysePage(Page):
         self.input(value, *PowerSortAnalyseLocators.QRY_END_TIME)
 
         # 查询
+
     def btn_qry(self):
-            self.click(*PowerSortAnalyseLocators.BTN_QRY)
+        self.click(*PowerSortAnalyseLocators.BTN_QRY)

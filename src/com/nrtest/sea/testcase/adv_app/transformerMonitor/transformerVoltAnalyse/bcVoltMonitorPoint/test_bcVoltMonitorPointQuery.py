@@ -8,20 +8,21 @@
 @desc:
 '''
 
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint.bcVoltMonitorPointQuery_page import \
-    BcVoltMonitorPointQueryPage
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint.bcVoltMonitorPointQuery_locators import \
     BcVoltMonitorPointQueryLocators
-from com.nrtest.common.dictionary import Dict
-from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint.bcVoltMonitorPointQuery_page import \
+    BcVoltMonitorPointQueryPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt, data
-import unittest
 
 
 # 高级应用--》配变监测分析--》电压质量分析--》B/C类电压监测点
-#B/C类电压监测点查询
+# B/C类电压监测点查询
 @ddt
 class TestBcVoltMonitorPointQuery(unittest.TestCase, BcVoltMonitorPointQueryPage):
 
@@ -72,7 +73,7 @@ class TestBcVoltMonitorPointQuery(unittest.TestCase, BcVoltMonitorPointQueryPage
         result = self.assert_context(*BcVoltMonitorPointQueryLocators.TABLE_DATA)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_BcVoltMonitorPoint,'B/C类电压监测点查询'))
+    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_BcVoltMonitorPoint, 'B/C类电压监测点查询'))
     def test_que(self, para):
         self.query(para)
 

@@ -8,14 +8,16 @@
 @desc:
 '''
 
-#档案管理
-from com.nrtest.sea.task.login import Login
-from com.nrtest.common.setting import Setting
 from com.nrtest.sea.pages.other.commonMenu_page import CommonMenu_page
-from selenium.webdriver.common.by import By
-from com.nrtest.sea.locators.base_app.archivesMan.archivesManage_locators import ArchivesManage_locators
+
+from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.base_app.archivesMan.archivesMaintain_locators import ArchivesMaintain_locators
-#档案同步
+from com.nrtest.sea.locators.base_app.archivesMan.archivesManage_locators import ArchivesManage_locators
+# 档案管理
+from com.nrtest.sea.task.login import Login
+
+
+# 档案同步
 def archivesMange():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -29,9 +31,10 @@ def archivesMange():
     cp.btn_company_plus(3)
     cp.click(*ArchivesManage_locators.BTN_LG)
 
-
     return cp.driver
-#档案异常分析_统计
+
+
+# 档案异常分析_统计
 def archivesAnalysisOfAnomaly_count():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -47,7 +50,9 @@ def archivesAnalysisOfAnomaly_count():
     cp.exec_script(js)
 
     return cp.driver
-#档案异常分析_明细
+
+
+# 档案异常分析_明细
 def archivesAnalysisOfAnomaly_detail():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -65,7 +70,9 @@ def archivesAnalysisOfAnomaly_detail():
     cp.exec_script(js)
 
     return cp.driver
-#档案维护_厂站维护
+
+
+# 档案维护_厂站维护
 def archivesMaintain_factory():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -79,7 +86,8 @@ def archivesMaintain_factory():
 
     return cp.driver
 
-#档案维护_终端维护
+
+# 档案维护_终端维护
 def archivesMaintain_terminal():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -94,7 +102,8 @@ def archivesMaintain_terminal():
 
     return cp.driver
 
-#档案维护_电表维护
+
+# 档案维护_电表维护
 def archivesMaintain_meter():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -109,7 +118,8 @@ def archivesMaintain_meter():
 
     return cp.driver
 
-#档案查询
+
+# 档案查询
 def archivesQuery():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -126,7 +136,6 @@ def archivesQuery():
 
     return cp.driver
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     archivesQuery()
-
-

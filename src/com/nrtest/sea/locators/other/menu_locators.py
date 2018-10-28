@@ -20,7 +20,7 @@ class MenuLocators:
     # 二级菜单
     MENU_LEVEL_IDX_2 = (By.XPATH, '//*[@id=\"smenu\"]//*[@class=\"x-toolbar-left-row\"]/td[%s]')
     MENU_LEVEL2 = (
-    By.XPATH, '//*[@id=\"smenu\"]//*[@class=\"x-toolbar-left-row\"]//*[@type=\"button\" and text() = \"%s\"]')
+        By.XPATH, '//*[@id=\"smenu\"]//*[@class=\"x-toolbar-left-row\"]//*[@type=\"button\" and text() = \"%s\"]')
 
     # 三级菜单
     MENU_LEVEL_IDX_3 = (By.XPATH, '//ul[@class=\"x-menu-list\"]/li[%s]')
@@ -34,14 +34,11 @@ class MenuLocators:
     MENU_LEVEL_IDX_5 = (By.XPATH, '(//*[@class=\"x-menu x-menu-floating x-layer \"])[3]/ul/li[%s]')
     MENU_LEVEL5 = (By.XPATH, '//div[@class=\"x-menu x-menu-floating x-layer \"][3]/ul/li//*[text()= \"%s\"]')
 
-
-    #当前正在操作的菜单页面
+    # 当前正在操作的菜单页面
     CURRENT_MENU = (By.XPATH, '//*[@id=\"maintab__%s\"]')
-    #右键菜单：关闭当前页/关闭其他所有页
+    # 右键菜单：关闭当前页/关闭其他所有页
     # '//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()=\'关闭其他所有页\']'
     CLOSE_PAGES = (By.XPATH, '//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()="%s"]')
-
-
 
     # 【左边树】
     # 左边树按钮

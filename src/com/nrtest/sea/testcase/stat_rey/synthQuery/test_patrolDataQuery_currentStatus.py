@@ -9,15 +9,18 @@
 '''
 
 import unittest
+
+from ddt import ddt, data
+
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryPage
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
+
 
 # 统计查询→综合查询→巡检仪数据查询→电流回路状态
 @ddt
-class TestPatrolDataQuery_CurrentStatus(unittest.TestCase,PatrolDataQueryPage):
+class TestPatrolDataQuery_CurrentStatus(unittest.TestCase, PatrolDataQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -45,13 +48,13 @@ class TestPatrolDataQuery_CurrentStatus(unittest.TestCase,PatrolDataQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 终端地址
         self.inputStr_current_status_tmnl_addr(para['CURRENT_STATUS_TMNL_ADDR'])
-        #终端资产号
+        # 终端资产号
         self.inputStr_current_status_tmnl_asset_no(para['CURRENT_STATUS_TMNL_ASSET_NO'])
-        #查询按钮
+        # 查询按钮
         self.btn_current_status_search()
 
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para))

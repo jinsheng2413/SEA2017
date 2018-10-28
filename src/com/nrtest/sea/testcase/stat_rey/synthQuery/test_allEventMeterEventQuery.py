@@ -9,15 +9,18 @@
 '''
 
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.allEventMeterEventQuery_page import AllEventMeterEventQueryPage
-from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.task.commonMath import *
+
 import ddt
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.allEventMeterEventQuery_page import AllEventMeterEventQueryPage
+from com.nrtest.sea.task.commonMath import *
+
 
 # 统计查询→综合查询→全事件电表事件查询
 @ddt.ddt
-class TestAllEventMeterEventQuery(unittest.TestCase,AllEventMeterEventQueryPage):
+class TestAllEventMeterEventQuery(unittest.TestCase, AllEventMeterEventQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -45,9 +48,9 @@ class TestAllEventMeterEventQuery(unittest.TestCase,AllEventMeterEventQueryPage)
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #电表资产号
+        # 电表资产号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 事件等级
         self.inputSel_event_level(para['EVENT_LEVEL'])
@@ -57,7 +60,7 @@ class TestAllEventMeterEventQuery(unittest.TestCase,AllEventMeterEventQueryPage)
         self.inputDt_start_date(para['START_DATE'])
         # 采集结束时间
         self.inputDt_end_date(para['END_DATE'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.AllEventMeterEventQuery_para))

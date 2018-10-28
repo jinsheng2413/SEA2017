@@ -9,15 +9,18 @@
 '''
 
 import unittest
+
+from ddt import ddt, data
+
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryPage
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
+
 
 # 统计查询→综合查询→巡检仪数据查询→异常事件查询
 @ddt
-class TestPatrolDataQuery_AnomalousEvent(unittest.TestCase,PatrolDataQueryPage):
+class TestPatrolDataQuery_AnomalousEvent(unittest.TestCase, PatrolDataQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -45,15 +48,15 @@ class TestPatrolDataQuery_AnomalousEvent(unittest.TestCase,PatrolDataQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 终端地址
         self.inputStr_anomalous_event_tmnl_addr(para['ANOMALOUS_EVENT_TMNL_ADDR'])
-        #用户编号
+        # 用户编号
         self.inputStr_anomalous_event_cons_no(para['ANOMALOUS_EVENT_CONS_NO'])
-        #异常事件
+        # 异常事件
         self.inputSel_anomalous_event(para['ANOMALOUS_EVENT'])
-        #查询按钮
+        # 查询按钮
         self.btn_anomalous_event_search()
 
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para))

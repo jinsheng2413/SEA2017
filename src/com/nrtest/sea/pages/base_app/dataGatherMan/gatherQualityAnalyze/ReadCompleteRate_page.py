@@ -13,14 +13,12 @@ from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.readCom
     ReadCompleteRateLocators
 
 
-
 class ReadCompleteRatePage(Page):
     # 蕊片厂家
     def inputSel_chipFactory(self, name):
         self.click(*ReadCompleteRateLocators.QRY_CHIP_FACTORY)
         locator = self.get_select_locator(ReadCompleteRateLocators.QRY_CHIP_FACTORY_VALUE, name)
         self.click(*locator)
-
 
     #  蕊片厂家
     def inputSel_chipFactoryCount(self, name):
@@ -36,14 +34,13 @@ class ReadCompleteRatePage(Page):
         locator = self.get_select_locator(ReadCompleteRateLocators.QRY_CHIP_FACTORY_DETAIL_VALUE, name)
         self.click(*locator)
 
-
-    #终端厂家
+    # 终端厂家
     def inputSel_tmnlFactory(self, name):
         self.click(*ReadCompleteRateLocators.QRY_TMNL_FACTORY)
         locator = self.get_select_locator(ReadCompleteRateLocators.QRY_TMNL_FACTORY_VALUE, name)
         self.click(*locator)
 
-    #终端厂家
+    # 终端厂家
     def inputSel_tmnlFactoryCount(self, name):
         self.click(*ReadCompleteRateLocators.QRY_TMNL_FACTORY_COUNT)
         locator = self.get_select_locator(ReadCompleteRateLocators.QRY_TMNL_FACTORY_COUNT_VALUE, name)
@@ -54,8 +51,6 @@ class ReadCompleteRatePage(Page):
         self.click(*ReadCompleteRateLocators.QRY_TMNL_FACTORY_DETAIL)
         locator = self.get_select_locator(ReadCompleteRateLocators.QRY_TMNL_FACTORY_DETAIL_VALUE, name)
         self.click(*locator)
-
-
 
     # 通信方式
     def inputSel_communicationMode(self, name):
@@ -103,7 +98,7 @@ class ReadCompleteRatePage(Page):
 
     # 日期时间
     def inputStr_date_time_count(self, value):
-            self.input(value, *ReadCompleteRateLocators.QRY_DATE_TIME_COUNT)
+        self.input(value, *ReadCompleteRateLocators.QRY_DATE_TIME_COUNT)
 
     # 日期时间
     def inputStr_date_time_detail(self, value):
@@ -111,11 +106,11 @@ class ReadCompleteRatePage(Page):
 
     # 查询
     def btn_qry(self):
-            self.click(*ReadCompleteRateLocators.BTN_QRY)
+        self.click(*ReadCompleteRateLocators.BTN_QRY)
 
     # 查询
     def btn_count_qry(self):
-            self.click(*ReadCompleteRateLocators.BTN_QRY_COUNT)
+        self.click(*ReadCompleteRateLocators.BTN_QRY_COUNT)
 
     # 查询
     def btn_detail_qry(self):

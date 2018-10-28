@@ -17,7 +17,6 @@ class LoadSortAnalysePage(Page):
     def inputStr_startDate(self, value):
         self.input(value, *LoadSortAnalyseLocators.QRY_START_DATE)
 
-
     # 用户类型
     def inputSel_userType(self, name):
         self.click(*LoadSortAnalyseLocators.QRY_USER_TYPE)
@@ -34,4 +33,4 @@ class LoadSortAnalysePage(Page):
 
     # 查询
     def btn_qry(self):
-            self.click(*LoadSortAnalyseLocators.BTN_QRY)
+        self.click(*LoadSortAnalyseLocators.BTN_QRY)

@@ -27,7 +27,6 @@ class TmnlStateArrPage(Page):
     def inputStr_count_time(self, value):
         self.input(value, *TmnlStateArrLocators.QRY_COUNT_TIME)
 
-
     # 查询
     def btn_qry(self):
-            self.click(*TmnlStateArrLocators.BTN_QRY)
+        self.click(*TmnlStateArrLocators.BTN_QRY)

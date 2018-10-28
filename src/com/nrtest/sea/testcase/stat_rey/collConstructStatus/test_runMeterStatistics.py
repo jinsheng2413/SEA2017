@@ -9,15 +9,18 @@
 '''
 
 import unittest
+
+from ddt import ddt, data
+
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.collConstructStatus.runMeterStatistics_page import RunMeterStatisticsPage
 from com.nrtest.sea.data.stat_rey.collConstructStatus.collConstructStatus_data import CollConstructStatus_data
+from com.nrtest.sea.pages.stat_rey.collConstructStatus.runMeterStatistics_page import RunMeterStatisticsPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
+
 
 # 统计查询→综合查询→采集建设情况→运行电能表统计
 @ddt
-class TestRunMeterStatistics(unittest.TestCase,RunMeterStatisticsPage):
+class TestRunMeterStatistics(unittest.TestCase, RunMeterStatisticsPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -45,13 +48,13 @@ class TestRunMeterStatistics(unittest.TestCase,RunMeterStatisticsPage):
         # self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 用户类型
         self.inputCSel_cons_type(para['CONS_TYPE'])
-        #统计日期
+        # 统计日期
         self.inputDt_date(para['DATE'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
 
     @data(*DataAccess.getCaseData(CollConstructStatus_data.RunMeterStatistics_para))

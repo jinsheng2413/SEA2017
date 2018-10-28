@@ -19,7 +19,6 @@ class ArchivesChangeRecordPage(Page):
         locator = self.get_select_locator(ArchivesChangeRecordLocators.QRY_DEVICE_TYPE_VALUE, name)
         self.click(*locator)
 
-
     # 变更类型
     def inputSel_change_type(self, name):
         self.click(*ArchivesChangeRecordLocators.QRY_CHANGE_TYPE)
@@ -35,12 +34,13 @@ class ArchivesChangeRecordPage(Page):
         self.input(value, *ArchivesChangeRecordLocators.QRY_END_TIME)
 
         # 查询
+
     def btn_qry(self):
         self.click(*ArchivesChangeRecordLocators.BTN_QRY)
 
     def btn_special_change(self):
         self.click(*ArchivesChangeRecordLocators.BTN_SPECIAL_CHANGE)
 
-    #低压
+    # 低压
     def btn_low(self):
         self.click(*ArchivesChangeRecordLocators.BTN_LOW)

@@ -35,13 +35,12 @@ class XlsRw(object):
     def __init__(self, filename):
         self.filename = filename
         self.wb = load_workbook(self.filename)
-        #获取sheet页
+        # 获取sheet页
         self.ws = self.wb.worksheets[0]
-        #获取最大行数
+        # 获取最大行数
         self.r_row = self.wb.worksheets[0].max_row
-        #获取最大列数
+        # 获取最大列数
         self.c_col = self.wb.worksheets[0].max_column
-
 
     def write(self, row, col, value):
         """
@@ -55,7 +54,6 @@ class XlsRw(object):
         self.ws.cell(row, col).value = value
         self.wb.save(self.filename)
 
-
     def read(self, i, l):
         """
         方法名：read
@@ -66,7 +64,6 @@ class XlsRw(object):
         """
         str = self.ws.cell(i, l).value
         return str
-
 
     def read_row_out(self, row):
         """
@@ -108,7 +105,7 @@ class XlsRw(object):
         t = XlsRw(filepath)
         lister = []
 
-        for rownumber in range(1, t.r_row+1):
+        for rownumber in range(1, t.r_row + 1):
             app = {}
             for i in range((len(t.read_row_out(rownumber)))):
                 app.setdefault(t.read_row_out(1)[i], t.read_row_out(rownumber)[i])
@@ -116,9 +113,7 @@ class XlsRw(object):
             lister.append(app)
         del lister[0]
 
-
         return lister
-
 
     def close(self):
         """
@@ -128,8 +123,6 @@ class XlsRw(object):
         self.wb.close()
 
 
-
 if __name__ == '__main__':
     p = XlsRw('D:/excel/text.xlsx')
-    print(p.write(4,5,'测试电视剧覅'))
-
+    print(p.write(4, 5, '测试电视剧覅'))

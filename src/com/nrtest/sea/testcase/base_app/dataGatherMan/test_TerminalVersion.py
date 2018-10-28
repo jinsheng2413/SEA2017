@@ -7,16 +7,21 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
-from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.TerminalVersion_page import TerminalVersionPage,TerminalVersionLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
+from com.nrtest.sea.pages.base_app.dataGatherMan.TerminalVersion_page import TerminalVersionPage, \
+    TerminalVersionLocators
+from com.nrtest.sea.task.commonMath import *
+
+
 # 基本应用→终端管理→终端离线明细
 
 @ddt
-class TestTerminalVersion(unittest.TestCase,TerminalVersionPage):
+class TestTerminalVersion(unittest.TestCase, TerminalVersionPage):
 
     @classmethod
     def setUpClass(cls):
@@ -24,7 +29,7 @@ class TestTerminalVersion(unittest.TestCase,TerminalVersionPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataGatherMan_data.terminalVersion_para)
         sleep(2)
-        cls.exec_script(cls,TerminalVersionLocators.JS)
+        cls.exec_script(cls, TerminalVersionLocators.JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -55,13 +60,13 @@ class TestTerminalVersion(unittest.TestCase,TerminalVersionPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #用户编号
+        # 用户编号
         self.inputStr_userNo(para['USER_NO'])
-        #z终端地址
+        # z终端地址
         self.inputStr_tmnlAddr(para['TMNL_ADDR'])
-        #查询日期
+        # 查询日期
         self.inputStr_queryTime(para['DATE'])
 
         self.btn_qry()
@@ -73,6 +78,3 @@ class TestTerminalVersion(unittest.TestCase,TerminalVersionPage):
     @data(*DataAccess.getCaseData(DataGatherMan_data.terminalVersion_para))
     def test_query(self, para):
         self.query(para)
-
-
-

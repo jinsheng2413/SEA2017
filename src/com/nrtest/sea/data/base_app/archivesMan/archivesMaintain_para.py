@@ -8,8 +8,9 @@
 @desc:
 '''
 
+
 class ArchivesMaintain:
-    para_test_amf_eleGrade = {'pa':'test_amf_eleGrade'}
-    para_test_amt_factoryName = {'pa':'test_amt_factoryName'}
-    para_test_amm_terminal_asset_no = {'pa':'test_amm_terminal_asset_no'}
-    para_test_amm_terminal_addr = {'pa':'test_amm_terminal_addr'}
+    para_test_amf_eleGrade = {'pa': 'test_amf_eleGrade'}
+    para_test_amt_factoryName = {'pa': 'test_amt_factoryName'}
+    para_test_amm_terminal_asset_no = {'pa': 'test_amm_terminal_asset_no'}
+    para_test_amm_terminal_addr = {'pa': 'test_amm_terminal_addr'}

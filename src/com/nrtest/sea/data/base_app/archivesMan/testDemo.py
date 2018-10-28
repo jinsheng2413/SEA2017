@@ -8,10 +8,9 @@
 @desc:
 '''
 from com.nrtest.common.data_access import DataAccess
+
+
 class TestDemoData:
     op = DataAccess()
     #
-    ps = op.getCaseData('guochunbiao','99922120')
-
-
-
+    ps = op.getCaseData('guochunbiao', '99922120')

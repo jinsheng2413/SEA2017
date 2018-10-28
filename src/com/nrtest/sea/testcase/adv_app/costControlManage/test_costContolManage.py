@@ -8,15 +8,17 @@
 @desc:
 '''
 import unittest
-from com.nrtest.sea.pages.adv_app.costControlManage.costControlManage_page import CostControlManagePage
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.task.feiMange import *
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_para import CostControlManage_para
-from com.nrtest.sea.locators.adv_app.costControlManage.costControlManage_page_locators import CostControlManagePageLocators
-from com.nrtest.common.BeautifulReport import BeautifulReport
 
-#高级应用--》费控管理--》本地费控--》专变用户费控管理
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.oracle_test import Oracle
+from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_para import CostControlManage_para
+from com.nrtest.sea.data.common.data_common import DataCommon
+from com.nrtest.sea.locators.adv_app.costControlManage.costControlManage_page_locators import \
+    CostControlManagePageLocators
+from com.nrtest.sea.task.feiMange import *
+
+
+# 高级应用--》费控管理--》本地费控--》专变用户费控管理
 class TestCostControlManage(unittest.TestCase, CostControlManagePage):
     @classmethod
     def setUpClass(cls):
@@ -35,8 +37,7 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         :return:
         """
 
-
-        #self.sleep_time(2000)
+        # self.sleep_time(2000)
 
     def tearDown(self):
         """
@@ -93,7 +94,7 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         result = self.assert_context(*CostControlManagePageLocators.TAB_ONE)
         self.assertTrue(result)
 
-    #时间查询
+    # 时间查询
     @BeautifulReport.add_test_img()
     def test_date(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, CostControlManage_para.para_test_date)
@@ -107,7 +108,7 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         result = self.assert_context(*CostControlManagePageLocators.TAB_ONE)
         self.assertTrue(result)
 
-    #业务类型查询
+    # 业务类型查询
     @BeautifulReport.add_test_img()
     def test_buiness_cata(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, CostControlManage_para.para_test_buiness_cata)
@@ -122,7 +123,7 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         result = self.assert_context(*CostControlManagePageLocators.TAB_ONE)
         self.assertTrue(result)
 
-    #参数下发状态查询
+    # 参数下发状态查询
     @BeautifulReport.add_test_img()
     def test_para_lower_hair(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, CostControlManage_para.para_test_para_lower_hair)
@@ -136,6 +137,3 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         # 校验
         result = self.assert_context(*CostControlManagePageLocators.TAB_ONE)
         self.assertTrue(result)
-
-
-

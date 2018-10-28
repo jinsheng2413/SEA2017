@@ -7,13 +7,14 @@
 @time: 2018/8/2 0002 18:40
 @desc:
 '''
+from com.nrtest.common.setting import Setting
+from com.nrtest.sea.locators.adv_app.costControlManage.custControlCommissioning_locators import \
+    CustControlCommissioning_locators
+from com.nrtest.sea.pages.adv_app.costControlManage.costControlManage_page import CostControlManagePage
+from com.nrtest.sea.pages.adv_app.costControlManage.lowUserMoneyCheck_Page import BalanceCheck_page
 from com.nrtest.sea.pages.other.common_page import Common_page
 from com.nrtest.sea.task.login import Login
-from com.nrtest.common.setting import Setting
-from com.nrtest.sea.pages.adv_app.costControlManage.costControlManage_page import CostControlManagePage
-from selenium.webdriver.common.by import By
-from com.nrtest.sea.pages.adv_app.costControlManage.lowUserMoneyCheck_Page import BalanceCheck_page
-from com.nrtest.sea.locators.adv_app.costControlManage.custControlCommissioning_locators import CustControlCommissioning_locators
+
 
 # 专变用户费控管理
 def specil_user_fei_mange():
@@ -48,6 +49,7 @@ def low_user_money_check():
     cp.btn_select_company(2)
     return cp.driver
 
+
 # 低压用户余额查看_余额查看
 def low_user_money_check_two():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
@@ -60,36 +62,35 @@ def low_user_money_check_two():
     cp.hover_local_fei_mange()
     cp.btn_low_user_money_check()
     print("------------")
-    b =BalanceCheck_page(cp.driver)
+    b = BalanceCheck_page(cp.driver)
     b.btn_balance_check()
-    cp.driver =b.driver
+    cp.driver = b.driver
     cp.btn_left_add()
     cp.sleep_time(1)
     cp.btn_select_company(6)
 
+    return cp.driver
 
+
+# 电价参数下发
+def ele_price_para():
+    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    dr = lg.login()
+    # 点击高级应用
+    cp = Common_page(dr)
+    cp.btn_advApp()
+    # 点击费控管理
+    cp.btn_fei_mange()
+    cp.hover_local_fei_mange()
+    cp.btn_ele_price_para()
+    cp.btn_left_add()
+    cp.sleep_time(1)
+    cp.btn_select_company(6)
 
     return cp.driver
 
-#电价参数下发
-def ele_price_para():
-     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
-     dr = lg.login()
-     # 点击高级应用
-     cp = Common_page(dr)
-     cp.btn_advApp()
-     # 点击费控管理
-     cp.btn_fei_mange()
-     cp.hover_local_fei_mange()
-     cp.btn_ele_price_para()
-     cp.btn_left_add()
-     cp.sleep_time(1)
-     cp.btn_select_company(6)
 
-
-     return cp.driver
-
-#专变用户余额查看
+# 专变用户余额查看
 def specialUserBalanceQuery():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -108,7 +109,9 @@ def specialUserBalanceQuery():
     cp.exec_script(js)
 
     return cp.driver
-#低压用户购电参数下发
+
+
+# 低压用户购电参数下发
 def lowUserBuyParaGiveOut():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -123,10 +126,10 @@ def lowUserBuyParaGiveOut():
     cp.sleep_time(1)
     cp.btn_select_company(3)
 
-
     return cp.driver
 
-#本地费控执行统计_费控情况统计
+
+# 本地费控执行统计_费控情况统计
 def localFeiManageCount_dis_count():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -141,11 +144,10 @@ def localFeiManageCount_dis_count():
     cp.sleep_time(1)
     cp.btn_select_company(4)
 
-
     return cp.driver
 
 
-#本地费控执行统计_费控情况明细
+# 本地费控执行统计_费控情况明细
 def localFeiManageCount_dis_detail():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -161,10 +163,10 @@ def localFeiManageCount_dis_detail():
     cp.sleep_time(1)
     cp.btn_select_company(6)
 
-
     return cp.driver
 
-#费控投入调试_电量控
+
+# 费控投入调试_电量控
 def custControlCommissioning_ele_manage():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -182,10 +184,10 @@ def custControlCommissioning_ele_manage():
     cp.sleep_time(1)
     cp.btn_select_company(2)
 
-
     return cp.driver
 
-#费控投入调试_电fei控
+
+# 费控投入调试_电fei控
 def custControlCommissioning_ele_cust():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
@@ -202,7 +204,6 @@ def custControlCommissioning_ele_cust():
     cp.btn_left_add()
     cp.sleep_time(1)
     cp.btn_select_company(4)
-
 
     return cp.driver
 

@@ -23,20 +23,20 @@ class RealDataPage(Page):
     # 反相采集结果
     def inputSel_reversCollectionResult(self, name):
         self.click(*RealDataLocators.QRY_REVERS_COLLECT_RESULT)
-        locator = self.get_select_locator(RealDataLocators.QRY_REVERS_COLLECT_RESULT_VALUE,name)
+        locator = self.get_select_locator(RealDataLocators.QRY_REVERS_COLLECT_RESULT_VALUE, name)
         print(locator)
         self.click(*locator)
 
     # 终端运行状态
     def inputSel_TmnlRunState_Failtime(self, name):
         self.click(*RealDataLocators.QRY_TMNL_RUN_STATE_FAILDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_TMNL_RUN_STATE_FAILDETAIL_VALUE,name)
+        locator = self.get_select_locator(RealDataLocators.QRY_TMNL_RUN_STATE_FAILDETAIL_VALUE, name)
         self.click(*locator)
 
     # 终端运行状态
     def inputSel_TmnlRunState_RDetail(self, name):
         self.click(*RealDataLocators.QRY_TMNL_RUN_STATE_RDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_TMNL_RUN_STATE_RDETAIL_VALUE,name)
+        locator = self.get_select_locator(RealDataLocators.QRY_TMNL_RUN_STATE_RDETAIL_VALUE, name)
         print(locator)
         self.click(*locator)
 
@@ -59,9 +59,6 @@ class RealDataPage(Page):
         print(locator)
         self.click(*locator)
 
-
-
-
     # 相位
     def inputSel_phase_Rdetail(self, name):
         self.click(*RealDataLocators.QRY_PHASE_RDETAIL)
@@ -82,7 +79,7 @@ class RealDataPage(Page):
     def inputStr_ReadMeterSegmentNo_Faildetail(self, value):
         self.input(value, *RealDataLocators.QRY_READ_METER_SEGMENT_NO_FAILDETAIL)
 
-    #电表资产号
+    # 电表资产号
     def inputStr_MeterAssert_Rdetail(self, value):
         self.input(value, *RealDataLocators.QRY_METER_ASSET_NO_RDETAIL)
 
@@ -90,14 +87,13 @@ class RealDataPage(Page):
     def inputStr_MeterAssert_Faildetail(self, value):
         self.input(value, *RealDataLocators.QRY_METER_ASSET_NO_FAILDETAIL)
 
-    #查询时间
-    def inputStr_Time_Rdetail(self,value):
-        self.input(value,*RealDataLocators.QRY_TIME_RDETAIL)
+    # 查询时间
+    def inputStr_Time_Rdetail(self, value):
+        self.input(value, *RealDataLocators.QRY_TIME_RDETAIL)
 
     # 查询时间
     def inputStr_Time_Faildetail(self, value):
         self.input(value, *RealDataLocators.QRY_TIME_FAILTIME)
-
 
     # 用户类型
     def inputSel_userType_Rdetail(self, name):
@@ -112,13 +108,11 @@ class RealDataPage(Page):
         locator = self.get_select_locator(RealDataLocators.QRY_USER_TYPE_FAILDETAIL_VALUE, name)
         self.click(*locator)
 
-
-
     # 查询
     def btn_rdetail_qry(self):
-            self.click(*RealDataLocators.BTN_QRY_RDETAIL)
+        self.click(*RealDataLocators.BTN_QRY_RDETAIL)
 
-            # 查询
+        # 查询
 
     def btn_Faildetail_qry(self):
         self.click(*RealDataLocators.BTN_QRY_FAILDETAIL)

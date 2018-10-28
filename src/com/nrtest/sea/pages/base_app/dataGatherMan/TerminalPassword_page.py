@@ -17,7 +17,7 @@ class TerminalPasswordPage(Page):
     def inputStr_date(self, value):
         self.input(value, *TerminalPasswordLocators.QRY_DATE)
 
-
         # 查询
+
     def btn_qry(self):
-            self.click(*TerminalPasswordLocators.BTN_QRY)
+        self.click(*TerminalPasswordLocators.BTN_QRY)

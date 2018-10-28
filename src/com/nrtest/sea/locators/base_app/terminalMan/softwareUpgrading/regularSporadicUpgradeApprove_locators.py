@@ -10,6 +10,7 @@
 
 from selenium.webdriver.common.by import By
 
+
 # 基本应用→终端管理→软件升级→常规零星升级审批
 class RegularSporadicUpgradeApproveLocator:
     # 终端厂家
@@ -28,8 +29,8 @@ class RegularSporadicUpgradeApproveLocator:
     START_DATE = (By.XPATH, '//label[contains(text(),"申请开始日期")]/../div/div/input')
     # 申请结束日期
     END_DATE = (By.XPATH, '//label[contains(text(),"申请结束日期")]/../div/div/input')
-    #批次号
-    BATCH_NO = (By.XPATH,'//label[contains(text(),"批次号")]/../div/input')
+    # 批次号
+    BATCH_NO = (By.XPATH, '//label[contains(text(),"批次号")]/../div/input')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
 

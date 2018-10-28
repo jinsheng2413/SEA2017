@@ -7,14 +7,16 @@
 @time: 2018/8/30 0030 15:30
 @desc:
 '''
-from com.nrtest.sea.task.archivesManage import *
-from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import ArchivesMaintain_factory_pages
+import unittest
+
+from com.nrtest.common.oracle_test import Oracle
 from com.nrtest.sea.data.base_app.archivesMan.archivesMaintain_para import ArchivesMaintain
 from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.oracle_test import Oracle
-import unittest
-class TestarchivesMaintain_factory(unittest.TestCase,ArchivesMaintain_factory_pages):
+from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import ArchivesMaintain_factory_pages
+from com.nrtest.sea.task.archivesManage import *
+
+
+class TestarchivesMaintain_factory(unittest.TestCase, ArchivesMaintain_factory_pages):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -34,7 +36,6 @@ class TestarchivesMaintain_factory(unittest.TestCase,ArchivesMaintain_factory_pa
 
         # self.sleep_time(2000)
 
-
     def tearDown(self):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
@@ -42,7 +43,7 @@ class TestarchivesMaintain_factory(unittest.TestCase,ArchivesMaintain_factory_pa
         """
         self.clear_values(ArchivesMaintain_factory_pages)
 
-    #电压等级
+    # 电压等级
     def test_amf_eleGrade(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesMaintain.para_test_amf_eleGrade)
         self.inputSel_eleGrade(lip[0][0])

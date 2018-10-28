@@ -8,20 +8,20 @@
 @desc:
 '''
 
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayDetail_page import \
-    OrgLowVoltDayDetailPage
+import unittest
+
+from ddt import ddt
+
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayDetail_locators import \
     OrgLowVoltDayDetailLocators
-from com.nrtest.common.dictionary import Dict
-from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayDetail_page import \
+    OrgLowVoltDayDetailPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt, data
-import unittest
 
 
 # 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
-#台区低电压日统计明细
+# 台区低电压日统计明细
 @ddt
 class TestOrgLowVoltDayDetail(unittest.TestCase, OrgLowVoltDayDetailPage):
 
@@ -32,7 +32,6 @@ class TestOrgLowVoltDayDetail(unittest.TestCase, OrgLowVoltDayDetailPage):
         clickTabPage('台区低电压日统计明细')
         cls.driver.execute_script(OrgLowVoltDayDetailLocators.START_DATE_JS)
         cls.driver.execute_script(OrgLowVoltDayDetailLocators.END_DATE_JS)
-
 
     @classmethod
     def tearDownClass(cls):

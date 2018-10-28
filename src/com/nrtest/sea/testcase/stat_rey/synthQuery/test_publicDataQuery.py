@@ -8,15 +8,15 @@
 '''
 
 import unittest
-from com.nrtest.sea.pages.stat_rey.synthQuery.publicDataQuery_page import PublicDataQueryPage
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.task.synthQuery import PublicDataQueryLog
-from com.nrtest.sea.locators.stat_rey.synthQuery.publicDataQuery_locators import PublicDataQueryLocators
 
-#统计查询→综合查询→配变数据查询
-class TestPublicDataQuery(unittest.TestCase,PublicDataQueryPage):
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.oracle_test import Oracle
+from com.nrtest.sea.pages.stat_rey.synthQuery.publicDataQuery_page import PublicDataQueryPage
+from com.nrtest.sea.task.synthQuery import PublicDataQueryLog
+
+
+# 统计查询→综合查询→配变数据查询
+class TestPublicDataQuery(unittest.TestCase, PublicDataQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -41,63 +41,63 @@ class TestPublicDataQuery(unittest.TestCase,PublicDataQueryPage):
         :return:
         """
 
-    #基本档案，查询
+    # 基本档案，查询
     @BeautifulReport.add_test_img()
     def test_a_publiccon(self):
-        #点击国网冀北电力有限公司
+        # 点击国网冀北电力有限公司
         self.inputNode_jibei()
-        #点击唐山供电公司
+        # 点击唐山供电公司
         self.inputNode_tangshan()
-        #点击直属用户
+        # 点击直属用户
         self.inputNode_directlyuser()
-        #点击国网_狮子湾农改
+        # 点击国网_狮子湾农改
         self.inputNode_shiziwan()
-        #点击查询按钮
+        # 点击查询按钮
         self.btn_search()
         self.sleep_time(2)
 
-    #数据展示，电压曲线
+    # 数据展示，电压曲线
     @BeautifulReport.add_test_img()
     def test_b_voltagecurve(self):
-        #点击数据展示
+        # 点击数据展示
         self.btn_datashow()
-        #点击数据展示→查询
+        # 点击数据展示→查询
         self.btn_voltagecurve_search()
-        #点击基本档案
+        # 点击基本档案
         self.btn_basicfile()
 
-    #数据展示，电流曲线
+    # 数据展示，电流曲线
     @BeautifulReport.add_test_img()
     def test_c_currentcurve(self):
-        #点击数据展示
+        # 点击数据展示
         self.btn_datashow()
-        #点击数据展示→电流曲线
+        # 点击数据展示→电流曲线
         self.btn_currentcurve()
-        #点击数据展示→电流曲线→查询
+        # 点击数据展示→电流曲线→查询
         self.btn_currentcurve_search()
-        #点击基本档案
+        # 点击基本档案
         self.btn_basicfile()
 
-    #数据展示，功率曲线
+    # 数据展示，功率曲线
     @BeautifulReport.add_test_img()
     def test_d_powercurve(self):
-        #点击数据展示
+        # 点击数据展示
         self.btn_datashow()
-        #点击数据展示→功率曲线
+        # 点击数据展示→功率曲线
         self.btn_powercurve()
-        #点击数据展示→功率曲线→查询
+        # 点击数据展示→功率曲线→查询
         self.btn_powercurve_search()
-        #点击基本档案
+        # 点击基本档案
         self.btn_basicfile()
 
-    #数据展示，功率因数曲线
+    # 数据展示，功率因数曲线
     @BeautifulReport.add_test_img()
     def test_e_powerfactorcurve(self):
-        #点击数据展示
+        # 点击数据展示
         self.btn_datashow()
-        #点击数据展示→功率因数曲线
+        # 点击数据展示→功率因数曲线
         self.btn_powerfactorcurve()
-        #点击数据展示→功率因数曲线→查询
+        # 点击数据展示→功率因数曲线→查询
         self.btn_powerfactorcurve_search()
-        #点击基本档案
+        # 点击基本档案
         self.btn_basicfile()

@@ -7,13 +7,15 @@
 @time: 2018/8/15 14:38
 @desc:
 '''
-from com.nrtest.sea.task.dataspecialityAnalyse import *
 import unittest
-from com.nrtest.sea.pages.stat_rey.dataAnalyse.dataspeciality_analyse_page import DataSpecialityAnalysePage
-from com.nrtest.sea.locators.stat_rey.dataAnalyse.dataspeciality_analyse_locators import DataSpecialityAnalyseLocators
-from com.nrtest.common.BeautifulReport import BeautifulReport
 
-class DataSpecialityAnalyse(unittest.TestCase,DataSpecialityAnalysePage):
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.sea.locators.stat_rey.dataAnalyse.dataspeciality_analyse_locators import DataSpecialityAnalyseLocators
+from com.nrtest.sea.pages.stat_rey.dataAnalyse.dataspeciality_analyse_page import DataSpecialityAnalysePage
+from com.nrtest.sea.task.dataspecialityAnalyse import *
+
+
+class DataSpecialityAnalyse(unittest.TestCase, DataSpecialityAnalysePage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")

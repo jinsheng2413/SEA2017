@@ -9,15 +9,18 @@
 '''
 
 import unittest
+
+from ddt import ddt, data
+
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.collConstructStatus.runMeterStatistics_page import RunMeterStatisticsPage
 from com.nrtest.sea.data.stat_rey.collConstructStatus.collConstructStatus_data import CollConstructStatus_data
+from com.nrtest.sea.pages.stat_rey.collConstructStatus.runMeterStatistics_page import RunMeterStatisticsPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
+
 
 # 统计查询→综合查询→采集建设情况→运行电能表统计→运行电能表明细
 @ddt
-class TestRunMeterStatistics_Detail(unittest.TestCase,RunMeterStatisticsPage):
+class TestRunMeterStatistics_Detail(unittest.TestCase, RunMeterStatisticsPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -45,21 +48,21 @@ class TestRunMeterStatistics_Detail(unittest.TestCase,RunMeterStatisticsPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['DETAIL_TREE_ORG_NO'])
         # 用户类型
         self.inputCSel_detail_cons_type(para['DETAIL_CONS_TYPE'])
-        #通信方式
+        # 通信方式
         self.inputCSel_detail_tmnl_way(para['DETAIL_TMNL_WAY'])
-        #通讯规约
+        # 通讯规约
         self.inputCSel_detail_tmnl_protocol(para['DETAIL_TMNL_PROTOCOL'])
-        #设备类型
+        # 设备类型
         self.inputCSel_detail_device_type(para['DETAIL_DEVICE_TYPE'])
-        #电能表厂家
+        # 电能表厂家
         self.inputCSel_detail_meter_factory(para['DETAIL_METER_FACTORY'])
-        #电能表状态
+        # 电能表状态
         self.inputCSel_detail_meter_ststus(para['DETAIL_METER_STATUS'])
-        #查询按钮
+        # 查询按钮
         self.btn_detail_search()
         self.sleep_time(5)
 

@@ -7,6 +7,8 @@
 @time: 2018/9/17 0017 10:42
 @desc:
 '''
+
+
 class ArchivesManData:
-    #基本应用--》档案管理--》
+    # 基本应用--》档案管理--》
     para_archivesQuery = '99911400'

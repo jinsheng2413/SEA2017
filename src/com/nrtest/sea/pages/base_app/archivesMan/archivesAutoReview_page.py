@@ -24,7 +24,6 @@ class ArchivesAutoReviewPage(Page):
     def inputStr_date(self, value):
         self.input(value, *ArchivesAutoReviewLocators.QRY_DATE)
 
-
     # 查询
     def btn_qry(self):
-            self.click(*ArchivesAutoReviewLocators.BTN_QRY)
+        self.click(*ArchivesAutoReviewLocators.BTN_QRY)

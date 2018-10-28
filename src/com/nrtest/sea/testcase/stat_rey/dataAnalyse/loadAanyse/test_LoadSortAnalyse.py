@@ -7,25 +7,28 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
-from com.nrtest.sea.data.stat_rey.dataAnalyse.loadAanlyse.loadAanlyse_data import LoadAanyse_data
-from com.nrtest.sea.pages.stat_rey.dataAnalyse.loadAanyse.LoadSortAnalyse_pages import LoadSortAnalysePage,LoadSortAnalyseLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
 import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.dataAnalyse.loadAanlyse.loadAanlyse_data import LoadAanyse_data
+from com.nrtest.sea.pages.stat_rey.dataAnalyse.loadAanyse.LoadSortAnalyse_pages import LoadSortAnalysePage, \
+    LoadSortAnalyseLocators
+from com.nrtest.sea.task.commonMath import *
 
 
 @ddt
-class TestDemo(unittest.TestCase,LoadSortAnalysePage):
+class TestDemo(unittest.TestCase, LoadSortAnalysePage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LoadAanyse_data.loadSortAnalyse_para,True)
+        cls.driver = openMenu(LoadAanyse_data.loadSortAnalyse_para, True)
         sleep(2)
-        cls.exec_script(cls,LoadSortAnalyseLocators.START_DATE_JS)
+        cls.exec_script(cls, LoadSortAnalyseLocators.START_DATE_JS)
         cls.exec_script(cls, LoadSortAnalyseLocators.END_DATE_JS)
 
     @classmethod
@@ -33,7 +36,6 @@ class TestDemo(unittest.TestCase,LoadSortAnalysePage):
         print("执行结束")
         # 刷新浏览器
         cls.closePages(cls)
-
 
     def setUp(self):
         """
@@ -58,15 +60,15 @@ class TestDemo(unittest.TestCase,LoadSortAnalysePage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #开始时间
+        # 开始时间
         self.inputStr_startDate(para['START_DATE'])
-        #结束时间
+        # 结束时间
         self.inputStr_end_time(para['END_TIME'])
-        #用户类型
+        # 用户类型
         self.inputSel_userType(para['USER_TYPE'])
-        #排名数量
+        # 排名数量
         self.inputStr_anking_number(para['RANKING_NUMBER'])
 
         self.btn_qry()
@@ -78,6 +80,3 @@ class TestDemo(unittest.TestCase,LoadSortAnalysePage):
     @data(*DataAccess.getCaseData(LoadAanyse_data.loadSortAnalyse_para))
     def test_query(self, para):
         self.query(para)
-
-
-

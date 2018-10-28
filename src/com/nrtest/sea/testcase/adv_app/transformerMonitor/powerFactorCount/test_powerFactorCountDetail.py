@@ -8,20 +8,21 @@
 @desc:
 '''
 
-from com.nrtest.sea.pages.adv_app.transformerMonitor.powerFactorCount.powerFactorCountDetail_page import \
-    PowerFactorCountDetailPage
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.locators.adv_app.transformerMonitor.powerFactorCount.powerFactorCountDetail_locators import \
     PowerFactorCountDetailLocators
-from com.nrtest.common.dictionary import Dict
-from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.pages.adv_app.transformerMonitor.powerFactorCount.powerFactorCountDetail_page import \
+    PowerFactorCountDetailPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt, data
-import unittest
 
 
 # 高级应用--》配变监测分析--》功率因数越限统计
-#功率因数越限明细
+# 功率因数越限明细
 @ddt
 class TestPowerFactorCountDetail(unittest.TestCase, PowerFactorCountDetailPage):
 
@@ -76,7 +77,7 @@ class TestPowerFactorCountDetail(unittest.TestCase, PowerFactorCountDetailPage):
         result = self.assert_context(*PowerFactorCountDetailLocators.TABLE_DATA)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_PowerFactorCount,'功率因数越限明细'))
+    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_PowerFactorCount, '功率因数越限明细'))
     def test_que(self, para):
         self.query(para)
 
@@ -95,6 +96,7 @@ class TestPowerFactorCountDetail(unittest.TestCase, PowerFactorCountDetailPage):
     #     # 校验
     #     result = self.assert_context(*PowerFactorCountDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -16,7 +16,7 @@ class TmnlInstallDetaiLocators:
     # 【查询条件区】
     # 终端类型
     QRY_TMNL_TYPE = (
-    By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'终端类型')]/../../div[1]/div[1]//input)[1]")
+        By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'终端类型')]/../../div[1]/div[1]//input)[1]")
     QRY_TMNL_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'负荷控制终端')]/../div[contains(text(),'%s')]")
     # 开始时间
@@ -65,7 +65,7 @@ class TmnlInstallDetaiLocators:
     QRY_PROCESS_ID_COUNT = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'流程标识')]/../../div[1]/div[1]//input)[1]")
     QRY_PROCESS_ID_COUNT_VALUE = (
-    By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'负控')]/../div[contains(text(),'%s')]")
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'负控')]/../div[contains(text(),'%s')]")
 
     # 装接类型
     QRY_MOUNTING_COUNT = (
@@ -86,23 +86,23 @@ class TmnlInstallDetaiLocators:
     # 终端类型
     QRY_TMNL_TYPE_COUNT = (By.XPATH, '//*[@id="tilldet_interfaceType"]')
 
-    #通信规约
-    QRY_LCT_COUNT = (By.XPATH,'//*[@id="protocolCodeName_tmnlTaskConfig"]')
+    # 通信规约
+    QRY_LCT_COUNT = (By.XPATH, '//*[@id="protocolCodeName_tmnlTaskConfig"]')
 
     # 【操作区】
     BTN_TMNL_QRY = (By.XPATH,
-                          "(//div[@class=\"x-column-inner\"]//tbody[@class=\"x-btn-small x-btn-icon-small-left\"]//button[contains(text(),'查询')])[2]")
+                    "(//div[@class=\"x-column-inner\"]//tbody[@class=\"x-btn-small x-btn-icon-small-left\"]//button[contains(text(),'查询')])[2]")
 
     # 【js区】
     # 开始时间，删除readonly属性
     START_DATE_JS_COUNT = 'document.getElementById("tmnlStartDate").removeAttribute("readonly");'
     # 结束时间，删除readonly属性
     END_DATE_JS_COUNT = 'document.getElementById("tmnlEndDate").removeAttribute("readonly");'
-    #终端厂家
+    # 终端厂家
     TMNL_FACTORY_JS_COUNT = 'document.getElementById("anhuitmnlFacRadiocombo").removeAttribute("readonly");'
     # 终端类型
     TMNL_TYPE_JS_COUNT = 'document.getElementById("tilldet_interfaceType").removeAttribute("readonly");'
     # 通信规约
     LCT_JS_COUNT = 'document.getElementById("protocolCodeName_tmnlTaskConfig").removeAttribute("readonly");'
-    #电表类型
+    # 电表类型
     METER_TYPE_JS_COUNT = 'document.getElementsByTagName(\'input\')[29].removeAttribute("readonly");'

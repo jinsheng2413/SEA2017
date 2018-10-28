@@ -9,15 +9,18 @@
 '''
 
 import unittest
+
+from ddt import ddt, data
+
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryPage
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
+
 
 # 统计查询→综合查询→巡检仪数据查询→曲线数据
 @ddt
-class TestPatrolDataQuery_CurveData(unittest.TestCase,PatrolDataQueryPage):
+class TestPatrolDataQuery_CurveData(unittest.TestCase, PatrolDataQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -45,15 +48,15 @@ class TestPatrolDataQuery_CurveData(unittest.TestCase,PatrolDataQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #用户编号
+        # 用户编号
         self.inputStr_curve_data_cons_no(para['CURVE_DATA_CONS_NO'])
         # 终端地址
         self.inputStr_curve_data_tmnl_addr(para['CURVE_DATA_TMNL_ADDR'])
-        #曲线类型
+        # 曲线类型
         self.inputSel_curve_data_curve_type(para['CURVE_DATA_CURVE_TYPE'])
-        #查询按钮
+        # 查询按钮
         self.btn_curve_data_search()
 
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para))

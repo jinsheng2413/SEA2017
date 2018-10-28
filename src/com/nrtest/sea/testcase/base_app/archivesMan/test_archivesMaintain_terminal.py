@@ -7,14 +7,16 @@
 @time: 2018/8/30 0030 15:30
 @desc:
 '''
-from com.nrtest.sea.task.archivesManage import *
-from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import ArchivesMaintain_terminal_pages
+import unittest
+
+from com.nrtest.common.oracle_test import Oracle
 from com.nrtest.sea.data.base_app.archivesMan.archivesMaintain_para import ArchivesMaintain
 from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.oracle_test import Oracle
-import unittest
-class TestarchivesMaintain_terminal(unittest.TestCase,ArchivesMaintain_terminal_pages):
+from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import ArchivesMaintain_terminal_pages
+from com.nrtest.sea.task.archivesManage import *
+
+
+class TestarchivesMaintain_terminal(unittest.TestCase, ArchivesMaintain_terminal_pages):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -33,7 +35,6 @@ class TestarchivesMaintain_terminal(unittest.TestCase,ArchivesMaintain_terminal_
         """
 
         # self.sleep_time(2000)
-    
 
     def tearDown(self):
         """
@@ -42,7 +43,7 @@ class TestarchivesMaintain_terminal(unittest.TestCase,ArchivesMaintain_terminal_
         """
         self.clear_values(ArchivesMaintain_terminal_pages)
 
-    #厂家名称
+    # 厂家名称
     def test_amt_factoryName(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesMaintain.para_test_amt_factoryName)
         self.inputSel_factoryNmae(lip[0][0])

@@ -9,18 +9,19 @@
 '''
 
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeTaskExecution_locators import UpgradeTaskExecutionLocators
-from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeTaskExecution_page import UpgradeTaskExecutionPage
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
-from com.nrtest.sea.task.commonMath import *
+
 import ddt
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
+from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeTaskExecution_page import \
+    UpgradeTaskExecutionPage
+from com.nrtest.sea.task.commonMath import *
+
 
 # 基本应用→终端管理→软件升级→升级任务执行
 @ddt.ddt
-class TestUpgradeTaskExecution(unittest.TestCase,UpgradeTaskExecutionPage):
+class TestUpgradeTaskExecution(unittest.TestCase, UpgradeTaskExecutionPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -49,27 +50,26 @@ class TestUpgradeTaskExecution(unittest.TestCase,UpgradeTaskExecutionPage):
         # 回收左边树
         self.recoverLeftTree()
 
-
     def query(self, para):
-        #打开左边树选择供电单位
+        # 打开左边树选择供电单位
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #终端厂家
+        # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        #终端类型
+        # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
-        #终端用途
+        # 终端用途
         self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
-        #开始时间
+        # 开始时间
         self.inputDt_start_date(para['START_DATE'])
-        #结束时间
+        # 结束时间
         self.inputDt_end_date(para['END_DATE'])
-        #批次号
+        # 批次号
         self.inputStr_batch_no(para['BATCH_NO'])
-        #升级目的
+        # 升级目的
         self.inputSel_upgrade_purpose(para['UPGRADE_PURPOSE'])
-        #升级类型
+        # 升级类型
         self.inputSel_upgrade_type(para['UPGRADE_TYPE'])
-        #执行状态
+        # 执行状态
         self.inputSel_execution_state(para['EXECUTION_STATE'])
         # 点击查询按钮
         self.btn_search()

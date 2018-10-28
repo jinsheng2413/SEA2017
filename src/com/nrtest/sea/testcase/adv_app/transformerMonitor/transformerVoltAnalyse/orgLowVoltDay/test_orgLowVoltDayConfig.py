@@ -8,20 +8,20 @@
 @desc:
 '''
 
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayConfig_page import \
-    OrgLowVoltDayConfigPage
+import unittest
+
+from ddt import ddt
+
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayConfig_locators import \
     OrgLowVoltDayConfigLocators
-from com.nrtest.common.dictionary import Dict
-from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayConfig_page import \
+    OrgLowVoltDayConfigPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt, data
-import unittest
 
 
 # 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
-#低压用户电压监测配置
+# 低压用户电压监测配置
 @ddt
 class TestOrgLowVoltDayConfig(unittest.TestCase, OrgLowVoltDayConfigPage):
 

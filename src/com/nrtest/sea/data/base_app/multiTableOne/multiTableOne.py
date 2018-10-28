@@ -7,6 +7,8 @@
 @time: 2018/10/17 0017 15:10
 @desc:
 '''
+
+
 class MultiTableOne:
-    #基本应用--》多表合一--》协议管理
+    # 基本应用--》多表合一--》协议管理
     protocolLibManage_para = '99917100'

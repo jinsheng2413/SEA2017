@@ -27,7 +27,6 @@ class PrePaidStatusPage(Page):
         print(locator)
         self.click(*locator)
 
-
     # 开始时间
     def inputStr_start_timeOne(self, value):
         self.input(value, *PrePaidStatus_Locators.QRY_START_TIME_ONE)
@@ -44,7 +43,7 @@ class PrePaidStatusPage(Page):
 
     # 查询
     def btn_qryOne(self):
-            self.click(*PrePaidStatus_Locators.BTN_QRY_ONE)
+        self.click(*PrePaidStatus_Locators.BTN_QRY_ONE)
 
     def btn_qryTwo(self):
-            self.click(*PrePaidStatus_Locators.BTN_QRY_TWO)
+        self.click(*PrePaidStatus_Locators.BTN_QRY_TWO)

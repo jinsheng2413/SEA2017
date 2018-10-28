@@ -64,5 +64,5 @@ class TestArchivesQuery(unittest.TestCase, ArchivesQueryPages):
     @data(*DataAccess.getCaseData(ArchivesManData.para_archivesQuery))
     def test_query(self, para):
         # ljf getCaseData已处理Dict，此处不需要再转
-        #self.query(Dict(para))
+        # self.query(Dict(para))
         self.query(para)

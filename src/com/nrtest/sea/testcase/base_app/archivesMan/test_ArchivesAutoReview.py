@@ -7,17 +7,21 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
-from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
-from com.nrtest.sea.pages.base_app.archivesMan.archivesAutoReview_page import ArchivesAutoReviewPage,ArchivesAutoReviewLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
 import unittest
 from time import sleep
 
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
+from com.nrtest.sea.pages.base_app.archivesMan.archivesAutoReview_page import ArchivesAutoReviewPage, \
+    ArchivesAutoReviewLocators
+from com.nrtest.sea.task.commonMath import *
+
+
 # 基本应用--》档案管理--》电表批量导出（冀北）
 @ddt
-class TestArchivesAutoRevie(unittest.TestCase,ArchivesAutoReviewPage):
+class TestArchivesAutoRevie(unittest.TestCase, ArchivesAutoReviewPage):
 
     @classmethod
     def setUpClass(cls):
@@ -25,7 +29,7 @@ class TestArchivesAutoRevie(unittest.TestCase,ArchivesAutoReviewPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(ArchivesMan_data.archivesAutoReview_para)
         sleep(2)
-        cls.exec_script(cls,ArchivesAutoReviewLocators.DATE_JS)
+        cls.exec_script(cls, ArchivesAutoReviewLocators.DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -57,9 +61,9 @@ class TestArchivesAutoRevie(unittest.TestCase,ArchivesAutoReviewPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #选择导入电表信息
+        # 选择导入电表信息
         self.inputSel_leadInto_meter_info(para['LEADINTO_METER'])
-        #输入日期
+        # 输入日期
         self.inputStr_date(para['DATE'])
 
         self.btn_qry()
@@ -71,6 +75,3 @@ class TestArchivesAutoRevie(unittest.TestCase,ArchivesAutoReviewPage):
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesAutoReview_para))
     def test_query(self, para):
         self.query(para)
-
-
-

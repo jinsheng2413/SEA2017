@@ -7,9 +7,10 @@
 @time: 2018/8/26 0026 17:55
 @desc:
 '''
-import requests
-from time import sleep
 import os
+from time import sleep
+
+import requests
 
 fobj = open('C:/Users/Administrator/Desktop/接口/tte.txt', 'r')
 i = 0
@@ -17,9 +18,9 @@ for eachline in fobj:
     i = i + 1
     path = "D:/pdg/"
     # path存放图片的路径
-    res = os.path.isfile(path+str(i)+".jpg")
+    res = os.path.isfile(path + str(i) + ".jpg")
     if res is True:
-        print(path+str(i) + ".jpg " + "已经存在")
+        print(path + str(i) + ".jpg " + "已经存在")
         continue
     name = i
     r = requests.get(eachline)  # create HTTP response object
@@ -27,6 +28,3 @@ for eachline in fobj:
         f.write(r.content)
     # 延迟时间
     sleep(2)
-
-
-

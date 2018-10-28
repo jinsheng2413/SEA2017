@@ -45,7 +45,7 @@ def clickTabPage(name):
     locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[text()='{0}']".format(name))
     print(locators)
     p.click(*locators)
-    #return p.driver
+    # return p.driver
 
 
 if __name__ == "__main__":

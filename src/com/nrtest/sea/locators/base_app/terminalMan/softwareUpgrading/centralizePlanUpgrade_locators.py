@@ -10,9 +10,10 @@
 
 from selenium.webdriver.common.by import By
 
+
 # 基本应用→终端管理→软件升级→集中计划升级
 class CentralizePlanUpgradeLocators:
-#集中计划升级
+    # 集中计划升级
     # 终端厂家
     TMNL_FACTORY = (By.XPATH, '//label[contains(text(),"终端厂家")]/../div/div/img')
     # 终端厂家→值
@@ -29,12 +30,12 @@ class CentralizePlanUpgradeLocators:
     START_DATE = (By.XPATH, '//label[contains(text(),"开始时间")]/../div/div/input')
     # 结束时间
     END_DATE = (By.XPATH, '//label[contains(text(),"结束时间")]/../div/div/input')
-    #批次号
-    BATCH_NO = (By.XPATH,'//label[contains(text(),"批次号")]/../div/input')
+    # 批次号
+    BATCH_NO = (By.XPATH, '//label[contains(text(),"批次号")]/../div/input')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
 
-#制定计划
+    # 制定计划
     # 终端厂家
     TAB_TMNL_FACTORY = (By.XPATH, '(//label[contains(text(),"终端厂家")]/../div/div/img)[2]')
     # 终端厂家→值
@@ -54,7 +55,7 @@ class CentralizePlanUpgradeLocators:
     # 查询按钮
     TAB_BTN_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[2]')
 
-# 【JS属性】
+    # 【JS属性】
     # 开始时间，删除readonly属性
     START_DATE_JS = 'document.getElementsByTagName("input")[7].removeAttribute("readonly");'
     # 结束时间，删除readonly属性

@@ -7,16 +7,19 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 '''
-from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
-from com.nrtest.sea.pages.adv_app.costControlManage.eleParaManLocators_pages import EleParaManPage,EleParaManLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
+from com.nrtest.sea.pages.adv_app.costControlManage.eleParaManLocators_pages import EleParaManPage, EleParaManLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 # 高级应用--》费控管理--》本地费控--》电价参数管理
 @ddt
-class TestDemo(unittest.TestCase,EleParaManPage):
+class TestDemo(unittest.TestCase, EleParaManPage):
 
     @classmethod
     def setUpClass(cls):
@@ -54,13 +57,13 @@ class TestDemo(unittest.TestCase,EleParaManPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #开始时间
+        # 开始时间
         self.inputStr_startTimeOne(para['START_TIME'])
-        #结束时间
+        # 结束时间
         self.inputStr_EndTimeOne(para['END_TIME'])
-        #是否已生成参数
+        # 是否已生成参数
         self.inputSel_ComeIntoPara_One()
 
         self.btn_qry()
@@ -68,7 +71,6 @@ class TestDemo(unittest.TestCase,EleParaManPage):
         # 校验
         result = self.assert_context(*EleParaManLocators.TAB_ONE)
         self.assertTrue(result)
-
 
     def gradeQuery(self, para):
         '''
@@ -78,7 +80,7 @@ class TestDemo(unittest.TestCase,EleParaManPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 开始时间
         self.inputStr_startTimeTwo(para['START_TIME'])
@@ -95,6 +97,3 @@ class TestDemo(unittest.TestCase,EleParaManPage):
     @data(*DataAccess.getCaseData(CostControlManage_data.eleParaMan_para))
     def test_query(self, para):
         self.query(para)
-
-
-

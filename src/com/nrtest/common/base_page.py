@@ -172,7 +172,7 @@ class Page():
 
         try:
             # 利用显示等待判断元素是否已经出现
-            WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator))
             # 定位元素
             element = self.driver.find_element(*locator)
 
@@ -644,14 +644,18 @@ class Page():
         """
 
         # ****定位到要右击的元素**
+
         loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
+
         right_click = self.driver.find_element(*loc)
         # 鼠标右键操作
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
         ActionChains(self.driver).context_click(right_click).perform()
 
         # 待定位右键菜单
         forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
         loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
         self.driver.find_element(*loc).click()
 
     @staticmethod

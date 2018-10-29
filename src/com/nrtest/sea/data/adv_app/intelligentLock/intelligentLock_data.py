@@ -15,3 +15,5 @@ class IntelligentLock_data:
     SecurityControl_para = '99992200'
     #高级应用→智能锁具→记录查询
     RecordsQuery_para = '99992300'
+    #高级应用→智能锁具→权限查询及删除
+    SecurityQueryAndDelete_para = '99992500'

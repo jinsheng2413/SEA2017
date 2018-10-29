@@ -1,22 +1,26 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_demo.py
 @time: 2018/9/10 0010 9:21
 @desc:
-'''
-from com.nrtest.sea.data.stat_rey.dataAnalyse.loadrankanalyse_para import LoadRankAnalyse_para
-from com.nrtest.sea.pages.stat_rey.dataAnalyse.gisPanoramaDisplay_page import GisPanoramaDisplayPage,GisPanoramaDisplayLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
+"""
 import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.dataAnalyse.loadrankanalyse_para import LoadRankAnalyse_para
+from com.nrtest.sea.pages.stat_rey.dataAnalyse.gisPanoramaDisplay_page import GisPanoramaDisplayPage, \
+    GisPanoramaDisplayLocators
+from com.nrtest.sea.task.commonMath import *
 
 
 @ddt
-class TestGisPanoramaDisplay(unittest.TestCase,GisPanoramaDisplayPage):
+class TestGisPanoramaDisplay(unittest.TestCase, GisPanoramaDisplayPage):
 
     @classmethod
     def setUpClass(cls):
@@ -48,20 +52,20 @@ class TestGisPanoramaDisplay(unittest.TestCase,GisPanoramaDisplayPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #用户类型
+        # 用户类型
         self.inputSel_userType(para['USER_TYPE'])
-        #逐日显示
+        # 逐日显示
         self.inputStr_day_display(para['DAY_DISPLAY'])
-        #查询日期
+        # 查询日期
         self.inputStr_query_time(para['DATE'])
         self.btn_qry()
         self.sleep_time(2)
@@ -72,6 +76,3 @@ class TestGisPanoramaDisplay(unittest.TestCase,GisPanoramaDisplayPage):
     @data(*DataAccess.getCaseData(LoadRankAnalyse_para.gisPanoramaDisplay_para))
     def test_query(self, para):
         self.query(para)
-
-
-

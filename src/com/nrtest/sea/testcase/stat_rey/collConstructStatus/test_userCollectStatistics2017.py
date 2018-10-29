@@ -1,25 +1,27 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_userCollectStatistics.py
 @time: 2018/10/24 14:19
 @desc:
-'''
+"""
 
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.locators.stat_rey.collConstructStatus.userCollectStatistics_locators import \
-    UserCollectStatisticsLocators
-from com.nrtest.sea.pages.stat_rey.collConstructStatus.userCollectStatistics2017_page import UserCollectStatistics2017Page
-from com.nrtest.sea.data.stat_rey.collConstructStatus.collConstructStatus_data import CollConstructStatus_data
-from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
 
-#统计查询→综合查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计2017
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.collConstructStatus.collConstructStatus_data import CollConstructStatus_data
+from com.nrtest.sea.pages.stat_rey.collConstructStatus.userCollectStatistics2017_page import \
+    UserCollectStatistics2017Page
+from com.nrtest.sea.task.commonMath import *
+
+
+# 统计查询→综合查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计2017
 @ddt
-class TestUserCollectStatistics2017(unittest.TestCase,UserCollectStatistics2017Page):
+class TestUserCollectStatistics2017(unittest.TestCase, UserCollectStatistics2017Page):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -47,15 +49,15 @@ class TestUserCollectStatistics2017(unittest.TestCase,UserCollectStatistics2017P
         # self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
-        #统计月份
+        # 统计月份
         self.inputDt_date(para['DATE'])
         # 统计口径
         self.inputSel_statistics_caliber(para['STATISTICS_CALIBER'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
         # #校验
         # result = self.assert_context(*UserCollectStatisticsLocators.CHECK_FIRST)

@@ -1,23 +1,30 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_demo.py
 @time: 2018/9/10 0010 9:21
 @desc:
-'''
+"""
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.remoteCustControl.remoteCustControl_data import \
     RemoteCustControl_data
-from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.ctrlExecutSpec_page import CtrlExecutSpecPage,CtrlExecutSpecLocators
+from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.ctrlExecutSpec_page import CtrlExecutSpecPage, \
+    CtrlExecutSpecLocators
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-import unittest
+
+
 # 高级应用--》费控管理--》远程费控--》专变用户远程费控执行
-CtrlExecutSpecPage
+# CtrlExecutSpecPage
+
+
 @ddt
-class TestDemo(unittest.TestCase,CtrlExecutSpecPage):
+class TestDemo(unittest.TestCase, CtrlExecutSpecPage):
 
     @classmethod
     def setUpClass(cls):
@@ -43,35 +50,34 @@ class TestDemo(unittest.TestCase,CtrlExecutSpecPage):
         :return:
         """
 
-
         # 回收左边树
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #输入用户编号
+        # 输入用户编号
         self.inputStr_userNo(para["USER_NO"])
-        #输入用户名称
+        # 输入用户名称
         self.inputStr_userName(para['USER_NAME'])
-        #终端地址
+        # 终端地址
         self.inputStr_tmnlAddr(para['TMNL_ADDR'])
-        #控制类型
+        # 控制类型
         self.inputRSel_controlType(para['CONTROL_TYPE'])
-        #执行状态
+        # 执行状态
         self.inputSel_exeStatus(para['EXE_STATUS'])
-        #工单号
+        # 工单号
         self.inputStr_workOrder(para['WORK_ORDER'])
-        #开始时间
+        # 开始时间
         self.inputStr_startTime(para['START_TIME'])
-       #结束时间
+        # 结束时间
         self.inputStr_endTime(para['END_TIME'])
         self.btn_qry()
         self.sleep_time(2)
@@ -82,6 +88,3 @@ class TestDemo(unittest.TestCase,CtrlExecutSpecPage):
     @data(*DataAccess.getCaseData(RemoteCustControl_data.CtrlExecutSpec_para))
     def test_query(self, para):
         self.query(para)
-
-
-

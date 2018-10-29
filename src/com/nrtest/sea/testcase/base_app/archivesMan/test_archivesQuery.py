@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_archivesManage.py
 @time: 2018/8/29 0029 14:26
 @desc:
-'''
+"""
 import unittest
 
 from ddt import ddt, data
@@ -64,5 +64,5 @@ class TestArchivesQuery(unittest.TestCase, ArchivesQueryPages):
     @data(*DataAccess.getCaseData(ArchivesManData.para_archivesQuery))
     def test_query(self, para):
         # ljf getCaseData已处理Dict，此处不需要再转
-        #self.query(Dict(para))
+        # self.query(Dict(para))
         self.query(para)

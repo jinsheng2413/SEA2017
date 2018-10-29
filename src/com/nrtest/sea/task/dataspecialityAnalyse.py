@@ -1,16 +1,16 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 邵茜
 @license: (C) Copyright 2018, Nari.
 @file: dataspecialityAnalyse.py
 @time: 2018/8/15 14:26
 @desc:
-'''
-from com.nrtest.sea.pages.stat_rey.dataAnalyse.dataspeciality_analyse_page import DataSpecialityAnalyseLocators
-from com.nrtest.sea.task.login import Login
+"""
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.pages.other.common_page import Common_page
+from com.nrtest.sea.task.login import Login
+
 
 def dataspecialityanalyse():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
@@ -25,5 +25,6 @@ def dataspecialityanalyse():
 
     return cp.driver
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     dataspecialityanalyse()

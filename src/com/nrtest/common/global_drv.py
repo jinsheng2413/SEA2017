@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 李建方
 @license: (C) Copyright 2018, Nari.
 @file: global_drv.py
 @time: 2018-09-10 18:30
 @desc:
-'''
+"""
 
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.task.login import Login

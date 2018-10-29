@@ -1,17 +1,16 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: lowUserBuyEleParaGiveOut_page.py
 @time: 2018/8/22 0022 11:31
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.eventRecResultStat_locators import \
     EventRecResultStatLocators
-
 
 
 class EventRecResultStatPage(Page):
@@ -29,7 +28,6 @@ class EventRecResultStatPage(Page):
     def inputStr_end_time(self, value):
         self.input(value, *EventRecResultStatLocators.QRY_END_TIME)
 
-
     # 查询
     def btn_qry(self):
-            self.click(*EventRecResultStatLocators.BTN_QRY)
+        self.click(*EventRecResultStatLocators.BTN_QRY)

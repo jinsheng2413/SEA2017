@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: lowUserBuyEleParaGiveOut_page.py
 @time: 2018/8/22 0022 11:31
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.dataAnalyse.powerSortAnalyse_locators import PowerSortAnalyseLocators
@@ -32,5 +32,6 @@ class PowerSortAnalysePage(Page):
         self.input(value, *PowerSortAnalyseLocators.QRY_END_TIME)
 
         # 查询
+
     def btn_qry(self):
-            self.click(*PowerSortAnalyseLocators.BTN_QRY)
+        self.click(*PowerSortAnalyseLocators.BTN_QRY)

@@ -1,23 +1,26 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_meterSuccessRateQuery.py
 @time: 2018/10/10 15:07
 @desc:
-'''
+"""
 
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.meterSuccessRateQuery_page import MeterSuccessRateQueryPage
-from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.task.commonMath import *
+
 import ddt
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.meterSuccessRateQuery_page import MeterSuccessRateQueryPage
+from com.nrtest.sea.task.commonMath import *
+
 
 # 统计查询→综合查询→抄表成功率查询（河北）
 @ddt.ddt
-class TestAllEventMeterEventQuery(unittest.TestCase,MeterSuccessRateQueryPage):
+class TestAllEventMeterEventQuery(unittest.TestCase, MeterSuccessRateQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -45,7 +48,7 @@ class TestAllEventMeterEventQuery(unittest.TestCase,MeterSuccessRateQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 日期
         self.inputDt_factory_date(para['FACTORY_DATE'])
@@ -53,7 +56,7 @@ class TestAllEventMeterEventQuery(unittest.TestCase,MeterSuccessRateQueryPage):
         self.inputCSel_factory_cons_type(para['FACTORY_CONS_TYPE'])
         # 终端类型
         self.inputCSel_factory_tmnl_type(para['FACTORY_TMNL_TYPE'])
-        #查询按钮
+        # 查询按钮
         self.factory_btn_search()
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.MeterSuccessRateQuery_para))

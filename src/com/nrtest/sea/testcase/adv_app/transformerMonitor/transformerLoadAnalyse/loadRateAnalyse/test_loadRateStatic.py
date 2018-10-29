@@ -1,23 +1,24 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: loadRateStatic_locators.py
 @time: 2018/9/24 20:42
 @desc:
-'''
+"""
 
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse.loadRateStatic_page import \
-    LoadRateStaticPage
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse.loadRateStatic_locators import \
     LoadRateStaticLocators
-from com.nrtest.common.dictionary import Dict
-from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse.loadRateStatic_page import \
+    LoadRateStaticPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt, data
-import unittest
 
 
 # 高级应用--》配变负载分析--》负载率分析
@@ -54,11 +55,11 @@ class TestLoadRateStatic(unittest.TestCase, LoadRateStaticPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
         # 供电单位
         openLeftTree(para['ORG_NO'])

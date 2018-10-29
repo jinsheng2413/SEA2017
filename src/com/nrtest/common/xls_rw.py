@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: xls_rw.py
@@ -27,7 +27,7 @@
 5.方法名：close
           说明：关闭excel
 
-'''
+"""
 from openpyxl import load_workbook
 
 
@@ -35,13 +35,12 @@ class XlsRw(object):
     def __init__(self, filename):
         self.filename = filename
         self.wb = load_workbook(self.filename)
-        #获取sheet页
+        # 获取sheet页
         self.ws = self.wb.worksheets[0]
-        #获取最大行数
+        # 获取最大行数
         self.r_row = self.wb.worksheets[0].max_row
-        #获取最大列数
+        # 获取最大列数
         self.c_col = self.wb.worksheets[0].max_column
-
 
     def write(self, row, col, value):
         """
@@ -55,7 +54,6 @@ class XlsRw(object):
         self.ws.cell(row, col).value = value
         self.wb.save(self.filename)
 
-
     def read(self, i, l):
         """
         方法名：read
@@ -64,9 +62,8 @@ class XlsRw(object):
         :param l: excel具体行数
         :return: 返回单元格读取内容
         """
-        str = self.ws.cell(i, l).value
-        return str
-
+        val = self.ws.cell(i, l).value
+        return val
 
     def read_row_out(self, row):
         """
@@ -77,38 +74,38 @@ class XlsRw(object):
         """
         line = self.ws.max_column
 
-        list = []
+        ls = []
         for i in range(1, line + 1):
-            str = self.ws.cell(row, i).value
-            list.append(str)
+            val = self.ws.cell(row, i).value
+            ls.append(val)
 
-        return list
+        return ls
 
     # 按行写入表格
-    def write_into_row(self, row, list):
+    def write_into_row(self, row, ls):
         """
         方法名：write_into_row
         说明按行写入excel表格
         :param row: 具体哪一行
-        :param list: 要写入的一行数据列表
+        :param ls: 要写入的一行数据列表
         """
-        self.ws.cell(row, 1).value = list[0]
-        for i in range(1, len(list)):
-            self.ws.cell(row, i + 1).value = list[i]
+        self.ws.cell(row, 1).value = ls[0]
+        for i in range(1, len(ls)):
+            self.ws.cell(row, i + 1).value = ls[i]
 
         self.wb.save(self.filename)
         # 获取最大行数
 
     def excel_table(self, filepath):
-        '''
+        """
         excel参数化时应用
         :param filepath:excl地址
         :return:返回读取数据：[{},{}]
-        '''
+        """
         t = XlsRw(filepath)
         lister = []
 
-        for rownumber in range(1, t.r_row+1):
+        for rownumber in range(1, t.r_row + 1):
             app = {}
             for i in range((len(t.read_row_out(rownumber)))):
                 app.setdefault(t.read_row_out(1)[i], t.read_row_out(rownumber)[i])
@@ -116,9 +113,7 @@ class XlsRw(object):
             lister.append(app)
         del lister[0]
 
-
         return lister
-
 
     def close(self):
         """
@@ -128,8 +123,6 @@ class XlsRw(object):
         self.wb.close()
 
 
-
 if __name__ == '__main__':
     p = XlsRw('D:/excel/text.xlsx')
-    print(p.write(4,5,'测试电视剧覅'))
-
+    print(p.write(4, 5, '测试电视剧覅'))

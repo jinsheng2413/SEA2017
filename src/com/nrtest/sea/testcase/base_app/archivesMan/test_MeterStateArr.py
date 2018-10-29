@@ -1,22 +1,24 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_demo.py
 @time: 2018/9/10 0010 9:21
 @desc:
-'''
-from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
-from com.nrtest.sea.pages.base_app.archivesMan.meterStateArrPage import MeterStateArrPage,MeterStateArrLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
+"""
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
+from com.nrtest.sea.pages.base_app.archivesMan.meterStateArrPage import MeterStateArrPage, MeterStateArrLocators
+from com.nrtest.sea.task.commonMath import *
 
 
 @ddt
-class TestMeterStateArr(unittest.TestCase,MeterStateArrPage):
+class TestMeterStateArr(unittest.TestCase, MeterStateArrPage):
 
     @classmethod
     def setUpClass(cls):
@@ -47,20 +49,20 @@ class TestMeterStateArr(unittest.TestCase,MeterStateArrPage):
         self.recoverLeftTree()
 
     def TmnlQuery(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #终端状态
+        # 终端状态
         self.inputSel_tmnlStatus(para["TMNL_STATUS"])
-        #终端类型
+        # 终端类型
         self.inputSel_tmnlType(para["TMNL_TYPE"])
-        #终端地址
+        # 终端地址
         self.inputStr_tmnlAddr(para["TMNL_ADDR"])
 
         self.btn_tmnl_qry()
@@ -74,12 +76,12 @@ class TestMeterStateArr(unittest.TestCase,MeterStateArrPage):
         self.TmnlQuery(para)
 
     # def MeterQuery(self, para):
-    #     '''
+    #     """
     #
     #     :param para: Dict类型的字典，不是dict
     #     ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
     #     key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-    #     '''
+    #     """
     #
     #     #打开左边树并选择
     #     self.driver = openLeftTree(para['ORG_NO'])

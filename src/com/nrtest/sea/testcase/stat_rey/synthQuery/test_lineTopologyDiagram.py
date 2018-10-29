@@ -1,23 +1,26 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_lineTopologyDiagram.py
 @time: 2018/10/8 14:39
 @desc:
-'''
+"""
 
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.lineTopologyDiagram_page import LineTopoLogyDiagramPage
-from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.task.commonMath import *
+
 import ddt
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.lineTopologyDiagram_page import LineTopoLogyDiagramPage
+from com.nrtest.sea.task.commonMath import *
+
 
 # 统计查询→综合查询→线路拓扑图
 @ddt.ddt
-class TestLineTopologyDiagram(unittest.TestCase,LineTopoLogyDiagramPage):
+class TestLineTopologyDiagram(unittest.TestCase, LineTopoLogyDiagramPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -45,11 +48,11 @@ class TestLineTopologyDiagram(unittest.TestCase,LineTopoLogyDiagramPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #线路名称
+        # 线路名称
         self.inputSel_line_name(para['LINE_NAME'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.LineTopologyDiagram_para))

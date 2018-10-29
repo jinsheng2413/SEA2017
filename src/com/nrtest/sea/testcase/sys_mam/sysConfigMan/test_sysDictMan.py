@@ -1,20 +1,21 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: test_sysDictMan.py
 @time: 2018/9/13 11:23
 @desc:
-'''
-from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysDictMan_page import SysDictManPage
+"""
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysConfigMan.sysConfigMan_data import SysConfigManData
 from com.nrtest.sea.locators.sys_mam.sysConfigMan.sysDictMan_locators import SysDictManLocators
-from com.nrtest.common.dictionary import Dict
-from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysDictMan_page import SysDictManPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt, data
-import unittest
 
 
 # 系统管理--》系统配置管理--》数据字典管理
@@ -46,16 +47,16 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
         :return:
         """
         # 去除查询干扰数据(要传入对应的page页面类)
-        #self.clear_values(SysDictManPage)
+        # self.clear_values(SysDictManPage)
         # 回收左边树
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
         # 分类名称
         self.inputStr_catalog_name(para['CATALOG_NAME'])
@@ -76,8 +77,6 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
         result = self.assert_context(*SysDictManLocators.TAB_ONE)
         self.assertTrue(result)
 
-
-
     # @ddt.data(*DataCommon.do.getCaseData())
     @data(*DataAccess.getCaseData(SysConfigManData.para_SysDictMan))
     def test_que(self, para):
@@ -86,4 +85,3 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
 
 if __name__ == '__main__':
     unittest.main()
-

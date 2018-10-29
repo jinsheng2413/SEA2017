@@ -1,28 +1,27 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_upgradeEditionApprove.py
 @time: 2018/9/27 16:17
 @desc:
-'''
+"""
 
-from com.nrtest.common.dictionary import Dict
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEditionApprove_locators import UpgradeEditionApproveLocators
-from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionApprove_page import UpgradeEditionApprovePage
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
-from com.nrtest.sea.task.commonMath import *
+
 import ddt
-from com.nrtest.common.base_page import *
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
+from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionApprove_page import \
+    UpgradeEditionApprovePage
+from com.nrtest.sea.task.commonMath import *
+
 
 # 基本应用→终端管理→软件升级→升级版本审批
 @ddt.ddt
-class TestUpgradeEditionApprove(unittest.TestCase,UpgradeEditionApprovePage):
+class TestUpgradeEditionApprove(unittest.TestCase, UpgradeEditionApprovePage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -51,19 +50,18 @@ class TestUpgradeEditionApprove(unittest.TestCase,UpgradeEditionApprovePage):
         # 回收左边树
         self.recoverLeftTree()
 
-
     def query(self, para):
-        #终端厂家
+        # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        #终端类型
+        # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
-        #终端用途
+        # 终端用途
         self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
-        #申请状态
+        # 申请状态
         self.inputSel_apply_status(para['APPLY_STATUS'])
-        #申请开始日期
+        # 申请开始日期
         self.inputDt_start_date(para['START_DATE'])
-        #申请结束日期
+        # 申请结束日期
         self.inputDt_end_date(para['END_DATE'])
         # 点击查询按钮
         self.btn_search()

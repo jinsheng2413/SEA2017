@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: dataGatherMan_data.py
 @time: 2018/9/28 0028 14:51
 @desc:
-'''
+"""
 
 
 class DataGatherMan_data:
@@ -24,5 +24,5 @@ class DataGatherMan_data:
     terminalPassword_para = '99912700'
     # 基本应用→终端管理→终端离线明细
     terminalVersion_para = '99912950'
-    #基本应用--》数据采集管理--》数据召测--》批量巡测
+    # 基本应用--》数据采集管理--》数据召测--》批量巡测
     batchFetch_para = '99913340'

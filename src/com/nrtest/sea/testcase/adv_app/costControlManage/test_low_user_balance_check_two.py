@@ -1,28 +1,28 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_low_user_balance_check_one.py
 @time: 2018/8/10 0010 11:03
 @desc:
-'''
+"""
 import unittest
-from com.nrtest.sea.pages.adv_app.costControlManage.lowUserMoneyCheck_Page import BalanceCheck_page
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.task.feiMange import *
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.data.adv_app.costControlManage.lowUserBalancecheck_para import LowUserBalanceCheck_para
-from com.nrtest.sea.locators.adv_app.costControlManage.costControlManage_page_locators import CostControlManagePageLocators
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.locators.adv_app.costControlManage.lowUserMoneyCheck_locators import BalanceCheckLocator
 
-#高级应用--》费控管理--》本地费控--》抵押用户余额查看
-class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.oracle_test import Oracle
+from com.nrtest.sea.data.adv_app.costControlManage.lowUserBalancecheck_para import LowUserBalanceCheck_para
+from com.nrtest.sea.data.common.data_common import DataCommon
+from com.nrtest.sea.locators.adv_app.costControlManage.lowUserMoneyCheck_locators import BalanceCheckLocator
+from com.nrtest.sea.task.feiMange import *
+
+
+# 高级应用--》费控管理--》本地费控--》抵押用户余额查看
+class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver =low_user_money_check_two()
+        cls.driver = low_user_money_check_two()
         cls.orl = Oracle()
 
     @classmethod
@@ -36,23 +36,20 @@ class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
         :return:
         """
 
-
-
-
-
     def tearDown(self):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
         self.clear_values(BalanceCheck_page)
-    #指定时间区域
+
+    # 指定时间区域
     def firstOne(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_work_order)
         self.inputStr_receive_date(lip[0][1])
         self.inputStr_end_date(lip[0][2])
 
-    #数据工单编号
+    # 数据工单编号
     @BeautifulReport.add_test_img()
     def test_work_order(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_work_order)
@@ -65,7 +62,7 @@ class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
         result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
-    #用户编号
+    # 用户编号
     @BeautifulReport.add_test_img()
     def test_user_order(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_user_order)
@@ -77,7 +74,7 @@ class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
         result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
-    #终端地址
+    # 终端地址
     @BeautifulReport.add_test_img()
     def test_terminal_addr(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_terminal_addr)
@@ -89,7 +86,7 @@ class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
         result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
-    #电表地址
+    # 电表地址
     @BeautifulReport.add_test_img()
     def test_ele_meter_addr(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_ele_meter_addr)
@@ -101,7 +98,7 @@ class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
         result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
-    #抄表段号
+    # 抄表段号
     @BeautifulReport.add_test_img()
     def test_meter_reading_number(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_meter_reading_number)
@@ -113,7 +110,7 @@ class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
         result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
-    #用户名称
+    # 用户名称
     @BeautifulReport.add_test_img()
     def test_BalanceCheck_user_name(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_BalanceCheck_user_name)
@@ -125,7 +122,7 @@ class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
         result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
-   #电表局编号
+    # 电表局编号
     @BeautifulReport.add_test_img()
     def test_ele_meter_bureea_order(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_ele_meter_bureea_order)
@@ -137,7 +134,7 @@ class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
         result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
-    #时间查询
+    # 时间查询
     @BeautifulReport.add_test_img()
     def test_date(self):
         self.firstOne()
@@ -147,7 +144,7 @@ class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
         result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
-    #执行状态
+    # 执行状态
     @BeautifulReport.add_test_img()
     def test_execute_state(self):
         lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_execute_state)
@@ -158,4 +155,3 @@ class TestBalanceCheck(unittest.TestCase,BalanceCheck_page):
         # 校验
         result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
-

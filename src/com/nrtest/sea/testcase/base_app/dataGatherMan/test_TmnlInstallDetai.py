@@ -1,21 +1,26 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_demo.py
 @time: 2018/9/10 0010 9:21
 @desc:
-'''
-from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage,TmnlInstallDetaiLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
+"""
 import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
+from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage, \
+    TmnlInstallDetaiLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 @ddt
-class TestTmnlInstallDetai(unittest.TestCase,TmnlInstallDetaiPage):
+class TestTmnlInstallDetai(unittest.TestCase, TmnlInstallDetaiPage):
 
     @classmethod
     def setUpClass(cls):
@@ -24,8 +29,8 @@ class TestTmnlInstallDetai(unittest.TestCase,TmnlInstallDetaiPage):
         cls.driver = openMenu(DataGatherMan_data.tmnlInstallDetail_para)
         sleep(2)
         clickTabPage(DataGatherMan_data.tmnlInstallDetail_tab_workCount)
-        cls.exec_script(cls,TmnlInstallDetaiLocators.START_DATE_JS)
-        cls.exec_script(cls,TmnlInstallDetaiLocators.END_DATE_JS)
+        cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS)
+        cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -48,22 +53,21 @@ class TestTmnlInstallDetai(unittest.TestCase,TmnlInstallDetaiPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #终端类型
+        # 终端类型
         self.inputSel_TmnlTYPE(para['TMNL_TYPE'])
-        #开始时间
+        # 开始时间
         self.inputStr_Start_time(para['START_TIME'])
-        #结束时间
+        # 结束时间
         self.inputStr_end_time(para['END_TIME'])
-
 
         self.btn_workCount_qry()
         self.sleep_time(2)
@@ -71,9 +75,7 @@ class TestTmnlInstallDetai(unittest.TestCase,TmnlInstallDetaiPage):
         result = self.assert_context(*TmnlInstallDetaiLocators.TAB_ONE)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,DataGatherMan_data.tmnlInstallDetail_tab_workCount))
+    @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
+                                  DataGatherMan_data.tmnlInstallDetail_tab_workCount))
     def test_query(self, para):
         self.query(para)
-
-
-

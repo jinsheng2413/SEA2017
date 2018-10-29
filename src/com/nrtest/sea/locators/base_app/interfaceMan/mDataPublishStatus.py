@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: mDataPublishStatus.py
 @time: 2018-09-21 9:07
 @desc:
-'''
+"""
 
 from selenium.webdriver.common.by import By
 
@@ -27,8 +27,8 @@ class MDataPublishStatus_locators:
     # 查询
     BTN_QUERY = (By.XPATH, "(//button[@class=\" x-btn-text\"])[4]")
 
-    #[显示区]
-    TAB_ONE = (By.XPATH,"(//table[@class=\"x-grid3-row-table\"])[1]")
+    # [显示区]
+    TAB_ONE = (By.XPATH, "(//table[@class=\"x-grid3-row-table\"])[1]")
 
     # 【js操作】
     # 开始时间，删除readonly属性

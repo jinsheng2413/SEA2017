@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 李建方
 @license: (C) Copyright 2018, Nari.
 @file: parse_nrtest.py
@@ -11,7 +11,7 @@
     dir=frob
 
     %(dir)s 会被frob代替。
-'''
+"""
 import configparser
 import os
 import platform
@@ -20,7 +20,7 @@ import platform
 class ParseNrTest(object):
     @staticmethod
     def pattern():
-        return r'/' if platform.system() == 'Windows' else r'\\'
+        return r'\\' if platform.system() == 'Windows' else r'/'
 
     def __init__(self, file=None):
         self.parse = configparser.ConfigParser()  # 注意大小写

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: lowUserBuyEleParaGiveOut_page.py
 @time: 2018/8/22 0022 11:31
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.dataAnalyse.loadAanyse.loadSortAnalyse_locators import LoadSortAnalyseLocators
@@ -16,7 +16,6 @@ class LoadSortAnalysePage(Page):
     # 开始日期
     def inputStr_startDate(self, value):
         self.input(value, *LoadSortAnalyseLocators.QRY_START_DATE)
-
 
     # 用户类型
     def inputSel_userType(self, name):
@@ -34,4 +33,4 @@ class LoadSortAnalysePage(Page):
 
     # 查询
     def btn_qry(self):
-            self.click(*LoadSortAnalyseLocators.BTN_QRY)
+        self.click(*LoadSortAnalyseLocators.BTN_QRY)

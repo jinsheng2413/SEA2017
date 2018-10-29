@@ -1,15 +1,16 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: lowUserBuyEleParaGiveOut_page.py
 @time: 2018/8/22 0022 11:31
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.costControlManage.remoteCustControl.newPrePaidStatus_locators import NewPrePaidStatusLocators
+from com.nrtest.sea.locators.adv_app.costControlManage.remoteCustControl.newPrePaidStatus_locators import \
+    NewPrePaidStatusLocators
 
 
 class NewPrePaidStatusPage(Page):
@@ -25,7 +26,6 @@ class NewPrePaidStatusPage(Page):
         locator = self.get_select_locator(NewPrePaidStatusLocators.QRY_CONTROL_TYPE_VALUE_TWO, name)
         print(locator)
         self.click(*locator)
-
 
     # 开始时间
     def inputStr_start_timeOne(self, value):
@@ -43,7 +43,7 @@ class NewPrePaidStatusPage(Page):
 
     # 查询
     def btn_qryOne(self):
-            self.click(*NewPrePaidStatusLocators.BTN_QRY_ONE)
+        self.click(*NewPrePaidStatusLocators.BTN_QRY_ONE)
 
     def btn_qryTwo(self):
-            self.click(*NewPrePaidStatusLocators.BTN_QRY_TWO)
+        self.click(*NewPrePaidStatusLocators.BTN_QRY_TWO)

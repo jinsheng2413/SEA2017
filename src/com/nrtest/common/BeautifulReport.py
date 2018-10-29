@@ -16,7 +16,7 @@ import time
 import traceback
 import unittest
 from functools import wraps
-from io import StringIO as StringIO
+from io import StringIO
 
 from com.nrtest.common.setting import Setting
 
@@ -30,7 +30,7 @@ HTML_IMG_TEMPLATE = """
 """
 
 
-class OutputRedirector(object):
+class OutputRedirector():
     """ Wrapper to redirect stdout or stderr """
 
     def __init__(self, fp):

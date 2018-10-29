@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: gatherTaskCompile_locators.py
 @time: 2018/9/28 0028 14:53
 @desc:
-'''
+"""
 from selenium.webdriver.common.by import By
 
 
@@ -14,9 +14,9 @@ class GatherTaskCompileLocators:
     # 【查询条件区】
     # 任务类型
     QRY_TASK_TYPE = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'任务类型')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'任务类型')]/../../div[1]/div[1]//input")
     QRY_TASK_TYPE_VALUE = (
-    By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'负荷类')]/../div[contains(text(),'%s')]")
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'负荷类')]/../div[contains(text(),'%s')]")
 
     # 终端类型
     QRY_TMAL_TYPE = (
@@ -26,20 +26,20 @@ class GatherTaskCompileLocators:
 
     # 任务编号
     QRY_TAST_NO = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'任务编号')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'任务编号')]/../../div[1]/div[1]//input")
 
     # 任务名称
     QRY_TASK_NAME = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'任务名称')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'任务名称')]/../../div[1]/div[1]//input")
 
     # 任务状态
     QRY_TASK_STATE = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'任务状态')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'任务状态')]/../../div[1]/div[1]//input")
 
     QRY_TASK_STATE_VALUE = (
-    By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'启动')]/../div[contains(text(),'%s')]")
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'启动')]/../div[contains(text(),'%s')]")
 
-    #终端地址
+    # 终端地址
     QRY_TMNL_ADDR = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端地址')]/../../div[1]/div[1]//input")
 

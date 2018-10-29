@@ -1,13 +1,14 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 李建方
 @license: (C) Copyright 2018, Nari.
 @file: setting.py
 @time: 2018-05-30 19:03
 @desc:
-'''
+"""
 import os
+import platform
 import sys
 
 from com.nrtest.common.parse_nrtest import ParseNrTest
@@ -19,7 +20,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'com'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 
-class Setting(object):
+class Setting():
     def __init__(self):
         pass
 
@@ -40,13 +41,13 @@ class Setting(object):
     PROJECT_NAME = parse.get('Project', 'PROJECT_NAME')
 
     # 区分windows与linux间不同的路径符号
-    PATTERN = parse.pattern()
+    PATTERN = parse.pattern()[0]
 
     # 基础路径
     # BASE_PATH = r'D:\\PycharmProjects\\MyPython\\' if platform.system() == 'Windows' else r'/PycharmProjects/MyPython/'
     PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
 
-    BASE_PATH = PROJECT_PATH.split('\src')[0]
+    BASE_PATH = PROJECT_PATH.split('src')[0]
 
     # 报表路径
     REPORT_PATH = BASE_PATH + r'{}reports/'.format(PATTERN)
@@ -79,5 +80,6 @@ class Setting(object):
 
 if __name__ == '__main__':
     p = Setting()
-
-    print(Setting.GROUP_USER)
+    print(p.PROJECT_PATH)
+    print(Setting.BASE_PATH)
+    print(platform.system())

@@ -1,20 +1,22 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_demo.py
 @time: 2018/9/10 0010 9:21
 @desc:
-'''
+"""
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadCompleteRate_page import ReadCompleteRatePage, \
     ReadCompleteRateLocators
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-import unittest
 
 ReadCompleteRatePage
 
@@ -49,7 +51,6 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         # 回收左边树
         self.recoverLeftTree()
 
-
     def countQuery(self, para):
         clickTabPage(para['TAB_NAME'])
         self.exec_script(ReadCompleteRateLocators.JS_COUNT)
@@ -72,7 +73,7 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         result = self.assert_context(*ReadCompleteRateLocators.TAB_COUNT_ONE)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,GatherQualityAnalyze_data.readCompleteRateCount_tab))
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
+                                  GatherQualityAnalyze_data.readCompleteRateCount_tab))
     def test_countQuery(self, para):
         self.countQuery(para)
-

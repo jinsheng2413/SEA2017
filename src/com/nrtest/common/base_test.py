@@ -1,14 +1,14 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 李建方
 @license: (C) Copyright 2018, Nari.
 @file: base_test.py
 @time: 2018-05-31 15:03
 @desc:
-'''
+"""
 
-#from lxml import etree
+# from lxml import etree
 from selenium import webdriver
 
 # from com.nrtest.sea.common.logger import Logger
@@ -18,11 +18,10 @@ from com.nrtest.common.setting import Setting
 logger = Logger(logger="BrowserEngine").getlog()
 
 
-class BaseTest(object):
+class BaseTest():
     # def __init__(self, browser):
     #     self.driver = self.openBrowser(browser)
     #     pass
-
 
     def save_img(self, img_name):
         """
@@ -36,8 +35,6 @@ class BaseTest(object):
         # path = os.path.abspath(self.img_path)
 
         self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
-
-
 
     @staticmethod
     def openBrowser(browser):
@@ -58,18 +55,21 @@ class BaseTest(object):
             option.add_argument('disable-infobars')
 
             driver = webdriver.Chrome(chrome_options=option)
-            #logger.info('启动谷歌浏览器')
-            return driver
+            # logger.info('启动谷歌浏览器')
+            # return driver
 
         elif 'f' in browser:
             driver = webdriver.Firefox()
-            #logger.info('启动火狐浏览器')
-            return driver
+            # logger.info('启动火狐浏览器')
+            #return driver
 
         elif 'i' in browser:
             driver = webdriver.Ie()
-            #logger.info('启动IE浏览器.')
-            return driver
+            # logger.info('启动IE浏览器.')
+        return driver
+
+
 if __name__ == '__main__':
-   t = BaseTest()
-   t.clear_values()
+    pass
+    # t = BaseTest()
+    # t.clear_values()

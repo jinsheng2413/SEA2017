@@ -1,16 +1,17 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: loadRateStatic_locators.py
 @time: 2018/9/29 10:42
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayStatic_locators import \
     OrgLowVoltDayStaticLocators
+
 
 class OrgLowVoltDayStaticPage(Page):
     # 供电单位

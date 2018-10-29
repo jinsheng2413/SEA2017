@@ -1,23 +1,26 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_tgTopologyDiagram.py
 @time: 2018/10/9 10:31
 @desc:
-'''
+"""
 
 import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.tgTopologyDiagram_page import TgTopologyDiagramPage
-from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.task.commonMath import *
+
 import ddt
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.tgTopologyDiagram_page import TgTopologyDiagramPage
+from com.nrtest.sea.task.commonMath import *
+
 
 # 统计查询→综合查询→台区拓扑图
 @ddt.ddt
-class TestTgTopologyDiagram(unittest.TestCase,TgTopologyDiagramPage):
+class TestTgTopologyDiagram(unittest.TestCase, TgTopologyDiagramPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -45,15 +48,15 @@ class TestTgTopologyDiagram(unittest.TestCase,TgTopologyDiagramPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #专公变类型
+        # 专公变类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
-        #台区编码
+        # 台区编码
         self.inputStr_tg_no(para['TG_NO'])
-        #台区名称
+        # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.TgTopologyDiagram_para))

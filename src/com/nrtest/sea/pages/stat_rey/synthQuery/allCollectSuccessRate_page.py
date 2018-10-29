@@ -1,16 +1,15 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: lowUserBuyEleParaGiveOut_page.py
 @time: 2018/8/22 0022 11:31
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.synthQuery.allCollectSuccessRate_locators import AllCollectSuccessRateLocators
-
 
 
 class AllCollectSuccessRatePage(Page):
@@ -32,17 +31,13 @@ class AllCollectSuccessRatePage(Page):
 
     # 用户类型
     def inputStr_userType(self, name):
-        self.input(name,*AllCollectSuccessRateLocators.QRY_USERTYPE)
-
-
-
+        self.input(name, *AllCollectSuccessRateLocators.QRY_USERTYPE)
 
     # 表资产号
     def inputStr_surfaceAssetNo(self, value):
         self.input(value, *AllCollectSuccessRateLocators.QRY_SURFACE_ASSERT_NO)
 
-
-
         # 查询
+
     def btn_qry(self):
-            self.click(*AllCollectSuccessRateLocators.BTN_QRY)
+        self.click(*AllCollectSuccessRateLocators.BTN_QRY)

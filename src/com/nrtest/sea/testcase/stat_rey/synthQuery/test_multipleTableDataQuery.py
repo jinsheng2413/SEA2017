@@ -1,23 +1,26 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_multipleTableDataQuery.py
 @time: 2018/10/11 15:07
 @desc:
-'''
+"""
 
 import unittest
+
+from ddt import ddt, data
+
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.stat_rey.synthQuery.multipleTableDataQuery_page import MultipleTableDataQueryPage
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.pages.stat_rey.synthQuery.multipleTableDataQuery_page import MultipleTableDataQueryPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
+
 
 # 统计查询→综合查询→多表合一抄表数据查询
 @ddt
-class TestMultipleTableDataQuery(unittest.TestCase,MultipleTableDataQueryPage):
+class TestMultipleTableDataQuery(unittest.TestCase, MultipleTableDataQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -47,13 +50,13 @@ class TestMultipleTableDataQuery(unittest.TestCase,MultipleTableDataQueryPage):
     def query(self, para):
         # 用户编号
         self.inputStr_cons_cons_no(para['CONS_CONS_NO'])
-        #开始时间
+        # 开始时间
         self.inputDt_cons_start_date(para['CONS_START_DATE'])
-        #结束时间
+        # 结束时间
         self.inputDt_cons_end_date(para['CONS_END_DATE'])
         # 用户状态
         self.inputSel_cons_cons_status(para['CONS_CONS_STATUS'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
 
     @data(*DataAccess.getCaseData(SynthQuery_data.MultipleTableDataQuery_para))

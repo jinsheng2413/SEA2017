@@ -1,13 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: GatherQualityAnalyze_data.py
 @time: 2018/9/17 16:36
 @desc:
-'''
-
+"""
 
 
 class GatherQualityAnalyze_data:
@@ -18,7 +17,7 @@ class GatherQualityAnalyze_data:
     # 基本应用→数据采集管理→采集质量分析→采集成功率综合统计
     collectSuccessRateStat_para = '99913270'
     # 基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
-    collectSuccessRateJb_para ='99913260'
+    collectSuccessRateJb_para = '99913260'
     # 基本应用→数据采集管理→采集质量分析→采集完整率
     readCompleteRate_para = '99913220'
     readCompleteRate_tab = '采集完整率'

@@ -128,7 +128,6 @@ venv.bak/
 #    检测结果编码列表：http://pylint-messages.wikidot.com/all-codes
 #    --output-format=parseable --disable=R,C0103 -rn --msg-template="{abspath}:{line}: [{msg_id}({symbol}), {obj}] {msg}" $FilePath$
 #    --rcfile=D:\PycharmProjects\venv\pylint.conf $FilePath$
-
 #    git-pylint-commit-hook
 #    (C) 惯例。违反了编码风格标准
 #    (R) 重构。写得非常糟糕的代码。

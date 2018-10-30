@@ -33,8 +33,8 @@ class TestTgLineLossAnalysis(unittest.TestCase, TgLineLossAnalysisPage):
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
-        # 刷新浏览器
-        cls.refreshPage(cls)
+        # 关闭菜单页面
+        cls.closePages(cls)
 
     def setUp(self):
         """

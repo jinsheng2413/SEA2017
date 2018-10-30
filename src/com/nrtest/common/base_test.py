@@ -67,9 +67,7 @@ class BaseTest():
             driver = webdriver.Ie()
             # logger.info('启动IE浏览器.')
         return driver
-    def confs(self):
-        print('--------')
-        self.confs()
+
 
 if __name__ == '__main__':
     pass

@@ -14,3 +14,5 @@ class LineLossStatisticsAnalysis_data:
     TgLineLossAnalysis_para = '99924210'
     # 高级应用→线损分析→线损统计分析→线路线损分析
     LineLossAnalysis_para = '99924250'
+    # 高级应用→线损分析→线损统计分析→分压线损分析
+    PartialPressureLineLossAnalysis_para = '99924220'

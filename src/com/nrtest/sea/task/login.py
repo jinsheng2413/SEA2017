@@ -17,6 +17,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from com.nrtest.common.base_test import BaseTest
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
+from com.nrtest.common.yamlSetting import YamlSetting
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # from com.nrtest.common.yamlSetting import YamlSetting
 from com.nrtest.sea.pages.other.login_page import LoginPage
@@ -45,7 +46,8 @@ class Login:
             elementWidth = baidu.location['x'] + baidu.size['width']
             elementHeight = baidu.location['y'] + baidu.size['height']
             picture = Image.open(Setting.SCREENSHOTS_PATH + 'photo.png')
-            picture = picture.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
+            picture = picture.crop((left, top, elementWidth, elementHeight))
+            # picture = picture.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
             picture.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
 
             image = Image.open(Setting.SCREENSHOTS_PATH + 'photo2.png')
@@ -76,21 +78,21 @@ class Login:
 
         return loginPage.driver
 
-    # @classmethod
-    # def cookieLogin(cls,username):
-    #     p = BaseTest()
-    #     dr = p.openBrowser('firefox')
-    #     dr.maximize_window()
-    #     dr.get(Setting.TEST_URL)
-    #     dr.add_cookie(YamlSetting.getCookie(username))
-    #     dr.get(Setting.TEST_URL+'/index.jsp')
+    @classmethod
+    def cookieLogin(cls, username):
+        p = BaseTest()
+        dr = p.openBrowser('firefox')
+        dr.maximize_window()
+        dr.get(Setting.TEST_URL)
+        dr.add_cookie(YamlSetting.getCookie(username))
+        dr.get(Setting.TEST_URL + '/index.jsp')
 
 
 # fdsdf
 if __name__ == '__main__':
-    lg = Login('gchb', '123')
-    drv = lg.login()
-    drv.add_cookie({'name': 'user', 'value': 'gchb'})
-    cookie = drv.get_cookies()
-    for i in cookie:
-        print(i)
+    # lg = Login('gchb', '123')
+    # drv = lg.login()
+    # cookie = drv.get_cookies()
+    # for i in cookie:
+    #     print(i)
+    Login.cookieLogin('gchb')

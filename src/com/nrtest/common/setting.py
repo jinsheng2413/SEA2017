@@ -49,6 +49,8 @@ class Setting():
 
     BASE_PATH = PROJECT_PATH.split('src')[0]
 
+    CONIFG_PATH = BASE_PATH + '/src/com/nrtest/setup/nr_test.yaml'
+
     # 报表路径
     REPORT_PATH = BASE_PATH + r'{}reports/'.format(PATTERN)
 

@@ -12,3 +12,5 @@
 class LineLossStatisticsAnalysis_data:
     # 高级应用→线损分析→线损统计分析→台区线损分析
     TgLineLossAnalysis_para = '99924210'
+    # 高级应用→线损分析→线损统计分析→线路线损分析
+    LineLossAnalysis_para = '99924250'

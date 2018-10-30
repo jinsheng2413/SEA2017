@@ -58,5 +58,5 @@ class DataSpecialityAnalyse(unittest.TestCase, DataSpecialityAnalysePage):
         self.sleep_time(2)
         self.bin_search()
         self.sleep_time(2)
-        result = self.assert_context(*DataSpecialityAnalyseLocators.TeAB_ONE)
+        result = self.assert_context(*DataSpecialityAnalyseLocators.TAB_ONE)
         self.assertTrue(result)

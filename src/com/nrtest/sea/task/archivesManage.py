@@ -28,6 +28,7 @@ def archivesMange():
     cp.menu_three(1)
     cp.btn_plus(1)
     cp.btn_company_plus(1)
+
     cp.btn_company_plus(3)
     cp.click(*ArchivesManage_locators.BTN_LG)
 

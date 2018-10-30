@@ -7,19 +7,20 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-from com.nrtest.sea.data.adv_app.txjx.datamaintain.datamaintain_data import Datamaintain_data
-from com.nrtest.sea.pages.adv_app.txjx.datamaintain.checkpointdata_page import CheckpointdataPage,CheckpointdataLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
 
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.adv_app.txjx.datamaintain.datamaintain_data import Datamaintain_data
+from com.nrtest.sea.pages.adv_app.txjx.datamaintain.checkpointdata_page import CheckpointdataPage, \
+    CheckpointdataLocators
+from com.nrtest.sea.task.commonMath import *
 
 
 @ddt
-#高级应用-->台线系统--》资料维护--》线路资料维护
+# 高级应用-->台线系统--》资料维护--》线路考核点资料维护
 class TestCheckpointdata(unittest.TestCase,CheckpointdataPage):
 
     @classmethod

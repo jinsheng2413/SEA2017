@@ -32,7 +32,7 @@ def get_driver():
     try:
         return __driver
     except Exception as e:
-        print(e)
+        print('__driver未初始化,初始化__driver')
         __init()
         return __driver
 

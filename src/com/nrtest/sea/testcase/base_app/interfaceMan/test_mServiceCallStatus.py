@@ -15,7 +15,6 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.common.dictionary import Dict
 from com.nrtest.sea.data.base_app.interfaceMan.mServiceCallStatus_data import InterfaceMan_data
 from com.nrtest.sea.locators.base_app.interfaceMan.mServiceCallStatus_locators import MServiceCallStatusLocators
 from com.nrtest.sea.pages.base_app.interfaceMan.mServiceCallStatus_page import MServiceCallStatusPage
@@ -60,4 +59,4 @@ class TestMServiceCallStatus(unittest.TestCase, MServiceCallStatusPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus))
     def test_query(self, para):
-        self.query(Dict(para))
+        self.query(para)

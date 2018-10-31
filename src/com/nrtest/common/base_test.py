@@ -55,17 +55,17 @@ class BaseTest():
             option.add_argument('disable-infobars')
 
             driver = webdriver.Chrome(chrome_options=option)
-            # logger.info('启动谷歌浏览器')
-            # return driver
+            logger.info('启动谷歌浏览器')
+            return driver
 
         elif 'f' in browser:
             driver = webdriver.Firefox()
-            # logger.info('启动火狐浏览器')
-            #return driver
+            logger.info('启动火狐浏览器')
+            return driver
 
         elif 'i' in browser:
             driver = webdriver.Ie()
-            # logger.info('启动IE浏览器.')
+            logger.info('启动IE浏览器.')
         return driver
 
 

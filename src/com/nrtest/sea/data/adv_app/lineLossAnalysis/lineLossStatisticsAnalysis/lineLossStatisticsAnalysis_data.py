@@ -22,3 +22,5 @@ class LineLossStatisticsAnalysis_data:
     LineLossSynthesizeAnalysis_para = '99924400'
     # 高级应用→线损分析→线损统计分析→线损统计查询
     LineLossStatisticsQuery_para = '99924500'
+    # 高级应用→线损分析→线损统计分析→台区线损监测
+    TgLineLossMonitor_para = '999246000'

@@ -24,3 +24,5 @@ class LineLossStatisticsAnalysis_data:
     LineLossStatisticsQuery_para = '99924500'
     # 高级应用→线损分析→线损统计分析→台区线损监测
     TgLineLossMonitor_para = '999246000'
+    # 高级应用→线损分析→线损统计分析→台区线损分析（冀北）
+    TgLineLossAnalysisJibei_para = '99924240'

@@ -672,6 +672,20 @@ class Page():
         # print('xpath:', xpath, 'format val', format_val)
         return (xpath[0], xpath[1] % format_val)
 
+    def DisplayTreeMenu(self):
+        """
+        打开左边树菜单栏
+        :return:
+        """
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable(MenuLocators.BTN_LEFT_MENU))
+            el = self.driver.find_element(*MenuLocators.BTN_LEFT_MENU)
+
+            el.click()
+        except:
+            print('左边树菜单栏已经打开')
+
 
 if __name__ == '__main__':
     # dr = webdriver.Chrome()

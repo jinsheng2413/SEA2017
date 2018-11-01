@@ -4,35 +4,35 @@
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: test_Tmnl.py
-@time: 2018/10/30 13:46
+@time: 2018/11/1 9:46
 @desc:
 """
-
-from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
 import unittest
-from com.nrtest.sea.pages.run_man.clock.tTmnlCheckClock_page import TmnlClockDetailPage
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import \
-    TmnlClockDetailLocators
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
 from time import sleep
 
+from ddt import ddt, data
 
-#运行管理→时钟管理→终端对时
-#终端时钟明细
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
+from com.nrtest.sea.locators.run_man.clock.metCheckClock_locators import \
+    MetClockMonthStaticLocators
+from com.nrtest.sea.pages.run_man.clock.metCheckClock_page import MetClockMonthStaticPage
+from com.nrtest.sea.task.commonMath import *
+
+
+# 运行管理→时钟管理→电能表对时
+# 电表时钟月统计
 @ddt
-class TestDemo(unittest.TestCase, TmnlClockDetailPage):
+class TestDemo(unittest.TestCase, MetClockMonthStaticPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(ClockData.para_TTmnlCheckClock,True)
-        clickTabPage('终端时钟明细')
+        cls.driver = openMenu(ClockData.para_MetCheckClock, True)
         sleep(2)
-        cls.driver.execute_script(TmnlClockDetailLocators.QUERY_DATE_JS)
+        cls.driver.execute_script(MetClockMonthStaticLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -65,60 +65,40 @@ class TestDemo(unittest.TestCase, TmnlClockDetailPage):
         # 供电单位
         sleep(2)
         openLeftTree(para['ORG_NO'])
-        # 偏差范围
-        self.inputRSel_offset_range(para['OFFSET_RANGE'])
-        # 终端类型
-        self.inputRSel_tmnl_type(para['TMNL_TYPE'])
-        # 终端型号
-        self.inputStr_tmnl_model(para['TMNL_MODEL'])
-        # 终端厂家
-        self.inputRSel_tmnl_fac(para['TMNL_FAC'])
-        # 终端地址
-        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
-        # 是否在线
-        self.inputRSel_is_online(para['IS_ONLINE'])
+        # 电表类别
+        self.inputRSel_tmnl_type(para['MET_TYPE'])
+        # 电能表厂商
+        self.inputRSel_tmnl_fac(para['MET_FAC'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
-        # 对时结果
-        self.inputRSel_call_status(para['CALL_STATUS'])
 
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*TmnlClockDetailLocators.TABLE_DATA)
+        result = self.assert_context(*MetClockMonthStaticLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_TTmnlCheckClock),'终端时钟明细')
+    @data(*DataAccess.getCaseData(ClockData.para_MetCheckClock, '电表时钟月统计'))
     def test_query(self, para):
         self.query(para)
 
     # def test_test(self):
     #     # 供电单位
-    #     sleep(2)
     #     openLeftTree('13401')
-    #     # 偏差范围
-    #     self.inputRSel_offset_range('全部')
     #     # 终端类型
     #     self.inputRSel_tmnl_type('全部')
-    #     # 终端型号
-    #     self.inputStr_tmnl_model('')
     #     # 终端厂家
     #     self.inputRSel_tmnl_fac('宁波三星')
-    #     # 终端地址
-    #     self.inputStr_tmnl_addr('')
-    #     # 是否在线
-    #     self.inputRSel_is_online('全部')
     #     # 查询日期
     #     self.inputStr_query_date('2018-09')
-    #     # 对时结果
-    #     self.inputRSel_call_status('全部')
     #
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*TmnlClockDetailLocators.TABLE_DATA)
+    #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
+
 
     if __name__ == '__main__':
         unittest.main()

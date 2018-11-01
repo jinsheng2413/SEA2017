@@ -176,7 +176,8 @@ class Page():
             # 定位元素
             element = self.driver.find_element(*locator)
 
-        except NameError as e:
+        except TimeoutException as e:
+            print(e)
             logger.error(u'未找到元素--> %s', locator)
 
         return element

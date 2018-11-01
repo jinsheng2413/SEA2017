@@ -9,9 +9,7 @@
 """
 
 import unittest
-
 from ddt import ddt, data
-
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.locators.adv_app.transformerMonitor.powerFactorCount.powerFactorCountStatic_locators import \

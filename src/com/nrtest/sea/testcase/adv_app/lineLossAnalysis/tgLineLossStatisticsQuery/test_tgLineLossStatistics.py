@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgL
 from com.nrtest.sea.task.commonMath import *
 
 
-# 高级应用→线损分析→台区线损统计查询→台区线损统计
+# 高级应用→线损分析→线损统计分析→台区线损监测
 @ddt
 class TestTgLineLossUnifiedView(unittest.TestCase, TgLineLossStatisticsPage):
     @classmethod

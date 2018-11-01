@@ -37,7 +37,7 @@ class Test_DataRepair_2(unittest.TestCase, DataRepair_2Page):
     def query(self, para):
         # 选择第二个tab页
         clickTabPage('数据修复明细')
-        sleep(4)
+        sleep(2)
         # 打开左边树选择供电单位
         self.driver = openLeftTree(para['ORG_NO'])
         # 用户类型
@@ -53,6 +53,6 @@ class Test_DataRepair_2(unittest.TestCase, DataRepair_2Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DataRepair.para_DataRepair))
+    @data(*DataAccess.getCaseData(DataRepair.para_DataRepair, DataRepair.DataRepair_tab_detail))
     def test_query(self, para):
         self.query(para)

@@ -40,10 +40,10 @@ class Test_DataRepair_2(unittest.TestCase, DataRepair_2Page):
         sleep(4)
         # 打开左边树选择供电单位
         self.driver = openLeftTree(para['ORG_NO'])
-        # 用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
         # 数据类型
         self.inputSel_data_type(para['DATA_TYPE'])
+        # 用户类型
+        self.inputSel_cons_sort(para['CONS_SORT'])
         # 查询日期
         self.inputStr_date(para['DATE'])
         # 查询
@@ -53,6 +53,6 @@ class Test_DataRepair_2(unittest.TestCase, DataRepair_2Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DataRepair.para_DataRepair))
+    @data(*DataAccess.getCaseData(DataRepair.para_DataRepair, DataRepair.DataRepair_tab_detail))
     def test_query(self, para):
         self.query(para)

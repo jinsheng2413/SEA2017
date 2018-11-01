@@ -18,3 +18,11 @@ class LineLossStatisticsAnalysis_data:
     PartialPressureLineLossAnalysis_para = '99924220'
     # 高级应用→线损分析→线损统计分析→区域线损分析
     AreaLineLossAnalysis_para = '99924230'
+    # 高级应用→线损分析→线损统计分析→线损综合分析
+    LineLossSynthesizeAnalysis_para = '99924400'
+    # 高级应用→线损分析→线损统计分析→线损统计查询
+    LineLossStatisticsQuery_para = '99924500'
+    # 高级应用→线损分析→线损统计分析→台区线损监测
+    TgLineLossMonitor_para = '999246000'
+    # 高级应用→线损分析→线损统计分析→台区线损分析（冀北）
+    TgLineLossAnalysisJibei_para = '99924240'

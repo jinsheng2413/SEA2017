@@ -8,16 +8,18 @@
 @desc:
 """
 
-from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
 import unittest
-from com.nrtest.sea.pages.run_man.clock.tTmnlCheckClock_page import AutoCheckPolicyPage
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import \
-    AutoCheckPolicyLocators
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
 from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
+from com.nrtest.sea.locators.run_man.clock.metCheckClock_locators import \
+    AutoCheckPolicyLocators
+from com.nrtest.sea.pages.run_man.clock.metCheckClock_page import AutoCheckPolicyPage
+from com.nrtest.sea.task.commonMath import *
 
 
 #运行管理→时钟管理→终端对时
@@ -29,7 +31,7 @@ class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(ClockData.para_TTmnlCheckClock,True)
+        cls.driver = openMenu(ClockData.para_MetCheckClock, True)
         clickTabPage('自动对时策略配置')
         sleep(2)
         cls.driver.execute_script(AutoCheckPolicyLocators.QUERY_DATE_JS)
@@ -79,7 +81,7 @@ class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_TTmnlCheckClock,'自动对时策略配置'))
+    @data(*DataAccess.getCaseData(ClockData.para_MetCheckClock, '自动对时策略配置'))
     def test_query(self, para):
         self.query(para)
 

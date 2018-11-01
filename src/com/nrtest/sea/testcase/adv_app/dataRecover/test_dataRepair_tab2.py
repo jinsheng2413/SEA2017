@@ -37,13 +37,13 @@ class Test_DataRepair_2(unittest.TestCase, DataRepair_2Page):
     def query(self, para):
         # 选择第二个tab页
         clickTabPage('数据修复明细')
-        sleep(2)
+        sleep(4)
         # 打开左边树选择供电单位
         self.driver = openLeftTree(para['ORG_NO'])
-        # 用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
         # 数据类型
         self.inputSel_data_type(para['DATA_TYPE'])
+        # 用户类型
+        self.inputSel_cons_sort(para['CONS_SORT'])
         # 查询日期
         self.inputStr_date(para['DATE'])
         # 查询

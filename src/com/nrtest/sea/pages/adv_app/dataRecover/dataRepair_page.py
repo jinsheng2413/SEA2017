@@ -44,11 +44,15 @@ class DataRepair_2Page(Page):
         self.click(*DataRepair_2Locators.QRY_DATA_TYPE)
         locator = self.get_select_locator(DataRepair_2Locators.QRY_DATA_TYPE_VALUE, index)
         self.click(*locator)
+        self.delDropdownBoxHtml()
+
     # 用户类型
     def inputSel_cons_sort(self, index):
         self.click(*DataRepair_2Locators.QRY_CONS_SORT)
         locator = self.get_select_locator(DataRepair_2Locators.QRY_CONS_SORT_VALUE, index)
         self.click(*locator)
+        self.delDropdownBoxHtml()
+
 
     # 查询日期
     def inputStr_date(self, value):

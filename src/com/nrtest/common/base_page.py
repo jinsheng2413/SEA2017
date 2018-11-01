@@ -544,9 +544,6 @@ class Page():
         :param num:带定位下拉序号
         :return: 返回locator
         """
-        js = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + "elem.parentNode.removeChild(elem);"
-        self.exec_script(js)
-
         return (locator[0], locator[1] % num)
 
     def bock_wait(self, locator):
@@ -685,6 +682,18 @@ class Page():
             el.click()
         except:
             print('左边树菜单栏已经打开')
+
+    def delDropdownBoxHtml(self):
+        """
+        删除下拉框的html标签
+        :return:
+        """
+        try:
+            js = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + "elem.parentNode.removeChild(elem);"
+            self.exec_script(js)
+        except NoSuchElementException:
+            print('删除下拉框的html标签失败')
+
 
 
 if __name__ == '__main__':

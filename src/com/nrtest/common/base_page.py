@@ -544,6 +544,8 @@ class Page():
         :param num:带定位下拉序号
         :return: 返回locator
         """
+        js = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + "elem.parentNode.removeChild(elem);"
+        self.exec_script(js)
 
         return (locator[0], locator[1] % num)
 

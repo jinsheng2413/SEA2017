@@ -14,10 +14,10 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeeseementResultStatistics_locators import \
+    AeeseementResultStatisticsLocators
 from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossIndexEvaluation.lineLossIndexEvaluation_data import \
     LineLossIndexEvaluation_data
-from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeeseementResultStatistics_locators import \
-    AeeseementResultStatisticsLocators
 from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeeseementResultStatistics_page import \
     AeeseementResultStatisticsPage
 from com.nrtest.sea.task.commonMath import *

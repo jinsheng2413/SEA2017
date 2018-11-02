@@ -3,11 +3,10 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_tgLineLossStatistics.py
-@time: 2018/11/1 16:46
+@file: test_tgLineLossAbnomalReport.py
+@time: 2018/11/2 11:09
 @desc:
 """
-
 import unittest
 
 from ddt import ddt, data
@@ -16,19 +15,19 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgLineLossStatisticsQuery_data import \
     TgLineLossStatisticsQuery_data
-from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgLineLossStatistics_page import \
-    TgLineLossStatisticsPage
+from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgLineLossAbnormalReport_page import \
+    TgLineLossAbnormalReportPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 高级应用→线损分析→线损统计分析→台区线损统计
+# 高级应用→线损分析→线损统计分析→台区线损异常报表
 @ddt
-class TestTgLineLossUnifiedView(unittest.TestCase, TgLineLossStatisticsPage):
+class TestTgLineLossAbnormalReport(unittest.TestCase, TgLineLossAbnormalReportPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(TgLineLossStatisticsQuery_data.TgLineLossStatistics_para, True)
+        cls.driver = openMenu(TgLineLossStatisticsQuery_data.TgLineLossAbnormalReport_para, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -61,6 +60,6 @@ class TestTgLineLossUnifiedView(unittest.TestCase, TgLineLossStatisticsPage):
         self.btn_search()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossStatistics_para, ))
+    @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossAbnormalReport_para))
     def test_der(self, para):
         self.query(para)

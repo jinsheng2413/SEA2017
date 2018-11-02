@@ -31,7 +31,7 @@ class TestDemo(unittest.TestCase, ClockResultDetailPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(ClockData.para_ClockResultClock, True)
+        cls.driver = openMenu(ClockData.para_ClockResult, True)
         clickTabPage('对时结果明细')
         sleep(2)
         cls.driver.execute_script(ClockResultDetailLocators.QUERY_DATE_JS)
@@ -85,7 +85,7 @@ class TestDemo(unittest.TestCase, ClockResultDetailPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_ClockResultClock, '对时结果明细'))
+    @data(*DataAccess.getCaseData(ClockData.para_ClockResult, '对时结果明细'))
     def test_query(self, para):
         self.query(para)
 

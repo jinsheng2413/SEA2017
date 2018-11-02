@@ -695,6 +695,32 @@ class Page():
         except NoSuchElementException:
             print('删除下拉框的html标签失败')
 
+    def clickCheckBox(self, CheckBoxName=','):
+        """
+        选中复选框
+
+        :param CheckBoxName: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
+        :return:
+        """
+        try:
+            if ',' in CheckBoxName:
+                lis = CheckBoxName.split(',')
+                for i in lis:
+                    xp = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
+                        i)
+                    self.click(*(By.XPATH, xp))
+            elif ',' not in CheckBoxName:
+                self.click(*(By.XPATH, CheckBoxName))
+            else:
+                print('输入格式不正确')
+        except BaseException as e:
+            print('点击复选框失败')
+            print(e)
+
+
+
+
+
 
 
 if __name__ == '__main__':

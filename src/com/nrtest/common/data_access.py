@@ -35,8 +35,9 @@ class DataAccess:
         获取被测试系统所有菜单
         :return:
         """
+
         pyoracle = PyOracle.getInstance()
-        cur = pyoracle.callFCur('pkg_nrtest.get_all_menu')
+        cur = pyoracle.callFCur('pkg_nrtest.get_all_menu', [Setting.DEFAULT_USER])
         return cur
 
     @staticmethod
@@ -79,17 +80,17 @@ class DataAccess:
         return cases
 
     @staticmethod
-    def reflash_menu(p_menu_no=''):
+    def refresh_menu(p_menu_no=''):
         """
         刷新菜单关系（由坐标定位改为按名称定位）
         :param p_menu_no: 父节点菜单编码，该值为空刷新全部菜单，否则刷新指定菜单
         """
         pyoracle = PyOracle.getInstance()
         if p_menu_no == '':
-            pyoracle.callproc('pkg_nrtest.refresh_case')
+            pyoracle.callproc('pkg_nrtest.refresh_menu')
         else:
             para = [p_menu_no]
-            pyoracle.callproc('pkg_nrtest.refresh_case', para)
+            pyoracle.callproc('pkg_nrtest.refresh_menu', para)
 
 
 if __name__ == '__main__':
@@ -98,6 +99,6 @@ if __name__ == '__main__':
     # print(len(str))
     # for i in  str[4:10]:
     #     print(i)
-    # print(DataAccess.getAllMenu())
+    print(DataAccess.getAllMenu())
     # DataAccess.getMenu('99913210')
-    pass
+    # pass

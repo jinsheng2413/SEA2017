@@ -167,15 +167,24 @@ class MenuPage(Page):
 
     def clickAllMenu(self):
         menus = DataAccess.getAllMenu()
-        # menus = [('999246000', '台区线损监测', 'advAppIcon;线损分析;线损统计分析;台区线损监测')]
+        # menus = [('9992G200', '统计数据', 'advAppIcon;ADI;统计数据') ]
         l = len(menus)
         for i in range(len(menus)):
             try:
                 menu = menus[i]
                 print('即将定位该菜单：', menu)
+                print('step1')
                 self.click_menu_by_name(menu[2], True)
+                print('step2')
                 sleep(1)
-                self.closePages(menu[1])
+                if self.check_element_exists(*MenuLocators.TIMEOUT_DLG):
+                    print('step3-1')
+                    self.click(*MenuLocators.CLOSE_DLG)
+                    print('step3-2')
+                else:
+                    print('step4-1')
+                    self.closePages(menu[1])
+                    print('step4-2')
             except Exception as e:
                 print('该菜单定位报错：', menu, e)
 

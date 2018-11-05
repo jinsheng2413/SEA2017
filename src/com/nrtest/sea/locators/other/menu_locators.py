@@ -36,9 +36,22 @@ class MenuLocators:
 
     # 当前正在操作的菜单页面
     CURRENT_MENU = (By.XPATH, '//*[@id=\"maintab__%s\"]')
+    CURRENT_MENU1 = (By.XPATH, '//span[contains(@class,\"x-tab-strip-text\") and text() = \"%s\"]')
+    # '//span[contains(@class,\"x-tab-strip-text\" and text() = \"%s\"]')
     # 右键菜单：关闭当前页/关闭其他所有页
     # '//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()=\'关闭其他所有页\']'
     CLOSE_PAGES = (By.XPATH, '//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()="%s"]')
+
+    # 打开菜单超时对话框
+    TIMEOUT_DLG = (By.XPATH, '//div[@class="x-window-bwrap"]//span[text()="请求无响应或超时！"]')
+
+    # 打开菜单太多对话框
+    OVER_15_DLG = (By.XPATH, '//span[text()="最多只允许打开15个菜单"]')
+    # 关闭“超时”、“菜单太多”、“未找到对应模块名”等弹出对话框
+    CLOSE_DLG = (By.XPATH, '//tbody[@class="x-btn-small x-btn-icon-small-left"]//button[text()="确定"]')
+
+    # 长时间加载页面中:Loading
+    LOADING = (By.XPATH, '//div[@class ="loading-indicator" and text()="Loading..."]')
 
     # 【左边树】
     # 左边树按钮

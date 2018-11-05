@@ -164,21 +164,25 @@ class Page():
         """
         方法名：_element
         功能：定位元素的具体某个元素WEBelement
-
+            presence_of_element_located： 当我们不关心元素是否可见，只关心元素是否存在在页面中。
+            visibility_of_element_located： 当我们需要找到元素，并且该元素也可见。
         *注释：_代表类的私有属性或方法
         :param locator: 元素的位置
         :return: 返回定位的元素
         """
-
+        element = None
         try:
             # 利用显示等待判断元素是否已经出现
-            WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
+            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(locator))
             # 定位元素
             element = self.driver.find_element(*locator)
-
-        except NameError as e:
-            logger.error(u'未找到元素--> %s', locator)
-
+        except TimeoutException as te:
+            if locator[1].find('请求无响应或超时！') == -1:
+                logger.error(u'等待元素超时--> %s', locator, te)
+        except NoSuchElementException as nse:
+            logger.error(u'未找到元素--> %s', locator, nse)
+        except Exception as e:  # 无法确定是哪类异常时用基类异常来捕获
+            logger.error(u'其他查找元素错误--> %s', locator, e)
         return element
 
     def input(self, values, *locators):
@@ -242,7 +246,9 @@ class Page():
             element.click()
             logger.info('点击元素：%s', locators)
         except AttributeError as e:
-            logger.error('点击元素失败')
+            logger.error('点击元素失败', e)
+        except Exception as ex:
+            logger.error("出错信息：", locators, ex)
         # return None
 
     def closeOldBrowser(self):
@@ -365,8 +371,7 @@ class Page():
         :return:布尔返回值
         """
         try:
-            self._find_element(*locator)
-            return True
+            return bool(self._find_element(*locator))
         except NoSuchElementException:
             return False
 

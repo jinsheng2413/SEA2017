@@ -708,9 +708,9 @@ class Page():
                 for i in lis:
                     xp = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
                         i)
-                    self.click(*(By.XPATH, xp))
+                    self.driver.find_element(*(By.XPATH, xp)).click()
             elif ',' not in CheckBoxName:
-                self.click(*(By.XPATH, CheckBoxName))
+                self.driver.find_element(*(By.XPATH, CheckBoxName)).click()
             else:
                 print('输入格式不正确')
         except BaseException as e:

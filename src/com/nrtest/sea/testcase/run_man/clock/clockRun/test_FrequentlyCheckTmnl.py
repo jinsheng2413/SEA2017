@@ -7,6 +7,7 @@
 @time: 2018/10/30 13:46
 @desc:
 """
+
 import unittest
 from time import sleep
 
@@ -15,24 +16,25 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
-from com.nrtest.sea.locators.run_man.clock.clockResult_locators import \
-    ClockResultStaticLocators
-from com.nrtest.sea.pages.run_man.clock.clockResult_page import ClockResultStaticPage
+from com.nrtest.sea.locators.run_man.clock.clockRun_locators import \
+    FrequentlyCheckTmnlLocators
+from com.nrtest.sea.pages.run_man.clock.clockRun_page import FrequentlyCheckTmnlPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 运行管理→时钟管理→对时结果分析
-# 对时结果分析
+# 运行管理→时钟管理→时钟运行质量分析
+# 频繁对时终端
 @ddt
-class TestDemo(unittest.TestCase, ClockResultStaticPage):
+class TestDemo(unittest.TestCase, FrequentlyCheckTmnlPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(ClockData.para_ClockResult, True)
+        cls.driver = openMenu(ClockData.para_ClockRun, True)
+        clickTabPage('频繁对时终端')
         sleep(2)
-        cls.driver.execute_script(ClockResultStaticLocators.QUERY_DATE_JS)
+        cls.driver.execute_script(FrequentlyCheckTmnlLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -65,37 +67,53 @@ class TestDemo(unittest.TestCase, ClockResultStaticPage):
         # 供电单位
         sleep(2)
         openLeftTree(para['ORG_NO'])
+        # 终端类型
+        self.inputRSel_tmnl_type(para['TMNL_TYPE'])
+        # 终端型号
+        self.inputStr_tmnl_model(para['TMNL_MODEL'])
         # 终端厂商
         self.inputRSel_tmnl_fac(para['TMNL_FAC'])
-        self.delDropdownBoxHtml()
+        # 终端资产号
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
 
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ClockResultStaticLocators.TABLE_DATA)
+        result = self.assert_context(*FrequentlyCheckTmnlLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_ClockResult, '对时结果分析'))
+    @data(*DataAccess.getCaseData(ClockData.para_ClockRun, '频繁对时终端'))
     def test_query(self, para):
         self.query(para)
 
     # def test_test(self):
     #     # 供电单位
+    #     sleep(2)
     #     openLeftTree('13401')
+    #     # 偏差范围
+    #     self.inputRSel_offset_range('全部')
     #     # 终端类型
     #     self.inputRSel_tmnl_type('全部')
+    #     # 终端型号
+    #     self.inputStr_tmnl_model('')
     #     # 终端厂家
     #     self.inputRSel_tmnl_fac('宁波三星')
+    #     # 终端地址
+    #     self.inputStr_tmnl_addr('')
+    #     # 是否在线
+    #     self.inputRSel_is_online('全部')
     #     # 查询日期
     #     self.inputStr_query_date('2018-09')
+    #     # 对时结果
+    #     self.inputRSel_call_status('全部')
     #
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
+    #     result = self.assert_context(*TmnlClockDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)
 
     if __name__ == '__main__':

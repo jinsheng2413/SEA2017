@@ -12,3 +12,5 @@
 class PowerCutAnalysis_data:
     # 高级应用→配变监测分析→停电分析→有效停电事件查询
     ValidPowerCutEventQuery_para = '99925410'
+    # 高级应用→配变监测分析→停电分析→终端停电事件查询
+    TmnlPowerCutEventQuery_para = '99925420'

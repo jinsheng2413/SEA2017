@@ -17,7 +17,7 @@ from com.nrtest.sea.task.login import Login
 
 
 class MenuPage(Page):
-    def click_menu(self, menu_no, by_name=False):
+    def click_menu(self, menu_no, by_name=True):
         """
         定位级菜单element,并调用Base_Page类的click方法选择级菜单
         :param menu_no: 菜单编号

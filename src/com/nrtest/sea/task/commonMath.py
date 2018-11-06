@@ -13,7 +13,7 @@ from com.nrtest.common import global_drv
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-def openMenu(menuNo, byName=False):
+def openMenu(menuNo, byName=True):
     """
     打开指定菜单页面
     :param menuNo: 菜单编号

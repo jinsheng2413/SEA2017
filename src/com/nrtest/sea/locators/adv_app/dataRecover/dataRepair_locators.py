@@ -53,12 +53,12 @@ class DataRepair_2Locators:
     QRY_DATA_TYPE = (By.XPATH, "(//label[contains(text(),'数据类型')]/../div/div/input)[2]")
     # 执行状态的值（数据类型）
     QRY_DATA_TYPE_VALUE = (
-    By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'电量')])[2]/../div[contains(text(),'%s')]")
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'电量')]/../div[contains(text(),'%s')]")
     # 用户类型
     QRY_CONS_SORT = (By.XPATH, "(//label[contains(text(),'用户类型')]/../div/div/input)[2]")
     # 执行状态的值(用户类型)
     QRY_CONS_SORT_VALUE = (
-    By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'其它')])[2]/../div[contains(text(),'%s')]")
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'其它')]/../div[contains(text(),'%s')]")
     # 用户编号
     QRY_CONS_NO = (By.XPATH, "//label[contains(text(),'用户编号')]/../div/input")
     # 终端资产号

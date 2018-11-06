@@ -10,3 +10,8 @@
 
 class ClockData:
     para_TTmnlCheckClock = '99932100'
+    para_MetCheckClock = '99932200'
+    para_ClockResult = '99932300'
+    para_ClockRun = '99932400'
+    para_LocalBroadChkClock = '99932500'
+    para_RemoteBroadChkClock = '99932600'

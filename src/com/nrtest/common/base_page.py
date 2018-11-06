@@ -675,6 +675,58 @@ class Page():
         # print('xpath:', xpath, 'format val', format_val)
         return (xpath[0], xpath[1] % format_val)
 
+    def DisplayTreeMenu(self):
+        """
+        打开左边树菜单栏
+        :return:
+        """
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable(MenuLocators.BTN_LEFT_MENU))
+            el = self.driver.find_element(*MenuLocators.BTN_LEFT_MENU)
+
+            el.click()
+        except:
+            print('左边树菜单栏已经打开')
+
+    def delDropdownBoxHtml(self):
+        """
+        删除下拉框的html标签
+        :return:
+        """
+        try:
+            js = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + "elem.parentNode.removeChild(elem);"
+            self.exec_script(js)
+        except NoSuchElementException:
+            print('删除下拉框的html标签失败')
+
+    def clickCheckBox(self, CheckBoxName=','):
+        """
+        选中复选框
+
+        :param CheckBoxName: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
+        :return:
+        """
+        try:
+            if ',' in CheckBoxName:
+                lis = CheckBoxName.split(',')
+                for i in lis:
+                    xp = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
+                        i)
+                    self.driver.find_element(*(By.XPATH, xp)).click()
+            elif ',' not in CheckBoxName:
+                self.driver.find_element(*(By.XPATH, CheckBoxName)).click()
+            else:
+                print('输入格式不正确')
+        except BaseException as e:
+            print('点击复选框失败')
+            print(e)
+
+
+
+
+
+
 
 if __name__ == '__main__':
     # dr = webdriver.Chrome()

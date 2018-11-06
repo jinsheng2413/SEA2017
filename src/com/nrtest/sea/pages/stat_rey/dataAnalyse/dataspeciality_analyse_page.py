@@ -8,7 +8,7 @@
 @desc:
 """
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.stat_rey.dataAnalyse.dataspeciality_analyse_locators import DataSpecialityAnalyseLocators
+from com.nrtest.sea.locators.stat_rey.dataAnalyse.dataspeciality_analyse_locators pimport DataSpecialityAnalyseLocators
 
 
 class DataSpecialityAnalysePage(Page):

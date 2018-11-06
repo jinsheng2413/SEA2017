@@ -53,6 +53,6 @@ class Test_DataRepair_1(unittest.TestCase, DataRepair_1Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DataRepair.para_DataRepair))
+    @data(*DataAccess.getCaseData(DataRepair.para_DataRepair, DataRepair.DataRepair_tab_count))
     def test_query(self, para):
         self.query(para)

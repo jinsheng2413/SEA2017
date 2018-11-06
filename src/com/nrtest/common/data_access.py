@@ -92,6 +92,15 @@ class DataAccess:
             para = [p_menu_no]
             pyoracle.callproc('pkg_nrtest.refresh_menu', para)
 
+    @staticmethod
+    def refresh_menu_xapth(menu_no=''):
+        """
+        刷新菜单/TAB对应的元素清单
+        :param menu_no: 菜单编码，该值为空刷新全部菜单，否则刷新指定菜单
+        """
+        pyoracle = PyOracle.getInstance()
+        pyoracle.callproc('pkg_nrtest.refresh_menu_xapth', [menu_no])
+
 
 if __name__ == '__main__':
     # DataAccess.refresh_case()

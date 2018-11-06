@@ -95,7 +95,7 @@ class DataAccess:
     @staticmethod
     def refresh_menu_xapth(menu_no=''):
         """
-        刷新菜单/TAB对应的元素清单
+        用例数据填完后，刷新菜单/TAB对应的元素清单
         :param menu_no: 菜单编码，该值为空刷新全部菜单，否则刷新指定菜单
         """
         pyoracle = PyOracle.getInstance()
@@ -108,6 +108,8 @@ if __name__ == '__main__':
     # print(len(str))
     # for i in  str[4:10]:
     #     print(i)
-    print(DataAccess.getAllMenu())
+    # print(DataAccess.getAllMenu())
     # DataAccess.getMenu('99913210')
     # pass
+    # 刷新菜单/tab对应的元素
+    DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')

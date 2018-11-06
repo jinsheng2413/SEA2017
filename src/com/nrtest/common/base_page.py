@@ -576,13 +576,6 @@ class Page():
 
         self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
 
-    # def closeTab(self):
-    #     # ****定位到要右击的元素**
-    #     right_click = self.driver.find_element(*(By.XPATH,'//*[@id=\"maintab__工作台\"]'))
-    #     # ****对定位到的元素执行鼠标右键操作
-    #     ActionChains(self.driver).context_click(right_click).perform()
-    #     self.driver.find_element(*(By.XPATH,"//div[@class=\"x-menu x-menu-floating x-layer \"]//*[contains(text(),'关闭其他所有页')]")).click()
-
     def recoverLeftTree(self):
         num = self.find_elements_num(*MenuLocators.TREE_MINUS)
         if self.assert_context(*MenuLocators.TREE_END) is False:
@@ -598,25 +591,6 @@ class Page():
                 counter = counter - 1
             self.click(*MenuLocators.TREE_END)
 
-    def clickTabPage(self, name):
-        """
-        输入tab页名称，选中tab页
-        :param name: tab页的中文名称
-        :return:
-        """
-        try:
-            locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[contains(text(),'{}')]".format(name))
-            self.click(*locators)
-        except NoSuchElementException  as e:
-            print('点击{}tab页失败'.format(name))
-
-    def tableLineValue(self, i, l):
-        try:
-            str_xpath = "(//*[@class=\"x-grid3-row-table\"])[{0}]//td[{1}]".format(i, l)
-            changeStr = self._find_element(*(By.XPATH, str_xpath)).text
-            return changeStr
-        except NameError as e:
-            print('获取显示区文字失败')
 
     def assertTableOne(self):
         try:

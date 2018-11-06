@@ -18,3 +18,5 @@ class PowerCutAnalysis_data:
     IntelligentMeterPowerCutEventQuery_para = '99925430'
     # 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测
     ImportantClientRealTimePowerCutMonitor_para = '99925441'
+    # 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测
+    SuspectedAreaPowerCutMonitor_para = '99925442'

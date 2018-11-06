@@ -20,3 +20,5 @@ class PowerCutAnalysis_data:
     ImportantClientRealTimePowerCutMonitor_para = '99925441'
     # 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测
     SuspectedAreaPowerCutMonitor_para = '99925442'
+    # 高级应用→配变监测分析→停电分析→表计实时停上电信息查询
+    MeterRealTimePowerCutQuery_para = '99925470'

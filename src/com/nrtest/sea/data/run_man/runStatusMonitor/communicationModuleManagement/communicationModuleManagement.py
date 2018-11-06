@@ -14,3 +14,5 @@ class CommunicationModuleManagement:
     commModulPropMain_para = '99931210'
     commModulPropMain_tab_baseInf = '通信模块基本信息维护'
     commModulPropMain_tab_relationship = '模块属性关系维护'
+    # 运行管理--》采集信道管理--》通信模块管理--》通信模块安装统计
+    commModulInstallStat_para = '99931220'

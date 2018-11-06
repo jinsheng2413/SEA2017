@@ -1,5 +1,5 @@
 from setuptools import setup
- 
+
 setup(
     name='SEA2017',
     version='V1.0',

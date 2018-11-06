@@ -16,3 +16,5 @@ class PowerCutAnalysis_data:
     TmnlPowerCutEventQuery_para = '99925420'
     # 高级应用→配变监测分析→停电分析→智能表停电事件查询
     IntelligentMeterPowerCutEventQuery_para = '99925430'
+    # 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测
+    ImportantClientRealTimePowerCutMonitor_para = '99925441'

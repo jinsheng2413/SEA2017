@@ -173,7 +173,7 @@ class Page():
         element = None
         try:
             # 利用显示等待判断元素是否已经出现
-            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(locator))
+            WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(locator))
             # 定位元素
             element = self.driver.find_element(*locator)
         except TimeoutException as te:
@@ -603,25 +603,25 @@ class Page():
                 counter = counter - 1
             self.click(*MenuLocators.TREE_END)
 
-    def clickTabPage(self, name):
-        """
-        输入tab页名称，选中tab页
-        :param name: tab页的中文名称
-        :return:
-        """
-        try:
-            locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[contains(text(),'{}')]".format(name))
-            self.click(*locators)
-        except NoSuchElementException  as e:
-            print('点击{}tab页失败'.format(name))
-
-    def tableLineValue(self, i, l):
-        try:
-            str_xpath = "(//*[@class=\"x-grid3-row-table\"])[{0}]//td[{1}]".format(i, l)
-            changeStr = self._find_element(*(By.XPATH, str_xpath)).text
-            return changeStr
-        except NameError as e:
-            print('获取显示区文字失败')
+    # def clickTabPage(self, name):
+    #     """
+    #     输入tab页名称，选中tab页
+    #     :param name: tab页的中文名称
+    #     :return:
+    #     """
+    #     try:
+    #         locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[contains(text(),'{}')]".format(name))
+    #         self.click(*locators)
+    #     except NoSuchElementException  as e:
+    #         print('点击{}tab页失败'.format(name))
+    #
+    # def tableLineValue(self, i, l):
+    #     try:
+    #         str_xpath = "(//*[@class=\"x-grid3-row-table\"])[{0}]//td[{1}]".format(i, l)
+    #         changeStr = self._find_element(*(By.XPATH, str_xpath)).text
+    #         return changeStr
+    #     except NameError as e:
+    #         print('获取显示区文字失败')
 
     def assertTableOne(self):
         try:

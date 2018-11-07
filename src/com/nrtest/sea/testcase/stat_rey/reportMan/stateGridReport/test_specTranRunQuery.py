@@ -4,8 +4,8 @@
 """
 @author: 卢炎炎
 @license: (C) Copyright 2018, Nari.
-@file: test_allMeasureDataCountQuery.py
-@time: 2018/11/2 11:31
+@file: test_specTranRunQuery.py
+@time: 2018/11/7 10:54
 @desc:
 """
 import unittest
@@ -15,30 +15,35 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.stat_rey.allMeasureDataCountQuery.allMeasureDataCountQuery_data import \
-    AllMeasureDataCountQuery_data
-from com.nrtest.sea.pages.stat_rey.allMeasureDataCountQuery.allMeasureDataCountQuery_page import \
-    AllMeasureDataCountQueryPage, AllMeasureDataCountQueryLocators
+from com.nrtest.sea.data.stat_rey.reportMan.stateGridReport.specTranRunQuery_data import SpecTranRunQuery_data
+from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.specTranRunQuery_page import SpecTranRunQueryPage, \
+    SpecTranRunQueryLocators
 from com.nrtest.sea.task.commonMath import *
 
 
-# 统计查询--》全量数据统计查询--》全量数据统计查询
+# 统计查询--》报表管理--》国网报表--》专变用户运行指标
 @ddt
-class TestallMeasureDataCountQuery(unittest.TestCase, AllMeasureDataCountQueryPage):
+class TestSpecTranRunQuery(unittest.TestCase, SpecTranRunQueryPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(AllMeasureDataCountQuery_data.AllMeasureDataCountQuery_para, True)
+        cls.driver = openMenu(SpecTranRunQuery_data.SpecTranRunQuery_para, True)
         sleep(2)
-        cls.exec_script(cls, AllMeasureDataCountQueryLocators.START_DATE_JS)
+        cls.exec_script(cls, SpecTranRunQueryLocators.START_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
         # 关闭菜单页面
         cls.closePages(cls)
+
+    def setUp(self):
+        """
+        测试固件的setUp()的代码，主要是测试的前提准备工作
+        :return:
+        """
 
     def tearDown(self):
         """
@@ -56,23 +61,24 @@ class TestallMeasureDataCountQuery(unittest.TestCase, AllMeasureDataCountQueryPa
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(3)
 
+        sleep(2)
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        # 日期
+
+        # 查询月份
         self.inputStr_date(para['DATE'])
+        # 统计口径
+        self.inputSel_statWay(para['STAT_WAY'])
 
         self.btn_qry()
-        # self.sleep_time(2)
-        self.btn_re()
-        # self.sleep_time(2)
+        self.sleep_time(2)
 
         # 校验
-        # result = self.assert_context(*AllMeasureDataCountQueryLocators.TAB_ONE)
+        #  result = self.assert_context(*SpecTranRunQueryLocators.TAB_ONE)
         # self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(AllMeasureDataCountQuery_data.AllMeasureDataCountQuery_para))
+    @data(*DataAccess.getCaseData(SpecTranRunQuery_data.SpecTranRunQuery_para))
     def test_query(self, para):
         self.query(para)

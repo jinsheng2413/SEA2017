@@ -26,3 +26,5 @@ class PowerCutAnalysis_data:
     ReadTimePowerCutMonitor_para = '99925480'
     # 高级应用→配变监测分析→停电分析→历史停电事件查询
     HistoryPowerCutEventQuery_para = '99925490'
+    # 高级应用→配变监测分析→停电分析→终端是否具备停上电事件上送功能
+    TmnlEventSendingFunction_para = '99925450'

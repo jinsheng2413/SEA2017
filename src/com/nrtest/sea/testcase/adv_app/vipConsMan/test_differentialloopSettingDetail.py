@@ -3,8 +3,8 @@
 '''
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_differentialloopSetting.py
-@time: 2018-11-06 11:00
+@file: test_differentialloopSettingDetail.py
+@time: 2018-11-07 14:00
 @desc:
 '''
 
@@ -15,19 +15,19 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.vipConsMan.differentialloopSetting_data import VipConsMan
-from com.nrtest.sea.pages.adv_app.vipConsMan.differentialloopSetting_page import DifferentialloopSetting_locators, \
-    DifferentialloopSetting_Page
+from com.nrtest.sea.data.adv_app.vipConsMan.differentialloopSettingDetail_data import VipConsMan
+from com.nrtest.sea.pages.adv_app.vipConsMan.differentialloopSettingDetail_page import \
+    DifferentialloopSettingDetail_locators, DifferentialloopSettingDetail_Page
 from com.nrtest.sea.task.commonMath import *
 
 
-# 高级应用--重点用户监测--差动回路设置
+# 高级应用--重点用户监测--差动回路明细查询
 @ddt
-class Test_DifferentialloopSetting(unittest.TestCase, DifferentialloopSetting_Page):
+class Test_DifferentialloopSettingDetail(unittest.TestCase, DifferentialloopSettingDetail_Page):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(VipConsMan.para_differentialloopSetting, True)
+        cls.driver = openMenu(VipConsMan.para_differentialloopSettingDetail, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -46,18 +46,16 @@ class Test_DifferentialloopSetting(unittest.TestCase, DifferentialloopSetting_Pa
         self.recoverLeftTree()
 
     def query(self, para):
-        sleep(4)
-        # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['ORG_NO'])
-        # 终端地址
-        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        sleep(2)
+        # 用户名称
+        self.inputStr_cons_name(para['CONS_NAME'])
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        result = self.assert_context(*DifferentialloopSetting_locators.TAB_ONE)
+        result = self.assert_context(*DifferentialloopSettingDetail_locators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(VipConsMan.para_differentialloopSetting))
+    @data(*DataAccess.getCaseData(VipConsMan.para_differentialloopSettingDetail))
     def test_query(self, para):
         self.query(para)

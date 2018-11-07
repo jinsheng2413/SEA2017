@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: 韩笑
@@ -8,8 +8,9 @@
 @desc:
 '''
 
-from com.nrtest.sea.locators.adv_app.appDispose.sectfailedAppQuery_locators import SectfailedAppQueryLocators
 from com.nrtest.common.base_page import Page
+from com.nrtest.sea.locators.adv_app.appDispose.sectfailedAppQuery_locators import SectfailedAppQueryLocators
+
 
 # 高级应用→工单处理→抄表失败工单查询
 class SectfailedAppQueryPage(Page):

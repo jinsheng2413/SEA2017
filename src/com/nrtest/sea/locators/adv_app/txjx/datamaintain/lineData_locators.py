@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -33,8 +33,3 @@ class LineDataLocators:
     #【显示区】
     TAB_ONE = (By.XPATH, '(//table[@class=\"x-grid3-row-table\"])[1]')
     TAB_ONE_VALUE = (By.XPATH, "//*[@class=\"x-grid3-row-table\"])[]//div[]")
-     
-     
-     
-     
-     

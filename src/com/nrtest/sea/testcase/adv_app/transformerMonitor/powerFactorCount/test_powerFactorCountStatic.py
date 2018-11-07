@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -9,7 +9,9 @@
 """
 
 import unittest
+
 from ddt import ddt, data
+
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.locators.adv_app.transformerMonitor.powerFactorCount.powerFactorCountStatic_locators import \
@@ -26,13 +28,13 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, PowerFactorCountStaticPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_PowerFactorCount)
         cls.driver.execute_script(PowerFactorCountStaticLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         # cls.refreshPage(cls)
 

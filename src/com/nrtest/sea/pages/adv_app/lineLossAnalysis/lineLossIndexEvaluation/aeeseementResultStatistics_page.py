@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -8,9 +8,10 @@
 @desc:
 """
 
-from com.nrtest.common.base_page import Page
 from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeeseementResultStatistics_locators import \
     AeeseementResultStatisticsLocators
+
+from com.nrtest.common.base_page import Page
 
 
 # 高级应用→线损分析→线损指标考核→考核结果统计

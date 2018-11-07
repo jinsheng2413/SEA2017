@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: jinsheng
@@ -24,7 +24,7 @@ from com.nrtest.sea.task.commonMath import *
 class Test_mDataPublishStatus2(unittest.TestCase, MDataPublishStatus2Page):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = openMenu(InterfaceManager_data.para_MDataPublishStatus2, True)
         sleep(2)
         cls.exec_script(cls, MDataPublishStatus2_locators.START_DATE_JS)
@@ -32,7 +32,7 @@ class Test_mDataPublishStatus2(unittest.TestCase, MDataPublishStatus2Page):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.closePages(cls)
 

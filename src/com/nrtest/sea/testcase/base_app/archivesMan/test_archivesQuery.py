@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -22,14 +22,14 @@ from com.nrtest.sea.task.commonMath import *
 class TestArchivesQuery(unittest.TestCase, ArchivesQueryPages):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = openMenu(ArchivesManData.para_archivesQuery)
         cls.sleep_time(cls, 2)
         cls.exec_script(cls, ArchivesQuery_locators.js)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.refreshPage(cls)
 
     def setUp(self):

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -17,7 +17,7 @@ from selenium import webdriver
 
 from com.nrtest.common.logger import Logger
 
-logger = Logger(logger="BrowserEngine").getlog()
+logger = Logger(logger='BrowserEngine').getlog()
 
 
 class BrowserEngine():

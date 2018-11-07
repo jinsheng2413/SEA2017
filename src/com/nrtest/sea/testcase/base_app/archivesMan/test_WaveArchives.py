@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -24,7 +24,7 @@ class TestWaveArchives(unittest.TestCase, WaveArchives_Page):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(ArchivesMan_data.waveArchives_para)
         sleep(2)
@@ -32,7 +32,7 @@ class TestWaveArchives(unittest.TestCase, WaveArchives_Page):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -65,7 +65,7 @@ class TestWaveArchives(unittest.TestCase, WaveArchives_Page):
         # 输入台区名称
         self.inputStr_zone_name(para['ZONE_NAME'])
         # 输入统计时间
-        self.inputStr_Count_time(para["COUNT_TIME"])
+        self.inputStr_Count_time(para['COUNT_TIME'])
         # 输入统计分类
         self.inputSel_countType(para['COUNT_TYPE'])
 

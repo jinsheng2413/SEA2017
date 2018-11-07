@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -9,7 +9,7 @@
 """
 from com.nrtest.common.logger import Logger
 
-logger = Logger(logger="test").getlog()
+logger = Logger(logger='test').getlog()
 
 
 class test:

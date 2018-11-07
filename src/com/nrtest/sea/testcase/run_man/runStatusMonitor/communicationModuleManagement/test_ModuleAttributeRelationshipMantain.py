@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 
 """
@@ -28,7 +28,7 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(CommunicationModuleManagement.commModulPropMain_para, True)
         clickTabPage(CommunicationModuleManagement.commModulPropMain_tab_relationship)
@@ -38,7 +38,7 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 

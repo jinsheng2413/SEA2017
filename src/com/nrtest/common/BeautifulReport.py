@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 @Version: 1.0
 @Project: BeautyReport
@@ -53,15 +54,15 @@ stderr_redirector = OutputRedirector(sys.stderr)
 # SITE_PAKAGE_PATH = get_python_lib()
 
 FIELDS = {
-    "testPass": 0,
-    "testResult": [
+    'testPass': 0,
+    'testResult': [
     ],
-    "testName": "",
-    "testAll": 0,
-    "testFail": 0,
-    "beginTime": "",
-    "totalTime": "",
-    "testSkip": 0
+    'testName': '',
+    'testAll': 0,
+    'testFail': 0,
+    'beginTime': '',
+    'totalTime': '',
+    'testSkip': 0
 }
 
 
@@ -86,7 +87,7 @@ class MakeResultJson:
 
     def __setitem__(self, key, value):
         """
-        
+
         :param key: self[key]
         :param value: value
         :return:
@@ -118,7 +119,7 @@ class ReportTestResult(unittest.TestResult):
     def __init__(self, suite, stream=sys.stdout):
         """ pass """
         super(ReportTestResult, self).__init__()
-        self.begin_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        self.begin_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
         self.start_time = 0
         self.stream = stream
         self.end_time = 0

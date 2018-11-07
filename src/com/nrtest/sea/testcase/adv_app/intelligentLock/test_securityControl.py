@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: 韩笑
@@ -9,25 +9,28 @@
 '''
 
 import unittest
+
+from ddt import ddt, data
+
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.intelligentLock.intelligentLock_data import IntelligentLock_data
 from com.nrtest.sea.locators.adv_app.intelligentLock.securityControl_locators import SecurityControlLocators
 from com.nrtest.sea.pages.adv_app.intelligentLock.securityControl_page import SecurityControlPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
+
 
 # 高级应用→智能锁具→权限控制
 @ddt
 class TestSecurityControl(unittest.TestCase,SecurityControlPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(IntelligentLock_data.SecurityControl_para,True)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 

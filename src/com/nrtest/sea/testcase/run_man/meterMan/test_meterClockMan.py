@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 吴竹筠
@@ -7,17 +7,16 @@
 @time: 2018/11/2 0002 14:12
 @desc:
 """
+import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.meterMan.meterClockMan_data import MeterClockMan_data
 from com.nrtest.sea.pages.run_man.meterMan.meterClockMan_pages import MeterClockManPage, MeterClockManLocators
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-import unittest
-from com.nrtest.common.data_access import DataAccess
-
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
 
 
 # 运行管理-电能表管理-电能表状态查询
@@ -26,7 +25,7 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(MeterClockMan_data.MeterClockMan_para, True)
         sleep(2)
@@ -34,7 +33,7 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 

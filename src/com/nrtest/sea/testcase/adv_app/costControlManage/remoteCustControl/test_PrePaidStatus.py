@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -26,13 +26,13 @@ class TestPrePaidStatus(unittest.TestCase, PrePaidStatusPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(RemoteCustControl_data.prePaidStatus_para)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -61,7 +61,7 @@ class TestPrePaidStatus(unittest.TestCase, PrePaidStatusPage):
         self.exec_script(PrePaidStatus_Locators.START_DATE_ONE_JS)
         self.exec_script(PrePaidStatus_Locators.END_DATE_ONE_JS)
         # 选择tab页
-        clickTabPage(para["TAB_NAME"])
+        clickTabPage(para['TAB_NAME'])
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 控制类型
@@ -86,7 +86,7 @@ class TestPrePaidStatus(unittest.TestCase, PrePaidStatusPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # 选择tab页
-        clickTabPage(para["TAB_NAME"])
+        clickTabPage(para['TAB_NAME'])
         sleep(2)
         self.exec_script(PrePaidStatus_Locators.START_DATE_TWO_JS)
 

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -28,7 +28,7 @@ class TestDemo(unittest.TestCase, MetClockMonthStaticPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(ClockData.para_MetCheckClock, True)
         sleep(2)
@@ -36,7 +36,7 @@ class TestDemo(unittest.TestCase, MetClockMonthStaticPage):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭页面
         cls.closePages(cls)
 

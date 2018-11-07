@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -23,14 +23,14 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataGatherMan_data.gatherTaskCompile_para)
         clickTabPage('任务查询')
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -65,15 +65,15 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
         # 任务编号
         self.inputStr_taskNo(para['TASK_NO'])
         # 任务名称
-        self.inputStr_taskName(para["TASK_NAME"])
+        self.inputStr_taskName(para['TASK_NAME'])
         # 任务状态
         self.inputSel_taskState(para['TASK_STATE'])
         # 终端地址
-        self.inputStr_TMNL_ADDR(para["TMNL_ADDR"])
+        self.inputStr_TMNL_ADDR(para['TMNL_ADDR'])
         # 采集点名称
         self.inputStr_CollectionPointName(para['COLLECTION_POINT_NAME'])
         # 终端类型
-        self.inputRSel_TmnlType(para["TMNL_TYPE"])
+        self.inputRSel_TmnlType(para['TMNL_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)

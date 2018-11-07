@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -7,14 +7,15 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
+import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.txjx.datamaintain.datamaintain_data import Datamaintain_data
-from com.nrtest.sea.pages.adv_app.txjx.datamaintain.lineData_page import LineDataPage,LineDataLocators
+from com.nrtest.sea.pages.adv_app.txjx.datamaintain.lineData_page import LineDataPage, LineDataLocators
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
-import unittest
 
 
 @ddt
@@ -23,13 +24,13 @@ class TestDemo(unittest.TestCase,LineDataPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(Datamaintain_data.lineData_para,True)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 

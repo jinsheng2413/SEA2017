@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -24,7 +24,7 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(CustMan_data.ctrlExecut_para)
         sleep(2)
@@ -33,7 +33,7 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -64,7 +64,7 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 用户编号
-        self.inputStr_userNo(para["USER_NO"])
+        self.inputStr_userNo(para['USER_NO'])
         # 用户名称
         self.inputStr_userName(para['USER_NAME'])
         # 终端地址
@@ -74,7 +74,7 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
         # 抄表段号
         self.inputStr_sectNo(para['SECT_NO'])
         # 执行状态
-        self.inputSel_exeStatus(para["EXE_STATUS"])
+        self.inputSel_exeStatus(para['EXE_STATUS'])
         # 数据来源
         self.inputSel_dataCome(para['DATA_COME'])
         # 确认状态

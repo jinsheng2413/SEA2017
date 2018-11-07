@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -9,9 +9,9 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import TmnlClockStaticLocators
-from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import TmnlClockDetailLocators
 from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import AutoCheckPolicyLocators
+from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import TmnlClockDetailLocators
+from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import TmnlClockStaticLocators
 
 
 # 运行管理→时钟管理→终端对时

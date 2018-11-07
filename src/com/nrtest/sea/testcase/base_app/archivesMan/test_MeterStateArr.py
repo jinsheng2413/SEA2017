@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -22,13 +22,13 @@ class TestMeterStateArr(unittest.TestCase, MeterStateArrPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(ArchivesMan_data.meterStateArr_para)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -59,11 +59,11 @@ class TestMeterStateArr(unittest.TestCase, MeterStateArrPage):
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 终端状态
-        self.inputSel_tmnlStatus(para["TMNL_STATUS"])
+        self.inputSel_tmnlStatus(para['TMNL_STATUS'])
         # 终端类型
-        self.inputSel_tmnlType(para["TMNL_TYPE"])
+        self.inputSel_tmnlType(para['TMNL_TYPE'])
         # 终端地址
-        self.inputStr_tmnlAddr(para["TMNL_ADDR"])
+        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
 
         self.btn_tmnl_qry()
         self.sleep_time(2)

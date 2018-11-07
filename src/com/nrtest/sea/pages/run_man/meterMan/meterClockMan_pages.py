@@ -18,19 +18,22 @@ class MeterClockManPage(Page):
     # 事件类型
     def inputSel_eventtype(self, index):
         self.click(*MeterClockManLocators.QRY_EVENTTYPE)
-        locator = self.get_select_locator(MeterClockManLocators.QRY_EVENTTYPE_VALUE, index)
+        locator = self.get_select_locator(
+            MeterClockManLocators.QRY_EVENTTYPE_VALUE, index)
         self.click(*locator)
 
     # 终端厂家
     def inputSel_tmnlfactory(self, index):
         self.click(*MeterClockManLocators.QRY_TMNLFACORY)
-        locator = self.get_select_locator(MeterClockManLocators.QRY_TMNLFACORY_VALUE, index)
+        locator = self.get_select_locator(
+            MeterClockManLocators.QRY_TMNLFACORY_VALUE, index)
         self.click(*locator)
 
     # 电表厂家
     def inputSel_meterfactory(self, index):
         self.click(*MeterClockManLocators.QRY_METERFACTORY)
-        locator = self.get_select_locator(MeterClockManLocators.QRY_METERFACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            MeterClockManLocators.QRY_METERFACTORY_VALUE, index)
         self.click(*locator)
 
     # 终端地址

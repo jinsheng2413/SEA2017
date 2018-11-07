@@ -27,7 +27,8 @@ class TestUpgradeEditionMan(unittest.TestCase, RegularSporadicUpgradePage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(RegularSporadicUpgrade_data.para_RegularSporadicUpgrade)
+        cls.driver = openMenu(
+            RegularSporadicUpgrade_data.para_RegularSporadicUpgrade)
 
     @classmethod
     def tearDownClass(cls):

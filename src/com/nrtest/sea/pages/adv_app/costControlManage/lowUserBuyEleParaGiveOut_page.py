@@ -31,12 +31,14 @@ class LowUserBuyEleParaGiveOut_page(Page):
 
     # 抄表段号
     def inputStr_meter_reading_num(self, value):
-        self.input(value, *LowUserBuyEleParaGiveOutLocators.QRY_METER_READING_NUMBER)
+        self.input(
+            value, *LowUserBuyEleParaGiveOutLocators.QRY_METER_READING_NUMBER)
 
     # 执行状态
     def inputSel_execute_state(self, index):
         self.click(*LowUserBuyEleParaGiveOutLocators.QRY_EXECUTE_STATE)
-        locator = self.get_select_locator(LowUserBuyEleParaGiveOutLocators.QRY_EXECUTE_STATE_VALUE, index)
+        locator = self.get_select_locator(
+            LowUserBuyEleParaGiveOutLocators.QRY_EXECUTE_STATE_VALUE, index)
         # print(locator)
         self.click(*locator)
 

@@ -34,8 +34,10 @@ class EleParaManLocators:
         By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'新增')]/../div[contains(text(),'%s')])[2]")
 
     # 【操作区】
-    BTN_QRY_ONE = (By.XPATH, "(//*[@class=\"x-column-inner\"]//button[contains(text(),'查询')])[1]")
-    BTN_QRY_TWO = (By.XPATH, "(//*[@class=\"x-column-inner\"]//button[contains(text(),'查询')])[1]")
+    BTN_QRY_ONE = (
+        By.XPATH, "(//*[@class=\"x-column-inner\"]//button[contains(text(),'查询')])[1]")
+    BTN_QRY_TWO = (
+        By.XPATH, "(//*[@class=\"x-column-inner\"]//button[contains(text(),'查询')])[1]")
     # 【js区】
     # 开始时间，删除readonly属性
     START_DATE_JS_ONE = 'document.getElementById("erateParamMainStartDate").removeAttribute("readonly");'

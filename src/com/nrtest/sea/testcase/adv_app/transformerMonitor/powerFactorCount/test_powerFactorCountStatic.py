@@ -71,7 +71,8 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, PowerFactorCountStaticPage):
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*PowerFactorCountStaticLocators.TABLE_DATA)
+        result = self.assert_context(
+            *PowerFactorCountStaticLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_PowerFactorCount, '功率因数越限统计'))

@@ -45,14 +45,16 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
 
     # 指定时间区域
     def firstOne(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_work_order)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                LowUserBalanceCheck_para.para_test_work_order)
         self.inputStr_receive_date(lip[0][1])
         self.inputStr_end_date(lip[0][2])
 
     # 数据工单编号
     @BeautifulReport.add_test_img()
     def test_work_order(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_work_order)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                LowUserBalanceCheck_para.para_test_work_order)
         self.inputStr_work_order(lip[0][0])
         self.inputStr_receive_date(lip[0][1])
         self.inputStr_end_date(lip[0][2])
@@ -65,7 +67,8 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
     # 用户编号
     @BeautifulReport.add_test_img()
     def test_user_order(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_user_order)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                LowUserBalanceCheck_para.para_test_user_order)
         self.inputStr_user_order(lip[0][0])
         self.firstOne()
         self.btn_qry()
@@ -77,7 +80,8 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
     # 终端地址
     @BeautifulReport.add_test_img()
     def test_terminal_addr(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_terminal_addr)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_terminal_addr)
         self.inputStr_terminal_addr(lip[0][0])
         self.firstOne()
         self.btn_qry()
@@ -89,7 +93,8 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
     # 电表地址
     @BeautifulReport.add_test_img()
     def test_ele_meter_addr(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_ele_meter_addr)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_ele_meter_addr)
         self.inputStr_meter_addr(lip[0][0])
         self.firstOne()
         self.btn_qry()
@@ -101,7 +106,8 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
     # 抄表段号
     @BeautifulReport.add_test_img()
     def test_meter_reading_number(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_meter_reading_number)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_meter_reading_number)
         self.inputStr_meter_reading_number(lip[0][0])
         self.firstOne()
         self.btn_qry()
@@ -113,7 +119,8 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
     # 用户名称
     @BeautifulReport.add_test_img()
     def test_BalanceCheck_user_name(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_BalanceCheck_user_name)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_BalanceCheck_user_name)
         self.inputStr_user_name(lip[0][0])
         self.firstOne()
         self.btn_qry()
@@ -125,7 +132,8 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
     # 电表局编号
     @BeautifulReport.add_test_img()
     def test_ele_meter_bureea_order(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_ele_meter_bureea_order)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_ele_meter_bureea_order)
         self.inputStr_ele_meter_bureea_order(lip[0][0])
         self.firstOne()
         self.btn_qry()
@@ -147,7 +155,8 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
     # 执行状态
     @BeautifulReport.add_test_img()
     def test_execute_state(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_execute_state)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_execute_state)
         self.firstOne()
         self.inputRSel_execute_state(lip[0][0])
         self.btn_qry()

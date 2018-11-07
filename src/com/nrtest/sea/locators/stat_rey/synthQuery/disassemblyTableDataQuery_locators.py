@@ -24,7 +24,8 @@ class DisassemblyTableDataQueryLocators:
     # 终端地址
     TMNL_ADDR = (By.XPATH, '//label[contains(text(),"终端地址")]/../div/input')
     # 电能表资产号
-    METER_ASSET_NO = (By.XPATH, '//label[contains(text(),"电能表资产号")]/../div/input')
+    METER_ASSET_NO = (
+        By.XPATH, '//label[contains(text(),"电能表资产号")]/../div/input')
     # 开始时间
     START_DATE = (By.XPATH, '//label[contains(text(),"起")]/../div/div/input')
     # 结束时间

@@ -25,13 +25,15 @@ class MetClockMonthStaticPage(Page):
     # 电表类别--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*MetClockMonthStaticLocators.MET_TYPE_SEL)
-        locator = self.get_select_locator(MetClockMonthStaticLocators.MET_TYPE, name)
+        locator = self.get_select_locator(
+            MetClockMonthStaticLocators.MET_TYPE, name)
         self.click(*locator)
 
     # 电能表厂商--打开并选择
     def inputRSel_tmnl_fac(self, name):
         self.click(*MetClockMonthStaticLocators.MET_FAC_SEL)
-        locator = self.get_select_locator(MetClockMonthStaticLocators.MET_FAC, name)
+        locator = self.get_select_locator(
+            MetClockMonthStaticLocators.MET_FAC, name)
         self.click(*locator)
 
     # 查询日期
@@ -52,13 +54,15 @@ class MetClockDayStaticPage(Page):
     # 电表类别--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*MetClockDayStaticLocators.MET_TYPE_SEL)
-        locator = self.get_select_locator(MetClockDayStaticLocators.MET_TYPE, name)
+        locator = self.get_select_locator(
+            MetClockDayStaticLocators.MET_TYPE, name)
         self.click(*locator)
 
     # 电能表厂商--打开并选择
     def inputRSel_tmnl_fac(self, name):
         self.click(*MetClockDayStaticLocators.MET_FAC_SEL)
-        locator = self.get_select_locator(MetClockDayStaticLocators.MET_FAC, name)
+        locator = self.get_select_locator(
+            MetClockDayStaticLocators.MET_FAC, name)
         self.click(*locator)
 
     # 查询日期
@@ -85,7 +89,8 @@ class MetClockDetailPage(Page):
     # 电表类别
     def inputRSel_met_type(self, name):
         self.click(*MetClockDetailLocators.MET_TYPE_SEL)
-        locator = self.get_select_locator(MetClockDetailLocators.MET_TYPE, name)
+        locator = self.get_select_locator(
+            MetClockDetailLocators.MET_TYPE, name)
         self.click(*locator)
 
     # 电能表资产号
@@ -99,7 +104,8 @@ class MetClockDetailPage(Page):
     # 偏差范围--打开并选择
     def inputRSel_offset_range(self, name):
         self.click(*MetClockDetailLocators.OFFSET_RANGE_SEL)
-        locator = self.get_select_locator(MetClockDetailLocators.OFFSET_RANGE, name)
+        locator = self.get_select_locator(
+            MetClockDetailLocators.OFFSET_RANGE, name)
         self.click(*locator)
 
     # 终端地址
@@ -124,13 +130,15 @@ class AutoCheckPolicyPage(Page):
     # 间隔周期--打开并选择
     def inputRSel_interval_cycle(self, name):
         self.click(*AutoCheckPolicyLocators.INTERVAL_CYCLE_SEL)
-        locator = self.get_select_locator(AutoCheckPolicyLocators.INTERVAL_CYCLE, name)
+        locator = self.get_select_locator(
+            AutoCheckPolicyLocators.INTERVAL_CYCLE, name)
         self.click(*locator)
 
     # 周期内自动对时次数--打开并选择
     def inputRSel_auto_times(self, name):
         self.click(*AutoCheckPolicyLocators.AUTO_TIMES_SEL)
-        locator = self.get_select_locator(AutoCheckPolicyLocators.AUTO_TIMES, name)
+        locator = self.get_select_locator(
+            AutoCheckPolicyLocators.AUTO_TIMES, name)
         self.click(*locator)
 
     # 查询日期

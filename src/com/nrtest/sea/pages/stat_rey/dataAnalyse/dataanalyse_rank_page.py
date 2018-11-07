@@ -55,5 +55,6 @@ class DataAnalyseRankPage(Page):
     # 用户类型
     def inputRSel_cons_type(self, index):
         self.click(*DataAnalyseRankLocators.DROP_DOWN)
-        locator = self.get_select_locator(DataAnalyseRankLocators.CONS_TYPE_SPECIAL, index)
+        locator = self.get_select_locator(
+            DataAnalyseRankLocators.CONS_TYPE_SPECIAL, index)
         self.click(*locator)

@@ -28,13 +28,15 @@ class AllEventDistributionRateStatisticsPage(Page):
     # 全事件未配置明细
     # 时间
     def inputDt_date_tab(self, content):
-        self.exec_script(AllEventDistributionRateStatisticsLocators.DATE_TAB_JS)
+        self.exec_script(
+            AllEventDistributionRateStatisticsLocators.DATE_TAB_JS)
         self.input(content, *AllEventDistributionRateStatisticsLocators.DATE_TAB)
 
     # 终端类型
     def inputSel_tmnl_type(self, index):
         self.click(*AllEventDistributionRateStatisticsLocators.TMNL_TYPE)
-        locator = self.get_select_locator(AllEventDistributionRateStatisticsLocators.TMNL_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            AllEventDistributionRateStatisticsLocators.TMNL_TYPE_VALUE, index)
         self.click(*locator)
 
     # 查询按钮

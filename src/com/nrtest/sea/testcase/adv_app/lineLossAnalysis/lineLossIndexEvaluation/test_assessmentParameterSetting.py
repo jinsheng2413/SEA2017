@@ -30,7 +30,8 @@ class TestAssessmentParameterSetting(unittest.TestCase, AssessmentParameterSetti
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LineLossIndexEvaluation_data.AssessmentParameterSetting_para, True)
+        cls.driver = openMenu(
+            LineLossIndexEvaluation_data.AssessmentParameterSetting_para, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -60,7 +61,8 @@ class TestAssessmentParameterSetting(unittest.TestCase, AssessmentParameterSetti
         # 查询按钮
         self.btn_search()
         # 校验
-        result = self.assert_context(*AssessmentParameterSettingLocators.CHECK_FIRST)
+        result = self.assert_context(
+            *AssessmentParameterSettingLocators.CHECK_FIRST)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

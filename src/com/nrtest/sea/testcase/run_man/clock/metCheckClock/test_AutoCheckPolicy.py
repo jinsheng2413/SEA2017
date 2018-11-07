@@ -22,8 +22,8 @@ from com.nrtest.sea.pages.run_man.clock.metCheckClock_page import AutoCheckPolic
 from com.nrtest.sea.task.commonMath import *
 
 
-#运行管理→时钟管理→终端对时
-#终端时钟明细
+# 运行管理→时钟管理→终端对时
+# 终端时钟明细
 @ddt
 class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
 
@@ -114,4 +114,3 @@ class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
 
     if __name__ == '__main__':
         unittest.main()
-

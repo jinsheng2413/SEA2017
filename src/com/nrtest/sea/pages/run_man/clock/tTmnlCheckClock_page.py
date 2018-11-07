@@ -24,13 +24,15 @@ class TmnlClockStaticPage(Page):
     # 终端类型--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*TmnlClockStaticLocators.TMNL_TYPE_SEL)
-        locator = self.get_select_locator(TmnlClockStaticLocators.TMNL_TYPE, name)
+        locator = self.get_select_locator(
+            TmnlClockStaticLocators.TMNL_TYPE, name)
         self.click(*locator)
 
     # 终端厂商--打开并选择
     def inputRSel_tmnl_fac(self, name):
         self.click(*TmnlClockStaticLocators.TMNL_FAC_SEL)
-        locator = self.get_select_locator(TmnlClockStaticLocators.TMNL_FAC, name)
+        locator = self.get_select_locator(
+            TmnlClockStaticLocators.TMNL_FAC, name)
         self.click(*locator)
 
     # 查询日期
@@ -51,13 +53,15 @@ class TmnlClockDetailPage(Page):
     # 偏差范围--打开并选择
     def inputRSel_offset_range(self, name):
         self.click(*TmnlClockDetailLocators.OFFSET_RANGE_SEL)
-        locator = self.get_select_locator(TmnlClockDetailLocators.OFFSET_RANGE, name)
+        locator = self.get_select_locator(
+            TmnlClockDetailLocators.OFFSET_RANGE, name)
         self.click(*locator)
 
     # 终端类型--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*TmnlClockDetailLocators.TMNL_TYPE_SEL)
-        locator = self.get_select_locator(TmnlClockDetailLocators.TMNL_TYPE, name)
+        locator = self.get_select_locator(
+            TmnlClockDetailLocators.TMNL_TYPE, name)
         self.click(*locator)
 
     # 终端型号
@@ -67,7 +71,8 @@ class TmnlClockDetailPage(Page):
     # 终端厂商--打开并选择
     def inputRSel_tmnl_fac(self, name):
         self.click(*TmnlClockDetailLocators.TMNL_FAC_SEL)
-        locator = self.get_select_locator(TmnlClockDetailLocators.TMNL_FAC, name)
+        locator = self.get_select_locator(
+            TmnlClockDetailLocators.TMNL_FAC, name)
         self.click(*locator)
 
     # 终端地址
@@ -77,7 +82,8 @@ class TmnlClockDetailPage(Page):
     # 是否在线--打开并选择
     def inputRSel_is_online(self, name):
         self.click(*TmnlClockDetailLocators.IS_ONLINE_SEL)
-        locator = self.get_select_locator(TmnlClockDetailLocators.IS_ONLINE, name)
+        locator = self.get_select_locator(
+            TmnlClockDetailLocators.IS_ONLINE, name)
         self.click(*locator)
 
     # 查询日期
@@ -87,7 +93,8 @@ class TmnlClockDetailPage(Page):
     # 对时结果-打开并选择
     def inputRSel_call_status(self, name):
         self.click(*TmnlClockDetailLocators.CALL_STATUS_SEL)
-        locator = self.get_select_locator(TmnlClockDetailLocators.CALL_STATUS, name)
+        locator = self.get_select_locator(
+            TmnlClockDetailLocators.CALL_STATUS, name)
         self.click(*locator)
 
     # 点击查询
@@ -95,6 +102,8 @@ class TmnlClockDetailPage(Page):
         self.click(*TmnlClockDetailLocators.BTN_QUERY)
 
 # 自动对时策略配置
+
+
 class AutoCheckPolicyPage(Page):
     # 节点
     def inputStr_org_no(self, value):
@@ -103,13 +112,15 @@ class AutoCheckPolicyPage(Page):
     # 间隔周期--打开并选择
     def inputRSel_interval_cycle(self, name):
         self.click(*AutoCheckPolicyLocators.INTERVAL_CYCLE_SEL)
-        locator = self.get_select_locator(AutoCheckPolicyLocators.INTERVAL_CYCLE, name)
+        locator = self.get_select_locator(
+            AutoCheckPolicyLocators.INTERVAL_CYCLE, name)
         self.click(*locator)
 
     # 周期内自动对时次数--打开并选择
     def inputRSel_auto_times(self, name):
         self.click(*AutoCheckPolicyLocators.AUTO_TIMES_SEL)
-        locator = self.get_select_locator(AutoCheckPolicyLocators.AUTO_TIMES, name)
+        locator = self.get_select_locator(
+            AutoCheckPolicyLocators.AUTO_TIMES, name)
         self.click(*locator)
 
     # 查询日期

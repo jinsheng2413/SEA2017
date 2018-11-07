@@ -20,13 +20,15 @@ class MeterStateArrPage(Page):
     # 终端状态
     def inputSel_tmnlStatus(self, name):
         self.click(*MeterStateArrLocators.QRY_TMNL_STATUS)
-        locator = self.get_select_locator(MeterStateArrLocators.QRY_TMNL_STATUS_VALUE, name)
+        locator = self.get_select_locator(
+            MeterStateArrLocators.QRY_TMNL_STATUS_VALUE, name)
         self.click(*locator)
 
     # 终端类型
     def inputSel_tmnlType(self, name):
         self.click(*MeterStateArrLocators.QRY_TMNLTYPE)
-        locator = self.get_select_locator(MeterStateArrLocators.QRY_TMNLTYPE_VALUE, name)
+        locator = self.get_select_locator(
+            MeterStateArrLocators.QRY_TMNLTYPE_VALUE, name)
         self.click(*locator)
 
     # # 筛选条件

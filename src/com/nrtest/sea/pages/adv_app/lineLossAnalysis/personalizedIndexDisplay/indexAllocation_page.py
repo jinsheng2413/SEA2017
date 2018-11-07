@@ -22,7 +22,8 @@ class IndexAllocationPage(Page):
     # 台区状态
     def inputSel_tg_status(self, index):
         self.click(*IndexAllocationLocators.QRY_TG_STATUS)
-        locator = self.get_select_locator(IndexAllocationLocators.QRY_TG_STATUS_VALUE, index)
+        locator = self.get_select_locator(
+            IndexAllocationLocators.QRY_TG_STATUS_VALUE, index)
         self.click(*locator)
 
     # 责任人工号

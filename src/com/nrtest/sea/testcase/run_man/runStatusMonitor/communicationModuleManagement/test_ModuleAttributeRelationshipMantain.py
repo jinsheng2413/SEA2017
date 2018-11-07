@@ -30,11 +30,14 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(CommunicationModuleManagement.commModulPropMain_para, True)
-        clickTabPage(CommunicationModuleManagement.commModulPropMain_tab_relationship)
+        cls.driver = openMenu(
+            CommunicationModuleManagement.commModulPropMain_para, True)
+        clickTabPage(
+            CommunicationModuleManagement.commModulPropMain_tab_relationship)
         cls.clickCheckBox(cls, CheckBoxName='已维护')
         sleep(2)
-        cls.exec_script(cls, ModuleAttributeRelationshipMantainLocators.TMNL_FACTORY_JS)
+        cls.exec_script(
+            cls, ModuleAttributeRelationshipMantainLocators.TMNL_FACTORY_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -77,7 +80,8 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ModuleAttributeRelationshipMantainLocators.TAB_ONE)
+        result = self.assert_context(
+            *ModuleAttributeRelationshipMantainLocators.TAB_ONE)
         self.assertTrue(result)
 
     # @BeautifulReport.add_test_img()

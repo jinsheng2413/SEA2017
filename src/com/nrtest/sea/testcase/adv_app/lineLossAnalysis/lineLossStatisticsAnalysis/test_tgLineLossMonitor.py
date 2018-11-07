@@ -28,7 +28,8 @@ class TestTgLineLossMonitor(unittest.TestCase, TgLineLossMonitorPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LineLossStatisticsAnalysis_data.TgLineLossMonitor_para, True)
+        cls.driver = openMenu(
+            LineLossStatisticsAnalysis_data.TgLineLossMonitor_para, True)
 
     @classmethod
     def tearDownClass(cls):

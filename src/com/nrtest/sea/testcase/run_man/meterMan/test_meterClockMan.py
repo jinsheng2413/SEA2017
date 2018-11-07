@@ -29,7 +29,7 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(MeterClockMan_data.MeterClockMan_para, True)
         sleep(2)
-        cls.exec_script(cls,MeterClockManLocators.START_DATE_JS)
+        cls.exec_script(cls, MeterClockManLocators.START_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -60,7 +60,7 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         self.DisplayTreeMenu()
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         self.inputSel_eventtype(para['EVENT_TYPE'])
         self.inputSel_tmnlfactory(para['TMNL_FACORY'])
@@ -69,7 +69,6 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
         self.inputStr_userno(para['USER_NO'])
         self.inputStr_meterno(para['METER_NO'])
         self.inputStr_date(para['DATE'])
-
 
         self.btn_qry()
         self.sleep_time(2)
@@ -81,6 +80,3 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
     @data(*DataAccess.getCaseData(MeterClockMan_data.MeterClockMan_para))
     def test_query(self, para):
         self.query(para)
-
-
-

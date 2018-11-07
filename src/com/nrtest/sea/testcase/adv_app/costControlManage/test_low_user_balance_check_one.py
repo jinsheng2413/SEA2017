@@ -46,14 +46,16 @@ class TestBalanceCount(unittest.TestCase, BalanceCount_page):
 
     # 查询出第一个数据
     def firstone(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_data_date)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                LowUserBalanceCheck_para.para_test_data_date)
         self.inputStr_data_date(lip[0][0])
         self.btn_qry()
 
     # 数据日期查询
     @BeautifulReport.add_test_img()
     def test_data_date(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_data_date)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                LowUserBalanceCheck_para.para_test_data_date)
         self.inputStr_data_date(lip[0][0])
         self.btn_qry()
         self.sleep_time(2)

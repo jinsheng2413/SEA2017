@@ -45,7 +45,8 @@ class TestarchivesMaintain_terminal(unittest.TestCase, ArchivesMaintain_terminal
 
     # 厂家名称
     def test_amt_factoryName(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesMaintain.para_test_amt_factoryName)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ArchivesMaintain.para_test_amt_factoryName)
         self.inputSel_factoryNmae(lip[0][0])
         self.btn_terminalQry()
         self.sleep_time(2)

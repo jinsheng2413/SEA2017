@@ -48,7 +48,8 @@ class PatrolDataQueryPage(Page):
     # 曲线类型
     def inputSel_curve_data_curve_type(self, index):
         self.click(*PatrolDataQueryLocators.CURVE_DATA_CURVE_TYPE)
-        locator = self.get_select_locator(PatrolDataQueryLocators.CURVE_DATA_CURVE_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            PatrolDataQueryLocators.CURVE_DATA_CURVE_TYPE_VALUE, index)
         self.click(*locator)
 
     # 查询按钮
@@ -67,12 +68,14 @@ class PatrolDataQueryPage(Page):
     # 曲线类型
     def inputSel_curve_contrast_curve_type(self, index):
         self.click(*PatrolDataQueryLocators.CURVE_CONTRAST_CURVE_TYPE)
-        locator = self.get_select_locator(PatrolDataQueryLocators.CURVE_CONTRAST_CURVE_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            PatrolDataQueryLocators.CURVE_CONTRAST_CURVE_TYPE_VALUE, index)
         self.click(*locator)
 
     # 电表资产号
     def inputStr_curve_contrast_meter_asset_no(self, content):
-        self.input(content, *PatrolDataQueryLocators.CURVE_CONTRAST_METER_ASSET_NO)
+        self.input(
+            content, *PatrolDataQueryLocators.CURVE_CONTRAST_METER_ASSET_NO)
 
     # 日期
     def inputDt_curve_contrast_date(self, content):
@@ -91,7 +94,8 @@ class PatrolDataQueryPage(Page):
     # 电流回路状态
     def inputSel_current_status(self, index):
         self.click(*PatrolDataQueryLocators.CURRENT_STATUS)
-        locator = self.get_select_locator(PatrolDataQueryLocators.CURRENT_STATUS_VALUE, index)
+        locator = self.get_select_locator(
+            PatrolDataQueryLocators.CURRENT_STATUS_VALUE, index)
         self.click(*locator)
 
     # 日期
@@ -118,7 +122,8 @@ class PatrolDataQueryPage(Page):
 
     # 终端资产号
     def inputStr_anomalous_event_tmnl_asset_no(self, content):
-        self.input(content, *PatrolDataQueryLocators.ANOMALOUS_EVENT_TMNL_ASSET_NO)
+        self.input(
+            content, *PatrolDataQueryLocators.ANOMALOUS_EVENT_TMNL_ASSET_NO)
 
     # 用户编号
     def inputStr_anomalous_event_cons_no(self, content):
@@ -127,7 +132,8 @@ class PatrolDataQueryPage(Page):
     # 异常事件
     def inputSel_anomalous_event(self, index):
         self.click(*PatrolDataQueryLocators.ANOMALOUS_EVENT)
-        locator = self.get_select_locator(PatrolDataQueryLocators.ANOMALOUS_EVENT_VALUE, index)
+        locator = self.get_select_locator(
+            PatrolDataQueryLocators.ANOMALOUS_EVENT_VALUE, index)
         self.click(*locator)
 
     # 查询按钮

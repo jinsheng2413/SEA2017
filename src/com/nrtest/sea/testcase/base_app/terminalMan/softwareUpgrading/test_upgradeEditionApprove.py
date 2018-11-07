@@ -26,7 +26,8 @@ class TestUpgradeEditionApprove(unittest.TestCase, UpgradeEditionApprovePage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SoftwareUpgrading_data.UpgradeEditionApprove_para)
+        cls.driver = openMenu(
+            SoftwareUpgrading_data.UpgradeEditionApprove_para)
 
     @classmethod
     def tearDownClass(cls):

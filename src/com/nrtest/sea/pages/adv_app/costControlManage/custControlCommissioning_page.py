@@ -15,7 +15,8 @@ from com.nrtest.sea.locators.adv_app.costControlManage.custControlCommissioning_
 class CustControlCommissioning_page(Page):
     # 营销单号
     def inputStr_mark_sigle(self, value):
-        self.input(value, *CustControlCommissioning_locators.QRY_MARKETINF_SINGLE_NUM)
+        self.input(
+            value, *CustControlCommissioning_locators.QRY_MARKETINF_SINGLE_NUM)
 
     # 终端地址
     def inputStr_terminal_addr(self, value):
@@ -40,14 +41,16 @@ class CustControlCommissioning_page(Page):
     # 按
     def inputRSel_buy_ele_date(self, index):
         self.click(*CustControlCommissioning_locators.SELR_ARRANGE)
-        locator = self.get_select_locator(CustControlCommissioning_locators.SELR_ARRANGE_VALUE, index)
+        locator = self.get_select_locator(
+            CustControlCommissioning_locators.SELR_ARRANGE_VALUE, index)
         self.click(*locator)
 
     # 下发状态
     def inputSel_provide_state(self, index):
         print('-------------')
         self.click(*CustControlCommissioning_locators.QRY_PROVIDE_STATE)
-        locator = self.get_select_locator(CustControlCommissioning_locators.QRY_PROVIDE_STATE_VALUE, index)
+        locator = self.get_select_locator(
+            CustControlCommissioning_locators.QRY_PROVIDE_STATE_VALUE, index)
         self.click(*locator)
 
     # 点击查询按钮

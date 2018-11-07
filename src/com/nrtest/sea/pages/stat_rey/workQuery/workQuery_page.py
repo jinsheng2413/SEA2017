@@ -32,7 +32,8 @@ class WorkQueryPage(Page):
     # 异常状态
     def inputSel_abnormalStatus(self, index):
         self.click(*WorkQueryLocators.QRY_ABNORMAL_STATUS)
-        locator = self.get_select_locator(WorkQueryLocators.QRY_ABNORMAL_STATUS_VALUE, index)
+        locator = self.get_select_locator(
+            WorkQueryLocators.QRY_ABNORMAL_STATUS_VALUE, index)
         self.click(*locator)
         # 日期
 

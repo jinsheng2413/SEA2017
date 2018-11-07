@@ -51,9 +51,11 @@ class TestPatrolDataQuery_CurrentStatus(unittest.TestCase, PatrolDataQueryPage):
         # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 终端地址
-        self.inputStr_current_status_tmnl_addr(para['CURRENT_STATUS_TMNL_ADDR'])
+        self.inputStr_current_status_tmnl_addr(
+            para['CURRENT_STATUS_TMNL_ADDR'])
         # 终端资产号
-        self.inputStr_current_status_tmnl_asset_no(para['CURRENT_STATUS_TMNL_ASSET_NO'])
+        self.inputStr_current_status_tmnl_asset_no(
+            para['CURRENT_STATUS_TMNL_ASSET_NO'])
         # 查询按钮
         self.btn_current_status_search()
 

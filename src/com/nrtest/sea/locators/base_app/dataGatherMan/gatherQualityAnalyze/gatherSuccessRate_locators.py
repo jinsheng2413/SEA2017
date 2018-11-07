@@ -16,7 +16,8 @@ class GatherSuccessRateLocators:
     # 采集成功率→采集成功率
     # 页面元素
     # 查询日期开始
-    START_DATE = (By.XPATH, '//label[contains(text(),"开始时间")]/../div/div/input')
+    START_DATE = (
+        By.XPATH, '//label[contains(text(),"开始时间")]/../div/div/input')
     # 查询日期结束
     END_DATE = (By.XPATH, '//label[contains(text(),"结束时间")]/../div/div/input')
     # 查询按钮
@@ -31,9 +32,11 @@ class GatherSuccessRateLocators:
     # 第一个“更多”按钮
     BTN_FIRST_MORE = (By.XPATH, '(//a[contains(text(),"更多")])[1]')
     # 跳出窗口关闭按钮
-    BTN_CLOSE = (By.XPATH, '//div[@class="x-window-header x-unselectable x-window-draggable"]/div[1]')
+    BTN_CLOSE = (
+        By.XPATH, '//div[@class="x-window-header x-unselectable x-window-draggable"]/div[1]')
     # 第一个结果的采集成功率
-    SHOW_FIRST_STATISTICS = (By.XPATH, '(//div[@class="x-grid3-cell-inner x-grid3-col-8"]/a)[1]')
+    SHOW_FIRST_STATISTICS = (
+        By.XPATH, '(//div[@class="x-grid3-cell-inner x-grid3-col-8"]/a)[1]')
 
     # 采集成功率→采集成功率统计
     # 采集成功率统计
@@ -44,9 +47,11 @@ class GatherSuccessRateLocators:
     # 用户类型
     STATISTICS_CONS_TYPE = (By.XPATH, '//input[@id="readSortTypeCombo"]')
     # 用户类型→值
-    STATISTICS_CONS_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    STATISTICS_CONS_TYPE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 查询按钮
-    BTN_STATISTICS_SEARCH = (By.XPATH, '//table[@id="readSuccessRateQueryBtn"]')
+    BTN_STATISTICS_SEARCH = (
+        By.XPATH, '//table[@id="readSuccessRateQueryBtn"]')
 
     # 采集成功率→数据采集成功率明细
     # 数据采集成功率明细
@@ -57,22 +62,27 @@ class GatherSuccessRateLocators:
     # 用户类型
     DETAIL_CONS_TYPE = (By.XPATH, '//input[@id="failDetail_consTypeCombox"]')
     # 用户类型→值
-    DETAIL_CONS_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    DETAIL_CONS_TYPE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 查询按钮
     BTN_DETAIL_SEARCH = (By.XPATH, '//table[@id="gatherFailDetailQueryBtn"]')
     # 未抄数
-    BTN_DETAIL_NEVER = (By.XPATH, '//div[@class="x-grid3-cell-inner x-grid3-col-13"]/a')
+    BTN_DETAIL_NEVER = (
+        By.XPATH, '//div[@class="x-grid3-cell-inner x-grid3-col-13"]/a')
 
     # 采集成功率→连续抄表失败明细
     # 连续抄表失败明细
     BTN_CONTINUOUS_FALSE = (By.XPATH, '//span[contains(text(),"连续抄表失败明细")]')
     # 页面元素
     # 查询日期
-    FALSE_DATE = (By.XPATH, '(//label[contains(text(),"日期")]/../div/div/input)[3]')
+    FALSE_DATE = (
+        By.XPATH, '(//label[contains(text(),"日期")]/../div/div/input)[3]')
     # 用户类型
-    FALSE_CONS_TYPE = (By.XPATH, '(//label[contains(text(),"用户类型")]/../div/div/input)[4]')
+    FALSE_CONS_TYPE = (
+        By.XPATH, '(//label[contains(text(),"用户类型")]/../div/div/input)[4]')
     # 用户类型→值
-    FALSE_CONS_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
+    FALSE_CONS_TYPE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     # 查询按钮
     BTN_FALSE_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[4]')
     # 连续N天抄表失败明细
@@ -86,9 +96,11 @@ class GatherSuccessRateLocators:
     # 查询日期，结束
     DATE_END_DATE = (By.XPATH, '//input[@name="msq_endDate"]')
     # 用户类型
-    DATE_CONS_TYPE = (By.XPATH, '(//label[contains(text(),"用户类型")]/../div/div/input)[5]')
+    DATE_CONS_TYPE = (
+        By.XPATH, '(//label[contains(text(),"用户类型")]/../div/div/input)[5]')
     # 用户类型→值
-    DATE_CONS_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[5]/div[%s]')
+    DATE_CONS_TYPE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[5]/div[%s]')
     # 查询按钮
     BTN_DATE_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[5]')
 
@@ -126,6 +138,7 @@ class GatherSuccessRateLocators:
     # 采集成功率明细→采集失败明细
     DETAIL_FALSE_CHECK = (By.XPATH, '//label[contains(text(),"采集失败明细")]')
     # 采集成功率明细→连续抄表失败明细
-    FALSE_CHECK = (By.XPATH, '//td[@class="x-grid3-col x-grid3-cell x-grid3-td-0 x-selectable x-grid3-cell-first "]')
+    FALSE_CHECK = (
+        By.XPATH, '//td[@class="x-grid3-col x-grid3-cell x-grid3-td-0 x-selectable x-grid3-cell-first "]')
     # 采集成功率明细→连续抄表失败明细→连续N天抄表失败明细
     FALSE_DETAIL_CHECK = (By.XPATH, '//table[@class="x-grid3-row-table"]')

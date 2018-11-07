@@ -20,12 +20,12 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用→工单处理→抄表失败工单查询
 @ddt
-class TestAssetMan(unittest.TestCase,SectfailedAppQueryPage):
+class TestAssetMan(unittest.TestCase, SectfailedAppQueryPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(AppDispose_data.SectFailedAppQuery_para,True)
+        cls.driver = openMenu(AppDispose_data.SectFailedAppQuery_para, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -48,13 +48,13 @@ class TestAssetMan(unittest.TestCase,SectfailedAppQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #抄表段号
+        # 抄表段号
         self.inputStr_sect_no(para['SECT_NO'])
         # 抄表管理员工号
         self.inputStr_sect_manager_no(para['SECT_MANAGER_NO'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
 
     @data(*DataAccess.getCaseData(AppDispose_data.SectFailedAppQuery_para))

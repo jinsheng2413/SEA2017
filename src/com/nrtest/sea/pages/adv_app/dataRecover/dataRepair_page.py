@@ -16,15 +16,18 @@ class DataRepair_1Page(Page):
     # 用户类型
     def inputSel_cons_sort(self, index):
         self.click(*DataRepair_1Locators.QRY_CONS_SORT)
-        locator = self.get_select_locator(DataRepair_1Locators.QRY_CONS_SORT_VALUE, index)
+        locator = self.get_select_locator(
+            DataRepair_1Locators.QRY_CONS_SORT_VALUE, index)
         self.click(*locator)
 
     # 数据类型
     def inputSel_data_type(self, index):
         self.click(*DataRepair_1Locators.QRY_DATA_TYPE)
-        locator = self.get_select_locator(DataRepair_1Locators.QRY_DATA_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            DataRepair_1Locators.QRY_DATA_TYPE_VALUE, index)
         self.click(*locator)
     # 开始时间
+
     def inputStr_start_date(self, value):
         self.input(value, *DataRepair_1Locators.QRY_START_DATE)
 
@@ -42,19 +45,21 @@ class DataRepair_2Page(Page):
     # 数据类型
     def inputSel_data_type(self, index):
         self.click(*DataRepair_2Locators.QRY_DATA_TYPE)
-        locator = self.get_select_locator(DataRepair_2Locators.QRY_DATA_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            DataRepair_2Locators.QRY_DATA_TYPE_VALUE, index)
         self.click(*locator)
         self.delDropdownBoxHtml()
 
     # 用户类型
     def inputSel_cons_sort(self, index):
         self.click(*DataRepair_2Locators.QRY_CONS_SORT)
-        locator = self.get_select_locator(DataRepair_2Locators.QRY_CONS_SORT_VALUE, index)
+        locator = self.get_select_locator(
+            DataRepair_2Locators.QRY_CONS_SORT_VALUE, index)
         self.click(*locator)
         self.delDropdownBoxHtml()
 
-
     # 查询日期
+
     def inputStr_date(self, value):
         self.input(value, *DataRepair_2Locators.QRY_DATE)
 

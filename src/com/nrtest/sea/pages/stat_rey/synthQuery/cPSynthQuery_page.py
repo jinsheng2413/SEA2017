@@ -17,13 +17,15 @@ class CPSynthQueryPage(Page):
     # 终端状态
     def inputSel_tmnl_status(self, index):
         self.click(*CPSynthQueryLocators.TMNL_STATUS)
-        locator = self.get_select_locator(CPSynthQueryLocators.TMNL_STATUS_VALUE, index)
+        locator = self.get_select_locator(
+            CPSynthQueryLocators.TMNL_STATUS_VALUE, index)
         self.click(locator)
 
     # 用户范围
     def inputSel_cons_range(self, index):
         self.click(*CPSynthQueryLocators.CONS_RANGE)
-        locator = self.get_select_locator(CPSynthQueryLocators.CONS_RANGE_VALUE, index)
+        locator = self.get_select_locator(
+            CPSynthQueryLocators.CONS_RANGE_VALUE, index)
         self.click(locator)
 
     # 查询按钮

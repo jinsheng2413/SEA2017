@@ -28,7 +28,8 @@ class TestTmnlPowerCutEventQuery(unittest.TestCase, TmnlPowerCutEventQueryPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(PowerCutAnalysis_data.TmnlPowerCutEventQuery_para, True)
+        cls.driver = openMenu(
+            PowerCutAnalysis_data.TmnlPowerCutEventQuery_para, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -60,7 +61,8 @@ class TestTmnlPowerCutEventQuery(unittest.TestCase, TmnlPowerCutEventQueryPage):
         # 查询按钮
         self.btn_search()
         # 校验
-        result = self.assert_context(*TmnlPowerCutEventQueryLocators.CHECK_FIRST)
+        result = self.assert_context(
+            *TmnlPowerCutEventQueryLocators.CHECK_FIRST)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

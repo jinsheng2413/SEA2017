@@ -24,7 +24,8 @@ class LowPressureMonitor_Page(Page):
     # 用户定义类别
     def inputSel_cons_define_type(self, index):
         self.click(*LowPressureMonitor_Locators.QRY_CONS_DEFINE_TYPE)
-        locator = self.get_select_locator(LowPressureMonitor_Locators.QRY_CONS_DEFINE_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            LowPressureMonitor_Locators.QRY_CONS_DEFINE_TYPE_VALUE, index)
         self.click(*locator)
 
     # 查询

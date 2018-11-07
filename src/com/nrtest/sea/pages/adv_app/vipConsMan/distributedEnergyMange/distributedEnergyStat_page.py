@@ -21,17 +21,18 @@ class DistributedEnergyStatPage(Page):
     # 发电量消纳方式
     def inputSel_powerConsumptionMode(self, name):
         self.click(*DistributedEnergyStatLocators.QRY_POWER_CONSUMPTION_MODE)
-        locator = self.get_select_locator(DistributedEnergyStatLocators.QRY_POWER_CONSUMPTION_MODE_VALUE, name)
+        locator = self.get_select_locator(
+            DistributedEnergyStatLocators.QRY_POWER_CONSUMPTION_MODE_VALUE, name)
         self.click(*locator)
 
     # 发电方式
     def inputSel_powerMode(self, name):
         self.click(*DistributedEnergyStatLocators.QRY_POWER_MODE)
-        locator = self.get_select_locator(DistributedEnergyStatLocators.QRY_POWER_MODE_VALUE, name)
+        locator = self.get_select_locator(
+            DistributedEnergyStatLocators.QRY_POWER_MODE_VALUE, name)
         self.click(*locator)
 
-
-
     # 查询
+
     def btn_qry(self):
-            self.click(*DistributedEnergyStatLocators.BTN_QRY)
+        self.click(*DistributedEnergyStatLocators.BTN_QRY)

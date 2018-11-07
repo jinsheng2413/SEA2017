@@ -153,7 +153,8 @@ class Page():
             except (TimeoutException, NoSuchElementException, InvalidElementStateException) as ex:
                 logger.error('Could not find the locator: %s .', selector)
                 filename = '{}.png'.format(get_current_time_str())
-                screenshot_path = os.path.join(get_snapshot_directory(), filename)
+                screenshot_path = os.path.join(
+                    get_snapshot_directory(), filename)
                 logger.debug(instance.selenium.page_source)
                 instance.selenium.save_screenshot(screenshot_path)
                 raise ex
@@ -173,7 +174,8 @@ class Page():
         element = None
         try:
             # 利用显示等待判断元素是否已经出现
-            WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(locator))
+            WebDriverWait(self.driver, 15).until(
+                EC.element_to_be_clickable(locator))
             # 定位元素
             element = self.driver.find_element(*locator)
         except TimeoutException as te:
@@ -232,7 +234,8 @@ class Page():
         :param is_trust:  是否一直等待到页面真正打开
         """
         if is_trust:
-            WebDriverWait(self.driver, Setting.WAIT_TIME).until(MustGetUrl(self.base_url))
+            WebDriverWait(self.driver, Setting.WAIT_TIME).until(
+                MustGetUrl(self.base_url))
         else:
             self._open(self.base_url, self.page_title)
 
@@ -284,7 +287,8 @@ class Page():
         :param locator: 元素的xpath
         """
         try:
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(locator))
             above = self._find_element(*locator)
             ActionChains(self.driver).move_to_element(above).perform()
         except NameError as e:
@@ -419,7 +423,6 @@ class Page():
         sleep(times)
 
     def select(self, idx_or_text, *locators):
-
         """
         选择下拉框
         :param locators: 元祖存放元素的xpath
@@ -429,10 +432,12 @@ class Page():
         try:
             # if type(idx_or_text) == int:
             if isinstance(idx_or_text, int):  # 数据类型判断新方法：isinstance
-                Select(self._find_element(*locators)).select_by_index(idx_or_text)
+                Select(self._find_element(*locators)
+                       ).select_by_index(idx_or_text)
                 logger.info('按下标选择下拉框,选中第:%s', idx_or_text)
             else:
-                Select(self._find_element(*locators)).select_by_visible_text(idx_or_text)
+                Select(self._find_element(*locators)
+                       ).select_by_visible_text(idx_or_text)
                 logger.info('按内容选择元素，选中内容为:%s', idx_or_text)
 
         except NameError as e:
@@ -449,7 +454,8 @@ class Page():
         screen_name = file_path + rq + name + '.png'
         try:
             self.driver.get_screenshot_as_file(screen_name)
-            logger.info('Had take screenshot and save to folder : /screenshots')
+            logger.info(
+                'Had take screenshot and save to folder : /screenshots')
         except NameError as e:
             logger.error('Failed to take screenshot! %s', e)
             self.get_windows_img(screen_name)
@@ -500,7 +506,8 @@ class Page():
         if '重要信息推出' in txt:
             if '登录异常' in txt:
                 print('-----')
-                self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
+                self.driver.find_element(
+                    *LoginPageLocators.BTN_CONFIRM).click()
             if '账号异常信息' in txt:
                 print('-----')
                 self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
@@ -553,7 +560,8 @@ class Page():
         return (locator[0], locator[1] % num)
 
     def bock_wait(self, locator):
-        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(locator))
+        WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable(locator))
 
     def implic_wait(self):
         self.driver.implicitly_wait(10)
@@ -695,7 +703,8 @@ class Page():
         :return:
         """
         try:
-            js = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + 'elem.parentNode.removeChild(elem);'
+            js = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + \
+                 'elem.parentNode.removeChild(elem);'
             self.exec_script(js)
         except NoSuchElementException:
             print('删除下拉框的html标签失败')
@@ -721,11 +730,6 @@ class Page():
         except BaseException as e:
             print('点击复选框失败')
             print(e)
-
-
-
-
-
 
 
 if __name__ == '__main__':

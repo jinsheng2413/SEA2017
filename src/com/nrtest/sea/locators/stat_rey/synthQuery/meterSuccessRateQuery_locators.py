@@ -15,15 +15,20 @@ from selenium.webdriver.common.by import By
 class MeterSuccessRateQueryLocators:
     # 按地区、厂家统计
     # 日期
-    FACTORY_DATE = (By.XPATH, '//label[contains(text(),"日期")]/../div/div/input')
+    FACTORY_DATE = (
+        By.XPATH, '//label[contains(text(),"日期")]/../div/div/input')
     # 用户类型
-    FACTORY_CONS_TYPE = (By.XPATH, '//label[contains(text(),"用户类型")]/../div/div/img')
+    FACTORY_CONS_TYPE = (
+        By.XPATH, '//label[contains(text(),"用户类型")]/../div/div/img')
     # 用户类型→值
-    FACTORY_CONS_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    FACTORY_CONS_TYPE_VALUE = (
+        By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 终端类型
-    FACTORY_TMNL_TYPE = (By.XPATH, '//label[contains(text(),"终端类型")]/../div/div/img')
+    FACTORY_TMNL_TYPE = (
+        By.XPATH, '//label[contains(text(),"终端类型")]/../div/div/img')
     # 终端类型→值
-    FACTORY_TMNL_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    FACTORY_TMNL_TYPE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 查询按钮
     FACTORY_BTN_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[4]')
 

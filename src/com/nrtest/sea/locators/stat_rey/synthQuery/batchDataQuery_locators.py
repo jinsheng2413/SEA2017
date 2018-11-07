@@ -16,7 +16,8 @@ class BatchDataQueryLocators:
     # 日期
     DATE = (By.XPATH, '//label[contains(text(),"日期")]/../div/div/input')
     # 终端资产号
-    TMNL_ASSET_NO = (By.XPATH, '//label[contains(text(),"终端资产号")]/../div/input')
+    TMNL_ASSET_NO = (
+        By.XPATH, '//label[contains(text(),"终端资产号")]/../div/input')
     # 用户类型
     CONS_TYPE = (By.XPATH, '//label[contains(text(),"用户类型")]/../div/div/img')
     # 用户类型→值

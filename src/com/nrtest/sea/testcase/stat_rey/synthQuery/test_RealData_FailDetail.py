@@ -62,7 +62,8 @@ class TestRealData_Rdetail(unittest.TestCase, RealDataPage):
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 选择抄表段号
-        self.inputStr_ReadMeterSegmentNo_Faildetail(para['READ_METER_SEGMENT_NO'])
+        self.inputStr_ReadMeterSegmentNo_Faildetail(
+            para['READ_METER_SEGMENT_NO'])
         # 电表资产号
         self.inputStr_MeterAssert_Faildetail(para['METER_ASSERT'])
         # 用户类型

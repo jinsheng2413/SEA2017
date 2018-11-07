@@ -22,10 +22,12 @@ class LowPressureMonitor_Locators:
     # 终端地址
     QRY_TMNL_ADDR = (By.XPATH, "//input[@id='monitorTmnlAddrText']")
     # 用户定义类别
-    QRY_CONS_DEFINE_TYPE = (By.XPATH, "//label[contains(text(),'用户定义类别')]/../div/div/input")
+    QRY_CONS_DEFINE_TYPE = (
+        By.XPATH, "//label[contains(text(),'用户定义类别')]/../div/div/input")
     # 值（用户定义类别）
     QRY_CONS_DEFINE_TYPE_VALUE = (
-    By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'已定义')])[1]/../div[contains(text(),'%s')]")
+        By.XPATH,
+        "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'已定义')])[1]/../div[contains(text(),'%s')]")
 
     # 【操作区】
     # 查询

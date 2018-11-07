@@ -33,7 +33,8 @@ class ArchivesChangeRecordLocators:
     BTN_QRY = (By.XPATH,
                "(//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//tbody[@class=\"x-btn-small x-btn-icon-small-left\"]//button[contains(text(),'查询')])[1]")
     # 专变
-    BTN_SPECIAL_CHANGE = (By.XPATH, '(//*[@name=\"changeRecord_consTypeRadio\"])[1]')
+    BTN_SPECIAL_CHANGE = (
+        By.XPATH, '(//*[@name=\"changeRecord_consTypeRadio\"])[1]')
     # 低压
     BTN_LOW = (By.XPATH, '(//*[@name=\"changeRecord_consTypeRadio\"])[2]')
 

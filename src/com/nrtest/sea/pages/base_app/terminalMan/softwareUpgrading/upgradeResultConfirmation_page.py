@@ -18,19 +18,22 @@ class UpgradeResultConfirmationPage(Page):
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
         self.click(*UpgradeResultConfirmationLocator.TMNL_FACTORY)
-        locator = self.get_select_locator(UpgradeResultConfirmationLocator.TMNL_FACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeResultConfirmationLocator.TMNL_FACTORY_VALUE, index)
         self.click(*locator)
 
     # 终端类型
     def inputSel_tmnl_type(self, index):
         self.click(*UpgradeResultConfirmationLocator.TMNL_TYPE)
-        locator = self.get_select_locator(UpgradeResultConfirmationLocator.TMNL_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeResultConfirmationLocator.TMNL_TYPE_VALUE, index)
         self.click(*locator)
 
     # 终端用途
     def inputSel_tmnl_purpose(self, index):
         self.click(*UpgradeResultConfirmationLocator.TMNL_PURPOSE)
-        locator = self.get_select_locator(UpgradeResultConfirmationLocator.TMNL_PURPOSE_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeResultConfirmationLocator.TMNL_PURPOSE_VALUE, index)
         self.click(*locator)
 
     # 确认开始日期

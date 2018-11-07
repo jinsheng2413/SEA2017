@@ -30,14 +30,16 @@ class ArchivesMaintain_pages(Page):
     # 厂站名称
     def inputSel_factoryNmae(self, index):
         self.click(*ArchivesMaintain_locators.QRY_FACTORY_NAME)
-        locator = self.get_select_locator(ArchivesMaintain_locators.QRY_FACTORY_NAME_VALUE, index)
+        locator = self.get_select_locator(
+            ArchivesMaintain_locators.QRY_FACTORY_NAME_VALUE, index)
         # print(locator)
         self.click(*locator)
 
     # 电压等级
     def inputStr_eleGrade(self, index):
         self.click(*ArchivesMaintain_locators.QRY_ELE_GRADE)
-        locator = self.get_select_locator(ArchivesMaintain_locators.QRY_ELE_GRADE_VALUE, index)
+        locator = self.get_select_locator(
+            ArchivesMaintain_locators.QRY_ELE_GRADE_VALUE, index)
         # print(locator)
         self.click(*locator)
 
@@ -76,7 +78,8 @@ class ArchivesMaintain_factory_pages(Page):
     # 电压等级
     def inputSel_eleGrade(self, index):
         self.click(*ArchivesMaintain_locators.QRY_ELE_GRADE)
-        locator = self.get_select_locator(ArchivesMaintain_locators.QRY_ELE_GRADE_VALUE, index)
+        locator = self.get_select_locator(
+            ArchivesMaintain_locators.QRY_ELE_GRADE_VALUE, index)
         # print(locator)
         self.click(*locator)
 
@@ -102,7 +105,8 @@ class ArchivesMaintain_terminal_pages(Page):
     # 厂站名称
     def inputSel_factoryNmae(self, index):
         self.click(*ArchivesMaintain_locators.QRY_FACTORY_NAME)
-        locator = self.get_select_locator(ArchivesMaintain_locators.QRY_FACTORY_NAME_VALUE, index)
+        locator = self.get_select_locator(
+            ArchivesMaintain_locators.QRY_FACTORY_NAME_VALUE, index)
         # print(locator)
         self.click(*locator)
 

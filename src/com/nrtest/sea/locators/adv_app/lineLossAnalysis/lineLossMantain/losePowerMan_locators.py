@@ -15,21 +15,21 @@ class LosePowerManLocators:
     # 【查询条件区】
     # 考核单元名称
     QRY_ASSESS_UNIT_NAME = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'考核单元名称')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'考核单元名称')]/../../div[1]/div[1]//input")
 
     # 考核单元分类
     QRY_ASSESS_UNIT_CLASSFICATION = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[text()='考核单元分类']/../../div[1]/div[1]//img")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[text()='考核单元分类']/../../div[1]/div[1]//img")
     QRY_ASSESS_UNIT_CLASSFICATION_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'台区')]/../div[contains(text(),'%s')]")
     # 组合标志
     QRY_COMBINATION_SIGN = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'组合标志')]/../../div[1]/div[1]//img")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'组合标志')]/../../div[1]/div[1]//img")
     QRY_COMBINATION_SIGN_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'是')]/../div[contains(text(),'%s')]")
     # 考核单元状态
     QRY_ASSESS_UNIT_STATE = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'考核单元状态')]/../../div[1]/div[1]//img")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'考核单元状态')]/../../div[1]/div[1]//img")
     QRY_ASSESS_UNIT_STATE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'启用')]/../div[contains(text(),'%s')]")
     # 台区状态

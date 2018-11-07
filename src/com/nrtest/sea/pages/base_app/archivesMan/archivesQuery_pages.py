@@ -28,7 +28,8 @@ class ArchivesQueryPages(Page):
             self._find_element(*ArchivesQuery_locators.QRY_CONS_TYPE_CLEAR)
         else:
             self.click(*ArchivesQuery_locators.QRY_CONS_TYPE)
-            locator = self.get_select_locator(ArchivesQuery_locators.QRY_CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                ArchivesQuery_locators.QRY_CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*ArchivesQuery_locators.QRY_CONS_TYPE)
 

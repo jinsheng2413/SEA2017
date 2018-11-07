@@ -27,7 +27,8 @@ class TestDemo(unittest.TestCase, CollectSuccessRateStatPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GatherQualityAnalyze_data.collectSuccessRateStat_para)
+        cls.driver = openMenu(
+            GatherQualityAnalyze_data.collectSuccessRateStat_para)
 
     @classmethod
     def tearDownClass(cls):

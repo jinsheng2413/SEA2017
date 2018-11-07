@@ -16,13 +16,17 @@ from selenium.webdriver.common.by import By
 class SpVoltAnalyseDetailLocators:
     # 【查询条件】
     # 供电单位
-    ORG_NO = (By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[2]"))
+    ORG_NO = (
+        By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[2]"))
     # 用户类型-下拉框
-    CONS_TYPE_SEL = (By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'用户类型')]/../div/div/img)[2]")
+    CONS_TYPE_SEL = (
+        By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'用户类型')]/../div/div/img)[2]")
     # 用户类型
-    CONS_TYPE = (By.XPATH, '//div[@class=\"x-combo-list-inner\"]//div[contains(text(),"%s")]')
+    CONS_TYPE = (
+        By.XPATH, '//div[@class=\"x-combo-list-inner\"]//div[contains(text(),"%s")]')
     # 查询日期
-    QUERY_DATE = (By.XPATH, "//div[@id=\"x-form-el-svadDateTimeField\"]/div/input")
+    QUERY_DATE = (
+        By.XPATH, "//div[@id=\"x-form-el-svadDateTimeField\"]/div/input")
 
     # 【按钮】
     # 查询
@@ -34,4 +38,5 @@ class SpVoltAnalyseDetailLocators:
     QUERY_DATE_JS = 'document.getElementById("svadDateTimeField").removeAttribute("readonly");'
 
     # 【显示区】
-    TABLE_DATA = (By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[2]/div/div)[1]")
+    TABLE_DATA = (
+        By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[2]/div/div)[1]")

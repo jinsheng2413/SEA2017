@@ -20,7 +20,8 @@ class TgLineLossUnifiedViewLocators:
 
     # 日线损
     # 查询日期，开始
-    QRY_START_DATE = (By.XPATH, '//label[contains(text(),"查询日期")]/../div/div/input')
+    QRY_START_DATE = (
+        By.XPATH, '//label[contains(text(),"查询日期")]/../div/div/input')
     # 查询日期，结束
     QRY_END_DATE = (By.XPATH, '//label[contains(text(),"至")]/../div/div/input')
     # 查询按钮
@@ -28,9 +29,11 @@ class TgLineLossUnifiedViewLocators:
 
     # 月线损
     # 查询日期，开始
-    QRY_START_DATE_TAB = (By.XPATH, '(//label[contains(text(),"查询日期")]/../div/div/input)[2]')
+    QRY_START_DATE_TAB = (
+        By.XPATH, '(//label[contains(text(),"查询日期")]/../div/div/input)[2]')
     # 查询日期，结束
-    QRY_END_DATE_TAB = (By.XPATH, '(//label[contains(text(),"至")]/../div/div/input)[2]')
+    QRY_END_DATE_TAB = (
+        By.XPATH, '(//label[contains(text(),"至")]/../div/div/input)[2]')
     # 查询按钮
     BTN_SEARCH_MONTH = (By.XPATH, '(//button[text()="查询"])[3]')
 

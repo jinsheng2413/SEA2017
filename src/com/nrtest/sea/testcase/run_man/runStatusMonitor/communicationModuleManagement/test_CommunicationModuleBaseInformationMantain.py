@@ -29,7 +29,8 @@ class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, Communica
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(CommunicationModuleManagement.commModulPropMain_para, True)
+        cls.driver = openMenu(
+            CommunicationModuleManagement.commModulPropMain_para, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -70,7 +71,8 @@ class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, Communica
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CommunicationModuleBaseInformationMantainLocators.TAB_ONE)
+        result = self.assert_context(
+            *CommunicationModuleBaseInformationMantainLocators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

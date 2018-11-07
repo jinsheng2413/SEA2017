@@ -15,24 +15,32 @@ from selenium.webdriver.common.by import By
 class UpgradeEffectStatisticsLocators:
     # 终端升级统计
     # 终端厂家
-    TMNL_FACTORY = (By.XPATH, '//label[contains(text(),"终端厂家")]/../div/div/img')
+    TMNL_FACTORY = (
+        By.XPATH, '//label[contains(text(),"终端厂家")]/../div/div/img')
     # 终端厂家→值
-    TMNL_FACTORY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    TMNL_FACTORY_VALUE = (
+        By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 升级目的
-    UPGRADE_PURPOSE = (By.XPATH, '//label[contains(text(),"升级目的")]/../div/div/img')
+    UPGRADE_PURPOSE = (
+        By.XPATH, '//label[contains(text(),"升级目的")]/../div/div/img')
     # 升级目的→值
-    UPGRADE_PURPOSE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    UPGRADE_PURPOSE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
 
     # 终端升级明细
     # 终端厂家
-    DETAIL_TMNL_FACTORY = (By.XPATH, '(//label[contains(text(),"终端厂家")]/../div/div/img)[2]')
+    DETAIL_TMNL_FACTORY = (
+        By.XPATH, '(//label[contains(text(),"终端厂家")]/../div/div/img)[2]')
     # 终端厂家→值
-    DETAIL_TMNL_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    DETAIL_TMNL_FACTORY_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 升级目的
-    DETAIL_UPGRADE_PURPOSE = (By.XPATH, '(//label[contains(text(),"升级目的")]/../div/div/img)[2]')
+    DETAIL_UPGRADE_PURPOSE = (
+        By.XPATH, '(//label[contains(text(),"升级目的")]/../div/div/img)[2]')
     # 升级目的→值
-    DETAIL_UPGRADE_PURPOSE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
+    DETAIL_UPGRADE_PURPOSE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     # 查询按钮
     BTN_DETAIL_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[2]')

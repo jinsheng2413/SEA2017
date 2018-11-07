@@ -99,7 +99,5 @@ class TestDemo(unittest.TestCase, MetClockMonthStaticPage):
     #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
 
-
     if __name__ == '__main__':
         unittest.main()
-

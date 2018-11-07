@@ -74,7 +74,8 @@ class TestPowerFactorCountDetail(unittest.TestCase, PowerFactorCountDetailPage):
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*PowerFactorCountDetailLocators.TABLE_DATA)
+        result = self.assert_context(
+            *PowerFactorCountDetailLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_PowerFactorCount, '功率因数越限明细'))

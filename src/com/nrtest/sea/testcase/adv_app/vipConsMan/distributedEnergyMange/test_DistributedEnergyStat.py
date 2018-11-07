@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedE
 from com.nrtest.sea.task.commonMath import *
 
 
-#高级应用--》重点用户检测--》分布式电源管理--》分布式电源接入统计
+# 高级应用--》重点用户检测--》分布式电源管理--》分布式电源接入统计
 @ddt
 class TestDemo(unittest.TestCase, DistributedEnergyStatPage):
 
@@ -29,7 +29,8 @@ class TestDemo(unittest.TestCase, DistributedEnergyStatPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DistributedEnergyMange_data.DistributedEnergyStat_para)
+        cls.driver = openMenu(
+            DistributedEnergyMange_data.DistributedEnergyStat_para)
         clickTabPage('分布式电源接入统计')
         sleep(2)
         cls.exec_script(cls, DistributedEnergyStatLocators.START_DATE_JS)
@@ -77,6 +78,7 @@ class TestDemo(unittest.TestCase, DistributedEnergyStatPage):
         # 校验
         # result = self.assert_context(*)
         # self.assertTrue(result)
+
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyStat_para))
     def test_query(self, para):

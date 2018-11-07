@@ -16,11 +16,14 @@ class MDataPublishStatus2_locators:
     # 供电单位
     QRY_ORG = (By.XPATH, "//label[contains(text(),'供电单位')]/../div/input")
     # 业务系统
-    QRY_BUSINESS_SYSTEM = (By.XPATH, "//label[contains(text(),'业务系统')]/../div/div/input")
+    QRY_BUSINESS_SYSTEM = (
+        By.XPATH, "//label[contains(text(),'业务系统')]/../div/div/input")
     # 值
-    QRY_BUSINESS_SYSTEM_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
+    QRY_BUSINESS_SYSTEM_VALUE = (
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
     # 开始时间
-    QRY_DATE_BEGIN = (By.XPATH, "//label[contains(text(),'发布时间')]/../div/div/input")
+    QRY_DATE_BEGIN = (
+        By.XPATH, "//label[contains(text(),'发布时间')]/../div/div/input")
     # 结束时间
     QRY_DATE_END = (By.XPATH, "//label[contains(text(),'至')]/../div/div/input")
 

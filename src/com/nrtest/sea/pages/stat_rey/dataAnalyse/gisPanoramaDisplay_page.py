@@ -17,13 +17,15 @@ class GisPanoramaDisplayPage(Page):
     # 逐日显示
     def inputStr_day_display(self, value):
         self.click(*GisPanoramaDisplayLocators.QRY_DAY_DISPLAY)
-        locator = self.get_select_locator(GisPanoramaDisplayLocators.QRY_USER_TYPE_VALUE, value)
+        locator = self.get_select_locator(
+            GisPanoramaDisplayLocators.QRY_USER_TYPE_VALUE, value)
         self.click(*locator)
 
     # 用户类型
     def inputSel_userType(self, name):
         self.click(*GisPanoramaDisplayLocators.QRY_USER_TYPE)
-        locator = self.get_select_locator(GisPanoramaDisplayLocators.QRY_USER_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            GisPanoramaDisplayLocators.QRY_USER_TYPE_VALUE, name)
         self.click(*locator)
 
     # 查询时间

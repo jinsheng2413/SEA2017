@@ -17,13 +17,17 @@ class MultipleTableDataQueryLocators:
     # 用户编号
     CONS_CONS_NO = (By.XPATH, '//label[contains(text(),"用户编号")]/../div/input')
     # 开始日期
-    CONS_START_DATE = (By.XPATH, '//label[contains(text(),"开始日期")]/../div/div/input')
+    CONS_START_DATE = (
+        By.XPATH, '//label[contains(text(),"开始日期")]/../div/div/input')
     # 结束日期
-    CONS_END_DATE = (By.XPATH, '//label[contains(text(),"结束日期")]/../div/div/input')
+    CONS_END_DATE = (
+        By.XPATH, '//label[contains(text(),"结束日期")]/../div/div/input')
     # 用户状态
-    CONS_CONS_STATUS = (By.XPATH, '//label[contains(text(),"用户状态")]/../div/div/img')
+    CONS_CONS_STATUS = (
+        By.XPATH, '//label[contains(text(),"用户状态")]/../div/div/img')
     # 用户状态→值
-    CONS_CONS_STATUS_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    CONS_CONS_STATUS_VALUE = (
+        By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[4]')
 

@@ -17,7 +17,8 @@ class CtrlExecutSpecPage(Page):
     # 控制类别
     def inputRSel_controlType(self, name):
         self.click(*CtrlExecutSpecLocators.QRY_CONTROL_TYPE)
-        locator = self.get_select_locator(CtrlExecutSpecLocators.QRY_CONTROL_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            CtrlExecutSpecLocators.QRY_CONTROL_TYPE_VALUE, name)
         self.click(*locator)
 
     # 工单号
@@ -47,7 +48,8 @@ class CtrlExecutSpecPage(Page):
     # 执行状态
     def inputSel_exeStatus(self, name):
         self.click(*CtrlExecutSpecLocators.QRY_EXE_STATUS)
-        locator = self.get_select_locator(CtrlExecutSpecLocators.QRY_EXE_STATUS_VALUE, name)
+        locator = self.get_select_locator(
+            CtrlExecutSpecLocators.QRY_EXE_STATUS_VALUE, name)
         self.click(*locator)
 
         # 查询

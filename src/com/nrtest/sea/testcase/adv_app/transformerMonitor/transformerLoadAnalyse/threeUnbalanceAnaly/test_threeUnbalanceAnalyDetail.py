@@ -71,7 +71,8 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ThreeUnbalanceAnalyDetailLocators.TABLE_DATA)
+        result = self.assert_context(
+            *ThreeUnbalanceAnalyDetailLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_ThreeUnbalanceAnaly))

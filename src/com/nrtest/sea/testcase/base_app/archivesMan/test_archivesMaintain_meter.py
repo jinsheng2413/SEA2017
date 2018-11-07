@@ -45,7 +45,8 @@ class TestarchivesMaintain_meter(unittest.TestCase, ArchivesMaintain_meter_pages
 
     # 终端资产号
     def test_amm_terminal_asset_no(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesMaintain.para_test_amm_terminal_asset_no)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesMaintain.para_test_amm_terminal_asset_no)
         self.inputStr_termainalAssetNo(lip[0][0])
         self.btn_meterQry()
         self.sleep_time(2)
@@ -55,7 +56,8 @@ class TestarchivesMaintain_meter(unittest.TestCase, ArchivesMaintain_meter_pages
 
     # 终端地址
     def test_amm_terminal_addr(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesMaintain.para_test_amm_terminal_addr)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ArchivesMaintain.para_test_amm_terminal_addr)
         self.inputStr_termainalAddr(lip[0][0])
         self.btn_meterQry()
         self.sleep_time(2)

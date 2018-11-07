@@ -25,25 +25,29 @@ class LocalBroadChkClockPage(Page):
     # 终端类型--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*LocalBroadChkClockLocators.TMNL_TYPE_SEL)
-        locator = self.get_select_locator(LocalBroadChkClockLocators.TMNL_TYPE, name)
+        locator = self.get_select_locator(
+            LocalBroadChkClockLocators.TMNL_TYPE, name)
         self.click(*locator)
 
     # 终端厂家--打开并选择
     def inputRSel_tmnl_fac(self, name):
         self.click(*LocalBroadChkClockLocators.TMNL_FAC_SEL)
-        locator = self.get_select_locator(LocalBroadChkClockLocators.TMNL_FAC, name)
+        locator = self.get_select_locator(
+            LocalBroadChkClockLocators.TMNL_FAC, name)
         self.click(*locator)
 
     # 终端规约--打开并选择
     def inputRSel_tmnl_protocol(self, name):
         self.click(*LocalBroadChkClockLocators.TMNL_PROTOCOL_SEL)
-        locator = self.get_select_locator(LocalBroadChkClockLocators.TMNL_PROTOCOL, name)
+        locator = self.get_select_locator(
+            LocalBroadChkClockLocators.TMNL_PROTOCOL, name)
         self.click(*locator)
 
     # 设置状态--打开并选择
     def inputRSel_set_status(self, name):
         self.click(*LocalBroadChkClockLocators.SET_STATUS_SEL)
-        locator = self.get_select_locator(LocalBroadChkClockLocators.SET_STATUS, name)
+        locator = self.get_select_locator(
+            LocalBroadChkClockLocators.SET_STATUS, name)
         self.click(*locator)
 
     # 点击查询

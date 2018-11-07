@@ -122,4 +122,3 @@ class TestDemo(unittest.TestCase, MetClockDetailPage):
 
     if __name__ == '__main__':
         unittest.main()
-

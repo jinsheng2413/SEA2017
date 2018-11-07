@@ -14,8 +14,10 @@ from selenium.webdriver.common.by import By
 # 高级应用→线损分析→线损统计分析→线损综合分析
 class LineLossSynthesizeAnalysisLocators:
     # 线损类别
-    QRY_LINE_LOSS_TYPE = (By.XPATH, '//label[contains(text(),"线损类别")]/../div/div/input')
-    QRY_LINE_LOSS_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_LINE_LOSS_TYPE = (
+        By.XPATH, '//label[contains(text(),"线损类别")]/../div/div/input')
+    QRY_LINE_LOSS_TYPE_VALUE = (
+        By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询日期
     QRY_DATE = (By.XPATH, '//label[contains(text(),"查询日期")]/../div/div/input')
     # 查询按钮

@@ -38,7 +38,8 @@ class ElePricePara_locators:
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'执行失败')]/../div[%s]")
     # 任务类型
     QRY_TASK_CATA = (By.XPATH, '// *[ @ id = "elecPriceParamType"]')
-    QRY_TASK_CATA_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'时区参数')]/../div[%s]")
+    QRY_TASK_CATA_VALUE = (
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'时区参数')]/../div[%s]")
     # 【操作区】
     BTN_QRY = (
         By.XPATH,

@@ -49,13 +49,15 @@ class TestSpecialUserBalanceQuery(unittest.TestCase, SpecialUserBalanceQueryPage
         self.clear_values(SpecialUserBalanceQueryPage)
 
     def commonTime(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_user_num)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_user_num)
         self.inputStr_call_test_date(lip[0][1])
 
     # 用户编号
     @BeautifulReport.add_test_img()
     def test_subq_user_num(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_user_num)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_user_num)
         self.inputStr_call_test_date(lip[0][1])
         self.inputStr_user_num(lip[0][0])
         # 点击查询
@@ -68,7 +70,8 @@ class TestSpecialUserBalanceQuery(unittest.TestCase, SpecialUserBalanceQueryPage
     # 用户名称
     @BeautifulReport.add_test_img()
     def test_subq_user_name(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_user_name)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_user_name)
         self.commonTime()
         self.inputStr_User_name(lip[0][0])
         # 点击查询
@@ -82,7 +85,8 @@ class TestSpecialUserBalanceQuery(unittest.TestCase, SpecialUserBalanceQueryPage
     @BeautifulReport.add_test_img()
     def test_subq_termianl_addr(self):
         self.commonTime()
-        lip = self.orl.queryAll(DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_termianl_addr)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_termianl_addr)
         self.inputStr_terminal_addr(lip[0][0])
         # 点击查询
         self.btn_qry()

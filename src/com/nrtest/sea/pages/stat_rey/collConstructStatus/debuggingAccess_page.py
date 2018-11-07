@@ -18,7 +18,8 @@ class DebuggingAccessPage(Page):
     # 管理方式
     def inputSel_manage_style(self, index):
         self.click(*DebuggingAccessLocators.MANAGE_STYLE)
-        locator = self.get_select_locator(DebuggingAccessLocators.MANAGE_STYLE_VALUE, index)
+        locator = self.get_select_locator(
+            DebuggingAccessLocators.MANAGE_STYLE_VALUE, index)
         self.click(*locator)
 
     # 装接方式
@@ -27,7 +28,8 @@ class DebuggingAccessPage(Page):
             self._find_element(*DebuggingAccessLocators.ASSEMBLING_WAY)
         else:
             self.click(*DebuggingAccessLocators.ASSEMBLING_WAY)
-            locator = self.get_select_locator(DebuggingAccessLocators.ASSEMBLING_WAY_VALUE, index)
+            locator = self.get_select_locator(
+                DebuggingAccessLocators.ASSEMBLING_WAY_VALUE, index)
             self.click(*locator)
             self.click(*DebuggingAccessLocators.ASSEMBLING_WAY)
 

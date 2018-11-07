@@ -8,6 +8,7 @@
 @desc:
 """
 
+
 class MeterClockMan_data:
-   # 运行管理-》电能表管理-》电能表状态查询
-   MeterClockMan_para='99936100'
+    # 运行管理-》电能表管理-》电能表状态查询
+    MeterClockMan_para = '99936100'

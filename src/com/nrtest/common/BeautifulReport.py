@@ -70,7 +70,8 @@ class PATH:
     """ all file PATH meta """
     # config_tmp_path = SITE_PAKAGE_PATH + '\\BeautifulReport\\template\\template'
     # config_tmp_path = SITE_PAKAGE_PATH + '/BeautifulReport/template/template'
-    config_tmp_path = os.path.dirname(__file__) + '{}template'.format('/' if platform.system() != 'Windows' else '\\')
+    config_tmp_path = os.path.dirname(
+        __file__) + '{}template'.format('/' if platform.system() != 'Windows' else '\\')
     # print('template file path is \'{}\''.format(config_tmp_path))
 
 
@@ -208,7 +209,8 @@ class ReportTestResult(unittest.TestResult):
         FIELDS['testFail'] = self.failure_count
         FIELDS['beginTime'] = self.begin_time
         end_time = int(time.time())
-        start_time = int(time.mktime(time.strptime(self.begin_time, '%Y-%m-%d %H:%M:%S')))
+        start_time = int(time.mktime(time.strptime(
+            self.begin_time, '%Y-%m-%d %H:%M:%S')))
         FIELDS['totalTime'] = str(end_time - start_time) + 's'
         FIELDS['testError'] = self.error_count
         FIELDS['testSkip'] = self.skipped
@@ -358,7 +360,8 @@ class BeautifulReport(ReportTestResult, PATH):
         """
 
         if filename:
-            self.filename = filename if filename.endswith('.html') else filename + '.html'
+            self.filename = filename if filename.endswith(
+                '.html') else filename + '.html'
 
         if description:
             self.title = description
@@ -386,7 +389,8 @@ class BeautifulReport(ReportTestResult, PATH):
                 if item.strip().startswith(b'var resultData'):
                     head = '    var resultData = '
                     item = item.decode().split(head)
-                    item[1] = head + json.dumps(self.FIELDS, ensure_ascii=False, indent=4)
+                    item[1] = head + \
+                              json.dumps(self.FIELDS, ensure_ascii=False, indent=4)
                     item = ''.join(item).encode()
                     item = bytes(item) + b';\n'
                 write_file.write(item)
@@ -424,7 +428,8 @@ class BeautifulReport(ReportTestResult, PATH):
                         save_img = getattr(args[0], 'save_img')
                         save_img(file_name)
                         print('<h3><font face="verdana">报错页面：</font></h3><br/>')
-                        data = BeautifulReport.img2base(img_path, file_name + '.png')
+                        data = BeautifulReport.img2base(
+                            img_path, file_name + '.png')
                         print(HTML_IMG_TEMPLATE.format(data, data))
 
                     # sys.exit(0)
@@ -436,8 +441,10 @@ class BeautifulReport(ReportTestResult, PATH):
                     for parg in pargs:
                         file = img_path + parg + '.png'
                         if os.path.isfile(file):
-                            print('<h3><font face="verdana"><b>' + parg + '：</b></font></h3><br/>')
-                            data = BeautifulReport.img2base(img_path, parg + '.png')
+                            print('<h3><font face="verdana"><b>' +
+                                  parg + '：</b></font></h3><br/>')
+                            data = BeautifulReport.img2base(
+                                img_path, parg + '.png')
                             print(HTML_IMG_TEMPLATE.format(data, data))
                     return result
                 return result

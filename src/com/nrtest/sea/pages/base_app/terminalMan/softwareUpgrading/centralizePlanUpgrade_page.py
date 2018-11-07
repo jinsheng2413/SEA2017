@@ -19,19 +19,22 @@ class CentralizePlanUpgradePage(Page):
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
         self.click(*CentralizePlanUpgradeLocators.TMNL_FACTORY)
-        locator = self.get_select_locator(CentralizePlanUpgradeLocators.TMNL_FACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            CentralizePlanUpgradeLocators.TMNL_FACTORY_VALUE, index)
         self.click(*locator)
 
     # 升级目的
     def inputSel_upgrade_purpose(self, index):
         self.click(*CentralizePlanUpgradeLocators.UPGRADE_PURPOSE)
-        locator = self.get_select_locator(CentralizePlanUpgradeLocators.UPGRADE_PURPOSE_VALUE, index)
+        locator = self.get_select_locator(
+            CentralizePlanUpgradeLocators.UPGRADE_PURPOSE_VALUE, index)
         self.click(*locator)
 
     # 终端用途
     def inputSel_tmnl_purpose(self, index):
         self.click(*CentralizePlanUpgradeLocators.TMNL_PURPOSE)
-        locator = self.get_select_locator(CentralizePlanUpgradeLocators.TMNL_PURPOSE_VALUE, index)
+        locator = self.get_select_locator(
+            CentralizePlanUpgradeLocators.TMNL_PURPOSE_VALUE, index)
         self.click(*locator)
 
     # 开始时间
@@ -56,25 +59,29 @@ class CentralizePlanUpgradePage(Page):
     # 终端厂家
     def inputSel_tab_tmnl_factory(self, index):
         self.click(*CentralizePlanUpgradeLocators.TAB_TMNL_FACTORY)
-        locator = self.get_select_locator(CentralizePlanUpgradeLocators.TAB_TMNL_FACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            CentralizePlanUpgradeLocators.TAB_TMNL_FACTORY_VALUE, index)
         self.click(*locator)
 
     # 终端类型
     def inputSel_tab_tmnl_type(self, index):
         self.click(*CentralizePlanUpgradeLocators.TAB_TMNL_TYPE)
-        locator = self.get_select_locator(CentralizePlanUpgradeLocators.TAB_TMNL_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            CentralizePlanUpgradeLocators.TAB_TMNL_TYPE_VALUE, index)
         self.click(*locator)
 
     # 终端用途
     def inputSel_tab_tmnl_purpose(self, index):
         self.click(*CentralizePlanUpgradeLocators.TAB_TMNL_PURPOSE)
-        locator = self.get_select_locator(CentralizePlanUpgradeLocators.TAB_TMNL_PURPOSE_VALUE, index)
+        locator = self.get_select_locator(
+            CentralizePlanUpgradeLocators.TAB_TMNL_PURPOSE_VALUE, index)
         self.click(*locator)
 
     # 升级版本号
     def inputSel_tab_upgrade_version_no(self, index):
         self.click(*CentralizePlanUpgradeLocators.TAB_UPGRADE_VERSION_NO)
-        locator = self.get_select_locator(CentralizePlanUpgradeLocators.TAB_UPGRADE_VERSION_NO_VALUE, index)
+        locator = self.get_select_locator(
+            CentralizePlanUpgradeLocators.TAB_UPGRADE_VERSION_NO_VALUE, index)
         self.click(*locator)
 
     # 查询按钮

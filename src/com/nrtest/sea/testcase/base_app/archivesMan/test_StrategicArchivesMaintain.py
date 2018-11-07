@@ -69,7 +69,8 @@ class TestDemo(unittest.TestCase, StrategicArchivesMaintainPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*StrategicArchivesMaintainLocators.TAB_ONE)
+        result = self.assert_context(
+            *StrategicArchivesMaintainLocators.TAB_ONE)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(ArchivesMan_data.strategicArchivesMaintain_para))

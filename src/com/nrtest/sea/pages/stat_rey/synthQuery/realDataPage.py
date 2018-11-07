@@ -17,58 +17,67 @@ class RealDataPage(Page):
     # 终端生产厂家
     def inputSel_Tmnl_manufacturer(self, name):
         self.click(*RealDataLocators.QRY_TMNL_MANUFACTUREE)
-        locator = self.get_select_locator(RealDataLocators.QRY_TMNL_MANUFACTUREE_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_TMNL_MANUFACTUREE_VALUE, name)
         self.click(*locator)
 
     # 反相采集结果
     def inputSel_reversCollectionResult(self, name):
         self.click(*RealDataLocators.QRY_REVERS_COLLECT_RESULT)
-        locator = self.get_select_locator(RealDataLocators.QRY_REVERS_COLLECT_RESULT_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_REVERS_COLLECT_RESULT_VALUE, name)
         print(locator)
         self.click(*locator)
 
     # 终端运行状态
     def inputSel_TmnlRunState_Failtime(self, name):
         self.click(*RealDataLocators.QRY_TMNL_RUN_STATE_FAILDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_TMNL_RUN_STATE_FAILDETAIL_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_TMNL_RUN_STATE_FAILDETAIL_VALUE, name)
         self.click(*locator)
 
     # 终端运行状态
     def inputSel_TmnlRunState_RDetail(self, name):
         self.click(*RealDataLocators.QRY_TMNL_RUN_STATE_RDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_TMNL_RUN_STATE_RDETAIL_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_TMNL_RUN_STATE_RDETAIL_VALUE, name)
         print(locator)
         self.click(*locator)
 
     # 电能表抄读状态
     def inputSel_meter_read_state_Rdetail(self, name):
         self.click(*RealDataLocators.QRY_METER_READ_STATE_RDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_METER_READ_STATE_RDETAIL_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_METER_READ_STATE_RDETAIL_VALUE, name)
         self.click(*locator)
 
     # 电能表抄读状态
     def inputSel__meter_read_state_faildetail(self, name):
         self.click(*RealDataLocators.QRY_METER_READ_STATE_FAILDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_METER_READ_STATE_FAILDETAIL_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_METER_READ_STATE_FAILDETAIL_VALUE, name)
         self.click(*locator)
 
     # 数据类型
     def inputSel_dataType(self, name):
         self.click(*RealDataLocators.QRY_DATATYPE_RDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_DATATYPE_RDETAIL_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_DATATYPE_RDETAIL_VALUE, name)
         print(locator)
         self.click(*locator)
 
     # 相位
     def inputSel_phase_Rdetail(self, name):
         self.click(*RealDataLocators.QRY_PHASE_RDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_PHASE_RDETAIL_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_PHASE_RDETAIL_VALUE, name)
         self.click(*locator)
 
     # 相位
     def inputSel_phase_Faildetail(self, name):
         self.click(*RealDataLocators.QRY_USER_TYPE_FAILDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_USER_TYPE_FAILDETAIL_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_USER_TYPE_FAILDETAIL_VALUE, name)
         self.click(*locator)
 
     # 抄表段号
@@ -98,14 +107,16 @@ class RealDataPage(Page):
     # 用户类型
     def inputSel_userType_Rdetail(self, name):
         self.click(*RealDataLocators.QRY_USER_TYPE_RDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_USER_TYPE_RDETAIL_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_USER_TYPE_RDETAIL_VALUE, name)
         print(locator)
         self.click(*locator)
 
     # 用户类型
     def inputSel_userType_Faildetail(self, name):
         self.click(*RealDataLocators.QRY_USER_TYPE_FAILDETAIL)
-        locator = self.get_select_locator(RealDataLocators.QRY_USER_TYPE_FAILDETAIL_VALUE, name)
+        locator = self.get_select_locator(
+            RealDataLocators.QRY_USER_TYPE_FAILDETAIL_VALUE, name)
         self.click(*locator)
 
     # 查询

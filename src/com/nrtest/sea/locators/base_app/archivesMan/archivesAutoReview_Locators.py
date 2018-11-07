@@ -19,7 +19,8 @@ class ArchivesAutoReviewLocators:
     QRY__LEADINTO_METER_INFO_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'条形码')]/../div[contains(text(),'%s')]")
     # 日期
-    QRY_DATE = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'日期')]/../../div[1]/div[1]//input")
+    QRY_DATE = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'日期')]/../../div[1]/div[1]//input")
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

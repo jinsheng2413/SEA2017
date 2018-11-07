@@ -30,7 +30,8 @@ class TestTgLineLossDetail(unittest.TestCase, TgLineLossDetailPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(TgLineLossStatisticsQuery_data.TgLineLossDetail_para, True)
+        cls.driver = openMenu(
+            TgLineLossStatisticsQuery_data.TgLineLossDetail_para, True)
 
     @classmethod
     def tearDownClass(cls):

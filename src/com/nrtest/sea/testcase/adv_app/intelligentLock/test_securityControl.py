@@ -21,12 +21,12 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用→智能锁具→权限控制
 @ddt
-class TestSecurityControl(unittest.TestCase,SecurityControlPage):
+class TestSecurityControl(unittest.TestCase, SecurityControlPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(IntelligentLock_data.SecurityControl_para,True)
+        cls.driver = openMenu(IntelligentLock_data.SecurityControl_para, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -49,17 +49,17 @@ class TestSecurityControl(unittest.TestCase,SecurityControlPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #供电单位，查询按钮
+        # 供电单位，查询按钮
         self.btn_cons_search()
-        #锁封编号
+        # 锁封编号
         self.inputStr_lock_no(para['LOCK_NO'])
-        #用户编号
+        # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
-        #校验
+        # 校验
         result = self.assert_context(*SecurityControlLocators.CHECK_FIRST)
         self.assertTrue(result)
 

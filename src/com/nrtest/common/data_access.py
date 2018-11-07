@@ -27,8 +27,6 @@ class DataAccess:
         pyoracle = PyOracle.getInstance()
         fun_name = 'pkg_nrtest.get_menu_path' + ('_by_name' if by_name else '')
         menu_path = pyoracle.callfunc(fun_name, 'str', [menuNo])
-        cls \
-            .abcd()
         return menu_path
 
     @staticmethod
@@ -58,7 +56,8 @@ class DataAccess:
 
         rslt = eval(tst_case)
         if len(rslt) == 0:
-            print('请确认以下配置项是否正确：\n1,配置文件（nari_test.conf）的user_group项：%s \n2,菜单编号：%s' % tuple(qry))
+            print(
+                '请确认以下配置项是否正确：\n1,配置文件（nari_test.conf）的user_group项：%s \n2,菜单编号：%s' % tuple(qry))
         print('当前用例数据：\n', rslt, '\n')
 
         # dict转Dict ljf

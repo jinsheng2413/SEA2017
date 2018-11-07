@@ -15,7 +15,8 @@ class ElePricePara_para:
     para_test_epp_user_number = {'pa': 'test_epp_user_number'}
     para_test_epp_terminal_addr = {'pa': 'test_epp_terminal_addr'}
     para_test_epp_meter_addr = {'pa': 'test_epp_meter_addr'}
-    para_test_epp_meter_reading_number = {'pa': 'test_epp_meter_reading_number'}
+    para_test_epp_meter_reading_number = {
+        'pa': 'test_epp_meter_reading_number'}
     para_test_epp_execute_state = {'pa': 'test_epp_execute_state'}
     para_test_epp_task_type = {'pa': 'test_epp_task_type'}
     para_test_epp_terminal_addr = {'pa': 'test_epp_terminal_addr'}

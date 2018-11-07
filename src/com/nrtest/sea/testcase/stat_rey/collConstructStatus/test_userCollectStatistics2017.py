@@ -26,7 +26,8 @@ class TestUserCollectStatistics2017(unittest.TestCase, UserCollectStatistics2017
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(CollConstructStatus_data.UserCollectStatistics2017_para)
+        cls.driver = openMenu(
+            CollConstructStatus_data.UserCollectStatistics2017_para)
 
     @classmethod
     def tearDownClass(cls):

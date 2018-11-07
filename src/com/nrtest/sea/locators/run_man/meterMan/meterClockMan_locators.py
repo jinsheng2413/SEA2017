@@ -31,7 +31,8 @@ class MeterClockManLocators:
     QRY_METERFACTORY_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'ABB公司\')]/../div[contains(text(),'%s')]")
     # 终端地址
-    QRY_TMNLADDR = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'终端地址\')]/../../div[1]/div[1]//input")
+    QRY_TMNLADDR = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'终端地址\')]/../../div[1]/div[1]//input")
     # 用户编号
     QRY_USERNO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'用户编号\')]/../../div[1]/div[1]//input")
@@ -39,7 +40,8 @@ class MeterClockManLocators:
     QRY_METERNO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'电表资产号\')]/../../div[1]/div[1]//input")
     # 日期
-    QRY_DATE = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'日期\')]/../../div[1]/div[1]//input")
+    QRY_DATE = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'日期\')]/../../div[1]/div[1]//input")
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

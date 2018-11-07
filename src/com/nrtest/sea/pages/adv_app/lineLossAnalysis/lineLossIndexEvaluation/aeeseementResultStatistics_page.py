@@ -19,7 +19,8 @@ class AeeseementResultStatisticsPage(Page):
     # 责任人
     def inputSel_charge_person(self, index):
         self.click(*AeeseementResultStatisticsLocators.QRY_CHARGE_PERSON)
-        locator = self.get_select_locator(AeeseementResultStatisticsLocators.QRY_CHARGE_PERSON_VALUE, index)
+        locator = self.get_select_locator(
+            AeeseementResultStatisticsLocators.QRY_CHARGE_PERSON_VALUE, index)
         self.click(*locator)
 
     # 查询日期

@@ -18,20 +18,23 @@ class LosePowerManPage(Page):
     # 考核单位状态
     def inputSel_assessUnitState(self, name):
         self.click(*LosePowerManLocators.QRY_ASSESS_UNIT_STATE)
-        locator = self.get_select_locator(LosePowerManLocators.QRY_ASSESS_UNIT_STATE_VALUE, name)
+        locator = self.get_select_locator(
+            LosePowerManLocators.QRY_ASSESS_UNIT_STATE_VALUE, name)
         print(locator)
         self.click(*locator)
 
     # 组合标志
     def inputSel_CombinationSign(self, name):
         self.click(*LosePowerManLocators.QRY_COMBINATION_SIGN)
-        locator = self.get_select_locator(LosePowerManLocators.QRY_COMBINATION_SIGN_VALUE, name)
+        locator = self.get_select_locator(
+            LosePowerManLocators.QRY_COMBINATION_SIGN_VALUE, name)
         self.click(*locator)
 
     # 台区状态
     def inputSel_ZoneAreaState(self, name):
         self.click(*LosePowerManLocators.QRY_ZONE_AREA_STATE)
-        locator = self.get_select_locator(LosePowerManLocators.QRY_ZONE_AREA_STATE_VALUE, name)
+        locator = self.get_select_locator(
+            LosePowerManLocators.QRY_ZONE_AREA_STATE_VALUE, name)
         self.click(*locator)
 
     # 考核单位名称
@@ -41,7 +44,8 @@ class LosePowerManPage(Page):
     # 考核单位分类
     def inputSel_assessUnitClassfication(self, name):
         self.click(*LosePowerManLocators.QRY_ASSESS_UNIT_CLASSFICATION)
-        locator = self.get_select_locator(LosePowerManLocators.QRY_ASSESS_UNIT_CLASSFICATION_VALUE, name)
+        locator = self.get_select_locator(
+            LosePowerManLocators.QRY_ASSESS_UNIT_CLASSFICATION_VALUE, name)
         print(locator)
         self.click(*locator)
 

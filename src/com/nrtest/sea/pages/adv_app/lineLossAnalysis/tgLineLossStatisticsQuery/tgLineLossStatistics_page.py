@@ -18,7 +18,8 @@ class TgLineLossStatisticsPage(Page):
     # 线损维度
     def inputSel_line_loss_dimension(self, index):
         self.click(*TgLineLossStatisticsLocators.QRY_LINE_LOSS_DIMENSION)
-        locator = self.get_select_locator(TgLineLossStatisticsLocators.QRY_LINE_LOSS_DIMENSION_VALUE, index)
+        locator = self.get_select_locator(
+            TgLineLossStatisticsLocators.QRY_LINE_LOSS_DIMENSION_VALUE, index)
         self.click(*locator)
 
     # 查询日期

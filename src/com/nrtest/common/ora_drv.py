@@ -165,7 +165,8 @@ class PyOracle():
             if retType == 'int':
                 rst = int(rst)
             elif retType == 'date':
-                rst = datetime.datetime.strptime(rst.strftime('%Y-%m-%d'), '%Y-%m-%d')
+                rst = datetime.datetime.strptime(
+                    rst.strftime('%Y-%m-%d'), '%Y-%m-%d')
             elif retType == 'date2str':
                 rst = rst.strftime('%Y-%m-%d')
             elif retType == 'dt2str':

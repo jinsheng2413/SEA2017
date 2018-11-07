@@ -18,19 +18,24 @@ class ImportantClientRealTimePowerCutMonitorPage(Page):
     # 电压等级
     def inputSel_volt_level(self, index):
         self.click(*ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL)
-        locator = self.get_select_locator(ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL_VALUE, index)
+        locator = self.get_select_locator(
+            ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL_VALUE, index)
         self.click(*locator)
         self.delDropdownBoxHtml()
 
     # 停电开始日期
     def inputDt_start_date(self, content):
-        self.exec_script(ImportantClientRealTimePowerCutMonitorLocators.START_DATE_JS)
-        self.input(content, *ImportantClientRealTimePowerCutMonitorLocators.QRY_START_DATE)
+        self.exec_script(
+            ImportantClientRealTimePowerCutMonitorLocators.START_DATE_JS)
+        self.input(
+            content, *ImportantClientRealTimePowerCutMonitorLocators.QRY_START_DATE)
 
     # 停电结束日期
     def inputDt_end_date(self, content):
-        self.exec_script(ImportantClientRealTimePowerCutMonitorLocators.END_DATE_JS)
-        self.input(content, *ImportantClientRealTimePowerCutMonitorLocators.QRY_END_DATE)
+        self.exec_script(
+            ImportantClientRealTimePowerCutMonitorLocators.END_DATE_JS)
+        self.input(
+            content, *ImportantClientRealTimePowerCutMonitorLocators.QRY_END_DATE)
 
     # 查询按钮
     def btn_search(self):

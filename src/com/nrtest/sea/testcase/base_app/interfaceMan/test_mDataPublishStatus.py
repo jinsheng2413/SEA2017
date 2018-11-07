@@ -25,7 +25,8 @@ class Test_mDataPublishStatus2(unittest.TestCase, MDataPublishStatus2Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(InterfaceManager_data.para_MDataPublishStatus2, True)
+        cls.driver = openMenu(
+            InterfaceManager_data.para_MDataPublishStatus2, True)
         sleep(2)
         cls.exec_script(cls, MDataPublishStatus2_locators.START_DATE_JS)
         cls.exec_script(cls, MDataPublishStatus2_locators.END_DATE_JS)

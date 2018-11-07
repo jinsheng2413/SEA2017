@@ -30,7 +30,8 @@ class TestAeeseementResultStatistics(unittest.TestCase, AeeseementResultStatisti
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LineLossIndexEvaluation_data.AssessmentResultStatistics_para, True)
+        cls.driver = openMenu(
+            LineLossIndexEvaluation_data.AssessmentResultStatistics_para, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -62,7 +63,8 @@ class TestAeeseementResultStatistics(unittest.TestCase, AeeseementResultStatisti
         # 查询按钮
         self.btn_search()
         # 校验
-        result = self.assert_context(*AeeseementResultStatisticsLocators.CHECK_FIRST)
+        result = self.assert_context(
+            *AeeseementResultStatisticsLocators.CHECK_FIRST)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

@@ -20,7 +20,8 @@ class AllEventDistributionRateStatisticsLocators:
     BTN_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[4]')
     # 全事件未配置明细
     # 时间
-    DATE_TAB = (By.XPATH, '(//label[contains(text(),"时间")]/../div/div/input)[2]')
+    DATE_TAB = (
+        By.XPATH, '(//label[contains(text(),"时间")]/../div/div/input)[2]')
     # 终端类型
     TMNL_TYPE = (By.XPATH, '//label[contains(text(),"终端类型")]/../div/div/img')
     # 终端类型→值

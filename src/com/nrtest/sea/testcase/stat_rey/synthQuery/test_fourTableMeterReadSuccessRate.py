@@ -26,7 +26,8 @@ class TestAutomatedMeterAvailability(unittest.TestCase, FourTableMeterReadSucces
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SynthQuery_data.FourTableMeterReadSuccessRate_para)
+        cls.driver = openMenu(
+            SynthQuery_data.FourTableMeterReadSuccessRate_para)
 
     @classmethod
     def tearDownClass(cls):

@@ -16,13 +16,15 @@ class ArchivesChangeRecordPage(Page):
     # 设备类型
     def inputSel_device_type(self, name):
         self.click(*ArchivesChangeRecordLocators.QRY_DEVICE_TYPE)
-        locator = self.get_select_locator(ArchivesChangeRecordLocators.QRY_DEVICE_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            ArchivesChangeRecordLocators.QRY_DEVICE_TYPE_VALUE, name)
         self.click(*locator)
 
     # 变更类型
     def inputSel_change_type(self, name):
         self.click(*ArchivesChangeRecordLocators.QRY_CHANGE_TYPE)
-        locator = self.get_select_locator(ArchivesChangeRecordLocators.QRY_CHANGE_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            ArchivesChangeRecordLocators.QRY_CHANGE_TYPE_VALUE, name)
         self.click(*locator)
 
     # 接收时间

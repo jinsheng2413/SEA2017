@@ -35,14 +35,16 @@ class ElePricePages(Page):
     # 任务类型
     def inputSel_task_cata(self, index):
         self.click(*ElePricePara_locators.QRY_TASK_CATA)
-        locator = self.get_select_locator(ElePricePara_locators.QRY_TASK_CATA_VALUE, index)
+        locator = self.get_select_locator(
+            ElePricePara_locators.QRY_TASK_CATA_VALUE, index)
         # print(locator)
         self.click(*locator)
 
     # 执行状态
     def inputSel_execute_state(self, index):
         self.click(*ElePricePara_locators.QRY_EXECUTE_STATE)
-        locator = self.get_select_locator(ElePricePara_locators.QRY_EXECUTE_STATE_VALUE, index)
+        locator = self.get_select_locator(
+            ElePricePara_locators.QRY_EXECUTE_STATE_VALUE, index)
         # print(locator)
         self.click(*locator)
 

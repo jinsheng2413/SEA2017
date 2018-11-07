@@ -16,7 +16,8 @@ class WhiteListQueryLocators:
     # 用户编号
     CONS_NO = (By.XPATH, '//label[contains(text(),"用户编号")]/../div/input')
     # 开始日期
-    START_DATE = (By.XPATH, '//label[contains(text(),"开始日期")]/../div/div/input')
+    START_DATE = (
+        By.XPATH, '//label[contains(text(),"开始日期")]/../div/div/input')
     # 结束日期
     END_DATE = (By.XPATH, '//label[contains(text(),"结束日期")]/../div/div/input')
     # 终端地址

@@ -45,7 +45,8 @@ class test_archivesAnalysisOfAnomaly_detail(unittest.TestCase, ArchivesAnalysisO
 
     # 用户类型
     def test_aaoad_user_cata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_user_cata)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_user_cata)
         self.inputStr_date(lip[0][1])
         print(lip[0][1])
         self.inputSel_user_cata(lip[0][0])
@@ -53,68 +54,79 @@ class test_archivesAnalysisOfAnomaly_detail(unittest.TestCase, ArchivesAnalysisO
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
         self.assertTrue(result)
 
         # 档案类型
 
     def test_aaoad_archives_cata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_user_cata)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_user_cata)
         self.inputStr_date(lip[0][1])
         self.inputSel_user_cata(lip[0][0])
         self.inputRSel_archives_cata(lip[0][2])
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 时间查询
     def test_aaoad_date(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 用户编号明细
     def test_aaoad_user_no_detail(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
         self.btn_qry()
         self.btn_user_no_detail()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_detail_locators.BTN_USER_DATA_QRY)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_detail_locators.BTN_USER_DATA_QRY)
         self.assertTrue(result)
         self.btn_menu_anchives_al()
 
         # 终端档案异常数
 
     def test_aaoad_terminal_anomals_detail(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
         self.btn_qry()
         self.btn_terminal_asset_no_detail()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_detail_locators.BTN_CONFIRM)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_detail_locators.BTN_CONFIRM)
         self.assertTrue(result)
         self.btn_confirm()
         self.btn_menu_anchives_al()
 
     # 终端档案异常数
     def test_aaoad_anomals_detail(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
         self.btn_qry()
         self.btnAnomalsDetail()
 
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_detail_locators.BTN_LOS)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_detail_locators.BTN_LOS)
         self.assertTrue(result)
         self.btn_los()
         self.btn_menu_anchives_al()

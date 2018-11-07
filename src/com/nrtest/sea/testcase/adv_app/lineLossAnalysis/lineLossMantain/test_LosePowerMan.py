@@ -65,7 +65,8 @@ class TestLosePowerMan(unittest.TestCase, LosePowerManPage):
         # 考核单元名称
         self.inputStr_assessUnitName(para['ASSESS_UNIT_NAME'])
         # 考核单元分类
-        self.inputSel_assessUnitClassfication(para['ASSESS_UNIT_CLASSFICCATION'])
+        self.inputSel_assessUnitClassfication(
+            para['ASSESS_UNIT_CLASSFICCATION'])
         # 组合标志
         self.inputSel_CombinationSign(para['COMBINATION_SIGN'])
         # 考核单元状态

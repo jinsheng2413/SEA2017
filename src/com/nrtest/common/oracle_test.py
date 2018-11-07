@@ -33,7 +33,8 @@ class Oracle:
         :param host: ip
         :param instance: 数据库名称
         """
-        self._conn = cx_Oracle.connect('%s/%s@%s/%s' % (username, pwd, host, name))
+        self._conn = cx_Oracle.connect(
+            '%s/%s@%s/%s' % (username, pwd, host, name))
         self.cursor = self._conn.cursor()
 
     def queryAll(self, sql, para):

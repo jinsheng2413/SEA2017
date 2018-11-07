@@ -48,13 +48,15 @@ class TestlocalFeiManageExeCount_dis_count(unittest.TestCase, LocalFeiManageExeC
         self.clear_values(LocalFeiManageExeCount_dis_count_Page)
 
     def commonTime(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdc_feiUserCata)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdc_feiUserCata)
         self.inputStr_receive_time(lip[0][1])
         self.inputStr_end_time(lip[0][2])
 
     # 费控用户类型
     def test_lfdc_feiUserCata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdc_feiUserCata)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdc_feiUserCata)
         self.inputSel_feiUserCata(lip[0][0])
         self.inputStr_receive_time(lip[0][1])
         self.inputStr_end_time(lip[0][2])
@@ -62,19 +64,22 @@ class TestlocalFeiManageExeCount_dis_count(unittest.TestCase, LocalFeiManageExeC
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_count_Locators.TAB_ONE)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_count_Locators.TAB_ONE)
         self.assertTrue(result)
 
     # 工单类型
     def test_lfdc_workCata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdc_workCata)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdc_workCata)
         self.commonTime()
         self.inputSel_work_cata(lip[0][0])
         # 点击查询
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_count_Locators.TAB_ONE)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_count_Locators.TAB_ONE)
         self.assertTrue(result)
 
     # 时间查询
@@ -84,7 +89,8 @@ class TestlocalFeiManageExeCount_dis_count(unittest.TestCase, LocalFeiManageExeC
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_count_Locators.TAB_ONE)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_count_Locators.TAB_ONE)
         self.assertTrue(result)
 
     # 工单总数明细
@@ -97,7 +103,8 @@ class TestlocalFeiManageExeCount_dis_count(unittest.TestCase, LocalFeiManageExeC
 
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_count_Locators.BTN_LOCAL_FEI_MANGE_EXE_COUNT)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_count_Locators.BTN_LOCAL_FEI_MANGE_EXE_COUNT)
         self.assertTrue(result)
         self.btn_localFeiMangeexeCount()
 
@@ -111,7 +118,8 @@ class TestlocalFeiManageExeCount_dis_count(unittest.TestCase, LocalFeiManageExeC
 
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_count_Locators.BTN_LOCAL_FEI_MANGE_EXE_COUNT)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_count_Locators.BTN_LOCAL_FEI_MANGE_EXE_COUNT)
         self.assertTrue(result)
         self.btn_localFeiMangeexeCount()
 
@@ -126,6 +134,7 @@ class TestlocalFeiManageExeCount_dis_count(unittest.TestCase, LocalFeiManageExeC
 
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_count_Locators.BTN_LOCAL_FEI_MANGE_EXE_COUNT)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_count_Locators.BTN_LOCAL_FEI_MANGE_EXE_COUNT)
         self.assertTrue(result)
         self.btn_localFeiMangeexeCount()

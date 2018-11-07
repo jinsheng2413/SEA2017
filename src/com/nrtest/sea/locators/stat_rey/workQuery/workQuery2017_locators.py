@@ -32,10 +32,10 @@ class WorkQuery2017Locators:
     # 【查询条件区】
     # 工单编号
     QRY_WORK_NO = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'工单编号\')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'工单编号\')]/../../div[1]/div[1]//input")
     # 工单处理人
     QRY_WORK_MAN = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'工单处理人\')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'工单处理人\')]/../../div[1]/div[1]//input")
     # 工单类型
     QRY_WORK_TITLE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),\'工单类型\')]/../../div[1]/div[1]//input)[2]")

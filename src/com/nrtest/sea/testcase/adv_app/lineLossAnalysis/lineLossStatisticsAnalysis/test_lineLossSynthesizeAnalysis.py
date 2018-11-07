@@ -28,7 +28,8 @@ class TestLineLossSynthesizeAnalysis(unittest.TestCase, LineLossSynthesizeAnalys
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LineLossStatisticsAnalysis_data.LineLossSynthesizeAnalysis_para, True)
+        cls.driver = openMenu(
+            LineLossStatisticsAnalysis_data.LineLossSynthesizeAnalysis_para, True)
 
     @classmethod
     def tearDownClass(cls):

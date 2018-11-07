@@ -8,12 +8,13 @@
 @desc:
 '''
 
+
 class IntelligentLock_data:
-    #高级应用→智能锁具→资产管理
+    # 高级应用→智能锁具→资产管理
     AssetMan_para = '99992100'
-    #高级应用→智能锁具→权限控制
+    # 高级应用→智能锁具→权限控制
     SecurityControl_para = '99992200'
-    #高级应用→智能锁具→记录查询
+    # 高级应用→智能锁具→记录查询
     RecordsQuery_para = '99992300'
-    #高级应用→智能锁具→权限查询及删除
+    # 高级应用→智能锁具→权限查询及删除
     SecurityQueryAndDelete_para = '99992500'

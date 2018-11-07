@@ -21,12 +21,12 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用→智能锁具→资产管理
 @ddt
-class TestAssetMan(unittest.TestCase,AssetManPage):
+class TestAssetMan(unittest.TestCase, AssetManPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(IntelligentLock_data.AssetMan_para,True)
+        cls.driver = openMenu(IntelligentLock_data.AssetMan_para, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -49,25 +49,25 @@ class TestAssetMan(unittest.TestCase,AssetManPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #锁封编号
+        # 锁封编号
         self.inputStr_lock_no(para['LOCK_NO'])
-        #台区名称
+        # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
-        #用户名称
+        # 用户名称
         self.inputStr_user_name(para['USER_NAME'])
-        #用户类型
+        # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
-        #锁封资产状态
+        # 锁封资产状态
         self.inputSel_lock_asset_ststus(para['LOCK_ASSET_STATUS'])
-        #锁封状态
+        # 锁封状态
         self.inputSel_lock_status(para['LOCK_STATUS'])
-        #锁封类型
+        # 锁封类型
         self.inputSel_lock_type(para['LOCK_TYPE'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
-        #校验
+        # 校验
         result = self.assert_context(*AssetManLocators.CHECK_FIRST)
         self.assertTrue(result)
 

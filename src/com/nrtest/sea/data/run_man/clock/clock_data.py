@@ -8,6 +8,7 @@
 @desc:
 """
 
+
 class ClockData:
     para_TTmnlCheckClock = '99932100'
     para_MetCheckClock = '99932200'

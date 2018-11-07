@@ -14,19 +14,25 @@ from selenium.webdriver.common.by import By
 class ArchivesMaintain_locators:
     # 【菜单】
     # 厂站维护
-    BTN_MENU_FACTORY_MAINTAIN = (By.XPATH, "(//*[contains(text(),'厂站维护')])[@class=\"x-tab-strip-text \"]")
+    BTN_MENU_FACTORY_MAINTAIN = (
+        By.XPATH, "(//*[contains(text(),'厂站维护')])[@class=\"x-tab-strip-text \"]")
     # 终端维护
-    BTN_MENU_TERMINAL_MAINTAIN = (By.XPATH, "(//*[contains(text(),'终端维护')])[@class=\"x-tab-strip-text \"]")
+    BTN_MENU_TERMINAL_MAINTAIN = (
+        By.XPATH, "(//*[contains(text(),'终端维护')])[@class=\"x-tab-strip-text \"]")
     # 电表维护
-    BTN_MENU_METER_MAINTAIN = (By.XPATH, "(//*[contains(text(),'电表维护')])[@class=\"x-tab-strip-text \"]")
+    BTN_MENU_METER_MAINTAIN = (
+        By.XPATH, "(//*[contains(text(),'电表维护')])[@class=\"x-tab-strip-text \"]")
     # 【查询名称】
     # 厂站名称
-    QRY_FACTORY_NAME = (By.XPATH, "//*[@class=\"x-form-item \"]//*[contains(text(),'厂站名称')]/../div[1]/div/img")
+    QRY_FACTORY_NAME = (
+        By.XPATH, "//*[@class=\"x-form-item \"]//*[contains(text(),'厂站名称')]/../div[1]/div/img")
     QRY_FACTORY_NAME_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'--全部--')]/../div[%s]")
     # 电压等级
-    QRY_ELE_GRADE = (By.XPATH, "//*[@class=\"x-form-item \"]//*[contains(text(),'电压等级')]/../div[1]/div/img")
-    QRY_ELE_GRADE_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'--全部--')]/../div[%s]")
+    QRY_ELE_GRADE = (
+        By.XPATH, "//*[@class=\"x-form-item \"]//*[contains(text(),'电压等级')]/../div[1]/div/img")
+    QRY_ELE_GRADE_VALUE = (
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'--全部--')]/../div[%s]")
 
     # 终端资产号
     QRY_TERMINAL_ASSET_NO = (By.XPATH,

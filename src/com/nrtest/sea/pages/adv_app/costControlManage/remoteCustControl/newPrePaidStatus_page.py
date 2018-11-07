@@ -17,13 +17,15 @@ class NewPrePaidStatusPage(Page):
     # 控制类别
     def inputRSel_controlType_one(self, name):
         self.click(*NewPrePaidStatusLocators.QRY_CONTROL_TYPE_ONE)
-        locator = self.get_select_locator(NewPrePaidStatusLocators.QRY_CONTROL_TYPE_VALUE_ONE, name)
+        locator = self.get_select_locator(
+            NewPrePaidStatusLocators.QRY_CONTROL_TYPE_VALUE_ONE, name)
         print(locator)
         self.click(*locator)
 
     def inputRSel_controlType_Two(self, name):
         self.click(*NewPrePaidStatusLocators.QRY_CONTROL_TYPE_TWO)
-        locator = self.get_select_locator(NewPrePaidStatusLocators.QRY_CONTROL_TYPE_VALUE_TWO, name)
+        locator = self.get_select_locator(
+            NewPrePaidStatusLocators.QRY_CONTROL_TYPE_VALUE_TWO, name)
         print(locator)
         self.click(*locator)
 

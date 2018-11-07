@@ -25,7 +25,8 @@ class MeterDataQueryPage(Page):
     # 用户类型
     def inputSel_cons_type(self, index):
         self.click(*MeterDataQueryLocators.CONS_TYPE)
-        locator = self.get_select_locator(MeterDataQueryLocators.CONS_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            MeterDataQueryLocators.CONS_TYPE_VALUE, index)
         self.click(locator)
 
     # 查询日期

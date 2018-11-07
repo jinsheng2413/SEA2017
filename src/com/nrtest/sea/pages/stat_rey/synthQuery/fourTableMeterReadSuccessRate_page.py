@@ -19,7 +19,8 @@ class FourTableMeterReadSuccessRatePage(Page):
     # 表计类型
     def inputSel_meter_type(self, index):
         self.click(*FourTableMeterReadSuccessRateLocators.METER_TYPE)
-        locator = self.get_select_locator(FourTableMeterReadSuccessRateLocators.METER_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            FourTableMeterReadSuccessRateLocators.METER_TYPE_VALUE, index)
         self.click(*locator)
 
     # 查询日期
@@ -35,12 +36,14 @@ class FourTableMeterReadSuccessRatePage(Page):
     # 表计类型
     def inputSel_failed_meter_type(self, index):
         self.click(*FourTableMeterReadSuccessRateLocators.FAILED_METER_TYPE)
-        locator = self.get_select_locator(FourTableMeterReadSuccessRateLocators.FAILED_METER_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            FourTableMeterReadSuccessRateLocators.FAILED_METER_TYPE_VALUE, index)
         self.click(*locator)
 
     # 终端地址
     def inputStr_failed_tmnl_addr(self, content):
-        self.input(content, *FourTableMeterReadSuccessRateLocators.FAILED_TMNL_ADDR)
+        self.input(
+            content, *FourTableMeterReadSuccessRateLocators.FAILED_TMNL_ADDR)
 
     # 查询日期
     def inputDt_failed_date(self, content):

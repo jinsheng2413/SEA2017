@@ -16,18 +16,18 @@ class LoseCountPowerManLocators:
     # 【查询条件区】
     # 台区运行状态
     QRY_ZONE_AREA_RUN_STATUS = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'台区运行状态')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'台区运行状态')]/../../div[1]/div[1]//input")
     QRY_ZONE_AREA_RUN_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'运行')]/../div[contains(text(),'%s')]")
     # 责任人工号
     QRY_RESPONSIBILITIER_NO = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'责任人工号')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'责任人工号')]/../../div[1]/div[1]//input")
     # 台区编码
     QRY_ZONE_AREA_CODE = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'台区编码')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'台区编码')]/../../div[1]/div[1]//input")
     # 台区名称
     QRY_ZONE_NAME = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'台区名称')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'台区名称')]/../../div[1]/div[1]//input")
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

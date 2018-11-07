@@ -21,7 +21,8 @@ class BcVoltMonitorPointDataPage(Page):
     # 监测点类型--打开并选择
     def inputRSel_monitor_point_type(self, name):
         self.click(*BcVoltMonitorPointDataLocators.MONITOR_POINT_TYPE_SEL)
-        locator = self.get_select_locator(BcVoltMonitorPointDataLocators.MONITOR_POINT_TYPE, name)
+        locator = self.get_select_locator(
+            BcVoltMonitorPointDataLocators.MONITOR_POINT_TYPE, name)
         self.click(*locator)
 
     # 监测点名称

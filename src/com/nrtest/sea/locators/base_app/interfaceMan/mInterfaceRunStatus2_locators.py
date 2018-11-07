@@ -15,13 +15,15 @@ from selenium.webdriver.common.by import By
 class MInterfaceRunStatus2Locators:
     # 【显示区】
     # 业务系统
-    QRY_BUSINESS_SYSTEM = (By.XPATH, "//label[contains(text(),'业务系统')]/../div/div/input")
+    QRY_BUSINESS_SYSTEM = (
+        By.XPATH, "//label[contains(text(),'业务系统')]/../div/div/input")
     # 执行状态的值
     QRY_BUSINESS_SYSTEM_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'营销业务应用')]/../div[contains(text(),'%s')]")
 
     # 服务对象名称
-    QRY_SERVICE_NAME = (By.XPATH, "//label[contains(text(),'服务对象名称')]/../div/div/input")
+    QRY_SERVICE_NAME = (
+        By.XPATH, "//label[contains(text(),'服务对象名称')]/../div/div/input")
     # 执行状态的值
     QRY_SERVICE_NAME_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'装接流程')]/../div[contains(text(),'%s')]")

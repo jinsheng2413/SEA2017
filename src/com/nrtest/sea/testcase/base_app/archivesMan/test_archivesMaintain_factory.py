@@ -45,7 +45,8 @@ class TestarchivesMaintain_factory(unittest.TestCase, ArchivesMaintain_factory_p
 
     # 电压等级
     def test_amf_eleGrade(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesMaintain.para_test_amf_eleGrade)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ArchivesMaintain.para_test_amf_eleGrade)
         self.inputSel_eleGrade(lip[0][0])
         self.btn_factoryQry()
         self.sleep_time(2)

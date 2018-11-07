@@ -16,7 +16,8 @@ class ArchivesManage_pages(Page):
     # 用户类型
     def inputSel_user_cata(self, index):
         self.click(*ArchivesManage_locators.QRY_USER_CATA)
-        locator = self.get_select_locator(ArchivesManage_locators.QRY_USER_CATA_VALUE, index)
+        locator = self.get_select_locator(
+            ArchivesManage_locators.QRY_USER_CATA_VALUE, index)
         # print(locator)
         self.click(*locator)
 

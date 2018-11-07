@@ -49,11 +49,14 @@ class TestPatrolDataQuery_CurveContrast(unittest.TestCase, PatrolDataQueryPage):
 
     def query(self, para):
         # 终端资产号
-        self.inputStr_curve_contrast_tmnl_asset_no(para['CURVR_CONTRAST_TMNL_ASSET_NO'])
+        self.inputStr_curve_contrast_tmnl_asset_no(
+            para['CURVR_CONTRAST_TMNL_ASSET_NO'])
         # 终端地址
-        self.inputStr_curve_contrast_tmnl_addr(para['CURVR_CONTRAST_TMNL_ADDR'])
+        self.inputStr_curve_contrast_tmnl_addr(
+            para['CURVR_CONTRAST_TMNL_ADDR'])
         # 曲线类型
-        self.inputSel_curve_contrast_curve_type(para['CURVR_CONTRAST_CURVE_TYPE'])
+        self.inputSel_curve_contrast_curve_type(
+            para['CURVR_CONTRAST_CURVE_TYPE'])
         # 查询按钮
         self.btn_curve_contrast_search()
 

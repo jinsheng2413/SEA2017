@@ -22,12 +22,13 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用→智能锁具→权限查询及删除
 @ddt
-class TestSecurityQueryAndDelete(unittest.TestCase,SecurityQueryAndDeletePage):
+class TestSecurityQueryAndDelete(unittest.TestCase, SecurityQueryAndDeletePage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(IntelligentLock_data.SecurityQueryAndDelete_para,True)
+        cls.driver = openMenu(
+            IntelligentLock_data.SecurityQueryAndDelete_para, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -50,18 +51,19 @@ class TestSecurityQueryAndDelete(unittest.TestCase,SecurityQueryAndDeletePage):
         self.recoverLeftTree()
 
     def query(self, para):
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
-        #电子钥匙编号
+        # 电子钥匙编号
         self.inputStr_key_no(para['KEY_NO'])
-        #锁封编号
+        # 锁封编号
         self.inputStr_lock_no(para['LOCK_NO'])
-        #操作员编号
+        # 操作员编号
         self.inputStr_staff_no(para['STAFF_NO'])
-        #查询按钮
+        # 查询按钮
         self.btn_search()
-        #校验
-        result = self.assert_context(*SecurityQueryAndDeleteLocators.CHECK_FIRST)
+        # 校验
+        result = self.assert_context(
+            *SecurityQueryAndDeleteLocators.CHECK_FIRST)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(IntelligentLock_data.SecurityQueryAndDelete_para))

@@ -19,13 +19,15 @@ class UpgradeEffectStatisticsPage(Page):
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
         self.click(*UpgradeEffectStatisticsLocators.TMNL_FACTORY)
-        locator = self.get_select_locator(UpgradeEffectStatisticsLocators.TMNL_FACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEffectStatisticsLocators.TMNL_FACTORY_VALUE, index)
         self.click(*locator)
 
     # 升级目的
     def inputSel_upgrade_purpose(self, index):
         self.click(*UpgradeEffectStatisticsLocators.UPGRADE_PURPOSE)
-        locator = self.get_select_locator(UpgradeEffectStatisticsLocators.UPGRADE_PURPOSE_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEffectStatisticsLocators.UPGRADE_PURPOSE_VALUE, index)
         self.click(*locator)
 
     # 查询按钮
@@ -35,13 +37,15 @@ class UpgradeEffectStatisticsPage(Page):
     # 终端升级明细
     def inputSel_detail_tmnl_factory(self, index):
         self.click(*UpgradeEffectStatisticsLocators.DETAIL_TMNL_FACTORY)
-        locator = self.get_select_locator(UpgradeEffectStatisticsLocators.DETAIL_TMNL_FACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEffectStatisticsLocators.DETAIL_TMNL_FACTORY_VALUE, index)
         self.click(*locator)
 
     # 升级目的
     def inputSel_detail_upgrade_purpose(self, index):
         self.click(*UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_PURPOSE)
-        locator = self.get_select_locator(UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_PURPOSE_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_PURPOSE_VALUE, index)
         self.click(*locator)
 
     # 查询按钮

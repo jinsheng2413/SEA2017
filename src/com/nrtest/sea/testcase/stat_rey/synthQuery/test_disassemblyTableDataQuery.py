@@ -70,7 +70,8 @@ class TestDisassemblyTableDataQuery(unittest.TestCase, DisassemblyTableDataQuery
         self.btn_search()
         self.sleep_time(10)
         # 校验
-        result = self.assert_context(*DisassemblyTableDataQueryLocators.CHECK_FIRST)
+        result = self.assert_context(
+            *DisassemblyTableDataQueryLocators.CHECK_FIRST)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(SynthQuery_data.DisassemblyTableDataQuery_para))

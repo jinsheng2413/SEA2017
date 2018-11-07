@@ -21,7 +21,8 @@ class UserCollectStatisticsPage(Page):
             self._find_element(*UserCollectStatisticsLocators.CONS_TYPE)
         else:
             self.click(*UserCollectStatisticsLocators.CONS_TYPE)
-            locator = self.get_select_locator(UserCollectStatisticsLocators.CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                UserCollectStatisticsLocators.CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*UserCollectStatisticsLocators.CONS_TYPE)
 
@@ -33,7 +34,8 @@ class UserCollectStatisticsPage(Page):
     # 统计口径
     def inputSel_statistics_caliber(self, index):
         self.click(*UserCollectStatisticsLocators.STATISTICS_CALIBER)
-        locator = self.get_select_locator(UserCollectStatisticsLocators.STATISTICS_CALIBER_VALUE, index)
+        locator = self.get_select_locator(
+            UserCollectStatisticsLocators.STATISTICS_CALIBER_VALUE, index)
         self.click(*locator)
 
     # 查询按钮

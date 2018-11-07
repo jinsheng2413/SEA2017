@@ -19,7 +19,8 @@ class LoginPageLocators:
     # 【操作区】
     BTN_LOGIN = (By.XPATH, '//*[@id="inputform"]/table/tbody/tr[5]/td[2]/img')
     BTN_CONFIRM = (By.XPATH, "//button[contains(.,'确定')]")
-    BTN_ARROW = (By.XPATH, '//*[@id="index.loginExceptionWin"]/div[1]/div/div/div/div[1]')
+    BTN_ARROW = (
+        By.XPATH, '//*[@id="index.loginExceptionWin"]/div[1]/div/div/div/div[1]')
     # 验证码
     BTN_IDENTIFYING_CODE = (By.XPATH, '//*[@id="imageMask"]')
     #

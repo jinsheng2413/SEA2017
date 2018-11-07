@@ -24,7 +24,8 @@ class WaveArchives_Locators:
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'台区名称')])[1]/../../div[1]/div[1]/input")
     # 统计分类
     QRY_COUNT_TYPE = (By.XPATH, "//*[@name=\"archivesTypeCombox\"]")
-    QRY_COUNT_TYPE_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
+    QRY_COUNT_TYPE_VALUE = (
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

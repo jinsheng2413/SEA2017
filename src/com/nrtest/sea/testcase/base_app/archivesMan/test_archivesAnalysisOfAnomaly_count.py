@@ -45,7 +45,8 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
 
     # 用户类型
     def test_aaoa_user_cata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_user_cata)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_user_cata)
         self.inputStr_date(lip[0][1])
         print(lip[0][1])
         self.inputSel_user_cata(lip[0][0])
@@ -53,51 +54,60 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 时间查询
     def test_aaoa_date(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 用户类型异常明细
     def test_aaoa_user_cata_anomals_detail(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
         self.btn_qry()
         self.btn_user_archives_anomalaum()
         self.sleep_time(2)
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA)
         self.assertTrue(result)
         self.btn_menu_archives_anomals_count()
 
     # 电表档案异常数
     def test_aaoa_meter_anomals_detail(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
         self.btn_qry()
         self.btn_meter_archives_anomalaum()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA)
         self.assertTrue(result)
         self.btn_menu_archives_anomals_count()
 
         # 终端档案异常数
 
     def test_aaoa_terminal_anomals_detail(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
         self.inputStr_date(lip[0][0])
         self.btn_qry()
         self.btn_termianal_archives_anomalaum()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA)
+        result = self.assert_context(
+            *ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA)
         self.assertTrue(result)
         self.btn_menu_archives_anomals_count()

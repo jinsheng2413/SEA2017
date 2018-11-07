@@ -30,7 +30,8 @@ def add_case(case_path='', rule='test*.py'):
 # @threads(2)
 def run(test_suit):
     result = BeautifulReport(test_suit)
-    result.report(filename='report.html', description='测试deafult报告')  # , log_path=Setting.REPORT_PATH)
+    # , log_path=Setting.REPORT_PATH)
+    result.report(filename='report.html', description='测试deafult报告')
 
 
 if __name__ == '__main__':

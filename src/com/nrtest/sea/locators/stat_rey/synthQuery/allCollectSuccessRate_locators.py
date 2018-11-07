@@ -34,7 +34,8 @@ class AllCollectSuccessRateLocators:
     QRY_USERTYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//*[contains(text(),\'%s\')]//img")
     #
-    QRY_ = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'')]/../../div[1]/div[1]//input")
+    QRY_ = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'')]/../../div[1]/div[1]//input")
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

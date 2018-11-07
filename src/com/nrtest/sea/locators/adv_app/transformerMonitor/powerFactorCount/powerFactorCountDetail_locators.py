@@ -16,18 +16,23 @@ from selenium.webdriver.common.by import By
 class PowerFactorCountDetailLocators:
     # 【查询条件】
     # 供电单位
-    ORG_NO = (By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[2]"))
+    ORG_NO = (
+        By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[2]"))
     # 用户类型-下拉框
-    CONS_TYPE_SEL = (By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'用户类型')]/../div/div/img)[2]")
+    CONS_TYPE_SEL = (
+        By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'用户类型')]/../div/div/img)[2]")
     # 用户类型
-    CONS_TYPE = (By.XPATH, '(//div[@class =\"x-combo-list-inner\"])[1]//*[contains(text(),"%s")]')
+    CONS_TYPE = (
+        By.XPATH, '(//div[@class =\"x-combo-list-inner\"])[1]//*[contains(text(),"%s")]')
     # 无功补偿情况-下拉框
     POWER_QUALITY_TYPE_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'无功补偿情况')]/../div/div/img)[1]")
     # 无功补偿情况
-    POWER_QUALITY_TYPE = (By.XPATH, '(//div[@class =\"x-combo-list-inner\"])[2]//*[contains(text(),"%s")]')
+    POWER_QUALITY_TYPE = (
+        By.XPATH, '(//div[@class =\"x-combo-list-inner\"])[2]//*[contains(text(),"%s")]')
     # 查询日期
-    QUERY_DATE = (By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'日期')])[2]/../div/div/input")
+    QUERY_DATE = (
+        By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'日期')])[2]/../div/div/input")
 
     # 【按钮】
     # 查询
@@ -39,4 +44,5 @@ class PowerFactorCountDetailLocators:
     QUERY_DATE_JS = 'document.getElementById("pfcdDate").removeAttribute("readonly");'
 
     # 【显示区】
-    TABLE_DATA = (By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[2]/div/div)[1]")
+    TABLE_DATA = (
+        By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[2]/div/div)[1]")

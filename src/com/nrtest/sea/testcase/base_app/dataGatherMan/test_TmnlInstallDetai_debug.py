@@ -21,7 +21,8 @@ from com.nrtest.sea.task.commonMath import *
 
 @ddt
 class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
-    lr = DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne)
+    lr = DataAccess.getCaseData(
+        DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne)
 
     @classmethod
     def setUpClass(cls):

@@ -16,11 +16,14 @@ from selenium.webdriver.common.by import By
 class OrgLowVoltDayStaticLocators:
     # 【查询条件】
     # 供电单位
-    ORG_NO = (By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'节点名')]/../div/input)[1]")
+    ORG_NO = (
+        By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'节点名')]/../div/input)[1]")
     # 开始日期
-    START_DATE = (By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'开始日期')]/../div/div/input)[1]")
+    START_DATE = (
+        By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'开始日期')]/../div/div/input)[1]")
     # 结束日期
-    END_DATE = (By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'结束日期')]/../div/div/input)[1]")
+    END_DATE = (
+        By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'结束日期')]/../div/div/input)[1]")
 
     # 【按钮】
     # 查询
@@ -34,4 +37,5 @@ class OrgLowVoltDayStaticLocators:
     END_DATE_JS = 'document.getElementsByTagName("input")[5].removeAttribute("readonly");'
 
     # 【显示区】
-    TABLE_DATA = (By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[1]")
+    TABLE_DATA = (
+        By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[1]")

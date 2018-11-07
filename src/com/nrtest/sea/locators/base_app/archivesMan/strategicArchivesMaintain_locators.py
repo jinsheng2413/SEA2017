@@ -17,9 +17,11 @@ class StrategicArchivesMaintainLocators:
     QRY_TMNLADDR = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端地址')]/../../div[1]/div[1]/input")
     # 终端资产号
-    QRY_TMNLNO = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端资产号')]/../../div[1]/div[1]/input")
+    QRY_TMNLNO = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端资产号')]/../../div[1]/div[1]/input")
     # 用户编号
-    QRY_USERNO = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户编号')]/../../div[1]/div[1]/input")
+    QRY_USERNO = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户编号')]/../../div[1]/div[1]/input")
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

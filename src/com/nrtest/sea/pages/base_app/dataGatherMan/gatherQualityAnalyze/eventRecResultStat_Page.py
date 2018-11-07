@@ -21,7 +21,8 @@ class EventRecResultStatPage(Page):
     # 事件类型
     def inputSel_event_type(self, name):
         self.click(*EventRecResultStatLocators.QRY_EVENT_TYPE)
-        locator = self.get_select_locator(EventRecResultStatLocators.QRY_EVENT_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            EventRecResultStatLocators.QRY_EVENT_TYPE_VALUE, name)
         self.click(*locator)
 
     # 结束时间

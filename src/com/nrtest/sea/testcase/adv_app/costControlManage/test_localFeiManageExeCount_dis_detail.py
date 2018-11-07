@@ -48,13 +48,15 @@ class TestlocalFeiManageExeCount_dis_detail(unittest.TestCase, LocalFeiManageExe
         self.clear_values(LocalFeiManageExeCount_dis_detail_Page)
 
     def commonTime(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_feiUserCata)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_feiUserCata)
         self.inputStr_receive_time(lip[0][1])
         self.inputStr_end_time(lip[0][2])
 
     # 费控用户类型
     def test_lfdd_feiUserCata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_feiUserCata)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_feiUserCata)
         self.inputSel_feiUserCata(lip[0][0])
         self.inputStr_receive_time(lip[0][1])
         self.inputStr_end_time(lip[0][2])
@@ -62,19 +64,22 @@ class TestlocalFeiManageExeCount_dis_detail(unittest.TestCase, LocalFeiManageExe
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
         self.assertTrue(result)
 
     # 工单类型
     def test_lfdd_workCata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_workCata)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_workCata)
         self.commonTime()
         self.inputSel_work_cata(lip[0][0])
         # 点击查询
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
         self.assertTrue(result)
 
     # 时间查询
@@ -84,41 +89,48 @@ class TestlocalFeiManageExeCount_dis_detail(unittest.TestCase, LocalFeiManageExe
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
         self.assertTrue(result)
 
     # 执行状态
     def test_lfdd_execute_state(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_execute_state)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_execute_state)
         self.commonTime()
         self.inputSel_execute_state(lip[0][0])
         # 点击查询
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
         self.assertTrue(result)
 
     # 工单编号
     def test_lfdd_work_cata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_work_cata)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_work_cata)
         self.commonTime()
         self.inputStr_work_num(lip[0][0])
         # 点击查询
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
         self.assertTrue(result)
 
     # 用户编号
     def test_lfdd_user_no(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_user_no)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_user_no)
         self.commonTime()
         self.inputStr_user_num(lip[0][0])
         # 点击查询
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
+        result = self.assert_context(
+            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
         self.assertTrue(result)

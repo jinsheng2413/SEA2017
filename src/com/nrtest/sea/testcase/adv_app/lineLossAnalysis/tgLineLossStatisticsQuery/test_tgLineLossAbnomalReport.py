@@ -27,7 +27,8 @@ class TestTgLineLossAbnormalReport(unittest.TestCase, TgLineLossAbnormalReportPa
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(TgLineLossStatisticsQuery_data.TgLineLossAbnormalReport_para, True)
+        cls.driver = openMenu(
+            TgLineLossStatisticsQuery_data.TgLineLossAbnormalReport_para, True)
 
     @classmethod
     def tearDownClass(cls):

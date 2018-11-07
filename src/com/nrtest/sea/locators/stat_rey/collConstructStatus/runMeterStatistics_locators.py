@@ -23,29 +23,41 @@ class RunMeterStatisticsLocators:
     BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')
     # 运行电能表明细
     # 用户类型
-    DETAIL_CONS_TYPE = (By.XPATH, '(//label[contains(text(),"用户类型")])[2]/../div/div/input')
+    DETAIL_CONS_TYPE = (
+        By.XPATH, '(//label[contains(text(),"用户类型")])[2]/../div/div/input')
     # 用户类型→值
-    DETAIL_CONS_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    DETAIL_CONS_TYPE_VALUE = (
+        By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 通信方式
-    DETAIL_TMNL_WAY = (By.XPATH, '//label[contains(text(),"通信方式")]/../div/div/input')
+    DETAIL_TMNL_WAY = (
+        By.XPATH, '//label[contains(text(),"通信方式")]/../div/div/input')
     # 通信方式→值
-    DETAIL_TMNL_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    DETAIL_TMNL_WAY_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 通讯规约
-    DETAIL_TMNL_PROTOCOL = (By.XPATH, '//label[contains(text(),"通讯规约")]/../div/div/input')
+    DETAIL_TMNL_PROTOCOL = (
+        By.XPATH, '//label[contains(text(),"通讯规约")]/../div/div/input')
     # 通讯规约→值
-    DETAIL_TMNL_PROTOCOL_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    DETAIL_TMNL_PROTOCOL_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 设备类型
-    DETAIL_DEVICE_TYPE = (By.XPATH, '//label[contains(text(),"设备类型")]/../div/div/input')
+    DETAIL_DEVICE_TYPE = (
+        By.XPATH, '//label[contains(text(),"设备类型")]/../div/div/input')
     # 设备类型→值
-    DETAIL_DEVICE_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
+    DETAIL_DEVICE_TYPE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     # 电能表厂家
-    DETAIL_METER_FACTORY = (By.XPATH, '//label[contains(text(),"电能表厂家")]/../div/div/input')
+    DETAIL_METER_FACTORY = (
+        By.XPATH, '//label[contains(text(),"电能表厂家")]/../div/div/input')
     # 电能表厂家→值
-    DETAIL_METER_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[5]/div[%s]')
+    DETAIL_METER_FACTORY_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[5]/div[%s]')
     # 电能表状态
-    DETAIL_METER_STATUS = (By.XPATH, '//label[contains(text(),"电能表状态")]/../div/div/input')
+    DETAIL_METER_STATUS = (
+        By.XPATH, '//label[contains(text(),"电能表状态")]/../div/div/input')
     # 电能表状态→值
-    DETAIL_METER_STATUS_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[6]/div[%s]')
+    DETAIL_METER_STATUS_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[6]/div[%s]')
     # 查询按钮
     BTN_DETAIL_SEARCH = (By.XPATH, '(//button[text()="查询"])[2]')
 

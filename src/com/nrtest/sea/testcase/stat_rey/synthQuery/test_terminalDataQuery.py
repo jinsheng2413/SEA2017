@@ -57,7 +57,8 @@ class TestUserDataQuery(unittest.TestCase, TerminalDataQueryPage):
         # 点击查询按钮
         td.btn_search()
         # 校验
-        result = self.assert_context(*TerminalDataQueryLocators.TREE_GUOGEZHUANG)
+        result = self.assert_context(
+            *TerminalDataQueryLocators.TREE_GUOGEZHUANG)
         self.assertTrue(result)
 
     # 基本档案，终端资产号查询

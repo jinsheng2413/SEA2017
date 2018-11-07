@@ -16,14 +16,17 @@ from selenium.webdriver.common.by import By
 class BcVoltMonitorPointQueryLocators:
     # 【查询条件】
     # 供电单位
-    ORG_NO = (By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[1]"))
+    ORG_NO = (
+        By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[1]"))
     # 监测点类型-下拉框
     MONITOR_POINT_TYPE_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'监测点类型')]/../div/div/img)[1]")
     # 监测点类型
-    MONITOR_POINT_TYPE = (By.XPATH, '//div[@class=\"x-combo-list-inner\"]//div[contains(text(),"%s")]')
+    MONITOR_POINT_TYPE = (
+        By.XPATH, '//div[@class=\"x-combo-list-inner\"]//div[contains(text(),"%s")]')
     # 监测点名称
-    MONITOR_POINT_NAME = (By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'监测点名称')]/../div/input)[1]"))
+    MONITOR_POINT_NAME = (
+        By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'监测点名称')]/../div/input)[1]"))
 
     # 【按钮】
     # 查询
@@ -31,4 +34,5 @@ class BcVoltMonitorPointQueryLocators:
                  "(//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//button[contains(text(),'查询')])[1]")
 
     # 【显示区】
-    TABLE_DATA = (By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[1]")
+    TABLE_DATA = (
+        By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[1]")

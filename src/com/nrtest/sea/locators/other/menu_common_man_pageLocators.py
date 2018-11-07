@@ -19,17 +19,20 @@ class SecurityCommonManPageLocators:
     # 菜单下拉框选择
     BTN_MENU = (By.XPATH, '//*[@id="menuUseStat_menuCombo_1"]')
     # 左边加号
-    BTN_LEFT_ADD = (By.XPATH, '//img[@class=\"x-tree-ec-icon x-tree-elbow-end-plus\"]')
+    BTN_LEFT_ADD = (
+        By.XPATH, '//img[@class=\"x-tree-ec-icon x-tree-elbow-end-plus\"]')
     # 【操作区】
     BTN_SYS_MANAGE = (By.XPATH, '//*[@id="sysManIcon"]')
     # 公司
     BTN_COMPANY = (By.XPATH, '(//a[@class=\"x-tree-node-anchor\"])[%s]')
 
     # 菜单使用明细
-    BTN_MENU_DETAIL = (By.XPATH, '//*[@id=\"menuUseStat_CenterTab\"]/div/div/ul/li[2]')
+    BTN_MENU_DETAIL = (
+        By.XPATH, '//*[@id=\"menuUseStat_CenterTab\"]/div/div/ul/li[2]')
 
     # 系统使用情况统计
-    BTN_SYS_USE_SITUATION_COUNT = (By.XPATH, "//button[contains(text(),'系统使用情况统计')]")
+    BTN_SYS_USE_SITUATION_COUNT = (
+        By.XPATH, "//button[contains(text(),'系统使用情况统计')]")
     # 系统配置管理
     BTN_SYS_CONFIG_MAN = (By.XPATH, "//button[contains(text(),'系统配置管理')]")
     # 数据字典管理
@@ -44,21 +47,28 @@ class SecurityCommonManPageLocators:
     BTN_SYS_UPGRADE_LOG = (By.XPATH, "//*[contains(text(),'系统升级日志')]")
 
     # 用户分布情况统计s
-    BTN_SYS_USER_DISTRIBUTION_COUNT = (By.XPATH, "//span[contains(text(),'用户分布情况统计')]")
+    BTN_SYS_USER_DISTRIBUTION_COUNT = (
+        By.XPATH, "//span[contains(text(),'用户分布情况统计')]")
     # 菜单分布情况统计
-    BTN_SYS_MENU_DISTRIBUTION_COUNT = (By.XPATH, "//span[contains(text(),'菜单使用情况统计')]")
+    BTN_SYS_MENU_DISTRIBUTION_COUNT = (
+        By.XPATH, "//span[contains(text(),'菜单使用情况统计')]")
     # 信息定制
     BTN_INFORMATION_CUSTOMIZATION = (By.XPATH, "//button[contains(.,'信息定制')]")
     # 推送信息定制
-    BTN_PUSH_INFORMATION_CUSTOMIZATION = (By.XPATH, '(//span[@class="x-menu-item-text"])[1]')
+    BTN_PUSH_INFORMATION_CUSTOMIZATION = (
+        By.XPATH, '(//span[@class="x-menu-item-text"])[1]')
     # 监控台定制
-    BTN_MONITOR_CUSTOMIZATION = (By.XPATH, '(//span[@class="x-menu-item-text"])[2]')
+    BTN_MONITOR_CUSTOMIZATION = (
+        By.XPATH, '(//span[@class="x-menu-item-text"])[2]')
     # 工作台定制
-    BTN_WORK_CUSTOMIZATION = (By.XPATH, '(//span[@class="x-menu-item-text"])[3]')
+    BTN_WORK_CUSTOMIZATION = (
+        By.XPATH, '(//span[@class="x-menu-item-text"])[3]')
     # 信息设置
-    BTN_INFORMATION_MAKE = (By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[1]')
+    BTN_INFORMATION_MAKE = (
+        By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[1]')
     # 重要信息推出
-    BTN_IMPORTANT_INFORMATION_PUSH = (By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[2]')
+    BTN_IMPORTANT_INFORMATION_PUSH = (
+        By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[2]')
 
     # 数据字典管理
     BTN_TAB_DATA_DIC = (By.XPATH, "//*[contains(text(),'数据字典管理')]")
@@ -91,14 +101,18 @@ class SecurityCommonManPageLocators:
     # 费控管路
     BTN_FEI_MANGE = (By.XPATH, "//button[contains(text(),'费控管理')]")
     # 本地费控
-    BTN_LOCAL_FEI_MANGE = (By.XPATH, '//div[@class=\"x-menu x-menu-floating x-layer \"]/ul/li[1]')
+    BTN_LOCAL_FEI_MANGE = (
+        By.XPATH, '//div[@class=\"x-menu x-menu-floating x-layer \"]/ul/li[1]')
     # 【费控管理】
     # 专变用户费控管理
-    BTN_SPE_USER_FEI_MANGE = (By.XPATH, "//*[@class=\"x-menu-list\"]//*[contains(text(),'专变用户费控管理')]")
+    BTN_SPE_USER_FEI_MANGE = (
+        By.XPATH, "//*[@class=\"x-menu-list\"]//*[contains(text(),'专变用户费控管理')]")
     # 抵押用户余额查看
-    BTN_LOW_USER_MONEY_CHECK = (By.XPATH, "(//div[@class=\"x-menu x-menu-floating x-layer \"])[2]/ul/li[3]")
+    BTN_LOW_USER_MONEY_CHECK = (
+        By.XPATH, "(//div[@class=\"x-menu x-menu-floating x-layer \"])[2]/ul/li[3]")
     # 专变用户余额查看
-    BTN_SPE_USER_MONEY_CHECK = (By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[5]')
+    BTN_SPE_USER_MONEY_CHECK = (
+        By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[5]')
 
     # 【一级菜单】
 
@@ -126,23 +140,31 @@ class SecurityCommonManPageLocators:
     BTN_LOADANALYSE_RANK = (By.XPATH, '//span[contains(text(),"负荷排名分析")]')
 
     # 【四级菜单--电价参数下发】
-    BTN_ELE_PRICE_PARA = (By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[1]')
+    BTN_ELE_PRICE_PARA = (
+        By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[1]')
     # 低压用户购电参数下发
-    BTN_LOW_USER_BUY_PARA_GIVEOUT = (By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[2]')
+    BTN_LOW_USER_BUY_PARA_GIVEOUT = (
+        By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[2]')
     # 本地费控执行统计
-    BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT = (By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[6]')
-    BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT_DISTRRIBUTIONC = (By.XPATH, "// *[contains(text(), '费控情况统计')]")
-    BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT_DISTRRIBUTIOND = (By.XPATH, "// *[contains(text(), '费控情况明细')]")
+    BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT = (
+        By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[6]')
+    BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT_DISTRRIBUTIONC = (
+        By.XPATH, "// *[contains(text(), '费控情况统计')]")
+    BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT_DISTRRIBUTIOND = (
+        By.XPATH, "// *[contains(text(), '费控情况明细')]")
     # 费控投入调试
-    BTN_CUST_CONTROL_COMMISSIONING = (By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[7]')
+    BTN_CUST_CONTROL_COMMISSIONING = (
+        By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[7]')
     # 电费控
     BTN_ELE_CUST_MANAGE = (By.XPATH, '(//input[@name=\"d-rb-auto\"])[2]')
 
     # 专变用户余额查看
-    BTN_SPECIAL_USER_BALANCE_CHECK = (By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[5]')
+    BTN_SPECIAL_USER_BALANCE_CHECK = (
+        By.XPATH, '(//div[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[5]')
 
     # 负荷特性分析
-    BTN_LOAD_SPECIALITY_ANALYSE = (By.XPATH, '//span[contains(text(),"负荷特性分析")]')
+    BTN_LOAD_SPECIALITY_ANALYSE = (
+        By.XPATH, '//span[contains(text(),"负荷特性分析")]')
     # 负荷曲线分析
     BTN_LOAD_CURVE_ANALYSE = (By.XPATH, '//span[contains(text(),"负荷曲线分析")]')
 

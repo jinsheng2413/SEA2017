@@ -18,11 +18,14 @@ class TgLineLossDetailLocators:
     # 台区名称
     QRY_TG_NAME = (By.XPATH, '//label[contains(text(),"台区名称")]/../div/input')
     # 查询日期，开始
-    QRY_START_DATE = (By.XPATH, '(//label[contains(text(),"日期")]/../div/div/input)[1]')
+    QRY_START_DATE = (
+        By.XPATH, '(//label[contains(text(),"日期")]/../div/div/input)[1]')
     # 查询日期，结束
-    QRY_END_DATE = (By.XPATH, '(//label[contains(text(),"日期")]/../div/div/input)[2]')
+    QRY_END_DATE = (
+        By.XPATH, '(//label[contains(text(),"日期")]/../div/div/input)[2]')
     # 责任人工号
-    QRY_CHARGE_PERSON_NO = (By.XPATH, '//label[contains(text(),"责任人工号")]/../div/input')
+    QRY_CHARGE_PERSON_NO = (
+        By.XPATH, '//label[contains(text(),"责任人工号")]/../div/input')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')
 

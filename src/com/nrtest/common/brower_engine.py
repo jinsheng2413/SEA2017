@@ -48,7 +48,7 @@ class BrowserEngine():
         elif 'i' in kinder:
             driver = webdriver.Firefox()
             logger.info('启动ie浏览器.')
-            #return driver
+            # return driver
 
         elif 'f' in kinder:
             driver = webdriver.Ie()

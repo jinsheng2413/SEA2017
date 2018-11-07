@@ -18,7 +18,8 @@ class UserCollectStatistics2017Page(Page):
     # 用户类型
     def inputSel_cons_type(self, index):
         self.click(*UserCollectStatistics2017Locators.CONS_TYPE)
-        locator = self.get_select_locator(UserCollectStatistics2017Locators.CONS_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            UserCollectStatistics2017Locators.CONS_TYPE_VALUE, index)
         self.click(*locator)
 
     # 统计月份
@@ -29,7 +30,8 @@ class UserCollectStatistics2017Page(Page):
     # 统计口径
     def inputSel_statistics_caliber(self, index):
         self.click(*UserCollectStatistics2017Locators.STATISTICS_CALIBER)
-        locator = self.get_select_locator(UserCollectStatistics2017Locators.STATISTICS_CALIBER_VALUE, index)
+        locator = self.get_select_locator(
+            UserCollectStatistics2017Locators.STATISTICS_CALIBER_VALUE, index)
         self.click(*locator)
 
     # 查询按钮

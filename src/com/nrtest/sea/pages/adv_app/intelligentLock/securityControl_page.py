@@ -18,11 +18,14 @@ class SecurityControlPage(Page):
     def btn_cons_search(self):
         self.click(*SecurityControlLocators.BTN_CONS_SEARCH)
     # 锁封编号
-    def inputStr_lock_no(self,content):
-        self.input(content,*SecurityControlLocators.LOCK_NO)
+
+    def inputStr_lock_no(self, content):
+        self.input(content, *SecurityControlLocators.LOCK_NO)
     # 用户编号
-    def inputStr_cons_no(self,content):
-        self.input(content,*SecurityControlLocators.CONS_NO)
+
+    def inputStr_cons_no(self, content):
+        self.input(content, *SecurityControlLocators.CONS_NO)
     # 查询按钮
+
     def btn_search(self):
         self.click(*SecurityControlLocators.BTN_SEARCH)

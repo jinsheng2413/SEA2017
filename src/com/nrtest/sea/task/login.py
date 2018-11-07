@@ -37,7 +37,8 @@ class Login:
         dr.maximize_window()
         dr.get(Setting.TEST_URL)
         while bl:
-            WebDriverWait(dr, 30).until(EC.element_to_be_clickable(LoginPageLocators.BTN_IDENTIFYING_CODE))
+            WebDriverWait(dr, 30).until(EC.element_to_be_clickable(
+                LoginPageLocators.BTN_IDENTIFYING_CODE))
 
             dr.save_screenshot(Setting.SCREENSHOTS_PATH + 'photo.png')
             baidu = dr.find_element_by_id('imageMask')
@@ -67,10 +68,12 @@ class Login:
                 logger.info('%s成功登陆系统' % self.username)
                 if '登录异常' in con:
                     print('-----')
-                    loginPage.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
+                    loginPage.driver.find_element(
+                        *LoginPageLocators.BTN_CONFIRM).click()
                 if '账号异常信息' in con:
                     print('-----')
-                    loginPage.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
+                    loginPage.driver.find_element(
+                        *LoginPageLocators.BTN_ARROW).click()
 
             else:
                 loginPage.click(*LoginPageLocators.BTN_IDENTIFYING_CODE)

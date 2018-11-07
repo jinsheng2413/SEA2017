@@ -32,7 +32,7 @@ class DataAccess:
     @staticmethod
     def getAllMenu():
         """
-        获取被测试系统所有菜单
+        获  取测试系统所有菜单
         :return:
         """
 

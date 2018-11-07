@@ -24,3 +24,5 @@ class PowerCutAnalysis_data:
     MeterRealTimePowerCutQuery_para = '99925470'
     # 高级应用→配变监测分析→停电分析→实时停电监测
     ReadTimePowerCutMonitor_para = '99925480'
+    # 高级应用→配变监测分析→停电分析→历史停电事件查询
+    HistoryPowerCutEventQuery_para = '99925490'

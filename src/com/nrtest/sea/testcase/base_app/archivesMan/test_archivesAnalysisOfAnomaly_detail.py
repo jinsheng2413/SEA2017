@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -19,13 +19,13 @@ from com.nrtest.sea.task.archivesManage import *
 class test_archivesAnalysisOfAnomaly_detail(unittest.TestCase, ArchivesAnalysisOfAnomaly_detail_pages):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = archivesAnalysisOfAnomaly_detail()
         cls.orl = Oracle()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.driver.quit()
 
     def setUp(self):

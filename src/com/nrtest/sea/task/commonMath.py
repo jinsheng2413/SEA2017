@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -48,5 +48,5 @@ def clickTabPage(name):
     # return p.driver
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     pass

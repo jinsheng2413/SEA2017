@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 邵茜
@@ -7,8 +7,9 @@
 @time: 2018/8/8 13:44
 @desc:
 """
-from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.dataAnalyse.dataanalyse_rank_locators import DataAnalyseRankLocators
+
+from com.nrtest.common.base_page import Page
 
 
 class DataAnalyseRankPage(Page):

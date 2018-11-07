@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: 韩笑
@@ -9,24 +9,27 @@
 '''
 
 import unittest
+
+from ddt import ddt, data
+
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.adv_app.appDispose.sectfailedAppQuery_page import SectfailedAppQueryPage
 from com.nrtest.sea.data.adv_app.appDispose.appDispose_data import AppDispose_data
+from com.nrtest.sea.pages.adv_app.appDispose.sectfailedAppQuery_page import SectfailedAppQueryPage
 from com.nrtest.sea.task.commonMath import *
-from ddt import ddt,data
+
 
 # 高级应用→工单处理→抄表失败工单查询
 @ddt
 class TestAssetMan(unittest.TestCase,SectfailedAppQueryPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(AppDispose_data.SectFailedAppQuery_para,True)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 

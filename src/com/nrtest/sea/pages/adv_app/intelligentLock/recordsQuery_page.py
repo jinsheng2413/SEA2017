@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: 韩笑
@@ -8,8 +8,9 @@
 @desc:
 '''
 
-from com.nrtest.sea.locators.adv_app.intelligentLock.recordsQuery_locators import RecordsQueryLocators
 from com.nrtest.common.base_page import Page
+from com.nrtest.sea.locators.adv_app.intelligentLock.recordsQuery_locators import RecordsQueryLocators
+
 
 # 高级应用→智能锁具→记录查询
 class RecordsQueryPage(Page):

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -20,13 +20,13 @@ from com.nrtest.sea.task.feiMange import *
 class TestCustControlCommissioning_ele_manage(unittest.TestCase, CustControlCommissioning_page):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = custControlCommissioning_ele_manage()
         cls.orl = Oracle()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.driver.quit()
 
     def setUp(self):

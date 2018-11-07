@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.synthQuery.userDataQuery_locators import UserDataQueryLocators
 

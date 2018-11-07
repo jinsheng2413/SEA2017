@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -61,7 +61,7 @@ def low_user_money_check_two():
     cp.btn_fei_mange()
     cp.hover_local_fei_mange()
     cp.btn_low_user_money_check()
-    print("------------")
+    print('------------')
     b = BalanceCheck_page(cp.driver)
     b.btn_balance_check()
     cp.driver = b.driver

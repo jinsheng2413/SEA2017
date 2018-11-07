@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: 韩笑
@@ -8,8 +8,9 @@
 @desc:
 '''
 
-from com.nrtest.sea.locators.adv_app.intelligentLock.assetMan_locators import AssetManLocators
 from com.nrtest.common.base_page import Page
+from com.nrtest.sea.locators.adv_app.intelligentLock.assetMan_locators import AssetManLocators
+
 
 # 高级应用→智能锁具→资产管理
 class AssetManPage(Page):

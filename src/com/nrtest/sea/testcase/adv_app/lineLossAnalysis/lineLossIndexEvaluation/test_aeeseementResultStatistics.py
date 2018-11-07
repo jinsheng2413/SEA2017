@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -10,12 +10,12 @@
 
 import unittest
 
+from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeeseementResultStatistics_locators import \
+    AeeseementResultStatisticsLocators
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeeseementResultStatistics_locators import \
-    AeeseementResultStatisticsLocators
 from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossIndexEvaluation.lineLossIndexEvaluation_data import \
     LineLossIndexEvaluation_data
 from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeeseementResultStatistics_page import \
@@ -28,13 +28,13 @@ from com.nrtest.sea.task.commonMath import *
 class TestAeeseementResultStatistics(unittest.TestCase, AeeseementResultStatisticsPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(LineLossIndexEvaluation_data.AssessmentResultStatistics_para, True)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 

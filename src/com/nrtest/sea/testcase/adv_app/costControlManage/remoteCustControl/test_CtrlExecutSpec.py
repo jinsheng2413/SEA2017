@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -28,13 +28,13 @@ class TestDemo(unittest.TestCase, CtrlExecutSpecPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(RemoteCustControl_data.CtrlExecutSpec_para)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -64,7 +64,7 @@ class TestDemo(unittest.TestCase, CtrlExecutSpecPage):
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 输入用户编号
-        self.inputStr_userNo(para["USER_NO"])
+        self.inputStr_userNo(para['USER_NO'])
         # 输入用户名称
         self.inputStr_userName(para['USER_NAME'])
         # 终端地址

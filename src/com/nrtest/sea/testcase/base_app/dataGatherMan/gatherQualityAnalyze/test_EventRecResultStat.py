@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -26,7 +26,7 @@ class TestEventRecResultStat(unittest.TestCase, EventRecResultStatPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(GatherQualityAnalyze_data.eventRecResultStat_para)
         sleep(2)
@@ -35,7 +35,7 @@ class TestEventRecResultStat(unittest.TestCase, EventRecResultStatPage):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -66,7 +66,7 @@ class TestEventRecResultStat(unittest.TestCase, EventRecResultStatPage):
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 开始时间
-        self.inputStr_start_timme(para["START_TIME"])
+        self.inputStr_start_timme(para['START_TIME'])
         # 结束时间
         self.inputStr_end_time(para['END_TIME'])
         # 时间类型

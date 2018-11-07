@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -25,7 +25,7 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataGatherMan_data.tmnlInstallDetail_para)
@@ -41,7 +41,7 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -83,7 +83,7 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         # 用户编号
         self.inputStr_userNo_count(para['USER_NO'])
         # 终端地址
-        self.inputStr_tmnlAddr_count(para["TMNL_ADDR"])
+        self.inputStr_tmnlAddr_count(para['TMNL_ADDR'])
         # 终端厂家
         self.inputStr_tmnlFactory_count(para['TMNL_FACTORY'])
         # 装接类型

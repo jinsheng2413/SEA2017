@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -22,7 +22,7 @@ from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # from com.nrtest.common.yamlSetting import YamlSetting
 from com.nrtest.sea.pages.other.login_page import LoginPage
 
-logger = Logger(logger="Login").getlog()
+logger = Logger(logger='Login').getlog()
 
 
 class Login:
@@ -66,10 +66,10 @@ class Login:
                 bl = False
                 logger.info('%s成功登陆系统' % self.username)
                 if '登录异常' in con:
-                    print("-----")
+                    print('-----')
                     loginPage.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
                 if '账号异常信息' in con:
-                    print("-----")
+                    print('-----')
                     loginPage.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
 
             else:

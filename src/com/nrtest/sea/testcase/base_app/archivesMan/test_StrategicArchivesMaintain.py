@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -23,13 +23,13 @@ class TestDemo(unittest.TestCase, StrategicArchivesMaintainPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(ArchivesMan_data.strategicArchivesMaintain_para)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -62,9 +62,9 @@ class TestDemo(unittest.TestCase, StrategicArchivesMaintainPage):
         # 输入中地址
         self.inputStr_TmnlAddr(para['TMNL_ADDR'])
         # 输入终端资产号
-        self.inputStr_TmnlNo(para["TMNL_NO"])
+        self.inputStr_TmnlNo(para['TMNL_NO'])
         # 输入用户编号
-        self.inputStr_userNo(para["USER_NO"])
+        self.inputStr_userNo(para['USER_NO'])
 
         self.btn_qry()
         self.sleep_time(2)

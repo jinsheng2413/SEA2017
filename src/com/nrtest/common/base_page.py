@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -94,7 +94,7 @@ from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # create a logger instance
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 
-logger = Logger(logger="Page").getlog()
+logger = Logger(logger='Page').getlog()
 
 
 class MustGetUrl():
@@ -144,15 +144,15 @@ class Page():
             :return:
             """
             # return datetime.strftime(datetime.now(), "%Y%m%d%H%M%S%f")
-            return time.strftime(time.time(), "%Y%m%d%H%M%S%f")
+            return time.strftime(time.time(), '%Y%m%d%H%M%S%f')
 
         def wrapper(*args, **kwargs):
             instance, selector = args[0], args[1]
             try:
                 return func(*args, **kwargs)
             except (TimeoutException, NoSuchElementException, InvalidElementStateException) as ex:
-                logger.error("Could not find the locator: %s .", selector)
-                filename = "{}.png".format(get_current_time_str())
+                logger.error('Could not find the locator: %s .', selector)
+                filename = '{}.png'.format(get_current_time_str())
                 screenshot_path = os.path.join(get_snapshot_directory(), filename)
                 logger.debug(instance.selenium.page_source)
                 instance.selenium.save_screenshot(screenshot_path)
@@ -224,7 +224,7 @@ class Page():
         self.driver.get(url)
         self.driver.maximize_window()
         # 使用assert进行校验，打开的窗口title是否与配置的title一致。调用on_page()方法
-        assert self.on_page(page_title), u"打开开页面失败 %s" % url
+        assert self.on_page(page_title), u'打开开页面失败 %s' % url
 
     def open_title_url(self, is_trust=False):
         """
@@ -248,7 +248,7 @@ class Page():
         except AttributeError as e:
             logger.error('点击元素失败', e)
         except Exception as ex:
-            logger.error("出错信息：", locators, ex)
+            logger.error('出错信息：', locators, ex)
         # return None
 
     def closeOldBrowser(self):
@@ -274,7 +274,7 @@ class Page():
         方法名：closeBrowser
         说明：关闭浏览器
         """
-        logger.info("关闭浏览器")
+        logger.info('关闭浏览器')
         self.driver.quit()
 
     def hover(self, *locator):
@@ -288,7 +288,7 @@ class Page():
             above = self._find_element(*locator)
             ActionChains(self.driver).move_to_element(above).perform()
         except NameError as e:
-            logger.error("悬停失败：%s", e)
+            logger.error('悬停失败：%s', e)
 
     def switch_frame(self, *locators):
         """
@@ -396,7 +396,7 @@ class Page():
             logger.info('打开被测试服务地址：%s', self.base_url)
             return self.driver
         except NameError as e:
-            logger.error("%s打开网址失败", self.base_url)
+            logger.error('%s打开网址失败', self.base_url)
 
     def assert_context(self, *locators):
         """
@@ -436,7 +436,7 @@ class Page():
                 logger.info('按内容选择元素，选中内容为:%s', idx_or_text)
 
         except NameError as e:
-            logger.error("选择下拉框失败")
+            logger.error('选择下拉框失败')
 
         # 保存图片
 
@@ -449,9 +449,9 @@ class Page():
         screen_name = file_path + rq + name + '.png'
         try:
             self.driver.get_screenshot_as_file(screen_name)
-            logger.info("Had take screenshot and save to folder : /screenshots")
+            logger.info('Had take screenshot and save to folder : /screenshots')
         except NameError as e:
-            logger.error("Failed to take screenshot! %s", e)
+            logger.error('Failed to take screenshot! %s', e)
             self.get_windows_img(screen_name)
 
     def find_elements(self, *locator):
@@ -465,7 +465,7 @@ class Page():
             return element
 
         except NameError as e:
-            logger.info("组员查找错误")
+            logger.info('组员查找错误')
 
     def find_elements_num(self, *locator):
         """
@@ -478,7 +478,7 @@ class Page():
             return element
 
         except NameError as e:
-            logger.info("组员查找错误")
+            logger.info('组员查找错误')
 
     def wait(self):
         """
@@ -499,10 +499,10 @@ class Page():
 
         if '重要信息推出' in txt:
             if '登录异常' in txt:
-                print("-----")
+                print('-----')
                 self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
             if '账号异常信息' in txt:
-                print("-----")
+                print('-----')
                 self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
 
     def clear(self, *locator):
@@ -536,9 +536,9 @@ class Page():
             if ((temp.startswith('inputSel_')) and callable(obj)):
                 obj('全部')
             elif (temp.startswith('inputStr') and callable(obj)):
-                obj("")
+                obj('')
             elif (temp.startswith('inputCStr') and callable(obj)):
-                obj("c")
+                obj('c')
             elif (temp.startswith('inputRSel')) and callable(obj):
                 obj(1)
 
@@ -695,7 +695,7 @@ class Page():
         :return:
         """
         try:
-            js = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + "elem.parentNode.removeChild(elem);"
+            js = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + 'elem.parentNode.removeChild(elem);'
             self.exec_script(js)
         except NoSuchElementException:
             print('删除下拉框的html标签失败')

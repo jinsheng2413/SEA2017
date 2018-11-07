@@ -28,7 +28,7 @@ class DataAccess:
         fun_name = 'pkg_nrtest.get_menu_path' + ('_by_name' if by_name else '')
         menu_path = pyoracle.callfunc(fun_name, 'str', [menuNo])
         return menu_path
-        abcd()
+        self.abcd()
 
     @staticmethod
     def getAllMenu():

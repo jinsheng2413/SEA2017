@@ -48,7 +48,7 @@ class Login:
             elementHeight = baidu.location['y'] + baidu.size['height']
             picture = Image.open(Setting.SCREENSHOTS_PATH + 'photo.png')
             picture = picture.crop((left, top, elementWidth, elementHeight))
-            # picture = picture.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
+            #picture = picture.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
             picture.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
 
             image = Image.open(Setting.SCREENSHOTS_PATH + 'photo2.png')

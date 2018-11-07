@@ -409,7 +409,7 @@ class Page():
         :return: 布尔返回值
         """
         try:
-            return self._find_element(*locators).is_displayed()
+            return self.driver.find_element(*locators).is_displayed()
         except:
             return False
 

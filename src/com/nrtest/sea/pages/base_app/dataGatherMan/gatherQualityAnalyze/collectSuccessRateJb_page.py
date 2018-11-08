@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -17,37 +17,43 @@ class CollectSuccessRateJbPage(Page):
     # 通信规约
     def inputSel_conmunicationGlue(self, name):
         self.click(*CollectSuccessRateJbLocators.QRY_COMUNICATION_GLUE)
-        locator = self.get_select_locator(CollectSuccessRateJbLocators.QRY_COMUNICATION_GLUE_VALUE, name)
+        locator = self.get_select_locator(
+            CollectSuccessRateJbLocators.QRY_COMUNICATION_GLUE_VALUE, name)
         self.click(*locator)
 
     # 终端厂家
     def inputSel_TmnlFactory(self, name):
         self.click(*CollectSuccessRateJbLocators.QRY_TMNL_FACTORY)
-        locator = self.get_select_locator(CollectSuccessRateJbLocators.QRY_TMNL_FACTORY_VALUE, name)
+        locator = self.get_select_locator(
+            CollectSuccessRateJbLocators.QRY_TMNL_FACTORY_VALUE, name)
         self.click(*locator)
 
     # 相位
     def inputSel_phase(self, name):
         self.click(*CollectSuccessRateJbLocators.QRY_PHASE)
-        locator = self.get_select_locator(CollectSuccessRateJbLocators.QRY_PHASE_VALUE, name)
+        locator = self.get_select_locator(
+            CollectSuccessRateJbLocators.QRY_PHASE_VALUE, name)
         self.click(*locator)
 
     # 通信方式
     def inputSel_conmunicationMode(self, name):
         self.click(*CollectSuccessRateJbLocators.QRY_COMUNICATION_MODE)
-        locator = self.get_select_locator(CollectSuccessRateJbLocators.QRY_COMUNICATION_MODE_VALUE, name)
+        locator = self.get_select_locator(
+            CollectSuccessRateJbLocators.QRY_COMUNICATION_MODE_VALUE, name)
         self.click(*locator)
 
     # 用户类型
     def inputSel_user_type(self, name):
         self.click(*CollectSuccessRateJbLocators.QRY_USER_TYPE)
-        locator = self.get_select_locator(CollectSuccessRateJbLocators.QRY_USER_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            CollectSuccessRateJbLocators.QRY_USER_TYPE_VALUE, name)
         self.click(*locator)
 
     # 芯片厂家
     def inputSel_pieceFactory(self, name):
         self.click(*CollectSuccessRateJbLocators.QRY_PIECE_FACTORY)
-        locator = self.get_select_locator(CollectSuccessRateJbLocators.QRY_PIECE_FACTORY_VALUE, name)
+        locator = self.get_select_locator(
+            CollectSuccessRateJbLocators.QRY_PIECE_FACTORY_VALUE, name)
         self.click(*locator)
 
     # 日期时间
@@ -57,7 +63,8 @@ class CollectSuccessRateJbPage(Page):
     # 通信类型
     def inputSel_conmunicationtype(self, name):
         self.click(*CollectSuccessRateJbLocators.QRY_CONMUNICATION_TYPE)
-        locator = self.get_select_locator(CollectSuccessRateJbLocators.QRY_CONMUNICATION_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            CollectSuccessRateJbLocators.QRY_CONMUNICATION_TYPE_VALUE, name)
         self.click(*locator)
 
     # 查询

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -19,13 +19,13 @@ from com.nrtest.sea.task.archivesManage import *
 class TestarchivesMaintain_meter(unittest.TestCase, ArchivesMaintain_meter_pages):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = archivesMaintain_meter()
         cls.orl = Oracle()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.driver.quit()
 
     def setUp(self):
@@ -45,7 +45,8 @@ class TestarchivesMaintain_meter(unittest.TestCase, ArchivesMaintain_meter_pages
 
     # 终端资产号
     def test_amm_terminal_asset_no(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesMaintain.para_test_amm_terminal_asset_no)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesMaintain.para_test_amm_terminal_asset_no)
         self.inputStr_termainalAssetNo(lip[0][0])
         self.btn_meterQry()
         self.sleep_time(2)
@@ -55,7 +56,8 @@ class TestarchivesMaintain_meter(unittest.TestCase, ArchivesMaintain_meter_pages
 
     # 终端地址
     def test_amm_terminal_addr(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesMaintain.para_test_amm_terminal_addr)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ArchivesMaintain.para_test_amm_terminal_addr)
         self.inputStr_termainalAddr(lip[0][0])
         self.btn_meterQry()
         self.sleep_time(2)

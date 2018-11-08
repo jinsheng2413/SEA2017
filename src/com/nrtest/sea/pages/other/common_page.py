@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -22,7 +22,8 @@ class Common_page(Page):
 
     # 选择公司
     def btn_select_company(self, number):
-        lr = self.get_select_locator(SecurityCommonManPageLocators.BTN_COMPANY, number)
+        lr = self.get_select_locator(
+            SecurityCommonManPageLocators.BTN_COMPANY, number)
         print(lr)
         self.click(*lr)
 
@@ -81,7 +82,8 @@ class Common_page(Page):
 
     # 悬停推送信息定制
     def hover_push_information_customization(self):
-        self.hover(*SecurityCommonManPageLocators.BTN_PUSH_INFORMATION_CUSTOMIZATION)
+        self.hover(
+            *SecurityCommonManPageLocators.BTN_PUSH_INFORMATION_CUSTOMIZATION)
 
     # 点击信息设置
     def btn_information_make(self):
@@ -259,15 +261,18 @@ class Common_page(Page):
 
     # 本地费控执行统计
     def btn_localFeiMangeExecutCount(self):
-        self.click(*SecurityCommonManPageLocators.BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT)
+        self.click(
+            *SecurityCommonManPageLocators.BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT)
 
     # 费控情况统计
     def btn_localFeiMangeExecutCount_dis_count(self):
-        self.click(*SecurityCommonManPageLocators.BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT_DISTRRIBUTIONC)
+        self.click(
+            *SecurityCommonManPageLocators.BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT_DISTRRIBUTIONC)
 
     # 费控情况明细
     def btn_localFeiMangeExecutCount_dis_detail(self):
-        self.click(*SecurityCommonManPageLocators.BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT_DISTRRIBUTIOND)
+        self.click(
+            *SecurityCommonManPageLocators.BTN_LOCAL_FEI_MANAGE_EXECUTE_COUNT_DISTRRIBUTIOND)
 
     # 费控投入调试
     def btn_cust_control_commssioning(self):

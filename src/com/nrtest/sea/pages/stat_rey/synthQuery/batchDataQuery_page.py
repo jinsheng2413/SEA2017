@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -29,7 +29,8 @@ class BatchDataQueryPage(Page):
             self._find_element(*BatchDataQueryLocators.CONS_TYPE)
         else:
             self.click(*BatchDataQueryLocators.CONS_TYPE)
-            locator = self.get_select_locator(BatchDataQueryLocators.CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                BatchDataQueryLocators.CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*BatchDataQueryLocators.CONS_TYPE)
 

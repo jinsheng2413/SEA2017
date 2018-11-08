@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: jinsheng
@@ -20,31 +20,36 @@ class News_Page(Page):
     # 问题类型
     def inputSel_question_type(self, index):
         self.click(*News_Locators.QRY_QUESTION_TYPE)
-        locator = self.get_select_locator(News_Locators.QRY_QUESTION_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            News_Locators.QRY_QUESTION_TYPE_VALUE, index)
         self.click(*locator)
 
     # 问题版块
     def inputSel_question_plate(self, index):
         self.click(*News_Locators.QRY_QUESTION_PLATE)
-        locator = self.get_select_locator(News_Locators.QRY_QUESTION_PLATE_VALUE, index)
+        locator = self.get_select_locator(
+            News_Locators.QRY_QUESTION_PLATE_VALUE, index)
         self.click(*locator)
 
     # 紧急程度
     def inputSel_emergency_degree(self, index):
         self.click(*News_Locators.QRY_EMERGENCY_DEGREE)
-        locator = self.get_select_locator(News_Locators.QRY_EMERGENCY_DEGREE_VALUE, index)
+        locator = self.get_select_locator(
+            News_Locators.QRY_EMERGENCY_DEGREE_VALUE, index)
         self.click(*locator)
 
     # 查询方式
     def inputSel_query_method(self, index):
         self.click(*News_Locators.QRY_QUERY_METHOD)
-        locator = self.get_select_locator(News_Locators.QRY_QUERY_METHOD_VALUE, index)
+        locator = self.get_select_locator(
+            News_Locators.QRY_QUERY_METHOD_VALUE, index)
         self.click(*locator)
 
     # 问题状态
     def inputSel_question_status(self, index):
         self.click(*News_Locators.QRY_QUESTION_STATUS)
-        locator = self.get_select_locator(News_Locators.QRY_QUESTION_STATUS_VALUE, index)
+        locator = self.get_select_locator(
+            News_Locators.QRY_QUESTION_STATUS_VALUE, index)
         self.click(*locator)
 
     # 开始日期

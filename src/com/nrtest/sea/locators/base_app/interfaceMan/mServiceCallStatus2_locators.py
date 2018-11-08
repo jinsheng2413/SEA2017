@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: jinsheng
@@ -15,17 +15,20 @@ from selenium.webdriver.common.by import By
 class MServiceCallStatus2Locators:
     # [显示区]
     # 业务系统
-    QRY_BUSINESS_SYSTEM = (By.XPATH, "//label[contains(text(),'业务系统')]/../div/div/input")
+    QRY_BUSINESS_SYSTEM = (
+        By.XPATH, "//label[contains(text(),'业务系统')]/../div/div/input")
     # 执行状态的值
     QRY_BUSINESS_SYSTEM_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'营销业务应用')]/../div[contains(text(),'%s')]")
     # 服务名称
-    QRY_BUSINESS_NAME = (By.XPATH, "//label[contains(text(),'服务名称')]/../div/div/input")
+    QRY_BUSINESS_NAME = (
+        By.XPATH, "//label[contains(text(),'服务名称')]/../div/div/input")
     # 执行状态的值
     QRY_BUSINESS_NAME_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'数据接入')]/../div[contains(text(),'%s')]")
     # 调用时间（开始）
-    QRY_DATE_BEGIN = (By.XPATH, "//label[contains(text(),'调用时间')]/../div/div/input")
+    QRY_DATE_BEGIN = (
+        By.XPATH, "//label[contains(text(),'调用时间')]/../div/div/input")
     # 结束时间
     QRY_DATE_END = (By.XPATH, "//label[contains(text(),'至')]/../div/div/input")
 

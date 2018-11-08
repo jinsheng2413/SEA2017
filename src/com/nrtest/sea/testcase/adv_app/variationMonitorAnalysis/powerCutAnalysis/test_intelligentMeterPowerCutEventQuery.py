@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -28,13 +28,14 @@ from com.nrtest.sea.task.commonMath import *
 class TestIntelligentMeterPowerCutEventQuery(unittest.TestCase, IntelligentMeterPowerCutEventQueryPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(PowerCutAnalysis_data.IntelligentMeterPowerCutEventQuery_para, True)
+        cls.driver = openMenu(
+            PowerCutAnalysis_data.IntelligentMeterPowerCutEventQuery_para, True)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 
@@ -62,7 +63,8 @@ class TestIntelligentMeterPowerCutEventQuery(unittest.TestCase, IntelligentMeter
         # 查询按钮
         self.btn_search()
         # 校验
-        result = self.assert_context(*IntelligentMeterPowerCutEventQueryLocators.CHECK_FIRST)
+        result = self.assert_context(
+            *IntelligentMeterPowerCutEventQueryLocators.CHECK_FIRST)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

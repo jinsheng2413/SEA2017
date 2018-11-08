@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -18,7 +18,8 @@ class ValidPowerCutEventQueryPage(Page):
     # 用户类型
     def inputSel_cons_type(self, index):
         self.click(*ValidPowerCutEventQueryLocators.QRY_CONS_TYPE)
-        locator = self.get_select_locator(ValidPowerCutEventQueryLocators.QRY_CONS_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            ValidPowerCutEventQueryLocators.QRY_CONS_TYPE_VALUE, index)
         self.click(*locator)
         self.delDropdownBoxHtml()
 
@@ -37,14 +38,16 @@ class ValidPowerCutDetailPage(Page):
     # 用户类型
     def inputSel_cons_type(self, index):
         self.click(*ValidPowerCutDetailLocators.QRY_CONS_TYPE)
-        locator = self.get_select_locator(ValidPowerCutDetailLocators.QRY_CONS_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            ValidPowerCutDetailLocators.QRY_CONS_TYPE_VALUE, index)
         self.click(*locator)
         self.delDropdownBoxHtml()
 
     # 终端类型
     def inputSel_tmnl_type(self, index):
         self.click(*ValidPowerCutDetailLocators.QRY_TMNL_TYPE)
-        locator = self.get_select_locator(ValidPowerCutDetailLocators.QRY_TMNL_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            ValidPowerCutDetailLocators.QRY_TMNL_TYPE_VALUE, index)
         self.click(*locator)
         self.delDropdownBoxHtml()
 
@@ -56,28 +59,32 @@ class ValidPowerCutDetailPage(Page):
     # 当前是否停电
     def inputSel_whether_power_cut(self, index):
         self.click(*ValidPowerCutDetailLocators.QRY_WHETHER_POWER_CUT)
-        locator = self.get_select_locator(ValidPowerCutDetailLocators.QRY_WHETHER_POWER_CUT_VALUE, index)
+        locator = self.get_select_locator(
+            ValidPowerCutDetailLocators.QRY_WHETHER_POWER_CUT_VALUE, index)
         self.click(*locator)
         self.delDropdownBoxHtml()
 
     # 是否有效停电
     def inputSel_whether_power_cut_valid(self, index):
         self.click(*ValidPowerCutDetailLocators.QRY_WHETHER_POWER_CUT_VALID)
-        locator = self.get_select_locator(ValidPowerCutDetailLocators.QRY_WHETHER_POWER_CUT_VALID_VALUE, index)
+        locator = self.get_select_locator(
+            ValidPowerCutDetailLocators.QRY_WHETHER_POWER_CUT_VALID_VALUE, index)
         self.click(*locator)
         self.delDropdownBoxHtml()
 
     # 是否补全
     def inputSel_whether_complement(self, index):
         self.click(*ValidPowerCutDetailLocators.QRY_COMPLEMENT)
-        locator = self.get_select_locator(ValidPowerCutDetailLocators.QRY_COMPLEMENT_VALUE, index)
+        locator = self.get_select_locator(
+            ValidPowerCutDetailLocators.QRY_COMPLEMENT_VALUE, index)
         self.click(*locator)
         self.delDropdownBoxHtml()
 
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
         self.click(*ValidPowerCutDetailLocators.QRY_TMNL_FACTORY)
-        locator = self.get_select_locator(ValidPowerCutDetailLocators.QRY_TMNL_FACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            ValidPowerCutDetailLocators.QRY_TMNL_FACTORY_VALUE, index)
         self.click(*locator)
         self.delDropdownBoxHtml()
 

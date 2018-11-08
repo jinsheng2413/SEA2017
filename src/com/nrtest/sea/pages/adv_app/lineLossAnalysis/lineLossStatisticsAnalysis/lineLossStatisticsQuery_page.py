@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -18,17 +18,20 @@ class LineLossStatisticsQueryPage(Page):
     # 线损分类
     def inputSel_line_loss_type(self, index):
         self.click(*LineLossStatisticsQueryLocators.QRY_LINE_LOSS_TYPE)
-        locator = self.get_select_locator(LineLossStatisticsQueryLocators.QRY_LINE_LOSS_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            LineLossStatisticsQueryLocators.QRY_LINE_LOSS_TYPE_VALUE, index)
         self.click(*locator)
 
     # 线损率
     def inputSel_line_loss_rate(self, index):
         self.click(*LineLossStatisticsQueryLocators.QRY_LINE_LOSS_RATE)
-        locator = self.get_select_locator(LineLossStatisticsQueryLocators.QRY_LINE_LOSS_RATE_VALUE, index)
+        locator = self.get_select_locator(
+            LineLossStatisticsQueryLocators.QRY_LINE_LOSS_RATE_VALUE, index)
         self.click(*locator)
 
     def inputStr_line_loss_rate(self, content):
-        self.input(content, *LineLossStatisticsQueryLocators.QRY_LINE_LOSS_RATE_INPUT)
+        self.input(
+            content, *LineLossStatisticsQueryLocators.QRY_LINE_LOSS_RATE_INPUT)
 
     # 日期
     def inputDt_date(self, content):

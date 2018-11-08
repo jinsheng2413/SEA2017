@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -24,13 +24,14 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GatherQualityAnalyze_data.curCollectSuccessRate_para)
+        cls.driver = openMenu(
+            GatherQualityAnalyze_data.curCollectSuccessRate_para)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -63,7 +64,7 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         # 开始时间
         self.inputStr_startTime(para['START_TIME'])
         # 结束时间
-        self.inputStr_endTime(para["END_TIME"])
+        self.inputStr_endTime(para['END_TIME'])
         self.btn_qry()
         self.sleep_time(2)
         # # 校验

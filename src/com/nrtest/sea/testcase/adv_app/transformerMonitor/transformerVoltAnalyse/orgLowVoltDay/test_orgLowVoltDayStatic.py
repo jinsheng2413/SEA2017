@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -27,14 +27,14 @@ class TestBcVoltMonitorPointQuery(unittest.TestCase, OrgLowVoltDayStaticPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_OrgLowVoltDay)
         cls.driver.execute_script(OrgLowVoltDayStaticLocators.START_DATE_JS)
         cls.driver.execute_script(OrgLowVoltDayStaticLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         # cls.refreshPage(cls)
 

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -17,7 +17,8 @@ class InterfaceMonitorPage(Page):
     # 接口类型
     def inputSel_interfaceType(self, name):
         self.click(*InterfaceMonitor_Locators.QRY_INTERFACE_TYPE)
-        locator = self.get_select_locator(InterfaceMonitor_Locators.QRY_INTERFACE_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            InterfaceMonitor_Locators.QRY_INTERFACE_TYPE_VALUE, name)
         print(locator)
         self.click(*locator)
 

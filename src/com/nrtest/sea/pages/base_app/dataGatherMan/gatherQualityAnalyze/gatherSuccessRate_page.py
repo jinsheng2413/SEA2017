@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -37,7 +37,8 @@ class GatherSuccessRatePage(Page):
             self._find_element(*GatherSuccessRateLocators.CONS_TYPE)
         else:
             self.click(*GatherSuccessRateLocators.CONS_TYPE)
-            locator = self.get_select_locator(GatherSuccessRateLocators.CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                GatherSuccessRateLocators.CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*GatherSuccessRateLocators.CONS_TYPE)
 
@@ -58,7 +59,8 @@ class GatherSuccessRatePage(Page):
             self._find_element(*GatherSuccessRateLocators.STATISTICS_CONS_TYPE)
         else:
             self.click(*GatherSuccessRateLocators.STATISTICS_CONS_TYPE)
-            locator = self.get_select_locator(GatherSuccessRateLocators.STATISTICS_CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                GatherSuccessRateLocators.STATISTICS_CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*GatherSuccessRateLocators.STATISTICS_CONS_TYPE)
 
@@ -83,7 +85,8 @@ class GatherSuccessRatePage(Page):
             self._find_element(*GatherSuccessRateLocators.DETAIL_CONS_TYPE)
         else:
             self.click(*GatherSuccessRateLocators.DETAIL_CONS_TYPE)
-            locator = self.get_select_locator(GatherSuccessRateLocators.DETAIL_CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                GatherSuccessRateLocators.DETAIL_CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*GatherSuccessRateLocators.DETAIL_CONS_TYPE)
 
@@ -112,7 +115,8 @@ class GatherSuccessRatePage(Page):
             self._find_element(*GatherSuccessRateLocators.FALSE_CONS_TYPE)
         else:
             self.click(*GatherSuccessRateLocators.FALSE_CONS_TYPE)
-            locator = self.get_select_locator(GatherSuccessRateLocators.FALSE_CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                GatherSuccessRateLocators.FALSE_CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*GatherSuccessRateLocators.FALSE_CONS_TYPE)
 
@@ -141,7 +145,8 @@ class GatherSuccessRatePage(Page):
             self._find_element(*GatherSuccessRateLocators.DATE_CONS_TYPE)
         else:
             self.click(*GatherSuccessRateLocators.DATE_CONS_TYPE)
-            locator = self.get_select_locator(GatherSuccessRateLocators.DATE_CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                GatherSuccessRateLocators.DATE_CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*GatherSuccessRateLocators.DATE_CONS_TYPE)
 

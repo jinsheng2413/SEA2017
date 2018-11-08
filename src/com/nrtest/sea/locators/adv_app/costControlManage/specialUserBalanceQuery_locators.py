@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -22,7 +22,8 @@ class SpecialUserBalanceQuery_locators:
     QRY_TERMINAL_ADDR = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端地址')]/../../div[1]/div[1]/input")
     # 越线类型
-    QRY_MORE_BOARD_CATA = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'越限类型')]/../div[1]/div/img")
+    QRY_MORE_BOARD_CATA = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'越限类型')]/../div[1]/div/img")
     QRY_MORE_BOARD_CATA_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'低于告警电量')]/../div[%s]")
 
@@ -33,4 +34,5 @@ class SpecialUserBalanceQuery_locators:
     TAB_ONE = (By.XPATH, '(//div[@class=\"x-grid3-row-checker\"])[1]')
 
     # 【操作区】
-    BTN_QRY = (By.XPATH, "//div[@class=\" x-panel x-panel-noborder\"]//button[contains(text(),'查询')]")
+    BTN_QRY = (
+        By.XPATH, "//div[@class=\" x-panel x-panel-noborder\"]//button[contains(text(),'查询')]")

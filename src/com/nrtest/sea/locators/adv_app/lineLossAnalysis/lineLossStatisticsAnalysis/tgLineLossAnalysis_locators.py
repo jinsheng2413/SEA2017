@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -18,16 +18,25 @@ class TgLineLossAnalysisLocators:
     # 台区名称
     QRY_TG_NAME = (By.XPATH, '//label[contains(text(),"台区名称")]/../div/input')
     # 安装率
-    QRY_INSTALLATION_RATE = (By.XPATH, '//label[contains(text(),"安")]/../div/div/input')
-    QRY_INSTALLATION_RATE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
-    QRY_INSTALLATION_RATE_INPUT = (By.XPATH, '//input[@class=" x-form-text x-form-field x-form-num-field "]')
+    QRY_INSTALLATION_RATE = (
+        By.XPATH, '//label[contains(text(),"安")]/../div/div/input')
+    QRY_INSTALLATION_RATE_VALUE = (
+        By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_INSTALLATION_RATE_INPUT = (
+        By.XPATH, '//input[@class=" x-form-text x-form-field x-form-num-field "]')
     # 抄读成功率
-    QRY_READ_SUCCESS_RATE = (By.XPATH, '//label[contains(text(),"抄读成功率:")]/../div/div/input')
-    QRY_READ_SUCCESS_RATE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
-    QRY_READ_SUCCESS_RATE_INPUT = (By.XPATH, '(//input[@class=" x-form-text x-form-field x-form-num-field "]）[3]')
+    QRY_READ_SUCCESS_RATE = (
+        By.XPATH, '//label[contains(text(),"抄读成功率:")]/../div/div/input')
+    QRY_READ_SUCCESS_RATE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_READ_SUCCESS_RATE_INPUT = (
+        By.XPATH, '(//input[@class=" x-form-text x-form-field x-form-num-field "]）[3]')
     # 线损率
-    QRY_LINE_LOSS_RATE = (By.XPATH, '//label[contains(text(),"线")]/../div/div/input')
-    QRY_LINE_LOSS_RATE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
-    QRY_LINE_LOSS_RATE_INPUT = (By.XPATH, '(//input[@class=" x-form-text x-form-field x-form-num-field "]）[5]')
+    QRY_LINE_LOSS_RATE = (
+        By.XPATH, '//label[contains(text(),"线")]/../div/div/input')
+    QRY_LINE_LOSS_RATE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    QRY_LINE_LOSS_RATE_INPUT = (
+        By.XPATH, '(//input[@class=" x-form-text x-form-field x-form-num-field "]）[5]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')

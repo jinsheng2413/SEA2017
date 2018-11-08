@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 李建方
@@ -25,7 +25,7 @@ class ConnPool():
     def __enter__(self):
         self.conn = self.__getConn()
         self.cursor = self.conn.cursor()
-        print(u"数据库创建con和cursor")
+        print(u'数据库创建con和cursor')
         return self
 
     def __getConn(self):
@@ -33,13 +33,13 @@ class ConnPool():
         # 或者os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
         if self.__pool is None:
             parse = ParseNrTest()
-            user = parse.get("Db_setup", "user_name")
-            pwd = parse.get("Db_setup", "password")
-            ip = parse.get("Db_setup", "IP")
-            db = parse.get("Db_setup", "SID")
-            maxcache = int(parse.get("Db_setup", "Maxcached"))
+            user = parse.get('Db_setup', 'user_name')
+            pwd = parse.get('Db_setup', 'password')
+            ip = parse.get('Db_setup', 'IP')
+            db = parse.get('Db_setup', 'SID')
+            maxcache = int(parse.get('Db_setup', 'Maxcached'))
 
-            dsn = ip + "/" + db
+            dsn = ip + '/' + db
             self.__pool = PooledDB(creator=cx_Oracle, mincached=1, maxcached=maxcache,
                                    user=user, password=pwd,
                                    dsn=dsn)
@@ -51,7 +51,7 @@ class ConnPool():
         """
         self.cursor.close()
         self.conn.close()
-        print(u"PT连接池释放con和cursor")
+        print(u'PT连接池释放con和cursor')
 
     # 重连接池中取出一个连接
     def getconn(self):
@@ -165,7 +165,8 @@ class PyOracle():
             if retType == 'int':
                 rst = int(rst)
             elif retType == 'date':
-                rst = datetime.datetime.strptime(rst.strftime('%Y-%m-%d'), '%Y-%m-%d')
+                rst = datetime.datetime.strptime(
+                    rst.strftime('%Y-%m-%d'), '%Y-%m-%d')
             elif retType == 'date2str':
                 rst = rst.strftime('%Y-%m-%d')
             elif retType == 'dt2str':

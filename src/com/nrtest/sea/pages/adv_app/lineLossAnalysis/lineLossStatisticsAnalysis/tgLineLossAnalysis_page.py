@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -26,25 +26,30 @@ class TgLineLossAnalysisPage(Page):
     # 安装率
     def inputSel_installation_rate(self, index):
         self.click(*TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE)
-        locator = self.get_select_locator(TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE_VALUE, index)
+        locator = self.get_select_locator(
+            TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE_VALUE, index)
         self.click(*locator)
 
     def inputStr_installation_rate(self, content):
-        self.input(content, *TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE_INPUT)
+        self.input(
+            content, *TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE_INPUT)
 
     # 抄读成功率
     def inputSel_read_success_rate(self, index):
         self.click(*TgLineLossAnalysisLocators.QRY_READ_SUCCESS_RATE)
-        locator = self.get_select_locator(TgLineLossAnalysisLocators.QRY_READ_SUCCESS_RATE_VALUE, index)
+        locator = self.get_select_locator(
+            TgLineLossAnalysisLocators.QRY_READ_SUCCESS_RATE_VALUE, index)
         self.click(*locator)
 
     def inputStr_read_success_rate(self, content):
-        self.input(content, *TgLineLossAnalysisLocators.QRY_READ_SUCCESS_RATE_INPUT)
+        self.input(
+            content, *TgLineLossAnalysisLocators.QRY_READ_SUCCESS_RATE_INPUT)
 
     # 线损率
     def inputSel_line_loss_rate(self, index):
         self.click(*TgLineLossAnalysisLocators.QRY_LINE_LOSS_RATE)
-        locator = self.get_select_locator(TgLineLossAnalysisLocators.QRY_LINE_LOSS_RATE_VALUE, index)
+        locator = self.get_select_locator(
+            TgLineLossAnalysisLocators.QRY_LINE_LOSS_RATE_VALUE, index)
         self.click(*locator)
 
     def inputStr_line_loss_rate(self, content):

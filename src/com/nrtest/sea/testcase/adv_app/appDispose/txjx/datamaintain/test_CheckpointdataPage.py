@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -21,17 +21,17 @@ from com.nrtest.sea.task.commonMath import *
 
 @ddt
 # 高级应用-->台线系统--》资料维护--》线路考核点资料维护
-class TestCheckpointdata(unittest.TestCase,CheckpointdataPage):
+class TestCheckpointdata(unittest.TestCase, CheckpointdataPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(Datamaintain_data.checkpointdata_para)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 
@@ -58,11 +58,11 @@ class TestCheckpointdata(unittest.TestCase,CheckpointdataPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #用户编号
+        # 用户编号
         self.inputStr_userNo(para['USER_NO'])
-        #用户名称
+        # 用户名称
         self.inputStr_userName(para['USER_NAME'])
-        #电表正反向
+        # 电表正反向
         self.inputSel_meterFr(para['METER_FR'])
 
         self.btn_qry()
@@ -75,6 +75,3 @@ class TestCheckpointdata(unittest.TestCase,CheckpointdataPage):
     @data(*DataAccess.getCaseData(Datamaintain_data.checkpointdata_para))
     def test_query(self, para):
         self.query(para)
-
-
-

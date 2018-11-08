@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -24,7 +24,7 @@ class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataGatherMan_data.terminalOnlineSpied_para)
         sleep(2)
@@ -35,7 +35,7 @@ class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -72,7 +72,7 @@ class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
         # 终端状态
         self.inputStr_TmnlState(para['TMNL_STATE'])
         # 终端规约
-        self.inputStr_TmnlProtocol(para["TMNL_PROTOCOL"])
+        self.inputStr_TmnlProtocol(para['TMNL_PROTOCOL'])
         # 终端类型
         self.inputStr_TmnlType(para['TMNL_TYPE'])
 

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -33,7 +33,8 @@ class ProtocolLibManageLocators:
     QRY_EFFECTIVE_SIGN_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'有效')]/../div[contains(text(),'%s')]")
     # 协议版本号
-    QRY_PROTOCOL_VERSION_NO = (By.XPATH, '//*[@id="protocolLib_protocolVersionNo"]')
+    QRY_PROTOCOL_VERSION_NO = (
+        By.XPATH, '//*[@id="protocolLib_protocolVersionNo"]')
     # 协议代码
     QEY_PROTOCOL_CODE = (By.XPATH, '//*[@id="protocolLib_protocolID"]')
 

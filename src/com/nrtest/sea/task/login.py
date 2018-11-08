@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -22,7 +22,7 @@ from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # from com.nrtest.common.yamlSetting import YamlSetting
 from com.nrtest.sea.pages.other.login_page import LoginPage
 
-logger = Logger(logger="Login").getlog()
+logger = Logger(logger='Login').getlog()
 
 
 class Login:
@@ -37,7 +37,8 @@ class Login:
         dr.maximize_window()
         dr.get(Setting.TEST_URL)
         while bl:
-            WebDriverWait(dr, 30).until(EC.element_to_be_clickable(LoginPageLocators.BTN_IDENTIFYING_CODE))
+            WebDriverWait(dr, 30).until(EC.element_to_be_clickable(
+                LoginPageLocators.BTN_IDENTIFYING_CODE))
 
             dr.save_screenshot(Setting.SCREENSHOTS_PATH + 'photo.png')
             baidu = dr.find_element_by_id('imageMask')
@@ -66,11 +67,13 @@ class Login:
                 bl = False
                 logger.info('%s成功登陆系统' % self.username)
                 if '登录异常' in con:
-                    print("-----")
-                    loginPage.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
+                    print('-----')
+                    loginPage.driver.find_element(
+                        *LoginPageLocators.BTN_CONFIRM).click()
                 if '账号异常信息' in con:
-                    print("-----")
-                    loginPage.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
+                    print('-----')
+                    loginPage.driver.find_element(
+                        *LoginPageLocators.BTN_ARROW).click()
 
             else:
                 loginPage.click(*LoginPageLocators.BTN_IDENTIFYING_CODE)

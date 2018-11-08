@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: jinsheng
@@ -26,13 +26,14 @@ from com.nrtest.sea.task.commonMath import *
 class Test_MInterfaceRunStatus2(unittest.TestCase, MInterfaceRunStatus2Page):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
-        cls.driver = openMenu(InterfaceMan_data.para_mInterfaceRunStatus2, True)
+        print('开始执行')
+        cls.driver = openMenu(
+            InterfaceMan_data.para_mInterfaceRunStatus2, True)
         sleep(2)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.closePages(cls)
 

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -21,13 +21,15 @@ class PowerFactorCountDetailPage(Page):
     # 用户类型--打开并选择
     def inputRSel_cons_type(self, name):
         self.click(*PowerFactorCountDetailLocators.CONS_TYPE_SEL)
-        locator = self.get_select_locator(PowerFactorCountDetailLocators.CONS_TYPE, name)
+        locator = self.get_select_locator(
+            PowerFactorCountDetailLocators.CONS_TYPE, name)
         self.click(*locator)
 
     # 无功补偿情况--打开并选择
     def inputRSel_power_quality_type(self, name):
         self.click(*PowerFactorCountDetailLocators.POWER_QUALITY_TYPE_SEL)
-        locator = self.get_select_locator(PowerFactorCountDetailLocators.POWER_QUALITY_TYPE, name)
+        locator = self.get_select_locator(
+            PowerFactorCountDetailLocators.POWER_QUALITY_TYPE, name)
         self.click(*locator)
 
     # 查询日期

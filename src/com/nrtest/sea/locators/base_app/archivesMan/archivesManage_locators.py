@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -14,14 +14,17 @@ class ArchivesManage_locators:
     # 【流程】
     BTN_LG_D = (By.XPATH, "(//span[contains(text(),'开平新苑路营业站')])[1]")
     BTN_LG = (By.XPATH, "(//span[contains(text(),'直属用户')])[1]")
-    BTN_MENU = (By.XPATH, "(//*[contains(text(),'档案同步')])[@class=\"x-tab-strip-text icorun\"]")
+    BTN_MENU = (
+        By.XPATH, "(//*[contains(text(),'档案同步')])[@class=\"x-tab-strip-text icorun\"]")
     BTN_CONFIRM = (By.XPATH, "//*[contains(text(),'确定')]")
-    BTN_MENU_ABNOLMAL_DETAIL = (By.XPATH, "(//*[contains(text(),'档案异常明细')])[@class=\"x-tab-strip-text \"]")
+    BTN_MENU_ABNOLMAL_DETAIL = (
+        By.XPATH, "(//*[contains(text(),'档案异常明细')])[@class=\"x-tab-strip-text \"]")
     # 【查询条件】
     # 用户类型
     QRY_USER_CATA = (By.XPATH,
                      "//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//label[contains(text(),'用户类型')]/../div/div/img")
-    QRY_USER_CATA_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'全部')]/../div[%s]")
+    QRY_USER_CATA_VALUE = (
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'全部')]/../div[%s]")
     # 户号
     QRY_FAMILY_NO = (By.XPATH,
                      "//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//label[contains(text(),'户号')]/../div/input")
@@ -39,8 +42,10 @@ class ArchivesManage_locators:
     # 【显示区】
     TAB_ONE = (By.XPATH, '(//div[@class=\"x-grid3-row-checker\"])[1]')
     # 用户编号明细
-    TAB_ONE_USER_CATA_DETAIL = (By.XPATH, '(//*[@class=\"x-grid3-row-checker\"])[1]/../../../td[3]/div/a')
+    TAB_ONE_USER_CATA_DETAIL = (
+        By.XPATH, '(//*[@class=\"x-grid3-row-checker\"])[1]/../../../td[3]/div/a')
     # 终端资产号明细
-    TAB_ONE_TERMINAL_ASSET_NO_DETAIL = (By.XPATH, '(//*[@class=\"x-grid3-row-checker\"])[1]/../../../td[6]/div/a')
+    TAB_ONE_TERMINAL_ASSET_NO_DETAIL = (
+        By.XPATH, '(//*[@class=\"x-grid3-row-checker\"])[1]/../../../td[6]/div/a')
 
     TAB_USER_ASSERT = (By.XPATH, "//*[contains(text(),'用户数据查询')]")

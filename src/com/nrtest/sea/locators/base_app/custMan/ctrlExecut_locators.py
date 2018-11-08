@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -14,7 +14,8 @@ from selenium.webdriver.common.by import By
 class CtrlExecutLocators:
     # 【查询条件区】
     # 用户编号
-    QRY_USER_NO = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户编号')]/../../div[1]/div[1]/input")
+    QRY_USER_NO = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户编号')]/../../div[1]/div[1]/input")
     # 用户名称
     QRY_USER_NAME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户名称')]/../../div[1]/div[1]/input")
@@ -22,7 +23,8 @@ class CtrlExecutLocators:
     QRY_TMNL_ADDR = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端地址')]/../../div[1]/div[1]/input")
     # 抄表段编号
-    QRY_SECT_NO = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'抄表段号')]/../../div[1]/div[1]/input")
+    QRY_SECT_NO = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'抄表段号')]/../../div[1]/div[1]/input")
     # 开始时间
     QRY_START_TIME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'开始时间')]/../../div[1]/div[1]/div/input")

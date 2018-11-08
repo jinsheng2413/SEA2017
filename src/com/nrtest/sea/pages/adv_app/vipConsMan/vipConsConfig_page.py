@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: jinsheng
@@ -16,7 +16,8 @@ class VipConsConfig_Page(Page):
     # 运行容量等级
     def inputSel_run_level(self, index):
         self.click(*VipConsConfig_locators.QRY_RUN_LEVEL)
-        locator = self.get_select_locator(VipConsConfig_locators.QRY_RUN_LEVEL_VALUE, index)
+        locator = self.get_select_locator(
+            VipConsConfig_locators.QRY_RUN_LEVEL_VALUE, index)
         self.click(*locator)
 
     # 用户编号

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -17,7 +17,8 @@ class CheckPointDataRtuPage(Page):
     # 电表正反向
     def inputSel_meterFr(self, name):
         self.click(*CheckPointDataRtuLocators.QRY_METER_FR)
-        locator = self.get_select_locator(CheckPointDataRtuLocators.QRY_METER_FR_VALUE, name)
+        locator = self.get_select_locator(
+            CheckPointDataRtuLocators.QRY_METER_FR_VALUE, name)
         self.click(*locator)
 
     # 用户编号
@@ -27,7 +28,8 @@ class CheckPointDataRtuPage(Page):
     # 抄表段号
     def inputSel_read_no(self, name):
         self.click(*CheckPointDataRtuLocators.QRY_READ_NO)
-        locator = self.get_select_locator(CheckPointDataRtuLocators.QRY_READ_NO_VALUE, name)
+        locator = self.get_select_locator(
+            CheckPointDataRtuLocators.QRY_READ_NO_VALUE, name)
         self.click(*locator)
 
     # 用户名称

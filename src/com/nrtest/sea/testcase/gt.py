@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -30,10 +30,11 @@ def add_case(case_path='', rule='test*.py'):
 # @threads(2)
 def run(test_suit):
     result = BeautifulReport(test_suit)
-    result.report(filename='report.html', description='测试deafult报告')  # , log_path=Setting.REPORT_PATH)
+    # , log_path=Setting.REPORT_PATH)
+    result.report(filename='report.html', description='测试deafult报告')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     global_drv.__init()
 
     # 如果group_user为admin则全量刷新用例

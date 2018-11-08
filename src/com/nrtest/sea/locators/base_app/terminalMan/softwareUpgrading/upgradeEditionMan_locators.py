@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -15,67 +15,93 @@ from selenium.webdriver.common.by import By
 class UpgradeEditionManLocators:
     # 终端版本信息登记
     # 终端厂家
-    TMNL_FACTORY = (By.XPATH, '//label[contains(text(),"终端厂家")]/../div/div/img')
+    TMNL_FACTORY = (
+        By.XPATH, '//label[contains(text(),"终端厂家")]/../div/div/img')
     # 终端厂家→值
-    TMNL_FACTORY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    TMNL_FACTORY_VALUE = (
+        By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 终端类型
     TMNL_TYPE = (By.XPATH, '//label[contains(text(),"终端类型")]/../div/div/img')
     # 终端类型→值
-    TMNL_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    TMNL_TYPE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 终端用途
-    TMNL_PURPOSE = (By.XPATH, '//label[contains(text(),"终端用途")]/../div/div/img')
+    TMNL_PURPOSE = (
+        By.XPATH, '//label[contains(text(),"终端用途")]/../div/div/img')
     # 终端用途→值
-    TMNL_PURPOSE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    TMNL_PURPOSE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 软件版本号
-    SOFTWARE_VERSION_NO = (By.XPATH, '//label[contains(text(),"软件版本号")]/../div/div/img')
+    SOFTWARE_VERSION_NO = (
+        By.XPATH, '//label[contains(text(),"软件版本号")]/../div/div/img')
     # 软件版本号→值
-    SOFTWARE_VERSION_NO_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
+    SOFTWARE_VERSION_NO_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
 
     # 升级版本管理
     # 终端厂家
-    UPGRADE_TMNL_FACTORY = (By.XPATH, '(//label[contains(text(),"终端厂家")]/../div/div/img)[2]')
+    UPGRADE_TMNL_FACTORY = (
+        By.XPATH, '(//label[contains(text(),"终端厂家")]/../div/div/img)[2]')
     # 终端厂家→值
-    UPGRADE_TMNL_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
+    UPGRADE_TMNL_FACTORY_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     # 终端类型
-    UPGRADE_TMNL_TYPE = (By.XPATH, '(//label[contains(text(),"终端类型")]/../div/div/img)[2]')
+    UPGRADE_TMNL_TYPE = (
+        By.XPATH, '(//label[contains(text(),"终端类型")]/../div/div/img)[2]')
     # 终端类型→值
-    UPGRADE_TMNL_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[5]/div[%s]')
+    UPGRADE_TMNL_TYPE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[5]/div[%s]')
     # 终端用途
-    UPGRADE_TMNL_PURPOSE = (By.XPATH, '(//label[contains(text(),"终端用途")]/../div/div/img)[2]')
+    UPGRADE_TMNL_PURPOSE = (
+        By.XPATH, '(//label[contains(text(),"终端用途")]/../div/div/img)[2]')
     # 终端用途→值
-    UPGRADE_TMNL_PURPOSE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[6]/div[%s]')
+    UPGRADE_TMNL_PURPOSE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[6]/div[%s]')
     # 申请状态
-    UPGRADE_APPLY_STATUS = (By.XPATH, '//input[@name="applyStatusUpgradeCombox"]')
+    UPGRADE_APPLY_STATUS = (
+        By.XPATH, '//input[@name="applyStatusUpgradeCombox"]')
     # 申请状态→值
-    UPGRADE_APPLY_STATUS_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[7]/div[%s]')
+    UPGRADE_APPLY_STATUS_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[7]/div[%s]')
     # 申请开始日期
-    UPGRADE_START_DATE = (By.XPATH, '//label[contains(text(),"申请开始日期")]/../div/div/input')
+    UPGRADE_START_DATE = (
+        By.XPATH, '//label[contains(text(),"申请开始日期")]/../div/div/input')
     # 申请结束日期
-    UPGRADE_END_DATE = (By.XPATH, '//label[contains(text(),"申请结束日期")]/../div/div/input')
+    UPGRADE_END_DATE = (
+        By.XPATH, '//label[contains(text(),"申请结束日期")]/../div/div/input')
     # 查询按钮
     BTN_UPGRADE_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[2]')
 
     # 终端版本召测
     # 终端厂家
-    EDITION_TMNL_FACTORY = (By.XPATH, '(//label[contains(text(),"终端厂家")]/../div/div/img)[3]')
+    EDITION_TMNL_FACTORY = (
+        By.XPATH, '(//label[contains(text(),"终端厂家")]/../div/div/img)[3]')
     # 终端厂家→值
-    EDITION_TMNL_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[8]/div[%s]')
+    EDITION_TMNL_FACTORY_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[8]/div[%s]')
     # 终端类型
-    EDITION_TMNL_TYPE = (By.XPATH, '(//label[contains(text(),"终端类型")]/../div/div/img)[3]')
+    EDITION_TMNL_TYPE = (
+        By.XPATH, '(//label[contains(text(),"终端类型")]/../div/div/img)[3]')
     # 终端类型→值
-    EDITION_TMNL_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[9]/div[%s]')
+    EDITION_TMNL_TYPE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[9]/div[%s]')
     # 终端用途
-    EDITION_TMNL_PURPOSE = (By.XPATH, '(//label[contains(text(),"终端用途")]/../div/div/img)[3]')
+    EDITION_TMNL_PURPOSE = (
+        By.XPATH, '(//label[contains(text(),"终端用途")]/../div/div/img)[3]')
     # 终端用途→值
-    EDITION_TMNL_PURPOSE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[10]/div[%s]')
+    EDITION_TMNL_PURPOSE_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[10]/div[%s]')
     # 终端规约
-    EDITION_TMNL_PROTOCOL = (By.XPATH, '//label[contains(text(),"终端规约")]/../div/div/img')
+    EDITION_TMNL_PROTOCOL = (
+        By.XPATH, '//label[contains(text(),"终端规约")]/../div/div/img')
     # 终端规约→值
-    EDITION_TMNL_PROTOCOL_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[11]/div[%s]')
+    EDITION_TMNL_PROTOCOL_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[11]/div[%s]')
     # 终端地址
-    EDITION_TMNL_ADDR = (By.XPATH, '//label[contains(text(),"终端地址")]/../div/input')
+    EDITION_TMNL_ADDR = (
+        By.XPATH, '//label[contains(text(),"终端地址")]/../div/input')
     # 查询按钮
     BTN_EDITION_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[3]')
 

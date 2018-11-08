@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -26,13 +26,14 @@ from com.nrtest.sea.task.commonMath import *
 class TestTmnlPowerCutEventQueryMonth(unittest.TestCase, TmnlPowerCutEventQueryMonthPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(PowerCutAnalysis_data.TmnlPowerCutEventQuery_para, True)
+        cls.driver = openMenu(
+            PowerCutAnalysis_data.TmnlPowerCutEventQuery_para, True)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -22,14 +22,14 @@ from com.nrtest.sea.pages.run_man.clock.metCheckClock_page import AutoCheckPolic
 from com.nrtest.sea.task.commonMath import *
 
 
-#运行管理→时钟管理→终端对时
-#终端时钟明细
+# 运行管理→时钟管理→终端对时
+# 终端时钟明细
 @ddt
 class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(ClockData.para_MetCheckClock, True)
         clickTabPage('自动对时策略配置')
@@ -38,7 +38,7 @@ class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭页面
         cls.closePages(cls)
 
@@ -114,4 +114,3 @@ class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
 
     if __name__ == '__main__':
         unittest.main()
-

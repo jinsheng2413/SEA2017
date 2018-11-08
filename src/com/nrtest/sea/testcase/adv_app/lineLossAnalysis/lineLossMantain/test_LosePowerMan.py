@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 
 """
@@ -26,13 +26,13 @@ class TestLosePowerMan(unittest.TestCase, LosePowerManPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(LineLossMantain_data.losePowerMan_para)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 
@@ -65,7 +65,8 @@ class TestLosePowerMan(unittest.TestCase, LosePowerManPage):
         # 考核单元名称
         self.inputStr_assessUnitName(para['ASSESS_UNIT_NAME'])
         # 考核单元分类
-        self.inputSel_assessUnitClassfication(para['ASSESS_UNIT_CLASSFICCATION'])
+        self.inputSel_assessUnitClassfication(
+            para['ASSESS_UNIT_CLASSFICCATION'])
         # 组合标志
         self.inputSel_CombinationSign(para['COMBINATION_SIGN'])
         # 考核单元状态

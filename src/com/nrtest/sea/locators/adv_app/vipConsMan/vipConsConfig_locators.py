@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: jinsheng
@@ -17,12 +17,15 @@ class VipConsConfig_locators:
     # 请选择节点
     QRY_ORG = (By.XPATH, "//input[@id='vipConsOrgName']")
     # [运行容量等级]
-    QRY_RUN_LEVEL = (By.XPATH, "//label[contains(text(),'运行容量等级')]/../div/div/img")
+    QRY_RUN_LEVEL = (
+        By.XPATH, "//label[contains(text(),'运行容量等级')]/../div/div/img")
     # 值（运行容量等级）
     QRY_RUN_LEVEL_VALUE = (
-    By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'<50')])[1]/../div[contains(text(),'%s')]")
+        By.XPATH,
+        "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'<50')])[1]/../div[contains(text(),'%s')]")
     # 供电电压
-    QRY_VOLTAGE_LEVEL = (By.XPATH, "//label[contains(text(),'供电电压')]/../div/div/img")
+    QRY_VOLTAGE_LEVEL = (
+        By.XPATH, "//label[contains(text(),'供电电压')]/../div/div/img")
     # 行业--选择
     BTN_FACTORY_SELECT = (By.XPATH, "//button[contains(text(),'选择')]")
     # 行业--清除

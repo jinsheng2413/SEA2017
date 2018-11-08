@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -25,14 +25,16 @@ class EleParaManPage(Page):
     # 是否已生成参数
     def inputSel_ComeIntoPara_One(self, name):
         self.click(*EleParaManLocators.QRY_OR_COMEINTO_PARA_ONE)
-        locator = self.get_select_locator(EleParaManLocators.QRY_OR_COMEINTO_PARA_ONE, name)
+        locator = self.get_select_locator(
+            EleParaManLocators.QRY_OR_COMEINTO_PARA_ONE, name)
         self.click(*locator)
 
         # 是否已生成参数
 
     def inputSel_ComeIntoPara_Two(self, name):
         self.click(*EleParaManLocators.QRY_OR_COMEINTO_PARA_TWO)
-        locator = self.get_select_locator(EleParaManLocators.QRY_OR_COMEINTO_PARA_TWO, name)
+        locator = self.get_select_locator(
+            EleParaManLocators.QRY_OR_COMEINTO_PARA_TWO, name)
         self.click(*locator)
 
     # 结束时间

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -7,6 +7,8 @@
 @time: 2018/9/10 0010 10:59
 @desc:
 """
+from time import sleep
+
 from selenium.webdriver.common.by import By
 
 from com.nrtest.common import global_drv
@@ -42,11 +44,14 @@ def clickTabPage(name):
     :param name:
     """
     p = MenuPage(global_drv.get_driver())
-    locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[text()='{0}']".format(name))
+    locators = (
+        By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[text()='{0}']".format(name))
     print(locators)
     p.click(*locators)
     # return p.driver
 
 
-if __name__ == "__main__":
-    pass
+if __name__ == '__main__':
+    openMenu('99914800')
+    sleep(3)
+    openLeftTree('134010204')

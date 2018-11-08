@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -20,7 +20,8 @@ class TmnlStateArrPage(Page):
     # 终端状态
     def inputSel_tmnl_status(self, name):
         self.click(*TmnlStateArrLocators.QRY_TMNL_STATUS)
-        locator = self.get_select_locator(TmnlStateArrLocators.QRY_TMNL_STATUS_VALUE, name)
+        locator = self.get_select_locator(
+            TmnlStateArrLocators.QRY_TMNL_STATUS_VALUE, name)
         self.click(*locator)
 
     # 统计时间

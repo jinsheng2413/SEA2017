@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -20,7 +20,8 @@ class MetclassfiyPage(Page):
     # 电能表类型
     def inputSel_meterType(self, name):
         self.click(*MetclassfiyLocators.QRY_METER_TYPE)
-        locator = self.get_select_locator(MetclassfiyLocators.QRY_METER_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            MetclassfiyLocators.QRY_METER_TYPE_VALUE, name)
         self.click(*locator)
 
     # 操作

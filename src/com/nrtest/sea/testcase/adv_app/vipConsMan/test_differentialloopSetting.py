@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.differentialloopSetting_page import
 from com.nrtest.sea.task.commonMath import *
 
 
-# 高级应用--重点用户监测--加载防窃电设备
+# 高级应用--重点用户监测--差动回路设置
 @ddt
 class Test_DifferentialloopSetting(unittest.TestCase, DifferentialloopSetting_Page):
     @classmethod

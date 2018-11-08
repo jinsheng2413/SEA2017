@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -18,7 +18,8 @@ class IndexDetailLocators:
     # 台区名称
     QRY_TG_NAME = (By.XPATH, '//label[contains(text(),"台区名称")]/../div/input')
     # 时间选择
-    QRY_DATE = (By.XPATH, '(//label[contains(text(),"时间选择")]/../div/div/input)[2]')
+    QRY_DATE = (
+        By.XPATH, '(//label[contains(text(),"时间选择")]/../div/div/input)[2]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '(//button[text()="查询"])[2]')
 

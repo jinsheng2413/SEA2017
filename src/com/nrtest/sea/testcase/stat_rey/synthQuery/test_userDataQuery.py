@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -18,12 +18,12 @@ from com.nrtest.sea.task.synthQuery import UserDataQueryLog
 class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = UserDataQueryLog()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.driver.quit()
 
     def setUp(self):
@@ -60,7 +60,7 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
     def test_b_usernum_two(self):
         ud = UserDataQueryPage(self.driver)
         # 在用户编号输入框输入“T1102676767”
-        ud.inputStr_usernum("T1102676767")
+        ud.inputStr_usernum('T1102676767')
         # 点击查询按钮
         ud.btn_search()
 
@@ -69,7 +69,7 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
     def test_c_electricenergy(self):
         ud = UserDataQueryPage(self.driver)
         # 在用户编号输入框输入“T1102676767”
-        ud.inputStr_usernum("T1102676767")
+        ud.inputStr_usernum('T1102676767')
         # 点击查询按钮
         ud.btn_search()
         # 点击数据展示
@@ -84,7 +84,7 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
     def test_d_voltagecurve(self):
         ud = UserDataQueryPage(self.driver)
         # 在用户编号输入框输入“T1102676767”
-        ud.inputStr_usernum("T1102676767")
+        ud.inputStr_usernum('T1102676767')
         # 点击查询按钮
         ud.btn_search()
         # 点击数据展示
@@ -101,7 +101,7 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
     def test_e_currentcurve(self):
         ud = UserDataQueryPage(self.driver)
         # 在用户编号输入框输入“T1102676767”
-        ud.inputStr_usernum("T1102676767")
+        ud.inputStr_usernum('T1102676767')
         # 点击查询按钮
         ud.btn_search()
         # 点击数据展示
@@ -118,7 +118,7 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
     def test_f_currentcurve(self):
         ud = UserDataQueryPage(self.driver)
         # 在用户编号输入框输入“T1102676767”
-        ud.inputStr_usernum("T1102676767")
+        ud.inputStr_usernum('T1102676767')
         # 点击查询按钮
         ud.btn_search()
         # 点击数据展示
@@ -135,7 +135,7 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
     def test_g_currentcurve(self):
         ud = UserDataQueryPage(self.driver)
         # 在用户编号输入框输入“T1102676767”
-        ud.inputStr_usernum("T1102676767")
+        ud.inputStr_usernum('T1102676767')
         # 点击查询按钮
         ud.btn_search()
         # 点击数据展示
@@ -152,7 +152,7 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
     def test_h_currentcurve(self):
         ud = UserDataQueryPage(self.driver)
         # 在用户编号输入框输入“T1102676767”
-        ud.inputStr_usernum("T1102676767")
+        ud.inputStr_usernum('T1102676767')
         # 点击查询按钮
         ud.btn_search()
         # 点击数据展示
@@ -169,7 +169,7 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
     def test_i_currentcurve(self):
         ud = UserDataQueryPage(self.driver)
         # 在用户编号输入框输入“T1102676767”
-        ud.inputStr_usernum("T1102676767")
+        ud.inputStr_usernum('T1102676767')
         # 点击查询按钮
         ud.btn_search()
         # 点击数据展示
@@ -186,7 +186,7 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
     def test_j_currentcurve(self):
         ud = UserDataQueryPage(self.driver)
         # 在用户编号输入框输入“T1102676767”
-        ud.inputStr_usernum("T1102676767")
+        ud.inputStr_usernum('T1102676767')
         # 点击查询按钮
         ud.btn_search()
         # 点击数据展示

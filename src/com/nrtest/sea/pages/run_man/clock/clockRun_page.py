@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -67,7 +67,8 @@ class FrequentlyCheckTmnlPage(Page):
     # 终端类型--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*FrequentlyCheckTmnlLocators.TMNL_TYPE_SEL)
-        locator = self.get_select_locator(FrequentlyCheckTmnlLocators.TMNL_TYPE, name)
+        locator = self.get_select_locator(
+            FrequentlyCheckTmnlLocators.TMNL_TYPE, name)
         self.click(*locator)
 
     # 终端型号
@@ -77,7 +78,8 @@ class FrequentlyCheckTmnlPage(Page):
     # 终端厂商--打开并选择
     def inputRSel_tmnl_fac(self, name):
         self.click(*FrequentlyCheckTmnlLocators.TMNL_FAC_SEL)
-        locator = self.get_select_locator(FrequentlyCheckTmnlLocators.TMNL_FAC, name)
+        locator = self.get_select_locator(
+            FrequentlyCheckTmnlLocators.TMNL_FAC, name)
         self.click(*locator)
 
     # 终端资产号
@@ -102,13 +104,15 @@ class FrequentlyCheckMetPage(Page):
     # 电能表厂商--打开并选择
     def inputRSel_met_fac(self, name):
         self.click(*FrequentlyCheckMetLocators.MET_FAC_SEL)
-        locator = self.get_select_locator(FrequentlyCheckMetLocators.MET_FAC, name)
+        locator = self.get_select_locator(
+            FrequentlyCheckMetLocators.MET_FAC, name)
         self.click(*locator)
 
     # 电表类别--打开并选择
     def inputRSel_met_type(self, name):
         self.click(*FrequentlyCheckMetLocators.MET_TYPE_SEL)
-        locator = self.get_select_locator(FrequentlyCheckMetLocators.MET_TYPE, name)
+        locator = self.get_select_locator(
+            FrequentlyCheckMetLocators.MET_TYPE, name)
         self.click(*locator)
 
     # 电能表资产号

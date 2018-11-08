@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -82,7 +82,8 @@ class BalanceCheck_page(Page):
     # 执行状态
     def inputRSel_execute_state(self, num):
         self.click(*BalanceCheckLocator.QRY_EXECUTE_STATE)
-        locator = self.get_select_locator(BalanceCheckLocator.QRY_EXECUTE_STATE_VALUE, num)
+        locator = self.get_select_locator(
+            BalanceCheckLocator.QRY_EXECUTE_STATE_VALUE, num)
         self.click(*locator)
 
     # 查询

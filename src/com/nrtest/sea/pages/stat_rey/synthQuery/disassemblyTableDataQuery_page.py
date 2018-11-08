@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -29,7 +29,8 @@ class DisassemblyTableDataQueryPage(Page):
             self._find_element(*DisassemblyTableDataQueryLocators.USER_TYPE)
         else:
             self.click(*DisassemblyTableDataQueryLocators.USER_TYPE)
-            locator = self.get_select_locator(DisassemblyTableDataQueryLocators.USER_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                DisassemblyTableDataQueryLocators.USER_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*DisassemblyTableDataQueryLocators.USER_TYPE)
 

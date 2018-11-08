@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 李建方
@@ -27,9 +27,9 @@ class ParseNrTest(object):
 
         # 获取当前文件的上一级目录,并定位setup路径
         path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) \
-               + self.pattern()[0] + ("setup") + self.pattern()[0]
+               + self.pattern()[0] + ('setup') + self.pattern()[0]
 
-        file = path + ("nari_test.conf" if file is None else file)
+        file = path + ('nari_test.conf' if file is None else file)
         # a = os.path.abspath(file)
         self.parse.read(file, encoding='utf-8')  # 配置文件的路径
 

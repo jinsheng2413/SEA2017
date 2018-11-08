@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 @author: 卢炎炎
 @license: (C) Copyright 2018, Nari.

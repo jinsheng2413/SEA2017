@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -17,7 +17,8 @@ class LineLossSynthesizeAnalysisPage(Page):
     # 线损类别
     def inputSel_line_loss_type(self, index):
         self.click(*LineLossSynthesizeAnalysisLocators.QRY_LINE_LOSS_TYPE)
-        locator = self.get_select_locator(LineLossSynthesizeAnalysisLocators.QRY_LINE_LOSS_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            LineLossSynthesizeAnalysisLocators.QRY_LINE_LOSS_TYPE_VALUE, index)
         self.click(*locator)
 
     # 查询日期

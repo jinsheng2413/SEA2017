@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -7,33 +7,37 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
+import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.vipConsMan.distributedEnergyMange.distributedEnergyManage_data import \
     DistributedEnergyMange_data
 from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedEnergyStat_page import \
     DistributedEnergyStatPage, DistributedEnergyStatLocators
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-import unittest
-from com.nrtest.common.BeautifulReport import BeautifulReport
 
-#高级应用--》重点用户检测--》分布式电源管理--》分布式电源接入统计
+
+# 高级应用--》重点用户检测--》分布式电源管理--》分布式电源接入统计
 @ddt
 class TestDemo(unittest.TestCase, DistributedEnergyStatPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DistributedEnergyMange_data.DistributedEnergyStat_para)
+        cls.driver = openMenu(
+            DistributedEnergyMange_data.DistributedEnergyStat_para)
         clickTabPage('分布式电源接入统计')
         sleep(2)
         cls.exec_script(cls, DistributedEnergyStatLocators.START_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.closePages(cls)
 
@@ -74,6 +78,7 @@ class TestDemo(unittest.TestCase, DistributedEnergyStatPage):
         # 校验
         # result = self.assert_context(*)
         # self.assertTrue(result)
+
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyStat_para))
     def test_query(self, para):

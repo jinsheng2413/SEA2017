@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -22,13 +22,13 @@ from com.nrtest.sea.task.feiMange import *
 class TestCostControlManage(unittest.TestCase, CostControlManagePage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = specil_user_fei_mange()
         cls.orl = Oracle()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.driver.quit()
 
     def setUp(self):
@@ -49,7 +49,8 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
     # 营销单号查询
     @BeautifulReport.add_test_img()
     def test_mark_single(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, CostControlManage_para.para_test_mark_single)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                CostControlManage_para.para_test_mark_single)
         # 输入营销单号
         self.inputStr_mark_sigle(lip[0][0])
         # 输入开始时间
@@ -65,7 +66,8 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
     # 用户编号查询
     @BeautifulReport.add_test_img()
     def test_user_no(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, CostControlManage_para.para_test_user_no)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                CostControlManage_para.para_test_user_no)
         # 输入
         self.inputStr_user_num(lip[0][0])
         # 输入开始时间
@@ -81,7 +83,8 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
     # 用户名称查询
     @BeautifulReport.add_test_img()
     def test_user_name(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, CostControlManage_para.para_test_user_name)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                CostControlManage_para.para_test_user_name)
         # 输入
         self.inputStr_user_name(lip[0][0])
         # 输入开始时间
@@ -97,7 +100,8 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
     # 时间查询
     @BeautifulReport.add_test_img()
     def test_date(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, CostControlManage_para.para_test_date)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                CostControlManage_para.para_test_date)
         # 输入开始时间
         self.input_start_date(lip[0][0])
         # 输入结束时间
@@ -111,7 +115,8 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
     # 业务类型查询
     @BeautifulReport.add_test_img()
     def test_buiness_cata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, CostControlManage_para.para_test_buiness_cata)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                CostControlManage_para.para_test_buiness_cata)
         self.inputSel_buniess_cata(lip[0][0])
         # 输入开始时间
         self.input_start_date(lip[0][1])
@@ -126,7 +131,8 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
     # 参数下发状态查询
     @BeautifulReport.add_test_img()
     def test_para_lower_hair(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, CostControlManage_para.para_test_para_lower_hair)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, CostControlManage_para.para_test_para_lower_hair)
         self.inputSel_para_deve(lip[0][0])
         # 输入开始时间
         self.input_start_date(lip[0][1])

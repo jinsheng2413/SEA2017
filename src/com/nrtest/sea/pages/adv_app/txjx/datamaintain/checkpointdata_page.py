@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -21,15 +21,15 @@ class CheckpointdataPage(Page):
     # 电表正反向
     def inputSel_meterFr(self, name):
         self.click(*CheckpointdataLocators.QRY_METER_FR)
-        locator = self.get_select_locator(CheckpointdataLocators.QRY_METER_FR_VALUE, name)
+        locator = self.get_select_locator(
+            CheckpointdataLocators.QRY_METER_FR_VALUE, name)
         self.click(*locator)
 
     # 用户名称
     def inputStr_userName(self, value):
         self.input(value, *CheckpointdataLocators.QRY_USER_NAME)
 
-
-
     # 查询
+
     def btn_qry(self):
-            self.click(*CheckpointdataLocators.BTN_QRY)
+        self.click(*CheckpointdataLocators.BTN_QRY)

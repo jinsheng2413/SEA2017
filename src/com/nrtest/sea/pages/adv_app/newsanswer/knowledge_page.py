@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: jinsheng
@@ -16,7 +16,8 @@ class Knowledge_Page(Page):
     # 文件类型
     def inputSel_file_type(self, index):
         self.click(*Knowledge_Locators.QRY_FILE_TYPE)
-        locator = self.get_select_locator(Knowledge_Locators.QRY_FILE_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            Knowledge_Locators.QRY_FILE_TYPE_VALUE, index)
         self.click(*locator)
 
     # 文件名称

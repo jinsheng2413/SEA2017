@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -16,13 +16,15 @@ class AllCollectSuccessRatePage(Page):
     # 电能表抄读状态
     def inputStr_meterReadState(self, name):
         self.click(*AllCollectSuccessRateLocators.QRY_METER_READ_STATE)
-        locator = self.get_select_locator(AllCollectSuccessRateLocators.QRY_METER_READ_STATE_VALUE, name)
+        locator = self.get_select_locator(
+            AllCollectSuccessRateLocators.QRY_METER_READ_STATE_VALUE, name)
         self.click(*locator)
 
     # 终端运行状态
     def inputStr_Tmnl_runState(self, name):
         self.click(*AllCollectSuccessRateLocators.QRY_TMNL_RUN_STATE)
-        locator = self.get_select_locator(AllCollectSuccessRateLocators.QRY_TMNL_RUN_STATE_VALUE, name)
+        locator = self.get_select_locator(
+            AllCollectSuccessRateLocators.QRY_TMNL_RUN_STATE_VALUE, name)
         self.click(*locator)
 
     # 用户编号

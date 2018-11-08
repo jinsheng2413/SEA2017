@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -22,13 +22,13 @@ from com.nrtest.sea.task.feiMange import *
 class TestElePricePara(unittest.TestCase, ElePricePages):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = ele_price_para()
         cls.orl = Oracle()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.driver.quit()
 
     def setUp(self):
@@ -47,7 +47,8 @@ class TestElePricePara(unittest.TestCase, ElePricePages):
         self.clear_values(ElePricePages)
 
     def commomTime(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ElePricePara_para.para_test_epp_workNumber)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ElePricePara_para.para_test_epp_workNumber)
         # 输入接收时间
         self.inputStr_receive_time(lip[0][1])
         # 输入结束时间
@@ -57,7 +58,8 @@ class TestElePricePara(unittest.TestCase, ElePricePages):
 
     @BeautifulReport.add_test_img()
     def test_epp_workNumber(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ElePricePara_para.para_test_epp_workNumber)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ElePricePara_para.para_test_epp_workNumber)
         # 输入工单编号
         self.inputStr_work_num(lip[0][0])
         # 输入接收时间
@@ -74,7 +76,8 @@ class TestElePricePara(unittest.TestCase, ElePricePages):
     # 用户编号查询
     @BeautifulReport.add_test_img()
     def test_epp_user_number(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ElePricePara_para.para_test_epp_user_number)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ElePricePara_para.para_test_epp_user_number)
         # 输入用户编号
         self.inputStr_user_num(lip[0][0])
         self.commomTime()
@@ -88,7 +91,8 @@ class TestElePricePara(unittest.TestCase, ElePricePages):
     # 终端地址查询
     @BeautifulReport.add_test_img()
     def test_epp_terminal_addr(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ElePricePara_para.para_test_epp_terminal_addr)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ElePricePara_para.para_test_epp_terminal_addr)
         # 输入终端地址
         self.inputStr_terminal_addr(lip[0][0])
         self.commomTime()
@@ -102,7 +106,8 @@ class TestElePricePara(unittest.TestCase, ElePricePages):
     # 电表地址查询
     @BeautifulReport.add_test_img()
     def test_epp_meter_addr(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ElePricePara_para.para_test_epp_meter_addr)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ElePricePara_para.para_test_epp_meter_addr)
         # 输入电表地址
         self.inputStr_meter_addr(lip[0][0])
         self.commomTime()
@@ -116,7 +121,8 @@ class TestElePricePara(unittest.TestCase, ElePricePages):
     # 抄表段号
     @BeautifulReport.add_test_img()
     def test_epp_meter_reading_number(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ElePricePara_para.para_test_epp_meter_reading_number)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ElePricePara_para.para_test_epp_meter_reading_number)
         # 输入抄表段号
         self.inputStr_meter_reading_num(lip[0][0])
         self.commomTime()
@@ -141,7 +147,8 @@ class TestElePricePara(unittest.TestCase, ElePricePages):
     # 执行状态查询
     @BeautifulReport.add_test_img()
     def test_epp_execute_state(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ElePricePara_para.para_test_epp_execute_state)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ElePricePara_para.para_test_epp_execute_state)
         self.commomTime()
         self.inputSel_execute_state(lip[0][0])
         # 点击查询
@@ -154,7 +161,8 @@ class TestElePricePara(unittest.TestCase, ElePricePages):
     # 任务类型查询
     @BeautifulReport.add_test_img()
     def test_epp_task_type(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ElePricePara_para.para_test_epp_task_type)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ElePricePara_para.para_test_epp_task_type)
         self.commomTime()
         self.inputSel_task_cata(lip[0][0])
         # 点击查询

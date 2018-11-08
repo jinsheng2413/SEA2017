@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -7,6 +7,7 @@
 @time: 2018/10/30 14:05
 @desc:
 """
+
 
 class ClockData:
     para_TTmnlCheckClock = '99932100'

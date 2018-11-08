@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -18,7 +18,8 @@ class MeterStateArrLocators:
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'筛选条件')]/../../div[1]/div[1]/div/img")
     QRY_SCREEN_CONDITION_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'用户名称')]/../div[contains(text(),'%s')]")
-    QRY_SCREEN_CONDITION_INPUT = (By.XPATH, '//*[@id=\"meterConditionTextField\"]')
+    QRY_SCREEN_CONDITION_INPUT = (
+        By.XPATH, '//*[@id=\"meterConditionTextField\"]')
     # 终端状态
     QRY_TMNL_STATUS = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端状态')]/../../div[1]/div[1]/div/img")

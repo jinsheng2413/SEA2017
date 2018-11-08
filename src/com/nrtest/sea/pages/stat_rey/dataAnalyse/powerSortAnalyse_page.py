@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -20,7 +20,8 @@ class PowerSortAnalysePage(Page):
     # 用户类型
     def inputSel_userType(self, name):
         self.click(*PowerSortAnalyseLocators.QRY_USER_TYPE)
-        locator = self.get_select_locator(PowerSortAnalyseLocators.QRY__USER_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            PowerSortAnalyseLocators.QRY__USER_TYPE_VALUE, name)
         self.click(*locator)
 
     # 开始时间

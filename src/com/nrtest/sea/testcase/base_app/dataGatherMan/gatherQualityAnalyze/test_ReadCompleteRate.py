@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -26,13 +26,13 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(GatherQualityAnalyze_data.readCompleteRate_para)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -66,7 +66,7 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 用户类型
-        self.inputSel_userType(para["USER_TYPE"])
+        self.inputSel_userType(para['USER_TYPE'])
         # 通信方式
         self.inputSel_communicationMode(para['COMMNUCATION_MODE'])
         # 终端厂家
@@ -76,7 +76,7 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         # 开始时间
         self.inputStr_start_time(para['START_TIME'])
         # 结束时间
-        self.inputStr_end_time(para["END_TIME"])
+        self.inputStr_end_time(para['END_TIME'])
 
         self.btn_qry()
         self.sleep_time(2)

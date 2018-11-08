@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -23,7 +23,8 @@ class ClockResultStaticPage(Page):
     # 终端厂商--打开并选择
     def inputRSel_tmnl_fac(self, name):
         self.click(*ClockResultStaticLocators.TMNL_FAC_SEL)
-        locator = self.get_select_locator(ClockResultStaticLocators.TMNL_FAC, name)
+        locator = self.get_select_locator(
+            ClockResultStaticLocators.TMNL_FAC, name)
         self.click(*locator)
 
     # 查询日期
@@ -44,7 +45,8 @@ class ClockResultDetailPage(Page):
     # 类别--打开并选择
     def inputRSel_clock_model(self, name):
         self.click(*ClockResultDetailLocators.CLOCK_MODEL_SEL)
-        locator = self.get_select_locator(ClockResultDetailLocators.CLOCK_MODEL, name)
+        locator = self.get_select_locator(
+            ClockResultDetailLocators.CLOCK_MODEL, name)
         self.click(*locator)
 
     # 电表资产号

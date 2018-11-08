@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -16,7 +16,8 @@ class MeterDataQueryLocators:
     # 抄表段号
     SECT_NO = (By.XPATH, '//label[contains(text(),"抄表段号")]/../div/input')
     # 电表资产号
-    METER_ASSET_NO = (By.XPATH, '//label[contains(text(),"电表资产号")]/../div/input')
+    METER_ASSET_NO = (
+        By.XPATH, '//label[contains(text(),"电表资产号")]/../div/input')
     # 用户类型
     CONS_TYPE = (By.XPATH, '//label[contains(text(),"用户类型")]/../div/div/img')
     # 用户类型→值

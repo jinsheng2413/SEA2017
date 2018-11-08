@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -17,19 +17,22 @@ class RegularSporadicUpgradeApprovePage(Page):
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
         self.click(*RegularSporadicUpgradeApproveLocator.TMNL_FACTORY)
-        locator = self.get_select_locator(RegularSporadicUpgradeApproveLocator.TMNL_FACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            RegularSporadicUpgradeApproveLocator.TMNL_FACTORY_VALUE, index)
         self.click(*locator)
 
     # 申请状态
     def inputSel_apply_status(self, index):
         self.click(*RegularSporadicUpgradeApproveLocator.APPLY_STATUS)
-        locator = self.get_select_locator(RegularSporadicUpgradeApproveLocator.APPLY_STATUS_VALUE, index)
+        locator = self.get_select_locator(
+            RegularSporadicUpgradeApproveLocator.APPLY_STATUS_VALUE, index)
         self.click(*locator)
 
     # 终端用途
     def inputSel_tmnl_purpose(self, index):
         self.click(*RegularSporadicUpgradeApproveLocator.TMNL_PURPOSE)
-        locator = self.get_select_locator(RegularSporadicUpgradeApproveLocator.TMNL_PURPOSE_VALUE, index)
+        locator = self.get_select_locator(
+            RegularSporadicUpgradeApproveLocator.TMNL_PURPOSE_VALUE, index)
         self.click(*locator)
 
     # 申请开始日期

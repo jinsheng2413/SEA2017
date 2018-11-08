@@ -134,21 +134,30 @@ class MenuPage(Page):
         l = len(items)
 
         if l == 2:
+            sleep(1.5)
             self.btn_plus(1)
+            sleep(1.5)
             self.btn_select_company(int(items[1]))
             print(int(items[1]))
         elif l in (3, 4):
+            sleep(1.5)
             self.btn_plus(1)
             if int(items[1]) == 5:
+                sleep(1.5)
                 self.btn_plus(1)
             else:
+                sleep(1.5)
                 self.btn_company_plus(items[1])
             if l == 3:
+                sleep(1.5)
                 self.btn_select_county(int(items[2]) + 1)
             else:
+                sleep(1.5)
                 self.btn_company_plus(int(items[2]) + int(items[1]))
+                sleep(1.5)
                 self.btn_select_user(int(items[3]) + 1)
         elif l == 1:
+            sleep(1.5)
             self.btn_select_province()
 
         return self.driver

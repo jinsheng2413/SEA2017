@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -11,4 +11,5 @@ from selenium.webdriver.common.by import By
 
 
 class MenuFourNameLocators:
-    MONITOR_CUST = (By.XPATH, "(//*[contains(text(),'工作台定制')])[@class=\"x-tab-strip-text GatherQualityEvaluate\"]")
+    MONITOR_CUST = (
+        By.XPATH, "(//*[contains(text(),'工作台定制')])[@class=\"x-tab-strip-text GatherQualityEvaluate\"]")

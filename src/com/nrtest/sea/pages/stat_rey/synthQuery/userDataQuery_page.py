@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.synthQuery.userDataQuery_locators import UserDataQueryLocators
 
@@ -204,15 +205,18 @@ class UserDataQueryPage(Page):
 
     # 电表
     def inputsel_abnormalelectricity_electricitymeyer(self):
-        self.click(*UserDataQueryLocators.SEL_ABNORMALELECTRICITY_ELECTRICITYMETER)
+        self.click(
+            *UserDataQueryLocators.SEL_ABNORMALELECTRICITY_ELECTRICITYMETER)
 
     # 查询日期_开始
     def inputDt_abnormalelectricity_startime(self, content):
-        self.click(content, *UserDataQueryLocators.QRY_ABNORMALELECTRICITY_STARTTIME)
+        self.click(
+            content, *UserDataQueryLocators.QRY_ABNORMALELECTRICITY_STARTTIME)
 
     # 查询日期_结束
     def inputDt_abnormalelectricity_endtime(self, content):
-        self.click(content, *UserDataQueryLocators.QRY_ABNORMALELECTRICITY_ENDTIME)
+        self.click(
+            content, *UserDataQueryLocators.QRY_ABNORMALELECTRICITY_ENDTIME)
 
     # 查询按钮
     def btn_abnormalelectricity_search(self):

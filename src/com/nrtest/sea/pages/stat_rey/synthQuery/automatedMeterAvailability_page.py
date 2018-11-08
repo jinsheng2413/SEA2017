@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -19,7 +19,8 @@ class AutomatedMeterAvailabilityPage(Page):
     # 表计类型
     def inputSel_meter_type(self, index):
         self.click(*AutomatedMeterAvailabilityLocators.METER_TYPE)
-        locator = self.get_select_locator(AutomatedMeterAvailabilityLocators.METER_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            AutomatedMeterAvailabilityLocators.METER_TYPE_VALUE, index)
         self.click(*locator)
 
     # 查询日期
@@ -35,7 +36,8 @@ class AutomatedMeterAvailabilityPage(Page):
     # 表计类型
     def inputSel_failed_meter_type(self, index):
         self.click(*AutomatedMeterAvailabilityLocators.FAILED_METER_TYPE)
-        locator = self.get_select_locator(AutomatedMeterAvailabilityLocators.FAILED_METER_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            AutomatedMeterAvailabilityLocators.FAILED_METER_TYPE_VALUE, index)
         self.click(*locator)
 
     # 终端地址

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -23,13 +23,13 @@ from com.nrtest.sea.task.commonMath import *
 class TestPatrolDataQuery_CurrentStatus(unittest.TestCase, PatrolDataQueryPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(SynthQuery_data.PatrolDataQuery_para)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -51,9 +51,11 @@ class TestPatrolDataQuery_CurrentStatus(unittest.TestCase, PatrolDataQueryPage):
         # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 终端地址
-        self.inputStr_current_status_tmnl_addr(para['CURRENT_STATUS_TMNL_ADDR'])
+        self.inputStr_current_status_tmnl_addr(
+            para['CURRENT_STATUS_TMNL_ADDR'])
         # 终端资产号
-        self.inputStr_current_status_tmnl_asset_no(para['CURRENT_STATUS_TMNL_ASSET_NO'])
+        self.inputStr_current_status_tmnl_asset_no(
+            para['CURRENT_STATUS_TMNL_ASSET_NO'])
         # 查询按钮
         self.btn_current_status_search()
 

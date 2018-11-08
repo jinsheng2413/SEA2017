@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: jinsheng
@@ -26,12 +26,12 @@ from com.nrtest.sea.task.commonMath import *
 class Test_LoadingEquipment(unittest.TestCase, LoadingEquipment_Page):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = openMenu(VipConsMan.para_loadingEquipment, True)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.closePages(cls)
 

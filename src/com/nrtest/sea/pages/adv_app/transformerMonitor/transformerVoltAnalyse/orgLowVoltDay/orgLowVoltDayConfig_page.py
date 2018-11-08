@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -21,7 +21,8 @@ class OrgLowVoltDayConfigPage(Page):
     # 是否电压监测--打开并选择
     def inputRSel_cons_type(self, name):
         self.click(*OrgLowVoltDayConfigLocators.IS_VOLT_MONITOR_SEL)
-        locator = self.get_select_locator(OrgLowVoltDayConfigLocators.IS_VOLT_MONITOR, name)
+        locator = self.get_select_locator(
+            OrgLowVoltDayConfigLocators.IS_VOLT_MONITOR, name)
         self.click(*locator)
 
     # 点击查询

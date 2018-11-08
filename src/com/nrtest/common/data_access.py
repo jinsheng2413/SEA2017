@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -19,8 +19,8 @@ os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
 # 或者os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
 
-
 class DataAccess:
+
     @staticmethod
     def getMenu(menuNo, by_name=False):
 
@@ -32,7 +32,7 @@ class DataAccess:
     @staticmethod
     def getAllMenu():
         """
-        获取被测试系统所有菜单
+        获取测试系统所有菜单
         :return:
         """
 
@@ -56,7 +56,8 @@ class DataAccess:
 
         rslt = eval(tst_case)
         if len(rslt) == 0:
-            print('请确认以下配置项是否正确：\n1,配置文件（nari_test.conf）的user_group项：%s \n2,菜单编号：%s' % tuple(qry))
+            print(
+                '请确认以下配置项是否正确：\n1,配置文件（nari_test.conf）的user_group项：%s \n2,菜单编号：%s' % tuple(qry))
         print('当前用例数据：\n', rslt, '\n')
 
         # dict转Dict ljf
@@ -92,6 +93,15 @@ class DataAccess:
             para = [p_menu_no]
             pyoracle.callproc('pkg_nrtest.refresh_menu', para)
 
+    @staticmethod
+    def refresh_menu_xapth(menu_no=''):
+        """
+        用例数据填完后，刷新菜单/TAB对应的元素清单
+        :param menu_no: 菜单编码，该值为空刷新全部菜单，否则刷新指定菜单
+        """
+        pyoracle = PyOracle.getInstance()
+        pyoracle.callproc('pkg_nrtest.refresh_menu_xapth', [menu_no])
+
 
 if __name__ == '__main__':
     # DataAccess.refresh_case()
@@ -99,6 +109,8 @@ if __name__ == '__main__':
     # print(len(str))
     # for i in  str[4:10]:
     #     print(i)
-    print(DataAccess.getAllMenu())
+    # print(DataAccess.getAllMenu())
     # DataAccess.getMenu('99913210')
     # pass
+    # 刷新菜单/tab对应的元素
+    DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -20,7 +20,8 @@ class RunMeterStatisticsPage(Page):
             self._find_element(*RunMeterStatisticsLocators.CONS_TYPE)
         else:
             self.click(*RunMeterStatisticsLocators.CONS_TYPE)
-            locator = self.get_select_locator(RunMeterStatisticsLocators.CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                RunMeterStatisticsLocators.CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*RunMeterStatisticsLocators.CONS_TYPE)
 
@@ -40,7 +41,8 @@ class RunMeterStatisticsPage(Page):
             self._find_element(*RunMeterStatisticsLocators.DETAIL_CONS_TYPE)
         else:
             self.click(*RunMeterStatisticsLocators.DETAIL_CONS_TYPE)
-            locator = self.get_select_locator(RunMeterStatisticsLocators.DETAIL_CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                RunMeterStatisticsLocators.DETAIL_CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*RunMeterStatisticsLocators.DETAIL_CONS_TYPE)
 
@@ -50,17 +52,20 @@ class RunMeterStatisticsPage(Page):
             self._find_element(*RunMeterStatisticsLocators.DETAIL_TMNL_WAY)
         else:
             self.click(*RunMeterStatisticsLocators.DETAIL_TMNL_WAY)
-            locator = self.get_select_locator(RunMeterStatisticsLocators.DETAIL_TMNL_WAY_VALUE, index)
+            locator = self.get_select_locator(
+                RunMeterStatisticsLocators.DETAIL_TMNL_WAY_VALUE, index)
             self.click(*locator)
             self.click(*RunMeterStatisticsLocators.DETAIL_TMNL_WAY)
 
     # 通讯规约
     def inputCSel_detail_tmnl_protocol(self, index):
         if index == 'c':
-            self._find_element(*RunMeterStatisticsLocators.DETAIL_TMNL_PROTOCOL)
+            self._find_element(
+                *RunMeterStatisticsLocators.DETAIL_TMNL_PROTOCOL)
         else:
             self.click(*RunMeterStatisticsLocators.DETAIL_TMNL_PROTOCOL)
-            locator = self.get_select_locator(RunMeterStatisticsLocators.DETAIL_TMNL_PROTOCOL_VALUE, index)
+            locator = self.get_select_locator(
+                RunMeterStatisticsLocators.DETAIL_TMNL_PROTOCOL_VALUE, index)
             self.click(*locator)
             self.click(*RunMeterStatisticsLocators.DETAIL_TMNL_PROTOCOL)
 
@@ -70,17 +75,20 @@ class RunMeterStatisticsPage(Page):
             self._find_element(*RunMeterStatisticsLocators.DETAIL_DEVICE_TYPE)
         else:
             self.click(*RunMeterStatisticsLocators.DETAIL_DEVICE_TYPE)
-            locator = self.get_select_locator(RunMeterStatisticsLocators.DETAIL_DEVICE_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                RunMeterStatisticsLocators.DETAIL_DEVICE_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*RunMeterStatisticsLocators.DETAIL_DEVICE_TYPE)
 
     # 电能表厂家
     def inputCSel_detail_meter_factory(self, index):
         if index == 'c':
-            self._find_element(*RunMeterStatisticsLocators.DETAIL_METER_FACTORY)
+            self._find_element(
+                *RunMeterStatisticsLocators.DETAIL_METER_FACTORY)
         else:
             self.click(*RunMeterStatisticsLocators.DETAIL_METER_FACTORY)
-            locator = self.get_select_locator(RunMeterStatisticsLocators.DETAIL_METER_FACTORY_VALUE, index)
+            locator = self.get_select_locator(
+                RunMeterStatisticsLocators.DETAIL_METER_FACTORY_VALUE, index)
             self.click(*locator)
             self.click(*RunMeterStatisticsLocators.DETAIL_METER_FACTORY)
 
@@ -90,7 +98,8 @@ class RunMeterStatisticsPage(Page):
             self._find_element(*RunMeterStatisticsLocators.DETAIL_METER_STATUS)
         else:
             self.click(*RunMeterStatisticsLocators.DETAIL_METER_STATUS)
-            locator = self.get_select_locator(RunMeterStatisticsLocators.DETAIL_METER_STATUS_VALUE, index)
+            locator = self.get_select_locator(
+                RunMeterStatisticsLocators.DETAIL_METER_STATUS_VALUE, index)
             self.click(*locator)
             self.click(*RunMeterStatisticsLocators.DETAIL_METER_STATUS)
 

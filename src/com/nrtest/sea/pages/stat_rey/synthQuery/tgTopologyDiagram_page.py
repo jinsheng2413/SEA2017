@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -17,7 +17,8 @@ class TgTopologyDiagramPage(Page):
     # 专公变类型
     def inputSel_tmnl_type(self, index):
         self.click(*TgTopologyDiagramLocators.TMNL_TYPE)
-        locator = self.get_select_locator(TgTopologyDiagramLocators.TMNL_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            TgTopologyDiagramLocators.TMNL_TYPE_VALUE, index)
         self.click(locator)
 
     # 台区编码

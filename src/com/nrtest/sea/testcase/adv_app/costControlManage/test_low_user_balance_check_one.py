@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -22,13 +22,13 @@ from com.nrtest.sea.task.feiMange import *
 class TestBalanceCount(unittest.TestCase, BalanceCount_page):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = low_user_money_check()
         cls.orl = Oracle()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.driver.quit()
 
     def setUp(self):
@@ -46,14 +46,16 @@ class TestBalanceCount(unittest.TestCase, BalanceCount_page):
 
     # 查询出第一个数据
     def firstone(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_data_date)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                LowUserBalanceCheck_para.para_test_data_date)
         self.inputStr_data_date(lip[0][0])
         self.btn_qry()
 
     # 数据日期查询
     @BeautifulReport.add_test_img()
     def test_data_date(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, LowUserBalanceCheck_para.para_test_data_date)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                LowUserBalanceCheck_para.para_test_data_date)
         self.inputStr_data_date(lip[0][0])
         self.btn_qry()
         self.sleep_time(2)

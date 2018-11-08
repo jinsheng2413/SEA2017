@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -17,7 +17,8 @@ class ArchivesAutoReviewPage(Page):
     # 导入电表信息
     def inputSel_leadInto_meter_info(self, name):
         self.click(*ArchivesAutoReviewLocators.QRY_LEADINTO_METER_INFO)
-        locator = self.get_select_locator(ArchivesAutoReviewLocators.QRY__LEADINTO_METER_INFO_VALUE, name)
+        locator = self.get_select_locator(
+            ArchivesAutoReviewLocators.QRY__LEADINTO_METER_INFO_VALUE, name)
         self.click(*locator)
 
     # 时间

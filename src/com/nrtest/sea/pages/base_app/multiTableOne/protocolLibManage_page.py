@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -42,7 +42,8 @@ class ProtocolLibManageLocatorsPage(Page):
     # 有效标志
     def inputSel_effectiveSign(self, name):
         self.click(*ProtocolLibManageLocators.QRY_EFFECTIVE_SIGN)
-        locator = self.get_select_locator(ProtocolLibManageLocators.QRY_EFFECTIVE_SIGN_VALUE, name)
+        locator = self.get_select_locator(
+            ProtocolLibManageLocators.QRY_EFFECTIVE_SIGN_VALUE, name)
         self.click(*locator)
 
     # 协议版本号

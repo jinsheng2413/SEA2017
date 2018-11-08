@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -19,7 +19,8 @@ class DebuggingAccess2017Page(Page):
     # 管理方式
     def inputSel_manage_style(self, index):
         self.click(*DebuggingAccess2017Locators.MANAGE_STYLE)
-        locator = self.get_select_locator(DebuggingAccess2017Locators.MANAGE_STYLE_VALUE, index)
+        locator = self.get_select_locator(
+            DebuggingAccess2017Locators.MANAGE_STYLE_VALUE, index)
         self.click(*locator)
 
     # 装接方式
@@ -28,7 +29,8 @@ class DebuggingAccess2017Page(Page):
             self._find_element(*DebuggingAccess2017Locators.ASSEMBLING_WAY)
         else:
             self.click(*DebuggingAccess2017Locators.ASSEMBLING_WAY)
-            locator = self.get_select_locator(DebuggingAccess2017Locators.ASSEMBLING_WAY_VALUE, index)
+            locator = self.get_select_locator(
+                DebuggingAccess2017Locators.ASSEMBLING_WAY_VALUE, index)
             self.click(*locator)
             self.click(*DebuggingAccess2017Locators.ASSEMBLING_WAY)
 

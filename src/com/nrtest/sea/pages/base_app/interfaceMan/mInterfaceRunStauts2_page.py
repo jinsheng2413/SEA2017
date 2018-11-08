@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
 @author: jinsheng
@@ -16,13 +16,15 @@ class MInterfaceRunStatus2Page(Page):
     # 业务系统
     def inputSel_business_system(self, index):
         self.click(*MInterfaceRunStatus2Locators.QRY_BUSINESS_SYSTEM)
-        locator = self.get_select_locator(MInterfaceRunStatus2Locators.QRY_BUSINESS_SYSTEM_VALUE, index)
+        locator = self.get_select_locator(
+            MInterfaceRunStatus2Locators.QRY_BUSINESS_SYSTEM_VALUE, index)
         self.click(*locator)
 
     # 服务对象名称
     def inputSel_service_name(self, index):
         self.click(*MInterfaceRunStatus2Locators.QRY_SERVICE_NAME)
-        locator = self.get_select_locator(MInterfaceRunStatus2Locators.QRY_SERVICE_NAME_VALUE, index)
+        locator = self.get_select_locator(
+            MInterfaceRunStatus2Locators.QRY_SERVICE_NAME_VALUE, index)
         self.click(*locator)
         print('------')
 

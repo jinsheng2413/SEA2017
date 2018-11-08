@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -17,7 +17,7 @@ from selenium import webdriver
 
 from com.nrtest.common.logger import Logger
 
-logger = Logger(logger="BrowserEngine").getlog()
+logger = Logger(logger='BrowserEngine').getlog()
 
 
 class BrowserEngine():
@@ -48,7 +48,7 @@ class BrowserEngine():
         elif 'i' in kinder:
             driver = webdriver.Firefox()
             logger.info('启动ie浏览器.')
-            #return driver
+            # return driver
 
         elif 'f' in kinder:
             driver = webdriver.Ie()

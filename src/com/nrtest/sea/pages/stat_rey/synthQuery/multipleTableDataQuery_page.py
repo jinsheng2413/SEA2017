@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -32,7 +32,8 @@ class MultipleTableDataQueryPage(Page):
     # 用户状态
     def inputSel_cons_cons_status(self, index):
         self.click(*MultipleTableDataQueryLocators.CONS_CONS_STATUS)
-        locator = self.get_select_locator(MultipleTableDataQueryLocators.CONS_CONS_STATUS_VALUE, index)
+        locator = self.get_select_locator(
+            MultipleTableDataQueryLocators.CONS_CONS_STATUS_VALUE, index)
         self.click(*locator)
 
     # 查询按钮

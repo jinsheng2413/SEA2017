@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -42,20 +42,23 @@ class CostControlManagePage(Page):
     # 业务类型
     def inputSel_buniess_cata(self, index):
         self.click(*CostControlManagePageLocators.SEL_BUNIESS_CATA)
-        locator = self.get_select_locator(CostControlManagePageLocators.SEL_BUNIESS_CATA_VALUE, index)
+        locator = self.get_select_locator(
+            CostControlManagePageLocators.SEL_BUNIESS_CATA_VALUE, index)
         # print(locator)
         self.click(*locator)
 
     # 参数下发状态
     def inputSel_para_deve(self, index):
         self.click(*CostControlManagePageLocators.SEL_PARA_DEVE)
-        locator = self.get_select_locator(CostControlManagePageLocators.SEL_PARA_DEVE_VALUE, index)
+        locator = self.get_select_locator(
+            CostControlManagePageLocators.SEL_PARA_DEVE_VALUE, index)
         self.click(*locator)
 
     # 购电日期
     def inputRSel_buy_ele_date(self, index):
         self.click(*CostControlManagePageLocators.SELR_ARRANGE)
-        locator = self.get_select_locator(CostControlManagePageLocators.SELR_ARRANGE_VALUE, index)
+        locator = self.get_select_locator(
+            CostControlManagePageLocators.SELR_ARRANGE_VALUE, index)
         self.click(*locator)
 
     # 开始时间

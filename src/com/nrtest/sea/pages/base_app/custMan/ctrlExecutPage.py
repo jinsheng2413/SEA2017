@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -45,31 +45,36 @@ class CtrlExecutPage(Page):
     # 控制类型
     def inputSel_controlType(self, name):
         self.click(*CtrlExecutLocators.QRY_CONTROL_TYPE)
-        locator = self.get_select_locator(CtrlExecutLocators.QRY_CONTROL_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            CtrlExecutLocators.QRY_CONTROL_TYPE_VALUE, name)
         self.click(*locator)
 
     # 执行状态
     def inputSel_exeStatus(self, name):
         self.click(*CtrlExecutLocators.QRY_EXE_STATUS)
-        locator = self.get_select_locator(CtrlExecutLocators.QRY_EXE_STATUS_VALUE, name)
+        locator = self.get_select_locator(
+            CtrlExecutLocators.QRY_EXE_STATUS_VALUE, name)
         self.click(*locator)
 
     # 数据来源
     def inputSel_dataCome(self, name):
         self.click(*CtrlExecutLocators.QRY_DATA_COME)
-        locator = self.get_select_locator(CtrlExecutLocators.QRY_DATA_COME_VALUE, name)
+        locator = self.get_select_locator(
+            CtrlExecutLocators.QRY_DATA_COME_VALUE, name)
         self.click(*locator)
 
     # 确认状态
     def inputSel_confirmStatus(self, name):
         self.click(*CtrlExecutLocators.QRY_CONFIRM_STATUS)
-        locator = self.get_select_locator(CtrlExecutLocators.QRY_CONFIRM_STATUS_VALUE, name)
+        locator = self.get_select_locator(
+            CtrlExecutLocators.QRY_CONFIRM_STATUS_VALUE, name)
         self.click(*locator)
 
     # 执行结果状态
     def inputSel_exeResultStatus(self, name):
         self.click(*CtrlExecutLocators.QRY_EXE_STATUS_RESULT)
-        locator = self.get_select_locator(CtrlExecutLocators.QRY_EXE_STATUS_RESULT_VALUE, name)
+        locator = self.get_select_locator(
+            CtrlExecutLocators.QRY_EXE_STATUS_RESULT_VALUE, name)
         self.click(*locator)
 
     # 查询

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -15,13 +15,17 @@ from selenium.webdriver.common.by import By
 class DebuggingAccessLocators:
     # 页面元素
     # 管理方式
-    MANAGE_STYLE = (By.XPATH, '//label[contains(text(),"管理方式")]/../div/div/input')
+    MANAGE_STYLE = (
+        By.XPATH, '//label[contains(text(),"管理方式")]/../div/div/input')
     # 管理方式→值
-    MANAGE_STYLE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    MANAGE_STYLE_VALUE = (
+        By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 装接方式
-    ASSEMBLING_WAY = (By.XPATH, '//label[contains(text(),"装接方式")]/../div/div/input')
+    ASSEMBLING_WAY = (
+        By.XPATH, '//label[contains(text(),"装接方式")]/../div/div/input')
     # 装接方式→值
-    ASSEMBLING_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    ASSEMBLING_WAY_VALUE = (
+        By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 日期
     DATE = (By.XPATH, '//label[contains(text(),"日期")]/../div/div/input')
     # 查询按钮

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -72,7 +72,8 @@ class ReadCompleteRateLocators:
     QRY_COMMUNICATION_MODE_DETAIL_VALUE = (
         By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'电话网')]/../div[contains(text(),'%s')])[2]")
     #
-    QRY_ = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'')]/../../div[1]/div[1]//input")
+    QRY_ = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'')]/../../div[1]/div[1]//input")
     # 用户类型
     QRY_USER_TYPE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'用户类型')]/../../div[1]/div[1]//input)[1]")

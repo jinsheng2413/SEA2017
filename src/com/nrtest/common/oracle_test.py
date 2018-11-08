@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -33,7 +33,8 @@ class Oracle:
         :param host: ip
         :param instance: 数据库名称
         """
-        self._conn = cx_Oracle.connect("%s/%s@%s/%s" % (username, pwd, host, name))
+        self._conn = cx_Oracle.connect(
+            '%s/%s@%s/%s' % (username, pwd, host, name))
         self.cursor = self._conn.cursor()
 
     def queryAll(self, sql, para):
@@ -98,7 +99,7 @@ if __name__ == '__main__':
 
     fy = {'case_name': 'test_a_first_new_add', 'po': '分类名称'}
     p.cursor.execute(
-        "select t.value_one,t.value_two from TEST_CASE t where  t.case_name =:case_name and t.value_one_name=:po",
+        'select t.value_one,t.value_two from TEST_CASE t where  t.case_name =:case_name and t.value_one_name=:po',
         fy)
     a = p.cursor.fetchall()
     print(a[0][0])

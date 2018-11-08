@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -21,7 +21,8 @@ class LoadRateStaticPage(Page):
     # 用户类型--打开并选择
     def inputRSel_cons_type(self, name):
         self.click(*LoadRateStaticLocators.CONS_TYPE_SEL)
-        locator = self.get_select_locator(LoadRateStaticLocators.CONS_TYPE, name)
+        locator = self.get_select_locator(
+            LoadRateStaticLocators.CONS_TYPE, name)
         self.click(*locator)
 
     # 查询日期

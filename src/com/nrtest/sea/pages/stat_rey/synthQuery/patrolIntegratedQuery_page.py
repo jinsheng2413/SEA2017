@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -33,7 +33,8 @@ class PatrolIntegratedQueryPage(Page):
     # 指标
     def inputSel_detail_index(self, index):
         self.click(*PatrolIntegratedQueryLocators.DETAIL_INDEX)
-        locator = self.get_select_locator(PatrolIntegratedQueryLocators.DETAIL_INDEX_VALUE, index)
+        locator = self.get_select_locator(
+            PatrolIntegratedQueryLocators.DETAIL_INDEX_VALUE, index)
         self.click(*locator)
 
     # 终端地址

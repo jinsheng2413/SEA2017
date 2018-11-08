@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -13,13 +13,16 @@ from selenium.webdriver.common.by import By
 class CostControlManagePageLocators:
     # 【查询条件】
     # 营销单号
-    QRY_MARKETINF_SINGLE_NUM = (By.XPATH, "//div[@class=\"x-form-item \"]/label[contains(text(),'营销单号')]/../div/input")
+    QRY_MARKETINF_SINGLE_NUM = (
+        By.XPATH, "//div[@class=\"x-form-item \"]/label[contains(text(),'营销单号')]/../div/input")
     # 终端地址
     QRY_TERMIAL_ADDR = (By.XPATH,
                         "//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//label[contains(text(),'终端地址')]/../div/input")
     # 按
-    SELR_ARRANGE = (By.XPATH, "//label[contains(text(),'按')]/../div[1]/div/img")
-    SELR_ARRANGE_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'购电日期')]/../div[%s]")
+    SELR_ARRANGE = (
+        By.XPATH, "//label[contains(text(),'按')]/../div[1]/div/img")
+    SELR_ARRANGE_VALUE = (
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'购电日期')]/../div[%s]")
 
     # 开始时间
     DATE_START = (By.XPATH, '//*[@id="buyStartDate"]')
@@ -34,10 +37,12 @@ class CostControlManagePageLocators:
     # 业务类型
     SEL_BUNIESS_CATA = (By.XPATH,
                         "//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//label[contains(text(),'业务类型')]/../div/div/input")
-    SEL_BUNIESS_CATA_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'缴费退补')]/../div[%s]")
+    SEL_BUNIESS_CATA_VALUE = (
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'缴费退补')]/../div[%s]")
     # 参数下发状态
     SEL_PARA_DEVE = (By.XPATH, '//*[@id="data_sendStatus"]')
-    SEL_PARA_DEVE_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'失败')]/../div[%s]")
+    SEL_PARA_DEVE_VALUE = (
+        By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'失败')]/../div[%s]")
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

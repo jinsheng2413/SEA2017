@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -24,16 +24,17 @@ class TestDemo(unittest.TestCase, InterfaceMonitorPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(MDataPublishStatus_data.interfaceMonitor_para, True)
+        cls.driver = openMenu(
+            MDataPublishStatus_data.interfaceMonitor_para, True)
         sleep(2)
         cls.exec_script(cls, InterfaceMonitor_Locators.START_DATE_JS)
         cls.exec_script(cls, InterfaceMonitor_Locators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.closePages(cls)
 

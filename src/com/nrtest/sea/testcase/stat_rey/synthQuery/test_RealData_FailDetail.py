@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -24,7 +24,7 @@ class TestRealData_Rdetail(unittest.TestCase, RealDataPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(SynthQuery_data.realData_para)
         sleep(2)
@@ -33,7 +33,7 @@ class TestRealData_Rdetail(unittest.TestCase, RealDataPage):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -62,7 +62,8 @@ class TestRealData_Rdetail(unittest.TestCase, RealDataPage):
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 选择抄表段号
-        self.inputStr_ReadMeterSegmentNo_Faildetail(para['READ_METER_SEGMENT_NO'])
+        self.inputStr_ReadMeterSegmentNo_Faildetail(
+            para['READ_METER_SEGMENT_NO'])
         # 电表资产号
         self.inputStr_MeterAssert_Faildetail(para['METER_ASSERT'])
         # 用户类型

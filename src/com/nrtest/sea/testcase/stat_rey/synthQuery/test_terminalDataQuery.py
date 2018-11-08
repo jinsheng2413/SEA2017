@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -20,12 +20,12 @@ from com.nrtest.sea.task.synthQuery import TerminalDataQueryLog
 class TestUserDataQuery(unittest.TestCase, TerminalDataQueryPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = TerminalDataQueryLog()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.driver.quit()
 
     def setUp(self):
@@ -57,7 +57,8 @@ class TestUserDataQuery(unittest.TestCase, TerminalDataQueryPage):
         # 点击查询按钮
         td.btn_search()
         # 校验
-        result = self.assert_context(*TerminalDataQueryLocators.TREE_GUOGEZHUANG)
+        result = self.assert_context(
+            *TerminalDataQueryLocators.TREE_GUOGEZHUANG)
         self.assertTrue(result)
 
     # 基本档案，终端资产号查询

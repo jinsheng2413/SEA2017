@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -13,7 +13,8 @@ import unittest
 from com.nrtest.sea.testcase.stat_rey.synthQuery.test_AllCollectSuccessRate import TestAllCollectSuccessRate
 
 suite = unittest.TestSuite()
-suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAllCollectSuccessRate))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+    TestAllCollectSuccessRate))
 # tests = [TestGatherSuccessRate('test_epp_task_type')]
 # suite.addTests(tests)
 

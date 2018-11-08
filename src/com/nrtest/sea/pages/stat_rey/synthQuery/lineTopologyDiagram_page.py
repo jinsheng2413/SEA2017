@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -17,7 +17,8 @@ class LineTopoLogyDiagramPage(Page):
     # 线路名称
     def inputSel_line_name(self, index):
         self.click(*LineTopologyDiagramLocators.LINE_NAME)
-        locator = self.get_select_locator(LineTopologyDiagramLocators.LINE_NAME_VALUE, index)
+        locator = self.get_select_locator(
+            LineTopologyDiagramLocators.LINE_NAME_VALUE, index)
         self.click(*locator)
 
     # 查询按钮

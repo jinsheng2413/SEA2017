@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -8,9 +8,10 @@
 @desc:
 """
 
-from com.nrtest.common.base_page import Page
 from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeeseementResultStatistics_locators import \
     AeeseementResultStatisticsLocators
+
+from com.nrtest.common.base_page import Page
 
 
 # 高级应用→线损分析→线损指标考核→考核结果统计
@@ -18,7 +19,8 @@ class AeeseementResultStatisticsPage(Page):
     # 责任人
     def inputSel_charge_person(self, index):
         self.click(*AeeseementResultStatisticsLocators.QRY_CHARGE_PERSON)
-        locator = self.get_select_locator(AeeseementResultStatisticsLocators.QRY_CHARGE_PERSON_VALUE, index)
+        locator = self.get_select_locator(
+            AeeseementResultStatisticsLocators.QRY_CHARGE_PERSON_VALUE, index)
         self.click(*locator)
 
     # 查询日期

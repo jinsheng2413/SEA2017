@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -20,7 +20,8 @@ class BatchFetchPage(Page):
     # 有效性
     def inputSel_effectiveness(self, name):
         self.click(*BatchFetchLocators.QRY_EFFECTIVENESS)
-        locator = self.get_select_locator(BatchFetchLocators.QRY_EFFECTIVENESS_VALUE, name)
+        locator = self.get_select_locator(
+            BatchFetchLocators.QRY_EFFECTIVENESS_VALUE, name)
         self.click(*locator)
 
     # 开始时间

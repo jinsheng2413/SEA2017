@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -42,11 +42,12 @@ def clickTabPage(name):
     :param name:
     """
     p = MenuPage(global_drv.get_driver())
-    locators = (By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[text()='{0}']".format(name))
+    locators = (
+        By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[text()='{0}']".format(name))
     print(locators)
     p.click(*locators)
     # return p.driver
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     pass

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -62,11 +62,13 @@ class TerminalDataQueryPage(Page):
 
     # 查询日期_开始
     def inputDt_electricquantity_starttime(self, content):
-        self.click(content, *TerminalDataQueryLocators.QRY_ELECTRICQUANTITY_STARTTIME)
+        self.click(
+            content, *TerminalDataQueryLocators.QRY_ELECTRICQUANTITY_STARTTIME)
 
     # 查询日期_结束
     def inputDt_electricquantity_endtime(self, content):
-        self.click(content, *TerminalDataQueryLocators.QRY_ELECTRICQUANTITY_ENDTIME)
+        self.click(
+            content, *TerminalDataQueryLocators.QRY_ELECTRICQUANTITY_ENDTIME)
 
     # 查询按钮
     def btn_electricquantity_search(self):

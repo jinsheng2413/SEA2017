@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 
 """
@@ -18,7 +18,8 @@ class WorkCount2017Page(Page):
     # 工单类型
     def inputSel_workTitle(self, index):
         self.click(*WorkCount2017Locators.QRY_WORK_TITLE)
-        locator = self.get_select_locator(WorkCount2017Locators.QRY_WORK_TITLE_VALUE, index)
+        locator = self.get_select_locator(
+            WorkCount2017Locators.QRY_WORK_TITLE_VALUE, index)
         self.click(*locator)
 
     # 查询
@@ -38,13 +39,15 @@ class WorkQuery2017Page(Page):
     # 工单类型
     def inputSel_workTitle(self, index):
         self.click(*WorkQuery2017Locators.QRY_WORK_TITLE)
-        locator = self.get_select_locator(WorkQuery2017Locators.QRY_WORK_TITLE_VALUE, index)
+        locator = self.get_select_locator(
+            WorkQuery2017Locators.QRY_WORK_TITLE_VALUE, index)
         self.click(*locator)
 
     # 工单状态
     def inputSel_workStatus(self, index):
         self.click(*WorkQuery2017Locators.QRY_WORK_STATUS)
-        locator = self.get_select_locator(WorkQuery2017Locators.QRY_WORK_STATUS_VALUE, index)
+        locator = self.get_select_locator(
+            WorkQuery2017Locators.QRY_WORK_STATUS_VALUE, index)
         self.click(*locator)
 
     # 工单发生时间

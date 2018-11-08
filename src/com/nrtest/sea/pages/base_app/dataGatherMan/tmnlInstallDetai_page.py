@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -18,7 +18,8 @@ class TmnlInstallDetaiPage(Page):
     # 终端类型
     def inputSel_TmnlTYPE(self, name):
         self.click(*TmnlInstallDetaiLocators.QRY_TMNL_TYPE)
-        locator = self.get_select_locator(TmnlInstallDetaiLocators.QRY_TMNL_TYPE_VALUE, name)
+        locator = self.get_select_locator(
+            TmnlInstallDetaiLocators.QRY_TMNL_TYPE_VALUE, name)
         self.click(*locator)
 
     # 开始时间
@@ -71,13 +72,15 @@ class TmnlInstallDetaiPage(Page):
     def inputSel_surfaceType_count(self, value):
         print(value)
         self.click(*TmnlInstallDetaiLocators.QRY_SURFACE_TYPE_COUNT)
-        locator = self.get_select_locator(TmnlInstallDetaiLocators.QRY_SURFACE_TYPE_VALUE, value)
+        locator = self.get_select_locator(
+            TmnlInstallDetaiLocators.QRY_SURFACE_TYPE_VALUE, value)
         self.click(*locator)
 
     # 流程标识
     def inputSel_processID_count(self, name):
         self.click(*TmnlInstallDetaiLocators.QRY_PROCESS_ID_COUNT)
-        locator = self.get_select_locator(TmnlInstallDetaiLocators.QRY_PROCESS_ID_COUNT_VALUE, name)
+        locator = self.get_select_locator(
+            TmnlInstallDetaiLocators.QRY_PROCESS_ID_COUNT_VALUE, name)
         print(locator)
         self.click(*locator)
         print(locator)
@@ -85,13 +88,15 @@ class TmnlInstallDetaiPage(Page):
     # 运行状态
     def inputSel_runState_count(self, name):
         self.click(*TmnlInstallDetaiLocators.QRY_RUN_STATE_COUNT)
-        locator = self.get_select_locator(TmnlInstallDetaiLocators.QRY_RUN_STATE_COUNT_VALUE, name)
+        locator = self.get_select_locator(
+            TmnlInstallDetaiLocators.QRY_RUN_STATE_COUNT_VALUE, name)
         self.click(*locator)
 
     # 装接类型
     def inputSel_moutingType_count(self, name):
         self.click(*TmnlInstallDetaiLocators.QRY_MOUNTING_COUNT)
-        locator = self.get_select_locator(TmnlInstallDetaiLocators.QRY_MOUNTING_COUNT_VALUE, name)
+        locator = self.get_select_locator(
+            TmnlInstallDetaiLocators.QRY_MOUNTING_COUNT_VALUE, name)
         self.click(*locator)
 
     # 查询

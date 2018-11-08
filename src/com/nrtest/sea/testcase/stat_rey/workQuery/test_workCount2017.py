@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 
 """
@@ -26,7 +26,7 @@ class TestDemo(unittest.TestCase, WorkCount2017Page):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(WorkQuery_data.WorkQuery2017_para, True)
         sleep(2)
@@ -35,7 +35,7 @@ class TestDemo(unittest.TestCase, WorkCount2017Page):
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 

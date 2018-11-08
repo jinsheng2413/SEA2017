@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -23,13 +23,13 @@ from com.nrtest.sea.task.commonMath import *
 class TestPatrolDataQuery_AnomalousEvent(unittest.TestCase, PatrolDataQueryPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(SynthQuery_data.PatrolDataQuery_para)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 
@@ -51,7 +51,8 @@ class TestPatrolDataQuery_AnomalousEvent(unittest.TestCase, PatrolDataQueryPage)
         # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 终端地址
-        self.inputStr_anomalous_event_tmnl_addr(para['ANOMALOUS_EVENT_TMNL_ADDR'])
+        self.inputStr_anomalous_event_tmnl_addr(
+            para['ANOMALOUS_EVENT_TMNL_ADDR'])
         # 用户编号
         self.inputStr_anomalous_event_cons_no(para['ANOMALOUS_EVENT_CONS_NO'])
         # 异常事件

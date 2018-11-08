@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -28,14 +28,14 @@ class TestBcVoltMonitorPointDataQuery(unittest.TestCase, BcVoltMonitorPointDataP
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_BcVoltMonitorPoint)
         clickTabPage('B/C类电压监测点数据')
         cls.driver.execute_script(BcVoltMonitorPointDataLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         # cls.refreshPage(cls)
 
@@ -74,7 +74,8 @@ class TestBcVoltMonitorPointDataQuery(unittest.TestCase, BcVoltMonitorPointDataP
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BcVoltMonitorPointDataLocators.TABLE_DATA)
+        result = self.assert_context(
+            *BcVoltMonitorPointDataLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_BcVoltMonitorPoint, 'B/C类电压监测点数据'))

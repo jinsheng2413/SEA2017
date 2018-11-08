@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -28,14 +28,14 @@ class TestPowerFactorCountDetail(unittest.TestCase, PowerFactorCountDetailPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_PowerFactorCount)
         clickTabPage('功率因数越限明细')
         cls.driver.execute_script(PowerFactorCountDetailLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         # cls.refreshPage(cls)
 
@@ -74,7 +74,8 @@ class TestPowerFactorCountDetail(unittest.TestCase, PowerFactorCountDetailPage):
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*PowerFactorCountDetailLocators.TABLE_DATA)
+        result = self.assert_context(
+            *PowerFactorCountDetailLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_PowerFactorCount, '功率因数越限明细'))

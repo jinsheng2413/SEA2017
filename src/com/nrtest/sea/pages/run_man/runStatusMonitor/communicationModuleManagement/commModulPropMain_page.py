@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 
 """
@@ -18,19 +18,23 @@ from com.nrtest.sea.locators.run_man.runStatusMonitor.communicationModuleManagem
 class CommunicationModuleBaseInformationMantainPage(Page):
     # 模块厂商
     def inputSel_moduleFactory(self, name):
-        self.click(*CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_FACTORY)
+        self.click(
+            *CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_FACTORY)
         locator = self.get_select_locator(CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_FACTORY_VALUE,
                                           name)
         self.click(*locator)
 
     # 模块属性标识
     def inputStr_moduleAttrbuteSign(self, value):
-        self.input(value, *CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_ATTRBUTE_SIGN)
+        self.input(
+            value, *CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_ATTRBUTE_SIGN)
 
     # 模块类型
     def inputSel_moduleType(self, name):
-        self.click(*CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE)
-        locator = self.get_select_locator(CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE_VALUE, name)
+        self.click(
+            *CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE)
+        locator = self.get_select_locator(
+            CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE_VALUE, name)
         self.click(*locator)
 
         # 查询
@@ -42,11 +46,13 @@ class CommunicationModuleBaseInformationMantainPage(Page):
 class ModuleAttributeRelationshipMantainPage(Page):
     # 终端地址
     def inputStr_tmnlAddr(self, value):
-        self.input(value, *ModuleAttributeRelationshipMantainLocators.QRY_TMNL_ADDR)
+        self.input(
+            value, *ModuleAttributeRelationshipMantainLocators.QRY_TMNL_ADDR)
 
     # 终端厂家
     def inputStr_tmnlFactory(self, name):
-        self.input(name, *ModuleAttributeRelationshipMantainLocators.QRY_TMNL_FACTORY)
+        self.input(
+            name, *ModuleAttributeRelationshipMantainLocators.QRY_TMNL_FACTORY)
 
     # 查询
     def btn_qry(self):

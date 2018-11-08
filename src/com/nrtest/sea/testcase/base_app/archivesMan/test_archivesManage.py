@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -19,13 +19,13 @@ from com.nrtest.sea.task.archivesManage import *
 class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = archivesMange()
         cls.orl = Oracle()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.driver.quit()
 
     def setUp(self):
@@ -45,7 +45,8 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
 
     # 用户类型
     def test_am_user_cata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesManage_para.para_test_am_user_cata)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ArchivesManage_para.para_test_am_user_cata)
         self.inputSel_user_cata(lip[0][0])
         self.btn_qry()
         self.sleep_time(2)
@@ -55,7 +56,8 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
 
     # 户号
     def test_am_family_no(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesManage_para.para_test_am_family_no)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ArchivesManage_para.para_test_am_family_no)
         self.inputStr_family_no(lip[0][0])
         self.btn_qry()
         self.sleep_time(2)
@@ -65,7 +67,8 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
 
     # 终端资产号
     def test_am_terminal_asset_no(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesManage_para.para_test_am_terminal_asset_no)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesManage_para.para_test_am_terminal_asset_no)
         self.inputStr_terminal_asset(lip[0][0])
         self.btn_qry()
         self.sleep_time(2)
@@ -75,7 +78,8 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
 
     # 终端地址
     def test_am_termianl_addr(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesManage_para.para_test_am_termianl_addr)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ArchivesManage_para.para_test_am_termianl_addr)
         self.inputStr_terminal_addr(lip[0][0])
         self.btn_qry()
         self.sleep_time(2)
@@ -85,7 +89,8 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
 
     # 用户编号明细
     def test_am_family_no_detail(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesManage_para.para_test_am_family_no)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ArchivesManage_para.para_test_am_family_no)
         self.inputStr_family_no(lip[0][0])
         self.btn_qry()
         self.sleep_time(2)
@@ -98,7 +103,8 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
 
     # 终端资产号明细
     def test_am_terminal_asset_no_detail(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesManage_para.para_test_am_terminal_asset_no)
+        lip = self.orl.queryAll(
+            DataCommon.sql_commom, ArchivesManage_para.para_test_am_terminal_asset_no)
         self.inputStr_terminal_asset(lip[0][0])
         self.btn_qry()
         self.sleep_time(2)

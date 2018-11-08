@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from selenium.webdriver.common.by import By
 
 
@@ -48,14 +49,16 @@ class TemplateManLocators():
     # 698规约
     BTN_RULE_698 = (By.XPATH, "//div[contains(text(),'698_13规约')]/../div[6]")
     # 698_13规约
-    BTN_RULE_698_13 = (By.XPATH, "//div[contains(text(),'698_13规约')]/../div[7]")
+    BTN_RULE_698_13 = (
+        By.XPATH, "//div[contains(text(),'698_13规约')]/../div[7]")
     # 江西（浙江）规约
     BTN_RULE_JX = (By.XPATH, "//div[contains(text(),'698_13规约')]/../div[8]")
     # 新增页面
     # 供电单位
     BTN_ADD_UNIT = (By.XPATH, '//*[@name="orgName"]')
     # 供电单位菜单
-    BTN_ADD_UNIT_MENU = (By.XPATH, '//img[@class="x-tree-node-icon"]/../img[1]')
+    BTN_ADD_UNIT_MENU = (
+        By.XPATH, '//img[@class="x-tree-node-icon"]/../img[1]')
     # 国网冀北电力有限公司
     BTN_ADD_JIBEI = (By.XPATH, '(//span[contains(text(),"国网冀北")])[2]')
     # 确定按钮
@@ -64,7 +67,8 @@ class TemplateManLocators():
     # 终端类型
     BTN_ADD_TYPE = (By.XPATH, '//input[@name="tmnlTypeCode"]/../img')
     # 终端类型，负荷控制终端
-    BTN_ADD_TYPE_FHKZ = (By.XPATH, "//div[@class=\"x-layer x-combo-list \"]/div/div[1]")
+    BTN_ADD_TYPE_FHKZ = (
+        By.XPATH, "//div[@class=\"x-layer x-combo-list \"]/div/div[1]")
 
     # 终端规约
     BTN_ADD_RULE = (By.XPATH, '//input[@name="protocolCode"]/../img')

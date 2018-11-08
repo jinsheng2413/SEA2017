@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -21,7 +21,8 @@ class RunTmnlStatisticsPage(Page):
             self._find_element(*RunTmnlStatisticsLocators.CONS_TYPE)
         else:
             self.click(*RunTmnlStatisticsLocators.CONS_TYPE)
-            locator = self.get_select_locator(RunTmnlStatisticsLocators.CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                RunTmnlStatisticsLocators.CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*RunTmnlStatisticsLocators.CONS_TYPE)
 
@@ -41,7 +42,8 @@ class RunTmnlStatisticsPage(Page):
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_CONS_TYPE)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_CONS_TYPE)
-            locator = self.get_select_locator(RunTmnlStatisticsLocators.DETAIL_CONS_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                RunTmnlStatisticsLocators.DETAIL_CONS_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*RunTmnlStatisticsLocators.DETAIL_CONS_TYPE)
 
@@ -51,7 +53,8 @@ class RunTmnlStatisticsPage(Page):
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_TMNL_TYPE)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_TYPE)
-            locator = self.get_select_locator(RunTmnlStatisticsLocators.DETAIL_TMNL_TYPE_VALUE, index)
+            locator = self.get_select_locator(
+                RunTmnlStatisticsLocators.DETAIL_TMNL_TYPE_VALUE, index)
             self.click(*locator)
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_TYPE)
 
@@ -61,7 +64,8 @@ class RunTmnlStatisticsPage(Page):
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_TMNL_PROTOCOL)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_PROTOCOL)
-            locator = self.get_select_locator(RunTmnlStatisticsLocators.DETAIL_TMNL_PROTOCOL_VALUE, index)
+            locator = self.get_select_locator(
+                RunTmnlStatisticsLocators.DETAIL_TMNL_PROTOCOL_VALUE, index)
             self.click(*locator)
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_PROTOCOL)
 
@@ -71,7 +75,8 @@ class RunTmnlStatisticsPage(Page):
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_TMNL_WAY)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_WAY)
-            locator = self.get_select_locator(RunTmnlStatisticsLocators.DETAIL_TMNL_WAY_VALUE, index)
+            locator = self.get_select_locator(
+                RunTmnlStatisticsLocators.DETAIL_TMNL_WAY_VALUE, index)
             self.click(*locator)
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_WAY)
 
@@ -81,7 +86,8 @@ class RunTmnlStatisticsPage(Page):
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_TMNL_FACTORY)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_FACTORY)
-            locator = self.get_select_locator(RunTmnlStatisticsLocators.DETAIL_TMNL_FACTORY_VALUE, index)
+            locator = self.get_select_locator(
+                RunTmnlStatisticsLocators.DETAIL_TMNL_FACTORY_VALUE, index)
             self.click(*locator)
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_FACTORY)
 
@@ -91,7 +97,8 @@ class RunTmnlStatisticsPage(Page):
             self._find_element(*RunTmnlStatisticsLocators.DETAIL_TMNL_STATUS)
         else:
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_STATUS)
-            locator = self.get_select_locator(RunTmnlStatisticsLocators.DETAIL_TMNL_STATUS_VALUE, index)
+            locator = self.get_select_locator(
+                RunTmnlStatisticsLocators.DETAIL_TMNL_STATUS_VALUE, index)
             self.click(*locator)
             self.click(*RunTmnlStatisticsLocators.DETAIL_TMNL_STATUS)
 

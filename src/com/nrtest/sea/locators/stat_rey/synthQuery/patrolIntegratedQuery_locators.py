@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -20,13 +20,16 @@ class PatrolIntegratedQueryLocators:
     BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
     # 巡检仪运行指标明细
     # 日期
-    DETAIL_DATE = (By.XPATH, '(//label[contains(text(),"日期")]/../div/div/input)[2]')
+    DETAIL_DATE = (
+        By.XPATH, '(//label[contains(text(),"日期")]/../div/div/input)[2]')
     # 指标
     DETAIL_INDEX = (By.XPATH, '//label[contains(text(),"指标")]/../div/div/img')
     # 指标→值
-    DETAIL_INDEX_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    DETAIL_INDEX_VALUE = (
+        By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 终端地址
-    DETAIL_TMNL_ADDR = (By.XPATH, '//label[contains(text(),"终端地址")]/../div/input')
+    DETAIL_TMNL_ADDR = (
+        By.XPATH, '//label[contains(text(),"终端地址")]/../div/input')
     # 查询按钮
     BTN_DETAIL_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')
 

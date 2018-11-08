@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -25,25 +25,29 @@ class RemoteBroadChkClockPage(Page):
     # 终端类型--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*RemoteBroadChkClockLocators.TMNL_TYPE_SEL)
-        locator = self.get_select_locator(RemoteBroadChkClockLocators.TMNL_TYPE, name)
+        locator = self.get_select_locator(
+            RemoteBroadChkClockLocators.TMNL_TYPE, name)
         self.click(*locator)
 
     # 终端厂家--打开并选择
     def inputRSel_tmnl_fac(self, name):
         self.click(*RemoteBroadChkClockLocators.TMNL_FAC_SEL)
-        locator = self.get_select_locator(RemoteBroadChkClockLocators.TMNL_FAC, name)
+        locator = self.get_select_locator(
+            RemoteBroadChkClockLocators.TMNL_FAC, name)
         self.click(*locator)
 
     # 终端规约--打开并选择
     def inputRSel_tmnl_protocol(self, name):
         self.click(*RemoteBroadChkClockLocators.TMNL_PROTOCOL_SEL)
-        locator = self.get_select_locator(RemoteBroadChkClockLocators.TMNL_PROTOCOL, name)
+        locator = self.get_select_locator(
+            RemoteBroadChkClockLocators.TMNL_PROTOCOL, name)
         self.click(*locator)
 
     # 设置状态--打开并选择
     def inputRSel_set_status(self, name):
         self.click(*RemoteBroadChkClockLocators.SET_STATUS_SEL)
-        locator = self.get_select_locator(RemoteBroadChkClockLocators.SET_STATUS, name)
+        locator = self.get_select_locator(
+            RemoteBroadChkClockLocators.SET_STATUS, name)
         self.click(*locator)
 
     # 点击查询

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 邵茜
@@ -7,8 +7,9 @@
 @time: 2018/8/8 13:44
 @desc:
 """
-from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.stat_rey.dataAnalyse.dataanalyse_rank_locators import DataAnalyseRankLocators
+
+from com.nrtest.common.base_page import Page
 
 
 class DataAnalyseRankPage(Page):
@@ -54,5 +55,6 @@ class DataAnalyseRankPage(Page):
     # 用户类型
     def inputRSel_cons_type(self, index):
         self.click(*DataAnalyseRankLocators.DROP_DOWN)
-        locator = self.get_select_locator(DataAnalyseRankLocators.CONS_TYPE_SPECIAL, index)
+        locator = self.get_select_locator(
+            DataAnalyseRankLocators.CONS_TYPE_SPECIAL, index)
         self.click(*locator)

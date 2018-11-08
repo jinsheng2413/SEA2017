@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -29,7 +29,8 @@ class GisPanoramaDisplayLocators:
     QRY_QUERY_TIME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'查询时间')]/../../div[1]/div[1]//input")
     #
-    QRY_ = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'')]/../../div[1]/div[1]//input")
+    QRY_ = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'')]/../../div[1]/div[1]//input")
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

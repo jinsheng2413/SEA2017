@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -19,13 +19,13 @@ from com.nrtest.sea.task.archivesManage import *
 class TestarchivesMaintain_factory(unittest.TestCase, ArchivesMaintain_factory_pages):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = archivesMaintain_factory()
         cls.orl = Oracle()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         cls.driver.quit()
 
     def setUp(self):
@@ -45,7 +45,8 @@ class TestarchivesMaintain_factory(unittest.TestCase, ArchivesMaintain_factory_p
 
     # 电压等级
     def test_amf_eleGrade(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom, ArchivesMaintain.para_test_amf_eleGrade)
+        lip = self.orl.queryAll(DataCommon.sql_commom,
+                                ArchivesMaintain.para_test_amf_eleGrade)
         self.inputSel_eleGrade(lip[0][0])
         self.btn_factoryQry()
         self.sleep_time(2)

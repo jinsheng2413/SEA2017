@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -28,13 +28,14 @@ class TestLoadRateStatic(unittest.TestCase, ThreeUnbalanceAnalyStaticPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_ThreeUnbalanceAnaly)
-        cls.driver.execute_script(ThreeUnbalanceAnalyStaticLocators.QUERY_DATE_JS)
+        cls.driver.execute_script(
+            ThreeUnbalanceAnalyStaticLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         # cls.refreshPage(cls)
 
@@ -71,7 +72,8 @@ class TestLoadRateStatic(unittest.TestCase, ThreeUnbalanceAnalyStaticPage):
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ThreeUnbalanceAnalyStaticLocators.TABLE_DATA)
+        result = self.assert_context(
+            *ThreeUnbalanceAnalyStaticLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_ThreeUnbalanceAnaly))

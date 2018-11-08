@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -22,10 +22,10 @@ class CommunicationModuleBaseInformationMantainLocators:
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'东软')]/../div[contains(text(),'%s')]")
     # 模块属性标识
     QRY_MODULE_ATTRBUTE_SIGN = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'模块属性标识')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'模块属性标识')]/../../div[1]/div[1]//input")
     # 模块类型
     QRY_MODULE_TYPE = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'模块类型')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'模块类型')]/../../div[1]/div[1]//input")
     QRY_MODULE_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'窄带载波')]/../div[contains(text(),'%s')]")
 
@@ -54,7 +54,7 @@ class ModuleAttributeRelationshipMantainLocators:
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'东方电子')]/../div[contains(text(),'%s')]")
     # 终端地址
     QRY_TMNL_ADDR = (
-    By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端地址')]/../../div[1]/div[1]//input")
+        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端地址')]/../../div[1]/div[1]//input")
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

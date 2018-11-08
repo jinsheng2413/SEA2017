@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -15,16 +15,19 @@ class ArchivesAnalysisOfAnomaly_count_pages(Page):
     # 【菜单】
     # 档案异常明细
     def btn_menu_archives_anomals_detail(self):
-        self.click(*ArchivesAnalysisOfAnomaly_count_locators.BTN_MENU_ARCHIVES_ABNOLMAL_DETAIL)
+        self.click(
+            *ArchivesAnalysisOfAnomaly_count_locators.BTN_MENU_ARCHIVES_ABNOLMAL_DETAIL)
 
     # 档案异常统计
     def btn_menu_archives_anomals_count(self):
-        self.click(*ArchivesAnalysisOfAnomaly_count_locators.BTN_MENU_ARCHIVES_ABNOLMAL_COUNT)
+        self.click(
+            *ArchivesAnalysisOfAnomaly_count_locators.BTN_MENU_ARCHIVES_ABNOLMAL_COUNT)
 
     # 用户类型
     def inputSel_user_cata(self, index):
         self.click(*ArchivesAnalysisOfAnomaly_count_locators.QRY_USER_CATA)
-        locator = self.get_select_locator(ArchivesAnalysisOfAnomaly_count_locators.QRY_USER_CATA_VALUE, index)
+        locator = self.get_select_locator(
+            ArchivesAnalysisOfAnomaly_count_locators.QRY_USER_CATA_VALUE, index)
         self.click(*locator)
 
     # 日期
@@ -39,15 +42,18 @@ class ArchivesAnalysisOfAnomaly_count_pages(Page):
 
     # 用户档案异常数
     def btn_user_archives_anomalaum(self):
-        self.click(*ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE_USER_ARCHIVES_ANOMALS_NUM)
+        self.click(
+            *ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE_USER_ARCHIVES_ANOMALS_NUM)
 
     # 电表档案异常数
     def btn_meter_archives_anomalaum(self):
-        self.click(*ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE_METER_ARCHIVES_ANOMALS_NUM)
+        self.click(
+            *ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE_METER_ARCHIVES_ANOMALS_NUM)
 
     # 终端档案异常数
     def btn_termianal_archives_anomalaum(self):
-        self.click(*ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE_TERMIANAL_ARCHIVES_ANOMALS_NUM)
+        self.click(
+            *ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE_TERMIANAL_ARCHIVES_ANOMALS_NUM)
 
 
 class ArchivesAnalysisOfAnomaly_detail_pages(Page):
@@ -57,7 +63,8 @@ class ArchivesAnalysisOfAnomaly_detail_pages(Page):
 
     # 档案异常分析
     def btn_menu_anchives_al(self):
-        self.click(*ArchivesAnalysisOfAnomaly_detail_locators.BTN_MENU_ARCHIVES_ABNOLMAL_AL)
+        self.click(
+            *ArchivesAnalysisOfAnomaly_detail_locators.BTN_MENU_ARCHIVES_ABNOLMAL_AL)
 
     # 确定
     def btn_confirm(self):
@@ -65,16 +72,19 @@ class ArchivesAnalysisOfAnomaly_detail_pages(Page):
 
     # 档案异常明细
     def btn_menu_archives_anomals_detail(self):
-        self.click(*ArchivesAnalysisOfAnomaly_detail_locators.BTN_MENU_ARCHIVES_ABNOLMAL_DETAIL)
+        self.click(
+            *ArchivesAnalysisOfAnomaly_detail_locators.BTN_MENU_ARCHIVES_ABNOLMAL_DETAIL)
 
     # 档案异常统计
     def btn_menu_archives_anomals_count(self):
-        self.click(*ArchivesAnalysisOfAnomaly_detail_locators.BTN_MENU_ARCHIVES_ABNOLMAL_COUNT)
+        self.click(
+            *ArchivesAnalysisOfAnomaly_detail_locators.BTN_MENU_ARCHIVES_ABNOLMAL_COUNT)
 
     # 用户类型
     def inputSel_user_cata(self, index):
         self.click(*ArchivesAnalysisOfAnomaly_detail_locators.QRY_USER_CATA)
-        locator = self.get_select_locator(ArchivesAnalysisOfAnomaly_detail_locators.QRY_USER_CATA_VALUE, index)
+        locator = self.get_select_locator(
+            ArchivesAnalysisOfAnomaly_detail_locators.QRY_USER_CATA_VALUE, index)
         self.click(*locator)
 
     # 日期
@@ -84,7 +94,8 @@ class ArchivesAnalysisOfAnomaly_detail_pages(Page):
     # 档案类型
     def inputRSel_archives_cata(self, index):
         self.click(*ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA)
-        locator = self.get_select_locator(ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA_VALUE, index)
+        locator = self.get_select_locator(
+            ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA_VALUE, index)
         self.click(*locator)
 
     # 【操作区】
@@ -95,11 +106,13 @@ class ArchivesAnalysisOfAnomaly_detail_pages(Page):
 
     # 用户编号
     def btn_user_no_detail(self):
-        self.click(*ArchivesAnalysisOfAnomaly_detail_locators.TAB_ONE_USER_NO_DETAIL)
+        self.click(
+            *ArchivesAnalysisOfAnomaly_detail_locators.TAB_ONE_USER_NO_DETAIL)
 
     # 终端资产号
     def btn_terminal_asset_no_detail(self):
-        self.click(*ArchivesAnalysisOfAnomaly_detail_locators.TAB_ONE_TERMINAL_ASSET_NO_DETAIL)
+        self.click(
+            *ArchivesAnalysisOfAnomaly_detail_locators.TAB_ONE_TERMINAL_ASSET_NO_DETAIL)
 
     # 异常明细
     def btnAnomalsDetail(self):

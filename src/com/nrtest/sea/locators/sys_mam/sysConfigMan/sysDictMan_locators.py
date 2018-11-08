@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -15,19 +15,26 @@ from selenium.webdriver.common.by import By
 class SysDictManLocators:
     # 【查询条件】
     # 分类名称
-    CATALOG_NAME = (By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'分类名称')]/../div/input")
+    CATALOG_NAME = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'分类名称')]/../div/input")
     # 生效日期
-    START_DATE = (By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'生效日期')]/../div/div/input")
+    START_DATE = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'生效日期')]/../div/div/input")
     # 失效日期
-    END_DATE = (By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'失效日期')]/../div/div/input")
+    END_DATE = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'失效日期')]/../div/div/input")
     # 维护类型-下拉框
-    EDIT_TYPE_SEL = (By.XPATH, '//div[@class=\"x-form-item \"]//*[contains(text(),"维护类型")]/../div/div/img')
+    EDIT_TYPE_SEL = (
+        By.XPATH, '//div[@class=\"x-form-item \"]//*[contains(text(),"维护类型")]/../div/div/img')
     # 维护类型
-    EDIT_TYPE = (By.XPATH, '(//div[@class =\"x-layer x-combo-list  x-resizable-pinned\"])[1]//*[contains(text(),"%s")]')
+    EDIT_TYPE = (
+        By.XPATH, '(//div[@class =\"x-layer x-combo-list  x-resizable-pinned\"])[1]//*[contains(text(),"%s")]')
     # 维护人员
-    EDITOR = (By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'维护人员')]/../div/input")
+    EDITOR = (
+        By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'维护人员')]/../div/input")
     # 数据来源-下拉框
-    DATA_SOURCE_SEL = (By.XPATH, '//div[@class=\"x-form-item \"]//*[contains(text(),"数据来源")]/../div/div/img')
+    DATA_SOURCE_SEL = (
+        By.XPATH, '//div[@class=\"x-form-item \"]//*[contains(text(),"数据来源")]/../div/div/img')
     # 数据来源
     DATA_SOURCE = (
         By.XPATH, '(//div[@class =\"x-layer x-combo-list  x-resizable-pinned\"])[2]//*[contains(text(),"%s")]')

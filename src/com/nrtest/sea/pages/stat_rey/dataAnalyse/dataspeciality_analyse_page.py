@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 邵茜
@@ -8,7 +8,8 @@
 @desc:
 """
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.stat_rey.dataAnalyse.dataspeciality_analyse_locators pimport DataSpecialityAnalyseLocators
+
+DataSpecialityAnalyseLocators
 
 
 class DataSpecialityAnalysePage(Page):

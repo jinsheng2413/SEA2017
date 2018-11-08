@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -108,7 +108,8 @@ class XlsRw(object):
         for rownumber in range(1, t.r_row + 1):
             app = {}
             for i in range((len(t.read_row_out(rownumber)))):
-                app.setdefault(t.read_row_out(1)[i], t.read_row_out(rownumber)[i])
+                app.setdefault(t.read_row_out(
+                    1)[i], t.read_row_out(rownumber)[i])
 
             lister.append(app)
         del lister[0]

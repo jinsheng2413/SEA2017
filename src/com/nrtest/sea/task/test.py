@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
@@ -16,11 +16,11 @@ fobj = open('C:/Users/Administrator/Desktop/接口/tte.txt', 'r')
 i = 0
 for eachline in fobj:
     i = i + 1
-    path = "D:/pdg/"
+    path = 'D:/pdg/'
     # path存放图片的路径
-    res = os.path.isfile(path + str(i) + ".jpg")
+    res = os.path.isfile(path + str(i) + '.jpg')
     if res is True:
-        print(path + str(i) + ".jpg " + "已经存在")
+        print(path + str(i) + '.jpg ' + '已经存在')
         continue
     name = i
     r = requests.get(eachline)  # create HTTP response object

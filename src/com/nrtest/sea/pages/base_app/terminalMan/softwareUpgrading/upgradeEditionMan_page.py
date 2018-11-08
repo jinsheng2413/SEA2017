@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
@@ -19,19 +19,22 @@ class UpgradeEditionManPage(Page):
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
         self.click(*UpgradeEditionManLocators.TMNL_FACTORY)
-        locator = self.get_select_locator(UpgradeEditionManLocators.TMNL_FACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.TMNL_FACTORY_VALUE, index)
         self.click(*locator)
 
     # 终端类型
     def inputSel_tmnl_type(self, index):
         self.click(*UpgradeEditionManLocators.TMNL_TYPE)
-        locator = self.get_select_locator(UpgradeEditionManLocators.TMNL_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.TMNL_TYPE_VALUE, index)
         self.click(*locator)
 
     # 终端用途
     def inputSel_tmnl_purpose(self, index):
         self.click(*UpgradeEditionManLocators.TMNL_PURPOSE)
-        locator = self.get_select_locator(UpgradeEditionManLocators.TMNL_PURPOSE_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.TMNL_PURPOSE_VALUE, index)
         self.click(*locator)
 
     # # 软件版本号
@@ -47,25 +50,29 @@ class UpgradeEditionManPage(Page):
     # 终端厂家
     def inputSel_upgrade_tmnl_factory(self, index):
         self.click(*UpgradeEditionManLocators.UPGRADE_TMNL_FACTORY)
-        locator = self.get_select_locator(UpgradeEditionManLocators.UPGRADE_TMNL_FACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.UPGRADE_TMNL_FACTORY_VALUE, index)
         self.click(*locator)
 
     # 终端类型
     def inputSel_upgrade_tmnl_type(self, index):
         self.click(*UpgradeEditionManLocators.UPGRADE_TMNL_TYPE)
-        locator = self.get_select_locator(UpgradeEditionManLocators.UPGRADE_TMNL_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.UPGRADE_TMNL_TYPE_VALUE, index)
         self.click(*locator)
 
     # 终端用途
     def inputSel_upgrade_tmnl_purpose(self, index):
         self.click(*UpgradeEditionManLocators.UPGRADE_TMNL_PURPOSE)
-        locator = self.get_select_locator(UpgradeEditionManLocators.UPGRADE_TMNL_PURPOSE_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.UPGRADE_TMNL_PURPOSE_VALUE, index)
         self.click(*locator)
 
     # 申请状态
     def inputSel_upgrade_apply_status(self, index):
         self.click(*UpgradeEditionManLocators.UPGRADE_APPLY_STATUS)
-        locator = self.get_select_locator(UpgradeEditionManLocators.UPGRADE_APPLY_STATUS_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.UPGRADE_APPLY_STATUS_VALUE, index)
         self.click(*locator)
 
     # 申请开始日期
@@ -86,25 +93,29 @@ class UpgradeEditionManPage(Page):
     # 终端厂家
     def inputSel_edition_tmnl_factory(self, index):
         self.click(*UpgradeEditionManLocators.EDITION_TMNL_FACTORY)
-        locator = self.get_select_locator(UpgradeEditionManLocators.EDITION_TMNL_FACTORY_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.EDITION_TMNL_FACTORY_VALUE, index)
         self.click(*locator)
 
     # 终端类型
     def inputSel_edition_tmnl_type(self, index):
         self.click(*UpgradeEditionManLocators.EDITION_TMNL_TYPE)
-        locator = self.get_select_locator(UpgradeEditionManLocators.EDITION_TMNL_TYPE_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.EDITION_TMNL_TYPE_VALUE, index)
         self.click(*locator)
 
     # 终端用途
     def inputSel_edition_tmnl_purpose(self, index):
         self.click(*UpgradeEditionManLocators.EDITION_TMNL_PURPOSE)
-        locator = self.get_select_locator(UpgradeEditionManLocators.EDITION_TMNL_PURPOSE_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.EDITION_TMNL_PURPOSE_VALUE, index)
         self.click(*locator)
 
     # 终端规约
     def inputSel_edition_tmnl_protocol(self, index):
         self.click(*UpgradeEditionManLocators.EDITION_TMNL_PROTOCOL)
-        locator = self.get_select_locator(UpgradeEditionManLocators.EDITION_TMNL_PROTOCOL_VALUE, index)
+        locator = self.get_select_locator(
+            UpgradeEditionManLocators.EDITION_TMNL_PROTOCOL_VALUE, index)
         self.click(*locator)
 
     # 终端地址

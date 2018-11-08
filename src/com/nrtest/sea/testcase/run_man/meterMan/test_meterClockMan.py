@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 吴竹筠
@@ -7,17 +7,16 @@
 @time: 2018/11/2 0002 14:12
 @desc:
 """
+import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.meterMan.meterClockMan_data import MeterClockMan_data
 from com.nrtest.sea.pages.run_man.meterMan.meterClockMan_pages import MeterClockManPage, MeterClockManLocators
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-import unittest
-from com.nrtest.common.data_access import DataAccess
-
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
 
 
 # 运行管理-电能表管理-电能表状态查询
@@ -26,15 +25,15 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(MeterClockMan_data.MeterClockMan_para, True)
         sleep(2)
-        cls.exec_script(cls,MeterClockManLocators.START_DATE_JS)
+        cls.exec_script(cls, MeterClockManLocators.START_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 
@@ -61,7 +60,7 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         self.DisplayTreeMenu()
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         self.inputSel_eventtype(para['EVENT_TYPE'])
         self.inputSel_tmnlfactory(para['TMNL_FACORY'])
@@ -70,7 +69,6 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
         self.inputStr_userno(para['USER_NO'])
         self.inputStr_meterno(para['METER_NO'])
         self.inputStr_date(para['DATE'])
-
 
         self.btn_qry()
         self.sleep_time(2)
@@ -82,6 +80,3 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
     @data(*DataAccess.getCaseData(MeterClockMan_data.MeterClockMan_para))
     def test_query(self, para):
         self.query(para)
-
-
-

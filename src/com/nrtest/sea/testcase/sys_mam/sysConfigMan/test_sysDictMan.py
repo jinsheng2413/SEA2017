@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 陈越峰
@@ -24,14 +24,14 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+        print('开始执行')
         cls.driver = openMenu(SysConfigManData.para_SysDictMan)
         cls.driver.execute_script(SysDictManLocators.START_DATE_JS)
         cls.driver.execute_script(SysDictManLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 刷新浏览器
         cls.refreshPage(cls)
 

@@ -703,9 +703,12 @@ class Page():
         :return:
         """
         try:
-            js = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + \
+            js = "var elem = document.getElementsByClassName('xst')[0];" + \
                  'elem.parentNode.removeChild(elem);'
             self.exec_script(js)
+            js2 = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + \
+                 'elem.parentNode.removeChild(elem);'
+            self.exec_script(js2)
         except NoSuchElementException:
             print('删除下拉框的html标签失败')
 
@@ -724,7 +727,8 @@ class Page():
                         i)
                     self.driver.find_element(*(By.XPATH, xp)).click()
             elif ',' not in CheckBoxName:
-                self.driver.find_element(*(By.XPATH, CheckBoxName)).click()
+                    xpa = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(CheckBoxName)
+                    self.driver.find_element(*(By.XPATH,xpa)).click()
             else:
                 print('输入格式不正确')
         except BaseException as e:

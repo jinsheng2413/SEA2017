@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 
 """
 @author: 郭春彪
@@ -134,30 +134,21 @@ class MenuPage(Page):
         l = len(items)
 
         if l == 2:
-            sleep(1.5)
             self.btn_plus(1)
-            sleep(1.5)
             self.btn_select_company(int(items[1]))
             print(int(items[1]))
         elif l in (3, 4):
-            sleep(1.5)
             self.btn_plus(1)
             if int(items[1]) == 5:
-                sleep(1.5)
                 self.btn_plus(1)
             else:
-                sleep(1.5)
                 self.btn_company_plus(items[1])
             if l == 3:
-                sleep(1.5)
                 self.btn_select_county(int(items[2]) + 1)
             else:
-                sleep(1.5)
                 self.btn_company_plus(int(items[2]) + int(items[1]))
-                sleep(1.5)
                 self.btn_select_user(int(items[3]) + 1)
         elif l == 1:
-            sleep(1.5)
             self.btn_select_province()
 
         return self.driver
@@ -176,24 +167,15 @@ class MenuPage(Page):
 
     def clickAllMenu(self):
         menus = DataAccess.getAllMenu()
-        # menus = [('9992G200', '统计数据', 'advAppIcon;ADI;统计数据') ]
+        # menus = [('999246000', '台区线损监测', 'advAppIcon;线损分析;线损统计分析;台区线损监测')]
         l = len(menus)
         for i in range(len(menus)):
             try:
                 menu = menus[i]
                 print('即将定位该菜单：', menu)
-                print('step1')
                 self.click_menu_by_name(menu[2], True)
-                print('step2')
                 sleep(1)
-                if self.check_element_exists(*MenuLocators.TIMEOUT_DLG):
-                    print('step3-1')
-                    self.click(*MenuLocators.CLOSE_DLG)
-                    print('step3-2')
-                else:
-                    print('step4-1')
-                    self.closePages(menu[1])
-                    print('step4-2')
+                self.closePages(menu[1])
             except Exception as e:
                 print('该菜单定位报错：', menu, e)
 

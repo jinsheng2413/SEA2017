@@ -20,12 +20,11 @@ class SpecTranRunQueryPage(Page):
     def inputStr_date(self, value):
         self.input(value, *SpecTranRunQueryLocators.QRY_DATE)
 
-    # 异常状态
+    # 统计口径
     def inputSel_statWay(self, index):
         self.click(*SpecTranRunQueryLocators.QRY_STAT_WAY)
         locator = self.get_select_locator(SpecTranRunQueryLocators.QRY_STAT_WAY_VALUE, index)
         self.click(*locator)
-        self.delDropdownBoxHtml()
 
     # 查询
     def btn_qry(self):

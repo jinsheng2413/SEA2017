@@ -7,6 +7,8 @@
 @time: 2018/9/10 0010 10:59
 @desc:
 """
+from time import sleep
+
 from selenium.webdriver.common.by import By
 
 from com.nrtest.common import global_drv
@@ -50,4 +52,6 @@ def clickTabPage(name):
 
 
 if __name__ == '__main__':
-    pass
+    openMenu('99914800')
+    sleep(3)
+    openLeftTree('134010204')

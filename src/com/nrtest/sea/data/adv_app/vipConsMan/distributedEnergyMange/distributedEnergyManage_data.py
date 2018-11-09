@@ -12,3 +12,5 @@
 class DistributedEnergyMange_data:
     # 高级应用--》重点用户检测--》分布式电源管理--》分布式电源接入统计
     DistributedEnergyStat_para = '99926110'
+    # 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测
+    DistributedEnergyMonitor_para = '99926120'

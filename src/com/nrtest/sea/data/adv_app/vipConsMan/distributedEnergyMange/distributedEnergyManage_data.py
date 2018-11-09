@@ -16,3 +16,5 @@ class DistributedEnergyMange_data:
     DistributedEnergyMonitor_para = '99926120'
     # 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量
     DistributedEnergyQuality_para = '99926170'
+    # 高级应用→重点用户监测→分布式电源管理→分布式电源异常分析
+    DistributedEnergyAnomalyAnalysis_para = '99926140'

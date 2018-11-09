@@ -1,0 +1,12 @@
+# -*- coding:utf-8 -*-
+
+"""
+@author: 郭春彪
+@license: (C) Copyright 2018, Nari.
+@file: runSituationCount_data.py
+@time: 2018/11/9 0009 9:11
+@desc:
+"""
+class RunSituationCount_data:
+    #运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
+    simInstallStat_para = '99933310'

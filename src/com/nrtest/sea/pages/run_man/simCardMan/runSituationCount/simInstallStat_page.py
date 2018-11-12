@@ -10,7 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
 from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.simInstallStat_locators import SimInstallStatLocators
 
 

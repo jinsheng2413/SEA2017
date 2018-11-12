@@ -93,7 +93,7 @@ from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # create a logger instance
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
-
+from selenium  import webdriver
 logger = Logger(logger='Page').getlog()
 
 
@@ -725,9 +725,11 @@ class Page():
                 for i in lis:
                     xp = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
                         i)
+                    self.commonWait((By.XPATH, xp))
                     self.driver.find_element(*(By.XPATH, xp)).click()
             elif ',' not in CheckBoxName:
                     xpa = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(CheckBoxName)
+                    self.commonWait((By.XPATH, xpa))
                     self.driver.find_element(*(By.XPATH,xpa)).click()
             else:
                 print('输入格式不正确')
@@ -735,9 +737,18 @@ class Page():
             print('点击复选框失败')
             print(e)
 
+    def clickAlert(self):
+        self.driver.switch_to.alert.accept()
+    def clickCancel(self):
+        self.driver.switch_to.alert.dismiss()
+
+    def commonWait(self,locator):
+        WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(locator))
+
 
 if __name__ == '__main__':
-    # dr = webdriver.Chrome()
+    dr = webdriver.Chrome()
+    dr.switch_to.alert.dismiss()
     #
     # p = Page(dr)
     # # jjjjjj

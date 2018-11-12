@@ -77,7 +77,7 @@ class TestDemo(unittest.TestCase, FaultDealQualityStaticPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(OperOrganManData.para_FaultDealQualityEval))
+    @data(*DataAccess.getCaseData(OperOrganManData.para_FaultDealQualityEval, '故障处理质量统计'))
     def test_query(self, para):
         self.query(para)
 

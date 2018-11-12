@@ -14,3 +14,5 @@ class UnControlPlant:
     para_unControlPlantGatherMon = '99926220'
     para_unControlPlantGatherMon_tab_count = '非统调电厂采集监测统计'
     para_unControlPlantGatherMon_tab_detail = '非统调电厂采集监测明细'
+    # 高级应用→重点用户监测→非统调电厂管理→非统调电厂接入统计
+    UnControlPlantStat_para = '99926210'

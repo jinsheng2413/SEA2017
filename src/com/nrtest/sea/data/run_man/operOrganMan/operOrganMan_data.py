@@ -14,5 +14,9 @@ class OperOrganManData:
     para_FaultDealQualityEval = '99934310'
     # 运行管理→采集运维平台→采集终端质量评价
     para_CollTmnlQualityEval = '99934320'
-    para_TmnlQualityEvalDetail = '终端质量评价明细'
     para_TmnlQualityEvalStatic = '终端质量评价统计'
+    para_TmnlQualityEvalDetail = '终端质量评价明细'
+    # 运行管理→采集运维平台→电能表质量评价
+    para_MeterQualityEval = '99934330'
+    para_MeterQualityEvalStatic = '电表质量评价统计'
+    para_MeterQualityEvalDetail = '电表质量评价明细'

@@ -34,7 +34,7 @@ class TmnlQualityEvalStaticPage(Page):
         self.input(value, *TmnlQualityEvalStaticLocators.QUERY_DATE)
 
     # 终端厂家--打开并选择
-    def inputRSel_cons_type(self, name):
+    def inputRSel_tmnl_fac(self, name):
         self.click(*TmnlQualityEvalStaticLocators.TMNL_FAC_SEL)
         locator = self.get_select_locator(
             TmnlQualityEvalStaticLocators.TMNL_FAC, name)

@@ -4,7 +4,7 @@
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: test_Tmnl.py
-@time: 2018/11/12 9:20
+@time: 2018/11/13 9:20
 @desc:
 """
 import unittest
@@ -14,25 +14,25 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
-from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_locators import \
-    TmnlQualityEvalStaticLocators
-from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_page import \
-    TmnlQualityEvalStaticPage
+from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.meterQualityEval_locators import \
+    MeterQualityEvalStaticLocators
+from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.meterQualityEval_page import \
+    MeterQualityEvalStaticPage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理→采集运维平台→采集终端质量评价
-# 终端质量评价统计
+# 电表质量评价统计
 @ddt
-class TestDemo(unittest.TestCase, TmnlQualityEvalStaticPage):
+class TestDemo(unittest.TestCase, MeterQualityEvalStaticPage):
 
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(OperOrganManData.para_CollTmnlQualityEval, True)
+        cls.driver = openMenu(OperOrganManData.para_MeterQualityEval, True)
         sleep(2)
-        cls.driver.execute_script(TmnlQualityEvalStaticLocators.QUERY_DATE_JS)
+        cls.driver.execute_script(MeterQualityEvalStaticLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -70,17 +70,17 @@ class TestDemo(unittest.TestCase, TmnlQualityEvalStaticPage):
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
         # 终端厂家
-        self.inputRSel_tmnl_fac(para['TMNL_FAC'])
+        self.inputRSel_meter_fac(para['METER_FAC'])
 
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*TmnlQualityEvalStaticLocators.TABLE_DATA)
+        result = self.assert_context(*MeterQualityEvalStaticLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
     @data(
-        *DataAccess.getCaseData(OperOrganManData.para_CollTmnlQualityEval, OperOrganManData.para_TmnlQualityEvalStatic))
+        *DataAccess.getCaseData(OperOrganManData.para_MeterQualityEval, OperOrganManData.para_MeterQualityEvalStatic))
     def test_query(self, para):
         self.query(para)
 

@@ -10,7 +10,7 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.collegeywplat.acquistionFaultHandling.faultHandler_locators import \
+from com.nrtest.sea.locators.run_man.collegeywplat.acquistionFaultHandling.lowFaultHandler_locators import \
     LowFaultHandlerLocators,LowFaultFeedBackLocators
 
 

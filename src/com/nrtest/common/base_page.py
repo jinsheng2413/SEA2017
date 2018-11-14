@@ -93,7 +93,8 @@ from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # create a logger instance
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
-from selenium  import webdriver
+from selenium import webdriver
+
 logger = Logger(logger='Page').getlog()
 
 
@@ -483,8 +484,8 @@ class Page():
             element = self.driver.find_elements(*locator)
             return element
 
-        except NameError as e:
-            logger.info('组员查找错误')
+        except NoSuchElementException:
+            logger.info('显示区未查询到结果')
 
     def wait(self):
         """
@@ -707,7 +708,7 @@ class Page():
                  'elem.parentNode.removeChild(elem);'
             self.exec_script(js)
             js2 = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + \
-                 'elem.parentNode.removeChild(elem);'
+                  'elem.parentNode.removeChild(elem);'
             self.exec_script(js2)
         except NoSuchElementException:
             print('删除下拉框的html标签失败')
@@ -728,9 +729,10 @@ class Page():
                     self.commonWait((By.XPATH, xp))
                     self.driver.find_element(*(By.XPATH, xp)).click()
             elif ',' not in CheckBoxName:
-                    xpa = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(CheckBoxName)
-                    self.commonWait((By.XPATH, xpa))
-                    self.driver.find_element(*(By.XPATH,xpa)).click()
+                xpa = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
+                    CheckBoxName)
+                self.commonWait((By.XPATH, xpa))
+                self.driver.find_element(*(By.XPATH, xpa)).click()
             else:
                 print('输入格式不正确')
         except BaseException as e:
@@ -739,16 +741,109 @@ class Page():
 
     def clickAlert(self):
         self.driver.switch_to.alert.accept()
+
     def clickCancel(self):
         self.driver.switch_to.alert.dismiss()
 
-    def commonWait(self,locator):
-        WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(locator))
+    def commonWait(self, locator):
+        '''
+        显示等待
+        :param locator:
+        :return:
+        '''
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator))
+
+    def AssertLine(self,value):
+        xp ='// *[text() =\'{}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]/ancestor::div[@class=\"x-grid3-viewport\"]//*[@class=\"x-grid3-header\"]//td'.format(value)
+        el = self.find_elements_num(*(By.XPATH,xp))
+        l = 0
+        for i in el:
+            l += 1
+            if value in i.text:
+                dl = l -1
+                break
+        return  dl
+
+
+    def AssertValue(self,AssertValues):
+        """
+        AssertValues ='手机,外包队伍名称,test'
+        :param AssertValues:
+        以，为分隔符，第一位是显示区唯一列明，第二位是要校验值的列明，第三位是校验值
+        :return:
+        """
+        if ',' not in AssertValues:
+            print('error：输入的逗号是中文的')
+        try:
+
+            if ',' in AssertValues:
+                va = AssertValues.split(',')
+                val = '// *[text() =\'{}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]'.format(
+                    va[0])
+                self.commonWait((By.XPATH, val))
+                num = len(self.find_elements_num(*(By.XPATH, val)))
+                num2 = 0
+                select = None
+                try:
+                    sel = '//*[@class=\"x-grid3-row-checker\"]'
+
+                    select = self.assert_context(*(By.XPATH, sel))
+                except:
+                    select = False
+                if select == True:
+                    gl = self.AssertLine(va[1])
+                    for i in range(1, num + 1):
+                        val2 = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
+                            va[0], i, gl + 1, va[2])
+                        try:
+                            hl = self.assert_context(*(By.XPATH, val2))
+                            if hl == True:
+                                num2 += 1
+                            else:
+                                print('第{0}行，{1}列显示的值与{2}不一致'.format(i, va[1],va[2]))
+                                break
+                        except:
+                            print('校验失败')
+
+                    if num2 == num:
+                        return True
+                    else:
+                        return False
+
+                elif select == False:
+                    gl = self.AssertLine(va[1])
+                    for i in range(1, num + 1):
+                        val2 = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
+                            va[0], i, gl+1, va[2])
+                        try:
+                            hl = self.assert_context(*(By.XPATH, val2))
+                            if hl == True:
+                                num2 += 1
+                            else:
+                                print('第{0}行，{1}列显示的值与{2}不一致'.format(i, va[1], va[2]))
+                                break
+                        except:
+                            print('校验失败')
+
+                    if num2 == num:
+                        return True
+                    else:
+                        return False
+
+
+
+
+            elif ',' not in AssertValues:
+
+                print('显示区检验值格式输入不正确')
+        except:
+            print('校验失败')
 
 
 if __name__ == '__main__':
     dr = webdriver.Chrome()
-    dr.switch_to.alert.dismiss()
+    el = dr.find_element(*(By.XPATH,''))
+    el.text
     #
     # p = Page(dr)
     # # jjjjjj

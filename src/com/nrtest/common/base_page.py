@@ -722,20 +722,13 @@ class Page():
         :return:
         """
         try:
-            if ',' in CheckBoxName:
                 lis = CheckBoxName.split(',')
                 for i in lis:
                     xp = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
                         i)
                     self.commonWait((By.XPATH, xp))
                     self.driver.find_element(*(By.XPATH, xp)).click()
-            elif ',' not in CheckBoxName:
-                xpa = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
-                    CheckBoxName)
-                self.commonWait((By.XPATH, xpa))
-                self.driver.find_element(*(By.XPATH, xpa)).click()
-            else:
-                print('输入格式不正确')
+
         except BaseException as e:
             print('点击复选框失败')
             print(e)

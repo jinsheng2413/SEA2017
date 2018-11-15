@@ -53,16 +53,18 @@ class DataAccess:
         tst_case = pyoracle.callfunc('pkg_nrtest.get_tst_case', 'str', qry)
 
         # 字符串转list
-
-        rslt = eval(tst_case)
-        if len(rslt) == 0:
-            print(
+        try:
+            rslt = eval(tst_case)
+            if len(rslt) == 0:
+               print(
                 '请确认以下配置项是否正确：\n1,配置文件（nari_test.conf）的user_group项：%s \n2,菜单编号：%s' % tuple(qry))
-        print('当前用例数据：\n', rslt, '\n')
+            print('当前用例数据：\n', rslt, '\n')
 
-        # dict转Dict ljf
-        for i in range(len(rslt)):
-            rslt[i] = Dict(rslt[i])
+            # dict转Dict ljf
+            for i in range(len(rslt)):
+               rslt[i] = Dict(rslt[i])
+        except BaseException:
+            print('获取测试用例数据失败，请检查用例用户组名称是否配置正确，用例编写是否符合要求')
         return rslt
 
     @staticmethod
@@ -105,8 +107,8 @@ class DataAccess:
 
 if __name__ == '__main__':
     # DataAccess.refresh_case()
-    # str = DataAccess.getCaseData("99912100",tabName='终端调试')
-    # print(len(str))
+    str = DataAccess.getCaseData("99912100",tabName='终端调试')
+    print(len(str))
     # for i in  str[4:10]:
     #     print(i)
     # print(DataAccess.getAllMenu())

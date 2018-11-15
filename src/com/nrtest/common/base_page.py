@@ -181,11 +181,12 @@ class Page():
             element = self.driver.find_element(*locator)
         except TimeoutException as te:
             if locator[1].find('请求无响应或超时！') == -1:
-                logger.error(u'等待元素超时--> %s', locator, te)
+                logger.error(u'等待元素超时--> %s' % locator, te)
+                logger.error
         except NoSuchElementException as nse:
-            logger.error(u'未找到元素--> %s', locator, nse)
+            logger.error(u'未找到元素--> %s' % locator, nse)
         except Exception as e:  # 无法确定是哪类异常时用基类异常来捕获
-            logger.error(u'其他查找元素错误--> %s', locator, e)
+            logger.error(u'其他查找元素错误--> %s' % locator, e)
         return element
 
     def input(self, values, *locators):
@@ -248,11 +249,11 @@ class Page():
         try:
             element = self._find_element(*locators)
             element.click()
-            logger.info('点击元素：%s', locators)
-        except AttributeError as e:
-            logger.error('点击元素失败', e)
+            logger.info('点击元素：%s' % locators)
+        except AttributeError as ae:
+            logger.error('点击元素失败:%s' % ae)
         except Exception as ex:
-            logger.error('出错信息：', locators, ex)
+            logger.error('出错信息：%s' % locators, ex)
         # return None
 
     def closeOldBrowser(self):

@@ -17,3 +17,5 @@ class SysConfigManData:
     SysParameterMan_para = '99952200'
     SysBasicParaSet_tabName = '系统基本参数设置'
     SysAbnormalParaSet_tabName = '系统异常参数设置'
+    # 系统管理→系统配置管理→计算服务配置
+    CountServeDeploy_para = '99952300'

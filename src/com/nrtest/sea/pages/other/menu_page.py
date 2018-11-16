@@ -159,11 +159,7 @@ class MenuPage(Page):
         self.btn_company_plus(list[0])
         self.btn_company_plus(list[1])
 
-    def getAssert(self, num):
-        self.get_select_locator(MenuLocators.TAB_ONE, num)
 
-    def getSecondAssert(self, num):
-        self.get_select_locator(MenuLocators.TAB_TWO, num)
 
     def clickAllMenu(self):
         menus = DataAccess.getAllMenu()

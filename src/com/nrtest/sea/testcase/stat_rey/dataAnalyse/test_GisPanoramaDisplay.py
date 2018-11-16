@@ -28,7 +28,7 @@ class TestGisPanoramaDisplay(unittest.TestCase, GisPanoramaDisplayPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(LoadRankAnalyse_para.gisPanoramaDisplay_para)
         sleep(2)
-        cls.exec_script(GisPanoramaDisplayLocators.JS)
+        cls.exec_script(cls,GisPanoramaDisplayLocators.JS)
 
     @classmethod
     def tearDownClass(cls):

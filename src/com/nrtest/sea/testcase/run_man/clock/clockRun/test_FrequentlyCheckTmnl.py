@@ -34,7 +34,7 @@ class TestDemo(unittest.TestCase, FrequentlyCheckTmnlPage):
         cls.driver = openMenu(ClockData.para_ClockRun, True)
         clickTabPage('频繁对时终端')
         sleep(2)
-        cls.driver.execute_script(FrequentlyCheckTmnlLocators.QUERY_DATE_JS)
+        cls.execute_script(cls,FrequentlyCheckTmnlLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

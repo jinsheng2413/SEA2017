@@ -8,7 +8,7 @@
 @desc:
 """
 
-from com.nrtest.sea.pages.other.commonMenu_page import CommonMenu_page
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.base_app.archivesMan.archivesMaintain_locators import ArchivesMaintain_locators
@@ -22,7 +22,7 @@ def archivesMange():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
     # 点击统计查询
-    cp = CommonMenu_page(dr)
+    cp = MenuPage(dr)
     cp.menu_first(1)
     cp.menu_second(1)
     cp.menu_three(1)
@@ -40,7 +40,7 @@ def archivesAnalysisOfAnomaly_count():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
     # 点击统计查询
-    cp = CommonMenu_page(dr)
+    cp = MenuPage(dr)
     cp.menu_first(1)
     cp.menu_second(1)
     cp.menu_three(2)
@@ -58,7 +58,7 @@ def archivesAnalysisOfAnomaly_detail():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
     # 点击统计查询
-    cp = CommonMenu_page(dr)
+    cp = MenuPage(dr)
     cp.menu_first(1)
     cp.menu_second(1)
     cp.menu_three(2)
@@ -78,7 +78,7 @@ def archivesMaintain_factory():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
     # 点击统计查询
-    cp = CommonMenu_page(dr)
+    cp = MenuPage(dr)
     cp.menu_first(1)
     cp.menu_second(1)
     cp.menu_three(3)
@@ -93,7 +93,7 @@ def archivesMaintain_terminal():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
     # 点击统计查询
-    cp = CommonMenu_page(dr)
+    cp = MenuPage(dr)
     cp.menu_first(1)
     cp.menu_second(1)
     cp.menu_three(3)
@@ -109,7 +109,7 @@ def archivesMaintain_meter():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
     # 点击统计查询
-    cp = CommonMenu_page(dr)
+    cp = MenuPage(dr)
     cp.menu_first(1)
     cp.menu_second(1)
     cp.menu_three(3)
@@ -125,7 +125,7 @@ def archivesQuery():
     lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     dr = lg.login()
     # 点击统计查询
-    cp = CommonMenu_page(dr)
+    cp = MenuPage(dr)
     cp.menu_first(1)
     cp.menu_second(1)
     cp.menu_three(4)

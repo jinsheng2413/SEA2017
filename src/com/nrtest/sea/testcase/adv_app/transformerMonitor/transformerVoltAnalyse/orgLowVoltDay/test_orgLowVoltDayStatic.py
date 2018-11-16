@@ -29,8 +29,8 @@ class TestBcVoltMonitorPointQuery(unittest.TestCase, OrgLowVoltDayStaticPage):
     def setUpClass(cls):
         print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_OrgLowVoltDay)
-        cls.driver.execute_script(OrgLowVoltDayStaticLocators.START_DATE_JS)
-        cls.driver.execute_script(OrgLowVoltDayStaticLocators.END_DATE_JS)
+        cls.execute_script(cls,OrgLowVoltDayStaticLocators.START_DATE_JS)
+        cls.execute_script(cls,OrgLowVoltDayStaticLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

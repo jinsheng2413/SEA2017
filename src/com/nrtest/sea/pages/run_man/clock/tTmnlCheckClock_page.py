@@ -17,9 +17,8 @@ from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import TmnlC
 # 运行管理→时钟管理→终端对时
 # 终端对时统计
 class TmnlClockStaticPage(Page):
-    # 供电单位
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
+
+
 
     # 终端类型--打开并选择
     def inputRSel_tmnl_type(self, name):
@@ -46,9 +45,7 @@ class TmnlClockStaticPage(Page):
 
 # 终端时钟明细
 class TmnlClockDetailPage(Page):
-    # 供电单位
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
+
 
     # 偏差范围--打开并选择
     def inputRSel_offset_range(self, name):
@@ -105,9 +102,7 @@ class TmnlClockDetailPage(Page):
 
 
 class AutoCheckPolicyPage(Page):
-    # 节点
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
+
 
     # 间隔周期--打开并选择
     def inputRSel_interval_cycle(self, name):

@@ -33,8 +33,8 @@ class TestDemo(unittest.TestCase, TmnlQualityEvalDetailPage):
         cls.driver = openMenu(OperOrganManData.para_CollTmnlQualityEval, True)
         clickTabPage(OperOrganManData.para_TmnlQualityEvalDetail)
         sleep(2)
-        cls.driver.execute_script(TmnlQualityEvalDetailLocators.QUERY_START_DATE_JS)
-        cls.driver.execute_script(TmnlQualityEvalDetailLocators.QUERY_END_DATE_JS)
+        cls.execute_script(cls,TmnlQualityEvalDetailLocators.QUERY_START_DATE_JS)
+        cls.execute_script(cls,TmnlQualityEvalDetailLocators.QUERY_END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

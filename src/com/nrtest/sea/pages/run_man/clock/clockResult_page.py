@@ -16,9 +16,7 @@ from com.nrtest.sea.locators.run_man.clock.clockResult_locators import ClockResu
 # 运行管理→时钟管理→对时结果分析
 # 对时结果分析
 class ClockResultStaticPage(Page):
-    # 供电单位
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
+
 
     # 终端厂商--打开并选择
     def inputRSel_tmnl_fac(self, name):
@@ -38,9 +36,7 @@ class ClockResultStaticPage(Page):
 
 # 对时结果明细
 class ClockResultDetailPage(Page):
-    # 供电单位
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
+
 
     # 类别--打开并选择
     def inputRSel_clock_model(self, name):

@@ -34,7 +34,7 @@ class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
         cls.driver = openMenu(ClockData.para_TTmnlCheckClock, True)
         clickTabPage('自动对时策略配置')
         sleep(2)
-        cls.driver.execute_script(AutoCheckPolicyLocators.QUERY_DATE_JS)
+        cls.execute_script(cls,AutoCheckPolicyLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

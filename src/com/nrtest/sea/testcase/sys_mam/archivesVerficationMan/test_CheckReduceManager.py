@@ -59,7 +59,7 @@ class TestCheckReduceManager(unittest.TestCase,CheckReduceManagerPage):
         #打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 开始时间
-        self.inputStr_start_time(para['START_TIME'])
+        self.inputStr_startTime(para['START_TIME'])
         # 结束时间
         self.inputStr_end_time(para['END_TIME'])
         #申请单号

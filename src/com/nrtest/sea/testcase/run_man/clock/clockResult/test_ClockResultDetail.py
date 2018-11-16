@@ -34,7 +34,7 @@ class TestDemo(unittest.TestCase, ClockResultDetailPage):
         cls.driver = openMenu(ClockData.para_ClockResult, True)
         clickTabPage('对时结果明细')
         sleep(2)
-        cls.driver.execute_script(ClockResultDetailLocators.QUERY_DATE_JS)
+        cls.execute_script(cls,ClockResultDetailLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

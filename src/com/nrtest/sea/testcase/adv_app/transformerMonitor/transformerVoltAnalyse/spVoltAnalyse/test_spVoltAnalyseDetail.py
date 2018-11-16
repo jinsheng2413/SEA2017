@@ -31,7 +31,7 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, SpVoltAnalyseDetailPage):
         print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_SpVoltAnalyse)
         clickTabPage('专/公变电压质量明细')
-        cls.driver.execute_script(SpVoltAnalyseDetailLocators.QUERY_DATE_JS)
+        cls.execute_script(cls,SpVoltAnalyseDetailLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

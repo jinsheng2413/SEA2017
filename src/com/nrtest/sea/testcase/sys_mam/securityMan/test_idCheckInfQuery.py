@@ -33,7 +33,7 @@ class TestIdCheckInfQuery(unittest.TestCase, IdCheckInfQueryPage):
     def tearDownClass(cls):
         print('执行结束')
         # 刷新菜单页面
-        cls.refreshPage(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """

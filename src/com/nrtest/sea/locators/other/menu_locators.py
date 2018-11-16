@@ -49,6 +49,9 @@ class MenuLocators:
     # '//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()=\'关闭其他所有页\']'
     CLOSE_PAGES = (
         By.XPATH, '//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()="%s"]')
+    CLOSE_PAGES_SPE = (By.XPATH,'//*[@class =\"x-menu x-menu-floating x-layer  x-hide-offsets\"]//*[text()="%s"]')
+
+
 
     # 打开菜单超时对话框
     TIMEOUT_DLG = (

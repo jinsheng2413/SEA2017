@@ -409,6 +409,7 @@ class Page():
         :return: 布尔返回值
         """
         try:
+            print(*locators)
             return self.driver.find_element(*locators).is_displayed()
         except:
             return False
@@ -668,6 +669,15 @@ class Page():
         # 待定位右键菜单
         forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
         loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
+        pe = self.format_xpath(MenuLocators.CLOSE_PAGES_SPE,forMenu)
+        print(pe)
+
+        try:
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(pe))
+            loc = pe
+        except:
+            print('关闭其他页面xpath出错')
+        print(loc)
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
         self.driver.find_element(*loc).click()
 

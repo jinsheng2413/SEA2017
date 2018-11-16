@@ -48,7 +48,7 @@ class Login:
             elementHeight = baidu.location['y'] + baidu.size['height']
             picture = Image.open(Setting.SCREENSHOTS_PATH + 'photo.png')
             picture = picture.crop((left, top, elementWidth, elementHeight))
-            #picture = picture.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
+            # picture = picture.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
             picture.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
 
             image = Image.open(Setting.SCREENSHOTS_PATH + 'photo2.png')
@@ -60,18 +60,16 @@ class Login:
             loginPage.input_password(self.password)
             loginPage.input_identifying(txt)
             loginPage.btn_login()
-            sleep(2)
+            sleep(1)
             con = loginPage.driver.find_element_by_tag_name('body').text
 
             if '重要信息推出' in con:
                 bl = False
                 logger.info('%s成功登陆系统' % self.username)
                 if '登录异常' in con:
-                    print('-----')
                     loginPage.driver.find_element(
                         *LoginPageLocators.BTN_CONFIRM).click()
                 if '账号异常信息' in con:
-                    print('-----')
                     loginPage.driver.find_element(
                         *LoginPageLocators.BTN_ARROW).click()
 
@@ -93,9 +91,10 @@ class Login:
 
 # fdsdf
 if __name__ == '__main__':
-    # lg = Login('gchb', '123')
-    # drv = lg.login()
+    lg = Login('gchb', '123')
+    drv = lg.login()
     # cookie = drv.get_cookies()
     # for i in cookie:
     #     print(i)
-    Login.cookieLogin('gchb')
+    pass
+

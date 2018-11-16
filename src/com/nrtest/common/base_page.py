@@ -249,12 +249,10 @@ class Page():
         try:
             element = self._find_element(*locators)
             element.click()
-            logger.info('点击元素：%s' % locators)
-        except AttributeError as ae:
-            logger.error('点击元素失败:%s' % ae)
-        except Exception as ex:
-            logger.error('出错信息：%s' % locators, ex)
-        # return None
+            logger.info('点击元素：{}'.format(locators))
+        except BaseException as e:
+            logger.error('点击元素失败:%s' % e)
+
 
     def closeOldBrowser(self):
         """

@@ -45,4 +45,4 @@ class SysAbnormalParaSetLocators:
 
     # 【校验区】
     # 第一行数据
-    CHECK_FIRST = (By.XPATH, '(//table[@class="x-grid3-row-table"])[1]')
+    CHECK_FIRST = (By.XPATH, '(//div[@class="x-grid3-body"])[2]/div[1]')

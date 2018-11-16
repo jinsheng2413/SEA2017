@@ -10,7 +10,6 @@
 
 from selenium.webdriver.common.by import By
 
-
 # 系统管理→系统配置管理→系统参数管理
 # 系统管理→系统配置管理→系统参数管理→系统基本参数设置
 class SysBasicParaSetLocators:
@@ -29,7 +28,6 @@ class SysBasicParaSetLocators:
     # 【校验区】
     # 第一行数据
     CHECK_FIRST = (By.XPATH, '(//table[@class="x-grid3-row-table"])[1]')
-
 
 # 系统管理→系统配置管理→系统参数管理→系统异常参数设置
 class SysAbnormalParaSetLocators:

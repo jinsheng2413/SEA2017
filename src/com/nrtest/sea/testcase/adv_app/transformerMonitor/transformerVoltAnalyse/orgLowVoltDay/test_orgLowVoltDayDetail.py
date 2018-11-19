@@ -30,8 +30,8 @@ class TestOrgLowVoltDayDetail(unittest.TestCase, OrgLowVoltDayDetailPage):
         print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_OrgLowVoltDay)
         clickTabPage('台区低电压日统计明细')
-        cls.execute_script(cls,OrgLowVoltDayDetailLocators.START_DATE_JS)
-        cls.execute_script(cls,OrgLowVoltDayDetailLocators.END_DATE_JS)
+        cls.exec_script(cls,OrgLowVoltDayDetailLocators.START_DATE_JS)
+        cls.exec_script(cls,OrgLowVoltDayDetailLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

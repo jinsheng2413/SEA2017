@@ -34,7 +34,7 @@ class TestDemo(unittest.TestCase, TmnlClockDetailPage):
         cls.driver = openMenu(ClockData.para_TTmnlCheckClock, True)
         clickTabPage('终端时钟明细')
         sleep(2)
-        cls.execute_script(cls,TmnlClockDetailLocators.QUERY_DATE_JS)
+        cls.exec_script(cls,TmnlClockDetailLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

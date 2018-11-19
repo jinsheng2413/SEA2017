@@ -27,8 +27,11 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
         print('开始执行')
         cls.driver = openMenu(SysConfigManData.para_SysDictMan)
         sleep(2)
-        cls.execute_script(cls,cls,SysDictManLocators.START_DATE_JS)
-        cls.execute_script(cls,cls,SysDictManLocators.END_DATE_JS)
+        cls.exec_script(cls,SysDictManLocators.START_DATE_JS)
+        cls.exec_script(cls,SysDictManLocators.END_DATE_JS)
+
+
+
 
     @classmethod
     def tearDownClass(cls):

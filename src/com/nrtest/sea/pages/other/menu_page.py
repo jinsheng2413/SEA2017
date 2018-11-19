@@ -153,11 +153,11 @@ class MenuPage(Page):
 
         return self.driver
 
-    def clickLeftTree(self, tree):
-        tree = tree.split(';')
-        self.btn_plus(1)
-        self.btn_company_plus(list[0])
-        self.btn_company_plus(list[1])
+    # def clickLeftTree(self, tree):
+    #     tree = tree.split(';')
+    #     self.btn_plus(1)
+    #     self.btn_company_plus(list[0])
+    #     self.btn_company_plus(list[1])
 
 
 

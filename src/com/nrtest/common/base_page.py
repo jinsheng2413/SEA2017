@@ -836,6 +836,16 @@ class Page():
                 print('显示区检验值格式输入不正确')
         except:
             print('校验失败')
+    def  rightClick(self,*locators):
+        """
+        右键点击元素
+        :param locators: 传入xpath即可
+        :return:
+        """
+        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locators))
+        right_click = self.driver.find_element(*locators)
+        ActionChains(self.driver).context_click(right_click).perform()
+
 
 
 if __name__ == '__main__':

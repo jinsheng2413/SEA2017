@@ -33,7 +33,7 @@ class TestDemo(unittest.TestCase, StaffDealDetailPage):
         cls.driver = openMenu(OperOrganManData.para_FaultDealQualityEval, True)
         clickTabPage('人员处理明细')
         sleep(2)
-        cls.execute_script(cls,StaffDealDetailLocators.QUERY_DATE_JS)
+        cls.exec_script(cls,StaffDealDetailLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

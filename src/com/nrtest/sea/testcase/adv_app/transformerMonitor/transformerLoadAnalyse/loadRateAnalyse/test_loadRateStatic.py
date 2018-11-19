@@ -30,7 +30,7 @@ class TestLoadRateStatic(unittest.TestCase, LoadRateStaticPage):
     def setUpClass(cls):
         print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_TradnsformerMonitor)
-        cls.execute_script(cls,LoadRateStaticLocators.QUERY_DATE_JS)
+        cls.exec_script(cls,LoadRateStaticLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

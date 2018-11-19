@@ -61,5 +61,5 @@ class TestPatrolDataQuery_CurveData(unittest.TestCase, PatrolDataQueryPage):
 
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para))
     def test_der(self, para):
-        self.clickTabPage('曲线数据')
+        clickTabPage('曲线数据')
         self.query(para)

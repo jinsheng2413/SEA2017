@@ -33,7 +33,7 @@ class TestDemo(unittest.TestCase, MetClockDayStaticPage):
         cls.driver = openMenu(ClockData.para_MetCheckClock, True)
         clickTabPage('电表时钟日统计')
         sleep(2)
-        cls.execute_script(cls,MetClockDayStaticLocators.QUERY_DATE_JS)
+        cls.exec_script(cls,MetClockDayStaticLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

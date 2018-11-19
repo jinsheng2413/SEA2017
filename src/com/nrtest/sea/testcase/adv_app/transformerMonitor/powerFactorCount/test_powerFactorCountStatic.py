@@ -30,7 +30,7 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, PowerFactorCountStaticPage):
     def setUpClass(cls):
         print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_PowerFactorCount)
-        cls.execute_script(cls,PowerFactorCountStaticLocators.QUERY_DATE_JS)
+        cls.exec_script(cls,PowerFactorCountStaticLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

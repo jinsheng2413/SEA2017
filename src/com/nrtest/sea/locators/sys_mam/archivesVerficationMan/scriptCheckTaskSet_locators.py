@@ -33,6 +33,13 @@ class ScriptCheckTaskSetLocators:
         By.XPATH,
         "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'启用')]/../..//div[contains(text(),'%s')]")
 
+    # 【js区】
+    # 开始时间，删除readonly属性
+    SCRIPT_TYPE_JS = 'document.getElementsByTagName(\'input\')[4].removeAttribute("readonly");'
+    # 结束时间，删除readonly属性
+    TASK_STATUS_JS = 'document.getElementsByTagName(\'input\')[7].removeAttribute("readonly");'
+    JS = "document.getElementsByTagName('input')[0].removeAttribute(\"readOnly\")"
+
     #【显示区】
     TAB_ONE = (By.XPATH, '(//table[@class=\"x-grid3-row-table\"])[1]')
     TAB_ONE_VALUE = (By.XPATH, "//*[@class=\"x-grid3-row-table\"])[]//div[]")

@@ -189,6 +189,7 @@ class Page():
             logger.error(u'其他查找元素错误--> %s' % locator, e)
         return element
 
+
     def input(self, values, *locators):
         """
         方法名：input
@@ -845,6 +846,8 @@ class Page():
         WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locators))
         right_click = self.driver.find_element(*locators)
         ActionChains(self.driver).context_click(right_click).perform()
+    def clearInput(self,*Locators):
+         self._find_element(*Locators).clear()
 
 
 

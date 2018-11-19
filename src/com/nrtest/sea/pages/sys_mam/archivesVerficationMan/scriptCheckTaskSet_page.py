@@ -20,7 +20,7 @@ class ScriptCheckTaskSetPage(Page):
     def inputSel_taskStatus(self, name):
 
         if name == '1':
-            pass
+         self.clearInput(*ScriptCheckTaskSetLocators.QRY_TASK_STATUS)
         else:
          self.click(*ScriptCheckTaskSetLocators.QRY_TASK_STATUS)
          locator = self.get_select_locator(ScriptCheckTaskSetLocators.QRY_TASK_STATUS_VALUE, name)
@@ -32,7 +32,7 @@ class ScriptCheckTaskSetPage(Page):
     # 脚本类型
     def inputSel_scriptType(self, name):
         if name == '1':
-            pass
+            self.clearInput(*ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE)
         else:
          self.click(*ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE)
          locator = self.get_select_locator(ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE_VALUE, name)

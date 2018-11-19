@@ -12,3 +12,5 @@ class ArchivesVerficationMan_data:
     VerficationResultDetail_para ='99959100'
     # 系统管理--》档案核查管理--》考核减免管理
     checkReduceManager_para = '99959910'
+    #系统管理--》档案核查管理--》核查结果统计查询
+    checkResultStat_para = '99959200'

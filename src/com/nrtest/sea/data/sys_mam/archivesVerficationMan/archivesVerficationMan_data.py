@@ -14,3 +14,5 @@ class ArchivesVerficationMan_data:
     checkReduceManager_para = '99959910'
     #系统管理--》档案核查管理--》核查结果统计查询
     checkResultStat_para = '99959200'
+    # 系统管理--》档案核查管理--》档案任务核查编制
+    dataCheckTaskSet_para = '99959300'

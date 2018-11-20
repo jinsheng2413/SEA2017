@@ -28,16 +28,14 @@ class BackgroupServeMonitorLocators:
 
 # 系统管理→系统配置管理→后台服务监测→后台服务监测明细
 class BackgroupServeMonitorDetailLocators:
-    # JOB名称
-    QRY_JOB_NAME = (By.XPATH, '//label[contains(text(),"JOB名称")]/../div/div/img')
-    QRY_JOB_NAME_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    # Job名称
+    QRY_JOB_NAME = (By.XPATH, '//label[contains(text(),"Job名称")]/../div/input')
     # 服务名称
-    QRY_SERVE_NAME = (By.XPATH, '//label[contains(text(),"服务名称")]/../div/div/img')
-    QRY_SERVE_NAME_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_SERVE_NAME = (By.XPATH, '//label[contains(text(),"服务名称")]/../div/input')
     # 查询日期
     QRY_DATE = (By.XPATH, '(//label[contains(text(),"查询日期")])[2]/../div/div/input')
     # 查询按钮
-    BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')
+    BTN_SEARCH = (By.XPATH, '(//button[text()="查询"])[2]')
 
     # 【JS属性】
     # 查询日期，删除readonly属性

@@ -24,3 +24,5 @@ class ArchivesVerficationMan_data:
     scriptResultStat_para ='99959600'
     # 系统管理--》档案核查管理--》档案核查模板编制
     taskTemplateSet_para = '99959700'
+    # 系统管理--》档案核查管理--》考核减免申请
+    checkReduceApplication_para = '99959900'

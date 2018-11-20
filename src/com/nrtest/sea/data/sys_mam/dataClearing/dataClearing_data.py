@@ -1,0 +1,12 @@
+# -*- coding:utf-8 -*-
+
+"""
+@author: 郭春彪
+@license: (C) Copyright 2018, Nari.
+@file: dataClearing_data.py
+@time: 2018/11/20 0020 11:29
+@desc:
+"""
+class DataClearing_data:
+    #系统管理-->数据清理管理-->历史数据监控
+    historicalDataMonitoring_para = '99958500'

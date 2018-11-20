@@ -19,3 +19,7 @@ class SysConfigManData:
     SysAbnormalParaSet_tabName = '系统异常参数设置'
     # 系统管理→系统配置管理→计算服务配置
     CountServeDeploy_para = '99952300'
+    # 系统管理→系统配置管理→后台服务监测
+    BackgroundServeMonitor_para = '99952400'
+    BackgroupServeMonitor_tabName = '后台服务监测'
+    BackgroupServeMonitorDetail_tabName = '后台服务监测明细'

@@ -10,3 +10,5 @@
 class DataClearing_data:
     #系统管理-->数据清理管理-->历史数据监控
     historicalDataMonitoring_para = '99958500'
+    # 系统管理-->数据清理管理-->数据表分析
+    dataTableAnalysis_para = '99958300'

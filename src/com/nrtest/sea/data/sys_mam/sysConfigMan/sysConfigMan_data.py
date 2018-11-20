@@ -25,3 +25,5 @@ class SysConfigManData:
     BackgroupServeMonitorDetail_tabName = '后台服务监测明细'
     # 系统管理→系统配置管理→IP黑名单管理
     IpBlacklistMan_para = '99952700'
+    # 系统管理→系统配置管理→用户操作监测
+    UserOperationMonitor_para = '99952600'

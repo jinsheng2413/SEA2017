@@ -20,3 +20,5 @@ class ArchivesVerficationMan_data:
     scriptCheckTaskSet_para = '99959400'
     # 系统管理--》档案核查管理--》脚本结果明细查询
     scriptResultDetail_para = '99959500'
+    # 系统管理--》档案核查管理--》脚本结果统计查询
+    scriptResultStat_para ='99959600'

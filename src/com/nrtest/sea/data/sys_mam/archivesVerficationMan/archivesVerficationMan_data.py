@@ -26,3 +26,5 @@ class ArchivesVerficationMan_data:
     taskTemplateSet_para = '99959700'
     # 系统管理--》档案核查管理--》考核减免申请
     checkReduceApplication_para = '99959900'
+    # 系统管理--》档案核查管理--》考核减免汇总
+    checkReducePool_para = '99959800'

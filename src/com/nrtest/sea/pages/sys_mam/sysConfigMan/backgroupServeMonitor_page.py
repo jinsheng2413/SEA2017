@@ -33,16 +33,12 @@ class BackgroupServeMonitorPage(Page):
 # 系统管理→系统配置管理→后台服务监测→后台服务监测明细
 class BackgroupServeMonitorDetailPage(Page):
     # JOB名称
-    def inputSel_job_name(self, index):
-        self.click(*BackgroupServeMonitorDetailLocators.QRY_JOB_NAME)
-        locator = self.get_select_locator(BackgroupServeMonitorDetailLocators.QRY_JOB_NAME_VALUE, index)
-        self.click(*locator)
+    def inputStr_job_name(self, index):
+        self.input(index, *BackgroupServeMonitorDetailLocators.QRY_JOB_NAME)
 
     # 服务名称
-    def inputSel_serve_name(self, index):
-        self.click(*BackgroupServeMonitorDetailLocators.QRY_SERVE_NAME)
-        locator = self.get_select_locator(BackgroupServeMonitorDetailLocators.QRY_SERVE_NAME_VALUE, index)
-        self.click(*locator)
+    def inputStr_serve_name(self, index):
+        self.input(index, *BackgroupServeMonitorDetailLocators.QRY_SERVE_NAME)
 
     # 查询日期
     def inputDt_date(self, content):

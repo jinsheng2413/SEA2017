@@ -4,7 +4,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: DataTableAnalysis_page.py
+@file: dataTableAnalysis_page.py
 @time: 2018/11/20 0020 14:21
 @desc:
 """
@@ -14,7 +14,7 @@ from com.nrtest.sea.locators.sys_mam.dataClearing.dataTableAnalysis_locators imp
 
 
 # 系统管理-->数据清理管理-->数据表分析
-class DataTableAnalysisPage(Page):
+class DataTransQureyPage(Page):
     # 核查日期
     def inputStr_examineDate(self, value):
         self.input(value, *DataTableAnalysisLocators.QRY_EXAMINE_DATE)

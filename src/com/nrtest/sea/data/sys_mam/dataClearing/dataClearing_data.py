@@ -12,3 +12,5 @@ class DataClearing_data:
     historicalDataMonitoring_para = '99958500'
     # 系统管理-->数据清理管理-->数据表分析
     dataTableAnalysis_para = '99958300'
+    # 系统管理-->数据清理管理-->数据传输查询
+    dataTransQurey_para = '99958400'

@@ -14,3 +14,5 @@ class DataClearing_data:
     dataTableAnalysis_para = '99958300'
     # 系统管理-->数据清理管理-->数据传输查询
     dataTransQurey_para = '99958400'
+    # 系统管理-->数据清理管理-->数模结构对照
+    dataStructureComparison_para = '99958200'

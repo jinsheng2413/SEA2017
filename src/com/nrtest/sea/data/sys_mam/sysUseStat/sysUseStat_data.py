@@ -14,3 +14,6 @@ class SysUseStat_date:
     UserDistributionStat_para = '99956100'
     UserDistributionStat_tabName = '用户分布统计'
     UserRegisterDetail_tabName = '注册用户明细'
+    # 系统管理→系统使用情况统计→系统使用情况统计
+    coreFunctionAudit_para = '99956400'
+

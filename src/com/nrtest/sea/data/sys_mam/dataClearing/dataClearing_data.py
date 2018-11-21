@@ -16,3 +16,5 @@ class DataClearing_data:
     dataTransQurey_para = '99958400'
     # 系统管理-->数据清理管理-->数模结构对照
     dataStructureComparison_para = '99958200'
+    # 系统管理-->数据清理管理-->历史数据策略管理
+    dataStrategyManagenment_para = '99958100'

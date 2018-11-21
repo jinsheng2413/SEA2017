@@ -12,3 +12,5 @@
 class TemplateManData:
     # 系统管理→模板管理→采集任务模板
     CollectTaskTemplate_para = '99953100'
+    # 系统管理→模板管理→供电电压测点设置
+    OrgVoltageStationSet_para = '99953600'

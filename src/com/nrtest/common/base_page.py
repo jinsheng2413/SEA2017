@@ -80,6 +80,7 @@ import os
 import time
 from time import sleep
 
+from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException, InvalidElementStateException
 from selenium.webdriver.common.action_chains import ActionChains
@@ -93,7 +94,6 @@ from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # create a logger instance
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
-from selenium import webdriver
 
 logger = Logger(logger='Page').getlog()
 
@@ -670,7 +670,7 @@ class Page():
         # 待定位右键菜单
         forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
         loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
-        pe = self.format_xpath(MenuLocators.CLOSE_PAGES_SPE,forMenu)
+        pe = self.format_xpath(MenuLocators.CLOSE_PAGES_SPE, forMenu)
 
         try:
             WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
@@ -837,7 +837,8 @@ class Page():
                 print('显示区检验值格式输入不正确')
         except:
             print('校验失败')
-    def  rightClick(self,*locators):
+
+    def rightClick(self, *locators):
         """
         右键点击元素
         :param locators: 传入xpath即可
@@ -846,8 +847,9 @@ class Page():
         WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locators))
         right_click = self.driver.find_element(*locators)
         ActionChains(self.driver).context_click(right_click).perform()
-    def clearInput(self,*Locators):
-         self._find_element(*Locators).clear()
+
+    def clearInput(self, *Locators):
+        self._find_element(*Locators).clear()
 
 
 

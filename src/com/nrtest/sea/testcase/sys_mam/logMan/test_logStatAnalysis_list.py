@@ -8,17 +8,20 @@
 @time: 2018/11/21 0021 14:08
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
 from com.nrtest.sea.pages.sys_mam.logMan.logStatAnalysis_page import *
+from com.nrtest.sea.task.commonMath import *
+
+
 # 系统管理--》日志管理--》日志统计分析
 @ddt
-class TestLogStatAnalysis_list(unittest.TestCase,LogStatAnalysis_list_Page):
+class TestLogStatAnalysis_list(unittest.TestCase, LogStatAnalysis_list_Page):
 
     @classmethod
     def setUpClass(cls):
@@ -58,9 +61,9 @@ class TestLogStatAnalysis_list(unittest.TestCase,LogStatAnalysis_list_Page):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
-        #查询时间
+        # 查询时间
         self.inputStr_queryDate(para['QUERY_DATE'])
-        #到
+        # 到
         self.inputStr_TO(para['TO'])
 
         self.btn_qry()
@@ -70,9 +73,6 @@ class TestLogStatAnalysis_list(unittest.TestCase,LogStatAnalysis_list_Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LogEdit_data.logStatAnalysis_para,LogEdit_data.logStatAnalysis_tab_list))
+    @data(*DataAccess.getCaseData(LogEdit_data.logStatAnalysis_para, LogEdit_data.logStatAnalysis_tab_list))
     def test_query(self, para):
         self.query(para)
-
-
-

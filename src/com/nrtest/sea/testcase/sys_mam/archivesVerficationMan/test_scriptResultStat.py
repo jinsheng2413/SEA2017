@@ -8,18 +8,21 @@
 @time: 2018/11/20 0020 8:52
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptResultDetail_page import ScriptResultDetailPage,ScriptResultDetailLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptResultDetail_page import ScriptResultDetailPage, \
+    ScriptResultDetailLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 # 系统管理--》档案核查管理--》脚本结果明细查询
 @ddt
-class TestScriptResultStat(unittest.TestCase,ScriptResultDetailPage):
+class TestScriptResultStat(unittest.TestCase, ScriptResultDetailPage):
 
     @classmethod
     def setUpClass(cls):
@@ -27,7 +30,7 @@ class TestScriptResultStat(unittest.TestCase,ScriptResultDetailPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(ArchivesVerficationMan_data.scriptResultStat_para)
         sleep(2)
-        cls.exec_script(cls,ScriptResultDetailLocators.START_DATE_JS)
+        cls.exec_script(cls, ScriptResultDetailLocators.START_DATE_JS)
         cls.exec_script(cls, ScriptResultDetailLocators.END_DATE_JS)
 
     @classmethod
@@ -59,15 +62,14 @@ class TestScriptResultStat(unittest.TestCase,ScriptResultDetailPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #脚本名称
+        # 脚本名称
         self.inputStr_scriptName(para['SCRIPT_NAME'])
-        #开始时间
+        # 开始时间
         self.inputStr_receive_time(para['START_TIME'])
-        #结束时间
+        # 结束时间
         self.inputStr_end_time(para["END_TIME"])
-
 
         self.btn_qry()
         self.sleep_time(2)
@@ -79,6 +81,3 @@ class TestScriptResultStat(unittest.TestCase,ScriptResultDetailPage):
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultDetail_para))
     def test_query(self, para):
         self.query(para)
-
-
-

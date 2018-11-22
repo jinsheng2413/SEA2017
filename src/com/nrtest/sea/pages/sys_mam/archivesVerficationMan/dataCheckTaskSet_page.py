@@ -25,7 +25,7 @@ class DataCheckTaskSetPage(Page):
         locator = self.get_select_locator(DataCheckTaskSetLocators.QRY_TASK_FROM_VALUE, name)
         self.click(*locator)
 
-
         # 查询
+
     def btn_qry(self):
-            self.click(*DataCheckTaskSetLocators.BTN_QRY)
+        self.click(*DataCheckTaskSetLocators.BTN_QRY)

@@ -19,7 +19,6 @@ from com.nrtest.sea.locators.run_man.clock.clockRun_locators import StaticByOrgL
 # 按单位统计
 class StaticByOrgPage(Page):
 
-
     # 终端厂商--打开并选择
     def inputRSel_tmnl_fac(self, name):
         self.click(*StaticByOrgLocators.TMNL_FAC_SEL)
@@ -56,7 +55,6 @@ class StaticByFacPage(Page):
 # 频繁对时终端
 class FrequentlyCheckTmnlPage(Page):
 
-
     # 终端类型--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*FrequentlyCheckTmnlLocators.TMNL_TYPE_SEL)
@@ -90,7 +88,6 @@ class FrequentlyCheckTmnlPage(Page):
 
 # 频繁对时电表
 class FrequentlyCheckMetPage(Page):
-
 
     # 电能表厂商--打开并选择
     def inputRSel_met_fac(self, name):

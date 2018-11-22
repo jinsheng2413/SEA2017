@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -34,7 +33,7 @@ class TestDemo(unittest.TestCase, ClockResultDetailPage):
         cls.driver = openMenu(ClockData.para_ClockResult, True)
         clickTabPage('对时结果明细')
         sleep(2)
-        cls.exec_script(cls,ClockResultDetailLocators.QUERY_DATE_JS)
+        cls.exec_script(cls, ClockResultDetailLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

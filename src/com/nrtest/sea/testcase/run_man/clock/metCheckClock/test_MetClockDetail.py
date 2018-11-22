@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -34,7 +33,7 @@ class TestDemo(unittest.TestCase, MetClockDetailPage):
         cls.driver = openMenu(ClockData.para_MetCheckClock, True)
         clickTabPage('电表时钟明细')
         sleep(2)
-        cls.exec_script(cls,MetClockDetailLocators.QUERY_DATE_JS)
+        cls.exec_script(cls, MetClockDetailLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -34,7 +33,7 @@ class TestDemo(unittest.TestCase, FrequentlyCheckTmnlPage):
         cls.driver = openMenu(ClockData.para_ClockRun, True)
         clickTabPage('频繁对时终端')
         sleep(2)
-        cls.exec_script(cls,FrequentlyCheckTmnlLocators.QUERY_DATE_JS)
+        cls.exec_script(cls, FrequentlyCheckTmnlLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

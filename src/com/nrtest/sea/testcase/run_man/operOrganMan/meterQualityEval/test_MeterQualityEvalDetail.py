@@ -33,8 +33,8 @@ class TestDemo(unittest.TestCase, MeterQualityEvalDetailPage):
         cls.driver = openMenu(OperOrganManData.para_MeterQualityEval, True)
         clickTabPage(OperOrganManData.para_MeterQualityEvalDetail)
         sleep(2)
-        cls.exec_script(cls,MeterQualityEvalDetailLocators.QUERY_START_DATE_JS)
-        cls.exec_script(cls,MeterQualityEvalDetailLocators.QUERY_END_DATE_JS)
+        cls.exec_script(cls, MeterQualityEvalDetailLocators.QUERY_START_DATE_JS)
+        cls.exec_script(cls, MeterQualityEvalDetailLocators.QUERY_END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

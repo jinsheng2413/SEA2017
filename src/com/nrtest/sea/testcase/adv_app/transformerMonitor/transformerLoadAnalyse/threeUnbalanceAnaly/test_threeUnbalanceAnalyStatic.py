@@ -31,7 +31,7 @@ class TestLoadRateStatic(unittest.TestCase, ThreeUnbalanceAnalyStaticPage):
         print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_ThreeUnbalanceAnaly)
         cls.exec_script(cls,
-            ThreeUnbalanceAnalyStaticLocators.QUERY_DATE_JS)
+                        ThreeUnbalanceAnalyStaticLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

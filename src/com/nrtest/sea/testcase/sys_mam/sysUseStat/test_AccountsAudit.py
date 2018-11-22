@@ -8,26 +8,25 @@
 @time: 2018/11/21 0021 10:35
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.sysUseStat.sysUseStat_data import SysUseStat_date
-from com.nrtest.sea.pages.sys_mam.sysUseStat.accountsAudit_page import AccountsAuditPage,AccountsAuditLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.sysUseStat.sysUseStat_data import SysUseStat_date
+from com.nrtest.sea.pages.sys_mam.sysUseStat.accountsAudit_page import AccountsAuditPage, AccountsAuditLocators
+from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理→系统使用情况统计→账号审计
 @ddt
-class TestAccountsAudit(unittest.TestCase,AccountsAuditPage):
+class TestAccountsAudit(unittest.TestCase, AccountsAuditPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(SysUseStat_date.accountsAudit_para)
-
 
     @classmethod
     def tearDownClass(cls):
@@ -58,17 +57,16 @@ class TestAccountsAudit(unittest.TestCase,AccountsAuditPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
         self.clickCheckBox(para['TAB_NAME'])
-        if para['TAB_NAME'] =='日':
-         sleep(2)
-         self.exec_script(AccountsAuditLocators.START_DATE_JS)
+        if para['TAB_NAME'] == '日':
+            sleep(2)
+            self.exec_script(AccountsAuditLocators.START_DATE_JS)
         else:
-          sleep(2)
-          self.exec_script(AccountsAuditLocators.START_DATE_I_JS)
-        #时间
+            sleep(2)
+            self.exec_script(AccountsAuditLocators.START_DATE_I_JS)
+        # 时间
         self.inputStr_date(para['DATE'])
-        #账号状态
+        # 账号状态
         self.inputStr_accountStatus(para['ACCOUNT_STATUS'])
-
 
         self.btn_qry()
         self.sleep_time(2)
@@ -77,10 +75,7 @@ class TestAccountsAudit(unittest.TestCase,AccountsAuditPage):
         # result = self.assert_context(*AccountsAuditLocators.)
         # self.assertTrue(result)
 
-    #@BeautifulReport.add_test_img()
+    # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysUseStat_date.accountsAudit_para))
     def test_query(self, para):
         self.query(para)
-
-
-

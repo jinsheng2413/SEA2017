@@ -18,6 +18,7 @@ class DataTransQureyPage(Page):
     # 核查日期
     def inputStr_examineDate(self, value):
         self.input(value, *DataTableAnalysisLocators.QRY_EXAMINE_DATE)
+
     # 表名称
     def inputStr_listName(self, value):
         self.input(value, *DataTableAnalysisLocators.QRY_LIST_NAME)
@@ -28,8 +29,7 @@ class DataTransQureyPage(Page):
         locator = self.get_select_locator(DataTableAnalysisLocators.QRY_DATA_GROUP_VALUE, name)
         self.click(*locator)
 
-
-
         # 查询
+
     def btn_qry(self):
-            self.click(*DataTableAnalysisLocators.BTN_QRY)
+        self.click(*DataTableAnalysisLocators.BTN_QRY)

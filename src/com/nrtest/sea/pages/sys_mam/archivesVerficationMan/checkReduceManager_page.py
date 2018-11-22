@@ -20,16 +20,14 @@ class CheckReduceManagerPage(Page):
     def inputStr_startTime(self, value):
         self.input(value, *CheckReduceManagerLocators.QRY_START_TIME)
 
-
-
     # 结束时间
     def inputStr_end_time(self, value):
         self.input(value, *CheckReduceManagerLocators.QRY_END_TIME)
 
     # 申请单号
     def inputStr_applyNo(self, value):
-            self.input(value, *CheckReduceManagerLocators.QRY_APPLY_NO)
+        self.input(value, *CheckReduceManagerLocators.QRY_APPLY_NO)
 
-        # 查询
+    # 查询
     def btn_qry(self):
-            self.click(*CheckReduceManagerLocators.BTN_QRY)
+        self.click(*CheckReduceManagerLocators.BTN_QRY)

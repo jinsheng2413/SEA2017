@@ -8,18 +8,20 @@
 @time: 2018/11/21 0021 13:46
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
-from com.nrtest.sea.pages.sys_mam.logMan.logEdit_page import LogEditPage,LogEditLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
 
-#系统管理--》日志管理--》值班日志
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
+from com.nrtest.sea.pages.sys_mam.logMan.logEdit_page import LogEditPage, LogEditLocators
+from com.nrtest.sea.task.commonMath import *
+
+
+# 系统管理--》日志管理--》值班日志
 @ddt
-class TestDemo(unittest.TestCase,LogEditPage):
+class TestDemo(unittest.TestCase, LogEditPage):
 
     @classmethod
     def setUpClass(cls):
@@ -27,8 +29,8 @@ class TestDemo(unittest.TestCase,LogEditPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(LogEdit_data.logEdit_para)
         sleep(2)
-        cls.exec_script(cls,LogEditLocators.START_DATE_JS)
-        cls.exec_script(cls,LogEditLocators.END_DATE_JS)
+        cls.exec_script(cls, LogEditLocators.START_DATE_JS)
+        cls.exec_script(cls, LogEditLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -58,13 +60,12 @@ class TestDemo(unittest.TestCase,LogEditPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
-       #值班人员工号
+        # 值班人员工号
         self.inputStr_dutyPersonNo(para['DUTY_PERSON_NO'])
-        #值班时间
+        # 值班时间
         self.inputStr_DutyTime(para['DUTY_TIME'])
-        #到
+        # 到
         self.inputStr_end_time(para['TO'])
-
 
         self.btn_qry()
         self.sleep_time(2)
@@ -76,6 +77,3 @@ class TestDemo(unittest.TestCase,LogEditPage):
     @data(*DataAccess.getCaseData(LogEdit_data.logEdit_para))
     def test_query(self, para):
         self.query(para)
-
-
-

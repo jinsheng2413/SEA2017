@@ -18,4 +18,3 @@ class SysUseStat_date:
     coreFunctionAudit_para = '99956400'
     # 系统管理→系统使用情况统计→账号审计
     accountsAudit_para = '99956300'
-

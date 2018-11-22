@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -34,7 +33,7 @@ class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
         cls.driver = openMenu(ClockData.para_TTmnlCheckClock, True)
         clickTabPage('自动对时策略配置')
         sleep(2)
-        cls.exec_script(cls,AutoCheckPolicyLocators.QUERY_DATE_JS)
+        cls.exec_script(cls, AutoCheckPolicyLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

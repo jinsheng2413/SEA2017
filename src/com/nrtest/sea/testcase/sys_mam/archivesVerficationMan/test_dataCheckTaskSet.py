@@ -8,18 +8,21 @@
 @time: 2018/11/19 0019 14:23
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.dataCheckTaskSet_page import DataCheckTaskSetPage,DataCheckTaskSetLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.dataCheckTaskSet_page import DataCheckTaskSetPage, \
+    DataCheckTaskSetLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 # 系统管理--》档案核查管理--》档案任务核查编制
 @ddt
-class TestDataCheckTaskSet(unittest.TestCase,DataCheckTaskSetPage):
+class TestDataCheckTaskSet(unittest.TestCase, DataCheckTaskSetPage):
 
     @classmethod
     def setUpClass(cls):
@@ -56,11 +59,11 @@ class TestDataCheckTaskSet(unittest.TestCase,DataCheckTaskSetPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #台区编号
+        # 台区编号
         self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])
-        #任务来源
+        # 任务来源
         # self.inputSel_taskFrom(para['TASK_FROM'])
 
         self.btn_qry()
@@ -73,6 +76,3 @@ class TestDataCheckTaskSet(unittest.TestCase,DataCheckTaskSetPage):
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.dataCheckTaskSet_para))
     def test_query(self, para):
         self.query(para)
-
-
-

@@ -8,18 +8,21 @@
 @time: 2018/11/16 0016 15:25
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkReduceManager_page import CheckReduceManagerPage,CheckReduceManagerLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
 
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkReduceManager_page import CheckReduceManagerPage
+from com.nrtest.sea.task.commonMath import *
+
 CheckReduceManagerPage
+
+
 @ddt
-class TestCheckReduceManager(unittest.TestCase,CheckReduceManagerPage):
+class TestCheckReduceManager(unittest.TestCase, CheckReduceManagerPage):
 
     @classmethod
     def setUpClass(cls):
@@ -56,13 +59,13 @@ class TestCheckReduceManager(unittest.TestCase,CheckReduceManagerPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 开始时间
         self.inputStr_startTime(para['START_TIME'])
         # 结束时间
         self.inputStr_end_time(para['END_TIME'])
-        #申请单号
+        # 申请单号
         self.inputStr_applyNo(para['APPLY_NO'])
 
         self.btn_qry()
@@ -75,6 +78,3 @@ class TestCheckReduceManager(unittest.TestCase,CheckReduceManagerPage):
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReduceManager_para))
     def test_query(self, para):
         self.query(para)
-
-
-

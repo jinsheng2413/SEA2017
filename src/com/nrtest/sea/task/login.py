@@ -32,8 +32,7 @@ class Login:
 
     def login(self):
         bl = True
-        p = BaseTest()
-        dr = p.openBrowser(Setting.BROWSER)
+        dr = BaseTest.openBrowser(Setting.BROWSER)
         dr.maximize_window()
         dr.get(Setting.TEST_URL)
         while bl:
@@ -81,8 +80,7 @@ class Login:
 
     @classmethod
     def cookieLogin(cls, username):
-        p = BaseTest()
-        dr = p.openBrowser('firefox')
+        dr = BaseTest.openBrowser('firefox')
         dr.maximize_window()
         dr.get(Setting.TEST_URL)
         dr.add_cookie(YamlSetting.getCookie(username))
@@ -96,4 +94,4 @@ if __name__ == '__main__':
     # cookie = drv.get_cookies()
     # for i in cookie:
     #     print(i)
-    pass
+    # Login.cookieLogin('gchb')

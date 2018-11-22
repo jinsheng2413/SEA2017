@@ -61,5 +61,5 @@ class TestPatrolIntegratedQuery_Detail(unittest.TestCase, PatrolIntegratedQueryP
 
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolIntegratedQuery_para))
     def test_der(self, para):
-        self.clickTabPage('巡检仪运行指标明细')
+        clickTabPage('巡检仪运行指标明细')
         self.query(para)

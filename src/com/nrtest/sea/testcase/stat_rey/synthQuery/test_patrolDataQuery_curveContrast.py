@@ -62,5 +62,5 @@ class TestPatrolDataQuery_CurveContrast(unittest.TestCase, PatrolDataQueryPage):
 
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para))
     def test_der(self, para):
-        self.clickTabPage('曲线对比')
+        clickTabPage('曲线对比')
         self.query(para)

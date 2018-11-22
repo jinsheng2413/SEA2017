@@ -63,5 +63,5 @@ class TestAutomatedMeterAvailability_Failed(unittest.TestCase, FourTableMeterRea
 
     @data(*DataAccess.getCaseData(SynthQuery_data.FourTableMeterReadSuccessRate_para))
     def test_der(self, para):
-        self.clickTabPage('四表合一抄表失败明细')
+        clickTabPage('四表合一抄表失败明细')
         self.query(para)

@@ -62,5 +62,5 @@ class TestPatrolDataQuery_AnomalousEvent(unittest.TestCase, PatrolDataQueryPage)
 
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para))
     def test_der(self, para):
-        self.clickTabPage('异常事件查询')
+        clickTabPage('异常事件查询')
         self.query(para)

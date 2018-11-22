@@ -67,11 +67,9 @@ class Login:
                 bl = False
                 logger.info('%s成功登陆系统' % self.username)
                 if '登录异常' in con:
-                    print('-----')
                     loginPage.driver.find_element(
                         *LoginPageLocators.BTN_CONFIRM).click()
                 if '账号异常信息' in con:
-                    print('-----')
                     loginPage.driver.find_element(
                         *LoginPageLocators.BTN_ARROW).click()
 
@@ -93,9 +91,10 @@ class Login:
 
 # fdsdf
 if __name__ == '__main__':
-    # lg = Login('gchb', '123')
-    # drv = lg.login()
+    lg = Login('gchb', '123')
+    drv = lg.login()
     # cookie = drv.get_cookies()
     # for i in cookie:
     #     print(i)
-    Login.cookieLogin('gchb')
+    pass
+

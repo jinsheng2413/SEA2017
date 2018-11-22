@@ -189,6 +189,7 @@ class Page():
             logger.error(u'其他查找元素错误--> %s' % locator, e)
         return element
 
+
     def input(self, values, *locators):
         """
         方法名：input
@@ -249,12 +250,10 @@ class Page():
         try:
             element = self._find_element(*locators)
             element.click()
-            logger.info('点击元素：%s' % locators)
-        except AttributeError as ae:
-            logger.error('点击元素失败:%s' % ae)
-        except Exception as ex:
-            logger.error('出错信息：%s' % locators, ex)
-        # return None
+            logger.info('点击元素：{}'.format(locators))
+        except BaseException as e:
+            logger.error('点击元素失败:%s' % e)
+
 
     def closeOldBrowser(self):
         """
@@ -411,6 +410,7 @@ class Page():
         :return: 布尔返回值
         """
         try:
+            print(*locators)
             return self.driver.find_element(*locators).is_displayed()
         except:
             return False
@@ -670,7 +670,12 @@ class Page():
         # 待定位右键菜单
         forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
         loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
+        pe = self.format_xpath(MenuLocators.CLOSE_PAGES_SPE,forMenu)
+
+        try:
+            WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
+        except:
+            loc = pe
         self.driver.find_element(*loc).click()
 
     @staticmethod
@@ -722,20 +727,13 @@ class Page():
         :return:
         """
         try:
-            if ',' in CheckBoxName:
                 lis = CheckBoxName.split(',')
                 for i in lis:
                     xp = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
                         i)
                     self.commonWait((By.XPATH, xp))
                     self.driver.find_element(*(By.XPATH, xp)).click()
-            elif ',' not in CheckBoxName:
-                xpa = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
-                    CheckBoxName)
-                self.commonWait((By.XPATH, xpa))
-                self.driver.find_element(*(By.XPATH, xpa)).click()
-            else:
-                print('输入格式不正确')
+
         except BaseException as e:
             print('点击复选框失败')
             print(e)
@@ -839,6 +837,18 @@ class Page():
                 print('显示区检验值格式输入不正确')
         except:
             print('校验失败')
+    def  rightClick(self,*locators):
+        """
+        右键点击元素
+        :param locators: 传入xpath即可
+        :return:
+        """
+        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locators))
+        right_click = self.driver.find_element(*locators)
+        ActionChains(self.driver).context_click(right_click).perform()
+    def clearInput(self,*Locators):
+         self._find_element(*Locators).clear()
+
 
 
 if __name__ == '__main__':

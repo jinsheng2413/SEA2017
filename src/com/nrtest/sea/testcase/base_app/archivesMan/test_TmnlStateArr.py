@@ -71,6 +71,6 @@ class TestTmnlStateArr(unittest.TestCase, TmnlStateArrPage):
         result = self.assert_context(*TmnlStateArrLocators.TAB_ONE)
         self.assertTrue(result)
 
-    @data(*DataAccess.getCaseData())
+    @data(*DataAccess.getCaseData(ArchivesMan_data.tmnlStateArr_para))
     def test_query(self, para):
         self.query(para)

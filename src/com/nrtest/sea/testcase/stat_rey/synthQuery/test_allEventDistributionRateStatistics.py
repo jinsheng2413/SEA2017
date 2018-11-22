@@ -75,5 +75,5 @@ class TestAllEventDistributionRateStatistics(unittest.TestCase, AllEventDistribu
 
     @data(*DataAccess.getCaseData(SynthQuery_data.AllEventDistributionRateStatistics_para))
     def test_der_tab(self, para):
-        self.clickTabPage('全事件未配置明细')
+        clickTabPage('全事件未配置明细')
         self.query_tab(para)

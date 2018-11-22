@@ -64,15 +64,15 @@ class TestDemo(unittest.TestCase, EleParaManPage):
         # 结束时间
         self.inputStr_EndTimeOne(para['END_TIME'])
         # 是否已生成参数
-        self.inputSel_ComeIntoPara_One()
+        self.inputSel_ComeIntoPara_One(para['COME_INTO_PARA'])
 
-        self.btn_qry()
+        self.btn_qryOne()
         self.sleep_time(2)
         # 校验
         result = self.assert_context(*EleParaManLocators.TAB_ONE)
         self.assertTrue(result)
 
-    def gradeQuery(self, para):
+    def query(self, para):
         """
 
         :param para: Dict类型的字典，不是dict
@@ -85,10 +85,10 @@ class TestDemo(unittest.TestCase, EleParaManPage):
         # 开始时间
         self.inputStr_startTimeTwo(para['START_TIME'])
         # 结束时间
-        self.inputStr_EndTimeTwo(para['END_TIME'])
+        self.inputStr_endTimeTwo(para['END_TIME'])
         # 是否已生成参数
-        self.inputSel_ComeIntoPara_Two()
-        self.btn_qry()
+        self.inputSel_ComeIntoPara_Two(para['COME_INTO_PARA'])
+        self.btn_qryOne()
         self.sleep_time(2)
         # 校验
         result = self.assert_context(*EleParaManLocators.TAB_ONE)

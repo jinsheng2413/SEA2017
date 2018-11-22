@@ -61,5 +61,5 @@ class TestPatrolDataQuery_CurrentStatus(unittest.TestCase, PatrolDataQueryPage):
 
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para))
     def test_der(self, para):
-        self.clickTabPage('电流回路状态')
+        clickTabPage('电流回路状态')
         self.query(para)

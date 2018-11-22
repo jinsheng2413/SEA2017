@@ -68,5 +68,5 @@ class TestRunMeterStatistics_Detail(unittest.TestCase, RunMeterStatisticsPage):
 
     @data(*DataAccess.getCaseData(CollConstructStatus_data.RunMeterStatistics_para))
     def test_der(self, para):
-        self.clickTabPage('运行电能表明细')
+        clickTabPage('运行电能表明细')
         self.query(para)

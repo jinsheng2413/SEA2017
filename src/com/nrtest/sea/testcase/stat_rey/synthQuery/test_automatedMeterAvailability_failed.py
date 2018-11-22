@@ -61,5 +61,5 @@ class TestAutomatedMeterAvailability_Failed(unittest.TestCase, AutomatedMeterAva
 
     @data(*DataAccess.getCaseData(SynthQuery_data.AutomatedMeterAvailability_para))
     def test_der(self, para):
-        self.clickTabPage('全项失败明细')
+        clickTabPage('全项失败明细')
         self.query(para)

@@ -14,9 +14,7 @@ from com.nrtest.sea.locators.run_man.clock.remoteBroadChkClock_locators import R
 
 # 运行管理→时钟管理→远程广播校时设置
 class RemoteBroadChkClockPage(Page):
-    # 节点名称
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
+
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):

@@ -18,9 +18,7 @@ from com.nrtest.sea.locators.run_man.clock.clockRun_locators import StaticByOrgL
 # 运行管理→时钟管理→时钟运行质量分析
 # 按单位统计
 class StaticByOrgPage(Page):
-    # 供电单位
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
+
 
     # 终端厂商--打开并选择
     def inputRSel_tmnl_fac(self, name):
@@ -45,9 +43,6 @@ class StaticByOrgPage(Page):
 
 # 按厂家统计
 class StaticByFacPage(Page):
-    # 供电单位
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
 
     # 查询日期
     def inputStr_query_date(self, value):
@@ -60,9 +55,7 @@ class StaticByFacPage(Page):
 
 # 频繁对时终端
 class FrequentlyCheckTmnlPage(Page):
-    # 供电单位
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
+
 
     # 终端类型--打开并选择
     def inputRSel_tmnl_type(self, name):
@@ -97,9 +90,7 @@ class FrequentlyCheckTmnlPage(Page):
 
 # 频繁对时电表
 class FrequentlyCheckMetPage(Page):
-    # 供电单位
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
+
 
     # 电能表厂商--打开并选择
     def inputRSel_met_fac(self, name):

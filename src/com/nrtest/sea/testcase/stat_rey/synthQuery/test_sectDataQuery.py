@@ -71,5 +71,5 @@ class TestSectDataQuery(unittest.TestCase, SectDataQueryPage):
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.SectDataQuery_para))
     def test_der_tab(self, para):
-        self.clickTabPage('数据展示')
+        clickTabPage('数据展示')
         self.query_tab(para)

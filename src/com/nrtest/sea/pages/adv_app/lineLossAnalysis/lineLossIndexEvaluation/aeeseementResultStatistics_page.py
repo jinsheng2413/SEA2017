@@ -8,7 +8,7 @@
 @desc:
 """
 
-from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeeseementResultStatistics_locators import \
+from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeeseementResultStatistics_locators import \
     AeeseementResultStatisticsLocators
 
 from com.nrtest.common.base_page import Page

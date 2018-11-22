@@ -31,7 +31,7 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataGatherMan_data.tmnlInstallDetail_para)
 
-        clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne, index=2)
+        clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         sleep(2)
         cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS_COUNT)
         cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS_COUNT)

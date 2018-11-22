@@ -59,10 +59,7 @@ class Common_page(Page):
     def btn_left_arrow(self):
         self.click(*SecurityCommonManPageLocators.BTN_LEFT_MENU)
 
-    # 选中省份
-    def btn_select_province(self):
-        self.click(*SecurityCommonManPageLocators.BTN_LEFT_MENU)
-        self.click(*SecurityCommonManPageLocators.BTN_LEFT_MENU_ELETRIC)
+
 
     # 系统使用情况统计
     def btn_man_sys_use_count(self):
@@ -101,9 +98,7 @@ class Common_page(Page):
     def btn_work_cust(self):
         self.click(*SecurityCommonManPageLocators.BTN_WORK_CUSTOMIZATION)
 
-    # 选择省分公司
-    def btn_select_province(self):
-        self.click(*SecurityCommonManPageLocators.BTN_LEFT_MENU_ELETRIC)
+
 
     # 电价参数下发
     def btn_ele_price_para(self):
@@ -126,8 +121,8 @@ class Common_page(Page):
         self.click(*SecurityCommonManPageLocators.BTN_MENU_DETAIL)
 
     # 数据字典管理
-    def btn_tab_data_dic(self):
-        self.rightClick(*SecurityCommonManPageLocators.BTN_TAB_DATA_DIC)
+    # def btn_tab_data_dic(self):
+    #     self.rightClick(*SecurityCommonManPageLocators.BTN_TAB_DATA_DIC)
 
     # 关闭其他所有页面
     def btn_close_other_all_page(self):

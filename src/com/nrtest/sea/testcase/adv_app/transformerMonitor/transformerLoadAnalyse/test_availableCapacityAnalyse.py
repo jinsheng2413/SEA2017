@@ -30,7 +30,7 @@ class TestLoadRateStatic(unittest.TestCase, AvailableCapacityAnalysePage):
         print('开始执行')
         cls.driver = openMenu(
             TradnsformerMonitorData.para_AvailableCapacityAnalyse)
-        cls.driver.execute_script(
+        cls.exec_script(cls,
             AvailableCapacityAnalyseLocators.QUERY_DATE_JS)
 
     @classmethod

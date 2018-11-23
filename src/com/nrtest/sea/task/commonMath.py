@@ -35,17 +35,17 @@ def openLeftTree(treeNo):
     :return:
     """
     p = MenuPage(global_drv.get_driver())
+    # p.btn_left_tree(treeNo)
     try:
         node = Dict(eval(treeNo))
         flag = node['FLAG']
         node_vale = node['VALUE']
     except:
-        if isinstance(treeNo, str):
-            flag = '01'
-            node_vale = treeNo
+        # 不是数组时的默认处理
+        flag = '01'
+        node_vale = treeNo
 
     if flag == '01':  # 选择供电单位
-        # p.btn_left_tree(treeNo)
         p.btn_left_tree(node_vale)
     else:
         pass  # 待实现

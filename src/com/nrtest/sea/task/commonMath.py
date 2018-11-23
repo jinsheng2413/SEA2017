@@ -23,10 +23,9 @@ def openMenu(menuNo, byName=True):
     :param byName:
     :return:
     """
-    p = MenuPage(global_drv.get_driver())
-    p.click_menu(menuNo, byName)
-    return p.driver
-
+    menuPage = MenuPage(global_drv.get_driver())
+    menuPage.click_menu(menuNo, byName)
+    return menuPage.driver
 
 def openLeftTree(treeNo):
     """
@@ -34,22 +33,22 @@ def openLeftTree(treeNo):
     :param treeNo:
     :return:
     """
-    p = MenuPage(global_drv.get_driver())
-    # p.btn_left_tree(treeNo)
+    menuPage = MenuPage(global_drv.get_driver())
+    # menuPage.btn_left_tree(treeNo)
     try:
         node = Dict(eval(treeNo))
-        flag = node['FLAG']
+        node_flag = node['FLAG']
         node_vale = node['VALUE']
     except:
         # 不是数组时的默认处理
-        flag = '01'
+        node_flag = '01'
         node_vale = treeNo
 
-    if flag == '01':  # 选择供电单位
-        p.btn_left_tree(node_vale)
-    else:
-        pass  # 待实现
-    return p.driver
+    if node_flag == '01':  # 选择供电单位
+        menuPage.btn_left_tree(node_vale)
+    else:                  # 选择其他节点
+        menuPage.btn_user_nodes(node_flag, node_vale)  # 待实现
+    return menuPage.driver
 
 
 def clickTabPage(name):
@@ -57,13 +56,12 @@ def clickTabPage(name):
     打开Tab页
     :param name:
     """
-    p = MenuPage(global_drv.get_driver())
+    menuPage = MenuPage(global_drv.get_driver())
     locators = (
         By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[text()='{0}']".format(name))
     print(locators)
-    p.click(*locators)
+    menuPage.click(*locators)
     # return p.driver
-
 
 if __name__ == '__main__':
     openMenu('99914800')

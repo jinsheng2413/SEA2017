@@ -9,7 +9,7 @@
 @desc:
 """
 from com.nrtest.sea.data.sys_mam.dataClearing.dataClearing_data import DataClearing_data
-from com.nrtest.sea.pages.sys_mam.dataClearing.DataTableAnalysis_page import DataTableAnalysisPage,DataTableAnalysisLocators
+from com.nrtest.sea.pages.sys_mam.dataClearing.dataTableAnalysis_page import DataTableAnalysisPage,DataTableAnalysisLocators
 from com.nrtest.sea.task.commonMath import *
 from com.nrtest.common.data_access import DataAccess
 from ddt import ddt, data
@@ -27,12 +27,14 @@ class TestDemo(unittest.TestCase,DataTableAnalysisPage):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataClearing_data.dataTableAnalysis_para)
+        sleep(2)
+        cls.exec_script(cls,DataTableAnalysisLocators.START_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
         # 关闭菜单页面
-        cls.closePages(cls)
+        #cls.closePages(cls)
 
     def setUp(self):
         """
@@ -71,7 +73,7 @@ class TestDemo(unittest.TestCase,DataTableAnalysisPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData())
+    @data(*DataAccess.getCaseData(DataClearing_data.dataTableAnalysis_para))
     def test_query(self, para):
         self.query(para)
 

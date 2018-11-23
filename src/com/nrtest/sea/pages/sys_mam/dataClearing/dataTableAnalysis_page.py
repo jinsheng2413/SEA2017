@@ -14,7 +14,7 @@ from com.nrtest.sea.locators.sys_mam.dataClearing.dataTableAnalysis_locators imp
 
 
 # 系统管理-->数据清理管理-->数据表分析
-class DataTransQureyPage(Page):
+class DataTableAnalysisPage(Page):
     # 核查日期
     def inputStr_examineDate(self, value):
         self.input(value, *DataTableAnalysisLocators.QRY_EXAMINE_DATE)

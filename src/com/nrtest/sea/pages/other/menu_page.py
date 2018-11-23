@@ -161,14 +161,11 @@ class MenuPage(Page):
         """
         xpath = None
         if node_flag == '02':  # 节点--用户编号
-            pass
-            # xpath = MenuLocators.NODE_CONS_NO
+            xpath = MenuLocators.NODE_CONS_NO
         elif node_flag == '03':  # 节点--终端逻辑地址
-            pass
-            # xpath = MenuLocators.NODE_TMNL_ADDR
+            xpath = MenuLocators.NODE_TMNL_ADDR
         elif node_flag == '04':  # 节点--电能表资产
-            pass
-            # xpath = MenuLocators.NODE_METER_ASSERT_NO
+            xpath = MenuLocators.NODE_METER_ASSERT_NO
 
         # 定位左边树用户Tab页@todo 请完善选择用户Tab的xpath
         # self.click()
@@ -177,7 +174,7 @@ class MenuPage(Page):
         self.input(node_value, *xpath)
 
         # 点击查询按钮
-        self.click(MenuLocators.USER_TAB_QRY)
+        self.click(MenuLocators.USER_TAB_BTN_QRY)
 
         # 等待查询结果，最好通过其他途径判断查询已返回
         sleep(3)

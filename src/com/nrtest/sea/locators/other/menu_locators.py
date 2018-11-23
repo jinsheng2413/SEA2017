@@ -91,13 +91,15 @@ class MenuLocators:
     # 确定
     BTN_CONFIRM = (By.XPATH, "//*[contains(text(),'确定')]")
 
-    # 【用户TAB页】
+    # 【用户TAB页】@todo 待定位元素的xpath
     # 节点--用户编号
     NODE_CONS_NO = (By.XPATH, "待定位元素")
     # 节点--终端逻辑地址
     NODE_TMNL_ADDR = (By.XPATH, "待定位元素")
     # 节点--电能表资产
     NODE_METER_ASSERT_NO = (By.XPATH, "待定位元素")
+    # 用户TAB页的查询按钮
+    USER_TAB_BTN_QRY = (By.XPATH, "待定位元素")
     # 查询结果区
     NODE_USER_TAB_RSLT = (By.XPATH, "待定位元素")
 

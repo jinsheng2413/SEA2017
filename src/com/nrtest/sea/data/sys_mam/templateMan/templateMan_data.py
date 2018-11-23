@@ -16,3 +16,5 @@ class TemplateManData:
     OrgVoltageStationSet_para = '99953600'
     # 系统管理→模板管理→终端任务模板
     TmnlTaskTemplate_para = '99953500'
+    # 系统管理→模板管理→F35设置采集任务模板
+    F35SetCollTaskTemp_para = '99953300'

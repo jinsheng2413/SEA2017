@@ -182,7 +182,6 @@ class Page():
         except TimeoutException as te:
             if locator[1].find('请求无响应或超时！') == -1:
                 logger.error(u'等待元素超时--> %s' % locator, te)
-                logger.error
         except NoSuchElementException as nse:
             logger.error(u'未找到元素--> %s' % locator, nse)
         except Exception as e:  # 无法确定是哪类异常时用基类异常来捕获

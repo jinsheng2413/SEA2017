@@ -107,8 +107,12 @@ class DataAccess:
 
 if __name__ == '__main__':
     # DataAccess.refresh_case()
-    str = DataAccess.getCaseData("99912100", tabName='终端调试')
-    print(len(str))
+    # str = DataAccess.getCaseData("99912100", tabName='终端调试')
+    # print(type(str))
+    # val = Dict(eval(str[4]['ORG_NO']))
+    # print(val['FLAG'], val['VALUE'])
+
+    print(isinstance('a', str))
     # for i in  str[4:10]:
     #     print(i)
     # print(DataAccess.getAllMenu())

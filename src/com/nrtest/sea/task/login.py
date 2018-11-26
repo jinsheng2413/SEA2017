@@ -97,5 +97,6 @@ if __name__ == '__main__':
     # # for i in cookie:
     # #     print(i)
     # pass
+
     Login.cookieLogin('admin')
 

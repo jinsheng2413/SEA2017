@@ -8,18 +8,21 @@
 @time: 2018/11/20 0020 11:31
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.dataClearing.dataClearing_data import DataClearing_data
-from com.nrtest.sea.pages.sys_mam.dataClearing.historicalDataMonitoring_page import HistoricalDataMonitoringPage,HistoricalDataMonitoringLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
 
-#系统管理-->数据清理管理-->历史数据监控
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.dataClearing.dataClearing_data import DataClearing_data
+from com.nrtest.sea.pages.sys_mam.dataClearing.historicalDataMonitoring_page import HistoricalDataMonitoringPage, \
+    HistoricalDataMonitoringLocators
+from com.nrtest.sea.task.commonMath import *
+
+
+# 系统管理-->数据清理管理-->历史数据监控
 @ddt
-class TestHistoricalDataMonitoring(unittest.TestCase,HistoricalDataMonitoringPage):
+class TestHistoricalDataMonitoring(unittest.TestCase, HistoricalDataMonitoringPage):
 
     @classmethod
     def setUpClass(cls):
@@ -27,8 +30,8 @@ class TestHistoricalDataMonitoring(unittest.TestCase,HistoricalDataMonitoringPag
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataClearing_data.historicalDataMonitoring_para)
         sleep(2)
-        cls.exec_script(cls,HistoricalDataMonitoringLocators.START_DATE_JS)
-        cls.exec_script(cls,HistoricalDataMonitoringLocators.END_DATE_JS)
+        cls.exec_script(cls, HistoricalDataMonitoringLocators.START_DATE_JS)
+        cls.exec_script(cls, HistoricalDataMonitoringLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -59,15 +62,15 @@ class TestHistoricalDataMonitoring(unittest.TestCase,HistoricalDataMonitoringPag
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #数据组
+        # 数据组
         self.inputSel_dataGroup(para['DATA_GROUP'])
-        #表名称
+        # 表名称
         self.inputStr_listName(para['LIST_NAME'])
-        #数据来源
+        # 数据来源
         self.inputSel_data_from(para['DATA_FROM'])
-        #开始日期
+        # 开始日期
         self.inputStr_Start_time(para['START_DATE'])
-        #结束日期
+        # 结束日期
         self.inputStr_end_time(para['END_DATE'])
         self.btn_qry()
         self.sleep_time(2)
@@ -79,6 +82,3 @@ class TestHistoricalDataMonitoring(unittest.TestCase,HistoricalDataMonitoringPag
     @data(*DataAccess.getCaseData(DataClearing_data.historicalDataMonitoring_para))
     def test_query(self, para):
         self.query(para)
-
-
-

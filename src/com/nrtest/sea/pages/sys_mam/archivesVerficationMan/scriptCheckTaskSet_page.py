@@ -20,11 +20,12 @@ class ScriptCheckTaskSetPage(Page):
     def inputSel_taskStatus(self, name):
 
         if name == '1':
-         self.clearInput(*ScriptCheckTaskSetLocators.QRY_TASK_STATUS)
+            self.clearInput(*ScriptCheckTaskSetLocators.QRY_TASK_STATUS)
         else:
-         self.click(*ScriptCheckTaskSetLocators.QRY_TASK_STATUS)
-         locator = self.get_select_locator(ScriptCheckTaskSetLocators.QRY_TASK_STATUS_VALUE, name)
-         self.click(*locator)
+            self.click(*ScriptCheckTaskSetLocators.QRY_TASK_STATUS)
+            locator = self.get_select_locator(ScriptCheckTaskSetLocators.QRY_TASK_STATUS_VALUE, name)
+            self.click(*locator)
+
     # 脚本名称
     def inputStr_scriptName(self, value):
         self.input(value, *ScriptCheckTaskSetLocators.QRY_SCRIPT_NAME)
@@ -34,16 +35,15 @@ class ScriptCheckTaskSetPage(Page):
         if name == '1':
             self.clearInput(*ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE)
         else:
-         self.click(*ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE)
-         locator = self.get_select_locator(ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE_VALUE, name)
-         self.click(*locator)
+            self.click(*ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE)
+            locator = self.get_select_locator(ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE_VALUE, name)
+            self.click(*locator)
 
     # 创建员工
     def inputStr_creatStall(self, value):
         self.input(value, *ScriptCheckTaskSetLocators.QRY_CREAT_STALL)
 
-
-
         # 查询
+
     def btn_qry(self):
-            self.click(*ScriptCheckTaskSetLocators.BTN_QRY)
+        self.click(*ScriptCheckTaskSetLocators.BTN_QRY)

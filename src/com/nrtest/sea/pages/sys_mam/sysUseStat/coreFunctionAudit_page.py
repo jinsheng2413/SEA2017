@@ -19,18 +19,19 @@ class CoreFunctionAuditPage(Page):
     def inputStr_performer(self, value):
         self.input(value, *CoreFunctionAuditLocators.QRY_PERFORMER)
 
-
     # 访问时间
     def inputStr_visitTime(self, value):
         self.input(value, *CoreFunctionAuditLocators.QRY_VISIST_DATE)
-    #到
-    def inputStr_TO(self,value):
-        self.input(value,*CoreFunctionAuditLocators.QRY_TO)
+
+    # 到
+    def inputStr_TO(self, value):
+        self.input(value, *CoreFunctionAuditLocators.QRY_TO)
 
     # 结束时间
     def inputStr_enDtime(self, value):
         self.input(value, *CoreFunctionAuditLocators.QRY_TO)
 
         # 查询
+
     def btn_qry(self):
-            self.click(*CoreFunctionAuditLocators.BTN_QRY)
+        self.click(*CoreFunctionAuditLocators.BTN_QRY)

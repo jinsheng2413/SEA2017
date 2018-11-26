@@ -20,8 +20,6 @@ class CheckReduceApplicationPage(Page):
     def inputStr_applyNo(self, value):
         self.input(value, *CheckReduceApplicationLocators.QRY_APPLY_NO)
 
-
-
     # 接收时间
     def inputStr_start_time(self, value):
         self.input(value, *CheckReduceApplicationLocators.QRY_START_TIME)
@@ -31,5 +29,6 @@ class CheckReduceApplicationPage(Page):
         self.input(value, *CheckReduceApplicationLocators.QRY_END_TIME)
 
         # 查询
+
     def btn_qry(self):
-            self.click(*CheckReduceApplicationLocators.BTN_QRY)
+        self.click(*CheckReduceApplicationLocators.BTN_QRY)

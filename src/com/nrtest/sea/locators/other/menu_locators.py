@@ -49,7 +49,7 @@ class MenuLocators:
     # '//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()=\'关闭其他所有页\']'
     CLOSE_PAGES = (
         By.XPATH, '//*[@class=\"x-menu x-menu-floating x-layer \"]//*[text()="%s"]')
-    CLOSE_PAGES_SPE = (By.XPATH,'//*[@class =\"x-menu x-menu-floating x-layer  x-hide-offsets\"]//*[text()="%s"]')
+    CLOSE_PAGES_SPE = (By.XPATH, '//*[@class =\"x-menu x-menu-floating x-layer  x-hide-offsets\"]//*[text()="%s"]')
 
 
 
@@ -70,7 +70,7 @@ class MenuLocators:
     # 【左边树】
     # 左边树按钮
     BTN_LEFT_MENU = (By.XPATH, '//*[@id="mainwest-xcollapsed"]/div')
-    # 左边树国王冀北店里有限公司
+    # 左边树省公司节点
     BTN_LEFT_MENU_ELETRIC = (By.XPATH, '//span[@unselectable="on"]')
     # 菜单下拉框选择
     BTN_MENU = (By.XPATH, '//*[@id="menuUseStat_menuCombo_1"]')
@@ -90,6 +90,18 @@ class MenuLocators:
         By.XPATH, "(//span[contains(text(),'直属用户')])[2]/../../../../li[%s]")
     # 确定
     BTN_CONFIRM = (By.XPATH, "//*[contains(text(),'确定')]")
+
+    # 【用户TAB页】@todo 待定位元素的xpath
+    # 节点--用户编号
+    NODE_CONS_NO = (By.XPATH, "待定位元素")
+    # 节点--终端逻辑地址
+    NODE_TMNL_ADDR = (By.XPATH, "待定位元素")
+    # 节点--电能表资产
+    NODE_METER_ASSERT_NO = (By.XPATH, "待定位元素")
+    # 用户TAB页的查询按钮
+    USER_TAB_BTN_QRY = (By.XPATH, "待定位元素")
+    # 查询结果区
+    NODE_USER_TAB_RSLT = (By.XPATH, "待定位元素")
 
     # 【左边树显示区】
     TABLE_DATA = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[[1]]')

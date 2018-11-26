@@ -19,7 +19,6 @@ from com.nrtest.sea.locators.run_man.clock.metCheckClock_locators import MetCloc
 # 电表时钟月统计
 class MetClockMonthStaticPage(Page):
 
-
     # 电表类别--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*MetClockMonthStaticLocators.MET_TYPE_SEL)
@@ -46,7 +45,6 @@ class MetClockMonthStaticPage(Page):
 # 电表时钟日统计
 class MetClockDayStaticPage(Page):
 
-
     # 电表类别--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*MetClockDayStaticLocators.MET_TYPE_SEL)
@@ -72,7 +70,6 @@ class MetClockDayStaticPage(Page):
 
 # 电表时钟明细
 class MetClockDetailPage(Page):
-
 
     # 电能表厂商--打开并选择
     def inputRSel_met_fac(self, name):
@@ -117,7 +114,6 @@ class MetClockDetailPage(Page):
 
 # 自动对时策略配置
 class AutoCheckPolicyPage(Page):
-
 
     # 间隔周期--打开并选择
     def inputRSel_interval_cycle(self, name):

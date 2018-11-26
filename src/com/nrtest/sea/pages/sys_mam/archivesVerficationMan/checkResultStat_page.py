@@ -13,7 +13,7 @@ from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.checkResultStat_locators import CheckResultStatLocators
 
 
-#系统管理--》档案核查管理--》核查结果统计查询
+# 系统管理--》档案核查管理--》核查结果统计查询
 class CheckResultStatPage(Page):
 
     # 异常类型(下拉框还未有值)
@@ -42,5 +42,6 @@ class CheckResultStatPage(Page):
         self.input(value, *CheckResultStatLocators.QRY_END_TIME)
 
         # 查询
+
     def btn_qry(self):
-            self.click(*CheckResultStatLocators.BTN_QRY)
+        self.click(*CheckResultStatLocators.BTN_QRY)

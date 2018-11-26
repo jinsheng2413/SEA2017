@@ -8,18 +8,21 @@
 @time: 2018/11/20 0020 10:20
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkReduceApplication_page import CheckReduceApplicationPage,CheckReduceApplicationLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkReduceApplication_page import CheckReduceApplicationPage, \
+    CheckReduceApplicationLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 # 系统管理--》档案核查管理--》考核减免申请
 @ddt
-class TestCheckReduceApplication(unittest.TestCase,CheckReduceApplicationPage):
+class TestCheckReduceApplication(unittest.TestCase, CheckReduceApplicationPage):
 
     @classmethod
     def setUpClass(cls):
@@ -27,8 +30,8 @@ class TestCheckReduceApplication(unittest.TestCase,CheckReduceApplicationPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(ArchivesVerficationMan_data.checkReduceApplication_para)
         sleep(2)
-        cls.exec_script(cls,CheckReduceApplicationLocators.START_DATE_JS)
-        cls.exec_script(cls,CheckReduceApplicationLocators.END_DATE_JS)
+        cls.exec_script(cls, CheckReduceApplicationLocators.START_DATE_JS)
+        cls.exec_script(cls, CheckReduceApplicationLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -59,13 +62,13 @@ class TestCheckReduceApplication(unittest.TestCase,CheckReduceApplicationPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #开始日期
+        # 开始日期
         self.inputStr_start_time(para['START_TIME'])
-        #结束日期
+        # 结束日期
         self.inputStr_end_time(para['END_TIME'])
-        #申请单号
+        # 申请单号
         self.inputStr_applyNo(para['APPLY_NO'])
 
         self.btn_qry()
@@ -78,6 +81,3 @@ class TestCheckReduceApplication(unittest.TestCase,CheckReduceApplicationPage):
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReduceApplication_para))
     def test_query(self, para):
         self.query(para)
-
-
-

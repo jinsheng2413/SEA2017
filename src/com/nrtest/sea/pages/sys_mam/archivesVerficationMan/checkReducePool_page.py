@@ -34,5 +34,6 @@ class CheckReducePoolPage(Page):
         self.input(value, *CheckReducePoolLocators.QRY_APPLY_DATE_TO)
 
         # 查询
+
     def btn_qry(self):
-            self.click(*CheckReducePoolLocators.BTN_QRY)
+        self.click(*CheckReducePoolLocators.BTN_QRY)

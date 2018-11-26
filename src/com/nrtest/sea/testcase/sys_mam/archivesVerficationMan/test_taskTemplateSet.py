@@ -8,18 +8,20 @@
 @time: 2018/11/20 0020 10:01
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.taskTemplateSet_page import TaskTemplateSetPage,TaskTemplateSetLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.taskTemplateSet_page import TaskTemplateSetPage
+from com.nrtest.sea.task.commonMath import *
+
 
 # 系统管理--》档案核查管理--》档案核查模板编制
 @ddt
-class TestTaskTemplateSet(unittest.TestCase,TaskTemplateSetPage):
+class TestTaskTemplateSet(unittest.TestCase, TaskTemplateSetPage):
 
     @classmethod
     def setUpClass(cls):
@@ -56,9 +58,9 @@ class TestTaskTemplateSet(unittest.TestCase,TaskTemplateSetPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #选择模板
+        # 选择模板
         self.inputSel_selectModule(para['SELECT_MODULE'])
 
         self.btn_qry()
@@ -71,6 +73,3 @@ class TestTaskTemplateSet(unittest.TestCase,TaskTemplateSetPage):
     @data(*DataAccess.getCaseData())
     def test_query(self, para):
         self.query(para)
-
-
-

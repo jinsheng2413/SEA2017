@@ -12,6 +12,7 @@ from time import sleep
 from selenium.webdriver.common.by import By
 
 from com.nrtest.common import global_drv
+from com.nrtest.common.dictionary import Dict
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
@@ -22,10 +23,9 @@ def openMenu(menuNo, byName=True):
     :param byName:
     :return:
     """
-    p = MenuPage(global_drv.get_driver())
-    p.click_menu(menuNo, byName)
-    return p.driver
-
+    menuPage = MenuPage(global_drv.get_driver())
+    menuPage.click_menu(menuNo, byName)
+    return menuPage.driver
 
 def openLeftTree(treeNo):
     """
@@ -33,9 +33,22 @@ def openLeftTree(treeNo):
     :param treeNo:
     :return:
     """
-    p = MenuPage(global_drv.get_driver())
-    p.btn_left_tree(treeNo)
-    return p.driver
+    menuPage = MenuPage(global_drv.get_driver())
+    # menuPage.btn_left_tree(treeNo)
+    try:
+        node = Dict(eval(treeNo))
+        node_flag = node['NODE_FLAG']
+        node_vale = node['NODE_VALE']
+    except:
+        # 不是数组时的默认处理
+        node_flag = '01'
+        node_vale = treeNo
+
+    if node_flag == '01':  # 选择供电单位
+        menuPage.btn_left_tree(node_vale)
+    else:                  # 选择其他节点
+        menuPage.btn_user_nodes(node_flag, node_vale)  # 该方法细节待实现
+    return menuPage.driver
 
 
 def clickTabPage(name):
@@ -43,13 +56,12 @@ def clickTabPage(name):
     打开Tab页
     :param name:
     """
-    p = MenuPage(global_drv.get_driver())
+    menuPage = MenuPage(global_drv.get_driver())
     locators = (
         By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[text()='{0}']".format(name))
     print(locators)
-    p.click(*locators)
+    menuPage.click(*locators)
     # return p.driver
-
 
 if __name__ == '__main__':
     openMenu('99914800')

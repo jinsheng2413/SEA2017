@@ -98,8 +98,6 @@ class Common_page(Page):
     def btn_work_cust(self):
         self.click(*SecurityCommonManPageLocators.BTN_WORK_CUSTOMIZATION)
 
-
-
     # 电价参数下发
     def btn_ele_price_para(self):
         self.click(*SecurityCommonManPageLocators.BTN_ELE_PRICE_PARA)

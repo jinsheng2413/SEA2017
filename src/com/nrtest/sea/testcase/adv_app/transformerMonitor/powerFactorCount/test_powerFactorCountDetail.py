@@ -31,7 +31,7 @@ class TestPowerFactorCountDetail(unittest.TestCase, PowerFactorCountDetailPage):
         print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_PowerFactorCount)
         clickTabPage('功率因数越限明细')
-        cls.exec_script(cls,PowerFactorCountDetailLocators.QUERY_DATE_JS)
+        cls.exec_script(cls, PowerFactorCountDetailLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

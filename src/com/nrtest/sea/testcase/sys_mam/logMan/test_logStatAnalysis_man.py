@@ -8,17 +8,20 @@
 @time: 2018/11/21 0021 14:08
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
 from com.nrtest.sea.pages.sys_mam.logMan.logStatAnalysis_page import *
+from com.nrtest.sea.task.commonMath import *
+
+
 # 系统管理--》日志管理--》日志统计分析
 @ddt
-class TestLogStatAnalysis(unittest.TestCase,LogStatAnalysis_man_Page):
+class TestLogStatAnalysis(unittest.TestCase, LogStatAnalysis_man_Page):
 
     @classmethod
     def setUpClass(cls):
@@ -70,9 +73,6 @@ class TestLogStatAnalysis(unittest.TestCase,LogStatAnalysis_man_Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LogEdit_data.logStatAnalysis_para,LogEdit_data.logStatAnalysis_tab_man))
+    @data(*DataAccess.getCaseData(LogEdit_data.logStatAnalysis_para, LogEdit_data.logStatAnalysis_tab_man))
     def test_query(self, para):
         self.query(para)
-
-
-

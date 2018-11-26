@@ -31,7 +31,7 @@ class TestBcVoltMonitorPointDataQuery(unittest.TestCase, BcVoltMonitorPointDataP
         print('开始执行')
         cls.driver = openMenu(TradnsformerMonitorData.para_BcVoltMonitorPoint)
         clickTabPage('B/C类电压监测点数据')
-        cls.exec_script(cls,BcVoltMonitorPointDataLocators.QUERY_DATE_JS)
+        cls.exec_script(cls, BcVoltMonitorPointDataLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

@@ -8,14 +8,15 @@
 @time: 2018/11/20 0020 14:21
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.dataClearing.dataClearing_data import DataClearing_data
-from com.nrtest.sea.pages.sys_mam.dataClearing.dataTransQurey_page import DataTransQureyPage,DataTransQureyLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.dataClearing.dataClearing_data import DataClearing_data
+from com.nrtest.sea.pages.sys_mam.dataClearing.dataTransQurey_page import DataTransQureyPage, DataTransQureyLocators
+from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理-->数据清理管理-->数据传输查询
@@ -56,13 +57,12 @@ class TestDataTransQurey(unittest.TestCase, DataTransQureyPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
-        #数据组
+        # 数据组
         self.inputSel_dataGroup(para['DATA_GROUP'])
-        #表名称
+        # 表名称
         self.inputStr_listName(para['LIST_NAME'])
-        #核查日期
+        # 核查日期
         self.inputStr_examineDate(para['EXAMINE_DATE'])
-
 
         self.btn_qry()
         self.sleep_time(2)
@@ -74,6 +74,3 @@ class TestDataTransQurey(unittest.TestCase, DataTransQureyPage):
     @data(*DataAccess.getCaseData(DataClearing_data.dataTransQurey_para))
     def test_query(self, para):
         self.query(para)
-
-
-

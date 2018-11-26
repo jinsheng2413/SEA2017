@@ -7,8 +7,10 @@
 @time: 2018/11/20 0020 11:29
 @desc:
 """
+
+
 class DataClearing_data:
-    #系统管理-->数据清理管理-->历史数据监控
+    # 系统管理-->数据清理管理-->历史数据监控
     historicalDataMonitoring_para = '99958500'
     # 系统管理-->数据清理管理-->数据表分析
     dataTableAnalysis_para = '99958300'

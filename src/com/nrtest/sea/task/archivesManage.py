@@ -8,11 +8,10 @@
 @desc:
 """
 
-from com.nrtest.sea.pages.other.menu_page import MenuPage
-
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.base_app.archivesMan.archivesMaintain_locators import ArchivesMaintain_locators
 from com.nrtest.sea.locators.base_app.archivesMan.archivesManage_locators import ArchivesManage_locators
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 # 档案管理
 from com.nrtest.sea.task.login import Login
 

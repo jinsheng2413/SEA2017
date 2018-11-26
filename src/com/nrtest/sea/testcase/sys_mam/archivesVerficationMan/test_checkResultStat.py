@@ -8,18 +8,21 @@
 @time: 2018/11/19 0019 10:36
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultStat_page import CheckResultStatPage,CheckResultStatLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
 
-#系统管理--》档案核查管理--》核查结果统计查询
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultStat_page import CheckResultStatPage, \
+    CheckResultStatLocators
+from com.nrtest.sea.task.commonMath import *
+
+
+# 系统管理--》档案核查管理--》核查结果统计查询
 @ddt
-class TestCheckResultStat(unittest.TestCase,CheckResultStatPage):
+class TestCheckResultStat(unittest.TestCase, CheckResultStatPage):
 
     @classmethod
     def setUpClass(cls):
@@ -27,8 +30,8 @@ class TestCheckResultStat(unittest.TestCase,CheckResultStatPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(ArchivesVerficationMan_data.checkResultStat_para)
         sleep(2)
-        cls.exec_script(cls,CheckResultStatLocators.START_DATE_JS)
-        cls.exec_script(cls,CheckResultStatLocators.END_DATE_JS)
+        cls.exec_script(cls, CheckResultStatLocators.START_DATE_JS)
+        cls.exec_script(cls, CheckResultStatLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -59,15 +62,15 @@ class TestCheckResultStat(unittest.TestCase,CheckResultStatPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #任务类型
+        # 任务类型
         self.inputSel_taskType(para['TASK_TYPE'])
-        #台区编号
+        # 台区编号
         self.inputStr_zoneNO(para['ZONE_AREA_NO'])
-        #开始时间
+        # 开始时间
         self.inputStr_start_time(para['START_TIME'])
-        #结束时间
+        # 结束时间
         self.inputStr_end_time(para['END_TIME'])
 
         self.btn_qry()
@@ -80,6 +83,3 @@ class TestCheckResultStat(unittest.TestCase,CheckResultStatPage):
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultStat_para))
     def test_query(self, para):
         self.query(para)
-
-
-

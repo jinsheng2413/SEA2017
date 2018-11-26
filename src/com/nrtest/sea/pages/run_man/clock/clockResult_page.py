@@ -17,7 +17,6 @@ from com.nrtest.sea.locators.run_man.clock.clockResult_locators import ClockResu
 # 对时结果分析
 class ClockResultStaticPage(Page):
 
-
     # 终端厂商--打开并选择
     def inputRSel_tmnl_fac(self, name):
         self.click(*ClockResultStaticLocators.TMNL_FAC_SEL)
@@ -36,7 +35,6 @@ class ClockResultStaticPage(Page):
 
 # 对时结果明细
 class ClockResultDetailPage(Page):
-
 
     # 类别--打开并选择
     def inputRSel_clock_model(self, name):

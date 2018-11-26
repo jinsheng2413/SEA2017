@@ -18,8 +18,6 @@ from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import TmnlC
 # 终端对时统计
 class TmnlClockStaticPage(Page):
 
-
-
     # 终端类型--打开并选择
     def inputRSel_tmnl_type(self, name):
         self.click(*TmnlClockStaticLocators.TMNL_TYPE_SEL)
@@ -45,7 +43,6 @@ class TmnlClockStaticPage(Page):
 
 # 终端时钟明细
 class TmnlClockDetailPage(Page):
-
 
     # 偏差范围--打开并选择
     def inputRSel_offset_range(self, name):
@@ -102,7 +99,6 @@ class TmnlClockDetailPage(Page):
 
 
 class AutoCheckPolicyPage(Page):
-
 
     # 间隔周期--打开并选择
     def inputRSel_interval_cycle(self, name):

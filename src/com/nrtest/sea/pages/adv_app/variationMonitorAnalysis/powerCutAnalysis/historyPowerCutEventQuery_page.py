@@ -9,7 +9,8 @@
 """
 
 from com.nrtest.common.base_page import Page
-from src.com.nrtest.sea.locators.adv_app.variationMonitorAnalysis.powerCutAnalysis.historyPowerCutEventQuery_locators import HistoryPowerCutEventQueryLocators,TmnlPowerCutEventQueryLocators,IntelligentMeterPowerCutEventQueryLocators
+from src.com.nrtest.sea.locators.adv_app.variationMonitorAnalysis.powerCutAnalysis.historyPowerCutEventQuery_locators import \
+    HistoryPowerCutEventQueryLocators, TmnlPowerCutEventQueryLocators, IntelligentMeterPowerCutEventQueryLocators
 
 
 # 高级应用→配变监测分析→停电分析→历史停电事件查询

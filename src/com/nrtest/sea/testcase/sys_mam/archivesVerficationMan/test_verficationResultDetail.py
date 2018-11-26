@@ -8,18 +8,20 @@
 @time: 2018/11/16 0016 14:33
 @desc:
 """
-from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.verficationResultDetail_page import VerficationResultDetailPage,VerficationResultDetailLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
 
-#系统管理--》档案核查管理--》核查结果明细查询
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.verficationResultDetail_page import \
+    VerficationResultDetailPage, VerficationResultDetailLocators
+from com.nrtest.sea.task.commonMath import *
+
+
+# 系统管理--》档案核查管理--》核查结果明细查询
 @ddt
-class TestVerficationResultDetail(unittest.TestCase,VerficationResultDetailPage):
+class TestVerficationResultDetail(unittest.TestCase, VerficationResultDetailPage):
 
     @classmethod
     def setUpClass(cls):
@@ -27,8 +29,8 @@ class TestVerficationResultDetail(unittest.TestCase,VerficationResultDetailPage)
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(ArchivesVerficationMan_data.VerficationResultDetail_para)
         sleep(2)
-        cls.exec_script(cls,VerficationResultDetailLocators.START_DATE_JS)
-        cls.exec_script(cls,VerficationResultDetailLocators.END_DATE_JS)
+        cls.exec_script(cls, VerficationResultDetailLocators.START_DATE_JS)
+        cls.exec_script(cls, VerficationResultDetailLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -59,15 +61,14 @@ class TestVerficationResultDetail(unittest.TestCase,VerficationResultDetailPage)
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #台区编号
+        # 台区编号
         self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])
-        #开始时间
+        # 开始时间
         self.inputStr_start_time(para['START_TIME'])
-        #结束时间
+        # 结束时间
         self.inputStr_end_time(para['END_TIME'])
-
 
         self.btn_qry()
         self.sleep_time(2)
@@ -75,10 +76,7 @@ class TestVerficationResultDetail(unittest.TestCase,VerficationResultDetailPage)
         # result = self.assert_context(*)
         # self.assertTrue(result)
 
-    #@BeautifulReport.add_test_img()
+    # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.VerficationResultDetail_para))
     def test_query(self, para):
         self.query(para)
-
-
-

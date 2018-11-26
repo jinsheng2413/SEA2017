@@ -159,6 +159,10 @@ class MenuPage(Page):
         :param node_flag: 节点分类
         :param node_value: 节点值
         """
+        # 定位左边树用户Tab页@todo 请完善选择用户Tab的xpath
+        # self.click()
+
+        # 根据node_flag选择相应的节点查询条件xpath，并输入查询条件
         xpath = None
         if node_flag == '02':  # 节点--用户编号
             xpath = MenuLocators.NODE_CONS_NO
@@ -166,11 +170,6 @@ class MenuPage(Page):
             xpath = MenuLocators.NODE_TMNL_ADDR
         elif node_flag == '04':  # 节点--电能表资产
             xpath = MenuLocators.NODE_METER_ASSERT_NO
-
-        # 定位左边树用户Tab页@todo 请完善选择用户Tab的xpath
-        # self.click()
-
-        # 输入查询条件
         self.input(node_value, *xpath)
 
         # 点击查询按钮

@@ -8,7 +8,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -90,10 +89,23 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        result = self.assert_context(*CtrlExecutLocators.TAB_ONE)
-        self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para))
     def test_query(self, para):
+        """
+        查询结果校验
+        :return:
+        """
         self.query(para)
+        result = self.assert_context(*CtrlExecutLocators.TAB_ONE)
+        self.assertTrue(result)
+
+    @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para, valCheck=True))
+    def test_checkValue(self, para):
+        """
+        查询条件校验
+        :return:
+        """
+        self.query(para)
+        result = self.assert_value(para)
+        self.assertTrue(result)

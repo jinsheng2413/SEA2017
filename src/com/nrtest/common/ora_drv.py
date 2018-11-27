@@ -282,3 +282,12 @@ class PyOracle():
         finally:
             self._close(cursor, conn)
         return res
+
+
+if __name__ == '__main__':
+    pyoracle = PyOracle.getInstance()
+    qry = ['admin', '99912100']
+    #
+    # funName = 'pkg_nrtest.get_tst_case_cur'
+    # tst_case = pyoracle.callFCur(funName, qry)
+    # print(tst_case)

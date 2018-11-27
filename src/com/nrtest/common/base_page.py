@@ -414,6 +414,14 @@ class Page():
         except:
             return False
 
+    def assert_value(self, para):
+        """
+        @todo 待实现输入条件校验功能
+        :param para:
+        :return:
+        """
+        pass
+
     def sleep_time(self, times):
         """
         休眠

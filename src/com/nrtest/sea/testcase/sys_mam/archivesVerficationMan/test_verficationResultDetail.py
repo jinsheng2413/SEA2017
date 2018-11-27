@@ -77,6 +77,6 @@ class TestVerficationResultDetail(unittest.TestCase, VerficationResultDetailPage
         # self.assertTrue(result)
 
     # @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.VerficationResultDetail_para))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.VerficationResultDetail_para,'测试'))
     def test_query(self, para):
         self.query(para)

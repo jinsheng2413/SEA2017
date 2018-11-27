@@ -92,23 +92,22 @@ class MenuLocators:
     BTN_CONFIRM = (By.XPATH, "//*[contains(text(),'确定')]")
 
     # 【用户TAB页】@todo 待定位元素的xpath
-    # 节点--用户编号
-    NODE_CONS_NO = (By.XPATH, "待定位元素")
-    # 节点--终端逻辑地址
-    NODE_TMNL_ADDR = (By.XPATH, "待定位元素")
-    # 节点--电能表资产
-    NODE_METER_ASSERT_NO = (By.XPATH, "待定位元素")
+    NODE ={'02':(By.XPATH, "//*[@name=\"consNo\"]"),'03':(By.XPATH, "//*[@name=\"terminalAddr\"]"),'04':(By.XPATH, "//*[@name=\"meterAssetNo\"]")}
     # 用户TAB页的查询按钮
-    USER_TAB_BTN_QRY = (By.XPATH, "待定位元素")
+    USER_TAB_BTN_QRY = (By.XPATH, "(//*[@id=\"indexUserPanel\"]//*[text()=\'查询\'])[5]")
     # 查询结果区
-    NODE_USER_TAB_RSLT = (By.XPATH, "待定位元素")
+    NODE_USER_TAB_RSLT_DEFAULT = (By.XPATH, "//*[@id=\"leftUserGrid\"]//div[@class=\"x-grid3-scroller\"]//table[1]")
+    NODE_USER_TAB_RSLT = (By.XPATH, "//*[@id=\"leftUserGrid\"]//div[@class=\"x-grid3-scroller\"]//table[%s]//td[1]/div/div")
+    NODE_USER = (By.XPATH,'//*[@class=\"x-tab-strip-text \" and text()=\'用户\']')
 
-    # 【左边树显示区】
+    # # 【左边树显示区】
     TABLE_DATA = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[[1]]')
     TREE_MINUS = (
         By.XPATH, '//*[@class=\"x-tree-ec-icon x-tree-elbow-minus\"]')
     TREE_END = (
         By.XPATH, '//*[@class=\"x-tree-ec-icon x-tree-elbow-end-minus\"]')
-    # 【table显示区】
-    TAB_ONE = (By.XPATH, '(//table[@class=\"x-grid3-row-table\"])[1]')
-    TAB_VALUE = (By.XPATH, "//*[@class=\"x-grid3-row-table\"])[{0}]//td[1]")
+    # # 【table显示区】
+    # TAB_ONE = (By.XPATH, '(//table[@class=\"x-grid3-row-table\"])[1]')
+    # TAB_VALUE = (By.XPATH, "//*[@class=\"x-grid3-row-table\"])[{0}]//td[1]")
+if __name__=='__main__':
+    print(MenuLocators.NODE['02'])

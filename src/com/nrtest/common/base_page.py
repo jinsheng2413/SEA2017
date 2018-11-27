@@ -687,7 +687,7 @@ class Page():
         """
 
         # print('xpath:', xpath, 'format val', format_val)
-        return (xpath[0], xpath[1] % format_val)
+        return (xpath[0], xpath[1]%format_val)
 
     def DisplayTreeMenu(self):
         """

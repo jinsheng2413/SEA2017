@@ -38,7 +38,9 @@ def openLeftTree(treeNo):
     try:
         node = Dict(eval(treeNo))
         node_flag = node['NODE_FLAG']
+
         node_vale = node['NODE_VALE']
+
     except:
         # 不是数组时的默认处理
         node_flag = '01'

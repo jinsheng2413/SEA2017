@@ -9,7 +9,7 @@
 """
 
 from com.nrtest.common.base_page import Page
-from src.com.nrtest.sea.locators.adv_app.variationMonitorAnalysis.powerCutAnalysis.historyPowerCutEventQuery_locators import \
+from com.nrtest.sea.locators.adv_app.variationMonitorAnalysis.powerCutAnalysis.historyPowerCutEventQuery_locators import \
     HistoryPowerCutEventQueryLocators, TmnlPowerCutEventQueryLocators, IntelligentMeterPowerCutEventQueryLocators
 
 

@@ -65,4 +65,5 @@ class TestUserCollectStatistics(unittest.TestCase, UserCollectStatisticsPage):
 
     @data(*DataAccess.getCaseData(CollConstructStatus_data.UserCollectStatistics_para))
     def test_der(self, para):
+        print(para)
         self.query(para)

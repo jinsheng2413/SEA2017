@@ -66,6 +66,5 @@ def clickTabPage(name):
     # return p.driver
 
 if __name__ == '__main__':
-    openMenu('99914800')
-    sleep(3)
-    openLeftTree('134010204')
+    openMenu('99942110')
+

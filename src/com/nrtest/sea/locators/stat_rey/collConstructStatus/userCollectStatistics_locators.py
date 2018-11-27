@@ -26,7 +26,7 @@ class UserCollectStatisticsLocators:
         By.XPATH, '//label[contains(text(),"统计口径")]/../div/div/input')
     # 统计口径→值
     STATISTICS_CALIBER_VALUE = (
-        By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+        By.XPATH, '//div[@class=\"x-combo-list-inner\"]/div[contains(text(),\'%s\')]')
     # 查询按钮
     BTN_SEARCH = (
         By.XPATH, '//table[@id="consCollCoverBtn"]//button[contains(text(),"查询")]')

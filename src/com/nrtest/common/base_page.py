@@ -850,12 +850,44 @@ class Page():
     def clearInput(self, *Locators):
         self._find_element(*Locators).clear()
 
+    def isSelect(self,name):
+        """
+        判断元素是否被选中
+        :param name:下拉复选中选项，其中一个中文名称
+        :return:
+        """
+        lv1 = "// div[@class =\"x-combo-list-inner\"]//*[contains(text(),'{}')]/../..//div[@class=\"ux-lovcombo-item-text\"]//img".format(name)
+        num = len(self.find_elements_num(*(By.XPATH,lv1)))
+
+        for i in range(1,num+1):
+         lv = "(// div[@class =\"x-combo-list-inner\"]//*[contains(text(),'{}')]/../..//div[@class=\"ux-lovcombo-item-text\"]//img)[{}]".format(name,i)
+         try:
+           el = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH,lv)))
+           val = el.get_attribute('src')
+           v = val.split('s/')
+         except BaseException:
+           print('下拉框的复选框判断失败')
+         if v[1] == 'checked.gif':
+            self.click(*(By.XPATH,lv))
+
+    def selectCheckBox(self,value):
+        if value == '全部':
+            self.isSelect(value)
+        else:
+            self.isSelect(value)
+            lv1 = "// div[@class =\"x-combo-list-inner\"]//*[contains(text(),\'{}\')]/../div/img".format(value)
+            self.click(*(By.XPATH,lv1))
+
+
+
+
+
 
 
 if __name__ == '__main__':
     dr = webdriver.Chrome()
-    el = dr.find_element(*(By.XPATH,''))
-    el.text
+    el = dr.find_element(*(By.XPATH,'')).get_attribute('class')
+    el.is_selected()
     #
     # p = Page(dr)
     # # jjjjjj

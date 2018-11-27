@@ -16,14 +16,9 @@ from com.nrtest.sea.locators.stat_rey.collConstructStatus.userCollectStatistics_
 # 统计查询→综合查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计
 class UserCollectStatisticsPage(Page):
     # 用户类型
-    def inputCSel_cons_type(self, index):
-        if index == 'c':
-            self._find_element(*UserCollectStatisticsLocators.CONS_TYPE)
-        else:
+    def inputCSel_cons_type(self, value):
             self.click(*UserCollectStatisticsLocators.CONS_TYPE)
-            locator = self.get_select_locator(
-                UserCollectStatisticsLocators.CONS_TYPE_VALUE, index)
-            self.click(*locator)
+            self.selectCheckBox(value)
             self.click(*UserCollectStatisticsLocators.CONS_TYPE)
 
     # 统计月份

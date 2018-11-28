@@ -86,9 +86,9 @@ class PyOracle():
         dataSet = None
         try:
             cursor, conn = self._pool.getconn()
-            l = para is None if 0 else len(para)
+            l = 0 if para is None else len(para)
             if l > 0:
-                cursor.executemany(sql, para)
+                cursor.execute(sql, para)
             else:
                 cursor.execute(sql)
 

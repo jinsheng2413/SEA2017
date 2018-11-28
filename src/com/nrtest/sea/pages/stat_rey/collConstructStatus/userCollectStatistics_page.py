@@ -18,7 +18,7 @@ class UserCollectStatisticsPage(Page):
     # 用户类型
     def inputCSel_cons_type(self, value):
             self.click(*UserCollectStatisticsLocators.CONS_TYPE)
-            self.selectCheckBox(value)
+            self.selectCheckBox(value,flag=UserCollectStatisticsLocators.CONS_TYPE_ONLY)
             self.click(*UserCollectStatisticsLocators.CONS_TYPE)
 
     # 统计月份

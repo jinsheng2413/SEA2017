@@ -41,7 +41,7 @@ class MenuLocators:
         By.XPATH, '//div[@class=\"x-menu x-menu-floating x-layer \"][3]/ul/li//*[text()= \"%s\"]')
 
     # 当前正在操作的菜单页面
-    CURRENT_MENU = (By.XPATH, '//*[@id=\"maintab__%s\"]')
+    CURRENT_MENU = (By.XPATH, '//*[@class=\"x-tab-strip-inner\"]//*[contains(text(),\'%s\')]')
     CURRENT_MENU1 = (
         By.XPATH, '//span[contains(@class,\"x-tab-strip-text\") and text() = \"%s\"]')
     # '//span[contains(@class,\"x-tab-strip-text\" and text() = \"%s\"]')

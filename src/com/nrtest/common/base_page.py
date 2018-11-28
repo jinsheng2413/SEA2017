@@ -873,6 +873,12 @@ class Page():
             self.click(*(By.XPATH,lv))
 
     def selectCheckBox(self,value,flag=''):
+        """
+
+        :param value:
+        :param flag:
+        :return:
+        """
         if ',' not in value:
             print(',错误，请改成英文的逗号')
 

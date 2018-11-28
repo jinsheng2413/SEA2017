@@ -205,10 +205,10 @@ class MenuPage(Page):
             except Exception as e:
                 print('该菜单定位报错：', menu, e)
 
-
 if __name__ == '__main__':
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
-    p = MenuPage(lg.login())
-    # p.click_menu('99913210', True) #'99913210', True)
-    # p.clickTabPage('采集成功率统计')
-    p.clickAllMenu()
+    login = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    menuPage = MenuPage(login.login())
+
+    # menuPage.click_menu('99913210', True) #'99913210', True)
+    # menuPage.clickTabPage('采集成功率统计')
+    menuPage.clickAllMenu()

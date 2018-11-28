@@ -91,8 +91,8 @@ class Login:
 
 # fdsdf
 if __name__ == '__main__':
-    # lg = Login('gchb', '123')
-    # drv = lg.login()
+    # login = Login('gchb', '123')
+    # drv = login.login()
     # # cookie = drv.get_cookies()
     # # for i in cookie:
     # #     print(i)

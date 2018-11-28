@@ -97,7 +97,8 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
         :return:
         """
         self.query(para)
-        result = self.assert_context(*CtrlExecutLocators.TAB_ONE)
+        # result = self.assert_context(*CtrlExecutLocators.TAB_ONE)
+        result = self.assert_context(para)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para, valCheck=True))

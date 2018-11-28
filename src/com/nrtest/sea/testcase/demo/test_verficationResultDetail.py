@@ -36,7 +36,7 @@ class TestVerficationResultDetail(unittest.TestCase, VerficationResultDetailPage
     def tearDownClass(cls):
         print("执行结束")
         # 关闭菜单页面
-        cls.closePages(cls)
+        #cls.closePages(cls)
 
     def setUp(self):
         """
@@ -63,15 +63,15 @@ class TestVerficationResultDetail(unittest.TestCase, VerficationResultDetailPage
 
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        # 台区编号
-        self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])
-        # 开始时间
-        self.inputStr_start_time(para['START_TIME'])
-        # 结束时间
-        self.inputStr_end_time(para['END_TIME'])
-
-        self.btn_qry()
-        self.sleep_time(2)
+        # # 台区编号
+        # self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])
+        # # 开始时间
+        # self.inputStr_start_time(para['START_TIME'])
+        # # 结束时间
+        # self.inputStr_end_time(para['END_TIME'])
+        #
+        # self.btn_qry()
+        # self.sleep_time(2)
         # 校验
         # result = self.assert_context(*)
         # self.assertTrue(result)

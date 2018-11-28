@@ -672,6 +672,7 @@ class Page():
         right_click = self.driver.find_element(*loc)
         # 鼠标右键操作
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
+        sleep(2)
         ActionChains(self.driver).context_click(right_click).perform()
 
         # 待定位右键菜单
@@ -683,6 +684,7 @@ class Page():
             WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
         except:
             loc = pe
+            print(loc)
         self.driver.find_element(*loc).click()
 
     @staticmethod
@@ -695,7 +697,7 @@ class Page():
         """
 
         # print('xpath:', xpath, 'format val', format_val)
-        return (xpath[0], xpath[1] % format_val)
+        return (xpath[0], xpath[1]%format_val)
 
     def DisplayTreeMenu(self):
         """
@@ -858,12 +860,121 @@ class Page():
     def clearInput(self, *Locators):
         self._find_element(*Locators).clear()
 
+    def isSelect(self,name):
+        """
+        判断元素是否被选中
+        :param name:下拉复选中选项，其中一个中文名称
+        :return:
+        """
+        lv1 = "// div[@class =\"x-combo-list-inner\"]//*[contains(text(),'{}')]/../..//div[@class=\"ux-lovcombo-item-text\"]//img".format(name)
+        num = len(self.find_elements_num(*(By.XPATH,lv1)))
+
+        for i in range(1,num+1):
+         lv = "(// div[@class =\"x-combo-list-inner\"]//*[contains(text(),'{}')]/../..//div[@class=\"ux-lovcombo-item-text\"]//img)[{}]".format(name,i)
+         try:
+           el = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH,lv)))
+           val = el.get_attribute('src')
+           v = val.split('s/')
+         except BaseException:
+           print('下拉框的复选框判断失败')
+         if v[1] == 'checked.gif':
+            self.click(*(By.XPATH,lv))
+
+    def selectCheckBox(self,value,flag=''):
+        """
+
+        :param value:
+        :param flag:
+        :return:
+        """
+        if ',' not in value:
+            print(',错误，请改成英文的逗号')
+
+        va = value.split(',')
+        if value == '全部':
+            self.isSelect(flag)
+        else:
+            self.isSelect(flag)
+            for i in  va:
+              lv1 = "// div[@class =\"x-combo-list-inner\"]//*[contains(text(),\'{}\')]/../div/img".format(i)
+              self.click(*(By.XPATH,lv1))
+
+    def clickSkip(self, AssertValues):
+        """
+               AssertValues ='手机,外包队伍名称,test'
+               :param AssertValues:
+               以，为分隔符，第一位是显示区唯一列明，第二位是要校验值的列明，第三位是校验值
+               :return:
+               """
+        if ',' not in AssertValues:
+            print('error：输入的逗号是中文的')
+        try:
+
+            if ',' in AssertValues:
+                va = AssertValues.split(',')
+                val = '// *[text() =\'{}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]'.format(
+                    va[0])
+                self.commonWait((By.XPATH, val))
+                num = len(self.find_elements_num(*(By.XPATH, val)))
+                num2 = 0
+                select = None
+                try:
+                    sel = '//*[@class=\"x-grid3-row-checker\"]'
+
+                    select = self.assert_context(*(By.XPATH, sel))
+                except:
+                    select = False
+                if select == True:
+                    # 判断是哪一行
+                    gl = self.AssertLine(va[1])
+                    val2 = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]".format(
+                        va[0], 1, gl + 1)
+                    try:
+                        self.click(*(By.XPATH, val2))
+                        try:
+                            lp = "//*[@class=\"x-tab-strip-text \"and contains(text(),'{}')]".format(va[2])
+                            vu = self.assert_context(*(By.XPATH, lp))
+                            self.closePages(page_name=va[2],isCurPage=False)
+                        except BaseException:
+                            pass
+                        except:
+                            print('---')
+                    except:
+                        print('校验失败')
 
 
+                elif select == False:
+                    gl = self.AssertLine(va[1])
+                    for i in range(1, num + 1):
+                        val2 = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
+                            va[0], i, gl + 1, va[2])
+                        try:
+                            hl = self.assert_context(*(By.XPATH, val2))
+                            if hl == True:
+                                num2 += 1
+                            else:
+                                print('第{0}行，{1}列显示的值与{2}不一致'.format(i, va[1], va[2]))
+                                break
+                        except:
+                            print('校验失败')
+
+                    if num2 == num:
+                        return True
+                    else:
+                        return False
+
+
+
+
+            elif ',' not in AssertValues:
+
+                print('显示区检验值格式输入不正确')
+        except:
+            print('校验失败')
 if __name__ == '__main__':
     dr = webdriver.Chrome()
-    el = dr.find_element(*(By.XPATH,''))
-    el.text
+    el = dr.find_element(*(By.XPATH,'')).get_attribute('class')
+    el.is_selected()
     #
     # p = Page(dr)
     # # jjjjjj

@@ -38,7 +38,9 @@ def openLeftTree(treeNo):
     try:
         node = Dict(eval(treeNo))
         node_flag = node['NODE_FLAG']
+
         node_vale = node['NODE_VALE']
+
     except:
         # 不是数组时的默认处理
         node_flag = '01'
@@ -64,6 +66,5 @@ def clickTabPage(name):
     # return p.driver
 
 if __name__ == '__main__':
-    openMenu('99914800')
-    sleep(3)
-    openLeftTree('134010204')
+    openMenu('99942110')
+

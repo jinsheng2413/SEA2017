@@ -52,3 +52,6 @@ class SynthQuery_data:
     realData_fdetail_tab = '抄表失败明细'
     # 统计查询→综合查询→掌机工单查询
     allCollectSuccessRate_para = '99941920'
+    # 统计查询→综合查询→用户数据
+    consDataQry_para = '99941110'
+    consDataQry_tab_ele = '数据展示'

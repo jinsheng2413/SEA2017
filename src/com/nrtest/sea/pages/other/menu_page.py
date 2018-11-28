@@ -153,35 +153,39 @@ class MenuPage(Page):
 
         return self.driver
 
-    def btn_user_nodes(self, node_flag, node_value):
+    def btn_user_nodes(self, node_flag, node_value,number=1):
+
         """
         选择左边树用户Tab页面，并根据节点类型，输入并查询相应结果
         :param node_flag: 节点分类
         :param node_value: 节点值
+        :param number:查询结果显示的区域，number：代表第几个行，默认是1
+
         """
         # 定位左边树用户Tab页@todo 请完善选择用户Tab的xpath
         # self.click()
 
         # 根据node_flag选择相应的节点查询条件xpath，并输入查询条件
-        xpath = None
-        if node_flag == '02':  # 节点--用户编号
-            xpath = MenuLocators.NODE_CONS_NO
-        elif node_flag == '03':  # 节点--终端逻辑地址
-            xpath = MenuLocators.NODE_TMNL_ADDR
-        elif node_flag == '04':  # 节点--电能表资产
-            xpath = MenuLocators.NODE_METER_ASSERT_NO
-        self.input(node_value, *xpath)
+        #{02:代表用户编号，03：代表终端逻辑地址，04：电能表资产号}
+        #点击用户
+        self.click(*MenuLocators.NODE_USER)
+        self.input(node_value, *MenuLocators.NODE[node_flag])
 
         # 点击查询按钮
-        self.click(MenuLocators.USER_TAB_BTN_QRY)
+        self.click(*MenuLocators.USER_TAB_BTN_QRY)
 
         # 等待查询结果，最好通过其他途径判断查询已返回
-        sleep(3)
+        self.commonWait(MenuLocators.NODE_USER_TAB_RSLT_DEFAULT)
+        self.clear(*MenuLocators.NODE[node_flag])
+
 
         # 定位查询结果，默认选择第一行记录
         # @TODO 是否需要格式化xpath根据实际情况定
-        xpath = self.format_xpath(MenuLocators.NODE_USER_TAB_RSLT, node_value)
-        self.click(xpath)
+        xpath = self.format_xpath(MenuLocators.NODE_USER_TAB_RSLT, number)
+        print(xpath)
+
+        self.click(*xpath)
+        print('------------')
 
     # def clickLeftTree(self, tree):
     #     tree = tree.split(';')

@@ -9,7 +9,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -34,7 +33,7 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
             CommunicationModuleManagement.commModulPropMain_para, True)
         clickTabPage(
             CommunicationModuleManagement.commModulPropMain_tab_relationship)
-        cls.clickCheckBox(cls, CheckBoxName='已维护')
+        cls.clickCheckBox(cls, items='已维护')
         sleep(2)
         cls.exec_script(
             cls, ModuleAttributeRelationshipMantainLocators.TMNL_FACTORY_JS)

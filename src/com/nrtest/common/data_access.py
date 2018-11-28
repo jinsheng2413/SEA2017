@@ -117,7 +117,7 @@ class DataAccess:
 
 if __name__ == '__main__':
     # DataAccess.refresh_case()
-    str = DataAccess.getCaseData("99912100", tabName='终端调试')
+    # str = DataAccess.getCaseData("99912100", tabName='终端调试')
     #print(type(str))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
@@ -129,3 +129,7 @@ if __name__ == '__main__':
     # pass
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
+
+    pyoracle = PyOracle.getInstance()
+    dataSet = pyoracle.query('SELECT * FROM tst_case_result where tst_case_id = :id ', ['999111002'])
+    print(dataSet)

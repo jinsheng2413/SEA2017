@@ -17,9 +17,9 @@ from com.nrtest.sea.locators.stat_rey.collConstructStatus.userCollectStatistics_
 class UserCollectStatisticsPage(Page):
     # 用户类型
     def inputCSel_cons_type(self, value):
-            self.click(*UserCollectStatisticsLocators.CONS_TYPE)
-            self.selectCheckBox(value,flag=UserCollectStatisticsLocators.CONS_TYPE_ONLY)#用于标识那个下拉框
-            self.click(*UserCollectStatisticsLocators.CONS_TYPE)
+        self.click(*UserCollectStatisticsLocators.CONS_TYPE)
+        self.selectCheckBox(value, flag=UserCollectStatisticsLocators.CONS_TYPE_ONLY)  # 用于标识那个下拉框
+        self.click(*UserCollectStatisticsLocators.CONS_TYPE)
 
     # 统计月份
     def inputDt_date(self, content):

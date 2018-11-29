@@ -17,3 +17,9 @@ class LogEdit_data:
     logStatAnalysis_tab_fail = '月统计登录失败top50'
     logStatAnalysis_tab_list = '用户权限变更列表'
     logStatAnalysis_tab_man = '管理员重置用户密码列表'
+    # 系统管理→日志管理→系统登录日志
+    sysEnterLog_para = '99955100'
+    # 系统管理→日志管理→系统操作日志
+    sysOperationLog_para = '99955200'
+    sysOperationLog_tabName_tmnl = '终端操作日志'
+    sysOperationLog_tabName_user = '用户操作日志'

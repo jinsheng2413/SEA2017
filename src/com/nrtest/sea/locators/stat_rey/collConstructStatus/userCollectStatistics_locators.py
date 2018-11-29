@@ -15,11 +15,11 @@ from selenium.webdriver.common.by import By
 class UserCollectStatisticsLocators:
     # 页面元素
     # 用户类型
-    CONS_TYPE = (By.XPATH, '//label[contains(text(),"用户类型")]/../div/div/input')
+    CONS_TYPE = (By.XPATH, '//label[text()="用户类型"]/..//input')
     # 用户类型→值
     CONS_TYPE_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
-    CONS_TYPE_ONLY = '大型专变用户'
+    CONS_TYPE_ONLY = '大型专变用户（ A 类）'
     # 统计月份
     DATE = (By.XPATH, '//input[@id="newConsSearchMon_consColl"]')
     # 统计口径

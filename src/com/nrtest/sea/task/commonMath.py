@@ -67,4 +67,5 @@ def clickTabPage(name):
 
 if __name__ == '__main__':
     openMenu('99942110')
+    openLeftTree()
 

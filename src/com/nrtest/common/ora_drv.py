@@ -86,9 +86,9 @@ class PyOracle():
         dataSet = None
         try:
             cursor, conn = self._pool.getconn()
-            l = 0 if para is None else len(para)
+            l = para is None if 0 else len(para)
             if l > 0:
-                cursor.execute(sql, para)
+                cursor.execute(sql,para)
             else:
                 cursor.execute(sql)
 
@@ -282,12 +282,3 @@ class PyOracle():
         finally:
             self._close(cursor, conn)
         return res
-
-
-if __name__ == '__main__':
-    pyoracle = PyOracle.getInstance()
-    qry = ['admin', '99912100']
-    #
-    # funName = 'pkg_nrtest.get_tst_case_cur'
-    # tst_case = pyoracle.callFCur(funName, qry)
-    # print(tst_case)

@@ -89,7 +89,7 @@ class MenuLocators:
     BTN_COUNTY_AND_USER = (
         By.XPATH, "(//span[contains(text(),'直属用户')])[2]/../../../../li[%s]")
     # 确定
-    BTN_CONFIRM = (By.XPATH, "//*[contains(text(),'确定')]")
+    BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 
     # 【用户TAB页】@todo 待定位元素的xpath
     NODE ={'02':(By.XPATH, "//*[@name=\"consNo\"]"),'03':(By.XPATH, "//*[@name=\"terminalAddr\"]"),'04':(By.XPATH, "//*[@name=\"meterAssetNo\"]")}

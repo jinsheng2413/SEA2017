@@ -18,3 +18,5 @@ class TemplateManData:
     TmnlTaskTemplate_para = '99953500'
     # 系统管理→模板管理→F35设置采集任务模板
     F35SetCollTaskTemp_para = '99953300'
+    # 系统管理→模板管理→终端参数模板
+    TmnlParaTemplate_para = '99953200'

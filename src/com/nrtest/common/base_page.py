@@ -924,27 +924,27 @@ class Page():
         Display_tab = (By.XPATH, '//table[@class=\"x-grid3-row-table\"]')  # 根据XPATH判断显示区是否有值
         for item in self.assertTstCaseResult(rslt):  # 根据rslt有几个值来判断要做几次校验
 
-                flag = item[0]
-                if flag == '11':
-                   haveValue = self.assert_context(*Display_tab)  # 判断是否有值
-                   if len(rslt) == 1:
-                       return haveValue
-                       break
+            flag = item[0]
+            if flag == '11':
+                haveValue = self.assert_context(*Display_tab)  # 判断是否有值
+                if len(rslt) == 1:
+                    return haveValue
+                    break
 
-                elif flag == '12':
+            elif flag == '12':
 
-                   valueRight = self.assertValue(item[1:len(item)])  # 判断值是否准确,item截取字符串，在转换成列表
-                   print(valueRight)
-                   if len(rslt) == 1:
-                       return valueRight
-                       break
-                   elif valueRight == False:
-                       return False
+                valueRight = self.assertValue(item[1:len(item)])  # 判断值是否准确,item截取字符串，在转换成列表
+                print(valueRight)
+                if len(rslt) == 1:
+                    return valueRight
+                    break
+                elif valueRight == False:
+                    return False
 
 
-                elif flag == '21':
-                    skipValue = self.clickSkip(item[1:len(item)])  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
-                    return  skipValue
+            elif flag == '21':
+                skipValue = self.clickSkip(item[1:len(item)])  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
+                return skipValue
 
     def assertTstCaseResult(self, rslt):
         """

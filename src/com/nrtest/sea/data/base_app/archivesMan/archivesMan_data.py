@@ -24,3 +24,5 @@ class ArchivesMan_data:
     archivesAutoReview_para = '99911B00'
     # 基本应用--》档案管理--》终端状态维护
     tmnlStateArr_para = '99911600'
+    # 基本应用--》档案管理--》档案同步
+    archivesGet_para = '99911100'

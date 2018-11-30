@@ -47,34 +47,27 @@ class DataAccess:
         return org_path
 
     @staticmethod
-    def getCaseData(menuNo, tabName='', groupNo='', valCheck=False):
-        """
-        根据菜单编号提取测试用例数据
-        :param menuNo: 菜单编号
-        :param tabName: Tab页名
-        :param groupNo: 用例组编号
-        :param valCheck: True-对元素数据有效性校验；False-测试用例数据
-        :return: 返回用例数据
-        """
+    def getCaseData(menuNo, tabName='', groupNo=''):
         pyoracle = PyOracle.getInstance()
         qry = [Setting.GROUP_USER, menuNo, groupNo, tabName]
+        tst_case = pyoracle.callfunc('pkg_nrtest.get_tst_case', 'str', qry)
 
-        # funName = 'pkg_nrtest.get_tst_case_for_valid' if valCheck else 'pkg_nrtest.get_tst_case'
-        # tst_case = pyoracle.callfunc(funName, 'str', qry)
-
-        funName = 'pkg_nrtest.get_tst_case_for_valid_cur' if valCheck else 'pkg_nrtest.get_tst_case_cur'
-        tst_case = pyoracle.callFCur(funName, qry)
-        print(tst_case)
+        # 字符串转list
         try:
-            rslt = []
-            for row in tst_case:
-                rslt.append(Dict(eval(row[0])))
+            rslt = eval(tst_case)
             if len(rslt) == 0:
                 print(
-                    '没有user_group：{} 与菜单编号：{} 的测试用例数据'.format(qry[0], qry[1]))
+                    '请确认以下配置项是否正确：\n1,配置文件（nari_test.conf）的user_group项：%s \n2,菜单编号：%s' % tuple(qry))
             print('当前用例数据：\n', rslt, '\n')
+
+            # dict转Dict ljf
+            for i in range(len(rslt)):
+                rslt[i] = Dict(rslt[i])
         except BaseException:
             print('获取测试用例数据失败，请检查用例用户组名称是否配置正确，用例编写是否符合要求')
+
+        print('---------')
+
         return rslt
 
     @staticmethod
@@ -91,6 +84,19 @@ class DataAccess:
         cases = pyoracle.callproc('pkg_nrtest.refresh_case', para)
 
         return cases
+
+    @staticmethod
+    def get_case_result(tst_case_id):
+        """
+        用于默认刷新admin用户下的‘00000’用户组的测试用例
+        :param user_no: 测试用例用户
+        :param group_no: 测试用例组
+        :return:
+        """
+        sql = 'select assert_type,tab_column_name , column_name, expected_value from tst_case_result where tst_case_id = :id'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [tst_case_id])
+        return dataSet
 
     @staticmethod
     def refresh_menu(p_menu_no=''):
@@ -117,8 +123,9 @@ class DataAccess:
 
 if __name__ == '__main__':
     # DataAccess.refresh_case()
-    # str = DataAccess.getCaseData("99912100", tabName='终端调试')
-    #print(type(str))
+    # str = DataAccess.getCaseData("99911500")
+    # print(type(str))
+    print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
 
@@ -129,7 +136,4 @@ if __name__ == '__main__':
     # pass
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
-
-    pyoracle = PyOracle.getInstance()
-    dataSet = pyoracle.query('SELECT * FROM tst_case_result where tst_case_id = :id ', ['999111002'])
-    print(dataSet)
+    # DataAccess.get_case_result('999111003')

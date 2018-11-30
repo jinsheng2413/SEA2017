@@ -34,5 +34,6 @@ class ArchivesGetPage(Page):
         self.input(value, *ArchivesGetLocators.QRY_TMNL_ADDR)
 
         # 查询
+
     def btn_qry(self):
-            self.click(*ArchivesGetLocators.BTN_QRY)
+        self.click(*ArchivesGetLocators.BTN_QRY)

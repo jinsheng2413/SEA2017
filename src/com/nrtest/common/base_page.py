@@ -844,7 +844,7 @@ class Page():
 
     def selectCheckBox(self, options, option_name=''):
         """
-
+            not all arguments converted during string formatting:原因是元素没法定位
         :param options:
         :param option_name:
         :return:

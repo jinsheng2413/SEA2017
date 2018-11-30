@@ -827,6 +827,14 @@ class Page():
         :param option_name:下拉复选中选项，其中一个中文名称
         :return:
         """
+        # img_check = '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]'.format(
+        #     option_name)
+        # elements = self.find_elements(*(By.XPATH, img_check))
+        # for el in elements:
+        #     child_el = el.find_element(*(By.XPATH, './img'))
+        #     # print('child_element ing', el.text)
+        #     if child_el.get_attribute('src').find('/checked.gif') > -1:
+        #         child_el.click()
         img_check = '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img'.format(
             option_name)
         elements = self.find_elements(*(By.XPATH, img_check))

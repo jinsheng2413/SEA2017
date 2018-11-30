@@ -856,46 +856,32 @@ class Page():
     def clearInput(self, *Locators):
         self._find_element(*Locators).clear()
 
-    def isSelect(self, name):
+    def _uncheck_all(self, option_name):
         """
         判断元素是否被选中
-        :param name:下拉复选中选项，其中一个中文名称
+        :param option_name:下拉复选中选项，其中一个中文名称
         :return:
         """
-        lv1 = "// div[@class =\"x-combo-list-inner\"]//*[contains(text(),'{}')]/../..//div[@class=\"ux-lovcombo-item-text\"]//img".format(
-            name)
-        num = len(self.find_elements_num(*(By.XPATH, lv1)))
+        img_check = '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img'.format(
+            option_name)
+        elements = self.find_elements(*(By.XPATH, img_check))
+        for el in elements:
+            if el.get_attribute('src').find('/checked.gif') > -1:
+                el.click()
 
-        for i in range(1, num + 1):
-            lv = "(// div[@class =\"x-combo-list-inner\"]//*[contains(text(),'{}')]/../..//div[@class=\"ux-lovcombo-item-text\"]//img)[{}]".format(
-                name, i)
-            try:
-                el = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, lv)))
-                val = el.get_attribute('src')
-                v = val.split('s/')
-            except BaseException:
-                print('下拉框的复选框判断失败')
-            if v[1] == 'checked.gif':
-                self.click(*(By.XPATH, lv))
-
-    def selectCheckBox(self, value, flag=''):
+    def selectCheckBox(self, options, option_name=''):
         """
 
-        :param value:
-        :param flag:
+        :param options:
+        :param option_name:
         :return:
         """
-        # if ',' not in value:
-        #     print(',错误，请改成英文的逗号')
-
-        va = value.split(',')
-        if value == '全部':
-            self.isSelect(flag)
-        else:
-            self.isSelect(flag)
-            for i in va:
-                lv1 = "// div[@class =\"x-combo-list-inner\"]//*[contains(text(),\'{}\')]/../div/img".format(i)
-                self.click(*(By.XPATH, lv1))
+        self._uncheck_all(option_name)
+        if len(option_name) > 0 and option_name != '全部':
+            ls_option = options.split(',')
+            img_chk_xpath = '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img'
+            for option in ls_option:
+                self.click(*(By.XPATH, img_chk_xpath.format(option)))
 
     def clickSkip(self, AssertValues):
         """

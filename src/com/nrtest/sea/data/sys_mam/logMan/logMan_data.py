@@ -23,3 +23,5 @@ class LogEdit_data:
     sysOperationLog_para = '99955200'
     sysOperationLog_tabName_tmnl = '终端操作日志'
     sysOperationLog_tabName_user = '用户操作日志'
+    # 系统管理→日志管理→系统升级日志
+    sysUpgradeLog_para = '99955300'

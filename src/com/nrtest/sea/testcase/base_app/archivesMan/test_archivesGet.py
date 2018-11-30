@@ -8,18 +8,20 @@
 @time: 2018/11/28 0028 13:55
 @desc:
 """
+import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesGet_page import ArchivesGetPage
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
-import unittest
+
 
 # 基本应用--》档案管理--》电表批量导出（冀北）
 @ddt
-class TestArchivesGetLocators(unittest.TestCase,ArchivesGetPage):
+class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
 
     # @classmethod
     # def setUpClass(cls):
@@ -61,31 +63,26 @@ class TestArchivesGetLocators(unittest.TestCase,ArchivesGetPage):
         '''
         sleep(3)
         print(para['ORG_NO'])
-        #打开左边树并选择
+        # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        #输入用户类型
+        # 输入用户类型
         self.inputSel_userType(para['USER_TYPE'])
-        #户号
+        # 户号
         self.inputStr_userNO(para['USER_NO'])
-        #终端资产号
+        # 终端资产号
         self.inputStr_tmnlAssetNo(para['TMNL_ASSET_NO'])
-        #终端地址
+        # 终端地址
         self.inputStr_tmnlAddr(para['TMNL_ADDR'])
 
         self.btn_qry()
         self.sleep_time(2)
 
+    def checkValue(self, tst_case_id):
+        self.assertTrue(self.commonAssertValue(tst_case_id))
 
-    def checkValue(self,tst_case_id):
-       self.assertTrue(self.commonAssertValue(tst_case_id))
-
-    #@BeautifulReport.add_test_img()
+    # @BeautifulReport.add_test_img()
     @data(*((DataAccess.getCaseData(ArchivesMan_data.archivesGet_para))))
     def test_query(self, para):
         print(para)
         self.query(para)
         self.checkValue(para['TST_CASE_ID'])
-
-
-
-

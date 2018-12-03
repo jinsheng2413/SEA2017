@@ -17,8 +17,7 @@ from com.nrtest.sea.locators.stat_rey.collConstructStatus.userCollectStatistics_
 class UserCollectStatisticsPage(Page):
     # 用户类型
     def inputCSel_cons_type(self, options):
-        self.selectCheckBox(options, UserCollectStatisticsLocators.CONS_TYPE,
-                            option_name=UserCollectStatisticsLocators.CONS_TYPE_ONLY)  # 用于标识那个下拉框
+        self.selectCheckBox(options)  # 用于标识那个下拉框
 
 
 
@@ -28,13 +27,14 @@ class UserCollectStatisticsPage(Page):
         self.input(content, *UserCollectStatisticsLocators.DATE)
 
     # 统计口径
-    def inputSel_statistics_caliber(self, index):
+    def inputSel_statistics_caliber(self, options):
         # self.click(*UserCollectStatisticsLocators.STATISTICS_CALIBER)
         # locator = self.get_select_locator(
-        #     UserCollectStatisticsLocators.STATISTICS_CALIBER_VALUE, index)
+        #     UserCollectStatisticsLocators.STATISTICS_CALIBER_VALUE, options)
         # self.click(*locator)
-        self.selectDropDown(index, UserCollectStatisticsLocators.STATISTICS_CALIBER,
-                            UserCollectStatisticsLocators.STATISTICS_CALIBER_VALUE)
+        self.selectDropDown(options)\
+            # , UserCollectStatisticsLocators.STATISTICS_CALIBER,
+            #                 UserCollectStatisticsLocators.STATISTICS_CALIBER_VALUE)
 
     # 查询按钮
     def btn_search(self):

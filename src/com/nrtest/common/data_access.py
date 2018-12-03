@@ -93,7 +93,7 @@ class DataAccess:
         :param group_no: 测试用例组
         :return:
         """
-        sql = 'select assert_type,tab_column_name , column_name, expected_value from tst_case_result where tst_case_id = :id'
+        sql = 'select assert_type,tab_column_name , column_name, expected_value from tst_case_result where tst_case_id = :id order by assert_type'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [tst_case_id])
         return dataSet

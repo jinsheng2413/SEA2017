@@ -632,7 +632,7 @@ class Page():
             self.commonWait(MenuLocators.BTN_CONFIRM)
             self.driver.find_element(*MenuLocators.BTN_CONFIRM).click()
         except Exception as e:
-            print('点击确认按钮失败')
+            print('没有出现确认按钮')
 
     def closePages(self, page_name='工作台', isCurPage=True):
         """
@@ -735,7 +735,7 @@ class Page():
         '''
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
 
-    def AssertLine(self, value):
+    def checkBoxAssertLine(self, value):
         xp = '// *[text() =\'{}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]/ancestor::div[@class=\"x-grid3-viewport\"]//*[@class=\"x-grid3-header\"]//td'.format(
             value)
         el = self.find_elements(*(By.XPATH, xp))
@@ -767,17 +767,18 @@ class Page():
                 displayCheck = self.assert_context(*(By.XPATH, xpath_checker))
             except:
                 displayCheck = False
-            diplayName = self.AssertLine(assertValues[1])  # 判断具体是哪一行
+            diplayName = self.checkBoxAssertLine(assertValues[1])  # 判断具体是哪一行
             ringhtNum = 0
+            displayLineElement = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]"
             if displayNum > 0:
 
                 if displayCheck == True:
 
                     for i in range(1, displayNum + 1):
-                        displayLineElement = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
-                            assertValues[0], i, diplayName + 1, assertValues[2])
+                        #显示区结果的每一行对应列的数据的xpath
+                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1, assertValues[2])
                         try:
-                            assert_rslt = self.assert_context(*(By.XPATH, displayLineElement))
+                            assert_rslt = self.assert_context(*(By.XPATH, displayLineElement_index))
                             if assert_rslt:
                                 ringhtNum += 1
                             else:
@@ -789,10 +790,10 @@ class Page():
 
                 elif not displayCheck:  # 非带有复选框显示区
                     for i in range(1, displayNum + 1):
-                        displayLineElement = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
-                            assertValues[0], i, diplayName + 1, assertValues[2])
+                        # 显示区结果的每一行对应列的数据的xpath
+                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1, assertValues[2])
                         try:
-                            assert_rslt = self.assert_context(*(By.XPATH, displayLineElement))
+                            assert_rslt = self.assert_context(*(By.XPATH, displayLineElement_index))
                             if assert_rslt == True:
                                 ringhtNum += 1
                             else:
@@ -801,10 +802,7 @@ class Page():
                         except:
                             print('校验失败')
 
-                    if ringhtNum == displayNum:
-                        return True
-                    else:
-                        return False
+                    return ringhtNum == displayNum
         except:
             print('显示区结果值校验失败')
 
@@ -844,7 +842,7 @@ class Page():
 
     def selectCheckBox(self, options, option_name=''):
         """
-            not all arguments converted during string formatting:原因是元素没法定位
+
         :param options:
         :param option_name:
         :return:
@@ -876,19 +874,19 @@ class Page():
                 except:
                     displayCheckbox = False
                 if displayCheckbox == True:
-                    lineName = self.AssertLine(assertValues[1])  # 判断是那一列
+                    lineName = self.checkBoxAssertLine(assertValues[1])  # 判断是那一列
                     displayLine = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]".format(
                         assertValues[0], 1, lineName + 1)
                     try:
                         self.click(*(By.XPATH, displayLine))
                         # 把弹出的确定框点掉
-                        try:
-                            self.btn_confirm()
-                        except:
-                            print('没有出现确定')
+
+                        self.btn_confirm()
+
                         try:
                             skipMenuName = "//*[@class=\"x-tab-strip-text \"and contains(text(),'{}')]".format(
                                 assertValues[2])
+                            print(assertValues[2])
                             result = self.assert_context(*(By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
                             if result == True:
                                 self.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
@@ -900,7 +898,7 @@ class Page():
 
             #
             # elif displayCheckbox == False:
-            #     gl = self.AssertLine(va[1])
+            #     gl = self.checkBoxAssertLine(va[1])
             #     for i in range(1, num + 1):
             #         val2 = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
             #             va[0], i, gl + 1, va[2])
@@ -928,47 +926,37 @@ class Page():
         :param tst_case_id:
         :return:item
         """
+        esplain = {'11':'显示区未查询出结果','12':'按条件查询出的结果与期望值不一致','21':'跳转页面不正确'}
         rslt = DataAccess.get_case_result(tst_case_id)
         Display_tab = (By.XPATH, '//table[@class=\"x-grid3-row-table\"]')  # 根据XPATH判断显示区是否有值
-        for item in self.assertTstCaseResult(rslt):  # 根据rslt有几个值来判断要做几次校验
+        ls_check_rslt = {}
+        for row in rslt:  # 根据rslt有几个值来判断要做几次校验
+            assert_type = row[0]
+            if assert_type == '11':
+                assert_rslt = self.assert_context(*Display_tab)  # 判断是否有值
+            elif assert_type == '12':
+                assert_rslt = self.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
+            elif assert_type == '21':
+                assert_rslt = self.clickSkip(row[1:])  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
+            ls_check_rslt.update({assert_type:assert_rslt})
 
-            flag = item[0]
-            if flag == '11':
-                haveValue = self.assert_context(*Display_tab)  # 判断是否有值
-                if len(rslt) == 1:
-                    return haveValue
-                    break
+        result = True
+        #处理判断结果，具体那一步出错
+        for item in ls_check_rslt.items():
+            if item[1] == False:
+                print(esplain[item[0]])#出错具体原因
+                result = item[1]
+                break
 
-            elif flag == '12':
-
-                valueRight = self.assertValue(item[1:len(item)])  # 判断值是否准确,item截取字符串，在转换成列表
-                print(valueRight)
-                if len(rslt) == 1:
-                    return valueRight
-                    break
-                elif valueRight == False:
-                    return False
+        return result
 
 
-            elif flag == '21':
-                skipValue = self.clickSkip(item[1:len(item)])  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
-                return skipValue
 
-    def assertTstCaseResult(self, rslt):
-        """
-        对数组进行排序，来确保先对结果值校验，在进行跳转
-        :param rslt:
-        :return:
-        """
-        new_rslt = []  # 重新排序后的列表
-        index = 0
-        for item in rslt:
-            index += 1
-            if item[0] in ('12', '11'):  # 有值和值的准确性放第一位
-                new_rslt.insert(0, item)
-            if item[0] in ('21', '22', '23'):  # 跳转放第二位
-                new_rslt.insert(1, item)
-        return new_rslt
+    def waitLeftTree(self):
+        locators = (By.XPATH, "//*[@class=\"x-tree-ec-icon x-tree-elbow-plus\"]")
+
+        WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
+
 
 
 if __name__ == '__main__':

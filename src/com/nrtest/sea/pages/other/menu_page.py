@@ -138,15 +138,18 @@ class MenuPage(Page):
             self.btn_select_company(int(items[1]))
             print(int(items[1]))
         elif l in (3, 4):
-            self.btn_plus(1)
-            if int(items[1]) == 5:
+            self.btn_plus(1)#点击省公司加号
+            if int(items[1]) == 5:#承德供电公司的加号xpath与前4个有所区别需要做特殊处理
                 self.btn_plus(1)
             else:
+                self.waitLeftTree()
                 self.btn_company_plus(items[1])
             if l == 3:
-                self.btn_select_county(int(items[2]) + 1)
+                self.waitLeftTree()
+                self.btn_select_county(int(items[2]) + 1) #点击公司加号
             else:
-                self.btn_company_plus(int(items[2]) + int(items[1]))
+                self.waitLeftTree()
+                self.btn_company_plus(int(items[2]) + int(items[1]))#点击公司加号
                 self.btn_select_user(int(items[3]) + 1)
         elif l == 1:
             self.btn_select_province()

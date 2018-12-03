@@ -11,6 +11,15 @@ from selenium.webdriver.common.by import By
 
 
 class BaseLocators:
+    # 通用查询条件定位
     QRY_INPUT = (By.XPATH, '//label[text()="{}"]/..//input')
 
-    QRY_DROPDOWN_OPTION = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[contains(text(),"{}")]')
+    #【下拉复选框相关】
+    # 取消所有已选项
+    SEL_UNCHECK_ALL = (By.XPATH, '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img')
+    # 选择指定复选项
+    SEL_OPTION = (By.XPATH, '//div[@class="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img')
+
+    # 【下拉单选框相关】
+    # 下拉单选项选择
+    DROPDOWN_OPTION = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[contains(text(),"{}")]')

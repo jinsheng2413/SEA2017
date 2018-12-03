@@ -130,7 +130,7 @@ class DataAccess:
 
 if __name__ == '__main__':
     # DataAccess.refresh_case()
-    print(DataAccess.getCaseData("99913220"))
+    print(DataAccess.getCaseData("99942110"))
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))

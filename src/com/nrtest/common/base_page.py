@@ -836,10 +836,9 @@ class Page():
         #     # print('child_element ing', el.text)
         #     if child_el.get_attribute('src').find('/checked.gif') > -1:
         #         child_el.click()
-        print('option_name', option_name)
-        img_check = '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img'.format(
-            option_name)
-        elements = self.find_elements(*(By.XPATH, img_check))
+
+        unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL, option_name)
+        elements = self.find_elements(*unchek_all_path)
         for el in elements:
             if el.get_attribute('src').find('/checked.gif') > -1:
                 el.click()
@@ -847,25 +846,22 @@ class Page():
     def selectCheckBox(self, options):
         """
 
-        :param options: 查询条件标签名;下拉选择项定位值;查询条件
+        :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
         :return:
         """
         if (options.find(';') == -1):
             print ('请配置查询条件的标签值。')
         else:
             ls_option = options.split(';')
-            print('options', ls_option)
             qry_xpath = self.format_xpath(BaseLocators.QRY_INPUT, ls_option[0])
-            print('qry_xpath', qry_xpath)
             self.click(*qry_xpath)
             self._uncheck_all(ls_option[1])
 
             if len(ls_option[2]) > 0 and ls_option[2] != '全部':
-                img_chk_xpath = '//div[@class ' \
-                                '="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img'
-
                 for option in ls_option[2].split(','):
-                    self.click(*(By.XPATH, img_chk_xpath.format(option)))
+                    img_chk_xpath = self.format_xpath(BaseLocators.SEL_OPTION, option)
+                    self.click(*img_chk_xpath)
+
             # 回收下拉框
             # self.click(*BasePageContainsXpage.RECOVERY_DROP_DOWN)
             self.click(*qry_xpath)
@@ -974,16 +970,13 @@ class Page():
 
         WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
 
-    def selectDropDown(self, options):  # sdsdf
+    def selectDropDown(self, options):
         """
 
-        :param qry_xpath: 下拉框的xapth
-        :param options: 下拉框元素的名字
-        :param replace_xpath: 要替换的xpath
-        :return:
+        :param options: 参数格式：查询条件标签名;查询条件
         """
         if (options.find(';') == -1):
-            print ('请配置查询条件的标签值。')
+            print ('............请配置查询条件的标签值............')
         else:
             ls_option = options.split(';')
             if len(ls_option[1]) > 0:
@@ -991,7 +984,7 @@ class Page():
                 qry_xpath = self.format_xpath(BaseLocators.QRY_INPUT, ls_option[0])
                 self.click(*qry_xpath)
                 # 根据名称选择下拉框
-                option_value = self.format_xpath(BaseLocators.QRY_DROPDOWN_OPTION, ls_option[1])
+                option_value = self.format_xpath(BaseLocators.DROPDOWN_OPTION, ls_option[1])
                 self.click(*option_value)
 
 

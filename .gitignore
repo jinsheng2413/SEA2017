@@ -138,7 +138,6 @@ venv.bak/
 # My configurations:
 geckodriver.log
 reports/*.html
-
 .idea/
 screenshots/
 logs/

@@ -13,6 +13,10 @@ from selenium.webdriver.common.by import By
 class BaseLocators:
     # 通用查询条件定位
     QRY_INPUT = (By.XPATH, '//label[text()="{}"]/..//input')
+    # document.getElementById()、getElementsByName()、getElementsByTagName()
+
+    # 去除查询条件只读属性
+    OBJ_JS = 'document.getElementBy{0}("{1}").removeAttribute("readonly");'
 
     #【下拉复选框相关】
     # 取消所有已选项

@@ -331,6 +331,15 @@ class Page():
         """
         self.driver.execute_script(src)
 
+    def remove_readonly_attr(self, obj_name, by_idx=0):
+        """
+        去除查询条件等对象的只读属性
+        :param obj_name: 对象名
+        :param by_idx: 对象类型--0-Id；1-Name；2-TagName
+        """
+        el_by = ['Id', 'Name', 'TagName']
+        self.driver.execute_script(BaseLocators.OBJ_JS.format(el_by[by_idx], obj_name))
+
     # def invisible_element(self,wait_time =Setting.WAIT_TIME, *locator):
     #     """
     #     方法名：invisible_element

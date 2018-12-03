@@ -65,5 +65,10 @@ class TestUserCollectStatistics(unittest.TestCase, UserCollectStatisticsPage):
 
     @data(*(DataAccess.getCaseData(CollConstructStatus_data.UserCollectStatistics_para)))
     def test_der(self, para):
+        """
+        下拉复选框选择
+        :param para:
+        :return:
+        """
         print(para)
         self.query(para)

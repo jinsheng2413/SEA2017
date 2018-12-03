@@ -79,4 +79,9 @@ class TestVerficationResultDetail(unittest.TestCase, VerficationResultDetailPage
     # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.VerficationResultDetail_para,'测试'))
     def test_query(self, para):
+        """
+        左边树，按终端地址查询
+        :param para:
+        :return:
+        """
         self.query(para)

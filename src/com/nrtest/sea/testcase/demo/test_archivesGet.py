@@ -83,6 +83,11 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
     # @BeautifulReport.add_test_img()
     @data(*((DataAccess.getCaseData(ArchivesMan_data.archivesGet_para))))
     def test_query(self, para):
+        """
+        跳转验证
+        :param para:
+        :return:
+        """
         print(para)
         self.query(para)
         self.checkValue(para['TST_CASE_ID'])

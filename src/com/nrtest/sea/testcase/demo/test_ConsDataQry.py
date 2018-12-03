@@ -72,6 +72,10 @@ class TestConsDataQry(unittest.TestCase,ConsDataQryPage):
     #@BeautifulReport.add_test_img()
     #@data(*DataAccess.getCaseData())
     def test_query(self):
+        """
+        复选框
+        :return:
+        """
         self.query()
 
 

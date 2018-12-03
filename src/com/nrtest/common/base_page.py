@@ -766,13 +766,13 @@ class Page():
 
                 displayCheck = self.assert_context(*(By.XPATH, xpath_checker))
             except:
-                displayCheck = False
+                print('没有弹出确定按钮')
             diplayName = self.checkBoxAssertLine(assertValues[1])  # 判断具体是哪一行
             ringhtNum = 0
             displayLineElement = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]"
             if displayNum > 0:
 
-                if displayCheck == True:
+                if displayCheck:
 
                     for i in range(1, displayNum + 1):
                         #显示区结果的每一行对应列的数据的xpath
@@ -794,7 +794,7 @@ class Page():
                         displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1, assertValues[2])
                         try:
                             assert_rslt = self.assert_context(*(By.XPATH, displayLineElement_index))
-                            if assert_rslt == True:
+                            if assert_rslt:
                                 ringhtNum += 1
                             else:
                                 print('第{0}行，{1}列显示的值与{2}不一致'.format(i, assertValues[1], assertValues[2]))
@@ -871,9 +871,10 @@ class Page():
                     sel = '//*[@class=\"x-grid3-row-checker\"]'
 
                     displayCheckbox = self.assert_context(*(By.XPATH, sel))  # 判断显示区是有复选框的还是没有复选框的
+                    print('显示区由复选框')
                 except:
-                    displayCheckbox = False
-                if displayCheckbox == True:
+                    print('显示区没有复选框')
+                if displayCheckbox:
                     lineName = self.checkBoxAssertLine(assertValues[1])  # 判断是那一列
                     displayLine = "(//*[text()=\'{0}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]//tr)[{1}]/td[{2}]".format(
                         assertValues[0], 1, lineName + 1)
@@ -888,7 +889,7 @@ class Page():
                                 assertValues[2])
                             print(assertValues[2])
                             result = self.assert_context(*(By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
-                            if result == True:
+                            if result:
                                 self.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
                             return result
                         except BaseException:

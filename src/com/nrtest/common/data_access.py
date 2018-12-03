@@ -129,8 +129,9 @@ class DataAccess:
 
 
 if __name__ == '__main__':
-    # DataAccess.refresh_case()
+    # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
     print(DataAccess.getCaseData("99942110"))
+
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))

@@ -17,8 +17,16 @@ from com.nrtest.sea.locators.stat_rey.collConstructStatus.userCollectStatistics_
 class UserCollectStatisticsPage(Page):
     # 用户类型
     def inputCSel_cons_type(self, options):
+        """
+
+        :param options: 要选择的选项
+        :return:
+        """
+        # 定位下拉选择框，并点击打开
         self.click(*UserCollectStatisticsLocators.CONS_TYPE)
-        self.selectCheckBox(options, UserCollectStatisticsLocators.CONS_TYPE_ONLY)  # 用于标识那个下拉框
+        # 要选择的选项及标识下拉选择的其中一个选择项
+        self.selectCheckBox(options, '用户类型', UserCollectStatisticsLocators.CONS_TYPE_ONLY)  # 用于标识那个下拉框
+        # 定位下拉选择框，并点击收起
         self.click(*UserCollectStatisticsLocators.CONS_TYPE)
 
     # 统计月份
@@ -27,10 +35,10 @@ class UserCollectStatisticsPage(Page):
         self.input(content, *UserCollectStatisticsLocators.DATE)
 
     # 统计口径
-    def inputSel_statistics_caliber(self, index):
+    def inputSel_statistics_caliber(self, option_name):
         self.click(*UserCollectStatisticsLocators.STATISTICS_CALIBER)
         locator = self.get_select_locator(
-            UserCollectStatisticsLocators.STATISTICS_CALIBER_VALUE, index)
+            UserCollectStatisticsLocators.STATISTICS_CALIBER_VALUE, option_name)
         self.click(*locator)
 
     # 查询按钮

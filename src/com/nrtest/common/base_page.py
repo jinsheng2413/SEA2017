@@ -95,6 +95,7 @@ from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # create a logger instance
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
+from com.nrtest.sea.pages.other.basePageContainsXpage import BasePageContainsXpage
 
 logger = Logger(logger='Page').getlog()
 
@@ -840,19 +841,23 @@ class Page():
             if el.get_attribute('src').find('/checked.gif') > -1:
                 el.click()
 
-    def selectCheckBox(self, options, option_name=''):
+    def selectCheckBox(self, options, qry_xpath, option_name=''):
         """
 
         :param options:
         :param option_name:
         :return:
         """
+        self.click(*qry_xpath)
         self._uncheck_all(option_name)
         if len(options) > 0 and options != '全部':
             ls_option = options.split(',')
-            img_chk_xpath = '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img'
+            img_chk_xpath = '//div[@class ' \
+                            '="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img'
             for option in ls_option:
                 self.click(*(By.XPATH, img_chk_xpath.format(option)))
+        # 回收下拉框
+        self.click(*BasePageContainsXpage.RECOVERY_DROP_DOWN)
 
     def clickSkip(self, assertValues):
         """
@@ -957,6 +962,22 @@ class Page():
         locators = (By.XPATH, "//*[@class=\"x-tree-ec-icon x-tree-elbow-plus\"]")
 
         WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
+
+    def selectDropDown(self, option_name, qry_xpath, replace_xpath):  # sdsdf
+        """
+
+        :param qry_xpath: 下拉框的xapth
+        :param option_name: 下拉框元素的名字
+        :param replace_xpath: 要替换的xpath
+        :return:
+        """
+        # 打开下拉框
+        self.click(*qry_xpath)
+        # 根据名称选择下拉框
+        self.click(*self.get_select_locator(replace_xpath, option_name))
+
+
+
 
 
 

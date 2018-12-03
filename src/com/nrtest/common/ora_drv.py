@@ -91,7 +91,7 @@ class PyOracle():
                 cursor.execute(sql, para)
             else:
                 cursor.execute(sql)
-            cursor.execute(sql, para)
+
             if isAll:
                 dataSet = cursor.fetchall()
             else:

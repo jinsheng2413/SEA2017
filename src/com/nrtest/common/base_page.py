@@ -850,7 +850,7 @@ class Page():
         :return:
         """
         self._uncheck_all(option_name)
-        if len(option_name) > 0 and option_name != '全部':
+        if len(options) > 0 and options != '全部':
             ls_option = options.split(',')
             img_chk_xpath = '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img'
             for option in ls_option:

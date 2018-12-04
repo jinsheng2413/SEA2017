@@ -26,6 +26,7 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
 
     @classmethod
     def setUpClass(cls):
+
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         # 打开菜单（需要传入对应的菜单编号）

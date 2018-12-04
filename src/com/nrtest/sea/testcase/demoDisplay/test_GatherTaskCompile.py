@@ -23,6 +23,7 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
 
     @classmethod
     def setUpClass(cls):
+
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataGatherMan_data.gatherTaskCompile_para)

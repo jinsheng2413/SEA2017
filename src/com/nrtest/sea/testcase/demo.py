@@ -10,15 +10,16 @@
 import os
 import unittest
 
-# from BeautifulReport import BeautifulReport
-
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common import global_drv
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.setting import Setting
 
 
-def add_case(case_path='D:/pythonworkspace/SEA2017/src/com/nrtest/sea/testcase/demoDisplay/', rule='test*.py'):
+# from BeautifulReport import BeautifulReport
+
+
+def add_case(case_path='D:/pythonworkspace/SEA2017/src/com/nrtest/sea/testcase/demo_new/', rule='test*.py'):
     if len(case_path) == 0:
         case_path = os.path.dirname(os.path.realpath(__file__))
     # 加载所有的测试用例

@@ -10,15 +10,14 @@
 import os
 import unittest
 
-#from BeautifulReport import BeautifulReport
-
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common import global_drv
+# from BeautifulReport import BeautifulReport
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.setting import Setting
 
 
-def add_case(case_path='', rule='test*.py'):
+def add_case(case_path='', rule='test_*.py'):
     if len(case_path) == 0:
         case_path = os.path.dirname(os.path.realpath(__file__))
     # 加载所有的测试用例
@@ -31,11 +30,7 @@ def add_case(case_path='', rule='test*.py'):
 # @threads(2)
 def run(test_suit):
     result = BeautifulReport(test_suit)
-    result.report()
-    # , log_path=Setting.REPORT_PATH)
     result.report(filename='report.html', description='测试deafult报告')
-                  # ,log_path="C:/Users/Administrator/Desktop/自动化测试汇报/测试报告")
-
 
 if __name__ == '__main__':
     global_drv.__init()
@@ -45,14 +40,6 @@ if __name__ == '__main__':
         DataAccess.refresh_case()
 
     # 用例集合
-    # curpath = 'D:\pythonworkspace\SEA2017\src\com/nrtest\sea/testcase/adv_app\dataRecover'
     cases = add_case()
-
-    # print(cases)
-    # for case in cases:
-    #     print(case)
-    #     run(case)
     run(cases)
     global_drv.quit()
-
-    #

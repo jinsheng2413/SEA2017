@@ -30,7 +30,6 @@ def add_case(case_path='D:/PycharmProjects/SEA2017/src/com/nrtest/sea/testcase/d
 # @threads(2)
 def run(test_suit):
     result = BeautifulReport(test_suit)
-    # , log_path=Setting.REPORT_PATH)
     result.report(filename='report.html', description='测试deafult报告')
 
 

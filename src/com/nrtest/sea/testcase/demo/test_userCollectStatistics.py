@@ -63,6 +63,7 @@ class TestUserCollectStatistics(unittest.TestCase, UserCollectStatisticsPage):
         # result = self.assert_context(*UserCollectStatisticsLocators.CHECK_FIRST)
         # self.assertTrue(result)
 
+
     @data(*(DataAccess.getCaseData(CollConstructStatus_data.UserCollectStatistics_para)))
     def test_der(self, para):
         """

@@ -418,6 +418,8 @@ class Page():
         :return: 布尔返回值
         """
         try:
+            WebDriverWait(self.driver, 15).until(
+                EC.presence_of_element_located(locators))
             return self.driver.find_element(*locators).is_displayed()
         except:
             return False
@@ -950,12 +952,12 @@ class Page():
         """
         esplain = {'11':'显示区未查询出结果','12':'按条件查询出的结果与期望值不一致','21':'跳转页面不正确'}
         rslt = DataAccess.get_case_result(tst_case_id)
-        Display_tab = (By.XPATH, '//table[@class=\"x-grid3-row-table\"]')  # 根据XPATH判断显示区是否有值
+        Display_tab = '// *[text() =\'{}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]'  # 根据XPATH判断显示区是否有值
         ls_check_rslt = {}
         for row in rslt:  # 根据rslt有几个值来判断要做几次校验
             assert_type = row[0]
             if assert_type == '11':
-                assert_rslt = self.assert_context(*Display_tab)  # 判断是否有值
+                assert_rslt = self.assert_context(*(By.XPATH, Display_tab.format(row[1])))  # 判断是否有值
             elif assert_type == '12':
                 assert_rslt = self.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
             elif assert_type == '21':

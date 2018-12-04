@@ -13,23 +13,20 @@ from time import sleep
 from ddt import ddt, data
 
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.custMan.custMan_data import CustMan_data
-from com.nrtest.sea.pages.base_app.custMan.ctrlExecutPage import CtrlExecutPage, CtrlExecutLocators
+from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
+from com.nrtest.sea.pages.base_app.dataGatherMan.GatherTaskCompile_Page import GatherTaskCompilePage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 基本应用--》费控管理--》低压用户远程费控执行
 @ddt
-class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
+class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
 
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(CustMan_data.ctrlExecut_para)
-        sleep(2)
-        cls.exec_script(cls, CtrlExecutLocators.START_DATE_JS)
-        cls.exec_script(cls, CtrlExecutLocators.END_DATE_JS)
+        cls.driver = openMenu(DataGatherMan_data.gatherTaskCompile_para)
+        clickTabPage('任务查询')
 
     @classmethod
     def tearDownClass(cls):
@@ -48,8 +45,6 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # 去除查询干扰数据(要传入对应的page页面类)
-        # self.clear_values(CtrlExecutPage)
         # 回收左边树
         self.recoverLeftTree()
 
@@ -60,33 +55,24 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        sleep(2)
 
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        # 用户编号
-        self.inputStr_userNo(para['USER_NO'])
-        # 用户名称
-        self.inputStr_userName(para['USER_NAME'])
+        # 任务类型
+        self.inputSel_taskType(para['TASK_TYPE'])
+        # 任务编号
+        self.inputStr_taskNo(para['TASK_NO'])
+        # 任务名称
+        self.inputStr_taskName(para['TASK_NAME'])
+        # 任务状态
+        self.inputSel_taskState(para['TASK_STATE'])
         # 终端地址
-        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
-        # 控制类型
-        self.inputSel_controlType(para['CONTROL_TYPE'])
-        # 抄表段号
-        self.inputStr_sectNo(para['SECT_NO'])
-        # 执行状态
-        self.inputSel_exeStatus(para['EXE_STATUS'])
-        # 数据来源
-        self.inputSel_dataCome(para['DATA_COME'])
-        # 确认状态
-        self.inputSel_confirmStatus(para['CONFIRM_STATUS'])
-        # 开始时间
-        self.inputStr_startTime(para['START_TIME'])
-        # 结束时间
-        self.inputStr_ENDTIme(para['END_TIME'])
-        # 工单号
-        self.inputStr_workOrder(para['WORK_ORDER'])
-        # 执行结果状态
-        self.inputSel_exeResultStatus(para['EXE_RESULT_STATUS'])
+        self.inputStr_TMNL_ADDR(para['TMNL_ADDR'])
+        # 采集点名称
+        self.inputStr_CollectionPointName(para['COLLECTION_POINT_NAME'])
+        # 终端类型
+        self.inputRSel_TmnlType(para['TMNL_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -94,10 +80,10 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
     def checkValue(self, tst_case_id):
         self.assertTrue(self.commonAssertValue(tst_case_id))
 
-    @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para))
+    @data(*(DataAccess.getCaseData(DataGatherMan_data.gatherTaskCompile_para)))
     def test_query(self, para):
         """
-        查询结果校验
+            查询结果校验
         :return:
         """
         self.query(para)

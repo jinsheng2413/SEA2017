@@ -138,16 +138,16 @@ venv.bak/
 # My configurations:
 geckodriver.log
 reports/*.html
-!blank.py
-!screenshots
-!logs
-!ocr
-!img
 .idea/
 screenshots/
 logs/
 ocr/
 img/
+!blank.py
+!screenshots
+!logs
+!ocr
+!img
 
 
 

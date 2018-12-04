@@ -96,7 +96,7 @@ from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # create a logger instance
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 from com.nrtest.sea.pages.other.basePageContainsXpage import BasePageContainsXpage
-
+from com.nrtest.sea.locators.other.base_locators import BaseLocators
 logger = Logger(logger='Page').getlog()
 
 
@@ -674,9 +674,11 @@ class Page():
         :param format_val: 格式化值
         :return:
         """
-
-        # print('xpath:', xpath, 'format val', format_val)
-        return (xpath[0], xpath[1] % format_val)
+        if xpath[1].find('%') > -1:  #'abc%s' 格式
+            # print('xpath:', xpath, 'format val', format_val)
+            return (xpath[0], xpath[1] % format_val)
+        else:                        #'abc{}' 格式
+            return (xpath[0], xpath[1].format(format_val))
 
     def DisplayTreeMenu(self):
         """
@@ -836,30 +838,35 @@ class Page():
         #     # print('child_element ing', el.text)
         #     if child_el.get_attribute('src').find('/checked.gif') > -1:
         #         child_el.click()
-        img_check = '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img'.format(
-            option_name)
-        elements = self.find_elements(*(By.XPATH, img_check))
+
+        unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL, option_name)
+        elements = self.find_elements(*unchek_all_path)
         for el in elements:
             if el.get_attribute('src').find('/checked.gif') > -1:
                 el.click()
 
-    def selectCheckBox(self, options, qry_xpath, option_name=''):
+    def selectCheckBox(self, options):
         """
 
-        :param options:
-        :param option_name:
+        :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
         :return:
         """
-        self.click(*qry_xpath)
-        self._uncheck_all(option_name)
-        if len(options) > 0 and options != '全部':
-            ls_option = options.split(',')
-            img_chk_xpath = '//div[@class ' \
-                            '="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img'
-            for option in ls_option:
-                self.click(*(By.XPATH, img_chk_xpath.format(option)))
-        # 回收下拉框
-        self.click(*BasePageContainsXpage.RECOVERY_DROP_DOWN)
+        if (options.find(';') == -1):
+            print ('请配置查询条件的标签值。')
+        else:
+            ls_option = options.split(';')
+            qry_xpath = self.format_xpath(BaseLocators.QRY_INPUT, ls_option[0])
+            self.click(*qry_xpath)
+            self._uncheck_all(ls_option[1])
+
+            if len(ls_option[2]) > 0 and ls_option[2] != '全部':
+                for option in ls_option[2].split(','):
+                    img_chk_xpath = self.format_xpath(BaseLocators.SEL_OPTION, option)
+                    self.click(*img_chk_xpath)
+
+            # 回收下拉框
+            # self.click(*BasePageContainsXpage.RECOVERY_DROP_DOWN)
+            self.click(*qry_xpath)
 
     def clickSkip(self, assertValues):
         """
@@ -965,18 +972,22 @@ class Page():
 
         WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
 
-    def selectDropDown(self, option_name, qry_xpath, replace_xpath):  # sdsdf
+    def selectDropDown(self, options):
         """
 
-        :param qry_xpath: 下拉框的xapth
-        :param option_name: 下拉框元素的名字
-        :param replace_xpath: 要替换的xpath
-        :return:
+        :param options: 参数格式：查询条件标签名;查询条件
         """
-        # 打开下拉框
-        self.click(*qry_xpath)
-        # 根据名称选择下拉框
-        self.click(*self.get_select_locator(replace_xpath, option_name))
+        if (options.find(';') == -1):
+            print ('............请配置查询条件的标签值............')
+        else:
+            ls_option = options.split(';')
+            if len(ls_option[1]) > 0:
+                # 打开下拉框
+                qry_xpath = self.format_xpath(BaseLocators.QRY_INPUT, ls_option[0])
+                self.click(*qry_xpath)
+                # 根据名称选择下拉框
+                option_value = self.format_xpath(BaseLocators.DROPDOWN_OPTION, ls_option[1])
+                self.click(*option_value)
 
 
 

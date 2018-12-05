@@ -25,7 +25,6 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
 
     @classmethod
     def setUpClass(cls):
-
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         # 打开菜单（需要传入对应的菜单编号）
@@ -116,16 +115,13 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne))
+    @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne))
     def test_query(self, para):
         self.query(para)
         self.assert_query_result(para)
 
     @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne,
-                                valCheck=True))
+    @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne, valCheck=True))
     def _test_checkValue(self, para):
         self.query(para)
         self.assert_query_criteria(para)

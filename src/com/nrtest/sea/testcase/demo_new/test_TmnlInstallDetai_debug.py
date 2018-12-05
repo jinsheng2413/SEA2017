@@ -22,7 +22,6 @@ from com.nrtest.sea.task.commonMath import *
 
 @ddt
 class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
-    lr = DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne)
 
     @classmethod
     def setUpClass(cls):
@@ -87,13 +86,13 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         # 终端地址
         self.inputStr_tmnlAddr_count(para["TMNL_ADDR"])
         # 终端厂家
-        self.inputStr_tmnlFactory_count(para['TMNL_FACTORY'])
+        self.inputSel_tmnlFactory_count(para['TMNL_FACTORY'])
         # 装接类型
         self.inputSel_moutingType_count(para['MOUNTING_TYPE'])
         # 终端类型
-        self.inputStr_tmnlType_count(para['TMNL_TYPE'])
+        self.inputSel_tmnlType_count(para['TMNL_TYPE'])
         # 通信规约
-        self.inputStr_LCT_count(para['LCT'])
+        self.inputSel_LCT_count(para['LCT'])
         # 表类型
         self.inputSel_surfaceType_count(para['SURFACE_TYPE'])
 
@@ -101,11 +100,32 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         self.sleep_time(2)
         # 校验
 
-    def checkValue(self, tst_case_id):
-        self.assertTrue(self.commonAssertValue(tst_case_id))
+    def assert_query_result(self, para):
+        """
+        查询结果校验
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*lr[4:10])
+    @data(
+        *DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne))
     def test_query(self, para):
         self.query(para)
-        self.checkValue(para['TST_CASE_ID'])
+        self.assert_query_result(para)
+
+    @BeautifulReport.add_test_img()
+    @data(
+        *DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne,
+                                valCheck=True))
+    def _test_checkValue(self, para):
+        self.query(para)
+        self.assert_query_criteria(para)

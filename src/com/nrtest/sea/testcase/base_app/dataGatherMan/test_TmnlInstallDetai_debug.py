@@ -85,13 +85,13 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         # 终端地址
         self.inputStr_tmnlAddr_count(para['TMNL_ADDR'])
         # 终端厂家
-        self.inputStr_tmnlFactory_count(para['TMNL_FACTORY'])
+        self.inputSel_tmnlFactory_count(para['TMNL_FACTORY'])
         # 装接类型
         self.inputSel_moutingType_count(para['MOUNTING_TYPE'])
         # 终端类型
-        self.inputStr_tmnlType_count(para['TMNL_TYPE'])
+        self.inputSel_tmnlType_count(para['TMNL_TYPE'])
         # 通信规约
-        self.inputStr_LCT_count(para['LCT'])
+        self.inputSel_LCT_count(para['LCT'])
         # 表类型
         self.inputSel_surfaceType_count(para['SURFACE_TYPE'])
 

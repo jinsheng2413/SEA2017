@@ -25,3 +25,4 @@ class LoginPageLocators:
     BTN_IDENTIFYING_CODE = (By.XPATH, '//*[@id="imageMask"]')
     #
     BTN_INFORMATAIN_PUS = (By.XPATH, "//span[contains(text(),'重要信息推出')]")
+

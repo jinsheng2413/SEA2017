@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.setting import Setting
 
 
-def add_case(case_path='D:/PycharmProjects/SEA2017/src/com/nrtest/sea/testcase/demo_new/', rule='test_CtrlExecut.py'):
+def add_case(case_path='D:/PycharmProjects/SEA2017/src/com/nrtest/sea/testcase/demo_new/', rule='test_*.py'):
     if len(case_path) == 0:
         case_path = os.path.dirname(os.path.realpath(__file__))
     # 加载所有的测试用例

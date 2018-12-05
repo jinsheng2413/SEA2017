@@ -13,11 +13,11 @@ from time import sleep
 
 from ddt import ddt, data
 
+from com.nrtest.common import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesGet_page import ArchivesGetPage
 from com.nrtest.sea.task.commonMath import *
-
 
 
 # 基本应用--》档案管理--》电表批量导出（冀北）
@@ -78,17 +78,29 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
         self.btn_qry()
         self.sleep_time(2)
 
-    def checkValue(self, tst_case_id):
-        self.assertTrue(self.commonAssertValue(tst_case_id))
-
-    # @BeautifulReport.add_test_img()
-    @data(*((DataAccess.getCaseData(ArchivesMan_data.archivesGet_para))))
-    def test_query(self, para):
+    def assert_query_result(self, para):
         """
-        跳转验证
+        查询结果校验
         :param para:
-        :return:
         """
-        print(para)
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesGet_para))
+    def test_query(self, para):
         self.query(para)
-        self.checkValue(para['TST_CASE_ID'])
+        self.assert_query_result(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesGet_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.query(para)
+        self.assert_query_criteria(para)

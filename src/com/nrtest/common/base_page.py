@@ -92,11 +92,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
+from com.nrtest.sea.locators.other.base_locators import BaseLocators
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # create a logger instance
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
-from com.nrtest.sea.pages.other.basePageContainsXpage import BasePageContainsXpage
-from com.nrtest.sea.locators.other.base_locators import BaseLocators
+
 logger = Logger(logger='Page').getlog()
 
 
@@ -183,11 +183,11 @@ class Page():
             element = self.driver.find_element(*locator)
         except TimeoutException as te:
             if locator[1].find('请求无响应或超时！') == -1:
-                logger.error(u'等待元素超时--> %s' % locator, te)
+                logger.error(u'等待元素超时--> {}\n{}'.format(locator, te))
         except NoSuchElementException as nse:
-            logger.error(u'未找到元素--> %s' % locator, nse)
-        except Exception as e:  # 无法确定是哪类异常时用基类异常来捕获
-            logger.error(u'其他查找元素错误--> %s' % locator, e)
+            logger.error(u'未找到元素-->  {}\n{}'.format(locator, nse))
+        except Exception as ex:  # 无法确定是哪类异常时用基类异常来捕获
+            logger.error(u'其他查找元素错误-->  {}\n{}'.format(locator, ex))
         return element
 
     def input(self, values, *locators):
@@ -252,7 +252,7 @@ class Page():
             element.click()
             logger.info('点击元素：{}'.format(locators))
         except BaseException as e:
-            logger.error('点击元素失败:%s' % e)
+            logger.error('点击元素失败:{}\n{}'.format(locators, e))
 
     def closeOldBrowser(self):
         """
@@ -509,6 +509,8 @@ class Page():
             if '账号异常信息' in txt:
                 print('-----')
                 self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
+            # self._find_element(*BaseLocators.BTN_ACCOUNT_EXCEPT).click()
+            # self._find_element(*BaseLocators.BTN_IMPORTANT_INFO).click()
 
     def clear(self, *locator):
         """
@@ -854,17 +856,20 @@ class Page():
             if el.get_attribute('src').find('/checked.gif') > -1:
                 el.click()
 
-    def selectCheckBox(self, options):
+    def selectCheckBox(self, options, sleep_sec=0):
         """
 
         :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
         :return:
         """
+        if bool(sleep_sec):
+            sleep(sleep_sec)
+
         if (options.find(';') == -1):
             print ('请配置查询条件的标签值。')
         else:
             ls_option = options.split(';')
-            qry_xpath = self.format_xpath(BaseLocators.QRY_INPUT, ls_option[0])
+            qry_xpath = self.format_xpath(BaseLocators.QRY_CHECK_BOX, ls_option[0])
             self.click(*qry_xpath)
             self._uncheck_all(ls_option[1])
 
@@ -944,14 +949,14 @@ class Page():
         except:
             print('验证失败')
 
-    def commonAssertValue(self, tst_case_id):
+    def check_query_result(self, para):
         """
 
-        :param tst_case_id:
+        :param para:
         :return:item
         """
         esplain = {'11':'显示区未查询出结果','12':'按条件查询出的结果与期望值不一致','21':'跳转页面不正确'}
-        rslt = DataAccess.get_case_result(tst_case_id)
+        rslt = DataAccess.get_case_result(para['TST_CASE_ID'])
         Display_tab = '// *[text() =\'{}\']/ancestor::div[@class=\"x-grid3-viewport\"]//table[@class=\"x-grid3-row-table\"]'  # 根据XPATH判断显示区是否有值
         ls_check_rslt = {}
         for row in rslt:  # 根据rslt有几个值来判断要做几次校验
@@ -974,6 +979,8 @@ class Page():
 
         return result
 
+    def check_query_criteria(self, para):
+        pass
 
 
     def waitLeftTree(self):
@@ -992,7 +999,7 @@ class Page():
             ls_option = options.split(';')
             if len(ls_option[1]) > 0:
                 # 打开下拉框
-                qry_xpath = self.format_xpath(BaseLocators.QRY_INPUT, ls_option[0])
+                qry_xpath = self.format_xpath(BaseLocators.QRY_CHECK_BOX, ls_option[0])
                 self.click(*qry_xpath)
                 # 根据名称选择下拉框
                 option_value = self.format_xpath(BaseLocators.DROPDOWN_OPTION, ls_option[1])

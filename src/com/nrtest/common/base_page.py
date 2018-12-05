@@ -951,7 +951,7 @@ class Page():
 
     def check_query_result(self, para):
         """
-
+        查询结果校验
         :param para:
         :return:item
         """
@@ -980,6 +980,11 @@ class Page():
         return result
 
     def check_query_criteria(self, para):
+        """
+        查询条件有效性校验（含安全）
+        :param para:
+        :return:
+        """
         pass
 
 

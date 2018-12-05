@@ -101,7 +101,7 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
 
     def assert_query_result(self, para):
         """
-        查询结果校验
+        查询结果校验（包括跳转）
         :param para:
         """
         self.assertTrue(self.check_query_result(para))

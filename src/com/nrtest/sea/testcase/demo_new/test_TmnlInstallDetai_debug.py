@@ -34,10 +34,11 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         sleep(2)
         cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS_COUNT)
         cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS_COUNT)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.LCT_JS_COUNT)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.METER_TYPE_JS_COUNT)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.TMNL_FACTORY_JS_COUNT)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.TMNL_TYPE_JS_COUNT)
+        # 下拉选择无需移除readonly属性
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.LCT_JS_COUNT)
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.METER_TYPE_JS_COUNT)
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.TMNL_FACTORY_JS_COUNT)
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.TMNL_TYPE_JS_COUNT)
 
     @classmethod
     def tearDownClass(cls):

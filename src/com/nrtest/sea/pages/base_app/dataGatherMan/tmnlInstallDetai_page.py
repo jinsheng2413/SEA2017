@@ -17,10 +17,10 @@ class TmnlInstallDetaiPage(Page):
 
     # 终端类型
     def inputSel_TmnlTYPE(self, options):
-        # self.click(*TmnlInstallDetaiLocators.QRY_TMNL_TYPE)
-        # locator = self.get_select_locator(
-        #     TmnlInstallDetaiLocators.QRY_TMNL_TYPE_VALUE, options)
-        # self.click(*locator)
+        self.click(*TmnlInstallDetaiLocators.QRY_TMNL_TYPE)
+        locator = self.get_select_locator(
+            TmnlInstallDetaiLocators.QRY_TMNL_TYPE_VALUE, options)
+        self.click(*locator)
         self.selectDropDown(options)
 
     # 开始时间
@@ -39,37 +39,44 @@ class TmnlInstallDetaiPage(Page):
     # --------------------------------------终端调试------------------------------------------
     # 开始时间
     def inputStr_startTime_count(self, value):
-        self.input(value, *TmnlInstallDetaiLocators.QRY_START_TIME_COUNT)
+        # self.input(value, *TmnlInstallDetaiLocators.QRY_START_TIME_COUNT)
+        self.input(value)
 
     # 结束时间
     def inputStr_enTime_Count(self, value):
-        self.input(value, *TmnlInstallDetaiLocators.QRY_END_TIME_COUNT)
+        # self.input(value, *TmnlInstallDetaiLocators.QRY_END_TIME_COUNT)
+        self.input(value)
 
     # 申请单号
     def inputStr_applyNo_count(self, value):
-        self.input(value, *TmnlInstallDetaiLocators.QRY_APPLY_STATE_COUNT)
+        # self.input(value, *TmnlInstallDetaiLocators.QRY_APPLY_STATE_COUNT)
+        self.input(value)
 
     # 用户编号
     def inputStr_userNo_count(self, value):
-        self.input(value, *TmnlInstallDetaiLocators.QRY_USER_NO_COUNT)
+        # self.input(value, *TmnlInstallDetaiLocators.QRY_USER_NO_COUNT)
+        self.input(value)
 
     # 终端地址
     def inputStr_tmnlAddr_count(self, value):
-        self.input(value, *TmnlInstallDetaiLocators.QRY_TMNL_ADDR_COUNT)
+        # self.input(value, *TmnlInstallDetaiLocators.QRY_TMNL_ADDR_COUNT)
+        self.input(value)
 
     # 终端厂家
     def inputSel_tmnlFactory_count(self, options):
         # self.input(options, *TmnlInstallDetaiLocators.QRY_TMNL_FACTORY_COUNT)
-        self.selectCheckBox('终端厂家;终端厂家;' + options, sleep_sec=3)
+        self.selectCheckBox(options, sleep_sec=2)
 
     # 终端类型
     def inputSel_tmnlType_count(self, options):
-        self.input(options, *TmnlInstallDetaiLocators.QRY_TMNL_TYPE_COUNT)
-        # self.selectCheckBox(options)
+        # self.input(options, *TmnlInstallDetaiLocators.QRY_TMNL_TYPE_COUNT)
+        self.selectCheckBox(options, is_multi_tab=True, sleep_sec=2,
+                            is_multi_elements=True)
+
     # 通信规约
     def inputSel_LCT_count(self, options):
         # self.input(options, *TmnlInstallDetaiLocators.QRY_LCT_COUNT)
-        self.selectCheckBox('通讯规约;698规约;' + options)
+        self.selectCheckBox(options)
 
     # 表类型
     def inputSel_surfaceType_count(self, options):
@@ -78,17 +85,17 @@ class TmnlInstallDetaiPage(Page):
         # locator = self.get_select_locator(
         #     TmnlInstallDetaiLocators.QRY_SURFACE_TYPE_VALUE, options)
         # self.click(*locator)
-        self.selectDropDown('表类型;' + options)
+        self.selectDropDown(options)
 
     # 流程标识
     def inputSel_processID_count(self, options):
-        self.click(*TmnlInstallDetaiLocators.QRY_PROCESS_ID_COUNT)
-        locator = self.get_select_locator(
-            TmnlInstallDetaiLocators.QRY_PROCESS_ID_COUNT_VALUE, options)
-        print(locator)
-        self.click(*locator)
-        print(locator)
-        # self.selectDropDown('流程标识;'+options)
+        # self.click(*TmnlInstallDetaiLocators.QRY_PROCESS_ID_COUNT)
+        # locator = self.get_select_locator(
+        #     TmnlInstallDetaiLocators.QRY_PROCESS_ID_COUNT_VALUE, options)
+        # print(locator)
+        # self.click(*locator)
+        # print(locator)
+        self.selectDropDown(options)
 
     # 运行状态
     def inputSel_runState_count(self, options):
@@ -96,7 +103,7 @@ class TmnlInstallDetaiPage(Page):
         # locator = self.get_select_locator(
         #     TmnlInstallDetaiLocators.QRY_RUN_STATE_COUNT_VALUE, options)
         # self.click(*locator)
-        self.selectDropDown('运行状态;' + options)
+        self.selectDropDown(options)
 
     # 装接类型
     def inputSel_moutingType_count(self, options):
@@ -104,8 +111,10 @@ class TmnlInstallDetaiPage(Page):
         # locator = self.get_select_locator(
         #     TmnlInstallDetaiLocators.QRY_MOUNTING_COUNT_VALUE, options)
         # self.click(*locator)
-        self.selectDropDown('装接类型;' + options)
+        self.selectDropDown(options)
 
     # 查询
     def btn_tmnl_qry(self):
-        self.click(*TmnlInstallDetaiLocators.BTN_TMNL_QRY)
+        # self.click(*TmnlInstallDetaiLocators.BTN_TMNL_QRY)
+        # self.click(None)
+        self.curr_click(is_multi_tab=True)

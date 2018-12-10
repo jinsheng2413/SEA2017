@@ -275,6 +275,12 @@ class Page():
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
 
+    def btn_query(self, is_multi_tab=False):
+        """
+        页面查询按钮
+        """
+        self.curr_click(is_multi_tab)
+
     def selectDropDown(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False):
         """
         下拉单选框选择

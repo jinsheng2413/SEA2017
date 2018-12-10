@@ -117,4 +117,4 @@ class TmnlInstallDetaiPage(Page):
     def btn_tmnl_qry(self):
         # self.click(*TmnlInstallDetaiLocators.BTN_TMNL_QRY)
         # self.click(None)
-        self.curr_click(is_multi_tab=True)
+        self.btn_query(True)

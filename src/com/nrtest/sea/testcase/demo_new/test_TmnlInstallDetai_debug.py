@@ -67,6 +67,9 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
+
         sleep(2)
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
@@ -117,11 +120,15 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
         self.assert_query_result(para)
+        self.end_case(para)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne, valCheck=True))
     def _test_checkValue(self, para):
+        self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
+        self.end_case(para)

@@ -37,7 +37,7 @@ class Logger(object):
         sh.setLevel(logging.INFO)
 
         # 定义handler的输出格式
-        formatter = logging.Formatter('[%(asctime)s] %(levelname)s: %(name)s - %(funcName)s -> %(message)s',
+        formatter = logging.Formatter('[%(asctime)s] %(levelname)s: %(name)s - %(funcName)s [line：%(lineno)d]-> %(message)s',
                                       '%Y-%m-%d %H:%M:%S')
         fh.setFormatter(formatter)
         sh.setFormatter(formatter)
@@ -57,6 +57,12 @@ class Logger(object):
 
 if __name__ == '__main__':
     logger = Logger(Logger.get_module(__file__)).getlog()
-    logger.info('日志测试!!')
+    logger.error('日志测试!!')
     # def __init__(self):
     #     self.logger = Logger(Logger.get_module(__file__)).getlog()
+    logger.debug('\031This is debug message')
+    logger.info('This is info message')
+    logger.warning('This is warning message')
+    print("\033[1;36;m", "*** 蓝字")
+    print("\033[0m", "*** 默认")
+    print("\033[1;31;m", "*** 红字!")

@@ -80,7 +80,6 @@ import os
 import time
 from time import sleep
 
-from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException, InvalidElementStateException
 from selenium.webdriver.common.action_chains import ActionChains
@@ -277,7 +276,7 @@ class Page():
 
     def btn_query(self, is_multi_tab=False):
         """
-        页面查询按钮
+        通用页面查询按钮
         """
         self.curr_click(is_multi_tab)
 
@@ -315,15 +314,6 @@ class Page():
         :param option_name:下拉复选中选项，其中一个中文名称
         :return:
         """
-        # img_check = '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]'.format(
-        #     option_name)
-        # elements = self.find_elements(*(By.XPATH, img_check))
-        # for el in elements:
-        #     child_el = el.find_element(*(By.XPATH, './img'))
-        #     # print('child_element ing', el.text)
-        #     if child_el.get_attribute('src').find('/checked.gif') > -1:
-        #         child_el.click()
-
         unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL, option_name)
         elements = self.find_elements(*unchek_all_path)
         for el in elements:
@@ -366,31 +356,59 @@ class Page():
             # self.click(*BasePageContainsXpage.RECOVERY_DROP_DOWN)
             el.click() if is_multi_elements else self.click(*xpath)
 
-    def remove_attr(self, obj_name, obj_attr='readonly', by_idx=0):
+    def remove_attr(self, obj_name, by_idx=0, obj_attr='readonly'):
         """
         去除查询条件等对象的属性
         :param obj_name: 对象名
-        :param obj_attr:对象属性
         :param by_idx: 对象类型--0-Id；1-Name；2-TagName
+        :param obj_attr:对象属性
         """
         el_by = ['Id', 'Name', 'TagName']
         self.driver.execute_script(BaseLocators.JS_REMOVE_ATTR.format(el_by[by_idx], obj_name, obj_attr))
 
-    def curr_check_box(self, options, is_multi_tab=False):
-        ls_option = (options.split(';')[1]).split(',')
-        xpath = self.format_xpath_multi(BaseLocators.CHECKBOX_CHECKED, ls_option[0], is_multi_tab)
-
-        elements = self.find_elements(*xpath)
-        for el in elements:
-            el.click()
-
-        for option in ls_option:
-            xpath = self.format_xpath_multi(BaseLocators.CHECKBOX_UNCHECKED, option, is_multi_tab)
+    def clickRadioBox(self, item, is_multi_tab=False):
+        """
+        选择单选框
+        :param item: 被选择项
+        :param is_multi_tab:
+        :return:
+        """
+        try:
+            xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, item, is_multi_tab)
             self.click(*xpath)
+        except BaseException as ex:
+            print('点击单选框失败：{}'.format(ex))
 
-    def curr_radio_box(self, option, is_multi_tab=False):
-        xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, option, is_multi_tab)
-        self.click(*xpath)
+    def clickSingleCheckBox(self, item, is_multi_tab=False):
+        self.clickRadioBox(item, is_multi_tab)
+
+    def clickCheckBox(self, items, attr, by=By.NAME, is_multi_tab=False):
+        """
+        选择复选框
+        :param items: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
+        :param attr: 属性值
+        :param by:   属性类型
+        :param is_multi_tab: 是否多Tab页
+        """
+        try:
+            # 撤销已选项
+            xpath = self.format_xpath_multi(BaseLocators.CHKBOX_UNCHECK_ALL, (by, attr), is_multi_tab)
+            elements = self.find_elements(xpath)
+            for el in elements:
+                el.click()
+
+            if items.find(';') >= 0:
+                ls_items = (items.split(';')[1]).split(',')
+            else:
+                ls_items = items.split(',')
+
+            for item in ls_items:
+                by_attr = (by, attr, item)
+                xpath = self.format_xpath_multi(BaseLocators.CHKBOX_INPUT2LABEL, by_attr, is_multi_tab)
+                self.click(*xpath)
+        except BaseException as ex:
+            print('点击单/复选框失败：{}'.format(ex))
+
 
     def input(self, values, *locators):
         """
@@ -879,6 +897,8 @@ class Page():
         if xpath[1].find('%') > -1:  # 'abc%s' 格式
             # print('xpath:', xpath, 'format val', format_val)
             return (xpath[0], xpath[1] % format_val)
+        if isinstance(format_val, tuple):
+            return (xpath[0], xpath[1].format(*format_val))
         else:  # 'abc{}' 格式
             return (xpath[0], xpath[1].format(format_val))
 
@@ -911,22 +931,7 @@ class Page():
         except NoSuchElementException:
             print('删除下拉框的html标签失败')
 
-    def clickCheckBox(self, items):
-        """
-        选中复选框
 
-        :param items: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
-        :return:
-        """
-        try:
-            lis = items.split(',')
-            for i in lis:
-                xp = '//label[@class="x-form-cb-label"and contains(text(),"{}")]/preceding-sibling::input'.format(i)
-                self.commonWait((By.XPATH, xp))
-                self.driver.find_element(*(By.XPATH, xp)).click()
-        except BaseException as e:
-            print('点击复选框失败')
-            print(e)
 
     def clickAlert(self):
         self.driver.switch_to.alert.accept()
@@ -1138,16 +1143,18 @@ class Page():
 
 
 if __name__ == '__main__':
-    dr = webdriver.Chrome()
-    el = dr.find_element(*(By.XPATH, '')).get_attribute('class')
-    el.is_selected()
+    # dr = webdriver.Chrome()
+    # el = dr.find_element(*(By.XPATH, '')).get_attribute('class')
+    # el.is_selected()
+    # #
+    # # p = Page(dr)
+    # # # jjjjjj
+    # #
+    # # p.clear_values(Page)
+    # # p.base_url = 'hhhhhhhhhhh'
     #
-    # p = Page(dr)
-    # # jjjjjj
-    #
-    # p.clear_values(Page)
-    # p.base_url = 'hhhhhhhhhhh'
-
-    menu_name = '关闭其他所有页' if False else '关闭当前页'
-    loc1 = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
-    print(loc1)
+    # menu_name = '关闭其他所有页' if False else '关闭当前页'
+    # loc1 = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
+    # print(loc1)
+    page = Page(None)
+    print(page.format_xpath_multi((By.XPATH, '{}/{}'), ('a', 'b'), False))

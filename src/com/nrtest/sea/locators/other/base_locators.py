@@ -34,12 +34,11 @@ class BaseLocators:
     # 按标签定位input
     QRY_INPUT = (By.XPATH, '//div[@class="x-form-item "]/label[text()="{}"]/..//input')
     # 按input直接定位
-    ATTRS = ['name', 'id']
     QRY_INPUT_BY = (By.XPATH, '//input[@{}="{}"]')  # 如：'//input[@name="{}"]'
 
     # 【日期等只读属性改变】
     # 去除查询条件只读属性，如：日期选择框
-    JS_REMOVE_ATTR = 'document.getElementBy{0}("{1}").removeAttribute("{}");'
+    JS_REMOVE_ATTR = 'document.getElementBy{}("{}").removeAttribute("{}");'
 
     # 【下拉框】
     # 下拉选择点击按钮
@@ -63,24 +62,17 @@ class BaseLocators:
     DROPDOWN_OPTION = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]')
     # $x('//div[@class="x-layer x-combo-list  x-resizable-pinned" and contains(@style,"visible;")]//div[contains(text(),"巡检仪")]')
 
-    # 【单选框】 by:name\id
+    # 【单选框】
     # 根据标签找input
-    RADIOBOX_LABEL2INPUT = (
-    By.XPATH, '//div[contains(@class,"x-form-radio-group")]//label[@class="x-form-cb-label" and text()="{}"]/../input[@type="radio"]')
-
-    # 根据INPUT的name找标签
-    RADIOBOX_INPUT2LABEL = (By.XPATH, '//input[@type="radio" and @name="{}"]/..label[@text()="{}"')
-    # 'div[contains(@class,"x-form-radio-group"]'
+    RADIOBOX_LABEL2INPUT = (By.XPATH, '//label[@class="x-form-cb-label"and text()="{}"]/preceding-sibling::input')
 
     # 【复选框】
-    # input 有checked=""属性时表示已选中，没有表示未选中 get_attribute
-    # 未选择
-    CHECKBOX_UNCHECKED = (By.XPATH, '//div[@class="x-form-check-wrap"]//label[@class="x-form-cb-label" and text()="{}"]/../input[@type="checkbox"]')
-    # 已选择
-    CHECKBOX_CHECKED = (
-    By.XPATH, '//div[@class="x-form-check-wrap"]//label[@class="x-form-cb-label" and text()="{}"]/../input[@type="checkbox" and @checked=""]')
+    # 被选择的复选框
+    CHKBOX_UNCHECK_ALL = (By.XPATH, '//input[@type="checkbox" and @{}="{}" and @checked=""]')
 
-    CHECKBOX_CHECKED_BY_INPUT = (By.XPATH, '//input[@type="checkbox" and @checked="" and @name="{}"]')
+    # 根据INPUT的name找标签 checkbox/radio
+    CHKBOX_INPUT2LABEL = (By.XPATH, '//input[@type="checkbox" and @{}="{}"]/../label[@text()="{}"')
+
 
     # 【按钮类元素】，如：查询按钮
     BTN_QRY = (By.XPATH, '//button[@class =" x-btn-text" and contains(text(),"{}")]')

@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: TestGatherSuccessRate.py
-@time: 2018-09-17 16:30
+@file: test_continuousFalseDetail.py
+@time: 2018/12/6 10:52
 @desc:
 """
 
@@ -16,15 +16,13 @@ import ddt
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_page import \
-    GatherSuccessRatePage
+from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_page import *
 from com.nrtest.sea.task.commonMath import *
 
 
-# 基本应用→数据采集管理→采集质量分析→采集成功率
+# 基本应用→数据采集管理→采集质量分析→采集成功率→连续抄表失败明细
 @ddt.ddt
-class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
-
+class TestContinuousFalseDetail(unittest.TestCase, ContinuousFalseDetailPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
@@ -51,34 +49,21 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         # 回收左边树
         self.recoverLeftTree()
 
-
     def query(self, para):
         sleep(2)
+        clickTabPage('连续抄表失败明细')
         # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 用户类型
         self.inputCSel_cons_type(para['CONS_TYPE'])
-        # 通信方式
-        self.inputSel_comm_type(para['COMM_TYPE'])
-        # 终端厂家
-        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        # 计量方式
-        self.inputSel_measure_way(para['MEASURE_WAY'])
-        # 所属区域
-        self.inputSel_area(para['AREA'])
-        # 芯片厂家
-        self.inputSel_chip_factory(para['CHIP_FACTORY'])
-        # 开始时间
-        self.inputDt_start_date(para['START_DATE'])
-        # 结束时间
-        self.inputDt_end_date(para['END_DATE'])
+        # 运行状态
+        self.inputSel_run_status(para['RUN_STATUS'])
+        # 查询日期
+        self.inputDt_date(para['DATE'])
         # 点击查询按钮
         self.btn_search()
-        # 校验
-        # result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
-        # self.assertTrue(result)
 
     @ddt.data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
-                                      GatherQualityAnalyze_data.GatherSuccessRate_tabName))
+                                      GatherQualityAnalyze_data.GatherSuccessRate_tabName_continuous))
     def test_a_der(self, para):
         self.query(para)

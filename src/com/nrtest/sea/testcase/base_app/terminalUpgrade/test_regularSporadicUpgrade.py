@@ -48,7 +48,7 @@ class TestUpgradeEditionMan(unittest.TestCase, RegularSporadicUpgradePage):
         :return:
         """
         # 去除查询干扰数据(要传入对应的page页面类)
-        self.clear_values(RegularSporadicUpgradePage)
+        # self.clear_values(RegularSporadicUpgradePage)
         # 回收左边树
         self.recoverLeftTree()
 

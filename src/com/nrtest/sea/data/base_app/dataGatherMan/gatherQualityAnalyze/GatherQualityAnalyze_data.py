@@ -11,7 +11,12 @@
 
 class GatherQualityAnalyze_data:
     # 基本应用→数据采集管理→采集质量分析→采集成功率
-    para_GatherSuccessRate = '99913401'
+    para_GatherSuccessRate = '99913210'
+    GatherSuccessRate_tabName = '采集成功率'
+    GatherSuccessRate_tabName_stat = '采集成功率统计'
+    GatherSuccessRate_tabName_detail = '采集成功率明细'
+    GatherSuccessRate_tabName_continuous = '连续抄表失败明细'
+    GatherSuccessRate_tabName_time = '按时间统计'
     # 基本应用→数据采集管理→采集质量分析→事件记录结果统计
     eventRecResultStat_para = '99913280'
     # 基本应用→数据采集管理→采集质量分析→采集成功率综合统计

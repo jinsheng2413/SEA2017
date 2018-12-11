@@ -34,10 +34,11 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         sleep(2)
         cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS_COUNT)
         cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS_COUNT)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.LCT_JS_COUNT)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.METER_TYPE_JS_COUNT)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.TMNL_FACTORY_JS_COUNT)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.TMNL_TYPE_JS_COUNT)
+        # 下拉选择无需移除readonly属性
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.LCT_JS_COUNT)
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.METER_TYPE_JS_COUNT)
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.TMNL_FACTORY_JS_COUNT)
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.TMNL_TYPE_JS_COUNT)
 
     @classmethod
     def tearDownClass(cls):
@@ -67,6 +68,9 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
+
         sleep(2)
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
@@ -117,11 +121,15 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
         self.assert_query_result(para)
+        self.end_case(para)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne, valCheck=True))
     def _test_checkValue(self, para):
+        self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
+        self.end_case(para)

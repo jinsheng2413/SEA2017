@@ -508,7 +508,8 @@ class Page():
         :return:
         """
         logger.info('进入 %s 的iframe层', locators)
-        return self.driver.switch_to_frame(locators[1])
+
+        return self.driver.switch_to.frame(locators[1])
 
     def back_parent_iframe(self):
         """
@@ -1133,6 +1134,7 @@ class Page():
 
 if __name__ == '__main__':
     dr = webdriver.Chrome()
+    dr.switch_to.frame()
     el = dr.find_element(*(By.XPATH, '')).get_attribute('class')
     el.is_selected()
     #

@@ -50,7 +50,7 @@ class TestSysEnterLog(unittest.TestCase, SysEnterLogPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        self.DisplayTreeMenu()
+        self.displayTreeMenu()
         # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 查询日期，开始

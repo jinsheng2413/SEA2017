@@ -61,7 +61,7 @@ class TestWorkCount(unittest.TestCase, WorkCountPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        self.DisplayTreeMenu()
+        self.displayTreeMenu()
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 日期

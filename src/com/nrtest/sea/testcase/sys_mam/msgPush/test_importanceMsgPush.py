@@ -50,7 +50,7 @@ class TestImportanceMsgPush(unittest.TestCase, ImportanceMsgPushPage):
         # self.recoverLeftTree()
 
     def query(self, para):
-        self.DisplayTreeMenu()
+        self.displayTreeMenu()
         # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 角色名称

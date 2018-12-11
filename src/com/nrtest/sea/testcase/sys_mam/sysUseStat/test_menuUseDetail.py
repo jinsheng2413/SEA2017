@@ -51,7 +51,7 @@ class TestMenuUseDetail(unittest.TestCase, MenuUseDetailPage):
 
     def query(self, para):
         clickTabPage('菜单使用明细')
-        self.DisplayTreeMenu()
+        self.displayTreeMenu()
         # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 菜单

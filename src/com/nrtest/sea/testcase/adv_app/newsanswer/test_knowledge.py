@@ -39,7 +39,7 @@ class Test_Knowledge(unittest.TestCase, Knowledge_Page):
 
     def query(self, para):
         sleep(3)
-        self.DisplayTreeMenu()
+        self.displayTreeMenu()
         # 打开左边树选择供电单位
         self.driver = openLeftTree(para['ORG_NO'])
         # 文件类型

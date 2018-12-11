@@ -371,7 +371,6 @@ class Page():
         选择单选框
         :param item: 被选择项
         :param is_multi_tab:
-        :return:
         """
         try:
             xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, item, is_multi_tab)
@@ -380,15 +379,20 @@ class Page():
             print('点击单选框失败：{}'.format(ex))
 
     def clickSingleCheckBox(self, item, is_multi_tab=False):
+        """
+         选择单个复选框
+         :param item: 被选择项
+         :param is_multi_tab:
+         """
         self.clickRadioBox(item, is_multi_tab)
 
     def clickCheckBox(self, items, attr, by=By.NAME, is_multi_tab=False):
         """
-        选择复选框
+        选择多个复选框
         :param items: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
         :param attr: 属性值
-        :param by:   属性类型
-        :param is_multi_tab: 是否多Tab页
+        :param by:   属性类型，一般为name或id
+        :param is_multi_tab: 页面是否有多Tab页
         """
         try:
             # 撤销已选项
@@ -407,7 +411,7 @@ class Page():
                 xpath = self.format_xpath_multi(BaseLocators.CHKBOX_INPUT2LABEL, by_attr, is_multi_tab)
                 self.click(*xpath)
         except BaseException as ex:
-            print('点击单/复选框失败：{}'.format(ex))
+            print('点击复选框失败：{}'.format(ex))
 
 
     def input(self, values, *locators):
@@ -902,7 +906,7 @@ class Page():
         else:  # 'abc{}' 格式
             return (xpath[0], xpath[1].format(format_val))
 
-    def DisplayTreeMenu(self):
+    def displayTreeMenu(self):
         """
         打开左边树菜单栏
         :return:

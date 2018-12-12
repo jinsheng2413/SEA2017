@@ -72,7 +72,6 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(GroupMan_data.LineGroupSet_para))
+    @data(*DataAccess.getCaseData(GroupMan_data.LineGroupSet_para))
     def test_der(self, para):
         self.query(para)

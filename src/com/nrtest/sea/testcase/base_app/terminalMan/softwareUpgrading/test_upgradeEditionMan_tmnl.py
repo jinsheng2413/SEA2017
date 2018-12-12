@@ -1,12 +1,13 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_upgradeEditionMan.py
-@time: 2018/9/25 17:02
+@file: test_upgradeEditionMan_tmnl.py
+@time: 2018/12/11 9:44
 @desc:
 """
+
 import unittest
 
 import ddt
@@ -19,7 +20,7 @@ from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionM
 from com.nrtest.sea.task.commonMath import *
 
 
-# 基本应用→终端管理→软件升级→升级版本管理→终端版本信息登记
+# 基本应用→终端管理→软件升级→升级版本管理→终端版本召测
 @ddt.ddt
 class TestUpgradeEditionMan(unittest.TestCase, UpgradeEditionManPage):
     @classmethod
@@ -50,22 +51,27 @@ class TestUpgradeEditionMan(unittest.TestCase, UpgradeEditionManPage):
         # 回收左边树
         self.recoverLeftTree()
 
-    def query(self, para):
+    def query_edition(self, para):
+        clickTabPage('终端版本召测')
+        # 打开左边树并选择
+        self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 终端厂家
-        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+        self.inputSel_edition_tmnl_factory(para['EDITION_TMNL_FACTORY'])
         # 终端类型
-        self.inputSel_tmnl_type(para['TMNL_TYPE'])
+        self.inputSel_edition_tmnl_type(para['EDITION_TMNL_TYPE'])
         # 终端用途
-        self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
-        # #软件版本号
-        # self.inputSel_software_version_no(para['SOFTWARE_VERSION_NO'])
-        # 点击查询按钮
-        self.btn_search()
+        self.inputSel_edition_tmnl_purpose(para['EDITION_TMNL_PURPOSE'])
+        # 终端规约
+        self.inputSel_edition_tmnl_protocol(para['EDITION_TMNL_PROTOCOL'])
+        # 终端地址
+        self.inputStr_edition_tmnl_addr(para['EDITION_TMNL_ADDR'])
+        # 查询按钮
+        self.btn_edition_search()
         # 校验
-        result = self.assert_context(*UpgradeEditionManLocators.CHECK)
+        result = self.assert_context(*UpgradeEditionManLocators.EDITION_CHECK)
         self.assertTrue(result)
 
     @ddt.data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionMan_para,
-                                      SoftwareUpgrading_data.UpgradeEditionMan_tabName))
-    def test_a_der(self, para):
-        self.query(para)
+                                      SoftwareUpgrading_data.UpgradeEditionMan_tabName_tmnl))
+    def test_c_der(self, para):
+        self.query_edition(para)

@@ -26,7 +26,7 @@ class DataAccess:
 
         pyoracle = PyOracle.getInstance()
         fun_name = 'pkg_nrtest.get_menu_path' + ('_by_name' if by_name else '')
-        menu_path = pyoracle.callfunc(fun_name, 'str', [menuNo])
+        menu_path = pyoracle.callfunc(fun_name, 'str', [menuNo, Setting.PROJECT_NO])
         return menu_path
 
     @staticmethod
@@ -37,13 +37,13 @@ class DataAccess:
         """
 
         pyoracle = PyOracle.getInstance()
-        cur = pyoracle.callFCur('pkg_nrtest.get_all_menu', [Setting.DEFAULT_USER])
+        cur = pyoracle.callFCur('pkg_nrtest.get_all_menu', [Setting.DEFAULT_USER, Setting.PROJECT_NO])
         return cur
 
     @staticmethod
     def getLeftTree(treeNO):
         pyoracle = PyOracle.getInstance()
-        org_path = pyoracle.callfunc('pkg_nrtest.get_org_path', 'str', [treeNO])
+        org_path = pyoracle.callfunc('pkg_nrtest.get_org_path', 'str', [treeNO, Setting.PROJECT_NO])
         return org_path
 
     @staticmethod
@@ -56,8 +56,9 @@ class DataAccess:
         :param valCheck: True-对元素数据有效性校验；False-测试用例数据
         :return: 返回用例数据
         """
+
         pyoracle = PyOracle.getInstance()
-        qry = [Setting.GROUP_USER, menuNo, groupNo, tabName]
+        qry = [Setting.GROUP_USER, menuNo, groupNo, tabName, Setting.PROJECT_NO]
 
         # funName = 'pkg_nrtest.get_tst_case_for_valid' if valCheck else 'pkg_nrtest.get_tst_case'
         # tst_case = pyoracle.callfunc(funName, 'str', qry)
@@ -86,7 +87,7 @@ class DataAccess:
         :return:
         """
         para = [Setting.GROUP_USER if user_no == '' else user_no,
-                '00000' if group_no == '' else group_no]
+                '00000' if group_no == '' else group_no, Setting.PROJECT_NO]
         pyoracle = PyOracle.getInstance()
         cases = pyoracle.callproc('pkg_nrtest.refresh_case', para)
 
@@ -115,7 +116,7 @@ class DataAccess:
         if p_menu_no == '':
             pyoracle.callproc('pkg_nrtest.refresh_menu')
         else:
-            para = [p_menu_no]
+            para = [p_menu_no, Setting.PROJECT_NO]
             pyoracle.callproc('pkg_nrtest.refresh_menu', para)
 
     @staticmethod
@@ -125,7 +126,7 @@ class DataAccess:
         :param menu_no: 菜单编码，该值为空刷新全部菜单，否则刷新指定菜单
         """
         pyoracle = PyOracle.getInstance()
-        pyoracle.callproc('pkg_nrtest.refresh_menu_xapth', [menu_no])
+        pyoracle.callproc('pkg_nrtest.refresh_menu_xapth', [menu_no, Setting.PROJECT_NO])
 
 
 if __name__ == '__main__':

@@ -38,7 +38,7 @@ class Setting():
     WAIT_TIME = parse.get('Base', 'WAIT_TIME')
 
     # 项目编号
-    PROJECT_NO = parse.get('Project', 'PROJECT_NO')
+    PROJECT_NO = parse.get('Project', 'PROJECT_NO').upper()
 
     # 区分windows与linux间不同的路径符号
     PATTERN = parse.pattern()[0]
@@ -82,6 +82,6 @@ class Setting():
 
 if __name__ == '__main__':
     p = Setting()
-    print(p.PROJECT_PATH)
+    print(p.PROJECT_NO)
     print(Setting.BASE_PATH)
     print(platform.system())

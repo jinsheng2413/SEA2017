@@ -536,7 +536,8 @@ class Page():
         :return:
         """
         logger.info('进入 %s 的iframe层', locators)
-        return self.driver.switch_to_frame(locators[1])
+
+        return self.driver.switch_to.frame(locators[1])
 
     def back_parent_iframe(self):
         """

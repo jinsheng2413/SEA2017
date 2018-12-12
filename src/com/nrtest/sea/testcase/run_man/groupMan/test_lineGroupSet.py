@@ -9,6 +9,7 @@
 """
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -26,8 +27,7 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            GroupMan_data.LineGroupSet_para, True)
+        cls.driver = openMenu(GroupMan_data.LineGroupSet_para, True)
 
     @classmethod
     def tearDownClass(cls):
@@ -50,16 +50,23 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        sleep(2)
-        self.clickCheckBox('管理群组')
-        # 名称
-        self.inputStr_name(para['NAME'])
-        # 查询日期，开始
-        self.inputDt_start_date(para['START_DATE'])
-        # 查询日期，结束
-        self.inputDt_end_date(para['END_DATE'])
-        # 查询按钮
-        self.btn_search()
+        # sleep(2)
+        self.clickRadioBox(para['TAB_PAGE_SEL'])  # '管理群组')
+        sleep(0.5)
+        if para['TAB_PAGE_SEL'] == '管理群组':
+            # 名称
+            self.inputStr_name(para['NAME'])
+
+            # 有效日期
+            self.clickSingleCheckBox(para['VALID_DT'])
+
+            if len(para['VALID_DT']) > 0:
+                # 查询日期，开始【少个“从”的标签】
+                self.inputDt_start_date(para['START_DATE'])
+                # 查询日期，结束
+                self.inputDt_end_date(para['END_DATE'])
+                # 查询按钮
+                self.btn_search()
         # 校验
         result = self.assert_context(*LineGroupSetLocators.CHECK_FIRST)
         self.assertTrue(result)

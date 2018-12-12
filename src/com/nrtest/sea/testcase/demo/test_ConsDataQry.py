@@ -8,15 +8,14 @@
 @time: 2018/11/28 0028 10:17
 @desc:
 """
+import unittest
+from time import sleep
+
+from ddt import ddt
+
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.stat_rey.synthQuery.consDataQry_page import ConsDataQryPage
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.task.commonMath import *
-import unittest
 
 
 # 统计查询→综合查询→用户数据
@@ -61,7 +60,7 @@ class TestConsDataQry(unittest.TestCase,ConsDataQryPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
         #点击复选框
-        self.clickCheckBox(self.CheckBoxName)
+        self.clickRadioBox(self.CheckBoxName)
 
 
         # self.btn_qry()

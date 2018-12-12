@@ -8,14 +8,17 @@
 @time: 2018/11/7 0007 14:59
 @desc:
 """
-from com.nrtest.sea.data.stat_rey.reportMan.ItsChinese.itsChinese import TtChinese
-from com.nrtest.sea.pages.stat_rey.reportMan.ItsChinese.tmnlInsertQuery_page import TmnlInsertQueryPage,TmnlInsertQueryLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.reportMan.ItsChinese.itsChinese import TtChinese
+from com.nrtest.sea.pages.stat_rey.reportMan.ItsChinese.tmnlInsertQuery_page import TmnlInsertQueryPage, TmnlInsertQueryLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 # 统计查询-->报表管理-->国网报表-->智能电能表及终端设备接入情况
 @ddt
@@ -62,7 +65,7 @@ class TestTmnlInsertQuery(unittest.TestCase,TmnlInsertQueryPage):
         self.exec_script(TmnlInsertQueryLocators.START_DATE_JS)
         self.exec_script(TmnlInsertQueryLocators.END_DATE_JS)
 
-        self.clickCheckBox(para['BOX'])
+        self.clickRadioBox(para['BOX'])
         #日期
         self.inputStr_date(para['DATE'])
         #到
@@ -96,7 +99,7 @@ class TestTmnlInsertQuery(unittest.TestCase,TmnlInsertQueryPage):
         sleep(2)
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
-        self.clickCheckBox(para['BOX'])
+        self.clickRadioBox(para['BOX'])
         # 终端类型
         self.inputSel_tmnlType(para['TMNL_TYPE'])
         # 终端厂商

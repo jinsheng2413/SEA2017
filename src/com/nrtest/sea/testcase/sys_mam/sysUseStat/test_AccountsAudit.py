@@ -57,7 +57,7 @@ class TestAccountsAudit(unittest.TestCase, AccountsAuditPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
-        self.clickCheckBox(para['TAB_NAME'])
+        self.clickRadioBox(para['TAB_NAME'])
         if para['TAB_NAME'] == '日':
             sleep(2)
             self.exec_script(AccountsAuditLocators.START_DATE_JS)

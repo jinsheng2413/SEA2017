@@ -12,16 +12,19 @@ from time import sleep
 
 from ddt import ddt, data
 
-from com.nrtest.common import BeautifulReport
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.custMan.custMan_data import CustMan_data
 from com.nrtest.sea.pages.base_app.custMan.ctrlExecutPage import CtrlExecutPage, CtrlExecutLocators
 from com.nrtest.sea.task.commonMath import *
 
 
-# 基本应用--》费控管理--》低压用户远程费控执行
+# 高级应用--》费控管理--》低压用户远程费控执行
 @ddt
 class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
+    """
+    高级应用--》费控管理--》低压用户远程费控执行
+    """
 
     @classmethod
     def setUpClass(cls):
@@ -61,6 +64,8 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
@@ -80,6 +85,9 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
         self.inputSel_dataCome(para['DATA_COME'])
         # 确认状态
         self.inputSel_confirmStatus(para['CONFIRM_STATUS'])
+        # 时间区间
+        self.clickRadioBox(para['DT_INTERAL'])
+
         # 开始时间
         self.inputStr_startTime(para['START_TIME'])
         # 结束时间
@@ -110,11 +118,20 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para))
     def test_query(self, para):
+        """
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        :return:
+        """
+        self.start_case(para)
         self.query(para)
         self.assert_query_result(para)
+        self.end_case(para)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para, valCheck=True))
     def _test_checkValue(self, para):
+        self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
+        self.end_case(para)

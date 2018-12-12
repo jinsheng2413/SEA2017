@@ -8,14 +8,17 @@
 @time: 2018/11/9 0009 9:44
 @desc:
 """
-from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
-from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import FlowCountPage,FlowCountLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
+from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import FlowCountPage, FlowCountLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
 @ddt
@@ -69,7 +72,7 @@ class TestFlowAnaly(unittest.TestCase,FlowCountPage):
         # result = self.assert_context(*FlowCountLocators.TAB_ONE)
         # self.assertTrue(result)
 
-    @BeautifulReport.add_test_img(RunSituationCount_data.flowAnaly_para)
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(RunSituationCount_data.flowAnaly_para))
     def test_query(self, para):
         self.query(para)

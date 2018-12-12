@@ -3,7 +3,7 @@
 """
 @author: 李建方
 @license: (C) Copyright 2018, Nari.
-@file: ora_drv.py
+@file: db_driver.py
 @time: 2018-09-10 11:14
 @desc:
 """
@@ -11,6 +11,7 @@ import datetime
 import os
 
 import cx_Oracle
+import pymysql
 from DBUtils.PooledDB import PooledDB
 
 from com.nrtest.common.parse_nrtest import ParseNrTest
@@ -18,7 +19,7 @@ from com.nrtest.common.parse_nrtest import ParseNrTest
 
 class ConnPool():
     """
-    Oracle数据库连接池
+    数据库连接池
     """
     __pool = None
 
@@ -33,17 +34,37 @@ class ConnPool():
         # 或者os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
         if self.__pool is None:
             parse = ParseNrTest()
+            self._db = parse.get('Db_setup', 'DB')
             user = parse.get('Db_setup', 'user_name')
             pwd = parse.get('Db_setup', 'password')
             ip = parse.get('Db_setup', 'IP')
+            port = parse.get('Db_setup', 'Port')
             db = parse.get('Db_setup', 'SID')
             maxcache = int(parse.get('Db_setup', 'Maxcached'))
+            dbMaxConns = int(parse.get('Db_setup', 'DbMaxConnections'))
 
-            dsn = ip + '/' + db
-            self.__pool = PooledDB(creator=cx_Oracle, mincached=1, maxcached=maxcache,
-                                   user=user, password=pwd,
-                                   dsn=dsn)
+            if self._db == 'oracle':
+                dsn = ip + '/' + db
+                self.__pool = PooledDB(creator=cx_Oracle, mincached=1, maxcached=maxcache,
+                                       maxconnections=dbMaxConns,
+                                       user=user, password=pwd,
+                                       dsn=dsn)
+            elif self._db == 'mysql':
+                self.__pool = PooledDB(creator=pymysql, mincached=1, maxcached=maxcache,
+                                       # maxshared=,
+                                       maxconnections=dbMaxConns,
+                                       host=ip, port=port,  # 3306
+                                       user=user, passwd=pwd,
+                                       db=db, use_unicode=False, charset='utf8')
+
         return self.__pool.connection()
+
+    def getDbType(self):
+        """
+        返回当前数据库连接驱动
+        :return:
+        """
+        return self.db.lower()
 
     def __exit__(self, type, value, trace):
         """
@@ -125,15 +146,19 @@ class PyOracle():
     # DataAccess							cx_Oracle				Python
     # VARCHAR2, NVARCHAR2, LONG		cx_Oracle.STRING		str
     # CHAR							cx_Oracle.FIXED_CHAR	str
-    # NUMBER							cx_Oracle.NUMBER		int
+    # NUMBER						cx_Oracle.NUMBER		int
     # FLOAT							cx_Oracle.NUMBER		float
     # DATE							cx_Oracle.DATETIME		datetime.datetime
     # TIMESTAMP						cx_Oracle.TIMESTAMP		datetime.datetime
     # CLOB							cx_Oracle.CLOB			cx_Oracle.LOB
     # BLOB							cx_Oracle.BLOB			cx_Oracle.LOB
     # """
-
     def _pytype2ora(self, to_type):
+        """
+        python数据类型转Oracle数据类型
+        :param to_type: python数据类型
+        :return:
+        """
         if to_type == 'str':
             cx_type = cx_Oracle.STRING
         elif to_type in ('int', 'float'):
@@ -143,6 +168,29 @@ class PyOracle():
         else:
             cx_type = cx_Oracle.STRING
         return cx_type
+
+    def _pytype2mysql(self, to_type):
+        """
+        python数据类型转MySQL数据类型
+        :param to_type: python数据类型
+        :return:
+        """
+        if to_type == 'str':
+            cx_type = pymysql.STRING
+        elif to_type in ('int', 'float'):
+            cx_type = pymysql.NUMBER
+        elif to_type in ('date', 'datetime', 'date2str', 'dt2str'):
+            cx_type = pymysql.DATETIME
+        else:
+            cx_type = pymysql.STRING
+        return cx_type
+
+    def _pytype2db(self, to_type):
+        db = self._pool.getDbType()
+        if db == 'oracle':
+            return self._pytype2ora(to_type)
+        elif db == 'mysql':
+            return self._pytype2mysql(to_type)
 
     def callfunc(self, fun, retType='str', para=()):
         """
@@ -160,7 +208,7 @@ class PyOracle():
         """
         try:
             cursor, conn = self._pool.getconn()
-            tp = cursor.var(self._pytype2ora(retType))
+            tp = cursor.var(self._pytype2db(retType))
             rst = cursor.callfunc(fun, tp, para)
             if retType == 'int':
                 rst = int(rst)

@@ -10,8 +10,8 @@
 
 import os
 
+from com.nrtest.common.db_driver import PyOracle
 from com.nrtest.common.dictionary import Dict
-from com.nrtest.common.ora_drv import PyOracle
 from com.nrtest.common.setting import Setting
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
@@ -56,12 +56,8 @@ class DataAccess:
         :param valCheck: True-对元素数据有效性校验；False-测试用例数据
         :return: 返回用例数据
         """
-
         pyoracle = PyOracle.getInstance()
         qry = [Setting.GROUP_USER, menuNo, groupNo, tabName, Setting.PROJECT_NO]
-
-        # funName = 'pkg_nrtest.get_tst_case_for_valid' if valCheck else 'pkg_nrtest.get_tst_case'
-        # tst_case = pyoracle.callfunc(funName, 'str', qry)
 
         funName = 'pkg_nrtest.get_tst_case_for_valid_cur' if valCheck else 'pkg_nrtest.get_tst_case_cur'
         tst_case = pyoracle.callFCur(funName, qry)
@@ -71,8 +67,7 @@ class DataAccess:
             for row in tst_case:
                 rslt.append(Dict(eval(row[0])))
             if len(rslt) == 0:
-                print(
-                    '没有user_group：{} 与菜单编号：{} 的测试用例数据'.format(qry[0], qry[1]))
+                print('没有user_group：{} 与菜单编号：{} 的测试用例数据'.format(qry[0], qry[1]))
             print('当前用例数据：\n', rslt, '\n')
         except BaseException:
             print('获取测试用例数据失败，请检查用例用户组名称是否配置正确，用例编写是否符合要求')
@@ -87,7 +82,8 @@ class DataAccess:
         :return:
         """
         para = [Setting.GROUP_USER if user_no == '' else user_no,
-                '00000' if group_no == '' else group_no, Setting.PROJECT_NO]
+                '00000' if group_no == '' else group_no,
+                Setting.PROJECT_NO]
         pyoracle = PyOracle.getInstance()
         cases = pyoracle.callproc('pkg_nrtest.refresh_case', para)
 
@@ -131,7 +127,7 @@ class DataAccess:
 
 if __name__ == '__main__':
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
-    print(DataAccess.getCaseData("99912100"))
+    print(DataAccess.getCaseData("99922210"))
 
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))

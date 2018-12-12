@@ -28,6 +28,7 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(GroupMan_data.LineGroupSet_para, True)
+        cls.tab_page = '管理群组'
 
     @classmethod
     def tearDownClass(cls):
@@ -62,7 +63,7 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
         # sleep(2)
         self.clickRadioBox(para['TAB_PAGE_SEL'])  # '管理群组')
         sleep(0.5)
-        if para['TAB_PAGE_SEL'] == '管理群组':
+        if para['TAB_PAGE_SEL'] == self.tab_page:  # 管理群组
             # 名称
             self.inputStr_name(para['NAME'])
 
@@ -106,7 +107,7 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
-        if para['TAB_PAGE_SEL'] == '管理群组':
+        if para['TAB_PAGE_SEL'] == self.tab_page:
             self.assert_query_result(para)
         self.end_case(para)
 
@@ -115,6 +116,6 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
-        if para['TAB_PAGE_SEL'] == '管理群组':
+        if para['TAB_PAGE_SEL'] == self.tab_page:
             self.assert_query_criteria(para)
         self.end_case(para)

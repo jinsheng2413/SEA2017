@@ -41,44 +41,44 @@ class CtrlExecutPage(Page):
         self.input(value)  #, *CtrlExecutLocators.QRY_END_TIME)
 
     # 控制类型
-    def inputSel_controlType(self, name):
+    def inputSel_controlType(self, options):
         # self.click(*CtrlExecutLocators.QRY_CONTROL_TYPE)
         # locator = self.get_select_locator(
-        #     CtrlExecutLocators.QRY_CONTROL_TYPE_VALUE, name)
+        #     CtrlExecutLocators.QRY_CONTROL_TYPE_VALUE, options)
         # self.click(*locator)
-        self.selectDropDown(name)
+        self.selectDropDown(options)
 
     # 执行状态
-    def inputSel_exeStatus(self, name):
+    def inputSel_exeStatus(self, options):
         # self.click(*CtrlExecutLocators.QRY_EXE_STATUS)
         # locator = self.get_select_locator(
-        #     CtrlExecutLocators.QRY_EXE_STATUS_VALUE, name)
+        #     CtrlExecutLocators.QRY_EXE_STATUS_VALUE, options)
         # self.click(*locator)
-        self.selectDropDown(name)
+        self.selectDropDown(options)
 
     # 数据来源
-    def inputSel_dataCome(self, name):
+    def inputSel_dataCome(self, options):
         # self.click(*CtrlExecutLocators.QRY_DATA_COME)
         # locator = self.get_select_locator(
-        #     CtrlExecutLocators.QRY_DATA_COME_VALUE, name)
+        #     CtrlExecutLocators.QRY_DATA_COME_VALUE, options)
         # self.click(*locator)
-        self.selectDropDown(name)
+        self.selectDropDown(options)
 
     # 确认状态
-    def inputSel_confirmStatus(self, name):
+    def inputSel_confirmStatus(self, options):
         # self.click(*CtrlExecutLocators.QRY_CONFIRM_STATUS)
         # locator = self.get_select_locator(
-        #     CtrlExecutLocators.QRY_CONFIRM_STATUS_VALUE, name)
+        #     CtrlExecutLocators.QRY_CONFIRM_STATUS_VALUE, options)
         # self.click(*locator)
-        self.selectDropDown(name)
+        self.selectDropDown(options)
 
     # 执行结果状态
-    def inputSel_exeResultStatus(self, name):
+    def inputSel_exeResultStatus(self, options):
         # self.click(*CtrlExecutLocators.QRY_EXE_STATUS_RESULT)
         # locator = self.get_select_locator(
-        #     CtrlExecutLocators.QRY_EXE_STATUS_RESULT_VALUE, name)
+        #     CtrlExecutLocators.QRY_EXE_STATUS_RESULT_VALUE, options)
         # self.click(*locator)
-        self.selectDropDown(name)
+        self.selectDropDown(options)
 
     # 查询
 

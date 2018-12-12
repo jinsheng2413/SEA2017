@@ -1,12 +1,13 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_upgradeEffectStatistics.py
-@time: 2018/9/29 14:22
+@file: test_upgradeEffectStat_detail.py
+@time: 2018/12/11 15:01
 @desc:
 """
+
 import unittest
 
 from ddt import ddt, data
@@ -19,9 +20,9 @@ from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEffectSt
 from com.nrtest.sea.task.commonMath import *
 
 
-# 基本应用→终端管理→软件升级→升级效果统计
+# 基本应用→终端管理→软件升级→升级效果统计→终端升级明细
 @ddt
-class TestUpgradeEffectStstistics(unittest.TestCase, UpgradeEffectStatisticsPage):
+class TestUpgradeEffectStst_detail(unittest.TestCase, UpgradeEffectStatisticsPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
@@ -51,25 +52,38 @@ class TestUpgradeEffectStstistics(unittest.TestCase, UpgradeEffectStatisticsPage
         # 回收左边树
         self.recoverLeftTree()
 
-    def query(self, para):
+    def query_tab(self, para):
+        clickTabPage('终端升级明细')
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['DETAIL_TREE_ORG_NO'])
         # 终端厂家
-        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+        self.inputSel_detail_tmnl_factory(para['DETAIL_TMNL_FACTORY'])
         # 升级目的
-        self.inputSel_upgrade_purpose(para['UPGRADE_PURPOSE'])
-        # 终端用途
-        self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
-        # 终端类型
-        self.inputSel_tmnl_type(para['TMNL_TYPE'])
+        self.inputSel_detail_upgrade_purpose(para['DETAIL_UPGRADE_PURPOSE'])
         # 升级类型
-        self.inputSel_upgrade_type(para['UPGRADE_TYPE'])
-        # 查询日期，开始
-        self.inputDt_start_date(para['START_DATE'])
-        # 查询日期，结束
-        self.inputDt_end_date(para['END_DATE'])
+        self.inputSel_detail_upgrade_type(para['DETAIL_UPGRADE_TYPE'])
+        # 终端用途
+        self.inputSel_detail_tmnl_purpose(para['DETAIL_TMNL_PURPOSE'])
+        # 是否成功
+        self.inputSel_detail_whether_success(para['DETAIL_WHETHER_SUCCESS'])
+        # 终端类型
+        self.inputSel_detail_tmnl_type(para['DETAIL_TMNL_TYPE'])
+        # 升级状态
+        self.inputSel_detail_upgrade_ststus(para['DETAIL_UPGRADE_STATUS'])
+        # 确认状态
+        self.inputSel_detail_affirm_status(para['DETAIL_AFFIRM_STATUS'])
+        # 确认结果
+        self.inputSel_detail_affirm_result(para['DETAIL_AFFIRM_RESULT'])
+        # 执行开始日期
+        self.inputDt_detail_start_date(para['DETAIL_START_DATE'])
+        # 执行结束日期
+        self.inputDt_detail_end_date(para['DETAIL_END_DATE'])
+        # 确认开始日期
+        self.inputDt_affirm_start_date(para['AFFIRM_START_DATE'])
+        # 确认结束日期
+        self.inputDt_affirm_end_date(para['AFFIRM_END_DATE'])
         # 点击查询按钮
-        self.btn_search()
+        self.btn_detail_search()
 
         # 校验
 
@@ -90,7 +104,7 @@ class TestUpgradeEffectStstistics(unittest.TestCase, UpgradeEffectStatisticsPage
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEffectStatistics_para,
-                                  SoftwareUpgrading_data.UpgradeEffectStatistics_tabName))
+                                  SoftwareUpgrading_data.UpgradeEffectStatistics_tabName_detail))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -99,7 +113,7 @@ class TestUpgradeEffectStstistics(unittest.TestCase, UpgradeEffectStatisticsPage
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEffectStatistics_para,
-                                  SoftwareUpgrading_data.UpgradeEffectStatistics_tabName, valCheck=True))
+                                  SoftwareUpgrading_data.UpgradeEffectStatistics_tabName_detail, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

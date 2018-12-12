@@ -12,6 +12,9 @@
 class SoftwareUpgrading_data:
     # 基本应用→终端管理→软件升级→升级版本管理
     UpgradeEditionMan_para = '99912310'
+    UpgradeEditionMan_tabName = '终端版本信息登记'
+    UpgradeEditionMan_tabName_upgrade = '升级版本管理'
+    UpgradeEditionMan_tabName_tmnl = '终端版本召测'
     # 基本应用→终端管理→软件升级→升级版本审批
     UpgradeEditionApprove_para = '99912320'
     # 基本应用→终端管理→软件升级→常规零星升级审批
@@ -24,3 +27,5 @@ class SoftwareUpgrading_data:
     CentralizedPlanUpgrade_para = '99912350'
     # 基本应用→终端管理→软件升级→升级效果统计
     UpgradeEffectStatistics_para = '99912380'
+    UpgradeEffectStatistics_tabName = '终端升级统计'
+    UpgradeEffectStatistics_tabName_detail = '终端升级明细'

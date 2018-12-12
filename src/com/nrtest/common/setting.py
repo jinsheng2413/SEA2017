@@ -37,8 +37,8 @@ class Setting():
     # 全局等待时间
     WAIT_TIME = parse.get('Base', 'WAIT_TIME')
 
-    # 项目名
-    PROJECT_NAME = parse.get('Project', 'PROJECT_NAME')
+    # 项目编号
+    PROJECT_NO = parse.get('Project', 'PROJECT_NO')
 
     # 区分windows与linux间不同的路径符号
     PATTERN = parse.pattern()[0]

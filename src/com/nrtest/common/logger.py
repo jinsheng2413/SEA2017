@@ -26,7 +26,7 @@ class Logger(object):
         self.logger = logging.getLogger(logger)
         self.logger.setLevel(logging.DEBUG)
 
-        log_name = Setting.LOG_PATH + Setting.PROJECT_NAME + '.log'
+        log_name = Setting.LOG_PATH + Setting.PROJECT_NO + '.log'
         vals = ParseNrTest().getSectionVals('LOG')
         fh = RotatingFileHandler(filename=log_name, mode=vals[0], maxBytes=int(vals[1]), backupCount=int(vals[2]),
                                  encoding=vals[3])

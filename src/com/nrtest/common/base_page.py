@@ -361,7 +361,7 @@ class Page():
         去除查询条件等对象的属性
         :param obj_name: 对象名
         :param by_idx: 对象类型--0-Id；1-Name；2-TagName
-        :param obj_attr:对象属性
+        :param obj_attr: 对象属性
         """
         el_by = ['Id', 'Name', 'TagName']
         self.driver.execute_script(BaseLocators.JS_REMOVE_ATTR.format(el_by[by_idx], obj_name, obj_attr))

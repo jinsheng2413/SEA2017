@@ -894,8 +894,10 @@ class Page():
     def format_xpath(xpath, format_val):
         """
         格式化xpath：(By.XPATH,'//*[@id=abc]//*[contains(text(),\"%s\"])
+        按%s：只支持字符串
+        按{}：支持字符串或元组
         :param xpath: 待格式化的xpath
-        :param format_val: 格式化值
+        :param format_val: 格式化值，可以是单个字符串，元组
         :return:
         """
         if xpath[1].find('%') > -1:  # 'abc%s' 格式

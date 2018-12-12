@@ -57,8 +57,8 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(2)
 
+        sleep(2)
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 任务类型

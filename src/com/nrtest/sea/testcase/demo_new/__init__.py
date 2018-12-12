@@ -5,5 +5,5 @@
 @license: (C) Copyright 2018, Nari.
 @file: __init__.py.py
 @time: 2018/5/24 0024 8:58
-@desc:
+@desc:新的演示程序
 """

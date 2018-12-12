@@ -101,7 +101,6 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
 
         self.btn_tmnl_qry()
         self.sleep_time(2)
-        # 校验
 
     def assert_query_result(self, para):
         """

@@ -183,7 +183,6 @@ class MenuPage(Page):
 
 
         # 定位查询结果，默认选择第一行记录
-        # @TODO 是否需要格式化xpath根据实际情况定
         xpath = self.format_xpath(MenuLocators.NODE_USER_TAB_RSLT, number)
         print(xpath)
 

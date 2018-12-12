@@ -91,7 +91,7 @@ class MenuLocators:
     # 确定
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 
-    # 【用户TAB页】@todo 待定位元素的xpath
+    # 【用户TAB页】
     NODE ={'02':(By.XPATH, "//*[@name=\"consNo\"]"),'03':(By.XPATH, "//*[@name=\"terminalAddr\"]"),'04':(By.XPATH, "//*[@name=\"meterAssetNo\"]")}
     # 用户TAB页的查询按钮
     USER_TAB_BTN_QRY = (By.XPATH, "(//*[@id=\"indexUserPanel\"]//*[text()=\'查询\'])[5]")

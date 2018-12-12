@@ -366,13 +366,21 @@ class Page():
         el_by = ['Id', 'Name', 'TagName']
         self.driver.execute_script(BaseLocators.JS_REMOVE_ATTR.format(el_by[by_idx], obj_name, obj_attr))
 
-    def clickRadioBox(self, item, is_multi_tab=False):
+    def clickRadioBox(self, options, is_multi_tab=False):
         """
         选择单选框
-        :param item: 被选择项
+        :param options: 被选择项
         :param is_multi_tab:
         """
         try:
+            if (options.find(';') == -1):
+                item = options
+            else:
+                ls_option = options.split(';')
+                item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
+
+            if len(item) == 0:
+                raise '单选框必须指定选择项：{}'.format(options)
             xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, item, is_multi_tab)
             self.click(*xpath)
         except BaseException as ex:
@@ -1141,7 +1149,9 @@ class Page():
         :param para:
         :return:
         """
-        pass
+
+        result = True
+        return result
 
     def waitLeftTree(self):
         locators = (By.XPATH, "//*[@class=\"x-tree-ec-icon x-tree-elbow-plus\"]")

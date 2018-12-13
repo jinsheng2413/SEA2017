@@ -24,6 +24,7 @@ class ConnPool():
     __pool = None
 
     def __enter__(self):
+        self._database = None
         self.conn = self.__getConn()
         self.cursor = self.conn.cursor()
         print(u'数据库创建con和cursor')
@@ -34,7 +35,7 @@ class ConnPool():
         # 或者os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
         if self.__pool is None:
             parse = ParseNrTest()
-            self._db = parse.get('Db_setup', 'DB')
+            self._database = parse.get('Db_setup', 'DB')
             user = parse.get('Db_setup', 'user_name')
             pwd = parse.get('Db_setup', 'password')
             ip = parse.get('Db_setup', 'IP')
@@ -43,13 +44,13 @@ class ConnPool():
             maxcache = int(parse.get('Db_setup', 'Maxcached'))
             dbMaxConns = int(parse.get('Db_setup', 'DbMaxConnections'))
 
-            if self._db == 'oracle':
+            if self._database == 'oracle':
                 dsn = ip + '/' + db
                 self.__pool = PooledDB(creator=cx_Oracle, mincached=1, maxcached=maxcache,
                                        maxconnections=dbMaxConns,
                                        user=user, password=pwd,
                                        dsn=dsn)
-            elif self._db == 'mysql':
+            elif self._database == 'mysql':
                 self.__pool = PooledDB(creator=pymysql, mincached=1, maxcached=maxcache,
                                        # maxshared=,
                                        maxconnections=dbMaxConns,
@@ -64,7 +65,7 @@ class ConnPool():
         返回当前数据库连接驱动
         :return:
         """
-        return self.db.lower()
+        return self._database.lower()
 
     def __exit__(self, type, value, trace):
         """
@@ -186,7 +187,9 @@ class PyOracle():
         return cx_type
 
     def _pytype2db(self, to_type):
+        print('start......................')
         db = self._pool.getDbType()
+        print('end...............{}'.format(db))
         if db == 'oracle':
             return self._pytype2ora(to_type)
         elif db == 'mysql':

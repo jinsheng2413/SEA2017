@@ -15,15 +15,14 @@ from com.nrtest.common.dictionary import Dict
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-def openMenu(menuNo, byName=True):
+def openMenu(menuNo):
     """
     打开指定菜单页面
     :param menuNo: 菜单编号
-    :param byName:
     :return:
     """
     menuPage = MenuPage(global_drv.get_driver())
-    menuPage.click_menu(menuNo, byName)
+    menuPage.click_menu(menuNo)
     return menuPage.driver
 
 def openLeftTree(treeNo):

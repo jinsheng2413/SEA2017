@@ -22,10 +22,10 @@ os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 class DataAccess:
 
     @staticmethod
-    def getMenu(menuNo, by_name=False):
+    def getMenu(menuNo):
 
         pyoracle = PyOracle.getInstance()
-        fun_name = 'pkg_nrtest.get_menu_path' + ('_by_name' if by_name else '')
+        fun_name = 'pkg_nrtest.get_menu_path'  # + ('_by_name' if by_name else '')
         menu_path = pyoracle.callfunc(fun_name, 'str', [menuNo, Setting.PROJECT_NO])
         return menu_path
 
@@ -47,28 +47,32 @@ class DataAccess:
         return org_path
 
     @staticmethod
-    def getCaseData(menuNo, tabName='', groupNo='', valCheck=False):
+    def getCaseData(menuNo, tabName='', valCheck=False):
         """
         根据菜单编号提取测试用例数据
         :param menuNo: 菜单编号
         :param tabName: Tab页名
-        :param groupNo: 用例组编号
         :param valCheck: True-对元素数据有效性校验；False-测试用例数据
         :return: 返回用例数据
         """
         pyoracle = PyOracle.getInstance()
-        qry = [Setting.GROUP_USER, menuNo, groupNo, tabName, Setting.PROJECT_NO]
+        qry = [Setting.GROUP_USER,
+               Setting.GROUP_NO,
+               menuNo,
+               tabName,
+               Setting.PROJECT_NO]
 
-        funName = 'pkg_nrtest.get_tst_case_for_valid_cur' if valCheck else 'pkg_nrtest.get_tst_case_cur'
+        funName = 'pkg_nrtest.get_tst_case_for_valid' if valCheck else 'pkg_nrtest.get_tst_case'
         tst_case = pyoracle.callFCur(funName, qry)
-        print(tst_case)
         try:
             rslt = []
             for row in tst_case:
                 rslt.append(Dict(eval(row[0])))
             if len(rslt) == 0:
-                print('没有user_group：{} 与菜单编号：{} 的测试用例数据'.format(qry[0], qry[1]))
-            print('当前用例数据：\n', rslt, '\n')
+                print('没配置{}用例数据...\n'.format(('查询条件校验' if valCheck else '测试')))
+                print('qry:{}；valCheck：{}.......\n'.format(qry, valCheck))
+            else:
+                print('当前用例数据：\n', rslt, '\n')
         except BaseException:
             print('获取测试用例数据失败，请检查用例用户组名称是否配置正确，用例编写是否符合要求')
         return rslt

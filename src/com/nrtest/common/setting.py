@@ -75,10 +75,13 @@ class Setting():
     DB_HOST = parse.get('Db_setup', 'IP')
     # SID
     DB_NAME = parse.get('Db_setup', 'SID')
+    # WEB用户账号与密码
     DEFAULT_USER = parse.get('Login', 'user_name')
     DEFAULT_PASSWORD = parse.get('Login', 'password')
-    GROUP_USER = parse.get('Login', 'user_group')
 
+    # 测试用例用户名及用例组号
+    GROUP_USER = parse.get('Login', 'user_group')
+    GROUP_NO = parse.get('Login', 'group_no')
 
 if __name__ == '__main__':
     p = Setting()

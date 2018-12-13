@@ -79,7 +79,7 @@ class Setting():
     DEFAULT_USER = parse.get('Login', 'user_name')
     DEFAULT_PASSWORD = parse.get('Login', 'password')
 
-    # 测试用例用户名及用例组号
+    # 测试用例用户及用例组号
     GROUP_USER = parse.get('Login', 'user_group')
     GROUP_NO = parse.get('Login', 'group_no')
 

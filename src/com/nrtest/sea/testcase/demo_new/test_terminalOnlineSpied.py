@@ -30,8 +30,8 @@ class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataGatherMan_data.terminalOnlineSpied_para)
         sleep(2)
-        cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_MANUFACTURER_JS)
-        cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_PROTOCOL_JS)
+        # cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_MANUFACTURER_JS)
+        # cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_PROTOCOL_JS)
         cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_STATE_JS)
         cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_TYPE_JS)
 
@@ -63,7 +63,9 @@ class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         '''
-        sleep(2)
+        self.menu_name = para['MENU_NAME']
+
+        # sleep(2)
         # 打开左边树并选择
         self.driver = openLeftTree(para['ORG_NO'])
         # 终端厂商
@@ -99,11 +101,15 @@ class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.terminalOnlineSpied_para))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
         self.assert_query_result(para)
+        self.end_case(para)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.terminalOnlineSpied_para, valCheck=True))
     def _test_checkValue(self, para):
+        self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
+        self.end_case(para)

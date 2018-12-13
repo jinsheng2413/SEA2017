@@ -101,4 +101,4 @@ class ParseNrTest(object):
 
 if __name__ == '__main__':
     nrTest = ParseNrTest()
-    print(nrTest.pattern())
+    print(nrTest.parse.get('Project', 'ABC'))

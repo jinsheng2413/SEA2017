@@ -187,12 +187,10 @@ class PyOracle():
         return cx_type
 
     def _pytype2db(self, to_type):
-        print('start......................')
-        db = self._pool.getDbType()
-        print('end...............{}'.format(db))
-        if db == 'oracle':
+        db_type = self._pool.getDbType()
+        if db_type == 'oracle':
             return self._pytype2ora(to_type)
-        elif db == 'mysql':
+        elif db_type == 'mysql':
             return self._pytype2mysql(to_type)
 
     def callfunc(self, fun, retType='str', para=()):

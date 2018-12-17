@@ -27,7 +27,7 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GroupMan_data.LineGroupSet_para, True)
+        cls.driver = openMenu(GroupMan_data.LineGroupSet_para)
         cls.tab_page = '管理群组'
 
     @classmethod

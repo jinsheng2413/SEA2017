@@ -7,6 +7,7 @@
 @desc:
 """
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -26,7 +27,7 @@ class TestSysOtherQuery(unittest.TestCase, SysOtherQueryPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(SysOtherQuery_data.SysOtherQuery_para, True)
+        cls.driver = openMenu(SysOtherQuery_data.SysOtherQuery_para)
         sleep(2)
         cls.exec_script(cls, SysOtherQueryLocators.START_DATE_JS)
 

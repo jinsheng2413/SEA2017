@@ -27,8 +27,7 @@ class Test_MInterfaceRunStatus2(unittest.TestCase, MInterfaceRunStatus2Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(
-            InterfaceMan_data.para_mInterfaceRunStatus2, True)
+        cls.driver = openMenu(InterfaceMan_data.para_mInterfaceRunStatus2)
         sleep(2)
 
     @classmethod

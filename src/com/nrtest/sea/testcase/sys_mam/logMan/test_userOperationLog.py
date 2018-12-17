@@ -9,6 +9,7 @@
 """
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -27,7 +28,7 @@ class TestUserOperationLog(unittest.TestCase, UserOperationLogPage):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(
-            LogEdit_data.sysOperationLog_para, True)
+            LogEdit_data.sysOperationLog_para)
 
     @classmethod
     def tearDownClass(cls):

@@ -9,6 +9,7 @@
 @desc:
 """
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -27,7 +28,7 @@ class TestsysRunContrastQuery(unittest.TestCase, SysRunContrastQueryPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(SysRunContrastQuery_data.SysRunContrastQuery_para, True)
+        cls.driver = openMenu(SysRunContrastQuery_data.SysRunContrastQuery_para)
         sleep(2)
         cls.exec_script(cls, SysRunContrastQueryLocators.START_DATE_JS)
 

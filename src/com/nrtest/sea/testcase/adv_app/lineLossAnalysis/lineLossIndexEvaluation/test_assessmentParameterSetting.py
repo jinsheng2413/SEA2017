@@ -30,8 +30,7 @@ class TestAssessmentParameterSetting(unittest.TestCase, AssessmentParameterSetti
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            LineLossIndexEvaluation_data.AssessmentParameterSetting_para, True)
+        cls.driver = openMenu(LineLossIndexEvaluation_data.AssessmentParameterSetting_para)
 
     @classmethod
     def tearDownClass(cls):

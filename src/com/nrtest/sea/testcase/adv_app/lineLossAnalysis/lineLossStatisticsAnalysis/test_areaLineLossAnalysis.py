@@ -28,8 +28,7 @@ class TestAreaLineLossAnalysis(unittest.TestCase, AreaLineLossAnalysisPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            LineLossStatisticsAnalysis_data.AreaLineLossAnalysis_para, True)
+        cls.driver = openMenu(LineLossStatisticsAnalysis_data.AreaLineLossAnalysis_para)
 
     @classmethod
     def tearDownClass(cls):

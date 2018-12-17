@@ -215,6 +215,6 @@ if __name__ == '__main__':
     login = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     menuPage = MenuPage(login.login())
 
-    # menuPage.click_menu('99913210', True) #'99913210', True)
+    # menuPage.click_menu('99913210', True) #'99913210')
     # menuPage.clickTabPage('采集成功率统计')
     menuPage.clickAllMenu()

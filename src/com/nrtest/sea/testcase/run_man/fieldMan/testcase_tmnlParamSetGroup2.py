@@ -8,20 +8,16 @@
 @desc:
 """
 
+import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.fieldMan.tmnlParamSetGroup2_data import TermParaSetGroup2_data
-from com.nrtest.sea.locators.run_man.fieldMan.tmnlParamSetGroup2_locators import TermParaSetGroup2Locators
 from com.nrtest.sea.pages.run_man.fieldMan.tmnlParamSetGroup2_pages import TermParaSetGroup2Page
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-import unittest
-from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.locators.adv_app.costControlManage.lowUserBuyEleParaGiveOut_locators import \
-    LowUserBuyEleParaGiveOutLocators
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
-
 
 TermParaSetGroup2Page
 
@@ -33,7 +29,7 @@ class TestDemo(unittest.TestCase, TermParaSetGroup2Page):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(TermParaSetGroup2_data.TermParaSetGroup2_para, True)
+        cls.driver = openMenu(TermParaSetGroup2_data.TermParaSetGroup2_para)
         sleep(2)
 
     @classmethod

@@ -394,17 +394,16 @@ class Page():
          """
         self.clickRadioBox(item, is_multi_tab)
 
-    def clickCheckBox(self, items, attr, by=By.NAME, is_multi_tab=False):
+    def clickCheckBox(self, items, attr, is_multi_tab=False):
         """
         选择多个复选框
         :param items: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
         :param attr: 属性值
-        :param by:   属性类型，一般为name或id
         :param is_multi_tab: 页面是否有多Tab页
         """
         try:
             # 撤销已选项
-            xpath = self.format_xpath_multi(BaseLocators.CHKBOX_UNCHECK_ALL, (by, attr), is_multi_tab)
+            xpath = self.format_xpath_multi(BaseLocators.CHKBOX_UNCHECK_ALL, attr, is_multi_tab)
             elements = self.find_elements(xpath)
             for el in elements:
                 el.click()
@@ -415,7 +414,7 @@ class Page():
                 ls_items = items.split(',')
 
             for item in ls_items:
-                by_attr = (by, attr, item)
+                by_attr = (attr[0], attr[1], item)
                 xpath = self.format_xpath_multi(BaseLocators.CHKBOX_INPUT2LABEL, by_attr, is_multi_tab)
                 self.click(*xpath)
         except BaseException as ex:

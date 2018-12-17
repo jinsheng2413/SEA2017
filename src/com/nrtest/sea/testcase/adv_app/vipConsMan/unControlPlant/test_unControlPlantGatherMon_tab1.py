@@ -27,7 +27,7 @@ class Test_UnControlPlantGatherMon_1(unittest.TestCase, UnControlPlantGatherMon1
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(UnControlPlant.para_unControlPlantGatherMon, True)
+        cls.driver = openMenu(UnControlPlant.para_unControlPlantGatherMon)
         sleep(2)
         cls.exec_script(cls, UnControlPlantGatherMon1_locators.START_DATE_JS)
         cls.exec_script(cls, UnControlPlantGatherMon1_locators.END_DATE_JS)

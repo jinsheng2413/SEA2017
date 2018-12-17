@@ -27,7 +27,7 @@ class Test_VipConsStealAnal(unittest.TestCase, VipConsStealAnal_Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(VipConsMan.para_VipConsStealAnal, True)
+        cls.driver = openMenu(VipConsMan.para_VipConsStealAnal)
 
     @classmethod
     def tearDownClass(cls):

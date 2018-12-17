@@ -8,6 +8,7 @@
 @desc:
 """
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -30,7 +31,7 @@ class TestDemo(unittest.TestCase, MeterQualityEvalDetailPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(OperOrganManData.para_MeterQualityEval, True)
+        cls.driver = openMenu(OperOrganManData.para_MeterQualityEval)
         clickTabPage(OperOrganManData.para_MeterQualityEvalDetail)
         sleep(2)
         cls.exec_script(cls, MeterQualityEvalDetailLocators.QUERY_START_DATE_JS)

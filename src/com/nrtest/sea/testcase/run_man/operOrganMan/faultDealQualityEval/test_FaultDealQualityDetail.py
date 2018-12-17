@@ -8,6 +8,7 @@
 @desc:
 """
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -30,7 +31,7 @@ class TestDemo(unittest.TestCase, FaultDealQualityDetailPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(OperOrganManData.para_FaultDealQualityEval, True)
+        cls.driver = openMenu(OperOrganManData.para_FaultDealQualityEval)
         clickTabPage('故障处理质量明细')
         sleep(2)
         cls.exec_script(cls, FaultDealQualityDetailLocators.QUERY_DATE_JS)

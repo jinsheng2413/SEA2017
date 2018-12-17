@@ -27,7 +27,7 @@ class Test_LoadingEquipment(unittest.TestCase, LoadingEquipment_Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(VipConsMan.para_loadingEquipment, True)
+        cls.driver = openMenu(VipConsMan.para_loadingEquipment)
 
     @classmethod
     def tearDownClass(cls):

@@ -26,7 +26,7 @@ class TestDemo(unittest.TestCase, BatchFetchPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DataGatherMan_data.batchFetch_para, True)
+        cls.driver = openMenu(DataGatherMan_data.batchFetch_para)
         sleep(2)
         cls.exec_script(cls, BatchFetchLocators.START_DATE_JS)
 

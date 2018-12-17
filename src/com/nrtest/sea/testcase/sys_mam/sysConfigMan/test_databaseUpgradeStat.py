@@ -9,6 +9,7 @@
 """
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -27,8 +28,7 @@ class TestDatabaseUpgradeStat(unittest.TestCase, DatabaseUpgradeStatPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            SysConfigManData.DatabaseUpgradeStat_para)
+        cls.driver = openMenu(SysConfigManData.DatabaseUpgradeStat_para)
         sleep(2)
         cls.exec_script(cls, DatabaseUpgradeStatLocators.DATE_JS)
 

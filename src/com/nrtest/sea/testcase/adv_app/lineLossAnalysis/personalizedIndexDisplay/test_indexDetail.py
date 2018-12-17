@@ -27,8 +27,7 @@ class TestIndexDetail(unittest.TestCase, IndexDetailPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            PersonalizedIndexDisplay_data.IndexDetail_para, True)
+        cls.driver = openMenu(PersonalizedIndexDisplay_data.IndexDetail_para)
 
     @classmethod
     def tearDownClass(cls):

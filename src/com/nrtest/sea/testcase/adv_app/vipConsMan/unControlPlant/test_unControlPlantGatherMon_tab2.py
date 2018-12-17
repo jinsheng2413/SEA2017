@@ -27,7 +27,7 @@ class Test_UnControlPlantGatherMon_2(unittest.TestCase, UnControlPlantGatherMon2
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(UnControlPlant.para_unControlPlantGatherMon, True)
+        cls.driver = openMenu(UnControlPlant.para_unControlPlantGatherMon)
         sleep(2)
         # 选择第二个tab页
         clickTabPage('非统调电厂采集监测明细')

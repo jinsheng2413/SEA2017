@@ -26,7 +26,7 @@ class Test_VipConsConfig(unittest.TestCase, VipConsConfig_Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(VipConsMan.para_VipConsConfig, True)
+        cls.driver = openMenu(VipConsMan.para_VipConsConfig)
 
     @classmethod
     def tearDownClass(cls):

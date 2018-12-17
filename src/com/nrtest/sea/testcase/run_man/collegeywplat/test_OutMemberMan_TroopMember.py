@@ -8,14 +8,16 @@
 @time: 2018/11/13 0013 10:16
 @desc:
 """
-from com.nrtest.sea.data.run_man.collegeywplat.collegeywplat_data import Collegeywplat_data
-from com.nrtest.sea.pages.collegeywplat.outMemberMan_page import OutNameTroopMemberPage,OutNameTroopMemberLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.run_man.collegeywplat.collegeywplat_data import Collegeywplat_data
+from com.nrtest.sea.pages.collegeywplat.outMemberMan_page import OutNameTroopMemberPage, OutNameTroopMemberLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 # 运行管理-->采集运维平台-->组织运维管理
 @ddt
@@ -25,8 +27,8 @@ class TestOutMemberManTroop(unittest.TestCase,OutNameTroopMemberPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(Collegeywplat_data.outMemberMan_para,Collegeywplat_data.outMemberMan_tab_TroopMenber)
-
+        cls.driver = openMenu(Collegeywplat_data.outMemberMan_para)
+        clickTabPage(Collegeywplat_data.outMemberMan_tab_TroopMenber)
     @classmethod
     def tearDownClass(cls):
         print("执行结束")

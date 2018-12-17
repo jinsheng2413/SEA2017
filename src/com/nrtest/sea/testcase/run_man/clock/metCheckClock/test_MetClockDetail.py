@@ -9,6 +9,7 @@
 """
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -30,7 +31,7 @@ class TestDemo(unittest.TestCase, MetClockDetailPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(ClockData.para_MetCheckClock, True)
+        cls.driver = openMenu(ClockData.para_MetCheckClock)
         clickTabPage('电表时钟明细')
         sleep(2)
         cls.exec_script(cls, MetClockDetailLocators.QUERY_DATE_JS)

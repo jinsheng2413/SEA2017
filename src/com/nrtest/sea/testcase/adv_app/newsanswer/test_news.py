@@ -26,7 +26,7 @@ class Test_News(unittest.TestCase, News_Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(NewsAnswer.para_News, True)
+        cls.driver = openMenu(NewsAnswer.para_News)
         sleep(2)
         cls.exec_script(cls, News_Locators.START_DATE_JS)
         cls.exec_script(cls, News_Locators.END_DATE_JS)

@@ -26,7 +26,7 @@ class Test_DataRepair_2(unittest.TestCase, DataRepair_2Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(DataRepair.para_DataRepair, True)
+        cls.driver = openMenu(DataRepair.para_DataRepair)
 
     @classmethod
     def tearDownClass(cls):

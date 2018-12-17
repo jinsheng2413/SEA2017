@@ -13,7 +13,7 @@ from time import sleep
 
 from ddt import ddt, data
 
-from com.nrtest.common import BeautifulReport
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesGet_page import ArchivesGetPage

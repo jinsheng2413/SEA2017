@@ -29,7 +29,7 @@ class TestSpecTranRunQuery(unittest.TestCase, SpecTranRunQueryPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(SpecTranRunQuery_data.SpecTranRunQuery_para, True)
+        cls.driver = openMenu(SpecTranRunQuery_data.SpecTranRunQuery_para)
         sleep(2)
         cls.exec_script(cls, SpecTranRunQueryLocators.START_DATE_JS)
 

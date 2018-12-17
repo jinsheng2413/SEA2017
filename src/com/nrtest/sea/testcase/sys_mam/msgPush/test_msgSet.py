@@ -9,6 +9,7 @@
 """
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -26,8 +27,7 @@ class TestMsgSet(unittest.TestCase, MsgSetPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            MsgPushData.MsgSet_para, True)
+        cls.driver = openMenu(MsgPushData.MsgSet_para)
 
     @classmethod
     def tearDownClass(cls):

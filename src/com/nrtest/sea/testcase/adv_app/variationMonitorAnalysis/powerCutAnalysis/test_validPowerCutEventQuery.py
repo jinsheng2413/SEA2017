@@ -30,8 +30,7 @@ class TestValidPowerCutEventQuery(unittest.TestCase, ValidPowerCutEventQueryPage
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            PowerCutAnalysis_data.ValidPowerCutEventQuery_para, True)
+        cls.driver = openMenu(PowerCutAnalysis_data.ValidPowerCutEventQuery_para)
 
     @classmethod
     def tearDownClass(cls):

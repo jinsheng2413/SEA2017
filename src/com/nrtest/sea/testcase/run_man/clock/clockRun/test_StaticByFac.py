@@ -8,6 +8,7 @@
 @desc:
 """
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -28,7 +29,7 @@ class TestDemo(unittest.TestCase, StaticByFacPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(ClockData.para_ClockRun, True)
+        cls.driver = openMenu(ClockData.para_ClockRun)
         clickTabPage('按厂家统计')
         sleep(2)
         cls.exec_script(cls, StaticByFacLocators.QUERY_DATE_JS)

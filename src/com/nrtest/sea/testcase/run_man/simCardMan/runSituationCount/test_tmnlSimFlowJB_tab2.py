@@ -9,6 +9,7 @@
 '''
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -26,7 +27,7 @@ class Test_TnmlSimFlowJB_2(unittest.TestCase, TmnlSimFlowJB_2Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(RunSituationCount_data.para_TmnlSimFlowJB, True)
+        cls.driver = openMenu(RunSituationCount_data.para_TmnlSimFlowJB)
         sleep(2)
         clickTabPage('月流量统计')
         cls.exec_script(cls, TmnlSimFlowJB_2Locators.DATE_JS)

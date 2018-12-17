@@ -9,6 +9,7 @@
 '''
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -26,7 +27,7 @@ class Test_StrategicManualRecord(unittest.TestCase, StrategicManualRecordPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(InterfaceManager_data.para_StrategicManualRecord, True)
+        cls.driver = openMenu(InterfaceManager_data.para_StrategicManualRecord)
         sleep(2)
         cls.exec_script(cls, StrategicManualRecord_Locators.DATE_JS)
 

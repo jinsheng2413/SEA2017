@@ -31,8 +31,8 @@ class BaseLocators:
     MULTI_TAB = ''
 
     # 【输入框】
-    # 按标签定位input
-    QRY_INPUT = (By.XPATH, '//div[@class="x-form-item "]/label[text()="{}"]/..//input')
+    # 按标签定位input normalize-space:去除换行\空格 \r\n\t
+    QRY_INPUT = (By.XPATH, '//div[@class="x-form-item "]/label[normalize-space(text())="{}"]/..//input[@type!="hidden"]')
     # 按input直接定位
     QRY_INPUT_BY = (By.XPATH, '//input[@{}="{}"]')  # 如：'//input[@name="{}"]'
 

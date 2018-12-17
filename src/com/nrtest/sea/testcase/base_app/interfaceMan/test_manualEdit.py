@@ -26,7 +26,7 @@ class Test_ManualEdit(unittest.TestCase, ManualEditPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(InterfaceManager_data.para_ManualEdit, True)
+        cls.driver = openMenu(InterfaceManager_data.para_ManualEdit)
         cls.exec_script(cls, ManualEdit_Locators.DATE_JS)
 
     @classmethod

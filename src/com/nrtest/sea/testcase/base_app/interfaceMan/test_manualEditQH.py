@@ -9,6 +9,7 @@
 '''
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -25,7 +26,7 @@ class Test_ManualEditQH(unittest.TestCase, ManualEditQHPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(InterfaceManager_data.para_ManualEditQH, True)
+        cls.driver = openMenu(InterfaceManager_data.para_ManualEditQH)
         cls.exec_script(cls, ManualEditQH_Locators.DATE_JS)
 
     @classmethod

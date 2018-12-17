@@ -29,8 +29,7 @@ class TestDemo(unittest.TestCase, DistributedEnergyStatPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            DistributedEnergyMange_data.DistributedEnergyStat_para)
+        cls.driver = openMenu(DistributedEnergyMange_data.DistributedEnergyStat_para)
         clickTabPage('分布式电源接入统计')
         sleep(2)
         cls.exec_script(cls, DistributedEnergyStatLocators.START_DATE_JS)

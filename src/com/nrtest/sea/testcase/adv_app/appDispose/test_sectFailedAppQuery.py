@@ -25,7 +25,7 @@ class TestAssetMan(unittest.TestCase, SectfailedAppQueryPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(AppDispose_data.SectFailedAppQuery_para, True)
+        cls.driver = openMenu(AppDispose_data.SectFailedAppQuery_para)
 
     @classmethod
     def tearDownClass(cls):

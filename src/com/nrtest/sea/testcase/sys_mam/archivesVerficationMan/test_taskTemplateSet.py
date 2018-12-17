@@ -70,6 +70,6 @@ class TestTaskTemplateSet(unittest.TestCase, TaskTemplateSetPage):
         # self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData())
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.taskTemplateSet_para))
     def test_query(self, para):
         self.query(para)

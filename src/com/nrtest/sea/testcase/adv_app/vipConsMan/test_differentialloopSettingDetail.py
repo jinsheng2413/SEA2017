@@ -27,7 +27,7 @@ class Test_DifferentialloopSettingDetail(unittest.TestCase, DifferentialloopSett
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(VipConsMan.para_differentialloopSettingDetail, True)
+        cls.driver = openMenu(VipConsMan.para_differentialloopSettingDetail)
 
     @classmethod
     def tearDownClass(cls):

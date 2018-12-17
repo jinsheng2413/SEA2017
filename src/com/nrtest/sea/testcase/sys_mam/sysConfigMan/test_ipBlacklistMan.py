@@ -26,8 +26,7 @@ class TestIpBlacklistMan(unittest.TestCase, IpBlacklistManPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            SysConfigManData.IpBlacklistMan_para)
+        cls.driver = openMenu(SysConfigManData.IpBlacklistMan_para)
 
     @classmethod
     def tearDownClass(cls):

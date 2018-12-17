@@ -9,6 +9,7 @@
 """
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -30,7 +31,7 @@ class TestDemo(unittest.TestCase, ClockResultDetailPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(ClockData.para_ClockResult, True)
+        cls.driver = openMenu(ClockData.para_ClockResult)
         clickTabPage('对时结果明细')
         sleep(2)
         cls.exec_script(cls, ClockResultDetailLocators.QUERY_DATE_JS)

@@ -9,6 +9,7 @@
 """
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -26,8 +27,7 @@ class TestIdCheckInfQuery(unittest.TestCase, IdCheckInfQueryPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            SecutityMan_date.IdCheckInfQuery_para, True)
+        cls.driver = openMenu(SecutityMan_date.IdCheckInfQuery_para)
 
     @classmethod
     def tearDownClass(cls):

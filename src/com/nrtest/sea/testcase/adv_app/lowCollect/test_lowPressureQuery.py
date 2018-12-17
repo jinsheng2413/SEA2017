@@ -27,7 +27,7 @@ class Test_LowPressureQuery(unittest.TestCase, LowPressureQuery_Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(LowColletc.para_LowpressureQuery, True)
+        cls.driver = openMenu(LowColletc.para_LowpressureQuery)
         sleep(2)
         cls.exec_script(cls, LowPressureQuery_Locators.START_DATE_JS)
 

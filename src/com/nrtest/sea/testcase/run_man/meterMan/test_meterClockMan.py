@@ -27,7 +27,7 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(MeterClockMan_data.MeterClockMan_para, True)
+        cls.driver = openMenu(MeterClockMan_data.MeterClockMan_para)
         sleep(2)
         cls.exec_script(cls, MeterClockManLocators.START_DATE_JS)
 

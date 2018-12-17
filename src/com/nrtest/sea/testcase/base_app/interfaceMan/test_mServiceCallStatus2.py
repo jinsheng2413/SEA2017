@@ -27,7 +27,7 @@ class TestMServiceCallStatus2(unittest.TestCase, MServiceCallStatus2Page):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(InterfaceMan_data.para_MServiceCallStatus2, True)
+        cls.driver = openMenu(InterfaceMan_data.para_MServiceCallStatus2)
         sleep(2)
         cls.exec_script(cls, MServiceCallStatus2Locators.START_DATE_JS)
         cls.exec_script(cls, MServiceCallStatus2Locators.END_DATE_JS)

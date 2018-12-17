@@ -9,6 +9,7 @@
 """
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -27,8 +28,7 @@ class TestUserOperationMonitor(unittest.TestCase, UserOperationMonitorPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            SysConfigManData.UserOperationMonitor_para)
+        cls.driver = openMenu(SysConfigManData.UserOperationMonitor_para)
 
     @classmethod
     def tearDownClass(cls):

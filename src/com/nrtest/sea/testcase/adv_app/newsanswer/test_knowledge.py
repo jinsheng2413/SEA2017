@@ -26,7 +26,7 @@ class Test_Knowledge(unittest.TestCase, Knowledge_Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(NewsAnswer.para_Knowledge, True)
+        cls.driver = openMenu(NewsAnswer.para_Knowledge)
         sleep(2)
         cls.exec_script(cls, Knowledge_Locators.START_DATE_JS)
         cls.exec_script(cls, Knowledge_Locators.END_DATE_JS)

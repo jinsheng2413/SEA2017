@@ -27,7 +27,7 @@ class Test_LowPressureMonitor(unittest.TestCase, LowPressureMonitor_Page):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(LowColletc.para_LowPressureMonitor, True)
+        cls.driver = openMenu(LowColletc.para_LowPressureMonitor)
 
     @classmethod
     def tearDownClass(cls):

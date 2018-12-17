@@ -9,6 +9,7 @@
 """
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -27,8 +28,7 @@ class TestF35SetCollTaskTemp(unittest.TestCase, F35SetCollTaskTempPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            TemplateManData.F35SetCollTaskTemp_para, True)
+        cls.driver = openMenu(TemplateManData.F35SetCollTaskTemp_para)
 
     @classmethod
     def tearDownClass(cls):

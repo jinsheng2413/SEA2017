@@ -28,7 +28,7 @@ class TestTmnlEventSendingFunctionDeatil(unittest.TestCase, TmnlEventSendingFunc
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(PowerCutAnalysis_data.TmnlEventSendingFunction_para, True)
+        cls.driver = openMenu(PowerCutAnalysis_data.TmnlEventSendingFunction_para)
 
     @classmethod
     def tearDownClass(cls):

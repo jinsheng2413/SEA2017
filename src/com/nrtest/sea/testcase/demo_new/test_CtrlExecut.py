@@ -15,7 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.custMan.custMan_data import CustMan_data
-from com.nrtest.sea.pages.base_app.custMan.ctrlExecutPage import CtrlExecutPage, CtrlExecutLocators
+from com.nrtest.sea.locators.base_app.custMan.ctrlExecut_locators import CtrlExecutLocators
+from com.nrtest.sea.pages.base_app.custMan.ctrlExecutPage import CtrlExecutPage
 from com.nrtest.sea.task.commonMath import *
 
 

@@ -83,7 +83,7 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
 
         self.btn_qry()
         self.sleep_time(2)
-        # # 校验
+        # 校验
         # result = self.assert_context(
         #     *ModuleAttributeRelationshipMantainLocators.TAB_ONE)
         # self.assertTrue(result)

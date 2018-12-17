@@ -69,8 +69,7 @@ class DataAccess:
             for row in tst_case:
                 rslt.append(Dict(eval(row[0])))
             if len(rslt) == 0:
-                print('没配置{}用例数据...\n'.format(('查询条件校验' if valCheck else '测试')))
-                print('qry:{}；valCheck：{}.......\n'.format(qry, valCheck))
+                print('没配置{}用例数据...\nqry:{}；valCheck：{}\n'.format(('查询条件校验' if valCheck else '测试'), qry, valCheck))
             else:
                 print('当前用例数据：\n', rslt, '\n')
         except BaseException:

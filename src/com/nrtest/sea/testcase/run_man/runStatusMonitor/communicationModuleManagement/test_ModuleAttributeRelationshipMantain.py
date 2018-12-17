@@ -34,7 +34,6 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
         cls.driver = openMenu(CommunicationModuleManagement.commModulPropMain_para)
         clickTabPage(CommunicationModuleManagement.commModulPropMain_tab_relationship)
         # cls.clickCheckBox(cls, items='已维护')
-        # cls.clickSingleCheckBox('维护')
         sleep(2)
         # cls.exec_script(cls, ModuleAttributeRelationshipMantainLocators.TMNL_FACTORY_JS)
 
@@ -60,18 +59,17 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
+
         # 注册菜单
         self.menu_name = para['MENU_NAME']
 
-        # sleep(2)
         # 打开左边树并选择
-
         self.driver = openLeftTree(para['ORG_NO'])
 
         # 终端地址

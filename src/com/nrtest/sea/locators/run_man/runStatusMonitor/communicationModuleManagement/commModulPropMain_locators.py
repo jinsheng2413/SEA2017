@@ -54,7 +54,10 @@ class ModuleAttributeRelationshipMantainLocators:
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'东方电子')]/../div[contains(text(),'%s')]")
     # 终端地址
     QRY_TMNL_ADDR = (
-        By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端地址')]/../../div[1]/div[1]//input")
+        By.XPATH, '//div[@class="x-form-item "]//label[contains(text(),"终端地址")]/../../div[1]/div[1]//input')
+
+    # 维护状态
+    QRY_MAINTEN_STATUS = (By.NAME, 'isPropCheckBox')
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

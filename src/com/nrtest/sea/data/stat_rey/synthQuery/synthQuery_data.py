@@ -55,3 +55,7 @@ class SynthQuery_data:
     # 统计查询→综合查询→用户数据
     consDataQry_para = '99941110'
     consDataQry_tab_ele = '数据展示'
+    # 统计查询→综合查询→用户数据查询
+    ConsDataQuery_para = '99941100'
+    # 统计查询→综合查询→终端数据查询
+    TmnlDataQuery_para = '99941200'

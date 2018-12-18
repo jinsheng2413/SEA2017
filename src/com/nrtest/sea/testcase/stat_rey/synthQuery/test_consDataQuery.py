@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_terminalDataQueryPage.py
-@time: 2018/8/14 0002 10:30
+@file: test_consDataQuery.py
+@time: 2018/12/13 10:09
+@desc:
 """
 
 import unittest
@@ -14,19 +15,19 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.pages.stat_rey.synthQuery.terminalDataQuery_page import *
+from com.nrtest.sea.pages.stat_rey.synthQuery.consDataQuery_page import *
 from com.nrtest.sea.task.commonMath import *
 
 
-# 统计查询→综合查询→终端数据查询
+# 统计查询→综合查询→用户数据查询
 @ddt
-class TestTerminalDataQuery(unittest.TestCase, TerminalDataQueryPage):
+class TestConsDataQuery(unittest.TestCase, ConsDataQueryPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(
-            SynthQuery_data.TmnlDataQuery_para)
+            SynthQuery_data.ConsDataQuery_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -59,10 +60,8 @@ class TestTerminalDataQuery(unittest.TestCase, TerminalDataQueryPage):
         """
         # 注册菜单
         self.menu_name = para['MENU_NAME']
-        # 终端资产号
-        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
-        # 终端地址
-        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
         # 点击查询按钮
         self.btn_search()
 
@@ -84,7 +83,7 @@ class TestTerminalDataQuery(unittest.TestCase, TerminalDataQueryPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para))
+    @data(*DataAccess.getCaseData(SynthQuery_data.ConsDataQuery_para))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -92,7 +91,7 @@ class TestTerminalDataQuery(unittest.TestCase, TerminalDataQueryPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.ConsDataQuery_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

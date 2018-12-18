@@ -51,7 +51,16 @@ class TestUpgradeEffectStst_detail(unittest.TestCase, UpgradeEffectStatisticsPag
         # 回收左边树
         self.recoverLeftTree()
 
-    def query_tab(self, para):
+    def query(self, para):
+        """
+
+        :param para: Dict类型的字典，不是dict
+        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
+        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
+        """
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
+
         clickTabPage('终端升级明细')
         # 打开左边树选择供电单位
         self.driver = openLeftTree(para['DETAIL_TREE_ORG_NO'])

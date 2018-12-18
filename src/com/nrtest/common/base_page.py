@@ -404,7 +404,7 @@ class Page():
         try:
             # 撤销已选项
             xpath = self.format_xpath_multi(BaseLocators.CHKBOX_UNCHECK_ALL, attr, is_multi_tab)
-            elements = self.find_elements(xpath)
+            elements = self.find_elements(*xpath)
             for el in elements:
                 el.click()
 
@@ -413,10 +413,11 @@ class Page():
             else:
                 ls_items = items.split(',')
 
-            for item in ls_items:
-                by_attr = (attr[0], attr[1], item)
-                xpath = self.format_xpath_multi(BaseLocators.CHKBOX_INPUT2LABEL, by_attr, is_multi_tab)
-                self.click(*xpath)
+            if ls_items[0] != '':
+                for item in ls_items:
+                    by_attr = (attr[0], attr[1], item)
+                    xpath = self.format_xpath_multi(BaseLocators.CHKBOX_INPUT2LABEL, by_attr, is_multi_tab)
+                    self.click(*xpath)
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 

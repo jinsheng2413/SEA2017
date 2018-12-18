@@ -4,11 +4,12 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_CommunicationModuleBaseInformationMantain.py
-@time: 2018/11/2 0002 11:37
+@file: test_ModuleAttributeRelationshipMantain.py
+@time: 2018/11/2 0002 13:38
 @desc:
 """
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -17,19 +18,24 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.runStatusMonitor.communicationModuleManagement.communicationModuleManagement import \
     CommunicationModuleManagement
 from com.nrtest.sea.pages.run_man.runStatusMonitor.communicationModuleManagement.commModulPropMain_page import \
-    CommunicationModuleBaseInformationMantainPage
+    ModuleAttributeRelationshipMantainPage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理--》采集信道管理--》通信模块管理--》通信模块属性维护
+
 @ddt
-class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, CommunicationModuleBaseInformationMantainPage):
+class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeRelationshipMantainPage):
 
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(CommunicationModuleManagement.commModulPropMain_para)
+        clickTabPage(CommunicationModuleManagement.commModulPropMain_tab_relationship)
+        # cls.clickCheckBox(cls, items='已维护')
+        sleep(2)
+        # cls.exec_script(cls, ModuleAttributeRelationshipMantainLocators.TMNL_FACTORY_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -63,31 +69,24 @@ class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, Communica
         # 注册菜单
         self.menu_name = para['MENU_NAME']
 
-        # 模块属性标识
-        self.inputStr_moduleAttrbuteSign(para['MODULE_ATTRBUTE_SIGN'])
+        # 打开左边树并选择
+        self.driver = openLeftTree(para['ORG_NO'])
 
-        # 模块类型
-        self.inputSel_moduleType(para['MODULE_TYPE'])
+        # 终端地址
+        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
 
-        # 模块厂商
-        self.inputSel_moduleFactory(para['MODULE_FACTORY'])
+        # 终端厂商
+        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
 
-        # 模块版本
-        self.inputSel_moduleVer(para['MODULE_VER'])
+        # 维护状态
+        self.inputChk_mainten_status(para['MAINTEN_STATUS'])
 
         self.btn_qry()
         self.sleep_time(2)
-
-    #     # 校验
-    #     result = self.assert_context(
-    #         *CommunicationModuleBaseInformationMantainLocators.TAB_ONE)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulPropMain_para,
-    #                               CommunicationModuleManagement.commModulPropMain_tab_baseInf))
-    # def test_query(self, para):
-    #     self.query(para)
+        # 校验
+        # result = self.assert_context(
+        #     *ModuleAttributeRelationshipMantainLocators.TAB_ONE)
+        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """
@@ -106,7 +105,7 @@ class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, Communica
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulPropMain_para,
-                                  CommunicationModuleManagement.commModulPropMain_tab_baseInf))
+                                  CommunicationModuleManagement.commModulPropMain_tab_relationship))
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验
@@ -120,7 +119,7 @@ class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, Communica
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulPropMain_para,
-                                  CommunicationModuleManagement.commModulPropMain_tab_baseInf, valCheck=True))
+                                  CommunicationModuleManagement.commModulPropMain_tab_relationship, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

@@ -73,7 +73,7 @@ class BaseLocators:
     CHKBOX_UNCHECK_ALL = (By.XPATH, '//input[@type="checkbox" and @{}="{}" and @checked=""]')
 
     # 根据INPUT的name找标签 checkbox/radio
-    CHKBOX_INPUT2LABEL = (By.XPATH, '//input[@type="checkbox" and @{}="{}"]/../label[@text()="{}"')
+    CHKBOX_INPUT2LABEL = (By.XPATH, '//input[@type="checkbox" and @{}="{}"]/../label[text()="{}"]')
 
 
     # 【按钮类元素】，如：查询按钮

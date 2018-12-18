@@ -59,18 +59,26 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
+
+        clickTabPage(GatherQualityAnalyze_data.curCollectSuccessRateDetail_tab)
         sleep(2)
-        self.exec_script(CurCollectSuccessRateLocators.START_DATE_JS)
-        self.exec_script(CurCollectSuccessRateLocators.END_DATE_JS)
+        self.exec_script(CurCollectSuccessRateLocators.JS_DETAIL)
+        print(para['PLATFORM_NO'])
+
         # 打开左边树并选择
-        print(para['START_TIME'])
         self.driver = openLeftTree(para['ORG_NO'])
-        # 开始时间
-        self.inputStr_startTime(para['START_TIME'])
-        # 结束时间
-        self.inputStr_endTime(para['END_TIME'])
-        self.btn_qry()
-        self.sleep_time(2)
+        # 台区编号
+        self.inputStr_platformNo(para['PLATFORM_NO'])
+        # 台区名称
+        self.inputStr_platformNo(para['PLATFORM_NAME'])
+        # 日期时间
+        self.inputStr_dateTime_detail(para['DATE_TIME'])
+        self.btn_query(True)
+
+        # self.btn_query()
+        # self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -89,16 +97,16 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.curCollectSuccessRate_para,
-                                  GatherQualityAnalyze_data.curCollectSuccessRate_tab))
-    def test_A_query(self, para):
+                                  GatherQualityAnalyze_data.curCollectSuccessRateDetail_tab))
+    def test_DetailQuery(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_result(para)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.curCollectSuccessRate_para,
-                                  GatherQualityAnalyze_data.curCollectSuccessRate_tab))
-    def _test_checkValue(self, para):
+                                  GatherQualityAnalyze_data.curCollectSuccessRateDetail_tab))
+    def _test_DetailQuery(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)

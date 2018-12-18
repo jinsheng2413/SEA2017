@@ -59,17 +59,17 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+
+        clickTabPage(GatherQualityAnalyze_data.curCollectSuccessRateCount_tab)
         sleep(2)
-        self.exec_script(CurCollectSuccessRateLocators.START_DATE_JS)
-        self.exec_script(CurCollectSuccessRateLocators.END_DATE_JS)
+        self.exec_script(CurCollectSuccessRateLocators.JS_COUNT)
+
         # 打开左边树并选择
-        print(para['START_TIME'])
         self.driver = openLeftTree(para['ORG_NO'])
-        # 开始时间
-        self.inputStr_startTime(para['START_TIME'])
-        # 结束时间
-        self.inputStr_endTime(para['END_TIME'])
-        self.btn_qry()
+        # 日期时间
+        self.inputStr_dateTime_count(para['DATE_TIME'])
+
+        self.btn_count_qry()
         self.sleep_time(2)
 
     def assert_query_result(self, para):
@@ -89,16 +89,16 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.curCollectSuccessRate_para,
-                                  GatherQualityAnalyze_data.curCollectSuccessRate_tab))
-    def test_A_query(self, para):
+                                  GatherQualityAnalyze_data.curCollectSuccessRateCount_tab))
+    def test_CountQuery(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_result(para)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.curCollectSuccessRate_para,
-                                  GatherQualityAnalyze_data.curCollectSuccessRate_tab))
-    def _test_checkValue(self, para):
+                                  GatherQualityAnalyze_data.curCollectSuccessRateCount_tab))
+    def _test_CountQuery(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)

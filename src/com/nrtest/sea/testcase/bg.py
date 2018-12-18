@@ -10,11 +10,12 @@
 
 import unittest
 
-from com.nrtest.sea.testcase.stat_rey.synthQuery.test_AllCollectSuccessRate import TestAllCollectSuccessRate
+from com.nrtest.sea.testcase.adv_app.vipConsMan.unControlPlant.test_unControlPlantGatherMon_tab2 import \
+    Test_UnControlPlantGatherMon_2
 
 suite = unittest.TestSuite()
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-    TestAllCollectSuccessRate))
+    Test_UnControlPlantGatherMon_2))
 # tests = [TestGatherSuccessRate('test_epp_task_type')]
 # suite.addTests(tests)
 

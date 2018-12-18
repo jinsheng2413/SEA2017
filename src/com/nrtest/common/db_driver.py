@@ -331,3 +331,11 @@ class PyOracle():
             self._close(cursor, conn)
         return res
 
+
+if __name__ == '__main__':
+    p = PyOracle()
+    sql = 'INSERT INTO tst_case_result (tst_case_id, assert_type, column_name, expected_value, tab_column_name) \
+            VALUES (:tst_case_id, :assert_type, :column_name, :expected_value, :tab_column_name)'
+    para = [('12', '01', 'col', '', '01'),
+            ('13', '01', 'col', '', '01')]
+    p.insertMany(sql, para)

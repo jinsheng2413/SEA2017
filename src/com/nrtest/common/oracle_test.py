@@ -15,6 +15,7 @@ import os
 
 import cx_Oracle
 
+from com.nrtest.common.db_driver import PyOracle
 from com.nrtest.common.setting import Setting
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
@@ -94,12 +95,17 @@ class Oracle:
 #     unittest.main()
 
 if __name__ == '__main__':
-    p = Oracle()
-    named_params = 'test_terminal_date_qry'
-
-    fy = {'case_name': 'test_a_first_new_add', 'po': '分类名称'}
-    p.cursor.execute(
-        'select t.value_one,t.value_two from TEST_CASE t where  t.case_name =:case_name and t.value_one_name=:po',
-        fy)
-    a = p.cursor.fetchall()
-    print(a[0][0])
+    p = PyOracle()
+    # named_params = 'test_terminal_date_qry'
+    #
+    # fy = {'case_name': 'test_a_first_new_add', 'po': '分类名称'}
+    # p.cursor.execute(
+    #     'select t.value_one,t.value_two from TEST_CASE t where  t.case_name =:case_name and t.value_one_name=:po',
+    #     fy)
+    # a = p.cursor.fetchall()
+    # print(a[0][0])
+    sql = 'INSERT INTO tst_case_result (tst_case_id, assert_type, column_name, expected_value, tab_column_name) \
+            VALUES (:tst_case_id, :assert_type, :column_name, :expected_value, :tab_column_name)'
+    para = [('12', '01', 'col', '', '01'),
+            ('13', '01', 'col', '', '01')]
+    p.insertMany(sql, para)

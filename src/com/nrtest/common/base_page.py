@@ -356,15 +356,13 @@ class Page():
             # self.click(*BasePageContainsXpage.RECOVERY_DROP_DOWN)
             el.click() if is_multi_elements else self.click(*xpath)
 
-    def remove_attr(self, obj_name, by_idx=0, obj_attr='readonly'):
+    def remove_attr(self, attr, obj_attr='readonly'):
         """
         去除查询条件等对象的属性
-        :param obj_name: 对象名
-        :param by_idx: 对象类型--0-Id；1-Name；2-TagName
+        :param attr: 对象名 (By.ID/NAME, xxx)
         :param obj_attr: 对象属性
         """
-        el_by = ['Id', 'Name', 'TagName']
-        self.driver.execute_script(BaseLocators.JS_REMOVE_ATTR.format(el_by[by_idx], obj_name, obj_attr))
+        self.driver.execute_script(BaseLocators.JS_REMOVE_ATTR.format(attr[0].capitalize(), attr[1], obj_attr))
 
     def clickRadioBox(self, options, is_multi_tab=False):
         """

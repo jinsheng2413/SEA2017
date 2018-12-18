@@ -47,9 +47,9 @@ class Test_UnControlPlantGatherMon_2(unittest.TestCase, UnControlPlantGatherMon2
         # 打开左边树选择供电单位
         self.driver = openLeftTree(para['ORG_NO'])
         # 发电方式
-        self.inputChk_generate_electricity_way(para['GENERATE_ELECTRICITY_WAY'])
+        self.inputSel_generate_electricity_way(para['GENERATE_ELECTRICITY_WAY'])
         # 采集方式
-        self.inputChk_gather_way(para['GATHER_WAY'])
+        self.inputSel_gather_way(para['GATHER_WAY'])
         # 查询日期
         self.inputStr_date(para['DATE'])
         # 户号

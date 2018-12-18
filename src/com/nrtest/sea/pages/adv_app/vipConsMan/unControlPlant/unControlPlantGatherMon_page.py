@@ -47,7 +47,7 @@ class UnControlPlantGatherMon1_Page(Page):
 # 第二个tab页
 class UnControlPlantGatherMon2_Page(Page):
     # 发电方式
-    def inputChk_generate_electricity_way(self, options):
+    def inputSel_generate_electricity_way(self, options):
         # self.click(*UnControlPlantGatherMon2_locators.QRY_GENERATE_ELECTRICITY_WAY)
         # locator = self.get_select_locator(UnControlPlantGatherMon2_locators.QRY_GENERATE_ELECTRICITY_WAY_VALUE, index)
         # self.click(*locator)
@@ -55,7 +55,7 @@ class UnControlPlantGatherMon2_Page(Page):
         self.selectDropDown(options)
 
     # 采集方式
-    def inputChk_gather_way(self, options):
+    def inputSel_gather_way(self, options):
         # self.click(*UnControlPlantGatherMon2_locators.QRY_GATHER_WAY)
         # locator = self.get_select_locator(UnControlPlantGatherMon2_locators.QRY_GATHER_WAY_VALUE, index)
         # self.click(*locator)

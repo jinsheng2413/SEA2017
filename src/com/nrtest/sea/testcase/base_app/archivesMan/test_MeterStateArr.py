@@ -84,7 +84,7 @@ class TestMeterStateArr(unittest.TestCase, MeterStateArrPage):
     #     """
     #
     #     #打开左边树并选择
-    #     openLeftTree(para['TREE_NODE'])    # 'TREE_NODE']) # 'ORG_NO'])
+    #     openLeftTree(para['TREE_NODE'])    # 'ORG_NO'])
     #     self.click(*MeterStateArrLocators.TAB_ONE_VALUE)
     #     #筛选条件
     #     self.inputSel_screenCondition(para["SCREEN_CONDITION"])

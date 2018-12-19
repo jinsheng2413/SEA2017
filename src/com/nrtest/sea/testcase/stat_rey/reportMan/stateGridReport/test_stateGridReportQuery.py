@@ -62,7 +62,7 @@ class TestStateGridReportQuery(unittest.TestCase, StateGridReportQueryPage):
 
         sleep(2)
         # 打开左边树并选择
-        # openLeftTree(para['TREE_NODE'])    # 'TREE_NODE']) # 'ORG_NO'])
+        # openLeftTree(para['TREE_NODE'])    # 'ORG_NO'])
 
         # 报表类型类型
         self.inputSel_reportType(para['REPORT_TYPE'])

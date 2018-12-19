@@ -204,9 +204,17 @@ class Page():
         return element
 
     def start_case(self, para):
+        """
+        开始执行测试用例
+        :param para:
+        """
         print('开始执行... \n用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}。'.format(*list(para.values())[:4]))
 
     def end_case(self, para):
+        """
+        测试用例执行结束
+        :param para:
+        """
         print('结束... \n用例ID：{}'.format(para['TST_CASE_ID']))
 
     def find_displayed_element(self, *locators):
@@ -225,7 +233,7 @@ class Page():
         """
         应用于多Tab页情况下的xpath格式化
         :param xpath:
-        :param format_val:
+        :param format_val:可以是字符串、元组
         :return:
         """
         loc = xpath
@@ -259,7 +267,6 @@ class Page():
         新版点击方法
         :param btn_name:按钮元素文本值
         :param is_multi_tab:菜单面内是否有多个TAB页
-        :return:
         """
         try:
             loc = self.format_xpath_multi(BaseLocators.BTN_QRY, \
@@ -277,6 +284,7 @@ class Page():
     def btn_query(self, is_multi_tab=False):
         """
         通用页面查询按钮
+        :param is_multi_tab: 多Tab页时，如果查询按钮名有重复，则该值填True
         """
         self.curr_click(is_multi_tab)
 
@@ -326,7 +334,7 @@ class Page():
         :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
         :param is_multi_tab: 多Tab页时，如果查询条件有重复，则该值填True
         :param sleep_sec:休眠n秒
-        :param is_multi_elements:是否存在重复元素
+        :param is_multi_elements:同一菜单是否存在重复元素
         """
         # print ('selectCheckBox', options, is_multi_tab)
         if (options.find(';') == -1):
@@ -364,10 +372,18 @@ class Page():
         """
         self.driver.execute_script(BaseLocators.JS_REMOVE_ATTR.format(attr[0].capitalize(), attr[1], obj_attr))
 
+    def remove_readonly(self, attr):
+        """
+        去除元素的readonly属性
+        :param attr: attr: 对象名 (By.ID/NAME, xxx)
+        """
+        self.remove_attr(attr)
+
+
     def clickRadioBox(self, options, is_multi_tab=False):
         """
         选择单选框
-        :param options: 被选择项
+        :param options: 被选择项名称
         :param is_multi_tab:
         """
         try:
@@ -1172,4 +1188,4 @@ if __name__ == '__main__':
     # loc1 = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
     # print(loc1)
     page = Page(None)
-    print(page.format_xpath_multi((By.XPATH, '{}/{}'), ('a', 'b'), False))
+    print(page.format_xpath_multi((By.XPATH, 'adad{}'), 'c', False))

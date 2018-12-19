@@ -69,8 +69,10 @@ def upgrade_test_file(file_name):
     刷新test_query方法的测试用例
     :param file_name:
     """
-    dirname = os.path.dirname(file_name)
-    temp_test_pyfile = dirname + "\\temp_test.py"  # 保存文件路径
+
+    # dirname = os.path.dirname(file_name)
+    # temp_test_logfile = dirname + "\\temp_test.py"  # 保存文件路径
+    temp_test_logfile = file_name.split('.')[0] + '.log'
     # print (temp_test_pyfile)
     comments = ['"""', "'''"]
     is_reg_menu = True
@@ -126,7 +128,7 @@ def upgrade_test_file(file_name):
                 else:
                     end.append(line)
 
-        with open(temp_test_pyfile, 'w', encoding='utf-8') as fo:
+        with open(temp_test_logfile, 'w', encoding='utf-8') as fo:
             fo.writelines(doc + end + test_funs)
 
 

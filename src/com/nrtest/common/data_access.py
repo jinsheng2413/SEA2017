@@ -47,7 +47,7 @@ class DataAccess:
         return org_path
 
     @staticmethod
-    def getCaseData(menuNo, tabName='', valCheck=False):
+    def getCaseData(menuNo, tabName='01', valCheck=False):
         """
         根据菜单编号提取测试用例数据
         :param menuNo: 菜单编号
@@ -130,7 +130,7 @@ class DataAccess:
 
 if __name__ == '__main__':
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
-    print(DataAccess.getCaseData("99926220", tabName='非统调电厂采集监测明细'))
+    print(DataAccess.getCaseData("99959300"))
 
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))

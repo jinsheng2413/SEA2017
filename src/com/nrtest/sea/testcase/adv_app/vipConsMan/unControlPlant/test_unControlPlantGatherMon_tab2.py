@@ -40,12 +40,14 @@ class Test_UnControlPlantGatherMon_2(unittest.TestCase, UnControlPlantGatherMon2
         cls.closePages(cls)
 
     def query(self, para):
+        print(para['MENU_NAME'])
         # 注册菜单
         self.menu_name = para['MENU_NAME']
 
         sleep(4)
         # 打开左边树选择供电单位
         self.driver = openLeftTree(para['ORG_NO'])
+        print(para['GENERATE_ELECTRICITY_WAY'])
         # 发电方式
         self.inputSel_generate_electricity_way(para['GENERATE_ELECTRICITY_WAY'])
         # 采集方式
@@ -85,4 +87,13 @@ class Test_UnControlPlantGatherMon_2(unittest.TestCase, UnControlPlantGatherMon2
         self.start_case(para)
         self.query(para)
         self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(UnControlPlant.para_unControlPlantGatherMon,
+                                  UnControlPlant.para_unControlPlantGatherMon_tab_detail, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
         self.end_case(para)

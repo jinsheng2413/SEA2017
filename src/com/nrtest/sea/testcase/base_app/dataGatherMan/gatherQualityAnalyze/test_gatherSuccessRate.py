@@ -11,8 +11,9 @@
 import unittest
 from time import sleep
 
-import ddt
+from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
@@ -22,7 +23,7 @@ from com.nrtest.sea.task.commonMath import *
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率
-@ddt.ddt
+@ddt
 class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
 
     @classmethod
@@ -53,11 +54,12 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
 
 
     def query(self, para):
+        self.menu_name = para['MENU_NAME']
         sleep(2)
         # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_ORG_NO'])
         # 用户类型
-        self.inputCSel_cons_type(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 通信方式
         self.inputSel_comm_type(para['COMM_TYPE'])
         # 终端厂家
@@ -74,11 +76,36 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         self.inputDt_end_date(para['END_DATE'])
         # 点击查询按钮
         self.btn_search()
-        # 校验
-        # result = self.assert_context(*GatherSuccessRateLocators.BTN_FIRST_UNIT)
-        # self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
-                                      GatherQualityAnalyze_data.GatherSuccessRate_tabName))
-    def test_a_der(self, para):
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
+                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName))
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
+                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

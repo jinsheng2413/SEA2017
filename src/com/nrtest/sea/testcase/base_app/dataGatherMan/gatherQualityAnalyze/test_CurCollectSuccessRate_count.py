@@ -65,7 +65,7 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         self.exec_script(CurCollectSuccessRateLocators.JS_COUNT)
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 日期时间
         self.inputStr_dateTime_count(para['DATE_TIME'])
 

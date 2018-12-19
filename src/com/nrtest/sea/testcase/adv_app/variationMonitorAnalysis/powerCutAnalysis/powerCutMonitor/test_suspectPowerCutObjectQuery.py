@@ -53,7 +53,7 @@ class TestSuspectePowerCutObjectQuery(unittest.TestCase, SuspectePowerCutObjectQ
     def query(self, para):
         clickTabPage('疑似停电对象查询')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 是否线路停电
         self.inputSel_whether_line_power_cut(para['WHETHER_LINE_POWER_CUT'])
         # 对象类型

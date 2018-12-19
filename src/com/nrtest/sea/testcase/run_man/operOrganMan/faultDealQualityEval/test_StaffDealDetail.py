@@ -66,7 +66,7 @@ class TestDemo(unittest.TestCase, StaffDealDetailPage):
 
         # 供电单位
         sleep(2)
-        openLeftTree(para['ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户类型
         self.inputRSel_cons_type(para['CONS_TYPE'])
         # 查询日期

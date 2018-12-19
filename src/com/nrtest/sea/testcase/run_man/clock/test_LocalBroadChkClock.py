@@ -62,7 +62,7 @@ class TestDemo(unittest.TestCase, LocalBroadChkClockPage):
 
         # 节点名称
         sleep(2)
-        openLeftTree(para['ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 终端类型

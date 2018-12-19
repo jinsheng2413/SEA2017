@@ -41,7 +41,7 @@ class Test_Knowledge(unittest.TestCase, Knowledge_Page):
         sleep(3)
         self.displayTreeMenu()
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 文件类型
         self.inputSel_file_type(para['FILE_TYPE'])
         # 开始时间

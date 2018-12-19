@@ -63,7 +63,7 @@ class TestUpgradeEffectStst_detail(unittest.TestCase, UpgradeEffectStatisticsPag
 
         clickTabPage('终端升级明细')
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'DETAIL_TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'DETAIL_TREE_ORG_NO'])
         # 终端厂家
         self.inputSel_detail_tmnl_factory(para['DETAIL_TMNL_FACTORY'])
         # 升级目的

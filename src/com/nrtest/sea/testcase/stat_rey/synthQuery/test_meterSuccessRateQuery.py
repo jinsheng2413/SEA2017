@@ -49,7 +49,7 @@ class TestAllEventMeterEventQuery(unittest.TestCase, MeterSuccessRateQueryPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 日期
         self.inputDt_factory_date(para['FACTORY_DATE'])
         # 用户类型

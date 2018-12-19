@@ -64,7 +64,7 @@ class TestDemo(unittest.TestCase, StaticByFacPage):
 
         # 供电单位
         sleep(2)
-        openLeftTree(para['ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
 

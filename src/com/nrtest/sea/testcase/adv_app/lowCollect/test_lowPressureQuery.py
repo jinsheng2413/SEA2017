@@ -40,7 +40,7 @@ class Test_LowPressureQuery(unittest.TestCase, LowPressureQuery_Page):
     def query(self, para):
         sleep(3)
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 日期
         self.inputStr_date(para['DATE'])
         # 查询

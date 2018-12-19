@@ -57,7 +57,7 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
         self.menu_name = para['MENU_NAME']
         sleep(2)
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 通信方式

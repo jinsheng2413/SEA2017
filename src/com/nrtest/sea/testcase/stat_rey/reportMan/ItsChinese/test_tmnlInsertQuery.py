@@ -61,7 +61,7 @@ class TestTmnlInsertQuery(unittest.TestCase,TmnlInsertQueryPage):
         '''
         sleep(2)
         #打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         self.exec_script(TmnlInsertQueryLocators.START_DATE_JS)
         self.exec_script(TmnlInsertQueryLocators.END_DATE_JS)
 
@@ -98,7 +98,7 @@ class TestTmnlInsertQuery(unittest.TestCase,TmnlInsertQueryPage):
         '''
         sleep(2)
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         self.clickRadioBox(para['BOX'])
         # 终端类型
         self.inputSel_tmnlType(para['TMNL_TYPE'])

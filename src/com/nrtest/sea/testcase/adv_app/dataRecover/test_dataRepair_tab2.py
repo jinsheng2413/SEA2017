@@ -39,7 +39,7 @@ class Test_DataRepair_2(unittest.TestCase, DataRepair_2Page):
         clickTabPage('数据修复明细')
         sleep(4)
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 数据类型
         self.inputSel_data_type(para['DATA_TYPE'])
         # 用户类型

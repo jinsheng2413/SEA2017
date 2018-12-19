@@ -39,7 +39,7 @@ class Test_LoadingEquipment(unittest.TestCase, LoadingEquipment_Page):
         self.menu_name = para['MENU_NAME']
         sleep(4)
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询

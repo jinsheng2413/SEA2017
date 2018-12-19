@@ -60,7 +60,7 @@ class TestOutMemberManTroop(unittest.TestCase,OutNameTroopPage):
         clickTabPage(Collegeywplat_data.outMemberMan_tab_Troop)
 
         #打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         #外包队伍名称
         self.inputStr_outName(para['OUT_NAME'])
 

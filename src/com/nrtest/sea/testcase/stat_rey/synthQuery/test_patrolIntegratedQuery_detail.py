@@ -49,7 +49,7 @@ class TestPatrolIntegratedQuery_Detail(unittest.TestCase, PatrolIntegratedQueryP
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 日期
         self.inputDt_detail_date(para['DEATIL_DATE'])
         # 指标

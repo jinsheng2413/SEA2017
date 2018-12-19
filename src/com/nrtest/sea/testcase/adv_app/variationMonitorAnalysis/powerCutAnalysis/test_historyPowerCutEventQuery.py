@@ -52,7 +52,7 @@ class TestHistoryPowerCutEventQuery(unittest.TestCase, HistoryPowerCutEventQuery
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 查询日期
         self.inputDt_date(para['DATE'])
         # 用户类型

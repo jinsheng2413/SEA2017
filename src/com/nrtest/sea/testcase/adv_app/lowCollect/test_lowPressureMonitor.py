@@ -38,7 +38,7 @@ class Test_LowPressureMonitor(unittest.TestCase, LowPressureMonitor_Page):
     def query(self, para):
         sleep(3)
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户定义类别
         self.inputSel_cons_define_type(para['CONS_DEFINE_TYPE'])
         # 查询

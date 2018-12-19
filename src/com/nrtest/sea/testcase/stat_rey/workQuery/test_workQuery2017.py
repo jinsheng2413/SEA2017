@@ -64,7 +64,7 @@ class TestDemo(unittest.TestCase, WorkQuery2017Page):
         """
         self.displayTreeMenu()
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 工单编号
         self.inputStr_workNo(para['WORK_NO'])
         # 工单处理人

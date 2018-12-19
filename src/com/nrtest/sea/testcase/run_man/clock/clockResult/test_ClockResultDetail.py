@@ -66,7 +66,7 @@ class TestDemo(unittest.TestCase, ClockResultDetailPage):
 
         # 供电单位
         sleep(2)
-        openLeftTree(para['ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 类别
         self.inputRSel_clock_model(para['CLOCK_MODEL'])
         # 电表资产号

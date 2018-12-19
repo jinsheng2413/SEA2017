@@ -46,7 +46,7 @@ class Test_UnControlPlantGatherMon_2(unittest.TestCase, UnControlPlantGatherMon2
 
         sleep(4)
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         print(para['GENERATE_ELECTRICITY_WAY'])
         # 发电方式
         self.inputSel_generate_electricity_way(para['GENERATE_ELECTRICITY_WAY'])

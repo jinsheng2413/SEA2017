@@ -63,7 +63,7 @@ class TestBcVoltMonitorPointDataQuery(unittest.TestCase, BcVoltMonitorPointDataP
         """
 
         # 供电单位
-        openLeftTree(para['ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 监测点类型
         self.inputRSel_monitor_point_type(para['MONITOR_POINT_TYPE'])
         # 监测点名称

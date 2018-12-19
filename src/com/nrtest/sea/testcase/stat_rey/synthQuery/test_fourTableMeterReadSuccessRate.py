@@ -51,7 +51,7 @@ class TestAutomatedMeterAvailability(unittest.TestCase, FourTableMeterReadSucces
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 表计类型
         self.inputSel_meter_type(para['METER_TYPE'])
         # 日期

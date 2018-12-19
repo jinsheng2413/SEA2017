@@ -49,7 +49,7 @@ class TestRunTmnlStatistics(unittest.TestCase, RunTmnlStatisticsPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 用户类型
         self.inputCSel_cons_type(para['CONS_TYPE'])
         # 统计日期

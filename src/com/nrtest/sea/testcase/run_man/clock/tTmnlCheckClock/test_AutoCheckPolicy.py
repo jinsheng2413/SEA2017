@@ -66,7 +66,7 @@ class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
 
         # 节点
         sleep(2)
-        openLeftTree(para['ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
         # 间隔周期

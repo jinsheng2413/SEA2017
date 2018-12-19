@@ -53,7 +53,7 @@ class TestDistributedEnergyElectricDetail(unittest.TestCase, DistributedEnergyEl
     def query(self, para):
         clickTabPage('分布式电源电量监测明细')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 电能表用途
         self.inputSel_meter_purpose(para['METER_PURPOSE'])
         # 发电量消纳方式

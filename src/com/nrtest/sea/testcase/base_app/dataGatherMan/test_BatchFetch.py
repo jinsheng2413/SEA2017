@@ -59,7 +59,7 @@ class TestDemo(unittest.TestCase, BatchFetchPage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 任务名称
         self.inputStr_taskName(para['TASK_NAME'])
         # 操作人

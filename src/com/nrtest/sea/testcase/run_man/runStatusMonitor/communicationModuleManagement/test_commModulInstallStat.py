@@ -64,7 +64,7 @@ class TestCommModulInstallStat(unittest.TestCase, CommModulInstallStatPage):
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 日期
         self.inputStr_date(para['DATE'])
         # 模块类型

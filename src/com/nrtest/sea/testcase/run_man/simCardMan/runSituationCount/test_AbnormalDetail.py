@@ -63,7 +63,7 @@ class TestDemo(unittest.TestCase,AbnormalDetailPage):
         '''
 
         #打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 月份
         self.inputStr_month(para['MONTH_COUNT'])
         #异常类型

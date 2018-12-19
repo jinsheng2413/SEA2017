@@ -61,7 +61,7 @@ class TestDemo(unittest.TestCase, MeterClockManPage):
         """
         self.displayTreeMenu()
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         self.inputSel_eventtype(para['EVENT_TYPE'])
         self.inputSel_tmnlfactory(para['TMNL_FACORY'])
         self.inputSel_meterfactory(para['METER_FACTORY'])

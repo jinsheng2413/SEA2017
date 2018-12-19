@@ -40,7 +40,7 @@ class Test_VipConsStealAnal(unittest.TestCase, VipConsStealAnal_Page):
         self.menu_name = para['MENU_NAME']
         sleep(4)
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 用户名称

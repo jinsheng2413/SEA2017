@@ -64,7 +64,7 @@ class TestCheckResultStat(unittest.TestCase, CheckResultStatPage):
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 任务类型
         self.inputSel_taskType(para['TASK_TYPE'])
         # 台区编号

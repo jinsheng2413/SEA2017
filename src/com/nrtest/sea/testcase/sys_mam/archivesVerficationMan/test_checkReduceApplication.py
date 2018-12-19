@@ -64,7 +64,7 @@ class TestCheckReduceApplication(unittest.TestCase, CheckReduceApplicationPage):
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 开始日期
         self.inputStr_start_time(para['START_TIME'])
         # 结束日期

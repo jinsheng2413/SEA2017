@@ -49,7 +49,7 @@ class TestBatchDataQuery(unittest.TestCase, BatchDataQueryPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 日期
         self.inputDt_date(para['DATA'])
         # 终端资产号

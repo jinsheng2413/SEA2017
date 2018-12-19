@@ -53,7 +53,7 @@ class TestSuspectePowerCutLineQuery(unittest.TestCase, SuspectePowerCutLineQuery
     def query(self, para):
         clickTabPage('疑似停电线路查询')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 是否恢复停电
         self.inputSel_whether_recover_power_cut(para['WHETHER_RECOVER_POWER_CUT'])
         # 停电日期

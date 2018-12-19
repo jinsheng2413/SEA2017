@@ -52,7 +52,7 @@ class TestUpgradeEffectStstistics(unittest.TestCase, OrgNoDataPage):
 
     def query(self, para):
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 日期
         self.inputDt_date(para['DATE'])
         # 查询按钮

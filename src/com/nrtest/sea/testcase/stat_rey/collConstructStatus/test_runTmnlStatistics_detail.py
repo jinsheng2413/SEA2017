@@ -51,7 +51,7 @@ class TestRunTmnlStatistics_Detail(unittest.TestCase, RunTmnlStatisticsPage):
     def query(self, para):
         sleep(2)
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'DETAIL_TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'DETAIL_TREE_ORG_NO'])
         # 用户类型
         self.inputCSel_detail_cons_type(para['DETAIL_CONS_TYPE'])
         # 终端类型

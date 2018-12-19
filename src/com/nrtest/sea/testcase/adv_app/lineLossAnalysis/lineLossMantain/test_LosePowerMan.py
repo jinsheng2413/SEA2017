@@ -61,7 +61,7 @@ class TestLosePowerMan(unittest.TestCase, LosePowerManPage):
         sleep(2)
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 考核单元名称
         self.inputStr_assessUnitName(para['ASSESS_UNIT_NAME'])
         # 考核单元分类

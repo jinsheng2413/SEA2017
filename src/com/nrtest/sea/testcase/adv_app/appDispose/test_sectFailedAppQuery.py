@@ -49,7 +49,7 @@ class TestAssetMan(unittest.TestCase, SectfailedAppQueryPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 抄表段号
         self.inputStr_sect_no(para['SECT_NO'])
         # 抄表管理员工号

@@ -51,7 +51,7 @@ class TestSecurityQueryAndDelete(unittest.TestCase, SecurityQueryAndDeletePage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 电子钥匙编号
         self.inputStr_key_no(para['KEY_NO'])
         # 锁封编号

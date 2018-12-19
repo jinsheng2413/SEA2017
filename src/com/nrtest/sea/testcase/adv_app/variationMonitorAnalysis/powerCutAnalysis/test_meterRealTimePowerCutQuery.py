@@ -52,7 +52,7 @@ class TestMeterRealTimePowerCutQuery(unittest.TestCase, MeterRealTimePowerCutQue
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 台区编号
         self.inputStr_tg_no(para['TG_NO'])
         # 用户编号

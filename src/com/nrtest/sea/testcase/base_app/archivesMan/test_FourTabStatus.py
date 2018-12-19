@@ -58,7 +58,7 @@ class TestFourTabStatus(unittest.TestCase, FourTabStatusPage):
         # 打开tab页
         clickTabPage(para['TAB_NAME'])
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 选择用状态
         self.inputSel_userState(para['USER_STATE'])
         self.btn_qry()

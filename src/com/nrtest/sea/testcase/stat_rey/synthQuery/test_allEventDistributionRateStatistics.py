@@ -52,7 +52,7 @@ class TestAllEventDistributionRateStatistics(unittest.TestCase, AllEventDistribu
     # 全事件配置率统计
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 时间
         self.inputDt_date(para['DATE'])
         # 查询按钮
@@ -65,7 +65,7 @@ class TestAllEventDistributionRateStatistics(unittest.TestCase, AllEventDistribu
     # 全事件未配置明细
     def query_tab(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 时间
         self.inputDt_date_tab(para['DATE_TAB'])
         # 终端类型

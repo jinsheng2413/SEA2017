@@ -64,7 +64,7 @@ class TestDemo(unittest.TestCase, MetClockMonthStaticPage):
 
         # 供电单位
         sleep(2)
-        openLeftTree(para['ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 电表类别
         self.inputRSel_tmnl_type(para['MET_TYPE'])
         # 电能表厂商

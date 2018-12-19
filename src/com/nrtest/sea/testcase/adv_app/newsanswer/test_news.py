@@ -41,7 +41,7 @@ class Test_News(unittest.TestCase, News_Page):
         sleep(3)
         self.displayTreeMenu()
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 问题标题
         self.inputStr_question_title(para['QUESTION_TITLE'])
         # 问题类型

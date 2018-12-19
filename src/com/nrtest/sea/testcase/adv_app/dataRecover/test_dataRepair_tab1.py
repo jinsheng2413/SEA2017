@@ -37,7 +37,7 @@ class Test_DataRepair_1(unittest.TestCase, DataRepair_1Page):
     def query(self, para):
         sleep(4)
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户类型
         self.inputSel_cons_sort(para['CONS_SORT'])
         # 数据类型

@@ -49,7 +49,7 @@ class TestLineTopologyDiagram(unittest.TestCase, LineTopoLogyDiagramPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 线路名称
         self.inputSel_line_name(para['LINE_NAME'])
         # 查询按钮

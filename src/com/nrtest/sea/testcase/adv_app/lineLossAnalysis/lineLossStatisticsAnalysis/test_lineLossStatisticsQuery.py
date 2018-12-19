@@ -52,7 +52,7 @@ class TestLineLossStatisticsQuery(unittest.TestCase, LineLossStatisticsQueryPage
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 线损分类
         self.inputSel_line_loss_type(para['LINE_LOSS_TYPE'])
         # 线损率

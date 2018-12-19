@@ -66,7 +66,7 @@ class TestDemo(unittest.TestCase, TmnlClockDetailPage):
 
         # 供电单位
         sleep(2)
-        openLeftTree(para['ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 偏差范围
         self.inputRSel_offset_range(para['OFFSET_RANGE'])
         # 终端类型

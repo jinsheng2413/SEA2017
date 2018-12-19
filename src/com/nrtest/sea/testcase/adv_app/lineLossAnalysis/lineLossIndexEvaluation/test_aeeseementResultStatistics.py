@@ -54,7 +54,7 @@ class TestAeeseementResultStatistics(unittest.TestCase, AeeseementResultStatisti
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 责任人
         self.inputSel_charge_person(para['CHARGE_PERSON'])
         # 查询日期

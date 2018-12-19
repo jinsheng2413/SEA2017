@@ -63,7 +63,7 @@ class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
         """
         sleep(2)
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端厂商
         self.inputStr_TmnlManufactory(para['TMNL_MANUFACTORY'])
         print(para['TMNL_ADDR'])

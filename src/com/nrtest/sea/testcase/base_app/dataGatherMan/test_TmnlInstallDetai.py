@@ -61,7 +61,7 @@ class TestTmnlInstallDetai(unittest.TestCase, TmnlInstallDetaiPage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端类型
         self.inputSel_TmnlTYPE(para['TMNL_TYPE'])
         # 开始时间

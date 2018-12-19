@@ -64,7 +64,7 @@ class TestDemo(unittest.TestCase, StaticByOrgPage):
 
         # 供电单位
         sleep(2)
-        openLeftTree(para['ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端厂商
         self.inputRSel_tmnl_fac(para['TMNL_FAC'])
         # 电能表厂商

@@ -66,7 +66,7 @@ class TestFaultHandler(unittest.TestCase,LowFaultHandlerPage):
         self.exec_script(LowFaultHandlerLocators.START_DATE_JS)
         self.exec_script(LowFaultHandlerLocators.END_DATE_JS)
         #打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         #故障开始日期
         self.inputStr_faultStartDate(para['FAULT_START_DATE'])
         #故障结束日期

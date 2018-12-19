@@ -54,7 +54,7 @@ class TestSuspecteAreaPowerCutMonitor(unittest.TestCase, SuspecteAreaPowerCutMon
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 停电日期
         self.inputDt_date(para['DATE'])
         # 查询按钮

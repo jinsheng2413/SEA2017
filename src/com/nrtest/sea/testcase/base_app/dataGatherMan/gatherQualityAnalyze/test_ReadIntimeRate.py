@@ -59,7 +59,7 @@ class TestReadIntimeRate(unittest.TestCase, ReadIntimeRatePage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户类型
         self.inputSel_userType(para['USER_TYPE'])
         # 终端厂家

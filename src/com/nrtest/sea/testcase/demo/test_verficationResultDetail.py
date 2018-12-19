@@ -63,7 +63,7 @@ class TestVerficationResultDetail(unittest.TestCase, VerficationResultDetailPage
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TMNL_ADDR'])
+        openLeftTree(para['TREE_NODE'])  # 'TMNL_ADDR'])
 
         # # 台区编号
         # self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])

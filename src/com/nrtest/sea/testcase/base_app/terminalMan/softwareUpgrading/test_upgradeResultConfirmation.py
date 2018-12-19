@@ -53,7 +53,7 @@ class TestUpgradeTaskExecution(unittest.TestCase, UpgradeResultConfirmationPage)
 
     def query(self, para):
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端类型

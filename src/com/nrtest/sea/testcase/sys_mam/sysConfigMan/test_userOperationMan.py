@@ -53,7 +53,7 @@ class TestUserOperationMonitor(unittest.TestCase, UserOperationMonitorPage):
     def query(self, para):
         self.displayTreeMenu()
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 日期
         self.inputDt_date(para['DATE'])
         # 操作模块

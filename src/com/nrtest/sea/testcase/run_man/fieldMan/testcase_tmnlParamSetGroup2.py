@@ -62,7 +62,7 @@ class TestDemo(unittest.TestCase, TermParaSetGroup2Page):
         """
         sleep(2)
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         self.inputSel_tmnl_protory(para['TMNL_PROTORY'])
         self.inputSel_task_status(para['TASK_STATUS'])

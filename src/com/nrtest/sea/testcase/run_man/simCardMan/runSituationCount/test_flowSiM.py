@@ -64,7 +64,7 @@ class TestFlowSIM(unittest.TestCase,SIMFlowCountPage):
         '''
 
         #打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
 
         #sim卡号
         self.inputStr_simCardNo(para['SIM_CARD_NO'])

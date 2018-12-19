@@ -70,7 +70,7 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
 
         # 终端地址
         self.inputStr_tmnlAddr(para['TMNL_ADDR'])

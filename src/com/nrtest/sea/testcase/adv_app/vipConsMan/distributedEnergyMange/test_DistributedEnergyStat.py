@@ -64,7 +64,7 @@ class TestDemo(unittest.TestCase, DistributedEnergyStatPage):
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 发电量消纳方式
         self.inputSel_powerConsumptionMode(para['POWER_CONSUMPTION_MODE'])
         # 日期

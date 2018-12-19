@@ -48,7 +48,7 @@ class Test_ManualEditQH(unittest.TestCase, ManualEditQHPage):
     def query(self, para):
         sleep(4)
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 数据来源

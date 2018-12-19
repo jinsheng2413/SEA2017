@@ -63,7 +63,7 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         self.exec_script(CurCollectSuccessRateLocators.END_DATE_JS)
         # 打开左边树并选择
         print(para['START_TIME'])
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 开始时间
         self.inputStr_startTime(para['START_TIME'])
         # 结束时间

@@ -52,7 +52,7 @@ class TestTgLineLossAnalysis(unittest.TestCase, PartialPressureLineLossAnalysisP
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 电压等级
         self.inputSel_voltage_level(para['VOLTAGE_LEVEL'])
         # 查询日期

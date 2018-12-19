@@ -64,7 +64,7 @@ class TestAssetsManage(unittest.TestCase,AssetsManagePage):
 
         #打开左边树并选择
 
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         #sim卡段
         self.inputStr_simCardNo(para['SIM_CARD_NO'])
         #至

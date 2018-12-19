@@ -64,7 +64,7 @@ class TestArchivesChangeRecordPage(unittest.TestCase, ArchivesChangeRecordPage):
         # 点击低压
         self.btn_low()
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 选择设备类型
         self.inputSel_device_type(para['DEVICE_TYPE'])
         # 变更类型

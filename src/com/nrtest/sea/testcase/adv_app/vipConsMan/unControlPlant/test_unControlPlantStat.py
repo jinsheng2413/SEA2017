@@ -51,7 +51,7 @@ class TestUnControlPlantStat(unittest.TestCase, UnControlPlantStatPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 发电方式
         self.inputSel_elec_way(para['ELEC_WAY'])
         # 采集方式

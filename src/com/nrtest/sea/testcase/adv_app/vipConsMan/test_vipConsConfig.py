@@ -39,7 +39,7 @@ class Test_VipConsConfig(unittest.TestCase, VipConsConfig_Page):
         self.menu_name = para['MENU_NAME']
         sleep(4)
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 运行容量等级
         self.inputSel_run_level(para['RUN_LEVEL'])
         # 用户编号

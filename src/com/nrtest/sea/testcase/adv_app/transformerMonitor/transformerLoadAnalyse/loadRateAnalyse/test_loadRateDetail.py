@@ -63,7 +63,7 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
         """
 
         # 供电单位
-        openLeftTree(para['ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户类型
         self.inputRSel_cons_type(para['CONS_TYPE'])
         # 查询日期

@@ -54,7 +54,7 @@ class TestUpgradeEditionMan(unittest.TestCase, UpgradeEditionManPage):
     def query_edition(self, para):
         clickTabPage('终端版本召测')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 终端厂家
         self.inputSel_edition_tmnl_factory(para['EDITION_TMNL_FACTORY'])
         # 终端类型

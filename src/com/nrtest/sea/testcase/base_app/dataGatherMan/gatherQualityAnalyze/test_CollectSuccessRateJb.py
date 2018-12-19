@@ -63,7 +63,7 @@ class TestDemo(unittest.TestCase, CollectSuccessRateJbPage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 通信类型
         self.inputSel_conmunicationtype(para['CONMUNICATION_TYPE'])
         # 通信方式

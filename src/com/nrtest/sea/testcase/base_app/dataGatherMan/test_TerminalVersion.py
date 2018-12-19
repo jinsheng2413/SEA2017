@@ -62,7 +62,7 @@ class TestTerminalVersion(unittest.TestCase, TerminalVersionPage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户编号
         self.inputStr_userNo(para['USER_NO'])
         # z终端地址

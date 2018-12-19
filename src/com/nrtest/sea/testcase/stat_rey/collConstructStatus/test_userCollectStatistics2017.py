@@ -51,7 +51,7 @@ class TestUserCollectStatistics2017(unittest.TestCase, UserCollectStatistics2017
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 统计月份

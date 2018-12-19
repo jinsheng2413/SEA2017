@@ -49,7 +49,7 @@ class TestPatrolDataQuery_AnomalousEvent(unittest.TestCase, PatrolDataQueryPage)
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 终端地址
         self.inputStr_anomalous_event_tmnl_addr(
             para['ANOMALOUS_EVENT_TMNL_ADDR'])

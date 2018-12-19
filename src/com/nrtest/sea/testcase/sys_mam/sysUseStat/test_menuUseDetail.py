@@ -53,7 +53,7 @@ class TestMenuUseDetail(unittest.TestCase, MenuUseDetailPage):
         clickTabPage('菜单使用明细')
         self.displayTreeMenu()
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 菜单
         self.inputSel_menu(para['MENU'])
         # 操作员

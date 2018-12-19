@@ -52,7 +52,7 @@ class UnControlPlantGatherMon2_Page(Page):
         # locator = self.get_select_locator(UnControlPlantGatherMon2_locators.QRY_GENERATE_ELECTRICITY_WAY_VALUE, index)
         # self.click(*locator)
         # self.delDropdownBoxHtml()
-        self.selectDropDown(options)
+        self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 采集方式
     def inputSel_gather_way(self, options):
@@ -60,7 +60,7 @@ class UnControlPlantGatherMon2_Page(Page):
         # locator = self.get_select_locator(UnControlPlantGatherMon2_locators.QRY_GATHER_WAY_VALUE, index)
         # self.click(*locator)
         # self.delDropdownBoxHtml()
-        self.selectDropDown(options)
+        self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 查询日期
     def inputStr_date(self, value):

@@ -14,19 +14,20 @@ from com.nrtest.sea.locators.adv_app.vipConsMan.vipConsConfig_locators import Vi
 
 class VipConsConfig_Page(Page):
     # 运行容量等级
-    def inputSel_run_level(self, index):
-        self.click(*VipConsConfig_locators.QRY_RUN_LEVEL)
-        locator = self.get_select_locator(
-            VipConsConfig_locators.QRY_RUN_LEVEL_VALUE, index)
-        self.click(*locator)
+    def inputSel_run_level(self, options):
+        # self.click(*VipConsConfig_locators.QRY_RUN_LEVEL)
+        # locator = self.get_select_locator(
+        #     VipConsConfig_locators.QRY_RUN_LEVEL_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(options)
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value, *VipConsConfig_locators.QRY_CONS_NO)
+        self.input(value)  # , *VipConsConfig_locators.QRY_CONS_NO)
 
     # 用户名称
     def inputStr_cons_name(self, value):
-        self.input(value, *VipConsConfig_locators.QRY_CONS_NAME)
+        self.input(value)  #, *VipConsConfig_locators.QRY_CONS_NAME)
 
     # 查询
     def btn_qry(self):

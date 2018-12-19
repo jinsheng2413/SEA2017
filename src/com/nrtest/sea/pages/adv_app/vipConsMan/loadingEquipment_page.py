@@ -15,7 +15,7 @@ from com.nrtest.sea.locators.adv_app.vipConsMan.loadingEquipment_locators import
 class LoadingEquipment_Page(Page):
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value, *LoadingEquipment_locators.QRY_TMNL_ADDR)
+        self.input(value)  # , *LoadingEquipment_locators.QRY_TMNL_ADDR)
 
     # 查询
     def btn_qry(self):

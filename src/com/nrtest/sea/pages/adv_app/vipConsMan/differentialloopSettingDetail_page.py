@@ -16,7 +16,7 @@ from com.nrtest.sea.locators.adv_app.vipConsMan.differentialloopSettingDetail_lo
 class DifferentialloopSettingDetail_Page(Page):
     # 用户名称
     def inputStr_cons_name(self, value):
-        self.input(value, *DifferentialloopSettingDetail_locators.QRY_CONS_NAME)
+        self.input(value)  # , *DifferentialloopSettingDetail_locators.QRY_CONS_NAME)
 
     # 查询
     def btn_qry(self):

@@ -28,10 +28,8 @@ class TestLoadRateStatic(unittest.TestCase, AvailableCapacityAnalysePage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(
-            TradnsformerMonitorData.para_AvailableCapacityAnalyse)
-        cls.exec_script(cls,
-                        AvailableCapacityAnalyseLocators.QUERY_DATE_JS)
+        cls.driver = openMenu(TradnsformerMonitorData.para_AvailableCapacityAnalyse)
+        cls.exec_script(cls, AvailableCapacityAnalyseLocators.QUERY_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

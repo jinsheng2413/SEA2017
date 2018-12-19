@@ -30,8 +30,7 @@ class TestDemo(unittest.TestCase, CollectSuccessRateJbPage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            GatherQualityAnalyze_data.collectSuccessRateJb_para)
+        cls.driver = openMenu(GatherQualityAnalyze_data.collectSuccessRateJb_para)
 
     @classmethod
     def tearDownClass(cls):

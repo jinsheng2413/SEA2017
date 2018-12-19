@@ -24,16 +24,16 @@ from com.nrtest.sea.task.commonMath import *
 @ddt
 class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
 
-    # @classmethod
-    # def setUpClass(cls):
-    #     print("开始执行")
-    #     # 打开菜单（需要传入对应的菜单编号）
-    #     cls.driver = openMenu(ArchivesMan_data.archivesGet_para)
+    @classmethod
+    def setUpClass(cls):
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        cls.driver = openMenu(ArchivesMan_data.archivesGet_para)
 
-    # @classmethod
-    # def tearDownClass(cls):
-    #     print("执行结束")
-    #     # 关闭菜单页面
+    @classmethod
+    def tearDownClass(cls):
+        print("执行结束")
+        # 关闭菜单页面
     #     cls.closePages(cls)
 
     def setUp(self):
@@ -43,7 +43,7 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
         """
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        self.driver = openMenu(ArchivesMan_data.archivesGet_para)
+        # self.driver = openMenu(ArchivesMan_data.archivesGet_para)
 
     def tearDown(self):
         """

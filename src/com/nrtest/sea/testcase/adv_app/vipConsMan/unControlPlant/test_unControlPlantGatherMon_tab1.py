@@ -41,7 +41,6 @@ class Test_UnControlPlantGatherMon_1(unittest.TestCase, UnControlPlantGatherMon1
     def query(self, para):
         # 注册菜单
         self.menu_name = para['MENU_NAME']
-
         sleep(4)
         # 开始日期
         self.inputStr_start_date(para['START_DATE'])

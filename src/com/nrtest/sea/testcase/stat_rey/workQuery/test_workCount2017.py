@@ -63,7 +63,7 @@ class TestDemo(unittest.TestCase, WorkCount2017Page):
         """
         self.displayTreeMenu()
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 工单类型
         self.inputSel_workTitle(para['WORK_TITLE'])
         self.btn_qry()

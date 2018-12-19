@@ -50,7 +50,7 @@ class TestRecordsQuery(unittest.TestCase, RecordsQueryPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 操作员名称
         self.inputStr_staff_name(para['STAFF_NAME'])
         # 台区编号

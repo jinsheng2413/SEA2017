@@ -52,7 +52,7 @@ class TestMsgSubscriptionMan(unittest.TestCase, MsgSubscriptionManPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 订阅类型
         self.inputSel_sub_type(para['SUB_TYPE'])
         # 发送范围

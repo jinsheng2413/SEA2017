@@ -55,7 +55,7 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         clickTabPage(para['TAB_NAME'])
         self.exec_script(ReadCompleteRateLocators.JS_COUNT)
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户类型
         self.inputSel_userType_count(para['USER_TYPE'])
         # 通信方式

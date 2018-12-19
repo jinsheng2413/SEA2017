@@ -50,7 +50,7 @@ class TestAssetMan(unittest.TestCase, AssetManPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 锁封编号
         self.inputStr_lock_no(para['LOCK_NO'])
         # 台区名称

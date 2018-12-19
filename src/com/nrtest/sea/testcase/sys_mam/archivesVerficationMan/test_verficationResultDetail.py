@@ -63,7 +63,7 @@ class TestVerficationResultDetail(unittest.TestCase, VerficationResultDetailPage
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 台区编号
         self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])
         # 开始时间

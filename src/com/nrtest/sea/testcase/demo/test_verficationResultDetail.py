@@ -20,7 +20,6 @@ from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.verficationResultDetail
 from com.nrtest.sea.task.commonMath import *
 
 
-
 # 系统管理--》档案核查管理--》核查结果明细查询
 @ddt
 class TestVerficationResultDetail(unittest.TestCase, VerficationResultDetailPage):
@@ -64,7 +63,7 @@ class TestVerficationResultDetail(unittest.TestCase, VerficationResultDetailPage
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TMNL_ADDR'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TMNL_ADDR'])
 
         # # 台区编号
         # self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])

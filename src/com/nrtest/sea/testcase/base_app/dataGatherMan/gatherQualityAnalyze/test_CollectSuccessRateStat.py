@@ -61,7 +61,7 @@ class TestDemo(unittest.TestCase, CollectSuccessRateStatPage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 输入查询时间
         self.inputStr_checkDate(para['CHECK_DATE'])
 

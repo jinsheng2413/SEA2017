@@ -53,7 +53,7 @@ class TestUpgradeTaskExecution(unittest.TestCase, CentralizePlanUpgradePage):
     # 集中计划升级
     def query(self, para):
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 升级目的
@@ -76,7 +76,7 @@ class TestUpgradeTaskExecution(unittest.TestCase, CentralizePlanUpgradePage):
     # 制定计划
     def query_tab(self, para):
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['TAB_TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TAB_TREE_ORG_NO'])
         # 终端厂家
         self.inputSel_tab_tmnl_factory(para['TAB_TMNL_FACTORY'])
         # 终端类型

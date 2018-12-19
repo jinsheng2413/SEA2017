@@ -52,7 +52,7 @@ class TestTgLineLossMonitor(unittest.TestCase, TgLineLossMonitorPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 指标类型
         self.inputSel_pointer_type(para['POINTER_TYPE'])
         # 日期

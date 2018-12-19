@@ -49,7 +49,7 @@ class TestPatrolDataQuery_CurveData(unittest.TestCase, PatrolDataQueryPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 用户编号
         self.inputStr_curve_data_cons_no(para['CURVE_DATA_CONS_NO'])
         # 终端地址

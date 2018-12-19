@@ -53,7 +53,7 @@ class TestDistributedEnergyMonitorDetail(unittest.TestCase, DistributedEnergyMon
     def query(self, para):
         clickTabPage('分布式电源采集监测明细')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 户号
         self.inputStr_cons_no(para['CONS_NO'])
         # 电能表资产编号

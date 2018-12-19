@@ -53,7 +53,7 @@ class TestReadTimePowerCutDetail(unittest.TestCase, ReadTimePowerCutDetailPage):
     def query(self, para):
         clickTabPage('实时停电明细')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 日期
         self.inputDt_date(para['DATE'])
         # 用户类型

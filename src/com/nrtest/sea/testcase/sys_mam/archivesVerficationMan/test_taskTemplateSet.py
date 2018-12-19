@@ -59,7 +59,7 @@ class TestTaskTemplateSet(unittest.TestCase, TaskTemplateSetPage):
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 选择模板
         self.inputSel_selectModule(para['SELECT_MODULE'])
 

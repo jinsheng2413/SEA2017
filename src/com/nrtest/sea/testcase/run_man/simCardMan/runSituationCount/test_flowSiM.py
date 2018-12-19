@@ -8,14 +8,17 @@
 @time: 2018/11/9 0009 9:44
 @desc:
 """
-from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
-from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import SIMFlowCountPage,SIMFlowCountLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
+from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import SIMFlowCountPage, SIMFlowCountLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
 @ddt
@@ -61,7 +64,7 @@ class TestFlowSIM(unittest.TestCase,SIMFlowCountPage):
         '''
 
         #打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
 
         #sim卡号
         self.inputStr_simCardNo(para['SIM_CARD_NO'])

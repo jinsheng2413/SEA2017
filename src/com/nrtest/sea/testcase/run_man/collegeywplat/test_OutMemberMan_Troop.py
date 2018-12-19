@@ -8,14 +8,16 @@
 @time: 2018/11/13 0013 10:16
 @desc:
 """
-from com.nrtest.sea.data.run_man.collegeywplat.collegeywplat_data import Collegeywplat_data
-from com.nrtest.sea.pages.collegeywplat.outMemberMan_page import OutNameTroopPage,OutNameTroopLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.run_man.collegeywplat.collegeywplat_data import Collegeywplat_data
+from com.nrtest.sea.pages.collegeywplat.outMemberMan_page import OutNameTroopPage, OutNameTroopLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 # 运行管理-->采集运维平台-->组织运维管理
 @ddt
@@ -58,7 +60,7 @@ class TestOutMemberManTroop(unittest.TestCase,OutNameTroopPage):
         clickTabPage(Collegeywplat_data.outMemberMan_tab_Troop)
 
         #打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         #外包队伍名称
         self.inputStr_outName(para['OUT_NAME'])
 

@@ -48,7 +48,7 @@ class TestArchivesQuery(unittest.TestCase, ArchivesQueryPages):
     def query(self, para):
         print(para)
         # 打开左边树并点击
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 输入抄表段号
         self.inputStr_sect_no(para['SECT_NO'])
         # 选择用户类型

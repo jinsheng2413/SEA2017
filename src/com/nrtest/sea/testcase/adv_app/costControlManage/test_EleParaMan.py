@@ -58,7 +58,7 @@ class TestDemo(unittest.TestCase, EleParaManPage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 开始时间
         self.inputStr_startTimeOne(para['START_TIME'])
         # 结束时间
@@ -81,7 +81,7 @@ class TestDemo(unittest.TestCase, EleParaManPage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 开始时间
         self.inputStr_startTimeTwo(para['START_TIME'])
         # 结束时间

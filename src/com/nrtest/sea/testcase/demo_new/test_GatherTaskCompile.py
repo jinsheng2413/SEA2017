@@ -60,7 +60,7 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
 
         sleep(2)
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 任务类型
         self.inputSel_taskType(para['TASK_TYPE'])
         # 任务编号

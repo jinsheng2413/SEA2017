@@ -54,7 +54,7 @@ class TestUserRegisterDetail(unittest.TestCase, UserRegisterDetailPage):
     def query(self, para):
         clickTabPage('注册用户明细')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 类型
         self.inputSel_type(para['TYPE'])
         # 查询按钮

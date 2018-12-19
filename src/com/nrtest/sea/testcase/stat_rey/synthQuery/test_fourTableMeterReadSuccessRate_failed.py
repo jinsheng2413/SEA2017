@@ -51,7 +51,7 @@ class TestAutomatedMeterAvailability_Failed(unittest.TestCase, FourTableMeterRea
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 表计类型
         self.inputSel_failed_meter_type(para['FAILED_METER_TYPE'])
         # 终端地址

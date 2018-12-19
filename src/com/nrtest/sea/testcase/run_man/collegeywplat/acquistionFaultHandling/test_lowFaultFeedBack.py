@@ -8,15 +8,16 @@
 @time: 2018/11/12 0012 9:31
 @desc:
 """
+import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.collegeywplat.acquistionFaultHandling.acquistionFaultHandling_data import \
     AcquistionFaultHandling_data
-from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.lowFaultHandler_page import LowFaultFeedBackPage,LowFaultFeedBackLocators
+from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.lowFaultHandler_page import LowFaultFeedBackPage, LowFaultFeedBackLocators
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
-import unittest
 
 
 # 运行管理-->采集运维平台-->采集故障处理-->低压故障处理
@@ -66,7 +67,7 @@ class TestLowFaultFeedback(unittest.TestCase,LowFaultFeedBackPage):
         self.exec_script(LowFaultFeedBackLocators.START_DATE_JS)
         self.exec_script(LowFaultFeedBackLocators.END_DATE_JS)
         #打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         #故障开始日期
         self.inputStr_faultStartDate(para['FAULT_START_DATE'])
         #故障结束日期

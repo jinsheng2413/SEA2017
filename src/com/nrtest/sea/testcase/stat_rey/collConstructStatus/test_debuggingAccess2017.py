@@ -50,7 +50,7 @@ class TestDebuggingAccess2017(unittest.TestCase, DebuggingAccess2017Page):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 管理方式
         self.inputSel_manage_style(para['MANAGE_STYLE'])
         # 装接方式

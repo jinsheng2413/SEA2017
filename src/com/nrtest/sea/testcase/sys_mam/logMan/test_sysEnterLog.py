@@ -52,7 +52,7 @@ class TestSysEnterLog(unittest.TestCase, SysEnterLogPage):
     def query(self, para):
         self.displayTreeMenu()
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 查询日期，开始
         self.inputDt_start_date(para['START_DATE'])
         # 查询日期，结束

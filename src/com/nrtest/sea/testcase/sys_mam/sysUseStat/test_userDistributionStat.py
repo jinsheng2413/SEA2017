@@ -53,7 +53,7 @@ class TestUserDistributionStat(unittest.TestCase, UserDistributionStatPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 查询按钮
         self.btn_search()
         sleep(2)

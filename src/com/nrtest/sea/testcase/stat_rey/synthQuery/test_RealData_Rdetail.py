@@ -59,7 +59,7 @@ class TestRealData_Rdetail(unittest.TestCase, RealDataPage):
         """
         sleep(2)
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 选择抄表段号
         self.inputStr_ReadMeterSegmentNo_Rdetail(para['READ_METER_SEGMENT_NO'])
         # 电表资产号

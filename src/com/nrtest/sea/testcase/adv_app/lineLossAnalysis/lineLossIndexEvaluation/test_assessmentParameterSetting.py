@@ -54,7 +54,7 @@ class TestAssessmentParameterSetting(unittest.TestCase, AssessmentParameterSetti
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 台区/线路名称
         self.inputStr_tg_name(para['TG_NAME'])
         # 查询按钮

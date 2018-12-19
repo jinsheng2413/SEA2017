@@ -60,7 +60,7 @@ class TestLoseCountPowerMan(unittest.TestCase, LoseCountPowerManPage):
         '''
         sleep(2)
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 台区运行状态
         self.inputSel_zoneAreaRunStatus(para['ZONE_AREA_RUN_STATUS'])
         # 台区编码

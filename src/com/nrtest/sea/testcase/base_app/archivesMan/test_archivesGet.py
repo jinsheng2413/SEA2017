@@ -65,7 +65,7 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
         sleep(3)
         print(para['ORG_NO'])
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 输入用户类型
         self.inputSel_userType(para['USER_TYPE'])
         # 户号

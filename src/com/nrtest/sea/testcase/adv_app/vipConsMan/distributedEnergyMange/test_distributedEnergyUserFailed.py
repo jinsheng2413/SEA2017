@@ -53,7 +53,7 @@ class TestDistributedEnergyUserFailed(unittest.TestCase, DistributedEnergyUserFa
     def query(self, para):
         clickTabPage('分布式电源用户抄表失败明细')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 电能表资产编号

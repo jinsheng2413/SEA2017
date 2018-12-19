@@ -64,7 +64,7 @@ class TestWorkQuery(unittest.TestCase, WorkQueryPage):
 
         self.displayTreeMenu()
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 异常编号
         self.inputStr_abnormalNo(para['ABNORMAL_NO'])
         # 异常状态

@@ -69,7 +69,7 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户编号
         self.inputStr_userNo(para['USER_NO'])
         # 用户名称

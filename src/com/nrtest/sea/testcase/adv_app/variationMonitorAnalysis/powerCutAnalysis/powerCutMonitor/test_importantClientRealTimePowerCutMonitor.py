@@ -52,7 +52,7 @@ class TestImportantClientRealTimePowerCutMonitor(unittest.TestCase, ImportantCli
     def query(self, para):
         clickTabPage('重要客户历史停电查询')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 电压等级
         self.inputSel_volt_level(para['VOLT_LEVEL'])
         # 停电开始日期

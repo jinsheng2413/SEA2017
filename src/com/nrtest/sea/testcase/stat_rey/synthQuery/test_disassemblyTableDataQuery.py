@@ -51,7 +51,7 @@ class TestDisassemblyTableDataQuery(unittest.TestCase, DisassemblyTableDataQuery
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 用户名称
         self.inputStr_user_name(para['USER_NAME'])
         # 用户编号

@@ -49,7 +49,7 @@ class TestAllEventMeterEventQuery(unittest.TestCase, AllEventMeterEventQueryPage
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 电表资产号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 事件等级

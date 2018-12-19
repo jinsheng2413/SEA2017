@@ -64,7 +64,7 @@ class TestScriptResultStat(unittest.TestCase, ScriptResultDetailPage):
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 脚本名称
         self.inputStr_scriptName(para['SCRIPT_NAME'])
         # 开始时间

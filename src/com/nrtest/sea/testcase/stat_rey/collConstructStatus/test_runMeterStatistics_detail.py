@@ -49,7 +49,7 @@ class TestRunMeterStatistics_Detail(unittest.TestCase, RunMeterStatisticsPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['DETAIL_TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'DETAIL_TREE_ORG_NO'])
         # 用户类型
         self.inputCSel_detail_cons_type(para['DETAIL_CONS_TYPE'])
         # 通信方式

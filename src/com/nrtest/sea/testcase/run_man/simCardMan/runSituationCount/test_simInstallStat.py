@@ -60,7 +60,7 @@ class TestSimInstallStat(unittest.TestCase,SimInstallStatPage):
         '''
 
         #打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         #运营商
         self.inputSel_operator(para['OPERATOR'])
 

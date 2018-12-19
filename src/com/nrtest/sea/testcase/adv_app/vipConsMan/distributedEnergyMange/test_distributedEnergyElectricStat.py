@@ -53,7 +53,7 @@ class TestDistributedEnergyElectricStat(unittest.TestCase, DistributedEnergyElec
     def query(self, para):
         clickTabPage('分布式电源电量监测统计')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 月份
         self.inputDt_date(para['DATE'])
         # 发电类型

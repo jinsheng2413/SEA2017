@@ -48,7 +48,7 @@ class TestMeterDataQuery(unittest.TestCase, MeterDataQueryPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 抄表段号
         self.inputStr_sect_no(para['SECT_NO'])
         # 电表资产号

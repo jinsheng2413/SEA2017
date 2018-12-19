@@ -49,7 +49,7 @@ class TestCPSynthQuery(unittest.TestCase, CPSynthQueryPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 终端类型
         self.inputSel_tmnl_status(para['TMNL_STATUS'])
         # 用户范围

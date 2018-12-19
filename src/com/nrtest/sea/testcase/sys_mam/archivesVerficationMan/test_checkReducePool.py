@@ -65,7 +65,7 @@ class TestCheckReducePool(unittest.TestCase, CheckReducePoolPage):
         sleep(2)
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 申请时间
         self.inputStr_apply_time(para['START_TIME'])
         # 至

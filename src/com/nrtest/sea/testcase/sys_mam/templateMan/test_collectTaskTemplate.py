@@ -52,7 +52,7 @@ class TestCollectTaskTemplate(unittest.TestCase, CollectTaskTemplatePage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 任务分类
         self.inputSel_task_classify(para['TASK_CLASSIFY'])
         # 任务类型

@@ -64,7 +64,7 @@ class TestCoreFunctionAudit(unittest.TestCase, CoreFunctionAuditPage):
         '''
         self.displayTreeMenu()
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 操作员
         self.inputStr_performer(para['PERFORMER'])
         # 拜访时间

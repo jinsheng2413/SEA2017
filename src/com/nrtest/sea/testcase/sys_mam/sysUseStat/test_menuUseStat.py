@@ -52,7 +52,7 @@ class TestMenuUseStat(unittest.TestCase, MenuUseStatPage):
     def query(self, para):
         self.displayTreeMenu()
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 菜单
         self.inputSel_menu(para['MENU'])
         # 操作员

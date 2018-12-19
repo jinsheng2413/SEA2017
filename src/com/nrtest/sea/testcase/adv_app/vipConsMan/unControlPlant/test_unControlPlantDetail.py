@@ -52,7 +52,7 @@ class TestUnControlPlantDetail(unittest.TestCase, UnControlPlantDetailPage):
     def query(self, para):
         clickTabPage('非统调电厂接入明细')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 发电方式
         self.inputSel_elec_way(para['ELEC_WAY'])
         # 采集方式

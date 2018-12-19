@@ -58,7 +58,7 @@ class TestTmnlStateArr(unittest.TestCase, TmnlStateArrPage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 终端状态

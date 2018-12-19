@@ -49,7 +49,7 @@ class TestTgTopologyDiagram(unittest.TestCase, TgTopologyDiagramPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 专公变类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 台区编码

@@ -51,7 +51,7 @@ class TestMsgSet(unittest.TestCase, MsgSetPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 重要性级别
         self.inputSel_importance_level(para['IMPORTANCE_LEVEL'])
         # 查询按钮

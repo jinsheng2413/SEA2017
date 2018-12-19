@@ -63,7 +63,7 @@ class TestPrePaidStatus(unittest.TestCase, PrePaidStatusPage):
         # 选择tab页
         clickTabPage(para['TAB_NAME'])
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 控制类型
         self.inputRSel_controlType_one(para['CONTROL_TYPE'])
         # 开始时间
@@ -93,7 +93,7 @@ class TestPrePaidStatus(unittest.TestCase, PrePaidStatusPage):
         self.exec_script(PrePaidStatus_Locators.END_DATE_TWO_JS)
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 控制类型
         self.inputRSel_controlType_Two(para['CONTROL_TYPE'])
         # 开始时间

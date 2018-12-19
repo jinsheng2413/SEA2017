@@ -61,7 +61,7 @@ class TestDemo(unittest.TestCase, LoadSortAnalysePage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 开始时间
         self.inputStr_startDate(para['START_DATE'])
         # 结束时间

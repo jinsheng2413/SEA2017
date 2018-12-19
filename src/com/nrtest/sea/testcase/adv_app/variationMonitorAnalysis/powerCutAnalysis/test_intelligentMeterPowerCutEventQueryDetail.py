@@ -53,7 +53,7 @@ class TestIntelligentMeterPowerCutEventQueryDetail(unittest.TestCase, Intelligen
     def query(self, para):
         clickTabPage('智能表停电明细')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询日期

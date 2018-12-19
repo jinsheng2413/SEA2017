@@ -64,7 +64,7 @@ class TestTmnlBuildQuery(unittest.TestCase, TmnlBuildQueryPage):
 
         sleep(2)
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
 
         # 查询日期
         self.inputStr_dateS(para['DATE_S'])

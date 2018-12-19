@@ -52,7 +52,7 @@ class TestIndexDetail(unittest.TestCase, IndexDetailPage):
     def query(self, para):
         clickTabPage('指标明细')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 台区编号
         self.inputStr_tg_no(para['TG_NO'])
         # 台区名称

@@ -63,7 +63,7 @@ class TestScriptCheckTaskSet(unittest.TestCase, ScriptCheckTaskSetPage):
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 脚本类型
         self.inputSel_scriptType(para['SCRIPT_TYPE'])
         # 脚本名称

@@ -61,7 +61,7 @@ class TestDemo(unittest.TestCase, CommModulVersionMainPage):
         '''
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端厂商
         self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
         # 终端类型

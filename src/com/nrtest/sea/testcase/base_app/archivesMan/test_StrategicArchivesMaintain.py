@@ -58,7 +58,7 @@ class TestDemo(unittest.TestCase, StrategicArchivesMaintainPage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 输入中地址
         self.inputStr_TmnlAddr(para['TMNL_ADDR'])
         # 输入终端资产号

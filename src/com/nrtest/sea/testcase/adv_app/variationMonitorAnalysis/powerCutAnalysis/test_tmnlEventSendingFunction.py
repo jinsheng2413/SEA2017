@@ -52,7 +52,7 @@ class TestTmnlEventSendingFunction(unittest.TestCase, TmnlEventSendingFunctionPa
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 查询日期
         self.inputDt_date(para['DATE'])
         # 查询按钮

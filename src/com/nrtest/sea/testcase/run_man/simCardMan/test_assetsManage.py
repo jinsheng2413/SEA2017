@@ -8,14 +8,16 @@
 @time: 2018/11/8 0008 14:55
 @desc:
 """
-from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardMan
-from com.nrtest.sea.pages.run_man.simCardMan.assetsManage_page import AssetsManagePage,AssetsManageLocators
-from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
 import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardMan
+from com.nrtest.sea.pages.run_man.simCardMan.assetsManage_page import AssetsManagePage, AssetsManageLocators
+from com.nrtest.sea.task.commonMath import *
+
 
 #运行管理-->SIM卡管理-->资产管理
 @ddt
@@ -62,7 +64,7 @@ class TestAssetsManage(unittest.TestCase,AssetsManagePage):
 
         #打开左边树并选择
 
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         #sim卡段
         self.inputStr_simCardNo(para['SIM_CARD_NO'])
         #至

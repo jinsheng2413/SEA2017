@@ -60,7 +60,7 @@ class TestPowerSortAnalyse(unittest.TestCase, PowerSortAnalysePage):
         """
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 开始时间
         self.inputStr_start_time(para['START_TIME'])
         # 结束时间

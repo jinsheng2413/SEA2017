@@ -53,7 +53,7 @@ class TestTmnlPowerCutEventQueryMonth(unittest.TestCase, TmnlPowerCutEventQueryM
     def query(self, para):
         clickTabPage('月终端停电明细')
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 月份

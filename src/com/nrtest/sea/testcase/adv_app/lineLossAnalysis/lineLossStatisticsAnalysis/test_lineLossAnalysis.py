@@ -52,7 +52,7 @@ class TestTgLineLossAnalysis(unittest.TestCase, LineLossAnalysisPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 线路编号
         self.inputStr_line_no(para['LINE_NO'])
         # 线路名称

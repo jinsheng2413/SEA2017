@@ -49,7 +49,7 @@ class TestPatrolDataQuery_CurrentStatus(unittest.TestCase, PatrolDataQueryPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 终端地址
         self.inputStr_current_status_tmnl_addr(
             para['CURRENT_STATUS_TMNL_ADDR'])

@@ -52,7 +52,7 @@ class TestTgLineLossUnifiedView(unittest.TestCase, TgLineLossStatisticsPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 线损维度
         self.inputSel_line_loss_dimension(para['LINE_LOSS_DIMENSION'])
         # 查询日期

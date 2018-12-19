@@ -54,7 +54,7 @@ class TestDistributedEnergyAnomalyDetail(unittest.TestCase, DistributedEnergyAno
         clickTabPage('分布式电源异常情况明细')
         # 打开左边树并选择
         self.displayTreeMenu()
-        self.driver = openLeftTree(para['TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 日期
         self.inputDt_date(para['DATE'])
         # 异常类型

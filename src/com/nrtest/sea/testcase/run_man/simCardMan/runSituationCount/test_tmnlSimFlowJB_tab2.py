@@ -51,7 +51,7 @@ class Test_TnmlSimFlowJB_2(unittest.TestCase, TmnlSimFlowJB_2Page):
     def query(self, para):
         sleep(4)
         # 打开左边树选择供电单位
-        self.driver = openLeftTree(para['ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # Sim卡号

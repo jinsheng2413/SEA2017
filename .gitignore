@@ -135,6 +135,8 @@ venv.bak/
 #    (E) 错误。很可能是代码中的错误。
 #    (F) 致命错误。阻止 Pylint 进一步运行的错误。
 
+# 生成类说明文档：python -m pydoc -p 1234
+
 # My configurations:
 geckodriver.log
 reports/*.html

@@ -37,7 +37,7 @@ class CurCollectSuccessRatePage(Page):
 
     # 开始时间
     def inputStr_startTime(self, value):
-        # self.input(value, *CurCollectSuccessRateLocators.QRY_START_TIME)
+        self.input(value, *CurCollectSuccessRateLocators.QRY_START_TIME)
         self.input(value)
 
     # 结束时间

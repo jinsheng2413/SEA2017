@@ -15,19 +15,19 @@ from com.nrtest.sea.locators.adv_app.vipConsMan.differentialloopSetting_locators
 class DifferentialloopSetting_Page(Page):
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value, *DifferentialloopSetting_locators.QRY_CONS_NO)
+        self.input(value)  # , *DifferentialloopSetting_locators.QRY_CONS_NO)
 
     # 用户名称
     def inputStr_cons_name(self, value):
-        self.input(value, *DifferentialloopSetting_locators.QRY_CONS_NAME)
+        self.input(value)  #, *DifferentialloopSetting_locators.QRY_CONS_NAME)
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value, *DifferentialloopSetting_locators.QRY_TMNL_ADDR)
+        self.input(value)  #, *DifferentialloopSetting_locators.QRY_TMNL_ADDR)
 
     # 终端资产号
     def inputStr_tmnl_asst_no(self, value):
-        self.input(value, *DifferentialloopSetting_locators.QRY_TMNL_ASST_NO)
+        self.input(value)  #, *DifferentialloopSetting_locators.QRY_TMNL_ASST_NO)
 
     # 查询
     def btn_qry(self):

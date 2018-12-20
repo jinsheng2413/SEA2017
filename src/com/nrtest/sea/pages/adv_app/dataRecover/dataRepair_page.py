@@ -14,67 +14,72 @@ from com.nrtest.sea.locators.adv_app.dataRecover.dataRepair_locators import Data
 
 class DataRepair_1Page(Page):
     # 用户类型
-    def inputSel_cons_sort(self, index):
-        self.click(*DataRepair_1Locators.QRY_CONS_SORT)
-        locator = self.get_select_locator(
-            DataRepair_1Locators.QRY_CONS_SORT_VALUE, index)
-        self.click(*locator)
-
+    def inputSel_cons_sort(self, options):
+        # self.click(*DataRepair_1Locators.QRY_CONS_SORT)
+        # locator = self.get_select_locator(
+        #     DataRepair_1Locators.QRY_CONS_SORT_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(options)
     # 数据类型
-    def inputSel_data_type(self, index):
-        self.click(*DataRepair_1Locators.QRY_DATA_TYPE)
-        locator = self.get_select_locator(
-            DataRepair_1Locators.QRY_DATA_TYPE_VALUE, index)
-        self.click(*locator)
+    def inputSel_data_type(self, options):
+        # self.click(*DataRepair_1Locators.QRY_DATA_TYPE)
+        # locator = self.get_select_locator(
+        #     DataRepair_1Locators.QRY_DATA_TYPE_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(options)
     # 开始时间
 
     def inputStr_start_date(self, value):
-        self.input(value, *DataRepair_1Locators.QRY_START_DATE)
+        self.input(value)#, *DataRepair_1Locators.QRY_START_DATE)
 
     # 结束时间
     def inputStr_end_date(self, value):
-        self.input(value, *DataRepair_1Locators.QRY_END_DATE)
+        self.input(value)#, *DataRepair_1Locators.QRY_END_DATE)
 
     # 查询
     def btn_qry(self):
-        self.click(*DataRepair_1Locators.BTN_QUERY)
+        #self.click(*DataRepair_1Locators.BTN_QUERY)
+        self.btn_query()
 
 
 # 第二个tab页
 class DataRepair_2Page(Page):
     # 数据类型
-    def inputSel_data_type(self, index):
-        self.click(*DataRepair_2Locators.QRY_DATA_TYPE)
-        locator = self.get_select_locator(
-            DataRepair_2Locators.QRY_DATA_TYPE_VALUE, index)
-        self.click(*locator)
-        self.delDropdownBoxHtml()
+    def inputSel_data_type(self, options):
+        # self.click(*DataRepair_2Locators.QRY_DATA_TYPE)
+        # locator = self.get_select_locator(
+        #     DataRepair_2Locators.QRY_DATA_TYPE_VALUE, index)
+        # self.click(*locator)
+        # self.delDropdownBoxHtml()
+        self.selectDropDown(options,is_multi_tab=True,is_multi_elements=True)
 
     # 用户类型
-    def inputSel_cons_sort(self, index):
-        self.click(*DataRepair_2Locators.QRY_CONS_SORT)
-        locator = self.get_select_locator(
-            DataRepair_2Locators.QRY_CONS_SORT_VALUE, index)
-        self.click(*locator)
-        self.delDropdownBoxHtml()
+    def inputSel_cons_sort(self, options):
+        # self.click(*DataRepair_2Locators.QRY_CONS_SORT)
+        # locator = self.get_select_locator(
+        #     DataRepair_2Locators.QRY_CONS_SORT_VALUE, index)
+        # self.click(*locator)
+        # self.delDropdownBoxHtml()
+        self.selectDropDown(options,is_multi_tab=True,is_multi_elements=True)
 
     # 查询日期
 
     def inputStr_date(self, value):
-        self.input(value, *DataRepair_2Locators.QRY_DATE)
+        self.curr_input(value,True,True)#, *DataRepair_2Locators.QRY_DATE)
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value, *DataRepair_2Locators.QRY_CONS_NO)
+        self.input(value)#, *DataRepair_2Locators.QRY_CONS_NO)
 
     # 终端资产号
     def inputStr_tmnl_asst_no(self, value):
-        self.input(value, *DataRepair_2Locators.QRY_TMNL_ASST_NO)
+        self.input(value)#, *DataRepair_2Locators.QRY_TMNL_ASST_NO)
 
     # 电表局编号
     def inputStr_meter_no(self, value):
-        self.input(value, *DataRepair_2Locators.QRY_METER_NO)
+        self.input(value)#, *DataRepair_2Locators.QRY_METER_NO)
 
     # 查询
     def btn_qry(self):
-        self.click(*DataRepair_2Locators.BTN_QUERY)
+        #self.click(*DataRepair_2Locators.BTN_QUERY)
+        self.btn_query(True)

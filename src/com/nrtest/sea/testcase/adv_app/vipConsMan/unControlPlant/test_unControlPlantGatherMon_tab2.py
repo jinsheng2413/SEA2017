@@ -40,7 +40,6 @@ class Test_UnControlPlantGatherMon_2(unittest.TestCase, UnControlPlantGatherMon2
         cls.closePages(cls)
 
     def query(self, para):
-        print(para['MENU_NAME'])
         # 注册菜单
         self.menu_name = para['MENU_NAME']
 

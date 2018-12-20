@@ -41,7 +41,8 @@ class UnControlPlantGatherMon1_Page(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*UnControlPlantGatherMon1_locators.BTN_QUERY)
+        #self.click(*UnControlPlantGatherMon1_locators.BTN_QUERY)
+        self.btn_query()
 
 
 # 第二个tab页
@@ -80,4 +81,5 @@ class UnControlPlantGatherMon2_Page(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*UnControlPlantGatherMon2_locators.BTN_QUERY)
+        #self.click(*UnControlPlantGatherMon2_locators.BTN_QUERY)
+        self.btn_query(True)

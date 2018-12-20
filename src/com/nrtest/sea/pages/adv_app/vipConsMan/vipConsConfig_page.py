@@ -31,4 +31,5 @@ class VipConsConfig_Page(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*VipConsConfig_locators.BTN_QUERY)
+        #self.click(*VipConsConfig_locators.BTN_QUERY)
+        self.btn_query()

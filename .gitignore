@@ -145,6 +145,7 @@ screenshots/
 logs/
 ocr/
 img/
+*.png
 !blank.py
 !screenshots
 !logs

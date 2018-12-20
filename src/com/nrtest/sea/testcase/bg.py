@@ -10,12 +10,12 @@
 
 import unittest
 
-from com.nrtest.sea.testcase.adv_app.vipConsMan.unControlPlant.test_unControlPlantGatherMon_tab2 import \
-    Test_UnControlPlantGatherMon_2
+from com.nrtest.sea.testcase.adv_app.vipConsMan.unControlPlant.test_unControlPlantGatherMon_tab1 import \
+    Test_UnControlPlantGatherMon_1
 
 suite = unittest.TestSuite()
 suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-    Test_UnControlPlantGatherMon_2))
+    Test_UnControlPlantGatherMon_1))
 # tests = [TestGatherSuccessRate('test_epp_task_type')]
 # suite.addTests(tests)
 

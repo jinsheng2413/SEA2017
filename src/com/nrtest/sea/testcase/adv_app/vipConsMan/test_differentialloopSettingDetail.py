@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -48,7 +47,7 @@ class Test_DifferentialloopSettingDetail(unittest.TestCase, DifferentialloopSett
     def query(self, para):
         # 注册菜单
         self.menu_name = para['MENU_NAME']
-        sleep(2)
+        # sleep(2)
         # 用户名称
         self.inputStr_cons_name(para['CONS_NAME'])
         # 查询

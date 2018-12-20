@@ -78,7 +78,7 @@ class GatherSuccessRatePage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*GatherSuccessRateLocators.BTN_SEARCH)
+        # self.click(*GatherSuccessRateLocators.BTN_SEARCH)
         self.btn_query(True)
 
 
@@ -312,4 +312,5 @@ class GatherSuccessRateTimePage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*GatherSuccessRateTimeLocators.BTN_SEARCH)
+        # self.click(*GatherSuccessRateTimeLocators.BTN_SEARCH)
+        self.btn_query()

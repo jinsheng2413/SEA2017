@@ -63,7 +63,6 @@ class TestDemo(unittest.TestCase, TmnlClockStaticPage):
         """
 
         # 供电单位
-        sleep(2)
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端类型
         self.inputRSel_tmnl_type(para['TMNL_TYPE'])

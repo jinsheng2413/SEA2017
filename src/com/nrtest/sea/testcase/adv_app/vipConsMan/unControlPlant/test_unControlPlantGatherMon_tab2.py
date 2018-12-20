@@ -43,7 +43,7 @@ class Test_UnControlPlantGatherMon_2(unittest.TestCase, UnControlPlantGatherMon2
         # 注册菜单
         self.menu_name = para['MENU_NAME']
 
-        sleep(4)
+        # sleep(4)
         # 打开左边树选择供电单位
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         print(para['GENERATE_ELECTRICITY_WAY'])

@@ -9,7 +9,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -59,12 +58,12 @@ class TestFaultHandler(unittest.TestCase,FaultHandlerPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(2)
         self.clickAlert()
         clickTabPage(para['TAB_NAME'])
 
         self.exec_script(FaultHandlerLocators.START_DATE_JS)
         self.exec_script(FaultHandlerLocators.END_DATE_JS)
+
         #打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         #故障开始日期

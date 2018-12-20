@@ -8,7 +8,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -29,8 +28,10 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            GatherQualityAnalyze_data.curCollectSuccessRate_para)
+        cls.driver = openMenu(GatherQualityAnalyze_data.curCollectSuccessRate_para)
+
+        clickTabPage(GatherQualityAnalyze_data.curCollectSuccessRateCount_tab)
+        cls.exec_script(CurCollectSuccessRateLocators.JS_COUNT)
 
     @classmethod
     def tearDownClass(cls):
@@ -59,10 +60,6 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
-        clickTabPage(GatherQualityAnalyze_data.curCollectSuccessRateCount_tab)
-        sleep(2)
-        self.exec_script(CurCollectSuccessRateLocators.JS_COUNT)
 
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])

@@ -16,7 +16,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.dataRecover.dataRepair_data import DataRepair
-from com.nrtest.sea.pages.adv_app.dataRecover.dataRepair_page import DataRepair_2Page, DataRepair_2Locators
+from com.nrtest.sea.pages.adv_app.dataRecover.dataRepair_page import DataRepair_2Page
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -40,7 +40,7 @@ class Test_DataRepair_2(unittest.TestCase, DataRepair_2Page):
     def query(self, para):
         # 注册菜单
         self.menu_name = para['MENU_NAME']
-        sleep(4)
+
         # 打开左边树选择供电单位
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 数据类型

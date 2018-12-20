@@ -30,6 +30,9 @@ class TestNewPrePaidStatus(unittest.TestCase, NewPrePaidStatusPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(RemoteCustControl_data.NewPrePaidStatus_para)
 
+        cls.exec_script(NewPrePaidStatusLocators.START_DATE_ONE_JS)
+        cls.exec_script(NewPrePaidStatusLocators.END_DATE_ONE_JS)
+
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
@@ -50,16 +53,14 @@ class TestNewPrePaidStatus(unittest.TestCase, NewPrePaidStatusPage):
         # 回收左边树
         self.recoverLeftTree()
 
-    def InstructionQuery(self, para):
+    def instructionQuery(self, para):
         """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(2)
-        self.exec_script(NewPrePaidStatusLocators.START_DATE_ONE_JS)
-        self.exec_script(NewPrePaidStatusLocators.END_DATE_ONE_JS)
+
         # 选择tab页
         clickTabPage(para['TAB_NAME'])
         # 打开左边树并选择
@@ -109,7 +110,7 @@ class TestNewPrePaidStatus(unittest.TestCase, NewPrePaidStatusPage):
 
     @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.Tab_One))
     def test_InstructionQuery(self, para):
-        self.InstructionQuery(para)
+        self.instructionQuery(para)
 
     @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.Tab_Two))
     def test_userQuery(self, para):

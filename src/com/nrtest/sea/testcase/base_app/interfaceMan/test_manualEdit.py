@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -46,7 +45,6 @@ class Test_ManualEdit(unittest.TestCase, ManualEditPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        sleep(4)
         # 打开左边树选择供电单位
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户编号

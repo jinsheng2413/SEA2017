@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -62,7 +61,7 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
 
         # sleep(2)
         self.clickRadioBox(para['TAB_PAGE_SEL'])  # '管理群组')
-        sleep(0.5)
+
         if para['TAB_PAGE_SEL'] == self.tab_page:  # 管理群组
             # 名称
             self.inputStr_name(para['NAME'])

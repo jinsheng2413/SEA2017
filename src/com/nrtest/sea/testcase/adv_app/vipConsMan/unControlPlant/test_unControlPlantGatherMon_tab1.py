@@ -13,7 +13,6 @@ from time import sleep
 
 from ddt import ddt, data
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.vipConsMan.unControlPlant.unControlPlantGatherMon_data import UnControlPlant
 from com.nrtest.sea.pages.adv_app.vipConsMan.unControlPlant.unControlPlantGatherMon_page import \
@@ -41,7 +40,7 @@ class Test_UnControlPlantGatherMon_1(unittest.TestCase, UnControlPlantGatherMon1
     def query(self, para):
         # 注册菜单
         self.menu_name = para['MENU_NAME']
-        sleep(4)
+
         # 开始日期
         self.inputStr_start_date(para['START_DATE'])
         # 结束日期

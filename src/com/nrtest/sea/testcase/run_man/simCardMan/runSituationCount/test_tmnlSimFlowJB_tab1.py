@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -48,7 +47,7 @@ class Test_TnmlSimFlowJB_1(unittest.TestCase, TmnlSimFlowJB_1Page):
         self.recoverLeftTree()
 
     def query(self, para):
-        sleep(4)
+        # sleep(4)
         # 打开左边树选择供电单位
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端地址

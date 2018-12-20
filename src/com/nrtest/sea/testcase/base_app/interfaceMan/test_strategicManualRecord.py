@@ -48,7 +48,6 @@ class Test_StrategicManualRecord(unittest.TestCase, StrategicManualRecordPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        sleep(4)
         # 点击电网结构
         self.click(*StrategicManualRecord_Locators.QRY_DWJG)
         # 点击供电单位

@@ -49,7 +49,6 @@ class Test_TnmlSimFlowJB_2(unittest.TestCase, TmnlSimFlowJB_2Page):
         self.recoverLeftTree()
 
     def query(self, para):
-        sleep(4)
         # 打开左边树选择供电单位
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端地址

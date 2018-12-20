@@ -32,8 +32,8 @@ class TestDemo(unittest.TestCase, FrequentlyCheckMetPage):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(ClockData.para_ClockRun)
-        clickTabPage('频繁对时电表')
         sleep(2)
+        clickTabPage('频繁对时电表')
         cls.exec_script(cls, FrequentlyCheckMetLocators.QUERY_DATE_JS)
 
     @classmethod
@@ -65,7 +65,6 @@ class TestDemo(unittest.TestCase, FrequentlyCheckMetPage):
         """
 
         # 供电单位
-        sleep(2)
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 电能表厂商
         self.inputRSel_met_fac(para['MET_FAC'])

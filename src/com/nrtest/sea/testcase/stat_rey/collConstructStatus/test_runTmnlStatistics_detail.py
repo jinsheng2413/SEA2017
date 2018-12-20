@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -49,7 +48,6 @@ class TestRunTmnlStatistics_Detail(unittest.TestCase, RunTmnlStatisticsPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        sleep(2)
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'DETAIL_TREE_ORG_NO'])
         # 用户类型

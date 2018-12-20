@@ -51,7 +51,6 @@ class TestGatherSuccessRateDetail(unittest.TestCase, GatherSuccessRateDetailPage
         self.recoverLeftTree()
 
     def query(self, para):
-        sleep(2)
         clickTabPage('采集成功率明细')
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])

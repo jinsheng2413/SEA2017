@@ -30,6 +30,10 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(GatherQualityAnalyze_data.curCollectSuccessRate_para)
+        sleep(2)
+        clickTabPage(GatherQualityAnalyze_data.curCollectSuccessRateDetail_tab)
+
+        cls.exec_script(CurCollectSuccessRateLocators.JS_DETAIL)
 
     @classmethod
     def tearDownClass(cls):
@@ -61,9 +65,6 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         # 注册菜单
         self.menu_name = para['MENU_NAME']
 
-        clickTabPage(GatherQualityAnalyze_data.curCollectSuccessRateDetail_tab)
-        sleep(2)
-        self.exec_script(CurCollectSuccessRateLocators.JS_DETAIL)
         print(para['PLATFORM_NO'])
 
         # 打开左边树并选择

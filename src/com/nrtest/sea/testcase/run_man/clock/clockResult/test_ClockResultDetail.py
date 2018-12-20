@@ -32,8 +32,8 @@ class TestDemo(unittest.TestCase, ClockResultDetailPage):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(ClockData.para_ClockResult)
-        clickTabPage('对时结果明细')
         sleep(2)
+        clickTabPage('对时结果明细')
         cls.exec_script(cls, ClockResultDetailLocators.QUERY_DATE_JS)
 
     @classmethod
@@ -65,7 +65,6 @@ class TestDemo(unittest.TestCase, ClockResultDetailPage):
         """
 
         # 供电单位
-        sleep(2)
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 类别
         self.inputRSel_clock_model(para['CLOCK_MODEL'])

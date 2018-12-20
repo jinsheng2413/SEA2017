@@ -8,7 +8,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -58,7 +57,7 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        sleep(2)
+        # sleep(2)
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 任务类型

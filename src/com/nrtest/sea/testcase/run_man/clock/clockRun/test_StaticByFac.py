@@ -30,8 +30,8 @@ class TestDemo(unittest.TestCase, StaticByFacPage):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(ClockData.para_ClockRun)
-        clickTabPage('按厂家统计')
         sleep(2)
+        clickTabPage('按厂家统计')
         cls.exec_script(cls, StaticByFacLocators.QUERY_DATE_JS)
 
     @classmethod
@@ -63,7 +63,6 @@ class TestDemo(unittest.TestCase, StaticByFacPage):
         """
 
         # 供电单位
-        sleep(2)
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])

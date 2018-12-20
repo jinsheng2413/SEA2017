@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 import ddt
 
@@ -50,7 +49,7 @@ class TestGatherSuccessRateTime(unittest.TestCase, GatherSuccessRateTimePage):
         self.recoverLeftTree()
 
     def query(self, para):
-        sleep(2)
+        # sleep(2)
         clickTabPage('按时间统计')
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])

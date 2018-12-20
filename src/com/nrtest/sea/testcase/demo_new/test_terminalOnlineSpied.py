@@ -65,7 +65,6 @@ class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
         """
         self.menu_name = para['MENU_NAME']
 
-        # sleep(2)
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 终端厂商

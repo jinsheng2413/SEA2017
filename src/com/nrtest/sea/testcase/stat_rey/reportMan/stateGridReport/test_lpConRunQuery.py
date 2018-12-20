@@ -60,7 +60,6 @@ class TestIpConRunQuery(unittest.TestCase, IpConRunQueryPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        sleep(2)
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
 

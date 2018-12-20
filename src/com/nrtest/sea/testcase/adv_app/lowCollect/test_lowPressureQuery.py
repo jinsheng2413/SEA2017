@@ -38,7 +38,6 @@ class Test_LowPressureQuery(unittest.TestCase, LowPressureQuery_Page):
         cls.closePages(cls)
 
     def query(self, para):
-        sleep(3)
         # 打开左边树选择供电单位
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 日期

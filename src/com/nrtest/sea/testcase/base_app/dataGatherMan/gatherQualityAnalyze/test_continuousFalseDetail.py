@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 import ddt
 
@@ -29,6 +28,7 @@ class TestContinuousFalseDetail(unittest.TestCase, ContinuousFalseDetailPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(GatherQualityAnalyze_data.para_GatherSuccessRate)
 
+        clickTabPage('连续抄表失败明细')
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
@@ -50,8 +50,6 @@ class TestContinuousFalseDetail(unittest.TestCase, ContinuousFalseDetailPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        sleep(2)
-        clickTabPage('连续抄表失败明细')
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 用户类型

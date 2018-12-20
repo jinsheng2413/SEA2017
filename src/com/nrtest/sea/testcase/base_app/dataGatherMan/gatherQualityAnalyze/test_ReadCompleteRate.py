@@ -8,6 +8,7 @@
 @desc:
 """
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -29,6 +30,10 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(GatherQualityAnalyze_data.readCompleteRate_para)
+
+        sleep(2)
+        cls.exec_script(ReadCompleteRateLocators.START_DATE_JS)
+        cls.exec_script(ReadCompleteRateLocators.END_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -58,9 +63,7 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(2)
-        self.exec_script(ReadCompleteRateLocators.START_DATE_JS)
-        self.exec_script(ReadCompleteRateLocators.END_DATE_JS)
+
         clickTabPage(para['TAB_NAME'])
 
         # 打开左边树并选择

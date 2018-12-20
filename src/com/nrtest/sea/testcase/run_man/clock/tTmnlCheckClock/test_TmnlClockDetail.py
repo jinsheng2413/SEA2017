@@ -32,8 +32,8 @@ class TestDemo(unittest.TestCase, TmnlClockDetailPage):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(ClockData.para_TTmnlCheckClock)
-        clickTabPage('终端时钟明细')
         sleep(2)
+        clickTabPage('终端时钟明细')
         cls.exec_script(cls, TmnlClockDetailLocators.QUERY_DATE_JS)
 
     @classmethod
@@ -65,7 +65,6 @@ class TestDemo(unittest.TestCase, TmnlClockDetailPage):
         """
 
         # 供电单位
-        sleep(2)
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 偏差范围
         self.inputRSel_offset_range(para['OFFSET_RANGE'])

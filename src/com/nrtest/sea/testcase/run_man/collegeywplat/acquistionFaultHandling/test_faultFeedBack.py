@@ -9,7 +9,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -30,6 +29,7 @@ class TestFaultFeedback(unittest.TestCase,FaultFeedBackPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(AcquistionFaultHandling_data.faultHandler_para)
 
+        clickTabPage(para['TAB_NAME'])
 
     @classmethod
     def tearDownClass(cls):
@@ -59,9 +59,7 @@ class TestFaultFeedback(unittest.TestCase,FaultFeedBackPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(2)
         self.clickCancel()
-        clickTabPage(para['TAB_NAME'])
 
         self.exec_script(FaultFeedBackLocators.START_DATE_JS)
         self.exec_script(FaultFeedBackLocators.END_DATE_JS)

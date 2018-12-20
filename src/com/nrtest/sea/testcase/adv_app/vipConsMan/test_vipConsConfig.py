@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -37,7 +36,7 @@ class Test_VipConsConfig(unittest.TestCase, VipConsConfig_Page):
     def query(self, para):
         # 注册菜单
         self.menu_name = para['MENU_NAME']
-        sleep(4)
+        # sleep(4)
         # 打开左边树选择供电单位
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 运行容量等级

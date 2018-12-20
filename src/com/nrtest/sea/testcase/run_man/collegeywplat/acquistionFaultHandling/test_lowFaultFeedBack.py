@@ -9,7 +9,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -59,7 +58,6 @@ class TestLowFaultFeedback(unittest.TestCase,LowFaultFeedBackPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(2)
         self.clickCancel()
         print(para['TAB_NAME'])
         clickTabPage(para['TAB_NAME'])

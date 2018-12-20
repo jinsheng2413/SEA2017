@@ -29,6 +29,7 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(ArchivesMan_data.archivesGet_para)
+        sleep(1)
 
     @classmethod
     def tearDownClass(cls):
@@ -61,7 +62,7 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(3)
+        # sleep(3)
         # print(para['ORG_NO'])
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])

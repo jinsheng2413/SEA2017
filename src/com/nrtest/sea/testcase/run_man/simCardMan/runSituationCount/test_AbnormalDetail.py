@@ -29,8 +29,8 @@ class TestDemo(unittest.TestCase,AbnormalDetailPage):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(RunSituationCount_data.simAlarmAnaly_para)
-        clickTabPage(RunSituationCount_data.simAlarmAnaly_tab_detail)
         sleep(2)
+        clickTabPage(RunSituationCount_data.simAlarmAnaly_tab_detail)
         cls.exec_script(cls, AbnormalDetailLocators.START_DATE_JS)
 
     @classmethod

@@ -9,7 +9,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -61,8 +60,8 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(3)
-        print(para['ORG_NO'])
+        # sleep(3)
+        # print(para['ORG_NO'])
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 输入用户类型

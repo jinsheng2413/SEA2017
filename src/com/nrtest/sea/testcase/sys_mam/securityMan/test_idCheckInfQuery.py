@@ -50,7 +50,7 @@ class TestIdCheckInfQuery(unittest.TestCase, IdCheckInfQueryPage):
         # self.recoverLeftTree()
 
     def query(self, para):
-        sleep(2)
+        # sleep(2)
         # 审核开始日期
         self.inputDt_start_date(para['START_DATE'])
         # 审核结束日期

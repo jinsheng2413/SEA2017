@@ -32,8 +32,8 @@ class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         cls.driver = openMenu(ClockData.para_MetCheckClock)
-        clickTabPage('自动对时策略配置')
         sleep(2)
+        clickTabPage('自动对时策略配置')
         cls.exec_script(cls, AutoCheckPolicyLocators.QUERY_DATE_JS)
 
     @classmethod
@@ -65,7 +65,6 @@ class TestDemo(unittest.TestCase, AutoCheckPolicyPage):
         """
 
         # 节点
-        sleep(2)
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])

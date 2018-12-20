@@ -9,7 +9,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -28,7 +27,7 @@ class TestAssetsManage(unittest.TestCase,AssetsManagePage):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(SimCardMan.assetsManage_para)
-        sleep(2)
+        # sleep(2)
         cls.exec_script(cls,AssetsManageLocators.START_DATE_JS)
         cls.exec_script(cls, AssetsManageLocators.END_DATE_JS)
 
@@ -60,7 +59,6 @@ class TestAssetsManage(unittest.TestCase,AssetsManagePage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(2)
 
         #打开左边树并选择
 

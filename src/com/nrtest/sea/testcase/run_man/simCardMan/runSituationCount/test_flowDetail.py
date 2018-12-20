@@ -29,9 +29,9 @@ class TestFlowDetail(unittest.TestCase,FlowDeatilPage):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(RunSituationCount_data.flowAnaly_para)
+        sleep(2)
         # 点击流量明细
         clickTabPage(RunSituationCount_data.flowAnaly_tab_Detail)
-        sleep(2)
         cls.exec_script(cls,FlowDetailLocators.START_DATE_JS)
 
     @classmethod

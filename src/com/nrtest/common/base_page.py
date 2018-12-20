@@ -379,8 +379,7 @@ class Page():
         """
         self.remove_attr(attr)
 
-
-    def clickRadioBox(self, options, is_multi_tab=False):
+    def clickRadioBox(self, options, is_multi_tab=False, is_multi_elements=False):
         """
         选择单选框
         :param options: 被选择项名称
@@ -396,7 +395,11 @@ class Page():
             if len(item) == 0:
                 raise '单选框必须指定选择项：{}'.format(options)
             xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, item, is_multi_tab)
-            self.click(*xpath)
+            if is_multi_elements:
+                el = self.find_displayed_element(*xpath)
+                el.click()
+            else:
+                self.click(*xpath)
         except BaseException as ex:
             print('点击单选框失败：{}'.format(ex))
 

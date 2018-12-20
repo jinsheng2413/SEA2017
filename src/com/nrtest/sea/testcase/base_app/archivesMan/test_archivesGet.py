@@ -24,26 +24,26 @@ from com.nrtest.sea.task.commonMath import *
 @ddt
 class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
 
-    # @classmethod
-    # def setUpClass(cls):
-    #     print("开始执行")
-    #     # 打开菜单（需要传入对应的菜单编号）
-    #     cls.driver = openMenu(ArchivesMan_data.archivesGet_para)
+    @classmethod
+    def setUpClass(cls):
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        cls.driver = openMenu(ArchivesMan_data.archivesGet_para)
 
-    # @classmethod
-    # def tearDownClass(cls):
-    #     print("执行结束")
-    #     # 关闭菜单页面
-    #     cls.closePages(cls)
+    @classmethod
+    def tearDownClass(cls):
+        # print("执行结束")
+        # 关闭菜单页面
+        cls.closePages(cls)
 
     def setUp(self):
         """
         测试固件的setUp()的代码，主要是测试的前提准备工作
         :return:
         """
-        print("开始执行")
+        # print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        self.driver = openMenu(ArchivesMan_data.archivesGet_para)
+        # self.driver = openMenu(ArchivesMan_data.archivesGet_para)
 
     def tearDown(self):
         """
@@ -53,7 +53,6 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
 
         # 回收左边树
         self.recoverLeftTree()
-        self.refreshPage()
 
     def query(self, para):
         '''

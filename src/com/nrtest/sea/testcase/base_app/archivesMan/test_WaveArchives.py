@@ -34,7 +34,7 @@ class TestWaveArchives(unittest.TestCase, WaveArchives_Page):
     def tearDownClass(cls):
         print('执行结束')
         # 刷新浏览器
-        cls.refreshPage(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -48,7 +48,7 @@ class TestWaveArchives(unittest.TestCase, WaveArchives_Page):
         :return:
         """
         # 去除查询干扰数据(要传入对应的page页面类)
-        self.clear_values(WaveArchives_Page)
+        # self.clear_values(WaveArchives_Page)
         # 回收左边树
         self.recoverLeftTree()
 

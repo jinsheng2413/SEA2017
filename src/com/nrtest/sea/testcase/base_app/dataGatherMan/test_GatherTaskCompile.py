@@ -32,7 +32,7 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
     def tearDownClass(cls):
         print('执行结束')
         # 刷新浏览器
-        cls.refreshPage(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -46,7 +46,7 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
         :return:
         """
         # 去除查询干扰数据(要传入对应的page页面类)
-        self.clear_values(GatherTaskCompilePage)
+        # self.clear_values(GatherTaskCompilePage)
         # 回收左边树
         self.recoverLeftTree()
 

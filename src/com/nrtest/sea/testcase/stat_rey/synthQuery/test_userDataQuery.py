@@ -8,9 +8,10 @@
 """
 import unittest
 
+from com.nrtest.sea.pages.stat_rey.synthQuery.userDataQuery_page import UserDataQueryPage
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.pages.stat_rey.synthQuery.userDataQuery_page import UserDataQueryPage
 from com.nrtest.sea.task.synthQuery import UserDataQueryLog
 
 
@@ -23,8 +24,8 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        cls.driver.quit()
+        # 关闭菜单
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -32,7 +33,7 @@ class TestUserDataQuery(unittest.TestCase, UserDataQueryPage):
         :return:
         """
         self.orl = Oracle()
-        self.clear_values(UserDataQueryPage)
+        # self.clear_values(UserDataQueryPage)
 
     def tearDown(self):
         """

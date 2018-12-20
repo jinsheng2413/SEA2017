@@ -36,7 +36,7 @@ class TestArchivesChangeRecordPage(unittest.TestCase, ArchivesChangeRecordPage):
     def tearDownClass(cls):
         print('执行结束')
         # 刷新浏览器
-        cls.refreshPage(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -50,7 +50,7 @@ class TestArchivesChangeRecordPage(unittest.TestCase, ArchivesChangeRecordPage):
         :return:
         """
         # 去除查询干扰数据(要传入对应的page页面类)
-        self.clear_values(ArchivesChangeRecordPage)
+        # self.clear_values(ArchivesChangeRecordPage)
         # 回收左边树
         self.recoverLeftTree()
 

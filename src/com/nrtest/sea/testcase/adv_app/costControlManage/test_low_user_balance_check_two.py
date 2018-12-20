@@ -27,8 +27,8 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        cls.driver.quit()
+        # 关闭菜单
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -41,7 +41,7 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        self.clear_values(BalanceCheck_page)
+        # self.clear_values(BalanceCheck_page)
 
     # 指定时间区域
     def firstOne(self):

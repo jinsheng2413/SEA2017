@@ -31,7 +31,7 @@ class TestRecordsQuery(unittest.TestCase, RecordsQueryPage):
     def tearDownClass(cls):
         print('执行结束')
         # 刷新浏览器
-        cls.refreshPage(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """

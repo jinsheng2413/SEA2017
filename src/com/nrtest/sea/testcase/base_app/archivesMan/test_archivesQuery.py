@@ -30,7 +30,7 @@ class TestArchivesQuery(unittest.TestCase, ArchivesQueryPages):
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
-        cls.refreshPage(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -42,7 +42,7 @@ class TestArchivesQuery(unittest.TestCase, ArchivesQueryPages):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.clear_values(ArchivesQueryPages)
+        # self.clear_values(ArchivesQueryPages)
         self.recoverLeftTree()
 
     def query(self, para):

@@ -34,7 +34,7 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
     def tearDownClass(cls):
         print("执行结束")
         # 关闭菜单页面
-    #     cls.closePages(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -53,7 +53,6 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
 
         # 回收左边树
         self.recoverLeftTree()
-        self.refreshPage()
 
     def query(self, para):
         '''

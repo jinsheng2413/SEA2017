@@ -25,8 +25,8 @@ class TestarchivesMaintain_meter(unittest.TestCase, ArchivesMaintain_meter_pages
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        cls.driver.quit()
+        # 关闭菜单
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -41,7 +41,7 @@ class TestarchivesMaintain_meter(unittest.TestCase, ArchivesMaintain_meter_pages
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        self.clear_values(ArchivesMaintain_meter_pages)
+        # self.clear_values(ArchivesMaintain_meter_pages)
 
     # 终端资产号
     def test_amm_terminal_asset_no(self):

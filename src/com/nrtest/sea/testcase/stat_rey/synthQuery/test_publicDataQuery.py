@@ -24,8 +24,8 @@ class TestPublicDataQuery(unittest.TestCase, PublicDataQueryPage):
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        cls.driver.quit()
+        # 关闭菜单
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -33,7 +33,7 @@ class TestPublicDataQuery(unittest.TestCase, PublicDataQueryPage):
         :return:
         """
         self.orl = Oracle()
-        self.clear_values(PublicDataQueryPage)
+        # self.clear_values(PublicDataQueryPage)
 
     def tearDown(self):
         """

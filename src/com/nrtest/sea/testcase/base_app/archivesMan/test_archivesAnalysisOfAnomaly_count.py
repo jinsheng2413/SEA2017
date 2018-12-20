@@ -25,8 +25,8 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        cls.driver.quit()
+        # 关闭菜单
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -41,7 +41,7 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        self.clear_values(ArchivesAnalysisOfAnomaly_count_pages)
+        # self.clear_values(ArchivesAnalysisOfAnomaly_count_pages)
 
     # 用户类型
     def test_aaoa_user_cata(self):

@@ -25,7 +25,9 @@ class TestLineDataQuery(unittest.TestCase, LineDataQueryPage):
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
-        cls.driver.quit()
+
+        # 关闭菜单
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -33,7 +35,7 @@ class TestLineDataQuery(unittest.TestCase, LineDataQueryPage):
         :return:
         """
         self.orl = Oracle()
-        self.clear_values(LineDataQueryPage)
+        # self.clear_values(LineDataQueryPage)
 
     def tearDown(self):
         """

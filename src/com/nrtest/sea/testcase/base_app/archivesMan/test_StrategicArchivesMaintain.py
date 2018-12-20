@@ -31,7 +31,7 @@ class TestDemo(unittest.TestCase, StrategicArchivesMaintainPage):
     def tearDownClass(cls):
         print('执行结束')
         # 刷新浏览器
-        cls.refreshPage(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -45,7 +45,7 @@ class TestDemo(unittest.TestCase, StrategicArchivesMaintainPage):
         :return:
         """
         # 去除查询干扰数据(要传入对应的page页面类)
-        self.clear_values(StrategicArchivesMaintainPage)
+        # self.clear_values(StrategicArchivesMaintainPage)
         # 回收左边树
         self.recoverLeftTree()
 

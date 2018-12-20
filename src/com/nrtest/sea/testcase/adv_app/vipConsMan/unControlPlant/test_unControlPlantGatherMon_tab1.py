@@ -69,7 +69,7 @@ class Test_UnControlPlantGatherMon_1(unittest.TestCase, UnControlPlantGatherMon1
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    @BeautifulReport.add_test_img()
+    #@BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(UnControlPlant.para_unControlPlantGatherMon,
                                   UnControlPlant.para_unControlPlantGatherMon_tab_count))
     def test_query(self, para):
@@ -83,7 +83,7 @@ class Test_UnControlPlantGatherMon_1(unittest.TestCase, UnControlPlantGatherMon1
         self.assert_query_result(para)
         self.end_case(para)
 
-    @BeautifulReport.add_test_img()
+    #@BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(UnControlPlant.para_unControlPlantGatherMon,
                                   UnControlPlant.para_unControlPlantGatherMon_tab_count, valCheck=True))
     def _test_checkValue(self, para):

@@ -87,7 +87,3 @@ class Test_VipConsStealAnal(unittest.TestCase, VipConsStealAnal_Page):
         self.assert_query_criteria(para)
         self.end_case(para)
 
-    @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(VipConsMan.para_VipConsStealAnal))
-    def test_query(self, para):
-        self.query(para)

@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.vipConsMan.differentialloopSetting_locators import DifferentialloopSetting_locators
 
 
 class DifferentialloopSetting_Page(Page):
@@ -31,4 +30,5 @@ class DifferentialloopSetting_Page(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*DifferentialloopSetting_locators.BTN_QUERY)
+        # self.click(*DifferentialloopSetting_locators.BTN_QUERY)
+        self.btn_query()

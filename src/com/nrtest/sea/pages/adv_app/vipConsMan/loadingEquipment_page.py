@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.vipConsMan.loadingEquipment_locators import LoadingEquipment_locators
 
 
 class LoadingEquipment_Page(Page):
@@ -19,4 +18,5 @@ class LoadingEquipment_Page(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*LoadingEquipment_locators.BTN_QUERY)
+        # self.click(*LoadingEquipment_locators.BTN_QUERY)
+        self.btn_query()

@@ -86,7 +86,3 @@ class Test_VipConsConfig(unittest.TestCase, VipConsConfig_Page):
         self.assert_query_criteria(para)
         self.end_case(para)
 
-    @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(VipConsMan.para_VipConsConfig))
-    def test_query(self, para):
-        self.query(para)

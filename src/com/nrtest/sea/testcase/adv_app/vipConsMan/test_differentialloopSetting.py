@@ -91,8 +91,3 @@ class Test_DifferentialloopSetting(unittest.TestCase, DifferentialloopSetting_Pa
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
-
-    @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(VipConsMan.para_differentialloopSetting))
-    def test_query(self, para):
-        self.query(para)

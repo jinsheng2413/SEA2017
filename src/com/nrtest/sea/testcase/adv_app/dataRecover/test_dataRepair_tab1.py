@@ -88,7 +88,3 @@ class Test_DataRepair_1(unittest.TestCase, DataRepair_1Page):
         self.assert_query_criteria(para)
         self.end_case(para)
 
-    @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DataRepair.para_DataRepair,DataRepair.DataRepair_tab_count))
-    def test_query(self, para):
-        self.query(para)

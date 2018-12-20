@@ -80,8 +80,3 @@ class Test_LoadingEquipment(unittest.TestCase, LoadingEquipment_Page):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
-
-    @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(VipConsMan.para_loadingEquipment))
-    def test_query(self, para):
-        self.query(para)

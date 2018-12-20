@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: securityQueryAndDelete_page.py
 @time: 2018/10/29 9:22
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.intelligentLock.securityQueryAndDelete_locators import \

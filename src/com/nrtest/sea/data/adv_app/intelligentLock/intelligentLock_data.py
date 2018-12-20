@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: intelligentLock_data.py
 @time: 2018/10/26 13:36
 @desc:
-'''
+"""
 
 
 class IntelligentLock_data:

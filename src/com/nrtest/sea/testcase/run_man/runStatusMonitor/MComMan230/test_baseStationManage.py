@@ -20,6 +20,7 @@ from com.nrtest.sea.pages.run_man.runStatusMonitor.MComMan230.baseStationManage_
     BaseStationManageLocators
 from com.nrtest.sea.task.commonMath import *
 
+
 #运行管理--》采集信道管理--》230M通信管理--》站点状态监控
 @ddt
 class TestbaseStationManage(unittest.TestCase, BaseStationManagePage):
@@ -47,12 +48,12 @@ class TestbaseStationManage(unittest.TestCase, BaseStationManagePage):
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
         sleep(2)
         # 通信地址
         self.inputStr_communicationAddr(para['COMMUNICATION_ADDR'])

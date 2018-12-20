@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: unControlPlantGatherMon_data.py
 @time: 2018-11-06 15:46
 @desc:
-'''
+"""
 
 
 class UnControlPlant:

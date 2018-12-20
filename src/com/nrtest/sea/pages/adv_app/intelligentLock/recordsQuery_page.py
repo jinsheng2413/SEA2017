@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: recordsQuery_page.py
 @time: 2018/10/26 16:43
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.intelligentLock.recordsQuery_locators import RecordsQueryLocators

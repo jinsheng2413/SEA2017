@@ -8,16 +8,18 @@
 @time: 2018/11/9 0009 15:41
 @desc:
 """
+import unittest
+from time import sleep
+
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.auxiliaryOperations.auxiliaryOperations_data import \
     AuxiliaryOperationsData
 from com.nrtest.sea.pages.base_app.dataGatherMan.auxiliaryOperations.origFrameHbaseQuery_page import \
-    OrigFrameHbaseQueryPage,OrigFrameHbaseQueryLocators
+    OrigFrameHbaseQueryPage, OrigFrameHbaseQueryLocators
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.data_access import DataAccess
-from ddt import ddt, data
-from time import sleep
-from com.nrtest.common.BeautifulReport import BeautifulReport
-import unittest
 
 
 # 运行管理-->采集运维平台-->辅助运维--》报文查询
@@ -54,12 +56,12 @@ class TestDemo(unittest.TestCase,OrigFrameHbaseQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
 
 
         #终端地址

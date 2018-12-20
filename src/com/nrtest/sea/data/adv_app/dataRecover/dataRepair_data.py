@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: dataRepair_data.py
 @time: 2018-10-31 13:52
 @desc:
-'''
+"""
 
 
 class DataRepair:

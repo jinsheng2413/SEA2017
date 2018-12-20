@@ -969,11 +969,11 @@ class Page():
         self.driver.switch_to.alert.dismiss()
 
     def commonWait(self, locator):
-        '''
+        """
         显示等待
         :param locator:
         :return:
-        '''
+        """
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
 
     def checkBoxAssertLine(self, value):

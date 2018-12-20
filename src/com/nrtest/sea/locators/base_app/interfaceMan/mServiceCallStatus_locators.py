@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: mServiceCallStatus_locators.py.py
 @time: 2018-10-15 10:58
 @desc:
-'''
+"""
 
 from selenium.webdriver.common.by import By
 

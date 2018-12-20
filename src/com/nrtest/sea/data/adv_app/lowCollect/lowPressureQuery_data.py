@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: lowPressureQuery_data.py
 @time: 2018-11-01 14:30
 @desc:
-'''
+"""
 
 
 class LowColletc:

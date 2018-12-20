@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_lowPressureQuery.py
 @time: 2018-11-01 16:22
 @desc:
-'''
+"""
 
 import unittest
 from time import sleep

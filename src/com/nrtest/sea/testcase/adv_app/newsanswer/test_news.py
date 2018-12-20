@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_news.py
 @time: 2018-11-02 10:36
 @desc:
-'''
+"""
 
 import unittest
 from time import sleep

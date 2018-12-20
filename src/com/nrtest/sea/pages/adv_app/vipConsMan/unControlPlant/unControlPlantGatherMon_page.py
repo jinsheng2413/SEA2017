@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: unControlPlantGatherMon_page.py
 @time: 2018-11-06 14:46
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.vipConsMan.unControlPlant.unControlPlantGatherMon_locators import \

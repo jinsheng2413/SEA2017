@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: tmnlSimFlowJB_page.py
 @time: 2018-11-12 10:03
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.tmnlSimFlowJB_locators import TmnlSimFlowJB_1Locators, \

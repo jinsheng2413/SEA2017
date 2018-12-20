@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: manaualEdit_locators.py
 @time: 2018-11-07 15:21
 @desc:
-'''
+"""
 
 from selenium.webdriver.common.by import By
 

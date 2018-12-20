@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
 @file: test_recordsQuery.py
 @time: 2018/10/26 17:00
 @desc:
-'''
+"""
 
 import unittest
 

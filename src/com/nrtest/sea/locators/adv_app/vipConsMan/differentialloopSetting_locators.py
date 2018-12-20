@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: differentialloopSetting_locators.py
 @time: 2018-11-06 9:44
 @desc:
-'''
+"""
 
 from selenium.webdriver.common.by import By
 

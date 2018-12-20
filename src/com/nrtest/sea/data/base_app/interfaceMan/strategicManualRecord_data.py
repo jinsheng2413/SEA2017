@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: strategicManualRecord_data.py
 @time: 2018-11-08 9:26
 @desc:
-'''
+"""
 
 
 class InterfaceManager_data:

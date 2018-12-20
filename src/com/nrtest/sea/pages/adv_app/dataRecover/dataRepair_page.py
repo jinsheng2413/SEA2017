@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: dataRepair_page.py
 @time: 2018-10-31 15:11
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.dataRecover.dataRepair_locators import DataRepair_1Locators, DataRepair_2Locators

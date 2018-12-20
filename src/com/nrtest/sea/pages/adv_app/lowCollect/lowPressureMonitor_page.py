@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: lowPressureMonitor_page.py
 @time: 2018-11-01 11:03
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.lowCollect.lowPressureMonitor_locators import LowPressureMonitor_Locators

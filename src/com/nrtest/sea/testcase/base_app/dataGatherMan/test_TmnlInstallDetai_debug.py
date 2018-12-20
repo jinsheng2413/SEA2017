@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
 @file: test_demo.py
 @time: 2018/9/10 0010 9:21
 @desc:
-'''
+"""
 import unittest
 from time import sleep
 

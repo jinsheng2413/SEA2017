@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
 @file: operOrganMan_data.py
 @time: 2018/11/12 9:34
 @desc:
-'''
+"""
 
 
 class OperOrganManData:

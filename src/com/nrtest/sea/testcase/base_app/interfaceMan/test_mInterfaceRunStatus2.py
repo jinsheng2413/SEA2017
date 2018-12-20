@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_mInterfaceRunStatus2.py
 @time: 2018-10-31 11:14
 @desc:
-'''
+"""
 
 import unittest
 from time import sleep

@@ -8,11 +8,6 @@
 @desc:
 """
 
-import codecs
-import os
-
-from com.nrtest.common.setting import Setting
-
 menu_code = ["\r        # 注册菜单\r",
              "        self.menu_name = para['MENU_NAME']\r",
              "\r"]
@@ -74,7 +69,7 @@ def upgrade_test_file(file_name):
     # temp_test_logfile = dirname + "\\temp_test.py"  # 保存文件路径
     temp_test_logfile = file_name.split('.')[0] + '.log'
     # print (temp_test_pyfile)
-    comments = ['"""', "'''"]
+    comments = ['"""', """""]
     is_reg_menu = True
     is_deal_test = False
     find_comment = False

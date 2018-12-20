@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: differentialloopSetting_page.py
 @time: 2018-11-06 10:50
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.vipConsMan.differentialloopSetting_locators import DifferentialloopSetting_locators

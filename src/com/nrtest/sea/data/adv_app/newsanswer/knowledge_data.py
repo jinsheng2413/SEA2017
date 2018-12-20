@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: knowledge_data.py
 @time: 2018-11-02 11:19
 @desc:
-'''
+"""
 
 
 class NewsAnswer:

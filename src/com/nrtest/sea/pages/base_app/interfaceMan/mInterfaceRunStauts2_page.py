@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: mInterfaceRunStauts2_page.py
 @time: 2018-10-31 11:11
 @desc:
-'''
+"""
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.base_app.interfaceMan.mInterfaceRunStatus2_locators import MInterfaceRunStatus2Locators

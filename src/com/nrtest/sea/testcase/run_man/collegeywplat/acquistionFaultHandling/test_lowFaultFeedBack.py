@@ -53,12 +53,12 @@ class TestLowFaultFeedback(unittest.TestCase,LowFaultFeedBackPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        '''
+        """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        '''
+        """
         sleep(2)
         self.clickCancel()
         print(para['TAB_NAME'])

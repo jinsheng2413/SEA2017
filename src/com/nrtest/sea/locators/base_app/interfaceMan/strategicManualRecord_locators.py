@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: strategicManualRecord_locators.py
 @time: 2018-11-08 9:45
 @desc:
-'''
+"""
 
 from selenium.webdriver.common.by import By
 

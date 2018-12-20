@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: manualEditQH_data.py
 @time: 2018-11-07 16:24
 @desc:
-'''
+"""
 
 
 class InterfaceManager_data:

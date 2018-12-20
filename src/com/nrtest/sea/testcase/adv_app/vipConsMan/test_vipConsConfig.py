@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_vipConsConfig.py
 @time: 2018-11-05 11:22
 @desc:
-'''
+"""
 
 import unittest
 from time import sleep

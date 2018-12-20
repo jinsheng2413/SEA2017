@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_tmnlSimFlowJB_tab1.py
 @time: 2018-11-12 10:27
 @desc:
-'''
+"""
 
 import unittest
 from time import sleep

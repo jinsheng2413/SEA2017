@@ -11,6 +11,8 @@
 
 class TradnsformerMonitorData:
     para_TradnsformerMonitor = '99925110'
+    para_TradnsformerMonitor_static = '负载率统计'
+    para_TradnsformerMonitor_detail = '负载率明细'
     para_AvailableCapacityAnalyse = '99925120'
     para_ThreeUnbalanceAnaly = '99925130'
     para_SpVoltAnalyse = '99925210'

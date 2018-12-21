@@ -41,6 +41,11 @@ class NewPrePaidStatusLocators:
 
     # 【js区】
     # 开始时间，删除readonly属性
+    START_DATE_TWO = (By.NAME, "dateFieldFrom1")
+    START_DATE_ONO = (By.NAME, "dateField_1S")
+    END_DATE_TWO = (By.NAME, "dateFieldTo1")
+    END_DATE_ONE = (By.NAME, "dateFieldE")
+
     START_DATE_TWO_JS = "document.getElementsByName('dateFieldFrom1')[0].removeAttribute(\"readonly\");"
     START_DATE_ONE_JS = "document.getElementsByName('dateField_1S')[0].removeAttribute(\"readonly\");"
 

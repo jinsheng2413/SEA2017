@@ -51,29 +51,30 @@ class TestPrePaidStatus(unittest.TestCase, PrePaidStatusPage):
         # 回收左边树
         self.recoverLeftTree()
 
-    def instructionQuery(self, para):
+    def userQuery(self, para):
         """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        # 选择tab页
         # 注册菜单
         self.menu_name = para['MENU_NAME']
-        sleep(2)
-        self.exec_script(PrePaidStatus_Locators.START_DATE_ONE_JS)
-        self.exec_script(PrePaidStatus_Locators.END_DATE_ONE_JS)
-        # 选择tab页
         clickTabPage(para['TAB_NAME'])
+        sleep(2)
+        self.exec_script(PrePaidStatus_Locators.START_DATE_TWO_JS)
+
+        self.exec_script(PrePaidStatus_Locators.END_DATE_TWO_JS)
+
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 控制类型
-        self.inputRSel_controlType_one(para['CONTROL_TYPE'])
+        self.inputRSel_controlType_Two(para['CONTROL_TYPE'])
         # 开始时间
-        self.inputStr_start_timeOne(para['START_TIME'])
-
+        self.inputStr_start_timeTwo(para['START_TIME'])
         # 结束时间
-        self.inputStr_end_timeOne(para['END_TIME'])
+        self.inputStr_end_timeTwo(para['END_TIME'])
 
         self.btn_query(True)
         self.sleep_time(2)
@@ -94,9 +95,9 @@ class TestPrePaidStatus(unittest.TestCase, PrePaidStatusPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_One))
-    def test_InstructionQuery(self, para):
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_Two))
+    def test_userQuery(self, para):
+        self.userQuery(para)
         self.start_case(para)
-        self.instructionQuery(para)
         self.assert_query_result(para)
         self.end_case(para)

@@ -15,6 +15,8 @@ class TradnsformerMonitorData:
     para_TradnsformerMonitor_detail = '负载率明细'
     para_AvailableCapacityAnalyse = '99925120'
     para_ThreeUnbalanceAnaly = '99925130'
+    para_ThreeUnbalanceAnaly_static = '三相不平衡统计'
+    para_ThreeUnbalanceAnaly_detail = '三相不平衡明细'
     para_SpVoltAnalyse = '99925210'
     para_OrgLowVoltDay = '99925220'
     para_BcVoltMonitorPoint = '99925230'

@@ -26,7 +26,7 @@ class AvailableCapacityAnalyseLocators:
 
     # 【按钮】
     # 查询
-    #BTN_QUERY = (By.XPATH, "(//button[contains(text(),'查询')])[2]")
+    #BTN_QUERY = (By.XPATH, "(//button[contains(text(),'查询')])[1]")
 
     # 【js操作】
     # 查询日期，删除readonly属性

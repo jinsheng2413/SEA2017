@@ -15,20 +15,21 @@ from com.nrtest.sea.locators.adv_app.lowCollect.lowPressureQuery_locators import
 class LowPressureQuery_Page(Page):
     # 台区名称
     def inputStr_tg_name(self, value):
-        self.input(value, *LowPressureQuery_Locators.QRY_TG_NAME)
+        self.input(value)#, *LowPressureQuery_Locators.QRY_TG_NAME)
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value, *LowPressureQuery_Locators.QRY_TMNL_ADDR)
+        self.input(value)#, *LowPressureQuery_Locators.QRY_TMNL_ADDR)
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value, *LowPressureQuery_Locators.QRY_CONS_NO)
+        self.input(value)#, *LowPressureQuery_Locators.QRY_CONS_NO)
 
     # 日期
     def inputStr_date(self, value):
-        self.input(value, *LowPressureQuery_Locators.QRY_DATE)
+        self.input(value)#, *LowPressureQuery_Locators.QRY_DATE)
 
     # 查询
     def btn_qry(self):
-        self.click(*LowPressureQuery_Locators.BTN_QUERY)
+        #self.click(*LowPressureQuery_Locators.BTN_QUERY)
+        self.btn_query()

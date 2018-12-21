@@ -16,42 +16,56 @@ from com.nrtest.sea.locators.adv_app.costControlManage.remoteCustControl.ctrlExe
 class CtrlExecutSpecPage(Page):
     # 控制类别
     def inputRSel_controlType(self, name):
-        self.click(*CtrlExecutSpecLocators.QRY_CONTROL_TYPE)
-        locator = self.get_select_locator(
-            CtrlExecutSpecLocators.QRY_CONTROL_TYPE_VALUE, name)
-        self.click(*locator)
+        # self.click(*CtrlExecutSpecLocators.QRY_CONTROL_TYPE)
+        # locator = self.get_select_locator(
+        # CtrlExecutSpecLocators.QRY_CONTROL_TYPE_VALUE, name)
+        # self.click(*locator)
 
+        self.selectDropDown(name)
     # 工单号
     def inputStr_workOrder(self, value):
-        self.input(value, *CtrlExecutSpecLocators.QRY_WORK_ORDER)
+        # self.input(value, *CtrlExecutSpecLocators.QRY_WORK_ORDER)
+
+        self.input(value)
 
     # 结束时间
     def inputStr_endTime(self, value):
-        self.input(value, *CtrlExecutSpecLocators.QRY_END_TIME)
+        # self.input(value, *CtrlExecutSpecLocators.QRY_END_TIME)
+
+        self.input(value)
 
     # 开始时间
     def inputStr_startTime(self, value):
-        self.input(value, *CtrlExecutSpecLocators.QRY_START_TIME)
+        # self.input(value, *CtrlExecutSpecLocators.QRY_START_TIME)
+
+        self.input(value)
 
     # 终端地址
     def inputStr_tmnlAddr(self, value):
-        self.input(value, *CtrlExecutSpecLocators.QRY_TMNL_ADDR)
+        # self.input(value, *CtrlExecutSpecLocators.QRY_TMNL_ADDR)
+
+        self.input(value)
 
     # 用户名称
     def inputStr_userName(self, value):
-        self.input(value, *CtrlExecutSpecLocators.QRY_USER_NAME)
+        # self.input(value, *CtrlExecutSpecLocators.QRY_USER_NAME)
+
+        self.input(value)
 
     # 用户编号
     def inputStr_userNo(self, value):
-        self.input(value, *CtrlExecutSpecLocators.QRY_USER_NO)
+        # self.input(value, *CtrlExecutSpecLocators.QRY_USER_NO)
+
+        self.input(value)
 
     # 执行状态
     def inputSel_exeStatus(self, name):
-        self.click(*CtrlExecutSpecLocators.QRY_EXE_STATUS)
-        locator = self.get_select_locator(
-            CtrlExecutSpecLocators.QRY_EXE_STATUS_VALUE, name)
-        self.click(*locator)
+        # self.click(*CtrlExecutSpecLocators.QRY_EXE_STATUS)
+        # locator = self.get_select_locator(
+        # CtrlExecutSpecLocators.QRY_EXE_STATUS_VALUE, name)
+        # self.click(*locator)
 
+        self.selectDropDown(name)
         # 查询
 
     def btn_qry(self):

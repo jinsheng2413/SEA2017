@@ -17,15 +17,17 @@ from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.dataCheckTaskSet_loc
 class DataCheckTaskSetPage(Page):
     # 台区编号
     def inputStr_zoneAreaNo(self, value):
-        self.input(value, *DataCheckTaskSetLocators.QRY_ZONE_AREA_NO)
+        # self.input(value, *DataCheckTaskSetLocators.QRY_ZONE_AREA_NO)
+
+        self.input(value)
 
     # 任务来源
     def inputSel_taskFrom(self, name):
-        self.click(*DataCheckTaskSetLocators.QRY_TASK_FROM)
-        locator = self.get_select_locator(DataCheckTaskSetLocators.QRY_TASK_FROM_VALUE, name)
-        self.click(*locator)
-
+        # self.click(*DataCheckTaskSetLocators.QRY_TASK_FROM)
+        # locator = self.get_select_locator(DataCheckTaskSetLocators.QRY_TASK_FROM_VALUE, name)
+        #self.click(*locator)
         # 查询
+        self.selectCheckBox(name)
 
     def btn_qry(self):
         self.click(*DataCheckTaskSetLocators.BTN_QRY)

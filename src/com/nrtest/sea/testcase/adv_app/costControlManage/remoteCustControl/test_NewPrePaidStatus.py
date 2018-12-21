@@ -12,6 +12,7 @@ from time import sleep
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.remoteCustControl.remoteCustControl_data import \
     RemoteCustControl_data
@@ -122,15 +123,15 @@ class TestNewPrePaidStatus(unittest.TestCase, NewPrePaidStatusPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.Tab_One))
-    # def test_InstructionQuery(self, para):
-    #     self.start_case(para)
-    #     self.instructionQuery(para)
-    #     self.assert_query_result(para)
-    #     self.end_case(para)
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.Tab_One))
+    def test_InstructionQuery(self, para):
+        self.start_case(para)
+        self.instructionQuery(para)
+        self.assert_query_result(para)
+        self.end_case(para)
 
-    # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.Tab_Two))
     def test_userQuery(self, para):
         self.start_case(para)

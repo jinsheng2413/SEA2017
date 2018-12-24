@@ -8,9 +8,11 @@
 @desc:
 """
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
@@ -31,6 +33,9 @@ class TestDemo(unittest.TestCase, CollectSuccessRateJbPage):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(GatherQualityAnalyze_data.collectSuccessRateJb_para)
+        sleep(2)
+        # cls.exec_script(cls,CollectSuccessRateJbLocators.START_DATE_JS)
+        cls.remove_readonly(cls, CollectSuccessRateJbLocators.JS)
 
     @classmethod
     def tearDownClass(cls):
@@ -61,10 +66,12 @@ class TestDemo(unittest.TestCase, CollectSuccessRateJbPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
-        # 通信类型
-        self.inputSel_conmunicationtype(para['CONMUNICATION_TYPE'])
+        # 用户类型
+        self.inputSel_user_type(para['USER_TYPE'])
         # 通信方式
         self.inputSel_conmunicationMode(para['CONMUNICATION_MODE'])
         # 终端厂家
@@ -76,14 +83,38 @@ class TestDemo(unittest.TestCase, CollectSuccessRateJbPage):
         # 时间
         self.inputStr_date(para['DATE'])
         # 相位
-        self.inputSel_phase(para['PHASE'])
+        self.inputSel_pieceFactory(para['PHASE'])
+        print('--------------')
 
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(*CollectSuccessRateJbLocators.TAB_ONE)
+        self.btn_query()
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
+    #@BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.collectSuccessRateJb_para))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.collectSuccessRateJb_para))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

@@ -83,11 +83,7 @@ class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, Communica
     #         *CommunicationModuleBaseInformationMantainLocators.TAB_ONE)
     #     self.assertTrue(result)
     #
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulPropMain_para,
-    #                               CommunicationModuleManagement.commModulPropMain_tab_baseInf))
-    # def test_query(self, para):
-    #     self.query(para)
+
 
     def assert_query_result(self, para):
         """
@@ -104,7 +100,7 @@ class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, Communica
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    @BeautifulReport.add_test_img()
+   # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulPropMain_para,
                                   CommunicationModuleManagement.commModulPropMain_tab_baseInf))
     def test_query(self, para):

@@ -90,5 +90,3 @@ class Test_Knowledge(unittest.TestCase, Knowledge_Page):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
-
-

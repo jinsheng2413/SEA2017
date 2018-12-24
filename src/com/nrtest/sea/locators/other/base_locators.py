@@ -77,8 +77,8 @@ class BaseLocators:
 
 
     # 【按钮类元素】，如：查询按钮
-    BTN_QRY = (By.XPATH, '//button[@class =" x-btn-text" and contains(text(),"{}")]')
-
+    # BTN_QRY = (By.XPATH, '//button[@class =" x-btn-text" and contains(text(),"{}")]')
+    BTN_QRY = (By.XPATH, '//button[text()="{}"]')
 
     # 菜单页面定位{}=远程调试
     MENU_PAGE = (By.XPATH, '//li[@id="maintab__{}"]')

@@ -35,6 +35,8 @@ class Test_LowPressureMonitor(unittest.TestCase, LowPressureMonitor_Page):
         cls.closePages(cls)
 
     def query(self, para):
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
         # 打开左边树选择供电单位
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户定义类别
@@ -42,10 +44,39 @@ class Test_LowPressureMonitor(unittest.TestCase, LowPressureMonitor_Page):
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        result = self.assert_context(*LowPressureMonitor_Locators.TAB_ONE)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LowColletc.para_LowPressureMonitor))
     def test_query(self, para):
+        """
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        :return:
+        """
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LowColletc.para_LowPressureMonitor,valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

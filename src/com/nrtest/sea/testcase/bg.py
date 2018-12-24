@@ -10,12 +10,10 @@
 
 import unittest
 
-from com.nrtest.sea.testcase.adv_app.vipConsMan.unControlPlant.test_unControlPlantGatherMon_tab1 import \
-    Test_UnControlPlantGatherMon_1
+from com.nrtest.sea.testcase.run_man.runStatusMonitor.communicationModuleManagement.test_CommunicationModuleBaseInformationMantain import TestCommunicationModuleBaseInformationMantain
 
 suite = unittest.TestSuite()
-suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-    Test_UnControlPlantGatherMon_1))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCommunicationModuleBaseInformationMantain))
 # tests = [TestGatherSuccessRate('test_epp_task_type')]
 # suite.addTests(tests)
 

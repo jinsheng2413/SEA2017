@@ -269,23 +269,23 @@ class Page():
         except AttributeError as ex:
             logger.error('输入错误:{}\n{}'.format(values, ex))
 
-    def inputDate(self, value, is_multi_tab=False, is_multi_elements=False, idx=1):
+    def inputDate(self, value, is_multi_elements=False, is_multi_tab=False):
         """
         新版日期输入框操作：没标签、没定义name或id时对可见日期选择框进行定位
-        :param value:要输入的值
+        :param value:要输入的值:自定义标签名;第n个日期选择框;日期值【该值不填默认为1】：开始日期;1;2018-12-24
         :param is_multi_tab:菜单面内是否有多个TAB页
         :param is_multi_elements:菜单面内是否有多个重复元素
-        :param idx:要定位的输入框，需定位第n个日期框
         """
         try:
             ls_values = value.split(';')
             loc = self.format_xpath_multi(BaseLocators.QRY_DT_INPUT, ls_values[0], is_multi_tab)
             if is_multi_elements:
+                idx = 1 if len(ls_values[1]) == 0 else ls_values[1]
                 el = self._find_displayed_element(loc, idx)
             else:
                 el = self._find_element(*loc)
             el.clear()
-            el.send_keys(ls_values[1])
+            el.send_keys(ls_values[2])
             logger.info('日期框填写:{}'.format(value))
         except AttributeError as ex:
             logger.error('输入错误:{}\n{}'.format(value, ex))

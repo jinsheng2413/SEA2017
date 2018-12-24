@@ -26,8 +26,7 @@ class TestUpgradeEditionMan(unittest.TestCase, RegularSporadicUpgradePage):
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(
-            RegularSporadicUpgrade_data.para_RegularSporadicUpgrade)
+        cls.driver = openMenu(RegularSporadicUpgrade_data.para_RegularSporadicUpgrade)
 
     @classmethod
     def tearDownClass(cls):
@@ -54,8 +53,10 @@ class TestUpgradeEditionMan(unittest.TestCase, RegularSporadicUpgradePage):
     def query(self, para):
         # 注册菜单
         self.menu_name = para['MENU_NAME']
+
         # 忽略历史版本
         self.inputChk_history_version(para['HISTORY_VERSION'])
+
         # 打开左边树选择供电单位
         openLeftTree(para['TREE_NODE'])
         # 终端厂家

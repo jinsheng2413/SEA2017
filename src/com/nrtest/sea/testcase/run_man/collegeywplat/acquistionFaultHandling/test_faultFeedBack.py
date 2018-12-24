@@ -29,8 +29,6 @@ class TestFaultFeedback(unittest.TestCase,FaultFeedBackPage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(AcquistionFaultHandling_data.faultHandler_para)
 
-        clickTabPage(para['TAB_NAME'])
-
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
@@ -60,6 +58,7 @@ class TestFaultFeedback(unittest.TestCase,FaultFeedBackPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         self.clickCancel()
+        clickTabPage(para['TAB_NAME'])
 
         self.exec_script(FaultFeedBackLocators.START_DATE_JS)
         self.exec_script(FaultFeedBackLocators.END_DATE_JS)

@@ -19,7 +19,6 @@ from com.nrtest.sea.data.run_man.fieldMan.tmnlParamSetGroup2_data import TermPar
 from com.nrtest.sea.pages.run_man.fieldMan.tmnlParamSetGroup2_pages import TermParaSetGroup2Page
 from com.nrtest.sea.task.commonMath import *
 
-TermParaSetGroup2Page
 
 # 运行管理-现场管理-终端抄表参数设置
 @ddt

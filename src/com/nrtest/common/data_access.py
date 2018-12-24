@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 郭春彪
+@author: 李建方
 @license: (C) Copyright 2018, Nari.
 @file: data_access.py
 @time: 2018/5/23 0023 14:04
-@desc:测试数据提取的数据库访问类
+@desc:测试用例数据提取的数据库访问类
 """
 
 import os
@@ -25,7 +25,7 @@ class DataAccess:
     def getMenu(menuNo):
 
         pyoracle = PyOracle.getInstance()
-        fun_name = 'pkg_nrtest.get_menu_path'  # + ('_by_name' if by_name else '')
+        fun_name = 'pkg_nrtest.get_menu_path'
         menu_path = pyoracle.callfunc(fun_name, 'str', [menuNo, Setting.PROJECT_NO])
         return menu_path
 
@@ -101,7 +101,8 @@ class DataAccess:
         :param group_no: 测试用例组
         :return:
         """
-        sql = 'select assert_type,tab_column_name , column_name, expected_value from tst_case_result where tst_case_id = :id order by assert_type'
+        sql = 'select assert_type,tab_column_name , column_name, expected_value \
+              from tst_case_result where tst_case_id = :id order by assert_type'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [tst_case_id])
         return dataSet

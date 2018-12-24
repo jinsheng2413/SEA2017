@@ -32,13 +32,10 @@ def openLeftTree(treeNo):
     :return:
     """
     menuPage = MenuPage(global_drv.get_driver())
-    # menuPage.btn_left_tree(treeNo)
     try:
         node = Dict(eval(treeNo))
         node_flag = node['NODE_FLAG']
-
         node_vale = node['NODE_VALE']
-
     except:
         # 不是数组时的默认处理
         node_flag = '01'
@@ -51,17 +48,16 @@ def openLeftTree(treeNo):
     return menuPage.driver
 
 
-def clickTabPage(name):
+def clickTabPage(tab_name):
     """
     打开Tab页
-    :param name:
+    :param tab_name:
     """
     menuPage = MenuPage(global_drv.get_driver())
-    locators = (
-        By.XPATH, "(//*[@class=\"x-tab-strip-text \"])[text()='{0}']".format(name))
+    locators = (By.XPATH, '//span[@class="x-tab-strip-text " and text()={}]'.format(tab_name))
+    # locators = (By.XPATH, '(//*[@class="x-tab-strip-text "])[text()="{}"]'.format(tab_name))
     print(locators)
     menuPage.click(*locators)
-    # return p.driver
 
 if __name__ == '__main__':
     openMenu('99942110')

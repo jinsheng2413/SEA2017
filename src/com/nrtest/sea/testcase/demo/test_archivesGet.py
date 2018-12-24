@@ -44,7 +44,6 @@ class TestArchivesGetLocators(unittest.TestCase, ArchivesGetPage):
         """
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        # self.driver = openMenu(ArchivesMan_data.archivesGet_para)
 
     def tearDown(self):
         """

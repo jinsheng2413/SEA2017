@@ -788,8 +788,7 @@ class Page():
         if '重要信息推出' in txt:
             if '登录异常' in txt:
                 print('-----')
-                self.driver.find_element(
-                    *LoginPageLocators.BTN_CONFIRM).click()
+                self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
             if '账号异常信息' in txt:
                 print('-----')
                 self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()

@@ -41,13 +41,13 @@ class TmnlInstallDetaiPage(Page):
     def inputStr_startTime_count(self, value):
         # self.input(value, *TmnlInstallDetaiLocators.QRY_START_TIME_COUNT)
         # self.input(value)
-        self.inputDate(value, True)
+        self.inputDate(value)
 
     # 结束时间
     def inputStr_enTime_Count(self, value):
         # self.input(value, *TmnlInstallDetaiLocators.QRY_END_TIME_COUNT)
         # self.input(value)
-        self.inputDate(value, True)
+        self.inputDate(value)
 
     # 申请单号
     def inputStr_applyNo_count(self, value):

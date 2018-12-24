@@ -9,6 +9,7 @@
 """
 
 import unittest
+from time import sleep
 
 from ddt import ddt, data
 
@@ -54,9 +55,11 @@ class TestGatherSuccessRate(unittest.TestCase, GatherSuccessRatePage):
 
     def query(self, para):
         self.menu_name = para['MENU_NAME']
-
+        sleep(2)
+        # 数据类型
+        self.inputChk_data_type(para['DATA_TYPE'])
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 通信方式

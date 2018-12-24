@@ -7,14 +7,13 @@
 @time: 2018/8/13 0002 09:50
 """
 
-from com.nrtest.common.setting import Setting
 from com.nrtest.sea.pages.other.common_page import Common_page
 from com.nrtest.sea.task.login import Login
 
 
 # 统计查询→综合查询→用户数据查询
 def UserDataQueryLog():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     udq = Common_page(dr)
     # 点击统计查询
@@ -28,7 +27,7 @@ def UserDataQueryLog():
 
 # 统计查询→综合查询→用户数据查询
 def TerminalDataQueryLog():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     tdq = Common_page(dr)
     # 点击统计查询
@@ -42,7 +41,7 @@ def TerminalDataQueryLog():
 
 # 统计查询→综合查询→配变数据查询
 def PublicDataQueryLog():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     pdq = Common_page(dr)
     # 点击统计查询
@@ -56,7 +55,7 @@ def PublicDataQueryLog():
 
 # 统计查询→综合查询→线路数据查询
 def LineDataQueryLog():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     ldq = Common_page(dr)
     # 点击统计查询

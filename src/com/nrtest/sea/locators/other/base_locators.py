@@ -33,7 +33,8 @@ class BaseLocators:
     # 【输入框】
     # 按标签定位input normalize-space:去除换行\空格 \r\n\t
     QRY_INPUT = (By.XPATH, '//div[@class="x-form-item "]/label[normalize-space(text())="{}"]/..//input[@type!="hidden"]')
-    # 按input直接定位
+
+    # 按id或name对input直接定位
     QRY_INPUT_BY = (By.XPATH, '//input[@{}="{}"]')  # 如：'//input[@name="{}"]'
 
     # 缺少标签或id、name情况下的日期元素定位
@@ -44,13 +45,14 @@ class BaseLocators:
     # 【日期等只读属性改变】
     # 去除查询条件只读属性，如：日期选择框
     JS_REMOVE_ATTR = 'document.getElementBy{}("{}").removeAttribute("{}");'
+
     JS_DT = '''var elements, el;
             elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
             for (var i = 0; i < elements.snapshotLength; i++) {
                 el= elements.snapshotItem(i);
                 el.removeAttribute("readonly")
             }'''
-    # q.style.display = \"block\";"
+    # el.style.display = \"block\";"
 
     # 【下拉框】
     # 下拉选择点击按钮

@@ -8,7 +8,6 @@
 @desc:
 """
 
-from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.base_app.archivesMan.archivesMaintain_locators import ArchivesMaintain_locators
 from com.nrtest.sea.locators.base_app.archivesMan.archivesManage_locators import ArchivesManage_locators
 from com.nrtest.sea.pages.other.menu_page import MenuPage
@@ -18,7 +17,7 @@ from com.nrtest.sea.task.login import Login
 
 # 档案同步
 def archivesMange():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击统计查询
     cp = MenuPage(dr)
@@ -36,7 +35,7 @@ def archivesMange():
 
 # 档案异常分析_统计
 def archivesAnalysisOfAnomaly_count():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击统计查询
     cp = MenuPage(dr)
@@ -54,7 +53,7 @@ def archivesAnalysisOfAnomaly_count():
 
 # 档案异常分析_明细
 def archivesAnalysisOfAnomaly_detail():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击统计查询
     cp = MenuPage(dr)
@@ -74,7 +73,7 @@ def archivesAnalysisOfAnomaly_detail():
 
 # 档案维护_厂站维护
 def archivesMaintain_factory():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击统计查询
     cp = MenuPage(dr)
@@ -89,7 +88,7 @@ def archivesMaintain_factory():
 
 # 档案维护_终端维护
 def archivesMaintain_terminal():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击统计查询
     cp = MenuPage(dr)
@@ -105,7 +104,7 @@ def archivesMaintain_terminal():
 
 # 档案维护_电表维护
 def archivesMaintain_meter():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击统计查询
     cp = MenuPage(dr)
@@ -121,7 +120,7 @@ def archivesMaintain_meter():
 
 # 档案查询
 def archivesQuery():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击统计查询
     cp = MenuPage(dr)

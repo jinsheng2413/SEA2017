@@ -11,7 +11,6 @@ from time import sleep
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 from com.nrtest.sea.task.login import Login
 
@@ -211,7 +210,7 @@ class MenuPage(Page):
 
 
 if __name__ == '__main__':
-    login = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    login = Login()
     menuPage = MenuPage(login.login())
     #
     # # menuPage.click_menu('99913210', True) #'99913210')

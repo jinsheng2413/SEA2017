@@ -30,6 +30,10 @@ class Setting():
 
     # 默认浏览器
     BROWSER = parse.get('Base', 'DefaultBrowser')  # 'firefox'
+
+    # 是否校验码验证
+    VALID_MASK = parse.get('Base', 'Valid_Mask')
+
     # 默认网址
     TEST_URL = parse.get('Base', 'Test_URL')  # 'http://testerlife.com'
     # 网址标题

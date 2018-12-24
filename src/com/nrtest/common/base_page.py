@@ -283,10 +283,8 @@ class Page():
             #     el = self._find_displayed_element(loc, idx)
             # else:
             #     el = self._find_element(*loc)
-
             idx = 1 if len(ls_values[1]) == 0 else ls_values[1]
             el = self._find_displayed_element(loc, idx)
-
             el.clear()
             el.send_keys(ls_values[2])
             logger.info('日期框填写:{}'.format(value))
@@ -731,12 +729,10 @@ class Page():
         try:
             # if type(idx_or_text) == int:
             if isinstance(idx_or_text, int):  # 数据类型判断新方法：isinstance
-                Select(self._find_element(*locators)
-                       ).select_by_index(idx_or_text)
+                Select(self._find_element(*locators)).select_by_index(idx_or_text)
                 logger.info('按下标选择下拉框,选中第:%s', idx_or_text)
             else:
-                Select(self._find_element(*locators)
-                       ).select_by_visible_text(idx_or_text)
+                Select(self._find_element(*locators)).select_by_visible_text(idx_or_text)
                 logger.info('按内容选择元素，选中内容为:%s', idx_or_text)
 
         except NameError as e:

@@ -7,7 +7,6 @@
 @time: 2018/8/2 0002 18:40
 @desc:
 """
-from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.adv_app.costControlManage.custControlCommissioning_locators import \
     CustControlCommissioning_locators
 from com.nrtest.sea.pages.adv_app.costControlManage.costControlManage_page import CostControlManagePage
@@ -18,7 +17,7 @@ from com.nrtest.sea.task.login import Login
 
 # 专变用户费控管理
 def specil_user_fei_mange():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击高级应用
     cp = Common_page(dr)
@@ -35,7 +34,7 @@ def specil_user_fei_mange():
 
 # 低压用户余额查看_余额统计
 def low_user_money_check():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击高级应用
     cp = Common_page(dr)
@@ -52,7 +51,7 @@ def low_user_money_check():
 
 # 低压用户余额查看_余额查看
 def low_user_money_check_two():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击高级应用
     cp = Common_page(dr)
@@ -74,7 +73,7 @@ def low_user_money_check_two():
 
 # 电价参数下发
 def ele_price_para():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击高级应用
     cp = Common_page(dr)
@@ -92,7 +91,7 @@ def ele_price_para():
 
 # 专变用户余额查看
 def specialUserBalanceQuery():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击高级应用
     cp = Common_page(dr)
@@ -113,7 +112,7 @@ def specialUserBalanceQuery():
 
 # 低压用户购电参数下发
 def lowUserBuyParaGiveOut():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击高级应用
     cp = Common_page(dr)
@@ -131,7 +130,7 @@ def lowUserBuyParaGiveOut():
 
 # 本地费控执行统计_费控情况统计
 def localFeiManageCount_dis_count():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击高级应用
     cp = Common_page(dr)
@@ -149,7 +148,7 @@ def localFeiManageCount_dis_count():
 
 # 本地费控执行统计_费控情况明细
 def localFeiManageCount_dis_detail():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击高级应用
     cp = Common_page(dr)
@@ -168,7 +167,7 @@ def localFeiManageCount_dis_detail():
 
 # 费控投入调试_电量控
 def custControlCommissioning_ele_manage():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击高级应用
     cp = Common_page(dr)
@@ -189,7 +188,7 @@ def custControlCommissioning_ele_manage():
 
 # 费控投入调试_电fei控
 def custControlCommissioning_ele_cust():
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     dr = lg.login()
     # 点击高级应用
     cp = Common_page(dr)

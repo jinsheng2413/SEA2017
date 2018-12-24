@@ -8,7 +8,6 @@
 @desc:
 """
 
-from com.nrtest.common.setting import Setting
 from com.nrtest.sea.task.login import Login
 
 global driver
@@ -19,7 +18,7 @@ def __init():
     初始化webdriver
     """
     global __driver
-    lg = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
+    lg = Login()
     __driver = lg.login()
 
     print('complete global webdriver init.')

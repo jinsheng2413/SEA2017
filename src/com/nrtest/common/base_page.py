@@ -407,7 +407,7 @@ class Page():
         通过元素的id或name定位并去除元素的readonly属性
         :param attr: attr: 对象名 (By.ID/NAME, xxx)
         """
-        self.remove_attr(attr)
+        self.remove_attr(self, attr)
 
     def remove_dt_readonly(self, is_multi_tab=False):
         """
@@ -1043,7 +1043,8 @@ class Page():
 
                     for i in range(1, displayNum + 1):
                         # 显示区结果的每一行对应列的数据的xpath
-                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1, assertValues[2])
+                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
+                                                                             assertValues[2])
                         try:
                             assert_rslt = self.assert_context(*(By.XPATH, displayLineElement_index))
                             if assert_rslt:
@@ -1058,7 +1059,8 @@ class Page():
                 elif not displayCheck:  # 非带有复选框显示区
                     for i in range(1, displayNum + 1):
                         # 显示区结果的每一行对应列的数据的xpath
-                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1, assertValues[2])
+                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
+                                                                             assertValues[2])
                         try:
                             assert_rslt = self.assert_context(*(By.XPATH, displayLineElement_index))
                             if assert_rslt:

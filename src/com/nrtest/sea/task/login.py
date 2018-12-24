@@ -24,7 +24,6 @@ from com.nrtest.sea.pages.other.login_page import LoginPage
 
 logger = Logger(logger='Login').getlog()
 
-
 class Login:
     def __init__(self):
         self.username = Setting.DEFAULT_USER
@@ -55,7 +54,7 @@ class Login:
 
     def _cleanScreen(self, loginPage):
         """
-        登录后窗口清屏处理（如，告警提示框等）
+        登录成功失败判断与清屏处理（如，告警提示框等）
         :param loginPage:
         """
 
@@ -83,14 +82,16 @@ class Login:
             loginPage.input_username(self.username)
             loginPage.input_password(self.password)
 
-            # 是否需要校验码验证
+            # 校验码验证
             is_valid_mask = Setting.VALID_MASK.lower().startswith('y')
             if is_valid_mask:  # yes是；no否
                 mask_code = self._getMaskCode(driver)
                 loginPage.input_identifying(mask_code)
+
             loginPage.btn_login()
             sleep(2)
 
+            # 登录成功失败判断与清屏处理
             is_failed = self._cleanScreen(loginPage)
             if is_failed and is_valid_mask:
                 loginPage.click(*LoginPageLocators.BTN_IDENTIFYING_CODE)

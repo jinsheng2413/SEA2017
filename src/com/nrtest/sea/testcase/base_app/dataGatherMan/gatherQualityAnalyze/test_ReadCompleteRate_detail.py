@@ -8,7 +8,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -33,10 +32,6 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(GatherQualityAnalyze_data.readCompleteRate_para)
 
-        sleep(2)
-        cls.exec_script(cls, ReadCompleteRateLocators.START_DATE_JS)
-        cls.exec_script(cls, ReadCompleteRateLocators.END_DATE_JS)
-
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
@@ -58,33 +53,25 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         # 回收左边树
         self.recoverLeftTree()
 
-    def query(self, para):
-        """
-
-        :param para: Dict类型的字典，不是dict
-        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
-        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        """
-
-        clickTabPage(para['TAB_NAME'])
-
+    def countQuery(self, para):
+        clickTabPage('采集完整率明细')
+        self.sleep_time(2)
+        self.exec_script(ReadCompleteRateLocators.JS_DETAIL)
         # 注册菜单
         self.menu_name = para['MENU_NAME']
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户类型
-        self.inputSel_userType(para['USER_TYPE'])
+        self.inputSel_userType_detail(para['USER_TYPE'])
         # 通信方式
-        self.inputSel_communicationMode(para['COMMNUCATION_MODE'])
+        self.inputSel_communicationModeDetail(para['COMMNUCATION_MODE'])
         # 终端厂家
-        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
+        self.inputSel_ctmnlFactoryDetail(para['TMNL_FACTORY'])
         # 蕊片厂家
-        self.inputSel_chipFactory(para['CHIP_FACTORY'])
-        # 开始时间
-        self.inputStr_start_time(para['START_TIME'])
-        # 结束时间
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputSel_chipFactoryDetail(para['CHIP_FACTORY'])
 
+        # 日期时间
+        self.inputStr_date_time_detail(para['DATE_TIME'])
         self.btn_query(True)
 
     def assert_query_result(self, para):
@@ -104,18 +91,18 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
-                                  GatherQualityAnalyze_data.readCompleteRate_tab))
+                                  GatherQualityAnalyze_data.readCompleteRateCount_tab))
     def test_query(self, para):
         self.start_case(para)
-        self.query(para)
+        self.countQuery(para)
         self.assert_query_result(para)
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
-                                  GatherQualityAnalyze_data.readCompleteRate_tab))
+                                  GatherQualityAnalyze_data.readCompleteRateCount_tab))
     def _test_checkValue(self, para):
         self.start_case(para)
-        self.query(para)
+        self.countQuery(para)
         self.assert_query_criteria(para)
         self.end_case(para)

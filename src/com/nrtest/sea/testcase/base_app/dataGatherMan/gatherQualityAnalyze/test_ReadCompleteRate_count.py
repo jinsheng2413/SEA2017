@@ -11,6 +11,7 @@ import unittest
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
@@ -21,6 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 ReadCompleteRatePage
 
 
+# 基本应用→数据采集管理→采集质量分析→采集完整率
 @ddt
 class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
 
@@ -54,6 +56,8 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
     def countQuery(self, para):
         clickTabPage(para['TAB_NAME'])
         self.exec_script(ReadCompleteRateLocators.JS_COUNT)
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户类型
@@ -67,13 +71,37 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
 
         # 日期时间
         self.inputStr_date_time_count(para['DATE_TIME'])
-        self.btn_count_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(*ReadCompleteRateLocators.TAB_COUNT_ONE)
+        self.btn_query(True)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
                                   GatherQualityAnalyze_data.readCompleteRateCount_tab))
-    def test_countQuery(self, para):
+    def test_query(self, para):
+        self.start_case(para)
         self.countQuery(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
+                                  GatherQualityAnalyze_data.readCompleteRateCount_tab))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.countQuery(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

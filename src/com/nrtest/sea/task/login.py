@@ -107,8 +107,6 @@ class Login:
         dr.add_cookie(YamlSetting.getCookie(username))
         dr.get(Setting.TEST_URL + '/index.jsp')
 
-
-# fdsdf
 if __name__ == '__main__':
     # login = Login('gchb', '123')
     # drv = login.login()

@@ -15,8 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage, \
-    TmnlInstallDetaiLocators
+from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -32,8 +31,10 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
 
         clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         sleep(2)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS_COUNT)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS_COUNT)
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS_COUNT)
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS_COUNT)
+        cls.remove_dt_readonly(cls)
+
         # 下拉选择无需移除readonly属性
         # cls.exec_script(cls, TmnlInstallDetaiLocators.LCT_JS_COUNT)
         # cls.exec_script(cls, TmnlInstallDetaiLocators.METER_TYPE_JS_COUNT)
@@ -44,7 +45,7 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
     def tearDownClass(cls):
         print("执行结束")
         # 刷新浏览器
-        cls.closePages(cls)
+        # cls.closePages(cls)
 
     def setUp(self):
         """

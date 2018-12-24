@@ -51,11 +51,13 @@ class TestGatherSuccessRateDetail(unittest.TestCase, GatherSuccessRateDetailPage
         self.recoverLeftTree()
 
     def query(self, para):
+        self.menu_name = para['MENU_NAME']
+        sleep(2)
         clickTabPage('采集成功率明细')
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 用户类型
-        self.inputCSel_cons_type(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 芯片厂家
         self.inputSel_chip_factory(para['CHIP_FACTORY'])
         # 终端厂家
@@ -66,14 +68,10 @@ class TestGatherSuccessRateDetail(unittest.TestCase, GatherSuccessRateDetailPage
         self.inputStr_cons_no(para['CONS_NO'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
-        # 查询日期
+        # 日期
         self.inputDt_date(para['DATE'])
         # 点击查询按钮
         self.btn_search()
-        sleep(2)
-        # 校验
-        result = self.assert_context(*GatherSuccessRateDetailLocators.CHECK_FIRST)
-        self.assertTrue(result)
 
     def assert_query_result(self, para):
         """
@@ -92,7 +90,7 @@ class TestGatherSuccessRateDetail(unittest.TestCase, GatherSuccessRateDetailPage
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
-                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName))
+                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName_detail))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -101,7 +99,7 @@ class TestGatherSuccessRateDetail(unittest.TestCase, GatherSuccessRateDetailPage
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
-                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName, ))
+                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName_detail))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

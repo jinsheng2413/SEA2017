@@ -18,11 +18,10 @@ from com.nrtest.sea.locators.run_man.runStatusMonitor.MComMan230.baseStationMana
 class BaseStationManagePage(Page):
     # 通信地址
     def inputStr_communicationAddr(self, value):
-        print(value)
-        print(value)
-        self.input(value, *BaseStationManageLocators.QRY_COMMUNICATION_ADDR)
+        self.input(value,*BaseStationManageLocators.QRY_COMMUNICATION_ADDR)
 
         # 查询
 
     def btn_qry(self):
-        self.click(*BaseStationManageLocators.BTN_QRY)
+        #self.click(*BaseStationManageLocators.BTN_QRY)
+        self.btn_query()

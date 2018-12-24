@@ -17,22 +17,25 @@ from com.nrtest.sea.locators.run_man.runStatusMonitor.communicationModuleManagem
 # 运行管理--》采集信道管理--》通信模块管理--》本地通信模块版本信息召测
 class CommModulVersionMainPage(Page):
     # 终端类型
-    def inputSel_tmnlType(self, name):
-        self.click(*CommModulVersionMainLocators.QRY_TMNL_TYPE)
-        locator = self.get_select_locator(CommModulVersionMainLocators.QRY_TMNL_TYPE_VALUE, name)
-        self.click(*locator)
+    def inputSel_tmnlType(self, options):
+        # self.click(*CommModulVersionMainLocators.QRY_TMNL_TYPE)
+        # locator = self.get_select_locator(CommModulVersionMainLocators.QRY_TMNL_TYPE_VALUE, name)
+        # self.click(*locator)
+        self.selectDropDown(options)
 
     # 终端厂商
-    def inputSel_tmnlFactory(self, name):
-        self.click(*CommModulVersionMainLocators.QRY_TMNL_FACTORY)
-        locator = self.get_select_locator(CommModulVersionMainLocators.QRY_TMNL_FACTORY_VALUE, name)
-        self.click(*locator)
+    def inputSel_tmnlFactory(self, options):
+        # self.click(*CommModulVersionMainLocators.QRY_TMNL_FACTORY)
+        # locator = self.get_select_locator(CommModulVersionMainLocators.QRY_TMNL_FACTORY_VALUE, name)
+        # self.click(*locator)
+        self.selectDropDown(options)
 
     # 终端地址
     def inputStr_tmnlAddr(self, value):
-        self.input(value, *CommModulVersionMainLocators.QRY_TMNL_ADDR)
+        self.input(value)#, *CommModulVersionMainLocators.QRY_TMNL_ADDR)
 
         # 查询
 
     def btn_qry(self):
-        self.click(*CommModulVersionMainLocators.BTN_QRY)
+        #self.click(*CommModulVersionMainLocators.BTN_QRY)
+        self.btn_query()

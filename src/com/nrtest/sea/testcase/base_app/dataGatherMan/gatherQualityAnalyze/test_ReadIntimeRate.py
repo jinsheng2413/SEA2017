@@ -11,11 +11,11 @@ import unittest
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadIntimeRate_page import ReadIntimeRatePage, \
-    ReadIntimeRate_Locators
+from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadIntimeRate_page import ReadIntimeRatePage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -58,6 +58,8 @@ class TestReadIntimeRate(unittest.TestCase, ReadIntimeRatePage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户类型
@@ -67,12 +69,35 @@ class TestReadIntimeRate(unittest.TestCase, ReadIntimeRatePage):
         # 芯片厂家
         self.inputSel_chipFactory(para['CHIP_FACTORY'])
 
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(*ReadIntimeRate_Locators.TAB_ONE)
+        self.btn_query()
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readIntimeRate_para))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readIntimeRate_para))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

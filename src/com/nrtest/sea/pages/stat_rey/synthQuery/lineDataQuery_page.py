@@ -46,13 +46,14 @@ class LineDataQueryPage(Page):
 
     # 数据展示
     # 查询日期_开始
-    def inputdt_starttime(self, content):
-        self.input(content, *LineDataQueryLocators.INPUTDT_STARTTIME)
+    def inputdt_starttime(self, value):
+        self.input(value)#, *LineDataQueryLocators.INPUTDT_STARTTIME)
 
     # 查询日期_结束
-    def inputdt_endtime(self, content):
-        self.input(content, *LineDataQueryLocators.INPUTDT_ENDTIME)
+    def inputdt_endtime(self, value):
+        self.input(value)#, *LineDataQueryLocators.INPUTDT_ENDTIME)
 
     # 查询按钮
     def btn_data_search(self):
-        self.click(*LineDataQueryLocators.BTN_DATA_SEARCH)
+        #self.click(*LineDataQueryLocators.BTN_DATA_SEARCH)
+        self.btn_query()

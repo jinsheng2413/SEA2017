@@ -45,7 +45,7 @@ def openLeftTree(treeNo):
         menuPage.btn_left_tree(node_vale)
     else:                  # 选择其他节点
         menuPage.btn_user_nodes(node_flag, node_vale)  # 该方法细节待实现
-    return menuPage.driver
+    # return menuPage.driver
 
 
 def clickTabPage(tab_name):

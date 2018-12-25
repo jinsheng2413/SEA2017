@@ -38,7 +38,7 @@ class BaseLocators:
     QRY_INPUT_BY = (By.XPATH, '//input[@{}="{}"]')  # 如：'//input[@name="{}"]'
 
     # 缺少标签或id、name情况下的日期元素定位
-    QRY_DT_INPUT = (By.XPATH, '//img[starts-with(@class,\'x-form-trigger x-form-date-trigger\')]/../input')
+    QRY_DT_INPUT = (By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-date-trigger")]/../input')
     # $x('(//div[@id="低压用户远程费控执行"]//img[starts-with(@class,"x-form-trigger x-form-date-trigger")]/../input)[1]')
 
 
@@ -98,7 +98,7 @@ class BaseLocators:
     MENU_PAGE = (By.XPATH, '//li[@id="maintab__{}"]')
 
     # 定位一个菜单页面内的某一Tab页
-    TAB_PAGE = (By.XPATH, '//span[@class="x-tab-strip-text " and text()={}]')
+    TAB_PAGE = (By.XPATH, '//span[@class="x-tab-strip-text " and text()="{}"]')
 
     # 登录后弹出窗口：账号异常
     BTN_ACCOUNT_EXCEPT = (By.XPATH,

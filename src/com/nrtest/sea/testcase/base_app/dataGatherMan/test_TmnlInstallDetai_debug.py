@@ -77,7 +77,7 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         # 开始时间
         self.inputStr_startTime_count(para['START_TIME'])
         # 结束时间
-        self.inputStr_enTime_Count(para['END_TIME'])
+        self.inputStr_endTime_Count(para['END_TIME'])
         # 运行状态
         self.inputSel_runState_count(para['RUN_STATE'])
         # 流程标识

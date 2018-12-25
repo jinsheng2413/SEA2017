@@ -9,6 +9,7 @@
 """
 from time import sleep
 
+from com.nrtest.common import global_drv
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
@@ -43,6 +44,17 @@ class MenuPage(Page):
     #             self.click(*loc)
     #     return self.driver
 
+    @staticmethod
+    def openMenu(menuNo):
+        """
+        打开指定菜单页面
+        :param menuNo: 菜单编号
+        :return:
+        """
+        menuPage = MenuPage(global_drv.get_driver())
+        menuPage.click_menu(menuNo)
+        return menuPage.driver
+
     def click_menu(self, menu_no, isPath=False):
         """
         定位级菜单element,并调用Base_Page类的click方法选择级菜单
@@ -53,12 +65,18 @@ class MenuPage(Page):
         menu_path = menu_no if isPath else DataAccess.getMenu(menu_no)
         print('菜单路径：', menu_path)
         items = menu_path.split(';')
+        self.menu_name = items[-1]
+        #
+        # path = menu_path.split(';')
+        # self.menu_name = path[0]
+        # items = path[1:]
 
-        l = len(items)
-        for i in range(len(items)):
+        item_cnt = len(items)
+        # for i in range(len(items)):
+        for i in range(item_cnt):
             locators = getattr(MenuLocators, 'MENU_LEVEL' + str(i + 1))
             loc = (locators[0], locators[1] % items[i])
-            if (l == 4 and i == 2) or (l == 5 and i in (2, 3)):
+            if (item_cnt == 4 and i == 2) or (item_cnt == 5 and i in (2, 3)):
                 self.hover(*loc)
             else:
                 self.click(*loc)

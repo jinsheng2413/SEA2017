@@ -9,7 +9,7 @@
 """
 from time import sleep
 
-import pytesseract as pt
+import pytesseract
 from PIL import Image
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -41,15 +41,16 @@ class Login:
         top = imageMask.location['y']
         elementWidth = imageMask.location['x'] + imageMask.size['width']
         elementHeight = imageMask.location['y'] + imageMask.size['height']
-        picture = Image.open(Setting.SCREENSHOTS_PATH + 'photo.png')
 
-        picture = picture.crop((left, top, elementWidth, elementHeight))
-        # picture = picture.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
+        with Image.open(Setting.SCREENSHOTS_PATH + 'photo.png') as img_file:
+            img_file = img_file.crop((left, top, elementWidth, elementHeight))
+            # picture = picture.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
 
-        picture.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
-        image = Image.open(Setting.SCREENSHOTS_PATH + 'photo2.png')
-        text = pt.image_to_string(image)
-        txt = text.replace(' ', '')
+            img_file.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
+
+        with Image.open(Setting.SCREENSHOTS_PATH + 'photo2.png') as file:
+            text = pytesseract.image_to_string(file)
+            txt = text.replace(' ', '')
         return txt
 
     def _cleanScreen(self, loginPage):
@@ -70,8 +71,8 @@ class Login:
         return is_failed
 
     def login(self):
-        p = BaseTest()
-        driver = p.openBrowser(Setting.BROWSER)
+        baseTest = BaseTest()
+        driver = baseTest.openBrowser(Setting.BROWSER)
         driver.maximize_window()
         driver.get(Setting.TEST_URL)
 

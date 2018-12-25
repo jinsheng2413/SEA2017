@@ -44,7 +44,7 @@ class TmnlInstallDetaiPage(Page):
         self.inputDate(value)
 
     # 结束时间
-    def inputStr_enTime_Count(self, value):
+    def inputStr_endTime_Count(self, value):
         # self.input(value, *TmnlInstallDetaiLocators.QRY_END_TIME_COUNT)
         # self.input(value)
         self.inputDate(value)

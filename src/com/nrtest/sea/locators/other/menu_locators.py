@@ -85,6 +85,8 @@ class MenuLocators:
     NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[%s]//td[1]/div/div')
     NODE_USER = (By.XPATH, '//*[@class="x-tab-strip-text " and text()=\'用户\']')
 
+    TAB_PAGE = (By.XPATH, '//span[@class="x-tab-strip-text " and text()="{}"]')
+
     # # 【左边树显示区】
     TABLE_DATA = (By.XPATH, '(//*[@class="x-grid3-row-table"])[[1]]')
     TREE_MINUS = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-minus"]')
@@ -92,5 +94,7 @@ class MenuLocators:
     # # 【table显示区】
     # TAB_ONE = (By.XPATH, '(//table[@class="x-grid3-row-table"])[1]')
     # TAB_VALUE = (By.XPATH, "//*[@class="x-grid3-row-table"])[{0}]//td[1]")
+
+
 if __name__=='__main__':
     print(MenuLocators.NODE['02'])

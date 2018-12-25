@@ -118,14 +118,14 @@ class Page():
     本项目所有页面菜单的基类
     """
 
-    def __init__(self, driver, base_url=Setting.TEST_URL, pagetitle=Setting.PAGE_TILE):
+    def __init__(self, driver):
         self.driver = driver
-        self.base_url = base_url
-        self.page_title = pagetitle
+        self.base_url = Setting.TEST_URL
+        self.page_title = Setting.PAGE_TILE
         self.menu_name = None
         # self.menuPage = None
         # #多Tab页时判断Tab页是否已激活
-        # self.isActiveTab = False
+        self.isActiveTab = False
 
     def save_img(self, img_name):
         """
@@ -283,7 +283,7 @@ class Page():
             #     el = self._find_displayed_element(loc, idx)
             # else:
             #     el = self._find_element(*loc)
-            idx = 1 if len(ls_values[1]) == 0 else ls_values[1]
+            idx = 1 if len(ls_values[1]) == 0 else int(ls_values[1])  # .strip()
             el = self._find_displayed_element(loc, idx)
             el.clear()
             el.send_keys(ls_values[2])
@@ -410,7 +410,7 @@ class Page():
         """
         self.remove_attr(self, attr)
 
-    def remove_dt_readonly(self, is_multi_tab=False):
+    def remove_dt_readonly(self, is_multi_tab=True):
         """
         新版日期输入框操作：没标签、没定义name或id时对可见日期选择框进行定位
         :param attr: 对象名 (By.ID/NAME, xxx)
@@ -418,10 +418,12 @@ class Page():
         """
 
         if is_multi_tab:
-            js_attr = BaseLocators.JS_DT % (BaseLocators.MENU_PAGE_ID.format(self.menu_name) + BaseLocators.QRY_DT_INPUT[1])
+            xpath = BaseLocators.MENU_PAGE_ID.format(self.menu_name) + BaseLocators.QRY_DT_INPUT[1]
         else:
-            js_attr = BaseLocators.JS_DT % BaseLocators.QRY_DT_INPUT[1]
-        print('js_attr', js_attr)
+            xpath = BaseLocators.QRY_DT_INPUT[1]
+        # 把xpath对象中的 “ 替换为 '
+        js_attr = BaseLocators.JS_DT % xpath.replace('"', '\'')
+        # print('js_attr', js_attr)
         self.driver.execute_script(js_attr)
 
 
@@ -484,6 +486,19 @@ class Page():
                     self.click(*xpath)
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
+
+    def clickTabPage(self, tab_name):
+        """
+        打开Tab页
+        :param tab_name:
+        """
+        try:
+            if not self.isActiveTab:
+                locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
+                self.click(*locators)
+                self.isActiveTab = True
+        except BaseException as ex:
+            self.isActiveTab = False
 
     def input(self, values, *locators):
         """

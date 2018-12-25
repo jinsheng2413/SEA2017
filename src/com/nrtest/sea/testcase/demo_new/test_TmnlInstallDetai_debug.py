@@ -8,7 +8,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -26,12 +25,16 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DataGatherMan_data.tmnlInstallDetail_para)
-        clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
-        sleep(2)
-        # cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS_COUNT)
-        # cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS_COUNT)
-        cls.remove_dt_readonly(cls)
+        cls.driver = MenuPage.openMenu(DataGatherMan_data.tmnlInstallDetail_para)
+        cls.isActiveTab = False
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # cls.driver = menuPage.driver
+        # cls.menu_name = menuPage.menu_name
+        # sleep(2)
+        # # cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS_COUNT)
+        # # cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS_COUNT)
+        # menuPage.remove_dt_readonly()
+        # # cls.remove_dt_readonly(cls)
 
 
         # 下拉选择无需移除readonly属性
@@ -72,12 +75,15 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         # 注册菜单
         self.menu_name = para['MENU_NAME']
 
+        self.clickTabPage(para['TAB_NAME'])
+        self.remove_dt_readonly()
+
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])
         # 开始时间
         self.inputStr_startTime_count(para['START_TIME'])
         # 结束时间
-        self.inputStr_enTime_Count(para['END_TIME'])
+        self.inputStr_endTime_Count(para['END_TIME'])
         # 运行状态
         self.inputSel_runState_count(para['RUN_STATE'])
         # 流程标识

@@ -565,7 +565,7 @@ class Page():
         点击(click)元素,如图标、按钮等
         :param locator: 元素的位置
         """
-        # locators参数值为None或带None的元组或元组长度为0
+        # locator参数值为None或带None的元组或元组长度为0
         if locator is None or locator[0] is None or len(locator) == 0:
             # print ('curr_click')
             self.curr_click(is_multi_tab=True)

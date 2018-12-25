@@ -165,12 +165,10 @@ class MenuPage(Page):
         :param number:查询结果显示的区域，number：代表第几个行，默认是1
 
         """
-        # 定位左边树用户Tab页@todo 请完善选择用户Tab的xpath
-        # self.click()
-
         # 根据node_flag选择相应的节点查询条件xpath，并输入查询条件
         #{02:代表用户编号，03：代表终端逻辑地址，04：电能表资产号}
-        #点击用户
+
+        # 点击用户标签页
         self.click(*MenuLocators.NODE_USER)
         self.input(node_value, *MenuLocators.NODE[node_flag])
 
@@ -211,10 +209,11 @@ class MenuPage(Page):
             except Exception as e:
                 print('该菜单定位报错：', menu, e)
 
+
 if __name__ == '__main__':
     login = Login(Setting.DEFAULT_USER, Setting.DEFAULT_PASSWORD)
     menuPage = MenuPage(login.login())
-
-    # menuPage.click_menu('99913210', True) #'99913210')
-    # menuPage.clickTabPage('采集成功率统计')
-    menuPage.clickAllMenu()
+    #
+    # # menuPage.click_menu('99913210', True) #'99913210')
+    # # menuPage.clickTabPage('采集成功率统计')
+    # menuPage.clickAllMenu()

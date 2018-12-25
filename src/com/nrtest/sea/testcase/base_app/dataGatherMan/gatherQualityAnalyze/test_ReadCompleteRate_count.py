@@ -19,8 +19,6 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadComple
     ReadCompleteRateLocators
 from com.nrtest.sea.task.commonMath import *
 
-ReadCompleteRatePage
-
 
 # 基本应用→数据采集管理→采集质量分析→采集完整率
 @ddt

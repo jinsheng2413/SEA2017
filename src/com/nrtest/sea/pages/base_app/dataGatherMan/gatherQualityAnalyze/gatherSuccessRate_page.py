@@ -14,6 +14,10 @@ from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.gatherS
 # 基本应该→数据采集管理→采集质量分析→采集成功率
 # 采集成功率→采集成功率
 class GatherSuccessRatePage(Page):
+    # 数据类型
+    def inputChk_data_type(self, options):
+        self.clickRadioBox(options, is_multi_tab=True, is_multi_elements=True)
+
     # 用户类型
     def inputSel_cons_type(self, index):
         # if index == 'c':
@@ -84,6 +88,10 @@ class GatherSuccessRatePage(Page):
 
 # 采集成功率→采集成功率统计
 class GatherSuccessRateStatPage(Page):
+    # 数据类型
+    def inputChk_data_type(self, options):
+        self.clickRadioBox(options, is_multi_tab=True, is_multi_elements=True)
+
     # 用户类型
     def inputSel_cons_type(self, index):
         # if index == 'c':
@@ -228,6 +236,10 @@ class ContinuousFalseDetailPage(Page):
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率→按时间统计
 class GatherSuccessRateTimePage(Page):
+    # 数据类型
+    def inputChk_data_type(self, options):
+        self.clickRadioBox(options, is_multi_tab=True, is_multi_elements=True)
+
     # 查询日期，开始
     def inputDt_start_date(self, content):
         self.exec_script(GatherSuccessRateTimeLocators.START_DATE_JS)

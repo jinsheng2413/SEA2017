@@ -36,9 +36,21 @@ class BaseLocators:
     # 按input直接定位
     QRY_INPUT_BY = (By.XPATH, '//input[@{}="{}"]')  # 如：'//input[@name="{}"]'
 
+    # 缺少标签或id、name情况下的日期元素定位
+    QRY_DT_INPUT = (By.XPATH, '//img[starts-with(@class,\'x-form-trigger x-form-date-trigger\')]/../input')
+    # $x('(//div[@id="低压用户远程费控执行"]//img[starts-with(@class,"x-form-trigger x-form-date-trigger")]/../input)[1]')
+
+
     # 【日期等只读属性改变】
     # 去除查询条件只读属性，如：日期选择框
     JS_REMOVE_ATTR = 'document.getElementBy{}("{}").removeAttribute("{}");'
+    JS_DT = '''var elements, el;
+            elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+            for (var i = 0; i < elements.snapshotLength; i++) {
+                el= elements.snapshotItem(i);
+                el.removeAttribute("readonly")
+            }'''
+    # q.style.display = \"block\";"
 
     # 【下拉框】
     # 下拉选择点击按钮
@@ -50,7 +62,7 @@ class BaseLocators:
     # 取消所有已选项
     # SEL_UNCHECK_ALL = (By.XPATH, '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img')
     SEL_UNCHECK_ALL = (By.XPATH,
-                       '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img')
+                       '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img[contains(@src, "/checked.gif")]')
     # 选择指定复选项@class="ux-lovcombo-item-text" and
     # SEL_OPTION = (By.XPATH, '//div[@class="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img')
     SEL_OPTION = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/..//img')

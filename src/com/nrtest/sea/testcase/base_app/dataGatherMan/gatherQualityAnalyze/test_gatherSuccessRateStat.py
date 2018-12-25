@@ -11,8 +11,9 @@
 import unittest
 from time import sleep
 
-import ddt
+from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
     GatherQualityAnalyze_data
@@ -21,15 +22,13 @@ from com.nrtest.sea.task.commonMath import *
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率→采集成功率统计
-@ddt.ddt
+@ddt
 class TestGatherSuccessRateStat(unittest.TestCase, GatherSuccessRateStatPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(GatherQualityAnalyze_data.para_GatherSuccessRate)
-
-        clickTabPage('采集成功率统计')
 
     @classmethod
     def tearDownClass(cls):
@@ -52,10 +51,15 @@ class TestGatherSuccessRateStat(unittest.TestCase, GatherSuccessRateStatPage):
         self.recoverLeftTree()
 
     def query(self, para):
+        self.menu_name = para['MENU_NAME']
+        clickTabPage('采集成功率统计')
+        sleep(2)
+        # 数据类型
+        self.inputChk_data_type(para['DATA_TYPE'])
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.driver = openLeftTree(para['TREE_NODE'])
         # 用户类型
-        self.inputCSel_cons_type(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 通信方式
         self.inputSel_comm_type(para['COMM_TYPE'])
         # 终端厂家
@@ -68,12 +72,36 @@ class TestGatherSuccessRateStat(unittest.TestCase, GatherSuccessRateStatPage):
         self.inputDt_date(para['DATE'])
         # 点击查询按钮
         self.btn_search()
-        sleep(2)
-        # 校验
-        # result = self.assert_context(*GatherSuccessRateStatLocators.CHECK_FIRST)
-        # self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
-                                      GatherQualityAnalyze_data.GatherSuccessRate_tabName_stat))
-    def test_a_der(self, para):
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
+                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName_stat))
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
+                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName_stat))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

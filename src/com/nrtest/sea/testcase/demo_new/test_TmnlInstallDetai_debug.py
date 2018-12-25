@@ -15,8 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage, \
-    TmnlInstallDetaiLocators
+from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -27,13 +26,14 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(DataGatherMan_data.tmnlInstallDetail_para)
-
         clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         sleep(2)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS_COUNT)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS_COUNT)
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS_COUNT)
+        # cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS_COUNT)
+        cls.remove_dt_readonly(cls)
+
+
         # 下拉选择无需移除readonly属性
         # cls.exec_script(cls, TmnlInstallDetaiLocators.LCT_JS_COUNT)
         # cls.exec_script(cls, TmnlInstallDetaiLocators.METER_TYPE_JS_COUNT)
@@ -44,7 +44,7 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
     def tearDownClass(cls):
         print("执行结束")
         # 刷新浏览器
-        cls.closePages(cls)
+        # cls.closePages(cls)
 
     def setUp(self):
         """
@@ -68,11 +68,12 @@ class TestTmnlInstallDetai_debug(unittest.TestCase, TmnlInstallDetaiPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+
         # 注册菜单
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 开始时间
         self.inputStr_startTime_count(para['START_TIME'])
         # 结束时间

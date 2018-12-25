@@ -12,6 +12,7 @@ from time import sleep
 from com.nrtest.common import global_drv
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
+from com.nrtest.common.dictionary import Dict
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 from com.nrtest.sea.task.login import Login
 
@@ -53,7 +54,29 @@ class MenuPage(Page):
         """
         menuPage = MenuPage(global_drv.get_driver())
         menuPage.click_menu(menuNo)
-        return menuPage.driver
+        return menuPage
+
+    @staticmethod
+    def openLeftTree(treeNo):
+        """
+        打开左边树
+        :param treeNo:
+        :return:
+        """
+        menuPage = MenuPage(global_drv.get_driver())
+        try:
+            node = Dict(eval(treeNo))
+            node_flag = node['NODE_FLAG']
+            node_vale = node['NODE_VALE']
+        except:
+            # 不是数组时的默认处理
+            node_flag = '01'
+            node_vale = treeNo
+
+        if node_flag == '01':  # 选择供电单位
+            menuPage.btn_left_tree(node_vale)
+        else:  # 选择其他节点
+            menuPage.btn_user_nodes(node_flag, node_vale)  # 该方法细节待实现
 
     def click_menu(self, menu_no, isPath=False):
         """
@@ -65,21 +88,21 @@ class MenuPage(Page):
         menu_path = menu_no if isPath else DataAccess.getMenu(menu_no)
         print('菜单路径：', menu_path)
         items = menu_path.split(';')
-        self.menu_name = items[-1]
-        #
-        # path = menu_path.split(';')
-        # self.menu_name = path[0]
-        # items = path[1:]
 
-        item_cnt = len(items)
-        # for i in range(len(items)):
-        for i in range(item_cnt):
-            locators = getattr(MenuLocators, 'MENU_LEVEL' + str(i + 1))
-            loc = (locators[0], locators[1] % items[i])
-            if (item_cnt == 4 and i == 2) or (item_cnt == 5 and i in (2, 3)):
-                self.hover(*loc)
-            else:
-                self.click(*loc)
+        # 当前菜单名
+        self.menu_name = items[-1]
+
+        # 当菜单已打开已打开时不再重新打开
+        if not self.exists_menu:
+            item_cnt = len(items)
+            for i in range(item_cnt):
+                locators = getattr(MenuLocators, 'MENU_LEVEL' + str(i + 1))
+                loc = (locators[0], locators[1] % items[i])
+                if (item_cnt == 4 and i == 2) or (item_cnt == 5 and i in (2, 3)):
+                    self.hover(*loc)
+                else:
+                    self.click(*loc)
+
         return self.driver
 
     # 左边树

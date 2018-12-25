@@ -35,15 +35,12 @@ class MenuLocators:
 
     # 当前正在操作的菜单页面
     CURRENT_MENU = (By.XPATH, '//*[@class="x-tab-strip-inner"]//*[contains(text(),\'%s\')]')
-    CURRENT_MENU1 = (
-        By.XPATH, '//span[contains(@class,"x-tab-strip-text") and text() = "%s"]')
+    CURRENT_MENU1 = (By.XPATH, '//span[contains(@class,"x-tab-strip-text") and text() = "%s"]')
     # '//span[contains(@class,"x-tab-strip-text" and text() = "%s"]')
     # 右键菜单：关闭当前页/关闭其他所有页
     # '//*[@class="x-menu x-menu-floating x-layer "]//*[text()=\'关闭其他所有页\']'
     CLOSE_PAGES = (By.XPATH, '//*[@class="x-menu x-menu-floating x-layer "]//*[text()="%s"]')
     CLOSE_PAGES_SPE = (By.XPATH, '//*[@class ="x-menu x-menu-floating x-layer  x-hide-offsets"]//*[text()="%s"]')
-
-
 
     # 打开菜单超时对话框
     TIMEOUT_DLG = (By.XPATH, '//div[@class="x-window-bwrap"]//span[text()="请求无响应或超时！"]')
@@ -85,9 +82,10 @@ class MenuLocators:
     NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[%s]//td[1]/div/div')
     NODE_USER = (By.XPATH, '//*[@class="x-tab-strip-text " and text()=\'用户\']')
 
+    # Tab页
     TAB_PAGE = (By.XPATH, '//span[@class="x-tab-strip-text " and text()="{}"]')
 
-    # # 【左边树显示区】
+    # 【左边树显示区】
     TABLE_DATA = (By.XPATH, '(//*[@class="x-grid3-row-table"])[[1]]')
     TREE_MINUS = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-minus"]')
     TREE_END = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-end-minus"]')
@@ -96,5 +94,5 @@ class MenuLocators:
     # TAB_VALUE = (By.XPATH, "//*[@class="x-grid3-row-table"])[{0}]//td[1]")
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     print(MenuLocators.NODE['02'])

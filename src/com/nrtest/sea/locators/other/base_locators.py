@@ -39,7 +39,6 @@ class BaseLocators:
 
     # 缺少标签或id、name情况下的日期元素定位
     QRY_DT_INPUT = (By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-date-trigger")]/../input')
-    # $x('(//div[@id="低压用户远程费控执行"]//img[starts-with(@class,"x-form-trigger x-form-date-trigger")]/../input)[1]')
 
 
     # 【日期等只读属性改变】

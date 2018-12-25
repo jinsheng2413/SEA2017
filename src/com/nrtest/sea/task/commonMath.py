@@ -54,7 +54,7 @@ def clickTabPage(tab_name):
     :param tab_name:
     """
     menuPage = MenuPage(global_drv.get_driver())
-    locators = (By.XPATH, '//span[@class="x-tab-strip-text " and text()={}]'.format(tab_name))
+    locators = (By.XPATH, '//span[@class="x-tab-strip-text " and text()="{}"]'.format(tab_name))
     # locators = (By.XPATH, '(//*[@class="x-tab-strip-text "])[text()="{}"]'.format(tab_name))
     print(locators)
     menuPage.click(*locators)

@@ -64,7 +64,7 @@
         使用title获取当前窗口title，检查输入的title是否在当前title中。
         :param page_title:
         :return: 返回比较结果（True 或 False）
-16.方法名：check_element_exists
+16.方法名：exists_element
         判断元素是否存在
         :param locator:
         :return:布尔返回值
@@ -118,14 +118,14 @@ class Page():
     本项目所有页面菜单的基类
     """
 
-    def __init__(self, driver):
+    def __init__(self, driver, menuName=None, isActived=False):
         self.driver = driver
         self.base_url = Setting.TEST_URL
         self.page_title = Setting.PAGE_TILE
-        self.menu_name = None
-        # self.menuPage = None
-        # #多Tab页时判断Tab页是否已激活
-        self.isActiveTab = False
+        self.menu_name = menuName
+        # 多Tab页时判断Tab页是否已激活
+        self.isActivedTab = isActived
+        print('Page class init test !!!!')
 
     def save_img(self, img_name):
         """
@@ -278,16 +278,12 @@ class Page():
         try:
             ls_values = value.split(';')
             loc = self.format_xpath_multi(BaseLocators.QRY_DT_INPUT, ls_values[0], is_multi_tab)
-            # if is_multi_elements:
-            #     idx = 1 if len(ls_values[1]) == 0 else ls_values[1]
-            #     el = self._find_displayed_element(loc, idx)
-            # else:
-            #     el = self._find_element(*loc)
-            idx = 1 if len(ls_values[1]) == 0 else int(ls_values[1])  # .strip()
+            tmp = ls_values[1].strip()
+            idx = 1 if len(tmp) == 0 else int(tmp)
             el = self._find_displayed_element(loc, idx)
             el.clear()
             el.send_keys(ls_values[2])
-            logger.info('日期框填写:{}'.format(value))
+            logger.info('日期选择框填写:{}'.format(value))
         except AttributeError as ex:
             logger.error('输入错误:{}\n{}'.format(value, ex))
 
@@ -493,12 +489,20 @@ class Page():
         :param tab_name:
         """
         try:
-            if not self.isActiveTab:
+            if not self.isActivedTab:
                 locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
                 self.click(*locators)
-                self.isActiveTab = True
+                self.isActivedTab = True
         except BaseException as ex:
-            self.isActiveTab = False
+            self.isActivedTab = False
+
+    @property
+    def exists_menu(self):
+        """
+        判断菜单是否已打开，
+        :return: True-已打开
+        """
+        return self.exists_element(BaseLocators.MENU_PAGE)
 
     def input(self, values, *locators):
         """
@@ -677,9 +681,9 @@ class Page():
         """
         return self.driver.current_url()
 
-    def check_element_exists(self, *locator):
+    def exists_element(self, locator):
         """
-        方法名：check_element_exists
+        方法名：exists_element
         判断元素是否存在
         :param locator:元祖形式的xpath
         :return:布尔返回值

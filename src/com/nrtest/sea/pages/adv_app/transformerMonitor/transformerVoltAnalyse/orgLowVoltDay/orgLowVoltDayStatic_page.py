@@ -20,12 +20,15 @@ class OrgLowVoltDayStaticPage(Page):
 
     # 开始日期
     def inputStr_start_date(self, value):
-        self.input(value, *OrgLowVoltDayStaticLocators.START_DATE)
+        # self.input(value, *OrgLowVoltDayStaticLocators.START_DATE)
+        self.input(value)
 
     # 结束日期
     def inputStr_end_date(self, value):
-        self.input(value, *OrgLowVoltDayStaticLocators.END_DATE)
+        # self.input(value, *OrgLowVoltDayStaticLocators.END_DATE)
+        self.input(value)
 
     # 点击查询
-    def btn_query(self):
-        self.click(*OrgLowVoltDayStaticLocators.BTN_QUERY)
+    def btn_qry(self):
+        # self.click(*OrgLowVoltDayStaticLocators.BTN_QUERY)
+        self.btn_query()

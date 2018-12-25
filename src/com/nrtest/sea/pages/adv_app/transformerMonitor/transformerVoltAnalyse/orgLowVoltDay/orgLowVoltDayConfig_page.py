@@ -19,12 +19,14 @@ class OrgLowVoltDayConfigPage(Page):
         self.openLeftTree(value)
 
     # 是否电压监测--打开并选择
-    def inputRSel_cons_type(self, name):
-        self.click(*OrgLowVoltDayConfigLocators.IS_VOLT_MONITOR_SEL)
-        locator = self.get_select_locator(
-            OrgLowVoltDayConfigLocators.IS_VOLT_MONITOR, name)
-        self.click(*locator)
+    def inputSel_volt_monitor(self, item):
+        # self.click(*OrgLowVoltDayConfigLocators.IS_VOLT_MONITOR_SEL)
+        # locator = self.get_select_locator(
+        #     OrgLowVoltDayConfigLocators.IS_VOLT_MONITOR, name)
+        # self.click(*locator)
+        self.selectDropDown(item)
 
     # 点击查询
-    def btn_query(self):
-        self.click(*OrgLowVoltDayConfigLocators.BTN_QUERY)
+    def btn_qry(self):
+        # self.click(*OrgLowVoltDayConfigLocators.BTN_QUERY)
+        self.btn_query()

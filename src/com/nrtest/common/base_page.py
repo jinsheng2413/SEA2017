@@ -560,22 +560,22 @@ class Page():
         else:
             self._open(self.base_url, self.page_title)
 
-    def click(self, *locators):
+    def click(self, *locator):
         """
         点击(click)元素,如图标、按钮等
-        :param locators: 元素的位置
+        :param locator: 元素的位置
         """
         # locators参数值为None或带None的元组或元组长度为0
-        if locators is None or locators[0] is None or len(locators) == 0:
+        if locator is None or locator[0] is None or len(locator) == 0:
             # print ('curr_click')
             self.curr_click(is_multi_tab=True)
         else:
             try:
-                element = self._find_element(*locators)
+                element = self._find_element(*locator)
                 element.click()
-                logger.info('点击元素：{}'.format(locators))
+                logger.info('点击元素：{}'.format(locator))
             except BaseException as e:
-                logger.error('点击元素失败:{}\n{}'.format(locators, e))
+                logger.error('点击元素失败:{}\n{}'.format(locator, e))
 
     def closeOldBrowser(self):
         """

@@ -63,6 +63,7 @@ class TestWorkCount(unittest.TestCase, WorkCountPage):
 
         # 注册菜单
         self.menu_name = para['MENU_NAME']
+
         self.displayTreeMenu()
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])

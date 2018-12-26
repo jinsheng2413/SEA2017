@@ -28,6 +28,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(DataGatherMan_data.tmnlInstallDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         menuPage.remove_dt_readonly()
 

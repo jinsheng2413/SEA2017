@@ -42,15 +42,14 @@ class Login:
         elementWidth = imageMask.location['x'] + imageMask.size['width']
         elementHeight = imageMask.location['y'] + imageMask.size['height']
 
-        img = Image.open(Setting.SCREENSHOTS_PATH + 'photo.png')  # type: Image.Image
-        real = img.resize((1920, 877), Image.ANTIALIAS)
-        real.save(Setting.SCREENSHOTS_PATH + 'photo3.png')
+        with Image.open(Setting.SCREENSHOTS_PATH + 'photo.png') as img_file:  # type: Image.Image
+            da = img_file.size
+            if da[0] == 1920:
+                img_code = img_file.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
+            else:
+                img_code = img_file.crop((left, top, elementWidth, elementHeight))
 
-        with Image.open(Setting.SCREENSHOTS_PATH + 'photo3.png') as img_file:
-            # img_file = img_file.crop((left, top, elementWidth, elementHeight))
-            img_file = img_file.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
-
-            img_file.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
+            img_code.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
 
         with Image.open(Setting.SCREENSHOTS_PATH + 'photo2.png') as file:
             text = pytesseract.image_to_string(file)
@@ -114,12 +113,11 @@ class Login:
         dr.get(Setting.TEST_URL + '/index.jsp')
 
 if __name__ == '__main__':
-    # login = Login()
-    # drv = login.login()
+    login = Login()
+    drv = login.login()
     # # cookie = drv.get_cookies()
     # # for i in cookie:
     # #     print(i)
     # pass
 
-    Login.cookieLogin('admin')
-
+# Login.cookieLogin('admin')

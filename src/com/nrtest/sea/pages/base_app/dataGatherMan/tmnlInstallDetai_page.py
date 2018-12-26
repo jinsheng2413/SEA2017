@@ -9,75 +9,74 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.dataGatherMan.tmnlInstallDetai import TmnlInstallDetaiLocators
 
 
 # 基本应用→终端管理→远程调试
 class TmnlInstallDetaiPage(Page):
 
     # 终端类型
-    def inputSel_TmnlTYPE(self, options):
-        self.click(*TmnlInstallDetaiLocators.QRY_TMNL_TYPE)
-        locator = self.get_select_locator(
-            TmnlInstallDetaiLocators.QRY_TMNL_TYPE_VALUE, options)
-        self.click(*locator)
+    def inputSel_TmnlType(self, options):
+        # self.click(*TmnlInstallDetaiLocators.QRY_TMNL_TYPE)
+        # locator = self.get_select_locator(
+        #     TmnlInstallDetaiLocators.QRY_TMNL_TYPE_VALUE, options)
+        # self.click(*locator)
         self.selectDropDown(options)
 
     # 开始时间
     def inputStr_Start_time(self, value):
-        self.input(value, *TmnlInstallDetaiLocators.QRY_START_TIME)
+        self.input(value)  # , *TmnlInstallDetaiLocators.QRY_START_TIME)
 
     # 结束时间
     def inputStr_end_time(self, value):
-        self.input(value, *TmnlInstallDetaiLocators.QRY_END_TIME)
+        self.input(value)  #, *TmnlInstallDetaiLocators.QRY_END_TIME)
 
         # 查询
 
     def btn_workCount_qry(self):
-        self.click(*TmnlInstallDetaiLocators.BTN_WORK_COUNT_QRY)
+        # self.click(*TmnlInstallDetaiLocators.BTN_WORK_COUNT_QRY)
+        self.btn_query(True)
+
 
     # --------------------------------------终端调试------------------------------------------
     # 开始时间
     def inputStr_startTime_count(self, value):
-        # self.input(value, *TmnlInstallDetaiLocators.QRY_START_TIME_COUNT)
-        # self.input(value)
+        # self.input(value) #, *TmnlInstallDetaiLocators.QRY_START_TIME_COUNT)
         self.inputDate(value)
 
     # 结束时间
     def inputStr_endTime_Count(self, value):
-        # self.input(value, *TmnlInstallDetaiLocators.QRY_END_TIME_COUNT)
-        # self.input(value)
+        # self.input(value) #, *TmnlInstallDetaiLocators.QRY_END_TIME_COUNT)
         self.inputDate(value)
 
     # 申请单号
     def inputStr_applyNo_count(self, value):
-        # self.input(value, *TmnlInstallDetaiLocators.QRY_APPLY_STATE_COUNT)
+        # self.input(value) #, *TmnlInstallDetaiLocators.QRY_APPLY_STATE_COUNT)
         self.input(value)
 
     # 用户编号
     def inputStr_userNo_count(self, value):
-        # self.input(value, *TmnlInstallDetaiLocators.QRY_USER_NO_COUNT)
+        # self.input(value) #, *TmnlInstallDetaiLocators.QRY_USER_NO_COUNT)
         self.input(value)
 
     # 终端地址
     def inputStr_tmnlAddr_count(self, value):
-        # self.input(value, *TmnlInstallDetaiLocators.QRY_TMNL_ADDR_COUNT)
+        # self.input(value) #, *TmnlInstallDetaiLocators.QRY_TMNL_ADDR_COUNT)
         self.input(value)
 
     # 终端厂家
     def inputSel_tmnlFactory_count(self, options):
-        # self.input(options, *TmnlInstallDetaiLocators.QRY_TMNL_FACTORY_COUNT)
+        # self.input(options) #, *TmnlInstallDetaiLocators.QRY_TMNL_FACTORY_COUNT)
         self.selectCheckBox(options, sleep_sec=2)
 
     # 终端类型
     def inputSel_tmnlType_count(self, options):
-        # self.input(options, *TmnlInstallDetaiLocators.QRY_TMNL_TYPE_COUNT)
+        # self.input(options) #, *TmnlInstallDetaiLocators.QRY_TMNL_TYPE_COUNT)
         self.selectCheckBox(options, is_multi_tab=True, sleep_sec=2,
                             is_multi_elements=True)
 
     # 通信规约
     def inputSel_LCT_count(self, options):
-        # self.input(options, *TmnlInstallDetaiLocators.QRY_LCT_COUNT)
+        # self.input(options) #, *TmnlInstallDetaiLocators.QRY_LCT_COUNT)
         self.selectCheckBox(options)
 
     # 表类型

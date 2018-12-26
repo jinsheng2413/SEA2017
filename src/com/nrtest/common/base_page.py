@@ -118,14 +118,11 @@ class Page():
     本项目所有页面菜单的基类
     """
 
-    def __init__(self, driver, menuName=None, isActived=False):
+    def __init__(self, driver, menuName=None):
         self.driver = driver
         self.base_url = Setting.TEST_URL
         self.page_title = Setting.PAGE_TILE
         self.menu_name = menuName
-        # 多Tab页时判断Tab页是否已激活
-        self.isActivedTab = isActived
-        print('Page class init test !!!!')
 
     def save_img(self, img_name):
         """
@@ -488,13 +485,8 @@ class Page():
         打开Tab页
         :param tab_name:
         """
-        try:
-            if not self.isActivedTab:
-                locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
-                self.click(*locators)
-                self.isActivedTab = True
-        except BaseException as ex:
-            self.isActivedTab = False
+        locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
+        self.click(*locators)
 
     @property
     def exists_menu(self):

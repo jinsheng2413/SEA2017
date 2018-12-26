@@ -16,13 +16,13 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
 from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.flowAnaly_locators import FlowCountLocators
-# from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import FlowCountPage
+from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import FlowStaticPage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
 @ddt
-class TestFlowAnaly(unittest.TestCase,FlowCountPage):
+class TestFlowAnaly(unittest.TestCase,FlowStaticPage):
 
     @classmethod
     def setUpClass(cls):

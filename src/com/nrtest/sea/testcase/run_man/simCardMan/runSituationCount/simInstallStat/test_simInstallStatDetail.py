@@ -4,33 +4,32 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_flowCount.py
-@time: 2018/11/9 0009 9:44
+@file: test_simInstallStat.py
+@time: 2018/11/9 0009 9:17
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
-from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.simAlarmAnaly_page import AbnoralCountPage, AbnormalCountLocators
+from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.simInstallStat_locators import SimInstallStatLocators
+from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.simInstallStat_page import SimInstallStatPageDetail
 from com.nrtest.sea.task.commonMath import *
 
 
-# 运行管理-->SIM卡管理-->运行情况分析-->异常分析
+# 运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
+# 安装情况明细
 @ddt
-class TestAbnormalCount(unittest.TestCase,AbnoralCountPage):
+class TestSimInstallStat(unittest.TestCase, SimInstallStatPageDetail):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(RunSituationCount_data.simAlarmAnaly_para)
-        sleep(2)
-        cls.exec_script(cls,AbnormalCountLocators.START_DATE_JS)
+        cls.driver = openMenu(RunSituationCount_data.simInstallStat_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -63,20 +62,16 @@ class TestAbnormalCount(unittest.TestCase,AbnoralCountPage):
 
         #打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
-
-        #月份
-        self.inputStr_month(para['MONTH_COUNT'])
+        #运营商
+        self.inputSel_operator(para['OPERATOR'])
 
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*FlowCountLocators.TAB_ONE)
-        # self.assertTrue(result)
+        result = self.assert_context(*SimInstallStatLocators.TAB_ONE)
+        self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunSituationCount_data.simAlarmAnaly_para,RunSituationCount_data.simAlarmAnaly_tab_count))
+    @data(*DataAccess.getCaseData(RunSituationCount_data.simInstallStat_para))
     def test_query(self, para):
         self.query(para)
-
-
-

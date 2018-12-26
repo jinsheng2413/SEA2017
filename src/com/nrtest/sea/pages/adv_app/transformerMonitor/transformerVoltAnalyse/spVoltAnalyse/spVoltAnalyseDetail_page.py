@@ -19,16 +19,23 @@ class SpVoltAnalyseDetailPage(Page):
         self.openLeftTree(value)
 
     # 用户类型--打开并选择
-    def inputRSel_cons_type(self, name):
-        self.click(*SpVoltAnalyseDetailLocators.CONS_TYPE_SEL)
-        locator = self.get_select_locator(
-            SpVoltAnalyseDetailLocators.CONS_TYPE, name)
-        self.click(*locator)
+    def inputSel_cons_type(self, item):
+        # self.click(*SpVoltAnalyseDetailLocators.CONS_TYPE_SEL)
+        # locator = self.get_select_locator(
+        #     SpVoltAnalyseDetailLocators.CONS_TYPE, name)
+        # self.click(*locator)
+        self.selectDropDown(item)
+
+    # 日期类型
+    def inputChk_data_method(self, option):
+        self.clickRadioBox(option,True,True)
 
     # 查询日期
     def inputStr_query_date(self, value):
         self.input(value, *SpVoltAnalyseDetailLocators.QUERY_DATE)
+        # self.input(value)
 
     # 点击查询
-    def btn_query(self):
-        self.click(*SpVoltAnalyseDetailLocators.BTN_QUERY)
+    def btn_qry(self):
+        # self.click(*SpVoltAnalyseDetailLocators.BTN_QUERY)
+        self.btn_query()

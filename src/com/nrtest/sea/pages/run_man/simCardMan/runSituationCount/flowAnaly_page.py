@@ -15,40 +15,51 @@ from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.flowAnaly_loca
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
-class FlowCountPage(Page):
+# 流量统计
+class FlowStaticPage(Page):
 
     # 月份
     def inputStr_month(self, value):
-        self.input(value, *FlowCountLocators.QRY_MONTH)
+        # self.input(value, *FlowCountLocators.QRY_MONTH)
+        self.input(value)
 
         # 查询
     def btn_qry(self):
-            self.click(*FlowCountLocators.BTN_QRY)
+        # self.click(*FlowCountLocators.BTN_QRY)
+        self.btn_query()
 
-
-
+# 流量明细
 class FlowDeatilPage(Page):
 
     # 月份
     def inputStr_month(self, value):
-        self.input(value, *FlowDetailLocators.QRY_MONTH)
+        # self.input(value, *FlowDetailLocators.QRY_MONTH)
+        self.input(value)
 
     # 查询
     def btn_qry(self):
-        self.click(*FlowDetailLocators.BTN_QRY)
+        # self.click(*FlowDetailLocators.BTN_QRY)
+        self.btn_query()
 
-class SIMFlowCountPage(Page):
+# SIM卡超流量统计
+class OverFlowStaticPage(Page):
 
     # 统计时间
     def inputStr_countTime(self, value):
-        self.input(value, *SIMFlowCountLocators.QRY_COUNT_TIME)
+        # self.input(value, *SIMFlowCountLocators.QRY_COUNT_TIME)
+        self.input(value)
+
     #SIM卡号
     def inputStr_simCardNo(self,value):
-        self.input(value,*SIMFlowCountLocators.QRY_SIM_NO)
+        # self.input(value,*SIMFlowCountLocators.QRY_SIM_NO)
+        self.input(value)
+
     #终端地址
     def inputStr_tmnlAddr(self,value):
-        self.input(value,*SIMFlowCountLocators.QRY_TMNL_ADDR)
+        # self.input(value,*SIMFlowCountLocators.QRY_TMNL_ADDR)
+        self.input(value)
 
     # 查询
     def btn_qry(self):
-        self.click(*SIMFlowCountLocators.BTN_QRY)
+        # self.click(*SIMFlowCountLocators.BTN_QRY)
+        self.btn_query()

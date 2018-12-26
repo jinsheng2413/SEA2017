@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
+
 
 """
-@author: 陈越峰
+@author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_Tmnl.py
-@time: 2018/11/2 16:11
+@file: test_flowCount.py
+@time: 2018/11/9 0009 9:44
 @desc:
 """
 import unittest
@@ -13,27 +14,30 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
-from com.nrtest.sea.locators.run_man.clock.localBroadChkClock_locators import \
-    LocalBroadChkClockLocators
-from com.nrtest.sea.pages.run_man.clock.localBroadChkClock_page import LocalBroadChkClockPage
+from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
+from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.simAlarmAnaly_locators import AbnormalCountLocators
+from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.simAlarmAnaly_page import AbnoralStaticPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 运行管理→时钟管理→本地广播校时设置
+# 运行管理-->SIM卡管理-->运行情况分析-->异常分析
+# 异常统计
 @ddt
-class TestDemo(unittest.TestCase, LocalBroadChkClockPage):
+class TestAbnormalCount(unittest.TestCase, AbnoralStaticPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+        print("开始执行")
         # 打开菜单
-        cls.driver = openMenu(ClockData.para_LocalBroadChkClock)
+        cls.driver = openMenu(RunSituationCount_data.para_simAlarmAnaly)
+        # 点击Tab页标签
+        clickTabPage(RunSituationCount_data.para_simAlarmAnaly_static)
+        cls.exec_script(cls,AbnormalCountLocators.START_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        # 关闭页面
+        print("执行结束")
+        # 关闭菜单页面
         cls.closePages(cls)
 
     def setUp(self):
@@ -63,21 +67,13 @@ class TestDemo(unittest.TestCase, LocalBroadChkClockPage):
 
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
-        # 终端地址
-        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
-        # 终端类型
-        self.inputSel_tmnl_type(para['TMNL_TYPE'])
-        # 终端厂家
-        self.inputSel_tmnl_fac(para['TMNL_FAC'])
-        # 终端规约
-        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
-        # 设置状态
-        self.inputSel_set_status(para['SET_STATUS'])
+        #月份
+        self.inputStr_month(para['MONTH_COUNT'])
 
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*LocalBroadChkClockLocators.TABLE_DATA)
+        # result = self.assert_context(*FlowCountLocators.TAB_ONE)
         # self.assertTrue(result)
 
     def assert_query_result(self, para):
@@ -95,8 +91,10 @@ class TestDemo(unittest.TestCase, LocalBroadChkClockPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
+
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_LocalBroadChkClock))
+    @data(*DataAccess.getCaseData(RunSituationCount_data.para_simAlarmAnaly,
+                                  RunSituationCount_data.para_simAlarmAnaly_static))
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验
@@ -109,28 +107,10 @@ class TestDemo(unittest.TestCase, LocalBroadChkClockPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_LocalBroadChkClock,valCheck=True))
+    @data(*DataAccess.getCaseData(RunSituationCount_data.para_simAlarmAnaly,
+                                  RunSituationCount_data.para_simAlarmAnaly_static, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
-
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 终端类型
-    #     self.inputRSel_tmnl_type('全部')
-    #     # 终端厂家
-    #     self.inputRSel_tmnl_fac('宁波三星')
-    #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
-    #     self.assertTrue(result)
-
-    if __name__ == '__main__':
-        unittest.main()

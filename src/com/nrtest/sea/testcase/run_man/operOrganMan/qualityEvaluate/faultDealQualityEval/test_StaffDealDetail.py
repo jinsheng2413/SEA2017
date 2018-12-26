@@ -7,33 +7,33 @@
 @time: 2018/11/12 9:20
 @desc:
 """
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
-from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_locators import \
-    TmnlQualityEvalStaticLocators
-from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_page import \
-    TmnlQualityEvalStaticPage
+from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.faultDealQualityEval_locators import \
+    StaffDealDetailLocators
+from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.faultDealQualityEval_page import \
+    StaffDealDetailPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 运行管理→采集运维平台→采集终端质量评价
-# 终端质量评价统计
+# 运行管理→采集运维平台→故障处理质量评价
+# 人员处理明细
 @ddt
-class TestDemo(unittest.TestCase, TmnlQualityEvalStaticPage):
+class TestStaffDealStatic(TestCase, StaffDealDetailPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(OperOrganManData.para_CollTmnlQualityEval)
-        sleep(2)
-        cls.exec_script(cls, TmnlQualityEvalStaticLocators.QUERY_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(OperOrganManData.para_FaultDealQualityEval)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        menuPage.clickTabPage(OperOrganManData.para_FaultDealQualityEval_staff)
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -58,31 +58,56 @@ class TestDemo(unittest.TestCase, TmnlQualityEvalStaticPage):
 
     def query(self, para):
         """
+
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 供电单位
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        # 注册菜单
+        # self.menu_name = para['MENU_NAME']
+
+        # 打开左边树并选择ljf
+        self.openLeftTree(para['TREE_NODE'])
+
         # 用户类型
-        self.inputRSel_cons_type(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
-        # 终端厂家
-        self.inputRSel_tmnl_fac(para['TMNL_FAC'])
 
-        self.btn_query()
+        self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        result = self.assert_context(*TmnlQualityEvalStaticLocators.TABLE_DATA)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(OperOrganManData.para_CollTmnlQualityEval, OperOrganManData.para_TmnlQualityEvalStatic))
+    @data(*DataAccess.getCaseData(OperOrganManData.para_FaultDealQualityEval, OperOrganManData.para_FaultDealQualityEval_staff))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(OperOrganManData.para_FaultDealQualityEval, OperOrganManData.para_FaultDealQualityEval_staff, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)
 
     # def test_test(self):
     #     # 供电单位
@@ -99,6 +124,3 @@ class TestDemo(unittest.TestCase, TmnlQualityEvalStaticPage):
     #     # 校验
     #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-    if __name__ == '__main__':
-        unittest.main()

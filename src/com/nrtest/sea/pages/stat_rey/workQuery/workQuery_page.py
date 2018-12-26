@@ -17,29 +17,31 @@ from com.nrtest.sea.locators.stat_rey.workQuery.WorkQuery_locators import WorkQu
 class WorkCountPage(Page):
     # 日期
     def inputStr_date(self, value):
-        self.input(value, *WorkCountLocators.QRY_DATE)
+        self.input(value)#, *WorkCountLocators.QRY_DATE)
 
     # 查询
     def btn_qry(self):
-        self.click(*WorkCountLocators.BTN_QRY)
-
+        #self.click(*WorkCountLocators.BTN_QRY)
+        self.btn_query()
 
 class WorkQueryPage(Page):
     # 异常编号
     def inputStr_abnormalNo(self, value):
-        self.input(value, *WorkQueryLocators.QRY_ABNORMAL_NO)
+        self.input(value)#, *WorkQueryLocators.QRY_ABNORMAL_NO)
 
     # 异常状态
-    def inputSel_abnormalStatus(self, index):
-        self.click(*WorkQueryLocators.QRY_ABNORMAL_STATUS)
-        locator = self.get_select_locator(
-            WorkQueryLocators.QRY_ABNORMAL_STATUS_VALUE, index)
-        self.click(*locator)
+    def inputSel_abnormalStatus(self, options):
+        # self.click(*WorkQueryLocators.QRY_ABNORMAL_STATUS)
+        # locator = self.get_select_locator(
+        #     WorkQueryLocators.QRY_ABNORMAL_STATUS_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(options)
         # 日期
 
     def inputStr_date(self, value):
-        self.input(value, *WorkQueryLocators.QRY_DATE)
+        self.input(value)#, *WorkQueryLocators.QRY_DATE)
 
     # 查询
     def btn_qry(self):
-        self.click(*WorkQueryLocators.BTN_QRY)
+        #self.click(*WorkQueryLocators.BTN_QRY)
+        self.btn_query()

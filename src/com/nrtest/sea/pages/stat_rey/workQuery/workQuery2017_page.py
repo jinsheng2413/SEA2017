@@ -16,48 +16,52 @@ from com.nrtest.sea.locators.stat_rey.workQuery.workQuery2017_locators import Wo
 # 统计查询→工单查询→工单查询2017
 class WorkCount2017Page(Page):
     # 工单类型
-    def inputSel_workTitle(self, index):
-        self.click(*WorkCount2017Locators.QRY_WORK_TITLE)
-        locator = self.get_select_locator(
-            WorkCount2017Locators.QRY_WORK_TITLE_VALUE, index)
-        self.click(*locator)
+    def inputSel_workTitle(self, options):
+        # self.click(*WorkCount2017Locators.QRY_WORK_TITLE)
+        # locator = self.get_select_locator(
+        #     WorkCount2017Locators.QRY_WORK_TITLE_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(options)
 
     # 查询
     def btn_qry(self):
-        self.click(*WorkCount2017Locators.BTN_QRY)
+        #self.click(*WorkCount2017Locators.BTN_QRY)
+        self.btn_query()
 
 
 class WorkQuery2017Page(Page):
     # 工单编号
     def inputStr_workNo(self, value):
-        self.input(value, *WorkQuery2017Locators.QRY_WORK_NO)
+        self.input(value)#, *WorkQuery2017Locators.QRY_WORK_NO)
 
     # 工单处理人
     def inputStr_workMan(self, value):
-        self.input(value, *WorkQuery2017Locators.QRY_WORK_MAN)
+        self.input(value)#, *WorkQuery2017Locators.QRY_WORK_MAN)
 
     # 工单类型
-    def inputSel_workTitle(self, index):
-        self.click(*WorkQuery2017Locators.QRY_WORK_TITLE)
-        locator = self.get_select_locator(
-            WorkQuery2017Locators.QRY_WORK_TITLE_VALUE, index)
-        self.click(*locator)
+    def inputSel_workTitle(self, options):
+        # self.click(*WorkQuery2017Locators.QRY_WORK_TITLE)
+        # locator = self.get_select_locator(
+        #     WorkQuery2017Locators.QRY_WORK_TITLE_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(options)
 
     # 工单状态
-    def inputSel_workStatus(self, index):
-        self.click(*WorkQuery2017Locators.QRY_WORK_STATUS)
-        locator = self.get_select_locator(
-            WorkQuery2017Locators.QRY_WORK_STATUS_VALUE, index)
-        self.click(*locator)
-
+    def inputSel_workStatus(self, options):
+        # self.click(*WorkQuery2017Locators.QRY_WORK_STATUS)
+        # locator = self.get_select_locator(
+        #     WorkQuery2017Locators.QRY_WORK_STATUS_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(options)
     # 工单发生时间
     def inputStr_startDate(self, value):
-        self.input(value, *WorkQuery2017Locators.QRY_STARTDATE)
+        self.input(value)#, *WorkQuery2017Locators.QRY_STARTDATE)
 
     # 工单完成时间
     def inputStr_endDate(self, value):
-        self.input(value, *WorkQuery2017Locators.QRY_ENDDATE)
+        self.input(value)#, *WorkQuery2017Locators.QRY_ENDDATE)
 
     # 查询
     def btn_qry(self):
-        self.click(*WorkQuery2017Locators.BTN_QRY)
+        #self.click(*WorkQuery2017Locators.BTN_QRY)
+        self.btn_query()

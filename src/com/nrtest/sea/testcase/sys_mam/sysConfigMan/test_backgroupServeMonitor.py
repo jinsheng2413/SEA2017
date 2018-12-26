@@ -28,7 +28,7 @@ class TestBackgroupServeMonitor(unittest.TestCase, BackgroupServeMonitorPage):
         print('开始执行')
         # # 打开菜单（需要传入对应的菜单编号）
         # cls.driver = openMenu(SysConfigManData.BackgroundServeMonitor_para)
-        # 打开菜单（需要传入对应的菜单编号）ljf
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SysConfigManData.BackgroundServeMonitor_para)
         super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码

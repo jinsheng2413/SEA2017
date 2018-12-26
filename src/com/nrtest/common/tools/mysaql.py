@@ -68,6 +68,9 @@ def modifyData(menuNo):
              p.update(sql3, ['01', menuNo, '00'])
              tab3 = 3
 #没有tab页
+readData('99952500', name='升级人员')
+# 有tab页
+# readData('99951100',tabNmae='',name= '部门')
 # readData('99952200',name= '供电单位')
 # 有tab页
 readData('99952200',tabNmae='系统基本参数设置',name= '上限值')

@@ -8,7 +8,6 @@
 @desc:
 """
 
-import unittest
 from time import sleep
 from unittest import TestCase
 
@@ -17,9 +16,9 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysConfigMan.sysConfigMan_data import SysConfigManData
-from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysParameterMan_page import SysAbnormalParaSetPage, \
-    SysAbnormalParaSetLocators
+from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysParameterMan_page import SysAbnormalParaSetPage
 from com.nrtest.sea.task.commonMath import *
+
 
 # 系统管理→系统配置管理→系统参数管理
 # 系统管理→系统配置管理→系统参数管理→系统异常参数设置
@@ -27,7 +26,7 @@ from com.nrtest.sea.task.commonMath import *
 class TestSysBasicParaSet(TestCase, SysAbnormalParaSetPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+        print('开始执行 ')
         # # 打开菜单（需要传入对应的菜单编号）
         # cls.driver = openMenu(SysConfigManData.SysParameterMan_para)
 
@@ -64,7 +63,7 @@ class TestSysBasicParaSet(TestCase, SysAbnormalParaSetPage):
         self.inputSel_para_name(para['PARA_NAME'])
         # 参数编码
         self.inputStr_para_no(para['PARA_NO'])
-        # 参数项名称
+        # 参数项 名称
         self.inputStr_para_item_name(para['PARA_ITEM_NAME'])
         # 参数项编码
         self.inputStr_para_item_no(para['PARA_ITEM_NO'])

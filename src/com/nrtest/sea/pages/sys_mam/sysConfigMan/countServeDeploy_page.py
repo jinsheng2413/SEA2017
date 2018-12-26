@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.sysConfigMan.countServeDeploy_locators import CountServeDeployLocators
 
 
 # 系统管理→系统配置管理→计算服务配置
@@ -21,7 +20,7 @@ class CountServeDeployPage(Page):
         # self.click(*locator)
         self.selectDropDown(option)
 
-    # 服务名称
+    # 服务 名称
     def inputSel_serve_name(self, option):
         # self.click(*CountServeDeployLocators.QRY_SERVE_NAME)
         # locator = self.get_select_locator(CountServeDeployLocators.QRY_SERVE_NAME_VALUE, option)

@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.sysConfigMan.sysParameterMan_locators import *
 
 
 # 系统管理→系统配置管理→系统参数管理
@@ -22,7 +21,7 @@ class SysBasicParaSetPage(Page):
         # self.click(*locator)
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
-    # 参数编码
+    # 参数 编码
     def inputStr_para_no(self, content):
         self.curr_input(content, is_multi_tab=True, is_multi_elements=True)
 
@@ -52,7 +51,7 @@ class SysAbnormalParaSetPage(Page):
     def inputStr_para_no(self, content):
         self.curr_input(content,is_multi_tab=True,is_multi_elements=True) #, *SysAbnormalParaSetLocators.QRY_PARA_NO)
 
-    # 参数项名称
+    # 参数 项 名称
     def inputStr_para_item_name(self, content):
         self.curr_input(content, is_multi_tab=True, is_multi_elements=True) #, *SysAbnormalParaSetLocators.QRY_PARA_ITEM_NAME)
 

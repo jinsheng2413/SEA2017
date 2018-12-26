@@ -16,8 +16,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysConfigMan.sysConfigMan_data import SysConfigManData
-from com.nrtest.sea.pages.sys_mam.sysConfigMan.countServeDeploy_page import CountServeDeployPage, \
-    CountServeDeployLocators
+from com.nrtest.sea.pages.sys_mam.sysConfigMan.countServeDeploy_page import CountServeDeployPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -26,7 +25,7 @@ from com.nrtest.sea.task.commonMath import *
 class TestCountServeDeploy(unittest.TestCase, CountServeDeployPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+        print('开始执行 ')
         # # 打开菜单（需要传入对应的菜单编号）
         # cls.driver = openMenu(SysConfigManData.CountServeDeploy_para)
         # 打开菜单（需要传入对应的菜单编号）ljf

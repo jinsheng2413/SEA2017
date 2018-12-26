@@ -13,7 +13,7 @@ from com.nrtest.common.base_page import Page
 
 # 系统管理→系统配置管理→后台服务监测
 class BackgroupServeMonitorPage(Page):
-    # 查询日期
+    # 查询 日期
     def inputDt_date(self, content):
         # self.exec_script(BackgroupServeMonitorLocators.DATE_JS)
         # self.input(content, *BackgroupServeMonitorLocators.QRY_DATE)

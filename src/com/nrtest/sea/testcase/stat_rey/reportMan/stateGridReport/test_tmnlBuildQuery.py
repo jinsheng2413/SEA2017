@@ -11,27 +11,28 @@ import unittest
 from time import sleep
 
 from ddt import ddt, data
-
+from unittest import TestCase
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_data import TmnlBuildQuery_data
 from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_page import TmnlBuildQueryPage, \
     TmnlBuildQueryLocators
 from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 统计查询--》报表管理--》国网报表--》智能电能表及终端设备建设情况
 @ddt
-class TestTmnlBuildQuery(unittest.TestCase, TmnlBuildQueryPage):
+class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(TmnlBuildQuery_data.TmnlBuildQuery_para)
-        sleep(2)
-        cls.exec_script(cls, TmnlBuildQueryLocators.START_DATE_JS)
-        cls.exec_script(cls, TmnlBuildQueryLocators.END_DATE_JS)
+        menuPage = MenuPage.openMenu(TmnlBuildQuery_data.TmnlBuildQuery_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+       #menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -78,11 +79,34 @@ class TestTmnlBuildQuery(unittest.TestCase, TmnlBuildQueryPage):
         self.btn_qry()
         self.sleep_time(2)
 
-        # 校验
-        # result = self.assert_context(*TmnlBuildQueryLocators.TAB_ONE)
-        # self.assertTrue(result)
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TmnlBuildQuery_data.TmnlBuildQuery_para))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(TmnlBuildQuery_data.TmnlBuildQuery_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)
+

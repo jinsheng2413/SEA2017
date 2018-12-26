@@ -10,8 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.simAlarmAnaly_locators import AbnormalCountLocators,AbnormalDetailLocators
-
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->异常分析

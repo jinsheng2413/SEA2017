@@ -13,7 +13,7 @@ class RunSituationCount_data:
     para_simInstallStat_static = '安装情况统计'
     para_simInstallStat_detail = '安装情况明细'
     # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
-    para_flowAnaly= '99933320'
+    para_flowAnaly = '99933320'
     para_flowAnaly_static = '流量统计'
     para_flowAnaly_detail = '流量明细'
     para_flowAnaly_overflowstatic = 'SIM卡超流量统计'
@@ -21,4 +21,3 @@ class RunSituationCount_data:
     para_simAlarmAnaly = '99933330'
     para_simAlarmAnaly_static = '异常统计'
     para_simAlarmAnaly_detail = '异常明细'
-

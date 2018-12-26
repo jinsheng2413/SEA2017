@@ -8,18 +8,20 @@
 @desc:
 """
 
-#统计查询--数据分析--电量分析--电量排名分析
+# 统计查询--数据分析--电量分析--电量排名分析
+
+# 统计查询--数据分析--电量分析--电量排名分析
 import unittest
 from time import sleep
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.dataAnalyse.loadrankanalyse_para import LoadRankAnalyse_para
 from com.nrtest.sea.pages.stat_rey.dataAnalyse.powerSortAnalyse_page import PowerSortAnalysePage, \
     PowerSortAnalyseLocators
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.BeautifulReport import BeautifulReport
 
 
 @ddt
@@ -106,7 +108,7 @@ class TestPowerSortAnalyse(unittest.TestCase, PowerSortAnalysePage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LoadRankAnalyse_para.powerSortAnalyse_para,valCheck=True))
+    @data(*DataAccess.getCaseData(LoadRankAnalyse_para.powerSortAnalyse_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

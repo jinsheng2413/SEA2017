@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint.bcVoltMonitorPointData_locators import \
-    BcVoltMonitorPointDataLocators
 
 
 class BcVoltMonitorPointDataPage(Page):

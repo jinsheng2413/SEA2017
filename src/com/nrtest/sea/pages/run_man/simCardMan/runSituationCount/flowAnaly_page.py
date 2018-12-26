@@ -10,8 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.flowAnaly_locators import FlowCountLocators,FlowDetailLocators,SIMFlowCountLocators
-
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
@@ -28,6 +26,7 @@ class FlowStaticPage(Page):
         # self.click(*FlowCountLocators.BTN_QRY)
         self.btn_query()
 
+
 # 流量明细
 class FlowDeatilPage(Page):
 
@@ -40,6 +39,7 @@ class FlowDeatilPage(Page):
     def btn_qry(self):
         # self.click(*FlowDetailLocators.BTN_QRY)
         self.btn_query()
+
 
 # SIM卡超流量统计
 class OverFlowStaticPage(Page):

@@ -92,7 +92,7 @@ class TestWorkQuery(unittest.TestCase, WorkQueryPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery_para,WorkQuery_data.WorkQuery_tab_query))
+    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery_para, WorkQuery_data.WorkQuery_tab_query))
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验
@@ -105,7 +105,7 @@ class TestWorkQuery(unittest.TestCase, WorkQueryPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery_para,WorkQuery_data.WorkQuery_tab_count,valCheck=True))
+    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery_para, WorkQuery_data.WorkQuery_tab_count, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

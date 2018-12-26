@@ -97,7 +97,6 @@ class TestBcVoltMonitorPointData(unittest.TestCase, BcVoltMonitorPointDataPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_BcVoltMonitorPoint,
                                   TradnsformerMonitorData.para_BcVoltMonitorPointData))
@@ -111,7 +110,6 @@ class TestBcVoltMonitorPointData(unittest.TestCase, BcVoltMonitorPointDataPage):
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
-
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_BcVoltMonitorPoint,

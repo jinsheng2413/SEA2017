@@ -97,7 +97,6 @@ class TestPowerFactorCountDetail(unittest.TestCase, PowerFactorCountDetailPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_PowerFactorCount,
                                   TradnsformerMonitorData.para_PowerFactorCount_detail))

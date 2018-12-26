@@ -10,24 +10,23 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.stat_rey.workQuery.WorkQuery_locators import WorkQueryLocators, WorkCountLocators
 
 
 # 统计查询→工单查询→工单查询
 class WorkCountPage(Page):
     # 日期
     def inputStr_date(self, value):
-        self.input(value)#, *WorkCountLocators.QRY_DATE)
+        self.input(value)  # , *WorkCountLocators.QRY_DATE)
 
     # 查询
     def btn_qry(self):
-        #self.click(*WorkCountLocators.BTN_QRY)
+        # self.click(*WorkCountLocators.BTN_QRY)
         self.btn_query()
 
 class WorkQueryPage(Page):
     # 异常编号
     def inputStr_abnormalNo(self, value):
-        self.input(value)#, *WorkQueryLocators.QRY_ABNORMAL_NO)
+        self.input(value)  # , *WorkQueryLocators.QRY_ABNORMAL_NO)
 
     # 异常状态
     def inputSel_abnormalStatus(self, options):
@@ -39,9 +38,9 @@ class WorkQueryPage(Page):
         # 日期
 
     def inputStr_date(self, value):
-        self.input(value)#, *WorkQueryLocators.QRY_DATE)
+        self.input(value)  # , *WorkQueryLocators.QRY_DATE)
 
     # 查询
     def btn_qry(self):
-        #self.click(*WorkQueryLocators.BTN_QRY)
+        # self.click(*WorkQueryLocators.BTN_QRY)
         self.btn_query()

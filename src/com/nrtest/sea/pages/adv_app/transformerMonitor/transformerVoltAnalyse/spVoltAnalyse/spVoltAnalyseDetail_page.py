@@ -28,7 +28,7 @@ class SpVoltAnalyseDetailPage(Page):
 
     # 日期类型
     def inputChk_data_method(self, option):
-        self.clickRadioBox(option,True,True)
+        self.clickRadioBox(option, True, True)
 
     # 查询日期
     def inputStr_query_date(self, value):

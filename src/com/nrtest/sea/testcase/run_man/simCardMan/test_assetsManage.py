@@ -120,6 +120,3 @@ class TestAssetsManage(unittest.TestCase,AssetsManagePage):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
-
-
-

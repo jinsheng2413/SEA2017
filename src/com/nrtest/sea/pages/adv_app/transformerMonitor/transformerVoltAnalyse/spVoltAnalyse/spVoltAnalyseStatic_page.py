@@ -28,7 +28,7 @@ class SpVoltAnalyseStaticPage(Page):
 
     # 日期类型
     def inputChk_data_method(self, option):
-        self.clickRadioBox(option,True,True)
+        self.clickRadioBox(option, True, True)
 
     # 查询日期
     def inputStr_query_date(self, value):
@@ -37,5 +37,5 @@ class SpVoltAnalyseStaticPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        #self.click(*SpVoltAnalyseStaticLocators.BTN_QUERY)
+        # self.click(*SpVoltAnalyseStaticLocators.BTN_QUERY)
         self.btn_query()

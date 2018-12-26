@@ -9,10 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.clock.clockRun_locators import FrequentlyCheckMetLocators
-from com.nrtest.sea.locators.run_man.clock.clockRun_locators import FrequentlyCheckTmnlLocators
-from com.nrtest.sea.locators.run_man.clock.clockRun_locators import StaticByFacLocators
-from com.nrtest.sea.locators.run_man.clock.clockRun_locators import StaticByOrgLocators
 
 
 # 运行管理→时钟管理→时钟运行质量分析

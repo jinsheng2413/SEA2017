@@ -15,8 +15,6 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint.bcVoltMonitorPointQuery_locators import \
-    BcVoltMonitorPointQueryLocators
 from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint.bcVoltMonitorPointQuery_page import \
     BcVoltMonitorPointQueryPage
 from com.nrtest.sea.task.commonMath import *
@@ -94,7 +92,6 @@ class TestBcVoltMonitorPointQuery(unittest.TestCase, BcVoltMonitorPointQueryPage
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_BcVoltMonitorPoint,
                                   TradnsformerMonitorData.para_BcVoltMonitorPointQuery))
@@ -108,7 +105,6 @@ class TestBcVoltMonitorPointQuery(unittest.TestCase, BcVoltMonitorPointQueryPage
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
-
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_BcVoltMonitorPoint,

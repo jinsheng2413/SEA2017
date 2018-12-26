@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.clock.localBroadChkClock_locators import LocalBroadChkClockLocators
 
 
 # 运行管理→时钟管理→本地广播校时设置

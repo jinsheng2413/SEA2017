@@ -9,9 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import AutoCheckPolicyLocators
-from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import TmnlClockDetailLocators
-from com.nrtest.sea.locators.run_man.clock.tTmnlCheckClock_locators import TmnlClockStaticLocators
 
 
 # 运行管理→时钟管理→终端对时

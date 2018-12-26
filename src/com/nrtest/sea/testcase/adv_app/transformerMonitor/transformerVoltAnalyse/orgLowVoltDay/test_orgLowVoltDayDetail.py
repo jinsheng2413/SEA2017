@@ -112,7 +112,6 @@ class TestOrgLowVoltDayDetail(unittest.TestCase, OrgLowVoltDayDetailPage):
         self.assert_query_result(para)
         self.end_case(para)
 
-
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_OrgLowVoltDay,
                                   TradnsformerMonitorData.para_OrgLowVoltDayDetail, valCheck=True))

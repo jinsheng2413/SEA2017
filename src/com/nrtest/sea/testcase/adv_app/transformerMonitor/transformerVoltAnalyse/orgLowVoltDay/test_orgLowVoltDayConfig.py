@@ -15,8 +15,6 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayConfig_locators import \
-    OrgLowVoltDayConfigLocators
 from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayConfig_page import \
     OrgLowVoltDayConfigPage
 from com.nrtest.sea.task.commonMath import *
@@ -73,6 +71,7 @@ class TestOrgLowVoltDayConfig(unittest.TestCase, OrgLowVoltDayConfigPage):
 
         self.btn_qry()
         self.sleep_time(2)
+
     #     # 校验
     #     result = self.assert_context(*OrgLowVoltDayConfigLocators.TABLE_DATA)
     #     self.assertTrue(result)

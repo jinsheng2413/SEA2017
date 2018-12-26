@@ -10,8 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.simInstallStat_locators import SimInstallStatLocators
-
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
@@ -29,6 +27,7 @@ class SimInstallStatPageStatic(Page):
     def btn_qry(self):
         # self.click(*SimInstallStatLocators.BTN_QRY)
         self.btn_query()
+
 
 # 运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
 # 安装情况明细

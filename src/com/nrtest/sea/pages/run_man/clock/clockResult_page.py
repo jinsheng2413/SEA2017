@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.clock.clockResult_locators import ClockResultDetailLocators
-from com.nrtest.sea.locators.run_man.clock.clockResult_locators import ClockResultStaticLocators
 
 
 # 运行管理→时钟管理→对时结果分析

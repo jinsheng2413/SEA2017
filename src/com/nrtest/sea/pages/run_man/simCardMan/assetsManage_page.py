@@ -10,7 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.simCardMan.assetsManage_locators import AssetsManageLocators
 
 
 #运行管理-->SIM卡管理-->资产管理

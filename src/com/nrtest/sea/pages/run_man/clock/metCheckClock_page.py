@@ -9,10 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.clock.metCheckClock_locators import AutoCheckPolicyLocators
-from com.nrtest.sea.locators.run_man.clock.metCheckClock_locators import MetClockDayStaticLocators
-from com.nrtest.sea.locators.run_man.clock.metCheckClock_locators import MetClockDetailLocators
-from com.nrtest.sea.locators.run_man.clock.metCheckClock_locators import MetClockMonthStaticLocators
 
 
 # 运行管理→时钟管理→电能表对时

@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.transformerMonitor.powerFactorCount.powerFactorCountDetail_locators import \
-    PowerFactorCountDetailLocators
 
 
 class PowerFactorCountDetailPage(Page):

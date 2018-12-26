@@ -14,8 +14,6 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
-from com.nrtest.sea.locators.run_man.clock.remoteBroadChkClock_locators import \
-    RemoteBroadChkClockLocators
 from com.nrtest.sea.pages.run_man.clock.remoteBroadChkClock_page import RemoteBroadChkClockPage
 from com.nrtest.sea.task.commonMath import *
 
@@ -109,7 +107,7 @@ class TestDemo(unittest.TestCase, RemoteBroadChkClockPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_RemoteBroadChkClock,valCheck=True))
+    @data(*DataAccess.getCaseData(ClockData.para_RemoteBroadChkClock, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

@@ -98,7 +98,6 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, SpVoltAnalyseDetailPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_SpVoltAnalyse,
                                   TradnsformerMonitorData.para_SpVoltAnalyse_detail))
@@ -112,7 +111,6 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, SpVoltAnalyseDetailPage):
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
-
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_SpVoltAnalyse,

@@ -43,32 +43,32 @@ class Login:
         elementHeight = imageMask.location['y'] + imageMask.size['height']
 
         with Image.open(Setting.SCREENSHOTS_PATH + 'photo.png') as img_file:  # type: Image.Image
-            da = img_file.size
-            if da[0] == 1920:
-                img_code = img_file.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
+            img_sizes = img_file.size
+            if img_sizes[0] == 1920:
+                img_code = img_file.crop((left + 285, top + 130, elementWidth + 290, elementHeight + 130))
             else:
                 img_code = img_file.crop((left, top, elementWidth, elementHeight))
-
             img_code.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
-            text = pytesseract.image_to_string(Setting.SCREENSHOTS_PATH + 'photo2.png')
-            txt = text.replace(' ', '')
+
+        text = pytesseract.image_to_string(Setting.SCREENSHOTS_PATH + 'photo2.png')
+        txt = text.replace(' ', '')
         return txt
 
-    def _cleanScreen(self, loginPage):
+    def _cleanScreen(self, driver):
         """
         登录成功失败判断与清屏处理（如，告警提示框等）
-        :param loginPage:
+        :param driver:
         """
 
-        con = loginPage.driver.find_element_by_tag_name('body').text
+        con = driver.find_element_by_tag_name('body').text
         is_failed = True
         if '重要信息推出' in con:
             is_failed = False  # 登录成功
             logger.info('%s成功登陆系统' % self.username)
             if '登录异常' in con:
-                loginPage.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
+                driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
             if '账号异常信息' in con:
-                loginPage.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
+                driver.find_element(*LoginPageLocators.BTN_ARROW).click()
         return is_failed
 
     def login(self):

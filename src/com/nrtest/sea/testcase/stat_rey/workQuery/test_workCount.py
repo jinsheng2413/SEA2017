@@ -102,7 +102,7 @@ class TestWorkCount(unittest.TestCase, WorkCountPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery_tab_count,valCheck=True))
+    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery_tab_count, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

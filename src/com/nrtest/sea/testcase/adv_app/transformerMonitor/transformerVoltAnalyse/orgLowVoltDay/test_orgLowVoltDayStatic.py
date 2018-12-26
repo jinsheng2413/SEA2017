@@ -102,7 +102,6 @@ class TestBcVoltMonitorPointQuery(unittest.TestCase, OrgLowVoltDayStaticPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_OrgLowVoltDay,
                                   TradnsformerMonitorData.para_OrgLowVoltDayStatic))
@@ -116,7 +115,6 @@ class TestBcVoltMonitorPointQuery(unittest.TestCase, OrgLowVoltDayStaticPage):
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
-
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_OrgLowVoltDay,

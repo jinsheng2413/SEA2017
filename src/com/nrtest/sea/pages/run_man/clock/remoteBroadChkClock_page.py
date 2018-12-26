@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.clock.remoteBroadChkClock_locators import RemoteBroadChkClockLocators
 
 
 # 运行管理→时钟管理→远程广播校时设置

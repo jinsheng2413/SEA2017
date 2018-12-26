@@ -41,6 +41,7 @@ class TmnlInstallDetaiPage(Page):
     # 开始时间
     def inputStr_startTime_count(self, value):
         # self.input(value) #, *TmnlInstallDetaiLocators.QRY_START_TIME_COUNT)
+        # ljf
         self.inputDate(value)
 
     # 结束时间

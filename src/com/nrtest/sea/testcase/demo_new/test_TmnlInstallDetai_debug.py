@@ -25,7 +25,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）
+        # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(DataGatherMan_data.tmnlInstallDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
@@ -63,7 +63,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         # 注册菜单
         # self.menu_name = para['MENU_NAME']
 
-        # 打开左边树并选择
+        # 打开左边树并选择ljf
         self.openLeftTree(para['TREE_NODE'])
 
         # 开始时间

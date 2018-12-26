@@ -35,8 +35,8 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
-        # 刷新浏览器
-        # cls.closePages(cls)
+        # 关闭菜单页面
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -46,7 +46,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         :return:
         """
 

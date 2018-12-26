@@ -15,8 +15,8 @@ from com.nrtest.sea.locators.adv_app.transformerMonitor.powerFactorCount.powerFa
 
 class PowerFactorCountStaticPage(Page):
     # 供电单位
-    def inputStr_org_no(self, value):
-        self.openLeftTree(value)
+    # def inputStr_org_no(self, value):
+    #     self.openLeftTree(value)
 
     # 用户类型--打开并选择
     def inputSel_cons_type(self, item):

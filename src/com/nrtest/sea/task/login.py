@@ -50,9 +50,7 @@ class Login:
                 img_code = img_file.crop((left, top, elementWidth, elementHeight))
 
             img_code.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
-
-        with Image.open(Setting.SCREENSHOTS_PATH + 'photo2.png') as file:
-            text = pytesseract.image_to_string(file)
+            text = pytesseract.image_to_string(Setting.SCREENSHOTS_PATH + 'photo2.png')
             txt = text.replace(' ', '')
         return txt
 

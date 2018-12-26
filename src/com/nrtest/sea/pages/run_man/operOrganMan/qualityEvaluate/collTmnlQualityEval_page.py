@@ -30,7 +30,7 @@ class TmnlQualityEvalStaticPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *TmnlQualityEvalStaticLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 终端厂家--打开并选择
     def inputRSel_tmnl_fac(self, options):
@@ -84,12 +84,12 @@ class TmnlQualityEvalDetailPage(Page):
     # 故障开始日期
     def inputStr_query_start_date(self, value):
         # self.input(value, *TmnlQualityEvalDetailLocators.START_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 故障结束日期
     def inputStr_query_end_date(self, value):
         # self.input(value, *TmnlQualityEvalDetailLocators.END_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):

@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
+
 
 """
-@author: 陈越峰
+@author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_Tmnl.py
-@time: 2018/11/12 9:20
+@file: test_OutMemberMan_Troop.py
+@time: 2018/11/13 0013 10:16
 @desc:
 """
 from unittest import TestCase
@@ -13,32 +14,28 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
-from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_locators import \
-    TmnlQualityEvalDetailLocators
-from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_page import \
-    TmnlQualityEvalDetailPage
+from com.nrtest.sea.data.run_man.collegeywplat.collegeywplat_data import Collegeywplat_data
+from com.nrtest.sea.pages.collegeywplat.outMemberMan_page import OutMemberManPage, OutNameTroopMemberLocators
 from com.nrtest.sea.task.commonMath import *
 
 
-# 运行管理→采集运维平台→采集终端质量评价
-# 终端质量评价明细
+# 运行管理-->采集运维平台-->组织运维管理
 @ddt
-class TestTmnlQualityEvalDetail(TestCase, TmnlQualityEvalDetailPage):
+class TestOutMemberManTroop(TestCase,OutMemberManPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(OperOrganManData.para_CollTmnlQualityEval)
+        menuPage = MenuPage.openMenu(Collegeywplat_data.para_operOrganMan)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        menuPage.clickTabPage(OperOrganManData.para_TmnlQualityEval_detail)
+        menuPage.clickTabPage(Collegeywplat_data.para_operOrganMan_member)
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        # 关闭页面
+        print("执行结束")
+        # 关闭菜单页面
         cls.closePages(cls)
 
     def setUp(self):
@@ -67,21 +64,11 @@ class TestTmnlQualityEvalDetail(TestCase, TmnlQualityEvalDetailPage):
         # 注册菜单
         # self.menu_name = para['MENU_NAME']
 
-        # 打开左边树并选择ljf
+        # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
-        # 故障严重程度
-        self.inputSel_fault_level(para['FAULT_LEVEL'])
-        # 终端厂家
-        self.inputSel_tmnl_fac(para['TMNL_FAC'])
-        # 故障类别
-        self.inputSel_fault_type(para['FAULT_TYPE'])
-        # 故障开始日期
-        self.inputStr_query_start_date(para['START_DATE'])
-        # 故障开始日期
-        self.inputStr_query_end_date(para['END_DATE'])
+        #外包队伍名称
+        self.inputStr_outName(para['OUT_NAME'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -102,7 +89,7 @@ class TestTmnlQualityEvalDetail(TestCase, TmnlQualityEvalDetailPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(OperOrganManData.para_CollTmnlQualityEval, OperOrganManData.para_TmnlQualityEval_detail))
+    @data(*DataAccess.getCaseData(Collegeywplat_data.para_operOrganMan, Collegeywplat_data.para_operOrganMan_member))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -110,25 +97,12 @@ class TestTmnlQualityEvalDetail(TestCase, TmnlQualityEvalDetailPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(OperOrganManData.para_CollTmnlQualityEval, OperOrganManData.para_TmnlQualityEval_detail, valCheck=True))
+    @data(*DataAccess.getCaseData(Collegeywplat_data.para_operOrganMan, Collegeywplat_data.para_operOrganMan_member, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
 
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 终端类型
-    #     self.inputRSel_tmnl_type('全部')
-    #     # 终端厂家
-    #     self.inputRSel_tmnl_fac('宁波三星')
-    #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
-    #     self.assertTrue(result)
+
+

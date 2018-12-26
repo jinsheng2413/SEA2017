@@ -9,7 +9,7 @@
 """
 class Collegeywplat_data:
  # 运行管理-->采集运维平台-->组织运维管理
- outMemberMan_para = '99934200'
- outMemberMan_tab_Troop = '外包队伍管理'
- outMemberMan_tab_TroopMenber = '外包队伍成员管理'
+ para_operOrganMan = '99934200'
+ para_operOrganMan_ranks = '外包队伍管理'
+ para_operOrganMan_member = '外包队伍成员管理'
 

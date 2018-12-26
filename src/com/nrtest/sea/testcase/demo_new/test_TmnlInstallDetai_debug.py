@@ -30,6 +30,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod

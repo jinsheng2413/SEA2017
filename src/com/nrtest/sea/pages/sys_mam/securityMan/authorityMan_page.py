@@ -16,18 +16,31 @@ from com.nrtest.sea.locators.sys_mam.securityMan.authorityMan_locators import Au
 class AuthorityManPage(Page):
     # 工号
     def inputStr_staff_no(self, content):
-        self.input(content, *AuthorityManLocators.QRY_STAFF_NO)
+        # #self.input(content, *AuthorityManLocators.QRY_STAFF_NO)
+
+        # self.input(content)
+
+        self.input(content)
+        # self.curr_input(content,is_multi_tab=True,is_multi_elements=True)
 
     # 用户名
     def inputStr_user_name(self, content):
-        self.input(content, *AuthorityManLocators.QRY_USER_NAME)
+        #self.input(content, *AuthorityManLocators.QRY_USER_NAME)
+
+        self.input(content)
+
+        self.input(content)
 
     # 当前状态
     def inputSel_cur_status(self, index):
-        self.click(*AuthorityManLocators.QRY_CUR_STATUS)
-        locator = self.get_select_locator(AuthorityManLocators.QRY_CUR_STATUS_VALUE, index)
-        self.click(*locator)
+        # self.click(*AuthorityManLocators.QRY_CUR_STATUS)
+        ## locator = self.get_select_locator(AuthorityManLocators.QRY_CUR_STATUS_VALUE, index)
+        ## #self.click(*locator)
+        #self.selectDropDown(is_multi_tab=True,is_multi_elements=True)
+        # self.selectCheckBox(is_multi_tab=True,is_multi_elements=True)
+        self.selectDropDown(index)
 
+#
     # 查询按钮
     def btn_search(self):
         self.click(*AuthorityManLocators.BTN_SEARCH)

@@ -10,6 +10,7 @@
 import unittest
 from time import sleep
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.data_access import DataAccess
@@ -63,6 +64,8 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
         # 分类名称
         self.inputStr_catalog_name(para['CATALOG_NAME'])
         # 生效日期
@@ -77,16 +80,33 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
         self.inputRSel_data_source(para['DATA_SOURCE'])
 
         self.btn_query()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(*SysDictManLocators.TAB_ONE)
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @ddt.data(*DataCommon.do.getCaseData())
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysConfigManData.para_SysDictMan))
-    def test_que(self, para):
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
 
-
-if __name__ == '__main__':
-    unittest.main()
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(SysConfigManData.para_SysDictMan))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

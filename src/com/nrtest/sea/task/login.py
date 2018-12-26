@@ -48,9 +48,12 @@ class Login:
 
             img_file.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
 
-        with Image.open(Setting.SCREENSHOTS_PATH + 'photo2.png') as file:
-            text = pytesseract.image_to_string(file)
-            txt = text.replace(' ', '')
+        # with Image.open(Setting.SCREENSHOTS_PATH + 'photo2.png') as file:
+        #     text = pytesseract.image_to_string(file)
+        #     txt = text.replace(' ', '')
+        path = Setting.SCREENSHOTS_PATH + 'photo2.png'
+        text = pytesseract.image_to_string(path)
+        txt = text.replace(' ', '')
         return txt
 
     def _cleanScreen(self, loginPage):

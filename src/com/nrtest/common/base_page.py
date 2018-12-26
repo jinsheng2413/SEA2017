@@ -88,6 +88,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
 from com.nrtest.common.data_access import DataAccess
+from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.base_locators import BaseLocators
@@ -118,11 +119,12 @@ class Page():
     本项目所有页面菜单的基类
     """
 
-    def __init__(self, driver, menuName=None):
+    def __init__(self, driver, menu_page=None):
         self.driver = driver
         self.base_url = Setting.TEST_URL
         self.page_title = Setting.PAGE_TILE
-        self.menu_name = menuName
+        self.menuPage = menu_page
+        self.menu_name = menu_page.menu_name if bool(menu_page) else None
 
     def save_img(self, img_name):
         """
@@ -149,7 +151,7 @@ class Page():
             获取截图存放路径
             :return:
             """
-            if not os.path.exists(Setting.IMG_PATH):  # SNAPSHOT_DIRECTORY  #ljf
+            if not os.path.exists(Setting.IMG_PATH):
                 os.mkdir(Setting.IMG_PATH)
             return Setting.IMG_PATH
 
@@ -487,6 +489,25 @@ class Page():
         """
         locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
         self.click(*locators)
+
+    def openLeftTree(self, treeNo):
+        """
+        打开左边树
+        :param treeNo:
+        """
+        try:
+            node = Dict(eval(treeNo))
+            node_flag = node['NODE_FLAG']
+            node_vale = node['NODE_VALE']
+        except:
+            # 不是数组时的默认处理
+            node_flag = '01'
+            node_vale = treeNo
+
+        if node_flag == '01':  # 选择供电单位
+            self.menuPage.btn_left_tree(node_vale)
+        else:  # 选择其他节点
+            self.menuPage.btn_user_nodes(node_flag, node_vale)  # 该方法细节待实现
 
     @property
     def exists_menu(self):

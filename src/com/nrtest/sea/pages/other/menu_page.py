@@ -12,7 +12,6 @@ from time import sleep
 from com.nrtest.common import global_drv
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.common.dictionary import Dict
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 from com.nrtest.sea.task.login import Login
 
@@ -55,28 +54,6 @@ class MenuPage(Page):
         menuPage = MenuPage(global_drv.get_driver())
         menuPage.click_menu(menuNo)
         return menuPage
-
-    @staticmethod
-    def openLeftTree(treeNo):
-        """
-        打开左边树
-        :param treeNo:
-        :return:
-        """
-        menuPage = MenuPage(global_drv.get_driver())
-        try:
-            node = Dict(eval(treeNo))
-            node_flag = node['NODE_FLAG']
-            node_vale = node['NODE_VALE']
-        except:
-            # 不是数组时的默认处理
-            node_flag = '01'
-            node_vale = treeNo
-
-        if node_flag == '01':  # 选择供电单位
-            menuPage.btn_left_tree(node_vale)
-        else:  # 选择其他节点
-            menuPage.btn_user_nodes(node_flag, node_vale)  # 该方法细节待实现
 
     def click_menu(self, menu_no, isPath=False):
         """

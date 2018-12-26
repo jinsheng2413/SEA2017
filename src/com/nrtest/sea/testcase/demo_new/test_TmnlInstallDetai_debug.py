@@ -16,7 +16,6 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage
-# from com.nrtest.sea.task.commonMath import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
@@ -28,7 +27,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(DataGatherMan_data.tmnlInstallDetail_para)
-        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage.menu_name)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         menuPage.remove_dt_readonly()
 
@@ -62,10 +61,10 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         """
 
         # 注册菜单
-        self.menu_name = para['MENU_NAME']
+        # self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        MenuPage.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
 
         # 开始时间
         self.inputStr_startTime_count(para['START_TIME'])

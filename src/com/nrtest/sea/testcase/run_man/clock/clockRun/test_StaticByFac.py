@@ -8,7 +8,6 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -28,10 +27,10 @@ class TestDemo(unittest.TestCase, StaticByFacPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
+        # 打开菜单
         cls.driver = openMenu(ClockData.para_ClockRun)
-        sleep(2)
-        clickTabPage('按厂家统计')
+        # 点击Tab页标签
+        clickTabPage(ClockData.para_ClockRun_staticbyfac)
         cls.exec_script(cls, StaticByFacLocators.QUERY_DATE_JS)
 
     @classmethod
@@ -62,21 +61,58 @@ class TestDemo(unittest.TestCase, StaticByFacPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 供电单位
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
+
+        # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
 
-        self.btn_query()
+        self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*StaticByFacLocators.TABLE_DATA)
+        # result = self.assert_context(*StaticByFacLocators.TABLE_DATA)
+        # self.assertTrue(result)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
+
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_ClockRun, '按厂家统计'))
+    @data(*DataAccess.getCaseData(ClockData.para_ClockRun,
+                                  ClockData.para_ClockRun_staticbyfac))
     def test_query(self, para):
+        """
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        :return:
+        """
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ClockData.para_ClockRun,
+                                  ClockData.para_ClockRun_staticbyfac, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)
 
     # def test_test(self):
     #     # 供电单位

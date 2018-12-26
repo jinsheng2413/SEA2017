@@ -70,7 +70,7 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, PowerFactorCountStaticPage):
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 用户类型
-        self.inputRSel_cons_type(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
 

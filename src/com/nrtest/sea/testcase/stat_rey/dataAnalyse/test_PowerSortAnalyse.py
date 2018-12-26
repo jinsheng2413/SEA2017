@@ -7,6 +7,8 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
+
+#统计查询--数据分析--电量分析--电量排名分析
 import unittest
 from time import sleep
 

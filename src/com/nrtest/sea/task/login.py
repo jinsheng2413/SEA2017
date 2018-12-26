@@ -94,7 +94,7 @@ class Login:
             sleep(2)
 
             # 登录成功失败判断与清屏处理
-            is_failed = self._cleanScreen(loginPage)
+            is_failed = self._cleanScreen(loginPage.driver)
             if is_failed and is_valid_mask:
                 loginPage.click(*LoginPageLocators.BTN_IDENTIFYING_CODE)
                 logger.info('%s登陆失败,点击刷新验证码' % self.username)

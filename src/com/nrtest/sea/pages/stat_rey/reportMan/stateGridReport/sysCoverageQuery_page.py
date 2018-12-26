@@ -16,24 +16,30 @@ from com.nrtest.sea.locators.stat_rey.reportMan.stateGridReport.sysCoverageQuery
 
 class SysCoverageQueryPage(Page):
 
-    # 查询日期
+    # 统计分类
+    def inputChk_stat_type(self, option):
+        self.clickRadioBox(option)
 
-    def inputStr_dateS(self, value):
-        self.input(value, *SysCoverageQueryLocators.QRY_DATE)
+    # 日期
+    def inputDt_stat_date(self, stat_date):
+        self.inputDate(stat_date)
 
     # 统计口径
-    def inputSel_statWay(self, index):
-        self.click(*SysCoverageQueryLocators.QRY_STAT_WAY)
-        locator = self.get_select_locator(SysCoverageQueryLocators.QRY_STAT_WAY_VALUE, index)
-        self.click(*locator)
+    def inputSel_statWay(self, option):
+        # self.click(*SysCoverageQueryLocators.QRY_STAT_WAY)
+        # locator = self.get_select_locator(SysCoverageQueryLocators.QRY_STAT_WAY_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(option)
 
     # 用户类型
 
-    def inputSel_userType(self, index):
-        self.click(*SysCoverageQueryLocators.QRY_USER_TYPE)
-        locator = self.get_select_locator(SysCoverageQueryLocators.QRY_USER_TYPE_VALUE, index)
-        self.click(*locator)
+    def inputSel_userType(self, options):
+        # self.click(*SysCoverageQueryLocators.QRY_USER_TYPE)
+        # locator = self.get_select_locator(SysCoverageQueryLocators.QRY_USER_TYPE_VALUE, index)
+        # self.click(*locator)
+        self.selectCheckBox(options)
 
     # 查询
     def btn_qry(self):
-        self.click(*SysCoverageQueryLocators.BTN_QRY)
+        #self.click(*SysCoverageQueryLocators.BTN_QRY)
+        self.btn_query()

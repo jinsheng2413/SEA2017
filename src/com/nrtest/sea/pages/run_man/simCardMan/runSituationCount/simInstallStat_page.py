@@ -15,18 +15,33 @@ from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.simInstallStat
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
-class SimInstallStatPage(Page):
-    # 
-
+# 安装情况统计
+class SimInstallStatPageStatic(Page):
 
     # 执行状态
-    def inputSel_operator(self, name):
-        self.click(*SimInstallStatLocators.QRY_OPERATOR)
-        locator = self.get_select_locator(SimInstallStatLocators.QRY_OPERATOR_VALUE, name)
-        self.click(*locator)
+    def inputSel_operator(self, item):
+        # self.click(*SimInstallStatLocators.QRY_OPERATOR)
+        # locator = self.get_select_locator(SimInstallStatLocators.QRY_OPERATOR_VALUE, name)
+        # self.click(*locator)
+        self.selectDropDown(item)
 
-
-
-        # 查询
+    # 查询
     def btn_qry(self):
-            self.click(*SimInstallStatLocators.BTN_QRY)
+        # self.click(*SimInstallStatLocators.BTN_QRY)
+        self.btn_query()
+
+# 运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
+# 安装情况明细
+class SimInstallStatPageDetail(Page):
+
+    # 执行状态
+    def inputSel_operator(self, item):
+        # self.click(*SimInstallStatLocators.QRY_OPERATOR)
+        # locator = self.get_select_locator(SimInstallStatLocators.QRY_OPERATOR_VALUE, name)
+        # self.click(*locator)
+        self.selectDropDown(item)
+
+    # 查询
+    def btn_qry(self):
+        # self.click(*SimInstallStatLocators.BTN_QRY)
+        self.btn_query()

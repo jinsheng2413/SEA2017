@@ -15,14 +15,15 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
-from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.simInstallStat_page import SimInstallStatPage, \
+from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.simInstallStat_page import SimInstallStatPageDetail, \
     SimInstallStatLocators
 from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
+# 安装情况明细
 @ddt
-class TestSimInstallStat(unittest.TestCase,SimInstallStatPage):
+class TestSimInstallStat(unittest.TestCase,SimInstallStatPageDetail):
 
     @classmethod
     def setUpClass(cls):

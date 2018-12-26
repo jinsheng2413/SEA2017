@@ -16,22 +16,21 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
-from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import SIMFlowCountPage, SIMFlowCountLocators
+from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import OverFlowStaticPage, SIMFlowCountLocators
 from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
 @ddt
-class TestFlowSIM(unittest.TestCase,SIMFlowCountPage):
+class TestFlowSIM(unittest.TestCase,OverFlowStaticPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(RunSituationCount_data.flowAnaly_para)
-        # 点击流量明细
-        clickTabPage(RunSituationCount_data.flowAnaly_tab_SIM)
-        sleep(2)
+        # 打开菜单
+        cls.driver = openMenu(RunSituationCount_data.para_flowAnaly)
+        # 点击Tab页标签
+        clickTabPage(RunSituationCount_data.para_flowAnaly_overflowstatic)
         cls.exec_script(cls,SIMFlowCountLocators.START_DATE_JS)
 
     @classmethod
@@ -57,15 +56,16 @@ class TestFlowSIM(unittest.TestCase,SIMFlowCountPage):
 
     def query(self, para):
         """
-
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        #打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
 
+        # 打开左边树并选择
+        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         #sim卡号
         self.inputStr_simCardNo(para['SIM_CARD_NO'])
         #终端地址
@@ -79,10 +79,44 @@ class TestFlowSIM(unittest.TestCase,SIMFlowCountPage):
         # result = self.assert_context(*FlowCountLocators.TAB_ONE)
         # self.assertTrue(result)
 
+    def assert_query_result(self, para):
+        """
+        查询结果校验
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
+
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunSituationCount_data.flowAnaly_para,RunSituationCount_data.flowAnaly_tab_SIM))
+    @data(*DataAccess.getCaseData(RunSituationCount_data.para_flowAnaly,
+                                  RunSituationCount_data.para_flowAnaly_overflowstatic))
     def test_query(self, para):
+        """
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        :return:
+        """
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(RunSituationCount_data.para_flowAnaly,
+                                  RunSituationCount_data.para_flowAnaly_overflowstatic, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)
 
 
 

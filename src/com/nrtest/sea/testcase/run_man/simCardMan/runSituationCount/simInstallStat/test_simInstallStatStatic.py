@@ -4,8 +4,8 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_assetsManage.py
-@time: 2018/11/8 0008 14:55
+@file: test_simInstallStat.py
+@time: 2018/11/9 0009 9:17
 @desc:
 """
 import unittest
@@ -14,22 +14,24 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardMan
-from com.nrtest.sea.pages.run_man.simCardMan.assetsManage_page import AssetsManagePage, AssetsManageLocators
+from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
+from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.simInstallStat_page import SimInstallStatPageStatic, \
+    SimInstallStatLocators
 from com.nrtest.sea.task.commonMath import *
 
 
-#运行管理-->SIM卡管理-->资产管理
+# 运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
+# 安装情况统计
 @ddt
-class TestAssetsManage(unittest.TestCase,AssetsManagePage):
+class TestSimInstallStat(unittest.TestCase,SimInstallStatPageStatic):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单
-        cls.driver = openMenu(SimCardMan.assetsManage_para)
-        cls.exec_script(cls,AssetsManageLocators.START_DATE_JS)
-        cls.exec_script(cls, AssetsManageLocators.END_DATE_JS)
+        cls.driver = openMenu(RunSituationCount_data.para_simInstallStat)
+        # 点击Tab页标签
+        clickTabPage(RunSituationCount_data.para_simInstallStat_static)
 
     @classmethod
     def tearDownClass(cls):
@@ -64,25 +66,13 @@ class TestAssetsManage(unittest.TestCase,AssetsManagePage):
 
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
-        #sim卡段
-        self.inputStr_simCardNo(para['SIM_CARD_NO'])
-        #至
-        self.inputStr_simCardNoTO(para['SIM_CARD_NO_TO'])
-        #sim卡状态
-        self.inputSel_simCardStatus(para['SIM_CARD_STATUS'])
         #运营商
         self.inputSel_operator(para['OPERATOR'])
-        #导入日期
-        self.inputStr_leadTime(para['LEAD_TIME'])
-        #所属系统
-        self.inputSel_subordinateSystem(para['SUBORDINATE_SYSTEM'])
-        #时间至
-        self.inputStr_timeTO(para['TIME_TO'])
 
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*AssetsManageLocators.TAB_ONE)
+        # result = self.assert_context(*SimInstallStatLocators.TAB_ONE)
         # self.assertTrue(result)
 
     def assert_query_result(self, para):
@@ -100,8 +90,10 @@ class TestAssetsManage(unittest.TestCase,AssetsManagePage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
+
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SimCardMan.assetsManage_para))
+    @data(*DataAccess.getCaseData(RunSituationCount_data.para_simInstallStat,
+                                  RunSituationCount_data.para_simInstallStat_static,))
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验
@@ -114,12 +106,12 @@ class TestAssetsManage(unittest.TestCase,AssetsManagePage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SimCardMan.assetsManage_para, valCheck=True))
+    @data(*DataAccess.getCaseData(RunSituationCount_data.para_simInstallStat,
+                                  RunSituationCount_data.para_simInstallStat_static, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
-
 
 

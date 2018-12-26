@@ -15,29 +15,34 @@ from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.simAlarmAnaly_
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->异常分析
-class AbnoralCountPage(Page):
+# 异常统计
+class AbnoralStaticPage(Page):
 
     # 月份
     def inputStr_month(self, value):
-        self.input(value,*AbnormalCountLocators.QRY_MONTH)
+        # self.input(value,*AbnormalCountLocators.QRY_MONTH)
+        self.input(value)
 
         # 查询
     def btn_qry(self):
-            self.click(*AbnormalDetailLocators.BTN_QRY)
-
+        # self.click(*AbnormalDetailLocators.BTN_QRY)
+        self.btn_query()
 
 class AbnormalDetailPage(Page):
 
     # 异常类型
-    def inputStr_AbnormalType(self, name):
-        self.click(*AbnormalDetailLocators.QRY_ABNORMAL_TYPE)
-        locator = self.get_select_locator(AbnormalDetailLocators.QRY_ABNORMAL_TYPE_VALUE, name)
-        self.click(*locator)
-        # 月份
+    def inputStr_AbnormalType(self, item):
+        # self.click(*AbnormalDetailLocators.QRY_ABNORMAL_TYPE)
+        # locator = self.get_select_locator(AbnormalDetailLocators.QRY_ABNORMAL_TYPE_VALUE, name)
+        # self.click(*locator)
+        self.selectDropDown(item)
 
+    # 月份
     def inputStr_month(self, value):
-        self.input(value, *AbnormalDetailLocators.QRY_MONTH)
+        # self.input(value, *AbnormalDetailLocators.QRY_MONTH)
+        self.input(value)
 
     # 查询
     def btn_qry(self):
-        self.click(*AbnormalDetailLocators.BTN_QRY)
+        # self.click(*AbnormalDetailLocators.BTN_QRY)
+        self.btn_query()

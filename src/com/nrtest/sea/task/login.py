@@ -42,9 +42,13 @@ class Login:
         elementWidth = imageMask.location['x'] + imageMask.size['width']
         elementHeight = imageMask.location['y'] + imageMask.size['height']
 
-        with Image.open(Setting.SCREENSHOTS_PATH + 'photo.png') as img_file:
-            img_file = img_file.crop((left, top, elementWidth, elementHeight))
-            # picture = picture.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
+        img = Image.open(Setting.SCREENSHOTS_PATH + 'photo.png')  # type: Image.Image
+        real = img.resize((1920, 877), Image.ANTIALIAS)
+        real.save(Setting.SCREENSHOTS_PATH + 'photo3.png')
+
+        with Image.open(Setting.SCREENSHOTS_PATH + 'photo3.png') as img_file:
+            # img_file = img_file.crop((left, top, elementWidth, elementHeight))
+            img_file = img_file.crop((left + 285, top + 130, elementWidth + 285 + 5, elementHeight + 130))
 
             img_file.save(Setting.SCREENSHOTS_PATH + 'photo2.png')
 
@@ -110,7 +114,7 @@ class Login:
         dr.get(Setting.TEST_URL + '/index.jsp')
 
 if __name__ == '__main__':
-    # login = Login('gchb', '123')
+    # login = Login()
     # drv = login.login()
     # # cookie = drv.get_cookies()
     # # for i in cookie:

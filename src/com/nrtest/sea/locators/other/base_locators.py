@@ -55,7 +55,7 @@ class BaseLocators:
 
     # 【下拉框】
     # 下拉选择点击按钮
-    SEL_CHECKBOX = (By.XPATH, '//label[text()="{}"]/..//img')
+    SEL_CHECKBOX = (By.XPATH, '//label[normalize-space(text())="{}"]/..//img')
     SEL_CHECKBOX_BY = (By.XPATH, '//input[@{}="{}"]/../img')
 
 

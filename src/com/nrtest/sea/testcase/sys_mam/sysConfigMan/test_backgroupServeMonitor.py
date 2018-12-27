@@ -8,7 +8,6 @@
 @desc:
 """
 
-from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -55,7 +54,6 @@ class TestBackgroupServeMonitor(TestCase, BackgroupServeMonitorPage):
         # self.recoverLeftTree()
 
     def query(self, para):
-        sleep(2)
 
         # 日期类型选择
         self.inputChk_date_type_sel(para['DATE_TYPE_SEL'])
@@ -64,8 +62,10 @@ class TestBackgroupServeMonitor(TestCase, BackgroupServeMonitorPage):
         self.inputDt_date(para['DT_START'])
 
         # 到
-        if para['DATE_TYPE_SEL'] == '按周统计':
+        if self.get_para_value(para['DATE_TYPE_SEL']) == '按周统计':
             self.inputDt_date(para['DT_END'])
+            # sleep(0.5)
+            # self.remove_dt_readonly()
 
         # 运行状态
         self.inputSel_operation_stat(para['OPERATION_STAT'])

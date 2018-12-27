@@ -490,15 +490,21 @@ class Page():
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
-    def clickTabPage(self, tab_name):
+    def clickTabPage(self, tab_name, is_multi_tab=False, is_multi_elements=False):
         """
         打开Tab页
         :param tab_name:
         """
-        locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
-        self.click(*locators)
+        # locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
+        # self.click(*locators)
+        xpath = self.format_xpath_multi(BaseLocators.TAB_PAGE, tab_name, is_multi_tab)
+        if is_multi_elements:
+            el = self._find_displayed_element(xpath)
+            el.click()
+        else:
+            self.click(*xpath)
 
-    def clickDt_Tab(self, tab_name):
+    def clickDt_Tab(self, tab_name, is_multi_tab=False, is_multi_elements=False):
         """
         按Tab选择不同日期区间，样例详见：系统管理→系统配置管理→后台服务监测
         :param tab_name:Tab页名称
@@ -510,7 +516,7 @@ class Page():
             tab = tab if len(tab) > 0 else ls_items[1]
         else:
             tab = tab_name
-        self.clickTabPage(tab)
+        self.clickTabPage(tab, is_multi_tab, is_multi_elements)
         sleep(0.2)
 
     def get_para_value(self, para):

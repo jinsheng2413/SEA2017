@@ -96,9 +96,7 @@ def upgrade_test_file(file_name):
         for i in range(len(lines)):
             line = (lines[i])[:-1]  # 去除行尾的\n符
             temp = line.strip().lower()
-            if temp.startswith('self.click'):
-                a = '1'
-            if temp.startswith('def') and temp.find('input') > 0:
+            if temp.startswith('def') and (temp.find('input') > 0):
                 if script == 'sel':
                     child = doc[-6:]
                     child.reverse()
@@ -108,8 +106,7 @@ def upgrade_test_file(file_name):
                             pos = i
                         elif pos >= 0 and ln != '\r':
                             break
-
-                    doc.append(blance + 'self.selectDropDown(' + para + ')\r')
+                    doc.insert(pos * -1 - 1, blance + 'self.selectDropDown(' + para + ')\r')
 
                 blance = line.split('def')[0] + '    '
                 para = line.split(',')[1].split(')')[0].strip()
@@ -122,9 +119,26 @@ def upgrade_test_file(file_name):
                     script = 'dt'
                 elif temp.find('inputsel') > 0 or temp.find('inputrsel') > 0:
                     script = 'sel'
+                elif temp.find('btn_') > 0:
+                    script = 'btn'
 
                 doc.append(line)
                 continue
+
+            if temp.startswith('def') and temp.find('btn_') > 0:
+                if script == 'sel':
+                    child = doc[-6:]
+                    child.reverse()
+                    pos = -1
+                    for i, ln in enumerate(child):
+                        if ln.find('self.') > 0 or ln.find('sleep') > 0:
+                            pos = i
+                        elif pos >= 0 and ln != '\r':
+                            break
+                    doc.insert(pos * -1, blance + 'self.selectDropDown(' + para + ')\r')
+                doc.append(line)
+                continue
+
             if temp.startswith('#') or temp == '\r':
                 doc.append(line)
                 continue
@@ -148,6 +162,12 @@ def upgrade_test_file(file_name):
 
             doc.append(line)
 
+        for i in range(5):
+            if doc[-1] == '\r':
+                doc.pop()
+            else:
+                break
+        doc.append(blance + 'self.btn_query()\r')
         with open(temp_test_logfile, 'w', encoding='utf-8') as fo:
             fo.writelines(doc)
 

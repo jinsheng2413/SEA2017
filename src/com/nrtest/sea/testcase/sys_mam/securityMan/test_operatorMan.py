@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -50,6 +49,8 @@ class TestOperatorMan(unittest.TestCase, OperatorManPage):
         # self.recoverLeftTree()
 
     def query(self, para):
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
         # 工号
         self.inputStr_staff_no(para['STAFF_NO'])
         # 用户名
@@ -57,14 +58,35 @@ class TestOperatorMan(unittest.TestCase, OperatorManPage):
         # 当前状态
         self.inputSel_cur_status(para['CUR_STATUS'])
         # 查询按钮
-        self.btn_search()
-        sleep(2)
-        # 校验
-        result = self.assert_context(*OperatorManLocators.CHECK_FIRST)
+        self.btn_query()
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(SecutityMan_date.OperatorMan_para))
-    def test_der(self, para):
+    @data(*DataAccess.getCaseData(SecutityMan_date.OperatorMan_para))
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(SecutityMan_date.OperatorMan_para))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

@@ -16,32 +16,42 @@ class SysDictManPage(Page):
 
     # 分类名称
     def inputStr_catalog_name(self, value):
-        self.input(value, *SysDictManLocators.CATALOG_NAME)
+        # self.input(value, *SysDictManLocators.CATALOG_NAME)
+
+        self.input(value)
 
     # 生效日期
     def inputStr_start_date(self, value):
-        self.input(value, *SysDictManLocators.START_DATE)
+        # self.input(value, *SysDictManLocators.START_DATE)
+
+        self.input(value)
 
     # 失效日期
     def inputStr_end_date(self, value):
-        self.input(value, *SysDictManLocators.END_DATE)
+        # self.input(value, *SysDictManLocators.END_DATE)
+
+        self.input(value)
 
     # 维护类型--打开并选择
     def inputRSel_cons_type(self, name):
-        self.click(*SysDictManLocators.EDIT_TYPE_SEL)
-        locator = self.get_select_locator(SysDictManLocators.EDIT_TYPE, name)
-        self.click(*locator)
+        # self.click(*SysDictManLocators.EDIT_TYPE_SEL)
+        # locator = self.get_select_locator(SysDictManLocators.EDIT_TYPE, name)
+        # self.click(*locator)
 
+        self.selectDropDown(name)
     # 维护人员
     def inputStr_editor(self, value):
-        self.input(value, *SysDictManLocators.EDITOR)
+        # self.input(value, *SysDictManLocators.EDITOR)
+
+        self.input(value)
 
     # 维护类型--打开并选择
     def inputRSel_data_source(self, name):
-        self.click(*SysDictManLocators.DATA_SOURCE_SEL)
-        locator = self.get_select_locator(SysDictManLocators.DATA_SOURCE, name)
-        self.click(*locator)
+        # self.click(*SysDictManLocators.DATA_SOURCE_SEL)
+        # locator = self.get_select_locator(SysDictManLocators.DATA_SOURCE, name)
+        # self.click(*locator)
 
+        self.selectDropDown(name)
     # 点击查询
     def btn_query(self):
         self.click(*SysDictManLocators.BTN_QUERY)

@@ -9,15 +9,16 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.sysConfigMan.ipBlacklistMan_locators import IpBlacklistManLocators
 
 
 # 系统管理→系统配置管理→IP黑名单管理
 class IpBlacklistManPage(Page):
     # IP地址
     def inputStr_ip_addr(self, content):
-        self.input(content, *IpBlacklistManLocators.QRY_IP_ADDR)
+        # self.input(content, *IpBlacklistManLocators.QRY_IP_ADDR)
+        self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*IpBlacklistManLocators.BTN_SEARCH)
+        # self.click(*IpBlacklistManLocators.BTN_SEARCH)
+        self.btn_query()

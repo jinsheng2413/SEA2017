@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.sysConfigMan.backgroupServeMonitor_locators import *
 
 
 # 系统管理→系统配置管理→后台服务监测
@@ -41,18 +40,22 @@ class BackgroupServeMonitorPage(Page):
 # 系统管理→系统配置管理→后台服务监测→后台服务监测明细
 class BackgroupServeMonitorDetailPage(Page):
     # JOB名称
-    def inputStr_job_name(self, index):
-        self.input(index, *BackgroupServeMonitorDetailLocators.QRY_JOB_NAME)
+    def inputStr_job_name(self, content):
+        # self.input(index, *BackgroupServeMonitorDetailLocators.QRY_JOB_NAME)
+        self.input(content)
 
     # 服务名称
-    def inputStr_serve_name(self, index):
-        self.input(index, *BackgroupServeMonitorDetailLocators.QRY_SERVE_NAME)
+    def inputStr_serve_name(self, content):
+        # self.input(index, *BackgroupServeMonitorDetailLocators.QRY_SERVE_NAME)
+        self.input(content)
 
     # 查询日期
     def inputDt_date(self, content):
-        self.exec_script(BackgroupServeMonitorDetailLocators.DATE_JS)
-        self.input(content, *BackgroupServeMonitorDetailLocators.QRY_DATE)
+        # self.exec_script(BackgroupServeMonitorDetailLocators.DATE_JS)
+        # self.input(content, *BackgroupServeMonitorDetailLocators.QRY_DATE)
+        self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*BackgroupServeMonitorDetailLocators.BTN_SEARCH)
+        # self.click(*BackgroupServeMonitorDetailLocators.BTN_SEARCH)
+        self.btn_query(True)

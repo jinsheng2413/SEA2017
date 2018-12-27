@@ -16,7 +16,9 @@ from com.nrtest.sea.locators.sys_mam.securityMan.roleMan_locators import RoleMAn
 class RoleMAnPage(Page):
     # 角色名称
     def inputStr_role_name(self, content):
-        self.input(content, *RoleMAnLocators.QRY_ROLE_NAME)
+        # self.input(content, *RoleMAnLocators.QRY_ROLE_NAME)
+
+        self.input(content)
 
     # 查询按钮
     def btn_search(self):

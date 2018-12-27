@@ -16,7 +16,8 @@ from com.nrtest.sea.locators.sys_mam.sysConfigMan.databaseUpgradeStat_locators i
 class DatabaseUpgradeStatPage(Page):
     # 升级日期
     def inputDt_date(self, content):
-        self.input(content, *DatabaseUpgradeStatLocators.QRY_DATE)
+        # self.input(content, *DatabaseUpgradeStatLocators.QRY_DATE)
+        self.input(content)
 
     # 查询按钮
     def btn_search(self):

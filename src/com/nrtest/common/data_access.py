@@ -64,7 +64,7 @@ class DataAccess:
 
         funName = 'pkg_nrtest.get_tst_case_for_valid' if valCheck else 'pkg_nrtest.get_tst_case'
         tst_case = pyoracle.callFCur(funName, qry)
-        print('----------',tst_case)
+        # print('----------',tst_case)
         try:
             rslt = []
             for row in tst_case:

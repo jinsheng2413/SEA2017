@@ -49,11 +49,13 @@ class BackgroupServeMonitorDetailPage(Page):
         # self.input(index, *BackgroupServeMonitorDetailLocators.QRY_SERVE_NAME)
         self.input(content)
 
-    # 查询日期
-    def inputDt_date(self, content):
-        # self.exec_script(BackgroupServeMonitorDetailLocators.DATE_JS)
-        # self.input(content, *BackgroupServeMonitorDetailLocators.QRY_DATE)
-        self.input(content)
+    # 日期类型选择
+    def inputChk_date_type_sel(self, tab_name):
+        self.clickDt_Tab(tab_name)
+
+    # 查询日期/从/到
+    def inputDt_date(self, value):
+        self.inputDate(value, True)
 
     # 查询按钮
     def btn_search(self):

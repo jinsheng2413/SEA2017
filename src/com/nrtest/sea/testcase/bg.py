@@ -10,10 +10,10 @@
 
 import unittest
 
-from com.nrtest.sea.testcase.run_man.runStatusMonitor.communicationModuleManagement.test_CommunicationModuleBaseInformationMantain import TestCommunicationModuleBaseInformationMantain
+from com.nrtest.sea.testcase.stat_rey.reportMan.ItsChinese.test_tmnlInsertQuery import TestTmnlInsertQuery
 
 suite = unittest.TestSuite()
-suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCommunicationModuleBaseInformationMantain))
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestTmnlInsertQuery))
 # tests = [TestGatherSuccessRate('test_epp_task_type')]
 # suite.addTests(tests)
 

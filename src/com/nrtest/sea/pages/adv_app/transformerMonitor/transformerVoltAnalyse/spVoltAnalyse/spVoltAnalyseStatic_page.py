@@ -20,10 +20,6 @@ class SpVoltAnalyseStaticPage(Page):
 
     # 用户类型--打开并选择
     def inputSel_cons_type(self, item):
-        # self.click(*SpVoltAnalyseStaticLocators.CONS_TYPE_SEL)
-        # locator = self.get_select_locator(
-        #     SpVoltAnalyseStaticLocators.CONS_TYPE, name)
-        # self.click(*locator)
         self.selectDropDown(item)
 
     # 日期类型
@@ -32,7 +28,7 @@ class SpVoltAnalyseStaticPage(Page):
 
     # 查询日期
     def inputStr_query_date(self, value):
-        self.input(value, *SpVoltAnalyseStaticLocators.QUERY_DATE)
+        self.inputDate(value)
         # self.input(value)
 
     # 点击查询

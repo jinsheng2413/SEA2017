@@ -75,7 +75,7 @@ class TestBcVoltMonitorPointQuery(unittest.TestCase, OrgLowVoltDayStaticPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 开始日期
         self.inputStr_start_date(para['START_DATE'])
         # 结束日期

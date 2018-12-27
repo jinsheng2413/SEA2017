@@ -27,4 +27,4 @@ class OrgLowVoltDayConfigPage(Page):
     # 点击查询
     def btn_qry(self):
         # self.click(*OrgLowVoltDayConfigLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)

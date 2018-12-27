@@ -8,15 +8,13 @@
 @desc:
 """
 from com.nrtest.common.setting import Setting
-from com.nrtest.common.tools.fr import *
-
-from com.nrtest.common.tools.mysaql import readData
-
 
 path = 'D:/pythonworkspace/SEA2017/src/com/nrtest/sea/testcase/sys_mam/archivesVerficationMan'
+
+
 class GuoProgram(object):
-    def strEmpty(self,stree):
-        for i,item in enumerate(stree,0):
+    def strEmpty(self, stree):
+        for i, item in enumerate(stree, 0):
             if item != ' ':
                 return i
 
@@ -49,20 +47,20 @@ class GuoProgram(object):
                 else:
                     fileList.append(value)
             li = []
-            for i,item in enumerate(fileList,1):
-                if item.find('Sel')>0  or item.find('*locator')>0:
-                    li.append(i+1)
+            for i, item in enumerate(fileList, 1):
+                if item.find('Sel') > 0 or item.find('*locator') > 0:
+                    li.append(i + 1)
                     if len(li) == 2:
-                      index_list.append(li)
-                      li = []
-            for i  in range(0,len(index_list)-1):
-                index_list[i][1] = int(index_list[i][1])-1
+                        index_list.append(li)
+                        li = []
+            for i in range(0, len(index_list) - 1):
+                index_list[i][1] = int(index_list[i][1]) - 1
 
-            for it  in index_list:
-                   for j in range(it[0],it[1]):
-                           fileList[j] = fileList[j][0:self.strEmpty(fileList[j])] + '#'+fileList[j][self.strEmpty(fileList[j]):len(fileList[j])-1]+'\n'
-                   fileList.insert(it[1]+1,fileList[it[0]+1][0:self.strEmpty(fileList[it[0]+1])]+'self.selectDropDown(options)'+'\n')
-
+            for it in index_list:
+                for j in range(it[0], it[1]):
+                    fileList[j] = fileList[j][0:self.strEmpty(fileList[j])] + '#' + fileList[j][
+                                                                                    self.strEmpty(fileList[j]):len(fileList[j]) - 1] + '\n'
+                fileList.insert(it[1] + 1, fileList[it[0] + 1][0:self.strEmpty(fileList[it[0] + 1])] + 'self.selectDropDown(options)' + '\n')
 
             with open(pathName, 'wt', encoding='utf-8') as wdata:
                 for item in fileList:
@@ -100,10 +98,10 @@ class GuoProgram(object):
                     if int(lp[0]) < index < int(lp[1]) + 1:
                         continue
                     fileList.append(value)
-            las_empty = fileList[len(fileList)-1][0:fileList[len(fileList)-1].index('self')]
+            las_empty = fileList[len(fileList) - 1][0:fileList[len(fileList) - 1].index('self')]
 
             fileList.pop()
-            fileList.append(las_empty+'self.btn_query()'+'\n')
+            fileList.append(las_empty + 'self.btn_query()' + '\n')
         fileList.extend(newModelList)
         if 'from com.nrtest.common.BeautifulReport' not in fileList:
             fileList.insert(12, 'from com.nrtest.common.BeautifulReport import BeautifulReport' + '\n')
@@ -112,16 +110,16 @@ class GuoProgram(object):
         for j, k in enumerate(fileList, 0):
 
             if 'query(self' in k:
-                   r = 1
+                r = 1
 
-            if r == 1 and '#' in  k:
+            if r == 1 and '#' in k:
                 op.append(j)
 
         le = int(op[0])
 
-        se = fileList[le][0:fileList[le].index('#')] + '# 注册菜单' + '\n'+ fileList[le][0:fileList[le].index('#')] + "self.menu_name = para['MENU_NAME']"+'\n'
+        se = fileList[le][0:fileList[le].index('#')] + '# 注册菜单' + '\n' + fileList[le][
+                                                                         0:fileList[le].index('#')] + "self.menu_name = para['MENU_NAME']" + '\n'
         fileList.insert(le, se)
-
 
         with open(pathName, 'wt', encoding='utf-8') as wdata:
             for item in fileList:
@@ -144,5 +142,3 @@ if __name__ == '__main__':
     # gu = GuoProgram()
     # for item in lis:
     #     gu.modifyPages(item)
-
-

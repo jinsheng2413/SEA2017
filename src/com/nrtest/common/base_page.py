@@ -277,6 +277,7 @@ class Page():
         """
         try:
             ls_values = value.split(';')
+            print(ls_values)
             loc = self.format_xpath_multi(BaseLocators.QRY_DT_INPUT, ls_values[0], is_multi_tab)
             tmp = ls_values[1].strip()
             idx = new_idx

@@ -70,6 +70,8 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, SpVoltAnalyseDetailPage):
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
 
+        # 打开左边树并选择
+        openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 日期类型
@@ -79,9 +81,6 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, SpVoltAnalyseDetailPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*SpVoltAnalyseDetailLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

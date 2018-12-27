@@ -14,20 +14,28 @@ from com.nrtest.sea.locators.sys_mam.sysConfigMan.backgroupServeMonitor_locators
 
 # 系统管理→系统配置管理→后台服务监测
 class BackgroupServeMonitorPage(Page):
-    # 查询日期
-    def inputDt_date(self, content):
-        self.exec_script(BackgroupServeMonitorLocators.DATE_JS)
-        self.input(content, *BackgroupServeMonitorLocators.QRY_DATE)
+
+    # 日期类型选择
+    def inputChk_date_type_sel(self, tab_name):
+        self.clickDt_Tab(tab_name)
+
+    # 查询日期/从/到
+    def inputDt_date(self, value):
+        # self.exec_script(BackgroupServeMonitorLocators.DATE_JS)
+        # self.input(value, *BackgroupServeMonitorLocators.QRY_DATE)
+        self.inputDate(value, True)
 
     # 运行状态
-    def inputSel_operation_stat(self, index):
-        self.click(*BackgroupServeMonitorLocators.QRY_OPERATION_STAT)
-        locator = self.get_select_locator(BackgroupServeMonitorLocators.QRY_OPERATION_STAT_VALUE, index)
-        self.click(*locator)
+    def inputSel_operation_stat(self, option):
+        # self.click(*BackgroupServeMonitorLocators.QRY_OPERATION_STAT)
+        # locator = self.get_select_locator(BackgroupServeMonitorLocators.QRY_OPERATION_STAT_VALUE, option)
+        # self.click(*locator)
+        self.selectDropDown(option, True)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*BackgroupServeMonitorLocators.BTN_SEARCH)
+        # self.click(*BackgroupServeMonitorLocators.BTN_SEARCH)
+        self.btn_query(True)
 
 
 # 系统管理→系统配置管理→后台服务监测→后台服务监测明细

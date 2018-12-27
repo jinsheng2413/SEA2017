@@ -55,6 +55,7 @@ setup = ['        print(\'开始执行\')\r',
          '        # 菜单页面上如果没日期型的查询条件时，请注释下面代码\r',
          '        menuPage.remove_dt_readonly()\r']
 
+
 def append_comment(line):
     temp = ''
     while True:
@@ -85,78 +86,73 @@ def upgrade_test_file(file_name):
     find_comment = False
     find_query = False
     find_setup = False
+    find_def = False
     head = []
     end = []
     doc = []
+    script = ''
     with codecs.open(file_name, 'r', 'utf-8') as file:
         lines = file.readlines()
         for i in range(len(lines)):
             line = (lines[i])[:-1]  # 去除行尾的\n符
             temp = line.strip().lower()
-            if temp.find('unittest') > 0:
-                if temp.startswith('import'):
-                    line = 'from unittest import TestCase\r'
-                else:
-                    line = line.replace('unittest.', '')
+            if temp.startswith('self.click'):
+                a = '1'
+            if temp.startswith('def') and temp.find('input') > 0:
+                if script == 'sel':
+                    child = doc[-6:]
+                    child.reverse()
+                    pos = -1
+                    for i, ln in enumerate(child):
+                        if ln == '\r':
+                            pos = i
+                        elif >= 0 and ln != '\r':
+                            break
 
-            if is_reg_menu:
-                head.append(line)
-                if find_setup == False and temp.startswith('def') and temp.find('setupclass') > 0:
-                    find_setup = True
-                if find_setup:
-                    head.pop()
-                    if temp.find('openmenu') > 0:
-                        setup[2] = setup[2].replace('$', line.split('(')[1])
-                        head += setup
-                    if temp.find('@') >= 0:
-                        head.append(line)
-                        find_setup = False
+                    doc.append(blance + 'self.selectDropDown(' + para + ')\r')
 
-                if find_query == False and temp.startswith('def') and temp.find('query') > 0:
-                    find_query = True
-                if find_query:
-                    if temp in (comments):
-                        if find_comment:
-                            doc = head  # + menu_code
-                            is_reg_menu = False
-                        else:
-                            find_comment = True
-                    elif temp.startswith('#') or temp.startswith('self') \
-                            or temp.startswith('sleep') \
-                            or line.strip().startswith('openLeftTree') > 0:
-                        head.pop()
-                        doc = head  # + menu_code
-                        doc.append(line)
-                        is_reg_menu = False
-            else:
-                if line == '\r' or temp.startswith('#'):
-                    end.append(line)
-                elif is_deal_test or temp.startswith('@'):
-                    if not is_deal_test or temp.startswith('@'):
-                        pos = line.find('@')
+                blance = line.split('def')[0] + '    '
+                para = line.split(',')[1].split(')')[0].strip()
 
-                    end.append(line[:pos] + '# ' + line[pos:])
+                if temp.find('inputstr') > 0:
+                    script = 'str'
+                elif temp.find('inputchk') > 0:
+                    script = 'chk'
+                elif temp.find('inputdt') > 0:
+                    script = 'dt'
+                elif temp.find('inputsel') > 0 or temp.find('inputrsel') > 0:
+                    script = 'sel'
 
-                    if temp.startswith('@data'):
-                        test_funs[17] = test_funs[17].replace('$1', line)
-                        test_funs[25] = test_funs[25].replace('$2', line.split('))')[0])
-                        is_deal_test = True
-                elif line.find('openLeftTree') > 0:
-                    line = line[:line.find("'")] + "'TREE_NODE'])\r"
-                    line = line.replace('open', 'self.open')
-                    end.append(line)
-                elif temp.find('assert_context') > 0:
-                    new_line, pos = append_comment(line)
-                    end.append(new_line)
-                    is_deal_test = True
-                else:
-                    end.append(line)
+                doc.append(line)
+                continue
+            if temp.startswith('#') or temp == '\r':
+                doc.append(line)
+                continue
+
+            if temp in (comments):
+                find_comment = not find_comment
+                doc.append(line)
+                continue
+
+            if find_comment:
+                doc.append(line)
+                continue
+            if script in ('str', 'chk', 'dt') and temp.find('self.input') >= 0:
+                line = line.replace(',', ') #', 1)
+                # doc.append(line)
+            elif script == 'sel' and line != '\r':
+                for c in line:
+                    if c != ' ':
+                        break
+                line = line.replace(c, '# ' + c, 1)
+
+            doc.append(line)
 
         with open(temp_test_logfile, 'w', encoding='utf-8') as fo:
-            fo.writelines(doc + end + test_funs)
+            fo.writelines(doc)
 
 
 if __name__ == '__main__':
     # 指定testcase的根目录
-    file = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\run_man\meterMan\test_meterClockMan.py'
+    file = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\pages\base_app\dataGatherMan\GatherTaskCompile_Page.py'
     upgrade_test_file(file)

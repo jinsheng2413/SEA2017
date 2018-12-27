@@ -55,7 +55,8 @@ class MenuLocators:
 
     # 【左边树】
     # 左边树按钮
-    BTN_LEFT_MENU = (By.XPATH, '//*[@id="mainwest-xcollapsed"]/div')
+    BTN_LEFT_MENU = (By.XPATH, '//div[@id="mainwest-xcollapsed"]/div')
+
     # 左边树省公司节点
     BTN_LEFT_MENU_ELETRIC = (By.XPATH, '//span[@unselectable="on"]')
     # 菜单下拉框选择

@@ -319,18 +319,18 @@ class Page():
         """
         self.curr_click(is_multi_tab)
 
-    def selectDropDown(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False):
+    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False):
         """
         下拉单选框选择
-        :param options: 参数格式：查询条件标签名;查询条件
+        :param option: 参数格式：查询条件标签名;查询条件
         :param is_multi_tab: 多Tab页时，如果查询条件有重复，则该值填True
         :param sleep_sec:休眠n秒
         :param is_multi_elements:是否存在重复元素
         """
-        if (options.find(';') == -1):
+        if (option.find(';') == -1):
             print('............请配置查询条件的标签值............')
         else:
-            ls_option = options.split(';')
+            ls_option = option.split(';')
             if len(ls_option[1]) > 0:
                 # 打开下拉框
                 xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
@@ -496,11 +496,22 @@ class Page():
         locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
         self.click(*locators)
 
+    def clickDt_Tab(self, tab_name):
+        """
+        按Tab选择不同日期区间，样例详见：系统管理→系统配置管理→后台服务监测
+        :param tab_name:Tab页名称
+        :return:
+        """
+        self.clickTabPage(tab_name)
+        sleep(0.5)
+
     def openLeftTree(self, treeNo):
         """
         打开左边树
         :param treeNo:
         """
+        # 打开左边树
+        self.menuPage.displayTreeMenu()
         try:
             node = Dict(eval(treeNo))
             node_flag = node['NODE_FLAG']
@@ -1004,11 +1015,10 @@ class Page():
         :return:
         """
         try:
-            WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable(MenuLocators.BTN_LEFT_MENU))
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(MenuLocators.BTN_LEFT_MENU))
             el = self.driver.find_element(*MenuLocators.BTN_LEFT_MENU)
-
-            el.click()
+            if el.is_displayed():  # 左边树没显示时打开
+                el.click()
         except:
             print('左边树菜单栏已经打开')
 

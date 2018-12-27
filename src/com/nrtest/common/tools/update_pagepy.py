@@ -106,7 +106,7 @@ def upgrade_test_file(file_name):
                     for i, ln in enumerate(child):
                         if ln == '\r':
                             pos = i
-                        elif >= 0 and ln != '\r':
+                        elif pos >= 0 and ln != '\r':
                             break
 
                     doc.append(blance + 'self.selectDropDown(' + para + ')\r')

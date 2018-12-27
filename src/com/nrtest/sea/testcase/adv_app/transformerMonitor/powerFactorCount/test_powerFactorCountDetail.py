@@ -68,7 +68,7 @@ class TestPowerFactorCountDetail(unittest.TestCase, PowerFactorCountDetailPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 无功补偿情况
@@ -76,7 +76,7 @@ class TestPowerFactorCountDetail(unittest.TestCase, PowerFactorCountDetailPage):
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
 
-        self.btn_query()
+        self.btn_qry()
         self.sleep_time(2)
         # 校验
         # result = self.assert_context(*PowerFactorCountDetailLocators.TABLE_DATA)

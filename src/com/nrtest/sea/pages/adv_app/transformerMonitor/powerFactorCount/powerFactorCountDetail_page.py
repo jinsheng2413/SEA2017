@@ -22,7 +22,7 @@ class PowerFactorCountDetailPage(Page):
         # locator = self.get_select_locator(
         #     PowerFactorCountDetailLocators.CONS_TYPE, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 无功补偿情况--打开并选择
     def inputSel_power_quality_type(self, item):
@@ -35,9 +35,9 @@ class PowerFactorCountDetailPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *PowerFactorCountDetailLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*PowerFactorCountDetailLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)

@@ -178,7 +178,7 @@ class Page():
 
         return wrapper
 
-    def _find_element(self, *locator):
+    def _find_element(self, locator, seconds=15):
         """
         方法名：_element
         功能：定位元素的具体某个元素WEBelement
@@ -191,7 +191,7 @@ class Page():
         element = None
         try:
             # 利用显示等待判断元素是否已经出现
-            WebDriverWait(self.driver, 15).until(
+            WebDriverWait(self.driver, seconds).until(
                 EC.element_to_be_clickable(locator))
             # 定位元素
             element = self.driver.find_element(*locator)
@@ -261,7 +261,7 @@ class Page():
             if is_multi_elements:
                 el = self._find_displayed_element(loc)
             else:
-                el = self._find_element(*loc)
+                el = self._find_element(loc)
             el.clear()
             el.send_keys(ls_values[1])
             logger.info('文本框输入:{}'.format(values))
@@ -307,7 +307,7 @@ class Page():
             if is_multi_tab:
                 el = self._find_displayed_element(loc)
             else:
-                el = self._find_element(*loc)
+                el = self._find_element(loc)
             el.click()
 
             logger.info('点击元素：{}'.format(loc))
@@ -580,7 +580,7 @@ class Page():
                 # print('execute curr_input')
                 self.curr_input(values)
             else:
-                element = self._find_element(*locators)
+                element = self._find_element(locators)
                 # 输入前清空文本框
                 element.clear()
                 element.send_keys(values)
@@ -632,7 +632,7 @@ class Page():
             self.curr_click(is_multi_tab=True)
         else:
             try:
-                element = self._find_element(*locator)
+                element = self._find_element(locator)
                 element.click()
                 logger.info('点击元素：{}'.format(locator))
             except BaseException as e:
@@ -673,7 +673,7 @@ class Page():
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(locator))
-            above = self._find_element(*locator)
+            above = self._find_element(locator)
             ActionChains(self.driver).move_to_element(above).perform()
         except NameError as ex:
             logger.error('悬停失败：{}'.format(ex))
@@ -750,7 +750,7 @@ class Page():
         :return:布尔返回值
         """
         try:
-            return bool(self._find_element(*locator))
+            return bool(self._find_element(locator, 1))
         except NoSuchElementException:
             return False
 
@@ -761,7 +761,7 @@ class Page():
         :param locator:元祖形式的xpath
         :return:布尔返回值
         """
-        return True if (self._find_element(*locator).is_selected()) else False
+        return True if (self._find_element(locator).is_selected()) else False
 
     def open_url(self):
         """
@@ -809,10 +809,10 @@ class Page():
         try:
             # if type(idx_or_text) == int:
             if isinstance(idx_or_text, int):  # 数据类型判断新方法：isinstance
-                Select(self._find_element(*locators)).select_by_index(idx_or_text)
+                Select(self._find_element(locators)).select_by_index(idx_or_text)
                 logger.info('按下标选择下拉框,选中第:%s', idx_or_text)
             else:
-                Select(self._find_element(*locators)).select_by_visible_text(idx_or_text)
+                Select(self._find_element(locators)).select_by_visible_text(idx_or_text)
                 logger.info('按内容选择元素，选中内容为:%s', idx_or_text)
 
         except NameError as e:
@@ -872,8 +872,8 @@ class Page():
             if '账号异常信息' in txt:
                 print('-----')
                 self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
-            # self._find_element(*BaseLocators.BTN_ACCOUNT_EXCEPT).click()
-            # self._find_element(*BaseLocators.BTN_IMPORTANT_INFO).click()
+            # self._find_element(BaseLocators.BTN_ACCOUNT_EXCEPT).click()
+            # self._find_element(BaseLocators.BTN_IMPORTANT_INFO).click()
 
     def clear(self, *locator):
         """
@@ -881,10 +881,10 @@ class Page():
         :param locator:
         :return:
         """
-        self._find_element(*locator).clear()
+        self._find_element(locator).clear()
 
     def assert_body(self, value):
-        txt = self._find_element(*(By.TAG_NAME, 'body')).text
+        txt = self._find_element((By.TAG_NAME, 'body')).text
         return value in txt
 
     def clear_values(self, cv):
@@ -971,7 +971,7 @@ class Page():
     # def tableLineValue(self, i, l):
     #     try:
     #         str_xpath = "(//*[@class="x-grid3-row-table"])[{0}]//td[{1}]".format(i, l)
-    #         changeStr = self._find_element(*(By.XPATH, str_xpath)).text
+    #         changeStr = self._find_element((By.XPATH, str_xpath)).text
     #         return changeStr
     #     except NameError as e:
     #         print('获取显示区文字失败')
@@ -1163,7 +1163,7 @@ class Page():
         ActionChains(self.driver).context_click(right_click).perform()
 
     def clearInput(self, *Locators):
-        self._find_element(*Locators).clear()
+        self._find_element(Locators).clear()
 
     def clickSkip(self, assertValues):
         """

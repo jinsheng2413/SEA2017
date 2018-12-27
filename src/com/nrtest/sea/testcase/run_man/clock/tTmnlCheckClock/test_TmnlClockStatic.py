@@ -23,7 +23,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→终端对时
 # 终端对时统计
 @ddt
-class TestDemo(unittest.TestCase, TmnlClockStaticPage):
+class TestTmnlClockStatic(unittest.TestCase, TmnlClockStaticPage):
 
     @classmethod
     def setUpClass(cls):
@@ -66,7 +66,7 @@ class TestDemo(unittest.TestCase, TmnlClockStaticPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 终端厂家

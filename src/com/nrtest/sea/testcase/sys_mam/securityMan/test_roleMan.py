@@ -25,8 +25,15 @@ class TestRoleMAn(unittest.TestCase, RoleMAnPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SecutityMan_date.RoleMan_para)
+        # # 打开菜单（需要传入对应的菜单编号）
+        # cls.driver = openMenu(SecutityMan_date.RoleMan_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(SecutityMan_date.RoleMan_para)
+        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -49,8 +56,6 @@ class TestRoleMAn(unittest.TestCase, RoleMAnPage):
         # self.recoverLeftTree()
 
     def query(self, para):
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
         # 角色名称
         self.inputStr_role_name(para['ROLE_NAME'])
         # 查询按钮
@@ -80,7 +85,7 @@ class TestRoleMAn(unittest.TestCase, RoleMAnPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SecutityMan_date.RoleMan_para))
+    @data(*DataAccess.getCaseData(SecutityMan_date.RoleMan_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

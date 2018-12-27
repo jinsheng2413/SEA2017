@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.sysConfigMan.databaseUpgradeStat_locators import DatabaseUpgradeStatLocators
 
 
 # 系统管理→系统配置管理→数据库升级情况
@@ -17,8 +16,9 @@ class DatabaseUpgradeStatPage(Page):
     # 升级日期
     def inputDt_date(self, content):
         # self.input(content, *DatabaseUpgradeStatLocators.QRY_DATE)
-        self.input(content)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DatabaseUpgradeStatLocators.BTN_SEARCH)
+        # self.click(*DatabaseUpgradeStatLocators.BTN_SEARCH)
+        self.btn_query()

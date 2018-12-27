@@ -17,17 +17,16 @@ from com.nrtest.sea.locators.sys_mam.logMan.logEdit_locators import LogEditLocat
 class LogEditPage(Page):
     # 值班人员工号
     def inputStr_dutyPersonNo(self, value):
-        self.input(value, *LogEditLocators.QRY_DUTY_PERSON_NO)
+         self.input(value)
 
     # 值班时间
     def inputStr_DutyTime(self, value):
-        self.input(value, *LogEditLocators.QRY_DUTY_TIME)
+          self.input(value)
 
     # 结束时间
     def inputStr_end_time(self, value):
-        self.input(value, *LogEditLocators.QRY_TO)
+        self.input(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*LogEditLocators.BTN_QRY)
+        self.btn_query()

@@ -16,30 +16,25 @@ from com.nrtest.sea.locators.sys_mam.dataClearing.historicalDataMonitoring_locat
 # 系统管理-->数据清理管理-->历史数据监控
 class HistoricalDataMonitoringPage(Page):
     # 数据来源
-    def inputSel_data_from(self, name):
-        self.click(*HistoricalDataMonitoringLocators.QRY_DATA_FROM)
-        locator = self.get_select_locator(HistoricalDataMonitoringLocators.QRY_DATA_FROM_VALUE, name)
-        self.click(*locator)
+    def inputSel_data_from(self, options):
+        self.selectDropDown(options)
 
     # 表名称
     def inputStr_listName(self, value):
-        self.input(value, *HistoricalDataMonitoringLocators.QRY_LIST_NAME)
+        self.input(value)
 
     # 数据组
-    def inputSel_dataGroup(self, name):
-        self.click(*HistoricalDataMonitoringLocators.QRY_DATA_GROUP)
-        locator = self.get_select_locator(HistoricalDataMonitoringLocators.QRY_DATA_GROUP_VALUE, name)
-        self.click(*locator)
+    def inputSel_dataGroup(self, options):
+        self.selectDropDown(options)
 
     # 接收时间
     def inputStr_Start_time(self, value):
-        self.input(value, *HistoricalDataMonitoringLocators.QRY_START_DATE)
+        self.input(value)
 
     # 结束时间
     def inputStr_end_time(self, value):
-        self.input(value, *HistoricalDataMonitoringLocators.QRY_END_DATE)
+        self.input(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*HistoricalDataMonitoringLocators.BTN_QRY)
+        self.btn_query()

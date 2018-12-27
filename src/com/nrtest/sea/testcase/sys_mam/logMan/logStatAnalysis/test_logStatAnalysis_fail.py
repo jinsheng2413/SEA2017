@@ -9,8 +9,10 @@
 @desc:
 """
 import unittest
+from unittest import TestCase
 from time import sleep
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.data_access import DataAccess
@@ -20,17 +22,20 @@ from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理--》日志管理--》日志统计分析
+# 月统计登录失败top50
 @ddt
 class TestLogStatAnalysis_fail(unittest.TestCase, LogStatAnalysis_fial_Page):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LogEdit_data.logStatAnalysis_para)
-        clickTabPage(LogEdit_data.logStatAnalysis_tab_fail)
-        sleep(2)
-        cls.exec_script(cls, LogStatAnalysis_fail_Locators.START_DATE_JS)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(LogEdit_data.logStatAnalysis_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(LogEdit_data.logStatAnalysis_tab_fail)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -63,13 +68,33 @@ class TestLogStatAnalysis_fail(unittest.TestCase, LogStatAnalysis_fial_Page):
         # 查询时间
         self.inputStr_date(para['date'])
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(*LogStatAnalysis_fail_Locators.TAB_ONE)
-        self.assertTrue(result)
-        print('0000')
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
 
-    # @BeautifulReport.add_test_img()
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LogEdit_data.logStatAnalysis_para, LogEdit_data.logStatAnalysis_tab_fail))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LogEdit_data.logStatAnalysis_para, LogEdit_data.logStatAnalysis_tab_fail, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

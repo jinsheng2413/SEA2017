@@ -16,18 +16,16 @@ from com.nrtest.sea.locators.sys_mam.logMan.sysEnterLog_locators import SysEnter
 class SysEnterLogPage(Page):
     # 查询日期，开始
     def inputDt_start_date(self, content):
-        self.exec_script(SysEnterLogLocators.START_DATE_JS)
-        self.input(content, *SysEnterLogLocators.QRY_START_DATE)
+        self.input(content)
 
     # 查询日期，结束
     def inputDt_end_date(self, content):
-        self.exec_script(SysEnterLogLocators.END_DATE_JS)
-        self.input(content, *SysEnterLogLocators.QRY_END_DATE)
+        self.input(content)
 
     # 操作人员
     def inputStr_operator(self, content):
-        self.input(content, *SysEnterLogLocators.QRY_OPERATOR)
+        self.input(content)
 
     # 查询按钮
-    def btn_search(self):
-        self.click(*SysEnterLogLocators.BTN_SEARCH)
+    def btn_qry(self):
+        self.btn_query()

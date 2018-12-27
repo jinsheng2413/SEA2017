@@ -9,8 +9,10 @@
 @desc:
 """
 import unittest
+from unittest import TestCase
 from time import sleep
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
@@ -28,11 +30,13 @@ class TestScriptResultDetail(unittest.TestCase, ScriptResultDetailPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(ArchivesVerficationMan_data.scriptResultDetail_para)
-        sleep(2)
-        cls.exec_script(cls, ScriptResultDetailLocators.START_DATE_JS)
-        cls.exec_script(cls, ScriptResultDetailLocators.END_DATE_JS)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.scriptResultDetail_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -74,7 +78,6 @@ class TestScriptResultDetail(unittest.TestCase, ScriptResultDetailPage):
         self.inputStr_end_time(para["END_TIME"])
 
         self.btn_query()
-
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）
@@ -90,7 +93,7 @@ class TestScriptResultDetail(unittest.TestCase, ScriptResultDetailPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultDetail_para))
     def test_query(self, para):
         self.start_case(para)
@@ -99,7 +102,7 @@ class TestScriptResultDetail(unittest.TestCase, ScriptResultDetailPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultDetail_para))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultDetail_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

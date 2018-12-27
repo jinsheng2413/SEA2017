@@ -18,23 +18,16 @@ from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.scriptResultDetail_l
 class ScriptResultDetailPage(Page):
     # 脚本名称
     def inputStr_scriptName(self, value):
-        # self.input(value, *ScriptResultDetailLocators.QRY_SCRIPT_NAME)
-
         self.input(value)
 
     # 接收时间
     def inputStr_receive_time(self, value):
-        # self.input(value, *ScriptResultDetailLocators.QRY_START_TIME)
-
-        self.input(value)
+        self.inputDate(value)
 
     # 结束时间
     def inputStr_end_time(self, value):
-        # self.input(value, *ScriptResultDetailLocators.QRY_END_TIME)
+        self.inputDate(value)
 
-        self.input(value)
-
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*ScriptResultDetailLocators.BTN_QRY)
+        self.btn_query()

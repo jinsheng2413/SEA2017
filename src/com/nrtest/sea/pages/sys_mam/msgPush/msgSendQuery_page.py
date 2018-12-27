@@ -16,44 +16,28 @@ from com.nrtest.sea.locators.sys_mam.msgPush.msgSendQuery_locators import MsgSen
 class MsgSendQueryPage(Page):
     # 用户编号
     def inputStr_cons_no(self, content):
-        self.input(content, *MsgSendQueryLocators.QRY_CONS_NO)
+        self.input(content)
 
     # 开始时间
     def inputDt_start_date(self, content):
-        self.exec_script(MsgSendQueryLocators.START_DATE_JS)
-        self.input(content, *MsgSendQueryLocators.QRY_START_DATE)
+        self.input(content)
 
     # 结束时间
     def inputDt_end_date(self, content):
-        self.exec_script(MsgSendQueryLocators.END_DATE_JS)
-        self.input(content, *MsgSendQueryLocators.QRY_END_DATE)
+        self.input(content)
 
     # 发送状态
-    def inputSel_send_stat(self, index):
-        if index == 'c':
-            self._find_element(*MsgSendQueryLocators.QRY_SEND_STAT)
-        else:
-            self.click(*MsgSendQueryLocators.QRY_SEND_STAT)
-            locator = self.get_select_locator(
-                MsgSendQueryLocators.QRY_SEND_STAT_VALUE, index)
-            self.click(*locator)
-            self.click(*MsgSendQueryLocators.QRY_SEND_STAT)
+    def inputSel_send_stat(self, options):
+        self.selectDropDown(options)
 
     # 发送方式
-    def inputSel_send_way(self, index):
-        if index == 'c':
-            self._find_element(*MsgSendQueryLocators.QRY_SEND_WAY)
-        else:
-            self.click(*MsgSendQueryLocators.QRY_SEND_WAY)
-            locator = self.get_select_locator(
-                MsgSendQueryLocators.QRY_SEND_WAY_VALUE, index)
-            self.click(*locator)
-            self.click(*MsgSendQueryLocators.QRY_SEND_WAY)
+    def inputSel_send_way(self, options):
+        self.selectDropDown(options)
 
     # 发送人
     def inputStr_send_man(self, content):
-        self.input(content, *MsgSendQueryLocators.QRY_SEND_MAN)
+        self.input(content)
 
     # 查询按钮
-    def btn_search(self):
-        self.click(*MsgSendQueryLocators.BTN_SEARCH)
+    def btn_qry(self):
+        self.btn_query(True)

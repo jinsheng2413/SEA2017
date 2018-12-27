@@ -16,8 +16,8 @@ from com.nrtest.sea.locators.sys_mam.msgPush.monitorDeskCust_locators import Mon
 class MonitorDeskCustPage(Page):
     # 角色名称
     def inputStr_role_name(self, content):
-        self.input(content, *MonitorDeskCustLocators.QRY_ROLE_NAME)
+        self.input(content)
 
     # 查询按钮
-    def btn_search(self):
-        self.click(*MonitorDeskCustLocators.BTN_SEARCH)
+    def btn_qry(self):
+        self.btn_query()

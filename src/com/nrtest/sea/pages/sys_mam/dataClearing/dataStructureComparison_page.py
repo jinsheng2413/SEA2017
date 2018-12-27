@@ -8,8 +8,6 @@
 @time: 2018/11/20 0020 14:21
 @desc:
 """
-from com.nrtest.sea.locators.sys_mam.dataClearing.DataStructureComparison_locators import \
-    DataStructureComparisonLocators
 
 from com.nrtest.common.base_page import Page
 
@@ -18,19 +16,16 @@ from com.nrtest.common.base_page import Page
 class DataStructureComparisonPage(Page):
     # 核查日期
     def inputStr_examineDate(self, value):
-        self.input(value, *DataStructureComparisonLocators.QRY_EXAMINE_DATE)
+        self.input(value)
 
     # 表名称
     def inputStr_listName(self, value):
-        self.input(value, *DataStructureComparisonLocators.QRY_LIST_NAME)
+        self.input(value)
 
     # 数据组
-    def inputSel_dataGroup(self, name):
-        self.click(*DataStructureComparisonLocators.QRY_DATA_GROUP)
-        locator = self.get_select_locator(DataStructureComparisonLocators.QRY_DATA_GROUP_VALUE, name)
-        self.click(*locator)
+    def inputSel_dataGroup(self, options):
+        self.selectDropDown(options)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*DataStructureComparisonLocators.BTN_QRY)
+        self.btn_query()

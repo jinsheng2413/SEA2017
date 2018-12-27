@@ -65,7 +65,7 @@ class TestOrgLowVoltDayConfig(unittest.TestCase, OrgLowVoltDayConfigPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 是否电压监测
         self.inputSel_volt_monitor(para['IS_VOLT_MONITOR_SEL'])
 

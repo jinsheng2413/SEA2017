@@ -19,12 +19,12 @@ class OrgLowVoltDayDetailPage(Page):
     # 开始日期
     def inputStr_start_date(self, value):
         # self.input(value, *OrgLowVoltDayDetailLocators.START_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 结束日期
     def inputStr_end_date(self, value):
         # self.input(value, *OrgLowVoltDayDetailLocators.END_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 台区名称
     def inputStr_tg_name(self, value):
@@ -34,4 +34,4 @@ class OrgLowVoltDayDetailPage(Page):
     # 点击查询
     def btn_qry(self):
         # self.click(*OrgLowVoltDayDetailLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)

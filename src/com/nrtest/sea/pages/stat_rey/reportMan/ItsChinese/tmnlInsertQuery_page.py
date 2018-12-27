@@ -41,12 +41,12 @@ class TmnlInsertQueryPage(Page):
         self.selectDropDown(options)
 
     # 日期
-    def inputStr_date(self, value):
-        self.input(value)  # , *TmnlInsertQueryLocators.QRY_DATE)
+    def inputStr_startTime_count(self, value):
+        self.inputDate(value)  # , *TmnlInsertQueryLocators.QRY_DATE)
 
     # 到
-    def inputStr_to(self, value):
-        self.input(value)  #, *TmnlInsertQueryLocators.QRY_TO)
+    def inputStr_endTime_Count(self, value):
+        self.inputDate(value)  # , *TmnlInsertQueryLocators.QRY_TO)
 
     # 查询
     def btn_qry(self):

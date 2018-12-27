@@ -66,16 +66,16 @@ class TestTmnlInsertQuery(TestCase, TmnlInsertQueryPage):
         """
 
         #打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
 
         # 统计分类
         self.inputChk_stat_type(para['STAT_TYPE'])
 
         #日期
-        self.inputStr_date(para['DATE'])
+        self.inputStr_startTime_count(para['DT_FROM'])
 
         #到
-        self.inputStr_to(para["TO"])
+        self.inputStr_endTime_Count(para["DT_TO"])
 
         #终端类型
         self.inputSel_tmnlType(para['TMNL_TYPE'])

@@ -22,19 +22,19 @@ class BcVoltMonitorPointDataPage(Page):
         # locator = self.get_select_locator(
         #     BcVoltMonitorPointDataLocators.MONITOR_POINT_TYPE, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 监测点名称
     def inputStr_monitor_point_name(self, value):
         # self.input(value, *BcVoltMonitorPointDataLocators.MONITOR_POINT_NAME)
-        self.input(value)
+        self.curr_input(value,is_multi_tab=True,is_multi_elements=True)
 
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *BcVoltMonitorPointDataLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*BcVoltMonitorPointDataLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)

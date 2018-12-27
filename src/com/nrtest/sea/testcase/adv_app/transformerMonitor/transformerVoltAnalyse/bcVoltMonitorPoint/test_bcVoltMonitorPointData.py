@@ -68,7 +68,7 @@ class TestBcVoltMonitorPointData(unittest.TestCase, BcVoltMonitorPointDataPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 监测点类型
         self.inputSel_monitor_point_type(para['MONITOR_POINT_TYPE'])
         # 监测点名称

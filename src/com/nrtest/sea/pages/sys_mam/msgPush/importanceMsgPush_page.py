@@ -9,15 +9,17 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.msgPush.importanceMsgPush_locators import ImportanceMsgPushLocators
 
 
 # 系统管理→信息定制→推送信息定制→重要信息推出
 class ImportanceMsgPushPage(Page):
     # 角色名称
     def inputStr_role_name(self, content):
-        self.input(content, *ImportanceMsgPushLocators.QRY_ROLE_NAME)
+        # self.input(content, *ImportanceMsgPushLocators.QRY_ROLE_NAME)
+        self.input(content)
+
 
     # 查询按钮
     def btn_search(self):
-        self.click(*ImportanceMsgPushLocators.BTN_SEARCH)
+        # self.click(*ImportanceMsgPushLocators.BTN_SEARCH)
+        self.btn_query()

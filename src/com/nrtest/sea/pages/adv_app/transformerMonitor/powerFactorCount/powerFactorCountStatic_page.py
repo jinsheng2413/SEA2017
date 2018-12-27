@@ -27,7 +27,7 @@ class PowerFactorCountStaticPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *PowerFactorCountStaticLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):

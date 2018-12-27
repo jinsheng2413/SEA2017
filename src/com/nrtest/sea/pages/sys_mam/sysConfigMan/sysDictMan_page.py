@@ -9,49 +9,43 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.sysConfigMan.sysDictMan_locators import SysDictManLocators
 
 
 class SysDictManPage(Page):
 
     # 分类名称
-    def inputStr_catalog_name(self, value):
+    def inputStr_catalog_name(self, content):
         # self.input(value, *SysDictManLocators.CATALOG_NAME)
-
-        self.input(value)
+        self.input(content)
 
     # 生效日期
-    def inputStr_start_date(self, value):
+    def inputStr_start_date(self, content):
         # self.input(value, *SysDictManLocators.START_DATE)
-
-        self.input(value)
+        self.inputDate(content)
 
     # 失效日期
-    def inputStr_end_date(self, value):
+    def inputStr_end_date(self, content):
         # self.input(value, *SysDictManLocators.END_DATE)
-
-        self.input(value)
+        self.inputDate(content)
 
     # 维护类型--打开并选择
-    def inputRSel_cons_type(self, name):
+    def inputRSel_cons_type(self, option):
         # self.click(*SysDictManLocators.EDIT_TYPE_SEL)
-        # locator = self.get_select_locator(SysDictManLocators.EDIT_TYPE, name)
+        # locator = self.get_select_locator(SysDictManLocators.EDIT_TYPE, option)
         # self.click(*locator)
-
-        self.selectDropDown(name)
+        self.selectDropDown(option)
     # 维护人员
-    def inputStr_editor(self, value):
+    def inputStr_editor(self, content):
         # self.input(value, *SysDictManLocators.EDITOR)
-
-        self.input(value)
+        self.input(content)
 
     # 维护类型--打开并选择
-    def inputRSel_data_source(self, name):
+    def inputRSel_data_source(self, option):
         # self.click(*SysDictManLocators.DATA_SOURCE_SEL)
         # locator = self.get_select_locator(SysDictManLocators.DATA_SOURCE, name)
         # self.click(*locator)
-
-        self.selectDropDown(name)
+        self.selectDropDown(option)
     # 点击查询
-    def btn_query(self):
-        self.click(*SysDictManLocators.BTN_QUERY)
+    def btn_search(self):
+        # self.click(*SysDictManLocators.BTN_QUERY)
+        self.btn_query()

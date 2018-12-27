@@ -8,14 +8,12 @@
 @desc:
 """
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysConfigMan.sysConfigMan_data import SysConfigManData
-from com.nrtest.sea.locators.sys_mam.sysConfigMan.sysDictMan_locators import SysDictManLocators
 from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysDictMan_page import SysDictManPage
 from com.nrtest.sea.task.commonMath import *
 
@@ -27,10 +25,17 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        cls.driver = openMenu(SysConfigManData.para_SysDictMan)
-        sleep(2)
-        cls.exec_script(cls, SysDictManLocators.START_DATE_JS)
-        cls.exec_script(cls, SysDictManLocators.END_DATE_JS)
+        # cls.driver = openMenu(SysConfigManData.para_SysDictMan)
+        # sleep(2)
+        # cls.exec_script(cls, SysDictManLocators.START_DATE_JS)
+        # cls.exec_script(cls, SysDictManLocators.END_DATE_JS)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(SysConfigManData.para_SysDictMan)
+        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
 
 
@@ -55,7 +60,7 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
         # 去除查询干扰数据(要传入对应的page页面类)
         # self.clear_values(SysDictManPage)
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         """
@@ -64,8 +69,6 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
         # 分类名称
         self.inputStr_catalog_name(para['CATALOG_NAME'])
         # 生效日期
@@ -105,7 +108,7 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SysConfigManData.para_SysDictMan))
+    @data(*DataAccess.getCaseData(SysConfigManData.para_SysDictMan, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

@@ -18,22 +18,23 @@ class IdCheckInfQueryPage(Page):
     def inputDt_start_date(self, content):
         self.exec_script(IdCheckInfQueryLocators.START_DATE_JS)
         # self.input(content, *IdCheckInfQueryLocators.QRY_START_DATE)
-        self.input(content)
+        self.inputDate(content)
 
     # 审核结束日期
     def inputDt_end_date(self, content):
         self.exec_script(IdCheckInfQueryLocators.END_DATE_JS)
         # self.input(content, *IdCheckInfQueryLocators.QRY_END_DATE)
-        self.input(content)
+        self.inputDate(content)
 
     # 审核结果
-    def inputSel_result(self, index):
+    def inputSel_result(self, option):
         # self.click(*IdCheckInfQueryLocators.QRY_RESULT)
-        # locator = self.get_select_locator(IdCheckInfQueryLocators.QRY_RESULT_VALUE, index)
+        # locator = self.get_select_locator(IdCheckInfQueryLocators.QRY_RESULT_VALUE, option)
         # self.click(*locator)
         # self.delDropdownBoxHtml()
-        self.selectDropDown(index)
+        self.selectDropDown(option)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*IdCheckInfQueryLocators.BTN_SEARCH)
+        # self.click(*IdCheckInfQueryLocators.BTN_SEARCH)
+        self.btn_query()

@@ -31,6 +31,13 @@ class TestDatabaseUpgradeStat(unittest.TestCase, DatabaseUpgradeStatPage):
         cls.driver = openMenu(SysConfigManData.DatabaseUpgradeStat_para)
         sleep(2)
         cls.exec_script(cls, DatabaseUpgradeStatLocators.DATE_JS)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(SysConfigManData.DatabaseUpgradeStat_para)
+        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -50,11 +57,9 @@ class TestDatabaseUpgradeStat(unittest.TestCase, DatabaseUpgradeStatPage):
         :return:
         """
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
         # 升级日期
         self.inputDt_date(para['DATE'])
         # 查询按钮
@@ -84,7 +89,7 @@ class TestDatabaseUpgradeStat(unittest.TestCase, DatabaseUpgradeStatPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SysConfigManData.DatabaseUpgradeStat_para))
+    @data(*DataAccess.getCaseData(SysConfigManData.DatabaseUpgradeStat_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

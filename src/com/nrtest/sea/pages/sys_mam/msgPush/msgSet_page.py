@@ -9,17 +9,18 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.msgPush.msgSet_locators import MsgSetLocators
 
 
 # 系统管理→信息定制→推送信息定制→信息设置
 class MsgSetPage(Page):
     # 重要性级别
-    def inputSel_importance_level(self, index):
-        self.click(*MsgSetLocators.QRY_IMPORTANCE_LEVEL)
-        locator = self.get_select_locator(MsgSetLocators.QRY_IMPORTANCE_LEVEL_VALUE, index)
-        self.click(*locator)
+    def inputSel_importance_level(self, option):
+        # self.click(*MsgSetLocators.QRY_IMPORTANCE_LEVEL)
+        # locator = self.get_select_locator(MsgSetLocators.QRY_IMPORTANCE_LEVEL_VALUE, option)
+        # self.click(*locator)
+        self.selectDropDown(option)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*MsgSetLocators.BTN_SEARCH)
+        # self.click(*MsgSetLocators.BTN_SEARCH)
+        self.btn_query()

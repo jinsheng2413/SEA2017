@@ -178,7 +178,7 @@ class Page():
 
         return wrapper
 
-    def _find_element(self, locator, seconds=15):
+    def _find_element(self, locator, seconds=5):
         """
         方法名：_element
         功能：定位元素的具体某个元素WEBelement
@@ -429,6 +429,16 @@ class Page():
         # print('*************js_attr', js_attr)
         self.driver.execute_script(js_attr)
 
+    def scrollToElement(self, locator):
+        """
+        滚动元素到指定位置
+        :param locator:
+        :return:
+        """
+        el = self._find_element(locator)
+        logger.info('scroll view element')
+        # // roll down and keep the element to the center of browser：scrollIntoView
+        self.driver.execute_script('arguments[0].scrollIntoViewIfNeeded(true);', el)
 
 
     def clickRadioBox(self, options, is_multi_tab=False, is_multi_elements=False):
@@ -455,13 +465,26 @@ class Page():
         except BaseException as ex:
             print('点击单选框失败：{}'.format(ex))
 
-    def clickSingleCheckBox(self, item, is_multi_tab=False):
+    def clickSingleCheckBox(self, options, is_multi_tab=False, is_multi_elements=False):
         """
          选择单个复选框
-         :param item: 被选择项
+         :param options: 被选择项
          :param is_multi_tab:
          """
-        self.clickRadioBox(item + item, is_multi_tab)
+        try:
+            ls_option = options.split(';')
+            item = ls_option[1]
+            # 赋值选中，不赋值不选中
+            is_select = bool(item)
+            xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, ls_option[0], is_multi_tab)
+            if is_multi_elements:
+                el = self._find_displayed_element(xpath)
+            else:
+                el = self._find_element(xpath)
+            if is_select != el.is_selected():
+                el.click()
+        except BaseException as ex:
+            print('点击失败：{}'.format(ex))
 
     def clickCheckBox(self, items, attr, is_multi_tab=False):
         """
@@ -508,7 +531,8 @@ class Page():
         """
         按Tab选择不同日期区间，样例详见：系统管理→系统配置管理→后台服务监测
         :param tab_name:Tab页名称
-        :return:
+        :param is_multi_tab:
+        :param is_multi_elements:
         """
         if tab_name.find(';'):
             ls_items = tab_name.split(';')
@@ -1161,9 +1185,6 @@ class Page():
         WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locators))
         right_click = self.driver.find_element(*locators)
         ActionChains(self.driver).context_click(right_click).perform()
-
-    def clearInput(self, *Locators):
-        self._find_element(Locators).clear()
 
     def clickSkip(self, assertValues):
         """

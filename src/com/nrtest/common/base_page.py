@@ -426,7 +426,7 @@ class Page():
             xpath = BaseLocators.QRY_DT_INPUT[1]
         # 把xpath对象中的 “ 替换为 '
         js_attr = BaseLocators.JS_DT % xpath.replace('"', '\'')
-        print('*************js_attr', js_attr)
+        # print('*************js_attr', js_attr)
         self.driver.execute_script(js_attr)
 
 

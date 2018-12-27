@@ -16,40 +16,36 @@ from com.nrtest.sea.locators.sys_mam.logMan.logStatAnalysis_locators import *
 class LogStatAnalysis_fial_Page(Page):
     # 
     def inputStr_date(self, value):
-        self.input(value, *LogStatAnalysis_fail_Locators.QRY_DATE)
+        self.input(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*LogStatAnalysis_fail_Locators.BTN_QRY)
-
+        self.btn_query()
 
 # 系统管理--》日志管理--》日志统计分析
 class LogStatAnalysis_list_Page(Page):
     # 查询日期
     def inputStr_queryDate(self, value):
-        self.input(value, *LogStatAnalysis_list_Locators.QRY_QUERY_DATE)
+        self.input(value)
 
     # 结束时间
     def inputStr_TO(self, value):
-        self.input(value, *LogStatAnalysis_list_Locators.QRY_TO)
+        self.input(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*LogStatAnalysis_list_Locators.BTN_QRY)
-
+        self.btn_query(True)
 
 # 系统管理--》日志管理--》日志统计分析
 class LogStatAnalysis_man_Page(Page):
     # 查询日期
     def inputStr_queryDate(self, value):
-        self.input(value, *LogStatAnalysis_man_Locators.QRY_QUERY_DATE)
+        self.input(value)
 
     # 结束时间
     def inputStr_TO(self, value):
-        self.input(value, *LogStatAnalysis_man_Locators.QRY_TO)
+        self.input(value)
 
     # 查询
     def btn_qry(self):
-        self.click(*LogStatAnalysis_man_Locators.BTN_QRY)
+        self.btn_query(True)

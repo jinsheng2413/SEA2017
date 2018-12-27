@@ -15,11 +15,9 @@ from com.nrtest.sea.locators.sys_mam.logMan.sysUpgradeLog_locators import SysUpg
 # 系统管理→日志管理→系统升级日志
 class SysUpgradeLogPage(Page):
     # 版本类型
-    def inputSel_version_type(self, index):
-        self.click(*SysUpgradeLogLocators.QRY_VERSION_TYPE)
-        locator = self.get_select_locator(SysUpgradeLogLocators.QRY_VERSION_TYPE_VALUE, index)
-        self.click(*locator)
+    def inputSel_version_type(self, options):
+        self.selectDropDown(options)
 
     # 查询按钮
-    def btn_search(self):
-        self.click(*SysUpgradeLogLocators.BTN_SEARCH)
+    def btn_qry(self):
+        self.btn_query(True)

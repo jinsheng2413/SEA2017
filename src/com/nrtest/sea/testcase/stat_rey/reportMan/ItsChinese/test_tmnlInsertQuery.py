@@ -2,33 +2,37 @@
 
 
 """
-@author: 郭春彪
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_tmnlInsertQuery.py
 @time: 2018/11/7 0007 14:59
 @desc:
 """
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.reportMan.ItsChinese.itsChinese import TtChinese
-from com.nrtest.sea.pages.stat_rey.reportMan.ItsChinese.tmnlInsertQuery_page import TmnlInsertQueryPage, TmnlInsertQueryLocators
+from com.nrtest.sea.pages.stat_rey.reportMan.ItsChinese.tmnlInsertQuery_page import TmnlInsertQueryPage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 统计查询-->报表管理-->国网报表-->智能电能表及终端设备接入情况
 @ddt
-class TestTmnlInsertQuery(unittest.TestCase,TmnlInsertQueryPage):
+class TestTmnlInsertQuery(TestCase, TmnlInsertQueryPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(TtChinese.tmnlInsertQuery_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(TtChinese.tmnlInsertQuery_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
 
     @classmethod
@@ -52,73 +56,66 @@ class TestTmnlInsertQuery(unittest.TestCase,TmnlInsertQueryPage):
         # 回收左边树
         self.recoverLeftTree()
 
-    def day_query(self, para):
+    def query(self, para):
+
         """
 
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        sleep(2)
+
         #打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
-        self.exec_script(TmnlInsertQueryLocators.START_DATE_JS)
-        self.exec_script(TmnlInsertQueryLocators.END_DATE_JS)
 
-        self.clickRadioBox(para['BOX'])
+        # 统计分类
+        self.inputChk_stat_type(para['STAT_TYPE'])
+
         #日期
         self.inputStr_date(para['DATE'])
+
         #到
         self.inputStr_to(para["TO"])
+
         #终端类型
         self.inputSel_tmnlType(para['TMNL_TYPE'])
+
         #终端厂商
         self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
+
         #统计口径
         self.inputSel_countCaliber(para['COUNT_CALIBER'])
 
-
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*TmnlInsertQueryLocators.TAB_ONE)
-        # self.assertTrue(result)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TtChinese.tmnlInsertQuery_para,tabName='日'))
-    def test_dayQuery(self, para):
-        self.day_query(para)
-
-    def month_query(self, para):
-        """
-
-        :param para: Dict类型的字典，不是dict
-        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
-        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        """
-
-        # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
-
-        self.clickRadioBox(para['BOX'])
-        # 终端类型
-        self.inputSel_tmnlType(para['TMNL_TYPE'])
-        # 终端厂商
-        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
-        # 统计口径
-        self.inputSel_countCaliber(para['COUNT_CALIBER'])
-
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*TmnlInsertQueryLocators.TAB_ONE)
-        # self.assertTrue(result)
+    @data(*DataAccess.getCaseData(TtChinese.tmnlInsertQuery_para))
+    def test_query(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TtChinese.tmnlInsertQuery_para,tabName='月'))
-    def test_monthQuery(self, para):
-        self.month_query(para)
-
-
-
-
+    @data(*DataAccess.getCaseData(TtChinese.tmnlInsertQuery_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

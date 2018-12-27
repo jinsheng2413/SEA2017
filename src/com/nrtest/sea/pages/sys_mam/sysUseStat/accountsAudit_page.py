@@ -17,15 +17,12 @@ from com.nrtest.sea.locators.sys_mam.sysUseStat.accountsAudit_locators import Ac
 class AccountsAuditPage(Page):
     # 时间
     def inputStr_date(self, value):
-        self.input(value, *AccountsAuditLocators.QRY_DATE)
+        self.input(value)
 
     # 账号状态
-    def inputStr_accountStatus(self, value):
-        self.click(*AccountsAuditLocators.QRY_ACCOUNT_STATUS)
-        locator = self.get_select_locator(AccountsAuditLocators.QRY_ACCOUNT_STATUS_VALUE, value)
-        self.click(*locator)
+    def inputSel_accountStatus(self, options):
+        self.selectDropDown(options)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*AccountsAuditLocators.BTN_QRY)
+        self.btn_query(True)

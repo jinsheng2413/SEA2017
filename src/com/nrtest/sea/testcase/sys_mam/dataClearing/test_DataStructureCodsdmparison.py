@@ -10,7 +10,9 @@
 """
 import unittest
 
+from unittest import TestCase
 from ddt import ddt, data
+from com.nrtest.common.BeautifulReport import BeautifulReport
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
@@ -27,7 +29,12 @@ class TestDataStrategyManagenment(unittest.TestCase, DataStrategyManagenmentPage
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DataClearing_data.dataStrategyManagenment_para)
+        menuPage = MenuPage.openMenu(DataClearing_data.dataStrategyManagenment_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -63,14 +70,36 @@ class TestDataStrategyManagenment(unittest.TestCase, DataStrategyManagenmentPage
         self.inputStr_listName(para['LIST_NAME'])
         # 存储周期
         self.inputSel_storageCycle(para['STORYAGE_CYCLE'])
-
+        # 查询
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*DataTableAnalysisLocators.TAB_ONE)
-        # self.assertTrue(result)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataClearing_data.dataStrategyManagenment_para))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(DataClearing_data.dataStrategyManagenment_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

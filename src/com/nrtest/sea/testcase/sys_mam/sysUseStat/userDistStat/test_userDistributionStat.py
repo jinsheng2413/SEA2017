@@ -3,33 +3,38 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_sysEnterLog.py
-@time: 2018/11/29 14:01
+@file: test_userDistributionStat.py
+@time: 2018/11/14 9:26
 @desc:
 """
 
+import unittest
 from unittest import TestCase
+from time import sleep
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
-from com.nrtest.sea.pages.sys_mam.logMan.sysEnterLog_page import *
+from com.nrtest.sea.data.sys_mam.sysUseStat.sysUseStat_data import SysUseStat_date
+from com.nrtest.sea.pages.sys_mam.sysUseStat.userDistributionStat_page import UserDistributionStatPage, \
+    UserDistributionStatLocators
 from com.nrtest.sea.task.commonMath import *
 
 
-# 系统管理→日志管理→系统登录日志
+# 系统管理→系统使用情况统计→用户分布情况统计
+# 用户分布统计
 @ddt
-class TestSysEnterLog(TestCase, SysEnterLogPage):
+class TestUserDistributionStat(unittest.TestCase, UserDistributionStatPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(LogEdit_data.sysEnterLog_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(SysUseStat_date.UserDistributionStat_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(SysUseStat_date.UserDistributionStat_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -54,15 +59,8 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        self.displayTreeMenu()
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
-        # 查询日期，开始
-        self.inputDt_start_date(para['START_DATE'])
-        # 查询日期，结束
-        self.inputDt_end_date(para['END_DATE'])
-        # 操作人员
-        self.inputStr_operator(para['OPERATOR'])
+        openLeftTree(para['TREE_NODE'])
         # 查询按钮
         self.btn_qry()
 
@@ -82,8 +80,8 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(LogEdit_data.sysEnterLog_para))
+    @data(*DataAccess.getCaseData(SysUseStat_date.UserDistributionStat_para,
+                                SysUseStat_date.UserDistributionStat_tabName))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -91,7 +89,8 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LogEdit_data.sysEnterLog_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SysUseStat_date.UserDistributionStat_para,
+                                SysUseStat_date.UserDistributionStat_tabName, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

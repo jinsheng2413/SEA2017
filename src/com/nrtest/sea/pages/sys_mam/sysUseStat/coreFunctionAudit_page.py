@@ -17,21 +17,20 @@ from com.nrtest.sea.locators.sys_mam.sysUseStat.coreFunctionAudit_locators impor
 class CoreFunctionAuditPage(Page):
     # 操作员
     def inputStr_performer(self, value):
-        self.input(value, *CoreFunctionAuditLocators.QRY_PERFORMER)
+        self.input(value)
 
     # 访问时间
     def inputStr_visitTime(self, value):
-        self.input(value, *CoreFunctionAuditLocators.QRY_VISIST_DATE)
+        self.input(value)
 
     # 到
     def inputStr_TO(self, value):
-        self.input(value, *CoreFunctionAuditLocators.QRY_TO)
+        self.input(value)
 
     # 结束时间
     def inputStr_enDtime(self, value):
-        self.input(value, *CoreFunctionAuditLocators.QRY_TO)
+        self.input(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*CoreFunctionAuditLocators.BTN_QRY)
+        self.btn_query()

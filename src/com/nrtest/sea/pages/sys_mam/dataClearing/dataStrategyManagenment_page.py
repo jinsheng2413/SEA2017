@@ -16,22 +16,17 @@ from com.nrtest.sea.locators.sys_mam.dataClearing.dataStrategyManagenment_locato
 # 系统管理-->数据清理管理-->历史数据策略管理
 class DataStrategyManagenmentPage(Page):
     # 存储周期
-    def inputSel_storageCycle(self, name):
-        self.click(*DataStrategyManagenmentLocators.QRY_STORAGE_CYCLE)
-        locator = self.get_select_locator(DataStrategyManagenmentLocators.QRY_STORAGE_CYCLE_VALUE, name)
-        self.click(*locator)
+    def inputSel_storageCycle(self, options):
+        self.selectDropDown(options)
 
     # 表名称
     def inputStr_listName(self, value):
-        self.input(value, *DataStrategyManagenmentLocators.QRY_LIST_NAME)
+        self.input(value)
 
     # 数据组
-    def inputSel_dataGroup(self, name):
-        self.click(*DataStrategyManagenmentLocators.QRY_DATA_GROUP)
-        locator = self.get_select_locator(DataStrategyManagenmentLocators.QRY_DATA_GROUP_VALUE, name)
-        self.click(*locator)
+    def inputSel_dataGroup(self, options):
+        self.selectDropDown(options)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*DataStrategyManagenmentLocators.BTN_QRY)
+        self.btn_query()

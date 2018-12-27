@@ -1,35 +1,32 @@
 # -*- coding:utf-8 -*-
 
-
 """
-@author: 郭春彪
+@author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: test_AccountsAudit.py
-@time: 2018/11/21 0021 10:35
+@file: test_demo.py
+@time: 2018/12/27 0010 9:21
 @desc:
 """
-import unittest
-from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
+from unittest import TestCase
+
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.sys_mam.sysUseStat.sysUseStat_data import SysUseStat_date
-from com.nrtest.sea.pages.sys_mam.sysUseStat.accountsAudit_page import AccountsAuditPage, AccountsAuditLocators
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardMan
+from com.nrtest.sea.pages.run_man.simCardMan.fourGCommMethod.communMeter_page import CommumMeterPage
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 系统管理→系统使用情况统计→账号审计
 @ddt
-class TestAccountsAudit(unittest.TestCase, AccountsAuditPage):
+class TestCommumMetter(TestCase, CommumMeterPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(SysUseStat_date.accountsAudit_para)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(SimCardMan.para_communMeter)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
@@ -50,7 +47,7 @@ class TestAccountsAudit(unittest.TestCase, AccountsAuditPage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         :return:
         """
 
@@ -65,12 +62,50 @@ class TestAccountsAudit(unittest.TestCase, AccountsAuditPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 时间
-        self.inputStr_date(para['DATE'])
-        # 账号状态
-        self.inputSel_accountStatus(para['ACCOUNT_STATUS'])
-        # 查询
-        self.btn_qry()
+        # 注册菜单
+        # self.menu_name = para['MENU_NAME']
+
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+
+        # 抄表段号
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
+
+        # 电表资产号
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
+
+        # 用户类型
+        self.inputSel_cons_type(para['RUN_STATE'])
+
+        # 流程标识
+        self.inputSel_processID_count(para['PROCESS_ID'])
+
+        # 申请单号
+        self.inputStr_applyNo_count(para['APPLY_NO'])
+
+        # 用户编号
+        self.inputStr_userNo_count(para['USER_NO'])
+
+        # 终端地址
+        self.inputStr_tmnlAddr_count(para["TMNL_ADDR"])
+
+        # 终端厂家
+        self.inputSel_tmnlFactory_count(para['TMNL_FACTORY'])
+
+        # 装接类型
+        self.inputSel_moutingType_count(para['MOUNTING_TYPE'])
+
+        # 终端类型
+        self.inputSel_tmnlType_count(para['TMNL_TYPE'])
+
+        # 通信规约
+        self.inputSel_LCT_count(para['LCT'])
+
+        # 表类型
+        self.inputSel_surfaceType_count(para['SURFACE_TYPE'])
+
+        self.btn_tmnl_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -88,7 +123,7 @@ class TestAccountsAudit(unittest.TestCase, AccountsAuditPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SysUseStat_date.accountsAudit_para))
+    @data(*DataAccess.getCaseData(SimCardMan.para_communMeter))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -96,7 +131,7 @@ class TestAccountsAudit(unittest.TestCase, AccountsAuditPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SysUseStat_date.accountsAudit_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SimCardMan.para_communMeter, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

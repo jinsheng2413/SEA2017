@@ -17,19 +17,16 @@ from com.nrtest.sea.locators.sys_mam.dataClearing.dataTransQurey_locators import
 class DataTransQureyPage(Page):
     # 核查日期
     def inputStr_examineDate(self, value):
-        self.input(value, *DataTransQureyLocators.QRY_EXAMINE_DATE)
+        self.input(value)
 
     # 表名称
     def inputStr_listName(self, value):
-        self.input(value, *DataTransQureyLocators.QRY_LIST_NAME)
+        self.input(value)
 
     # 数据组
-    def inputSel_dataGroup(self, name):
-        self.click(*DataTransQureyLocators.QRY_DATA_GROUP)
-        locator = self.get_select_locator(DataTransQureyLocators.QRY_DATA_GROUP_VALUE, name)
-        self.click(*locator)
+    def inputSel_dataGroup(self, options):
+        self.selectDropDown(options)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*DataTransQureyLocators.BTN_QRY)
+        self.btn_query()

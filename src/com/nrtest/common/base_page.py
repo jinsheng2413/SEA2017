@@ -286,10 +286,11 @@ class Page():
                 raise Exception('日期选择框调整顺序【{}】不对，请确认'.format(idx))
 
             el = self._find_displayed_element(loc, idx)
-            el.clear()
-            el.send_keys(ls_values[2])
+            self.driver.execute_script("arguments[0].value=arguments[1]", el, ls_values[2])
+            # el.clear()
+            # el.send_keys(ls_values[2])
             logger.info('日期选择框填写:{}'.format(value))
-        except AttributeError as ex:
+        except Exception as ex:
             logger.error('输入错误:{}\n{}'.format(value, ex))
 
 
@@ -424,7 +425,7 @@ class Page():
             xpath = BaseLocators.QRY_DT_INPUT[1]
         # 把xpath对象中的 “ 替换为 '
         js_attr = BaseLocators.JS_DT % xpath.replace('"', '\'')
-        # print('js_attr', js_attr)
+        print('*************js_attr', js_attr)
         self.driver.execute_script(js_attr)
 
 
@@ -502,8 +503,31 @@ class Page():
         :param tab_name:Tab页名称
         :return:
         """
-        self.clickTabPage(tab_name)
-        sleep(0.5)
+        if tab_name.find(';'):
+            ls_items = tab_name.split(';')
+            tab = ls_items[2]
+            tab = tab if len(tab) > 0 else ls_items[1]
+        else:
+            tab = tab_name
+        self.clickTabPage(tab)
+        sleep(0.2)
+
+    def get_para_value(self, para):
+        """
+        提取页面元素配置值，目前只针对单选框及输入框（包括日期型）
+        :param para:
+        :return:
+        """
+        if para.find(';'):
+            ls_items = para.split(';')
+            if len(ls_items) == 2:
+                value = ls_items[1]
+            else:
+                value = ls_items[2]
+                value = value if len(value) > 0 else ls_items[1]
+        else:
+            value = para
+        return value
 
     def openLeftTree(self, treeNo):
         """

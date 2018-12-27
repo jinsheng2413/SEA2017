@@ -158,5 +158,5 @@ def upgrade_test_file(file_name):
 
 if __name__ == '__main__':
     # 指定testcase的根目录
-    file = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\run_man\meterMan\test_meterClockMan.py'
+    file = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\sys_mam\sysConfigMan\test_backgroupServeMonitorDetail.py'
     upgrade_test_file(file)

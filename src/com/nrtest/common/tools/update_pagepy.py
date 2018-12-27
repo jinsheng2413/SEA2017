@@ -153,6 +153,7 @@ def upgrade_test_file(file_name):
                 continue
             if script in ('str', 'chk', 'dt') and temp.find('self.input') >= 0:
                 line = line.replace(',', ') #', 1)
+
                 # doc.append(line)
             elif script == 'sel' and line != '\r':
                 for c in line:

@@ -96,6 +96,20 @@ class DataAccess:
         return cases
 
     @staticmethod
+    def refresh_all():
+        """
+        用于默认刷新admin用户下的‘00000’用户组的测试用例
+        :param user_no: 测试用例用户
+        :param group_no: 测试用例组
+        :return:
+        """
+
+        pyoracle = PyOracle.getInstance()
+        cases = pyoracle.callproc('pkg_nrtest.refres_all_case')
+
+        return cases
+
+    @staticmethod
     def get_case_result(tst_case_id):
         """
         用于默认刷新admin用户下的‘00000’用户组的测试用例
@@ -166,12 +180,12 @@ class DataAccess:
 if __name__ == '__main__':
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
     # print(DataAccess.getCaseData("99952200", tabName='系统异常参数设置'))
-    print(DataAccess.replace_chrs('\r\nabc\t123\n  xyz'))
+    print(DataAccess.refresh_all())
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
-
+    pass
     # for i in  str[4:10]:
     #     print(i)
     # print(DataAccess.getAllMenu())

@@ -9,19 +9,17 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.vipConsMan.unControlPlant.unControlPlantGatherMon_locators import \
-    UnControlPlantGatherMon1_locators, UnControlPlantGatherMon2_locators
 
 
 # 第一个tab页
 class UnControlPlantGatherMon1_Page(Page):
     # 开始时间
     def inputStr_start_date(self, value):
-        self.input(value)  # , *UnControlPlantGatherMon1_locators.QRY_START_DATE)
+        self.inputDate(value)  # , *UnControlPlantGatherMon1_locators.QRY_START_DATE)
 
     # 结束时间
     def inputStr_end_date(self, value):
-        self.input(value)  #, *UnControlPlantGatherMon1_locators.QRY_END_DATE)
+        self.inputDate(value)  # , *UnControlPlantGatherMon1_locators.QRY_END_DATE)
 
     # 发电方式
     def inputSel_generate_electricity_way(self, options):
@@ -65,7 +63,7 @@ class UnControlPlantGatherMon2_Page(Page):
 
     # 查询日期
     def inputStr_date(self, value):
-        self.input(value)  #, *UnControlPlantGatherMon2_locators.QRY_DATE)
+        self.inputDate(value)  #, *UnControlPlantGatherMon2_locators.QRY_DATE)
 
     # 户号
     def inputStr_cons_no(self, value):

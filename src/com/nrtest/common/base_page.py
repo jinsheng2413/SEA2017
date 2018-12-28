@@ -349,9 +349,15 @@ class Page():
         except BaseException as e:
             return finded_el
 
-    def spec_click(self, locator, label_name, idx=1):
-        # BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
-        el = self._spec_element(BaseLocators.BTN_QRY_BLANK, label_name, idx)
+    def spec_click(self, label_name='查询', idx=1, locator=None):
+        """
+
+        :param label_name: 按钮名称
+        :param idx:
+        :param locator:
+        """
+        loc = locator if bool(locator) else BaseLocators.BTN_QRY_BLANK
+        el = self._spec_element(loc, label_name, idx)
         if bool(el):
             el.click()
         else:

@@ -8,14 +8,13 @@
 @time: 2018/11/9 0009 9:44
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
-from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.simAlarmAnaly_locators import AbnormalCountLocators
 from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.simAlarmAnaly_page import AbnoralStaticPage
 from com.nrtest.sea.task.commonMath import *
 
@@ -23,16 +22,18 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理-->SIM卡管理-->运行情况分析-->异常分析
 # 异常统计
 @ddt
-class TestAbnormalCount(unittest.TestCase, AbnoralStaticPage):
+class TestAbnormalCount(TestCase, AbnoralStaticPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单
-        cls.driver = openMenu(RunSituationCount_data.para_simAlarmAnaly)
-        # 点击Tab页标签
-        clickTabPage(RunSituationCount_data.para_simAlarmAnaly_static)
-        cls.exec_script(cls,AbnormalCountLocators.START_DATE_JS)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(RunSituationCount_data.para_simAlarmAnaly)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(RunSituationCount_data.para_simAlarmAnaly_static)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):

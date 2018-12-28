@@ -31,6 +31,9 @@ class FaultHandlerLocators:
     #
     QRY_ = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'')]/../../div[1]/div[1]//input")
 
+    # 故障类型
+    QRY_FAULT_TYPE = (By.NAME, 'isValid')
+
     # 【操作区】
     BTN_QRY = (By.XPATH,
                "(//div[@class=\"x-column-inner\"]//tbody[@class=\"x-btn-small x-btn-icon-small-left\"]//button[contains(text(),'查询')])[1]")
@@ -66,6 +69,9 @@ class FaultFeedBackLocators:
     QRY_FAULT_END_DATE = (By.XPATH, "//*[@id=\"feedbackEndDate\"]")
     #
     QRY_ = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'')]/../../div[1]/div[1]//input")
+
+    # 故障类型
+    QRY_FAULT_TYPE = (By.NAME, 'isValid')
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

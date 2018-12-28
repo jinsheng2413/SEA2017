@@ -14,8 +14,6 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
-from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_locators import \
-    TmnlQualityEvalDetailLocators
 from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_page import \
     TmnlQualityEvalDetailPage
 from com.nrtest.sea.task.commonMath import *

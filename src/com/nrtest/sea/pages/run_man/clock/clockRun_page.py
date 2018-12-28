@@ -74,7 +74,7 @@ class FrequentlyCheckTmnlPage(Page):
         # locator = self.get_select_locator(
         #     FrequentlyCheckTmnlLocators.TMNL_FAC, name)
         # self.click(*locator)
-        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
+        self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
     # 终端资产号
     def inputStr_tmnl_asset_no(self, value):
@@ -100,7 +100,7 @@ class FrequentlyCheckMetPage(Page):
         # locator = self.get_select_locator(
         #     FrequentlyCheckMetLocators.MET_FAC, name)
         # self.click(*locator)
-        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
+        self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
     # 电表类别--打开并选择
     def inputSel_met_type(self, item):

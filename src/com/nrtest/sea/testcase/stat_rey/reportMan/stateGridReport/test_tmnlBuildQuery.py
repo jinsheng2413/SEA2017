@@ -14,7 +14,6 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_data import TmnlBuildQuery_data
-from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_page import TmnlBuildQueryPage
 from com.nrtest.sea.task.commonMath import *
 

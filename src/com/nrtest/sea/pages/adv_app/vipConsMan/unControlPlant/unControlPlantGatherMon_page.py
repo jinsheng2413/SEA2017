@@ -63,7 +63,7 @@ class UnControlPlantGatherMon2_Page(Page):
 
     # 查询日期
     def inputStr_date(self, value):
-        self.inputDate(value)  #, *UnControlPlantGatherMon2_locators.QRY_DATE)
+        self.inputDate(value)  # , *UnControlPlantGatherMon2_locators.QRY_DATE)
 
     # 户号
     def inputStr_cons_no(self, value):

@@ -9,6 +9,7 @@
 """
 
 from unittest import TestCase
+
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport

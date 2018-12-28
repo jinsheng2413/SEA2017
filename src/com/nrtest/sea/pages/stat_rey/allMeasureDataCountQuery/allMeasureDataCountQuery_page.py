@@ -10,8 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.stat_rey.allMeasureDataCountQuery.allMeasureDataCountQuery_locators import \
-    AllMeasureDataCountQueryLocators
 
 
 # 统计查询--》全量数据统计查询--》全量数据统计查询

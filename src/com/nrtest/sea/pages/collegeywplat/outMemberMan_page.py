@@ -8,8 +8,6 @@
 @time: 2018/11/13 0013 10:15
 @desc:
 """
-from com.nrtest.sea.locators.run_man.collegeywplat.outMemberMan_locators import OutNameTroopMemberLocators,OutNameTroopLocators
-
 
 from com.nrtest.common.base_page import Page
 
@@ -31,7 +29,7 @@ class OutMemberManPage(Page):
     # 外包队伍名称
     def inputStr_outName(self, value):
         # self.input(value, *OutNameTroopMemberLocators.QRY_OUT_NAME)
-        self.curr_input(value,is_multi_tab=True,is_multi_elements=True)
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 查询
     def btn_qry(self):

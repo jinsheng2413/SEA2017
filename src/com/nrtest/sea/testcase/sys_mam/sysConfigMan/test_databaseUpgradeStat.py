@@ -9,15 +9,13 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysConfigMan.sysConfigMan_data import SysConfigManData
-from com.nrtest.sea.pages.sys_mam.sysConfigMan.databaseUpgradeStat_page import DatabaseUpgradeStatPage, \
-    DatabaseUpgradeStatLocators
+from com.nrtest.sea.pages.sys_mam.sysConfigMan.databaseUpgradeStat_page import DatabaseUpgradeStatPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -27,10 +25,10 @@ class TestDatabaseUpgradeStat(unittest.TestCase, DatabaseUpgradeStatPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SysConfigManData.DatabaseUpgradeStat_para)
-        sleep(2)
-        cls.exec_script(cls, DatabaseUpgradeStatLocators.DATE_JS)
+        # # 打开菜单（需要传入对应的菜单编号）
+        # cls.driver = openMenu(SysConfigManData.DatabaseUpgradeStat_para)
+        # sleep(2)
+        # cls.exec_script(cls, DatabaseUpgradeStatLocators.DATE_JS)
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(SysConfigManData.DatabaseUpgradeStat_para)
         super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)

@@ -12,6 +12,8 @@ from com.nrtest.common.base_page import Page
 
 
 # 高级应用→线损分析→线损统计分析→线损统计查询
+
+
 class LineLossStatisticsQueryPage(Page):
     # 线损分类
     def inputSel_line_loss_type(self, index):
@@ -43,4 +45,4 @@ class LineLossStatisticsQueryPage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(*LineLossStatisticsQueryLocators.BTN_SEARCH)
-        self.curr_click(btn_name='查   询')
+        self.spec_click()

@@ -6,30 +6,31 @@
 @time: 2018/11/8 11:41
 @desc:
 """
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.reportMan.stateGridReport.stateGridReportQuery_data import StateGridReportQuery_data
-from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.stateGridReportQuery_page import StateGridReportQueryPage, \
-    StateGridReportQueryLocators
+from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.stateGridReportQuery_page import StateGridReportQueryPage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 统计查询--》报表管理--》国网报表--》国网报表新
 @ddt
-class TestStateGridReportQuery(unittest.TestCase, StateGridReportQueryPage):
+class TestStateGridReportQuery(TestCase, StateGridReportQueryPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(StateGridReportQuery_data.StateGridReportQuery_para)
-        sleep(2)
-        cls.exec_script(cls, StateGridReportQueryLocators.START_DATE_JS)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(StateGridReportQuery_data.StateGridReportQuery_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -60,22 +61,48 @@ class TestStateGridReportQuery(unittest.TestCase, StateGridReportQueryPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        # 打开左边树并选择ljf
+        # self.openLeftTree(para['TREE_NODE'])
 
         # 报表类型类型
         self.inputSel_reportType(para['REPORT_TYPE'])
 
+        # 查询方式
+        self.inputChk_stat_type(para['STAT_TYPE'])
+
         # 查询日期
         self.inputStr_date(para['DATE'])
+
         self.btn_qry()
         self.sleep_time(2)
 
-        # 校验
-        # result = self.assert_context(*StateGridReportQueryLocators.TAB_ONE)
-        # self.assertTrue(result)
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(StateGridReportQuery_data.StateGridReportQuery_para))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(StateGridReportQuery_data.StateGridReportQuery_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

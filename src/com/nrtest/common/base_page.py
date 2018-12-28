@@ -91,6 +91,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
+from com.nrtest.common.utils import Utils
 from com.nrtest.sea.locators.other.base_locators import BaseLocators
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # create a logger instance
@@ -298,8 +299,7 @@ class Page():
         except Exception as ex:
             logger.error('输入错误:{}\n{}'.format(value, ex))
 
-
-    def curr_click(self, is_multi_tab=False, btn_name=''):
+    def curr_click(self, is_multi_tab=False, btn_name='', starts_with=False):
         """
         新版点击方法
         :param btn_name:按钮元素文本值
@@ -317,6 +317,65 @@ class Page():
             logger.info('点击元素：{}'.format(loc))
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
+
+    def _spec_element(self, locator, label_name, idx=1):
+        """
+        新版点击方法
+        :param btn_name:按钮元素文本值
+        :param is_multi_tab:菜单面内是否有多个TAB页
+        """
+        try:
+            temp = Utils.replace_chrs(label_name, '\r\n\t ')
+            loc = self.format_xpath_multi(locator, temp[0])
+            elements = self._find_elements(loc)
+            finded_el = None
+            pos = 1
+            for el in elements:
+                if el.is_displayed():
+                    text = Utils.replace_chrs(el.text, '\r\n\t ')
+                    # for ch in label_name[1:]:
+                    #     if text.find(ch)>=0:
+                    #         continue
+                    #     else:
+                    #         break
+                    # if text[-1] == ch:
+                    if text == temp:
+                        if pos == idx:
+                            finded_el = el
+                            break
+                        else:
+                            pos += 1
+            return finded_el
+        except BaseException as e:
+            return finded_el
+
+    def spec_click(self, locator, label_name, idx=1):
+        # BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
+        el = self._spec_element(BaseLocators.BTN_QRY_BLANK, label_name, idx)
+        if bool(el):
+            el.click()
+        else:
+            raise '不能定位特殊元素{}：{}'.format(locator, label_name)
+
+    def spec_input(self, locator, label_name, value, idx=1):
+        # QRY_INPUT = (By.XPATH, '//div[@class="x-form-item "]/label[normalize-space(text())="{}"]/..//input[@type!="hidden"]')
+        locator = (By.XPATH, '//div[@class="x-form-item "]/label[contains(text(),"{}")])')
+        el = self._spec_element(locator, label_name, idx)
+        if bool(el):
+            child_el = el.find_element('..//input[@type!="hidden"]')
+            child_el.clear()
+            child_el.send_keys(value)
+
+    def spec_dropdown(self, locator, label_name, idx=1):
+        # SEL_CHECKBOX = (By.XPATH, '//label[normalize-space(text())="{}"]/..//img')
+        el = self._spec_element(locator, label_name, idx)
+        if bool(el):
+            child_el = el.find_element('..//img')
+            child_el.click()
+        else:
+            raise '不能定位特殊元素{}：{}'.format(locator, label_name)
+
+
 
     def btn_query(self, is_multi_tab=False):
         """

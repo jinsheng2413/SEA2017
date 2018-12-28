@@ -14,6 +14,7 @@ import re
 from com.nrtest.common.db_driver import PyOracle
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.setting import Setting
+from com.nrtest.common.utils import Utils
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
@@ -69,7 +70,7 @@ class DataAccess:
         try:
             rslt = []
             for row in tst_case:
-                temp = DataAccess.replace_chrs(row[0])
+                temp = Utils.replace_chrs(row[0])
                 rslt.append(Dict(eval(temp)))
             if len(rslt) == 0:
                 print('没配置{}用例数据...\nqry:{}；valCheck：{}\n'.format(('查询条件校验' if valCheck else '测试'), qry, valCheck))
@@ -165,13 +166,13 @@ class DataAccess:
 
 if __name__ == '__main__':
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
-    print(DataAccess.getCaseData("99935100", tabName='01'))
-    # print(DataAccess.replace_chrs('\r\nabc\t123\n  xyz'))
+    # print(DataAccess.getCaseData("99952200", tabName='系统异常参数设置'))
+    print(Utils.replace_chrs('\r\nabc\t123\n  xyz'))
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
-    pass
+
     # for i in  str[4:10]:
     #     print(i)
     # print(DataAccess.getAllMenu())

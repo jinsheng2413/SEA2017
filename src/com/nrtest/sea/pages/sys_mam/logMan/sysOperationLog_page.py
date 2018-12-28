@@ -25,11 +25,11 @@ class SysOperationLogPage(Page):
 
     # 查询日期，开始
     def inputDt_start_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 查询日期，结束
     def inputDt_end_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 操作人员
     def inputStr_operator(self, content):
@@ -43,15 +43,15 @@ class SysOperationLogPage(Page):
 class UserOperationLogPage(Page):
     # 操作模块
     def inputSel_operation_tem(self, options):
-        self.selectDropDown(options)
+        self.selectDropDown(options,is_multi_tab=True,is_multi_elements=True)
 
     # 查询日期，开始
     def inputDt_start_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 查询日期，结束
     def inputDt_end_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 操作人员
     def inputStr_operator(self, content):

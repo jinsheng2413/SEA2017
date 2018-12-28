@@ -59,3 +59,5 @@ class SynthQuery_data:
     ConsDataQuery_para = '99941100'
     # 统计查询→综合查询→终端数据查询
     TmnlDataQuery_para = '99941200'
+    # 统计查询--综合查询--配变数据查询
+    CollcateDataQuery_para = '99941300'

@@ -23,7 +23,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→电能表对时
 # 电表时钟日统计
 @ddt
-class TestDemo(unittest.TestCase, MetClockDayStaticPage):
+class TestMetClockDayStatic(unittest.TestCase, MetClockDayStaticPage):
 
     @classmethod
     def setUpClass(cls):
@@ -65,12 +65,14 @@ class TestDemo(unittest.TestCase, MetClockDayStaticPage):
         # 注册菜单
         self.menu_name = para['MENU_NAME']
 
+        # 统计方式
+        self.inputChk_static_method(para['STATIC_METHOD'])
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 电表类别
-        self.inputSel_tmnl_type(para['MET_TYPE'])
+        self.inputSel_met_type(para['MET_TYPE'])
         # 电能表厂商
-        self.inputSel_tmnl_fac(para['MET_FAC'])
+        self.inputSel_met_fac(para['MET_FAC'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
 

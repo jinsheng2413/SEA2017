@@ -24,7 +24,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→终端对时
 # 终端时钟明细
 @ddt
-class TestDemo(unittest.TestCase, TmnlClockDetailPage):
+class TestTmnlClockDetail(unittest.TestCase, TmnlClockDetailPage):
 
     @classmethod
     def setUpClass(cls):
@@ -67,7 +67,7 @@ class TestDemo(unittest.TestCase, TmnlClockDetailPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 偏差范围
         self.inputSel_offset_range(para['OFFSET_RANGE'])
         # 终端类型

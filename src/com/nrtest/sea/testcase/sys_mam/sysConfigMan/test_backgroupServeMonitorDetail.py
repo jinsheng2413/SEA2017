@@ -31,7 +31,7 @@ class TestBackgroupServeMonitorDetail(TestCase, BackgroupServeMonitorDetailPage)
         sleep(1)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SysConfigManData.BackgroupServeMonitor_tabName)
+        menuPage.clickTabPage(SysConfigManData.BackgroupServeMonitorDetail_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 

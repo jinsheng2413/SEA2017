@@ -99,6 +99,11 @@ from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 logger = Logger(logger='Page').getlog()
 
 
+# def func_info():
+#     info = inspect.stack()[1]
+#     clean_info = '{}.{}::{}'.format(info[1].split('src/')[1].split('.')[0], cls.__class__.__name__, info[3])
+#     print(clean_info)
+
 class MustGetUrl():
     """
     必须到达的URL
@@ -178,7 +183,7 @@ class Page():
 
         return wrapper
 
-    def _find_element(self, locator, seconds=15):
+    def _find_element(self, locator, seconds=5):
         """
         方法名：_element
         功能：定位元素的具体某个元素WEBelement
@@ -191,8 +196,7 @@ class Page():
         element = None
         try:
             # 利用显示等待判断元素是否已经出现
-            WebDriverWait(self.driver, seconds).until(
-                EC.element_to_be_clickable(locator))
+            WebDriverWait(self.driver, seconds).until(EC.element_to_be_clickable(locator))
             # 定位元素
             element = self.driver.find_element(*locator)
         except TimeoutException as te:
@@ -225,7 +229,7 @@ class Page():
         :return:定位到的元素
         """
         # print('{}\n{}'.format(locators, idx))
-        elements = self.find_elements(*locators)
+        elements = self._find_elements(locators)
         pos = 1
         for el in elements:
             if el.is_displayed():
@@ -356,7 +360,7 @@ class Page():
         :return:
         """
         unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL, option_name)
-        elements = self.find_elements(*unchek_all_path)
+        elements = self._find_elements(unchek_all_path)
         for el in elements:
             # if el.get_attribute('src').find('/checked.gif') > -1:
             #     el.click()
@@ -426,9 +430,19 @@ class Page():
             xpath = BaseLocators.QRY_DT_INPUT[1]
         # 把xpath对象中的 “ 替换为 '
         js_attr = BaseLocators.JS_DT % xpath.replace('"', '\'')
-        print('*************js_attr', js_attr)
+        # print('*************js_attr', js_attr)
         self.driver.execute_script(js_attr)
 
+    def scrollToElement(self, locator):
+        """
+        滚动元素到指定位置
+        :param locator:
+        :return:
+        """
+        el = self._find_element(locator)
+        logger.info('scroll view element')
+        # // roll down and keep the element to the center of browser：scrollIntoView
+        self.driver.execute_script('arguments[0].scrollIntoViewIfNeeded(true);', el)
 
 
     def clickRadioBox(self, options, is_multi_tab=False, is_multi_elements=False):
@@ -455,13 +469,26 @@ class Page():
         except BaseException as ex:
             print('点击单选框失败：{}'.format(ex))
 
-    def clickSingleCheckBox(self, item, is_multi_tab=False):
+    def clickSingleCheckBox(self, options, is_multi_tab=False, is_multi_elements=False):
         """
          选择单个复选框
-         :param item: 被选择项
+         :param options: 被选择项
          :param is_multi_tab:
          """
-        self.clickRadioBox(item + item, is_multi_tab)
+        try:
+            ls_option = options.split(';')
+            item = ls_option[1]
+            # 赋值选中，不赋值不选中
+            is_select = bool(item)
+            xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, ls_option[0], is_multi_tab)
+            if is_multi_elements:
+                el = self._find_displayed_element(xpath)
+            else:
+                el = self._find_element(xpath)
+            if is_select != el.is_selected():
+                el.click()
+        except BaseException as ex:
+            print('点击失败：{}'.format(ex))
 
     def clickCheckBox(self, items, attr, is_multi_tab=False):
         """
@@ -473,7 +500,7 @@ class Page():
         try:
             # 撤销已选项
             xpath = self.format_xpath_multi(BaseLocators.CHKBOX_UNCHECK_ALL, attr, is_multi_tab)
-            elements = self.find_elements(*xpath)
+            elements = self._find_elements(xpath)
             for el in elements:
                 el.click()
 
@@ -490,19 +517,26 @@ class Page():
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
-    def clickTabPage(self, tab_name):
+    def clickTabPage(self, tab_name, is_multi_tab=False, is_multi_elements=False):
         """
         打开Tab页
         :param tab_name:
         """
-        locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
-        self.click(*locators)
+        # locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
+        # self.click(*locators)
+        xpath = self.format_xpath_multi(BaseLocators.TAB_PAGE, tab_name, is_multi_tab)
+        if is_multi_elements:
+            el = self._find_displayed_element(xpath)
+            el.click()
+        else:
+            self.click(*xpath)
 
-    def clickDt_Tab(self, tab_name):
+    def clickDt_Tab(self, tab_name, is_multi_tab=False, is_multi_elements=False):
         """
         按Tab选择不同日期区间，样例详见：系统管理→系统配置管理→后台服务监测
         :param tab_name:Tab页名称
-        :return:
+        :param is_multi_tab:
+        :param is_multi_elements:
         """
         if tab_name.find(';'):
             ls_items = tab_name.split(';')
@@ -510,7 +544,7 @@ class Page():
             tab = tab if len(tab) > 0 else ls_items[1]
         else:
             tab = tab_name
-        self.clickTabPage(tab)
+        self.clickTabPage(tab, is_multi_tab, is_multi_elements)
         sleep(0.2)
 
     def get_para_value(self, para):
@@ -702,13 +736,14 @@ class Page():
         logger.info('回到ifrmae开始的地方')
         self.driver.switch_to.default_content()
 
-    def exec_script(self, src):
+    def exec_script(self, src, args):
         """
         方法名：exec_script
         执行js脚本
         :param src:js脚本
         """
         self.driver.execute_script(src)
+
 
     # def invisible_element(self,wait_time =Setting.WAIT_TIME, *locator):
     #     """
@@ -829,16 +864,14 @@ class Page():
             logger.error('Failed to take screenshot! %s', e)
             self.get_windows_img(screen_name)
 
-    def find_elements(self, *locator):
+    def _find_elements(self, locator):
         """
         #校验一组元素
         :param locator:
         :return: 查找元素个数
         """
         try:
-            element = self.driver.find_elements(*locator)
-            return element
-
+            return self.driver.find_elements(*locator)
         except NoSuchElementException:
             logger.info('显示区未查询到结果')
 
@@ -936,7 +969,7 @@ class Page():
     #     self.driver.find_element(*(By.XPATH,"//div[@class="x-menu x-menu-floating x-layer "]//*[contains(text(),'关闭其他所有页')]")).click()
 
     def recoverLeftTree(self):
-        num = self.find_elements(*MenuLocators.TREE_MINUS)
+        num = self._find_elements(MenuLocators.TREE_MINUS)
         if self.assert_context(*MenuLocators.TREE_END) is False:
             pass
 
@@ -1079,7 +1112,7 @@ class Page():
     def checkBoxAssertLine(self, value):
         xp = '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td'.format(
             value)
-        el = self.find_elements(*(By.XPATH, xp))
+        el = self._find_elements((By.XPATH, xp))
         l = 0
         for i in el:
             l += 1
@@ -1100,7 +1133,7 @@ class Page():
             xpath_table = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(assertValues[0])
             self.commonWait((By.XPATH, xpath_table))
             # 显示区查询出多少结果数量
-            displayNum = len(self.find_elements(*(By.XPATH, xpath_table)))
+            displayNum = len(self._find_elements((By.XPATH, xpath_table)))
             try:
                 xpath_checker = '//*[@class="x-grid3-row-checker"]'
                 displayCheck = self.assert_context(*(By.XPATH, xpath_checker))
@@ -1156,9 +1189,6 @@ class Page():
         right_click = self.driver.find_element(*locators)
         ActionChains(self.driver).context_click(right_click).perform()
 
-    def clearInput(self, *Locators):
-        self._find_element(Locators).clear()
-
     def clickSkip(self, assertValues):
         """
         AssertValues ='手机,外包队伍名称,test'
@@ -1170,7 +1200,7 @@ class Page():
             displayElement = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
                 assertValues[0])
             self.commonWait((By.XPATH, displayElement))
-            display_num = len(self.find_elements(*(By.XPATH, displayElement)))
+            display_num = len(self._find_elements((By.XPATH, displayElement)))
             if display_num > 0:
                 try:
                     sel = '//*[@class="x-grid3-row-checker"]'
@@ -1273,6 +1303,8 @@ class Page():
 
 
 if __name__ == '__main__':
+    pass
+
     # dr = webdriver.Chrome()
     # el = dr.find_element(*(By.XPATH, '')).get_attribute('class')
     # el.is_selected()
@@ -1288,5 +1320,5 @@ if __name__ == '__main__':
     # print(loc1)
     # page = Page(None)
     # print(page.format_xpath_multi((By.XPATH, 'adad{}'), 'c', False))
-    pg = Page(None)
-    pg.clickSingleCheckBox('忽略历史版本;')
+    # pg = Page(None)
+    # pg.clickSingleCheckBox('忽略历史版本;')

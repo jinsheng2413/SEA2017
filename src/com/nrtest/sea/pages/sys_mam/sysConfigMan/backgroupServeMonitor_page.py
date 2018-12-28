@@ -16,7 +16,7 @@ class BackgroupServeMonitorPage(Page):
 
     # 日期类型选择
     def inputChk_date_type_sel(self, tab_name):
-        self.clickDt_Tab(tab_name)
+        self.clickDt_Tab(tab_name, True, True)
 
     # 查询日期/从/到
     def inputDt_date(self, value):
@@ -51,7 +51,7 @@ class BackgroupServeMonitorDetailPage(Page):
 
     # 日期类型选择
     def inputChk_date_type_sel(self, tab_name):
-        self.clickDt_Tab(tab_name)
+        self.clickDt_Tab(tab_name, True, True)
 
     # 查询日期/从/到
     def inputDt_date(self, value):

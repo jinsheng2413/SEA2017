@@ -34,7 +34,7 @@ class TmnlClockStaticPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *TmnlClockStaticLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
@@ -59,7 +59,7 @@ class TmnlClockDetailPage(Page):
         # locator = self.get_select_locator(
         #     TmnlClockDetailLocators.TMNL_TYPE, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 终端型号
     def inputStr_tmnl_model(self, value):
@@ -72,7 +72,7 @@ class TmnlClockDetailPage(Page):
         # locator = self.get_select_locator(
         #     TmnlClockDetailLocators.TMNL_FAC, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):
@@ -90,10 +90,10 @@ class TmnlClockDetailPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *TmnlClockDetailLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 对时结果-打开并选择
-    def inputRSel_call_status(self, item):
+    def inputSel_call_status(self, item):
         # self.click(*TmnlClockDetailLocators.CALL_STATUS_SEL)
         # locator = self.get_select_locator(
         #     TmnlClockDetailLocators.CALL_STATUS, name)
@@ -103,7 +103,7 @@ class TmnlClockDetailPage(Page):
     # 点击查询
     def btn_qry(self):
         # self.click(*TmnlClockDetailLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)
 
 # 自动对时策略配置
 class AutoCheckPolicyPage(Page):
@@ -127,9 +127,9 @@ class AutoCheckPolicyPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *AutoCheckPolicyLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*AutoCheckPolicyLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)

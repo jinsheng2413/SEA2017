@@ -59,7 +59,9 @@ class BaseTest():
             return driver
 
         elif 'f' in browser:
-            driver = webdriver.Firefox()
+            option = webdriver.FirefoxProfile()
+            option.set_preference('plugin.state.flash', 2)
+            driver = webdriver.Firefox(option)
             logger.info('启动火狐浏览器')
             return driver
 

@@ -26,7 +26,7 @@ class TestOutMemberManTroop(TestCase,OutMemberManPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）ljf
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(Collegeywplat_data.para_operOrganMan)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.clickTabPage(Collegeywplat_data.para_operOrganMan_member)

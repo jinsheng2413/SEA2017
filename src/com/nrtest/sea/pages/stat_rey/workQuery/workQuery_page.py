@@ -14,6 +14,7 @@ from com.nrtest.common.base_page import Page
 
 # 统计查询→工单查询→工单查询
 class WorkCountPage(Page):
+
     # 日期
     def inputStr_date(self, value):
         self.input(value)  # , *WorkCountLocators.QRY_DATE)
@@ -24,6 +25,7 @@ class WorkCountPage(Page):
         self.btn_query()
 
 class WorkQueryPage(Page):
+
     # 异常编号
     def inputStr_abnormalNo(self, value):
         self.input(value)  # , *WorkQueryLocators.QRY_ABNORMAL_NO)
@@ -38,9 +40,9 @@ class WorkQueryPage(Page):
         # 日期
 
     def inputStr_date(self, value):
-        self.input(value)  # , *WorkQueryLocators.QRY_DATE)
+        self.inputDate(value, is_multi_tab=True)  # , *WorkQueryLocators.QRY_DATE)
 
     # 查询
     def btn_qry(self):
         # self.click(*WorkQueryLocators.BTN_QRY)
-        self.btn_query()
+        self.btn_query(True)

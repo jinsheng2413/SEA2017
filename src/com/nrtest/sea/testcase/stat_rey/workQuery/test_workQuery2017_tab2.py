@@ -4,33 +4,36 @@
 """
 @author: 卢炎炎
 @license: (C) Copyright 2018, Nari.
-@file: test_workCount.py
-@time: 2018/10/31 15:59
+@file: test_workQuery2017_tab2.py
+@time: 2018/11/1 15:27
 @desc:
 """
-import unittest
-from time import sleep
+
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.workQuery.workQuery_data import WorkQuery_data
-from com.nrtest.sea.pages.stat_rey.workQuery.workQuery_page import WorkCountPage, WorkCountLocators
+from com.nrtest.sea.pages.stat_rey.workQuery.workQuery2017_page import WorkQuery2017Page
 from com.nrtest.sea.task.commonMath import *
 
 
-# 高级应用→工单处理→抄表失败工单统计
+# 统计查询--工单查询--工单查询2017（第二个tab页）
 @ddt
-class TestWorkCount(unittest.TestCase, WorkCountPage):
+class TestDemo(TestCase, WorkQuery2017Page):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(WorkQuery_data.WorkQuery_para)
-        sleep(2)
-        cls.exec_script(cls, WorkCountLocators.START_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(WorkQuery_data.WorkQuery2017_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(WorkQuery_data.WorkQuery2017_tab_query)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -61,14 +64,26 @@ class TestWorkCount(unittest.TestCase, WorkCountPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
-        self.displayTreeMenu()
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
-        # 日期
-        self.inputStr_date(para['DATE'])
+        self.openLeftTree(para['TREE_NODE'])
+
+        # 工单编号
+        self.inputStr_workNo(para['WORK_NO'])
+
+        # 工单处理人
+        self.inputStr_workMan(para['WORK_MAN'])
+
+        # 工单类型
+        self.inputSel_workTitle(para['WORK_TITLE'])
+
+        # 工单状态
+        self.inputSel_workStatus(para['WORK_STATUS'])
+
+        # 工单发生时间
+        self.inputStr_startDate(para['START_DATE'])
+
+        # 工单完成时间
+        self.inputStr_endDate(para['END_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -89,7 +104,7 @@ class TestWorkCount(unittest.TestCase, WorkCountPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery_tab_count))
+    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery2017_para, WorkQuery_data.WorkQuery2017_tab_query))
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验
@@ -102,7 +117,8 @@ class TestWorkCount(unittest.TestCase, WorkCountPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery_tab_count, valCheck=True))
+    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery2017_para, WorkQuery_data.WorkQuery2017_tab_query,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
+
 """
-@author: 卢炎炎
+@author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: fr.py
-@time: 2018/12/26 9:37
+@file: __init__.py.py
+@time: 2018/12/4 0004 9:00
 @desc:
 """

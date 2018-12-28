@@ -80,6 +80,8 @@ class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
         self.inputSel_faultFrom(para['FAULT_FROM'])
         #故障严重程度
         self.inputSel_faultSeverity(para['FAULT_SEVERITY'])
+        #故障类型
+        self.inputChk_fault_type(para['FAULT_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)

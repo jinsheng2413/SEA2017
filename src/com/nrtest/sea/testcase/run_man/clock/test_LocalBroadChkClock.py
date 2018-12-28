@@ -7,7 +7,7 @@
 @time: 2018/11/2 16:11
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -20,13 +20,18 @@ from com.nrtest.sea.task.commonMath import *
 
 # 运行管理→时钟管理→本地广播校时设置
 @ddt
-class TestDemo(unittest.TestCase, LocalBroadChkClockPage):
+class TestLocalBroadChkClock(TestCase, LocalBroadChkClockPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(ClockData.para_LocalBroadChkClock)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ClockData.para_LocalBroadChkClock)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(ClockData.para_ClockResult_static)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -60,7 +65,7 @@ class TestDemo(unittest.TestCase, LocalBroadChkClockPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 终端类型
@@ -129,6 +134,3 @@ class TestDemo(unittest.TestCase, LocalBroadChkClockPage):
     #     # 校验
     #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-    if __name__ == '__main__':
-        unittest.main()

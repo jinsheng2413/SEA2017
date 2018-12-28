@@ -171,7 +171,7 @@ if __name__ == '__main__':
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
-
+    pass
     # for i in  str[4:10]:
     #     print(i)
     # print(DataAccess.getAllMenu())

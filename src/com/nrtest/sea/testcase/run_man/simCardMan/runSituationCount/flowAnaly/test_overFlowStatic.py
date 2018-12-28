@@ -8,30 +8,31 @@
 @time: 2018/11/9 0009 9:44
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
-from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.flowAnaly_locators import SIMFlowCountLocators
 from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import OverFlowStaticPage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
 @ddt
-class TestFlowSIM(unittest.TestCase, OverFlowStaticPage):
+class TestOverFlowStatic(TestCase, OverFlowStaticPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单
-        cls.driver = openMenu(RunSituationCount_data.para_flowAnaly)
-        # 点击Tab页标签
-        clickTabPage(RunSituationCount_data.para_flowAnaly_overflowstatic)
-        cls.exec_script(cls,SIMFlowCountLocators.START_DATE_JS)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(RunSituationCount_data.para_flowAnaly)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(RunSituationCount_data.para_flowAnaly_overflowstatic)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -62,16 +63,20 @@ class TestFlowSIM(unittest.TestCase, OverFlowStaticPage):
         """
 
         # 注册菜单
-        self.menu_name = para['MENU_NAME']
+        # self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         #sim卡号
         self.inputStr_simCardNo(para['SIM_CARD_NO'])
         #终端地址
         self.inputStr_tmnlAddr(para['TMNL_ADDR'])
         #统计时间
         self.inputStr_countTime(para['COUNT_TIME'])
+        #是否超流量
+        self.inputChk_is_over_flow(para['IS_OVER_FLOW'])
+        # 日期类型
+        self.inputChk_data_method(para['DATA_METHOD'])
 
         self.btn_qry()
         self.sleep_time(2)

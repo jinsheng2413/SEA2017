@@ -77,34 +77,13 @@ class TestCommumMetter(TestCase, CommumMeterPage):
         # 用户类型
         self.inputSel_cons_type(para['RUN_STATE'])
 
-        # 流程标识
-        self.inputSel_processID_count(para['PROCESS_ID'])
+        # 终端运行状态
+        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
 
-        # 申请单号
-        self.inputStr_applyNo_count(para['APPLY_NO'])
+        # 查询日期
+        self.inputStr_query_date(para['QUERY_DATE'])
 
-        # 用户编号
-        self.inputStr_userNo_count(para['USER_NO'])
-
-        # 终端地址
-        self.inputStr_tmnlAddr_count(para["TMNL_ADDR"])
-
-        # 终端厂家
-        self.inputSel_tmnlFactory_count(para['TMNL_FACTORY'])
-
-        # 装接类型
-        self.inputSel_moutingType_count(para['MOUNTING_TYPE'])
-
-        # 终端类型
-        self.inputSel_tmnlType_count(para['TMNL_TYPE'])
-
-        # 通信规约
-        self.inputSel_LCT_count(para['LCT'])
-
-        # 表类型
-        self.inputSel_surfaceType_count(para['SURFACE_TYPE'])
-
-        self.btn_tmnl_qry()
+        self.btn_qry()
         self.sleep_time(2)
 
     def assert_query_result(self, para):

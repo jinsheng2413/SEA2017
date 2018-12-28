@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.logMan.sysEnterLog_locators import SysEnterLogLocators
 
 
 # 系统管理→日志管理→系统登录日志

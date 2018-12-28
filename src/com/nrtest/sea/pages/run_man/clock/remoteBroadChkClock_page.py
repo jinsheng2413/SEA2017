@@ -44,7 +44,7 @@ class RemoteBroadChkClockPage(Page):
         self.selectDropDown(item)
 
     # 设置状态--打开并选择
-    def inputRSel_set_status(self, item):
+    def inputSel_set_status(self, item):
         # self.click(*RemoteBroadChkClockLocators.SET_STATUS_SEL)
         # locator = self.get_select_locator(
         #     RemoteBroadChkClockLocators.SET_STATUS, name)

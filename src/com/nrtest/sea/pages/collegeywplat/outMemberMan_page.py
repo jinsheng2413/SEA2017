@@ -31,9 +31,9 @@ class OutMemberManPage(Page):
     # 外包队伍名称
     def inputStr_outName(self, value):
         # self.input(value, *OutNameTroopMemberLocators.QRY_OUT_NAME)
-        self.input(value)
+        self.curr_input(value,is_multi_tab=True,is_multi_elements=True)
 
     # 查询
     def btn_qry(self):
         # self.click(*OutNameTroopMemberLocators.BTN_QRY)
-        self.btn_query()
+        self.btn_query(True)

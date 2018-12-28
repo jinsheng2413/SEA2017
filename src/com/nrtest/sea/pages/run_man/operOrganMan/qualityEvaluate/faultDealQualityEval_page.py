@@ -32,7 +32,7 @@ class FaultDealQualityStaticPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *FaultDealQualityStaticLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
@@ -49,12 +49,12 @@ class FaultDealQualityDetailPage(Page):
         # locator = self.get_select_locator(
         #     FaultDealQualityDetailLocators.CONS_TYPE, name)
         # self.click(*locator)
-        self.selectDropDown(options)
+        self.selectDropDown(options,is_multi_tab=True,is_multi_elements=True)
 
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *FaultDealQualityDetailLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 流程状态-打开并选择
     def inputSel_flow_status(self, options):
@@ -67,7 +67,7 @@ class FaultDealQualityDetailPage(Page):
     # 点击查询
     def btn_qry(self):
         # self.click(*FaultDealQualityDetailLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)
 
 
 # 人员处理明细
@@ -79,14 +79,14 @@ class StaffDealDetailPage(Page):
         # locator = self.get_select_locator(
         #     StaffDealDetailLocators.CONS_TYPE, name)
         # self.click(*locator)
-        self.selectDropDown(options)
+        self.selectDropDown(options,is_multi_tab=True,is_multi_elements=True)
 
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *StaffDealDetailLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*StaffDealDetailLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)

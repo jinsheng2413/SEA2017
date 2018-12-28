@@ -23,6 +23,7 @@ from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理→日志管理→系统操作日志
+# 系统操作日志
 @ddt
 class TestSysOperationLog(unittest.TestCase, SysOperationLogPage):
     @classmethod
@@ -54,7 +55,7 @@ class TestSysOperationLog(unittest.TestCase, SysOperationLogPage):
         :return:
         """
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         # 操作模块
@@ -69,6 +70,7 @@ class TestSysOperationLog(unittest.TestCase, SysOperationLogPage):
         self.inputStr_operator(para['OPERATOR'])
         # 查询按钮
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

@@ -7,13 +7,13 @@
 @time: 2018/9/29 14:22
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
+from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEffectStatistics_page import \
     UpgradeEffectStatisticsPage
 from com.nrtest.sea.task.commonMath import *
@@ -21,12 +21,17 @@ from com.nrtest.sea.task.commonMath import *
 
 # 基本应用→终端管理→软件升级→升级效果统计
 @ddt
-class TestUpgradeEffectStstistics(unittest.TestCase, UpgradeEffectStatisticsPage):
+class TestUpgradeEffectStstistics(TestCase, UpgradeEffectStatisticsPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SoftwareUpgrading_data.UpgradeEffectStatistics_para)
+        menuPage = MenuPage.openMenu(SoftwareUpgrading_data.UpgradeEffectStatistics_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(SoftwareUpgrading_data.UpgradeEffectStatistics_tabName)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -45,10 +50,8 @@ class TestUpgradeEffectStstistics(unittest.TestCase, UpgradeEffectStatisticsPage
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # # 去除查询干扰数据(要传入对应的page页面类)
-        # self.clear_values(UpgradeTaskExecutionPage)
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         """
@@ -57,10 +60,13 @@ class TestUpgradeEffectStstistics(unittest.TestCase, UpgradeEffectStatisticsPage
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
+
+        # 统计方式
+        self.inputChk_stat_way(para['STAT_WAY'])
+        # 日期类型
+        self.inputChk_date_type(para['DATE_TYPE'])
         # 打开左边树选择供电单位
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 升级目的
@@ -77,8 +83,6 @@ class TestUpgradeEffectStstistics(unittest.TestCase, UpgradeEffectStatisticsPage
         self.inputDt_end_date(para['END_DATE'])
         # 点击查询按钮
         self.btn_search()
-
-        # 校验
 
     def assert_query_result(self, para):
         """

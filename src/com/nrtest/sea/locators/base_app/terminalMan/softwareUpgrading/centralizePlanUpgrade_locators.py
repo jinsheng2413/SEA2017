@@ -62,8 +62,7 @@ class CentralizePlanUpgradeLocators:
     TAB_TMNL_PURPOSE_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[6]/div[%s]')
     # 升级版本号
-    TAB_UPGRADE_VERSION_NO = (
-        By.XPATH, '//label[contains(text(),"升级版本号")]/../div/div/input')
+    TAB_UPGRADE_VERSION_NO = (By.XPATH, '//input[@name="softVersion"]')
     # 升级版本号→值
     TAB_UPGRADE_VERSION_NO_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[7]/div[%s]')

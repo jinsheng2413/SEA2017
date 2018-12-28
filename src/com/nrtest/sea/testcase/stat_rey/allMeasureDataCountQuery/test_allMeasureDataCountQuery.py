@@ -65,6 +65,15 @@ class TestallMeasureDataCountQuery(TestCase, AllMeasureDataCountQueryPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
+        # 用户类型
+        self.inputSel_cons_type(para['CONS_TYPE'])
+
+        # 数据项
+        self.inputSel_protocol_item(para['PROTOCOL_ITEM'])
+
+        # 统计维度
+        self.inputSel_static_method(para['STATIC_METHOD'])
+
         # 日期
         self.inputStr_date(para['DATE'])
 

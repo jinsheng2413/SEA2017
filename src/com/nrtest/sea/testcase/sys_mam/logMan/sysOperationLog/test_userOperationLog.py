@@ -22,7 +22,8 @@ from com.nrtest.sea.pages.sys_mam.logMan.sysOperationLog_page import *
 from com.nrtest.sea.task.commonMath import *
 
 
-# 系统管理→日志管理→系统操作日志→用户操作日志
+# 系统管理→日志管理→系统操作日志
+# 用户操作日志
 @ddt
 class TestUserOperationLog(unittest.TestCase, UserOperationLogPage):
     @classmethod
@@ -54,10 +55,9 @@ class TestUserOperationLog(unittest.TestCase, UserOperationLogPage):
         :return:
         """
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
-        clickTabPage('用户操作日志')
         # 操作模块
         self.inputSel_operation_tem(para['OPERATION_TEM'])
         # 查询日期，开始

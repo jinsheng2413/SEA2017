@@ -23,7 +23,7 @@ from com.nrtest.sea.task.commonMath import *
 #运行管理-->采集运维平台-->采集故障处理-->低压故障处理
 # 低压处理专变
 @ddt
-class TestFaultLowPowerDeal(TestCase,FaultLowPowerDealPage):
+class TestFaultLowPowerDeal(TestCase, FaultLowPowerDealPage):
 
     @classmethod
     def setUpClass(cls):
@@ -79,7 +79,7 @@ class TestFaultLowPowerDeal(TestCase,FaultLowPowerDealPage):
         self.inputSel_faultFrom(para['FAULT_FROM'])
         #故障严重程度
         self.inputSel_faultSeverity(para['FAULT_SEVERITY'])
-        #故障类型
+        # 故障类型
         self.inputChk_fault_type(para['FAULT_TYPE'])
 
         self.btn_qry()

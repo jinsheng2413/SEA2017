@@ -71,7 +71,7 @@ class FaultLowPowerFeedbackPage(Page):
 
     # 流程状态
     def inputSel_process(self, options):
-        self.selectDropDown(options,is_multi_tab=True, is_multi_elements=True)
+        self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障结束日期
     def inputStr_faultEndDate(self, value):
@@ -84,5 +84,3 @@ class FaultLowPowerFeedbackPage(Page):
     # 查询
     def btn_qry(self):
         self.btn_query(True)
-
-

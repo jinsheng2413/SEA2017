@@ -82,7 +82,7 @@ class FaultSpecificPowerFeedbackPage(Page):
         # self.click(*FaultFeedBackLocators.QRY_PROCESS_STAUS)
         # locator = self.get_select_locator(FaultFeedBackLocators.QRY_PROCESS_STAUS_VALUE, name)
         # self.click(*locator)
-        self.selectDropDown(options,is_multi_tab=True, is_multi_elements=True)
+        self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障结束日期
     def inputStr_faultEndDate(self, value):
@@ -97,4 +97,3 @@ class FaultSpecificPowerFeedbackPage(Page):
     def btn_qry(self):
         # self.click(*FaultFeedBackLocators.BTN_QRY)
         self.btn_query(True)
-

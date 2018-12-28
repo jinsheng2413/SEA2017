@@ -16,11 +16,11 @@ from com.nrtest.sea.locators.sys_mam.logMan.sysEnterLog_locators import SysEnter
 class SysEnterLogPage(Page):
     # 查询日期，开始
     def inputDt_start_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 查询日期，结束
     def inputDt_end_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 操作人员
     def inputStr_operator(self, content):

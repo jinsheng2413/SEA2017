@@ -1,42 +1,43 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 
 """
-@author: 郭春彪
+@author: 卢炎炎
 @license: (C) Copyright 2018, Nari.
-@file: test_flowCount.py
-@time: 2018/11/9 0009 9:44
+@file: test_workQuery2017_tab1.py
+@time: 2018/11/1 15:17
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
-from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import OverFlowStaticPage
+from com.nrtest.sea.data.stat_rey.workQuery.workQuery_data import WorkQuery_data
+from com.nrtest.sea.pages.stat_rey.workQuery.workQuery2017_page import WorkCount2017Page
 from com.nrtest.sea.task.commonMath import *
 
 
-# 运行管理-->SIM卡管理-->运行情况分析-->流量分析
+# 统计查询→工单查询→工单查询2017(第一个tab页)
 @ddt
-class TestOverFlowStatic(TestCase, OverFlowStaticPage):
+class TestDemo(TestCase, WorkCount2017Page):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(RunSituationCount_data.para_flowAnaly)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(WorkQuery_data.WorkQuery2017_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(RunSituationCount_data.para_flowAnaly_overflowstatic)
+        menuPage.clickTabPage(WorkQuery_data.WorkQuery2017_tab_count)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
+        print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
 
@@ -57,32 +58,20 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
 
     def query(self, para):
         """
+
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        # self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
-        #sim卡号
-        self.inputStr_simCardNo(para['SIM_CARD_NO'])
-        #终端地址
-        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
-        #统计时间
-        self.inputStr_countTime(para['COUNT_TIME'])
-        # 是否超流量
-        self.inputChk_is_over_flow(para['IS_OVER_FLOW'])
-        # 日期类型
-        self.inputChk_data_method(para['DATA_METHOD'])
+        self.openLeftTree(para['TREE_NODE'])
+
+        # 工单类型
+        self.inputSel_workTitle(para['WORK_TITLE'])
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*FlowCountLocators.TAB_ONE)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """
@@ -99,10 +88,8 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunSituationCount_data.para_flowAnaly,
-                                  RunSituationCount_data.para_flowAnaly_overflowstatic))
+    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery2017_para, WorkQuery_data.WorkQuery2017_tab_count))
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验
@@ -115,8 +102,8 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunSituationCount_data.para_flowAnaly,
-                                  RunSituationCount_data.para_flowAnaly_overflowstatic, valCheck=True))
+    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery2017_para, WorkQuery_data.WorkQuery2017_tab_count,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

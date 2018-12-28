@@ -48,7 +48,7 @@ test_funs = [
 setup = ['        print(\'开始执行\')\r',
          '        # 打开菜单（需要传入对应的菜单编号）\r',
          '        menuPage = MenuPage.openMenu($',
-         '        sleep(1)',
+         '        sleep(1)\r',
          '        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)\r',
          '        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码\r',
          '        menuPage.clickTabPage(SysConfigManData.BackgroupServeMonitor_tabName)\r',
@@ -158,5 +158,5 @@ def upgrade_test_file(file_name):
 
 if __name__ == '__main__':
     # 指定testcase的根目录
-    file = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\sys_mam\sysConfigMan\test_backgroupServeMonitorDetail.py'
+    file = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\adv_app\lineLossAnalysis\lineLossStatisticsAnalysis\test_lineLossStatisticsQuery.py'
     upgrade_test_file(file)

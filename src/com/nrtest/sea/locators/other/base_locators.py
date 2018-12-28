@@ -82,6 +82,9 @@ class BaseLocators:
     RADIOBOX_INPUT2LABEL = (By.XPATH, '//input[@type="radio" and @{}="{}"]/../label[@text()="{}"')
 
     # 【复选框】
+    # 单个复选框
+    SINGLE_CHECK_BOX = (By.XPATH, '//label[text()="{}"]/..//input')
+
     # 被选择的复选框
     CHKBOX_UNCHECK_ALL = (By.XPATH, '//input[@type="checkbox" and @{}="{}" and @checked=""]')
 
@@ -91,8 +94,8 @@ class BaseLocators:
 
     # 【按钮类元素】，如：查询按钮
     # BTN_QRY = (By.XPATH, '//button[@class =" x-btn-text" and contains(text(),"{}")]')
-    BTN_QRY = (By.XPATH, '//button[text()="{}"]')
-
+    BTN_QRY = (By.XPATH, '//button[normalize-space(text())="{}"]')
+    BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
     # 菜单页面定位{}=远程调试
     MENU_PAGE = (By.XPATH, '//li[@id="maintab__{}"]')
 

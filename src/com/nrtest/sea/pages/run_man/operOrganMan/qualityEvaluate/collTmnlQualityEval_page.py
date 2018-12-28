@@ -9,10 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_locators import \
-    TmnlQualityEvalDetailLocators
-from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_locators import \
-    TmnlQualityEvalStaticLocators
 
 
 # 运行管理→采集运维平台→采集终端质量评价
@@ -55,7 +51,7 @@ class TmnlQualityEvalDetailPage(Page):
         # locator = self.get_select_locator(
         #     TmnlQualityEvalDetailLocators.CONS_TYPE, name)
         # self.click(*locator)
-        self.selectDropDown(options,is_multi_elements=True,is_multi_tab=True)
+        self.selectDropDown(options, is_multi_elements=True, is_multi_tab=True)
 
     # 故障严重程度--打开并选择
     def inputSel_fault_level(self, options):
@@ -71,7 +67,7 @@ class TmnlQualityEvalDetailPage(Page):
         # locator = self.get_select_locator(
         #     TmnlQualityEvalDetailLocators.TMNL_FAC, name)
         # self.click(*locator)
-        self.selectDropDown(options,is_multi_elements=True,is_multi_tab=True)
+        self.selectDropDown(options, is_multi_elements=True, is_multi_tab=True)
 
     # 故障类别-打开并选择
     def inputSel_fault_type(self, options):

@@ -21,7 +21,7 @@ from com.nrtest.sea.task.commonMath import *
 
 #运行管理-->SIM卡管理-->资产管理
 @ddt
-class TestAssetsManage(TestCase,AssetsManagePage):
+class TestAssetsManage(TestCase, AssetsManagePage):
 
     @classmethod
     def setUpClass(cls):

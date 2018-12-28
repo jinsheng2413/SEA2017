@@ -9,6 +9,7 @@
 """
 
 import os
+import re
 
 from com.nrtest.common.db_driver import PyOracle
 from com.nrtest.common.dictionary import Dict
@@ -68,7 +69,8 @@ class DataAccess:
         try:
             rslt = []
             for row in tst_case:
-                rslt.append(Dict(eval(row[0])))
+                temp = DataAccess.replace_chrs(row[0])
+                rslt.append(Dict(eval(temp)))
             if len(rslt) == 0:
                 print('没配置{}用例数据...\nqry:{}；valCheck：{}\n'.format(('查询条件校验' if valCheck else '测试'), qry, valCheck))
             else:
@@ -129,11 +131,42 @@ class DataAccess:
         pyoracle = PyOracle.getInstance()
         pyoracle.callproc('pkg_nrtest.refresh_menu_xapth', [menu_no, Setting.PROJECT_NO])
 
+    @staticmethod
+    def se_operate_log(tst_case_id, class_path, except_info):
+        pyoracle = PyOracle.getInstance()
+        sql = 'insert into tst_operate_log (project_no, user_no, group_no, tst_case_id, class, log_info) \
+        values (:1, :2, :3, :4, :5, :6)'
+        para = (Setting.PROJECT_NO,
+                Setting.GROUP_USER,
+                Setting.GROUP_NO,
+                tst_case_id,
+                class_path,
+                except_info)
+        pyoracle.insert(sql, para)
+
+    @staticmethod
+    def replace_chrs(src, pattern='\r\n\t'):
+        """
+        # 去除\r\n\t字符
+        s = '\r\nabc\t123\nxyz'
+        print(re.sub('[\r\n\t]', '', s))
+        :param src:
+        :return:
+        """
+        # # % 希望使用左右括号、空格以及*分割
+        # # % 核心两句代码如下
+        # # % 正则表达式切分字符串，但会有空串出现，注意中间需要转义
+        # temp = re.split('\(|\)| |\*',src)
+        # # %使用过滤器筛掉空串得到了迭代器，再重新构造出列表
+        # temp = [item for item in filter(lambda x:x != '', temp)]
+        # return ''.join(temp)
+        return re.sub('[' + pattern + ']', '', src.strip())
+
 
 if __name__ == '__main__':
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
-    print(DataAccess.getCaseData("99952200", tabName='系统异常参数设置'))
-
+    # print(DataAccess.getCaseData("99952200", tabName='系统异常参数设置'))
+    print(DataAccess.replace_chrs('\r\nabc\t123\n  xyz'))
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))

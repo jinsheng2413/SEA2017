@@ -70,9 +70,9 @@ def modifyData(menuNo):
 
 
 # 没有tab页
-readData('99952500', name='升级人员')
+readData('99952300', name='统计频率')
 # 有tab页
 # readData('99951100',tabNmae='',name= '部门')
 # readData('99952200',name= '供电单位')
 # 有tab页
-readData('99952200', tabNmae='系统基本参数设置', name='上限值')
+# readData('99952200', tabNmae='系统基本参数设置', name='上限值')

@@ -82,6 +82,9 @@ class BaseLocators:
     RADIOBOX_INPUT2LABEL = (By.XPATH, '//input[@type="radio" and @{}="{}"]/../label[@text()="{}"')
 
     # 【复选框】
+    # 单个复选框
+    SINGLE_CHECK_BOX = (By.XPATH, '//label[text()="{}"]/..//input')
+
     # 被选择的复选框
     CHKBOX_UNCHECK_ALL = (By.XPATH, '//input[@type="checkbox" and @{}="{}" and @checked=""]')
 

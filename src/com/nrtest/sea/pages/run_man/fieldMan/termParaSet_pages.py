@@ -9,34 +9,37 @@
 """
 from com.nrtest.common.base_page import Page
 
-from com.nrtest.sea.locators.run_man.fieldMan.termParaSet_locators import TermParaSetLocators
-
 
 # 运行管理-现场管理-终端运行参数设置
 class TermParaSetPage(Page):
 
     # 终端地址
-    def inputStr_tmnl_addr(self, value):
-        self.input(value, *TermParaSetLocators.QRY_TMNL_ADDR)
+    def inputStr_tmnl_addr(self, content):
+        # self.input(value, *TermParaSetLocators.QRY_TMNL_ADDR)
+        self.input(content)
 
     # 终端厂商
-    def inputSel_tmnl_factory(self, index):
-        self.click(*TermParaSetLocators.QRY_TMNL_FACTORY)
-        locator = self.get_select_locator(TermParaSetLocators.QRY_TMNL_FACTORY_VALUE, index)
-        self.click(*locator)
+    def inputSel_tmnl_factory(self, option):
+        # self.click(*TermParaSetLocators.QRY_TMNL_FACTORY)
+        # locator = self.get_select_locator(TermParaSetLocators.QRY_TMNL_FACTORY_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(option)
 
     # 规约
-    def inputSel_tmnl_protory(self, index):
-        self.click(*TermParaSetLocators.QRY_TMNL_PROTORY)
-        locator = self.get_select_locator(TermParaSetLocators.QRY_TMNL_PROTORY_VALUE, index)
-        self.click(*locator)
+    def inputSel_tmnl_protory(self, option):
+        # self.click(*TermParaSetLocators.QRY_TMNL_PROTORY)
+        # locator = self.get_select_locator(TermParaSetLocators.QRY_TMNL_PROTORY_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(option)
 
     # 任务状态
-    def inputSel_task_status(self, index):
-        self.click(*TermParaSetLocators.QRY_TAST_STATUS)
-        locator = self.get_select_locator(TermParaSetLocators.QRY_TAST_STATUS_VALUE, index)
-        self.click(*locator)
+    def inputSel_task_status(self, option):
+        # self.click(*TermParaSetLocators.QRY_TAST_STATUS)
+        # locator = self.get_select_locator(TermParaSetLocators.QRY_TAST_STATUS_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(option)
 
     # 查询
     def btn_qry(self):
-        self.click(*TermParaSetLocators.BTN_QRY)
+        # self.click(*TermParaSetLocators.BTN_QRY)
+        self.btn_query()

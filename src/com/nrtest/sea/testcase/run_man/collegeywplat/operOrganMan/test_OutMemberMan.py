@@ -15,7 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.collegeywplat.collegeywplat_data import Collegeywplat_data
-from com.nrtest.sea.pages.collegeywplat.outMemberMan_page import OutMemberManPage, OutNameTroopMemberLocators
+from com.nrtest.sea.pages.collegeywplat.outMemberMan_page import OutMemberManPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -26,7 +26,7 @@ class TestOutMemberManTroop(TestCase,OutMemberManPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）ljf
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(Collegeywplat_data.para_operOrganMan)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.clickTabPage(Collegeywplat_data.para_operOrganMan_member)

@@ -16,7 +16,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.collegeywplat.acquistionFaultHandling.acquistionFaultHandling_data import \
     AcquistionFaultHandling_data
-from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.faultHandler_page import FaultSpecificPowerFeedbackPage, FaultHandlerLocators
+from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.faultHandler_page import FaultSpecificPowerFeedbackPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -80,6 +80,8 @@ class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
         self.inputSel_faultFrom(para['FAULT_FROM'])
         #故障严重程度
         self.inputSel_faultSeverity(para['FAULT_SEVERITY'])
+        # 故障类型
+        self.inputChk_fault_type(para['FAULT_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)

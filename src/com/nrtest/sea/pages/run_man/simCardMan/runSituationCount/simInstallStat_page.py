@@ -38,7 +38,7 @@ class SimInstallStatPageDetail(Page):
         # self.click(*SimInstallStatLocators.QRY_OPERATOR)
         # locator = self.get_select_locator(SimInstallStatLocators.QRY_OPERATOR_VALUE, name)
         # self.click(*locator)
-        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
+        self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
     # 查询
     def btn_qry(self):

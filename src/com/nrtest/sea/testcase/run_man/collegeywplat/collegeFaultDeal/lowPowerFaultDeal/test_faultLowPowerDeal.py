@@ -23,12 +23,12 @@ from com.nrtest.sea.task.commonMath import *
 #运行管理-->采集运维平台-->采集故障处理-->低压故障处理
 # 低压处理专变
 @ddt
-class TestFaultSpecificPowerDeal(TestCase,FaultLowPowerDealPage):
+class TestFaultLowPowerDeal(TestCase, FaultLowPowerDealPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）ljf
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(AcquistionFaultHandling_data.para_lowPowerFaultDeal)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.clickTabPage(AcquistionFaultHandling_data.para_lowPowerFaultDeal_deal)
@@ -79,6 +79,8 @@ class TestFaultSpecificPowerDeal(TestCase,FaultLowPowerDealPage):
         self.inputSel_faultFrom(para['FAULT_FROM'])
         #故障严重程度
         self.inputSel_faultSeverity(para['FAULT_SEVERITY'])
+        # 故障类型
+        self.inputChk_fault_type(para['FAULT_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)

@@ -14,7 +14,6 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
-from com.nrtest.sea.locators.run_man.clock.clockRun_locators import StaticByFacLocators
 from com.nrtest.sea.pages.run_man.clock.clockRun_page import StaticByFacPage
 from com.nrtest.sea.task.commonMath import *
 

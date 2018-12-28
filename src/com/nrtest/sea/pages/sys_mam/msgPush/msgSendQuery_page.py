@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.msgPush.msgSendQuery_locators import MsgSendQueryLocators
 
 
 # 系统管理→信息定制→推送信息定制→手机订阅→短信发送查询
@@ -20,11 +19,11 @@ class MsgSendQueryPage(Page):
 
     # 开始时间
     def inputDt_start_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 结束时间
     def inputDt_end_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 发送状态
     def inputSel_send_stat(self, options):
@@ -40,4 +39,4 @@ class MsgSendQueryPage(Page):
 
     # 查询按钮
     def btn_qry(self):
-        self.btn_query(True)
+        self.btn_query()

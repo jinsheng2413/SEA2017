@@ -4,12 +4,12 @@
 """
 @author: 卢炎炎
 @license: (C) Copyright 2018, Nari.
-@file: test_workCount2017.py
+@file: test_workQuery2017_tab1.py
 @time: 2018/11/1 15:17
 @desc:
 """
-import unittest
-from time import sleep
+
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -20,18 +20,20 @@ from com.nrtest.sea.pages.stat_rey.workQuery.workQuery2017_page import WorkCount
 from com.nrtest.sea.task.commonMath import *
 
 
-# 统计查询→工单查询→工单查询2017
+# 统计查询→工单查询→工单查询2017(第一个tab页)
 @ddt
-class TestDemo(unittest.TestCase, WorkCount2017Page):
+class TestDemo(TestCase, WorkCount2017Page):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(WorkQuery_data.WorkQuery2017_para)
-        sleep(2)
-        # cls.exec_script(cls, WorkCount2017Locators.START_DATE_JS)
-        # cls.exec_script(cls, WorkCount2017Locators.END_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(WorkQuery_data.WorkQuery2017_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(WorkQuery_data.WorkQuery2017_tab_count)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -61,13 +63,13 @@ class TestDemo(unittest.TestCase, WorkCount2017Page):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-        self.displayTreeMenu()
+
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
+
         # 工单类型
         self.inputSel_workTitle(para['WORK_TITLE'])
+
         self.btn_qry()
         self.sleep_time(2)
 
@@ -100,7 +102,8 @@ class TestDemo(unittest.TestCase, WorkCount2017Page):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery2017_para, WorkQuery_data.WorkQuery2017_tab_count, valCheck=True))
+    @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery2017_para, WorkQuery_data.WorkQuery2017_tab_count,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

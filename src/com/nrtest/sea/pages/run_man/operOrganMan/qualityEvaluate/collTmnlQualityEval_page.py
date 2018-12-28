@@ -9,10 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_locators import \
-    TmnlQualityEvalDetailLocators
-from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_locators import \
-    TmnlQualityEvalStaticLocators
 
 
 # 运行管理→采集运维平台→采集终端质量评价
@@ -33,7 +29,7 @@ class TmnlQualityEvalStaticPage(Page):
         self.inputDate(value)
 
     # 终端厂家--打开并选择
-    def inputRSel_tmnl_fac(self, options):
+    def inputSel_tmnl_fac(self, options):
         # self.click(*TmnlQualityEvalStaticLocators.TMNL_FAC_SEL)
         # locator = self.get_select_locator(
         #     TmnlQualityEvalStaticLocators.TMNL_FAC, name)
@@ -55,7 +51,7 @@ class TmnlQualityEvalDetailPage(Page):
         # locator = self.get_select_locator(
         #     TmnlQualityEvalDetailLocators.CONS_TYPE, name)
         # self.click(*locator)
-        self.selectDropDown(options)
+        self.selectDropDown(options, is_multi_elements=True, is_multi_tab=True)
 
     # 故障严重程度--打开并选择
     def inputSel_fault_level(self, options):
@@ -66,15 +62,15 @@ class TmnlQualityEvalDetailPage(Page):
         self.selectDropDown(options)
 
     # 终端厂家-打开并选择
-    def inputRSel_tmnl_fac(self, options):
+    def inputSel_tmnl_fac(self, options):
         # self.click(*TmnlQualityEvalDetailLocators.TMNL_FAC_SEL)
         # locator = self.get_select_locator(
         #     TmnlQualityEvalDetailLocators.TMNL_FAC, name)
         # self.click(*locator)
-        self.selectDropDown(options)
+        self.selectDropDown(options, is_multi_elements=True, is_multi_tab=True)
 
     # 故障类别-打开并选择
-    def inputRSel_fault_type(self, options):
+    def inputSel_fault_type(self, options):
         # self.click(*TmnlQualityEvalDetailLocators.FAULT_TYPE_SEL)
         # locator = self.get_select_locator(
         #     TmnlQualityEvalDetailLocators.FAULT_TYPE, name)
@@ -94,4 +90,4 @@ class TmnlQualityEvalDetailPage(Page):
     # 点击查询
     def btn_qry(self):
         # self.click(*TmnlQualityEvalDetailLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)

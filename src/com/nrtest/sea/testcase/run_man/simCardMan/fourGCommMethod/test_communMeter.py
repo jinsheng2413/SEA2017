@@ -15,8 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardMan
-from com.nrtest.sea.pages.run_man.simCardMan.fourGCommMethod.communMeter_page import CommumMeterPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.run_man.simCardMan.fourGCommMethod.communMeter_page import CommumMeterPage
 
 
 @ddt

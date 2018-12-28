@@ -15,7 +15,10 @@ from selenium.webdriver.common.by import By
 class GeneralGroupSetLocators:
     # 名称
     QRY_NAME = (By.XPATH, '//label[contains(text(),"名称")]/../div/input')
-    # 查询日期，开始
+
+    # 查询日期
+    QRY_VALID_DATE = (By.XPATH, '//input[@type="checkbox"]')
+    # 开始
     QRY_START_DATE = (By.XPATH, '//label[contains(text(),"有效日期")]/../div/div/input')
     # 查询日期，结束
     QRY_END_DATE = (By.XPATH, '//label[contains(text(),"至")]/../div/div/input')

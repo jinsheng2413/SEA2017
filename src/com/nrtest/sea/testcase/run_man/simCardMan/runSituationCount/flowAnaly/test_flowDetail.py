@@ -21,7 +21,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
 @ddt
-class TestFlowDetail(TestCase,FlowDeatilPage):
+class TestFlowDetail(TestCase, FlowDeatilPage):
 
     @classmethod
     def setUpClass(cls):

@@ -21,7 +21,7 @@ class CommumMeterPage(Page):
         self.inputDate(value)
 
     # 抄表段号
-    def inputStr_mr_sect_no(self,value):
+    def inputStr_mr_sect_no(self, value):
         self.input(value)
 
     # 电表资产号

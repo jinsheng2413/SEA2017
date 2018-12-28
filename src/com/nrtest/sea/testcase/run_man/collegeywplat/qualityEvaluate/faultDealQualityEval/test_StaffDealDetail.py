@@ -14,8 +14,6 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
-from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.faultDealQualityEval_locators import \
-    StaffDealDetailLocators
 from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.faultDealQualityEval_page import \
     StaffDealDetailPage
 from com.nrtest.sea.task.commonMath import *
@@ -29,7 +27,7 @@ class TestStaffDealStatic(TestCase, StaffDealDetailPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）ljf
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(OperOrganManData.para_FaultDealQualityEval)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.clickTabPage(OperOrganManData.para_FaultDealQualityEval_staff)

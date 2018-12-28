@@ -42,7 +42,7 @@ class WorkQuery2017Page(Page):
         # locator = self.get_select_locator(
         #     WorkQuery2017Locators.QRY_WORK_TITLE_VALUE, index)
         # self.click(*locator)
-        self.selectDropDown(options)
+        self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 工单状态
     def inputSel_workStatus(self, options):
@@ -53,13 +53,13 @@ class WorkQuery2017Page(Page):
         self.selectDropDown(options)
     # 工单发生时间
     def inputStr_startDate(self, value):
-        self.input(value)  # , *WorkQuery2017Locators.QRY_STARTDATE)
+        self.inputDate(value)  # , *WorkQuery2017Locators.QRY_STARTDATE)
 
     # 工单完成时间
     def inputStr_endDate(self, value):
-        self.input(value)  # , *WorkQuery2017Locators.QRY_ENDDATE)
+        self.inputDate(value)  # , *WorkQuery2017Locators.QRY_ENDDATE)
 
     # 查询
     def btn_qry(self):
         # self.click(*WorkQuery2017Locators.BTN_QRY)
-        self.btn_query()
+        self.btn_query(True)

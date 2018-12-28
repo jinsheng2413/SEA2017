@@ -15,7 +15,6 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
-from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.simAlarmAnaly_locators import AbnormalDetailLocators
 from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.simAlarmAnaly_page import AbnormalDetailPage
 from com.nrtest.sea.task.commonMath import *
 
@@ -23,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理-->SIM卡管理-->运行情况分析-->异常分析
 # 异常明细
 @ddt
-class TestDemo(TestCase,AbnormalDetailPage):
+class TestDemo(TestCase, AbnormalDetailPage):
 
     @classmethod
     def setUpClass(cls):

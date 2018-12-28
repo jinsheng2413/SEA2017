@@ -10,8 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.stat_rey.allMeasureDataCountQuery.allMeasureDataCountQuery_locators import \
-    AllMeasureDataCountQueryLocators
 
 
 # 统计查询--》全量数据统计查询--》全量数据统计查询
@@ -20,6 +18,18 @@ class AllMeasureDataCountQueryPage(Page):
     def inputStr_date(self, value):
         # self.input(value, *AllMeasureDataCountQueryLocators.QRY_DATE)
         self.inputDate(value)
+
+    # 用户类型--打开并选择
+    def inputSel_cons_type(self, options):
+        self.selectDropDown(options)
+
+    # 数据项
+    def inputSel_protocol_item(self, options):
+        self.selectDropDown(options)
+
+    # 统计维度
+    def inputSel_static_method(self, options):
+        self.selectDropDown(options)
 
     # 查询
     def btn_qry(self):

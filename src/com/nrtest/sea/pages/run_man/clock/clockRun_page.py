@@ -32,7 +32,7 @@ class StaticByOrgPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *StaticByOrgLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
@@ -45,12 +45,12 @@ class StaticByFacPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *StaticByFacLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*StaticByFacLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)
 
 # 频繁对时终端
 class FrequentlyCheckTmnlPage(Page):
@@ -74,7 +74,7 @@ class FrequentlyCheckTmnlPage(Page):
         # locator = self.get_select_locator(
         #     FrequentlyCheckTmnlLocators.TMNL_FAC, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 终端资产号
     def inputStr_tmnl_asset_no(self, value):
@@ -84,12 +84,12 @@ class FrequentlyCheckTmnlPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *FrequentlyCheckTmnlLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*FrequentlyCheckTmnlLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)
 
 # 频繁对时电表
 class FrequentlyCheckMetPage(Page):
@@ -100,7 +100,7 @@ class FrequentlyCheckMetPage(Page):
         # locator = self.get_select_locator(
         #     FrequentlyCheckMetLocators.MET_FAC, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 电表类别--打开并选择
     def inputSel_met_type(self, item):
@@ -123,9 +123,9 @@ class FrequentlyCheckMetPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *FrequentlyCheckMetLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*FrequentlyCheckMetLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)

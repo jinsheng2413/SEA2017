@@ -7,32 +7,31 @@
 @time: 2018/10/30 13:46
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
-from com.nrtest.sea.locators.run_man.clock.clockResult_locators import \
-    ClockResultStaticLocators
 from com.nrtest.sea.pages.run_man.clock.clockResult_page import ClockResultStaticPage
 from com.nrtest.sea.task.commonMath import *
-
 
 # 运行管理→时钟管理→对时结果分析
 # 对时结果分析
 @ddt
-class TestDemo(unittest.TestCase, ClockResultStaticPage):
+class TestDemo(TestCase, ClockResultStaticPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(ClockData.para_ClockResult)
-        # 点击Tab页标签
-        clickTabPage(ClockData.para_ClockResult_static)
-        cls.exec_script(cls, ClockResultStaticLocators.QUERY_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ClockData.para_ClockResult)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(ClockData.para_ClockResult_static)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -66,10 +65,11 @@ class TestDemo(unittest.TestCase, ClockResultStaticPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
+        # 类别
+        self.inputChk_static_method(para['STATIC_METHOD'])
         # 终端厂商
         self.inputSel_tmnl_fac(para['TMNL_FAC'])
-        # self.delDropdownBoxHtml()
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
 
@@ -133,6 +133,3 @@ class TestDemo(unittest.TestCase, ClockResultStaticPage):
     #     # 校验
     #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-    if __name__ == '__main__':
-        unittest.main()

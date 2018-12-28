@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -24,16 +24,18 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→时钟运行质量分析
 # 频繁对时终端
 @ddt
-class TestDemo(unittest.TestCase, FrequentlyCheckMetPage):
+class TestDemo(TestCase, FrequentlyCheckMetPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(ClockData.para_ClockRun)
-        # 点击Tab页标签
-        clickTabPage(ClockData.para_ClockRun_checkmet)
-        cls.exec_script(cls, FrequentlyCheckMetLocators.QUERY_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ClockData.para_ClockRun)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(ClockData.para_ClockRun_checkmet)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -149,6 +151,3 @@ class TestDemo(unittest.TestCase, FrequentlyCheckMetPage):
     #     # 校验
     #     result = self.assert_context(*TmnlClockDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-    if __name__ == '__main__':
-        unittest.main()

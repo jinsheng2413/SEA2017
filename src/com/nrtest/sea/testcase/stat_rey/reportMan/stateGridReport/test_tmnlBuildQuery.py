@@ -7,18 +7,16 @@
 @desc:
 """
 
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
-from unittest import TestCase
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_data import TmnlBuildQuery_data
-from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_page import TmnlBuildQueryPage, \
-    TmnlBuildQueryLocators
-from com.nrtest.sea.task.commonMath import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_page import TmnlBuildQueryPage
+from com.nrtest.sea.task.commonMath import *
 
 
 # 统计查询--》报表管理--》国网报表--》智能电能表及终端设备建设情况
@@ -66,13 +64,21 @@ class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
 
-        # 查询日期
-        self.inputStr_dateS(para['DATE_S'])
-        self.inputStr_dateE(para['DATE_E'])
+        # 统计分类
+        self.inputChk_stat_type(para['STAT_TYPE'])
+
+        # 日期
+        self.inputStr_startDate(para['START_DATE'])
+
+        # 到
+        self.inputStr_endDate(para['END_DATE'])
+
         # 终端类型
         self.inputSel_tmnlType(para['TMNL_TYPE'])
+
         # 终端厂商
         self.inputSel_tmnlFac(para['TMNL_FAC'])
+
         # 统计口径
         self.inputSel_statWay(para['STAT_WAY'])
 

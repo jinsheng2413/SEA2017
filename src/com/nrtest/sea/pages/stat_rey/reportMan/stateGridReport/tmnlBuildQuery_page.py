@@ -7,20 +7,23 @@
 @desc:
 """
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_locators import TmnlBuildQueryLocators
 
 
 # 统计查询--》报表管理--》国网报表--》智能电能表及终端设备建设情况
 
 class TmnlBuildQueryPage(Page):
 
+    # 统计分类
+    def inputChk_stat_type(self, option):
+        self.clickRadioBox(option)
+
     # 查询日期
 
-    def inputStr_dateS(self, value):
-        self.input(value)#, *TmnlBuildQueryLocators.QRY_DATE_S)
+    def inputStr_startDate(self, value):
+        self.inputDate(value)  # , *TmnlBuildQueryLocators.QRY_DATE_S)
 
-    def inputStr_dateE(self, value):
-        self.input(value)#, *TmnlBuildQueryLocators.QRY_DATE_E)
+    def inputStr_endDate(self, value):
+        self.inputDate(value)  # , *TmnlBuildQueryLocators.QRY_DATE_E)
 
     # 终端类型
     def inputSel_tmnlType(self, options):

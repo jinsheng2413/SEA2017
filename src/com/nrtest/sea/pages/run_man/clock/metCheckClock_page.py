@@ -34,7 +34,7 @@ class MetClockMonthStaticPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *MetClockMonthStaticLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
@@ -45,32 +45,36 @@ class MetClockMonthStaticPage(Page):
 # 电表时钟日统计
 class MetClockDayStaticPage(Page):
 
+    # 统计类型
+    def inputChk_static_method(self, option):
+        self.clickRadioBox(option)
+
     # 电表类别--打开并选择
-    def inputSel_tmnl_type(self, item):
+    def inputSel_met_type(self, item):
         # self.click(*MetClockDayStaticLocators.MET_TYPE_SEL)
         # locator = self.get_select_locator(
         #     MetClockDayStaticLocators.MET_TYPE, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 电能表厂商--打开并选择
-    def inputSel_tmnl_fac(self, item):
+    def inputSel_met_fac(self, item):
         # self.click(*MetClockDayStaticLocators.MET_FAC_SEL)
         # locator = self.get_select_locator(
         #     MetClockDayStaticLocators.MET_FAC, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
 
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *MetClockDayStaticLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*MetClockDayStaticLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)
 
 # 电表时钟明细
 class MetClockDetailPage(Page):
@@ -80,15 +84,15 @@ class MetClockDetailPage(Page):
         # self.click(*MetClockDetailLocators.MET_FAC_SEL)
         # locator = self.get_select_locator(MetClockDetailLocators.MET_FAC, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 电表类别
-    def inputRSel_met_type(self, item):
+    def inputSel_met_type(self, item):
         # self.click(*MetClockDetailLocators.MET_TYPE_SEL)
         # locator = self.get_select_locator(
         #     MetClockDetailLocators.MET_TYPE, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 电能表资产号
     def inputStr_met_asset_no(self, value):
@@ -116,12 +120,12 @@ class MetClockDetailPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *MetClockDetailLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*MetClockDetailLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)
 
 
 # 自动对时策略配置
@@ -146,9 +150,9 @@ class AutoCheckPolicyPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *AutoCheckPolicyLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*AutoCheckPolicyLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)

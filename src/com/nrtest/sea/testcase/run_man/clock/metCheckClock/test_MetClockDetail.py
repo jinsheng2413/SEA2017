@@ -24,7 +24,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→电能表对时
 # 电表时钟明细
 @ddt
-class TestDemo(unittest.TestCase, MetClockDetailPage):
+class TestMetClockDetail(unittest.TestCase, MetClockDetailPage):
 
     @classmethod
     def setUpClass(cls):
@@ -67,7 +67,7 @@ class TestDemo(unittest.TestCase, MetClockDetailPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 电能表厂商
         self.inputSel_met_fac(para['MET_FAC'])
         # 电表类别

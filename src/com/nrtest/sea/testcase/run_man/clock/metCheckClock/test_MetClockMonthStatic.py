@@ -66,7 +66,7 @@ class TestDemo(unittest.TestCase, MetClockMonthStaticPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 电表类别
         self.inputSel_tmnl_type(para['MET_TYPE'])
         # 电能表厂商

@@ -54,9 +54,8 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        self.displayTreeMenu()
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 查询日期，开始
         self.inputDt_start_date(para['START_DATE'])
         # 查询日期，结束
@@ -65,6 +64,7 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
         self.inputStr_operator(para['OPERATOR'])
         # 查询按钮
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -81,9 +81,8 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(LogEdit_data.sysEnterLog_para))
+    # @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LogEdit_data.sysEnterLog_para)[0:1])
     def test_query(self, para):
         self.start_case(para)
         self.query(para)

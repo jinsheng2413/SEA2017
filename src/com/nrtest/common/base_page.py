@@ -480,7 +480,7 @@ class Page():
             item = ls_option[1]
             # 赋值选中，不赋值不选中
             is_select = bool(item)
-            xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, ls_option[0], is_multi_tab)
+            xpath = self.format_xpath_multi(BaseLocators.SINGLE_CHECK_BOX, ls_option[0], is_multi_tab)
             if is_multi_elements:
                 el = self._find_displayed_element(xpath)
             else:

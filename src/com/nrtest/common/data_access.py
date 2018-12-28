@@ -165,8 +165,8 @@ class DataAccess:
 
 if __name__ == '__main__':
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
-    # print(DataAccess.getCaseData("99952200", tabName='系统异常参数设置'))
-    print(DataAccess.replace_chrs('\r\nabc\t123\n  xyz'))
+    print(DataAccess.getCaseData("99935100", tabName='01'))
+    # print(DataAccess.replace_chrs('\r\nabc\t123\n  xyz'))
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))

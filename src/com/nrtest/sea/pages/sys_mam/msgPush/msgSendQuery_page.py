@@ -20,11 +20,11 @@ class MsgSendQueryPage(Page):
 
     # 开始时间
     def inputDt_start_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 结束时间
     def inputDt_end_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 发送状态
     def inputSel_send_stat(self, options):
@@ -40,4 +40,4 @@ class MsgSendQueryPage(Page):
 
     # 查询按钮
     def btn_qry(self):
-        self.btn_query(True)
+        self.btn_query()

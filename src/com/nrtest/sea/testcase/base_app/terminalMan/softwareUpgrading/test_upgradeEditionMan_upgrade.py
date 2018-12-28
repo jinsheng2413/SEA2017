@@ -10,18 +10,17 @@
 
 import unittest
 
-import ddt
+from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
-from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_locators import \
-    UpgradeEditionManLocators
+from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_page import UpgradeEditionManPage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 基本应用→终端管理→软件升级→升级版本管理→升级版本管理
-@ddt.ddt
+@ddt
 class TestUpgradeEditionMan(unittest.TestCase, UpgradeEditionManPage):
     @classmethod
     def setUpClass(cls):
@@ -51,7 +50,9 @@ class TestUpgradeEditionMan(unittest.TestCase, UpgradeEditionManPage):
         # 回收左边树
         self.recoverLeftTree()
 
-    def query_upgrade(self, para):
+    def query(self, para):
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
         clickTabPage('升级版本管理')
         # 终端厂家
         self.inputSel_upgrade_tmnl_factory(para['UPGRADE_TMNL_FACTORY'])
@@ -67,11 +68,36 @@ class TestUpgradeEditionMan(unittest.TestCase, UpgradeEditionManPage):
         self.upgrade_end_date(para['UPGRADE_END_DATE'])
         # 点击查询按钮
         self.btn_upgrade_search()
-        # 校验
-        result = self.assert_context(*UpgradeEditionManLocators.UPGRADE_CHECK)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    @ddt.data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionMan_para,
-                                      SoftwareUpgrading_data.UpgradeEditionMan_tabName_upgrade))
-    def test_b_der(self, para):
-        self.query_upgrade(para)
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionMan_para,
+                                  SoftwareUpgrading_data.UpgradeEditionMan_tabName_upgrade))
+    def test_query(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionMan_para,
+                                  SoftwareUpgrading_data.UpgradeEditionMan_tabName_upgrade, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

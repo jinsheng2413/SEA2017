@@ -33,7 +33,7 @@ class UpgradeEditionManLocators:
         By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 软件版本号
     SOFTWARE_VERSION_NO = (
-        By.XPATH, '//label[contains(text(),"软件版本号")]/../div/div/img')
+        By.XPATH, '//input[@name="upgradeTmnlVersion"]')
     # 软件版本号→值
     SOFTWARE_VERSION_NO_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')

@@ -10,17 +10,18 @@
 
 import unittest
 
-import ddt
+from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_date import SoftwareUpgrading_data
+from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionApprove_page import \
     UpgradeEditionApprovePage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 基本应用→终端管理→软件升级→升级版本审批
-@ddt.ddt
+@ddt
 class TestUpgradeEditionApprove(unittest.TestCase, UpgradeEditionApprovePage):
     @classmethod
     def setUpClass(cls):
@@ -49,8 +50,9 @@ class TestUpgradeEditionApprove(unittest.TestCase, UpgradeEditionApprovePage):
         # self.clear_values(UpgradeEditionManPage)
         # 回收左边树
         self.recoverLeftTree()
-
     def query(self, para):
+        # 注册菜单
+        self.menu_name = para['MENU_NAME']
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端类型
@@ -64,8 +66,35 @@ class TestUpgradeEditionApprove(unittest.TestCase, UpgradeEditionApprovePage):
         # 申请结束日期
         self.inputDt_end_date(para['END_DATE'])
         # 点击查询按钮
-        self.btn_search()
+        self.btn_query()
 
-    @ddt.data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionApprove_para))
-    def test_der(self, para):
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionApprove_para))
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionApprove_para))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

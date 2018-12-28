@@ -80,6 +80,10 @@ class UpgradeEffectStatisticsLocators:
     AFFIRM_END_DATE = (By.XPATH, '//label[text()="确认结束日期"]/../div/div/input')
     # 查询按钮
     BTN_DETAIL_SEARCH = (By.XPATH, '(//button[text()="查询"])[2]')
+    # 执行日期
+    BOX_EXECUTE_DATE = (By.NAME, 'execDateStatus')
+    # 确认日期
+    BOX_AFFIRM_DATE = (By.NAME, 'confirmDateStatus')
 
     # 【JS属性】
     # 执行开始日期，删除readonly属性

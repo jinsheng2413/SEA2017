@@ -8,7 +8,7 @@
 @time: 2018/11/9 0009 14:52
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -23,16 +23,18 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理-->SIM卡管理-->运行情况分析-->异常分析
 # 异常明细
 @ddt
-class TestDemo(unittest.TestCase,AbnormalDetailPage):
+class TestDemo(TestCase,AbnormalDetailPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单
-        cls.driver = openMenu(RunSituationCount_data.para_simAlarmAnaly)
-        # 点击Tab页标签
-        clickTabPage(RunSituationCount_data.para_simAlarmAnaly_detail)
-        cls.exec_script(cls, AbnormalDetailLocators.START_DATE_JS)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(RunSituationCount_data.para_simAlarmAnaly)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(RunSituationCount_data.para_simAlarmAnaly_detail)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):

@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 # 安装情况统计
 class SimInstallStatPageStatic(Page):
 
-    # 执行状态
+    # 运营商
     def inputSel_operator(self, item):
         # self.click(*SimInstallStatLocators.QRY_OPERATOR)
         # locator = self.get_select_locator(SimInstallStatLocators.QRY_OPERATOR_VALUE, name)
@@ -33,14 +33,14 @@ class SimInstallStatPageStatic(Page):
 # 安装情况明细
 class SimInstallStatPageDetail(Page):
 
-    # 执行状态
+    # 运营商
     def inputSel_operator(self, item):
         # self.click(*SimInstallStatLocators.QRY_OPERATOR)
         # locator = self.get_select_locator(SimInstallStatLocators.QRY_OPERATOR_VALUE, name)
         # self.click(*locator)
-        self.selectDropDown(item)
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 查询
     def btn_qry(self):
         # self.click(*SimInstallStatLocators.BTN_QRY)
-        self.btn_query()
+        self.btn_query(True)

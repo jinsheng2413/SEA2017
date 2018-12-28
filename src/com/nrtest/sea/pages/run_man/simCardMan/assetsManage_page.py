@@ -32,12 +32,12 @@ class AssetsManagePage(Page):
     # 时间至
     def inputStr_timeTO(self, value):
         # self.input(value, *AssetsManageLocators.QRY_TIME_TO)
-        self.input(value)
+        self.inputDate(value)
 
     # 导入日期
     def inputStr_leadTime(self, value):
         # self.input(value, *AssetsManageLocators.QRY_LEAD_TO_TIME)
-        self.input(value)
+        self.inputDate(value)
 
     # SIM卡段号至
     def inputStr_simCardNoTO(self, value):

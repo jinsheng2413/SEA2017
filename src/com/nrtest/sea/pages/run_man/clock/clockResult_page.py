@@ -15,8 +15,11 @@ from com.nrtest.common.base_page import Page
 # 对时结果分析
 class ClockResultStaticPage(Page):
 
+    def inputChk_static_method(self, option):
+        self.clickRadioBox(option)
+
     # 终端厂商--打开并选择
-    def inputRSel_tmnl_fac(self, item):
+    def inputSel_tmnl_fac(self, item):
         # self.click(*ClockResultStaticLocators.TMNL_FAC_SEL)
         # locator = self.get_select_locator(
         #     ClockResultStaticLocators.TMNL_FAC, name)
@@ -26,7 +29,7 @@ class ClockResultStaticPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *ClockResultStaticLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
@@ -63,9 +66,9 @@ class ClockResultDetailPage(Page):
     # 查询日期
     def inputStr_query_date(self, value):
         # self.input(value, *ClockResultDetailLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
         # self.click(*ClockResultDetailLocators.BTN_QUERY)
-        self.btn_query()
+        self.btn_query(True)

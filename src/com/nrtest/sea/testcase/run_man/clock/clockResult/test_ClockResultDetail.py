@@ -8,15 +8,13 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
-from com.nrtest.sea.locators.run_man.clock.clockResult_locators import \
-    ClockResultDetailLocators
 from com.nrtest.sea.pages.run_man.clock.clockResult_page import ClockResultDetailPage
 from com.nrtest.sea.task.commonMath import *
 
@@ -24,16 +22,18 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→对时结果分析
 # 对时结果明细
 @ddt
-class TestDemo(unittest.TestCase, ClockResultDetailPage):
+class TestDemo(TestCase, ClockResultDetailPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(ClockData.para_ClockResult)
-        # 点击Tab页标签
-        clickTabPage(ClockData.para_ClockResult_detail)
-        cls.exec_script(cls, ClockResultDetailLocators.QUERY_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ClockData.para_ClockResult)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(ClockData.para_ClockResult_detail)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -67,9 +67,9 @@ class TestDemo(unittest.TestCase, ClockResultDetailPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 类别
-        self.inputSel_clock_model(para['CLOCK_MODEL'])
+        # self.inputSel_clock_model(para['CLOCK_MODEL'])
         # 电表资产号
         self.inputStr_met_asset_no(para['MET_ASSET_NO'])
         # 终端资产号

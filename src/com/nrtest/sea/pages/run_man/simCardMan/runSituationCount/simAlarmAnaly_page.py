@@ -19,9 +19,9 @@ class AbnoralStaticPage(Page):
     # 月份
     def inputStr_month(self, value):
         # self.input(value,*AbnormalCountLocators.QRY_MONTH)
-        self.input(value)
+        self.inputDate(value)
 
-        # 查询
+    # 查询
     def btn_qry(self):
         # self.click(*AbnormalDetailLocators.BTN_QRY)
         self.btn_query()
@@ -38,9 +38,9 @@ class AbnormalDetailPage(Page):
     # 月份
     def inputStr_month(self, value):
         # self.input(value, *AbnormalDetailLocators.QRY_MONTH)
-        self.input(value)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):
         # self.click(*AbnormalDetailLocators.BTN_QRY)
-        self.btn_query()
+        self.btn_query(True)

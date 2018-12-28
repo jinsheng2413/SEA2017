@@ -8,7 +8,7 @@
 @time: 2018/11/9 0009 9:17
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -22,15 +22,18 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
 # 安装情况统计
 @ddt
-class TestSimInstallStat(unittest.TestCase, SimInstallStatPageStatic):
+class TestSimInstallStat(TestCase, SimInstallStatPageStatic):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单
-        cls.driver = openMenu(RunSituationCount_data.para_simInstallStat)
-        # 点击Tab页标签
-        clickTabPage(RunSituationCount_data.para_simInstallStat_static)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(RunSituationCount_data.para_simInstallStat)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(RunSituationCount_data.para_simInstallStat_static)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -61,10 +64,10 @@ class TestSimInstallStat(unittest.TestCase, SimInstallStatPageStatic):
         """
 
         # 注册菜单
-        self.menu_name = para['MENU_NAME']
+        # self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 运营商
         self.inputSel_operator(para['OPERATOR'])
 
@@ -91,7 +94,7 @@ class TestSimInstallStat(unittest.TestCase, SimInstallStatPageStatic):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(RunSituationCount_data.para_simInstallStat,
-                                  RunSituationCount_data.para_simInstallStat_static, ))
+                                  RunSituationCount_data.para_simInstallStat_static))
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验

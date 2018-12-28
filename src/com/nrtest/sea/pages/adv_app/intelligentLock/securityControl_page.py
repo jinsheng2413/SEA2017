@@ -9,23 +9,24 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.intelligentLock.securityControl_locators import SecurityControlLocators
 
 
 # 高级应用→智能锁具→权限控制
 class SecurityControlPage(Page):
     # 供电单位，查询按钮
     def btn_cons_search(self):
-        self.click(*SecurityControlLocators.BTN_CONS_SEARCH)
+        # self.click(*SecurityControlLocators.BTN_CONS_SEARCH)
+        self.btn_query()
+
     # 锁封编号
-
     def inputStr_lock_no(self, content):
-        self.input(content, *SecurityControlLocators.LOCK_NO)
+        self.input(content)  # , *SecurityControlLocators.LOCK_NO)
+
     # 用户编号
-
     def inputStr_cons_no(self, content):
-        self.input(content, *SecurityControlLocators.CONS_NO)
-    # 查询按钮
+        self.input(content)  #, *SecurityControlLocators.CONS_NO)
 
+    # 查询按钮
     def btn_search(self):
-        self.click(*SecurityControlLocators.BTN_SEARCH)
+        # self.click(*SecurityControlLocators.BTN_SEARCH)
+        self.btn_query()

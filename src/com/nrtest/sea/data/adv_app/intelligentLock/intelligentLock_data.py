@@ -16,5 +16,7 @@ class IntelligentLock_data:
     SecurityControl_para = '99992200'
     # 高级应用→智能锁具→记录查询
     RecordsQuery_para = '99992300'
+    RecordsQuery_tabName = '开关锁操作日志'
+    RecordsQuery_tabName_asset = '资产管理记录查询'
     # 高级应用→智能锁具→权限查询及删除
     SecurityQueryAndDelete_para = '99992500'

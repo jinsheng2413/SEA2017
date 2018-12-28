@@ -25,9 +25,16 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GroupMan_data.LineGroupSet_para)
-        cls.tab_page = '管理群组'
+        # # 打开菜单（需要传入对应的菜单编号）
+        # cls.driver = openMenu(GroupMan_data.LineGroupSet_para)
+        # cls.tab_page = '管理群组'
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(GroupMan_data.LineGroupSet_para)
+        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -56,26 +63,24 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
-        # sleep(2)
-        self.clickRadioBox(para['TAB_PAGE_SEL'])  # '管理群组')
-
-        if para['TAB_PAGE_SEL'] == self.tab_page:  # 管理群组
+        # 群组分类
+        self.inputChk_group_type(para['GROUP_TYPE'])
+        if self.get_para_value(para['GROUP_TYPE']) == '管理群组':
             # 名称
             self.inputStr_name(para['NAME'])
-
             # 有效日期
-            self.clickSingleCheckBox(para['VALID_DT'])
+            self.inputChk_valid_date(para['VALID_DATE'])
 
-            if len(para['VALID_DT']) > 0:
-                # 查询日期，开始【少个“从”的标签】
+            # 是否勾选有效日期
+            if bool(self.get_para_value(para['VALID_DATE'])):
+                # 开始日期
                 self.inputDt_start_date(para['START_DATE'])
-                # 查询日期，结束
+                # 至
                 self.inputDt_end_date(para['END_DATE'])
-                # 查询按钮
-                self.btn_search()
+            # 查询按钮
+            self.btn_search()
+        else:
+            self.openLeftTree(para['TREE_NODE'])
 
     #     # 校验
     #     result = self.assert_context(*LineGroupSetLocators.CHECK_FIRST)
@@ -106,8 +111,7 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
-        if para['TAB_PAGE_SEL'] == self.tab_page:
-            self.assert_query_result(para)
+        self.assert_query_result(para)
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
@@ -115,6 +119,6 @@ class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
-        if para['TAB_PAGE_SEL'] == self.tab_page:
-            self.assert_query_criteria(para)
+        self.assert_query_criteria(para)
         self.end_case(para)
+

@@ -66,7 +66,6 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
 
         # 群组分类
         self.inputChk_group_type(para['GROUP_TYPE'])
-        print(para['GROUP_TYPE'])
         if self.get_para_value(para['GROUP_TYPE']) == '管理群组':
             # 名称
             self.inputStr_name(para['NAME'])

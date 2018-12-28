@@ -1,14 +1,14 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_centralizedPlanUpgrade.py
-@time: 2018/9/29 10:54
+@file: test_centralizePlanUpgrade_tab.py
+@time: 2018/12/26 10:11
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -20,19 +20,24 @@ from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanU
 from com.nrtest.sea.task.commonMath import *
 
 
-# 基本应用→终端管理→软件升级→集中计划升级
+# 基本应用→终端管理→软件升级→集中计划升级→制定计划
 @ddt
-class TestUpgradeTaskExecution(unittest.TestCase, CentralizePlanUpgradePage):
+class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SoftwareUpgrading_data.CentralizedPlanUpgrade_para)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(SoftwareUpgrading_data.CentralizedPlanUpgrade_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_plan)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        # 刷新浏览器
+        print("执行结束")
+        # 关闭菜单页面
         cls.closePages(cls)
 
     def setUp(self):
@@ -46,29 +51,26 @@ class TestUpgradeTaskExecution(unittest.TestCase, CentralizePlanUpgradePage):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # # 去除查询干扰数据(要传入对应的page页面类)
-        # self.clear_values(UpgradeTaskExecutionPage)
         # 回收左边树
         self.recoverLeftTree()
 
-    # 集中计划升级
+    # 制定计划
     def query(self, para):
+        clickTabPage('制定计划')
         # 打开左边树选择供电单位
         openLeftTree(para['TREE_NODE'])
+        # 忽略旧版本号
+        self.inputChk_history_version(para['HISTORY_VERSION'])
         # 终端厂家
-        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        # 升级目的
-        self.inputSel_upgrade_purpose(para['UPGRADE_PURPOSE'])
+        self.inputSel_tab_tmnl_factory(para['TAB_TMNL_FACTORY'])
+        # 终端类型
+        self.inputSel_tab_tmnl_type(para['TAB_TMNL_TYPE'])
         # 终端用途
-        self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
-        # 开始时间
-        self.inputDt_start_date(para['START_DATE'])
-        # 结束时间
-        self.inputDt_end_date(para['END_DATE'])
-        # 批次号
-        self.inputStr_batch_no(para['BATCH_NO'])
+        self.inputSel_tab_tmnl_purpose(para['TAB_TMNL_PURPOSE'])
+        # 升级版本号
+        self.inputSel_tab_upgrade_version_no(para['TAB_UPGRADE_VERSION_NO'])
         # 点击查询按钮
-        self.btn_search()
+        self.btn_tab_search()
 
     def assert_query_result(self, para):
         """
@@ -87,7 +89,7 @@ class TestUpgradeTaskExecution(unittest.TestCase, CentralizePlanUpgradePage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.CentralizedPlanUpgrade_para,
-                                  SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName))
+                                  SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_plan))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -96,7 +98,7 @@ class TestUpgradeTaskExecution(unittest.TestCase, CentralizePlanUpgradePage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.CentralizedPlanUpgrade_para,
-                                  SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName))
+                                  SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_plan))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

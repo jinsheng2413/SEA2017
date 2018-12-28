@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.intelligentLock.recordsQuery_locators import RecordsQueryLocators
 
 
 # 高级应用→智能锁具→记录查询
@@ -17,94 +16,103 @@ class RecordsQueryPage(Page):
     # 开关锁操作日志
     # 操作员名称
     def inputStr_staff_name(self, content):
-        self.input(content, *RecordsQueryLocators.STAFF_NAME)
+        self.input(content)  # , *RecordsQueryLocators.STAFF_NAME)
+
     # 台区编号
-
     def inputStr_tg_no(self, content):
-        self.input(content, *RecordsQueryLocators.TG_NO)
+        self.input(content)  #, *RecordsQueryLocators.TG_NO)
+
     # 台区名称
-
     def inputStr_tg_name(self, content):
-        self.input(content, *RecordsQueryLocators.TG_NAME)
+        self.input(content)  #, *RecordsQueryLocators.TG_NAME)
+
     # 用户编号
-
     def inputStr_cons_no(self, content):
-        self.input(content, *RecordsQueryLocators.CONS_NO)
+        self.input(content)  #, *RecordsQueryLocators.CONS_NO)
+
     # 用户名称
-
     def inputStr_user_name(self, content):
-        self.input(content, *RecordsQueryLocators.USER_NAME)
+        self.input(content)  #, *RecordsQueryLocators.USER_NAME)
+
     # 用户类型
-
     def inputSel_cons_type(self, index):
-        self.click(*RecordsQueryLocators.CONS_TYPE)
-        locator = self.get_select_locator(
-            RecordsQueryLocators.CONS_TYPE_VALUE, index)
-        self.click(*locator)
+        # self.click(*RecordsQueryLocators.CONS_TYPE)
+        # locator = self.get_select_locator(
+        #     RecordsQueryLocators.CONS_TYPE_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(index)
+
     # 操作行为
-
     def inputSel_operant_hehavior(self, index):
-        self.click(*RecordsQueryLocators.OPERANT_HEHAVIOR)
-        locator = self.get_select_locator(
-            RecordsQueryLocators.OPERANT_HEHAVIOR_VALUE, index)
-        self.click(*locator)
+        # self.click(*RecordsQueryLocators.OPERANT_HEHAVIOR)
+        # locator = self.get_select_locator(
+        #     RecordsQueryLocators.OPERANT_HEHAVIOR_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(index)
+
     # 操作结果
-
     def inputSel_operant_result(self, index):
-        self.click(*RecordsQueryLocators.OPERANT_RESULT)
-        locator = self.get_select_locator(
-            RecordsQueryLocators.OPERANT_RESULT_VALUE, index)
-        self.click(*locator)
-    # 电子钥匙编号
+        # self.click(*RecordsQueryLocators.OPERANT_RESULT)
+        # locator = self.get_select_locator(
+        #     RecordsQueryLocators.OPERANT_RESULT_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(index)
 
+    # 电子钥匙编号
     def inputStr_key_no(self, content):
-        self.input(content, *RecordsQueryLocators.KEY_NO)
-    # 锁封编号
+        self.input(content)  #, *RecordsQueryLocators.KEY_NO)
 
+    # 锁封编号
     def inputStr_lock_no(self, content):
-        self.input(content, *RecordsQueryLocators.LOCK_NO)
-    # 开始日期
+        self.input(content)  #, *RecordsQueryLocators.LOCK_NO)
 
+    # 开始日期
     def inputDt_start_date(self, content):
-        self.exec_script(RecordsQueryLocators.START_DATE_JS)
-        self.input(content, *RecordsQueryLocators.START_DATE)
-    # 结束日期
+        # self.exec_script(RecordsQueryLocators.START_DATE_JS)
+        # self.input(content, *RecordsQueryLocators.START_DATE)
+        self.inputDate(content)
 
+    # 结束日期
     def inputDt_end_date(self, content):
-        self.exec_script(RecordsQueryLocators.END_DATE_JS)
-        self.input(content, *RecordsQueryLocators.END_DATE)
-    # 查询按钮
+        # self.exec_script(RecordsQueryLocators.END_DATE_JS)
+        # self.input(content, *RecordsQueryLocators.END_DATE)
+        self.inputDate(content)
 
+    # 查询按钮
     def btn_search(self):
-        self.click(*RecordsQueryLocators.BTN_SEARCH)
-# 资产管理记录查询
+        # self.click(*RecordsQueryLocators.BTN_SEARCH)
+        self.btn_query()
+
+    # 资产管理记录查询
     # 操作员名称
-
     def inputStr_tab_staff_name(self, content):
-        self.input(content, *RecordsQueryLocators.TAB_STAFF_NAME)
+        self.input(content)  #, *RecordsQueryLocators.TAB_STAFF_NAME)
+
     # 电子钥匙编号
-
     def inputStr_tab_key_no(self, content):
-        self.input(content, *RecordsQueryLocators.TAB_KEY_NO)
+        self.input(content)  #, *RecordsQueryLocators.TAB_KEY_NO)
+
     # 锁封编号
-
     def inputStr_tab_lock_no(self, content):
-        self.input(content, *RecordsQueryLocators.TAB_LOCK_NO)
+        self.input(content)  #, *RecordsQueryLocators.TAB_LOCK_NO)
+
     # 锁封用户编号
-
     def inputStr_tab_lock_user_no(self, content):
-        self.input(content, *RecordsQueryLocators.TAB_LOCK_USER_NO)
+        self.input(content)  #, *RecordsQueryLocators.TAB_LOCK_USER_NO)
+
     # 开始日期
-
     def inputDt_tab_start_date(self, content):
-        self.exec_script(RecordsQueryLocators.TAB_START_DATE_JS)
-        self.input(content, *RecordsQueryLocators.TAB_START_DATE)
+        # self.exec_script(RecordsQueryLocators.TAB_START_DATE_JS)
+        # self.input(content, *RecordsQueryLocators.TAB_START_DATE)
+        self.inputDate(content)
+
     # 结束日期
-
     def inputDt_tab_end_date(self, content):
-        self.exec_script(RecordsQueryLocators.TAB_END_DATE_JS)
-        self.input(content, *RecordsQueryLocators.TAB_END_DATE)
-    # 查询按钮
+        # self.exec_script(RecordsQueryLocators.TAB_END_DATE_JS)
+        # self.input(content, *RecordsQueryLocators.TAB_END_DATE)
+        self.inputDate(content)
 
+    # 查询按钮
     def tab_btn_search(self):
-        self.click(*RecordsQueryLocators.TAB_BTN_SEARCH)
+        # self.click(*RecordsQueryLocators.TAB_BTN_SEARCH)
+        self.btn_query(True)

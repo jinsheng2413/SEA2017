@@ -469,7 +469,7 @@ class Page():
         except BaseException as ex:
             print('点击单选框失败：{}'.format(ex))
 
-    def clickSingleCheckBox(self, options, is_multi_tab=False, is_multi_elements=False):
+    def clickSingleCheckBox(self, options, locator=None, is_multi_tab=False, is_multi_elements=False):
         """
          选择单个复选框
          :param options: 被选择项
@@ -477,18 +477,23 @@ class Page():
          """
         try:
             ls_option = options.split(';')
+            print('--------------', options)
             item = ls_option[1]
             # 赋值选中，不赋值不选中
             is_select = bool(item)
-            xpath = self.format_xpath_multi(BaseLocators.SINGLE_CHECK_BOX, ls_option[0], is_multi_tab)
+            loc = locator if bool(locator) else BaseLocators.SINGLE_CHECK_BOX
+            xpath = self.format_xpath_multi(loc, ls_option[0], is_multi_tab)
             if is_multi_elements:
                 el = self._find_displayed_element(xpath)
             else:
                 el = self._find_element(xpath)
             if is_select != el.is_selected():
                 el.click()
+            return el.is_selected()
         except BaseException as ex:
             print('点击失败：{}'.format(ex))
+            return False
+
 
     def clickCheckBox(self, items, attr, is_multi_tab=False):
         """

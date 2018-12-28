@@ -15,25 +15,28 @@ from com.nrtest.common.base_page import Page
 # 运行管理-->SIM卡管理-->4G通信方式-->抄表情况
 class CommumMeterPage(Page):
 
-    # 月份
-    def inputStr_month(self, value):
+    # 查询日期
+    def inputStr_query_date(self, value):
         # self.input(value, *FlowCountLocators.QRY_MONTH)
+        self.inputDate(value)
+
+    # 抄表段号
+    def inputStr_mr_sect_no(self,value):
         self.input(value)
 
-        # 查询
-    def btn_qry(self):
-        # self.click(*FlowCountLocators.BTN_QRY)
-        self.btn_query()
-
-
-# 流量明细
-class FlowDeatilPage(Page):
-
-    # 月份
-    def inputStr_month(self, value):
-        # self.input(value, *FlowDetailLocators.QRY_MONTH)
+    # 电表资产号
+    def inputStr_meter_asset_no(self, value):
         self.input(value)
+
+    # 用户类型
+    def inputSel_cons_type(self, options):
+        self.selectDropDown(options)
+
+    # 终端运行状态
+    def inputSel_tmnl_run_status(self, options):
+        self.selectDropDown(options)
 
     # 查询
     def btn_qry(self):
+        # self.click(*FlowCountLocators.BTN_QRY)
         self.btn_query()

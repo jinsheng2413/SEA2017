@@ -17,11 +17,12 @@ from com.nrtest.sea.locators.adv_app.variationMonitorAnalysis.powerCutAnalysis.p
 class ImportantClientRealTimePowerCutMonitorPage(Page):
     # 电压等级
     def inputSel_volt_level(self, index):
-        self.click(*ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL)
-        locator = self.get_select_locator(
-            ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL_VALUE, index)
-        self.click(*locator)
-        self.delDropdownBoxHtml()
+        # self.click(*ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL)
+        # locator = self.get_select_locator(
+        #     ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL_VALUE, index)
+        # self.click(*locator)
+        # self.delDropdownBoxHtml()
+        self.selectDropDown(index)
 
     # 停电开始日期
     def inputDt_start_date(self, content):

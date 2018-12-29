@@ -33,7 +33,7 @@ class TestbaseStationManage(TestCase, BaseStationManagePage):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -82,7 +82,7 @@ class TestbaseStationManage(TestCase, BaseStationManagePage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(MComMan230.baseStationMonitor_para))
+    @data(*DataAccess.getCaseData(MComMan230.baseStationManage_para))
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验
@@ -95,7 +95,7 @@ class TestbaseStationManage(TestCase, BaseStationManagePage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(MComMan230.baseStationMonitor_para,valCheck=True))
+    @data(*DataAccess.getCaseData(MComMan230.baseStationManage_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

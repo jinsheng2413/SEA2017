@@ -72,7 +72,7 @@ class BaseLocators:
                 elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                 for (var i = 0; i < elements.snapshotLength; i++) {
                     el= elements.snapshotItem(i);
-                    txt = el.innerText.replace(new RegExp(/\s/,'g'), '');
+                    txt = el.innerText.replace(new RegExp(/[\s:：]/,'g'), '');
                     if (txt != el.innerText)
                         el.innerText = txt
                 }'''

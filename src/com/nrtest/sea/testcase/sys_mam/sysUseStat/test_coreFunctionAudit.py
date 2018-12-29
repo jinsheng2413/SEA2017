@@ -22,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 系统管理→系统使用情况统计→核心功能审计
 @ddt
-class TestCoreFunctionAudit(unittest.TestCase, CoreFunctionAuditPage):
+class TestCoreFunctionAudit(TestCase, CoreFunctionAuditPage):
 
     @classmethod
     def setUpClass(cls):

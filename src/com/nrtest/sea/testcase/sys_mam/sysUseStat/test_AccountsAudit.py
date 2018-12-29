@@ -67,7 +67,6 @@ class TestAccountsAudit(unittest.TestCase, AccountsAuditPage):
 
         # 日期类型
         self.inputChk_data_method(para['DATE_METHOD'])
-
         self.sleep_time(2)
         # 时间
         self.inputStr_date(para['DATE'])

@@ -66,7 +66,7 @@ class TestLogStatAnalysis_list(unittest.TestCase, LogStatAnalysis_list_Page):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        print(para['QUERY_DATE'])
+
         # 查询时间
         self.inputStr_queryDate(para['QUERY_DATE'])
         # 到

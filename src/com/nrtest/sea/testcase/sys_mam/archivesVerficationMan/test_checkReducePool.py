@@ -68,7 +68,7 @@ class TestCheckReducePool(unittest.TestCase, CheckReducePoolPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        openLeftTree(para['TREE_NODE'])
         # 申请时间
         self.inputStr_apply_time(para['START_TIME'])
         # 至
@@ -79,6 +79,8 @@ class TestCheckReducePool(unittest.TestCase, CheckReducePoolPage):
         self.inputSel_workStatus(para['WORK_STATUS'])
 
         self.btn_qry()
+        self.sleep_time(2)
+
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

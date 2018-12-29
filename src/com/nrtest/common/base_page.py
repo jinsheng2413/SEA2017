@@ -1361,7 +1361,7 @@ if __name__ == '__main__':
     # loc1 = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
     # print(loc1)
     page = Page(None)
-    page.clean_blank('查询')
+    page._clean_blank('查询')
     # print(page.format_xpath_multi((By.XPATH, 'adad{}'), 'c', False))
     # pg = Page(None)
     # pg.clickSingleCheckBox('忽略历史版本;')

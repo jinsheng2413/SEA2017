@@ -16,7 +16,7 @@ from com.nrtest.sea.locators.sys_mam.logMan.logStatAnalysis_locators import *
 class LogStatAnalysis_fial_Page(Page):
     # 
     def inputStr_date(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):
@@ -26,11 +26,11 @@ class LogStatAnalysis_fial_Page(Page):
 class LogStatAnalysis_list_Page(Page):
     # 查询日期
     def inputStr_queryDate(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 结束时间
     def inputStr_TO(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):
@@ -40,11 +40,11 @@ class LogStatAnalysis_list_Page(Page):
 class LogStatAnalysis_man_Page(Page):
     # 查询日期
     def inputStr_queryDate(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 结束时间
     def inputStr_TO(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):

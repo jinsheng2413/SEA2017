@@ -8,11 +8,8 @@
 @time: 2018/11/21 0021 13:46
 @desc:
 """
-import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
@@ -24,7 +21,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 系统管理--》日志管理--》值班日志
 @ddt
-class TestDemo(unittest.TestCase, LogEditPage):
+class TestDemo(TestCase, LogEditPage):
 
     @classmethod
     def setUpClass(cls):
@@ -68,11 +65,13 @@ class TestDemo(unittest.TestCase, LogEditPage):
         # 值班人员工号
         self.inputStr_dutyPersonNo(para['DUTY_PERSON_NO'])
         # 值班时间
-        self.inputStr_DutyTime(para['DUTY_TIME'])
+        self.inputStr_start_time(para['START_TIME'])
         # 到
         self.inputStr_end_time(para['TO'])
 
         self.btn_qry()
+        self.sleep_time(2)
+
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

@@ -60,7 +60,7 @@ class TestMenuUseStat(unittest.TestCase, MenuUseStatPage):
     def query(self, para):
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 菜单
         self.inputSel_menu(para['MENU'])
         # 操作员
@@ -69,8 +69,10 @@ class TestMenuUseStat(unittest.TestCase, MenuUseStatPage):
         self.inputDt_start_date(para['START_DATE'])
         # 查询日期，结束
         self.inputDt_end_date(para['END_DATE'])
+
         # 查询按钮
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

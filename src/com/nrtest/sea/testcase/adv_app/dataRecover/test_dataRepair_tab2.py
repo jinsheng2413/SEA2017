@@ -8,8 +8,7 @@
 @desc:
 """
 
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -22,14 +21,17 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用--数据修复--修复数据查询（第二个tab页）
 @ddt
-class Test_DataRepair_2(unittest.TestCase, DataRepair_2Page):
+class Test_DataRepair_2(TestCase, DataRepair_2Page):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        cls.driver = openMenu(DataRepair.para_DataRepair)
-        sleep(2)
-        # 选择第二个tab页
-        clickTabPage('数据修复明细')
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(DataRepair.para_DataRepair)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(DataRepair.DataRepair_tab_detail)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -38,17 +40,18 @@ class Test_DataRepair_2(unittest.TestCase, DataRepair_2Page):
         cls.closePages(cls)
 
     def query(self, para):
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
 
-        # 打开左边树选择供电单位
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 数据类型
         self.inputSel_data_type(para['DATA_TYPE'])
+
         # 用户类型
         self.inputSel_cons_sort(para['CONS_SORT'])
+
         # 查询日期
         self.inputStr_date(para['DATE'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)

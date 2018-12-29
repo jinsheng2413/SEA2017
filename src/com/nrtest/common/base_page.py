@@ -440,7 +440,7 @@ class Page():
         :param tag_obj: 要剔除的tag
         """
         clean_obj = {'button': "//button[contains(text(), '{}')]",
-                     'label': "//lable[contains(text(), '{}')]",
+                     'label': "//label[contains(text(), '{}')]",
                      'span': "//span[contains(text(), '{}')]"}
         clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_obj].format(tag_text[0])
         script = BaseLocators.CLEAN_BLANK % clean_me

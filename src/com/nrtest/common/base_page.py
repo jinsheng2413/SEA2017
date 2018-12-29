@@ -448,12 +448,24 @@ class Page():
         self.exec_script(script)
 
     def btn_clean(self, tag_text):
+        """
+        请按钮名上的空格
+        :param tag_text: 按钮名的部分内容
+        """
         self._clean_blank(tag_text, 'button')
 
     def label_clean(self, tag_text):
+        """
+        清查询条件标签上的空格
+        :param tag_text: 标签名的部分内容
+        """
         self._clean_blank(tag_text)
 
     def span_clean(self, tag_text):
+        """
+        清日期选择标签上的空格
+        :param tag_text: 标签名的部分内容
+        """
         self._clean_blank(tag_text, 'span')
 
 

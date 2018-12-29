@@ -62,11 +62,8 @@ class TestDemo(TestCase, ClockResultStaticPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 类别
         self.inputChk_static_method(para['STATIC_METHOD'])
         # 终端厂商
@@ -76,9 +73,6 @@ class TestDemo(TestCase, ClockResultStaticPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*ClockResultStaticLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

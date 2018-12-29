@@ -61,11 +61,8 @@ class TestLocalBroadChkClock(TestCase, LocalBroadChkClockPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 终端类型

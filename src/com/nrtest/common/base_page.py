@@ -528,7 +528,7 @@ class Page():
         except BaseException as ex:
             print('点击单选框失败：{}'.format(ex))
 
-    def clickSingleCheckBox(self, options, locator=None, is_multi_tab=False, is_multi_elements=False):
+    def clickSingleCheckBox(self, options, is_multi_tab=False, is_multi_elements=False, locator=None):
         """
          选择单个复选框
          :param options: 被选择项

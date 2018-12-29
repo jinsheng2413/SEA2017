@@ -8,8 +8,8 @@
 @time: 2018/11/2 0002 13:38
 @desc:
 """
-import unittest
-from time import sleep
+
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -25,17 +25,18 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理--》采集信道管理--》通信模块管理--》通信模块属性维护
 
 @ddt
-class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeRelationshipMantainPage):
+class TestModuleAttributeRelationshipMantain(TestCase, ModuleAttributeRelationshipMantainPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(CommunicationModuleManagement.commModulPropMain_para)
-        clickTabPage(CommunicationModuleManagement.commModulPropMain_tab_relationship)
-        # cls.clickCheckBox(cls, items='已维护')
-        sleep(2)
-        # cls.exec_script(cls, ModuleAttributeRelationshipMantainLocators.TMNL_FACTORY_JS)
+        menuPage = MenuPage.openMenu(CommunicationModuleManagement.commModulPropMain_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(CommunicationModuleManagement.commModulPropMain_tab_relationship)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -66,11 +67,8 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
 
         # 终端地址
         self.inputStr_tmnlAddr(para['TMNL_ADDR'])
@@ -83,10 +81,6 @@ class TestModuleAttributeRelationshipMantain(unittest.TestCase, ModuleAttributeR
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(
-        #     *ModuleAttributeRelationshipMantainLocators.TAB_ONE)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

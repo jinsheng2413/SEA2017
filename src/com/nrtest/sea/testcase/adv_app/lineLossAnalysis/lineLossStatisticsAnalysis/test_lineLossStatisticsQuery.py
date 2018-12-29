@@ -19,12 +19,14 @@ from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.lin
     LineLossStatisticsAnalysis_data
 from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.lineLossStatisticsQuery_page import \
     LineLossStatisticsQueryPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损统计分析→线损统计查询
 @ddt
 class TestLineLossStatisticsQuery(unittest.TestCase, LineLossStatisticsQueryPage):
+    """
+    高级应用→线损分析→线损统计分析→线损统计查询
+    """
     @classmethod
     def setUpClass(cls):
         print('开始执行')
@@ -55,7 +57,7 @@ class TestLineLossStatisticsQuery(unittest.TestCase, LineLossStatisticsQueryPage
 
     def query(self, para):
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 线损分类
         self.inputSel_line_loss_type(para['LINE_LOSS_TYPE'])
         # 线损率

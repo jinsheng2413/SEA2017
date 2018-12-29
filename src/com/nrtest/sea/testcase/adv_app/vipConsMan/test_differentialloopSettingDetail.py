@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -22,11 +22,17 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用--重点用户监测--差动回路明细查询
 @ddt
-class Test_DifferentialloopSettingDetail(unittest.TestCase, DifferentialloopSettingDetail_Page):
+class Test_DifferentialloopSettingDetail(TestCase, DifferentialloopSettingDetail_Page):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(VipConsMan.para_differentialloopSettingDetail)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(VipConsMan.para_differentialloopSettingDetail)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -45,11 +51,9 @@ class Test_DifferentialloopSettingDetail(unittest.TestCase, DifferentialloopSett
         self.recoverLeftTree()
 
     def query(self, para):
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-        # sleep(2)
         # 用户名称
         self.inputStr_cons_name(para['CONS_NAME'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)

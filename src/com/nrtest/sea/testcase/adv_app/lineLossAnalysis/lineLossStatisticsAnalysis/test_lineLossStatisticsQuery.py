@@ -33,7 +33,6 @@ class TestLineLossStatisticsQuery(unittest.TestCase, LineLossStatisticsQueryPage
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.remove_dt_readonly()
 
-
     @classmethod
     def tearDownClass(cls):
         print('执行结束')

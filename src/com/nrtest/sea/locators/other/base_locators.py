@@ -51,7 +51,32 @@ class BaseLocators:
                 el= elements.snapshotItem(i);
                 el.removeAttribute("readonly")
             }'''
-    # el.style.display = \"block\";"
+
+    # 勿删
+    # OBJ = '''function getDom(rege){
+    #             var domAll = document.getElementsByTagName("arguments[0]"),domArr = new Array();
+    #             for (var i = 0; i < domAll.length; i++) {
+    #                 if (rege.test(domAll[i].text)) {
+    #                     var obj = domAll[i]
+    #                     var txt = obj.text.replace(new RegExp(/\s/,'g'), '');
+    #                     if (txt == "arguments[1]" && obj.style.display=="block")
+    #                         domArr.push(obj);
+    #                 }
+    #             }
+    #             return domArr;
+    #         }
+    #         getDom(%s);'''
+
+    # innerHTML  剔除空白字符，及中英文冒号
+    CLEAN_BLANK = '''var elements, el, txt;
+                elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+                for (var i = 0; i < elements.snapshotLength; i++) {
+                    el= elements.snapshotItem(i);
+                    txt = el.innerText.replace(new RegExp(/\s/,'g'), '');
+                    if (txt != el.innerText)
+                        el.innerText = txt
+                }'''
+
 
     # 【下拉框】
     # 下拉选择点击按钮
@@ -108,3 +133,7 @@ class BaseLocators:
 
     # 登录后弹出窗口：推出重要信息
     BTN_IMPORTANT_INFO = (By.XPATH, '//button[@class=" x-btn-text cancel" and text()="不再提醒"]')
+
+
+if __name__ == '__main__':
+    print(BaseLocators.OBJ % '/查\s{1,}询/')

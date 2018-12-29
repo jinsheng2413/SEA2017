@@ -4,8 +4,8 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_checkReducePool.py
-@time: 2018/11/20 0020 10:47
+@file: test_verficationResultDetail.py
+@time: 2018/11/16 0016 14:33
 @desc:
 """
 from unittest import TestCase
@@ -15,20 +15,20 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkReducePool_page import CheckReducePoolPage, \
-    CheckReducePoolLocators
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultDetail_page import \
+    CheckResultDetailPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 系统管理--》档案核查管理--》考核减免汇总
+# 系统管理--》档案核查管理--》核查结果明细查询
 @ddt
-class TestCheckReducePool(TestCase, CheckReducePoolPage):
+class TestVerficationResultDetail(TestCase, CheckResultDetailPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.checkReducePool_para)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.checkResultDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
@@ -65,15 +65,13 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
-        # 申请时间
-        self.inputStr_apply_time(para['START_TIME'])
-        # 至
+        self.openLeftTree(para['TREE_NODE'])
+        # 台区编号
+        self.inputStr_tg_no(para['TG_NO'])
+        # 开始时间
+        self.inputStr_start_time(para['START_TIME'])
+        # 结束时间
         self.inputStr_end_time(para['END_TIME'])
-        # 申请单号
-        self.inputStr_applyNo(para['APPLY_NO'])
-        # 工单状态
-        self.inputSel_workStatus(para['WORK_STATUS'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -94,7 +92,7 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReducePool_para))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultDetail_para))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -102,7 +100,7 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReducePool_para, valCheck=True))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultDetail_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

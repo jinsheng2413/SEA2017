@@ -15,21 +15,20 @@ from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.VerficationResultDet
 
 
 # 系统管理--》档案核查管理--》核查结果明细查询
-class VerficationResultDetailPage(Page):
+class CheckResultDetailPage(Page):
+
+    # 台区编号
+    def inputStr_tg_no(self, value):
+        self.input(value)
+
     # 开始日期
     def inputStr_start_time(self, value):
-        self.input(value, *VerficationResultDetailLocators.QRY_START_DATE)
-
-        # 开始日期
-
-    def inputStr_zoneAreaNo(self, value):
-        self.input(value, *VerficationResultDetailLocators.QRY_ZONE_AREA_NO)
+        self.inputDate(value)
 
     # 结束时间
     def inputStr_end_time(self, value):
-        self.input(value, *VerficationResultDetailLocators.QRY_END_TIME)
+        self.inputDate(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*VerficationResultDetailLocators.BTN_QRY)
+        self.btn_query()

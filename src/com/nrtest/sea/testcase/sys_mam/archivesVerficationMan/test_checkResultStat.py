@@ -68,17 +68,21 @@ class TestCheckResultStat(unittest.TestCase, CheckResultStatPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 任务类型
-        self.inputSel_taskType(para['TASK_TYPE'])
+        self.inputSel_task_type(para['TASK_TYPE'])
+        # 异常类型
+        self.inputSel_except_type(para['EXCEPT_TYPE'])
         # 台区编号
-        self.inputStr_zoneNO(para['ZONE_AREA_NO'])
+        self.inputStr_tg_no(para['TG_NO'])
         # 开始时间
         self.inputStr_start_time(para['START_TIME'])
         # 结束时间
         self.inputStr_end_time(para['END_TIME'])
 
         self.btn_qry()
+        self.sleep_time(2)
+
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

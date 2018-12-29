@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 class DataStructureComparisonPage(Page):
     # 核查日期
     def inputStr_examineDate(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 表名称
     def inputStr_listName(self, value):

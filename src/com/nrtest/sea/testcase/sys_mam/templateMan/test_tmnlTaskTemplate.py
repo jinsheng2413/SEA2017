@@ -63,6 +63,19 @@ class TestTmnlTaskTemplate(unittest.TestCase, TmnlTaskTemplatePage):
         self.inputSel_scheme_type(para['SCHEME_TYPE'])
         # 执行优先级
         self.inputSel_execution_priority(para['EXECUTION_PRIORITY'])
+        # 启用开始时间
+        is_sel_start = self.inputChk_use_startdate(para['USE_STARTDATE'])
+        # 启用结束时间
+        is_sel_end = self.inputChk_use_enddate(para['USE_ENDDATE'])
+        # 是否勾选启用开始时间
+        if is_sel_start:
+            # 开始时间
+            self.inputDt_start_date(para['START_DATE'])
+        # 是否勾选启用结束时间
+        if is_sel_end:
+            # 结束时间
+            self.inputDt_end_date(para['END_DATE'])
+
         # 查询按钮
         self.btn_search()
         sleep(2)

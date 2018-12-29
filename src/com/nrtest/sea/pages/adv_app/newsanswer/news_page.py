@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.newsanswer.news_locators import News_Locators
 
 
 class News_Page(Page):
@@ -67,5 +66,5 @@ class News_Page(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*News_Locators.BTN_QUERY)
+        # self.click(*News_Locators.BTN_QUERY)
         self.btn_query()

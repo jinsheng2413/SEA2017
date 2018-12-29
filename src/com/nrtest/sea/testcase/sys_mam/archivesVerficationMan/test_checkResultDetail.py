@@ -1,45 +1,44 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
+
 
 """
-@author: 陈越峰
+@author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: loadRateStatic_locators.py
-@time: 2018/9/29 14:42
+@file: test_verficationResultDetail.py
+@time: 2018/11/16 0016 14:33
 @desc:
 """
-
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayConfig_page import \
-    OrgLowVoltDayConfigPage
+from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultDetail_page import \
+    CheckResultDetailPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
-# 低压用户电压监测配置
+# 系统管理--》档案核查管理--》核查结果明细查询
 @ddt
-class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
+class TestVerficationResultDetail(TestCase, CheckResultDetailPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(TradnsformerMonitorData.para_OrgLowVoltDay)
+        menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.checkResultDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(TradnsformerMonitorData.para_OrgLowVoltDayConfig)
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        # 刷新浏览器
+        print("执行结束")
+        # 关闭菜单页面
         cls.closePages(cls)
 
     def setUp(self):
@@ -59,29 +58,27 @@ class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
 
     def query(self, para):
         """
+
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        # self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 是否电压监测
-        self.inputSel_volt_monitor(para['IS_VOLT_MONITOR_SEL'])
+        # 台区编号
+        self.inputStr_tg_no(para['TG_NO'])
+        # 开始时间
+        self.inputStr_start_time(para['START_TIME'])
+        # 结束时间
+        self.inputStr_end_time(para['END_TIME'])
 
         self.btn_qry()
         self.sleep_time(2)
 
-    #     # 校验
-    #     result = self.assert_context(*OrgLowVoltDayConfigLocators.TABLE_DATA)
-    #     self.assertTrue(result)
-
     def assert_query_result(self, para):
         """
-        查询结果校验
+        查询结果校验（包括跳转）
         :param para:
         """
         self.assertTrue(self.check_query_result(para))
@@ -95,36 +92,17 @@ class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_OrgLowVoltDay,
-                                  TradnsformerMonitorData.para_OrgLowVoltDayConfig))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultDetail_para))
     def test_query(self, para):
-        """
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        :return:
-        """
         self.start_case(para)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_OrgLowVoltDay,
-                                  TradnsformerMonitorData.para_OrgLowVoltDayConfig, valCheck=True))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultDetail_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
-
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 是否电压监测
-    #     self.inputRSel_cons_type('是')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(*OrgLowVoltDayConfigLocators.TABLE_DATA)
-    #     self.assertTrue(result)

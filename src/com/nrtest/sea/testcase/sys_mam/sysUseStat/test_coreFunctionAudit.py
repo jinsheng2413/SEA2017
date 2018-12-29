@@ -8,11 +8,8 @@
 @time: 2018/11/21 0021 9:56
 @desc:
 """
-import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
@@ -66,17 +63,19 @@ class TestCoreFunctionAudit(unittest.TestCase, CoreFunctionAuditPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        self.displayTreeMenu()
+
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 操作员
         self.inputStr_performer(para['PERFORMER'])
-        # 拜访时间
+        # 访问时间
         self.inputStr_visitTime(para['VISIT_TIME'])
         # 到
         self.inputStr_TO(para['TO'])
+
         # 查询
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

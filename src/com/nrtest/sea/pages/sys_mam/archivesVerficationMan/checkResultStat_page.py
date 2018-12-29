@@ -16,16 +16,16 @@ from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.checkResultStat_loca
 # 系统管理--》档案核查管理--》核查结果统计查询
 class CheckResultStatPage(Page):
 
-    # 异常类型(下拉框还未有值)
-    def inputSel_exceptionType(self, options):
+    # 异常类型
+    def inputSel_except_type(self, options):
         self.selectDropDown(options)
 
     # 台区编号
-    def inputStr_zoneNO(self, value):
+    def inputStr_tg_no(self, value):
         self.inputDate(value)
 
     # 任务类型
-    def inputSel_taskType(self, options):
+    def inputSel_task_type(self, options):
         self.selectDropDown(options)
 
     # 开始时间

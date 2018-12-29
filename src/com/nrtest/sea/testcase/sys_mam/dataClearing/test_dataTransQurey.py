@@ -8,11 +8,10 @@
 @time: 2018/11/20 0020 14:21
 @desc:
 """
-import unittest
 
 from unittest import TestCase
+
 from ddt import ddt, data
-from com.nrtest.common.BeautifulReport import BeautifulReport
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
@@ -23,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 系统管理-->数据清理管理-->数据传输查询
 @ddt
-class TestDataTransQurey(unittest.TestCase, DataTransQureyPage):
+class TestDataTransQurey(TestCase, DataTransQureyPage):
 
     @classmethod
     def setUpClass(cls):

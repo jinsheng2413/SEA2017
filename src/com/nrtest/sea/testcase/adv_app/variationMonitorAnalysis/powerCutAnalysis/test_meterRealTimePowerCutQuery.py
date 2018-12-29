@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -23,12 +23,17 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用→配变监测分析→停电分析→表计实时停上电信息查询
 @ddt
-class TestMeterRealTimePowerCutQuery(unittest.TestCase, MeterRealTimePowerCutQueryPage):
+class TestMeterRealTimePowerCutQuery(TestCase, MeterRealTimePowerCutQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(PowerCutAnalysis_data.MeterRealTimePowerCutQuery_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(PowerCutAnalysis_data.MeterRealTimePowerCutQuery_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage()
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -52,7 +57,7 @@ class TestMeterRealTimePowerCutQuery(unittest.TestCase, MeterRealTimePowerCutQue
 
     def query(self, para):
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 台区编号
         self.inputStr_tg_no(para['TG_NO'])
         # 用户编号
@@ -61,10 +66,42 @@ class TestMeterRealTimePowerCutQuery(unittest.TestCase, MeterRealTimePowerCutQue
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 停电标志
         self.inputSel_power_cut_mark(para['POWER_CUT_MARK'])
+        # 查询类型
+        self.inputChk_qry_type(para['QRY_TYPE'])
+        # 开始日期
+        self.inputDt_start_date(para['START_DATE'])
+        # 结束日期
+        self.inputDt_end_date(para['END_DATE'])
         # 查询按钮
         self.btn_search()
 
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.MeterRealTimePowerCutQuery_para))
-    def test_der(self, para):
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(PowerCutAnalysis_data.MeterRealTimePowerCutQuery_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

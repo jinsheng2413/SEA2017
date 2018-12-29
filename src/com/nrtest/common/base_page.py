@@ -602,6 +602,7 @@ class Page():
         self.menuPage.displayTreeMenu()
         try:
             node = Dict(eval(treeNo))
+            print(node)
             node_flag = node['NODE_FLAG']
             node_vale = node['NODE_VALE']
         except:

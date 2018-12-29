@@ -8,28 +8,30 @@
 @desc:
 """
 
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.lowCollect.lowPressureQuery_data import LowColletc
-from com.nrtest.sea.pages.adv_app.lowCollect.lowPressureQuery_page import LowPressureQuery_Locators, \
-    LowPressureQuery_Page
+from com.nrtest.sea.pages.adv_app.lowCollect.lowPressureQuery_page import LowPressureQuery_Page
 from com.nrtest.sea.task.commonMath import *
 
 
 # 高级应用--低压采集监控--低压采集查询
 @ddt
-class Test_LowPressureQuery(unittest.TestCase, LowPressureQuery_Page):
+class Test_LowPressureQuery(TestCase, LowPressureQuery_Page):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        cls.driver = openMenu(LowColletc.para_LowpressureQuery)
-        sleep(2)
-        cls.exec_script(cls, LowPressureQuery_Locators.START_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(LowColletc.para_LowpressureQuery)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -38,12 +40,12 @@ class Test_LowPressureQuery(unittest.TestCase, LowPressureQuery_Page):
         cls.closePages(cls)
 
     def query(self, para):
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-        # 打开左边树选择供电单位
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+
         # 日期
         self.inputStr_date(para['DATE'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)

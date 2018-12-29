@@ -29,11 +29,11 @@ class HistoricalDataMonitoringPage(Page):
 
     # 接收时间
     def inputStr_Start_time(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 结束时间
     def inputStr_end_time(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):

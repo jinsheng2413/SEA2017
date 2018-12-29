@@ -65,7 +65,7 @@ class TestSimInstallStat(TestCase, SimInstallStatPageDetail):
         """
 
         #打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         #运营商
         self.inputSel_operator(para['OPERATOR'])
 

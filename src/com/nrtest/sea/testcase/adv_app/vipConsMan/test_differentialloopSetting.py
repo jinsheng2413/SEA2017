@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -21,11 +21,17 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用--重点用户监测--差动回路设置
 @ddt
-class Test_DifferentialloopSetting(unittest.TestCase, DifferentialloopSetting_Page):
+class Test_DifferentialloopSetting(TestCase, DifferentialloopSetting_Page):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        cls.driver = openMenu(VipConsMan.para_differentialloopSetting)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(VipConsMan.para_differentialloopSetting)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(VipConsMan.para_differentialloopSetting)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -41,16 +47,15 @@ class Test_DifferentialloopSetting(unittest.TestCase, DifferentialloopSetting_Pa
         # 去除查询干扰数据(要传入对应的page页面类)
         # self.clear_values(SysDictManPage)
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-        # sleep(4)
-        # 打开左边树选择供电单位
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)

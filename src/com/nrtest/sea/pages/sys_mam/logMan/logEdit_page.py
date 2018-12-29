@@ -20,12 +20,12 @@ class LogEditPage(Page):
          self.input(value)
 
     # 值班时间
-    def inputStr_DutyTime(self, value):
-          self.input(value)
+    def inputStr_start_time(self, value):
+          self.inputDate(value)
 
     # 结束时间
     def inputStr_end_time(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):

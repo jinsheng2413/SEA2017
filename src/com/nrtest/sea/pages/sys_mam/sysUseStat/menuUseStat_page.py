@@ -25,11 +25,11 @@ class MenuUseStatPage(Page):
 
     # 查询日期，开始
     def inputDt_start_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 查询日期，结束
     def inputDt_end_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_qry(self):
@@ -41,19 +41,19 @@ class MenuUseStatPage(Page):
 class MenuUseDetailPage(Page):
     # 菜单
     def inputSel_menu(self, options):
-        self.selectDropDown(options)
+        self.selectDropDown(options,is_multi_tab=True,is_multi_elements=True)
 
     # 操作员
     def inputStr_operator(self, content):
-        self.input(content)
+        self.curr_input(content,is_multi_tab=True,is_multi_elements=True)
 
     # 查询日期，开始
     def inputDt_start_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 查询日期，结束
     def inputDt_end_date(self, content):
-        self.input(content)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_qry(self):

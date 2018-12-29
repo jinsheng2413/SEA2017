@@ -30,7 +30,7 @@ class TestUserDistributionStat(unittest.TestCase, UserDistributionStatPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）ljf
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SysUseStat_date.UserDistributionStat_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
@@ -61,8 +61,10 @@ class TestUserDistributionStat(unittest.TestCase, UserDistributionStatPage):
     def query(self, para):
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])
+
         # 查询按钮
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

@@ -17,31 +17,35 @@ from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEditi
 class UpgradeEditionApprovePage(Page):
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
-        self.click(*UpgradeEditionApproveLocators.TMNL_FACTORY)
-        locator = self.get_select_locator(
-            UpgradeEditionApproveLocators.TMNL_FACTORY_VALUE, index)
-        self.click(*locator)
+        # self.click(*UpgradeEditionApproveLocators.TMNL_FACTORY)
+        # locator = self.get_select_locator(
+        #     UpgradeEditionApproveLocators.TMNL_FACTORY_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(index)
 
     # 终端类型
     def inputSel_tmnl_type(self, index):
-        self.click(*UpgradeEditionApproveLocators.TMNL_TYPE)
-        locator = self.get_select_locator(
-            UpgradeEditionApproveLocators.TMNL_TYPE_VALUE, index)
-        self.click(*locator)
+        # self.click(*UpgradeEditionApproveLocators.TMNL_TYPE)
+        # locator = self.get_select_locator(
+        #     UpgradeEditionApproveLocators.TMNL_TYPE_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(index)
 
     # 终端用途
     def inputSel_tmnl_purpose(self, index):
-        self.click(*UpgradeEditionApproveLocators.TMNL_PURPOSE)
-        locator = self.get_select_locator(
-            UpgradeEditionApproveLocators.TMNL_PURPOSE_VALUE, index)
-        self.click(*locator)
+        # self.click(*UpgradeEditionApproveLocators.TMNL_PURPOSE)
+        # locator = self.get_select_locator(
+        #     UpgradeEditionApproveLocators.TMNL_PURPOSE_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(index)
 
     # 申请状态
     def inputSel_apply_status(self, index):
-        self.click(*UpgradeEditionApproveLocators.APPLY_STATUS)
-        locator = self.get_select_locator(
-            UpgradeEditionApproveLocators.APPLY_STATUS_VALUE, index)
-        self.click(*locator)
+        # self.click(*UpgradeEditionApproveLocators.APPLY_STATUS)
+        # locator = self.get_select_locator(
+        #     UpgradeEditionApproveLocators.APPLY_STATUS_VALUE, index)
+        # self.click(*locator)
+        self.selectDropDown(index)
 
     # 申请开始日期
     def inputDt_start_date(self, content):

@@ -29,7 +29,7 @@ class GeneralGroupSetPage(Page):
 
     # 有效日期
     def inputChk_valid_date(self, item):
-        return self.clickSingleCheckBox(item, GeneralGroupSetLocators.QRY_VALID_DATE, True, True)
+        return self.clickSingleCheckBox(item, True, True, GeneralGroupSetLocators.QRY_VALID_DATE)
 
     # 查询日期，开始
     def inputDt_start_date(self, content):

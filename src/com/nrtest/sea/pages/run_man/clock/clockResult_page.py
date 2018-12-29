@@ -42,10 +42,7 @@ class ClockResultDetailPage(Page):
 
     # 类别--打开并选择
     def inputSel_clock_model(self, item):
-        # self.click(*ClockResultDetailLocators.CLOCK_MODEL_SEL)
-        # locator = self.get_select_locator(
-        #     ClockResultDetailLocators.CLOCK_MODEL, name)
-        # self.click(*locator)
+        self.label_clean('类')
         self.selectDropDown(item)
 
     # 电表资产号

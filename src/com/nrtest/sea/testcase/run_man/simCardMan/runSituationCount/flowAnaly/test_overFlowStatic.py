@@ -62,9 +62,6 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        # self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])
         #sim卡号
@@ -80,9 +77,6 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*FlowCountLocators.TAB_ONE)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

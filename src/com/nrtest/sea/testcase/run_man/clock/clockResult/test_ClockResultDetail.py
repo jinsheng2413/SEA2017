@@ -66,7 +66,7 @@ class TestDemo(TestCase, ClockResultDetailPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 类别
-        # self.inputSel_clock_model(para['CLOCK_MODEL'])
+        self.inputSel_clock_model(para['CLOCK_MODEL'])
         # 电表资产号
         self.inputStr_met_asset_no(para['MET_ASSET_NO'])
         # 终端资产号

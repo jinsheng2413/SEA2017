@@ -31,4 +31,4 @@ class CheckReduceApplicationPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*CheckReduceApplicationLocators.BTN_QRY)
+        self.click(CheckReduceApplicationLocators.BTN_QRY)

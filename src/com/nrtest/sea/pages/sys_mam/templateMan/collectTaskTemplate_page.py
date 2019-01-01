@@ -15,16 +15,16 @@ from com.nrtest.common.base_page import Page
 class CollectTaskTemplatePage(Page):
     # 任务分类
     def inputSel_task_classify(self, option):
-        # self.click(*CollectTaskTemplateLocators.QRY_TASK_CLASSIFY)
+        # self.click(CollectTaskTemplateLocators.QRY_TASK_CLASSIFY)
         # locator = self.get_select_locator(CollectTaskTemplateLocators.QRY_TASK_CLASSIFY_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 任务类型
     def inputSel_task_type(self, option):
-        # self.click(*CollectTaskTemplateLocators.QRY_TASK_TYPE)
+        # self.click(CollectTaskTemplateLocators.QRY_TASK_TYPE)
         # locator = self.get_select_locator(CollectTaskTemplateLocators.QRY_TASK_TYPE_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 模板名称
@@ -34,5 +34,5 @@ class CollectTaskTemplatePage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*CollectTaskTemplateLocators.BTN_SEARCH)
+        # self.click(CollectTaskTemplateLocators.BTN_SEARCH)
         self.btn_query()

@@ -80,7 +80,7 @@ class TestDemo(unittest.TestCase, TermParaSetGroup2Page):
         self.sleep_time(2)
 
         # 校验
-        # result = self.assert_context(*)
+        # result = self.assert_context()
         # self.assertTrue(result)
 
     # @BeautifulReport.add_test_img()

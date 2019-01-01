@@ -15,10 +15,10 @@ from com.nrtest.common.base_page import Page
 class AeeseementResultStatisticsPage(Page):
     # 责任人
     def inputSel_charge_person(self, index):
-        # self.click(*AeeseementResultStatisticsLocators.QRY_CHARGE_PERSON)
+        # self.click(AeeseementResultStatisticsLocators.QRY_CHARGE_PERSON)
         # locator = self.get_select_locator(
         #     AeeseementResultStatisticsLocators.QRY_CHARGE_PERSON_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 查询日期
@@ -34,5 +34,5 @@ class AeeseementResultStatisticsPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*AeeseementResultStatisticsLocators.BTN_SEARCH)
+        # self.click(AeeseementResultStatisticsLocators.BTN_SEARCH)
         self.btn_query()

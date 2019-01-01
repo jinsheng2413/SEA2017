@@ -20,4 +20,4 @@ class TerminalPasswordPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*TerminalPasswordLocators.BTN_QRY)
+        self.click(TerminalPasswordLocators.BTN_QRY)

@@ -68,7 +68,7 @@ class TestCheckpointdata(unittest.TestCase, CheckpointdataPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CheckpointdataLocators.TAB_ONE)
+        result = self.assert_context(CheckpointdataLocators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

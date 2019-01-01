@@ -19,10 +19,10 @@ class BatchFetchPage(Page):
 
     # 有效性
     def inputSel_effectiveness(self, name):
-        self.click(*BatchFetchLocators.QRY_EFFECTIVENESS)
+        self.click(BatchFetchLocators.QRY_EFFECTIVENESS)
         locator = self.get_select_locator(
             BatchFetchLocators.QRY_EFFECTIVENESS_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 开始时间
     def inputStr_startTime(self, value):
@@ -35,4 +35,4 @@ class BatchFetchPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*BatchFetchLocators.BTN_QRY)
+        self.click(BatchFetchLocators.BTN_QRY)

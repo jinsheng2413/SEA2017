@@ -23,23 +23,23 @@ class UnControlPlantGatherMon1_Page(Page):
 
     # 发电方式
     def inputSel_generate_electricity_way(self, options):
-        # self.click(*UnControlPlantGatherMon1_locators.QRY_GENERATE_ELECTRICITY_WAY)
+        # self.click(UnControlPlantGatherMon1_locators.QRY_GENERATE_ELECTRICITY_WAY)
         # locator = self.get_select_locator(UnControlPlantGatherMon1_locators.QRY_GENERATE_ELECTRICITY_WAY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(options)
 
     # 采集方式
     def inputSel_gather_way(self, options):
-        # self.click(*UnControlPlantGatherMon1_locators.QRY_GATHER_WAY)
+        # self.click(UnControlPlantGatherMon1_locators.QRY_GATHER_WAY)
         # locator = self.get_select_locator(UnControlPlantGatherMon1_locators.QRY_GATHER_WAY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(options)
 
     # 查询
     def btn_qry(self):
-        #self.click(*UnControlPlantGatherMon1_locators.BTN_QUERY)
+        # self.click(UnControlPlantGatherMon1_locators.BTN_QUERY)
         self.btn_query()
 
 
@@ -47,17 +47,17 @@ class UnControlPlantGatherMon1_Page(Page):
 class UnControlPlantGatherMon2_Page(Page):
     # 发电方式
     def inputSel_generate_electricity_way(self, options):
-        # self.click(*UnControlPlantGatherMon2_locators.QRY_GENERATE_ELECTRICITY_WAY)
+        # self.click(UnControlPlantGatherMon2_locators.QRY_GENERATE_ELECTRICITY_WAY)
         # locator = self.get_select_locator(UnControlPlantGatherMon2_locators.QRY_GENERATE_ELECTRICITY_WAY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 采集方式
     def inputSel_gather_way(self, options):
-        # self.click(*UnControlPlantGatherMon2_locators.QRY_GATHER_WAY)
+        # self.click(UnControlPlantGatherMon2_locators.QRY_GATHER_WAY)
         # locator = self.get_select_locator(UnControlPlantGatherMon2_locators.QRY_GATHER_WAY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
@@ -79,5 +79,5 @@ class UnControlPlantGatherMon2_Page(Page):
 
     # 查询
     def btn_qry(self):
-        #self.click(*UnControlPlantGatherMon2_locators.BTN_QUERY)
+        # self.click(UnControlPlantGatherMon2_locators.BTN_QUERY)
         self.btn_query(True)

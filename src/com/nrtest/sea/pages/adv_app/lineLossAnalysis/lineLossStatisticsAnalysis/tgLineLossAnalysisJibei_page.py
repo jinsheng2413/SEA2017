@@ -25,10 +25,10 @@ class TgLineLossAnalysisJibeiPage(Page):
 
     # 安装率
     def inputSel_installation_rate(self, index):
-        self.click(*TgLineLossAnalysisJibeiLocators.QRY_INSTALLATION_RATE)
+        self.click(TgLineLossAnalysisJibeiLocators.QRY_INSTALLATION_RATE)
         locator = self.get_select_locator(
             TgLineLossAnalysisJibeiLocators.QRY_INSTALLATION_RATE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     def inputStr_installation_rate(self, content):
         self.input(
@@ -36,10 +36,10 @@ class TgLineLossAnalysisJibeiPage(Page):
 
     # 抄读成功率
     def inputSel_read_success_rate(self, index):
-        self.click(*TgLineLossAnalysisJibeiLocators.QRY_READ_SUCCESS_RATE)
+        self.click(TgLineLossAnalysisJibeiLocators.QRY_READ_SUCCESS_RATE)
         locator = self.get_select_locator(
             TgLineLossAnalysisJibeiLocators.QRY_READ_SUCCESS_RATE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     def inputStr_read_success_rate(self, content):
         self.input(
@@ -47,10 +47,10 @@ class TgLineLossAnalysisJibeiPage(Page):
 
     # 线损率
     def inputSel_line_loss_rate(self, index):
-        self.click(*TgLineLossAnalysisJibeiLocators.QRY_LINE_LOSS_RATE)
+        self.click(TgLineLossAnalysisJibeiLocators.QRY_LINE_LOSS_RATE)
         locator = self.get_select_locator(
             TgLineLossAnalysisJibeiLocators.QRY_LINE_LOSS_RATE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     def inputStr_line_loss_rate(self, content):
         self.input(
@@ -63,4 +63,4 @@ class TgLineLossAnalysisJibeiPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*TgLineLossAnalysisJibeiLocators.BTN_SEARCH)
+        self.click(TgLineLossAnalysisJibeiLocators.BTN_SEARCH)

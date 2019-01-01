@@ -16,17 +16,17 @@ from com.nrtest.sea.locators.adv_app.dataRecover.gisPanoramaDisplay_locators imp
 class GisPanoramaDisplayPage(Page):
     # 逐日显示
     def inputStr_day_display(self, value):
-        self.click(*GisPanoramaDisplayLocators.QRY_DAY_DISPLAY)
+        self.click(GisPanoramaDisplayLocators.QRY_DAY_DISPLAY)
         locator = self.get_select_locator(
             GisPanoramaDisplayLocators.QRY_USER_TYPE_VALUE, value)
-        self.click(*locator)
+        self.click(locator)
 
     # 用户类型
     def inputSel_userType(self, name):
-        self.click(*GisPanoramaDisplayLocators.QRY_USER_TYPE)
+        self.click(GisPanoramaDisplayLocators.QRY_USER_TYPE)
         locator = self.get_select_locator(
             GisPanoramaDisplayLocators.QRY_USER_TYPE_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询时间
     def inputStr_query_time(self, value):
@@ -34,4 +34,4 @@ class GisPanoramaDisplayPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*GisPanoramaDisplayLocators.BTN_QRY)
+        self.click(GisPanoramaDisplayLocators.BTN_QRY)

@@ -67,7 +67,7 @@ class TestImportanceMsgPush(unittest.TestCase, ImportanceMsgPushPage):
         sleep(2)
 
     #     # 校验
-    #     result = self.assert_context(*ImportanceMsgPushLocators.CHECK_FIRST)
+    #     result = self.assert_context(ImportanceMsgPushLocators.CHECK_FIRST)
     #     self.assertTrue(result)
     #
     # @BeautifulReport.add_test_img()

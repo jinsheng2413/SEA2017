@@ -21,28 +21,28 @@ class LineDataQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*LineDataQueryLocators.BTN_SEARCH)
+        self.click(LineDataQueryLocators.BTN_SEARCH)
 
     # 操作对象选择区
     # 电网结构
     def inputNode_electricpower(self):
-        self.click(*LineDataQueryLocators.TREE_ELECTRICPOWER)
+        self.click(LineDataQueryLocators.TREE_ELECTRICPOWER)
 
     # 营销电网结构
     def inputNode_marketing(self):
-        self.click(*LineDataQueryLocators.TREE_MARKETING)
+        self.click(LineDataQueryLocators.TREE_MARKETING)
 
     # 国网冀北电力有限公司
     def inputNode_jibei(self):
-        self.click(*LineDataQueryLocators.TREE_JIBEI)
+        self.click(LineDataQueryLocators.TREE_JIBEI)
 
     # 电网_安各庄变电站
     def inputNode_angezhuang(self):
-        self.click(*LineDataQueryLocators.TREE_ANGEZHUANG)
+        self.click(LineDataQueryLocators.TREE_ANGEZHUANG)
 
     # 电网_10kV523安变无税庄
     def inputNode_anbianwu(self):
-        self.click(*LineDataQueryLocators.TREE_ANBIANWU)
+        self.click(LineDataQueryLocators.TREE_ANBIANWU)
 
     # 数据展示
     # 查询日期_开始
@@ -55,5 +55,5 @@ class LineDataQueryPage(Page):
 
     # 查询按钮
     def btn_data_search(self):
-        #self.click(*LineDataQueryLocators.BTN_DATA_SEARCH)
+        # self.click(LineDataQueryLocators.BTN_DATA_SEARCH)
         self.btn_query()

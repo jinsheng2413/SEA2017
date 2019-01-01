@@ -26,13 +26,13 @@ class DisassemblyTableDataQueryPage(Page):
     # 用户类型
     def inputSel_user_type(self, index):
         if index == 'c':
-            self._find_element(*DisassemblyTableDataQueryLocators.USER_TYPE)
+            self._find_element(DisassemblyTableDataQueryLocators.USER_TYPE)
         else:
-            self.click(*DisassemblyTableDataQueryLocators.USER_TYPE)
+            self.click(DisassemblyTableDataQueryLocators.USER_TYPE)
             locator = self.get_select_locator(
                 DisassemblyTableDataQueryLocators.USER_TYPE_VALUE, index)
-            self.click(*locator)
-            self.click(*DisassemblyTableDataQueryLocators.USER_TYPE)
+            self.click(locator)
+            self.click(DisassemblyTableDataQueryLocators.USER_TYPE)
 
     # 终端地址
     def inputStr_tmnl_addr(self, content):
@@ -54,4 +54,4 @@ class DisassemblyTableDataQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DisassemblyTableDataQueryLocators.BTN_SEARCH)
+        self.click(DisassemblyTableDataQueryLocators.BTN_SEARCH)

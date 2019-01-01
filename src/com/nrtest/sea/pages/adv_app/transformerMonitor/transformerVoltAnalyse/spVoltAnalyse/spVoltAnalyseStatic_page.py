@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.spVoltAnalyse.spVoltAnalyseStatic_locators import \
-    SpVoltAnalyseStaticLocators
 
 
 class SpVoltAnalyseStaticPage(Page):
@@ -33,5 +31,5 @@ class SpVoltAnalyseStaticPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        # self.click(*SpVoltAnalyseStaticLocators.BTN_QUERY)
+        # self.click(SpVoltAnalyseStaticLocators.BTN_QUERY)
         self.btn_query()

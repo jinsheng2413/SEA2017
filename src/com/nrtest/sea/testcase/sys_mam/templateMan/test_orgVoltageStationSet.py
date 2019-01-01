@@ -72,7 +72,7 @@ class TestOrgVoltageStationSet(unittest.TestCase, OrgVoltageStationSetPage):
         sleep(2)
 
     #     # 校验
-    #     result = self.assert_context(*OrgVoltageStationSetLocators.CHECK_FIRST)
+    #     result = self.assert_context(OrgVoltageStationSetLocators.CHECK_FIRST)
     #     self.assertTrue(result)
     #
     # @BeautifulReport.add_test_img()

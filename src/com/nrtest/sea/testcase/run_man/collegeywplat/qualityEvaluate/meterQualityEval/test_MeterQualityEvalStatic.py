@@ -75,7 +75,7 @@ class TestDemo(unittest.TestCase, MeterQualityEvalStaticPage):
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*MeterQualityEvalStaticLocators.TABLE_DATA)
+        result = self.assert_context(MeterQualityEvalStaticLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
@@ -97,7 +97,7 @@ class TestDemo(unittest.TestCase, MeterQualityEvalStaticPage):
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
+    #     result = self.assert_context(TmnlClockStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
 
     if __name__ == '__main__':

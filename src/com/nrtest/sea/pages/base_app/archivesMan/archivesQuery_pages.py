@@ -15,7 +15,7 @@ class ArchivesQueryPages(Page):
     # 【菜单】
     # 确认
     def btn_confirm(self):
-        self.click(*ArchivesQuery_locators.BTN_CONFIRM)
+        self.click(ArchivesQuery_locators.BTN_CONFIRM)
 
     # 档案查询
     def btn_archivesQuery(self):
@@ -25,13 +25,13 @@ class ArchivesQueryPages(Page):
     # 用户类型
     def inputCSel_cons_type(self, index):
         if index == 'c':
-            self._find_element(*ArchivesQuery_locators.QRY_CONS_TYPE_CLEAR)
+            self._find_element(ArchivesQuery_locators.QRY_CONS_TYPE_CLEAR)
         else:
-            self.click(*ArchivesQuery_locators.QRY_CONS_TYPE)
+            self.click(ArchivesQuery_locators.QRY_CONS_TYPE)
             locator = self.get_select_locator(
                 ArchivesQuery_locators.QRY_CONS_TYPE_VALUE, index)
-            self.click(*locator)
-            self.click(*ArchivesQuery_locators.QRY_CONS_TYPE)
+            self.click(locator)
+            self.click(ArchivesQuery_locators.QRY_CONS_TYPE)
 
     # 抄表段号
     def inputStr_sect_no(self, value):
@@ -43,12 +43,12 @@ class ArchivesQueryPages(Page):
 
     # 【操作区】
     def btn_qry(self):
-        self.click(*ArchivesQuery_locators.BTN_QRY)
+        self.click(ArchivesQuery_locators.BTN_QRY)
 
     # 用户编号
     def btn_tab_cons_no(self):
-        self.click(*ArchivesQuery_locators.TAB_ONE_CONS_NO)
+        self.click(ArchivesQuery_locators.TAB_ONE_CONS_NO)
 
     # 终端地址
     def btn_tab_tmnl_addr(self):
-        self.click(*ArchivesQuery_locators.TAB_ONE_TMNL_ADDR)
+        self.click(ArchivesQuery_locators.TAB_ONE_TMNL_ADDR)

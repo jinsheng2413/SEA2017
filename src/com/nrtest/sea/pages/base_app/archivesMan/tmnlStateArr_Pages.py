@@ -19,10 +19,10 @@ class TmnlStateArrPage(Page):
 
     # 终端状态
     def inputSel_tmnl_status(self, name):
-        self.click(*TmnlStateArrLocators.QRY_TMNL_STATUS)
+        self.click(TmnlStateArrLocators.QRY_TMNL_STATUS)
         locator = self.get_select_locator(
             TmnlStateArrLocators.QRY_TMNL_STATUS_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 统计时间
     def inputStr_count_time(self, value):
@@ -30,4 +30,4 @@ class TmnlStateArrPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*TmnlStateArrLocators.BTN_QRY)
+        self.click(TmnlStateArrLocators.BTN_QRY)

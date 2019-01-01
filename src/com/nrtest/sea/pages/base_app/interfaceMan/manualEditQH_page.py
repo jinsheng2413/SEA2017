@@ -24,9 +24,9 @@ class ManualEditQHPage(Page):
 
     # 数据来源
     def inputSel_data_from(self, index):
-        self.click(*ManualEditQH_Locators.QRY_DATA_FROM)
+        self.click(ManualEditQH_Locators.QRY_DATA_FROM)
         locator = self.get_select_locator(ManualEditQH_Locators.QRY_DATA_FROM_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
         self.delDropdownBoxHtml()
 
     def inputStr_date(self, value):
@@ -34,4 +34,4 @@ class ManualEditQHPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*ManualEditQH_Locators.BTN_QRY)
+        self.click(ManualEditQH_Locators.BTN_QRY)

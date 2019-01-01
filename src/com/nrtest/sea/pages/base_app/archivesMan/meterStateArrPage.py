@@ -19,23 +19,23 @@ class MeterStateArrPage(Page):
 
     # 终端状态
     def inputSel_tmnlStatus(self, name):
-        self.click(*MeterStateArrLocators.QRY_TMNL_STATUS)
+        self.click(MeterStateArrLocators.QRY_TMNL_STATUS)
         locator = self.get_select_locator(
             MeterStateArrLocators.QRY_TMNL_STATUS_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 终端类型
     def inputSel_tmnlType(self, name):
-        self.click(*MeterStateArrLocators.QRY_TMNLTYPE)
+        self.click(MeterStateArrLocators.QRY_TMNLTYPE)
         locator = self.get_select_locator(
             MeterStateArrLocators.QRY_TMNLTYPE_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # # 筛选条件
     # def inputSel_screenCondition(self, name):
-    #     self.click(*MeterStateArrLocators.QRY_SCREEN_CONDITION)
+    #     self.click(MeterStateArrLocators.QRY_SCREEN_CONDITION)
     #     locator = self.get_select_locator(MeterStateArrLocators.QRY_SCREEN_CONDITION_VALUE, name)
-    #     self.click(*locator)
+    #     self.click(locator)
 
     # #筛选条件输入框
     # def inputStr_screenConditionInput(self,value):
@@ -43,15 +43,15 @@ class MeterStateArrPage(Page):
 
     # # 电能表状态
     # def inputSel_meterStatus(self, name):
-    #     self.click(*MeterStateArrLocators.QRY_METER_STATUS)
+    #     self.click(MeterStateArrLocators.QRY_METER_STATUS)
     #     locator = self.get_select_locator(MeterStateArrLocators.QRY_METER_STATUS_VALUE, name)
-    #     self.click(*locator)
+    #     self.click(locator)
 
     # 查询
     def btn_tmnl_qry(self):
-        self.click(*MeterStateArrLocators.BTN_TMNL_QRY)
+        self.click(MeterStateArrLocators.BTN_TMNL_QRY)
 
         # 查询
 
     def btn_meter_qry(self):
-        self.click(*MeterStateArrLocators.BTN_METER_QRY)
+        self.click(MeterStateArrLocators.BTN_METER_QRY)

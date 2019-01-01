@@ -20,10 +20,10 @@ class ClockResultStaticPage(Page):
 
     # 终端厂商--打开并选择
     def inputSel_tmnl_fac(self, item):
-        # self.click(*ClockResultStaticLocators.TMNL_FAC_SEL)
+        # self.click(ClockResultStaticLocators.TMNL_FAC_SEL)
         # locator = self.get_select_locator(
         #     ClockResultStaticLocators.TMNL_FAC, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 查询日期
@@ -33,7 +33,7 @@ class ClockResultStaticPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        # self.click(*ClockResultStaticLocators.BTN_QUERY)
+        # self.click(ClockResultStaticLocators.BTN_QUERY)
         self.btn_query()
 
 
@@ -67,5 +67,5 @@ class ClockResultDetailPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        # self.click(*ClockResultDetailLocators.BTN_QUERY)
+        # self.click(ClockResultDetailLocators.BTN_QUERY)
         self.btn_query(True)

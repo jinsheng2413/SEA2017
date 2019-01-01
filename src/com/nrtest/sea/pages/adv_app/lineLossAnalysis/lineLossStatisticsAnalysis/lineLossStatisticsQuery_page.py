@@ -17,18 +17,18 @@ from com.nrtest.common.base_page import Page
 class LineLossStatisticsQueryPage(Page):
     # 线损分类
     def inputSel_line_loss_type(self, index):
-        # self.click(*LineLossStatisticsQueryLocators.QRY_LINE_LOSS_TYPE)
+        # self.click(LineLossStatisticsQueryLocators.QRY_LINE_LOSS_TYPE)
         # locator = self.get_select_locator(
         #     LineLossStatisticsQueryLocators.QRY_LINE_LOSS_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 线损率
     def inputSel_line_loss_rate(self, index):
-        # self.click(*LineLossStatisticsQueryLocators.QRY_LINE_LOSS_RATE)
+        # self.click(LineLossStatisticsQueryLocators.QRY_LINE_LOSS_RATE)
         # locator = self.get_select_locator(
         #     LineLossStatisticsQueryLocators.QRY_LINE_LOSS_RATE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     def inputStr_line_loss_rate(self, content):
@@ -44,6 +44,6 @@ class LineLossStatisticsQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*LineLossStatisticsQueryLocators.BTN_SEARCH)
+        # self.click(LineLossStatisticsQueryLocators.BTN_SEARCH)
         self.btn_clean('查')
         self.btn_query(True)

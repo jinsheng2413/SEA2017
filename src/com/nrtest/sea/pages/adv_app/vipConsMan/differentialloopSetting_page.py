@@ -30,5 +30,5 @@ class DifferentialloopSetting_Page(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*DifferentialloopSetting_locators.BTN_QUERY)
+        # self.click(DifferentialloopSetting_locators.BTN_QUERY)
         self.btn_query()

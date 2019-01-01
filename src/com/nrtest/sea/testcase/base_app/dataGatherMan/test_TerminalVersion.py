@@ -73,7 +73,7 @@ class TestTerminalVersion(unittest.TestCase, TerminalVersionPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*TerminalVersionLocators.TAB_ONE)
+        # result = self.assert_context(TerminalVersionLocators.TAB_ONE)
         # self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(DataGatherMan_data.terminalVersion_para))

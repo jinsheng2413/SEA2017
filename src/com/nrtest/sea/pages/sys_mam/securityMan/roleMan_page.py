@@ -20,5 +20,5 @@ class RoleMAnPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*RoleMAnLocators.BTN_SEARCH)
+        # self.click(RoleMAnLocators.BTN_SEARCH)
         self.btn_query()

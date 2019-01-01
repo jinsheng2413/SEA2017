@@ -18,16 +18,13 @@ class PartialPressureLineLossAnalysisPage(Page):
     # 电压等级
     def inputSel_voltage_level(self, index):
         if index == 'c':
-            self._find_element(
-                *PartialPressureLineLossAnalysisLocators.QRY_VOLTAGE_LEVEL)
+            self._find_element(PartialPressureLineLossAnalysisLocators.QRY_VOLTAGE_LEVEL)
         else:
-            self.click(
-                *PartialPressureLineLossAnalysisLocators.QRY_VOLTAGE_LEVEL)
+            self.click(PartialPressureLineLossAnalysisLocators.QRY_VOLTAGE_LEVEL)
             locator = self.get_select_locator(
                 PartialPressureLineLossAnalysisLocators.QRY_VOLTAGE_LEVEL_VALUE, index)
-            self.click(*locator)
-            self.click(
-                *PartialPressureLineLossAnalysisLocators.QRY_VOLTAGE_LEVEL)
+            self.click(locator)
+            self.click(PartialPressureLineLossAnalysisLocators.QRY_VOLTAGE_LEVEL)
 
     # 查询日期
     def inputDt_date(self, content):
@@ -36,4 +33,4 @@ class PartialPressureLineLossAnalysisPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*PartialPressureLineLossAnalysisLocators.BTN_SEARCH)
+        self.click(PartialPressureLineLossAnalysisLocators.BTN_SEARCH)

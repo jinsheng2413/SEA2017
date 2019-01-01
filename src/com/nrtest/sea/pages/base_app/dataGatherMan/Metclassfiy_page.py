@@ -19,10 +19,10 @@ class MetclassfiyPage(Page):
 
     # 电能表类型
     def inputSel_meterType(self, name):
-        self.click(*MetclassfiyLocators.QRY_METER_TYPE)
+        self.click(MetclassfiyLocators.QRY_METER_TYPE)
         locator = self.get_select_locator(
             MetclassfiyLocators.QRY_METER_TYPE_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 操作
     def inputStr_perform(self, value):
@@ -31,4 +31,4 @@ class MetclassfiyPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*MetclassfiyLocators.BTN_QRY)
+        self.click(MetclassfiyLocators.BTN_QRY)

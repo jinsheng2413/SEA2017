@@ -40,23 +40,23 @@ class CustControlCommissioning_page(Page):
 
     # 按
     def inputRSel_buy_ele_date(self, index):
-        self.click(*CustControlCommissioning_locators.SELR_ARRANGE)
+        self.click(CustControlCommissioning_locators.SELR_ARRANGE)
         locator = self.get_select_locator(
             CustControlCommissioning_locators.SELR_ARRANGE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 下发状态
     def inputSel_provide_state(self, index):
         print('-------------')
-        self.click(*CustControlCommissioning_locators.QRY_PROVIDE_STATE)
+        self.click(CustControlCommissioning_locators.QRY_PROVIDE_STATE)
         locator = self.get_select_locator(
             CustControlCommissioning_locators.QRY_PROVIDE_STATE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 点击查询按钮
     def btn_qry(self):
-        self.click(*CustControlCommissioning_locators.BTN_QRY)
+        self.click(CustControlCommissioning_locators.BTN_QRY)
 
     # 总加组
     def btn_all_class(self):
-        self.click(*CustControlCommissioning_locators.TAB_ONE_ALL_CLASS)
+        self.click(CustControlCommissioning_locators.TAB_ONE_ALL_CLASS)

@@ -11,12 +11,12 @@
 import unittest
 from time import sleep
 
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.verficationResultDetail_page import \
+    VerficationResultDetailPage, VerficationResultDetailLocators
 from ddt import ddt, data
 
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.verficationResultDetail_page import \
-    VerficationResultDetailPage, VerficationResultDetailLocators
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -75,7 +75,7 @@ class TestVerficationResultDetail(unittest.TestCase, VerficationResultDetailPage
         # self.btn_qry()
         # self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*)
+        # result = self.assert_context()
         # self.assertTrue(result)
 
     # @BeautifulReport.add_test_img()

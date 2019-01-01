@@ -38,5 +38,5 @@ class CommumMeterPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*FlowCountLocators.BTN_QRY)
+        # self.click(FlowCountLocators.BTN_QRY)
         self.btn_query()

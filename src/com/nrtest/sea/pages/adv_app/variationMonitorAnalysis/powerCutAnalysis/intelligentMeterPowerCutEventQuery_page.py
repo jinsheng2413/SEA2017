@@ -19,10 +19,10 @@ class IntelligentMeterPowerCutEventQueryPage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, index):
-        # self.click(*IntelligentMeterPowerCutEventQueryLocators.QRY_CONS_TYPE)
+        # self.click(IntelligentMeterPowerCutEventQueryLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(
         #     IntelligentMeterPowerCutEventQueryLocators.QRY_CONS_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
@@ -34,7 +34,7 @@ class IntelligentMeterPowerCutEventQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*IntelligentMeterPowerCutEventQueryLocators.BTN_SEARCH)
+        # self.click(IntelligentMeterPowerCutEventQueryLocators.BTN_SEARCH)
         self.btn_query()
 
 # 高级应用→配变监测分析→停电分析→智能表停电事件查询→智能表停电明细
@@ -49,7 +49,7 @@ class IntelligentMeterPowerCutEventQueryDetailPage(Page):
         #     *IntelligentMeterPowerCutEventQueryDetailLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(
         #     IntelligentMeterPowerCutEventQueryDetailLocators.QRY_CONS_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
@@ -67,7 +67,7 @@ class IntelligentMeterPowerCutEventQueryDetailPage(Page):
         #     *IntelligentMeterPowerCutEventQueryDetailLocators.QRY_EVENT_CORRECTNESS)
         # locator = self.get_select_locator(IntelligentMeterPowerCutEventQueryDetailLocators.QRY_EVENT_CORRECTNESS_VALUE,
         #                                   index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
@@ -84,11 +84,11 @@ class IntelligentMeterPowerCutEventQueryDetailPage(Page):
         #     *IntelligentMeterPowerCutEventQueryDetailLocators.QRY_METER_FACTORY)
         # locator = self.get_select_locator(IntelligentMeterPowerCutEventQueryDetailLocators.QRY_METER_FACTORY_VALUE,
         #                                   index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*IntelligentMeterPowerCutEventQueryDetailLocators.BTN_SEARCH)
+        # self.click(IntelligentMeterPowerCutEventQueryDetailLocators.BTN_SEARCH)
         self.btn_query(True)

@@ -58,7 +58,7 @@ class TestUpgradeEffectStstistics(unittest.TestCase, OrgNoDataPage):
         # 查询按钮
         self.btn_search()
         # 校验
-        result = self.assert_context(*OrgNoDataQueryLocator.CHECK_FIRST)
+        result = self.assert_context(OrgNoDataQueryLocator.CHECK_FIRST)
         self.assertTrue(result)
 
     @ddt.data(*DataAccess.getCaseData(SynthQuery_data.OrgNoDataQuery_para))

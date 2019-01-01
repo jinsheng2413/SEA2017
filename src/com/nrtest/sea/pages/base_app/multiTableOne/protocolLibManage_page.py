@@ -41,10 +41,10 @@ class ProtocolLibManageLocatorsPage(Page):
 
     # 有效标志
     def inputSel_effectiveSign(self, name):
-        self.click(*ProtocolLibManageLocators.QRY_EFFECTIVE_SIGN)
+        self.click(ProtocolLibManageLocators.QRY_EFFECTIVE_SIGN)
         locator = self.get_select_locator(
             ProtocolLibManageLocators.QRY_EFFECTIVE_SIGN_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 协议版本号
     def inputStr_protocolVersionNo(self, value):
@@ -56,4 +56,4 @@ class ProtocolLibManageLocatorsPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*ProtocolLibManageLocators.BTN_QRY)
+        self.click(ProtocolLibManageLocators.BTN_QRY)

@@ -14,8 +14,7 @@ from com.nrtest.sea.task.commonMath import *
 class op(Page):
 
  def od(self):
-
-    self.click(*(By.XPATH,'//*[text()=\'查询\']'))
+     self.click((By.XPATH, '//*[text()=\'查询\']'))
 
 openMenu('99911100')
 driver = openLeftTree('134010101')

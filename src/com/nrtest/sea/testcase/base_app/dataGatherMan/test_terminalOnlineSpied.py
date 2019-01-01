@@ -80,7 +80,7 @@ class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
 
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*TerminalOnlineSpiedLocators.TAB_ONE)
+        result = self.assert_context(TerminalOnlineSpiedLocators.TAB_ONE)
 
         self.assertTrue(result)
 

@@ -16,11 +16,11 @@ class InterfaceMonitorPage(Page):
 
     # 接口类型
     def inputSel_interfaceType(self, name):
-        self.click(*InterfaceMonitor_Locators.QRY_INTERFACE_TYPE)
+        self.click(InterfaceMonitor_Locators.QRY_INTERFACE_TYPE)
         locator = self.get_select_locator(
             InterfaceMonitor_Locators.QRY_INTERFACE_TYPE_VALUE, name)
         print(locator)
-        self.click(*locator)
+        self.click(locator)
 
     # 接收时间
     def inputStr_start_time(self, value):
@@ -32,4 +32,4 @@ class InterfaceMonitorPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*InterfaceMonitor_Locators.BTN_QRY)
+        self.click(InterfaceMonitor_Locators.BTN_QRY)

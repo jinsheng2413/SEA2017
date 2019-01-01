@@ -31,11 +31,11 @@ class MultipleTableDataQueryPage(Page):
 
     # 用户状态
     def inputSel_cons_cons_status(self, index):
-        self.click(*MultipleTableDataQueryLocators.CONS_CONS_STATUS)
+        self.click(MultipleTableDataQueryLocators.CONS_CONS_STATUS)
         locator = self.get_select_locator(
             MultipleTableDataQueryLocators.CONS_CONS_STATUS_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*MultipleTableDataQueryLocators.BTN_SEARCH)
+        self.click(MultipleTableDataQueryLocators.BTN_SEARCH)

@@ -20,26 +20,26 @@ class TermParaSetPage(Page):
 
     # 终端厂商
     def inputSel_tmnl_factory(self, option):
-        # self.click(*TermParaSetLocators.QRY_TMNL_FACTORY)
+        # self.click(TermParaSetLocators.QRY_TMNL_FACTORY)
         # locator = self.get_select_locator(TermParaSetLocators.QRY_TMNL_FACTORY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 规约
     def inputSel_tmnl_protory(self, option):
-        # self.click(*TermParaSetLocators.QRY_TMNL_PROTORY)
+        # self.click(TermParaSetLocators.QRY_TMNL_PROTORY)
         # locator = self.get_select_locator(TermParaSetLocators.QRY_TMNL_PROTORY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 任务状态
     def inputSel_task_status(self, option):
-        # self.click(*TermParaSetLocators.QRY_TAST_STATUS)
+        # self.click(TermParaSetLocators.QRY_TAST_STATUS)
         # locator = self.get_select_locator(TermParaSetLocators.QRY_TAST_STATUS_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 查询
     def btn_qry(self):
-        # self.click(*TermParaSetLocators.BTN_QRY)
+        # self.click(TermParaSetLocators.BTN_QRY)
         self.btn_query()

@@ -18,21 +18,21 @@ class DebuggingAccess2017Page(Page):
     # 页面元素
     # 管理方式
     def inputSel_manage_style(self, index):
-        self.click(*DebuggingAccess2017Locators.MANAGE_STYLE)
+        self.click(DebuggingAccess2017Locators.MANAGE_STYLE)
         locator = self.get_select_locator(
             DebuggingAccess2017Locators.MANAGE_STYLE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 装接方式
     def inputCSel_assembling_way(self, index):
         if index == 'c':
-            self._find_element(*DebuggingAccess2017Locators.ASSEMBLING_WAY)
+            self._find_element(DebuggingAccess2017Locators.ASSEMBLING_WAY)
         else:
-            self.click(*DebuggingAccess2017Locators.ASSEMBLING_WAY)
+            self.click(DebuggingAccess2017Locators.ASSEMBLING_WAY)
             locator = self.get_select_locator(
                 DebuggingAccess2017Locators.ASSEMBLING_WAY_VALUE, index)
-            self.click(*locator)
-            self.click(*DebuggingAccess2017Locators.ASSEMBLING_WAY)
+            self.click(locator)
+            self.click(DebuggingAccess2017Locators.ASSEMBLING_WAY)
 
     # 日期
     def inputDt_date(self, content):
@@ -41,4 +41,4 @@ class DebuggingAccess2017Page(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DebuggingAccess2017Locators.BTN_SEARCH)
+        self.click(DebuggingAccess2017Locators.BTN_SEARCH)

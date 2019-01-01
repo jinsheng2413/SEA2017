@@ -20,7 +20,7 @@ class TgLineLossUnifiedViewPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*TgLineLossUnifiedViewLocators.BTN_SEARCH)
+        self.click(TgLineLossUnifiedViewLocators.BTN_SEARCH)
 
     # 日线损
     # 查询日期，开始
@@ -35,7 +35,7 @@ class TgLineLossUnifiedViewPage(Page):
 
     # 查询按钮
     def btn_search_day(self):
-        self.click(*TgLineLossUnifiedViewLocators.BTN_SEARCH_DAY)
+        self.click(TgLineLossUnifiedViewLocators.BTN_SEARCH_DAY)
 
     # 月线损
     # 查询日期，开始
@@ -50,4 +50,4 @@ class TgLineLossUnifiedViewPage(Page):
 
     # 查询按钮
     def btn_search_month(self):
-        self.click(*TgLineLossUnifiedViewLocators.BTN_SEARCH_MONTH)
+        self.click(TgLineLossUnifiedViewLocators.BTN_SEARCH_MONTH)

@@ -21,7 +21,7 @@ class WorkCountPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*WorkCountLocators.BTN_QRY)
+        # self.click(WorkCountLocators.BTN_QRY)
         self.btn_query()
 
 class WorkQueryPage(Page):
@@ -32,10 +32,10 @@ class WorkQueryPage(Page):
 
     # 异常状态
     def inputSel_abnormalStatus(self, options):
-        # self.click(*WorkQueryLocators.QRY_ABNORMAL_STATUS)
+        # self.click(WorkQueryLocators.QRY_ABNORMAL_STATUS)
         # locator = self.get_select_locator(
         #     WorkQueryLocators.QRY_ABNORMAL_STATUS_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
         # 日期
 
@@ -44,5 +44,5 @@ class WorkQueryPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*WorkQueryLocators.BTN_QRY)
+        # self.click(WorkQueryLocators.BTN_QRY)
         self.btn_query(True)

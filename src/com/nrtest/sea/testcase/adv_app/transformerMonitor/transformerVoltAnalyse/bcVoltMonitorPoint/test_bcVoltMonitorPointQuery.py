@@ -74,7 +74,7 @@ class TestBcVoltMonitorPointQuery(TestCase, BcVoltMonitorPointQueryPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*BcVoltMonitorPointQueryLocators.TABLE_DATA)
+        # result = self.assert_context(BcVoltMonitorPointQueryLocators.TABLE_DATA)
         # self.assertTrue(result)
 
     def assert_query_result(self, para):
@@ -126,5 +126,5 @@ class TestBcVoltMonitorPointQuery(TestCase, BcVoltMonitorPointQueryPage):
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*BcVoltMonitorPointQueryLocators.TABLE_DATA)
+    #     result = self.assert_context(BcVoltMonitorPointQueryLocators.TABLE_DATA)
     #     self.assertTrue(result)

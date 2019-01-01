@@ -170,4 +170,4 @@ class TestCustControlCommissioning_ele_manage(unittest.TestCase, CustControlComm
         result = self.assert_context(
             *CustControlCommissioning_locators.BTN_OUT)
         self.assertTrue(result)
-        self.click(*CustControlCommissioning_locators.BTN_OUT)
+        self.click(CustControlCommissioning_locators.BTN_OUT)

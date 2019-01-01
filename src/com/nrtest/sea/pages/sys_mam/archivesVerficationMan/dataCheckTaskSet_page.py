@@ -23,11 +23,11 @@ class DataCheckTaskSetPage(Page):
 
     # 任务来源
     def inputSel_taskFrom(self, name):
-        # self.click(*DataCheckTaskSetLocators.QRY_TASK_FROM)
+        # self.click(DataCheckTaskSetLocators.QRY_TASK_FROM)
         # locator = self.get_select_locator(DataCheckTaskSetLocators.QRY_TASK_FROM_VALUE, name)
-        #self.click(*locator)
+        # self.click(locator)
         # 查询
         self.selectCheckBox(name)
 
     def btn_qry(self):
-        self.click(*DataCheckTaskSetLocators.BTN_QRY)
+        self.click(DataCheckTaskSetLocators.BTN_QRY)

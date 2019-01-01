@@ -60,7 +60,7 @@ class TestBalanceCount(unittest.TestCase, BalanceCount_page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCountLocator.TAB_ONE)
+        result = self.assert_context(BalanceCountLocator.TAB_ONE)
         self.assertTrue(result)
 
     # 供电单位明细
@@ -70,7 +70,7 @@ class TestBalanceCount(unittest.TestCase, BalanceCount_page):
         self.btn_ele_company()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCountLocator.BAL_CHECK)
+        result = self.assert_context(BalanceCountLocator.BAL_CHECK)
         self.assertTrue(result)
         self.btn_balance_count()
 
@@ -81,7 +81,7 @@ class TestBalanceCount(unittest.TestCase, BalanceCount_page):
         self.btn_tab_one_ten_user_all()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCountLocator.BAL_CHECK)
+        result = self.assert_context(BalanceCountLocator.BAL_CHECK)
         self.assertTrue(result)
         self.btn_balance_count()
 
@@ -92,7 +92,7 @@ class TestBalanceCount(unittest.TestCase, BalanceCount_page):
         self.btn_tab_one_fifty_user_all()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCountLocator.BAL_CHECK)
+        result = self.assert_context(BalanceCountLocator.BAL_CHECK)
         self.assertTrue(result)
         self.btn_balance_count()
 
@@ -103,6 +103,6 @@ class TestBalanceCount(unittest.TestCase, BalanceCount_page):
         self.btn_tab_one_more_fifty_user_all()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCountLocator.BAL_CHECK)
+        result = self.assert_context(BalanceCountLocator.BAL_CHECK)
         self.assertTrue(result)
         self.btn_balance_count()

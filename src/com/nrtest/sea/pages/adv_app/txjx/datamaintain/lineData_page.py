@@ -17,10 +17,10 @@ class LineDataPage(Page):
 
     # 负责人
     def inputSel_master(self, name):
-        self.click(*LineDataLocators.QRY_MASTER)
+        self.click(LineDataLocators.QRY_MASTER)
         locator = self.get_select_locator(
             LineDataLocators.QRY_MASTER_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 线路名称
     def inputStr_lineName(self, value):
@@ -29,4 +29,4 @@ class LineDataPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*LineDataLocators.BTN_QRY)
+        self.click(LineDataLocators.BTN_QRY)

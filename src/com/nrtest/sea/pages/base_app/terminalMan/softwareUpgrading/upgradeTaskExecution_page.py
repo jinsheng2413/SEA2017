@@ -17,26 +17,26 @@ from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeTaskE
 class UpgradeTaskExecutionPage(Page):
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
-        # self.click(*UpgradeTaskExecutionLocators.TMNL_FACTORY)
+        # self.click(UpgradeTaskExecutionLocators.TMNL_FACTORY)
         # locator = self.get_select_locator(
         #     UpgradeTaskExecutionLocators.TMNL_FACTORY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 终端类型
     def inputSel_tmnl_type(self, index):
-        # self.click(*UpgradeTaskExecutionLocators.TMNL_TYPE)
+        # self.click(UpgradeTaskExecutionLocators.TMNL_TYPE)
         # locator = self.get_select_locator(
         #     UpgradeTaskExecutionLocators.TMNL_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 终端用途
     def inputSel_tmnl_purpose(self, index):
-        # self.click(*UpgradeTaskExecutionLocators.TMNL_PURPOSE)
+        # self.click(UpgradeTaskExecutionLocators.TMNL_PURPOSE)
         # locator = self.get_select_locator(
         #     UpgradeTaskExecutionLocators.TMNL_PURPOSE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 开始时间
@@ -55,28 +55,28 @@ class UpgradeTaskExecutionPage(Page):
 
     # 升级目的
     def inputSel_upgrade_purpose(self, index):
-        # self.click(*UpgradeTaskExecutionLocators.UPGRADE_PURPOSE)
+        # self.click(UpgradeTaskExecutionLocators.UPGRADE_PURPOSE)
         # locator = self.get_select_locator(
         #     UpgradeTaskExecutionLocators.UPGRADE_PURPOSE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 升级类型
     def inputSel_upgrade_type(self, index):
-        # self.click(*UpgradeTaskExecutionLocators.UPGRADE_TYPE)
+        # self.click(UpgradeTaskExecutionLocators.UPGRADE_TYPE)
         # locator = self.get_select_locator(
         #     UpgradeTaskExecutionLocators.UPGRADE_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 执行状态
     def inputSel_execution_state(self, index):
-        # self.click(*UpgradeTaskExecutionLocators.EXECUTION_STATE)
+        # self.click(UpgradeTaskExecutionLocators.EXECUTION_STATE)
         # locator = self.get_select_locator(
         #     UpgradeTaskExecutionLocators.EXECUTION_STATE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*UpgradeTaskExecutionLocators.BTN_SEARCH)
+        self.click(UpgradeTaskExecutionLocators.BTN_SEARCH)

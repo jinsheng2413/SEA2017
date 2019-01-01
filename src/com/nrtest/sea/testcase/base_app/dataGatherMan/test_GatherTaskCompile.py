@@ -78,7 +78,7 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*GatherTaskCompileLocators.TAB_ONE)
+        result = self.assert_context(GatherTaskCompileLocators.TAB_ONE)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(DataGatherMan_data.gatherTaskCompile_para))

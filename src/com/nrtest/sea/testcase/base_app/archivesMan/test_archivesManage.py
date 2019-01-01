@@ -51,7 +51,7 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesManage_locators.TAB_ONE)
+        result = self.assert_context(ArchivesManage_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 户号
@@ -62,7 +62,7 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesManage_locators.TAB_ONE)
+        result = self.assert_context(ArchivesManage_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 终端资产号
@@ -73,7 +73,7 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesManage_locators.TAB_ONE)
+        result = self.assert_context(ArchivesManage_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 终端地址
@@ -84,7 +84,7 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesManage_locators.TAB_ONE)
+        result = self.assert_context(ArchivesManage_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 用户编号明细
@@ -97,7 +97,7 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
         self.btn_user_no_detail()
 
         # 校验
-        result = self.assert_context(*ArchivesManage_locators.TAB_USER_ASSERT)
+        result = self.assert_context(ArchivesManage_locators.TAB_USER_ASSERT)
         self.assertTrue(result)
         self.btn_menu()
 
@@ -110,7 +110,7 @@ class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
         self.sleep_time(2)
         self.btn_terminal_asset_detail()
         # 校验
-        result = self.assert_context(*ArchivesManage_locators.BTN_CONFIRM)
+        result = self.assert_context(ArchivesManage_locators.BTN_CONFIRM)
         self.assertTrue(result)
         self.btn_confirm()
         self.btn_menu()

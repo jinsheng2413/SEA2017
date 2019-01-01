@@ -17,10 +17,10 @@ from com.nrtest.sea.locators.adv_app.variationMonitorAnalysis.powerCutAnalysis.p
 class ImportantClientRealTimePowerCutMonitorPage(Page):
     # 电压等级
     def inputSel_volt_level(self, index):
-        # self.click(*ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL)
+        # self.click(ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL)
         # locator = self.get_select_locator(
         #     ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
@@ -40,4 +40,4 @@ class ImportantClientRealTimePowerCutMonitorPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*ImportantClientRealTimePowerCutMonitorLocators.BTN_SEARCH)
+        self.click(ImportantClientRealTimePowerCutMonitorLocators.BTN_SEARCH)

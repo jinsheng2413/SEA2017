@@ -30,4 +30,4 @@ class IndexDetailPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*IndexDetailLocators.BTN_SEARCH)
+        self.click(IndexDetailLocators.BTN_SEARCH)

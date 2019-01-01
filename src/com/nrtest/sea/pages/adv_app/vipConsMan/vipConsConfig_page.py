@@ -9,16 +9,15 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.vipConsMan.vipConsConfig_locators import VipConsConfig_locators
 
 
 class VipConsConfig_Page(Page):
     # 运行容量等级
     def inputSel_run_level(self, options):
-        # self.click(*VipConsConfig_locators.QRY_RUN_LEVEL)
+        # self.click(VipConsConfig_locators.QRY_RUN_LEVEL)
         # locator = self.get_select_locator(
         #     VipConsConfig_locators.QRY_RUN_LEVEL_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 用户编号
@@ -31,5 +30,5 @@ class VipConsConfig_Page(Page):
 
     # 查询
     def btn_qry(self):
-        #self.click(*VipConsConfig_locators.BTN_QUERY)
+        # self.click(VipConsConfig_locators.BTN_QUERY)
         self.btn_query()

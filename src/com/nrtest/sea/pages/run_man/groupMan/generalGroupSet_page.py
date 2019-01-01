@@ -45,5 +45,5 @@ class GeneralGroupSetPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*GeneralGroupSetLocators.BTN_SEARCH)
+        # self.click(GeneralGroupSetLocators.BTN_SEARCH)
         self.btn_query()

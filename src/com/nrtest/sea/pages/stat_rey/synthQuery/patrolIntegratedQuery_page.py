@@ -22,7 +22,7 @@ class PatrolIntegratedQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*PatrolIntegratedQueryLocators.BTN_SEARCH)
+        self.click(PatrolIntegratedQueryLocators.BTN_SEARCH)
 
     # 巡检仪运行指标明细
     # 日期
@@ -32,10 +32,10 @@ class PatrolIntegratedQueryPage(Page):
 
     # 指标
     def inputSel_detail_index(self, index):
-        self.click(*PatrolIntegratedQueryLocators.DETAIL_INDEX)
+        self.click(PatrolIntegratedQueryLocators.DETAIL_INDEX)
         locator = self.get_select_locator(
             PatrolIntegratedQueryLocators.DETAIL_INDEX_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 终端地址
     def inputStr_detail_tmnl_addr(self, content):
@@ -43,4 +43,4 @@ class PatrolIntegratedQueryPage(Page):
 
     # 查询按钮
     def btn_detail_search(self):
-        self.click(*PatrolIntegratedQueryLocators.BTN_DETAIL_SEARCH)
+        self.click(PatrolIntegratedQueryLocators.BTN_DETAIL_SEARCH)

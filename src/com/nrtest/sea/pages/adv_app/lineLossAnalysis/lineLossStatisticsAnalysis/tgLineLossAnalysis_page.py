@@ -31,10 +31,10 @@ class TgLineLossAnalysisPage(Page):
 
     # 安装率
     def inputSel_installation_rate(self, index):
-        self.click(*TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE)
+        self.click(TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE)
         locator = locator = self.get_select_locator(
             TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
         # self.selectDropDown(index)
 
     def inputStr_installation_rate(self, content):
@@ -43,10 +43,10 @@ class TgLineLossAnalysisPage(Page):
         self.input(content)
     # 抄读成功率
     def inputSel_read_success_rate(self, index):
-        self.click(*TgLineLossAnalysisLocators.QRY_READ_SUCCESS_RATE)
+        self.click(TgLineLossAnalysisLocators.QRY_READ_SUCCESS_RATE)
         locator = locator = self.get_select_locator(
             TgLineLossAnalysisLocators.QRY_READ_SUCCESS_RATE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
         # self.selectDropDown(index)
 
     def inputStr_read_success_rate(self, content):
@@ -56,10 +56,10 @@ class TgLineLossAnalysisPage(Page):
 
     # 线损率
     def inputSel_line_loss_rate(self, index):
-        self.click(*TgLineLossAnalysisLocators.QRY_LINE_LOSS_RATE)
+        self.click(TgLineLossAnalysisLocators.QRY_LINE_LOSS_RATE)
         locator = locator = self.get_select_locator(
             TgLineLossAnalysisLocators.QRY_LINE_LOSS_RATE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
         # self.selectDropDown(index)
 
     def inputStr_line_loss_rate(self, content):
@@ -76,7 +76,7 @@ class TgLineLossAnalysisPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*TgLineLossAnalysisLocators.BTN_SEARCH)
+        # self.click(TgLineLossAnalysisLocators.BTN_SEARCH)
         self.btn_query()
 
     # 日期选择类型

@@ -21,9 +21,9 @@ class UserOperationMonitorPage(Page):
 
     # 操作模块
     def inputSel_operation_module(self, option):
-        # self.click(*UserOperationMonitorLocators.QRY_OPERATION_MODULE)
+        # self.click(UserOperationMonitorLocators.QRY_OPERATION_MODULE)
         # locator = self.get_select_locator(UserOperationMonitorLocators.QRY_OPERATION_MODULE_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 操作人员
@@ -33,5 +33,5 @@ class UserOperationMonitorPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*UserOperationMonitorLocators.BTN_SEARCH)
+        # self.click(UserOperationMonitorLocators.BTN_SEARCH)
         self.btn_query()

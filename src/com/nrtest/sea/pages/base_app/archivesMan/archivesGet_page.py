@@ -21,9 +21,9 @@ class ArchivesGetPage(Page):
 
     # 用户类型
     def inputSel_userType(self, name):
-        self.click(*ArchivesGetLocators.QRY_USER_TYPE)
+        self.click(ArchivesGetLocators.QRY_USER_TYPE)
         locator = self.get_select_locator(ArchivesGetLocators.QRY_USER_TYPE_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 终端资产号
     def inputStr_tmnlAssetNo(self, value):
@@ -36,4 +36,4 @@ class ArchivesGetPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*ArchivesGetLocators.BTN_QRY)
+        self.click(ArchivesGetLocators.BTN_QRY)

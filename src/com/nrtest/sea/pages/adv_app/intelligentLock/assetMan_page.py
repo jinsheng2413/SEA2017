@@ -27,37 +27,37 @@ class AssetManPage(Page):
     # 用户类型
 
     def inputSel_cons_type(self, index):
-        # self.click(*AssetManLocators.CONS_TYPE)
+        # self.click(AssetManLocators.CONS_TYPE)
         # locator = self.get_select_locator(
         #     AssetManLocators.CONS_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 锁封资产状态
     def inputSel_lock_asset_ststus(self, index):
-        # self.click(*AssetManLocators.LOCK_ASSET_STATUS)
+        # self.click(AssetManLocators.LOCK_ASSET_STATUS)
         # locator = self.get_select_locator(
         #     AssetManLocators.LOCK_ASSET_STATUS_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 锁封状态
     def inputSel_lock_status(self, index):
-        # self.click(*AssetManLocators.LOCK_STATUS)
+        # self.click(AssetManLocators.LOCK_STATUS)
         # locator = self.get_select_locator(
         #     AssetManLocators.LOCK_STATUS_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 锁封类型
     def inputSel_lock_type(self, index):
-        # self.click(*AssetManLocators.LOCK_TYPE)
+        # self.click(AssetManLocators.LOCK_TYPE)
         # locator = self.get_select_locator(
         #     AssetManLocators.LOCK_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*AssetManLocators.BTN_SEARCH)
+        # self.click(AssetManLocators.BTN_SEARCH)
         self.btn_query()

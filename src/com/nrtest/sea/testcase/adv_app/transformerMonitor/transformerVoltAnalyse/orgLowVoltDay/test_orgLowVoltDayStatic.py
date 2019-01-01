@@ -83,7 +83,7 @@ class TestOrgLowVoltDayStatic(TestCase, OrgLowVoltDayStaticPage):
         self.btn_qry()
         self.sleep_time(2)
         # # 校验
-        # result = self.assert_context(*OrgLowVoltDayStaticLocators.TABLE_DATA)
+        # result = self.assert_context(OrgLowVoltDayStaticLocators.TABLE_DATA)
         # self.assertTrue(result)
 
     def assert_query_result(self, para):
@@ -135,5 +135,5 @@ class TestOrgLowVoltDayStatic(TestCase, OrgLowVoltDayStaticPage):
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*OrgLowVoltDayStaticLocators.TABLE_DATA)
+    #     result = self.assert_context(OrgLowVoltDayStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)

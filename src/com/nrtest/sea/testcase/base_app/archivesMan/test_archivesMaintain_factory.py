@@ -51,5 +51,5 @@ class TestarchivesMaintain_factory(unittest.TestCase, ArchivesMaintain_factory_p
         self.btn_factoryQry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesMaintain_locators.TAB_ONE)
+        result = self.assert_context(ArchivesMaintain_locators.TAB_ONE)
         self.assertTrue(result)

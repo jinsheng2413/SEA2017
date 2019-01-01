@@ -36,26 +36,26 @@ class RecordsQueryPage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, index):
-        # self.click(*RecordsQueryLocators.CONS_TYPE)
+        # self.click(RecordsQueryLocators.CONS_TYPE)
         # locator = self.get_select_locator(
         #     RecordsQueryLocators.CONS_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 操作行为
     def inputSel_operant_hehavior(self, index):
-        # self.click(*RecordsQueryLocators.OPERANT_HEHAVIOR)
+        # self.click(RecordsQueryLocators.OPERANT_HEHAVIOR)
         # locator = self.get_select_locator(
         #     RecordsQueryLocators.OPERANT_HEHAVIOR_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 操作结果
     def inputSel_operant_result(self, index):
-        # self.click(*RecordsQueryLocators.OPERANT_RESULT)
+        # self.click(RecordsQueryLocators.OPERANT_RESULT)
         # locator = self.get_select_locator(
         #     RecordsQueryLocators.OPERANT_RESULT_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 电子钥匙编号
@@ -80,7 +80,7 @@ class RecordsQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*RecordsQueryLocators.BTN_SEARCH)
+        # self.click(RecordsQueryLocators.BTN_SEARCH)
         self.btn_query()
 
     # 资产管理记录查询
@@ -114,5 +114,5 @@ class RecordsQueryPage(Page):
 
     # 查询按钮
     def tab_btn_search(self):
-        # self.click(*RecordsQueryLocators.TAB_BTN_SEARCH)
+        # self.click(RecordsQueryLocators.TAB_BTN_SEARCH)
         self.btn_query(True)

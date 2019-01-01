@@ -8,8 +8,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.stat_rey.reportMan.stateGridReport.sysCoverageQuery_locators import \
-    SysCoverageQueryLocators
 
 
 # 统计查询--》报表管理--》国网报表--》系统采集覆盖情况
@@ -26,20 +24,20 @@ class SysCoverageQueryPage(Page):
 
     # 统计口径
     def inputSel_statWay(self, option):
-        # self.click(*SysCoverageQueryLocators.QRY_STAT_WAY)
+        # self.click(SysCoverageQueryLocators.QRY_STAT_WAY)
         # locator = self.get_select_locator(SysCoverageQueryLocators.QRY_STAT_WAY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 用户类型
 
     def inputSel_userType(self, options):
-        # self.click(*SysCoverageQueryLocators.QRY_USER_TYPE)
+        # self.click(SysCoverageQueryLocators.QRY_USER_TYPE)
         # locator = self.get_select_locator(SysCoverageQueryLocators.QRY_USER_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectCheckBox(options)
 
     # 查询
     def btn_qry(self):
-        #self.click(*SysCoverageQueryLocators.BTN_QRY)
+        # self.click(SysCoverageQueryLocators.BTN_QRY)
         self.btn_query()

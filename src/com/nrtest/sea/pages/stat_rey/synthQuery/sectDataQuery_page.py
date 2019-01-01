@@ -20,9 +20,9 @@ class SectDataQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*SectDataQueryLocators.BTN_SEARCH)
+        self.click(SectDataQueryLocators.BTN_SEARCH)
 
     # 数据展示
     # 查询按钮
     def btn_tab_search(self):
-        self.click(*SectDataQueryLocators.BTN_TAB_SEARCH)
+        self.click(SectDataQueryLocators.BTN_TAB_SEARCH)

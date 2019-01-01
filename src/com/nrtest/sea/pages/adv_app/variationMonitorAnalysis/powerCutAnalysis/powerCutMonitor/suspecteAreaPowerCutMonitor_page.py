@@ -21,16 +21,16 @@ class SuspecteAreaPowerCutMonitorPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*SuspecteAreaPowerCutMonitorLocators.BTN_SEARCH)
+        self.click(SuspecteAreaPowerCutMonitorLocators.BTN_SEARCH)
 
 
 # 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测→疑似停电线路查询
 class SuspectePowerCutLineQueryPage(Page):
     # 是否恢复停电
     def inputSel_whether_recover_power_cut(self, index):
-        # self.click(*SuspectePowerCutLineQueryLocators.QRY_WHETHER_RECOVER_POWER_CUT)
+        # self.click(SuspectePowerCutLineQueryLocators.QRY_WHETHER_RECOVER_POWER_CUT)
         # locator = self.get_select_locator(SuspectePowerCutLineQueryLocators.QRY_WHETHER_RECOVER_POWER_CUT_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
@@ -48,24 +48,24 @@ class SuspectePowerCutLineQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*SuspectePowerCutLineQueryLocators.BTN_SEARCH)
+        self.click(SuspectePowerCutLineQueryLocators.BTN_SEARCH)
 
 
 # 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测→疑似停电对象查询
 class SuspectePowerCutObjectQueryPage(Page):
     # 是否线路停电
     def inputSel_whether_line_power_cut(self, index):
-        # self.click(*SuspectePowerCutObjectQueryLocators.QRY_WHETHER_LINE_POWER_CUT)
+        # self.click(SuspectePowerCutObjectQueryLocators.QRY_WHETHER_LINE_POWER_CUT)
         # locator = self.get_select_locator(SuspectePowerCutObjectQueryLocators.QRY_WHETHER_LINE_POWER_CUT_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 对象类型
     def inputSel_object_type(self, index):
-        # self.click(*SuspectePowerCutObjectQueryLocators.QRY_OBJECT_TYPE)
+        # self.click(SuspectePowerCutObjectQueryLocators.QRY_OBJECT_TYPE)
         # locator = self.get_select_locator(SuspectePowerCutObjectQueryLocators.QRY_OBJECT_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
@@ -76,4 +76,4 @@ class SuspectePowerCutObjectQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*SuspectePowerCutObjectQueryLocators.BTN_SEARCH)
+        self.click(SuspectePowerCutObjectQueryLocators.BTN_SEARCH)

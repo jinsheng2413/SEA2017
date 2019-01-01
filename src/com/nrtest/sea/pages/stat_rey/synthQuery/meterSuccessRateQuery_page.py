@@ -23,27 +23,25 @@ class MeterSuccessRateQueryPage(Page):
     # 用户类型
     def inputCSel_factory_cons_type(self, index):
         if index == 'c':
-            self._find_element(
-                *MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
+            self._find_element(MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
         else:
-            self.click(*MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
+            self.click(MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
             locator = self.get_select_locator(
                 MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE_VALUE, index)
-            self.click(*locator)
-            self.click(*MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
+            self.click(locator)
+            self.click(MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
 
     # 终端类型
     def inputCSel_factory_tmnl_type(self, index):
         if index == 'c':
-            self._find_element(
-                *MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
+            self._find_element(MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
         else:
-            self.click(*MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
+            self.click(MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
             locator = self.get_select_locator(
                 MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE_VALUE, index)
-            self.click(*locator)
-            self.click(*MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
+            self.click(locator)
+            self.click(MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
 
     # 查询按钮
     def factory_btn_search(self):
-        self.click(*MeterSuccessRateQueryLocators.FACTORY_BTN_SEARCH)
+        self.click(MeterSuccessRateQueryLocators.FACTORY_BTN_SEARCH)

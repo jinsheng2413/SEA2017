@@ -27,14 +27,14 @@ class DistributedEnergyMonitorStatisticsPage(Page):
 
     # 发电类型
     def inputSel_elec_type(self, index):
-        self.click(*DistributedEnergyMonitorStatisticsLocators.QRY_ELEC_TYPE)
+        self.click(DistributedEnergyMonitorStatisticsLocators.QRY_ELEC_TYPE)
         locator = self.get_select_locator(
             DistributedEnergyMonitorStatisticsLocators.QRY_ELEC_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DistributedEnergyMonitorStatisticsLocators.BTN_SEARCH)
+        self.click(DistributedEnergyMonitorStatisticsLocators.BTN_SEARCH)
 
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测→分布式电源采集监测明细
@@ -58,24 +58,24 @@ class DistributedEnergyMonitorDetailPage(Page):
 
     # 发电类型
     def inputSel_elec_type(self, index):
-        self.click(*DistributedEnergyMonitorDetailLocators.QRY_ELEC_TYPE)
+        self.click(DistributedEnergyMonitorDetailLocators.QRY_ELEC_TYPE)
         locator = self.get_select_locator(
             DistributedEnergyMonitorDetailLocators.QRY_ELEC_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DistributedEnergyMonitorDetailLocators.BTN_SEARCH)
+        self.click(DistributedEnergyMonitorDetailLocators.BTN_SEARCH)
 
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测→分布式电源采集成功率
 class DistributedEnergySuccessRatePage(Page):
     # 用户类型
     def inputSel_cons_type(self, index):
-        self.click(*DistributedEnergySuccessRateLocators.QRY_CONS_TYPE)
+        self.click(DistributedEnergySuccessRateLocators.QRY_CONS_TYPE)
         locator = self.get_select_locator(
             DistributedEnergySuccessRateLocators.QRY_CONS_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询日期
     def inputDt_date(self, content):
@@ -84,7 +84,7 @@ class DistributedEnergySuccessRatePage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DistributedEnergySuccessRateLocators.BTN_SEARCH)
+        self.click(DistributedEnergySuccessRateLocators.BTN_SEARCH)
 
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测→分布式电源用户抄表失败明细
@@ -92,13 +92,13 @@ class DistributedEnergyUserFailedPage(Page):
     # 用户类型
     def inputSel_cons_type(self, index):
         if index == 'c':
-            self._find_element(*DistributedEnergyUserFailedLocators.QRY_CONS_TYPE)
+            self._find_element(DistributedEnergyUserFailedLocators.QRY_CONS_TYPE)
         else:
-            self.click(*DistributedEnergyUserFailedLocators.QRY_CONS_TYPE)
+            self.click(DistributedEnergyUserFailedLocators.QRY_CONS_TYPE)
             locator = self.get_select_locator(
                 DistributedEnergyUserFailedLocators.QRY_CONS_TYPE_VALUE, index)
-            self.click(*locator)
-            self.click(*DistributedEnergyUserFailedLocators.QRY_CONS_TYPE)
+            self.click(locator)
+            self.click(DistributedEnergyUserFailedLocators.QRY_CONS_TYPE)
 
     # 电能表资产编号
     def inputStr_meter_asset_no(self, content):
@@ -119,4 +119,4 @@ class DistributedEnergyUserFailedPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DistributedEnergyUserFailedLocators.BTN_SEARCH)
+        self.click(DistributedEnergyUserFailedLocators.BTN_SEARCH)

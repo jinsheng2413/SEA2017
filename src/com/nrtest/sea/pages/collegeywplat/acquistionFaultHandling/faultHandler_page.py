@@ -18,16 +18,16 @@ from com.nrtest.sea.locators.run_man.collegeywplat.acquistionFaultHandling.fault
 class FaultSpecificPowerDealPage(Page):
     # 故障严重程度
     def inputSel_faultSeverity(self, options):
-        # self.click(*FaultHandlerLocators.QRY_FAULT_SEVERITY)
+        # self.click(FaultHandlerLocators.QRY_FAULT_SEVERITY)
         # locator = self.get_select_locator(FaultHandlerLocators.QRY_FAULT_SEVERITY_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 故障来源
     def inputSel_faultFrom(self, options):
-        # self.click(*FaultHandlerLocators.QRY_FAULT_FROM)
+        # self.click(FaultHandlerLocators.QRY_FAULT_FROM)
         # locator = self.get_select_locator(FaultHandlerLocators.QRY_FAULT_FROM_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 故障开始日期
@@ -37,9 +37,9 @@ class FaultSpecificPowerDealPage(Page):
 
     # 流程状态
     def inputSel_process(self, options):
-        # self.click(*FaultHandlerLocators.QRY_PROCESS_STAUS)
+        # self.click(FaultHandlerLocators.QRY_PROCESS_STAUS)
         # locator = self.get_select_locator(FaultHandlerLocators.QRY_PROCESS_STAUS_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 故障结束日期
@@ -53,23 +53,23 @@ class FaultSpecificPowerDealPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*FaultHandlerLocators.BTN_QRY)
+        # self.click(FaultHandlerLocators.BTN_QRY)
         self.btn_query(True)
 
 
 class FaultSpecificPowerFeedbackPage(Page):
     # 故障严重程度
     def inputSel_faultSeverity(self, options):
-        # self.click(*FaultFeedBackLocators.QRY_FAULT_SEVERITY)
+        # self.click(FaultFeedBackLocators.QRY_FAULT_SEVERITY)
         # locator = self.get_select_locator(FaultFeedBackLocators.QRY_FAULT_SEVERITY_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障来源
     def inputSel_faultFrom(self, options):
-        # self.click(*FaultFeedBackLocators.QRY_FAULT_FROM)
+        # self.click(FaultFeedBackLocators.QRY_FAULT_FROM)
         # locator = self.get_select_locator(FaultFeedBackLocators.QRY_FAULT_FROM_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障开始日期
@@ -79,9 +79,9 @@ class FaultSpecificPowerFeedbackPage(Page):
 
     # 流程状态
     def inputSel_process(self, options):
-        # self.click(*FaultFeedBackLocators.QRY_PROCESS_STAUS)
+        # self.click(FaultFeedBackLocators.QRY_PROCESS_STAUS)
         # locator = self.get_select_locator(FaultFeedBackLocators.QRY_PROCESS_STAUS_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障结束日期
@@ -95,5 +95,5 @@ class FaultSpecificPowerFeedbackPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*FaultFeedBackLocators.BTN_QRY)
+        # self.click(FaultFeedBackLocators.BTN_QRY)
         self.btn_query(True)

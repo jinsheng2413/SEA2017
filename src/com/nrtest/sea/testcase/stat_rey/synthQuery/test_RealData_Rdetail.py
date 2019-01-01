@@ -80,7 +80,7 @@ class TestRealData_Rdetail(unittest.TestCase, RealDataPage):
         self.btn_rdetail_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*)
+        # result = self.assert_context()
         # self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(SynthQuery_data.realData_para, SynthQuery_data.realData_rdetail_tab))

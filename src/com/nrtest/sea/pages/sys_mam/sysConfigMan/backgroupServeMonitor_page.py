@@ -26,14 +26,14 @@ class BackgroupServeMonitorPage(Page):
 
     # 运行状态
     def inputSel_operation_stat(self, option):
-        # self.click(*BackgroupServeMonitorLocators.QRY_OPERATION_STAT)
+        # self.click(BackgroupServeMonitorLocators.QRY_OPERATION_STAT)
         # locator = self.get_select_locator(BackgroupServeMonitorLocators.QRY_OPERATION_STAT_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option, True)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*BackgroupServeMonitorLocators.BTN_SEARCH)
+        # self.click(BackgroupServeMonitorLocators.BTN_SEARCH)
         self.btn_query(True)
 
 
@@ -59,5 +59,5 @@ class BackgroupServeMonitorDetailPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*BackgroupServeMonitorDetailLocators.BTN_SEARCH)
+        # self.click(BackgroupServeMonitorDetailLocators.BTN_SEARCH)
         self.btn_query(True)

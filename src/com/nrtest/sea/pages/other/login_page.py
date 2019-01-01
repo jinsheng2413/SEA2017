@@ -26,4 +26,4 @@ class LoginPage(Page):
 
     # 点击登录按钮
     def btn_login(self):
-        self.click(*LoginPageLocators.BTN_LOGIN)
+        self.click(LoginPageLocators.BTN_LOGIN)

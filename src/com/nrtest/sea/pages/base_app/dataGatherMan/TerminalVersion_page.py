@@ -28,4 +28,4 @@ class TerminalVersionPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*TerminalVersionLocators.BTN_QRY)
+        self.click(TerminalVersionLocators.BTN_QRY)

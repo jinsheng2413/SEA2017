@@ -72,7 +72,7 @@ class TestLoseCountPowerMan(unittest.TestCase, LoseCountPowerManPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LoseCountPowerManLocators.TAB_ONE)
+        result = self.assert_context(LoseCountPowerManLocators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

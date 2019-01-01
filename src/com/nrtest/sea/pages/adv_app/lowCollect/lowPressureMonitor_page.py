@@ -23,13 +23,13 @@ class LowPressureMonitor_Page(Page):
 
     # 用户定义类别
     def inputSel_cons_define_type(self, options):
-        # self.click(*LowPressureMonitor_Locators.QRY_CONS_DEFINE_TYPE)
+        # self.click(LowPressureMonitor_Locators.QRY_CONS_DEFINE_TYPE)
         # locator = self.get_select_locator(
         #     LowPressureMonitor_Locators.QRY_CONS_DEFINE_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 查询
     def btn_qry(self):
-        #self.click(*LowPressureMonitor_Locators.BTN_QUERY)
+        # self.click(LowPressureMonitor_Locators.BTN_QUERY)
         self.btn_query()

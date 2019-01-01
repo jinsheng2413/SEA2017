@@ -21,7 +21,7 @@ class OutRanksManPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*OutNameTroopLocators.BTN_QRY)
+        # self.click(OutNameTroopLocators.BTN_QRY)
         self.btn_query()
 
 # 外包队伍成员管理
@@ -33,5 +33,5 @@ class OutMemberManPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*OutNameTroopMemberLocators.BTN_QRY)
+        # self.click(OutNameTroopMemberLocators.BTN_QRY)
         self.btn_query(True)

@@ -72,7 +72,7 @@ class TestSysBasicParaSet(TestCase, SysAbnormalParaSetPage):
         sleep(2)
 
     #     # 校验
-    #     result = self.assert_context(*SysAbnormalParaSetLocators.CHECK_FIRST)
+    #     result = self.assert_context(SysAbnormalParaSetLocators.CHECK_FIRST)
     #     self.assertTrue(result)
     #
     # @BeautifulReport.add_test_img()

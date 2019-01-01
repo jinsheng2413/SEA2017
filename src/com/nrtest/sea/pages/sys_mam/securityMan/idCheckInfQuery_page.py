@@ -28,13 +28,13 @@ class IdCheckInfQueryPage(Page):
 
     # 审核结果
     def inputSel_result(self, option):
-        # self.click(*IdCheckInfQueryLocators.QRY_RESULT)
+        # self.click(IdCheckInfQueryLocators.QRY_RESULT)
         # locator = self.get_select_locator(IdCheckInfQueryLocators.QRY_RESULT_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(option)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*IdCheckInfQueryLocators.BTN_SEARCH)
+        # self.click(IdCheckInfQueryLocators.BTN_SEARCH)
         self.btn_query()

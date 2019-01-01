@@ -61,7 +61,7 @@ class TestUserCollectStatistics2017(unittest.TestCase, UserCollectStatistics2017
         # 查询按钮
         self.btn_search()
         # #校验
-        # result = self.assert_context(*UserCollectStatisticsLocators.CHECK_FIRST)
+        # result = self.assert_context(UserCollectStatisticsLocators.CHECK_FIRST)
         # self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(CollConstructStatus_data.UserCollectStatistics2017_para))

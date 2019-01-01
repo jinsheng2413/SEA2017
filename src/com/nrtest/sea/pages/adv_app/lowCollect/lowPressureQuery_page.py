@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.lowCollect.lowPressureQuery_locators import LowPressureQuery_Locators
 
 
 class LowPressureQuery_Page(Page):
@@ -31,5 +30,5 @@ class LowPressureQuery_Page(Page):
 
     # 查询
     def btn_qry(self):
-        #self.click(*LowPressureQuery_Locators.BTN_QUERY)
+        # self.click(LowPressureQuery_Locators.BTN_QUERY)
         self.btn_query()

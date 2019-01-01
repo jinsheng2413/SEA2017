@@ -16,11 +16,11 @@ from com.nrtest.sea.locators.stat_rey.synthQuery.lineTopologyDiagram_locators im
 class LineTopoLogyDiagramPage(Page):
     # 线路名称
     def inputSel_line_name(self, index):
-        self.click(*LineTopologyDiagramLocators.LINE_NAME)
+        self.click(LineTopologyDiagramLocators.LINE_NAME)
         locator = self.get_select_locator(
             LineTopologyDiagramLocators.LINE_NAME_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*LineTopologyDiagramLocators.BTN_SEARCH)
+        self.click(LineTopologyDiagramLocators.BTN_SEARCH)

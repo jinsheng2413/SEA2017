@@ -31,4 +31,4 @@ class scriptResultStatPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*ScriptResultDetailLocators.BTN_QRY)
+        self.click(ScriptResultDetailLocators.BTN_QRY)

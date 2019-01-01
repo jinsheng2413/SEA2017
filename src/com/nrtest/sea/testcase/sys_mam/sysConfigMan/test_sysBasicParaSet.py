@@ -71,7 +71,7 @@ class TestSysBasicParaSet(TestCase, SysBasicParaSetPage):
         sleep(2)
 
     #     # 校验
-    #     result = self.assert_context(*SysBasicParaSetLocators.CHECK_FIRST)
+    #     result = self.assert_context(SysBasicParaSetLocators.CHECK_FIRST)
     #     self.assertTrue(result)
     #
     # @BeautifulReport.add_test_img()

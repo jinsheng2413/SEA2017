@@ -21,21 +21,21 @@ class DistributedEnergyElectricTrendPage(Page):
 
     # 发电类型
     def inputSel_elec_type(self, index):
-        self.click(*DistributedEnergyElectricTrendLocators.QRY_ELEC_TYPE)
+        self.click(DistributedEnergyElectricTrendLocators.QRY_ELEC_TYPE)
         locator = self.get_select_locator(
             DistributedEnergyElectricTrendLocators.QRY_ELEC_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 发电量消纳方式
     def inputSel_abso_type(self, index):
-        self.click(*DistributedEnergyElectricTrendLocators.QRY_ABSO_MODE)
+        self.click(DistributedEnergyElectricTrendLocators.QRY_ABSO_MODE)
         locator = self.get_select_locator(
             DistributedEnergyElectricTrendLocators.QRY_ABSO_MODE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DistributedEnergyElectricTrendLocators.BTN_SEARCH)
+        self.click(DistributedEnergyElectricTrendLocators.BTN_SEARCH)
 
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测→分布式电源电量监测统计
@@ -47,45 +47,45 @@ class DistributedEnergyElectricStatPage(Page):
 
     # 发电类型
     def inputSel_elec_type(self, index):
-        self.click(*DistributedEnergyElectricStatLocators.QRY_ELEC_TYPE)
+        self.click(DistributedEnergyElectricStatLocators.QRY_ELEC_TYPE)
         locator = self.get_select_locator(
             DistributedEnergyElectricStatLocators.QRY_ELEC_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 发电量消纳方式
     def inputSel_abso_type(self, index):
-        self.click(*DistributedEnergyElectricStatLocators.QRY_ABSO_MODE)
+        self.click(DistributedEnergyElectricStatLocators.QRY_ABSO_MODE)
         locator = self.get_select_locator(
             DistributedEnergyElectricStatLocators.QRY_ABSO_MODE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DistributedEnergyElectricStatLocators.BTN_SEARCH)
+        self.click(DistributedEnergyElectricStatLocators.BTN_SEARCH)
 
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测→分布式电源电量监测明细
 class DistributedEnergyElectricDetailPage(Page):
     # 电能表用途
     def inputSel_meter_purpose(self, index):
-        self.click(*DistributedEnergyElectricDetailLocators.QRY_METER_PURPOSE)
+        self.click(DistributedEnergyElectricDetailLocators.QRY_METER_PURPOSE)
         locator = self.get_select_locator(
             DistributedEnergyElectricDetailLocators.QRY_METER_PURPOSE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 发电量消纳方式
     def inputSel_abso_type(self, index):
-        self.click(*DistributedEnergyElectricDetailLocators.QRY_ABSO_MODE)
+        self.click(DistributedEnergyElectricDetailLocators.QRY_ABSO_MODE)
         locator = self.get_select_locator(
             DistributedEnergyElectricDetailLocators.QRY_ABSO_MODE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 发电类型
     def inputSel_elec_type(self, index):
-        self.click(*DistributedEnergyElectricDetailLocators.QRY_ELEC_TYPE)
+        self.click(DistributedEnergyElectricDetailLocators.QRY_ELEC_TYPE)
         locator = self.get_select_locator(
             DistributedEnergyElectricDetailLocators.QRY_ELEC_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 日期
     def inputDt_date(self, content):
@@ -94,31 +94,31 @@ class DistributedEnergyElectricDetailPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DistributedEnergyElectricDetailLocators.BTN_SEARCH)
+        self.click(DistributedEnergyElectricDetailLocators.BTN_SEARCH)
 
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测→分布式电源抄表示数查询
 class DistributedEnergyQueryPage(Page):
     # 电能表用途
     def inputSel_meter_purpose(self, index):
-        self.click(*DistributedEnergyQueryLocators.QRY_METER_PURPOSE)
+        self.click(DistributedEnergyQueryLocators.QRY_METER_PURPOSE)
         locator = self.get_select_locator(
             DistributedEnergyQueryLocators.QRY_METER_PURPOSE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 发电类型
     def inputSel_elec_type(self, index):
-        self.click(*DistributedEnergyQueryLocators.QRY_ELEC_TYPE)
+        self.click(DistributedEnergyQueryLocators.QRY_ELEC_TYPE)
         locator = self.get_select_locator(
             DistributedEnergyQueryLocators.QRY_ELEC_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 发电量消纳方式
     def inputSel_abso_type(self, index):
-        self.click(*DistributedEnergyQueryLocators.QRY_ABSO_MODE)
+        self.click(DistributedEnergyQueryLocators.QRY_ABSO_MODE)
         locator = self.get_select_locator(
             DistributedEnergyQueryLocators.QRY_ABSO_MODE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 开始日期
     def inputDt_start_date(self, content):
@@ -132,4 +132,4 @@ class DistributedEnergyQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*DistributedEnergyQueryLocators.BTN_SEARCH)
+        self.click(DistributedEnergyQueryLocators.BTN_SEARCH)

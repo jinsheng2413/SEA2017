@@ -21,9 +21,9 @@ class ScriptCheckTaskSetPage(Page):
         # if name == '1':
         # self.clearInput(*ScriptCheckTaskSetLocators.QRY_TASK_STATUS)
         # else:
-        # self.click(*ScriptCheckTaskSetLocators.QRY_TASK_STATUS)
+        # self.click(ScriptCheckTaskSetLocators.QRY_TASK_STATUS)
         # locator = self.get_select_locator(ScriptCheckTaskSetLocators.QRY_TASK_STATUS_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
 
         self.selectCheckBox(name)
     # 脚本名称
@@ -37,9 +37,9 @@ class ScriptCheckTaskSetPage(Page):
         # if name == '1':
         # self.clearInput(*ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE)
         # else:
-        # self.click(*ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE)
+        # self.click(ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE)
         # locator = self.get_select_locator(ScriptCheckTaskSetLocators.QRY_SCRIPT_TYPE_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
 
         self.selectCheckBox(name)
     # 创建员工
@@ -51,4 +51,4 @@ class ScriptCheckTaskSetPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*ScriptCheckTaskSetLocators.BTN_QRY)
+        self.click(ScriptCheckTaskSetLocators.BTN_QRY)

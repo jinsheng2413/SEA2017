@@ -58,12 +58,12 @@ class Test_TnmlSimFlowJB_2(unittest.TestCase, TmnlSimFlowJB_2Page):
         # 开始日期
         self.inputStr_date(para['DATE'])
         # 点击零流量
-        self.click(*TmnlSimFlowJB_2Locators.QRY_ZERO_FLOW)
+        self.click(TmnlSimFlowJB_2Locators.QRY_ZERO_FLOW)
 
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        result = self.assert_context(*TmnlSimFlowJB_2Locators.TAB_ONE)
+        result = self.assert_context(TmnlSimFlowJB_2Locators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

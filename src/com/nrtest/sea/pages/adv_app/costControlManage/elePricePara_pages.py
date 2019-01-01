@@ -34,19 +34,19 @@ class ElePricePages(Page):
 
     # 任务类型
     def inputSel_task_cata(self, index):
-        self.click(*ElePricePara_locators.QRY_TASK_CATA)
+        self.click(ElePricePara_locators.QRY_TASK_CATA)
         locator = self.get_select_locator(
             ElePricePara_locators.QRY_TASK_CATA_VALUE, index)
         # print(locator)
-        self.click(*locator)
+        self.click(locator)
 
     # 执行状态
     def inputSel_execute_state(self, index):
-        self.click(*ElePricePara_locators.QRY_EXECUTE_STATE)
+        self.click(ElePricePara_locators.QRY_EXECUTE_STATE)
         locator = self.get_select_locator(
             ElePricePara_locators.QRY_EXECUTE_STATE_VALUE, index)
         # print(locator)
-        self.click(*locator)
+        self.click(locator)
 
     # 接收时间
     def inputStr_receive_time(self, value):
@@ -58,4 +58,4 @@ class ElePricePages(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*ElePricePara_locators.BTN_QRY)
+        self.click(ElePricePara_locators.BTN_QRY)

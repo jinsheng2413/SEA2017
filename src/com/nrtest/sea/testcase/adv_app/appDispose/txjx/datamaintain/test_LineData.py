@@ -63,7 +63,7 @@ class TestDemo(unittest.TestCase, LineDataPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LineDataLocators.TAB_ONE)
+        result = self.assert_context(LineDataLocators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

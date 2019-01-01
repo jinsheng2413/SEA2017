@@ -24,7 +24,7 @@ class ReadTimePowerCutMonitorPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*ReadTimePowerCutMonitorLocators.BTN_SEARCH)
+        # self.click(ReadTimePowerCutMonitorLocators.BTN_SEARCH)
         self.btn_query()
 
 # 高级应用→配变监测分析→停电分析→实时停电监测→实时停电明细
@@ -37,21 +37,21 @@ class ReadTimePowerCutDetailPage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, index):
-        # self.click(*ReadTimePowerCutDetailLocators.QRY_CONS_TYPE)
+        # self.click(ReadTimePowerCutDetailLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(ReadTimePowerCutDetailLocators.QRY_CONS_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 信息推送
     def inputSel_information_push(self, index):
-        # self.click(*ReadTimePowerCutDetailLocators.QRY_INFORMATION_PUSH)
+        # self.click(ReadTimePowerCutDetailLocators.QRY_INFORMATION_PUSH)
         # locator = self.get_select_locator(ReadTimePowerCutDetailLocators.QRY_INFORMATION_PUSH_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*ReadTimePowerCutDetailLocators.BTN_SEARCH)
+        # self.click(ReadTimePowerCutDetailLocators.BTN_SEARCH)
         self.btn_query(True)

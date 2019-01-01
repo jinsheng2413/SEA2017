@@ -41,7 +41,7 @@ class MenuPage(Page):
     #         if (l == 4 and i == 2) or (l == 5 and i in (2, 3)):
     #             self.hover(*loc)
     #         else:
-    #             self.click(*loc)
+    #             self.click(loc)
     #     return self.driver
 
     @staticmethod
@@ -76,27 +76,27 @@ class MenuPage(Page):
                 locators = getattr(MenuLocators, 'MENU_LEVEL' + str(i + 1))
                 loc = (locators[0], locators[1] % items[i])
                 if (item_cnt == 4 and i == 2) or (item_cnt == 5 and i in (2, 3)):
-                    self.hover(*loc)
+                    self.hover(loc)
                 else:
-                    self.click(*loc)
+                    self.click(loc)
 
         return self.driver
 
     # 左边树
     def btn_plus(self, index):
         locator = self.get_select_locator(MenuLocators.BTN_LEFT_PLUS, index)
-        self.click(*locator)
+        self.click(locator)
 
     def btn_company_plus(self, index):
         locator = self.get_select_locator(MenuLocators.BTN_COMPANY_PLUS, index)
         print(locator)
-        self.click(*locator)
+        self.click(locator)
 
     def btn_select_province(self):
         """
         选择省份
         """
-        self.click(*MenuLocators.BTN_LEFT_MENU_ELETRIC)
+        self.click(MenuLocators.BTN_LEFT_MENU_ELETRIC)
 
     def btn_select_company(self, number):
         """
@@ -105,13 +105,13 @@ class MenuPage(Page):
         """
         nb = number + 1
         lr = self.get_select_locator(MenuLocators.BTN_COMPANY, nb)
-        self.click(*lr)
+        self.click(lr)
 
     def btn_left_arrow(self):
         """
         点击双向箭头
         """
-        self.click(*MenuLocators.BTN_LEFT_MENU)
+        self.click(MenuLocators.BTN_LEFT_MENU)
 
     def btn_select_county(self, index):
         """
@@ -119,7 +119,7 @@ class MenuPage(Page):
         :param index:
         """
         lr = self.get_select_locator(MenuLocators.BTN_COUNTY, index)
-        self.click(*lr)
+        self.click(lr)
 
     def page_assert_body(self):
         op = self.assert_body('电网结构')
@@ -131,7 +131,7 @@ class MenuPage(Page):
         :param index:
         """
         lr = self.get_select_locator(MenuLocators.BTN_COUNTY_AND_USER, index)
-        self.click(*lr)
+        self.click(lr)
 
     def btn_suitable_arrow(self):
         hp = self.page_assert_body()
@@ -186,22 +186,22 @@ class MenuPage(Page):
         #{02:代表用户编号，03：代表终端逻辑地址，04：电能表资产号}
 
         # 点击用户标签页
-        self.click(*MenuLocators.NODE_USER)
+        self.click(MenuLocators.NODE_USER)
         self.input(node_value, *MenuLocators.NODE[node_flag])
 
         # 点击查询按钮
-        self.click(*MenuLocators.USER_TAB_BTN_QRY)
+        self.click(MenuLocators.USER_TAB_BTN_QRY)
 
         # 等待查询结果，最好通过其他途径判断查询已返回
         self.commonWait(MenuLocators.NODE_USER_TAB_RSLT_DEFAULT)
-        self.clear(*MenuLocators.NODE[node_flag])
+        self.clear(MenuLocators.NODE[node_flag])
 
 
         # 定位查询结果，默认选择第一行记录
         xpath = self.format_xpath(MenuLocators.NODE_USER_TAB_RSLT, number)
         print(xpath)
 
-        self.click(*xpath)
+        self.click(xpath)
         print('------------')
 
     # def clickLeftTree(self, tree):

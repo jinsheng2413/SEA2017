@@ -16,19 +16,19 @@ from com.nrtest.sea.locators.adv_app.costControlManage.remoteCustControl.newPreP
 class NewPrePaidStatusPage(Page):
     # 控制类别
     def inputRSel_controlType_one(self, name):
-        # self.click(*NewPrePaidStatusLocators.QRY_CONTROL_TYPE_ONE)
+        # self.click(NewPrePaidStatusLocators.QRY_CONTROL_TYPE_ONE)
         # locator = self.get_select_locator(
         # NewPrePaidStatusLocators.QRY_CONTROL_TYPE_VALUE_ONE, name)
         # print(locator)
-        # self.click(*locator)
+        # self.click(locator)
 
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
     def inputRSel_controlType_Two(self, name):
-        # self.click(*NewPrePaidStatusLocators.QRY_CONTROL_TYPE_TWO)
+        # self.click(NewPrePaidStatusLocators.QRY_CONTROL_TYPE_TWO)
         # locator = self.get_select_locator(
         # NewPrePaidStatusLocators.QRY_CONTROL_TYPE_VALUE_TWO, name)
         # print(locator)
-        # self.click(*locator)
+        # self.click(locator)
 
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
     # 开始时间
@@ -55,7 +55,7 @@ class NewPrePaidStatusPage(Page):
 
     # 查询
     def btn_qryOne(self):
-        self.click(*NewPrePaidStatusLocators.BTN_QRY_ONE)
+        self.click(NewPrePaidStatusLocators.BTN_QRY_ONE)
 
     def btn_qryTwo(self):
-        self.click(*NewPrePaidStatusLocators.BTN_QRY_TWO)
+        self.click(NewPrePaidStatusLocators.BTN_QRY_TWO)

@@ -16,12 +16,12 @@ class FourTabStatusPage(Page):
 
     # 用户状态
     def inputSel_userState(self, name):
-        self.click(*FourTabStatusLocators.QRY_USER_STATE)
+        self.click(FourTabStatusLocators.QRY_USER_STATE)
         locator = self.get_select_locator(
             FourTabStatusLocators.QRY_USER_STATE_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
         # 查询
 
     def btn_qry(self):
-        self.click(*FourTabStatusLocators.BTN_QRY)
+        self.click(FourTabStatusLocators.BTN_QRY)

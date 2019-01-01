@@ -27,5 +27,5 @@ class SecurityQueryAndDeletePage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*SecurityQueryAndDeleteLocators.BTN_SEARCH)
+        # self.click(SecurityQueryAndDeleteLocators.BTN_SEARCH)
         self.btn_query()

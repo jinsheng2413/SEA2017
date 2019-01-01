@@ -25,7 +25,7 @@ class FlowStaticPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*FlowCountLocators.BTN_QRY)
+        # self.click(FlowCountLocators.BTN_QRY)
         self.btn_query()
 
 
@@ -39,7 +39,7 @@ class FlowDeatilPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*FlowDetailLocators.BTN_QRY)
+        # self.click(FlowDetailLocators.BTN_QRY)
         self.btn_query(True)
 
 
@@ -71,5 +71,5 @@ class OverFlowStaticPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*SIMFlowCountLocators.BTN_QRY)
+        # self.click(SIMFlowCountLocators.BTN_QRY)
         self.btn_query(True)

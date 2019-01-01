@@ -54,11 +54,11 @@ class Test_ManualEditQH(unittest.TestCase, ManualEditQHPage):
         # 日期
         self.inputStr_date(para['DATE'])
         # 点击正向有功总为空
-        self.click(*ManualEditQH_Locators.QRY_IS_EMPTY)
+        self.click(ManualEditQH_Locators.QRY_IS_EMPTY)
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        result = self.assert_context(*ManualEditQH_Locators.TAB_ONE)
+        result = self.assert_context(ManualEditQH_Locators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

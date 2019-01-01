@@ -20,10 +20,10 @@ class EventRecResultStatPage(Page):
 
     # 事件类型
     def inputSel_event_type(self, name):
-        self.click(*EventRecResultStatLocators.QRY_EVENT_TYPE)
+        self.click(EventRecResultStatLocators.QRY_EVENT_TYPE)
         locator = self.get_select_locator(
             EventRecResultStatLocators.QRY_EVENT_TYPE_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 结束时间
     def inputStr_end_time(self, value):
@@ -31,4 +31,4 @@ class EventRecResultStatPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*EventRecResultStatLocators.BTN_QRY)
+        self.click(EventRecResultStatLocators.BTN_QRY)

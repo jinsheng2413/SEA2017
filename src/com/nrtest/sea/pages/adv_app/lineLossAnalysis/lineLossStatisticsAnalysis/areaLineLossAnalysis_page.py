@@ -22,4 +22,4 @@ class AreaLineLossAnalysisPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*AreaLineLossAnalysisLocators.BTN_SEARCH)
+        self.click(AreaLineLossAnalysisLocators.BTN_SEARCH)

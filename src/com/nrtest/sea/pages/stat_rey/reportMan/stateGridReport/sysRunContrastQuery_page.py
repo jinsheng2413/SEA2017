@@ -21,12 +21,12 @@ class SysRunContrastQueryPage(Page):
     # 统计口径
 
     def inputSel_statWay(self, option):
-        # self.click(*SysRunContrastQueryLocators.QRY_STAT_WAY)
+        # self.click(SysRunContrastQueryLocators.QRY_STAT_WAY)
         # locator = self.get_select_locator(SysRunContrastQueryLocators.QRY_STAT_WAY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 查询
     def btn_qry(self):
-        # self.click(*SysRunContrastQueryLocators.BTN_QRY)
+        # self.click(SysRunContrastQueryLocators.BTN_QRY)
         self.btn_query()

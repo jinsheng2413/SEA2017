@@ -49,9 +49,9 @@ class Test_StrategicManualRecord(unittest.TestCase, StrategicManualRecordPage):
 
     def query(self, para):
         # 点击电网结构
-        self.click(*StrategicManualRecord_Locators.QRY_DWJG)
+        self.click(StrategicManualRecord_Locators.QRY_DWJG)
         # 点击供电单位
-        self.click(*StrategicManualRecord_Locators.QRY_ORG)
+        self.click(StrategicManualRecord_Locators.QRY_ORG)
         # 采集点名
         self.inputStr_gatherpoint_name(para['GATHERPOINT_NAME'])
         # 电表名称
@@ -63,7 +63,7 @@ class Test_StrategicManualRecord(unittest.TestCase, StrategicManualRecordPage):
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        result = self.assert_context(*StrategicManualRecord_Locators.TAB_ONE)
+        result = self.assert_context(StrategicManualRecord_Locators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

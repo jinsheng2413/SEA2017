@@ -15,16 +15,16 @@ from com.nrtest.common.base_page import Page
 class CountServeDeployPage(Page):
     # JOB名称
     def inputSel_job_name(self, option):
-        # self.click(*CountServeDeployLocators.QRY_JOB_NAME)
+        # self.click(CountServeDeployLocators.QRY_JOB_NAME)
         # locator = self.get_select_locator(CountServeDeployLocators.QRY_JOB_NAME_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 服务 名称
     def inputSel_serve_name(self, option):
-        # self.click(*CountServeDeployLocators.QRY_SERVE_NAME)
+        # self.click(CountServeDeployLocators.QRY_SERVE_NAME)
         # locator = self.get_select_locator(CountServeDeployLocators.QRY_SERVE_NAME_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 统计分类
@@ -33,5 +33,5 @@ class CountServeDeployPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*CountServeDeployLocators.BTN_SEARCH)
+        # self.click(CountServeDeployLocators.BTN_SEARCH)
         self.btn_query()

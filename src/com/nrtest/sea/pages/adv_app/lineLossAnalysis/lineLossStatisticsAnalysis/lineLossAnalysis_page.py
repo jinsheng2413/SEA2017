@@ -30,4 +30,4 @@ class LineLossAnalysisPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*LineLossAnalysisLocators.BTN_SEARCH)
+        self.click(LineLossAnalysisLocators.BTN_SEARCH)

@@ -60,7 +60,7 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CostControlManagePageLocators.TAB_ONE)
+        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 用户编号查询
@@ -77,7 +77,7 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CostControlManagePageLocators.TAB_ONE)
+        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 用户名称查询
@@ -94,7 +94,7 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CostControlManagePageLocators.TAB_ONE)
+        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 时间查询
@@ -109,7 +109,7 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CostControlManagePageLocators.TAB_ONE)
+        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 业务类型查询
@@ -125,7 +125,7 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CostControlManagePageLocators.TAB_ONE)
+        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 参数下发状态查询
@@ -141,5 +141,5 @@ class TestCostControlManage(unittest.TestCase, CostControlManagePage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CostControlManagePageLocators.TAB_ONE)
+        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
         self.assertTrue(result)

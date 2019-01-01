@@ -44,7 +44,7 @@ class Test_MInterfaceRunStatus2(unittest.TestCase, MInterfaceRunStatus2Page):
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        result = self.assert_context(*MInterfaceRunStatus2Locators.TAB_ONE)
+        result = self.assert_context(MInterfaceRunStatus2Locators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

@@ -18,10 +18,10 @@ class PowerSortAnalysePage(Page):
 
     # 用户类型
     def inputSel_userType(self, options):
-        # self.click(*PowerSortAnalyseLocators.QRY_USER_TYPE)
+        # self.click(PowerSortAnalyseLocators.QRY_USER_TYPE)
         # locator = self.get_select_locator(
         #     PowerSortAnalyseLocators.QRY__USER_TYPE_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
     # 开始时间
     def inputStr_start_time(self, value):
@@ -34,5 +34,5 @@ class PowerSortAnalysePage(Page):
         # 查询
 
     def btn_qry(self):
-        # self.click(*PowerSortAnalyseLocators.BTN_QRY)
+        # self.click(PowerSortAnalyseLocators.BTN_QRY)
         self.btn_query()

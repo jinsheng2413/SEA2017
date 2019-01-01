@@ -30,9 +30,9 @@ class SysDictManPage(Page):
 
     # 维护类型--打开并选择
     def inputRSel_cons_type(self, option):
-        # self.click(*SysDictManLocators.EDIT_TYPE_SEL)
+        # self.click(SysDictManLocators.EDIT_TYPE_SEL)
         # locator = self.get_select_locator(SysDictManLocators.EDIT_TYPE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
     # 维护人员
     def inputStr_editor(self, content):
@@ -41,11 +41,11 @@ class SysDictManPage(Page):
 
     # 维护类型--打开并选择
     def inputRSel_data_source(self, option):
-        # self.click(*SysDictManLocators.DATA_SOURCE_SEL)
+        # self.click(SysDictManLocators.DATA_SOURCE_SEL)
         # locator = self.get_select_locator(SysDictManLocators.DATA_SOURCE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
     # 点击查询
     def btn_search(self):
-        # self.click(*SysDictManLocators.BTN_QUERY)
+        # self.click(SysDictManLocators.BTN_QUERY)
         self.btn_query()

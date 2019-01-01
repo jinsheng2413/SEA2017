@@ -47,13 +47,12 @@ class CurCollectSuccessRatePage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*CurCollectSuccessRateLocators.BTN_QRY)
+        self.click(CurCollectSuccessRateLocators.BTN_QRY)
 
     # 统计查询
     def btn_count_qry(self):
-        self.click(*CurCollectSuccessRateLocators.BTN_QRY_COUNT)
+        self.click(CurCollectSuccessRateLocators.BTN_QRY_COUNT)
 
     # 明细查询
     def btn_detail_qry(self):
-        self.click(*CurCollectSuccessRateLocators.BTN_QRY_DETAIL)
-
+        self.click(CurCollectSuccessRateLocators.BTN_QRY_DETAIL)

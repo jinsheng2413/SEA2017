@@ -72,7 +72,7 @@ class TestUserOperationMonitor(unittest.TestCase, UserOperationMonitorPage):
 
     #     # 校验
     #     sleep(2)
-    #     result = self.assert_context(*UserOperationMonitorLocators.CHECK_FIRST)
+    #     result = self.assert_context(UserOperationMonitorLocators.CHECK_FIRST)
     #     self.assertTrue(result)
     #
     # @BeautifulReport.add_test_img()

@@ -15,6 +15,9 @@ from com.nrtest.common.base_page import Page
 
 
 class LineLossStatisticsQueryPage(Page):
+    day = 0
+    month = 0
+    year = 0
     # 线损分类
     def inputSel_line_loss_type(self, index):
         # self.click(*LineLossStatisticsQueryLocators.QRY_LINE_LOSS_TYPE)
@@ -41,6 +44,29 @@ class LineLossStatisticsQueryPage(Page):
         # self.exec_script(LineLossStatisticsQueryLocators.DATE_JS)
         # self.input(content, *LineLossStatisticsQueryLocators.QRY_DATE)
         self.inputDate(content)
+
+    # 起
+    def inputDT_from(self, name):
+        self.inputDate(name)
+
+    # 止
+    def inputDT_to(self, name):
+        self.input(name)
+
+    # 按底码
+    def inputChk_code(self, name):
+        self.clickSingleCheckBox(name)
+
+    # 月
+    def inputChl_qryType_month(self, name):
+        self.clickSingleCheckBox(name)
+        self.month = 1
+
+    # 日
+    def inputChl_qryType_day(self, name):
+        self.clickSingleCheckBox(name)
+        self.day = 1
+
 
     # 查询按钮
     def btn_search(self):

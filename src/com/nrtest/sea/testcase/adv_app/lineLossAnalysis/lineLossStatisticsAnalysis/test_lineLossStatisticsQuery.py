@@ -59,12 +59,21 @@ class TestLineLossStatisticsQuery(unittest.TestCase, LineLossStatisticsQueryPage
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 线损分类
+
         self.inputSel_line_loss_type(para['LINE_LOSS_TYPE'])
         # 线损率
         self.inputSel_line_loss_rate(para['LINE_LOSS_RATE'])
         # self.inputStr_line_loss_rate(para['LINE_LOSS_RATE_INPUT'])
-        # 日期
-        self.inputDt_date(para['DATE'])
+
+        if para['QRY_TYPE'].count('日') > 2:
+            self.inputChl_qryType_day(para['QRY_TYPE'])
+            # 日期
+            self.inputDt_date(para['DATE'])
+        elif para['QRY_TYPE_MONTH'].count('月') > 2:
+            self.inputChl_qryType_month(para['QRY_TYPE_MONTH'])
+            self.inputDT_from(para['FROM'])
+            self.sleep_time(2)
+            self.inputDT_to(para['TO'])
         # 查询按钮
         self.btn_search()
 
@@ -86,6 +95,7 @@ class TestLineLossStatisticsQuery(unittest.TestCase, LineLossStatisticsQueryPage
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossStatisticsQuery_para))
     def test_query(self, para):
+        print(para)
         self.start_case(para)
         self.query(para)
         self.assert_query_result(para)

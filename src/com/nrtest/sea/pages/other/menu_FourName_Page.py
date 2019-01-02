@@ -14,4 +14,4 @@ from com.nrtest.sea.locators.other.menu_four_name_locators import MenuFourNameLo
 class MenuFourNamePage(Page):
     # 右击工作台定制
     def btn_right_menu_four_monitor_cust(self):
-        self.rightClick(*MenuFourNameLocators.MONITOR_CUST)
+        self.rightClick(MenuFourNameLocators.MONITOR_CUST)

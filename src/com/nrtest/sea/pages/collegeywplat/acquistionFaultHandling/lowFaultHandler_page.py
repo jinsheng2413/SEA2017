@@ -14,7 +14,7 @@ from com.nrtest.sea.locators.run_man.collegeywplat.acquistionFaultHandling.lowFa
     LowFaultHandlerLocators,LowFaultFeedBackLocators
 
 
-#运行管理-->采集运维平台-->采集故障处理
+# 运行管理-->采集运维平台-->采集故障处理
 # 我的待办低压
 class FaultLowPowerMyTodoPage(Page):
     # 故障严重程度
@@ -30,16 +30,16 @@ class FaultLowPowerMyTodoPage(Page):
 class FaultLowPowerDealPage(Page):
     # 故障严重程度
     def inputSel_faultSeverity(self, options):
-        # self.click(*FaultHandlerLocators.QRY_FAULT_SEVERITY)
+        # self.click(FaultHandlerLocators.QRY_FAULT_SEVERITY)
         # locator = self.get_select_locator(FaultHandlerLocators.QRY_FAULT_SEVERITY_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 故障来源
     def inputSel_faultFrom(self, options):
-        # self.click(*FaultHandlerLocators.QRY_FAULT_FROM)
+        # self.click(FaultHandlerLocators.QRY_FAULT_FROM)
         # locator = self.get_select_locator(FaultHandlerLocators.QRY_FAULT_FROM_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 故障开始日期
@@ -49,9 +49,9 @@ class FaultLowPowerDealPage(Page):
 
     # 流程状态
     def inputSel_process(self, options):
-        # self.click(*FaultHandlerLocators.QRY_PROCESS_STAUS)
+        # self.click(FaultHandlerLocators.QRY_PROCESS_STAUS)
         # locator = self.get_select_locator(FaultHandlerLocators.QRY_PROCESS_STAUS_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 故障结束日期
@@ -65,7 +65,7 @@ class FaultLowPowerDealPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*FaultHandlerLocators.BTN_QRY)
+        # self.click(FaultHandlerLocators.BTN_QRY)
         self.btn_query(True)
 
 class FaultLowPowerFeedbackPage(Page):

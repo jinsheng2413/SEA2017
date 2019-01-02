@@ -25,13 +25,13 @@ class OperatorManPage(Page):
 
     # 当前状态
     def inputSel_cur_status(self, option):
-        # self.click(*OperatorManLocators.QRY_CUR_STATUS)
+        # self.click(OperatorManLocators.QRY_CUR_STATUS)
         # locator = self.get_select_locator(OperatorManLocators.QRY_CUR_STATUS_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     #
     # 查询按钮
     def btn_search(self):
-        # self.click(*OperatorManLocators.BTN_SEARCH)
+        # self.click(OperatorManLocators.BTN_SEARCH)
         self.btn_query()

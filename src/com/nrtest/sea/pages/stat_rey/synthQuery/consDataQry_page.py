@@ -22,4 +22,4 @@ class ConsDataQryPage(Page):
 
         # 查询
     def btn_qry(self):
-            self.click(*ConsDataQryLocators.BTN_QRY)
+        self.click(ConsDataQryLocators.BTN_QRY)

@@ -29,4 +29,4 @@ class BlackListQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*BlackListQueryLocators.BTN_SEARCH)
+        self.click(BlackListQueryLocators.BTN_SEARCH)

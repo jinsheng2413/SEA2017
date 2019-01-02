@@ -15,7 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
-from com.nrtest.sea.pages.sys_mam.logMan.logEdit_page import LogEditPage, LogEditLocators
+from com.nrtest.sea.pages.sys_mam.logMan.logEdit_page import LogEditPage
 from com.nrtest.sea.task.commonMath import *
 
 

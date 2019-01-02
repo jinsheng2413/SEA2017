@@ -18,6 +18,7 @@ from com.nrtest.sea.data.sys_mam.msgPush.msgPush_data import MsgPushData
 from com.nrtest.sea.pages.sys_mam.msgPush.monitorDeskCust_page import *
 from com.nrtest.sea.task.commonMath import *
 
+
 # 系统管理→信息定制→监控台定制
 @ddt
 class TestMonitorDeskCust(TestCase, MonitorDeskCustPage):

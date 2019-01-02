@@ -19,27 +19,27 @@ class BalanceCount_page(Page):
 
     # 查询按钮
     def btn_qry(self):
-        self.click(*BalanceCountLocator.BTN_QRY)
+        self.click(BalanceCountLocator.BTN_QRY)
 
     # 供电单位明细
     def btn_ele_company(self):
-        self.click(*BalanceCountLocator.TAB_ONE_ELE_COMPANY)
+        self.click(BalanceCountLocator.TAB_ONE_ELE_COMPANY)
 
     # 10元内用户总数
     def btn_tab_one_ten_user_all(self):
-        self.click(*BalanceCountLocator.TAB_ONE_TEN_USER_ALL)
+        self.click(BalanceCountLocator.TAB_ONE_TEN_USER_ALL)
 
     # 50元内用户总数
     def btn_tab_one_fifty_user_all(self):
-        self.click(*BalanceCountLocator.TAB_ONE_FIFTY_USER_ALL)
+        self.click(BalanceCountLocator.TAB_ONE_FIFTY_USER_ALL)
 
     # 50元内用户总数
     def btn_tab_one_more_fifty_user_all(self):
-        self.click(*BalanceCountLocator.TAB_ONE_MORE_FIFTY_USER_ALL)
+        self.click(BalanceCountLocator.TAB_ONE_MORE_FIFTY_USER_ALL)
 
     # 余额统计
     def btn_balance_count(self):
-        self.click(*BalanceCountLocator.BAL_COUNT)
+        self.click(BalanceCountLocator.BAL_COUNT)
 
 
 class BalanceCheck_page(Page):
@@ -81,15 +81,15 @@ class BalanceCheck_page(Page):
 
     # 执行状态
     def inputRSel_execute_state(self, num):
-        self.click(*BalanceCheckLocator.QRY_EXECUTE_STATE)
+        self.click(BalanceCheckLocator.QRY_EXECUTE_STATE)
         locator = self.get_select_locator(
             BalanceCheckLocator.QRY_EXECUTE_STATE_VALUE, num)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询
     def btn_qry(self):
-        self.click(*BalanceCheckLocator.BTN_QRY)
+        self.click(BalanceCheckLocator.BTN_QRY)
 
     # 余额查看
     def btn_balance_check(self):
-        self.click(*BalanceCheckLocator.BAL_CHECK)
+        self.click(BalanceCheckLocator.BAL_CHECK)

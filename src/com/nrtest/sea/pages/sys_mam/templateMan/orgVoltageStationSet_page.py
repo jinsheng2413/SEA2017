@@ -32,12 +32,12 @@ class OrgVoltageStationSetPage(Page):
 
     # 注册信息
     def inputSel_login_infor(self, option):
-        # self.click(*OrgVoltageStationSetLocators.QRY_LOGIN_INFOR)
+        # self.click(OrgVoltageStationSetLocators.QRY_LOGIN_INFOR)
         # locator = self.get_select_locator(OrgVoltageStationSetLocators.QRY_LOGIN_INFOR_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*OrgVoltageStationSetLocators.BTN_SEARCH)
+        # self.click(OrgVoltageStationSetLocators.BTN_SEARCH)
         self.btn_query()

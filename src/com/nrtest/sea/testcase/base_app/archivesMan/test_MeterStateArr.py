@@ -68,7 +68,7 @@ class TestMeterStateArr(unittest.TestCase, MeterStateArrPage):
         self.btn_tmnl_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*MeterStateArrLocators.TABLE_TMNL_ONE)
+        result = self.assert_context(MeterStateArrLocators.TABLE_TMNL_ONE)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(ArchivesMan_data.meterStateArr_para))
@@ -85,7 +85,7 @@ class TestMeterStateArr(unittest.TestCase, MeterStateArrPage):
     #
     #     #打开左边树并选择
     #     openLeftTree(para['TREE_NODE'])    # 'ORG_NO'])
-    #     self.click(*MeterStateArrLocators.TAB_ONE_VALUE)
+    #     self.click(MeterStateArrLocators.TAB_ONE_VALUE)
     #     #筛选条件
     #     self.inputSel_screenCondition(para["SCREEN_CONDITION"])
     #     #筛选条件输入框
@@ -96,7 +96,7 @@ class TestMeterStateArr(unittest.TestCase, MeterStateArrPage):
     #     self.btn_meter_qry()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*MeterStateArrLocators.TABLE_METER_ONE)
+    #     result = self.assert_context(MeterStateArrLocators.TABLE_METER_ONE)
     #     self.assertTrue(result)
     #
     # @data(*DataAccess.getCaseData(ArchivesMan_data.meterStateArr_para))

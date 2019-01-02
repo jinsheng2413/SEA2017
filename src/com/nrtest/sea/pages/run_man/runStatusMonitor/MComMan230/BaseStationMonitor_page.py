@@ -22,6 +22,6 @@ class BaseStationMonitorPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*BaseStationMonitorlocators
+        # self.click(BaseStationMonitorlocators
         #            .BTN_QRY)
         self.btn_query()

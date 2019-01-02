@@ -10,9 +10,7 @@
 """
 import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport

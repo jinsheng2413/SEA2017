@@ -30,4 +30,4 @@ class StrategicManualRecordPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*StrategicManualRecord_Locators.BTN_QRY)
+        self.click(StrategicManualRecord_Locators.BTN_QRY)

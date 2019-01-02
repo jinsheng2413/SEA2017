@@ -21,34 +21,34 @@ class RegularSporadicUpgradePage(Page):
 
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
-        # self.click(*RegularSporadicUpgradeLocators.TMNL_FACTORY)
+        # self.click(RegularSporadicUpgradeLocators.TMNL_FACTORY)
         # locator = self.get_select_locator(
         #     RegularSporadicUpgradeLocators.TMNL_FACTORY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 终端类型
     def inputSel_tmnl_type(self, index):
-        # self.click(*RegularSporadicUpgradeLocators.TMNL_TYPE)
+        # self.click(RegularSporadicUpgradeLocators.TMNL_TYPE)
         # locator = self.get_select_locator(
         #     RegularSporadicUpgradeLocators.TMNL_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 终端用途
     def inputSel_tmnl_purpose(self, index):
-        # self.click(*RegularSporadicUpgradeLocators.TMNL_PURPOSE)
+        # self.click(RegularSporadicUpgradeLocators.TMNL_PURPOSE)
         # locator = self.get_select_locator(
         #     RegularSporadicUpgradeLocators.TMNL_PURPOSE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 升级版本号
     def inputSel_upgrade_version_no(self, index):
-        # self.click(*RegularSporadicUpgradeLocators.UPGRADE_VERSION_NO)
+        # self.click(RegularSporadicUpgradeLocators.UPGRADE_VERSION_NO)
         # locator = self.get_select_locator(
         #     RegularSporadicUpgradeLocators.UPGRADE_VERSION_NO_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 起始终端地址
@@ -65,4 +65,4 @@ class RegularSporadicUpgradePage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*RegularSporadicUpgradeLocators.BTN_SEARCH)
+        self.click(RegularSporadicUpgradeLocators.BTN_SEARCH)

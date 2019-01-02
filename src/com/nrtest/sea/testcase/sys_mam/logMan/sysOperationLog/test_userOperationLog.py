@@ -10,9 +10,7 @@
 
 import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
@@ -58,7 +56,6 @@ class TestUserOperationLog(unittest.TestCase, UserOperationLogPage):
         # self.recoverLeftTree()
 
     def query(self, para):
-
         # 操作模块
         self.inputSel_operation_tem(para['OPERATION_TEM'])
         # 查询日期，开始

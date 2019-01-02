@@ -58,7 +58,7 @@ class TestArchivesQuery(unittest.TestCase, ArchivesQueryPages):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesQuery_locators.TAB_ONE)
+        result = self.assert_context(ArchivesQuery_locators.TAB_ONE)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(ArchivesManData.para_archivesQuery))

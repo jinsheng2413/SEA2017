@@ -56,7 +56,7 @@ class Test_ManualEdit(unittest.TestCase, ManualEditPage):
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        result = self.assert_context(*ManualEdit_Locators.TAB_ONE)
+        result = self.assert_context(ManualEdit_Locators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

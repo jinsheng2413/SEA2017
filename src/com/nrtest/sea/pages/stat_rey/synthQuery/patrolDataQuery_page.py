@@ -29,7 +29,7 @@ class PatrolDataQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*PatrolDataQueryLocators.BTN_SEARCH)
+        self.click(PatrolDataQueryLocators.BTN_SEARCH)
 
     # 曲线数据
     # 用户编号
@@ -47,14 +47,14 @@ class PatrolDataQueryPage(Page):
 
     # 曲线类型
     def inputSel_curve_data_curve_type(self, index):
-        self.click(*PatrolDataQueryLocators.CURVE_DATA_CURVE_TYPE)
+        self.click(PatrolDataQueryLocators.CURVE_DATA_CURVE_TYPE)
         locator = self.get_select_locator(
             PatrolDataQueryLocators.CURVE_DATA_CURVE_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询按钮
     def btn_curve_data_search(self):
-        self.click(*PatrolDataQueryLocators.BTN_CURVE_DATA_SEARCH)
+        self.click(PatrolDataQueryLocators.BTN_CURVE_DATA_SEARCH)
 
     # 曲线对比
     # 终端资产号
@@ -67,10 +67,10 @@ class PatrolDataQueryPage(Page):
 
     # 曲线类型
     def inputSel_curve_contrast_curve_type(self, index):
-        self.click(*PatrolDataQueryLocators.CURVE_CONTRAST_CURVE_TYPE)
+        self.click(PatrolDataQueryLocators.CURVE_CONTRAST_CURVE_TYPE)
         locator = self.get_select_locator(
             PatrolDataQueryLocators.CURVE_CONTRAST_CURVE_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 电表资产号
     def inputStr_curve_contrast_meter_asset_no(self, content):
@@ -84,7 +84,7 @@ class PatrolDataQueryPage(Page):
 
     # 查询按钮
     def btn_curve_contrast_search(self):
-        self.click(*PatrolDataQueryLocators.BTN_CONTRAST_DATA_SEARCH)
+        self.click(PatrolDataQueryLocators.BTN_CONTRAST_DATA_SEARCH)
 
     # 电流回路状态
     # 终端地址
@@ -93,10 +93,10 @@ class PatrolDataQueryPage(Page):
 
     # 电流回路状态
     def inputSel_current_status(self, index):
-        self.click(*PatrolDataQueryLocators.CURRENT_STATUS)
+        self.click(PatrolDataQueryLocators.CURRENT_STATUS)
         locator = self.get_select_locator(
             PatrolDataQueryLocators.CURRENT_STATUS_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 日期
     def inputDt_current_status_date(self, index):
@@ -113,7 +113,7 @@ class PatrolDataQueryPage(Page):
 
     # 查询按钮
     def btn_current_status_search(self):
-        self.click(*PatrolDataQueryLocators.BTN_CURRENT_STATUS_SEARCH)
+        self.click(PatrolDataQueryLocators.BTN_CURRENT_STATUS_SEARCH)
 
     # 异常事件查询
     # 终端地址
@@ -131,11 +131,11 @@ class PatrolDataQueryPage(Page):
 
     # 异常事件
     def inputSel_anomalous_event(self, index):
-        self.click(*PatrolDataQueryLocators.ANOMALOUS_EVENT)
+        self.click(PatrolDataQueryLocators.ANOMALOUS_EVENT)
         locator = self.get_select_locator(
             PatrolDataQueryLocators.ANOMALOUS_EVENT_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询按钮
     def btn_anomalous_event_search(self):
-        self.click(*PatrolDataQueryLocators.BTN_ANOMALOUS_EVENT_SEARCH)
+        self.click(PatrolDataQueryLocators.BTN_ANOMALOUS_EVENT_SEARCH)

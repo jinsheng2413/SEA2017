@@ -36,11 +36,11 @@ class LowUserBuyEleParaGiveOut_page(Page):
 
     # 执行状态
     def inputSel_execute_state(self, index):
-        self.click(*LowUserBuyEleParaGiveOutLocators.QRY_EXECUTE_STATE)
+        self.click(LowUserBuyEleParaGiveOutLocators.QRY_EXECUTE_STATE)
         locator = self.get_select_locator(
             LowUserBuyEleParaGiveOutLocators.QRY_EXECUTE_STATE_VALUE, index)
         # print(locator)
-        self.click(*locator)
+        self.click(locator)
 
     # 接收时间
     def inputStr_receive_time(self, value):
@@ -52,4 +52,4 @@ class LowUserBuyEleParaGiveOut_page(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*LowUserBuyEleParaGiveOutLocators.BTN_QRY)
+        self.click(LowUserBuyEleParaGiveOutLocators.BTN_QRY)

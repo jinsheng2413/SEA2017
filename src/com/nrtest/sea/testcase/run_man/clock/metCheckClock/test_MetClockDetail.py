@@ -15,8 +15,6 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
-from com.nrtest.sea.locators.run_man.clock.metCheckClock_locators import \
-    MetClockDetailLocators
 from com.nrtest.sea.pages.run_man.clock.metCheckClock_page import MetClockDetailPage
 from com.nrtest.sea.task.commonMath import *
 
@@ -85,7 +83,7 @@ class TestMetClockDetail(TestCase, MetClockDetailPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*MetClockDetailLocators.TABLE_DATA)
+        # result = self.assert_context(MetClockDetailLocators.TABLE_DATA)
         # self.assertTrue(result)
 
     def assert_query_result(self, para):
@@ -151,5 +149,5 @@ class TestMetClockDetail(TestCase, MetClockDetailPage):
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*TmnlClockDetailLocators.TABLE_DATA)
+    #     result = self.assert_context(TmnlClockDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)

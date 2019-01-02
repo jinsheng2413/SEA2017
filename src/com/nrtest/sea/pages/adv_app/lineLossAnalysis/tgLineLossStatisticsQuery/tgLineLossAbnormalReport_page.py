@@ -17,10 +17,10 @@ from com.nrtest.sea.locators.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.
 class TgLineLossAbnormalReportPage(Page):
     # 线损维度
     def inputSel_line_loss_dimension(self, index):
-        self.click(*TgLineLossAbnormalReportLocators.QRY_LINE_LOSS_DIMENSION)
+        self.click(TgLineLossAbnormalReportLocators.QRY_LINE_LOSS_DIMENSION)
         locator = self.get_select_locator(
             TgLineLossAbnormalReportLocators.QRY_LINE_LOSS_DIMENSION_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询日期
     def inputDt_date(self, content):
@@ -29,4 +29,4 @@ class TgLineLossAbnormalReportPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*TgLineLossAbnormalReportLocators.BTN_SEARCH)
+        self.click(TgLineLossAbnormalReportLocators.BTN_SEARCH)

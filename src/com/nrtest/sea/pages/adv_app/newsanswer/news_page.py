@@ -18,42 +18,42 @@ class News_Page(Page):
 
     # 问题类型
     def inputSel_question_type(self, options):
-        # self.click(*News_Locators.QRY_QUESTION_TYPE)
+        # self.click(News_Locators.QRY_QUESTION_TYPE)
         # locator = self.get_select_locator(
         #     News_Locators.QRY_QUESTION_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 问题版块
     def inputSel_question_plate(self, options):
-        # self.click(*News_Locators.QRY_QUESTION_PLATE)
+        # self.click(News_Locators.QRY_QUESTION_PLATE)
         # locator = self.get_select_locator(
         #     News_Locators.QRY_QUESTION_PLATE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 紧急程度
     def inputSel_emergency_degree(self, options):
-        # self.click(*News_Locators.QRY_EMERGENCY_DEGREE)
+        # self.click(News_Locators.QRY_EMERGENCY_DEGREE)
         # locator = self.get_select_locator(
         #     News_Locators.QRY_EMERGENCY_DEGREE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 查询方式
     def inputSel_query_method(self, options):
-        # self.click(*News_Locators.QRY_QUERY_METHOD)
+        # self.click(News_Locators.QRY_QUERY_METHOD)
         # locator = self.get_select_locator(
         #     News_Locators.QRY_QUERY_METHOD_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 问题状态
     def inputSel_question_status(self, options):
-        # self.click(*News_Locators.QRY_QUESTION_STATUS)
+        # self.click(News_Locators.QRY_QUESTION_STATUS)
         # locator = self.get_select_locator(
         #     News_Locators.QRY_QUESTION_STATUS_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 开始日期
@@ -66,5 +66,5 @@ class News_Page(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*News_Locators.BTN_QUERY)
+        # self.click(News_Locators.BTN_QUERY)
         self.btn_query()

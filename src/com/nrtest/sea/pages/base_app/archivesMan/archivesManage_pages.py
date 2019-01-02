@@ -15,11 +15,11 @@ class ArchivesManage_pages(Page):
 
     # 用户类型
     def inputSel_user_cata(self, index):
-        self.click(*ArchivesManage_locators.QRY_USER_CATA)
+        self.click(ArchivesManage_locators.QRY_USER_CATA)
         locator = self.get_select_locator(
             ArchivesManage_locators.QRY_USER_CATA_VALUE, index)
         # print(locator)
-        self.click(*locator)
+        self.click(locator)
 
     # 户号
     def inputStr_family_no(self, value):
@@ -35,20 +35,20 @@ class ArchivesManage_pages(Page):
 
     # 【操作区】
     def btn_qry(self):
-        self.click(*ArchivesManage_locators.BTN_QRY)
+        self.click(ArchivesManage_locators.BTN_QRY)
 
     # 返回菜单
     def btn_menu(self):
-        self.click(*ArchivesManage_locators.BTN_MENU)
+        self.click(ArchivesManage_locators.BTN_MENU)
 
     # 确定
     def btn_confirm(self):
-        self.click(*ArchivesManage_locators.BTN_CONFIRM)
+        self.click(ArchivesManage_locators.BTN_CONFIRM)
 
     # 终端资产号明细
     def btn_terminal_asset_detail(self):
-        self.click(*ArchivesManage_locators.TAB_ONE_TERMINAL_ASSET_NO_DETAIL)
+        self.click(ArchivesManage_locators.TAB_ONE_TERMINAL_ASSET_NO_DETAIL)
 
     # 用户编号明细
     def btn_user_no_detail(self):
-        self.click(*ArchivesManage_locators.TAB_ONE_USER_CATA_DETAIL)
+        self.click(ArchivesManage_locators.TAB_ONE_USER_CATA_DETAIL)

@@ -175,5 +175,5 @@ def upgrade_test_file(file_name):
 
 if __name__ == '__main__':
     # 指定testcase的根目录
-    file = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\pages\base_app\dataGatherMan\GatherTaskCompile_Page.py'
+    file = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\pages\adv_app\costControlManage\costControlManage_page.py'
     upgrade_test_file(file)

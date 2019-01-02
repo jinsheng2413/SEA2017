@@ -125,5 +125,5 @@ class TestSpVoltAnalyseStatic(TestCase, SpVoltAnalyseStaticPage):
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*SpVoltAnalyseStaticLocators.TABLE_DATA)
+    #     result = self.assert_context(SpVoltAnalyseStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)

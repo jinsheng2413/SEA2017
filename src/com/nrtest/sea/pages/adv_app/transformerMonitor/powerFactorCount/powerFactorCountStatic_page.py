@@ -18,10 +18,10 @@ class PowerFactorCountStaticPage(Page):
 
     # 用户类型--打开并选择
     def inputSel_cons_type(self, item):
-        # self.click(*PowerFactorCountStaticLocators.CONS_TYPE_SEL)
+        # self.click(PowerFactorCountStaticLocators.CONS_TYPE_SEL)
         # locator = self.get_select_locator(
         #     PowerFactorCountStaticLocators.CONS_TYPE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 查询日期
@@ -31,5 +31,5 @@ class PowerFactorCountStaticPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        # self.click(*PowerFactorCountStaticLocators.BTN_QUERY)
+        # self.click(PowerFactorCountStaticLocators.BTN_QUERY)
         self.btn_query()

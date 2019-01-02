@@ -344,14 +344,14 @@ class Page():
                     el = self._find_displayed_element(xpath)
                     el.click()
                 else:
-                    self.click(*xpath)
+                    self.click(xpath)
 
                 if bool(sleep_sec):
                     sleep(sleep_sec)
 
                 # 根据名称选择下拉框
                 option_value = self.format_xpath(BaseLocators.DROPDOWN_OPTION, ls_option[1])
-                self.click(*option_value)
+                self.click(option_value)
 
     def _uncheck_all(self, option_name):
         """
@@ -385,7 +385,7 @@ class Page():
                 el = self._find_displayed_element(xpath)
                 el.click()
             else:
-                self.click(*xpath)
+                self.click(xpath)
 
             if bool(sleep_sec):
                 sleep(sleep_sec)
@@ -396,11 +396,11 @@ class Page():
             if len(ls_option[2]) > 0 and ls_option[2] != '全部':
                 for option in ls_option[2].split(','):
                     img_chk_xpath = self.format_xpath(BaseLocators.SEL_OPTION, option)
-                    self.click(*img_chk_xpath)
+                    self.click(img_chk_xpath)
 
             # 回收下拉框
-            # self.click(*BasePageContainsXpage.RECOVERY_DROP_DOWN)
-            el.click() if is_multi_elements else self.click(*xpath)
+            # self.click(BasePageContainsXpage.RECOVERY_DROP_DOWN)
+            el.click() if is_multi_elements else self.click(xpath)
 
     def remove_attr(self, attr, obj_attr='readOnly'):
         """
@@ -501,7 +501,7 @@ class Page():
                 el = self._find_displayed_element(xpath)
                 el.click()
             else:
-                self.click(*xpath)
+                self.click(xpath)
         except BaseException as ex:
             print('点击单选框失败：{}'.format(ex))
 
@@ -554,7 +554,7 @@ class Page():
                 for item in ls_items:
                     by_attr = (attr[0], attr[1], item)
                     xpath = self.format_xpath_multi(BaseLocators.CHKBOX_INPUT2LABEL, by_attr, is_multi_tab)
-                    self.click(*xpath)
+                    self.click(xpath)
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
@@ -564,13 +564,13 @@ class Page():
         :param tab_name:
         """
         # locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
-        # self.click(*locators)
+        # self.click(locators)
         xpath = self.format_xpath_multi(BaseLocators.TAB_PAGE, tab_name, is_multi_tab)
         if is_multi_elements:
             el = self._find_displayed_element(xpath)
             el.click()
         else:
-            self.click(*xpath)
+            self.click(xpath)
 
     def clickDt_Tab(self, tab_name, is_multi_tab=False, is_multi_elements=False):
         """
@@ -691,7 +691,7 @@ class Page():
         else:
             self._open(self.base_url, self.page_title)
 
-    def click(self, *locator):
+    def click(self, locator):
         """
         点击(click)元素,如图标、按钮等
         :param locator: 元素的位置
@@ -734,7 +734,7 @@ class Page():
         logger.info('关闭浏览器')
         self.driver.quit()
 
-    def hover(self, *locator):
+    def hover(self, locator):
         """
         方法名：hover
         说明：鼠标移动到某个元素上
@@ -748,7 +748,7 @@ class Page():
         except NameError as ex:
             logger.error('悬停失败：{}'.format(ex))
 
-    def switch_frame(self, *locators):
+    def switch_frame(self, locators):
         """
         方法名：switch_frame
         进入iframe层
@@ -825,7 +825,7 @@ class Page():
         except NoSuchElementException:
             return False
 
-    def checkbox_is_selected(self, *locator):
+    def checkbox_is_selected(self, locator):
         """
         方法名：checkbox_is_selected
         判断checkBox元素是否被选择
@@ -848,18 +848,7 @@ class Page():
         except NameError as e:
             logger.error('%s打开网址失败', self.base_url)
 
-    def assert_context(self, *locators):
-        """
-        断言
-        :param locators: 校验的值
-        :return: 布尔返回值
-        """
-        try:
-            WebDriverWait(self.driver, 15).until(
-                EC.presence_of_element_located(locators))
-            return self.driver.find_element(*locators).is_displayed()
-        except:
-            return False
+
 
     def sleep_time(self, times):
         """
@@ -870,7 +859,7 @@ class Page():
         logger.info('休眠 %s 秒', times)
         sleep(times)
 
-    def select(self, idx_or_text, *locators):
+    def select(self, idx_or_text, locators):
         """
         选择下拉框
         :param locators: 元祖存放元素的xpath
@@ -944,7 +933,7 @@ class Page():
             # self._find_element(BaseLocators.BTN_ACCOUNT_EXCEPT).click()
             # self._find_element(BaseLocators.BTN_IMPORTANT_INFO).click()
 
-    def clear(self, *locator):
+    def clear(self, locator):
         """
 
         :param locator:
@@ -1012,18 +1001,18 @@ class Page():
 
     def recoverLeftTree(self):
         num = self._find_elements(MenuLocators.TREE_MINUS)
-        if self.assert_context(*MenuLocators.TREE_END) is False:
+        if self.assert_context(MenuLocators.TREE_END) is False:
             pass
 
         else:
             counter = len(num) - 1
             while counter >= 0:
                 if num[counter] is MenuLocators.TREE_END:
-                    self.click(*MenuLocators.TREE_END)
+                    self.click(MenuLocators.TREE_END)
                 else:
                     num[counter].click()
                 counter = counter - 1
-            self.click(*MenuLocators.TREE_END)
+            self.click(MenuLocators.TREE_END)
 
     # def clickTabPage(self, name):
     #     """
@@ -1033,7 +1022,7 @@ class Page():
     #     """
     #     try:
     #         locators = (By.XPATH, "(//*[@class="x-tab-strip-text "])[contains(text(),'{}')]".format(name))
-    #         self.click(*locators)
+    #         self.click(locators)
     #     except NoSuchElementException  as e:
     #         print('点击{}tab页失败'.format(name))
     #
@@ -1047,7 +1036,7 @@ class Page():
 
     def assertTableOne(self):
         try:
-            return self.assert_context(*(By.XPATH, '(//*[@class="x-grid3-row-table"])[1]'))
+            return self.assert_context((By.XPATH, '(//*[@class="x-grid3-row-table"])[1]'))
         except NameError as e:
             print('获取显示区第一个列数据失败')
             return False
@@ -1163,6 +1152,29 @@ class Page():
                 break
         return dl
 
+    def rightClick(self, locators):
+        """
+        右键点击元素
+        :param locators: 传入xpath即可
+        :return:
+        """
+        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locators))
+        right_click = self.driver.find_element(*locators)
+        ActionChains(self.driver).context_click(right_click).perform()
+
+    def assert_context(self, locators):
+        """
+        断言
+        :param locators: 校验的值
+        :return: 布尔返回值
+        """
+        try:
+            WebDriverWait(self.driver, 15).until(
+                EC.presence_of_element_located(locators))
+            return self.driver.find_element(*locators).is_displayed()
+        except:
+            return False
+
     def assertValue(self, assertValues):
         """
         assertValues ='手机,外包队伍名称,test'
@@ -1178,7 +1190,7 @@ class Page():
             displayNum = len(self._find_elements((By.XPATH, xpath_table)))
             try:
                 xpath_checker = '//*[@class="x-grid3-row-checker"]'
-                displayCheck = self.assert_context(*(By.XPATH, xpath_checker))
+                displayCheck = self.assert_context((By.XPATH, xpath_checker))
             except:
                 print('没有弹出确定按钮')
             diplayName = self.checkBoxAssertLine(assertValues[1])  # 判断具体是哪一行
@@ -1192,7 +1204,7 @@ class Page():
                         displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
                                                                              assertValues[2])
                         try:
-                            assert_rslt = self.assert_context(*(By.XPATH, displayLineElement_index))
+                            assert_rslt = self.assert_context((By.XPATH, displayLineElement_index))
                             if assert_rslt:
                                 ringhtNum += 1
                             else:
@@ -1208,7 +1220,7 @@ class Page():
                         displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
                                                                              assertValues[2])
                         try:
-                            assert_rslt = self.assert_context(*(By.XPATH, displayLineElement_index))
+                            assert_rslt = self.assert_context((By.XPATH, displayLineElement_index))
                             if assert_rslt:
                                 ringhtNum += 1
                             else:
@@ -1220,16 +1232,6 @@ class Page():
                     return ringhtNum == displayNum
         except:
             print('显示区结果值校验失败')
-
-    def rightClick(self, *locators):
-        """
-        右键点击元素
-        :param locators: 传入xpath即可
-        :return:
-        """
-        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locators))
-        right_click = self.driver.find_element(*locators)
-        ActionChains(self.driver).context_click(right_click).perform()
 
     def clickSkip(self, assertValues):
         """
@@ -1247,7 +1249,7 @@ class Page():
                 try:
                     sel = '//*[@class="x-grid3-row-checker"]'
 
-                    displayCheckbox = self.assert_context(*(By.XPATH, sel))  # 判断显示区是有复选框的还是没有复选框的
+                    displayCheckbox = self.assert_context((By.XPATH, sel))  # 判断显示区是有复选框的还是没有复选框的
                     print('显示区由复选框')
                 except:
                     print('显示区没有复选框')
@@ -1256,7 +1258,7 @@ class Page():
                     displayLine = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]'.format(
                         assertValues[0], 1, lineName + 1)
                     try:
-                        self.click(*(By.XPATH, displayLine))
+                        self.click((By.XPATH, displayLine))
                         # 把弹出的确定框点掉
 
                         self.btn_confirm()
@@ -1265,7 +1267,7 @@ class Page():
                             skipMenuName = '//*[@class="x-tab-strip-text "and contains(text(),"{}")]'.format(
                                 assertValues[2])
                             print(assertValues[2])
-                            result = self.assert_context(*(By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
+                            result = self.assert_context((By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
                             if result:
                                 self.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
                             return result
@@ -1281,7 +1283,7 @@ class Page():
             #         val2 = "(//*[text()=\'{0}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
             #             va[0], i, gl + 1, va[2])
             #         try:
-            #             hl = self.assert_context(*(By.XPATH, val2))
+            #             hl = self.assert_context((By.XPATH, val2))
             #             if hl == True:
             #                 num2 += 1
             #             else:
@@ -1311,7 +1313,7 @@ class Page():
         for row in rslt:  # 根据rslt有几个值来判断要做几次校验
             assert_type = row[0]
             if assert_type == '11':
-                assert_rslt = self.assert_context(*(By.XPATH, Display_tab.format(row[1])))  # 判断是否有值
+                assert_rslt = self.assert_context((By.XPATH, Display_tab.format(row[1])))  # 判断是否有值
             elif assert_type == '12':
                 assert_rslt = self.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
             elif assert_type == '21':
@@ -1361,7 +1363,7 @@ if __name__ == '__main__':
     # loc1 = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
     # print(loc1)
     page = Page(None)
-    page.clean_blank('查询')
+    page._clean_blank('查询')
     # print(page.format_xpath_multi((By.XPATH, 'adad{}'), 'c', False))
     # pg = Page(None)
     # pg.clickSingleCheckBox('忽略历史版本;')

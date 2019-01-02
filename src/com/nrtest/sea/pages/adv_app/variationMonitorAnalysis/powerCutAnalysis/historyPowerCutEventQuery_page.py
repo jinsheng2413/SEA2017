@@ -27,15 +27,15 @@ class HistoryPowerCutEventQueryPage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, index):
-        # self.click(*HistoryPowerCutEventQueryLocators.QRY_CONS_TYPE)
+        # self.click(HistoryPowerCutEventQueryLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(HistoryPowerCutEventQueryLocators.QRY_CONS_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*HistoryPowerCutEventQueryLocators.BTN_SEARCH)
+        # self.click(HistoryPowerCutEventQueryLocators.BTN_SEARCH)
         self.btn_query()
 
 # 高级应用→配变监测分析→停电分析→历史停电事件查询→终端停电事件查询
@@ -46,17 +46,17 @@ class TmnlPowerCutEventQueryPage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, index):
-        # self.click(*TmnlPowerCutEventQueryLocators.QRY_CONS_TYPE)
+        # self.click(TmnlPowerCutEventQueryLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(TmnlPowerCutEventQueryLocators.QRY_CONS_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 终端类型
     def inputSel_tmnl_type(self, index):
-        # self.click(*TmnlPowerCutEventQueryLocators.QRY_TMNL_TYPE)
+        # self.click(TmnlPowerCutEventQueryLocators.QRY_TMNL_TYPE)
         # locator = self.get_select_locator(TmnlPowerCutEventQueryLocators.QRY_TMNL_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
@@ -68,31 +68,31 @@ class TmnlPowerCutEventQueryPage(Page):
 
     # 停复电标识
     def inputSel_power_cut_identifying(self, index):
-        # self.click(*TmnlPowerCutEventQueryLocators.QRY_POWER_CUT_IDENTIFYING)
+        # self.click(TmnlPowerCutEventQueryLocators.QRY_POWER_CUT_IDENTIFYING)
         # locator = self.get_select_locator(TmnlPowerCutEventQueryLocators.QRY_POWER_CUT_IDENTIFYING_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
-        # self.click(*TmnlPowerCutEventQueryLocators.QRY_TMNL_FACTORY)
+        # self.click(TmnlPowerCutEventQueryLocators.QRY_TMNL_FACTORY)
         # locator = self.get_select_locator(TmnlPowerCutEventQueryLocators.QRY_TMNL_FACTORY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 是否有效
     def inputSel_whether_valid(self, index):
-        # self.click(*TmnlPowerCutEventQueryLocators.QRY_WHETHER_VALID)
+        # self.click(TmnlPowerCutEventQueryLocators.QRY_WHETHER_VALID)
         # locator = self.get_select_locator(TmnlPowerCutEventQueryLocators.QRY_WHETHER_VALID_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*TmnlPowerCutEventQueryLocators.BTN_SEARCH)
+        # self.click(TmnlPowerCutEventQueryLocators.BTN_SEARCH)
         self.btn_query(True)
 
 # 高级应用→配变监测分析→停电分析→历史停电事件查询→智能表停电事件查询
@@ -103,9 +103,9 @@ class IntelligentMeterPowerCutEventQueryDetailPage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, index):
-        # self.click(*IntelligentMeterPowerCutEventQueryLocators.QRY_CONS_TYPE)
+        # self.click(IntelligentMeterPowerCutEventQueryLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(IntelligentMeterPowerCutEventQueryLocators.QRY_CONS_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
@@ -117,10 +117,10 @@ class IntelligentMeterPowerCutEventQueryDetailPage(Page):
 
     # 事件正确性
     def inputSel_event_correctness(self, index):
-        # self.click(*IntelligentMeterPowerCutEventQueryLocators.QRY_EVENT_CORRECTNESS)
+        # self.click(IntelligentMeterPowerCutEventQueryLocators.QRY_EVENT_CORRECTNESS)
         # locator = self.get_select_locator(IntelligentMeterPowerCutEventQueryLocators.QRY_EVENT_CORRECTNESS_VALUE,
         #                                   index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
@@ -133,22 +133,22 @@ class IntelligentMeterPowerCutEventQueryDetailPage(Page):
 
     # 电表厂家
     def inputSel_meter_factory(self, index):
-        # self.click(*IntelligentMeterPowerCutEventQueryLocators.QRY_METER_FACTORY)
+        # self.click(IntelligentMeterPowerCutEventQueryLocators.QRY_METER_FACTORY)
         # locator = self.get_select_locator(IntelligentMeterPowerCutEventQueryLocators.QRY_METER_FACTORY_VALUE,
         #                                   index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 是否有效
     def inputSel_whether_valid(self, index):
-        # self.click(*IntelligentMeterPowerCutEventQueryLocators.QRY_WHETHER_VALID)
+        # self.click(IntelligentMeterPowerCutEventQueryLocators.QRY_WHETHER_VALID)
         # locator = self.get_select_locator(IntelligentMeterPowerCutEventQueryLocators.QRY_WHETHER_VALID_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*IntelligentMeterPowerCutEventQueryLocators.BTN_SEARCH)
+        # self.click(IntelligentMeterPowerCutEventQueryLocators.BTN_SEARCH)
         self.btn_query(True)

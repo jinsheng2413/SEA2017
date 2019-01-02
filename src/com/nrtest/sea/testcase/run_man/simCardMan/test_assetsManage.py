@@ -82,7 +82,7 @@ class TestAssetsManage(TestCase, AssetsManagePage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*AssetsManageLocators.TAB_ONE)
+        # result = self.assert_context(AssetsManageLocators.TAB_ONE)
         # self.assertTrue(result)
 
     def assert_query_result(self, para):

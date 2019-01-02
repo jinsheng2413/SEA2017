@@ -71,7 +71,7 @@ class TestCountServeDeploy(unittest.TestCase, CountServeDeployPage):
         sleep(2)
 
     #     # 校验
-    #     result = self.assert_context(*CountServeDeployLocators.CHECK_FIRST)
+    #     result = self.assert_context(CountServeDeployLocators.CHECK_FIRST)
     #     self.assertTrue(result)
     #
     # @BeautifulReport.add_test_img()

@@ -68,7 +68,7 @@ class TestMsgSubscriptionMan(unittest.TestCase, MsgSubscriptionManPage):
         sleep(2)
 
     #     # 校验
-    #     result = self.assert_context(*MsgSubscriptionManLocators.CHECK_FIRST)
+    #     result = self.assert_context(MsgSubscriptionManLocators.CHECK_FIRST)
     #     self.assertTrue(result)
     #
     # @BeautifulReport.add_test_img()

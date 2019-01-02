@@ -16,10 +16,10 @@ from com.nrtest.sea.locators.adv_app.txjx.datamaintain.checkPointDataRtu_locator
 class CheckPointDataRtuPage(Page):
     # 电表正反向
     def inputSel_meterFr(self, name):
-        self.click(*CheckPointDataRtuLocators.QRY_METER_FR)
+        self.click(CheckPointDataRtuLocators.QRY_METER_FR)
         locator = self.get_select_locator(
             CheckPointDataRtuLocators.QRY_METER_FR_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 用户编号
     def inputStr_userNO(self, value):
@@ -27,10 +27,10 @@ class CheckPointDataRtuPage(Page):
 
     # 抄表段号
     def inputSel_read_no(self, name):
-        self.click(*CheckPointDataRtuLocators.QRY_READ_NO)
+        self.click(CheckPointDataRtuLocators.QRY_READ_NO)
         locator = self.get_select_locator(
             CheckPointDataRtuLocators.QRY_READ_NO_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 用户名称
     def inputStr_userName(self, value):
@@ -39,4 +39,4 @@ class CheckPointDataRtuPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*CheckPointDataRtuLocators.BTN_QRY)
+        self.click(CheckPointDataRtuLocators.BTN_QRY)

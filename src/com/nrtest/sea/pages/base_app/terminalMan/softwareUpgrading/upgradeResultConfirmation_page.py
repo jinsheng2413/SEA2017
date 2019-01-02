@@ -15,26 +15,26 @@ from com.nrtest.common.base_page import Page
 class UpgradeResultConfirmationPage(Page):
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
-        # self.click(*UpgradeResultConfirmationLocator.TMNL_FACTORY)
+        # self.click(UpgradeResultConfirmationLocator.TMNL_FACTORY)
         # locator = self.get_select_locator(
         #     UpgradeResultConfirmationLocator.TMNL_FACTORY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 终端类型
     def inputSel_tmnl_type(self, index):
-        # self.click(*UpgradeResultConfirmationLocator.TMNL_TYPE)
+        # self.click(UpgradeResultConfirmationLocator.TMNL_TYPE)
         # locator = self.get_select_locator(
         #     UpgradeResultConfirmationLocator.TMNL_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 终端用途
     def inputSel_tmnl_purpose(self, index):
-        # self.click(*UpgradeResultConfirmationLocator.TMNL_PURPOSE)
+        # self.click(UpgradeResultConfirmationLocator.TMNL_PURPOSE)
         # locator = self.get_select_locator(
         #     UpgradeResultConfirmationLocator.TMNL_PURPOSE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 确认开始日期
@@ -51,5 +51,5 @@ class UpgradeResultConfirmationPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*UpgradeResultConfirmationLocator.BTN_SEARCH)
+        # self.click(UpgradeResultConfirmationLocator.BTN_SEARCH)
         self.btn_query()

@@ -69,7 +69,7 @@ class TestArchivesAutoRevie(unittest.TestCase, ArchivesAutoReviewPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesAutoReviewLocators.TAB_ONE)
+        result = self.assert_context(ArchivesAutoReviewLocators.TAB_ONE)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesAutoReview_para))

@@ -20,10 +20,10 @@ from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.lowFaultHandler_
 from com.nrtest.sea.task.commonMath import *
 
 
-#运行管理-->采集运维平台-->采集故障处理-->专变故障处理
+# 运行管理-->采集运维平台-->采集故障处理-->专变故障处理
 # 故障处理专变
 @ddt
-class TestFaultSpecificPowerDeal(TestCase,FaultLowPowerMyTodoPage):
+class TestFaultSpecificPowerDeal(TestCase, FaultLowPowerMyTodoPage):
 
     @classmethod
     def setUpClass(cls):
@@ -96,12 +96,10 @@ class TestFaultSpecificPowerDeal(TestCase,FaultLowPowerMyTodoPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_lowPowerFaultDeal, AcquistionFaultHandling_data.para_lowPowerFaultMy_todo, valCheck=True))
+    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_lowPowerFaultDeal, AcquistionFaultHandling_data.para_lowPowerFaultMy_todo,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
-
-
-

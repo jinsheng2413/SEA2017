@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.availableCapacityAnalyse_locators import \
-    AvailableCapacityAnalyseLocators
 
 
 class AvailableCapacityAnalysePage(Page):
@@ -30,5 +28,5 @@ class AvailableCapacityAnalysePage(Page):
 
     # 点击查询
     def btn_qry(self):
-        #self.click(*AvailableCapacityAnalyseLocators.BTN_QUERY)
+        # self.click(AvailableCapacityAnalyseLocators.BTN_QUERY)
         self.btn_query()

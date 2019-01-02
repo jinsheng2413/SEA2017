@@ -81,7 +81,7 @@ class TestDemo(unittest.TestCase, ProtocolLibManageLocatorsPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ProtocolLibManageLocators.TAB_ONE)
+        result = self.assert_context(ProtocolLibManageLocators.TAB_ONE)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(MultiTableOne.protocolLibManage_para))

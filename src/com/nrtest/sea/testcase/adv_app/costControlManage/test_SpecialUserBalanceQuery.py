@@ -64,7 +64,7 @@ class TestSpecialUserBalanceQuery(unittest.TestCase, SpecialUserBalanceQueryPage
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*SpecialUserBalanceQuery_locators.TAB_ONE)
+        result = self.assert_context(SpecialUserBalanceQuery_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 用户名称
@@ -78,7 +78,7 @@ class TestSpecialUserBalanceQuery(unittest.TestCase, SpecialUserBalanceQueryPage
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*SpecialUserBalanceQuery_locators.TAB_ONE)
+        result = self.assert_context(SpecialUserBalanceQuery_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 终端地址
@@ -92,7 +92,7 @@ class TestSpecialUserBalanceQuery(unittest.TestCase, SpecialUserBalanceQueryPage
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*SpecialUserBalanceQuery_locators.TAB_ONE)
+        result = self.assert_context(SpecialUserBalanceQuery_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 时间查询
@@ -103,5 +103,5 @@ class TestSpecialUserBalanceQuery(unittest.TestCase, SpecialUserBalanceQueryPage
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*SpecialUserBalanceQuery_locators.TAB_ONE)
+        result = self.assert_context(SpecialUserBalanceQuery_locators.TAB_ONE)
         self.assertTrue(result)

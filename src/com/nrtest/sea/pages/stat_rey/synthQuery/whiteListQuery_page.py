@@ -34,4 +34,4 @@ class WhiteListQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*WhiteListQueryLocators.BTN_SEARCH)
+        self.click(WhiteListQueryLocators.BTN_SEARCH)

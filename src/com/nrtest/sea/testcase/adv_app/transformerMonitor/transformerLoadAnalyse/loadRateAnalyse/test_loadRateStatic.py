@@ -129,5 +129,5 @@ class TestLoadRateStatic(TestCase, LoadRateStaticPage):
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*LoadRateStaticLocators.TABLE_DATA)
+    #     result = self.assert_context(LoadRateStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)

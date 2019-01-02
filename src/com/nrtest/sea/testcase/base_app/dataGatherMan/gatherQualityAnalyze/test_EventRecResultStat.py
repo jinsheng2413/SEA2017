@@ -76,7 +76,7 @@ class TestEventRecResultStat(unittest.TestCase, EventRecResultStatPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*EventRecResultStatLocators.TAB_ONE)
+        result = self.assert_context(EventRecResultStatLocators.TAB_ONE)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.eventRecResultStat_para))

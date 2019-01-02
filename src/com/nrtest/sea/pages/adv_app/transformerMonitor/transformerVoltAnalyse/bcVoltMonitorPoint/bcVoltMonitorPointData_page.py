@@ -18,10 +18,10 @@ class BcVoltMonitorPointDataPage(Page):
 
     # 监测点类型--打开并选择
     def inputSel_monitor_point_type(self, item):
-        # self.click(*BcVoltMonitorPointDataLocators.MONITOR_POINT_TYPE_SEL)
+        # self.click(BcVoltMonitorPointDataLocators.MONITOR_POINT_TYPE_SEL)
         # locator = self.get_select_locator(
         #     BcVoltMonitorPointDataLocators.MONITOR_POINT_TYPE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 监测点名称
@@ -36,5 +36,5 @@ class BcVoltMonitorPointDataPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        # self.click(*BcVoltMonitorPointDataLocators.BTN_QUERY)
+        # self.click(BcVoltMonitorPointDataLocators.BTN_QUERY)
         self.btn_query(True)

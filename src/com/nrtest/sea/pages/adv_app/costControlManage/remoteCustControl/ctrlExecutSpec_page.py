@@ -16,10 +16,10 @@ from com.nrtest.sea.locators.adv_app.costControlManage.remoteCustControl.ctrlExe
 class CtrlExecutSpecPage(Page):
     # 控制类别
     def inputRSel_controlType(self, name):
-        # self.click(*CtrlExecutSpecLocators.QRY_CONTROL_TYPE)
+        # self.click(CtrlExecutSpecLocators.QRY_CONTROL_TYPE)
         # locator = self.get_select_locator(
         # CtrlExecutSpecLocators.QRY_CONTROL_TYPE_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
 
         self.selectDropDown(name)
     # 工单号
@@ -60,13 +60,13 @@ class CtrlExecutSpecPage(Page):
 
     # 执行状态
     def inputSel_exeStatus(self, name):
-        # self.click(*CtrlExecutSpecLocators.QRY_EXE_STATUS)
+        # self.click(CtrlExecutSpecLocators.QRY_EXE_STATUS)
         # locator = self.get_select_locator(
         # CtrlExecutSpecLocators.QRY_EXE_STATUS_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
 
         self.selectDropDown(name)
         # 查询
 
     def btn_qry(self):
-        self.click(*CtrlExecutSpecLocators.BTN_QRY)
+        self.click(CtrlExecutSpecLocators.BTN_QRY)

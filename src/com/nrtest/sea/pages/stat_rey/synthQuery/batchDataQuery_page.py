@@ -26,13 +26,13 @@ class BatchDataQueryPage(Page):
     # 用户类型
     def inputCSel_cons_type(self, index):
         if index == 'c':
-            self._find_element(*BatchDataQueryLocators.CONS_TYPE)
+            self._find_element(BatchDataQueryLocators.CONS_TYPE)
         else:
-            self.click(*BatchDataQueryLocators.CONS_TYPE)
+            self.click(BatchDataQueryLocators.CONS_TYPE)
             locator = self.get_select_locator(
                 BatchDataQueryLocators.CONS_TYPE_VALUE, index)
-            self.click(*locator)
-            self.click(*BatchDataQueryLocators.CONS_TYPE)
+            self.click(locator)
+            self.click(BatchDataQueryLocators.CONS_TYPE)
 
     # 终端地址
     def inputStr_tmnl_addr(self, content):
@@ -40,4 +40,4 @@ class BatchDataQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*BatchDataQueryLocators.BTN_SEARCH)
+        self.click(BatchDataQueryLocators.BTN_SEARCH)

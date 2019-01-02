@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.stat_rey.dataAnalyse.loadAanyse.loadSortAnalyse_locators import LoadSortAnalyseLocators
 
 
 class LoadSortAnalysePage(Page):
@@ -19,10 +18,10 @@ class LoadSortAnalysePage(Page):
 
     # 用户类型
     def inputSel_userType(self, options):
-        # self.click(*LoadSortAnalyseLocators.QRY_USER_TYPE)
+        # self.click(LoadSortAnalyseLocators.QRY_USER_TYPE)
         # locator = self.get_select_locator(
         #     LoadSortAnalyseLocators.QRY_USER_TYPE_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 结束日期
@@ -35,5 +34,5 @@ class LoadSortAnalysePage(Page):
 
     # 查询
     def btn_qry(self):
-        #self.click(*LoadSortAnalyseLocators.BTN_QRY)
+        # self.click(LoadSortAnalyseLocators.BTN_QRY)
         self.btn_query()

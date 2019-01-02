@@ -18,10 +18,10 @@ class FourTableMeterReadSuccessRatePage(Page):
     # 全项采集成功率
     # 表计类型
     def inputSel_meter_type(self, index):
-        self.click(*FourTableMeterReadSuccessRateLocators.METER_TYPE)
+        self.click(FourTableMeterReadSuccessRateLocators.METER_TYPE)
         locator = self.get_select_locator(
             FourTableMeterReadSuccessRateLocators.METER_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询日期
     def inputDt_date(self, content):
@@ -30,15 +30,15 @@ class FourTableMeterReadSuccessRatePage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*FourTableMeterReadSuccessRateLocators.BTN_SEARCH)
+        self.click(FourTableMeterReadSuccessRateLocators.BTN_SEARCH)
 
     # 四表合一抄表失败明细
     # 表计类型
     def inputSel_failed_meter_type(self, index):
-        self.click(*FourTableMeterReadSuccessRateLocators.FAILED_METER_TYPE)
+        self.click(FourTableMeterReadSuccessRateLocators.FAILED_METER_TYPE)
         locator = self.get_select_locator(
             FourTableMeterReadSuccessRateLocators.FAILED_METER_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 终端地址
     def inputStr_failed_tmnl_addr(self, content):
@@ -52,4 +52,4 @@ class FourTableMeterReadSuccessRatePage(Page):
 
     # 查询按钮
     def failed_btn_search(self):
-        self.click(*FourTableMeterReadSuccessRateLocators.FAILED_BTN_SEARCH)
+        self.click(FourTableMeterReadSuccessRateLocators.FAILED_BTN_SEARCH)

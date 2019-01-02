@@ -18,10 +18,10 @@ class AutomatedMeterAvailabilityPage(Page):
     # 全项采集成功率
     # 表计类型
     def inputSel_meter_type(self, index):
-        self.click(*AutomatedMeterAvailabilityLocators.METER_TYPE)
+        self.click(AutomatedMeterAvailabilityLocators.METER_TYPE)
         locator = self.get_select_locator(
             AutomatedMeterAvailabilityLocators.METER_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询日期
     def inputDt_date(self, content):
@@ -30,15 +30,15 @@ class AutomatedMeterAvailabilityPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*AutomatedMeterAvailabilityLocators.BTN_SEARCH)
+        self.click(AutomatedMeterAvailabilityLocators.BTN_SEARCH)
 
     # 全项采集失败明细
     # 表计类型
     def inputSel_failed_meter_type(self, index):
-        self.click(*AutomatedMeterAvailabilityLocators.FAILED_METER_TYPE)
+        self.click(AutomatedMeterAvailabilityLocators.FAILED_METER_TYPE)
         locator = self.get_select_locator(
             AutomatedMeterAvailabilityLocators.FAILED_METER_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 终端地址
     def inputStr_failed_tmnl_addr(self, content):
@@ -51,4 +51,4 @@ class AutomatedMeterAvailabilityPage(Page):
 
     # 查询按钮
     def failed_btn_search(self):
-        self.click(*AutomatedMeterAvailabilityLocators.FAILED_BTN_SEARCH)
+        self.click(AutomatedMeterAvailabilityLocators.FAILED_BTN_SEARCH)

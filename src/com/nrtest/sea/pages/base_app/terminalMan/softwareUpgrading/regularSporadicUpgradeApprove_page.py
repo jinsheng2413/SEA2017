@@ -16,26 +16,26 @@ from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.regularSpora
 class RegularSporadicUpgradeApprovePage(Page):
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
-        # self.click(*RegularSporadicUpgradeApproveLocator.TMNL_FACTORY)
+        # self.click(RegularSporadicUpgradeApproveLocator.TMNL_FACTORY)
         # locator = self.get_select_locator(
         #     RegularSporadicUpgradeApproveLocator.TMNL_FACTORY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 申请状态
     def inputSel_apply_status(self, index):
-        # self.click(*RegularSporadicUpgradeApproveLocator.APPLY_STATUS)
+        # self.click(RegularSporadicUpgradeApproveLocator.APPLY_STATUS)
         # locator = self.get_select_locator(
         #     RegularSporadicUpgradeApproveLocator.APPLY_STATUS_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 终端用途
     def inputSel_tmnl_purpose(self, index):
-        # self.click(*RegularSporadicUpgradeApproveLocator.TMNL_PURPOSE)
+        # self.click(RegularSporadicUpgradeApproveLocator.TMNL_PURPOSE)
         # locator = self.get_select_locator(
         #     RegularSporadicUpgradeApproveLocator.TMNL_PURPOSE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 申请开始日期
@@ -54,4 +54,4 @@ class RegularSporadicUpgradeApprovePage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*RegularSporadicUpgradeApproveLocator.BTN_SEARCH)
+        self.click(RegularSporadicUpgradeApproveLocator.BTN_SEARCH)

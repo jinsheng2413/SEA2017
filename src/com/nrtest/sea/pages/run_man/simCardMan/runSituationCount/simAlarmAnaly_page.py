@@ -23,16 +23,16 @@ class AbnoralStaticPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*AbnormalDetailLocators.BTN_QRY)
+        # self.click(AbnormalDetailLocators.BTN_QRY)
         self.btn_query()
 
 class AbnormalDetailPage(Page):
 
     # 异常类型
     def inputStr_AbnormalType(self, item):
-        # self.click(*AbnormalDetailLocators.QRY_ABNORMAL_TYPE)
+        # self.click(AbnormalDetailLocators.QRY_ABNORMAL_TYPE)
         # locator = self.get_select_locator(AbnormalDetailLocators.QRY_ABNORMAL_TYPE_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 月份
@@ -42,5 +42,5 @@ class AbnormalDetailPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*AbnormalDetailLocators.BTN_QRY)
+        # self.click(AbnormalDetailLocators.BTN_QRY)
         self.btn_query(True)

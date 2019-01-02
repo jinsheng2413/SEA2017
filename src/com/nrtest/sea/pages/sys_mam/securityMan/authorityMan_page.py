@@ -27,9 +27,9 @@ class AuthorityManPage(Page):
 
     # 当前状态
     def inputSel_cur_status(self, option):
-        # self.click(*AuthorityManLocators.QRY_CUR_STATUS)
+        # self.click(AuthorityManLocators.QRY_CUR_STATUS)
         ## locator = self.get_select_locator(AuthorityManLocators.QRY_CUR_STATUS_VALUE, option)
-        ## #self.click(*locator)
+        ## #self.click(locator)
         # self.selectDropDown(is_multi_tab=True,is_multi_elements=True)
         # self.selectCheckBox(is_multi_tab=True,is_multi_elements=True)
         self.selectDropDown(option)
@@ -37,5 +37,5 @@ class AuthorityManPage(Page):
     #
     # 查询按钮
     def btn_search(self):
-        # self.click(*AuthorityManLocators.BTN_SEARCH)
+        # self.click(AuthorityManLocators.BTN_SEARCH)
         self.btn_query()

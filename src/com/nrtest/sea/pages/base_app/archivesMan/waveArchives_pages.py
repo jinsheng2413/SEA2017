@@ -23,10 +23,10 @@ class WaveArchives_Page(Page):
 
     # 统计分类
     def inputSel_countType(self, name):
-        self.click(*WaveArchives_Locators.QRY_COUNT_TYPE)
+        self.click(WaveArchives_Locators.QRY_COUNT_TYPE)
         locator = self.get_select_locator(
             WaveArchives_Locators.QRY_COUNT_TYPE_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 统计时间
     def inputStr_Count_time(self, value):
@@ -34,4 +34,4 @@ class WaveArchives_Page(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*WaveArchives_Locators.BTN_QRY)
+        self.click(WaveArchives_Locators.BTN_QRY)

@@ -15,19 +15,19 @@ from com.nrtest.common.base_page import Page
 class TmnlParaTemplatePage(Page):
     # 终端类型
     def inputSel_tmnl_type(self, option):
-        # self.click(*TmnlParaTemplateLocators.QRY_TMNL_TYPE)
+        # self.click(TmnlParaTemplateLocators.QRY_TMNL_TYPE)
         # locator = self.get_select_locator(TmnlParaTemplateLocators.QRY_TMNL_TYPE_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 终端规约
     def inputSel_tmnl_protocol(self, option):
-        # self.click(*TmnlParaTemplateLocators.QRY_TMNL_PROTOCOL)
+        # self.click(TmnlParaTemplateLocators.QRY_TMNL_PROTOCOL)
         # locator = self.get_select_locator(TmnlParaTemplateLocators.QRY_TMNL_PROTOCOL_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*TmnlParaTemplateLocators.BTN_SEARCH)
+        # self.click(TmnlParaTemplateLocators.BTN_SEARCH)
         self.btn_query()

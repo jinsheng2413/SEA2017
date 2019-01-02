@@ -18,18 +18,18 @@ class PowerFactorCountDetailPage(Page):
 
     # 用户类型--打开并选择
     def inputSel_cons_type(self, item):
-        # self.click(*PowerFactorCountDetailLocators.CONS_TYPE_SEL)
+        # self.click(PowerFactorCountDetailLocators.CONS_TYPE_SEL)
         # locator = self.get_select_locator(
         #     PowerFactorCountDetailLocators.CONS_TYPE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 无功补偿情况--打开并选择
     def inputSel_power_quality_type(self, item):
-        # self.click(*PowerFactorCountDetailLocators.POWER_QUALITY_TYPE_SEL)
+        # self.click(PowerFactorCountDetailLocators.POWER_QUALITY_TYPE_SEL)
         # locator = self.get_select_locator(
         #     PowerFactorCountDetailLocators.POWER_QUALITY_TYPE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 查询日期
@@ -39,5 +39,5 @@ class PowerFactorCountDetailPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        # self.click(*PowerFactorCountDetailLocators.BTN_QUERY)
+        # self.click(PowerFactorCountDetailLocators.BTN_QUERY)
         self.btn_query(True)

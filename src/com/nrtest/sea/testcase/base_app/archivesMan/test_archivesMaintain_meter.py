@@ -51,7 +51,7 @@ class TestarchivesMaintain_meter(unittest.TestCase, ArchivesMaintain_meter_pages
         self.btn_meterQry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesMaintain_locators.TAB_ONE)
+        result = self.assert_context(ArchivesMaintain_locators.TAB_ONE)
         self.assertTrue(result)
 
     # 终端地址
@@ -62,5 +62,5 @@ class TestarchivesMaintain_meter(unittest.TestCase, ArchivesMaintain_meter_pages
         self.btn_meterQry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*ArchivesMaintain_locators.TAB_ONE)
+        result = self.assert_context(ArchivesMaintain_locators.TAB_ONE)
         self.assertTrue(result)

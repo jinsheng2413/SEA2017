@@ -61,7 +61,7 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
+        result = self.assert_context(BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
     # 用户编号
@@ -74,7 +74,7 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
+        result = self.assert_context(BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
     # 终端地址
@@ -87,7 +87,7 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
+        result = self.assert_context(BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
     # 电表地址
@@ -100,7 +100,7 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
+        result = self.assert_context(BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
     # 抄表段号
@@ -113,7 +113,7 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
+        result = self.assert_context(BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
     # 用户名称
@@ -126,7 +126,7 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
+        result = self.assert_context(BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
     # 电表局编号
@@ -139,7 +139,7 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
+        result = self.assert_context(BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
     # 时间查询
@@ -149,7 +149,7 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
+        result = self.assert_context(BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)
 
     # 执行状态
@@ -162,5 +162,5 @@ class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*BalanceCheckLocator.TAB_ONE)
+        result = self.assert_context(BalanceCheckLocator.TAB_ONE)
         self.assertTrue(result)

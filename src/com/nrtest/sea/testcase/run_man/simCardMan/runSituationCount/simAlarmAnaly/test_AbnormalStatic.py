@@ -71,7 +71,7 @@ class TestAbnormalCount(TestCase, AbnoralStaticPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*FlowCountLocators.TAB_ONE)
+        # result = self.assert_context(FlowCountLocators.TAB_ONE)
         # self.assertTrue(result)
 
     def assert_query_result(self, para):

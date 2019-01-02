@@ -14,10 +14,10 @@ from com.nrtest.common.base_page import Page
 class Knowledge_Page(Page):
     # 文件类型
     def inputSel_file_type(self, options):
-        # self.click(*Knowledge_Locators.QRY_FILE_TYPE)
+        # self.click(Knowledge_Locators.QRY_FILE_TYPE)
         # locator = self.get_select_locator(
         #     Knowledge_Locators.QRY_FILE_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options)
 
     # 文件名称
@@ -35,5 +35,5 @@ class Knowledge_Page(Page):
 
     # 查询
     def btn_qry(self):
-        #self.click(*Knowledge_Locators.BTN_QUERY)
+        # self.click(Knowledge_Locators.BTN_QUERY)
         self.btn_query()

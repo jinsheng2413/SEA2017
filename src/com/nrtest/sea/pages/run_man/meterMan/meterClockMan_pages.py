@@ -16,27 +16,27 @@ class MeterClockManPage(Page):
 
     # 事件类型
     def inputSel_eventtype(self, option):
-        # self.click(*MeterClockManLocators.QRY_EVENTTYPE)
+        # self.click(MeterClockManLocators.QRY_EVENTTYPE)
         # locator = self.get_select_locator(
         #     MeterClockManLocators.QRY_EVENTTYPE_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
 
     # 终端厂家
     def inputSel_tmnlfactory(self, option):
-        # self.click(*MeterClockManLocators.QRY_TMNLFACORY)
+        # self.click(MeterClockManLocators.QRY_TMNLFACORY)
         # locator = self.get_select_locator(
         #     MeterClockManLocators.QRY_TMNLFACORY_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 电表厂家
     def inputSel_meterfactory(self, option):
-        # self.click(*MeterClockManLocators.QRY_METERFACTORY)
+        # self.click(MeterClockManLocators.QRY_METERFACTORY)
         # locator = self.get_select_locator(
         #     MeterClockManLocators.QRY_METERFACTORY_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 终端地址
@@ -62,5 +62,5 @@ class MeterClockManPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*MeterClockManLocators.BTN_QRY)
+        # self.click(MeterClockManLocators.BTN_QRY)
         self.btn_query()

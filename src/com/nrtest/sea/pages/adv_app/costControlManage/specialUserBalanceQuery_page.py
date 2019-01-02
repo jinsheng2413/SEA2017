@@ -27,14 +27,14 @@ class SpecialUserBalanceQueryPage(Page):
 
     #   #越限类型
     # def inputSel_more_cata(self,index):
-    #     self.click(*SpecialUserBalanceQuery_locators.QRY_MORE_BOARD_CATA)
+    #     self.click(SpecialUserBalanceQuery_locators.QRY_MORE_BOARD_CATA)
     #     locator = self.get_select_locator(SpecialUserBalanceQuery_locators.QRY_MORE_BOARD_CATA_VALUE, index)
     #     # print(locator)
-    #     self.click(*locator)
+    #     self.click(locator)
 
     # 召测日期
     def inputStr_call_test_date(self, value):
         self.input(value, *SpecialUserBalanceQuery_locators.QRY_CALL_TEST_DATE)
 
     def btn_qry(self):
-        self.click(*SpecialUserBalanceQuery_locators.BTN_QRY)
+        self.click(SpecialUserBalanceQuery_locators.BTN_QRY)

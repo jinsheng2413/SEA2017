@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.logMan.sysOperationLog_locators import SysOperationLogLocators, \
-    UserOperationLogLocators
 
 
 # 系统管理→日志管理→系统操作日志
@@ -59,5 +57,5 @@ class UserOperationLogPage(Page):
 
     # 查询按钮
     def btn_qry(self):
-        # self.click(*UserOperationLogLocators.BTN_SEARCH)
+        # self.click(UserOperationLogLocators.BTN_SEARCH)
         self.btn_query(True)

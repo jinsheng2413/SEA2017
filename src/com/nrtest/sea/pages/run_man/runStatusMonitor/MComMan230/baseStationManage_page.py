@@ -23,5 +23,5 @@ class BaseStationManagePage(Page):
         # 查询
 
     def btn_qry(self):
-        #self.click(*BaseStationManageLocators.BTN_QRY)
+        # self.click(BaseStationManageLocators.BTN_QRY)
         self.btn_query()

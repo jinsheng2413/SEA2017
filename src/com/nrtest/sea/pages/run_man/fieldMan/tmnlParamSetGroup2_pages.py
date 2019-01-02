@@ -21,16 +21,16 @@ class TermParaSetGroup2Page(Page):
 
     # 终端规约
     def inputSel_tmnl_protory(self, option):
-        # self.click(*TermParaSetGroup2Locators.QRY_TMNL_PROTORY)
+        # self.click(TermParaSetGroup2Locators.QRY_TMNL_PROTORY)
         # locator = self.get_select_locator(TermParaSetGroup2Locators.QRY_TMNL_PROTORY_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 下发状态
     def inputSel_task_status(self, option):
-        # self.click(*TermParaSetGroup2Locators.QRY_TAST_STATUS)
+        # self.click(TermParaSetGroup2Locators.QRY_TAST_STATUS)
         # locator = self.get_select_locator(TermParaSetGroup2Locators.QRY_TAST_STATUS_VALUE, option)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     def inputChk_f10_failsn(self, item):
@@ -38,5 +38,5 @@ class TermParaSetGroup2Page(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*TermParaSetGroup2Locators.BTN_QRY)
+        # self.click(TermParaSetGroup2Locators.BTN_QRY)
         self.btn_query()

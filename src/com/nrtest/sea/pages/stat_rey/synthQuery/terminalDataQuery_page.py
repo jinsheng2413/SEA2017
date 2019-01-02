@@ -22,5 +22,5 @@ class TerminalDataQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*TerminalDataQueryLocators.BTN_SEARCH)
+        # self.click(TerminalDataQueryLocators.BTN_SEARCH)
         self.btn_query()

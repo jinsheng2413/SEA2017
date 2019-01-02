@@ -33,10 +33,10 @@ class AllMeasureDataCountQueryPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*AllMeasureDataCountQueryLocators.BTN_QRY)
+        # self.click(AllMeasureDataCountQueryLocators.BTN_QRY)
         self.btn_query()
 
     # 重置
     def btn_re(self):
-        # self.click(*AllMeasureDataCountQueryLocators.BTN_RE)
+        # self.click(AllMeasureDataCountQueryLocators.BTN_RE)
         self.btn_query('重置')

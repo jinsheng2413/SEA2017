@@ -71,7 +71,7 @@ class TestLowUserBuyEleParaGiveOut(unittest.TestCase, LowUserBuyEleParaGiveOut_p
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LowUserBuyEleParaGiveOutLocators.TAB_ONE)
+        result = self.assert_context(LowUserBuyEleParaGiveOutLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 用户编号查询
@@ -86,7 +86,7 @@ class TestLowUserBuyEleParaGiveOut(unittest.TestCase, LowUserBuyEleParaGiveOut_p
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LowUserBuyEleParaGiveOutLocators.TAB_ONE)
+        result = self.assert_context(LowUserBuyEleParaGiveOutLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 终端地址查询
@@ -101,7 +101,7 @@ class TestLowUserBuyEleParaGiveOut(unittest.TestCase, LowUserBuyEleParaGiveOut_p
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LowUserBuyEleParaGiveOutLocators.TAB_ONE)
+        result = self.assert_context(LowUserBuyEleParaGiveOutLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 电表地址查询
@@ -116,7 +116,7 @@ class TestLowUserBuyEleParaGiveOut(unittest.TestCase, LowUserBuyEleParaGiveOut_p
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LowUserBuyEleParaGiveOutLocators.TAB_ONE)
+        result = self.assert_context(LowUserBuyEleParaGiveOutLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 抄表段号
@@ -131,7 +131,7 @@ class TestLowUserBuyEleParaGiveOut(unittest.TestCase, LowUserBuyEleParaGiveOut_p
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LowUserBuyEleParaGiveOutLocators.TAB_ONE)
+        result = self.assert_context(LowUserBuyEleParaGiveOutLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 时间查询
@@ -142,7 +142,7 @@ class TestLowUserBuyEleParaGiveOut(unittest.TestCase, LowUserBuyEleParaGiveOut_p
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LowUserBuyEleParaGiveOutLocators.TAB_ONE)
+        result = self.assert_context(LowUserBuyEleParaGiveOutLocators.TAB_ONE)
         self.assertTrue(result)
 
     # 执行状态查询
@@ -156,5 +156,5 @@ class TestLowUserBuyEleParaGiveOut(unittest.TestCase, LowUserBuyEleParaGiveOut_p
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*LowUserBuyEleParaGiveOutLocators.TAB_ONE)
+        result = self.assert_context(LowUserBuyEleParaGiveOutLocators.TAB_ONE)
         self.assertTrue(result)

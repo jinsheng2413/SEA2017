@@ -10,14 +10,13 @@
 """
 import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysUseStat.sysUseStat_data import SysUseStat_date
-from com.nrtest.sea.pages.sys_mam.sysUseStat.accountsAudit_page import AccountsAuditPage, AccountsAuditLocators
+from com.nrtest.sea.pages.sys_mam.sysUseStat.accountsAudit_page import AccountsAuditPage
 from com.nrtest.sea.task.commonMath import *
 
 

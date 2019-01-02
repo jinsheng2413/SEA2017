@@ -16,7 +16,7 @@ from com.nrtest.sea.locators.stat_rey.synthQuery.tgTopologyDiagram_locators impo
 class TgTopologyDiagramPage(Page):
     # 专公变类型
     def inputSel_tmnl_type(self, index):
-        self.click(*TgTopologyDiagramLocators.TMNL_TYPE)
+        self.click(TgTopologyDiagramLocators.TMNL_TYPE)
         locator = self.get_select_locator(
             TgTopologyDiagramLocators.TMNL_TYPE_VALUE, index)
         self.click(locator)
@@ -31,4 +31,4 @@ class TgTopologyDiagramPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*TgTopologyDiagramLocators.BTN_SEARCH)
+        self.click(TgTopologyDiagramLocators.BTN_SEARCH)

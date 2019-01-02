@@ -15,8 +15,6 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.availableCapacityAnalyse_locators import \
-    AvailableCapacityAnalyseLocators
 from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.availableCapacityAnalyse_page import \
     AvailableCapacityAnalysePage
 from com.nrtest.sea.task.commonMath import *
@@ -132,5 +130,5 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*AvailableCapacityAnalyseLocators.TABLE_DATA)
+    #     result = self.assert_context(AvailableCapacityAnalyseLocators.TABLE_DATA)
     #     self.assertTrue(result)

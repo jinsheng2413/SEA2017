@@ -17,8 +17,6 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
 from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.meterQualityEval_locators import \
     MeterQualityEvalStaticLocators
-from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.meterQualityEval_page import \
-    MeterQualityEvalStaticPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -75,7 +73,7 @@ class TestMeterQualityEvalDetail(unittest.TestCase, MeterQualityEvalDetailPage):
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*MeterQualityEvalStaticLocators.TABLE_DATA)
+        result = self.assert_context(MeterQualityEvalStaticLocators.TABLE_DATA)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
@@ -97,7 +95,7 @@ class TestMeterQualityEvalDetail(unittest.TestCase, MeterQualityEvalDetailPage):
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
+    #     result = self.assert_context(TmnlClockStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
 
     if __name__ == '__main__':

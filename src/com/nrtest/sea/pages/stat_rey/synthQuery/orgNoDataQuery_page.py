@@ -21,4 +21,4 @@ class OrgNoDataPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*OrgNoDataQueryLocator.BTN_SEARCH)
+        self.click(OrgNoDataQueryLocator.BTN_SEARCH)

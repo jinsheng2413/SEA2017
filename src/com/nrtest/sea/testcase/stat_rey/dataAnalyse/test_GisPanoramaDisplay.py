@@ -70,7 +70,7 @@ class TestGisPanoramaDisplay(unittest.TestCase, GisPanoramaDisplayPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*)
+        # result = self.assert_context()
         # self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(LoadRankAnalyse_para.gisPanoramaDisplay_para))

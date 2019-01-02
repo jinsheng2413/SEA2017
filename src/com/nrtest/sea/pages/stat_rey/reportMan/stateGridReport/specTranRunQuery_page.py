@@ -19,12 +19,12 @@ class SpecTranRunQueryPage(Page):
 
     # 统计口径
     def inputSel_statWay(self, option):
-        # self.click(*SpecTranRunQueryLocators.QRY_STAT_WAY)
+        # self.click(SpecTranRunQueryLocators.QRY_STAT_WAY)
         # locator = self.get_select_locator(SpecTranRunQueryLocators.QRY_STAT_WAY_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(option)
 
     # 查询
     def btn_qry(self):
-        # self.click(*SpecTranRunQueryLocators.BTN_QRY)
+        # self.click(SpecTranRunQueryLocators.BTN_QRY)
         self.btn_query()

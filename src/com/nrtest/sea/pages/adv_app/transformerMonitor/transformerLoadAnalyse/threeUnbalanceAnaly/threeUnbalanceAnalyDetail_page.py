@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse.loadRateDetail_locators import \
-    LoadRateDetailLocators
 
 
 class LoadRateDetailPage(Page):
@@ -20,10 +18,10 @@ class LoadRateDetailPage(Page):
 
     # 用户类型--打开并选择
     def inputSel_cons_type(self, item):
-        #         self.click(*ThreeUnbalanceAnalyStaticLocators.CONS_TYPE_SEL)
+        #         self.click(ThreeUnbalanceAnalyStaticLocators.CONS_TYPE_SEL)
         #         locator = self.get_select_locator(
         #             LoadRateStaticLocators.CONS_TYPE, name)
-        #         self.click(*locator)
+        #         self.click(locator)
         self.selectDropDown(item,True,1,True)
 
     # 查询日期
@@ -33,6 +31,6 @@ class LoadRateDetailPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        #self.click(*ThreeUnbalanceAnalyStaticLocators.BTN_QUERY)
+        # self.click(ThreeUnbalanceAnalyStaticLocators.BTN_QUERY)
         self.btn_query(True)
 

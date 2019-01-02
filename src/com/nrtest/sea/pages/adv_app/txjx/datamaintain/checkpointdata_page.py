@@ -20,10 +20,10 @@ class CheckpointdataPage(Page):
 
     # 电表正反向
     def inputSel_meterFr(self, name):
-        self.click(*CheckpointdataLocators.QRY_METER_FR)
+        self.click(CheckpointdataLocators.QRY_METER_FR)
         locator = self.get_select_locator(
             CheckpointdataLocators.QRY_METER_FR_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 用户名称
     def inputStr_userName(self, value):
@@ -32,4 +32,4 @@ class CheckpointdataPage(Page):
     # 查询
 
     def btn_qry(self):
-        self.click(*CheckpointdataLocators.BTN_QRY)
+        self.click(CheckpointdataLocators.BTN_QRY)

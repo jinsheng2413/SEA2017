@@ -71,7 +71,7 @@ class TestCollectTaskTemplate(unittest.TestCase, CollectTaskTemplatePage):
         sleep(2)
 
     #     # 校验
-    #     result = self.assert_context(*CollectTaskTemplateLocators.CHECK_FIRST)
+    #     result = self.assert_context(CollectTaskTemplateLocators.CHECK_FIRST)
     #     self.assertTrue(result)
     #
     # @BeautifulReport.add_test_img()

@@ -27,5 +27,5 @@ class VipConsStealAnal_Page(Page):
 
     # 查询
     def btn_qry(self):
-        #self.click(*VipConsStealAnal_locators.BTN_QUERY)
+        # self.click(VipConsStealAnal_locators.BTN_QUERY)
         self.btn_query()

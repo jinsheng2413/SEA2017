@@ -54,7 +54,6 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
         self.recoverLeftTree()
 
     def query(self, para):
-
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 查询日期，开始

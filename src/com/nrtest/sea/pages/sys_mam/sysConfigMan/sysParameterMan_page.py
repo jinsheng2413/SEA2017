@@ -16,9 +16,9 @@ from com.nrtest.common.base_page import Page
 class SysBasicParaSetPage(Page):
     # 参数名称
     def inputSel_para_name(self, options):
-        # self.click(*SysBasicParaSetLocators.QRY_PARA_NAME)
+        # self.click(SysBasicParaSetLocators.QRY_PARA_NAME)
         # locator = self.get_select_locator(SysBasicParaSetLocators.QRY_PARA_NAME_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 参数 编码
@@ -42,9 +42,9 @@ class SysBasicParaSetPage(Page):
 class SysAbnormalParaSetPage(Page):
     # 参数名称
     def inputSel_para_name(self, options):
-        # self.click(*SysAbnormalParaSetLocators.QRY_PARA_NAME)
+        # self.click(SysAbnormalParaSetLocators.QRY_PARA_NAME)
         # locator = self.get_select_locator(SysAbnormalParaSetLocators.QRY_PARA_NAME_VALUE, options)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 参数编码
@@ -61,5 +61,5 @@ class SysAbnormalParaSetPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*SysAbnormalParaSetLocators.BTN_SEARCH)
+        # self.click(SysAbnormalParaSetLocators.BTN_SEARCH)
         self.btn_query(True)

@@ -16,7 +16,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.dataClearing.dataClearing_data import DataClearing_data
-from com.nrtest.sea.pages.sys_mam.dataClearing.dataTransQurey_page import DataTransQureyPage, DataTransQureyLocators
+from com.nrtest.sea.pages.sys_mam.dataClearing.dataTransQurey_page import DataTransQureyPage
 from com.nrtest.sea.task.commonMath import *
 
 

@@ -62,7 +62,7 @@ class Test_mData_Publish_StatusPage(unittest.TestCase, MDataPublishStatusPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*MDataPublishStatus_locators.TAB_ONE)
+        result = self.assert_context(MDataPublishStatus_locators.TAB_ONE)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(MDataPublishStatus_data.para_MDataPublishStatus))

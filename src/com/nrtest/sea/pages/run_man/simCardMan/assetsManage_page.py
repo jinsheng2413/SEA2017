@@ -16,16 +16,16 @@ from com.nrtest.common.base_page import Page
 class AssetsManagePage(Page):
     # 所属系统
     def inputSel_subordinateSystem(self, item):
-        # self.click(*AssetsManageLocators.QRY_SUBORDINATE_SYSTEM)
+        # self.click(AssetsManageLocators.QRY_SUBORDINATE_SYSTEM)
         # locator = self.get_select_locator(AssetsManageLocators.QRY_SUBORDINATE_SYSTEM_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 运营商
     def inputSel_operator(self, item):
-        # self.click(*AssetsManageLocators.QRY_OPERATOR)
+        # self.click(AssetsManageLocators.QRY_OPERATOR)
         # locator = self.get_select_locator(AssetsManageLocators.QRY_OPERATOR_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
 
@@ -51,12 +51,12 @@ class AssetsManagePage(Page):
 
     # sim卡状态
     def inputSel_simCardStatus(self, item):
-        # self.click(*AssetsManageLocators.QRY_SIM_CARD_STATUS)
+        # self.click(AssetsManageLocators.QRY_SIM_CARD_STATUS)
         # locator = self.get_select_locator(AssetsManageLocators.QRY_SIM_CARD_STATUS_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 查询
     def btn_qry(self):
-        # self.click(*AssetsManageLocators.BTN_QRY)
+        # self.click(AssetsManageLocators.BTN_QRY)
         self.btn_query()

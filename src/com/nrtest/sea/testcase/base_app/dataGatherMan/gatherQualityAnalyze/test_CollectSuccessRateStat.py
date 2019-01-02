@@ -68,7 +68,7 @@ class TestDemo(unittest.TestCase, CollectSuccessRateStatPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*CollectSuccessRateStatLocators.TAB_ONE)
+        result = self.assert_context(CollectSuccessRateStatLocators.TAB_ONE)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.collectSuccessRateStat_para))

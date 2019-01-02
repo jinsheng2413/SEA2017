@@ -59,7 +59,7 @@ class TestUserCollectStatistics(unittest.TestCase, UserCollectStatisticsPage):
         # 查询按钮
         self.btn_search()
         # #校验
-        # result = self.assert_context(*UserCollectStatisticsLocators.CHECK_FIRST)
+        # result = self.assert_context(UserCollectStatisticsLocators.CHECK_FIRST)
         # self.assertTrue(result)
 
 

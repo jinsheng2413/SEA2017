@@ -34,7 +34,7 @@ class TmnlSimFlowJB_1Page(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*TmnlSimFlowJB_1Locators.BTN_QUERY)
+        self.click(TmnlSimFlowJB_1Locators.BTN_QUERY)
 
 
 # 第二个tab页
@@ -53,4 +53,4 @@ class TmnlSimFlowJB_2Page(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*TmnlSimFlowJB_2Locators.BTN_QUERY)
+        self.click(TmnlSimFlowJB_2Locators.BTN_QUERY)

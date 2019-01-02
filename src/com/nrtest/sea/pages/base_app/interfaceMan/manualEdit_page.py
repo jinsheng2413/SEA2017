@@ -24,9 +24,9 @@ class ManualEditPage(Page):
 
     # 处理类型
     def inputSel_process_type(self, index):
-        self.click(*ManualEdit_Locators.QRY_PROCESS_TYPE)
+        self.click(ManualEdit_Locators.QRY_PROCESS_TYPE)
         locator = self.get_select_locator(ManualEdit_Locators.QRY_PROCESS_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
         self.delDropdownBoxHtml()
 
     def inputStr_date(self, value):
@@ -34,4 +34,4 @@ class ManualEditPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(*ManualEdit_Locators.BTN_QRY)
+        self.click(ManualEdit_Locators.BTN_QRY)

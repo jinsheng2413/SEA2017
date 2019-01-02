@@ -51,7 +51,7 @@ class TestMServiceCallStatus2(unittest.TestCase, MServiceCallStatus2Page):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*MServiceCallStatus2Locators.TAB_ONE)
+        result = self.assert_context(MServiceCallStatus2Locators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

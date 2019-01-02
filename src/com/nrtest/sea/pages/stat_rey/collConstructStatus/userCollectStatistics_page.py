@@ -30,4 +30,4 @@ class UserCollectStatisticsPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*UserCollectStatisticsLocators.BTN_SEARCH)
+        self.click(UserCollectStatisticsLocators.BTN_SEARCH)

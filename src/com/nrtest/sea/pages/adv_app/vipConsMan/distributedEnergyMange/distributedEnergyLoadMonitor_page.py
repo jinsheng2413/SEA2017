@@ -84,10 +84,6 @@ class DistributedEnergyLoadMonitorDetailPage(Page):
         # self.input(content, *DistributedEnergyLoadMonitorDetailLocators.QRY_DATE)
         self.inputDate(content)
 
-    # 负荷类型
-    def inputChk_load_type(self, index):
-        self.clickRadioBox(index, is_multi_tab=True, is_multi_elements=True)
-
     # 查询按钮
     def btn_search(self):
         # self.click(*DistributedEnergyLoadMonitorDetailLocators.BTN_SEARCH)

@@ -86,7 +86,7 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
             self.openLeftTree(para['TREE_NODE'])
 
     #     # 校验
-    #     result = self.assert_context(*GeneralGroupSetLocators.CHECK_FIRST)
+    #     result = self.assert_context(GeneralGroupSetLocators.CHECK_FIRST)
     #     self.assertTrue(result)
     #
     # @BeautifulReport.add_test_img()

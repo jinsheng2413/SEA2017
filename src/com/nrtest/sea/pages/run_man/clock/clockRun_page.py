@@ -17,16 +17,16 @@ class StaticByOrgPage(Page):
 
     # 终端厂商--打开并选择
     def inputSel_tmnl_fac(self, item):
-        # self.click(*StaticByOrgLocators.TMNL_FAC_SEL)
+        # self.click(StaticByOrgLocators.TMNL_FAC_SEL)
         # locator = self.get_select_locator(StaticByOrgLocators.TMNL_FAC, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 电能表厂商--打开并选择
     def inputSel_met_fac(self, item):
-        # self.click(*StaticByOrgLocators.MET_FAC_SEL)
+        # self.click(StaticByOrgLocators.MET_FAC_SEL)
         # locator = self.get_select_locator(StaticByOrgLocators.MET_FAC, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 查询日期
@@ -36,7 +36,7 @@ class StaticByOrgPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        # self.click(*StaticByOrgLocators.BTN_QUERY)
+        # self.click(StaticByOrgLocators.BTN_QUERY)
         self.btn_query()
 
 # 按厂家统计
@@ -49,7 +49,7 @@ class StaticByFacPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        # self.click(*StaticByFacLocators.BTN_QUERY)
+        # self.click(StaticByFacLocators.BTN_QUERY)
         self.btn_query(True)
 
 # 频繁对时终端
@@ -57,10 +57,10 @@ class FrequentlyCheckTmnlPage(Page):
 
     # 终端类型--打开并选择
     def inputSel_tmnl_type(self, item):
-        # self.click(*FrequentlyCheckTmnlLocators.TMNL_TYPE_SEL)
+        # self.click(FrequentlyCheckTmnlLocators.TMNL_TYPE_SEL)
         # locator = self.get_select_locator(
         #     FrequentlyCheckTmnlLocators.TMNL_TYPE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 终端型号
@@ -70,10 +70,10 @@ class FrequentlyCheckTmnlPage(Page):
 
     # 终端厂商--打开并选择
     def inputSel_tmnl_fac(self, item):
-        # self.click(*FrequentlyCheckTmnlLocators.TMNL_FAC_SEL)
+        # self.click(FrequentlyCheckTmnlLocators.TMNL_FAC_SEL)
         # locator = self.get_select_locator(
         #     FrequentlyCheckTmnlLocators.TMNL_FAC, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
     # 终端资产号
@@ -88,7 +88,7 @@ class FrequentlyCheckTmnlPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        # self.click(*FrequentlyCheckTmnlLocators.BTN_QUERY)
+        # self.click(FrequentlyCheckTmnlLocators.BTN_QUERY)
         self.btn_query(True)
 
 # 频繁对时电表
@@ -96,18 +96,18 @@ class FrequentlyCheckMetPage(Page):
 
     # 电能表厂商--打开并选择
     def inputSel_met_fac(self, item):
-        # self.click(*FrequentlyCheckMetLocators.MET_FAC_SEL)
+        # self.click(FrequentlyCheckMetLocators.MET_FAC_SEL)
         # locator = self.get_select_locator(
         #     FrequentlyCheckMetLocators.MET_FAC, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
     # 电表类别--打开并选择
     def inputSel_met_type(self, item):
-        # self.click(*FrequentlyCheckMetLocators.MET_TYPE_SEL)
+        # self.click(FrequentlyCheckMetLocators.MET_TYPE_SEL)
         # locator = self.get_select_locator(
         #     FrequentlyCheckMetLocators.MET_TYPE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 电能表资产号
@@ -127,5 +127,5 @@ class FrequentlyCheckMetPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        # self.click(*FrequentlyCheckMetLocators.BTN_QUERY)
+        # self.click(FrequentlyCheckMetLocators.BTN_QUERY)
         self.btn_query(True)

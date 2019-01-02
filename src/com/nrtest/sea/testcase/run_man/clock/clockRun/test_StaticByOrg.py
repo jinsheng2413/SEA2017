@@ -74,7 +74,7 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*StaticByOrgLocators.TABLE_DATA)
+        # result = self.assert_context(StaticByOrgLocators.TABLE_DATA)
         # self.assertTrue(result)
 
     def assert_query_result(self, para):
@@ -129,5 +129,5 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
     #     self.btn_query()
     #     self.sleep_time(2)
     #     # 校验
-    #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
+    #     result = self.assert_context(TmnlClockStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)

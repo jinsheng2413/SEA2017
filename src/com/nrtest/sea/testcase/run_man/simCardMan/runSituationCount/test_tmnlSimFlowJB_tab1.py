@@ -61,7 +61,7 @@ class Test_TnmlSimFlowJB_1(unittest.TestCase, TmnlSimFlowJB_1Page):
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        result = self.assert_context(*TmnlSimFlowJB_1Locators.TAB_ONE)
+        result = self.assert_context(TmnlSimFlowJB_1Locators.TAB_ONE)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()

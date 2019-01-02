@@ -22,22 +22,20 @@ class LoseCountPowerManPage(Page):
 
     # 台区运行状态
     def inputSel_zoneAreaRunStatus(self, name):
-        # self.click(*LoseCountPowerManLocators.QRY_ZONE_AREA_RUN_STATUS)
+        # self.click(LoseCountPowerManLocators.QRY_ZONE_AREA_RUN_STATUS)
         # locator = self.get_select_locator(
         #     LoseCountPowerManLocators.QRY_ZONE_AREA_RUN_STATUS_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(name)
 
     # 台区名称
     def inputStr_zoneAreaName(self, value):
         # self.input(value, *LoseCountPowerManLocators.QRY_ZONE_NAME)
-
         self.input(value)
 
     # 责任人工号
     def inputStr_responsibilierNo(self, value):
         # self.input(value, *LoseCountPowerManLocators.QRY_RESPONSIBILITIER_NO)
-
         self.input(value)
 
         # 查询

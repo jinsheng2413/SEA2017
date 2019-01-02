@@ -29,4 +29,4 @@ class StrategicArchivesMaintainPage(Page):
         # 查询
 
     def btn_qry(self):
-        self.click(*StrategicArchivesMaintainLocators.BTN_QRY)
+        self.click(StrategicArchivesMaintainLocators.BTN_QRY)

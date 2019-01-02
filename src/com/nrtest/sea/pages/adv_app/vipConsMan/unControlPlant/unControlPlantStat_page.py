@@ -16,15 +16,15 @@ from com.nrtest.sea.locators.adv_app.vipConsMan.unControlPlant.unControlPlantSta
 class UnControlPlantStatPage(Page):
     # 发电方式
     def inputSel_elec_way(self, index):
-        self.click(*UnControlPlantStatLocators.QRY_ELEC_WAY)
+        self.click(UnControlPlantStatLocators.QRY_ELEC_WAY)
         locator = self.get_select_locator(UnControlPlantStatLocators.QRY_ELEC_WAY_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 采集方式
     def inputSel_gather_way(self, index):
-        self.click(*UnControlPlantStatLocators.QRY_GATHER_WAY)
+        self.click(UnControlPlantStatLocators.QRY_GATHER_WAY)
         locator = self.get_select_locator(UnControlPlantStatLocators.QRY_GATHER_WAY_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 日期
     def inputDt_date(self, content):
@@ -33,22 +33,22 @@ class UnControlPlantStatPage(Page):
 
     # 查询
     def btn_search(self):
-        self.click(*UnControlPlantStatLocators.BTN_SEARCH)
+        self.click(UnControlPlantStatLocators.BTN_SEARCH)
 
 
 # 高级应用→重点用户监测→非统调电厂管理→非统调电厂接入统计→非统调电厂接入明细
 class UnControlPlantDetailPage(Page):
     # 发电方式
     def inputSel_elec_way(self, index):
-        self.click(*UnControlPlantDetailLocators.QRY_ELEC_WAY)
+        self.click(UnControlPlantDetailLocators.QRY_ELEC_WAY)
         locator = self.get_select_locator(UnControlPlantDetailLocators.QRY_ELEC_WAY_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 采集方式
     def inputSel_gather_way(self, index):
-        self.click(*UnControlPlantDetailLocators.QRY_GATHER_WAY)
+        self.click(UnControlPlantDetailLocators.QRY_GATHER_WAY)
         locator = self.get_select_locator(UnControlPlantDetailLocators.QRY_GATHER_WAY_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 统计日期
     def inputDt_date(self, content):
@@ -69,4 +69,4 @@ class UnControlPlantDetailPage(Page):
 
     # 查询
     def btn_search(self):
-        self.click(*UnControlPlantDetailLocators.BTN_SEARCH)
+        self.click(UnControlPlantDetailLocators.BTN_SEARCH)

@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
@@ -18,11 +16,10 @@ from com.nrtest.sea.locators.run_man.runStatusMonitor.communicationModuleManagem
 class CommunicationModuleBaseInformationMantainPage(Page):
     # 模块厂商
     def inputSel_moduleFactory(self, item):
-        # self.click(
-        #     *CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_FACTORY)
+        # self.click(CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_FACTORY)
         # locator = self.get_select_locator(CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_FACTORY_VALUE,
         #                                   item)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 模块版本
@@ -35,16 +32,15 @@ class CommunicationModuleBaseInformationMantainPage(Page):
 
     # 模块类型
     def inputSel_moduleType(self, item):
-        # self.click(
-        #     *CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE)
+        # self.click(CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE)
         # locator = self.get_select_locator(
         #     CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE_VALUE, item)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(item)
 
     # 查询
     def btn_qry(self):
-        # self.click(*CommunicationModuleBaseInformationMantainLocators.BTN_QRY)
+        # self.click(CommunicationModuleBaseInformationMantainLocators.BTN_QRY)
         self.btn_query(True)
 
 
@@ -64,5 +60,5 @@ class ModuleAttributeRelationshipMantainPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(*ModuleAttributeRelationshipMantainLocators.BTN_QRY)
+        # self.click(ModuleAttributeRelationshipMantainLocators.BTN_QRY)
         self.btn_query(True)

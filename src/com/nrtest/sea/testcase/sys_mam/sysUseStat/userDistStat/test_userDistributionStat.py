@@ -10,16 +10,13 @@
 
 import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysUseStat.sysUseStat_data import SysUseStat_date
-from com.nrtest.sea.pages.sys_mam.sysUseStat.userDistributionStat_page import UserDistributionStatPage, \
-    UserDistributionStatLocators
+from com.nrtest.sea.pages.sys_mam.sysUseStat.userDistributionStat_page import UserDistributionStatPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -59,7 +56,6 @@ class TestUserDistributionStat(unittest.TestCase, UserDistributionStatPage):
         self.recoverLeftTree()
 
     def query(self, para):
-
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])
 

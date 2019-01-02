@@ -158,5 +158,5 @@ def upgrade_test_file(file_name):
 
 if __name__ == '__main__':
     # 指定testcase的根目录
-    file = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\adv_app\lineLossAnalysis\lineLossStatisticsAnalysis\test_lineLossStatisticsQuery.py'
+    file = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\demo_new\test_Metclassfiy.py'
     upgrade_test_file(file)

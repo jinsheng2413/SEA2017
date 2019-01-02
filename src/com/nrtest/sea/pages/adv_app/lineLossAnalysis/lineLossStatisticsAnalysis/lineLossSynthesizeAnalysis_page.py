@@ -16,10 +16,10 @@ from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis
 class LineLossSynthesizeAnalysisPage(Page):
     # 线损类别
     def inputSel_line_loss_type(self, index):
-        self.click(*LineLossSynthesizeAnalysisLocators.QRY_LINE_LOSS_TYPE)
+        self.click(LineLossSynthesizeAnalysisLocators.QRY_LINE_LOSS_TYPE)
         locator = self.get_select_locator(
             LineLossSynthesizeAnalysisLocators.QRY_LINE_LOSS_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询日期
     def inputDt_date(self, content):
@@ -28,4 +28,4 @@ class LineLossSynthesizeAnalysisPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*LineLossSynthesizeAnalysisLocators.BTN_SEARCH)
+        self.click(LineLossSynthesizeAnalysisLocators.BTN_SEARCH)

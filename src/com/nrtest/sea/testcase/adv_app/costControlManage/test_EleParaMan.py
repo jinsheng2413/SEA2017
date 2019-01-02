@@ -69,7 +69,7 @@ class TestDemo(unittest.TestCase, EleParaManPage):
         self.btn_qryOne()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*EleParaManLocators.TAB_ONE)
+        result = self.assert_context(EleParaManLocators.TAB_ONE)
         self.assertTrue(result)
 
     def query(self, para):
@@ -91,7 +91,7 @@ class TestDemo(unittest.TestCase, EleParaManPage):
         self.btn_qryOne()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(*EleParaManLocators.TAB_ONE)
+        result = self.assert_context(EleParaManLocators.TAB_ONE)
         self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(CostControlManage_data.eleParaMan_para))

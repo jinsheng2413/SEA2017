@@ -22,9 +22,9 @@ class OrigFrameHbaseQueryPage(Page):
 
     # 报文类型
     def inputSel_messageType(self, name):
-        self.click(*OrigFrameHbaseQueryLocators.QRY_MESSAGE_TYPE)
+        self.click(OrigFrameHbaseQueryLocators.QRY_MESSAGE_TYPE)
         locator = self.get_select_locator(OrigFrameHbaseQueryLocators.QRY_MESSAGE_TYPE_VALUE, name)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询时间
     def inputStr_query_time(self, value):
@@ -40,4 +40,4 @@ class OrigFrameHbaseQueryPage(Page):
 
         # 查询
     def btn_qry(self):
-            self.click(*OrigFrameHbaseQueryLocators.BTN_QRY)
+        self.click(OrigFrameHbaseQueryLocators.BTN_QRY)

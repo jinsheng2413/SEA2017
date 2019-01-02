@@ -10,11 +10,10 @@
 """
 import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
 from com.nrtest.sea.pages.sys_mam.logMan.logStatAnalysis_page import *

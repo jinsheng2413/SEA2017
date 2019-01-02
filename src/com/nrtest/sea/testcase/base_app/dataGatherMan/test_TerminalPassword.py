@@ -69,7 +69,7 @@ class TesterminalPassword(unittest.TestCase, TerminalPasswordPage):
         self.btn_qry()
         self.sleep_time(2)
         # 校验
-        # result = self.assert_context(*)
+        # result = self.assert_context()
         # self.assertTrue(result)
 
     @data(*DataAccess.getCaseData(DataGatherMan_data.terminalPassword_para))

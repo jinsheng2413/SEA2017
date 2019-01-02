@@ -16,10 +16,10 @@ from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis
 class TgLineLossMonitorPage(Page):
     # 指标类型
     def inputSel_pointer_type(self, index):
-        self.click(*TgLineLossMonitorLocators.QRY_POINTER_TYPE)
+        self.click(TgLineLossMonitorLocators.QRY_POINTER_TYPE)
         locator = self.get_select_locator(
             TgLineLossMonitorLocators.QRY_POINTER_TYPE_VALUE, index)
-        self.click(*locator)
+        self.click(locator)
 
     # 查询日期
     def inputDt_date(self, content):
@@ -28,4 +28,4 @@ class TgLineLossMonitorPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(*TgLineLossMonitorLocators.BTN_SEARCH)
+        self.click(TgLineLossMonitorLocators.BTN_SEARCH)

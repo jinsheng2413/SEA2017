@@ -9,6 +9,7 @@
 """
 
 import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -27,8 +28,10 @@ class TestLineLossSynthesizeAnalysis(unittest.TestCase, LineLossSynthesizeAnalys
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LineLossStatisticsAnalysis_data.LineLossSynthesizeAnalysis_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(LineLossStatisticsAnalysis_data.LineLossSynthesizeAnalysis_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -52,15 +55,43 @@ class TestLineLossSynthesizeAnalysis(unittest.TestCase, LineLossSynthesizeAnalys
 
     def query(self, para):
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
         # 线损类别
         self.inputSel_line_loss_type(para['LINE_LOSS_TYPE'])
+        # 日期统计类型
+        self.inputDTTAB_statDateType(para['STAT_DATE_TYPE'])
         # 查询日期
         self.inputDt_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 
-    @BeautifulReport.add_test_img()
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
+    # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossSynthesizeAnalysis_para))
-    def test_der(self, para):
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossSynthesizeAnalysis_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

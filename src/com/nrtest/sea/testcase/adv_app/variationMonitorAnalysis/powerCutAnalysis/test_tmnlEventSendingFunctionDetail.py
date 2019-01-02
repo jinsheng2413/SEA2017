@@ -9,6 +9,7 @@
 """
 
 import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -27,6 +28,13 @@ class TestTmnlEventSendingFunctionDeatil(unittest.TestCase, TmnlEventSendingFunc
     @classmethod
     def setUpClass(cls):
         print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(PowerCutAnalysis_data.TmnlEventSendingFunction_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
         # 打开菜单（需要传入对应的菜单编号）
         cls.driver = openMenu(PowerCutAnalysis_data.TmnlEventSendingFunction_para)
 
@@ -67,7 +75,34 @@ class TestTmnlEventSendingFunctionDeatil(unittest.TestCase, TmnlEventSendingFunc
         # 查询按钮
         self.btn_search()
 
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.TmnlEventSendingFunction_para, tabName='终端是否具停上电事件上送功能明细'))
-    def test_der(self, para):
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(PowerCutAnalysis_data.TmnlEventSendingFunction_para, tabName='终端是否具停上电事件上送功能明细',
+                                  valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

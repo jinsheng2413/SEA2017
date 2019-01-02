@@ -4,8 +4,8 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_faultHandler.py
-@time: 2018/11/12 0012 9:31
+@file: test_verficationResultDetail.py
+@time: 2018/11/16 0016 14:33
 @desc:
 """
 from unittest import TestCase
@@ -14,26 +14,26 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.collegeywplat.acquistionFaultHandling.acquistionFaultHandling_data import \
-    AcquistionFaultHandling_data
-from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.faultHandler_page import FaultSpecificPowerFeedbackPage
+from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultDetail_page import \
+    CheckResultDetailPage
 from com.nrtest.sea.task.commonMath import *
 
 
-#运行管理-->采集运维平台-->采集故障处理-->专变故障处理
-# 故障反馈专变
+# 系统管理--》档案核查管理--》核查结果明细查询
 @ddt
-class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
+class TestVerficationResultDetail(TestCase, CheckResultDetailPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(AcquistionFaultHandling_data.para_specificPowerFaultDeal)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.checkResultDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        menuPage.clickTabPage(AcquistionFaultHandling_data.para_specificPowerFaultDeal_feedback)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-
 
     @classmethod
     def tearDownClass(cls):
@@ -66,19 +66,12 @@ class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-
-        #故障开始日期
-        self.inputStr_faultStartDate(para['FAULT_START_DATE'])
-        #故障结束日期
-        self.inputStr_faultEndDate(para['FAULT_END_DATE'])
-        #流程状态
-        self.inputSel_process(para['PROCESS_STATUS'])
-        #故障来源
-        self.inputSel_faultFrom(para['FAULT_FROM'])
-        #故障严重程度
-        self.inputSel_faultSeverity(para['FAULT_SEVERITY'])
-        # 故障类型
-        self.inputChk_fault_type(para['FAULT_TYPE'])
+        # 台区编号
+        self.inputStr_tg_no(para['TG_NO'])
+        # 开始时间
+        self.inputStr_start_time(para['START_TIME'])
+        # 结束时间
+        self.inputStr_end_time(para['END_TIME'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -99,7 +92,7 @@ class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultDeal_feedback))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultDetail_para))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -107,12 +100,9 @@ class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultDeal_feedback, valCheck=True))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultDetail_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
-
-
-

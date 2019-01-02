@@ -8,11 +8,8 @@
 @time: 2018/11/20 0020 11:31
 @desc:
 """
-import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
@@ -25,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 系统管理-->数据清理管理-->历史数据监控
 @ddt
-class TestHistoricalDataMonitoring(unittest.TestCase, HistoricalDataMonitoringPage):
+class TestHistoricalDataMonitoring(TestCase, HistoricalDataMonitoringPage):
 
     @classmethod
     def setUpClass(cls):

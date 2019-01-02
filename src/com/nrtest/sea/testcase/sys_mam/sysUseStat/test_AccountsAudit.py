@@ -65,12 +65,17 @@ class TestAccountsAudit(unittest.TestCase, AccountsAuditPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
+        # 日期类型
+        self.inputChk_data_method(para['DATE_METHOD'])
+        self.sleep_time(2)
         # 时间
         self.inputStr_date(para['DATE'])
         # 账号状态
         self.inputSel_accountStatus(para['ACCOUNT_STATUS'])
+
         # 查询
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

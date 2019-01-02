@@ -8,11 +8,9 @@
 @time: 2018/11/20 0020 14:21
 @desc:
 """
-import unittest
-
 from unittest import TestCase
+
 from ddt import ddt, data
-from com.nrtest.common.BeautifulReport import BeautifulReport
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
@@ -23,7 +21,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 系统管理-->数据清理管理-->历史数据策略管理
 @ddt
-class TestDataStrategyManagenment(unittest.TestCase, DataStrategyManagenmentPage):
+class TestDataStrategyManagenment(TestCase, DataStrategyManagenmentPage):
 
     @classmethod
     def setUpClass(cls):
@@ -70,6 +68,7 @@ class TestDataStrategyManagenment(unittest.TestCase, DataStrategyManagenmentPage
         self.inputStr_listName(para['LIST_NAME'])
         # 存储周期
         self.inputSel_storageCycle(para['STORYAGE_CYCLE'])
+
         # 查询
         self.btn_qry()
 

@@ -28,10 +28,11 @@ class SuspecteAreaPowerCutMonitorPage(Page):
 class SuspectePowerCutLineQueryPage(Page):
     # 是否恢复停电
     def inputSel_whether_recover_power_cut(self, index):
-        self.click(*SuspectePowerCutLineQueryLocators.QRY_WHETHER_RECOVER_POWER_CUT)
-        locator = self.get_select_locator(SuspectePowerCutLineQueryLocators.QRY_WHETHER_RECOVER_POWER_CUT_VALUE, index)
-        self.click(*locator)
-        self.delDropdownBoxHtml()
+        # self.click(*SuspectePowerCutLineQueryLocators.QRY_WHETHER_RECOVER_POWER_CUT)
+        # locator = self.get_select_locator(SuspectePowerCutLineQueryLocators.QRY_WHETHER_RECOVER_POWER_CUT_VALUE, index)
+        # self.click(*locator)
+        # self.delDropdownBoxHtml()
+        self.selectDropDown(index)
 
     # 停电日期
     def inputDt_date(self, content):
@@ -54,17 +55,19 @@ class SuspectePowerCutLineQueryPage(Page):
 class SuspectePowerCutObjectQueryPage(Page):
     # 是否线路停电
     def inputSel_whether_line_power_cut(self, index):
-        self.click(*SuspectePowerCutObjectQueryLocators.QRY_WHETHER_LINE_POWER_CUT)
-        locator = self.get_select_locator(SuspectePowerCutObjectQueryLocators.QRY_WHETHER_LINE_POWER_CUT_VALUE, index)
-        self.click(*locator)
-        self.delDropdownBoxHtml()
+        # self.click(*SuspectePowerCutObjectQueryLocators.QRY_WHETHER_LINE_POWER_CUT)
+        # locator = self.get_select_locator(SuspectePowerCutObjectQueryLocators.QRY_WHETHER_LINE_POWER_CUT_VALUE, index)
+        # self.click(*locator)
+        # self.delDropdownBoxHtml()
+        self.selectDropDown(index)
 
     # 对象类型
     def inputSel_object_type(self, index):
-        self.click(*SuspectePowerCutObjectQueryLocators.QRY_OBJECT_TYPE)
-        locator = self.get_select_locator(SuspectePowerCutObjectQueryLocators.QRY_OBJECT_TYPE_VALUE, index)
-        self.click(*locator)
-        self.delDropdownBoxHtml()
+        # self.click(*SuspectePowerCutObjectQueryLocators.QRY_OBJECT_TYPE)
+        # locator = self.get_select_locator(SuspectePowerCutObjectQueryLocators.QRY_OBJECT_TYPE_VALUE, index)
+        # self.click(*locator)
+        # self.delDropdownBoxHtml()
+        self.selectDropDown(index)
 
     # 停电日期
     def inputDt_date(self, content):

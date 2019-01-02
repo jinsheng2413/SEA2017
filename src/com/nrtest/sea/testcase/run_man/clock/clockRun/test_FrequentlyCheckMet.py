@@ -22,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→时钟运行质量分析
 # 频繁对时终端
 @ddt
-class TestDemo(TestCase, FrequentlyCheckMetPage):
+class TestFrequentlyCheckMet(TestCase, FrequentlyCheckMetPage):
 
     @classmethod
     def setUpClass(cls):
@@ -63,11 +63,8 @@ class TestDemo(TestCase, FrequentlyCheckMetPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 电能表厂商
         self.inputSel_met_fac(para['MET_FAC'])
         # 电表类别
@@ -81,9 +78,6 @@ class TestDemo(TestCase, FrequentlyCheckMetPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*FrequentlyCheckMetLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

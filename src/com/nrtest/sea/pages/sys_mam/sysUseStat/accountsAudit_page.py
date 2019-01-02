@@ -15,9 +15,14 @@ from com.nrtest.sea.locators.sys_mam.sysUseStat.accountsAudit_locators import Ac
 
 # 系统管理→系统使用情况统计→账号审计
 class AccountsAuditPage(Page):
+
+    # 日期类型
+    def inputChk_data_method(self, option):
+        self.clickRadioBox(option)
+
     # 时间
     def inputStr_date(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 账号状态
     def inputSel_accountStatus(self, options):

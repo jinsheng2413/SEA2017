@@ -8,11 +8,9 @@
 @time: 2018/11/20 0020 14:21
 @desc:
 """
-import unittest
-from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
+from unittest import TestCase
+
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
@@ -25,7 +23,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 系统管理-->数据清理管理-->数据表分析
 @ddt
-class TestDemo(unittest.TestCase, DataTableAnalysisPage):
+class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
 
     @classmethod
     def setUpClass(cls):

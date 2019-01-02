@@ -17,7 +17,7 @@ from com.nrtest.sea.locators.sys_mam.dataClearing.dataTransQurey_locators import
 class DataTransQureyPage(Page):
     # 核查日期
     def inputStr_examineDate(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 表名称
     def inputStr_listName(self, value):

@@ -7,7 +7,7 @@
 @time: 2018/10/30 13:46
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -23,16 +23,18 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→终端对时
 # 终端对时统计
 @ddt
-class TestTmnlClockStatic(unittest.TestCase, TmnlClockStaticPage):
+class TestTmnlClockStatic(TestCase, TmnlClockStaticPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(ClockData.para_TTmnlCheckClock)
-        # 点击Tab页标签
-        clickTabPage(ClockData.para_TTmnlCheckClock_static)
-        cls.exec_script(cls, TmnlClockStaticLocators.QUERY_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ClockData.para_TTmnlCheckClock)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(ClockData.para_TTmnlCheckClock_static)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -62,11 +64,8 @@ class TestTmnlClockStatic(unittest.TestCase, TmnlClockStaticPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 终端厂家
@@ -76,9 +75,6 @@ class TestTmnlClockStatic(unittest.TestCase, TmnlClockStaticPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """
@@ -134,6 +130,3 @@ class TestTmnlClockStatic(unittest.TestCase, TmnlClockStaticPage):
     #     # 校验
     #     result = self.assert_context(*TmnlClockStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-    if __name__ == '__main__':
-        unittest.main()

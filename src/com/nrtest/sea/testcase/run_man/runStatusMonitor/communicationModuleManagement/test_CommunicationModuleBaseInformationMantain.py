@@ -8,7 +8,8 @@
 @time: 2018/11/2 0002 11:37
 @desc:
 """
-import unittest
+
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -23,13 +24,18 @@ from com.nrtest.sea.task.commonMath import *
 
 # 运行管理--》采集信道管理--》通信模块管理--》通信模块属性维护
 @ddt
-class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, CommunicationModuleBaseInformationMantainPage):
+class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModuleBaseInformationMantainPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(CommunicationModuleManagement.commModulPropMain_para)
+        menuPage = MenuPage.openMenu(CommunicationModuleManagement.commModulPropMain_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(CommunicationModuleManagement.commModulPropMain_tab_baseInf)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -59,9 +65,8 @@ class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, Communica
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
+        # 打开左边树并选择
+        # self.openLeftTree(para['TREE_NODE'])
 
         # 模块属性标识
         self.inputStr_moduleAttrbuteSign(para['MODULE_ATTRBUTE_SIGN'])
@@ -77,13 +82,6 @@ class TestCommunicationModuleBaseInformationMantain(unittest.TestCase, Communica
 
         self.btn_qry()
         self.sleep_time(2)
-
-    #     # 校验
-    #     result = self.assert_context(
-    #         *CommunicationModuleBaseInformationMantainLocators.TAB_ONE)
-    #     self.assertTrue(result)
-    #
-
 
     def assert_query_result(self, para):
         """

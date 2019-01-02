@@ -62,11 +62,8 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 终端厂商
         self.inputSel_tmnl_fac(para['TMNL_FAC'])
         # 电能表厂商

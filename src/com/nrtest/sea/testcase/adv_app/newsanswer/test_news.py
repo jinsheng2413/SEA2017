@@ -8,28 +8,30 @@
 @desc:
 """
 
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.newsanswer.news_data import NewsAnswer
-from com.nrtest.sea.pages.adv_app.newsanswer.news_page import News_Locators, News_Page
+from com.nrtest.sea.pages.adv_app.newsanswer.news_page import News_Page
 from com.nrtest.sea.task.commonMath import *
 
 
 # 高级应用--问题交流平台--问题在线交流
 @ddt
-class Test_News(unittest.TestCase, News_Page):
+class Test_News(TestCase, News_Page):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        cls.driver = openMenu(NewsAnswer.para_News)
-        sleep(2)
-        cls.exec_script(cls, News_Locators.START_DATE_JS)
-        cls.exec_script(cls, News_Locators.END_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(NewsAnswer.para_News)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -38,27 +40,33 @@ class Test_News(unittest.TestCase, News_Page):
         cls.closePages(cls)
 
     def query(self, para):
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-        self.displayTreeMenu()
-        # 打开左边树选择供电单位
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+
         # 问题标题
         self.inputStr_question_title(para['QUESTION_TITLE'])
+
         # 问题类型
         self.inputSel_question_type(para['QUESTION_TYPE'])
+
         # 问题版块
         self.inputSel_question_plate(para['QUESTION_PLATE'])
+
         # 紧急程度
         self.inputSel_emergency_degree(para['EMERGENCY_DEGREE'])
+
         # 查询方式
         self.inputSel_query_method(para['QUERY_METHOD'])
+
         # 问题状态
         self.inputSel_question_status(para['QUESTION_STATUS'])
+
         # 开始日期
         self.inputStr_start_date(para['START_DATE'])
+
         # 结束日期
         self.inputStr_end_date(para['END_DATE'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)

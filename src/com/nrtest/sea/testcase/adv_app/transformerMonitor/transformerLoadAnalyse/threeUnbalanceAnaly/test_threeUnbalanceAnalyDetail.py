@@ -8,15 +8,13 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyDetail_locators import \
-    ThreeUnbalanceAnalyDetailLocators
 from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyDetail_page import \
     LoadRateDetailPage
 from com.nrtest.sea.task.commonMath import *
@@ -25,16 +23,18 @@ from com.nrtest.sea.task.commonMath import *
 # 高级应用--》配变负载分析--》三相不平衡分析
 # 三相不平衡明细
 @ddt
-class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
+class TestLoadRateDetail(TestCase, LoadRateDetailPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(TradnsformerMonitorData.para_ThreeUnbalanceAnaly)
-        # 点击Tab页标签
-        clickTabPage(TradnsformerMonitorData.para_ThreeUnbalanceAnaly_detail)
-        cls.exec_script(cls, ThreeUnbalanceAnalyDetailLocators.QUERY_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(TradnsformerMonitorData.para_ThreeUnbalanceAnaly)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(TradnsformerMonitorData.para_ThreeUnbalanceAnaly_detail)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -65,10 +65,10 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
         """
 
         # 注册菜单
-        self.menu_name = para['MENU_NAME']
+        # self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
 
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
@@ -99,7 +99,7 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_ThreeUnbalanceAnaly,
-                                  TradnsformerMonitorData.para_ThreeUnbalanceAnaly_static))
+                                  TradnsformerMonitorData.para_ThreeUnbalanceAnaly_detail))
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验
@@ -114,7 +114,7 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_ThreeUnbalanceAnaly,
-                                  TradnsformerMonitorData.para_ThreeUnbalanceAnaly_static, valCheck=True))
+                                  TradnsformerMonitorData.para_ThreeUnbalanceAnaly_detail, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
@@ -134,7 +134,3 @@ class TestLoadRateDetail(unittest.TestCase, LoadRateDetailPage):
     #     # 校验
     #     result = self.assert_context(*LoadRateDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-
-if __name__ == '__main__':
-    unittest.main()

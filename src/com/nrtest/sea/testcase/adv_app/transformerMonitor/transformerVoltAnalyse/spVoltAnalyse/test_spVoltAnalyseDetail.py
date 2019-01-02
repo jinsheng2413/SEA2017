@@ -8,15 +8,13 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.locators.adv_app.transformerMonitor.transformerVoltAnalyse.spVoltAnalyse.spVoltAnalyseDetail_locators import \
-    SpVoltAnalyseDetailLocators
 from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.spVoltAnalyse.spVoltAnalyseDetail_page import \
     SpVoltAnalyseDetailPage
 from com.nrtest.sea.task.commonMath import *
@@ -25,16 +23,18 @@ from com.nrtest.sea.task.commonMath import *
 # 高级应用--》配变监测分析--》电压质量分析--》专/公变电压质量分析
 # 专/公变电压质量明细
 @ddt
-class TestSpVoltAnalyseStatic(unittest.TestCase, SpVoltAnalyseDetailPage):
+class TestSpVoltAnalyseDetail(TestCase, SpVoltAnalyseDetailPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(TradnsformerMonitorData.para_SpVoltAnalyse)
-        # 点击Tab页标签
-        clickTabPage(TradnsformerMonitorData.para_SpVoltAnalyse_detail)
-        cls.exec_script(cls, SpVoltAnalyseDetailLocators.QUERY_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(TradnsformerMonitorData.para_SpVoltAnalyse)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(TradnsformerMonitorData.para_SpVoltAnalyse_detail)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -64,14 +64,8 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, SpVoltAnalyseDetailPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
-
-        # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 日期类型
@@ -133,7 +127,3 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, SpVoltAnalyseDetailPage):
     #     # 校验
     #     result = self.assert_context(*SpVoltAnalyseDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-
-if __name__ == '__main__':
-    unittest.main()

@@ -25,7 +25,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→采集运维平台→采集终端质量评价
 # 电表质量评价统计
 @ddt
-class TestDemo(unittest.TestCase, MeterQualityEvalStaticPage):
+class TestMeterQualityEvalDetail(unittest.TestCase, MeterQualityEvalDetailPage):
 
     @classmethod
     def setUpClass(cls):

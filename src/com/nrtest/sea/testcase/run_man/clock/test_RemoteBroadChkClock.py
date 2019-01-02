@@ -61,11 +61,8 @@ class TestRemoteBroadChkClock(TestCase, RemoteBroadChkClockPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 终端类型
@@ -79,9 +76,6 @@ class TestRemoteBroadChkClock(TestCase, RemoteBroadChkClockPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*RemoteBroadChkClockLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

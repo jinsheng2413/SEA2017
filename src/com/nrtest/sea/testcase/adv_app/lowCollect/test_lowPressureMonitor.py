@@ -8,25 +8,30 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.lowCollect.lowPressureMonitor_data import LowColletc
-from com.nrtest.sea.pages.adv_app.lowCollect.lowPressureMonitor_page import LowPressureMonitor_Locators, \
-    LowPressureMonitor_Page
+from com.nrtest.sea.pages.adv_app.lowCollect.lowPressureMonitor_page import LowPressureMonitor_Page
 from com.nrtest.sea.task.commonMath import *
 
 
 # 高级应用--低压采集监控--配置采集任务
 @ddt
-class Test_LowPressureMonitor(unittest.TestCase, LowPressureMonitor_Page):
+class Test_LowPressureMonitor(TestCase, LowPressureMonitor_Page):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        cls.driver = openMenu(LowColletc.para_LowPressureMonitor)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(LowColletc.para_LowPressureMonitor)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -35,12 +40,12 @@ class Test_LowPressureMonitor(unittest.TestCase, LowPressureMonitor_Page):
         cls.closePages(cls)
 
     def query(self, para):
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-        # 打开左边树选择供电单位
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+
         # 用户定义类别
         self.inputSel_cons_define_type(para['CONS_DEFINE_TYPE'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)

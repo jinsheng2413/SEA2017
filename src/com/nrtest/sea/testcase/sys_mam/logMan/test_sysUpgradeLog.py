@@ -57,9 +57,11 @@ class TestSysUpgradeLog(unittest.TestCase, SysUpgradeLogPage):
         self.recoverLeftTree()
 
     def query(self, para):
+
         # 版本类型
         self.inputSel_version_type(para['VERSION_TYPE'])
-        # 查询按钮
+
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 

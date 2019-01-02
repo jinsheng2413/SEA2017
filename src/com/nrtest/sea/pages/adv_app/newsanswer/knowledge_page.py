@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.newsanswer.knowledge_locators import Knowledge_Locators
 
 
 class Knowledge_Page(Page):
@@ -27,11 +26,12 @@ class Knowledge_Page(Page):
 
     # 开始日期
     def inputStr_start_date(self, value):
-        self.input(value)#, *Knowledge_Locators.QRY_START_DATE)
+        # self.input(value)#, *Knowledge_Locators.QRY_START_DATE)
+        self.inputDate(value)
 
     # 结束日期
     def inputStr_end_date(self, value):
-        self.input(value)#, *Knowledge_Locators.QRY_END_DATE)
+        self.inputDate(value)  # , *Knowledge_Locators.QRY_END_DATE)
 
     # 查询
     def btn_qry(self):

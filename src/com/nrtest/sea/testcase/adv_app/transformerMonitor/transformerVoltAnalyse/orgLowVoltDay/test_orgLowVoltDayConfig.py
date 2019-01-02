@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -23,15 +23,18 @@ from com.nrtest.sea.task.commonMath import *
 # 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
 # 低压用户电压监测配置
 @ddt
-class TestOrgLowVoltDayConfig(unittest.TestCase, OrgLowVoltDayConfigPage):
+class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(TradnsformerMonitorData.para_OrgLowVoltDay)
-        # 点击Tab页标签
-        clickTabPage(TradnsformerMonitorData.para_OrgLowVoltDayConfig)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(TradnsformerMonitorData.para_OrgLowVoltDay)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(TradnsformerMonitorData.para_OrgLowVoltDayConfig)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -61,11 +64,8 @@ class TestOrgLowVoltDayConfig(unittest.TestCase, OrgLowVoltDayConfigPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 是否电压监测
         self.inputSel_volt_monitor(para['IS_VOLT_MONITOR_SEL'])
 
@@ -125,7 +125,3 @@ class TestOrgLowVoltDayConfig(unittest.TestCase, OrgLowVoltDayConfigPage):
     #     # 校验
     #     result = self.assert_context(*OrgLowVoltDayConfigLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-
-if __name__ == '__main__':
-    unittest.main()

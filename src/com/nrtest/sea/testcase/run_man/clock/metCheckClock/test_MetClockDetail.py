@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -24,16 +24,18 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→电能表对时
 # 电表时钟明细
 @ddt
-class TestMetClockDetail(unittest.TestCase, MetClockDetailPage):
+class TestMetClockDetail(TestCase, MetClockDetailPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(ClockData.para_MetCheckClock)
-        # 点击Tab页标签
-        clickTabPage(ClockData.para_MetCheckClock_detail)
-        cls.exec_script(cls, MetClockDetailLocators.QUERY_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ClockData.para_MetCheckClock)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(ClockData.para_MetCheckClock_detail)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -63,11 +65,8 @@ class TestMetClockDetail(unittest.TestCase, MetClockDetailPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 电能表厂商
         self.inputSel_met_fac(para['MET_FAC'])
         # 电表类别
@@ -154,6 +153,3 @@ class TestMetClockDetail(unittest.TestCase, MetClockDetailPage):
     #     # 校验
     #     result = self.assert_context(*TmnlClockDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-    if __name__ == '__main__':
-        unittest.main()

@@ -8,8 +8,6 @@
 @desc:
 """
 
-#统计查询--数据分析--负荷排名分析
-
 from unittest import TestCase
 
 from ddt import ddt, data

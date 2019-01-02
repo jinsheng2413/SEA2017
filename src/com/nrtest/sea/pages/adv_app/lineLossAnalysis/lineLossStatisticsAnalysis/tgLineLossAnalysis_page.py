@@ -73,7 +73,6 @@ class TgLineLossAnalysisPage(Page):
     def inputChkRunType(self, value):
         self.clickRadioBox(value)
 
-
     # 查询按钮
     def btn_search(self):
         # self.click(TgLineLossAnalysisLocators.BTN_SEARCH)

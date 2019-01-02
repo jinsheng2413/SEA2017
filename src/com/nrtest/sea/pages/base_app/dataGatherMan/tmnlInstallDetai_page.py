@@ -24,11 +24,11 @@ class TmnlInstallDetaiPage(Page):
 
     # 开始时间
     def inputStr_Start_time(self, value):
-        self.input(value)  # , *TmnlInstallDetaiLocators.QRY_START_TIME)
+        self.inputDate(value)  # , *TmnlInstallDetaiLocators.QRY_START_TIME)
 
     # 结束时间
     def inputStr_end_time(self, value):
-        self.input(value)  #, *TmnlInstallDetaiLocators.QRY_END_TIME)
+        self.inputDate(value)  # , *TmnlInstallDetaiLocators.QRY_END_TIME)
 
         # 查询
 

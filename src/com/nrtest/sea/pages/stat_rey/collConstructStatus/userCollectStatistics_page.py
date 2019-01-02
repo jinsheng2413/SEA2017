@@ -9,20 +9,19 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.stat_rey.collConstructStatus.userCollectStatistics_locators import \
-    UserCollectStatisticsLocators
 
 
 # 统计查询→综合查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计
 class UserCollectStatisticsPage(Page):
     # 用户类型
-    def inputCSel_cons_type(self, options):
-        self.selectCheckBox(options)  # 用于标识那个下拉框
+    def inputSel_cons_type(self, options):
+        self.selectCheckBox(options)
 
     # 统计月份
     def inputDt_date(self, content):
-        self.exec_script(UserCollectStatisticsLocators.DATE_JS)
-        self.input(content, *UserCollectStatisticsLocators.DATE)
+        # self.exec_script(UserCollectStatisticsLocators.DATE_JS)
+        # self.input(content, *UserCollectStatisticsLocators.DATE)
+        self.inputDate(content)
 
     # 统计口径
     def inputSel_statistics_caliber(self, options):
@@ -30,4 +29,5 @@ class UserCollectStatisticsPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(UserCollectStatisticsLocators.BTN_SEARCH)
+        # self.click(UserCollectStatisticsLocators.BTN_SEARCH)
+        self.btn_query()

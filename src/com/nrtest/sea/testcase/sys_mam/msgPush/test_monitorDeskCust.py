@@ -54,10 +54,12 @@ class TestMonitorDeskCust(TestCase, MonitorDeskCustPage):
         # self.recoverLeftTree()
 
     def query(self, para):
+
         # 角色名称
         self.inputStr_role_name(para['ROLE_NAME'])
         # 查询按钮
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -75,8 +77,7 @@ class TestMonitorDeskCust(TestCase, MonitorDeskCustPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(MsgPushData.MonitorDeskCust_para))
+    @data(*DataAccess.getCaseData(MsgPushData.MonitorDeskCust_para))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)

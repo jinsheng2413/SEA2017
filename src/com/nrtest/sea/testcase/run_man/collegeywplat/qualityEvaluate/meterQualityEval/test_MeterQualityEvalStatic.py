@@ -17,15 +17,13 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
 from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.meterQualityEval_locators import \
     MeterQualityEvalStaticLocators
-from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.meterQualityEval_page import \
-    MeterQualityEvalStaticPage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理→采集运维平台→采集终端质量评价
 # 电表质量评价统计
 @ddt
-class TestDemo(unittest.TestCase, MeterQualityEvalStaticPage):
+class TestMeterQualityEvalDetail(unittest.TestCase, MeterQualityEvalDetailPage):
 
     @classmethod
     def setUpClass(cls):

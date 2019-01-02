@@ -9,13 +9,14 @@
 @desc:
 """
 import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossMantain.lineLossMantain_data import LineLossMantain_data
-from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossMantain.losePowerMan_page import LosePowerManPage, \
-    LosePowerManLocators
+from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossMantain.losePowerMan_page import LosePowerManPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -26,8 +27,10 @@ class TestLosePowerMan(unittest.TestCase, LosePowerManPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LineLossMantain_data.losePowerMan_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(LineLossMantain_data.losePowerMan_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+
 
     @classmethod
     def tearDownClass(cls):
@@ -59,26 +62,49 @@ class TestLosePowerMan(unittest.TestCase, LosePowerManPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 考核单元名称
         self.inputStr_assessUnitName(para['ASSESS_UNIT_NAME'])
         # 考核单元分类
-        self.inputSel_assessUnitClassfication(
-            para['ASSESS_UNIT_CLASSFICCATION'])
+        self.inputSel_assessUnitClassfication(para['ASSESS_UNIT_CLASSFICCATION'])
         # 组合标志
         self.inputSel_CombinationSign(para['COMBINATION_SIGN'])
         # 考核单元状态
         self.inputSel_assessUnitState(para['ASSESS_UNIT_STATE'])
         # 台区状态
         self.inputSel_ZoneAreaState(para['ZONE_AREA_STATE'])
+        # 点击复选框
+        self.inputChk_uncover(para['UNCOVER'])
 
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(LosePowerManLocators.TAB_ONE)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
     # @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LineLossMantain_data.losePowerMan_para))
+    @data(*DataAccess.getCaseData(LineLossMantain_data.losePowerMan_para)[0:1])
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LineLossMantain_data.losePowerMan_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

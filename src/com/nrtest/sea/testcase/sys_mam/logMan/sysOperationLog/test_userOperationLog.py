@@ -10,9 +10,7 @@
 
 import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
@@ -66,6 +64,7 @@ class TestUserOperationLog(unittest.TestCase, UserOperationLogPage):
         self.inputDt_end_date(para['END_DATE'])
         # 操作人员
         self.inputStr_operator(para['OPERATOR'])
+
         # 查询按钮
         self.btn_qry()
 

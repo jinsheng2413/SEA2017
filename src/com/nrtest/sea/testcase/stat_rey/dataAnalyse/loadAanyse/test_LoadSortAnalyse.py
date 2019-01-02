@@ -8,32 +8,31 @@
 @desc:
 """
 
-#统计查询--数据分析--负荷排名分析
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.dataAnalyse.loadAanlyse.loadAanlyse_data import LoadAanyse_data
-from com.nrtest.sea.pages.stat_rey.dataAnalyse.loadAanyse.LoadSortAnalyse_pages import LoadSortAnalysePage, \
-    LoadSortAnalyseLocators
+from com.nrtest.sea.pages.stat_rey.dataAnalyse.loadAanyse.LoadSortAnalyse_pages import LoadSortAnalysePage
 from com.nrtest.sea.task.commonMath import *
-from com.nrtest.common.BeautifulReport import BeautifulReport
 
 
 #统计查询--数据分析--负荷分析--负荷排名分析
 @ddt
-class TestDemo(unittest.TestCase, LoadSortAnalysePage):
+class TestDemo(TestCase, LoadSortAnalysePage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LoadAanyse_data.loadSortAnalyse_para)
-        sleep(2)
-        cls.exec_script(cls, LoadSortAnalyseLocators.START_DATE_JS)
-        cls.exec_script(cls, LoadSortAnalyseLocators.END_DATE_JS)
+        menuPage = MenuPage.openMenu(LoadAanyse_data.loadSortAnalyse_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -63,16 +62,18 @@ class TestDemo(unittest.TestCase, LoadSortAnalysePage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
+
         # 开始时间
         self.inputStr_startDate(para['START_DATE'])
+
         # 结束时间
         self.inputStr_end_time(para['END_TIME'])
+
         # 用户类型
         self.inputSel_userType(para['USER_TYPE'])
+
         # 排名数量
         self.inputStr_anking_number(para['RANKING_NUMBER'])
 

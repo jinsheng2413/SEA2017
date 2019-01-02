@@ -15,8 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.dataClearing.dataClearing_data import DataClearing_data
-from com.nrtest.sea.pages.sys_mam.dataClearing.historicalDataMonitoring_page import HistoricalDataMonitoringPage, \
-    HistoricalDataMonitoringLocators
+from com.nrtest.sea.pages.sys_mam.dataClearing.historicalDataMonitoring_page import HistoricalDataMonitoringPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -74,8 +73,10 @@ class TestHistoricalDataMonitoring(TestCase, HistoricalDataMonitoringPage):
         self.inputStr_Start_time(para['START_DATE'])
         # 结束日期
         self.inputStr_end_time(para['END_DATE'])
+
         # 查询
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

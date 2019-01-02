@@ -62,6 +62,7 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
         self.inputDt_end_date(para['END_DATE'])
         # 操作人员
         self.inputStr_operator(para['OPERATOR'])
+
         # 查询按钮
         self.btn_qry()
         self.sleep_time(2)

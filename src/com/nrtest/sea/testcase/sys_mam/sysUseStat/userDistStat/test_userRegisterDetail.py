@@ -15,8 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysUseStat.sysUseStat_data import SysUseStat_date
-from com.nrtest.sea.pages.sys_mam.sysUseStat.userDistributionStat_page import UserRegisterDetailPage, \
-    UserRegisterDetailLocators
+from com.nrtest.sea.pages.sys_mam.sysUseStat.userDistributionStat_page import UserRegisterDetailPage
 from com.nrtest.sea.task.commonMath import *
 
 

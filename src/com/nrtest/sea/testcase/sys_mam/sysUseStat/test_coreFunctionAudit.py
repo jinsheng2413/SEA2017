@@ -15,14 +15,13 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysUseStat.sysUseStat_data import SysUseStat_date
-from com.nrtest.sea.pages.sys_mam.sysUseStat.coreFunctionAudit_page import CoreFunctionAuditPage, \
-    CoreFunctionAuditLocators
+from com.nrtest.sea.pages.sys_mam.sysUseStat.coreFunctionAudit_page import CoreFunctionAuditPage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理→系统使用情况统计→核心功能审计
 @ddt
-class TestCoreFunctionAudit(unittest.TestCase, CoreFunctionAuditPage):
+class TestCoreFunctionAudit(TestCase, CoreFunctionAuditPage):
 
     @classmethod
     def setUpClass(cls):

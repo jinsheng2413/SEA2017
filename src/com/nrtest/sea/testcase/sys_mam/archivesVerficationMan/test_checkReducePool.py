@@ -15,8 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkReducePool_page import CheckReducePoolPage, \
-    CheckReducePoolLocators
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkReducePool_page import CheckReducePoolPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -65,7 +64,7 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 申请时间
         self.inputStr_apply_time(para['START_TIME'])
         # 至

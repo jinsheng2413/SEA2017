@@ -14,6 +14,18 @@ from com.nrtest.sea.locators.run_man.collegeywplat.acquistionFaultHandling.fault
     FaultHandlerLocators,FaultFeedBackLocators
 
 
+# 运行管理-->采集运维平台-->采集故障处理
+# 我的待办专变
+class FaultSpecificPowerMyTodoPage(Page):
+    # 故障严重程度
+    def inputChk_job_method(self, option):
+        self.clickRadioBox(option)
+
+    # 查询
+    def btn_qry(self):
+        # self.click(*FaultHandlerLocators.BTN_QRY)
+        self.btn_query(True)
+
 #运行管理-->采集运维平台-->采集故障处理-->专变故障处理
 class FaultSpecificPowerDealPage(Page):
     # 故障严重程度

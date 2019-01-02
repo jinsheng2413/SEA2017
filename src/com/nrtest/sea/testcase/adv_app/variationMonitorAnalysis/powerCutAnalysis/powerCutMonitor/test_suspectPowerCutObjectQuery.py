@@ -7,8 +7,6 @@
 @time: 2018/11/6 14:40
 @desc:
 """
-
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -24,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测→疑似停电对象查询
 @ddt
-class TestSuspectePowerCutObjectQuery(unittest.TestCase, SuspectePowerCutObjectQueryPage):
+class TestSuspectePowerCutObjectQuery(TestCase, SuspectePowerCutObjectQueryPage):
     @classmethod
     def setUpClass(cls):
         print("开始执行")
@@ -32,11 +30,9 @@ class TestSuspectePowerCutObjectQuery(unittest.TestCase, SuspectePowerCutObjectQ
         menuPage = MenuPage.openMenu(PowerCutAnalysis_data.SuspectedAreaPowerCutMonitor_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(PowerCutAnalysis_data.SuspectedObjectPowerCutMonitor_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(PowerCutAnalysis_data.SuspectedAreaPowerCutMonitor_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -59,9 +55,8 @@ class TestSuspectePowerCutObjectQuery(unittest.TestCase, SuspectePowerCutObjectQ
         self.recoverLeftTree()
 
     def query(self, para):
-        clickTabPage('疑似停电对象查询')
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 是否线路停电
         self.inputSel_whether_line_power_cut(para['WHETHER_LINE_POWER_CUT'])
         # 对象类型
@@ -87,7 +82,8 @@ class TestSuspectePowerCutObjectQuery(unittest.TestCase, SuspectePowerCutObjectQ
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(PowerCutAnalysis_data.SuspectedAreaPowerCutMonitor_para, tabName='疑似停电对象查询'))
+    @data(*DataAccess.getCaseData(PowerCutAnalysis_data.SuspectedAreaPowerCutMonitor_para,
+                                  PowerCutAnalysis_data.SuspectedObjectPowerCutMonitor_tabName))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -95,7 +91,8 @@ class TestSuspectePowerCutObjectQuery(unittest.TestCase, SuspectePowerCutObjectQ
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(PowerCutAnalysis_data.SuspectedAreaPowerCutMonitor_para, tabName='疑似停电对象查询',
+    @data(*DataAccess.getCaseData(PowerCutAnalysis_data.SuspectedAreaPowerCutMonitor_para,
+                                  PowerCutAnalysis_data.SuspectedObjectPowerCutMonitor_tabName,
                                   valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)

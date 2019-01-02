@@ -9,31 +9,35 @@
 @desc:
 """
 import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossMantain.lineLossMantain_data import LineLossMantain_data
-from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossMantain.loseCountPowerMan_page import LoseCountPowerManPage, \
-    LoseCountPowerManLocators
+from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossMantain.loseCountPowerMan_page import LoseCountPowerManPage
 from com.nrtest.sea.task.commonMath import *
 
 
+# 高级应用-->线损分析--》线损模型维护--》线损计算模型管理
 @ddt
 class TestLoseCountPowerMan(unittest.TestCase, LoseCountPowerManPage):
 
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LineLossMantain_data.loseCountPowerMan_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(LineLossMantain_data.loseCountPowerMan_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+
 
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
         # 关闭菜单页面
         cls.closePages(cls)
+
 
     def setUp(self):
         """
@@ -59,7 +63,7 @@ class TestLoseCountPowerMan(unittest.TestCase, LoseCountPowerManPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
         # 台区运行状态
         self.inputSel_zoneAreaRunStatus(para['ZONE_AREA_RUN_STATUS'])
         # 台区编码
@@ -70,12 +74,34 @@ class TestLoseCountPowerMan(unittest.TestCase, LoseCountPowerManPage):
         self.inputStr_responsibilierNo(para['RESPONSIBLLIER_NO'])
 
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(LoseCountPowerManLocators.TAB_ONE)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossMantain_data.loseCountPowerMan_para))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LineLossMantain_data.loseCountPowerMan_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

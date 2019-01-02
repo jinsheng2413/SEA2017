@@ -16,8 +16,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.dataClearing.dataClearing_data import DataClearing_data
-from com.nrtest.sea.pages.sys_mam.dataClearing.dataTableAnalysis_page import DataTableAnalysisPage, \
-    DataTableAnalysisLocators
+from com.nrtest.sea.pages.sys_mam.dataClearing.dataTableAnalysis_page import DataTableAnalysisPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -64,14 +63,17 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+
         # 数据组
         self.inputSel_dataGroup(para['DATA_GROUP'])
         # 表名称
         self.inputStr_listName(para['LIST_NAME'])
         # 核查日期
         self.inputStr_examineDate(para['EXAMINE_DATE'])
+
         # 查询
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

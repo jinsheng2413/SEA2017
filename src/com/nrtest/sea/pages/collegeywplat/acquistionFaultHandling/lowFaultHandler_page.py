@@ -14,6 +14,18 @@ from com.nrtest.sea.locators.run_man.collegeywplat.acquistionFaultHandling.lowFa
     LowFaultHandlerLocators,LowFaultFeedBackLocators
 
 
+# 运行管理-->采集运维平台-->采集故障处理
+# 我的待办低压
+class FaultLowPowerMyTodoPage(Page):
+    # 故障严重程度
+    def inputChk_job_method(self, option):
+        self.clickRadioBox(option)
+
+    # 查询
+    def btn_qry(self):
+        # self.click(*FaultHandlerLocators.BTN_QRY)
+        self.btn_query(True)
+
 # 运行管理-->采集运维平台-->采集故障处理-->低压故障处理
 class FaultLowPowerDealPage(Page):
     # 故障严重程度

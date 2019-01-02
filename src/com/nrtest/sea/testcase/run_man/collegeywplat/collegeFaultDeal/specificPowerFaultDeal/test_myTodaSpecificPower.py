@@ -4,36 +4,34 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_logStatAnalysis_fail.py
-@time: 2018/11/21 0021 14:08
+@file: test_faultHandler.py
+@time: 2018/11/12 0012 9:31
 @desc:
 """
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
-from com.nrtest.sea.pages.sys_mam.logMan.logStatAnalysis_page import *
+from com.nrtest.sea.data.run_man.collegeywplat.acquistionFaultHandling.acquistionFaultHandling_data import \
+    AcquistionFaultHandling_data
+from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.faultHandler_page import FaultSpecificPowerMyTodoPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 系统管理--》日志管理--》日志统计分析
-# 月统计登录失败top50
+#运行管理-->采集运维平台-->采集故障处理-->专变故障处理
+# 故障处理专变
 @ddt
-class TestLogStatAnalysis_fail(unittest.TestCase, LogStatAnalysis_fial_Page):
+class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerMyTodoPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(LogEdit_data.logStatAnalysis_para)
+        menuPage = MenuPage.openMenu(AcquistionFaultHandling_data.para_specificPowerFaultDeal)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(LogEdit_data.logStatAnalysis_tab_fail)
-        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.clickTabPage(AcquistionFaultHandling_data.para_specificPowerFaultMy_todo)
         menuPage.remove_dt_readonly()
 
     @classmethod
@@ -64,8 +62,12 @@ class TestLogStatAnalysis_fail(unittest.TestCase, LogStatAnalysis_fial_Page):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 查询时间
-        self.inputStr_date(para['QUERY_DATE'])
+
+        # 派工类型
+        self.inputChk_job_method(para['JOB_METHOD'])
+
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -86,7 +88,7 @@ class TestLogStatAnalysis_fail(unittest.TestCase, LogStatAnalysis_fial_Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LogEdit_data.logStatAnalysis_para, LogEdit_data.logStatAnalysis_tab_fail))
+    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultMy_todo))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -94,9 +96,12 @@ class TestLogStatAnalysis_fail(unittest.TestCase, LogStatAnalysis_fial_Page):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LogEdit_data.logStatAnalysis_para, LogEdit_data.logStatAnalysis_tab_fail, valCheck=True))
+    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultMy_todo, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
+
+
+

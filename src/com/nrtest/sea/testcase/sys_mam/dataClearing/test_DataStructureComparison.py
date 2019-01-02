@@ -62,6 +62,7 @@ class TestDataStructureComparison(TestCase, DataStructureComparisonPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+
         # 数据组
         self.inputSel_dataGroup(para['DATA_GROUP'])
         # 表名称
@@ -70,6 +71,8 @@ class TestDataStructureComparison(TestCase, DataStructureComparisonPage):
         self.inputStr_examineDate(para['EXAMINE_DATE'])
 
         self.btn_qry()
+        self.sleep_time(2)
+
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

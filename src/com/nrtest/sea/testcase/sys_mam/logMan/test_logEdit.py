@@ -15,7 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
-from com.nrtest.sea.pages.sys_mam.logMan.logEdit_page import LogEditPage, LogEditLocators
+from com.nrtest.sea.pages.sys_mam.logMan.logEdit_page import LogEditPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -62,6 +62,7 @@ class TestDemo(TestCase, LogEditPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+
         # 值班人员工号
         self.inputStr_dutyPersonNo(para['DUTY_PERSON_NO'])
         # 值班时间
@@ -69,6 +70,7 @@ class TestDemo(TestCase, LogEditPage):
         # 到
         self.inputStr_end_time(para['TO'])
 
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 

@@ -56,6 +56,12 @@ class Test_UnControlPlantGatherMon_2(TestCase, UnControlPlantGatherMon2_Page):
         # 户号
         self.inputStr_cons_no(para['CONS_NO'])
 
+        # 表资产编号
+        self.inputStr_meter_asst_no(para['METER_ASST_NO'])
+
+        # 终端资产号
+        self.inputStr_tmnl_asst_no(para['TMNL_ASST_NO'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)

@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -23,12 +23,17 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源异常分析
 @ddt
-class TestDistributedEnergyAnomalyAnalysis(unittest.TestCase, DistributedEnergyAnomalyAnalysisPage):
+class TestDistributedEnergyAnomalyAnalysis(TestCase, DistributedEnergyAnomalyAnalysisPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_tabName)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -52,7 +57,9 @@ class TestDistributedEnergyAnomalyAnalysis(unittest.TestCase, DistributedEnergyA
 
     def query(self, para):
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
+        # 查询类型
+        self.inputChk_qry_type(para['QRY_TYPE'])
         # 日期
         self.inputDt_date(para['DATE'])
         # 发电类型
@@ -62,8 +69,37 @@ class TestDistributedEnergyAnomalyAnalysis(unittest.TestCase, DistributedEnergyA
         # 查询按钮
         self.btn_search()
 
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
     @BeautifulReport.add_test_img()
     @data(
-        *DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_para, tabName='分布式电源异常分析'))
-    def test_der(self, para):
+        *DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_para,
+                                DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_tabName))
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_para,
+                                  DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_tabName
+        , valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

@@ -9,20 +9,20 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.variationMonitorAnalysis.powerCutAnalysis.powerCutMonitor.suspecteAreaPowerCutMonitor_locators import *
 
 
 # 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测
 class SuspecteAreaPowerCutMonitorPage(Page):
     # 停电日期
     def inputDt_date(self, content):
-        self.exec_script(SuspecteAreaPowerCutMonitorLocators.DATE_JS)
-        self.input(content, *SuspecteAreaPowerCutMonitorLocators.QRY_DATE)
+        # self.exec_script(SuspecteAreaPowerCutMonitorLocators.DATE_JS)
+        # self.input(content, *SuspecteAreaPowerCutMonitorLocators.QRY_DATE)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*SuspecteAreaPowerCutMonitorLocators.BTN_SEARCH)
-
+        # self.click(*SuspecteAreaPowerCutMonitorLocators.BTN_SEARCH)
+        self.btn_query()
 
 # 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测→疑似停电线路查询
 class SuspectePowerCutLineQueryPage(Page):
@@ -36,20 +36,21 @@ class SuspectePowerCutLineQueryPage(Page):
 
     # 停电日期
     def inputDt_date(self, content):
-        self.exec_script(SuspectePowerCutLineQueryLocators.DATE_JS)
-        self.input(content, *SuspectePowerCutLineQueryLocators.QRY_DATE)
+        # self.exec_script(SuspectePowerCutLineQueryLocators.DATE_JS)
+        # self.input(content, *SuspectePowerCutLineQueryLocators.QRY_DATE)
+        self.inputDate(content)
 
     # 停电时长
     def inputStr_power_cut_start(self, content):
-        self.input(content, *SuspectePowerCutLineQueryLocators.QRY_POWER_CUT_START)
+        self.input(content)  # , *SuspectePowerCutLineQueryLocators.QRY_POWER_CUT_START)
 
     def inputStr_power_cut_end(self, content):
-        self.input(content, *SuspectePowerCutLineQueryLocators.QRY_POWER_CUT_END)
+        self.input(content)  #, *SuspectePowerCutLineQueryLocators.QRY_POWER_CUT_END)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*SuspectePowerCutLineQueryLocators.BTN_SEARCH)
-
+        # self.click(*SuspectePowerCutLineQueryLocators.BTN_SEARCH)
+        self.btn_query(True)
 
 # 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测→疑似停电对象查询
 class SuspectePowerCutObjectQueryPage(Page):
@@ -71,9 +72,11 @@ class SuspectePowerCutObjectQueryPage(Page):
 
     # 停电日期
     def inputDt_date(self, content):
-        self.exec_script(SuspectePowerCutObjectQueryLocators.DATE_JS)
-        self.input(content, *SuspectePowerCutObjectQueryLocators.QRY_DATE)
+        # self.exec_script(SuspectePowerCutObjectQueryLocators.DATE_JS)
+        # self.input(content, *SuspectePowerCutObjectQueryLocators.QRY_DATE)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(*SuspectePowerCutObjectQueryLocators.BTN_SEARCH)
+        # self.click(*SuspectePowerCutObjectQueryLocators.BTN_SEARCH)
+        self.btn_query(True)

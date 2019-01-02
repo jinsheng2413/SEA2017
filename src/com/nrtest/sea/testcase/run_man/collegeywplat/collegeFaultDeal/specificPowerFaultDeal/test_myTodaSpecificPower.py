@@ -1,43 +1,42 @@
 # -*- coding:utf-8 -*-
 
+
 """
-@author: 韩笑
+@author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_distributedEnergyElectricTrend.py
-@time: 2018/11/9 17:08
+@file: test_faultHandler.py
+@time: 2018/11/12 0012 9:31
 @desc:
 """
-
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.vipConsMan.distributedEnergyMange.distributedEnergyManage_data import \
-    DistributedEnergyMange_data
-from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedEnergyElectricMonitor_page import \
-    DistributedEnergyElectricTrendPage
+from com.nrtest.sea.data.run_man.collegeywplat.acquistionFaultHandling.acquistionFaultHandling_data import \
+    AcquistionFaultHandling_data
+from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.faultHandler_page import FaultSpecificPowerMyTodoPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测→分布式电源电量趋势
+#运行管理-->采集运维平台-->采集故障处理-->专变故障处理
+# 故障处理专变
 @ddt
-class TestDistributedEnergyElectricTrend(TestCase, DistributedEnergyElectricTrendPage):
+class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerMyTodoPage):
+
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(DistributedEnergyMange_data.DistributedEnergyElectricMonitor_para)
+        menuPage = MenuPage.openMenu(AcquistionFaultHandling_data.para_specificPowerFaultDeal)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(DistributedEnergyMange_data.DistributedEnergyElectricMonitor_tabName_Trend)
-        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.clickTabPage(AcquistionFaultHandling_data.para_specificPowerFaultMy_todo)
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
+        print("执行结束")
         # 关闭菜单页面
         cls.closePages(cls)
 
@@ -52,22 +51,26 @@ class TestDistributedEnergyElectricTrend(TestCase, DistributedEnergyElectricTren
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
+
         # 回收左边树
         self.recoverLeftTree()
 
     def query(self, para):
+        """
+
+        :param para: Dict类型的字典，不是dict
+        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
+        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
+        """
+
+        # 派工类型
+        self.inputChk_job_method(para['JOB_METHOD'])
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 月份
-        self.inputDt_date(para['DATE'])
-        # 发电类型
-        self.inputSel_elec_type(para['ELEC_TYPE'])
-        # 发电量消纳方式
-        self.inputSel_abso_type(para['ABSO_TYPE'])
-        # 电量方式
-        self.inputChk_elec_way(para['ELEC_WAY'])
-        # 查询按钮
-        self.btn_search()
+
+        self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -85,9 +88,7 @@ class TestDistributedEnergyElectricTrend(TestCase, DistributedEnergyElectricTren
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyElectricMonitor_para,
-                                DistributedEnergyMange_data.DistributedEnergyElectricMonitor_tabName_Trend))
+    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultMy_todo))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -95,11 +96,12 @@ class TestDistributedEnergyElectricTrend(TestCase, DistributedEnergyElectricTren
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyElectricMonitor_para,
-                                  DistributedEnergyMange_data.DistributedEnergyElectricMonitor_tabName_Trend,
-                                  valCheck=True))
+    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultMy_todo, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
+
+
+

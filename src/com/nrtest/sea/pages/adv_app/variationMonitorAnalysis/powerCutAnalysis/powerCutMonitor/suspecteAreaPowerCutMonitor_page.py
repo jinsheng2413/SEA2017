@@ -64,9 +64,9 @@ class SuspectePowerCutObjectQueryPage(Page):
 
     # 对象类型
     def inputSel_object_type(self, index):
-        # self.click(*SuspectePowerCutObjectQueryLocators.QRY_OBJECT_TYPE)
+        # self.click(SuspectePowerCutObjectQueryLocators.QRY_OBJECT_TYPE)
         # locator = self.get_select_locator(SuspectePowerCutObjectQueryLocators.QRY_OBJECT_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 

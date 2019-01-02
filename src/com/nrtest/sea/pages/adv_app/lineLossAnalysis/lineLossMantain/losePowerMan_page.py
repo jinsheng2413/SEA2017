@@ -16,29 +16,29 @@ from com.nrtest.common.base_page import Page
 class LosePowerManPage(Page):
     # 考核单位状态
     def inputSel_assessUnitState(self, name):
-        # self.click(*LosePowerManLocators.QRY_ASSESS_UNIT_STATE)
+        # self.click(LosePowerManLocators.QRY_ASSESS_UNIT_STATE)
         # locator = self.get_select_locator(
         #     LosePowerManLocators.QRY_ASSESS_UNIT_STATE_VALUE, name)
         # print(locator)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(name)
 
     # 组合标志
     def inputSel_CombinationSign(self, name):
-        # self.click(*LosePowerManLocators.QRY_COMBINATION_SIGN)
+        # self.click(LosePowerManLocators.QRY_COMBINATION_SIGN)
         # locator = self.get_select_locator(
         #     LosePowerManLocators.QRY_COMBINATION_SIGN_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.label_clean(name)
         self.selectDropDown(name)
 
 
     # 台区状态
     def inputSel_ZoneAreaState(self, name):
-        # self.click(*LosePowerManLocators.QRY_ZONE_AREA_STATE)
+        # self.click(LosePowerManLocators.QRY_ZONE_AREA_STATE)
         # locator = self.get_select_locator(
         #     LosePowerManLocators.QRY_ZONE_AREA_STATE_VALUE, name)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(name)
 
     # 考核单位名称
@@ -61,5 +61,5 @@ class LosePowerManPage(Page):
         self.clickSingleCheckBox(name)
 
     def btn_qry(self):
-        # self.click(*LosePowerManLocators.BTN_QRY)
+        # self.click(LosePowerManLocators.BTN_QRY)
         self.btn_query()

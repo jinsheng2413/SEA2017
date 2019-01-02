@@ -25,23 +25,23 @@ class DistributedEnergyAnomalyAnalysisPage(Page):
 
     # 发电类型
     def inputSel_elec_type(self, index):
-        # self.click(*DistributedEnergyAnomalyAnalysisLocators.QRY_ELEC_TYPE)
+        # self.click(DistributedEnergyAnomalyAnalysisLocators.QRY_ELEC_TYPE)
         # locator = self.get_select_locator(
         #     DistributedEnergyAnomalyAnalysisLocators.QRY_ELEC_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 发电量消纳方式
     def inputSel_abso_type(self, index):
-        # self.click(*DistributedEnergyAnomalyAnalysisLocators.QRY_ABSO_MODE)
+        # self.click(DistributedEnergyAnomalyAnalysisLocators.QRY_ABSO_MODE)
         # locator = self.get_select_locator(
         #     DistributedEnergyAnomalyAnalysisLocators.QRY_ABSO_MODE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*DistributedEnergyAnomalyAnalysisLocators.BTN_SEARCH)
+        # self.click(DistributedEnergyAnomalyAnalysisLocators.BTN_SEARCH)
         self.btn_query()
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源异常分析→分布式电源异常情况明细
@@ -58,29 +58,29 @@ class DistributedEnergyAnomalyDetailPage(Page):
 
     # 异常类型
     def inputSel_anomaly_type(self, index):
-        # self.click(*DistributedEnergyAnomalyDetailLocators.QRY_ANOMALY_TYPE)
+        # self.click(DistributedEnergyAnomalyDetailLocators.QRY_ANOMALY_TYPE)
         # locator = self.get_select_locator(
         #     DistributedEnergyAnomalyDetailLocators.QRY_ANOMALY_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 发电类型
     def inputSel_elec_type(self, index):
-        # self.click(*DistributedEnergyAnomalyDetailLocators.QRY_ELEC_TYPE)
+        # self.click(DistributedEnergyAnomalyDetailLocators.QRY_ELEC_TYPE)
         # locator = self.get_select_locator(
         #     DistributedEnergyAnomalyDetailLocators.QRY_ELEC_TYPE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 发电量消纳方式
     def inputSel_abso_type(self, index):
-        # self.click(*DistributedEnergyAnomalyDetailLocators.QRY_ABSO_MODE)
+        # self.click(DistributedEnergyAnomalyDetailLocators.QRY_ABSO_MODE)
         # locator = self.get_select_locator(
         #     DistributedEnergyAnomalyDetailLocators.QRY_ABSO_MODE_VALUE, index)
-        # self.click(*locator)
+        # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*DistributedEnergyAnomalyDetailLocators.BTN_SEARCH)
+        # self.click(DistributedEnergyAnomalyDetailLocators.BTN_SEARCH)
         self.btn_query(True)

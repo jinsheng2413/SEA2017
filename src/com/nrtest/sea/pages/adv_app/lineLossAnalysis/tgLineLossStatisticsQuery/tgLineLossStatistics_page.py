@@ -17,15 +17,21 @@ from com.nrtest.sea.locators.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.
 class TgLineLossStatisticsPage(Page):
     # 线损维度
     def inputSel_line_loss_dimension(self, index):
-        self.click(TgLineLossStatisticsLocators.QRY_LINE_LOSS_DIMENSION)
-        locator = self.get_select_locator(
-            TgLineLossStatisticsLocators.QRY_LINE_LOSS_DIMENSION_VALUE, index)
-        self.click(locator)
+        # self.click(TgLineLossStatisticsLocators.QRY_LINE_LOSS_DIMENSION)
+        # locator = self.get_select_locator(
+        #     TgLineLossStatisticsLocators.QRY_LINE_LOSS_DIMENSION_VALUE, index)
+        # self.click(locator)
+        self.selectDropDown(index)
 
-    # 查询日期
-    def inputDt_date(self, content):
-        self.exec_script(TgLineLossStatisticsLocators.DATE_JS)
-        self.input(content, *TgLineLossStatisticsLocators.QRY_DATE)
+    # 开始时间
+    def inputDt_start_date(self, content):
+        # self.exec_script(TgLineLossStatisticsLocators.DATE_JS)
+        self.inputDate(content)  # , *TgLineLossStatisticsLocators.QRY_DATE)
+
+    # 结束世间
+    def inputDt_end_date(self, content):
+        # self.exec_script(TgLineLossStatisticsLocators.DATE_JS)
+        self.inputDate(content)  # , *TgLineLossStatisticsLocators.QRY_DATE)
 
     # 查询按钮
     def btn_search(self):

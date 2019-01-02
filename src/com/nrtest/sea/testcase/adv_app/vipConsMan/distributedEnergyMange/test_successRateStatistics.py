@@ -7,8 +7,7 @@
 @time: 2018/11/9 14:07
 @desc:
 """
-
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -23,12 +22,17 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量→采集成功率统计
 @ddt
-class TestSuccessRateStatistics(unittest.TestCase, SuccessRateStatisticsPage):
+class TestSuccessRateStatistics(TestCase, SuccessRateStatisticsPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DistributedEnergyMange_data.DistributedEnergyQuality_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(DistributedEnergyMange_data.DistributedEnergyQuality_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(DistributedEnergyMange_data.DistributedEnergyQuality_tabName_Stat)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -51,9 +55,8 @@ class TestSuccessRateStatistics(unittest.TestCase, SuccessRateStatisticsPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        clickTabPage('采集成功率统计')
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 日期
         self.inputDt_date(para['DATE'])
         # 本地通讯方式
@@ -67,7 +70,35 @@ class TestSuccessRateStatistics(unittest.TestCase, SuccessRateStatisticsPage):
         # 查询按钮
         self.btn_search()
 
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyQuality_para, tabName='采集成功率统计'))
-    def test_der(self, para):
+    @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyQuality_para,
+                                  DistributedEnergyMange_data.DistributedEnergyQuality_tabName_Stat))
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyQuality_para,
+                                  DistributedEnergyMange_data.DistributedEnergyQuality_tabName_Stat, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

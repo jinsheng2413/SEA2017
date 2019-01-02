@@ -68,8 +68,6 @@ class TestDistributedEnergyLoadMonitorDetail(TestCase, DistributedEnergyLoadMoni
         self.inputSel_abso_type(para['ABSO_TYPE'])
         # 日期
         self.inputDt_date(para['DATE'])
-        # 负荷类型
-        self.inputChk_load_type(para['LOAD_TYPE'])
         # 查询按钮
         self.btn_search()
 

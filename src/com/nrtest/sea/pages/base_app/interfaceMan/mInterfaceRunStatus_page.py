@@ -9,25 +9,27 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.interfaceMan.mInterfaceRunStatus_locators import MInterfaceRunStatusLocators
 
 
 class MInterfaceRunStatusPage(Page):
     # 业务系统
-    def inputSel_business_system(self, index):
-        self.click(MInterfaceRunStatusLocators.QRY_BUSINESS_SYSTEM)
-        locator = self.get_select_locator(
-            MInterfaceRunStatusLocators.QRY_BUSINESS_SYSTEM_VALUE, index)
-        self.click(locator)
+    def inputSel_business_system(self, option):
+        # self.click(MInterfaceRunStatusLocators.QRY_BUSINESS_SYSTEM)
+        # locator = self.get_select_locator(
+        #     MInterfaceRunStatusLocators.QRY_BUSINESS_SYSTEM_VALUE, option)
+        # self.click(locator)
+        self.selectDropDown(option)
 
     # 服务对象名称
-    def inputSel_service_name(self, index):
-        self.click(MInterfaceRunStatusLocators.QRY_SERVICE_NAME)
-        locator = self.get_select_locator(
-            MInterfaceRunStatusLocators.QRY_SERVICE_NAME_VALUE, index)
-        self.click(locator)
-        print('------')
+    def inputSel_service_name(self, option):
+        # self.click(MInterfaceRunStatusLocators.QRY_SERVICE_NAME)
+        # locator = self.get_select_locator(
+        #     MInterfaceRunStatusLocators.QRY_SERVICE_NAME_VALUE, option)
+        # self.click(locator)
+        # print('------')
+        self.selectDropDown(option)
 
     # 查询
     def btn_qry(self):
-        self.click(MInterfaceRunStatusLocators.BTN_QRY)
+        # self.click(MInterfaceRunStatusLocators.BTN_QRY)
+        self.btn_query()

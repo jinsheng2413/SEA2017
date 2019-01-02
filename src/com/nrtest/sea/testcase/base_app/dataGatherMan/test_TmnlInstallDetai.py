@@ -7,30 +7,31 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
-from time import sleep
+
+from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage, \
-    TmnlInstallDetaiLocators
+from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage
 from com.nrtest.sea.task.commonMath import *
 
 
 @ddt
-class TestTmnlInstallDetai(unittest.TestCase, TmnlInstallDetaiPage):
+class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DataGatherMan_data.tmnlInstallDetail_para)
-        sleep(2)
-        clickTabPage(DataGatherMan_data.tmnlInstallDetail_tab_workCount)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.START_DATE_JS)
-        cls.exec_script(cls, TmnlInstallDetaiLocators.END_DATE_JS)
+        menuPage = MenuPage.openMenu(DataGatherMan_data.tmnlInstallDetail_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tab_workCount)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -61,21 +62,49 @@ class TestTmnlInstallDetai(unittest.TestCase, TmnlInstallDetaiPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
+
         # 终端类型
         self.inputSel_TmnlType(para['TMNL_TYPE'])
+
         # 开始时间
         self.inputStr_Start_time(para['START_TIME'])
+
         # 结束时间
         self.inputStr_end_time(para['END_TIME'])
 
         self.btn_workCount_qry()
         self.sleep_time(2)
-        # 校验
-        result = self.assert_context(TmnlInstallDetaiLocators.TAB_ONE)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
                                   DataGatherMan_data.tmnlInstallDetail_tab_workCount))
     def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
+                                  DataGatherMan_data.tmnlInstallDetail_tab_workCount, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

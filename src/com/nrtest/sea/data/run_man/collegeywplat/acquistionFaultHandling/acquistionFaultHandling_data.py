@@ -10,10 +10,12 @@
 class AcquistionFaultHandling_data:
     #运行管理-->采集运维平台-->采集故障处理-->专变故障处理
     para_specificPowerFaultDeal = '99934110'
+    para_specificPowerFaultMy_todo = '我的待办专变'
     para_specificPowerFaultDeal_deal = '故障处理专变'
     para_specificPowerFaultDeal_feedback = '故障反馈专变'
     # 运行管理-->采集运维平台-->采集故障处理-->低压故障处理
     para_lowPowerFaultDeal = '99934120'
+    para_lowPowerFaultMy_todo = '我的待办低压'
     para_lowPowerFaultDeal_deal = '故障处理低压'
     para_lowPowerFaultDeal_feedback = '故障反馈低压'
 

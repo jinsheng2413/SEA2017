@@ -22,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→时钟运行质量分析
 # 频繁对时终端
 @ddt
-class TestDemo(TestCase, FrequentlyCheckTmnlPage):
+class TestFrequentlyCheckTmnl(TestCase, FrequentlyCheckTmnlPage):
 
     @classmethod
     def setUpClass(cls):

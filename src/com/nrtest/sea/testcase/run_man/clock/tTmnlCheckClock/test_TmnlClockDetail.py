@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -24,16 +24,18 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→终端对时
 # 终端时钟明细
 @ddt
-class TestTmnlClockDetail(unittest.TestCase, TmnlClockDetailPage):
+class TestTmnlClockDetail(TestCase, TmnlClockDetailPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(ClockData.para_TTmnlCheckClock)
-        # 点击Tab页标签
-        clickTabPage(ClockData.para_TTmnlCheckClock_detail)
-        cls.exec_script(cls, TmnlClockDetailLocators.QUERY_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ClockData.para_TTmnlCheckClock)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(ClockData.para_TTmnlCheckClock_detail)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -63,11 +65,8 @@ class TestTmnlClockDetail(unittest.TestCase, TmnlClockDetailPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 偏差范围
         self.inputSel_offset_range(para['OFFSET_RANGE'])
         # 终端类型
@@ -87,9 +86,6 @@ class TestTmnlClockDetail(unittest.TestCase, TmnlClockDetailPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*TmnlClockDetailLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """
@@ -156,6 +152,3 @@ class TestTmnlClockDetail(unittest.TestCase, TmnlClockDetailPage):
     #     # 校验
     #     result = self.assert_context(*TmnlClockDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-    if __name__ == '__main__':
-        unittest.main()

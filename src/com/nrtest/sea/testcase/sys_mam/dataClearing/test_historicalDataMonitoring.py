@@ -74,8 +74,10 @@ class TestHistoricalDataMonitoring(TestCase, HistoricalDataMonitoringPage):
         self.inputStr_Start_time(para['START_DATE'])
         # 结束日期
         self.inputStr_end_time(para['END_DATE'])
+
         # 查询
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

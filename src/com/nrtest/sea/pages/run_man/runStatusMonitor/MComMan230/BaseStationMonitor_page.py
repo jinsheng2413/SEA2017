@@ -10,23 +10,18 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.runStatusMonitor.MComMan230.baseStationManage_locators import \
-    BaseStationManageLocators
 from com.nrtest.sea.locators.run_man.runStatusMonitor.MComMan230.baseStationMonitor_locators import \
     BaseStationMonitorlocators
 
 
-
-# 运行管理--》采集信道管理--》230M通信管理--》基站信息维护
-class BaseStationManagePage(Page):
+# 运行管理--》采集信道管理--》230M通信管理--》基站状态监控
+class BaseStationMonitorPage(Page):
     # 通信地址
     def inputStr_communicationAddr(self, value):
-        print(value)
-        print(value)
         self.input(value, *BaseStationMonitorlocators.QRY_COMMUNICATION_ADDR)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(*BaseStationMonitorlocators
-                   .BTN_QRY)
+        # self.click(*BaseStationMonitorlocators
+        #            .BTN_QRY)
+        self.btn_query()

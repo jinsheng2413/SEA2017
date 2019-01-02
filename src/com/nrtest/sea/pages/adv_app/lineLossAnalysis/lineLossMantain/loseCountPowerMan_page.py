@@ -10,32 +10,38 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossMantain.loseCountPowerMan_locators import \
-    LoseCountPowerManLocators
 
 
 # 高级应用-->线损分析--》线损模型维护--》线损计算模型管理
 class LoseCountPowerManPage(Page):
     # 台区编码
     def inputStr_zoneAreaCode(self, value):
-        self.input(value, *LoseCountPowerManLocators.QRY_ZONE_AREA_CODE)
+        # self.input(value, *LoseCountPowerManLocators.QRY_ZONE_AREA_CODE)
+
+        self.input(value)
 
     # 台区运行状态
     def inputSel_zoneAreaRunStatus(self, name):
-        self.click(*LoseCountPowerManLocators.QRY_ZONE_AREA_RUN_STATUS)
-        locator = self.get_select_locator(
-            LoseCountPowerManLocators.QRY_ZONE_AREA_RUN_STATUS_VALUE, name)
-        self.click(*locator)
+        # self.click(*LoseCountPowerManLocators.QRY_ZONE_AREA_RUN_STATUS)
+        # locator = self.get_select_locator(
+        #     LoseCountPowerManLocators.QRY_ZONE_AREA_RUN_STATUS_VALUE, name)
+        # self.click(*locator)
+        self.selectDropDown(name)
 
     # 台区名称
     def inputStr_zoneAreaName(self, value):
-        self.input(value, *LoseCountPowerManLocators.QRY_ZONE_NAME)
+        # self.input(value, *LoseCountPowerManLocators.QRY_ZONE_NAME)
+
+        self.input(value)
 
     # 责任人工号
     def inputStr_responsibilierNo(self, value):
-        self.input(value, *LoseCountPowerManLocators.QRY_RESPONSIBILITIER_NO)
+        # self.input(value, *LoseCountPowerManLocators.QRY_RESPONSIBILITIER_NO)
+
+        self.input(value)
 
         # 查询
 
     def btn_qry(self):
-        self.click(*LoseCountPowerManLocators.BTN_QRY)
+        # self.click(*LoseCountPowerManLocators.BTN_QRY)
+        self.btn_query()

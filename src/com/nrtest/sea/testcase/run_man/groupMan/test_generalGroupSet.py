@@ -76,9 +76,9 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
 
             # 是否勾选有效日期
             if bool(self.get_para_value(para['VALID_DATE'])):
-                #开始日期
+                # 开始日期
                 self.inputDt_start_date(para['START_DATE'])
-                #至
+                # 至
                 self.inputDt_end_date(para['END_DATE'])
             # 查询按钮
             self.btn_search()

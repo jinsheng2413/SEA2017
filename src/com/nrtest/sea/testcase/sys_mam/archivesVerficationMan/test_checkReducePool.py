@@ -8,11 +8,8 @@
 @time: 2018/11/20 0020 10:47
 @desc:
 """
-import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
@@ -25,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 系统管理--》档案核查管理--》考核减免汇总
 @ddt
-class TestCheckReducePool(unittest.TestCase, CheckReducePoolPage):
+class TestCheckReducePool(TestCase, CheckReducePoolPage):
 
     @classmethod
     def setUpClass(cls):
@@ -68,7 +65,7 @@ class TestCheckReducePool(unittest.TestCase, CheckReducePoolPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 申请时间
         self.inputStr_apply_time(para['START_TIME'])
         # 至

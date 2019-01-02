@@ -71,6 +71,8 @@ class TestDataTransQurey(TestCase, DataTransQureyPage):
         self.inputStr_examineDate(para['EXAMINE_DATE'])
 
         self.btn_qry()
+        self.sleep_time(2)
+
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

@@ -4,43 +4,41 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_dataTableAnalysis.py
-@time: 2018/11/20 0020 14:21
+@file: test_faultHandler.py
+@time: 2018/11/12 0012 9:31
 @desc:
 """
-
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.sys_mam.dataClearing.dataClearing_data import DataClearing_data
-from com.nrtest.sea.pages.sys_mam.dataClearing.dataTableAnalysis_page import DataTableAnalysisPage, \
-    DataTableAnalysisLocators
+from com.nrtest.sea.data.run_man.collegeywplat.acquistionFaultHandling.acquistionFaultHandling_data import \
+    AcquistionFaultHandling_data
+from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.faultHandler_page import FaultSpecificPowerMyTodoPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 系统管理-->数据清理管理-->数据表分析
+#运行管理-->采集运维平台-->采集故障处理-->专变故障处理
+# 故障处理专变
 @ddt
-class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
+class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerMyTodoPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(DataClearing_data.dataTableAnalysis_para)
+        menuPage = MenuPage.openMenu(AcquistionFaultHandling_data.para_specificPowerFaultDeal)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
-        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.clickTabPage(AcquistionFaultHandling_data.para_specificPowerFaultMy_todo)
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
         # 关闭菜单页面
-        # cls.closePages(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -65,14 +63,12 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 数据组
-        self.inputSel_dataGroup(para['DATA_GROUP'])
-        # 表名称
-        self.inputStr_listName(para['LIST_NAME'])
-        # 核查日期
-        self.inputStr_examineDate(para['EXAMINE_DATE'])
+        # 派工类型
+        self.inputChk_job_method(para['JOB_METHOD'])
 
-        # 查询
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+
         self.btn_qry()
         self.sleep_time(2)
 
@@ -92,7 +88,7 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DataClearing_data.dataTableAnalysis_para))
+    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultMy_todo))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -100,9 +96,12 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DataClearing_data.dataTableAnalysis_para, valCheck=True))
+    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultMy_todo, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)
+
+
+

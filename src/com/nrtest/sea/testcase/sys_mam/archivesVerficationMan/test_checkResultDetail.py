@@ -4,32 +4,31 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_dataTableAnalysis.py
-@time: 2018/11/20 0020 14:21
+@file: test_verficationResultDetail.py
+@time: 2018/11/16 0016 14:33
 @desc:
 """
-
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.sys_mam.dataClearing.dataClearing_data import DataClearing_data
-from com.nrtest.sea.pages.sys_mam.dataClearing.dataTableAnalysis_page import DataTableAnalysisPage, \
-    DataTableAnalysisLocators
+from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultDetail_page import \
+    CheckResultDetailPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 系统管理-->数据清理管理-->数据表分析
+# 系统管理--》档案核查管理--》核查结果明细查询
 @ddt
-class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
+class TestVerficationResultDetail(TestCase, CheckResultDetailPage):
 
     @classmethod
     def setUpClass(cls):
         print("开始执行")
-        # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(DataClearing_data.dataTableAnalysis_para)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.checkResultDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
@@ -40,7 +39,7 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
     def tearDownClass(cls):
         print("执行结束")
         # 关闭菜单页面
-        # cls.closePages(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """
@@ -65,14 +64,15 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 数据组
-        self.inputSel_dataGroup(para['DATA_GROUP'])
-        # 表名称
-        self.inputStr_listName(para['LIST_NAME'])
-        # 核查日期
-        self.inputStr_examineDate(para['EXAMINE_DATE'])
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+        # 台区编号
+        self.inputStr_tg_no(para['TG_NO'])
+        # 开始时间
+        self.inputStr_start_time(para['START_TIME'])
+        # 结束时间
+        self.inputStr_end_time(para['END_TIME'])
 
-        # 查询
         self.btn_qry()
         self.sleep_time(2)
 
@@ -92,7 +92,7 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DataClearing_data.dataTableAnalysis_para))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultDetail_para))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -100,7 +100,7 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DataClearing_data.dataTableAnalysis_para, valCheck=True))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultDetail_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

@@ -91,7 +91,6 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
-from com.nrtest.common.utils import Utils
 from com.nrtest.sea.locators.other.base_locators import BaseLocators
 from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
 # create a logger instance
@@ -240,6 +239,7 @@ class Page():
                     pos += 1
         return el
 
+
     def format_xpath_multi(self, xpath, format_val='', is_multi_tab=True):
         """
         应用于多Tab页情况下的xpath格式化
@@ -299,15 +299,15 @@ class Page():
         except Exception as ex:
             logger.error('输入错误:{}\n{}'.format(value, ex))
 
-    def curr_click(self, is_multi_tab=False, btn_name='', starts_with=False):
+    def curr_click(self, is_multi_tab=False, btn_name=''):
         """
         新版点击方法
         :param btn_name:按钮元素文本值
         :param is_multi_tab:菜单面内是否有多个TAB页
         """
         try:
-            loc = self.format_xpath_multi(BaseLocators.BTN_QRY, \
-                                          (btn_name if bool(btn_name) else '查询'), is_multi_tab)
+            btn_name = btn_name if bool(btn_name) else '查询'
+            loc = self.format_xpath_multi(BaseLocators.BTN_QRY, btn_name, is_multi_tab)
             if is_multi_tab:
                 el = self._find_displayed_element(loc)
             else:
@@ -317,65 +317,6 @@ class Page():
             logger.info('点击元素：{}'.format(loc))
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
-
-    def _spec_element(self, locator, label_name, idx=1):
-        """
-        新版点击方法
-        :param btn_name:按钮元素文本值
-        :param is_multi_tab:菜单面内是否有多个TAB页
-        """
-        try:
-            temp = Utils.replace_chrs(label_name, '\r\n\t ')
-            loc = self.format_xpath_multi(locator, temp[0])
-            elements = self._find_elements(loc)
-            finded_el = None
-            pos = 1
-            for el in elements:
-                if el.is_displayed():
-                    text = Utils.replace_chrs(el.text, '\r\n\t ')
-                    # for ch in label_name[1:]:
-                    #     if text.find(ch)>=0:
-                    #         continue
-                    #     else:
-                    #         break
-                    # if text[-1] == ch:
-                    if text == temp:
-                        if pos == idx:
-                            finded_el = el
-                            break
-                        else:
-                            pos += 1
-            return finded_el
-        except BaseException as e:
-            return finded_el
-
-    def spec_click(self, locator, label_name, idx=1):
-        # BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
-        el = self._spec_element(BaseLocators.BTN_QRY_BLANK, label_name, idx)
-        if bool(el):
-            el.click()
-        else:
-            raise '不能定位特殊元素{}：{}'.format(locator, label_name)
-
-    def spec_input(self, locator, label_name, value, idx=1):
-        # QRY_INPUT = (By.XPATH, '//div[@class="x-form-item "]/label[normalize-space(text())="{}"]/..//input[@type!="hidden"]')
-        locator = (By.XPATH, '//div[@class="x-form-item "]/label[contains(text(),"{}")])')
-        el = self._spec_element(locator, label_name, idx)
-        if bool(el):
-            child_el = el.find_element('..//input[@type!="hidden"]')
-            child_el.clear()
-            child_el.send_keys(value)
-
-    def spec_dropdown(self, locator, label_name, idx=1):
-        # SEL_CHECKBOX = (By.XPATH, '//label[normalize-space(text())="{}"]/..//img')
-        el = self._spec_element(locator, label_name, idx)
-        if bool(el):
-            child_el = el.find_element('..//img')
-            child_el.click()
-        else:
-            raise '不能定位特殊元素{}：{}'.format(locator, label_name)
-
-
 
     def btn_query(self, is_multi_tab=False):
         """
@@ -491,6 +432,42 @@ class Page():
         js_attr = BaseLocators.JS_DT % xpath.replace('"', '\'')
         # print('*************js_attr', js_attr)
         self.driver.execute_script(js_attr)
+
+    def _clean_blank(self, tag_text, tag_obj='label'):
+        """
+        剔除标签中的空白字符及冒号：:
+        :param tag_text: 标签中第一个连续中英文
+        :param tag_obj: 要剔除的tag
+        """
+        clean_obj = {'button': "//button[contains(text(), '{}')]",
+                     'label': "//label[contains(text(), '{}')]",
+                     'span': "//span[contains(text(), '{}')]"}
+        clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_obj].format(tag_text[0])
+        script = BaseLocators.CLEAN_BLANK % clean_me
+        # print(script)
+        self.exec_script(script)
+
+    def btn_clean(self, tag_text):
+        """
+        请按钮名上的空格
+        :param tag_text: 按钮名的部分内容
+        """
+        self._clean_blank(tag_text, 'button')
+
+    def label_clean(self, tag_text):
+        """
+        清查询条件标签上的空格
+        :param tag_text: 标签名的部分内容
+        """
+        self._clean_blank(tag_text)
+
+    def span_clean(self, tag_text):
+        """
+        清日期选择标签上的空格
+        :param tag_text: 标签名的部分内容
+        """
+        self._clean_blank(tag_text, 'span')
+
 
     def scrollToElement(self, locator):
         """
@@ -801,7 +778,7 @@ class Page():
         logger.info('回到ifrmae开始的地方')
         self.driver.switch_to.default_content()
 
-    def exec_script(self, src, args):
+    def exec_script(self, src):
         """
         方法名：exec_script
         执行js脚本
@@ -1383,7 +1360,8 @@ if __name__ == '__main__':
     # menu_name = '关闭其他所有页' if False else '关闭当前页'
     # loc1 = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
     # print(loc1)
-    # page = Page(None)
+    page = Page(None)
+    page.clean_blank('查询')
     # print(page.format_xpath_multi((By.XPATH, 'adad{}'), 'c', False))
     # pg = Page(None)
     # pg.clickSingleCheckBox('忽略历史版本;')

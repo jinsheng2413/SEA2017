@@ -58,6 +58,7 @@ class TestUserOperationLog(unittest.TestCase, UserOperationLogPage):
         # self.recoverLeftTree()
 
     def query(self, para):
+
         # 操作模块
         self.inputSel_operation_tem(para['OPERATION_TEM'])
         # 查询日期，开始
@@ -66,6 +67,7 @@ class TestUserOperationLog(unittest.TestCase, UserOperationLogPage):
         self.inputDt_end_date(para['END_DATE'])
         # 操作人员
         self.inputStr_operator(para['OPERATOR'])
+
         # 查询按钮
         self.btn_qry()
 

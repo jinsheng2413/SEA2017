@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -25,16 +25,18 @@ from com.nrtest.sea.task.commonMath import *
 # 高级应用--》配变监测分析--》功率因数越限统计
 # 功率因数越限统计
 @ddt
-class TestSpVoltAnalyseStatic(unittest.TestCase, PowerFactorCountStaticPage):
+class TestSpVoltAnalyseStatic(TestCase, PowerFactorCountStaticPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单
-        cls.driver = openMenu(TradnsformerMonitorData.para_PowerFactorCount)
-        # 点击Tab页标签
-        clickTabPage(TradnsformerMonitorData.para_PowerFactorCount_static)
-        cls.exec_script(cls, PowerFactorCountStaticLocators.QUERY_DATE_JS)
+        print("开始执行")
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(TradnsformerMonitorData.para_PowerFactorCount)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(TradnsformerMonitorData.para_PowerFactorCount_static)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -64,11 +66,8 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, PowerFactorCountStaticPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询日期
@@ -76,9 +75,6 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, PowerFactorCountStaticPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(*PowerFactorCountStaticLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """
@@ -131,7 +127,3 @@ class TestSpVoltAnalyseStatic(unittest.TestCase, PowerFactorCountStaticPage):
     #     # 校验
     #     result = self.assert_context(*PowerFactorCountStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-
-if __name__ == '__main__':
-    unittest.main()

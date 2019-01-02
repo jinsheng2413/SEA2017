@@ -59,6 +59,7 @@ class TestUserDistributionStat(unittest.TestCase, UserDistributionStatPage):
         self.recoverLeftTree()
 
     def query(self, para):
+
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])
 

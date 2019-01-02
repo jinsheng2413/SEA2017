@@ -63,13 +63,10 @@ class TestDemo(TestCase, ClockResultDetailPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 类别
-        # self.inputSel_clock_model(para['CLOCK_MODEL'])
+        self.inputSel_clock_model(para['CLOCK_MODEL'])
         # 电表资产号
         self.inputStr_met_asset_no(para['MET_ASSET_NO'])
         # 终端资产号
@@ -150,6 +147,3 @@ class TestDemo(TestCase, ClockResultDetailPage):
     #     # 校验
     #     result = self.assert_context(*TmnlClockDetailLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-    if __name__ == '__main__':
-        unittest.main()

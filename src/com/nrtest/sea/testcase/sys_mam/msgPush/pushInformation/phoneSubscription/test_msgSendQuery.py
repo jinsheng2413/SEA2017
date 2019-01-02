@@ -54,8 +54,9 @@ class TestMsgSendQuery(TestCase, MsgSendQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
+
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 开始时间

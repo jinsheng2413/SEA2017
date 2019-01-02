@@ -58,6 +58,7 @@ class TestMenuUseDetail(unittest.TestCase, MenuUseDetailPage):
         self.recoverLeftTree()
 
     def query(self, para):
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 菜单

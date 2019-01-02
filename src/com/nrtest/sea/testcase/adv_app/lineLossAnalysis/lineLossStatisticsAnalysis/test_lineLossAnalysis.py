@@ -9,6 +9,7 @@
 """
 
 import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -21,14 +22,17 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.li
 from com.nrtest.sea.task.commonMath import *
 
 
-# 高级应用→线损分析→线损统计分析→台区线损分析
+# 高级应用→线损分析→线损统计分析→线路线损分析
 @ddt
 class TestTgLineLossAnalysis(unittest.TestCase, LineLossAnalysisPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(LineLossStatisticsAnalysis_data.LineLossAnalysis_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(LineLossStatisticsAnalysis_data.LineLossAnalysis_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        menuPage.remove_dt_readonly()
+
 
     @classmethod
     def tearDownClass(cls):
@@ -57,12 +61,45 @@ class TestTgLineLossAnalysis(unittest.TestCase, LineLossAnalysisPage):
         self.inputStr_line_no(para['LINE_NO'])
         # 线路名称
         self.inputStr_line_name(para['LINE_NAME'])
+        # 按时间类型统计
+        self.inputDTTAB_statDateType(para['STAT_DATE_TYPE'])
         # 查询日期
         self.inputDt_date(para['DATE'])
+        # 组合单元
+        self.inputChk_compoistionUnit(para['COMPOSITION_UNIT'])
+        # 线损类型
+        self.inputSChk_lineLossType(para['LINE_LOSS_TYPE'])
+
         # 查询按钮
         self.btn_search()
 
-    @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossAnalysis_para))
-    def test_der(self, para):
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
+    # @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossAnalysis_para)[0:1])
+    def test_query(self, para):
+        self.start_case(para)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case(para)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossAnalysis_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case(para)

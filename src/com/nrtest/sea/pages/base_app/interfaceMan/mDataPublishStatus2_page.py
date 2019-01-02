@@ -9,25 +9,28 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.interfaceMan.mDataPublishStatus2_locators import MDataPublishStatus2_locators
 
 
 class MDataPublishStatus2Page(Page):
     # 业务系统
-    def inputSel_BusinessSystem(self, index):
-        self.click(MDataPublishStatus2_locators.QRY_BUSINESS_SYSTEM)
-        locator = self.get_select_locator(
-            MDataPublishStatus2_locators.QRY_BUSINESS_SYSTEM_VALUE, index)
-        self.click(locator)
+    def inputSel_BusinessSystem(self, option):
+        # self.click(MDataPublishStatus2_locators.QRY_BUSINESS_SYSTEM)
+        # locator = self.get_select_locator(
+        #     MDataPublishStatus2_locators.QRY_BUSINESS_SYSTEM_VALUE, option)
+        # self.click(locator)
+        self.selectDropDown(option)
 
     # 发布时间 开始
-    def inputStr_receive_time(self, value):
-        self.input(value, *MDataPublishStatus2_locators.QRY_DATE_BEGIN)
+    def inputStr_receive_time(self, content):
+        # self.input(value, *MDataPublishStatus2_locators.QRY_DATE_BEGIN)
+        self.inputDate(content)
 
     # 结束时间
-    def inputStr_end_time(self, value):
-        self.input(value, *MDataPublishStatus2_locators.QRY_DATE_END)
+    def inputStr_end_time(self, content):
+        # self.input(value, *MDataPublishStatus2_locators.QRY_DATE_END)
+        self.inputDate(content)
 
     # 查询
     def btn_qry(self):
-        self.click(MDataPublishStatus2_locators.BTN_QUERY)
+        # self.click(MDataPublishStatus2_locators.BTN_QUERY)
+        self.btn_query()

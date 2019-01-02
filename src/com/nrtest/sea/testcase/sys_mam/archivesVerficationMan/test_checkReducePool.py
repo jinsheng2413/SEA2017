@@ -65,7 +65,7 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 申请时间
         self.inputStr_apply_time(para['START_TIME'])
         # 至

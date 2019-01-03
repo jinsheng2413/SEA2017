@@ -20,6 +20,18 @@ class VipConsConfig_Page(Page):
         # self.click(locator)
         self.selectDropDown(options)
 
+    # 供电电压
+    def inputSel_power_voltage(self, option):
+        self.selectDropDown()
+
+    # 已定义重点用户
+    def inputChk_vip_cons(self, option):
+        self.clickSingleCheckBox(option)
+
+    # 行业
+    def inputStr_industry(self, value):
+        self.input(value)
+
     # 用户编号
     def inputStr_cons_no(self, value):
         self.input(value)  # , *VipConsConfig_locators.QRY_CONS_NO)

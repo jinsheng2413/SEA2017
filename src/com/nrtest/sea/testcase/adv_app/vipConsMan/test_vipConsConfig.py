@@ -46,11 +46,17 @@ class Test_VipConsConfig(TestCase, VipConsConfig_Page):
         # 运行容量等级
         self.inputSel_run_level(para['RUN_LEVEL'])
 
+        # 供电电压
+        self.inputSel_power_voltage(para['POWER_VOLTAGE'])
+
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
 
         # 用户名称
         self.inputStr_cons_name(para['CONS_NAME'])
+
+        # 已定义重点用户
+        self.inputChk_vip_cons(para['VIP_CONS'])
 
         # 查询
         self.btn_qry()

@@ -15,8 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse.loadRateDetail_page import \
-    LoadRateDetailPage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse_page import LoadRateDetailPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -74,7 +73,7 @@ class TestLoadRateDetail(TestCase, LoadRateDetailPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         #负载情况
-        self.inputChk_load_status(para['LOAD_STATUS'])
+        self.inputChk_load_status(para)
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
 

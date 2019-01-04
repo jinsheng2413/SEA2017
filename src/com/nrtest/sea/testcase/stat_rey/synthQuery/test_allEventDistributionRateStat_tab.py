@@ -3,8 +3,8 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_cPSynthQuery.py
-@time: 2018/10/20 14:09
+@file: test_allEventDistributionRateStatistics.py
+@time: 2018/12/27 9:49
 @desc:
 """
 
@@ -15,23 +15,24 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.pages.stat_rey.synthQuery.cPSynthQuery_page import CPSynthQueryPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.allEventDistributionRateStatistics_page import \
+    AllEventDistributionRateStatisticsPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 统计查询→综合查询→采集点综合查询
+# 统计查询→综合查询→全事件配置率统计→全事件未配置明细
 @ddt
-class TestCPSynthQuery(TestCase, CPSynthQueryPage):
+class TestAllEventDistributionRateStatistics(TestCase, AllEventDistributionRateStatisticsPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(SynthQuery_data.CPSynthQuery_para)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(SynthQuery_data.AllEventDistributionRateStatistics_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage()
+        menuPage.clickTabPage(SynthQuery_data.AllEventDistributionRateStatistics_tabName_detail)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        # menuPage.remove_dt_readonly()
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -56,24 +57,12 @@ class TestCPSynthQuery(TestCase, CPSynthQueryPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+        # 时间
+        self.inputDt_date_tab(para['DATE_TAB'])
         # 终端类型
-        self.inputSel_tmnl_status(para['TMNL_STATUS'])
-        # 用户范围
-        self.inputSel_cons_range(para['CONS_RANGE'])
-        # 停电标志
-        self.inputSel_power_out_sign(para['POWER_OUT_SIGN'])
-        # 终端投运日期
-        self.inputChk_tmnl_comm_date(para['TMNL_COMM_DATE'])
-        # 开始日期
-        self.inputDt_start_date(para['START_DATE'])
-        # 结束日期
-        self.inputDt_end_date(para['END_DATE'])
-        # 终端用途
-        self.inputChk_tmnl_way(para['TMNL_WAY'])
-        # 接线方式
-        self.inputSel_line_way(para['LINE_WAY'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_search_tab()
 
     def assert_query_result(self, para):
         """
@@ -91,7 +80,8 @@ class TestCPSynthQuery(TestCase, CPSynthQueryPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.CPSynthQuery_para))
+    @data(*DataAccess.getCaseData(SynthQuery_data.AllEventDistributionRateStatistics_para,
+                                  SynthQuery_data.AllEventDistributionRateStatistics_tabName_detail))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -99,7 +89,8 @@ class TestCPSynthQuery(TestCase, CPSynthQueryPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.CPSynthQuery_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.AllEventDistributionRateStatistics_para,
+                                  SynthQuery_data.AllEventDistributionRateStatistics_tabName_detail, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

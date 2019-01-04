@@ -14,6 +14,8 @@ class SynthQuery_data:
     OrgNoDataQuery_para = '99941500'
     # 统计查询→综合查询→抄表段数据查询
     SectDataQuery_para = '99941600'
+    SectDataQuery_tabName = '抄表段数据查询'
+    SectDataQuery_tabName_data = '数据展示'
     # 统计查询→综合查询→批量数据查询
     BatchDataQuery_para = '99941700'
     # 统计查询→综合查询→全事件电表事件查询
@@ -28,20 +30,35 @@ class SynthQuery_data:
     MeterDataQuery_para = '99941910'
     # 统计查询→综合查询→抄表成功率查询（河北）
     MeterSuccessRateQuery_para = '99941930'
+    MeterSuccessRateQuery_tabName = '按地区、厂家统计'
     # 统计查询→综合查询→多表合一抄表数据查询
     MultipleTableDataQuery_para = '99941A00'
+    MultipleTableDataQuery_tabName = '用户抄表数据'
     # 统计查询→综合查询→全事件配置率统计
     AllEventDistributionRateStatistics_para = '99941945'
+    AllEventDistributionRateStatistics_tabName = '全事件配置率统计'
+    AllEventDistributionRateStatistics_tabName_detail = '全事件未配置明细'
     # 统计查询→综合查询→巡检仪数据查询
     PatrolDataQuery_para = '99941K00'
+    PatrolDataQuery_tabName = '基本档案'
+    PatrolDataQuery_tabName_curve = '曲线数据'
+    PatrolDataQuery_tabName_anomalous = '异常事件查询'
+    PatrolDataQuery_tabName_current = '电流回路状态'
+    PatrolDataQuery_tabName_contrast = '曲线对比'
     # 统计查询→综合查询→自动化抄表可用率
     AutomatedMeterAvailability_para = '99941C00'
+    AutomatedMeterAvailability_tabName = '自动化抄表可用率'
+    AutomatedMeterAvailability_tabName_detail = '全项失败明细'
     # 统计查询→综合查询→白名单查询
     WhiteListQuery_para = '99941O00'
     # 统计查询→综合查询→巡检仪综合查询
     PatrolIntegratedQuery_para = '99941S00'
+    PatrolIntegratedQuery_tabName = '巡检仪运行指标'
+    PatrolIntegratedQuery_tabName_detail = '巡检仪运行指标明细'
     # 统计查询→综合查询→四表合一抄表成功率
     FourTableMeterReadSuccessRate_para = '99941800'
+    FourTableMeterReadSuccessRate_tabName = '四表合一抄表成功率'
+    FourTableMeterReadSuccessRate_tabName_failed = '四表合一抄表失败明细'
     # 统计查询→综合查询→采集点综合查询
     CPSynthQuery_para = '99941D00'
     # 统计查询→综合查询→黑名单查询

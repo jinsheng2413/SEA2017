@@ -18,6 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.StrategicArchivesMaintainPage imp
 from com.nrtest.sea.task.commonMath import *
 
 
+# 基本应用--》档案管理--》巡检仪档案管理
 @ddt
 class TestDemo(unittest.TestCase, StrategicArchivesMaintainPage):
 

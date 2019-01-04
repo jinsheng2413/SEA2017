@@ -9,22 +9,23 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.archivesMan.archivesAutoReview_Locators import ArchivesAutoReviewLocators
 
 
 class ArchivesAutoReviewPage(Page):
 
     # 导入电表信息
     def inputSel_leadInto_meter_info(self, name):
-        self.click(ArchivesAutoReviewLocators.QRY_LEADINTO_METER_INFO)
-        locator = self.get_select_locator(
-            ArchivesAutoReviewLocators.QRY__LEADINTO_METER_INFO_VALUE, name)
-        self.click(locator)
+        # self.click(ArchivesAutoReviewLocators.QRY_LEADINTO_METER_INFO)
+        # locator = self.get_select_locator(
+        #     ArchivesAutoReviewLocators.QRY__LEADINTO_METER_INFO_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name)
 
     # 时间
     def inputStr_date(self, value):
-        self.input(value, *ArchivesAutoReviewLocators.QRY_DATE)
+        self.input(value)  # , *ArchivesAutoReviewLocators.QRY_DATE)
 
     # 查询
     def btn_qry(self):
-        self.click(ArchivesAutoReviewLocators.BTN_QRY)
+        # self.click(ArchivesAutoReviewLocators.BTN_QRY)
+        self.btn_query()

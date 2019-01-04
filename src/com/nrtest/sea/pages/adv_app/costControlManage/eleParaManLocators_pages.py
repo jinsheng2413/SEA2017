@@ -12,38 +12,42 @@ from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.costControlManage.eleParaMan_locators import EleParaManLocators
 
 
+# 高级应用--》费控管理--》本地费控--》电价参数管理
+
 class EleParaManPage(Page):
 
     # 开始时间
     def inputStr_startTimeTwo(self, value):
-        self.input(value, *EleParaManLocators.QRY_START_TIME_ONE)
+        self.inputDate(value)  # , *EleParaManLocators.QRY_START_TIME_ONE)
 
     # 开始时间
     def inputStr_startTimeOne(self, value):
-        self.input(value, *EleParaManLocators.QRY_START_TIME_ONE)
+        self.inputDate(value)  #, *EleParaManLocators.QRY_START_TIME_ONE)
 
     # 是否已生成参数
     def inputSel_ComeIntoPara_One(self, name):
-        self.click(EleParaManLocators.QRY_OR_COMEINTO_PARA_ONE)
-        locator = self.get_select_locator(
-            EleParaManLocators.QRY_OR_COMEINTO_PARA_ONE, name)
-        self.click(locator)
+        # self.click(EleParaManLocators.QRY_OR_COMEINTO_PARA_ONE)
+        # locator = self.get_select_locator(
+        #     EleParaManLocators.QRY_OR_COMEINTO_PARA_ONE, name)
+        # self.click(locator)
+        self.selectDropDown(name)
 
         # 是否已生成参数
 
     def inputSel_ComeIntoPara_Two(self, name):
-        self.click(EleParaManLocators.QRY_OR_COMEINTO_PARA_TWO)
-        locator = self.get_select_locator(
-            EleParaManLocators.QRY_OR_COMEINTO_PARA_TWO, name)
-        self.click(locator)
+        # self.click(EleParaManLocators.QRY_OR_COMEINTO_PARA_TWO)
+        # locator = self.get_select_locator(
+        #     EleParaManLocators.QRY_OR_COMEINTO_PARA_TWO, name)
+        # self.click(locator)
+        self.selectDropDown(name)
 
     # 结束时间
     def inputStr_EndTimeOne(self, value):
-        self.input(value, *EleParaManLocators.QRY_END_TIME_ONE)
+        self.inputDate(value)  #, *EleParaManLocators.QRY_END_TIME_ONE)
 
     # 结束时间
     def inputStr_endTimeTwo(self, value):
-        self.input(value, *EleParaManLocators.QRY_END_TIME_ONE)
+        self.inputDate(value)  #, *EleParaManLocators.QRY_END_TIME_ONE)
 
         # 查询
 

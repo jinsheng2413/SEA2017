@@ -48,7 +48,7 @@ class TestMeterStateArr(unittest.TestCase, MeterStateArrPage):
         # 回收左边树
         self.recoverLeftTree()
 
-    def TmnlQuery(self, para):
+    def query(self, para):
         """
 
         :param para: Dict类型的字典，不是dict
@@ -73,7 +73,7 @@ class TestMeterStateArr(unittest.TestCase, MeterStateArrPage):
 
     @data(*DataAccess.getCaseData(ArchivesMan_data.meterStateArr_para))
     def test_tmnl_query(self, para):
-        self.TmnlQuery(para)
+        self.query(para)
 
     # def MeterQuery(self, para):
     #     """

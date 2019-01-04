@@ -94,8 +94,8 @@ class MenuPage(Page):
                 if (item_cnt == 4 and i == 2) or (item_cnt == 5 and i in (2, 3)):
                     self.hover(loc)
                 else:
-                    # 目前就“统计查询-->综合查询”有部分菜单需要
-                    if i + 1 == item_cnt and is_scroll == 'Y':  # 菜单太多需要滚屏处理
+                    # 菜单太多需要滚屏处理,如：统计查询→综合查询→巡检仪综合查询
+                    if i + 1 == item_cnt and is_scroll == 'Y':
                         self._scroll_menu(loc)
                     else:
                         self.click(loc)
@@ -106,21 +106,22 @@ class MenuPage(Page):
         菜单太多时需要滚屏
         :param locator: 菜单xpath
         """
-        el = self._find_element(MenuLocators.BTN_SCROLL_DOWN)
-        el_menu = self.driver.find_element(*locator)
-        is_find = bool(el) and bool(el_menu)
-        if is_find:
-            cnt = 0
-            while cnt < 15:
-                # 最多点15次，如果还没找到则退出
-                if el_menu.is_displayed():
-                    el_menu.click()
-                    cnt += 1
-                else:
+        try:
+            el_menu = self.driver.find_element(*locator)
+            if el_menu.is_displayed():
+                el_menu.click()
+            else:
+                el = self._find_element(MenuLocators.BTN_SCROLL_DOWN)
+                cnt = 0
+                while cnt < 15:
                     el.click()
-                    break
-        else:
-            DataAccess.el_operate_log(self.menu_name, None, locator, None, '找不到元素', '该菜单不存在或未知原因！')
+                    sleep(0.5)
+                    cnt += 1
+                    if el_menu.is_displayed():
+                        el_menu.click()
+                        break
+        except Exception as ex:
+            DataAccess.el_operate_log(self.menu_name, None, locator, None, '找不到元素', ex)
 
     # 左边树
     def btn_plus(self, index):

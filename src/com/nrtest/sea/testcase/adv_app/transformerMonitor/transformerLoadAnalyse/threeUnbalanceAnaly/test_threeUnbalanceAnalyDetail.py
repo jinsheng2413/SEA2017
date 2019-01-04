@@ -15,15 +15,14 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyDetail_page import \
-    LoadRateDetailPage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly_page import ThreeUnbalanceAnalyDetailPage
 from com.nrtest.sea.task.commonMath import *
 
 
 # 高级应用--》配变负载分析--》三相不平衡分析
 # 三相不平衡明细
 @ddt
-class TestLoadRateDetail(TestCase, LoadRateDetailPage):
+class TestLoadRateDetail(TestCase, ThreeUnbalanceAnalyDetailPage):
 
     @classmethod
     def setUpClass(cls):
@@ -64,9 +63,6 @@ class TestLoadRateDetail(TestCase, LoadRateDetailPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        # self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
@@ -77,9 +73,6 @@ class TestLoadRateDetail(TestCase, LoadRateDetailPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(ThreeUnbalanceAnalyDetailLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """
@@ -110,7 +103,6 @@ class TestLoadRateDetail(TestCase, LoadRateDetailPage):
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
-
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_ThreeUnbalanceAnaly,

@@ -15,8 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly.threeUnbalanceAnalyStatic_page import \
-    ThreeUnbalanceAnalyStaticPage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.threeUnbalanceAnaly_page import ThreeUnbalanceAnalyStaticPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -35,6 +34,7 @@ class TestLoadRateStatic(TestCase, ThreeUnbalanceAnalyStaticPage):
         menuPage.clickTabPage(TradnsformerMonitorData.para_ThreeUnbalanceAnaly_static)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
+
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
@@ -63,9 +63,6 @@ class TestLoadRateStatic(TestCase, ThreeUnbalanceAnalyStaticPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        # self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
         openLeftTree(para['TREE_NODE'])
 
@@ -76,9 +73,6 @@ class TestLoadRateStatic(TestCase, ThreeUnbalanceAnalyStaticPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(ThreeUnbalanceAnalyStaticLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """
@@ -133,7 +127,3 @@ class TestLoadRateStatic(TestCase, ThreeUnbalanceAnalyStaticPage):
     #     # 校验
     #     result = self.assert_context(ThreeUnbalanceAnalyStaticLocators.TABLE_DATA)
     #     self.assertTrue(result)
-
-
-if __name__ == '__main__':
-    unittest.main()

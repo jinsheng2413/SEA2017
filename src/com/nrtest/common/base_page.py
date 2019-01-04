@@ -129,7 +129,10 @@ class Page():
         self.base_url = Setting.TEST_URL
         self.page_title = Setting.PAGE_TILE
         self.menuPage = menu_page
+        self.menu_no = menu_page.menu_no
         self.menu_name = menu_page.menu_name if bool(menu_page) else None
+        self.tst_case_id = None
+        self.class_name = ''
 
     def save_img(self, img_name):
         """
@@ -199,20 +202,32 @@ class Page():
             WebDriverWait(self.driver, seconds).until(EC.element_to_be_clickable(locator))
             # 定位元素
             element = self.driver.find_element(*locator)
+            except_type = ''
+            except_info = ''
         except TimeoutException as te:
+            except_type = '等待超时'
+            except_info = te
             if locator[1].find('请求无响应或超时！') == -1:
                 logger.error(u'等待元素超时--> {}\n{}'.format(locator, te))
         except NoSuchElementException as nse:
+            except_type = '找不到元素'
+            except_info = nse
             logger.error(u'未找到元素-->  {}\n{}'.format(locator, nse))
         except Exception as ex:  # 无法确定是哪类异常时用基类异常来捕获
+            except_type = '其他错误'
+            except_info = ex
             logger.error(u'其他查找元素错误-->  {}\n{}'.format(locator, ex))
+        if except_type != '':
+            DataAccess.el_operate_log(self.tst_case_id, locator, self.class_name, except_type, except_info)
         return element
 
-    def start_case(self, para):
+    def start_case(self, para, class_path=''):
         """
         开始执行测试用例
         :param para:
         """
+        self.class_name = class_path.split('src/')[1]
+        self.tst_case_id = para['TST_CASE_ID']
         print('开始执行... \n用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}。'.format(*list(para.values())[:4]))
 
     def end_case(self, para):
@@ -901,10 +916,20 @@ class Page():
         :param locator:
         :return: 查找元素个数
         """
+        elements = None
         try:
-            return self.driver.find_elements(*locator)
-        except NoSuchElementException:
+            except_type = ''
+            elements = self.driver.find_elements(*locator)
+        except NoSuchElementException as nse:
+            except_type = '找不到元素'
+            except_info = nse
             logger.info('显示区未查询到结果')
+        except Exception as ex:  # 无法确定是哪类异常时用基类异常来捕获
+            except_type = '其他错误'
+            except_info = ex
+        if except_type != '':
+            DataAccess.el_operate_log(self.tst_case_id, locator, self.class_name, except_type, except_info)
+        return elements
 
     def wait(self):
         """

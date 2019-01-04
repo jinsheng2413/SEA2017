@@ -79,7 +79,7 @@ class Test_VipConsStealAnal(TestCase, VipConsStealAnal_Page):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)

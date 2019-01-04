@@ -66,8 +66,19 @@ class MenuPage(Page):
         print('菜单路径：', menu_path)
         items = menu_path.split(';')
 
-        # 当前菜单名
+        # 菜单编号
+        self.menu_no = menu_no
+        # 菜单名
         self.menu_name = items[-1]
+
+        # 菜单路径
+        firt_levels = DataAccess.getFirtMenu()
+        for level, menuName in firt_levels:
+            if menu_path.startswith(level):
+                menu_path = menu_path.replace(level, menuName)
+                break
+        self.menu_path = menu_path.replace(';', '-->')
+
 
         # 当菜单已打开已打开时不再重新打开
         if not self.exists_menu:

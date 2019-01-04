@@ -31,6 +31,12 @@ class DataAccess:
         return menu_path
 
     @staticmethod
+    def getFirtMenu():
+        pyoracle = PyOracle.getInstance()
+        sql = 'select level1, menu_name from vw_first_level'
+        return pyoracle.query(sql)
+
+    @staticmethod
     def getAllMenu():
         """
         获取测试系统所有菜单
@@ -146,15 +152,16 @@ class DataAccess:
         pyoracle.callproc('pkg_nrtest.refresh_menu_xapth', [menu_no, Setting.PROJECT_NO])
 
     @staticmethod
-    def se_operate_log(tst_case_id, class_path, except_info):
+    def el_operate_log(tst_case_id, locator, class_path, except_type, except_info):
         pyoracle = PyOracle.getInstance()
-        sql = 'insert into tst_operate_log (project_no, user_no, group_no, tst_case_id, class, log_info) \
-        values (:1, :2, :3, :4, :5, :6)'
-        para = (Setting.PROJECT_NO,
-                Setting.GROUP_USER,
-                Setting.GROUP_NO,
+        sql = 'insert into tst_operate_log (operate_log_id, computer_name, project_no, tst_case_id, locator, class_name, except_type, except_info) \
+        values (seq_tst_operate_log.nextval, :1, :2, :3, :4, :5, :6, :7)'
+        para = (os.environ['COMPUTERNAME'],
+                Setting.PROJECT_NO,
                 tst_case_id,
+                locator,
                 class_path,
+                except_type,
                 except_info)
         pyoracle.insert(sql, para)
 
@@ -179,8 +186,9 @@ class DataAccess:
 
 if __name__ == '__main__':
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
-    print(DataAccess.getCaseData("99926400", tabName='01'))
+    # print(DataAccess.getCaseData("99926400", tabName='01'))
     # print(DataAccess.refresh_all())
+    DataAccess.el_operate_log('122', '2323', 'dddd')
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))

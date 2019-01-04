@@ -90,7 +90,7 @@ class TestMenuUseDetail(unittest.TestCase, MenuUseDetailPage):
     @data(
         *DataAccess.getCaseData(SysUseStat_date.menuUseStat_para, SysUseStat_date.menuUseDetail_tabName))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -98,7 +98,7 @@ class TestMenuUseDetail(unittest.TestCase, MenuUseDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysUseStat_date.menuUseStat_para, SysUseStat_date.menuUseDetail_tabName, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

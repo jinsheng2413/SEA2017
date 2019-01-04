@@ -84,7 +84,7 @@ class TestIndexDetail(unittest.TestCase, IndexDetailPage):
     @data(*DataAccess.getCaseData(PersonalizedIndexDisplay_data.IndexDetail_para,
                                   tabName=PersonalizedIndexDisplay_data.IndexDetail_detail_tab))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -92,7 +92,7 @@ class TestIndexDetail(unittest.TestCase, IndexDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PersonalizedIndexDisplay_data.IndexDetail_para, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

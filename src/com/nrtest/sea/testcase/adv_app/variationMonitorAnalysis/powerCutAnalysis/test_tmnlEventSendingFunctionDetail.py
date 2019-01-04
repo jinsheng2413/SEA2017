@@ -93,7 +93,7 @@ class TestTmnlEventSendingFunctionDeatil(unittest.TestCase, TmnlEventSendingFunc
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.TmnlEventSendingFunction_para, tabName='终端是否具停上电事件上送功能明细'))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -102,7 +102,7 @@ class TestTmnlEventSendingFunctionDeatil(unittest.TestCase, TmnlEventSendingFunc
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.TmnlEventSendingFunction_para, tabName='终端是否具停上电事件上送功能明细',
                                   valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

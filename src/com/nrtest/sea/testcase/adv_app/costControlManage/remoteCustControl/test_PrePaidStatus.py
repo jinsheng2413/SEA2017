@@ -96,7 +96,7 @@ class TestPrePaidStatus(unittest.TestCase, PrePaidStatusPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_One))
     def test_InstructionQuery(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.instructionQuery(para)
         self.assert_query_result(para)
         self.end_case(para)

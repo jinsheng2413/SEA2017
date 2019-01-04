@@ -83,7 +83,7 @@ class TestUserRegisterDetail(TestCase, UserRegisterDetailPage):
     @data(
         *DataAccess.getCaseData(SysUseStat_date.UserDistributionStat_para, SysUseStat_date.UserRegisterDetail_tabName))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -91,7 +91,7 @@ class TestUserRegisterDetail(TestCase, UserRegisterDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysUseStat_date.UserDistributionStat_para, SysUseStat_date.UserRegisterDetail_tabName, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

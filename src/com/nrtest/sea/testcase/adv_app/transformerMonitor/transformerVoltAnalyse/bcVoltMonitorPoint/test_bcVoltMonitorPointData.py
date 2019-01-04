@@ -100,7 +100,7 @@ class TestBcVoltMonitorPointData(TestCase, BcVoltMonitorPointDataPage):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -109,7 +109,7 @@ class TestBcVoltMonitorPointData(TestCase, BcVoltMonitorPointDataPage):
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_BcVoltMonitorPoint,
                                   TradnsformerMonitorData.para_BcVoltMonitorPointData, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

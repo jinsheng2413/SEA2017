@@ -84,7 +84,7 @@ class TestPatrolDataQuery_CurrentStatus(TestCase, PatrolDataQueryPage):
     @data(
         *DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para, SynthQuery_data.PatrolDataQuery_tabName_current))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -93,7 +93,7 @@ class TestPatrolDataQuery_CurrentStatus(TestCase, PatrolDataQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para, SynthQuery_data.PatrolDataQuery_tabName_current,
                                   valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

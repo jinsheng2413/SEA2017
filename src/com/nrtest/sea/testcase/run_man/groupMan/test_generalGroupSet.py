@@ -112,7 +112,7 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
     # @BeautifulReport.add_test_img()
     # @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para))
     # def test_query(self, para):
-    #     self.start_case(para)
+    #     self.start_case(para, __file__)
     #     self.query(para)
     #     if para['TAB_PAGE_SEL'] == self.tab_page:  #管理群组
     #         self.assert_query_result(para)
@@ -121,7 +121,7 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
     # @BeautifulReport.add_test_img()
     # @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para, valCheck=True))
     # def _test_checkValue(self, para):
-    #     self.start_case(para)
+    #     self.start_case(para, __file__)
     #     self.query(para)
     #     if para['TAB_PAGE_SEL'] == self.tab_page:  #管理群组
     #         self.assert_query_criteria(para)
@@ -144,7 +144,7 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -152,7 +152,7 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

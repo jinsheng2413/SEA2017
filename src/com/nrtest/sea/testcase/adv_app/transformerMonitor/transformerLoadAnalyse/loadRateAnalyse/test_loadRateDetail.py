@@ -105,7 +105,7 @@ class TestLoadRateDetail(TestCase, LoadRateDetailPage):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -114,7 +114,7 @@ class TestLoadRateDetail(TestCase, LoadRateDetailPage):
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_TradnsformerMonitor,
                                   TradnsformerMonitorData.para_TradnsformerMonitor_detail, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

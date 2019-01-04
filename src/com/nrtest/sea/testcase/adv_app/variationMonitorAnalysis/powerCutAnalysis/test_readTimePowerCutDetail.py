@@ -86,7 +86,7 @@ class TestReadTimePowerCutDetail(TestCase, ReadTimePowerCutDetailPage):
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.ReadTimePowerCutMonitor_para,
                                   PowerCutAnalysis_data.ReadTimePowerCutMonitor_tabName_Detail))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -95,7 +95,7 @@ class TestReadTimePowerCutDetail(TestCase, ReadTimePowerCutDetailPage):
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.ReadTimePowerCutMonitor_para,
                                   PowerCutAnalysis_data.ReadTimePowerCutMonitor_tabName_Detail, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

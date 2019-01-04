@@ -93,7 +93,7 @@ class TestMServiceCallStatus(unittest.TestCase, MServiceCallStatusPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -101,7 +101,7 @@ class TestMServiceCallStatus(unittest.TestCase, MServiceCallStatusPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

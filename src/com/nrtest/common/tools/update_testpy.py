@@ -32,7 +32,7 @@ test_funs = [
     '    @BeautifulReport.add_test_img()\r',
     '$1',
     '    def test_query(self, para):\r',
-    '        self.start_case(para)\r',
+    '        self.start_case(para, __file__)\r',
     '        self.query(para)\r',
     '        self.assert_query_result(para)\r',
     '        self.end_case(para)\r',
@@ -40,7 +40,7 @@ test_funs = [
     '    @BeautifulReport.add_test_img()\r',
     '$2, valCheck=True))\r',
     '    def _test_checkValue(self, para):\r',
-    '        self.start_case(para)\r',
+    '        self.start_case(para, __file__)\r',
     '        self.query(para)\r',
     '        self.assert_query_criteria(para)\r',
     '        self.end_case(para)\r']

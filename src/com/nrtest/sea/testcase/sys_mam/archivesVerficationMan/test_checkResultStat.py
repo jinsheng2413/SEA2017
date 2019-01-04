@@ -10,16 +10,13 @@
 """
 import unittest
 from unittest import TestCase
-from time import sleep
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultStat_page import CheckResultStatPage, \
-    CheckResultStatLocators
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultStat_page import CheckResultStatPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -101,7 +98,7 @@ class TestCheckResultStat(unittest.TestCase, CheckResultStatPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultStat_para))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -109,7 +106,7 @@ class TestCheckResultStat(unittest.TestCase, CheckResultStatPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultStat_para, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

@@ -90,7 +90,7 @@ class TestDistributedEnergyUserFailed(TestCase, DistributedEnergyUserFailedPage)
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyMonitor_para,
                                   DistributedEnergyMange_data.DistributedEnergyMonitor_tabName_Failed))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -99,7 +99,7 @@ class TestDistributedEnergyUserFailed(TestCase, DistributedEnergyUserFailedPage)
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyMonitor_para,
                                   DistributedEnergyMange_data.DistributedEnergyMonitor_tabName_Failed, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

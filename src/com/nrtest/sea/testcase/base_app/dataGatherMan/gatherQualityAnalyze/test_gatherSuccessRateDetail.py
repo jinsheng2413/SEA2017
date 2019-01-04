@@ -92,7 +92,7 @@ class TestGatherSuccessRateDetail(unittest.TestCase, GatherSuccessRateDetailPage
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
                                   GatherQualityAnalyze_data.GatherSuccessRate_tabName_detail))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -101,7 +101,7 @@ class TestGatherSuccessRateDetail(unittest.TestCase, GatherSuccessRateDetailPage
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
                                   GatherQualityAnalyze_data.GatherSuccessRate_tabName_detail))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

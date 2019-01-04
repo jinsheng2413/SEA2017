@@ -111,7 +111,7 @@ class TestWorkQuery2017_tab2(TestCase, WorkQuery2017Page):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -120,7 +120,7 @@ class TestWorkQuery2017_tab2(TestCase, WorkQuery2017Page):
     @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery2017_para, WorkQuery_data.WorkQuery2017_tab_query,
                                   valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

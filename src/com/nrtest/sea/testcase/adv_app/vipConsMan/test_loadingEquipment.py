@@ -88,7 +88,7 @@ class Test_LoadingEquipment(TestCase, LoadingEquipment_Page):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -96,7 +96,7 @@ class Test_LoadingEquipment(TestCase, LoadingEquipment_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(VipConsMan.para_loadingEquipment, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

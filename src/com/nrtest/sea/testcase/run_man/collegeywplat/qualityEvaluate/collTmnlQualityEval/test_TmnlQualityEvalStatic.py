@@ -93,7 +93,7 @@ class TestTmnlQualityEvalStatic(TestCase, TmnlQualityEvalStaticPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(OperOrganManData.para_CollTmnlQualityEval, OperOrganManData.para_TmnlQualityEval_static))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -101,7 +101,7 @@ class TestTmnlQualityEvalStatic(TestCase, TmnlQualityEvalStaticPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(OperOrganManData.para_CollTmnlQualityEval, OperOrganManData.para_TmnlQualityEval_static, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

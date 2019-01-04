@@ -82,7 +82,7 @@ class TestPatrolIntegratedQuery(TestCase, PatrolIntegratedQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolIntegratedQuery_para,
                                   SynthQuery_data.PatrolIntegratedQuery_tabName))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -91,7 +91,7 @@ class TestPatrolIntegratedQuery(TestCase, PatrolIntegratedQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolIntegratedQuery_para,
                                   SynthQuery_data.PatrolIntegratedQuery_tabName, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

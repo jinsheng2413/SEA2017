@@ -96,7 +96,7 @@ class TestWorkCount(TestCase, WorkCountPage):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -104,7 +104,7 @@ class TestWorkCount(TestCase, WorkCountPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery_para, WorkQuery_data.WorkQuery_tab_count, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

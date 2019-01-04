@@ -126,7 +126,7 @@ class TestNewPrePaidStatus(unittest.TestCase, NewPrePaidStatusPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.Tab_One))
     def test_InstructionQuery(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.instructionQuery(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -134,7 +134,7 @@ class TestNewPrePaidStatus(unittest.TestCase, NewPrePaidStatusPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.Tab_Two))
     def test_userQuery(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.userQuery(para)
         self.assert_query_result(para)
         self.end_case(para)

@@ -103,7 +103,7 @@ class Test_DataRepair_2(TestCase, DataRepair_2Page):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -111,7 +111,7 @@ class Test_DataRepair_2(TestCase, DataRepair_2Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataRepair.para_DataRepair,DataRepair.DataRepair_tab_detail,valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

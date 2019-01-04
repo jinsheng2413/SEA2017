@@ -95,7 +95,7 @@ class TestUpgradeTaskExecution(unittest.TestCase, UpgradeTaskExecutionPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeTaskExecution_para))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -103,7 +103,7 @@ class TestUpgradeTaskExecution(unittest.TestCase, UpgradeTaskExecutionPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeTaskExecution_para, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

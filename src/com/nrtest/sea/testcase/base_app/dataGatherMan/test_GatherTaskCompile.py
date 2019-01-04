@@ -104,7 +104,7 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.gatherTaskCompile_para))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -112,7 +112,7 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.gatherTaskCompile_para, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

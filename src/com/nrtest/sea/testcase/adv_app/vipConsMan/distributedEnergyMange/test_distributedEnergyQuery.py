@@ -90,7 +90,7 @@ class TestDistributedEnergyQuery(TestCase, DistributedEnergyQueryPage):
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyElectricMonitor_para,
                                   DistributedEnergyMange_data.DistributedEnergyElectricMonitor_tabName_Query))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -100,7 +100,7 @@ class TestDistributedEnergyQuery(TestCase, DistributedEnergyQueryPage):
                                   DistributedEnergyMange_data.DistributedEnergyElectricMonitor_tabName_Query,
                                   valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

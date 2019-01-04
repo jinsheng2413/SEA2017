@@ -107,7 +107,7 @@ class TestTmnlTaskTemplate(unittest.TestCase, TmnlTaskTemplatePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TemplateManData.TmnlTaskTemplate_para))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -115,7 +115,7 @@ class TestTmnlTaskTemplate(unittest.TestCase, TmnlTaskTemplatePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TemplateManData.TmnlTaskTemplate_para, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

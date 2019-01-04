@@ -108,7 +108,7 @@ class TestAssetsManage(TestCase, AssetsManagePage):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -116,7 +116,7 @@ class TestAssetsManage(TestCase, AssetsManagePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SimCardMan.assetsManage_para, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

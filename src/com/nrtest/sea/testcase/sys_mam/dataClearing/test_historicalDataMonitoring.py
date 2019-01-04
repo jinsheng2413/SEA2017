@@ -96,7 +96,7 @@ class TestHistoricalDataMonitoring(TestCase, HistoricalDataMonitoringPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataClearing_data.historicalDataMonitoring_para))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -104,7 +104,7 @@ class TestHistoricalDataMonitoring(TestCase, HistoricalDataMonitoringPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataClearing_data.historicalDataMonitoring_para, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

@@ -116,7 +116,7 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEffectStatistics_para,
                                   SoftwareUpgrading_data.UpgradeEffectStatistics_tabName_detail))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -125,7 +125,7 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEffectStatistics_para,
                                   SoftwareUpgrading_data.UpgradeEffectStatistics_tabName_detail, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

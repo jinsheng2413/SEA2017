@@ -88,7 +88,7 @@ class TestDistributedEnergyElectricStat(TestCase, DistributedEnergyElectricStatP
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyElectricMonitor_para,
                                   DistributedEnergyMange_data.DistributedEnergyElectricMonitor_tabName_Stat))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -98,7 +98,7 @@ class TestDistributedEnergyElectricStat(TestCase, DistributedEnergyElectricStatP
                                   DistributedEnergyMange_data.DistributedEnergyElectricMonitor_tabName_Stat,
                                   valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

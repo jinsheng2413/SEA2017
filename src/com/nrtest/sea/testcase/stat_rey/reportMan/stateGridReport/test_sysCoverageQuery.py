@@ -6,11 +6,10 @@
 @time: 2018/11/8 10:34
 @desc:
 """
-import unittest
-from time import sleep
 from unittest import TestCase
+
 from ddt import ddt, data
-from com.nrtest.sea.pages.other.menu_page import MenuPage
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.reportMan.stateGridReport.sysCoverageQuery_data import SysCoverageQuery_data
@@ -97,7 +96,7 @@ class TestSysCoverageQuery(TestCase, SysCoverageQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysCoverageQuery_data.SysCoverageQuery_para))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -105,7 +104,7 @@ class TestSysCoverageQuery(TestCase, SysCoverageQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysCoverageQuery_data.SysCoverageQuery_para, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

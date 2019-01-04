@@ -90,7 +90,7 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
                                   GatherQualityAnalyze_data.readCompleteRateCount_tab))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.countQuery(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -99,7 +99,7 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
                                   GatherQualityAnalyze_data.readCompleteRateCount_tab))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.countQuery(para)
         self.assert_query_criteria(para)
         self.end_case(para)

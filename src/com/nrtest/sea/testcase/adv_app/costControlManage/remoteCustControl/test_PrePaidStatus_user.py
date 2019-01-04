@@ -98,6 +98,6 @@ class TestPrePaidStatus(unittest.TestCase, PrePaidStatusPage):
     @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_Two))
     def test_userQuery(self, para):
         self.userQuery(para)
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.assert_query_result(para)
         self.end_case(para)

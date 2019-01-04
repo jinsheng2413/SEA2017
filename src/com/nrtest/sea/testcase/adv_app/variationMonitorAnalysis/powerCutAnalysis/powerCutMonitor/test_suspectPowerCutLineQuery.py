@@ -85,7 +85,7 @@ class TestSuspectePowerCutLineQuery(TestCase, SuspectePowerCutLineQueryPage):
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.SuspectedAreaPowerCutMonitor_para,
                                   PowerCutAnalysis_data.SuspectedLinePowerCutMonitor_tabName))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -95,7 +95,7 @@ class TestSuspectePowerCutLineQuery(TestCase, SuspectePowerCutLineQueryPage):
                                   PowerCutAnalysis_data.SuspectedLinePowerCutMonitor_tabName,
                                   valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

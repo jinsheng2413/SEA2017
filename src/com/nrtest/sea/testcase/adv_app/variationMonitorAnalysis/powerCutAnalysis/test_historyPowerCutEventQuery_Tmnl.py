@@ -94,7 +94,7 @@ class TestHistoryPowerCutEventQuery_Tmnl(TestCase, TmnlPowerCutEventQueryPage):
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.HistoryPowerCutEventQuery_para,
                                   PowerCutAnalysis_data.HistoryPowerCutEventQuery_tabName_Tmnl))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -103,7 +103,7 @@ class TestHistoryPowerCutEventQuery_Tmnl(TestCase, TmnlPowerCutEventQueryPage):
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.HistoryPowerCutEventQuery_para,
                                   PowerCutAnalysis_data.HistoryPowerCutEventQuery_tabName_Tmnl, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

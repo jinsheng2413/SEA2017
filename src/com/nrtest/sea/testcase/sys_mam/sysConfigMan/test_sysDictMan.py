@@ -102,7 +102,7 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysConfigManData.para_SysDictMan))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -110,7 +110,7 @@ class TestSysDict(unittest.TestCase, SysDictManPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysConfigManData.para_SysDictMan, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

@@ -95,7 +95,7 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
                                   DataGatherMan_data.tmnlInstallDetail_tab_workCount))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -104,7 +104,7 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
                                   DataGatherMan_data.tmnlInstallDetail_tab_workCount, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

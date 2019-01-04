@@ -88,7 +88,7 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.curCollectSuccessRate_para,
                                   GatherQualityAnalyze_data.curCollectSuccessRateCount_tab))
     def test_CountQuery(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
 
@@ -96,7 +96,7 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.curCollectSuccessRate_para,
                                   GatherQualityAnalyze_data.curCollectSuccessRateCount_tab))
     def _test_CountQuery(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

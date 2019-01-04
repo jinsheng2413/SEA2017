@@ -90,7 +90,7 @@ class TestRunMeterStatistics_Detail(TestCase, RunMeterStatisticsPage):
     @data(*DataAccess.getCaseData(CollConstructStatus_data.RunMeterStatistics_para,
                                   CollConstructStatus_data.RunMeterStatistics_tabName_detail))
     def test_query(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -99,7 +99,7 @@ class TestRunMeterStatistics_Detail(TestCase, RunMeterStatisticsPage):
     @data(*DataAccess.getCaseData(CollConstructStatus_data.RunMeterStatistics_para,
                                   CollConstructStatus_data.RunMeterStatistics_tabName_detail, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

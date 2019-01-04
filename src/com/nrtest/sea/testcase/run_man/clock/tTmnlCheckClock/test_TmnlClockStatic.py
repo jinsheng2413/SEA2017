@@ -99,7 +99,7 @@ class TestTmnlClockStatic(TestCase, TmnlClockStaticPage):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -108,7 +108,7 @@ class TestTmnlClockStatic(TestCase, TmnlClockStaticPage):
     @data(*DataAccess.getCaseData(ClockData.para_TTmnlCheckClock,
                                   ClockData.para_TTmnlCheckClock_static, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

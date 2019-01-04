@@ -99,7 +99,7 @@ class TestAbnormalCount(TestCase, AbnoralStaticPage):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -108,7 +108,7 @@ class TestAbnormalCount(TestCase, AbnoralStaticPage):
     @data(*DataAccess.getCaseData(RunSituationCount_data.para_simAlarmAnaly,
                                   RunSituationCount_data.para_simAlarmAnaly_static, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

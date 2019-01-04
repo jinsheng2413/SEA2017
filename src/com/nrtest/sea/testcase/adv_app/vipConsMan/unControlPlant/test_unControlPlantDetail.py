@@ -96,7 +96,7 @@ class TestUnControlPlantDetail(TestCase, UnControlPlantDetailPage):
         :param para: 用例数据
         :return:
         """
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case(para)
@@ -105,7 +105,7 @@ class TestUnControlPlantDetail(TestCase, UnControlPlantDetailPage):
     @data(*DataAccess.getCaseData(UnControlPlant.UnControlPlantStat_para,
                                   UnControlPlant.UnControlPlantStat_tabName_Detail, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para)
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case(para)

@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_demo.py
+@file: test_EleParaMan.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -21,7 +21,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用--》费控管理--》本地费控--》电价参数管理
 @ddt
-class TestDemo(unittest.TestCase, EleParaManPage):
+class TestEleParaMan(unittest.TestCase, EleParaManPage):
 
     @classmethod
     def setUpClass(cls):

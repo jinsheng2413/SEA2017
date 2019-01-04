@@ -20,7 +20,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 运行管理-电能表管理-电能表状态查询
 @ddt
-class TestDemo(unittest.TestCase, MeterClockManPage):
+class TestMeterClockMan(unittest.TestCase, MeterClockManPage):
 
     @classmethod
     def setUpClass(cls):

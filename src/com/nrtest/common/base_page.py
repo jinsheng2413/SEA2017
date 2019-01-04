@@ -448,16 +448,16 @@ class Page():
         # print('*************js_attr', js_attr)
         self.driver.execute_script(js_attr)
 
-    def _clean_blank(self, tag_text, tag_obj='label'):
+    def _clean_blank(self, tag_text, tag_name='label'):
         """
         剔除标签中的空白字符及冒号：:
         :param tag_text: 标签中第一个连续中英文
-        :param tag_obj: 要剔除的tag
+        :param tag_name: 要剔除的tag
         """
         clean_obj = {'button': "//button[contains(text(), '{}')]",
                      'label': "//label[contains(text(), '{}')]",
                      'span': "//span[contains(text(), '{}')]"}
-        clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_obj].format(tag_text[0])
+        clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(tag_text[0])
         script = BaseLocators.CLEAN_BLANK % clean_me
         # print(script)
         self.exec_script(script)

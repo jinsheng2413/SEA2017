@@ -22,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→电能表对时
 # 自动对时策略配置
 @ddt
-class TestDemo(TestCase, AutoCheckPolicyPage):
+class TestAutoCheckPolicy(TestCase, AutoCheckPolicyPage):
 
     @classmethod
     def setUpClass(cls):

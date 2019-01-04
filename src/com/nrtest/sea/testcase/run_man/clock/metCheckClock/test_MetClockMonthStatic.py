@@ -21,7 +21,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→电能表对时
 # 电表时钟月统计
 @ddt
-class TestDemo(TestCase, MetClockMonthStaticPage):
+class TestMetClockMonthStatic(TestCase, MetClockMonthStaticPage):
 
     @classmethod
     def setUpClass(cls):

@@ -22,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 统计查询--工单查询--工单查询2017（第二个tab页）
 @ddt
-class TestDemo(TestCase, WorkQuery2017Page):
+class TestWorkQuery2017_tab2(TestCase, WorkQuery2017Page):
 
     @classmethod
     def setUpClass(cls):

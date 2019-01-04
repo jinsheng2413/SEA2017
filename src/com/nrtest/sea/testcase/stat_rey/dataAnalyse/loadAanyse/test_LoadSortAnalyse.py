@@ -21,7 +21,7 @@ from com.nrtest.sea.task.commonMath import *
 
 #统计查询--数据分析--负荷分析--负荷排名分析
 @ddt
-class TestDemo(TestCase, LoadSortAnalysePage):
+class TestLoadSortAnalyse(TestCase, LoadSortAnalysePage):
 
     @classmethod
     def setUpClass(cls):

@@ -22,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理-->SIM卡管理-->运行情况分析-->异常分析
 # 异常明细
 @ddt
-class TestDemo(TestCase, AbnormalDetailPage):
+class TestAbnormalDetail(TestCase, AbnormalDetailPage):
 
     @classmethod
     def setUpClass(cls):

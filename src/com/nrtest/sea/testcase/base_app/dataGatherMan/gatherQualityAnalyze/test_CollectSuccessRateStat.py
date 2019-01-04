@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_demo.py
+@file: test_CollectSuccessRateStat.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -23,7 +23,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率综合统计
 @ddt
-class TestDemo(unittest.TestCase, CollectSuccessRateStatPage):
+class TestCollectSuccessRateStat(unittest.TestCase, CollectSuccessRateStatPage):
 
     @classmethod
     def setUpClass(cls):

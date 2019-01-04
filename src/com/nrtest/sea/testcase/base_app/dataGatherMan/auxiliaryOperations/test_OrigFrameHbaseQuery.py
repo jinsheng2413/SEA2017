@@ -24,7 +24,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 运行管理-->采集运维平台-->辅助运维--》报文查询
 @ddt
-class TestDemo(unittest.TestCase,OrigFrameHbaseQueryPage):
+class TestOrigFrameHbaseQuery(unittest.TestCase, OrigFrameHbaseQueryPage):
 
     @classmethod
     def setUpClass(cls):

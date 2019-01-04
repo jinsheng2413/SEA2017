@@ -43,6 +43,21 @@ class Test_MInterfaceRunStatus2(unittest.TestCase, MInterfaceRunStatus2Page):
         # 刷新浏览器
         cls.closePages(cls)
 
+    def setUp(self):
+        """
+        测试固件的setUp()的代码，主要是测试的前提准备工作
+        :return:
+        """
+
+    def tearDown(self):
+        """
+        测试结束后的操作，这里基本上都是关闭浏览器
+        :return:
+        """
+
+        # 回收左边树
+        self.recoverLeftTree()
+
     def query(self, para):
         # 业务系统
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])

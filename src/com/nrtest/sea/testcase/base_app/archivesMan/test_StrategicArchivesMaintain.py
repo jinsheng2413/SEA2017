@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_demo.py
+@file: test_StrategicArchivesMaintain.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -20,7 +20,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 基本应用--》档案管理--》巡检仪档案管理
 @ddt
-class TestDemo(unittest.TestCase, StrategicArchivesMaintainPage):
+class TestStrategicArchivesMaintain(unittest.TestCase, StrategicArchivesMaintainPage):
 
     @classmethod
     def setUpClass(cls):

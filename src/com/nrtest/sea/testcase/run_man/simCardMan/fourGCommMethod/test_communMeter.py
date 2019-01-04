@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: test_demo.py
+@file: test_communMeter.py
 @time: 2018/12/27 0010 9:21
 @desc:
 """

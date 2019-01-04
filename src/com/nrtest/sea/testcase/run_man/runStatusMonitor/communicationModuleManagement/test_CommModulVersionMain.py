@@ -24,7 +24,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 运行管理--》采集信道管理--》通信模块管理--》本地通信模块版本信息召测
 @ddt
-class TestDemo(TestCase, CommModulVersionMainPage):
+class TestCommModulVersionMain(TestCase, CommModulVersionMainPage):
 
     @classmethod
     def setUpClass(cls):

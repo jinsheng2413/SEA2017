@@ -21,7 +21,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 系统管理--》日志管理--》值班日志
 @ddt
-class TestDemo(TestCase, LogEditPage):
+class TestLogEdit(TestCase, LogEditPage):
 
     @classmethod
     def setUpClass(cls):

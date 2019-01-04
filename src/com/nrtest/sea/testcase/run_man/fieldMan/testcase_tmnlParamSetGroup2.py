@@ -22,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 
 # 运行管理-现场管理-终端抄表参数设置
 @ddt
-class TestDemo(unittest.TestCase, TermParaSetGroup2Page):
+class TestTmnlParamSetGroup2(unittest.TestCase, TermParaSetGroup2Page):
 
     @classmethod
     def setUpClass(cls):

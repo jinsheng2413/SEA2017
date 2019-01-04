@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_demo.py
+@file: test_InterfaceMonitor.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -20,7 +20,7 @@ from com.nrtest.sea.task.commonMath import *
 
 
 @ddt
-class TestDemo(unittest.TestCase, InterfaceMonitorPage):
+class TestInterfaceMonitor(unittest.TestCase, InterfaceMonitorPage):
 
     @classmethod
     def setUpClass(cls):

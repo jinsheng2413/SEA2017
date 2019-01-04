@@ -3,12 +3,11 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_demo.py
+@file: test_BatchFetch.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
 import unittest
-from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,12 +15,12 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.batchFetch_page import BatchFetchPage, BatchFetchLocators
+from com.nrtest.sea.pages.base_app.dataGatherMan.batchFetch_page import BatchFetchPage
 from com.nrtest.sea.task.commonMath import *
 
 
 @ddt
-class TestDemo(unittest.TestCase, BatchFetchPage):
+class TestBatchFetch(unittest.TestCase, BatchFetchPage):
 
     @classmethod
     def setUpClass(cls):
@@ -33,10 +32,10 @@ class TestDemo(unittest.TestCase, BatchFetchPage):
         menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DataGatherMan_data.batchFetch_para)
-        sleep(2)
-        cls.exec_script(cls, BatchFetchLocators.START_DATE_JS)
+        # # 打开菜单（需要传入对应的菜单编号）
+        # cls.driver = openMenu(DataGatherMan_data.batchFetch_para)
+        # sleep(2)
+        # cls.exec_script(cls, BatchFetchLocators.START_DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

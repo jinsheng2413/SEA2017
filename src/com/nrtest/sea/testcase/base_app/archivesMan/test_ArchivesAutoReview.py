@@ -3,12 +3,11 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_demo.py
+@file: test_ArchivesAutoRevie.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
 import unittest
-from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,8 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
-from com.nrtest.sea.pages.base_app.archivesMan.archivesAutoReview_page import ArchivesAutoReviewPage, \
-    ArchivesAutoReviewLocators
+from com.nrtest.sea.pages.base_app.archivesMan.archivesAutoReview_page import ArchivesAutoReviewPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -32,13 +30,13 @@ class TestArchivesAutoRevie(unittest.TestCase, ArchivesAutoReviewPage):
         menuPage = MenuPage.openMenu(ArchivesMan_data.archivesAutoReview_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(ArchivesMan_data.archivesAutoReview_para)
-        sleep(2)
-        cls.exec_script(cls, ArchivesAutoReviewLocators.DATE_JS)
+        # cls.driver = openMenu(ArchivesMan_data.archivesAutoReview_para)
+        # sleep(2)
+        # cls.exec_script(cls, ArchivesAutoReviewLocators.DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

@@ -22,7 +22,7 @@ from com.nrtest.sea.task.commonMath import *
 # 运行管理→时钟管理→对时结果分析
 # 对时结果明细
 @ddt
-class TestDemo(TestCase, ClockResultDetailPage):
+class TestClockResultDetail(TestCase, ClockResultDetailPage):
 
     @classmethod
     def setUpClass(cls):

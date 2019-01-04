@@ -1,44 +1,44 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 
 """
-@author: 郭春彪
+@author: 吴竹筠
 @license: (C) Copyright 2018, Nari.
-@file: test_demo.py
-@time: 2018/9/10 0010 9:21
+@file: test_TerParaSet.py
+@time: 2018/11/6 0006 11:23
 @desc:
 """
 import unittest
-from unittest import TestCase
+from time import sleep
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.txjx.datamaintain.datamaintain_data import Datamaintain_data
-from com.nrtest.sea.pages.adv_app.txjx.datamaintain.checkpointdata_page import CheckpointdataPage
+from com.nrtest.sea.data.run_man.fieldMan.termParaSet_data import TermParaSet_data
+from com.nrtest.sea.pages.run_man.fieldMan.termParaSet_pages import TermParaSetPage
 from com.nrtest.sea.task.commonMath import *
 
 
+# 运行管理-现场管理-终端运行参数设置
 @ddt
-# 高级应用-->台线系统--》资料维护--》线路考核点资料维护
-class TestCheckpointdata(unittest.TestCase, CheckpointdataPage):
+class TestTerParaSet(unittest.TestCase, TermParaSetPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(Datamaintain_data.checkpointdata_para)
-        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        print("开始执行")
+        # # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
+        # cls.driver = openMenu(TermParaSet_data.TermParaSet_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(TermParaSet_data.TermParaSet_para)
+        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # menuPage.clickTabPage(SysConfigManData.SysBasicParaSet_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(Datamaintain_data.checkpointdata_para)
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
+        print("执行结束")
         # 关闭菜单页面
         cls.closePages(cls)
 
@@ -65,15 +65,26 @@ class TestCheckpointdata(unittest.TestCase, CheckpointdataPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 用户编号
-        self.inputStr_userNo(para['USER_NO'])
-        # 用户名称
-        self.inputStr_userName(para['USER_NAME'])
-        # 电表正反向
-        self.inputSel_meterFr(para['METER_FR'])
+        # 打开左边树并选择
+        sleep(2)
+        self.openLeftTree(para['TREE_NODE'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+        self.inputSel_task_status(para['TASK_STATUS'])
+        self.inputSel_tmnl_protory(para['TMNL_PROTORY'])
 
         self.btn_qry()
+        self.sleep_time(2)
 
+        # 校验
+        # result = self.assert_context()
+        # self.assertTrue(result)
+
+    #
+    # @BeautifulReport.add_test_img()
+    # @data(*DataAccess.getCaseData(TermParaSet_data.TermParaSet_para))
+    # def test_query(self, para):
+    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）
@@ -90,7 +101,7 @@ class TestCheckpointdata(unittest.TestCase, CheckpointdataPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(Datamaintain_data.checkpointdata_para))
+    @data(*DataAccess.getCaseData(TermParaSet_data.TermParaSet_para))
     def test_query(self, para):
         self.start_case(para)
         self.query(para)
@@ -98,7 +109,7 @@ class TestCheckpointdata(unittest.TestCase, CheckpointdataPage):
         self.end_case(para)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(Datamaintain_data.checkpointdata_para, valCheck=True))
+    @data(*DataAccess.getCaseData(TermParaSet_data.TermParaSet_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para)
         self.query(para)

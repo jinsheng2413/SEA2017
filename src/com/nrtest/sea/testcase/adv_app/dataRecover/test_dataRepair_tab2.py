@@ -52,6 +52,15 @@ class Test_DataRepair_2(TestCase, DataRepair_2Page):
         # 查询日期
         self.inputStr_date(para['DATE'])
 
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+
+        # 终端资产号
+        self.inputStr_tmnl_asst_no(para['TMNL_ASST_NO'])
+
+        # 电表局编号
+        self.inputStr_meter_no(para['METER_NO'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)

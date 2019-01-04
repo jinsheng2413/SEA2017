@@ -129,8 +129,9 @@ class Page():
         self.base_url = Setting.TEST_URL
         self.page_title = Setting.PAGE_TILE
         self.menuPage = menu_page
-        self.menu_no = menu_page.menu_no
-        self.menu_name = menu_page.menu_name if bool(menu_page) else None
+        if bool(menu_page):
+            self.menu_no = menu_page.menu_no
+            self.menu_name = menu_page.menu_name
         self.tst_case_id = None
         self.class_name = ''
 

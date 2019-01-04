@@ -12,21 +12,15 @@ from com.nrtest.common.base_page import Page
 
 
 class AvailableCapacityAnalysePage(Page):
-    # 供电单位
-    # def inputStr_org_no(self, value):
-    #     self.openLeftTree(value)
 
     # 查询日期
     def inputStr_query_date(self, value):
-        #self.input(value, *AvailableCapacityAnalyseLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 负载率
     def inputStr_load_rate(self, value):
-        #self.input(value, *AvailableCapacityAnalyseLocators.LOAD_RATE)
         self.input(value)
 
     # 点击查询
     def btn_qry(self):
-        # self.click(AvailableCapacityAnalyseLocators.BTN_QUERY)
         self.btn_query()

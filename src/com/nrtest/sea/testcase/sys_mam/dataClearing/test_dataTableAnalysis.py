@@ -96,7 +96,7 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataClearing_data.dataTableAnalysis_para, valCheck=True))
@@ -104,4 +104,4 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

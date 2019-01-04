@@ -31,12 +31,6 @@ class DataAccess:
         return menu_path
 
     @staticmethod
-    def getFirtMenu():
-        pyoracle = PyOracle.getInstance()
-        sql = 'select level1, menu_name from vw_first_level'
-        return pyoracle.query(sql)
-
-    @staticmethod
     def getAllMenu():
         """
         获取测试系统所有菜单

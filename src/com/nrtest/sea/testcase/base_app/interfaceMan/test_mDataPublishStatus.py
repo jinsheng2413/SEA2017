@@ -98,7 +98,7 @@ class Test_mDataPublishStatus2(unittest.TestCase, MDataPublishStatus2Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceManager_data.para_MDataPublishStatus2, valCheck=True))
@@ -106,4 +106,4 @@ class Test_mDataPublishStatus2(unittest.TestCase, MDataPublishStatus2Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

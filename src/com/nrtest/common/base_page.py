@@ -227,17 +227,21 @@ class Page():
         开始执行测试用例
         :param para:
         """
-        print(class_path)
+        # print(class_path)
         self.class_name = class_path.split('src')[1][1:]
         self.tst_case_id = para['TST_CASE_ID']
-        print('开始执行... \n用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}。'.format(*list(para.values())[:4]))
+        # print('开始执行... \n用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}。'.format(*list(para.values())[:4]))
+        print('开始执行... \n')
+        print('用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}'.format(self.tst_case_id, self.menu_no,
+                                                         self.menu_path, para['TAB_NAME']))
 
-    def end_case(self, para):
+    def end_case(self):
         """
         测试用例执行结束
         :param para:
         """
-        print('结束... \n用例ID：{}'.format(para['TST_CASE_ID']))
+        # print('结束... \n用例ID：{}'.format(para['TST_CASE_ID']))
+        print('结束... \n用例ID：{}'.format(self.tst_case_id))
 
     def _find_displayed_element(self, locators, idx=1):
         """
@@ -255,7 +259,6 @@ class Page():
                 else:
                     pos += 1
         return el
-
 
     def format_xpath_multi(self, xpath, format_val='', is_multi_tab=True):
         """
@@ -485,7 +488,6 @@ class Page():
         """
         self._clean_blank(tag_text, 'span')
 
-
     def scrollToElement(self, locator):
         """
         滚动元素到指定位置
@@ -496,9 +498,6 @@ class Page():
         logger.info('scroll view element')
         # // roll down and keep the element to the center of browser：scrollIntoView
         self.driver.execute_script('arguments[0].scrollIntoView();', el)
-
-
-
 
     def clickRadioBox(self, options, is_multi_tab=False, is_multi_elements=False):
         """
@@ -548,7 +547,6 @@ class Page():
         except BaseException as ex:
             print('点击失败：{}'.format(ex))
             return False
-
 
     def clickCheckBox(self, items, attr, is_multi_tab=False):
         """
@@ -806,7 +804,6 @@ class Page():
         """
         self.driver.execute_script(src)
 
-
     # def invisible_element(self,wait_time =Setting.WAIT_TIME, *locator):
     #     """
     #     方法名：invisible_element
@@ -841,7 +838,7 @@ class Page():
         :return:布尔返回值
         """
         try:
-            return bool(self._find_element(locator, 0.5))
+            return bool(self._find_element(locator, 0.25))
         except NoSuchElementException:
             return False
 
@@ -867,8 +864,6 @@ class Page():
             return self.driver
         except NameError as e:
             logger.error('%s打开网址失败', self.base_url)
-
-
 
     def sleep_time(self, times):
         """

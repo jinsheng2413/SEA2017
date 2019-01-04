@@ -116,7 +116,7 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
     #     self.query(para)
     #     if para['TAB_PAGE_SEL'] == self.tab_page:  #管理群组
     #         self.assert_query_result(para)
-    #     self.end_case(para)
+    #     self.end_case()
     #
     # @BeautifulReport.add_test_img()
     # @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para, valCheck=True))
@@ -125,7 +125,7 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
     #     self.query(para)
     #     if para['TAB_PAGE_SEL'] == self.tab_page:  #管理群组
     #         self.assert_query_criteria(para)
-    #     self.end_case(para)
+    #     self.end_case()
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）
@@ -147,7 +147,7 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para, valCheck=True))
@@ -155,4 +155,4 @@ class TestGeneralGroupSet(unittest.TestCase, GeneralGroupSetPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

@@ -108,7 +108,7 @@ class Test_UnControlPlantGatherMon_2(TestCase, UnControlPlantGatherMon2_Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(UnControlPlant.para_unControlPlantGatherMon,
@@ -117,4 +117,4 @@ class Test_UnControlPlantGatherMon_2(TestCase, UnControlPlantGatherMon2_Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

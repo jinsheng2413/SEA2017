@@ -103,7 +103,7 @@ class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerDealPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultDeal_deal, valCheck=True))
@@ -111,7 +111,4 @@ class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerDealPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
-
-
-
+        self.end_case()

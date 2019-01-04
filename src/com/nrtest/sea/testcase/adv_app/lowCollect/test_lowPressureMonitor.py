@@ -91,7 +91,7 @@ class Test_LowPressureMonitor(TestCase, LowPressureMonitor_Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LowColletc.para_LowPressureMonitor,valCheck=True))
@@ -99,4 +99,4 @@ class Test_LowPressureMonitor(TestCase, LowPressureMonitor_Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

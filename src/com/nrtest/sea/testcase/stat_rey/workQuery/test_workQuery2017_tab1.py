@@ -99,7 +99,7 @@ class TestWorkQuery2017_tab1(TestCase, WorkCount2017Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery2017_para, WorkQuery_data.WorkQuery2017_tab_count,
@@ -108,4 +108,4 @@ class TestWorkQuery2017_tab1(TestCase, WorkCount2017Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

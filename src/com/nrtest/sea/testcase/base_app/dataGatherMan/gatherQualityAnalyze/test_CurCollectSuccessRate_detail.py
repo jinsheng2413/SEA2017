@@ -110,4 +110,4 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

@@ -86,7 +86,7 @@ class TestLineLossSynthesizeAnalysis(unittest.TestCase, LineLossSynthesizeAnalys
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossSynthesizeAnalysis_para, valCheck=True))
@@ -94,4 +94,4 @@ class TestLineLossSynthesizeAnalysis(unittest.TestCase, LineLossSynthesizeAnalys
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

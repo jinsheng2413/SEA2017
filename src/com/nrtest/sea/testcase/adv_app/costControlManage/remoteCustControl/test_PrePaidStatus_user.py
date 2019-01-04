@@ -100,4 +100,4 @@ class TestPrePaidStatus(unittest.TestCase, PrePaidStatusPage):
         self.userQuery(para)
         self.start_case(para, __file__)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()

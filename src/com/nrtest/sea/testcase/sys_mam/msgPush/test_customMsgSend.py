@@ -89,7 +89,7 @@ class TestCustomMsgSend(unittest.TestCase, CustomMsgSendPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(MsgPushData.CustomMsgSend_para, valCheck=True))
@@ -97,4 +97,4 @@ class TestCustomMsgSend(unittest.TestCase, CustomMsgSendPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

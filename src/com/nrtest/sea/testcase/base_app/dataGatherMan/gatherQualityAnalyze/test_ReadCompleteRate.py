@@ -109,7 +109,7 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
@@ -118,4 +118,4 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

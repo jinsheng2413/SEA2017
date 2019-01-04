@@ -86,7 +86,7 @@ class TestDebuggingAccess2017(TestCase, DebuggingAccess2017Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CollConstructStatus_data.DebuggingAccess2017_para, valCheck=True))
@@ -94,4 +94,4 @@ class TestDebuggingAccess2017(TestCase, DebuggingAccess2017Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

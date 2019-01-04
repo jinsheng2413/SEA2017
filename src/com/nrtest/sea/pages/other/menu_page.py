@@ -63,7 +63,6 @@ class MenuPage(Page):
         :return:各级菜单名，如：基本应用;档案管理;档案同步  一级菜单下第一个菜单下的第二个子菜单
         """
         menu_path = menu_no if isPath else DataAccess.getMenu(menu_no)
-        print('菜单路径：', menu_path)
         # items = menu_path.split(';')
 
         ls_menu = menu_path.split(',')
@@ -71,19 +70,11 @@ class MenuPage(Page):
         is_scroll = ls_menu[1]
         items = menu_path.split(';')
 
-        # 菜单编号
+        # 菜单编号、菜单名
         self.menu_no = menu_no
-        # 菜单名
         self.menu_name = items[-1]
-
         # 菜单路径
-        firt_levels = DataAccess.getFirtMenu()
-        for level, menuName in firt_levels:
-            if menu_path.startswith(level):
-                menu_path = menu_path.replace(level, menuName)
-                break
-        self.menu_path = menu_path.replace(';', '-->')
-
+        self.menu_path = ls_menu[2] + '-->' + '-->'.join(items[1:])
 
         # 当菜单已打开已打开时不再重新打开
         if not self.exists_menu:
@@ -112,7 +103,7 @@ class MenuPage(Page):
                 el_menu.click()
             else:
                 el = self._find_element(MenuLocators.BTN_SCROLL_DOWN)
-                cnt = 0
+                cnt = 0  # 避免菜单不存在
                 while cnt < 15:
                     el.click()
                     sleep(0.5)

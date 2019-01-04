@@ -35,7 +35,7 @@ test_funs = [
     '        self.start_case(para, __file__)\r',
     '        self.query(para)\r',
     '        self.assert_query_result(para)\r',
-    '        self.end_case(para)\r',
+    '        self.end_case()\r',
     '\r',
     '    @BeautifulReport.add_test_img()\r',
     '$2, valCheck=True))\r',
@@ -43,7 +43,7 @@ test_funs = [
     '        self.start_case(para, __file__)\r',
     '        self.query(para)\r',
     '        self.assert_query_criteria(para)\r',
-    '        self.end_case(para)\r']
+    '        self.end_case()\r']
 
 setup = ['        print(\'开始执行\')\r',
          '        # 打开菜单（需要传入对应的菜单编号）\r',

@@ -106,7 +106,7 @@ class Test_DataRepair_2(TestCase, DataRepair_2Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataRepair.para_DataRepair,DataRepair.DataRepair_tab_detail,valCheck=True))
@@ -114,4 +114,4 @@ class Test_DataRepair_2(TestCase, DataRepair_2Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

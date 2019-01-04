@@ -103,7 +103,7 @@ class Test_VipConsConfig(TestCase, VipConsConfig_Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(VipConsMan.para_VipConsConfig, valCheck=True))
@@ -111,5 +111,4 @@ class Test_VipConsConfig(TestCase, VipConsConfig_Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
-
+        self.end_case()

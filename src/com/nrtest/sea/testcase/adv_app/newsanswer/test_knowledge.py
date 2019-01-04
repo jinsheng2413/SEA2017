@@ -99,7 +99,7 @@ class Test_Knowledge(TestCase, Knowledge_Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(NewsAnswer.para_Knowledge,valCheck=True))
@@ -107,4 +107,4 @@ class Test_Knowledge(TestCase, Knowledge_Page):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

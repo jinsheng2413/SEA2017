@@ -101,7 +101,7 @@ class TestCheckResultStat(unittest.TestCase, CheckResultStatPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultStat_para, valCheck=True))
@@ -109,4 +109,4 @@ class TestCheckResultStat(unittest.TestCase, CheckResultStatPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case(para)
+        self.end_case()

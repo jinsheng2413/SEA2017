@@ -10,7 +10,27 @@
 
 from com.nrtest.common.base_page import Page
 
+# 高级应用--》配变监测分析--》电压质量分析--》专/公变电压质量分析
+# 专/公变电压质量分析
+class SpVoltAnalyseStaticPage(Page):
 
+    # 用户类型--打开并选择
+    def inputSel_cons_type(self, item):
+        self.selectDropDown(item)
+
+    # 日期类型
+    def inputChk_data_method(self, option):
+        self.clickRadioBox(option, True, True)
+
+    # 查询日期
+    def inputStr_query_date(self, value):
+        self.inputDate(value)
+
+    # 点击查询
+    def btn_qry(self):
+        self.btn_query()
+
+# 专/公变电压质量明细
 class SpVoltAnalyseDetailPage(Page):
 
     # 用户类型--打开并选择

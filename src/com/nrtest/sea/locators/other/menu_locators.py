@@ -33,6 +33,11 @@ class MenuLocators:
     MENU_LEVEL_IDX_5 = (By.XPATH, '(//*[@class="x-menu x-menu-floating x-layer "])[3]/ul/li[%s]')
     MENU_LEVEL5 = (By.XPATH, '//div[@class="x-menu x-menu-floating x-layer "][3]/ul/li//*[text()= "%s"]')
 
+    # 上下滚动菜单按钮
+    BTN_SCROLL_DOWN = (By.XPATH, '//div[starts-with(@class,"x-menu-scroller x-menu-scroller-bottom x-unselectable")]')
+    BTN_SCROLL_UP = (By.XPATH, '//div[starts-with(@class,"x-menu-scroller x-menu-scroller-top x-unselectable")]')
+
+
     # 当前正在操作的菜单页面
     CURRENT_MENU = (By.XPATH, '//*[@class="x-tab-strip-inner"]//*[contains(text(),\'%s\')]')
     CURRENT_MENU1 = (By.XPATH, '//span[contains(@class,"x-tab-strip-text") and text() = "%s"]')

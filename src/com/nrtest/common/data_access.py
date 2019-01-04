@@ -26,7 +26,7 @@ class DataAccess:
     def getMenu(menuNo):
 
         pyoracle = PyOracle.getInstance()
-        fun_name = 'pkg_nrtest.get_menu_path'
+        fun_name = 'pkg_nrtest.get_menu_path1'
         menu_path = pyoracle.callfunc(fun_name, 'str', [menuNo, Setting.PROJECT_NO])
         return menu_path
 
@@ -152,17 +152,18 @@ class DataAccess:
         pyoracle.callproc('pkg_nrtest.refresh_menu_xapth', [menu_no, Setting.PROJECT_NO])
 
     @staticmethod
-    def el_operate_log(tst_case_id, locator, class_path, except_type, except_info):
+    def el_operate_log(menu_no, tst_case_id, locator, class_path, except_type, except_info):
         pyoracle = PyOracle.getInstance()
-        sql = 'insert into tst_operate_log (operate_log_id, computer_name, project_no, tst_case_id, locator, class_name, except_type, except_info) \
-        values (seq_tst_operate_log.nextval, :1, :2, :3, :4, :5, :6, :7)'
+        sql = 'insert into tst_operate_log (operate_log_id, computer_name, project_no, menu_no, tst_case_id, locator, class_name, except_type, except_info) \
+        values (seq_tst_operate_log.nextval, :1, :2, :3, :4, :5, :6, :7, :8)'
         para = (os.environ['COMPUTERNAME'],
                 Setting.PROJECT_NO,
+                menu_no,
                 tst_case_id,
-                locator,
+                locator[0] + '-->' + locator[1],
                 class_path,
                 except_type,
-                except_info)
+                str(except_info))
         pyoracle.insert(sql, para)
 
     @staticmethod

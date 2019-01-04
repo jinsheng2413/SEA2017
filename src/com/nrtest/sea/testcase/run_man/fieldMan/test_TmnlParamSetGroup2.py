@@ -3,7 +3,7 @@
 """
 @author: 吴竹筠
 @license: (C) Copyright 2018, Nari.
-@file: testcase_tmnlParamSetGroup2.py
+@file: test_TmnlParamSetGroup2.py
 @time: 2018/11/8 0008 13:50
 @desc:
 """
@@ -74,7 +74,6 @@ class TestTmnlParamSetGroup2(unittest.TestCase, TermParaSetGroup2Page):
         self.inputSel_tmnl_protory(para['TMNL_PROTORY'])
         self.inputSel_task_status(para['TASK_STATUS'])
         self.inputChk_f10_failsn(para['F10_FAILSN'])
-
 
         self.btn_qry()
         self.sleep_time(2)

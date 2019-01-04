@@ -64,6 +64,11 @@ class MenuPage(Page):
         """
         menu_path = menu_no if isPath else DataAccess.getMenu(menu_no)
         print('菜单路径：', menu_path)
+        # items = menu_path.split(';')
+
+        ls_menu = menu_path.split(',')
+        menu_path = ls_menu[0]
+        is_scroll = ls_menu[1]
         items = menu_path.split(';')
 
         # 菜单编号
@@ -89,9 +94,33 @@ class MenuPage(Page):
                 if (item_cnt == 4 and i == 2) or (item_cnt == 5 and i in (2, 3)):
                     self.hover(loc)
                 else:
-                    self.click(loc)
-
+                    # 目前就“统计查询-->综合查询”有部分菜单需要
+                    if i + 1 == item_cnt and is_scroll == 'Y':  # 菜单太多需要滚屏处理
+                        self._scroll_menu(loc)
+                    else:
+                        self.click(loc)
         return self.driver
+
+    def _scroll_menu(self, locator):
+        """
+        菜单太多时需要滚屏
+        :param locator: 菜单xpath
+        """
+        el = self._find_element(MenuLocators.BTN_SCROLL_DOWN)
+        el_menu = self.driver.find_element(*locator)
+        is_find = bool(el) and bool(el_menu)
+        if is_find:
+            cnt = 0
+            while cnt < 15:
+                # 最多点15次，如果还没找到则退出
+                if el_menu.is_displayed():
+                    el_menu.click()
+                    cnt += 1
+                else:
+                    el.click()
+                    break
+        else:
+            DataAccess.el_operate_log(self.menu_name, None, locator, None, '找不到元素', '该菜单不存在或未知原因！')
 
     # 左边树
     def btn_plus(self, index):

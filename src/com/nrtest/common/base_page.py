@@ -219,7 +219,7 @@ class Page():
             except_info = ex
             logger.error(u'其他查找元素错误-->  {}\n{}'.format(locator, ex))
         if except_type != '':
-            DataAccess.el_operate_log(self.tst_case_id, locator, self.class_name, except_type, except_info)
+            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type, except_info)
         return element
 
     def start_case(self, para, class_path=''):
@@ -495,7 +495,8 @@ class Page():
         el = self._find_element(locator)
         logger.info('scroll view element')
         # // roll down and keep the element to the center of browser：scrollIntoView
-        self.driver.execute_script('arguments[0].scrollIntoViewIfNeeded();', el)
+        self.driver.execute_script('arguments[0].scrollIntoView();', el)
+
 
 
 
@@ -651,7 +652,8 @@ class Page():
         判断菜单是否已打开，
         :return: True-已打开
         """
-        return self.exists_element(BaseLocators.MENU_PAGE)
+        loc = self.format_xpath(BaseLocators.MENU_PAGE, self.menu_name)
+        return self.exists_element(loc)
 
     def input(self, values, *locators):
         """
@@ -839,7 +841,7 @@ class Page():
         :return:布尔返回值
         """
         try:
-            return bool(self._find_element(locator, 1))
+            return bool(self._find_element(locator, 0.5))
         except NoSuchElementException:
             return False
 
@@ -931,7 +933,7 @@ class Page():
             except_type = '其他错误'
             except_info = ex
         if except_type != '':
-            DataAccess.el_operate_log(self.tst_case_id, locator, self.class_name, except_type, except_info)
+            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type, except_info)
         return elements
 
     def wait(self):

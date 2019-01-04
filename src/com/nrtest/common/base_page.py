@@ -227,7 +227,8 @@ class Page():
         开始执行测试用例
         :param para:
         """
-        self.class_name = class_path.split('src/')[1]
+        print(class_path)
+        self.class_name = class_path.split('src')[1][1:]
         self.tst_case_id = para['TST_CASE_ID']
         print('开始执行... \n用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}。'.format(*list(para.values())[:4]))
 
@@ -494,7 +495,8 @@ class Page():
         el = self._find_element(locator)
         logger.info('scroll view element')
         # // roll down and keep the element to the center of browser：scrollIntoView
-        self.driver.execute_script('arguments[0].scrollIntoViewIfNeeded(true);', el)
+        self.driver.execute_script('arguments[0].scrollIntoViewIfNeeded();', el)
+
 
 
     def clickRadioBox(self, options, is_multi_tab=False, is_multi_elements=False):

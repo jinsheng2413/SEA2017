@@ -9,38 +9,46 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.stat_rey.synthQuery.patrolIntegratedQuery_locators import PatrolIntegratedQueryLocators
 
 
 # 统计查询→综合查询→巡检仪综合查询
 class PatrolIntegratedQueryPage(Page):
     # 巡检仪运行指标
+    # 日期类型
+    def inputChk_date_type(self, index):
+        self.clickRadioBox(index)
+
     # 日期
     def inputDt_date(self, content):
-        self.exec_script(PatrolIntegratedQueryLocators.DATE_JS)
-        self.input(content, *PatrolIntegratedQueryLocators.DATE)
+        # self.exec_script(PatrolIntegratedQueryLocators.DATE_JS)
+        # self.input(content, *PatrolIntegratedQueryLocators.DATE)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(PatrolIntegratedQueryLocators.BTN_SEARCH)
+        # self.click(PatrolIntegratedQueryLocators.BTN_SEARCH)
+        self.btn_query()
 
     # 巡检仪运行指标明细
     # 日期
     def inputDt_detail_date(self, content):
-        self.exec_script(PatrolIntegratedQueryLocators.DETAIL_DATE_JS)
-        self.input(content, *PatrolIntegratedQueryLocators.DETAIL_DATE)
+        # self.exec_script(PatrolIntegratedQueryLocators.DETAIL_DATE_JS)
+        # self.input(content, *PatrolIntegratedQueryLocators.DETAIL_DATE)
+        self.inputDate(content)
 
     # 指标
     def inputSel_detail_index(self, index):
-        self.click(PatrolIntegratedQueryLocators.DETAIL_INDEX)
-        locator = self.get_select_locator(
-            PatrolIntegratedQueryLocators.DETAIL_INDEX_VALUE, index)
-        self.click(locator)
+        # self.click(PatrolIntegratedQueryLocators.DETAIL_INDEX)
+        # locator = self.get_select_locator(
+        #     PatrolIntegratedQueryLocators.DETAIL_INDEX_VALUE, index)
+        # self.click(locator)
+        self.selectDropDown(index)
 
     # 终端地址
     def inputStr_detail_tmnl_addr(self, content):
-        self.input(content, *PatrolIntegratedQueryLocators.DETAIL_TMNL_ADDR)
+        self.input(content)  #, *PatrolIntegratedQueryLocators.DETAIL_TMNL_ADDR)
 
     # 查询按钮
     def btn_detail_search(self):
-        self.click(PatrolIntegratedQueryLocators.BTN_DETAIL_SEARCH)
+        # self.click(PatrolIntegratedQueryLocators.BTN_DETAIL_SEARCH)
+        self.btn_query(True)

@@ -10,7 +10,8 @@
 
 from com.nrtest.common.base_page import Page
 
-
+# 高级应用--》配变负载分析--》三相不平衡分析
+# 三相不平衡统计
 class ThreeUnbalanceAnalyStaticPage(Page):
     # 供电单位
     # def inputStr_org_no(self, value):
@@ -26,10 +27,23 @@ class ThreeUnbalanceAnalyStaticPage(Page):
 
     # 查询日期
     def inputStr_query_date(self, value):
-        #self.input(value, *ThreeUnbalanceAnalyStaticLocators.QUERY_DATE)
-        self.input(value)
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
-        # self.click(ThreeUnbalanceAnalyStaticLocators.BTN_QUERY)
         self.btn_query()
+
+# 三相不平衡明细
+class ThreeUnbalanceAnalyDetailPage(Page):
+
+    # 用户类型--打开并选择
+    def inputSel_cons_type(self, item):
+        self.selectDropDown(item,True,1,True)
+
+    # 查询日期
+    def inputStr_query_date(self, value):
+        self.inputDate(value)
+
+    # 点击查询
+    def btn_qry(self):
+        self.btn_query(True)

@@ -58,6 +58,15 @@ class Test_DifferentialloopSetting(TestCase, DifferentialloopSetting_Page):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+
+        # 用户名称
+        self.inputStr_cons_name(para['CONS_NAME'])
+
+        # 终端资产号
+        self.inputStr_tmnl_asst_no(para['TMNL_ASST_NO'])
+
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 

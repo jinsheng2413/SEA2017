@@ -15,8 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.spVoltAnalyse.spVoltAnalyseStatic_page import \
-    SpVoltAnalyseStaticPage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.spVoltAnalyse_page import SpVoltAnalyseStaticPage
 from com.nrtest.sea.task.commonMath import *
 
 

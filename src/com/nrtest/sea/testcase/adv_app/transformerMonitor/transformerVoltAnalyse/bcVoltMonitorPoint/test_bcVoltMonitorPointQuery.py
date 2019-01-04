@@ -15,8 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint.bcVoltMonitorPointQuery_page import \
-    BcVoltMonitorPointQueryPage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint_page import BcVoltMonitorPointQueryPage
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -73,9 +72,6 @@ class TestBcVoltMonitorPointQuery(TestCase, BcVoltMonitorPointQueryPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(BcVoltMonitorPointQueryLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

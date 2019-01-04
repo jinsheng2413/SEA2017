@@ -15,8 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.pages.adv_app.transformerMonitor.powerFactorCount.powerFactorCountDetail_page import \
-    PowerFactorCountDetailPage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.powerFactorCount_page import PowerFactorCountDetailPage
+
 from com.nrtest.sea.task.commonMath import *
 
 
@@ -75,9 +75,6 @@ class TestPowerFactorCountDetail(TestCase, PowerFactorCountDetailPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(PowerFactorCountDetailLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

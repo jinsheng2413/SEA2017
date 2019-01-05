@@ -62,6 +62,7 @@ class MenuPage(Page):
         :param isPath: True-menu_no是已确定的菜单路径，False-menu_no是菜单编码
         :return:各级菜单名，如：基本应用;档案管理;档案同步  一级菜单下第一个菜单下的第二个子菜单
         """
+
         menu_path = menu_no if isPath else DataAccess.getMenu(menu_no)
         # items = menu_path.split(';')
 
@@ -75,6 +76,7 @@ class MenuPage(Page):
         self.menu_name = items[-1]
         # 菜单路径
         self.menu_path = ls_menu[2] + '-->' + '-->'.join(items[1:])
+        print('开始执行：{} 相关用例....\r'.format(self.menu_path))
 
         # 当菜单已打开已打开时不再重新打开
         if not self.exists_menu:
@@ -90,7 +92,8 @@ class MenuPage(Page):
                         self._scroll_menu(loc)
                     else:
                         self.click(loc)
-        return self.driver
+        sleep(2)
+        # return self.driver
 
     def _scroll_menu(self, locator):
         """

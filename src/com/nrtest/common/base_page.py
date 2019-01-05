@@ -467,21 +467,21 @@ class Page():
         # print(script)
         self.exec_script(script)
 
-    def btn_clean(self, tag_text):
+    def clean_btn(self, tag_text):
         """
         请按钮名上的空格
         :param tag_text: 按钮名的部分内容
         """
         self._clean_blank(tag_text, 'button')
 
-    def label_clean(self, tag_text):
+    def clean_label(self, tag_text):
         """
         清查询条件标签上的空格
         :param tag_text: 标签名的部分内容
         """
         self._clean_blank(tag_text)
 
-    def span_clean(self, tag_text):
+    def clean_span(self, tag_text):
         """
         清日期选择标签上的空格
         :param tag_text: 标签名的部分内容
@@ -499,21 +499,22 @@ class Page():
         # // roll down and keep the element to the center of browser：scrollIntoView
         self.driver.execute_script('arguments[0].scrollIntoView();', el)
 
-    def clickRadioBox(self, options, is_multi_tab=False, is_multi_elements=False):
+    def clickRadioBox(self, option, is_multi_tab=False, is_multi_elements=False):
         """
         选择单选框
-        :param options: 被选择项名称
+        :param option: 被选择项名称
         :param is_multi_tab:
+        :param is_multi_elements:
         """
         try:
-            if (options.find(';') == -1):
-                item = options
+            if (option.find(';') == -1):
+                item = option
             else:
-                ls_option = options.split(';')
+                ls_option = option.split(';')
                 item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
 
             if len(item) == 0:
-                raise '单选框必须指定选择项：{}'.format(options)
+                raise '单选框必须指定选择项：{}'.format(option)
             xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, item, is_multi_tab)
             if is_multi_elements:
                 el = self._find_displayed_element(xpath)

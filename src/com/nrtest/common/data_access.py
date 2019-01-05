@@ -26,7 +26,7 @@ class DataAccess:
     def getMenu(menuNo):
 
         pyoracle = PyOracle.getInstance()
-        fun_name = 'pkg_nrtest.get_menu_path1'
+        fun_name = 'pkg_nrtest.get_menu_path'
         menu_path = pyoracle.callfunc(fun_name, 'str', [menuNo, Setting.PROJECT_NO])
         return menu_path
 

@@ -132,6 +132,7 @@ class Page():
         if bool(menu_page):
             self.menu_no = menu_page.menu_no
             self.menu_name = menu_page.menu_name
+            self.menu_path = menu_page.menu_path
         self.tst_case_id = None
         self.class_name = ''
 
@@ -187,7 +188,18 @@ class Page():
 
         return wrapper
 
-    def _find_element(self, locator, seconds=5):
+    def _element_ec_mode(self, locator, seconds=5, ec_mode=0):
+        if ec_mode == 0:
+            # 判断元素是否可点击
+            WebDriverWait(self.driver, seconds).until(EC.element_to_be_clickable(locator))
+        elif ec_mode == 1:
+            # 判断元素是否已加载出来
+            WebDriverWait(self.driver, seconds).until(EC.presence_of_element_located(locator))
+        elif ec_mode == 2:
+            # 判断元素是否可见
+            WebDriverWait(self.driver, seconds).until(EC.visibility_of_element_located(locator))
+
+    def _find_element(self, locator, seconds=5, ec_mode=0):
         """
         方法名：_element
         功能：定位元素的具体某个元素WEBelement
@@ -195,12 +207,13 @@ class Page():
             visibility_of_element_located： 当我们需要找到元素，并且该元素也可见。
         *注释：_代表类的私有属性或方法
         :param locator: 元素的位置
+        :param seconds:
+        :param ec_mode: 0:判断元素是否可点击;1:判断元素是否已加载出来;2:判断元素是否可见
         :return: 返回定位的元素
         """
         element = None
         try:
-            # 利用显示等待判断元素是否已经出现
-            WebDriverWait(self.driver, seconds).until(EC.element_to_be_clickable(locator))
+            self._element_ec_mode(locator, seconds, ec_mode)
             # 定位元素
             element = self.driver.find_element(*locator)
             except_type = ''
@@ -651,8 +664,8 @@ class Page():
         判断菜单是否已打开，
         :return: True-已打开
         """
-        loc = self.format_xpath(BaseLocators.MENU_PAGE, self.menu_name)
-        return self.exists_element(loc)
+        locator = self.format_xpath(BaseLocators.MENU_PAGE, self.menu_name)
+        return bool(self._find_element(locator, seconds=0.5, ec_mode=1))
 
     def input(self, values, *locators):
         """
@@ -831,17 +844,14 @@ class Page():
         """
         return self.driver.current_url()
 
-    def exists_element(self, locator):
+    def exists_element(self, locator, ec_mode=0):
         """
         方法名：exists_element
-        判断元素是否存在
+        判断元素是否存在,
         :param locator:元祖形式的xpath
         :return:布尔返回值
         """
-        try:
-            return bool(self._find_element(locator, 0.25))
-        except NoSuchElementException:
-            return False
+        return bool(self._find_element(locator, ec_mode))
 
     def checkbox_is_selected(self, locator):
         """

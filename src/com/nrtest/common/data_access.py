@@ -183,7 +183,6 @@ if __name__ == '__main__':
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
     # print(DataAccess.getCaseData("99926400", tabName='01'))
     # print(DataAccess.refresh_all())
-    DataAccess.el_operate_log('122', '2323', 'dddd')
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))

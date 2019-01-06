@@ -103,12 +103,12 @@ class Login:
 
     @classmethod
     def cookieLogin(cls, username):
-        p = BaseTest()
-        dr = p.openBrowser('firefox')
-        dr.maximize_window()
-        dr.get(Setting.TEST_URL)
-        dr.add_cookie(YamlSetting.getCookie(username))
-        dr.get(Setting.TEST_URL + '/index.jsp')
+        baseTest = BaseTest()
+        driver = baseTest.openBrowser('firefox')
+        driver.maximize_window()
+        driver.get(Setting.TEST_URL)
+        driver.add_cookie(YamlSetting.getCookie(username))
+        driver.get(Setting.TEST_URL + '/index.jsp')
 
 if __name__ == '__main__':
     login = Login()

@@ -8,7 +8,7 @@
 @desc:
 """
 
-from com.nrtest.sea.task.login import Login
+from com.nrtest.common.login import Login
 
 global driver
 

@@ -61,7 +61,7 @@ class Oracle:
 
 
 # print(lis)
-# import unittest, ddt
+# from unittest import TestCase, ddt
 #
 # p = Oracle()
 # lis = p.queryAll("SELECT t.LINE1 us,t.LINE2 FROM AU t where t.USECASENAME ")
@@ -70,7 +70,7 @@ class Oracle:
 #
 #
 # @ddt.ddt
-# class TestDtt(unittest.TestCase):
+# class TestDtt(TestCase):
 #
 #
 #     def setUp(cls):

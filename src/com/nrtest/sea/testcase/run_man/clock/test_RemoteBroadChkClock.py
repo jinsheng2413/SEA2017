@@ -14,8 +14,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.clock.remoteBroadChkClock_page import RemoteBroadChkClockPage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理→时钟管理→本地广播校时设置
@@ -24,7 +24,6 @@ class TestRemoteBroadChkClock(TestCase, RemoteBroadChkClockPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(ClockData.para_RemoteBroadChkClock)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

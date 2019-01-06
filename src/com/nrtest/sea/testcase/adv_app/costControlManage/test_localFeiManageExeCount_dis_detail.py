@@ -7,25 +7,30 @@
 @time: 2018/8/22 0022 15:59
 @desc:
 """
-import unittest
+from unittest import TestCase
 
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.adv_app.costControlManage.localFeiManageExeCount_para import LocalFeiManageExeCount_para
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.locators.adv_app.costControlManage.localFeiManageExeCount_Locators import \
-    LocalFeiManageExeCount_dis_detail_Locators
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
 from com.nrtest.sea.pages.adv_app.costControlManage.localFeiManageExeCount_page import \
     LocalFeiManageExeCount_dis_detail_Page
-from com.nrtest.sea.task.feiMange import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》本地费控执行统计
-class TestlocalFeiManageExeCount_dis_detail(unittest.TestCase, LocalFeiManageExeCount_dis_detail_Page):
+# 高级应用--》费控管理--》本地费控--》本地费控执行统计: 费控情况明细
+@ddt
+class TestlocalFeiManageExeCount_dis_detail(TestCase, LocalFeiManageExeCount_dis_detail_Page):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        cls.driver = localFeiManageCount_dis_detail()
-        cls.orl = Oracle()
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(CostControlManage_data.localFeiManageExeCount_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(CostControlManage_data.localFeiManageExeCount_tab_detail)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -45,92 +50,57 @@ class TestlocalFeiManageExeCount_dis_detail(unittest.TestCase, LocalFeiManageExe
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # self.clear_values(LocalFeiManageExeCount_dis_detail_Page)
 
-    def commonTime(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_feiUserCata)
-        self.inputStr_receive_time(lip[0][1])
-        self.inputStr_end_time(lip[0][2])
+    def query(self, para):
+        # 费控用户类型
+        self.inputSel_fee_ctrl_type(para['FEE_CTRL_TYPE'])
 
-    # 费控用户类型
-    def test_lfdd_feiUserCata(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_feiUserCata)
-        self.inputSel_feiUserCata(lip[0][0])
-        self.inputStr_receive_time(lip[0][1])
-        self.inputStr_end_time(lip[0][2])
-        # 点击查询
+        # 执行状态
+        self.inputSel_exec_status(para['EXEC_STATUS'])
+
+        # 工单类型
+        self.inputSel_app_type(para['APP_TYPE'])
+
+        # 工单编号
+        self.inputStr_app_no(para['APP_NO'])
+
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+
+        self.inputDt_receive_time(para['RECEOVE_TIME'])
+
+        self.inputDt_end_time(para['END_TIME'])
+
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # 工单类型
-    def test_lfdd_workCata(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_workCata)
-        self.commonTime()
-        self.inputSel_work_cata(lip[0][0])
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
-        self.assertTrue(result)
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(CostControlManage_data.localFeiManageExeCount_para, CostControlManage_data.localFeiManageExeCount_tab_detail))
+    def test_query(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
 
-    # 时间查询
-    def test_lfdd_time(self):
-        self.commonTime()
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 执行状态
-    def test_lfdd_execute_state(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_execute_state)
-        self.commonTime()
-        self.inputSel_execute_state(lip[0][0])
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 工单编号
-    def test_lfdd_work_cata(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_work_cata)
-        self.commonTime()
-        self.inputStr_work_num(lip[0][0])
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 用户编号
-    def test_lfdd_user_no(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, LocalFeiManageExeCount_para.para_test_lfdd_user_no)
-        self.commonTime()
-        self.inputStr_user_num(lip[0][0])
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *LocalFeiManageExeCount_dis_detail_Locators.TAB_ONE)
-        self.assertTrue(result)
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(CostControlManage_data.localFeiManageExeCount_para, CostControlManage_data.localFeiManageExeCount_tab_detail,
+                                  valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

@@ -55,8 +55,7 @@ class GatherTaskCompilePage(Page):
         # self.click(locator)
         self.selectDropDown(name)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
         # self.click(GatherTaskCompileLocators.BTN_QRY)
         self.btn_query()

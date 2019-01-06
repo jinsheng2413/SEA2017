@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: terminalPassword__locators.py
+@file: terminalOnlineMonitor_locators.py
 @time: 2018/10/17 0017 10:59
 @desc:
 """
@@ -11,8 +11,7 @@ from selenium.webdriver.common.by import By
 
 
 # 基本应用→终端管理→终端在线监视
-
-class TerminalPasswordLocators:
+class TerminalOnlineMonitorLocators:
     # 【查询条件区】
     # 日期
     QRY_DATE = (

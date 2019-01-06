@@ -8,28 +8,25 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.sys_mam.securityMan.securityMan_data import SecutityMan_date
+from com.nrtest.sea.data.sys_mam.securityMan.securityMan_data import SecutityMan_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.securityMan.operatorMan_page import *
-from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理→权限密码管理→操作员管理
 @ddt
-class TestOperatorMan(unittest.TestCase, OperatorManPage):
+class TestOperatorMan(TestCase, OperatorManPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SecutityMan_date.OperatorMan_para)
         # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(SecutityMan_date.OperatorMan_para)
-        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        menuPage = MenuPage.openMenu(SecutityMan_data.OperatorMan_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
@@ -83,7 +80,7 @@ class TestOperatorMan(unittest.TestCase, OperatorManPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SecutityMan_date.OperatorMan_para))
+    @data(*DataAccess.getCaseData(SecutityMan_data.OperatorMan_para))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -91,7 +88,7 @@ class TestOperatorMan(unittest.TestCase, OperatorManPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SecutityMan_date.OperatorMan_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SecutityMan_data.OperatorMan_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

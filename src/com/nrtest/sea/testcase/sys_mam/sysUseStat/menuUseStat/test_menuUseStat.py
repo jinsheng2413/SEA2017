@@ -8,7 +8,6 @@
 @desc:
 """
 
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,17 +15,16 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysUseStat.sysUseStat_data import SysUseStat_date
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.sysUseStat.menuUseStat_page import *
-from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理→系统使用情况统计→菜单使用情况统计
 # 菜单使用统计
 @ddt
-class TestMenuUseStat(unittest.TestCase, MenuUseStatPage):
+class TestMenuUseStat(TestCase, MenuUseStatPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(SysUseStat_date.menuUseStat_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

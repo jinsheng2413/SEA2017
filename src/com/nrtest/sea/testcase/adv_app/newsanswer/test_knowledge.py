@@ -16,7 +16,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.newsanswer.knowledge_data import NewsAnswer
 from com.nrtest.sea.pages.adv_app.newsanswer.knowledge_page import Knowledge_Page
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--问题交流平台--问题在线交流
@@ -24,7 +24,6 @@ from com.nrtest.sea.task.commonMath import *
 class Test_Knowledge(TestCase, Knowledge_Page):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(NewsAnswer.para_Knowledge)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

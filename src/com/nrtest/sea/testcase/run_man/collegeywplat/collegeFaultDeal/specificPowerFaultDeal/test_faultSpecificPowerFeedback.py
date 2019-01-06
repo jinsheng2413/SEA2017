@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.collegeywplat.acquistionFaultHandling.acquistionFaultHandling_data import \
     AcquistionFaultHandling_data
 from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.faultHandler_page import FaultSpecificPowerFeedbackPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 #运行管理-->采集运维平台-->采集故障处理-->专变故障处理
@@ -27,7 +27,6 @@ class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(AcquistionFaultHandling_data.para_specificPowerFaultDeal)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

@@ -8,7 +8,6 @@
 @desc:
 """
 
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -19,15 +18,14 @@ from com.nrtest.sea.data.adv_app.lineLossAnalysis.personalizedIndexDisplay.perso
     PersonalizedIndexDisplay_data
 from com.nrtest.sea.pages.adv_app.lineLossAnalysis.personalizedIndexDisplay.indexDetail_page import \
     IndexDetailPage_count
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→线损分析→同期线损→指标明细
 @ddt
-class TestIndexDetail(unittest.TestCase, IndexDetailPage_count):
+class TestIndexDetail(TestCase, IndexDetailPage_count):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(PersonalizedIndexDisplay_data.IndexDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -56,7 +54,7 @@ class TestIndexDetail(unittest.TestCase, IndexDetailPage_count):
     def query(self, para):
         self.clickTabPage(PersonalizedIndexDisplay_data.IndexDetail_count_tab)
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 工号
         self.inputStr_workNo(para['WORK_NO'])
         # 时间选择

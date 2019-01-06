@@ -8,8 +8,6 @@
 @desc:
 """
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.regularSporadicUpgradeApprove_locators import \
-    RegularSporadicUpgradeApproveLocator
 
 
 # 基本应用→终端管理→软件升级→常规零星升级审批
@@ -40,18 +38,21 @@ class RegularSporadicUpgradeApprovePage(Page):
 
     # 申请开始日期
     def inputDt_start_date(self, content):
-        self.exec_script(RegularSporadicUpgradeApproveLocator.START_DATE_JS)
-        self.input(content, *RegularSporadicUpgradeApproveLocator.START_DATE)
+        # self.exec_script(RegularSporadicUpgradeApproveLocator.START_DATE_JS)
+        # self.input(content, *RegularSporadicUpgradeApproveLocator.START_DATE)
+        self.inputDate(content)
 
     # 申请结束日期
     def inputDt_end_date(self, content):
-        self.exec_script(RegularSporadicUpgradeApproveLocator.END_DATE_JS)
-        self.input(content, *RegularSporadicUpgradeApproveLocator.END_DATE)
+        # self.exec_script(RegularSporadicUpgradeApproveLocator.END_DATE_JS)
+        # self.input(content, *RegularSporadicUpgradeApproveLocator.END_DATE)
+        self.inputDate(content)
 
     # 批次号
     def inputStr_batch_no(self, content):
-        self.input(content, *RegularSporadicUpgradeApproveLocator.BATCH_NO)
+        self.input(content)  # , *RegularSporadicUpgradeApproveLocator.BATCH_NO)
 
     # 查询按钮
     def btn_search(self):
-        self.click(RegularSporadicUpgradeApproveLocator.BTN_SEARCH)
+        # self.click(RegularSporadicUpgradeApproveLocator.BTN_SEARCH)
+        self.btn_query()

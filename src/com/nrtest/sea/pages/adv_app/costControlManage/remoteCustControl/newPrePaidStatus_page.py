@@ -9,53 +9,28 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.costControlManage.remoteCustControl.newPrePaidStatus_locators import \
-    NewPrePaidStatusLocators
 
 
 class NewPrePaidStatusPage(Page):
     # 控制类别
-    def inputRSel_controlType_one(self, name):
+    def inputSel_controlType(self, name):
         # self.click(NewPrePaidStatusLocators.QRY_CONTROL_TYPE_ONE)
         # locator = self.get_select_locator(
         # NewPrePaidStatusLocators.QRY_CONTROL_TYPE_VALUE_ONE, name)
         # print(locator)
         # self.click(locator)
-
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
-    def inputRSel_controlType_Two(self, name):
-        # self.click(NewPrePaidStatusLocators.QRY_CONTROL_TYPE_TWO)
-        # locator = self.get_select_locator(
-        # NewPrePaidStatusLocators.QRY_CONTROL_TYPE_VALUE_TWO, name)
-        # print(locator)
-        # self.click(locator)
 
-        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
     # 开始时间
-    def inputStr_start_timeOne(self, value):
+    def inputDt_start_time(self, value):
         # self.input(value, *NewPrePaidStatusLocators.QRY_START_TIME_ONE)
-
         self.input(value)
-
-    def inputStr_start_timeTwo(self, value):
-        # self.input(value, *NewPrePaidStatusLocators.QRY_START_TIME_TWO)
-
-        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 结束时间
-    def inputStr_end_timeOne(self, value):
+    def inputDt_end_time(self, value):
         # self.input(value, *NewPrePaidStatusLocators.QRY_END_TIME_ONE)
-
-        self.input(value)
-
-    def inputStr_end_timeTwo(self, value):
-        # self.input(value, *NewPrePaidStatusLocators.QRY_END_TIME_TWO)
-
-        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
-
+        self.inputDate(value)
     # 查询
-    def btn_qryOne(self):
-        self.click(NewPrePaidStatusLocators.BTN_QRY_ONE)
-
-    def btn_qryTwo(self):
-        self.click(NewPrePaidStatusLocators.BTN_QRY_TWO)
+    def btn_qry(self):
+        # self.click(NewPrePaidStatusLocators.BTN_QRY_ONE)
+        self.btn_query(True)

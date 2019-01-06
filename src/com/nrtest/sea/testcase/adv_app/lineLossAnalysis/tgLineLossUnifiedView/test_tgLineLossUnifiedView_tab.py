@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -18,17 +18,21 @@ from com.nrtest.sea.data.adv_app.lineLossAnalysis.tgLineLossUnifiedView.tgLineLo
     TgLineLossUnifiedView_data
 from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossUnifiedView.tgLineLossUnifiedView_page import \
     TgLineLossUnifiedViewPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→线损分析→线损统计分析→台区线损监测→月线损
 @ddt
-class TestTgLineLossUnifiedView_Tab(unittest.TestCase, TgLineLossUnifiedViewPage):
+class TestTgLineLossUnifiedView_Tab(TestCase, TgLineLossUnifiedViewPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para)
+        menuPage = MenuPage.openMenu(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_month)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -62,8 +66,40 @@ class TestTgLineLossUnifiedView_Tab(unittest.TestCase, TgLineLossUnifiedViewPage
         # 月线损，查询按钮
         self.btn_search_month()
 
+    # @BeautifulReport.add_test_img()
+    # @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, tabName='月线损'))
+    # def test_der(self, para):
+    #     clickTabPage('月线损')
+    #     self.query(para)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, tabName='月线损'))
-    def test_der(self, para):
-        clickTabPage('月线损')
+    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_month))
+    def test_query(self, para):
+        self.start_case(para, __file__)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_month,
+                                  valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

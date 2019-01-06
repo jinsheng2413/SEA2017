@@ -7,33 +7,29 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.terminalOnlineSpied_page import TerminalOnlineSpiedLocators, \
-    TerminalOnlineSpiedPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.base_app.dataGatherMan.terminalOnlineSpied_page import TerminalOnlineSpiedPage
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
+class TestTerminalOnlineSpied(TestCase, TerminalOnlineSpiedPage):
 
     @classmethod
     def setUpClass(cls):
-
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DataGatherMan_data.terminalOnlineSpied_para)
-        sleep(2)
-        # cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_MANUFACTURER_JS)
-        # cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_PROTOCOL_JS)
-        cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_STATE_JS)
-        cls.exec_script(cls, TerminalOnlineSpiedLocators.TMNL_TYPE_JS)
+        menuPage = MenuPage.openMenu(DataGatherMan_data.terminalOnlineSpied_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(DataGatherMan_data.)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -63,13 +59,11 @@ class TestTerminalOnlineSpied(unittest.TestCase, TerminalOnlineSpiedPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 终端厂商
         self.inputStr_TmnlManufactory(para['TMNL_MANUFACTORY'])
-        print(para['TMNL_ADDR'])
+
         # 终端地址
         self.inputSel_TmnlAddr(para['TMNL_ADDR'])
         # 终端状态

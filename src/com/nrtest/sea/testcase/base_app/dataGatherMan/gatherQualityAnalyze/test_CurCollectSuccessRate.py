@@ -7,31 +7,32 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.curCollectSuccessRate_page import \
-    CurCollectSuccessRatePage, CurCollectSuccessRateLocators
-from com.nrtest.sea.task.commonMath import *
+    CurCollectSuccessRatePage
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→采集质量分析→实时采集成功率
 @ddt
-class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
+class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRatePage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GatherQualityAnalyze_data.curCollectSuccessRate_para)
-
-        cls.exec_script(CurCollectSuccessRateLocators.START_DATE_JS)
-        cls.exec_script(CurCollectSuccessRateLocators.END_DATE_JS)
+        menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.curCollectSuccessRate_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(GatherQualityAnalyze_data.curCollectSuccessRate_tab)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -61,8 +62,8 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # 打开左边树并选择
-        print(para['START_TIME'])
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
+
         # 开始时间
         self.inputStr_startTime(para['START_TIME'])
         # 结束时间
@@ -88,10 +89,11 @@ class TestCurCollectSuccessRate(unittest.TestCase, CurCollectSuccessRatePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.curCollectSuccessRate_para,
                                   GatherQualityAnalyze_data.curCollectSuccessRate_tab))
-    def test_A_query(self, para):
+    def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.curCollectSuccessRate_para,

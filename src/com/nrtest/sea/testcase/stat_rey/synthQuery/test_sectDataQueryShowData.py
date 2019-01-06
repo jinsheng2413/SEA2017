@@ -1,42 +1,42 @@
-# -*- coding:utf-8 -*-
-
+# -*- coding: utf-8 -*-
 
 """
-@author: 郭春彪
+@author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_faultHandler.py
-@time: 2018/11/12 0012 9:31
+@file: test_sectDataQuery.py
+@time: 2018/9/29 16:13
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.collegeywplat.acquistionFaultHandling.acquistionFaultHandling_data import \
-    AcquistionFaultHandling_data
-from com.nrtest.sea.pages.collegeywplat.acquistionFaultHandling.faultHandler_page import FaultSpecificPowerMyTodoPage
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.sectDataQuery_page import SectDataQueryPage
 
 
-#运行管理-->采集运维平台-->采集故障处理-->专变故障处理
-# 故障处理专变
+# 统计查询→综合查询→抄表段数据查询
 @ddt
-class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerMyTodoPage):
-
+class TestSectDataQuery(TestCase, SectDataQueryPage):
     @classmethod
     def setUpClass(cls):
-        # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(AcquistionFaultHandling_data.para_specificPowerFaultDeal)
+        # *****************共享page类*****************
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(SynthQuery_data.sectDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        menuPage.clickTabPage(AcquistionFaultHandling_data.para_specificPowerFaultMy_todo)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(SynthQuery_data.sectDataQuery_tabName_data)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print("执行结束")
-        # 关闭菜单页面
+        print('执行结束')
+        # 刷新浏览器
         cls.closePages(cls)
 
     def setUp(self):
@@ -50,26 +50,16 @@ class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerMyTodoPage):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-
+        # 去除查询干扰数据(要传入对应的page页面类)
+        # self.clear_values(SectDataQueryPage)
         # 回收左边树
         self.recoverLeftTree()
 
     def query(self, para):
-        """
-
-        :param para: Dict类型的字典，不是dict
-        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
-        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        """
-
-        # 派工类型
-        self.inputChk_job_method(para['JOB_METHOD'])
-
-        # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
-
-        self.btn_qry()
-        self.sleep_time(2)
+        # 抄表段编号
+        self.inputStr_sect_no(para['SECT_NO'])
+        # 查询按钮
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
@@ -87,7 +77,7 @@ class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerMyTodoPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultMy_todo))
+    @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName_data))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -95,7 +85,7 @@ class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerMyTodoPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultMy_todo, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName_data, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -42,7 +42,7 @@ class MeterSuccessRateQueryPage(Page):
         #         MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE_VALUE, index)
         #     self.click(locator)
         #     self.click(MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
-        self.label_clean(index)
+        self.clean_label(index)
         self.selectCheckBox(index)
 
     # 通信方式

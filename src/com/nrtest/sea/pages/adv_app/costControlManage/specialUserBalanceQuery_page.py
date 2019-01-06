@@ -8,22 +8,20 @@
 @desc:
 """
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.costControlManage.specialUserBalanceQuery_locators import \
-    SpecialUserBalanceQuery_locators
 
 
 class SpecialUserBalanceQueryPage(Page):
     # 用户编号
-    def inputStr_user_num(self, value):
-        self.input(value, *SpecialUserBalanceQuery_locators.QRY_USER_NUM)
+    def inputStr_cons_no(self, value):
+        self.input(value)  # , *SpecialUserBalanceQuery_locators.QRY_USER_NUM)
 
     # 用户名称
-    def inputStr_User_name(self, value):
-        self.input(value, *SpecialUserBalanceQuery_locators.QRY_USER_NAME)
+    def inputStr_cons_name(self, value):
+        self.input(value)  # , *SpecialUserBalanceQuery_locators.QRY_USER_NAME)
 
     # 终端地址
     def inputStr_terminal_addr(self, value):
-        self.input(value, *SpecialUserBalanceQuery_locators.QRY_TERMINAL_ADDR)
+        self.input(value)  # , *SpecialUserBalanceQuery_locators.QRY_TERMINAL_ADDR)
 
     #   #越限类型
     # def inputSel_more_cata(self,index):
@@ -33,8 +31,10 @@ class SpecialUserBalanceQueryPage(Page):
     #     self.click(locator)
 
     # 召测日期
-    def inputStr_call_test_date(self, value):
-        self.input(value, *SpecialUserBalanceQuery_locators.QRY_CALL_TEST_DATE)
+    def inputDt_call_date(self, value):
+        # self.input(value, *SpecialUserBalanceQuery_locators.QRY_CALL_TEST_DATE)
+        self.inputDate(value)
 
     def btn_qry(self):
-        self.click(SpecialUserBalanceQuery_locators.BTN_QRY)
+        # self.click(SpecialUserBalanceQuery_locators.BTN_QRY)
+        self.btn_query()

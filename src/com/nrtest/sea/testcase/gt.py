@@ -8,7 +8,7 @@
 @desc:
 """
 import os
-import unittest
+from unittest import defaultTestLoader
 
 from com.nrtest.common import global_drv
 # from BeautifulReport import BeautifulReport
@@ -21,9 +21,9 @@ def add_case(case_path='', rule='test_*.py'):
     if len(case_path) == 0:
         case_path = os.path.dirname(os.path.realpath(__file__))
     # 加载所有的测试用例
-    discover = unittest.defaultTestLoader.discover(case_path,
-                                                   pattern=rule,
-                                                   top_level_dir=None)
+    discover = defaultTestLoader.discover(case_path,
+                                          pattern=rule,
+                                          top_level_dir=None)
     return discover
 
 

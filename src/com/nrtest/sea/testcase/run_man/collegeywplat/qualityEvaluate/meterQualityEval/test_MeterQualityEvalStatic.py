@@ -7,31 +7,31 @@
 @time: 2018/11/13 9:20
 @desc:
 """
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
-from com.nrtest.sea.locators.run_man.operOrganMan.qualityEvaluate.meterQualityEval_locators import \
-    MeterQualityEvalStaticLocators
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.meterQualityEval_page import MeterQualityEvalDetailPage
 
 
 # 运行管理→采集运维平台→采集终端质量评价
 # 电表质量评价统计
 @ddt
-class TestMeterQualityEvalDetail(unittest.TestCase, MeterQualityEvalDetailPage):
+class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        cls.driver = openMenu(OperOrganManData.para_MeterQualityEval)
-        sleep(2)
-        cls.exec_script(cls, MeterQualityEvalStaticLocators.QUERY_DATE_JS)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(OperOrganManData.para_MeterQualityEval)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(OperOrganManData.para_MeterQualityEvalStatic)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -62,41 +62,52 @@ class TestMeterQualityEvalDetail(unittest.TestCase, MeterQualityEvalDetailPage):
         """
 
         # 供电单位
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 用户类型
-        self.inputRSel_cons_type(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 终端厂家
         self.inputRSel_meter_fac(para['METER_FAC'])
 
         self.btn_query()
         self.sleep_time(2)
         # 校验
-        result = self.assert_context(MeterQualityEvalStaticLocators.TABLE_DATA)
+        # result = self.assert_context(MeterQualityEvalStaticLocators.TABLE_DATA)
+        # self.assertTrue(result)
+
+    # @BeautifulReport.add_test_img()
+    # @data(*DataAccess.getCaseData(OperOrganManData.para_MeterQualityEval, OperOrganManData.para_MeterQualityEvalStatic))
+    # def test_query(self, para):
+    #     self.query(para)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(OperOrganManData.para_MeterQualityEval, OperOrganManData.para_MeterQualityEvalStatic))
+    @data(*DataAccess.getCaseData(OperOrganManData.para_MeterQualityEval, OperOrganManData.para_MeterQualityEvalStatic))
     def test_query(self, para):
+        self.start_case(para, __file__)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
 
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 终端类型
-    #     self.inputRSel_tmnl_type('全部')
-    #     # 终端厂家
-    #     self.inputRSel_tmnl_fac('宁波三星')
-    #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(TmnlClockStaticLocators.TABLE_DATA)
-    #     self.assertTrue(result)
-
-    if __name__ == '__main__':
-        unittest.main()
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(OperOrganManData.para_MeterQualityEval, OperOrganManData.para_MeterQualityEvalStatic, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

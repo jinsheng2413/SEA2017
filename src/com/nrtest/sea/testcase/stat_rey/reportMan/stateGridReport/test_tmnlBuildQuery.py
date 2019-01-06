@@ -14,8 +14,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_data import TmnlBuildQuery_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_page import TmnlBuildQueryPage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 统计查询--》报表管理--》国网报表--》智能电能表及终端设备建设情况
@@ -24,7 +24,6 @@ class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         menuPage = MenuPage.openMenu(TmnlBuildQuery_data.TmnlBuildQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -61,7 +60,7 @@ class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
 
         # 统计分类
         self.inputChk_stat_type(para['STAT_TYPE'])

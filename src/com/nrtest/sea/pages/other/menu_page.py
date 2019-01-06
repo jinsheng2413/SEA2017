@@ -12,8 +12,8 @@ from time import sleep
 from com.nrtest.common import global_drv
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
+from com.nrtest.common.login import Login
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
-from com.nrtest.sea.task.login import Login
 
 
 class MenuPage(Page):
@@ -93,7 +93,6 @@ class MenuPage(Page):
                     else:
                         self.click(loc)
         sleep(2)
-        # return self.driver
 
     def _scroll_menu(self, locator):
         """
@@ -190,25 +189,25 @@ class MenuPage(Page):
             self.btn_select_company(int(items[1]))
             print(int(items[1]))
         elif l in (3, 4):
-            self.btn_plus(1)#点击省公司加号
-            if int(items[1]) == 5:#承德供电公司的加号xpath与前4个有所区别需要做特殊处理
+            self.btn_plus(1)  # 点击省公司加号
+            if int(items[1]) == 5:  # 承德供电公司的加号xpath与前4个有所区别需要做特殊处理
                 self.btn_plus(1)
             else:
                 self.waitLeftTree()
                 self.btn_company_plus(items[1])
             if l == 3:
                 self.waitLeftTree()
-                self.btn_select_county(int(items[2]) + 1) #点击公司加号
+                self.btn_select_county(int(items[2]) + 1)  # 点击公司加号
             else:
                 self.waitLeftTree()
-                self.btn_company_plus(int(items[2]) + int(items[1]))#点击公司加号
+                self.btn_company_plus(int(items[2]) + int(items[1]))  # 点击公司加号
                 self.btn_select_user(int(items[3]) + 1)
         elif l == 1:
             self.btn_select_province()
 
         return self.driver
 
-    def btn_user_nodes(self, node_flag, node_value,number=1):
+    def btn_user_nodes(self, node_flag, node_value, number=1):
 
         """
         选择左边树用户Tab页面，并根据节点类型，输入并查询相应结果
@@ -218,7 +217,7 @@ class MenuPage(Page):
 
         """
         # 根据node_flag选择相应的节点查询条件xpath，并输入查询条件
-        #{02:代表用户编号，03：代表终端逻辑地址，04：电能表资产号}
+        # {02:代表用户编号，03：代表终端逻辑地址，04：电能表资产号}
 
         # 点击用户标签页
         self.click(MenuLocators.NODE_USER)
@@ -230,7 +229,6 @@ class MenuPage(Page):
         # 等待查询结果，最好通过其他途径判断查询已返回
         self.commonWait(MenuLocators.NODE_USER_TAB_RSLT_DEFAULT)
         self.clear(MenuLocators.NODE[node_flag])
-
 
         # 定位查询结果，默认选择第一行记录
         xpath = self.format_xpath(MenuLocators.NODE_USER_TAB_RSLT, number)
@@ -244,8 +242,6 @@ class MenuPage(Page):
     #     self.btn_plus(1)
     #     self.btn_company_plus(list[0])
     #     self.btn_company_plus(list[1])
-
-
 
     def clickAllMenu(self):
         menus = DataAccess.getAllMenu()

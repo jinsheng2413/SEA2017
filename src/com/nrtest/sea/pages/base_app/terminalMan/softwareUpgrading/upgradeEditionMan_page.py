@@ -9,8 +9,10 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_locators import \
-    UpgradeEditionManLocators
+
+
+# from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_locators import \
+#     UpgradeEditionManLocators
 
 
 # 基本应用→终端管理→软件升级→升级版本管理
@@ -45,12 +47,13 @@ class UpgradeEditionManPage(Page):
         # self.click(UpgradeEditionManLocators.SOFTWARE_VERSION_NO)
         # locator = self.get_select_locator(UpgradeEditionManLocators.SOFTWARE_VERSION_NO_VALUE,index)
         # self.click(locator)
-        self.click(UpgradeEditionManLocators.SOFTWARE_VERSION_NO)
+        # self.click(UpgradeEditionManLocators.SOFTWARE_VERSION_NO)
         self.selectDropDown(index)
 
     # 查询按钮
     def btn_search(self):
-        self.click(UpgradeEditionManLocators.BTN_SEARCH)
+        # self.click(UpgradeEditionManLocators.BTN_SEARCH)
+        self.btn_query(True)
 
     # 升级版本管理
     # 终端厂家
@@ -86,14 +89,17 @@ class UpgradeEditionManPage(Page):
         self.selectDropDown(index)
 
     # 申请开始日期
-    def upgrade_start_date(self, content):
-        self.exec_script(UpgradeEditionManLocators.UPGRADE_START_DATE_JS)
-        self.input(content, *UpgradeEditionManLocators.UPGRADE_START_DATE)
+    def inputDt_upgrade_start_date(self, content):
+        # self.exec_script(UpgradeEditionManLocators.UPGRADE_START_DATE_JS)
+        # self.input(content, *UpgradeEditionManLocators.UPGRADE_START_DATE)
+        self.inputDate(content)
 
     # 申请结束日期
-    def upgrade_end_date(self, content):
-        self.exec_script(UpgradeEditionManLocators.UPGRADE_END_DATE_JS)
-        self.input(content, *UpgradeEditionManLocators.UPGRADE_END_DATE)
+    def inputDt_upgrade_end_date(self, content):
+        # self.exec_script(UpgradeEditionManLocators.UPGRADE_END_DATE_JS)
+        # self.input(content, *UpgradeEditionManLocators.UPGRADE_END_DATE)
+        self.inputDate(content)
+
 
     # 查询按钮
     def btn_upgrade_search(self):
@@ -135,7 +141,7 @@ class UpgradeEditionManPage(Page):
 
     # 终端地址
     def inputStr_edition_tmnl_addr(self, content):
-        self.input(content, *UpgradeEditionManLocators.EDITION_TMNL_ADDR)
+        self.input(content)  # , *UpgradeEditionManLocators.EDITION_TMNL_ADDR)
 
     # 查询按钮
     def btn_edition_search(self):

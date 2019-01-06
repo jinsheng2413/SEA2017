@@ -8,31 +8,30 @@
 @time: 2018/11/20 0020 10:20
 @desc:
 """
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkReduceApplication_page import CheckReduceApplicationPage, \
-    CheckReduceApplicationLocators
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkReduceApplication_page import CheckReduceApplicationPage
 
 
 # 系统管理--》档案核查管理--》考核减免申请
 @ddt
-class TestCheckReduceApplication(unittest.TestCase, CheckReduceApplicationPage):
+class TestCheckReduceApplication(TestCase, CheckReduceApplicationPage):
 
     @classmethod
-    def setUpClass(cls):
-        print("开始执行")
+    def setUpClass(cls):        
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(ArchivesVerficationMan_data.checkReduceApplication_para)
-        sleep(2)
-        cls.exec_script(cls, CheckReduceApplicationLocators.START_DATE_JS)
-        cls.exec_script(cls, CheckReduceApplicationLocators.END_DATE_JS)
+        menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.checkReduceApplication_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(ArchivesVerficationMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -64,11 +63,11 @@ class TestCheckReduceApplication(unittest.TestCase, CheckReduceApplicationPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 开始日期
-        self.inputStr_start_time(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
         # 结束日期
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
         # 申请单号
         self.inputStr_applyNo(para['APPLY_NO'])
 
@@ -78,7 +77,38 @@ class TestCheckReduceApplication(unittest.TestCase, CheckReduceApplicationPage):
         # result = self.assert_context()
         # self.assertTrue(result)
 
+    # @BeautifulReport.add_test_img()
+    # @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReduceApplication_para))
+    # def test_query(self, para):
+    #     self.query(para)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
+
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReduceApplication_para))
     def test_query(self, para):
+        self.start_case(para, __file__)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReduceApplication_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

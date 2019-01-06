@@ -17,7 +17,7 @@ from com.nrtest.sea.data.adv_app.variationMonitorAnalysis.powerCutAnalysis.power
     PowerCutAnalysis_data
 from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.tmnlPowerCutEventQuery_page import \
     TmnlPowerCutEventQueryPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→配变监测分析→停电分析→终端停电事件查询
@@ -25,7 +25,6 @@ from com.nrtest.sea.task.commonMath import *
 class TestTmnlPowerCutEventQuery(TestCase, TmnlPowerCutEventQueryPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(PowerCutAnalysis_data.TmnlPowerCutEventQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

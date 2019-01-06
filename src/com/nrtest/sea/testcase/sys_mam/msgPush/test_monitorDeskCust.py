@@ -15,8 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.msgPush.msgPush_data import MsgPushData
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.msgPush.monitorDeskCust_page import *
-from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理→信息定制→监控台定制
@@ -24,7 +24,6 @@ from com.nrtest.sea.task.commonMath import *
 class TestMonitorDeskCust(TestCase, MonitorDeskCustPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(MsgPushData.MonitorDeskCust_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

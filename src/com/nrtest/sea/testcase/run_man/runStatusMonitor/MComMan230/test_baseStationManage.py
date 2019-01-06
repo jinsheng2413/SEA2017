@@ -16,8 +16,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.runStatusMonitor.MComMan230.mComMan230 import MComMan230
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.runStatusMonitor.MComMan230.baseStationManage_page import BaseStationManagePage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理--》采集信道管理--》230M通信管理--》基站信息维护
@@ -26,7 +26,6 @@ class TestbaseStationManage(TestCase, BaseStationManagePage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(MComMan230.baseStationManage_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

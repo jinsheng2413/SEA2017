@@ -29,7 +29,7 @@ class LosePowerManPage(Page):
         # locator = self.get_select_locator(
         #     LosePowerManLocators.QRY_COMBINATION_SIGN_VALUE, name)
         # self.click(locator)
-        self.label_clean(name)
+        self.clean_label(name)
         self.selectDropDown(name)
 
 

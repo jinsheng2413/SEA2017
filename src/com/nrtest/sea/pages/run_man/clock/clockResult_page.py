@@ -42,7 +42,7 @@ class ClockResultDetailPage(Page):
 
     # 类别--打开并选择
     def inputSel_clock_model(self, item):
-        self.label_clean(item)  # '类')
+        self.clean_label(item)  # '类')
         self.selectDropDown(item)
 
     # 电表资产号

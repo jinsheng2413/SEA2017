@@ -10,19 +10,19 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.taskTemplateSet_locators import TaskTemplateSetLocators
 
 
 # 系统管理--》档案核查管理--》档案核查模板编制
 class TaskTemplateSetPage(Page):
 
     # 选择模板
-    def inputSel_selectModule(self, name):
-        self.click(TaskTemplateSetLocators.QRY_SELECT_MODULE)
-        locator = self.get_select_locator(TaskTemplateSetLocators.QRY_SELECT_MODULE, name)
-        self.click(locator)
+    def inputSel_selectModule(self, option):
+        # self.click(TaskTemplateSetLocators.QRY_SELECT_MODULE)
+        # locator = self.get_select_locator(TaskTemplateSetLocators.QRY_SELECT_MODULE, option)
+        # self.click(locator)
+        self.selectDropDown(option)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        self.click(TaskTemplateSetLocators.BTN_QRY)
+        # self.click(TaskTemplateSetLocators.BTN_QRY)
+        self.btn_query()

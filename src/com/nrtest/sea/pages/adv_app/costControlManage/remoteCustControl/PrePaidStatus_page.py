@@ -9,53 +9,55 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.costControlManage.remoteCustControl.PrePaidStatus_locators import \
-    PrePaidStatus_Locators
 
 
-class PrePaidStatusPage(Page):
+class PrePaidStatusByActionPage(Page):
     # 控制类别
-    def inputRSel_controlType_one(self, name):
+    def inputSel_controlType(self, name):
         # self.click(PrePaidStatus_Locators.QRY_CONTROL_TYPE_ONE)
         # locator = self.get_select_locator(
         # PrePaidStatus_Locators.QRY_CONTROL_TYPE_VALUE_ONE, name)
         # print(locator)
         # self.click(locator)
-
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
-    def inputRSel_controlType_Two(self, name):
+
+    # 开始时间
+    def inputDt_start_time(self, value):
+        # self.input(value, *PrePaidStatus_Locators.QRY_START_TIME_ONE)
+        self.inputDate(value)
+
+    # 结束时间
+    def inputDt_end_time(self, value):
+        # self.input(value, *PrePaidStatus_Locators.QRY_END_TIME_ONE)
+        self.inputDate(value)
+
+    # 查询
+    def btn_qry(self):
+        # self.click(PrePaidStatus_Locators.BTN_QRY_ONE)
+        self.btn_query(True)
+
+
+class PrePaidStatusByUserPage(Page):
+    # 控制类别
+    def inputSel_controlType(self, name):
         # self.click(PrePaidStatus_Locators.QRY_CONTROL_TYPE_TWO)
         # locator = self.get_select_locator(
         # PrePaidStatus_Locators.QRY_CONTROL_TYPE_VALUE_TWO, name)
         # print(locator)
         # self.click(locator)
-
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
     # 开始时间
-    def inputStr_start_timeOne(self, value):
-        # self.input(value, *PrePaidStatus_Locators.QRY_START_TIME_ONE)
-
-        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
-
-    def inputStr_start_timeTwo(self, value):
+    def inputDt_start_time(self, value):
         # self.input(value, *PrePaidStatus_Locators.QRY_START_TIME_TWO)
-
-        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
+        self.inputDate(value)
 
     # 结束时间
-    def inputStr_end_timeOne(self, value):
-        # self.input(value, *PrePaidStatus_Locators.QRY_END_TIME_ONE)
-
-        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
-
-    def inputStr_end_timeTwo(self, value):
+    def inputDt_end_time(self, value):
         # self.input(value, *PrePaidStatus_Locators.QRY_END_TIME_TWO)
-
-        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
+        self.inputDate(value)
 
     # 查询
-    def btn_qryOne(self):
-        self.click(PrePaidStatus_Locators.BTN_QRY_ONE)
-
-    def btn_qryTwo(self):
-        self.click(PrePaidStatus_Locators.BTN_QRY_TWO)
+    def btn_qry(self):
+        # self.click(PrePaidStatus_Locators.BTN_QRY_TWO)
+        self.btn_query(True)

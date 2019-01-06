@@ -7,7 +7,7 @@
 @time: 2018/8/29 0029 14:26
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from com.nrtest.common.oracle_test import Oracle
 from com.nrtest.sea.data.base_app.archivesMan.archivesManage_para import ArchivesManage_para
@@ -16,10 +16,9 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesManage_pages import Archi
 from com.nrtest.sea.task.archivesManage import *
 
 
-class test_archivesManage(unittest.TestCase, ArchivesManage_pages):
+class test_archivesManage(TestCase, ArchivesManage_pages):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         cls.driver = archivesMange()
         cls.orl = Oracle()
 

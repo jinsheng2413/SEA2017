@@ -16,7 +16,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_page import UpgradeEditionManPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→升级版本管理→终端版本召测
@@ -24,7 +24,7 @@ from com.nrtest.sea.task.commonMath import *
 class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SoftwareUpgrading_data.UpgradeEditionMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -55,7 +55,7 @@ class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
 
     def query(self, para):
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 终端厂家
         self.inputSel_edition_tmnl_factory(para['EDITION_TMNL_FACTORY'])
         # 终端类型

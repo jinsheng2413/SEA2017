@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayStatic_page import \
     OrgLowVoltDayStaticPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
@@ -27,7 +27,7 @@ class TestOrgLowVoltDayStatic(TestCase, OrgLowVoltDayStaticPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(TradnsformerMonitorData.para_OrgLowVoltDay)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -74,7 +74,7 @@ class TestOrgLowVoltDayStatic(TestCase, OrgLowVoltDayStaticPage):
         # self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 开始日期
         self.inputStr_start_date(para['START_DATE'])
         # 结束日期
@@ -128,9 +128,9 @@ class TestOrgLowVoltDayStatic(TestCase, OrgLowVoltDayStaticPage):
     #     # 供电单位
     #     openLeftTree('13401')
     #     # 开始日期
-    #     self.inputStr_start_date('2018-09-01')
+    #     self.inputDt_start_date('2018-09-01')
     #     # 结束日期
-    #     self.inputStr_end_date('2018-09-01')
+    #     self.inputDt_end_date('2018-09-01')
     #
     #     self.btn_query()
     #     self.sleep_time(2)

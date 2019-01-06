@@ -71,5 +71,5 @@ class LineLossStatisticsQueryPage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(LineLossStatisticsQueryLocators.BTN_SEARCH)
-        self.btn_clean('查')
+        self.clean_btn('查')
         self.btn_query(True)

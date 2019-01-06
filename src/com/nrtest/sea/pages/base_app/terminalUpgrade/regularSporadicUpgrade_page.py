@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.terminalUpgrade.regularSporadicUpgrade_locators import \
-    RegularSporadicUpgradeLocators
 
 
 # 基本应用→终端升级→常规零星升级
@@ -53,16 +51,17 @@ class RegularSporadicUpgradePage(Page):
 
     # 起始终端地址
     def inputStr_tmnl_addr_start(self, content):
-        self.input(content, *RegularSporadicUpgradeLocators.TMNL_ADDR_START)
+        self.input(content)  # , *RegularSporadicUpgradeLocators.TMNL_ADDR_START)
 
     # 结束终端地址
     def inputStr_tmnl_addr_end(self, content):
-        self.input(content, *RegularSporadicUpgradeLocators.TMNL_ADDR_END)
+        self.input(content)  # , *RegularSporadicUpgradeLocators.TMNL_ADDR_END)
 
     # 终端资产号
     def inputStr_tmnl_asset_no(self, content):
-        self.input(content, *RegularSporadicUpgradeLocators.TMNL_ASSET_NO)
+        self.input(content)  # , *RegularSporadicUpgradeLocators.TMNL_ASSET_NO)
 
     # 查询按钮
     def btn_search(self):
-        self.click(RegularSporadicUpgradeLocators.BTN_SEARCH)
+        # self.click(RegularSporadicUpgradeLocators.BTN_SEARCH)
+        self.btn_query()

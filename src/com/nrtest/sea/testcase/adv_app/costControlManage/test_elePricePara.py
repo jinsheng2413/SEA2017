@@ -7,7 +7,7 @@
 @time: 2018/8/16 0016 8:55
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.oracle_test import Oracle
@@ -19,10 +19,9 @@ from com.nrtest.sea.task.feiMange import *
 
 
 # 高级应用--》费控管理--》本地费控--》电价参数下发
-class TestElePricePara(unittest.TestCase, ElePricePages):
+class TestElePricePara(TestCase, ElePricePages):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         cls.driver = ele_price_para()
         cls.orl = Oracle()
 

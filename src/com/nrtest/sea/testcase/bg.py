@@ -8,16 +8,16 @@
 @desc:
 """
 
-import unittest
+from unittest import TestSuite, TestLoader, TextTestRunner
 
 from com.nrtest.sea.testcase.stat_rey.reportMan.ItsChinese.test_tmnlInsertQuery import TestTmnlInsertQuery
 
-suite = unittest.TestSuite()
-suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestTmnlInsertQuery))
+suite = TestSuite()
+suite.addTests(TestLoader().loadTestsFromTestCase(TestTmnlInsertQuery))
 # tests = [TestGatherSuccessRate('test_epp_task_type')]
 # suite.addTests(tests)
 
 
 if __name__ == '__main__':
-    runner = unittest.TextTestRunner(verbosity=2)
+    runner = TextTestRunner(verbosity=2)
     runner.run(suite)

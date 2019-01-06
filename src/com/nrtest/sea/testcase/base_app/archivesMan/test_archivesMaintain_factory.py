@@ -7,7 +7,7 @@
 @time: 2018/8/30 0030 15:30
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from com.nrtest.common.oracle_test import Oracle
 from com.nrtest.sea.data.base_app.archivesMan.archivesMaintain_para import ArchivesMaintain
@@ -16,10 +16,9 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import Arch
 from com.nrtest.sea.task.archivesManage import *
 
 
-class TestarchivesMaintain_factory(unittest.TestCase, ArchivesMaintain_factory_pages):
+class TestarchivesMaintain_factory(TestCase, ArchivesMaintain_factory_pages):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         cls.driver = archivesMaintain_factory()
         cls.orl = Oracle()
 
@@ -34,14 +33,12 @@ class TestarchivesMaintain_factory(unittest.TestCase, ArchivesMaintain_factory_p
         :return:
         """
 
-        # self.sleep_time(2000)
 
     def tearDown(self):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # self.clear_values(ArchivesMaintain_factory_pages)
 
     # 电压等级
     def test_amf_eleGrade(self):

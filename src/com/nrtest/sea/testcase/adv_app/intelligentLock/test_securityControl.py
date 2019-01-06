@@ -16,7 +16,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.intelligentLock.intelligentLock_data import IntelligentLock_data
 from com.nrtest.sea.pages.adv_app.intelligentLock.securityControl_page import SecurityControlPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→智能锁具→权限控制
@@ -24,7 +24,6 @@ from com.nrtest.sea.task.commonMath import *
 class TestSecurityControl(TestCase, SecurityControlPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(IntelligentLock_data.SecurityControl_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

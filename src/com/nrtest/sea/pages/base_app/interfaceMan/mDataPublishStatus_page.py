@@ -15,20 +15,23 @@ from com.nrtest.sea.locators.base_app.interfaceMan.mDataPublishStatus import MDa
 class MDataPublishStatusPage(Page):
 
     # 业务系统
-    def inputSel_BusinessSystem(self, index):
-        self.click(MDataPublishStatus_locators.QRY_BUSINESS_SYSTEM)
-        locator = self.get_select_locator(
-            MDataPublishStatus_locators.QRY_BUSINESS_SYSTEM_VALUE, index)
-        self.click(locator)
+    def inputSel_BusinessSystem(self, option):
+        # self.click(MDataPublishStatus_locators.QRY_BUSINESS_SYSTEM)
+        # locator = self.get_select_locator(
+        #     MDataPublishStatus_locators.QRY_BUSINESS_SYSTEM_VALUE, option)
+        # self.click(locator)
+        self.selectDropDown(option)
 
     # 发布时间 开始
-    def inputStr_receive_time(self, value):
+    def inputDt_receive_time(self, value):
         self.input(value, *MDataPublishStatus_locators.QRY_DATE_BEGIN)
 
     # 结束时间
-    def inputStr_end_time(self, value):
-        self.input(value, *MDataPublishStatus_locators.QRY_DATE_END)
+    def inputDt_end_time(self, value):
+        # self.input(value, *MDataPublishStatus_locators.QRY_DATE_END)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        self.click(MDataPublishStatus_locators.BTN_QUERY)
+        # self.click(MDataPublishStatus_locators.BTN_QUERY)
+        self.btn_query()

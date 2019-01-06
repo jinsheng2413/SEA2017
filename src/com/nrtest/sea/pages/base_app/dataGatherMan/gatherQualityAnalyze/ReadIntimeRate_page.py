@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.readIntimeRate_locators import \
-    ReadIntimeRate_Locators
 
 
 class ReadIntimeRatePage(Page):
@@ -40,9 +38,10 @@ class ReadIntimeRatePage(Page):
     # 日期时间
     def inputStr_date_time(self, value):
         # self.input(value, *ReadIntimeRate_Locators.QRY_DATE_TIME)
-        self.input(value)
+        self.inputDate(value)
 
         # 查询
 
     def btn_qry(self):
-        self.click(ReadIntimeRate_Locators.BTN_QRY)
+        # self.click(ReadIntimeRate_Locators.BTN_QRY)
+        self.btn_query()

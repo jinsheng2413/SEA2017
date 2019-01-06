@@ -7,7 +7,7 @@
 @time: 2018/8/30 0030 15:30
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from com.nrtest.common.oracle_test import Oracle
 from com.nrtest.sea.data.base_app.archivesMan.archivesMaintain_para import ArchivesMaintain
@@ -16,10 +16,9 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import Arch
 from com.nrtest.sea.task.archivesManage import *
 
 
-class TestarchivesMaintain_terminal(unittest.TestCase, ArchivesMaintain_terminal_pages):
+class TestarchivesMaintain_terminal(TestCase, ArchivesMaintain_terminal_pages):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         cls.driver = archivesMaintain_terminal()
         cls.orl = Oracle()
 

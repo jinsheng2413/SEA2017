@@ -7,7 +7,7 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -15,19 +15,21 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.GatherTaskCompile_Page import GatherTaskCompilePage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
+class TestGatherTaskCompile(TestCase, GatherTaskCompilePage):
 
     @classmethod
     def setUpClass(cls):
-
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(DataGatherMan_data.gatherTaskCompile_para)
-        clickTabPage('任务查询')
+        menuPage = MenuPage.openMenu(DataGatherMan_data.gatherTaskCompile_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(DataGatherMan_data.gatherTaskCompile_tab_query_task)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -59,7 +61,7 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
 
         # sleep(2)
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 任务类型
         self.inputSel_taskType(para['TASK_TYPE'])
         # 任务编号
@@ -94,13 +96,17 @@ class TestGatherTaskCompile(unittest.TestCase, GatherTaskCompilePage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DataGatherMan_data.gatherTaskCompile_para))
+    @data(*DataAccess.getCaseData(DataGatherMan_data.gatherTaskCompile_para, DataGatherMan_data.gatherTaskCompile_tab_query_task))
     def test_query(self, para):
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
+        self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DataGatherMan_data.gatherTaskCompile_para, valCheck=True))
+    @data(*DataAccess.getCaseData(DataGatherMan_data.gatherTaskCompile_para, DataGatherMan_data.gatherTaskCompile_tab_query_task, valCheck=True))
     def _test_checkValue(self, para):
+        self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
+        self.end_case()

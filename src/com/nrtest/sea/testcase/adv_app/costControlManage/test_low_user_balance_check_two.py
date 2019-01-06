@@ -7,7 +7,7 @@
 @time: 2018/8/10 0010 11:03
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.oracle_test import Oracle
@@ -18,10 +18,9 @@ from com.nrtest.sea.task.feiMange import *
 
 
 # 高级应用--》费控管理--》本地费控--》抵押用户余额查看
-class TestBalanceCheck(unittest.TestCase, BalanceCheck_page):
+class TestBalanceCheck(TestCase, BalanceCheck_page):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         cls.driver = low_user_money_check_two()
         cls.orl = Oracle()
 

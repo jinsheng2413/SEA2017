@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.curCollectSuccessRate_locators import \
-    CurCollectSuccessRateLocators
 
 
 # 基本应用→数据采集管理→采集质量分析→实时采集成功率
@@ -38,21 +36,24 @@ class CurCollectSuccessRatePage(Page):
     # 开始时间
     def inputStr_startTime(self, value):
         # self.input(value, *CurCollectSuccessRateLocators.QRY_START_TIME)
-        self.input(value)
+        self.inputDate(value, True)
 
     # 结束时间
     def inputStr_endTime(self, value):
         # self.input(value, *CurCollectSuccessRateLocators.QRY_END_TIME)
-        self.input(value)
+        self.inputDate(value, True)
 
     # 查询
     def btn_qry(self):
-        self.click(CurCollectSuccessRateLocators.BTN_QRY)
+        # self.click(CurCollectSuccessRateLocators.BTN_QRY)
+        self.btn_query(True)
 
     # 统计查询
     def btn_count_qry(self):
-        self.click(CurCollectSuccessRateLocators.BTN_QRY_COUNT)
+        # self.click(CurCollectSuccessRateLocators.BTN_QRY_COUNT)
+        self.btn_query(True)
 
     # 明细查询
     def btn_detail_qry(self):
-        self.click(CurCollectSuccessRateLocators.BTN_QRY_DETAIL)
+        # self.click(CurCollectSuccessRateLocators.BTN_QRY_DETAIL)
+        self.btn_query(True)

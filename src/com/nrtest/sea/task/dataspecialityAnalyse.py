@@ -7,8 +7,8 @@
 @time: 2018/8/15 14:26
 @desc:
 """
+from com.nrtest.common.login import Login
 from com.nrtest.sea.pages.other.common_page import Common_page
-from com.nrtest.sea.task.login import Login
 
 
 def dataspecialityanalyse():

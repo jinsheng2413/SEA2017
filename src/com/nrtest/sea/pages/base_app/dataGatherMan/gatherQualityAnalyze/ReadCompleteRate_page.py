@@ -109,33 +109,25 @@ class ReadCompleteRatePage(Page):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 开始时间
-    def inputStr_start_time(self, value):
+    def inputDt_start_time(self, value):
         # self.input(value, *ReadCompleteRateLocators.QRY_START_TIME)
-        self.input(value)
+        # self.input(value)
+        self.inputDate(value)
 
     # 结束时间
-    def inputStr_end_time(self, value):
+    def inputDt_end_time(self, value):
         # self.input(value, *ReadCompleteRateLocators.QRY_END_TIME)
-        self.input(value)
+        # self.input(value)
+        self.inputDate(value)
 
     # 日期时间
-    def inputStr_date_time_count(self, value):
+    def inputDt_date_time_count(self, value):
         # self.input(value, *ReadCompleteRateLocators.QRY_DATE_TIME_COUNT)
-        self.input(value)
+        # self.input(value)
+        self.inputDate(value)
 
     # 日期时间
-    def inputStr_date_time_detail(self, value):
+    def inputDt_date_time_detail(self, value):
         # self.input(value, *ReadCompleteRateLocators.QRY_DATE_TIME_DETAIL)
-        self.input(value)
-
-    # # 查询
-    # def btn_qry(self):
-    #     self.click(ReadCompleteRateLocators.BTN_QRY)
-    #
-    # # 查询
-    # def btn_count_qry(self):
-    #     self.click(ReadCompleteRateLocators.BTN_QRY_COUNT)
-    #
-    # # 查询
-    # def btn_detail_qry(self):
-    #     self.click(ReadCompleteRateLocators.BTN_QRY_DETAIL)
+        # self.input(value)
+        self.inputDate(value)

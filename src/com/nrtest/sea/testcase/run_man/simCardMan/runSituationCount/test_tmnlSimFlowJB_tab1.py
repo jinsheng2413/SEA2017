@@ -8,27 +8,29 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.tmnlSimFlowJB_data import RunSituationCount_data
-from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.tmnlSimFlowJB_page import TmnlSimFlowJB_1Locators, \
-    TmnlSimFlowJB_1Page
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.tmnlSimFlowJB_page import TmnlSimFlowJB_1Page
 
 
 # 运行管理--SIM卡管理--运行情况分析--终端流量统计（冀北）（第一个tab页）
 @ddt
-class Test_TnmlSimFlowJB_1(unittest.TestCase, TmnlSimFlowJB_1Page):
+class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        cls.driver = openMenu(RunSituationCount_data.para_TmnlSimFlowJB)
-        cls.exec_script(cls, TmnlSimFlowJB_1Locators.START_DATE_JS)
-        cls.exec_script(cls, TmnlSimFlowJB_1Locators.END_DATE_JS)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(RunSituationCount_data.para_TmnlSimFlowJB)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(RunSituationCount_data.TmnlSimFlowJB_tab_count_day)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -54,7 +56,7 @@ class Test_TnmlSimFlowJB_1(unittest.TestCase, TmnlSimFlowJB_1Page):
     def query(self, para):
         # sleep(4)
         # 打开左边树选择供电单位
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # Sim卡号
@@ -62,15 +64,48 @@ class Test_TnmlSimFlowJB_1(unittest.TestCase, TmnlSimFlowJB_1Page):
         # 开始日期
         self.inputStr_start_date(para['START_DATE'])
         # 结束日期
-        self.inputStr_end_date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        result = self.assert_context(TmnlSimFlowJB_1Locators.TAB_ONE)
+        # result = self.assert_context(TmnlSimFlowJB_1Locators.TAB_ONE)
+        # self.assertTrue(result)
+
+    # @BeautifulReport.add_test_img()
+    # @data(*DataAccess.getCaseData(RunSituationCount_data.para_TmnlSimFlowJB,
+    #                               RunSituationCount_data.TmnlSimFlowJB_tab_count_day))
+    # def test_query(self, para):
+    #     self.query(para)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(RunSituationCount_data.para_TmnlSimFlowJB,
                                   RunSituationCount_data.TmnlSimFlowJB_tab_count_day))
     def test_query(self, para):
+        self.start_case(para, __file__)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(RunSituationCount_data.para_TmnlSimFlowJB,
+                                  RunSituationCount_data.TmnlSimFlowJB_tab_count_day, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

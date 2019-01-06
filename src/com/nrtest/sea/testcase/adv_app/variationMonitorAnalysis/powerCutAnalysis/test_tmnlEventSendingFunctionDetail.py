@@ -8,7 +8,6 @@
 @desc:
 """
 
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -19,24 +18,21 @@ from com.nrtest.sea.data.adv_app.variationMonitorAnalysis.powerCutAnalysis.power
     PowerCutAnalysis_data
 from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.tmnlEventSendingFunction_page import \
     TmnlEventSendingFunctionDeatilPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→配变监测分析→停电分析→终端是否具备停上电事件上送功能→终端是否具备停上电事件上送功能明细
 @ddt
-class TestTmnlEventSendingFunctionDeatil(unittest.TestCase, TmnlEventSendingFunctionDeatilPage):
+class TestTmnlEventSendingFunctionDeatil(TestCase, TmnlEventSendingFunctionDeatilPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(PowerCutAnalysis_data.TmnlEventSendingFunction_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(PowerCutAnalysis_data.TmnlEventSendingFunction_tabName_Detail)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(PowerCutAnalysis_data.TmnlEventSendingFunction_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -59,9 +55,8 @@ class TestTmnlEventSendingFunctionDeatil(unittest.TestCase, TmnlEventSendingFunc
         self.recoverLeftTree()
 
     def query(self, para):
-        clickTabPage('终端是否具备停上电事件上送功能明细')
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 查询日期
         self.inputDt_date(para['DATE'])
         # 终端类型
@@ -91,7 +86,7 @@ class TestTmnlEventSendingFunctionDeatil(unittest.TestCase, TmnlEventSendingFunc
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(PowerCutAnalysis_data.TmnlEventSendingFunction_para, tabName='终端是否具停上电事件上送功能明细'))
+    @data(*DataAccess.getCaseData(PowerCutAnalysis_data.TmnlEventSendingFunction_para, PowerCutAnalysis_data.TmnlEventSendingFunction_tabName_Detail))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -99,7 +94,7 @@ class TestTmnlEventSendingFunctionDeatil(unittest.TestCase, TmnlEventSendingFunc
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(PowerCutAnalysis_data.TmnlEventSendingFunction_para, tabName='终端是否具停上电事件上送功能明细',
+    @data(*DataAccess.getCaseData(PowerCutAnalysis_data.TmnlEventSendingFunction_para, PowerCutAnalysis_data.TmnlEventSendingFunction_tabName_Detail,
                                   valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

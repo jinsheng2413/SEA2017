@@ -8,7 +8,6 @@
 @desc:
 """
 
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,17 +15,16 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.logMan.sysOperationLog_page import *
-from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理→日志管理→系统操作日志
 # 用户操作日志
 @ddt
-class TestUserOperationLog(unittest.TestCase, UserOperationLogPage):
+class TestUserOperationLog(TestCase, UserOperationLogPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(LogEdit_data.sysOperationLog_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

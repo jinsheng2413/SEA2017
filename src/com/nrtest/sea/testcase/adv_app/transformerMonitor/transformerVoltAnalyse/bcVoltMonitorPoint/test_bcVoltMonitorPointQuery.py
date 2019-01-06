@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint.bcVoltMonitorPointQuery_page import \
     BcVoltMonitorPointQueryPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》配变监测分析--》电压质量分析--》B/C类电压监测点
@@ -27,7 +27,6 @@ class TestBcVoltMonitorPointQuery(TestCase, BcVoltMonitorPointQueryPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(TradnsformerMonitorData.para_BcVoltMonitorPoint)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

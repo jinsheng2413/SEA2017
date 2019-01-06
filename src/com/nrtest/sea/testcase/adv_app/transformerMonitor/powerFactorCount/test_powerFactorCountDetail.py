@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.pages.adv_app.transformerMonitor.powerFactorCount.powerFactorCountDetail_page import \
     PowerFactorCountDetailPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》配变监测分析--》功率因数越限统计
@@ -27,7 +27,6 @@ class TestPowerFactorCountDetail(TestCase, PowerFactorCountDetailPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(TradnsformerMonitorData.para_PowerFactorCount)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -121,7 +120,7 @@ class TestPowerFactorCountDetail(TestCase, PowerFactorCountDetailPage):
     #     # 供电单位
     #     openLeftTree('1340101')
     #     # 用户类型
-    #     self.inputRSel_cons_type('全部')
+    #     self.inputSel_cons_type('全部')
     #     # 无功补偿情况
     #     self.inputRSel_power_quality_type('全部')
     #     # 查询日期

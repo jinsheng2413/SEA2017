@@ -29,10 +29,10 @@ class MServiceCallStatusPage(Page):
         self.selectDropDown(value)
 
     # 调用时间
-    def inputStr_start_date(self, value):
+    def inputDt_start_date(self, value):
         self.inputDate(value)  # , *MServiceCallStatusLocators.QRY_DATE_BEGIN)
 
-    def inputStr_end_date(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)  #, *MServiceCallStatusLocators.QRY_DATE_END)
 
     # 查询

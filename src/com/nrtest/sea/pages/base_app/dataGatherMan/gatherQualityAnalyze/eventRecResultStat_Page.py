@@ -17,6 +17,11 @@ class EventRecResultStatPage(Page):
         # self.input(value, *EventRecResultStatLocators.QRY_START_TIME)
         self.inputDate(content)
 
+    # 结束时间
+    def inputStr_end_time(self, content):
+        # self.input(value, *EventRecResultStatLocators.QRY_END_TIME)
+        self.inputDate(content)
+
     # 事件类型
     def inputSel_event_type(self, option):
         # self.click(EventRecResultStatLocators.QRY_EVENT_TYPE)
@@ -25,10 +30,6 @@ class EventRecResultStatPage(Page):
         # self.click(locator)
         self.selectDropDown(option)
 
-    # 结束时间
-    def inputStr_end_time(self, content):
-        # self.input(value, *EventRecResultStatLocators.QRY_END_TIME)
-        self.inputDate(content)
 
     # 查询
     def btn_qry(self):

@@ -7,30 +7,27 @@
 @time: 2018/11/6 0006 11:23
 @desc:
 """
-import unittest
 from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.fieldMan.termParaSet_data import TermParaSet_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.fieldMan.termParaSet_pages import TermParaSetPage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理-现场管理-终端运行参数设置
 @ddt
-class TestTerParaSet(unittest.TestCase, TermParaSetPage):
+class TestTerParaSet(TestCase, TermParaSetPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
-        # # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
-        # cls.driver = openMenu(TermParaSet_data.TermParaSet_para)
-        # 打开菜单（需要传入对应的菜单编号）ljf
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(TermParaSet_data.TermParaSet_para)
-        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(SysConfigManData.SysBasicParaSet_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码

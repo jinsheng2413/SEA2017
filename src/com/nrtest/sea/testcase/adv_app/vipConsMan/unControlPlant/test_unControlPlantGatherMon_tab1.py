@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.vipConsMan.unControlPlant.unControlPlantGatherMon_data import UnControlPlant
 from com.nrtest.sea.pages.adv_app.vipConsMan.unControlPlant.unControlPlantGatherMon_page import \
     UnControlPlantGatherMon1_Page
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--重点用户监测--非统调电厂管理--非统调电厂采集监测（第一个tab页）
@@ -25,7 +25,6 @@ from com.nrtest.sea.task.commonMath import *
 class Test_UnControlPlantGatherMon_1(TestCase, UnControlPlantGatherMon1_Page):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(UnControlPlant.para_unControlPlantGatherMon)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

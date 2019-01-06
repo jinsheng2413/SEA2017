@@ -8,27 +8,30 @@
 @desc:
 """
 
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_page import *
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率→采集成功率统计
 @ddt
-class TestGatherSuccessRateStat(unittest.TestCase, GatherSuccessRateStatPage):
+class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GatherQualityAnalyze_data.para_GatherSuccessRate)
+        menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.GatherSuccessRate_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(GatherQualityAnalyze_data.GatherSuccessRate_tabName_stat)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -51,13 +54,12 @@ class TestGatherSuccessRateStat(unittest.TestCase, GatherSuccessRateStatPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        self.menu_name = para['MENU_NAME']
-        clickTabPage('采集成功率统计')
-        sleep(2)
-        # 数据类型
-        self.inputChk_data_type(para['DATA_TYPE'])
+
         # 打开左边树并选择
         self.driver = openLeftTree(para['TREE_NODE'])
+
+        # 数据类型
+        self.inputChk_data_type(para['DATA_TYPE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 通信方式
@@ -89,7 +91,7 @@ class TestGatherSuccessRateStat(unittest.TestCase, GatherSuccessRateStatPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.GatherSuccessRate_para,
                                   GatherQualityAnalyze_data.GatherSuccessRate_tabName_stat))
     def test_query(self, para):
         self.start_case(para, __file__)
@@ -98,7 +100,7 @@ class TestGatherSuccessRateStat(unittest.TestCase, GatherSuccessRateStatPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.para_GatherSuccessRate,
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.GatherSuccessRate_para,
                                   GatherQualityAnalyze_data.GatherSuccessRate_tabName_stat))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

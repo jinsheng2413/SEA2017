@@ -16,7 +16,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.variationMonitorAnalysis.powerCutAnalysis.powerCutAnalysis_data import \
     PowerCutAnalysis_data
 from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.powerCutMonitor.importantClientRealTimePowerCutMonitor_page import *
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测→重要客户历史停电查询
@@ -24,7 +24,6 @@ from com.nrtest.sea.task.commonMath import *
 class TestImportantClientRealTimePowerCutMonitor(TestCase, ImportantClientRealTimePowerCutMonitorPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(PowerCutAnalysis_data.ImportantClientRealTimePowerCutMonitor_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

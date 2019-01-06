@@ -7,35 +7,33 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.collectSuccessRateJb_page import \
-    CollectSuccessRateJbPage, CollectSuccessRateJbLocators
-from com.nrtest.sea.task.commonMath import *
+    CollectSuccessRateJbPage
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
-CollectSuccessRateJbPage
-
-
-# 基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
 
 @ddt
-class TestCollectSuccessRateJb(unittest.TestCase, CollectSuccessRateJbPage):
-
+class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
+    """
+    基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
+    """
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GatherQualityAnalyze_data.collectSuccessRateJb_para)
-        sleep(2)
-        # cls.exec_script(cls,CollectSuccessRateJbLocators.START_DATE_JS)
-        cls.remove_readonly(cls, CollectSuccessRateJbLocators.JS)
+        menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.collectSuccessRateJb_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(GatherQualityAnalyze_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -66,10 +64,8 @@ class TestCollectSuccessRateJb(unittest.TestCase, CollectSuccessRateJbPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_user_type(para['USER_TYPE'])
         # 通信方式
@@ -84,7 +80,6 @@ class TestCollectSuccessRateJb(unittest.TestCase, CollectSuccessRateJbPage):
         self.inputStr_date(para['DATE'])
         # 相位
         self.inputSel_pieceFactory(para['PHASE'])
-        print('--------------')
 
         self.btn_query()
 

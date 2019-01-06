@@ -7,7 +7,7 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -16,7 +16,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.remoteCustControl.remoteCustControl_data import \
     RemoteCustControl_data
 from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.ctrlExecutSpec_page import CtrlExecutSpecPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》费控管理--》远程费控--》专变用户远程费控执行
@@ -24,13 +24,17 @@ from com.nrtest.sea.task.commonMath import *
 
 # 高级应用--》费控管理--》远程费控--》专变用户远程费控执行
 @ddt
-class TestCtrlExecutSpec(unittest.TestCase, CtrlExecutSpecPage):
+class TestCtrlExecutSpec(TestCase, CtrlExecutSpecPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(RemoteCustControl_data.CtrlExecutSpec_para)
+        menuPage = MenuPage.openMenu(RemoteCustControl_data.CtrlExecutSpec_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(RemoteCustControl_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -60,11 +64,8 @@ class TestCtrlExecutSpec(unittest.TestCase, CtrlExecutSpecPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 输入用户编号
         self.inputStr_userNo(para['USER_NO'])
         # 输入用户名称
@@ -72,15 +73,15 @@ class TestCtrlExecutSpec(unittest.TestCase, CtrlExecutSpecPage):
         # 终端地址
         self.inputStr_tmnlAddr(para['TMNL_ADDR'])
         # 控制类型
-        self.inputRSel_controlType(para['CONTROL_TYPE'])
+        self.inputSel_controlType(para['CONTROL_TYPE'])
         # 执行状态
         self.inputSel_exeStatus(para['EXE_STATUS'])
         # 工单号
         self.inputStr_workOrder(para['WORK_ORDER'])
         # 开始时间
-        self.inputStr_startTime(para['START_TIME'])
+        self.inputDt_startTime(para['START_TIME'])
         # 结束时间
-        self.inputStr_endTime(para['END_TIME'])
+        self.inputDt_endTime(para['END_TIME'])
         self.btn_query()
 
     def assert_query_result(self, para):

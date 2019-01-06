@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeTaskExecution_locators import \
-    UpgradeTaskExecutionLocators
 
 
 # 基本应用→终端管理→软件升级→升级任务执行
@@ -41,17 +39,19 @@ class UpgradeTaskExecutionPage(Page):
 
     # 开始时间
     def inputDt_start_date(self, content):
-        self.exec_script(UpgradeTaskExecutionLocators.START_DATE_JS)
-        self.input(content, *UpgradeTaskExecutionLocators.START_DATE)
+        # self.exec_script(UpgradeTaskExecutionLocators.START_DATE_JS)
+        # self.input(content, *UpgradeTaskExecutionLocators.START_DATE)
+        self.inputDate(content)
 
     # 结束时间
     def inputDt_end_date(self, content):
-        self.exec_script(UpgradeTaskExecutionLocators.END_DATE_JS)
-        self.input(content, *UpgradeTaskExecutionLocators.END_DATE)
+        # self.exec_script(UpgradeTaskExecutionLocators.END_DATE_JS)
+        # self.input(content, *UpgradeTaskExecutionLocators.END_DATE)
+        self.inputDate(content)
 
     # 批次号
     def inputStr_batch_no(self, content):
-        self.input(content, *UpgradeTaskExecutionLocators.BATCH_NO)
+        self.input(content)  # , *UpgradeTaskExecutionLocators.BATCH_NO)
 
     # 升级目的
     def inputSel_upgrade_purpose(self, index):
@@ -79,4 +79,5 @@ class UpgradeTaskExecutionPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.click(UpgradeTaskExecutionLocators.BTN_SEARCH)
+        # self.click(UpgradeTaskExecutionLocators.BTN_SEARCH)
+        self.btn_query()

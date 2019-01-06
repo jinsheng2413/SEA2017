@@ -8,55 +8,58 @@
 @desc:
 """
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.costControlManage.custControlCommissioning_locators import \
-    CustControlCommissioning_locators
 
 
 class CustControlCommissioning_page(Page):
     # 营销单号
-    def inputStr_mark_sigle(self, value):
-        self.input(
-            value, *CustControlCommissioning_locators.QRY_MARKETINF_SINGLE_NUM)
+    def inputStr_app_no(self, value):
+        # self.input(value, *CustControlCommissioning_locators.QRY_MARKETINF_SINGLE_NUM)
+        self.input(value)
 
     # 终端地址
     def inputStr_terminal_addr(self, value):
-        self.input(value, *CustControlCommissioning_locators.QRY_TERMIAL_ADDR)
+        self.input(value)  # , *CustControlCommissioning_locators.QRY_TERMIAL_ADDR)
 
     # 用户编号
-    def inputStr_user_num(self, value):
-        self.input(value, *CustControlCommissioning_locators.QRY_USER_NUM)
+    def inputStr_cons_no(self, value):
+        self.input(value)  # , *CustControlCommissioning_locators.QRY_USER_NUM)
 
     # 用户名称
-    def inputStr_user_name(self, value):
-        self.input(value, *CustControlCommissioning_locators.QRY_USER_NAME)
+    def inputStr_cons_name(self, value):
+        self.input(value)  # , *CustControlCommissioning_locators.QRY_USER_NAME)
 
     # 开始时间
-    def inputStr_start_date(self, value):
-        self.input(value, *CustControlCommissioning_locators.QRY_START_TIME)
-
+    def inputDt_start_date(self, value):
+        # self.input(value, *CustControlCommissioning_locators.QRY_START_TIME)
+        self.inputDate(value)
     # 结束时间
-    def inputStr_end_date(self, value):
-        self.input(value, *CustControlCommissioning_locators.QRY_END_TIME)
+    def inputDt_end_date(self, value):
+        # self.input(value, *CustControlCommissioning_locators.QRY_END_TIME)
+        self.inputDate(value)
 
     # 按
-    def inputRSel_buy_ele_date(self, index):
-        self.click(CustControlCommissioning_locators.SELR_ARRANGE)
-        locator = self.get_select_locator(
-            CustControlCommissioning_locators.SELR_ARRANGE_VALUE, index)
-        self.click(locator)
+    def inputSel_debug_dt(self, option):
+        # self.click(CustControlCommissioning_locators.SELR_ARRANGE)
+        # locator = self.get_select_locator(
+        #     CustControlCommissioning_locators.SELR_ARRANGE_VALUE, option)
+        # self.click(locator)
+        self.selectDropDown(option)
 
     # 下发状态
-    def inputSel_provide_state(self, index):
-        print('-------------')
-        self.click(CustControlCommissioning_locators.QRY_PROVIDE_STATE)
-        locator = self.get_select_locator(
-            CustControlCommissioning_locators.QRY_PROVIDE_STATE_VALUE, index)
-        self.click(locator)
+    def inputSel_send_status(self, option):
+        # print('-------------')
+        # self.click(CustControlCommissioning_locators.QRY_PROVIDE_STATE)
+        # locator = self.get_select_locator(
+        #     CustControlCommissioning_locators.QRY_PROVIDE_STATE_VALUE, option)
+        # self.click(locator)
+        self.selectDropDown(option)
 
     # 点击查询按钮
     def btn_qry(self):
-        self.click(CustControlCommissioning_locators.BTN_QRY)
+        # self.click(CustControlCommissioning_locators.BTN_QRY)
+        self.btn_query()
 
     # 总加组
     def btn_all_class(self):
-        self.click(CustControlCommissioning_locators.TAB_ONE_ALL_CLASS)
+        # self.click(CustControlCommissioning_locators.TAB_ONE_ALL_CLASS)
+        self.btn_query()

@@ -8,29 +8,25 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.groupMan.groupMan_data import GroupMan_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.groupMan.lineGroupSet_page import *
-from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理→群组管理→线路群组设置
 @ddt
-class TestLineGroupSet(unittest.TestCase, LineGroupSetPage):
+class TestLineGroupSet(TestCase, LineGroupSetPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # # 打开菜单（需要传入对应的菜单编号）
-        # cls.driver = openMenu(GroupMan_data.LineGroupSet_para)
-        # cls.tab_page = '管理群组'
-        # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(GroupMan_data.LineGroupSet_para)
-        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码

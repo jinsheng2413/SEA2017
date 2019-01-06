@@ -7,12 +7,12 @@
 @time: 2018/8/2 0002 18:40
 @desc:
 """
+from com.nrtest.common.login import Login
 from com.nrtest.sea.locators.adv_app.costControlManage.custControlCommissioning_locators import \
     CustControlCommissioning_locators
 from com.nrtest.sea.pages.adv_app.costControlManage.costControlManage_page import CostControlManagePage
 from com.nrtest.sea.pages.adv_app.costControlManage.lowUserMoneyCheck_Page import BalanceCheck_page
 from com.nrtest.sea.pages.other.common_page import Common_page
-from com.nrtest.sea.task.login import Login
 
 
 # 专变用户费控管理

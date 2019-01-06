@@ -23,27 +23,29 @@ class ArchivesQueryPages(Page):
 
     # 【查询条件】
     # 用户类型
-    def inputCSel_cons_type(self, index):
-        if index == 'c':
-            self._find_element(ArchivesQuery_locators.QRY_CONS_TYPE_CLEAR)
-        else:
-            self.click(ArchivesQuery_locators.QRY_CONS_TYPE)
-            locator = self.get_select_locator(
-                ArchivesQuery_locators.QRY_CONS_TYPE_VALUE, index)
-            self.click(locator)
-            self.click(ArchivesQuery_locators.QRY_CONS_TYPE)
+    def inputSel_cons_type(self, option):
+        # if option == 'c':
+        #     self._find_element(ArchivesQuery_locators.QRY_CONS_TYPE_CLEAR)
+        # else:
+        #     self.click(ArchivesQuery_locators.QRY_CONS_TYPE)
+        #     locator = self.get_select_locator(
+        #         ArchivesQuery_locators.QRY_CONS_TYPE_VALUE, option)
+        #     self.click(locator)
+        #     self.click(ArchivesQuery_locators.QRY_CONS_TYPE)
+        self.selectDropDown(option)
 
     # 抄表段号
     def inputStr_sect_no(self, value):
-        self.input(value, *ArchivesQuery_locators.QRY_SECT_NO)
+        self.input(value)  # , *ArchivesQuery_locators.QRY_SECT_NO)
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value, *ArchivesQuery_locators.QRY_TMNL_ADDR)
+        self.input(value)  # , *ArchivesQuery_locators.QRY_TMNL_ADDR)
 
     # 【操作区】
     def btn_qry(self):
-        self.click(ArchivesQuery_locators.BTN_QRY)
+        # self.click(ArchivesQuery_locators.BTN_QRY)
+        self.btn_query()
 
     # 用户编号
     def btn_tab_cons_no(self):

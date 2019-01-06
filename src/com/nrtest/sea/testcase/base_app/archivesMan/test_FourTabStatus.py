@@ -7,7 +7,6 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,25 +15,22 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.fourTabStatus_Page import FourTabStatusPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用--》档案管理--》多表合一运行状态
 @ddt
-class TestFourTabStatus(unittest.TestCase, FourTabStatusPage):
+class TestFourTabStatus(TestCase, FourTabStatusPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(ArchivesMan_data.fourTabStatus_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(ArchivesMan_data.fourTabStatus_para)
 
     @classmethod
     def tearDownClass(cls):
@@ -68,7 +64,7 @@ class TestFourTabStatus(unittest.TestCase, FourTabStatusPage):
         # 打开tab页
         self.clickTabPage(para['TAB_NAME'])
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 选择用状态
         self.inputSel_userState(para['USER_STATE'])
         self.btn_qry()

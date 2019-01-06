@@ -17,9 +17,9 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.runStatusMonitor.communicationModuleManagement.communicationModuleManagement import \
     CommunicationModuleManagement
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.runStatusMonitor.communicationModuleManagement.commModulPropMain_page import \
     CommunicationModuleBaseInformationMantainPage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理--》采集信道管理--》通信模块管理--》通信模块属性维护
@@ -28,7 +28,6 @@ class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModul
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(CommunicationModuleManagement.commModulPropMain_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -36,6 +35,7 @@ class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModul
         menuPage.clickTabPage(CommunicationModuleManagement.commModulPropMain_tab_baseInf)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
+
 
     @classmethod
     def tearDownClass(cls):
@@ -98,7 +98,7 @@ class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModul
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-   # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulPropMain_para,
                                   CommunicationModuleManagement.commModulPropMain_tab_baseInf))
     def test_query(self, para):

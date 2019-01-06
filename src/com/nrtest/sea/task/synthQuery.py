@@ -7,8 +7,8 @@
 @time: 2018/8/13 0002 09:50
 """
 
+from com.nrtest.common.login import Login
 from com.nrtest.sea.pages.other.common_page import Common_page
-from com.nrtest.sea.task.login import Login
 
 
 # 统计查询→综合查询→用户数据查询

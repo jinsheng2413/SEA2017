@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.collectSuccessRateJb_locators import \
-    CollectSuccessRateJbLocators
 
 
 class CollectSuccessRateJbPage(Page):
@@ -20,8 +18,8 @@ class CollectSuccessRateJbPage(Page):
         # locator = self.get_select_locator(
         # CollectSuccessRateJbLocators.QRY_COMUNICATION_GLUE_VALUE, name)
         # self.click(locator)
-
         self.selectDropDown(name)
+
     # 终端厂家
     def inputSel_TmnlFactory(self, name):
         # self.click(CollectSuccessRateJbLocators.QRY_TMNL_FACTORY)
@@ -38,7 +36,7 @@ class CollectSuccessRateJbPage(Page):
         # self.click(locator)
         self.selectDropDown(name)
 
-    ## 通信方式
+    # 通信方式
     def inputSel_conmunicationMode(self, name):
         # self.click(CollectSuccessRateJbLocators.QRY_COMUNICATION_MODE)
         # locator = self.get_select_locator(
@@ -46,9 +44,7 @@ class CollectSuccessRateJbPage(Page):
         # self.click(locator)
         self.selectDropDown(name)
 
-        #
-
-    ## 用户类型
+    # 用户类型
     def inputSel_user_type(self, name):
         # self.click(CollectSuccessRateJbLocators.QRY_USER_TYPE)
         # locator = self.get_select_locator(
@@ -68,8 +64,8 @@ class CollectSuccessRateJbPage(Page):
     # 日期时间
     def inputStr_date(self, value):
         # self.input(value, *CollectSuccessRateJbLocators.QRY_DATE_TIME)
-
-        self.input(value)
+        # self.input(value)
+        self.inputDate(value)
 
     ## 通信类型
     def inputSel_conmunicationtype(self, name):
@@ -81,4 +77,5 @@ class CollectSuccessRateJbPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click(CollectSuccessRateJbLocators.BTN_QRY)
+        # self.click(CollectSuccessRateJbLocators.BTN_QRY)
+        self.btn_query()

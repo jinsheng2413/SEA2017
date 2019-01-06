@@ -7,26 +7,30 @@
 @time: 2018/8/19 0019 9:26
 @desc:
 """
+from time import sleep
+from unittest import TestCase
 
-import unittest
+from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.adv_app.costControlManage.specialUserBalanceQuery_para import SpecialUserBalanceQuery_para
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.locators.adv_app.costControlManage.specialUserBalanceQuery_locators import \
-    SpecialUserBalanceQuery_locators
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
 from com.nrtest.sea.pages.adv_app.costControlManage.specialUserBalanceQuery_page import SpecialUserBalanceQueryPage
-from com.nrtest.sea.task.feiMange import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》费控管理--》本地费控--》专变用户余额查询
-class TestSpecialUserBalanceQuery(unittest.TestCase, SpecialUserBalanceQueryPage):
+@ddt
+class TestSpecialUserBalanceQuery(TestCase, SpecialUserBalanceQueryPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        cls.driver = specialUserBalanceQuery()
-        cls.orl = Oracle()
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(CostControlManage_data.specialUserBalanceQuery_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(CostControlManage_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -48,60 +52,52 @@ class TestSpecialUserBalanceQuery(unittest.TestCase, SpecialUserBalanceQueryPage
         """
         # self.clear_values(SpecialUserBalanceQueryPage)
 
-    def commonTime(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_user_num)
-        self.inputStr_call_test_date(lip[0][1])
+        # 回收左边树
+        self.recoverLeftTree()
 
-    # 用户编号
-    @BeautifulReport.add_test_img()
-    def test_subq_user_num(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_user_num)
-        self.inputStr_call_test_date(lip[0][1])
-        self.inputStr_user_num(lip[0][0])
-        # 点击查询
+    def query(self, para):
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+
+        # 用户名称
+        self.inputStr_cons_name(para['CONS_NAME'])
+
+        # 终端地址
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
+        # 召测日期
+        self.inputDt_call_date(para['CALL_DATE'])
+
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(SpecialUserBalanceQuery_locators.TAB_ONE)
+        sleep(2)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # 用户名称
     @BeautifulReport.add_test_img()
-    def test_subq_user_name(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_user_name)
-        self.commonTime()
-        self.inputStr_User_name(lip[0][0])
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(SpecialUserBalanceQuery_locators.TAB_ONE)
-        self.assertTrue(result)
+    @data(*DataAccess.getCaseData(CostControlManage_data.specialUserBalanceQuery_para))
+    def test_query(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
 
-    # 终端地址
     @BeautifulReport.add_test_img()
-    def test_subq_termianl_addr(self):
-        self.commonTime()
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, SpecialUserBalanceQuery_para.para_test_subq_termianl_addr)
-        self.inputStr_terminal_addr(lip[0][0])
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(SpecialUserBalanceQuery_locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 时间查询
-    @BeautifulReport.add_test_img()
-    def test_subq_time_qry(self):
-        self.commonTime()
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(SpecialUserBalanceQuery_locators.TAB_ONE)
-        self.assertTrue(result)
+    @data(*DataAccess.getCaseData(CostControlManage_data.specialUserBalanceQuery_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

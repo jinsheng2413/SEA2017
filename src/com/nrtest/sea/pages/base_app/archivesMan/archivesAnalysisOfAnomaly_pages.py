@@ -72,7 +72,7 @@ class ArchivesAnalysisOfAnomaly_detail_pages(Page):
         self.click(ArchivesAnalysisOfAnomaly_detail_locators.BTN_MENU_ARCHIVES_ABNOLMAL_COUNT)
 
     # 用户类型
-    def inputSel_user_cata(self, index):
+    def inputSel_cons_type(self, index):
         self.click(ArchivesAnalysisOfAnomaly_detail_locators.QRY_USER_CATA)
         locator = self.get_select_locator(
             ArchivesAnalysisOfAnomaly_detail_locators.QRY_USER_CATA_VALUE, index)

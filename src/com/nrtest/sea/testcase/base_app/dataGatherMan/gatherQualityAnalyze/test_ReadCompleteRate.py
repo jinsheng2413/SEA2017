@@ -7,39 +7,36 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadCompleteRate_page import ReadCompleteRatePage, \
-    ReadCompleteRateLocators
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadCompleteRate_page import ReadCompleteRatePage
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 ReadCompleteRatePage
 
 
 # 基本应用→数据采集管理→采集质量分析→采集完整率
 @ddt
-class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
+class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GatherQualityAnalyze_data.readCompleteRate_para)
-
-        sleep(2)
-        cls.exec_script(cls, ReadCompleteRateLocators.START_DATE_JS)
-        cls.exec_script(cls, ReadCompleteRateLocators.END_DATE_JS)
+        menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.readCompleteRate_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(GatherQualityAnalyze_data.readCompleteRate_tab)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
         # 刷新浏览器
         cls.closePages(cls)
 
@@ -65,13 +62,8 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
-        clickTabPage(para['TAB_NAME'])
-
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_userType(para['USER_TYPE'])
         # 通信方式
@@ -81,9 +73,9 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         # 蕊片厂家
         self.inputSel_chipFactory(para['CHIP_FACTORY'])
         # 开始时间
-        self.inputStr_start_time(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
         # 结束时间
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         self.btn_query(True)
 

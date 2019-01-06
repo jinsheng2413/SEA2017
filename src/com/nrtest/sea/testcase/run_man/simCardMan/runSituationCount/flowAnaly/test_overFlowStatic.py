@@ -15,8 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page import OverFlowStaticPage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
@@ -25,7 +25,6 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(RunSituationCount_data.para_flowAnaly)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -63,7 +62,7 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
         """
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         #sim卡号
         self.inputStr_simCardNo(para['SIM_CARD_NO'])
         #终端地址

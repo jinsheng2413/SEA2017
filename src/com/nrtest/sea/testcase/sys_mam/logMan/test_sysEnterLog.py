@@ -15,8 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.logMan.sysEnterLog_page import *
-from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理→日志管理→系统登录日志
@@ -24,7 +24,6 @@ from com.nrtest.sea.task.commonMath import *
 class TestSysEnterLog(TestCase, SysEnterLogPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(LogEdit_data.sysEnterLog_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

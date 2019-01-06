@@ -10,24 +10,25 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.checkReduceManager_locators import \
-    CheckReduceManagerLocators
 
 
 # 系统管理--》档案核查管理--》考核减免管理
 class CheckReduceManagerPage(Page):
     # 开始时间
     def inputStr_startTime(self, value):
-        self.input(value, *CheckReduceManagerLocators.QRY_START_TIME)
+        # self.input(value, *CheckReduceManagerLocators.QRY_START_TIME)
+        self.inputDate(value)
 
     # 结束时间
-    def inputStr_end_time(self, value):
-        self.input(value, *CheckReduceManagerLocators.QRY_END_TIME)
+    def inputDt_end_time(self, value):
+        # self.input(value, *CheckReduceManagerLocators.QRY_END_TIME)
+        self.inputDate(value)
 
     # 申请单号
-    def inputStr_applyNo(self, value):
-        self.input(value, *CheckReduceManagerLocators.QRY_APPLY_NO)
+    def inputDt_applyNo(self, value):
+        self.input(value)  # , *CheckReduceManagerLocators.QRY_APPLY_NO)
 
     # 查询
     def btn_qry(self):
-        self.click(CheckReduceManagerLocators.BTN_QRY)
+        # self.click(CheckReduceManagerLocators.BTN_QRY)
+        self.btn_query()

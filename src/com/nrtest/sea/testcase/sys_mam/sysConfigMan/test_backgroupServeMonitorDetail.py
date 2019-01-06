@@ -16,8 +16,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysConfigMan.sysConfigMan_data import SysConfigManData
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.sysConfigMan.backgroupServeMonitor_page import BackgroupServeMonitorDetailPage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理→系统配置管理→后台服务监测→后台服务监测明细
@@ -25,7 +25,6 @@ from com.nrtest.sea.task.commonMath import *
 class TestBackgroupServeMonitorDetail(TestCase, BackgroupServeMonitorDetailPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SysConfigManData.BackgroundServeMonitor_para)
         sleep(1)

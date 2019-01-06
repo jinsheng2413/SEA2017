@@ -15,7 +15,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.intelligentLock.intelligentLock_data import IntelligentLock_data
 from com.nrtest.sea.pages.adv_app.intelligentLock.recordsQuery_page import RecordsQueryPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→智能锁具→记录查询→资产管理记录查询
@@ -23,7 +23,6 @@ from com.nrtest.sea.task.commonMath import *
 class TestRecordsQuery(TestCase, RecordsQueryPage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(IntelligentLock_data.RecordsQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -54,7 +53,7 @@ class TestRecordsQuery(TestCase, RecordsQueryPage):
 
     def query(self, para):
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 操作员名称
         self.inputStr_tab_staff_name(para['TAB_STAFF_NAME'])
         # 电子钥匙编号

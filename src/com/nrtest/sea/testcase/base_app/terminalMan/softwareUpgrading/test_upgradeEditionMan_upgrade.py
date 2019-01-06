@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -16,17 +16,21 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_page import UpgradeEditionManPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→升级版本管理→升级版本管理
 @ddt
-class TestUpgradeEditionMan(unittest.TestCase, UpgradeEditionManPage):
+class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SoftwareUpgrading_data.UpgradeEditionMan_para)
+        menuPage = MenuPage.openMenu(SoftwareUpgrading_data.UpgradeEditionMan_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(SoftwareUpgrading_data.UpgradeEditionMan_tabName_upgrade)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -51,9 +55,6 @@ class TestUpgradeEditionMan(unittest.TestCase, UpgradeEditionManPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
-        clickTabPage('升级版本管理')
         # 终端厂家
         self.inputSel_upgrade_tmnl_factory(para['UPGRADE_TMNL_FACTORY'])
         # 终端类型
@@ -63,9 +64,9 @@ class TestUpgradeEditionMan(unittest.TestCase, UpgradeEditionManPage):
         # 申请状态
         self.inputSel_upgrade_apply_status(para['UPGRADE_APPLY_STATUS'])
         # 申请开始日期
-        self.upgrade_start_date(para['UPGRADE_START_DATE'])
+        self.inputDt_upgrade_start_date(para['UPGRADE_START_DATE'])
         # 申请结束日期
-        self.upgrade_end_date(para['UPGRADE_END_DATE'])
+        self.inputDt_upgrade_end_date(para['UPGRADE_END_DATE'])
         # 点击查询按钮
         self.btn_upgrade_search()
 

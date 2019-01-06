@@ -19,7 +19,6 @@ from com.nrtest.sea.task.archivesManage import *
 class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOfAnomaly_count_pages):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         cls.driver = archivesAnalysisOfAnomaly_count()
         cls.orl = Oracle()
 

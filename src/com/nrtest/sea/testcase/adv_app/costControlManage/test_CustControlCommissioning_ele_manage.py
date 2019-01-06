@@ -7,22 +7,28 @@
 @time: 2018/8/23 0023 11:20
 @desc:
 """
-import unittest
+from unittest import TestCase
+
+from ddt import data, ddt
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.adv_app.costControlManage.custControlCommissioning_para import CcustControlCommissioning_para
-from com.nrtest.sea.data.common.data_common import DataCommon
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
 from com.nrtest.sea.pages.adv_app.costControlManage.custControlCommissioning_page import CustControlCommissioning_page
-from com.nrtest.sea.task.feiMange import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-class TestCustControlCommissioning_ele_manage(unittest.TestCase, CustControlCommissioning_page):
+@ddt
+class TestCustControlCommissioning_ele_manage(TestCase, CustControlCommissioning_page):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        cls.driver = custControlCommissioning_ele_manage()
-        cls.orl = Oracle()
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(CostControlManage_data.custControlCommissioning_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(CostControlManage_data.custControlCommissioning_tab_elec)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -35,139 +41,64 @@ class TestCustControlCommissioning_ele_manage(unittest.TestCase, CustControlComm
         :return:
         """
 
-        # self.sleep_time(2000)
 
     def tearDown(self):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # self.clear_values(CustControlCommissioning_page)
 
-    def commonTime(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, CcustControlCommissioning_para.para_test_ccem_mark_single)
-        # 输入开始时间
-        self.inputStr_start_date(lip[0][1])
-        # 输入结束时间
-        self.inputStr_end_date(lip[0][2])
+    def query(self, para):
+        # 营销单号
+        self.inputStr_app_no(para['APP_NO'])
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+        # 用户名称
+        self.inputStr_cons_name(para['CONS_NAME'])
 
-    # 营销单号查询
-    @BeautifulReport.add_test_img()
-    def test_ccem_mark_single(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, CcustControlCommissioning_para.para_test_ccem_mark_single)
-        # 输入营销单号
-        self.inputStr_mark_sigle(lip[0][0])
-        # 输入开始时间
-        self.inputStr_start_date(lip[0][1])
-        # 输入结束时间
-        self.inputStr_end_date(lip[0][2])
+        # 终端地址
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
+        # 按调试日期
+        self.inputSel_debug_dt(para['DEBUG_DT'])
+
+        # 下发状态
+        self.inputSel_send_status(para['SEND_STATUS'])
+        # 开始时间
+        self.inputDt_start_date(para['START_DATE'])
+        # 结束时间
+        self.inputDt_end_date(para['END_DATE'])
+
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *CustControlCommissioning_locators.TAB_ONE)
-        self.assertTrue(result)
 
-    # 时间查询
-    @BeautifulReport.add_test_img()
-    def test_ccem_time(self):
-        self.commonTime()
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *CustControlCommissioning_locators.TAB_ONE)
-        self.assertTrue(result)
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
 
-    # 终端地址查询
-    @BeautifulReport.add_test_img()
-    def test_ccem_terminal_addr(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, CcustControlCommissioning_para.para_test_ccem_terminal_addr)
-        # 输入终端地址
-        self.inputStr_terminal_addr(lip[0][0])
-        self.commonTime()
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *CustControlCommissioning_locators.TAB_ONE)
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
-
-    # 用户编号查询
-    @BeautifulReport.add_test_img()
-    def test_ccem_user_no(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, CcustControlCommissioning_para.para_test_ccem_user_no)
-        # 输入用户编号
-        self.inputStr_user_num(lip[0][0])
-        self.commonTime()
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *CustControlCommissioning_locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 用户名称查询
-    @BeautifulReport.add_test_img()
-    def test_ccem_user_name(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, CcustControlCommissioning_para.para_test_ccem_user_name)
-        # 输入用户名称
-        self.inputStr_user_name(lip[0][0])
-        self.commonTime()
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *CustControlCommissioning_locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 按调试日期
-    def test_ccem_commissioning_date(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, CcustControlCommissioning_para.para_test_ccem_commissioning_date)
-        # 输入按调试日期
-        self.inputRSel_buy_ele_date(lip[0][0])
-        self.commonTime()
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *CustControlCommissioning_locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 下发状态
-    def test_ccem_provide_state(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, CcustControlCommissioning_para.para_test_ccem_provide_state)
-        # 输入按调试日期
-        self.inputSel_provide_state(lip[0][0])
-        self.commonTime()
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *CustControlCommissioning_locators.TAB_ONE)
-        self.assertTrue(result)
-
-        # 设置明细
 
     @BeautifulReport.add_test_img()
-    def test_ccem_setting_detail(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, CcustControlCommissioning_para.para_test_ccem_user_name)
-        # 输入用户名称
-        self.inputStr_user_name(lip[0][0])
-        self.commonTime()
-        self.btn_qry()
-        self.btn_all_class()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *CustControlCommissioning_locators.BTN_OUT)
-        self.assertTrue(result)
-        self.click(CustControlCommissioning_locators.BTN_OUT)
+    @data(*DataAccess.getCaseData(CostControlManage_data.custControlCommissioning_para, CostControlManage_data.custControlCommissioning_tab_elec))
+    def test_query(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(CostControlManage_data.custControlCommissioning_para, CostControlManage_data.custControlCommissioning_tab_elec,
+                                  valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

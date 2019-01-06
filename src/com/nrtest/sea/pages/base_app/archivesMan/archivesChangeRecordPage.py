@@ -9,40 +9,40 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.archivesMan.archivesChangeRecord_locators import ArchivesChangeRecordLocators
 
 
 class ArchivesChangeRecordPage(Page):
     # 设备类型
     def inputSel_device_type(self, name):
-        self.click(ArchivesChangeRecordLocators.QRY_DEVICE_TYPE)
-        locator = self.get_select_locator(
-            ArchivesChangeRecordLocators.QRY_DEVICE_TYPE_VALUE, name)
-        self.click(locator)
+        # self.click(ArchivesChangeRecordLocators.QRY_DEVICE_TYPE)
+        # locator = self.get_select_locator(
+        #     ArchivesChangeRecordLocators.QRY_DEVICE_TYPE_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name)
 
     # 变更类型
     def inputSel_change_type(self, name):
-        self.click(ArchivesChangeRecordLocators.QRY_CHANGE_TYPE)
-        locator = self.get_select_locator(
-            ArchivesChangeRecordLocators.QRY_CHANGE_TYPE_VALUE, name)
-        self.click(locator)
+        # self.click(ArchivesChangeRecordLocators.QRY_CHANGE_TYPE)
+        # locator = self.get_select_locator(
+        #     ArchivesChangeRecordLocators.QRY_CHANGE_TYPE_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name)
 
     # 接收时间
-    def inputStr_start_time(self, value):
-        self.input(value, *ArchivesChangeRecordLocators.QRY_START_TIME)
+    def inputDt_start_time(self, value):
+        # self.input(value, *ArchivesChangeRecordLocators.QRY_START_TIME)
+        self.inputDate(value)
 
     # 结束时间
-    def inputStr_end_time(self, value):
-        self.input(value, *ArchivesChangeRecordLocators.QRY_END_TIME)
+    def inputDt_end_time(self, value):
+        # self.input(value, *ArchivesChangeRecordLocators.QRY_END_TIME)
+        self.inputDate(value)
 
-        # 查询
+    def inputChk_cons_type(self, option):
+        # self.click(ArchivesChangeRecordLocators.BTN_SPECIAL_CHANGE)
+        self.clickRadioBox(option)
 
+    # 查询
     def btn_qry(self):
-        self.click(ArchivesChangeRecordLocators.BTN_QRY)
-
-    def btn_special_change(self):
-        self.click(ArchivesChangeRecordLocators.BTN_SPECIAL_CHANGE)
-
-    # 低压
-    def btn_low(self):
-        self.click(ArchivesChangeRecordLocators.BTN_LOW)
+        # self.click(ArchivesChangeRecordLocators.BTN_QRY)
+        self.btn_query()

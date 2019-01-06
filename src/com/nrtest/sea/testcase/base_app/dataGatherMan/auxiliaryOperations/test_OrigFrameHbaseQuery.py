@@ -8,8 +8,7 @@
 @time: 2018/11/9 0009 15:41
 @desc:
 """
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -18,22 +17,23 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.auxiliaryOperations.auxiliaryOperations_data import \
     AuxiliaryOperationsData
 from com.nrtest.sea.pages.base_app.dataGatherMan.auxiliaryOperations.origFrameHbaseQuery_page import \
-    OrigFrameHbaseQueryPage, OrigFrameHbaseQueryLocators
-from com.nrtest.sea.task.commonMath import *
+    OrigFrameHbaseQueryPage
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 运行管理-->采集运维平台-->辅助运维--》报文查询
 @ddt
-class TestOrigFrameHbaseQuery(unittest.TestCase, OrigFrameHbaseQueryPage):
+class TestOrigFrameHbaseQuery(TestCase, OrigFrameHbaseQueryPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(AuxiliaryOperationsData.origFrameHbaseQuery_para)
-        sleep(2)
-        cls.exec_script(cls,OrigFrameHbaseQueryLocators.START_DATE_JS)
-
+        menuPage = MenuPage.openMenu(AuxiliaryOperationsData.origFrameHbaseQuery_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(AuxiliaryOperationsData.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
@@ -53,7 +53,7 @@ class TestOrigFrameHbaseQuery(unittest.TestCase, OrigFrameHbaseQueryPage):
         """
 
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         """
@@ -70,21 +70,41 @@ class TestOrigFrameHbaseQuery(unittest.TestCase, OrigFrameHbaseQueryPage):
         self.inputStr_query_time(para['QUERY_TIME'])
         #报文类型
         self.inputSel_messageType(para['MESSAGE'])
-        # #从
-        # self.inputStr_from(para['FROM'])
-        # #到
-        # self.inputStr_to(para['TO'])
+        # 从
+        self.inputDt_from(para['FROM'])
+        # 到
+        self.inputDt_to(para['TO'])
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context()
-        # self.assertTrue(result)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AuxiliaryOperationsData.origFrameHbaseQuery_para))
     def test_query(self, para):
+        self.start_case(para, __file__)
         self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
 
-
-
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(AuxiliaryOperationsData.origFrameHbaseQuery_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

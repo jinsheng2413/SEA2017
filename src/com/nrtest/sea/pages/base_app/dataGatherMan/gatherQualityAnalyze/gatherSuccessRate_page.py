@@ -9,7 +9,7 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_locators import *
+
 
 # 基本应该→数据采集管理→采集质量分析→采集成功率
 # 采集成功率→采集成功率
@@ -72,13 +72,15 @@ class GatherSuccessRatePage(Page):
 
     # 查询日期开始
     def inputDt_start_date(self, content):
-        self.exec_script(GatherSuccessRateLocators.START_DATE_JS)
-        self.input(content, *GatherSuccessRateLocators.START_DATE)
+        # self.exec_script(GatherSuccessRateLocators.START_DATE_JS)
+        # self.input(content, *GatherSuccessRateLocators.START_DATE)
+        self.inputDate(content)
 
     # 查询日期结束
     def inputDt_end_date(self, content):
-        self.exec_script(GatherSuccessRateLocators.END_DATE_JS)
-        self.input(content, *GatherSuccessRateLocators.END_DATE)
+        # self.exec_script(GatherSuccessRateLocators.END_DATE_JS)
+        # self.input(content, *GatherSuccessRateLocators.END_DATE)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
@@ -138,13 +140,14 @@ class GatherSuccessRateStatPage(Page):
 
     # 查询日期
     def inputDt_date(self, content):
-        self.exec_script(GatherSuccessRateStatLocators.DATE_JS)
-        self.input(content, *GatherSuccessRateStatLocators.DATE)
+        # self.exec_script(GatherSuccessRateStatLocators.DATE_JS)
+        # self.input(content, *GatherSuccessRateStatLocators.DATE)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(GatherSuccessRateStatLocators.BTN_SEARCH)
-
+        # self.click(GatherSuccessRateStatLocators.BTN_SEARCH)
+        self.btn_query()
 
 # 采集成功率→数据采集成功率明细
 class GatherSuccessRateDetailPage(Page):
@@ -186,21 +189,22 @@ class GatherSuccessRateDetailPage(Page):
 
     # 用户编号
     def inputStr_cons_no(self, content):
-        self.input(content, *GatherSuccessRateDetailLocators.CONS_NO)
+        self.input(content)  # , *GatherSuccessRateDetailLocators.CONS_NO)
 
     # 终端地址
     def inputStr_tmnl_addr(self, content):
-        self.input(content, *GatherSuccessRateDetailLocators.TMNL_ADDR)
+        self.input(content)  # , *GatherSuccessRateDetailLocators.TMNL_ADDR)
 
     # 查询日期
     def inputDt_date(self, content):
-        self.exec_script(GatherSuccessRateDetailLocators.DATE_JS)
-        self.input(content, *GatherSuccessRateDetailLocators.DATE)
+        # self.exec_script(GatherSuccessRateDetailLocators.DATE_JS)
+        # self.input(content, *GatherSuccessRateDetailLocators.DATE)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(GatherSuccessRateDetailLocators.BTN_SEARCH)
-
+        # self.click(GatherSuccessRateDetailLocators.BTN_SEARCH)
+        self.btn_query()
 
 # 采集成功率→连续抄表失败明细
 class ContinuousFalseDetailPage(Page):
@@ -226,12 +230,14 @@ class ContinuousFalseDetailPage(Page):
 
     # 查询日期
     def inputDt_date(self, content):
-        self.exec_script(ContinuousFalseDetailLocators.DATE_JS)
-        self.input(content, *ContinuousFalseDetailLocators.DATE)
+        # self.exec_script(ContinuousFalseDetailLocators.DATE_JS)
+        # self.input(content, *ContinuousFalseDetailLocators.DATE)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(ContinuousFalseDetailLocators.BTN_SEARCH)
+        # self.click(ContinuousFalseDetailLocators.BTN_SEARCH)
+        self.btn_query()
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率→按时间统计
@@ -242,13 +248,15 @@ class GatherSuccessRateTimePage(Page):
 
     # 查询日期，开始
     def inputDt_start_date(self, content):
-        self.exec_script(GatherSuccessRateTimeLocators.START_DATE_JS)
-        self.input(content, *GatherSuccessRateTimeLocators.START_DATE)
+        # self.exec_script(GatherSuccessRateTimeLocators.START_DATE_JS)
+        # self.input(content, *GatherSuccessRateTimeLocators.START_DATE)
+        self.inputDate(content)
 
     # 查询日期，结束
     def inputDt_end_date(self, content):
-        self.exec_script(GatherSuccessRateTimeLocators.END_DATE_JS)
-        self.input(content, *GatherSuccessRateTimeLocators.END_DATE)
+        # self.exec_script(GatherSuccessRateTimeLocators.END_DATE_JS)
+        # self.input(content, *GatherSuccessRateTimeLocators.END_DATE)
+        self.inputDate(content)
 
     # 用户类型
     def inputSel_cons_type(self, index):

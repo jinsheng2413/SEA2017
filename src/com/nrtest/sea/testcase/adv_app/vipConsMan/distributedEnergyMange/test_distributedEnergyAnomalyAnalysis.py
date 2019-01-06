@@ -18,7 +18,7 @@ from com.nrtest.sea.data.adv_app.vipConsMan.distributedEnergyMange.distributedEn
     DistributedEnergyMange_data
 from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedEnergyAnomalyAnalysis_page import \
     DistributedEnergyAnomalyAnalysisPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源异常分析
@@ -26,7 +26,6 @@ from com.nrtest.sea.task.commonMath import *
 class TestDistributedEnergyAnomalyAnalysis(TestCase, DistributedEnergyAnomalyAnalysisPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

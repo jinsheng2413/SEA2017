@@ -20,18 +20,21 @@ class ManualEditPage(Page):
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value, *ManualEdit_Locators.QRY_CONS_NO)
+        self.input(value)  # , *ManualEdit_Locators.QRY_CONS_NO)
 
     # 处理类型
-    def inputSel_process_type(self, index):
-        self.click(ManualEdit_Locators.QRY_PROCESS_TYPE)
-        locator = self.get_select_locator(ManualEdit_Locators.QRY_PROCESS_TYPE_VALUE, index)
-        self.click(locator)
-        self.delDropdownBoxHtml()
+    def inputSel_process_type(self, option):
+        # self.click(ManualEdit_Locators.QRY_PROCESS_TYPE)
+        # locator = self.get_select_locator(ManualEdit_Locators.QRY_PROCESS_TYPE_VALUE, option)
+        # self.click(locator)
+        # self.delDropdownBoxHtml()
+        self.selectDropDown(option)
 
-    def inputStr_date(self, value):
-        self.input(value, *ManualEdit_Locators.QRY_DATE)
+    def inputDt_date(self, value):
+        # self.input(value, *ManualEdit_Locators.QRY_DATE)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        self.click(ManualEdit_Locators.BTN_QRY)
+        # self.click(ManualEdit_Locators.BTN_QRY)
+        self.btn_query()

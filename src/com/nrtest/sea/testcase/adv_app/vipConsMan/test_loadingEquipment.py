@@ -16,7 +16,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.vipConsMan.loadingEquipment_data import VipConsMan
 from com.nrtest.sea.pages.adv_app.vipConsMan.loadingEquipment_page import LoadingEquipment_Page
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--重点用户监测--加载防窃电设备
@@ -24,7 +24,6 @@ from com.nrtest.sea.task.commonMath import *
 class Test_LoadingEquipment(TestCase, LoadingEquipment_Page):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(VipConsMan.para_loadingEquipment)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

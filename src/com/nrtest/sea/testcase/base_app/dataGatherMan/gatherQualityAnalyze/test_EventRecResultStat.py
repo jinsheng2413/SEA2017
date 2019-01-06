@@ -7,35 +7,28 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.eventRecResultStat_Page import \
     EventRecResultStatPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→采集质量分析→事件记录结果统计
 @ddt
-class TestEventRecResultStat(unittest.TestCase, EventRecResultStatPage):
+class TestEventRecResultStat(TestCase, EventRecResultStatPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # # 打开菜单（需要传入对应的菜单编号）
-        # cls.driver = openMenu(
-        #     GatherQualityAnalyze_data.eventRecResultStat_para)
-        # sleep(2)
-        # cls.exec_script(cls, EventRecResultStatLocators.START_DATE_JS)
-        # cls.exec_script(cls, EventRecResultStatLocators.END_DATE_JS)
-        # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.eventRecResultStat_para)
-        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
@@ -77,7 +70,7 @@ class TestEventRecResultStat(unittest.TestCase, EventRecResultStatPage):
         self.inputStr_start_timme(para['START_TIME'])
         # 结束时间
         self.inputStr_end_time(para['END_TIME'])
-        # 时间类型
+        # 事件类型
         self.inputSel_event_type(para['EVENT_TYPE'])
 
         self.btn_qry()

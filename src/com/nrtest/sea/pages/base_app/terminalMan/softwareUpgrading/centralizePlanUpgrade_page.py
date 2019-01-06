@@ -42,21 +42,24 @@ class CentralizePlanUpgradePage(Page):
 
     # 开始时间
     def inputDt_start_date(self, content):
-        self.exec_script(CentralizePlanUpgradeLocators.START_DATE_JS)
-        self.input(content, *CentralizePlanUpgradeLocators.START_DATE)
+        # self.exec_script(CentralizePlanUpgradeLocators.START_DATE_JS)
+        # self.input(content, *CentralizePlanUpgradeLocators.START_DATE)
+        self.inputDate(content)
 
     # 结束时间
     def inputDt_end_date(self, content):
-        self.exec_script(CentralizePlanUpgradeLocators.END_DATE_JS)
-        self.input(content, *CentralizePlanUpgradeLocators.END_DATE)
+        # self.exec_script(CentralizePlanUpgradeLocators.END_DATE_JS)
+        # self.input(content, *CentralizePlanUpgradeLocators.END_DATE)
+        self.inputDate(content)
 
     # 批次号
     def inputStr_batch_no(self, content):
-        self.input(content, *CentralizePlanUpgradeLocators.BATCH_NO)
+        self.input(content)  # , *CentralizePlanUpgradeLocators.BATCH_NO)
 
     # 查询按钮
     def btn_search(self):
-        self.click(CentralizePlanUpgradeLocators.BTN_SEARCH)
+        # self.click(CentralizePlanUpgradeLocators.BTN_SEARCH)
+        self.btn_query()
 
     # 制定计划
     # 忽略旧版本号

@@ -7,34 +7,33 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
-from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.custMan.custMan_data import CustMan_data
-from com.nrtest.sea.locators.base_app.custMan.ctrlExecut_locators import CtrlExecutLocators
 from com.nrtest.sea.pages.base_app.custMan.ctrlExecutPage import CtrlExecutPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》费控管理--》低压用户远程费控执行
 @ddt
-class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
+class TestCtrlExecut(TestCase, CtrlExecutPage):
     """
     高级应用--》费控管理--》低压用户远程费控执行
     """
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(CustMan_data.ctrlExecut_para)
-        sleep(2)
-        cls.exec_script(cls, CtrlExecutLocators.START_DATE_JS)
-        cls.exec_script(cls, CtrlExecutLocators.END_DATE_JS)
+        menuPage = MenuPage.openMenu(CustMan_data.ctrlExecut_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(CustMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -65,11 +64,9 @@ class TestCtrlExecut(unittest.TestCase, CtrlExecutPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 用户编号
         self.inputStr_userNo(para['USER_NO'])
         # 用户名称

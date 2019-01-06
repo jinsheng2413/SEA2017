@@ -8,7 +8,6 @@
 @time: 2018/11/21 0021 14:08
 @desc:
 """
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,18 +15,17 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.logMan.logMan_data import LogEdit_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.logMan.logStatAnalysis_page import *
-from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理--》日志管理--》日志统计分析
 # 管理员重置用户密码列表
 @ddt
-class TestLogStatAnalysis(unittest.TestCase, LogStatAnalysis_man_Page):
+class TestLogStatAnalysis(TestCase, LogStatAnalysis_man_Page):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(LogEdit_data.logStatAnalysis_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

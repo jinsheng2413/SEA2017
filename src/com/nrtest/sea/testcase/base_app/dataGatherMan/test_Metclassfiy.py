@@ -15,7 +15,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.Metclassfiy_page import MetclassfiyPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→电能表分级归类管理
@@ -25,7 +25,6 @@ class TestMetclassfiy(TestCase, MetclassfiyPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(DataGatherMan_data.metclassfiy_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

@@ -12,3 +12,5 @@
 class TgLineLossUnifiedView_data:
     # 高级应用→线损分析→台区线损统一视图→台区线损统一视图
     TgLineLossUnifiedView_para = '99924710'
+    TgLineLossUnifiedView_tab_day = '日线损'
+    TgLineLossUnifiedView_tab_month = '月线损'

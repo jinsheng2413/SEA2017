@@ -10,4 +10,4 @@
 
 
 class InterfaceMan_data:
-    para_MServiceCallStatus2 = '99914120'
+    mServiceCallStatus2_para = '99914120'

@@ -100,7 +100,8 @@ class MenuPage(Page):
         :param locator: 菜单xpath
         """
         try:
-            el_menu = self.driver.find_element(*locator)
+            # el_menu = self.driver.find_element(*locator)
+            el_menu = self._find_element(locator, ec_mode=1)
             if el_menu.is_displayed():
                 el_menu.click()
             else:

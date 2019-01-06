@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.vipConsMan.differentialloopSettingDetail_data import VipConsMan
 from com.nrtest.sea.pages.adv_app.vipConsMan.differentialloopSettingDetail_page import \
     DifferentialloopSettingDetail_Page
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--重点用户监测--差动回路明细查询
@@ -25,7 +25,6 @@ from com.nrtest.sea.task.commonMath import *
 class Test_DifferentialloopSettingDetail(TestCase, DifferentialloopSettingDetail_Page):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(VipConsMan.para_differentialloopSettingDetail)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

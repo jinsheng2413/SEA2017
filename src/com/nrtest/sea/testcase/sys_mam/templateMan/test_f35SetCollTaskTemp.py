@@ -8,29 +8,26 @@
 @desc:
 """
 
-import unittest
 from time import sleep
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.templateMan.templateMan_data import TemplateManData
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.templateMan.f35SetCollTaskTemp_page import F35SetCollTaskTempPage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理→模板管理→F35设置采集任务模板
 @ddt
-class TestF35SetCollTaskTemp(unittest.TestCase, F35SetCollTaskTempPage):
+class TestF35SetCollTaskTemp(TestCase, F35SetCollTaskTempPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # # 打开菜单（需要传入对应的菜单编号）
-        # cls.driver = openMenu(TemplateManData.F35SetCollTaskTemp_para)
-        # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(TemplateManData.F35SetCollTaskTemp_para)
-        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码

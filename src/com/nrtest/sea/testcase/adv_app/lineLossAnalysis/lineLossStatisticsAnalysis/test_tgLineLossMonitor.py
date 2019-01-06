@@ -8,7 +8,6 @@
 @desc:
 """
 
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -19,15 +18,14 @@ from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.lin
     LineLossStatisticsAnalysis_data
 from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.tgLineLossMonitor_page import \
     TgLineLossMonitorPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→线损分析→线损统计分析→台区线损监测
 @ddt
-class TestTgLineLossMonitor(unittest.TestCase, TgLineLossMonitorPage):
+class TestTgLineLossMonitor(TestCase, TgLineLossMonitorPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(LineLossStatisticsAnalysis_data.TgLineLossMonitor_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -55,7 +53,7 @@ class TestTgLineLossMonitor(unittest.TestCase, TgLineLossMonitorPage):
 
     def query(self, para):
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 指标类型
         self.inputSel_pointer_type(para['POINTER_TYPE'])
         # 日期

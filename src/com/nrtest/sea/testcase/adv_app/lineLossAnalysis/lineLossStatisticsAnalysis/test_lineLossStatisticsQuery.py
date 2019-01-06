@@ -8,7 +8,6 @@
 @desc:
 """
 
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -23,13 +22,13 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-class TestLineLossStatisticsQuery(unittest.TestCase, LineLossStatisticsQueryPage):
+class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
     """
     高级应用→线损分析→线损统计分析→线损统计查询
     """
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(LineLossStatisticsAnalysis_data.LineLossStatisticsQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -57,7 +56,7 @@ class TestLineLossStatisticsQuery(unittest.TestCase, LineLossStatisticsQueryPage
 
     def query(self, para):
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 线损分类
 
         self.inputSel_line_loss_type(para['LINE_LOSS_TYPE'])

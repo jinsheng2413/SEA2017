@@ -7,27 +7,25 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.collectSuccessRateStat_page import \
     CollectSuccessRateStatPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率综合统计
 @ddt
-class TestCollectSuccessRateStat(unittest.TestCase, CollectSuccessRateStatPage):
+class TestCollectSuccessRateStat(TestCase, CollectSuccessRateStatPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.collectSuccessRateStat_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -65,7 +63,7 @@ class TestCollectSuccessRateStat(unittest.TestCase, CollectSuccessRateStatPage):
         """
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 输入查询时间
         self.inputStr_checkDate(para['CHECK_DATE'])
 

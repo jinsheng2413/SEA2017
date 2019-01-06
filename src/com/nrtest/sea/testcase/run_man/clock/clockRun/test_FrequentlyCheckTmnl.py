@@ -15,8 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.clock.clockRun_page import FrequentlyCheckTmnlPage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理→时钟管理→时钟运行质量分析
@@ -26,7 +26,6 @@ class TestFrequentlyCheckTmnl(TestCase, FrequentlyCheckTmnlPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(ClockData.para_ClockRun)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -67,7 +66,7 @@ class TestFrequentlyCheckTmnl(TestCase, FrequentlyCheckTmnlPage):
         self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 终端型号

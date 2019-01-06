@@ -24,7 +24,6 @@ class TestCommumMetter(TestCase, CommumMeterPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SimCardMan.para_communMeter)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

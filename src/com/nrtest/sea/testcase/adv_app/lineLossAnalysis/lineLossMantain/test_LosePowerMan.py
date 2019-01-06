@@ -8,7 +8,6 @@
 @time: 2018/10/31 0031 13:35
 @desc:
 """
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -17,16 +16,15 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossMantain.lineLossMantain_data import LineLossMantain_data
 from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossMantain.losePowerMan_page import LosePowerManPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
 # 高级应用-->线损分析--》线损模型维护--》线损模型设计
-class TestLosePowerMan(unittest.TestCase, LosePowerManPage):
+class TestLosePowerMan(TestCase, LosePowerManPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(LineLossMantain_data.losePowerMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -62,7 +60,7 @@ class TestLosePowerMan(unittest.TestCase, LosePowerManPage):
         """
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 考核单元名称
         self.inputStr_assessUnitName(para['ASSESS_UNIT_NAME'])
         # 考核单元分类

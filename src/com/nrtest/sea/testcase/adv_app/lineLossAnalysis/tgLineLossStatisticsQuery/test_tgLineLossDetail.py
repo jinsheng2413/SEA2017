@@ -8,7 +8,6 @@
 @desc:
 """
 
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -19,15 +18,14 @@ from com.nrtest.sea.data.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgLi
     TgLineLossStatisticsQuery_data
 from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgLineLossDetail_page import \
     TgLineLossDetailPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→线损分析→线损统计分析→台区线损明细
 @ddt
-class TestTgLineLossDetail(unittest.TestCase, TgLineLossDetailPage):
+class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(TgLineLossStatisticsQuery_data.TgLineLossDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -56,7 +54,7 @@ class TestTgLineLossDetail(unittest.TestCase, TgLineLossDetailPage):
 
     def query(self, para):
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'TREE_ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 采集覆盖率
         self.inputSel_collectCoverRate(para['COLLECT_COVER_RATE'])
         # 采集成功率

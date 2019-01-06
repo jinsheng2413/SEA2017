@@ -7,7 +7,6 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,27 +15,22 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesAutoReview_page import ArchivesAutoReviewPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用--》档案管理--》电表批量导出（冀北）
 @ddt
-class TestArchivesAutoRevie(unittest.TestCase, ArchivesAutoReviewPage):
+class TestArchivesAutoRevie(TestCase, ArchivesAutoReviewPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(ArchivesMan_data.archivesAutoReview_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
+        # menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-        # 打开菜单（需要传入对应的菜单编号）
-        # cls.driver = openMenu(ArchivesMan_data.archivesAutoReview_para)
-        # sleep(2)
-        # cls.exec_script(cls, ArchivesAutoReviewLocators.DATE_JS)
 
     @classmethod
     def tearDownClass(cls):

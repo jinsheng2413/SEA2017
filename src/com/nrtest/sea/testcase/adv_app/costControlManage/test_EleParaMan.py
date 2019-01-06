@@ -7,7 +7,6 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,16 +15,16 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
 from com.nrtest.sea.pages.adv_app.costControlManage.eleParaManLocators_pages import EleParaManPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》费控管理--》本地费控--》电价参数管理
 @ddt
-class TestEleParaMan(unittest.TestCase, EleParaManPage):
+class TestEleParaMan(TestCase, EleParaManPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(CostControlManage_data.eleParaMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -64,7 +63,7 @@ class TestEleParaMan(unittest.TestCase, EleParaManPage):
         """
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 开始时间
         self.inputStr_startTimeOne(para['START_TIME'])
         # 结束时间

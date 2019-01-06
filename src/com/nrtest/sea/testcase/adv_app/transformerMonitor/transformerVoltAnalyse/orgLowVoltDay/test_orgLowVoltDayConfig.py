@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayConfig_page import \
     OrgLowVoltDayConfigPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
@@ -27,7 +27,6 @@ class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(TradnsformerMonitorData.para_OrgLowVoltDay)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -118,7 +117,7 @@ class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
     #     # 供电单位
     #     openLeftTree('13401')
     #     # 是否电压监测
-    #     self.inputRSel_cons_type('是')
+    #     self.inputSel_cons_type('是')
     #
     #     self.btn_query()
     #     self.sleep_time(2)

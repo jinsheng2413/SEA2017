@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_page import \
     CentralizePlanUpgradePage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→集中计划升级→制定计划
@@ -25,7 +25,7 @@ from com.nrtest.sea.task.commonMath import *
 class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
+
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(SoftwareUpgrading_data.CentralizedPlanUpgrade_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -58,7 +58,7 @@ class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
     def query(self, para):
         clickTabPage('制定计划')
         # 打开左边树选择供电单位
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 忽略旧版本号
         self.inputChk_history_version(para['HISTORY_VERSION'])
         # 终端厂家

@@ -7,7 +7,7 @@
 @time: 2018/8/2 0002 21:25
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.oracle_test import Oracle
@@ -19,10 +19,9 @@ from com.nrtest.sea.task.feiMange import *
 
 
 # 高级应用--》费控管理--》本地费控--》专变用户费控管理
-class TestCostControlManage(unittest.TestCase, CostControlManagePage):
+class TestCostControlManage(TestCase, CostControlManagePage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         cls.driver = specil_user_fei_mange()
         cls.orl = Oracle()
 

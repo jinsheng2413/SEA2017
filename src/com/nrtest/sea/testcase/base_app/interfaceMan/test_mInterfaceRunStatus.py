@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -16,20 +16,17 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.interfaceMan.mInterfaceRunStatus_data import InterfaceMan_data
 from com.nrtest.sea.pages.base_app.interfaceMan.mInterfaceRunStatus_page import MInterfaceRunStatusPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用--接口管理--其他业务接口--接口运行状态
 @ddt
-class Test_MInterfaceRunStatus(unittest.TestCase, MInterfaceRunStatusPage):
+class Test_MInterfaceRunStatus(TestCase, MInterfaceRunStatusPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
-        # cls.driver = openMenu(InterfaceMan_data.para_mInterfaceRunStatus)
-        # sleep(2)
-        # 打开菜单（需要传入对应的菜单编号）ljf
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(InterfaceMan_data.para_mInterfaceRunStatus)
-        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
@@ -54,7 +51,7 @@ class Test_MInterfaceRunStatus(unittest.TestCase, MInterfaceRunStatusPage):
         """
 
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         # 业务系统

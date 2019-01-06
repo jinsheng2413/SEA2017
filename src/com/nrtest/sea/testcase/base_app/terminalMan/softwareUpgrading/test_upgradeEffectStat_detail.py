@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEffectStatistics_page import \
     UpgradeEffectStatisticsPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→升级效果统计→终端升级明细
@@ -25,7 +25,6 @@ from com.nrtest.sea.task.commonMath import *
 class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SoftwareUpgrading_data.UpgradeEffectStatistics_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

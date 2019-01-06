@@ -7,28 +7,31 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.GatherQualityAnalyze_data import \
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadCompleteRate_page import ReadCompleteRatePage, \
-    ReadCompleteRateLocators
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadCompleteRate_page import ReadCompleteRatePage
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→采集质量分析→采集完整率
 @ddt
-class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
+class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(GatherQualityAnalyze_data.readCompleteRate_para)
+        menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.readCompleteRate_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(GatherQualityAnalyze_data.readCompleteRateCount_tab)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -52,12 +55,8 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         self.recoverLeftTree()
 
     def countQuery(self, para):
-        clickTabPage(para['TAB_NAME'])
-        self.exec_script(ReadCompleteRateLocators.JS_COUNT)
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_userType_count(para['USER_TYPE'])
         # 通信方式
@@ -68,7 +67,7 @@ class TestReadCompleteRate(unittest.TestCase, ReadCompleteRatePage):
         self.inputSel_chipFactoryCount(para['CHIP_FACTORY'])
 
         # 日期时间
-        self.inputStr_date_time_count(para['DATE_TIME'])
+        self.inputDt_date_time_count(para['DATE_TIME'])
         self.btn_query(True)
 
     def assert_query_result(self, para):

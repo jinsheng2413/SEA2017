@@ -8,7 +8,6 @@
 @time: 2018/11/19 0019 10:36
 @desc:
 """
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,17 +15,16 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultStat_page import CheckResultStatPage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理--》档案核查管理--》核查结果统计查询
 @ddt
-class TestCheckResultStat(unittest.TestCase, CheckResultStatPage):
+class TestCheckResultStat(TestCase, CheckResultStatPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.checkResultStat_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)

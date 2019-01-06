@@ -8,7 +8,6 @@
 @time: 2018/11/20 0020 8:52
 @desc:
 """
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,17 +15,16 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptResultDetail_page import ScriptResultDetailPage
-from com.nrtest.sea.task.commonMath import *
 
 
 # 系统管理--》档案核查管理--》脚本结果明细查询
 @ddt
-class TestScriptResultDetail(unittest.TestCase, ScriptResultDetailPage):
+class TestScriptResultDetail(TestCase, ScriptResultDetailPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.scriptResultDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -66,13 +64,13 @@ class TestScriptResultDetail(unittest.TestCase, ScriptResultDetailPage):
         # 注册菜单
         self.menu_name = para['MENU_NAME']
         # 打开左边树并选择
-        openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
         # 脚本名称
         self.inputStr_scriptName(para['SCRIPT_NAME'])
         # 开始时间
-        self.inputStr_receive_time(para['START_TIME'])
+        self.inputDt_receive_time(para['START_TIME'])
         # 结束时间
-        self.inputStr_end_time(para["END_TIME"])
+        self.inputDt_end_time(para["END_TIME"])
 
         self.btn_query()
     def assert_query_result(self, para):

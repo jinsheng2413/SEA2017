@@ -8,7 +8,7 @@
 @desc:
 """
 
-import unittest
+from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -17,17 +17,21 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.regularSporadicUpgradeApprove_page import \
     RegularSporadicUpgradeApprovePage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→常规零星升级审批
 @ddt
-class TestRegularSporadicUpgradeApprove(unittest.TestCase, RegularSporadicUpgradeApprovePage):
+class TestRegularSporadicUpgradeApprove(TestCase, RegularSporadicUpgradeApprovePage):
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(SoftwareUpgrading_data.RegularSporadicUpgradeApprove_para)
+        menuPage = MenuPage.openMenu(SoftwareUpgrading_data.RegularSporadicUpgradeApprove_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(SoftwareUpgrading_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -52,10 +56,8 @@ class TestRegularSporadicUpgradeApprove(unittest.TestCase, RegularSporadicUpgrad
         self.recoverLeftTree()
 
     def query(self, para):
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
         # 打开左边树选择供电单位
-        openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 申请状态

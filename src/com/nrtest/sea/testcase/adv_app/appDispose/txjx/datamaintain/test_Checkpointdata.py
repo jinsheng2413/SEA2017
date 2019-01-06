@@ -7,7 +7,6 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
-import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,25 +15,23 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.txjx.datamaintain.datamaintain_data import Datamaintain_data
 from com.nrtest.sea.pages.adv_app.txjx.datamaintain.checkpointdata_page import CheckpointdataPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
 # 高级应用-->台线系统--》资料维护--》线路考核点资料维护
-class TestCheckpointdata(unittest.TestCase, CheckpointdataPage):
+class TestCheckpointdata(TestCase, CheckpointdataPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(Datamaintain_data.checkpointdata_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(Datamaintain_data.checkpointdata_para)
 
     @classmethod
     def tearDownClass(cls):

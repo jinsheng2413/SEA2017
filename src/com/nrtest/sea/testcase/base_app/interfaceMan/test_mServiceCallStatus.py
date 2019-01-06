@@ -8,8 +8,6 @@
 @desc:
 """
 
-import unittest
-from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -17,30 +15,25 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.interfaceMan.mServiceCallStatus_data import InterfaceMan_data
-from com.nrtest.sea.locators.base_app.interfaceMan.mServiceCallStatus_locators import MServiceCallStatusLocators
 from com.nrtest.sea.pages.base_app.interfaceMan.mServiceCallStatus_page import MServiceCallStatusPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用--接口管理--其他业务接口--服务调用情况
 @ddt
-class TestMServiceCallStatus(unittest.TestCase, MServiceCallStatusPage):
+class TestMServiceCallStatus(TestCase, MServiceCallStatusPage):
 
     @classmethod
     def setUpClass(cls):
-        print('开始执行')
+
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(InterfaceMan_data.para_MServiceCallStatus)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # menuPage.clickTabPage(InterfaceMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-        # 打开菜单（需要传入对应的菜单编号）
-        cls.driver = openMenu(InterfaceMan_data.para_MServiceCallStatus)
-        sleep(2)
-        cls.exec_script(cls, MServiceCallStatusLocators.START_DATE_JS)
-        cls.exec_script(cls, MServiceCallStatusLocators.END_DATE_JS)
+
 
     @classmethod
     def tearDownClass(cls):
@@ -61,7 +54,7 @@ class TestMServiceCallStatus(unittest.TestCase, MServiceCallStatusPage):
         """
 
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         # 业务系统
@@ -69,9 +62,9 @@ class TestMServiceCallStatus(unittest.TestCase, MServiceCallStatusPage):
         # #服务名称
         self.inputSel_business_name(para['BUSINESS_NAME'])
         # 开始时间
-        self.inputStr_start_date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 结束时间
-        self.inputStr_end_date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
         # 查询
         self.btn_qry()
 

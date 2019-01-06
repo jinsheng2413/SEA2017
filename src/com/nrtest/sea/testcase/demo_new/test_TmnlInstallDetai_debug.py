@@ -24,7 +24,6 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
 
     @classmethod
     def setUpClass(cls):
-        print("开始执行")
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(DataGatherMan_data.tmnlInstallDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -61,9 +60,6 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
-        # 注册菜单
-        # self.menu_name = para['MENU_NAME']
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])

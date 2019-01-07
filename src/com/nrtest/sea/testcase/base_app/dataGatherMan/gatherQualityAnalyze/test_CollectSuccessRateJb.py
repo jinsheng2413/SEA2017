@@ -20,6 +20,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.collectSuc
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
 @ddt
 class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
     """
@@ -30,8 +31,6 @@ class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.collectSuccessRateJb_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(GatherQualityAnalyze_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -63,11 +62,13 @@ class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
+        # 电压类型
+        self.inputChk_eleType(para['ELE_TYPE'])
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_user_type(para['USER_TYPE'])
+        print(para['CONMUNICATION_MODE'])
         # 通信方式
         self.inputSel_conmunicationMode(para['CONMUNICATION_MODE'])
         # 终端厂家
@@ -98,7 +99,7 @@ class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    #@BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.collectSuccessRateJb_para))
     def test_query(self, para):
         self.start_case(para, __file__)

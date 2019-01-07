@@ -68,7 +68,7 @@ class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
         self.openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_user_type(para['USER_TYPE'])
-        print(para['CONMUNICATION_MODE'])
+
         # 通信方式
         self.inputSel_conmunicationMode(para['CONMUNICATION_MODE'])
         # 终端厂家

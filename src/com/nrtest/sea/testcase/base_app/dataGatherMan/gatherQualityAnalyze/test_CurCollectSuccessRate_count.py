@@ -16,13 +16,13 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.curCollectSuccessRate_page import \
-    CurCollectSuccessRatePage
+    CurCollectSuccessRate_count_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→采集质量分析→实时采集成功率
 @ddt
-class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRatePage):
+class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_count_Page):
 
     @classmethod
     def setUpClass(cls):
@@ -65,7 +65,7 @@ class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRatePage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 日期时间
-        self.inputStr_dateTime_count(para['DATE_TIME'])
+        self.inputDT_dateTime_count(para['DATE_TIME'])
 
         self.btn_count_qry()
         self.sleep_time(2)

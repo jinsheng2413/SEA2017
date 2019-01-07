@@ -65,9 +65,9 @@ class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRatePage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 开始时间
-        self.inputStr_startTime(para['START_TIME'])
+        self.inputDT_startTime(para['START_TIME'])
         # 结束时间
-        self.inputStr_endTime(para['END_TIME'])
+        self.inputDT_endTime(para['END_TIME'])
         self.btn_qry()
         self.sleep_time(2)
 

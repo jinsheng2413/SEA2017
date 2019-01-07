@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptResultDetail_page import ScriptResultDetailPage
 
 
-# 系统管理--》档案核查管理--》脚本结果明细查询
+# 系统管理--》档案核查管理--》脚本结果统计查询
 @ddt
 class TestScriptResultStat(TestCase, ScriptResultDetailPage):
 
@@ -70,9 +70,8 @@ class TestScriptResultStat(TestCase, ScriptResultDetailPage):
         self.inputDt_receive_time(para['START_TIME'])
         # 结束时间
         self.inputDt_end_time(para["END_TIME"])
-
+        # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.workQuery.workQuery_page import WorkQueryPage
 
 
-# 统计查询→工单查询→工单查询
+# 统计查询→工单查询→工单查询(第二个tab页)
 @ddt
 class TestWorkQuery(TestCase, WorkQueryPage):
 

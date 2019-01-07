@@ -74,9 +74,6 @@ class TestPowerFactorCountDetail(TestCase, PowerFactorCountDetailPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(PowerFactorCountDetailLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

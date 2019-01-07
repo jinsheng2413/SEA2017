@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.newsanswer.knowledge_page import Knowledge_Pag
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--问题交流平台--问题在线交流
+# 高级应用--问题交流平台--知识库管理
 @ddt
 class Test_Knowledge(TestCase, Knowledge_Page):
     @classmethod
@@ -60,7 +60,8 @@ class Test_Knowledge(TestCase, Knowledge_Page):
         # 文件类型
         self.inputSel_file_type(para['FILE_TYPE'])
 
-        self.sleep_time(2)
+        # 文件名称
+        self.inputStr_file_name(para['FILE_NAME'])
 
         # 开始时间
         self.inputStr_start_date(para['START_DATE'])

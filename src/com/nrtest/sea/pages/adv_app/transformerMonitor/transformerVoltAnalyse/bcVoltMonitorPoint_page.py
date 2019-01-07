@@ -10,31 +10,41 @@
 
 from com.nrtest.common.base_page import Page
 
-
-class BcVoltMonitorPointDataPage(Page):
-    # 供电单位
-    # def inputStr_org_no(self, value):
-    #     self.openLeftTree(value)
+# 高级应用--》配变监测分析--》电压质量分析--》B/C类电压监测点
+# B/C类电压监测点查询
+class BcVoltMonitorPointQueryPage(Page):
 
     # 监测点类型--打开并选择
     def inputSel_monitor_point_type(self, item):
-        # self.click(BcVoltMonitorPointDataLocators.MONITOR_POINT_TYPE_SEL)
-        # locator = self.get_select_locator(
-        #     BcVoltMonitorPointDataLocators.MONITOR_POINT_TYPE, name)
-        # self.click(locator)
-        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
+        self.selectDropDown(item)
 
     # 监测点名称
     def inputStr_monitor_point_name(self, value):
-        # self.input(value, *BcVoltMonitorPointDataLocators.MONITOR_POINT_NAME)
-        self.curr_input(value,is_multi_tab=True,is_multi_elements=True)
+        self.input(value)
 
     # 查询日期
     def inputStr_query_date(self, value):
-        # self.input(value, *BcVoltMonitorPointDataLocators.QUERY_DATE)
         self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
-        # self.click(BcVoltMonitorPointDataLocators.BTN_QUERY)
+        self.btn_query()
+
+# B/C类电压监测点数据
+class BcVoltMonitorPointDataPage(Page):
+
+    # 监测点类型--打开并选择
+    def inputSel_monitor_point_type(self, item):
+        self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
+
+    # 监测点名称
+    def inputStr_monitor_point_name(self, value):
+        self.curr_input(value,is_multi_tab=True,is_multi_elements=True)
+
+    # 查询日期
+    def inputStr_query_date(self, value):
+        self.inputDate(value)
+
+    # 点击查询
+    def btn_qry(self):
         self.btn_query(True)

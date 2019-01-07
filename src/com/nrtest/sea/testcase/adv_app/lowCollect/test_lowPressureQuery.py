@@ -57,6 +57,15 @@ class Test_LowPressureQuery(TestCase, LowPressureQuery_Page):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
+        # 台区名称
+        self.inputStr_tg_name(para['TG_NAME'])
+
+        # 终端地址
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+
         # 日期
         self.inputStr_date(para['DATE'])
 

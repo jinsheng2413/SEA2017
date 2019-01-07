@@ -33,7 +33,7 @@ class CurCollectSuccessRate_count_Page(Page):
     # 日期时间
     def inputDT_dateTime_count(self, value):
         # self.input(value, *CurCollectSuccessRateLocators.QRY_DATE_TIME_COUNT)
-        self.input(value)
+        self.inputDate(value)
 
     # 统计查询
     def btn_count_qry(self):
@@ -56,7 +56,7 @@ class CurCollectSuccessRate_detail_Page(Page):
 
     def inputDT_dateTime_detail(self, value):
         # self.input(value, *CurCollectSuccessRateLocators.QRY_DATE_TIME_DETAIL)
-        self.input(value)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):

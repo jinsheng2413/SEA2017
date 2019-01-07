@@ -70,17 +70,8 @@ class TestCheckReduceApplication(TestCase, CheckReduceApplicationPage):
         self.inputDt_end_time(para['END_TIME'])
         # 申请单号
         self.inputStr_applyNo(para['APPLY_NO'])
-
+        # 查询
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        # result = self.assert_context()
-        # self.assertTrue(result)
-
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReduceApplication_para))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

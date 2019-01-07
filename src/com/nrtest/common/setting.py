@@ -34,6 +34,9 @@ class Setting():
     # 是否校验码验证
     VALID_MASK = parse.get('Base', 'Valid_Mask')
 
+    # 登录后是否需清屏
+    CLEAN_SCREEN = parse.get('Base', 'clean_screen')
+
     # 默认网址
     TEST_URL = parse.get('Base', 'Test_URL')  # 'http://testerlife.com'
     # 网址标题

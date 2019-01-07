@@ -27,7 +27,7 @@
 4.方法名：get_current_url
         功能：打开测试服务器地址
         :return: None
-5. 方法名：closeOldBrowser
+5. 方法名：switch_to_window
         说明：在打开新页面时关闭旧的页面
         参数：无
 6.方法名：closeBrowser
@@ -315,7 +315,7 @@ class Page():
         """
         try:
             ls_values = value.split(';')
-            print(ls_values)
+            # print(ls_values)
             loc = self.format_xpath_multi(BaseLocators.QRY_DT_INPUT, ls_values[0], is_multi_tab)
             tmp = ls_values[1].strip()
             idx = new_idx
@@ -740,23 +740,23 @@ class Page():
             except BaseException as e:
                 logger.error('点击元素失败:{}\n{}'.format(locator, e))
 
-    def closeOldBrowser(self):
+    def switch_to_window(self, switch_mode=True):
         """
-        方法名：closeOldBrowser
-        说明：在打开新页面时关闭旧的页面
-        参数：无
-
+        切换到新窗口
+        :param switch_mode: True-关闭其他窗口，False-保留其他窗口
         """
-        # 获取当前打开的所有窗口的句柄
-        handles = self.driver.window_handles
 
-        # 切换到第二个窗口的句柄
-        self.driver.switch_to.window(handles[1])
-
-        # 切换回主页句柄
-        self.driver.switch_to.window(handles[0])
-        self.driver.close()
-        logger.info('关闭浏览器错误')
+        # 获取当前窗口句柄
+        now_handle = self.driver.current_window_handle
+        if switch_mode:
+            # 获取所有窗口句柄
+            all_handles = self.driver.window_handles
+            for handle in all_handles:
+                if handle != now_handle:
+                    self.driver.switch_to.window(handle)
+                    # self.driver.find_element_by_xpath("//*[@id='menu_projects']/a").click()
+                    self.driver.close()  # 关闭窗口
+        self.driver.switch_to.window(now_handle)
 
     def closeBrowser(self):
         """

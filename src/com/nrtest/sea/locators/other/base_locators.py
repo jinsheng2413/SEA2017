@@ -68,7 +68,7 @@ class BaseLocators:
     #         getDom(%s);'''
 
     # innerHTML  剔除空白字符，及中英文冒号
-    CLEAN_BLANK = '''var elements, el, txt;
+    CLEAN_BLANK = r'''var elements, el, txt;
                 elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                 for (var i = 0; i < elements.snapshotLength; i++) {
                     el= elements.snapshotItem(i);
@@ -136,4 +136,5 @@ class BaseLocators:
 
 
 if __name__ == '__main__':
-    print(BaseLocators.OBJ % '/查\s{1,}询/')
+    # print(BaseLocators.OBJ % '/查\s{1,}询/')
+    print(BaseLocators.CLEAN_BLANK)

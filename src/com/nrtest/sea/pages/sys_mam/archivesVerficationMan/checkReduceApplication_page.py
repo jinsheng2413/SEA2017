@@ -27,8 +27,8 @@ class CheckReduceApplicationPage(Page):
     def inputDt_end_time(self, value):
         # self.input(value, *CheckReduceApplicationLocators.QRY_END_TIME)
         self.inputDate(value)
-        # 查询
 
+    # 查询
     def btn_qry(self):
         # self.click(CheckReduceApplicationLocators.BTN_QRY)
         self.btn_query()

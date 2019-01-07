@@ -23,11 +23,11 @@ class TmnlInstallDetaiPage(Page):
         self.selectDropDown(options)
 
     # 开始时间
-    def inputStr_Start_time(self, value):
+    def inputDt_Start_time(self, value):
         self.input(value)  # , *TmnlInstallDetaiLocators.QRY_START_TIME)
 
     # 结束时间
-    def inputStr_end_time(self, value):
+    def inputDt_end_time(self, value):
         self.input(value)  # , *TmnlInstallDetaiLocators.QRY_END_TIME)
 
         # 查询
@@ -39,13 +39,13 @@ class TmnlInstallDetaiPage(Page):
 
     # --------------------------------------终端调试------------------------------------------
     # 开始时间
-    def inputStr_startTime_count(self, value):
+    def inputDt_startTime_count(self, value):
         # self.input(value) #, *TmnlInstallDetaiLocators.QRY_START_TIME_COUNT)
         # ljf
         self.inputDate(value)
 
     # 结束时间
-    def inputStr_endTime_Count(self, value):
+    def inputDt_endTime_Count(self, value):
         # self.input(value) #, *TmnlInstallDetaiLocators.QRY_END_TIME_COUNT)
         self.inputDate(value)
 

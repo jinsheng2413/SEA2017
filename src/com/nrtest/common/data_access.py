@@ -105,7 +105,7 @@ class DataAccess:
         """
 
         pyoracle = PyOracle.getInstance()
-        cases = pyoracle.callproc('pkg_nrtest.refres_all_case')
+        cases = pyoracle.callproc('pkg_nrtesh.refresh_all_case')
 
         return cases
 

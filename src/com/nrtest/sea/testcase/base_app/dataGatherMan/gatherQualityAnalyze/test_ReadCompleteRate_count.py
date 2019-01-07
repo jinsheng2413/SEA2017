@@ -15,13 +15,14 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadCompleteRate_page import ReadCompleteRatePage
+from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadCompleteRate_page import \
+    ReadCompleteRate_count_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→采集质量分析→采集完整率
 @ddt
-class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
+class TestReadCompleteRate(TestCase, ReadCompleteRate_count_Page):
 
     @classmethod
     def setUpClass(cls):

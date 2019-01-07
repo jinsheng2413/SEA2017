@@ -10,6 +10,7 @@
 
 from com.nrtest.common.base_page import Page
 
+
 # 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
 # 台区低电压日统计
 class OrgLowVoltDayStaticPage(Page):
@@ -29,6 +30,7 @@ class OrgLowVoltDayStaticPage(Page):
         # self.click(OrgLowVoltDayStaticLocators.BTN_QUERY)
         self.btn_query()
 
+
 # 台区低电压日统计明细
 class OrgLowVoltDayDetailPage(Page):
 
@@ -47,6 +49,7 @@ class OrgLowVoltDayDetailPage(Page):
     # 点击查询
     def btn_qry(self):
         self.btn_query(True)
+
 
 # 低压用户电压监测配置
 class OrgLowVoltDayConfigPage(Page):

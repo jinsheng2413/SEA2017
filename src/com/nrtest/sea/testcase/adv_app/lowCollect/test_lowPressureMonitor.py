@@ -57,6 +57,12 @@ class Test_LowPressureMonitor(TestCase, LowPressureMonitor_Page):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
+        # 台区名称
+        self.inputStr_tg_name(para['TG_NAME'])
+
+        # 终端地址
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
         # 用户定义类别
         self.inputSel_cons_define_type(para['CONS_DEFINE_TYPE'])
 

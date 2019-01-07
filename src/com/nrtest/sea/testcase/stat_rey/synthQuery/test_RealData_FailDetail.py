@@ -14,23 +14,20 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.realDataPage import RealDataPage
+from com.nrtest.sea.task.commonMath import *
 
 
 # 统计查询→综合查询→抄表数据查询（冀北）
 @ddt
-class TestRealData_Rdetail(TestCase, RealDataPage):
-
+class TestRealData_Faildetail(TestCase, RealDataPage):
     @classmethod
     def setUpClass(cls):
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SynthQuery_data.realData_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SynthQuery_data.realData_fdetail_tab)
-        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+
 
     @classmethod
     def tearDownClass(cls):
@@ -59,11 +56,16 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        self.menuPage.clickTabPage(SynthQuery_data.realData_fdetail_tab)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        self.menuPage.remove_dt_readonly()
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 选择抄表段号
-        self.inputStr_ReadMeterSegmentNo_Faildetail(para['READ_METER_SEGMENT_NO'])
+        self.inputStr_ReadMeterSegmentNo_Faildetail(
+            para['READ_METER_SEGMENT_NO'])
         # 电表资产号
         self.inputStr_MeterAssert_Faildetail(para['METER_ASSERT'])
         # 用户类型
@@ -75,21 +77,13 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         # 相位
         self.inputSel_phase_Faildetail(para['PHASE'])
         # 查询日期
-        self.inputDt_Time_Faildetail(para['QUERY_TIME'])
+        self.inputStr_Time_Faildetail(para['QUERY_TIME'])
         # 电能表抄读状态
         self.inputSel__meter_read_state_faildetail(para['METER_READ_STATE'])
         # 终端运行状态
         self.inputSel_TmnlRunState_Failtime(para['TMNL_RUN_STATE'])
-
+        # 查询
         self.btn_Faildetail_qry()
-        self.sleep_time(2)
-        # 校验
-        # result = self.assert_context()
-        # self.assertTrue(result)
-
-    @data(*DataAccess.getCaseData(SynthQuery_data.realData_para, SynthQuery_data.realData_fdetail_tab))
-    def test_query(self, para):
-        self.query(para)
 
     def assert_query_result(self, para):
         """
@@ -115,9 +109,10 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.realData_para, SynthQuery_data.realData_fdetail_tab))
+    @data(*DataAccess.getCaseData(SynthQuery_data.realData_para, SynthQuery_data.realData_fdetail_tab, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
+

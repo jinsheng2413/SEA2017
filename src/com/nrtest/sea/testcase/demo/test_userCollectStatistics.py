@@ -56,7 +56,7 @@ class TestUserCollectStatistics(TestCase, UserCollectStatisticsPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 用户类型（下拉选择）
-        self.inputCSel_cons_type(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 统计月份
         self.inputDt_date(para['DATE'])
         # 统计口径

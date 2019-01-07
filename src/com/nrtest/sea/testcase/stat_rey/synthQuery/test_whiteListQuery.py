@@ -15,8 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.whiteListQuery_page import WhiteListQueryPage
+from com.nrtest.sea.task.commonMath import *
 
 
 # 统计查询→综合查询→白名单查询
@@ -24,11 +24,12 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.whiteListQuery_page import WhiteLi
 class TestWhiteListQuery(TestCase, WhiteListQueryPage):
     @classmethod
     def setUpClass(cls):
-        # 打开菜单（需要传入对应的菜单编号）
+        print('开始执行')
+        # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(SynthQuery_data.WhiteListQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(SynthQuery_data.tmnlInstallDetail_tabOne)
+        # menuPage.clickTabPage()
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -90,9 +91,10 @@ class TestWhiteListQuery(TestCase, WhiteListQueryPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.WhiteListQuery_para))
+    @data(*DataAccess.getCaseData(SynthQuery_data.WhiteListQuery_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
+

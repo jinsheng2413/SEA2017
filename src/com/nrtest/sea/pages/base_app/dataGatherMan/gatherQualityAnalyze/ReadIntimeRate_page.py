@@ -40,8 +40,7 @@ class ReadIntimeRatePage(Page):
         # self.input(value, *ReadIntimeRate_Locators.QRY_DATE_TIME)
         self.inputDate(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
         # self.click(ReadIntimeRate_Locators.BTN_QRY)
         self.btn_query()

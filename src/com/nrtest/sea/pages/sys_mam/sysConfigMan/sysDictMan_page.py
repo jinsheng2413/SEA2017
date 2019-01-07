@@ -19,12 +19,12 @@ class SysDictManPage(Page):
         self.input(content)
 
     # 生效日期
-    def inputStr_start_date(self, content):
+    def inputDt_start_date(self, content):
         # self.input(value, *SysDictManLocators.START_DATE)
         self.inputDate(content)
 
     # 失效日期
-    def inputStr_end_date(self, content):
+    def inputDt_end_date(self, content):
         # self.input(value, *SysDictManLocators.END_DATE)
         self.inputDate(content)
 

@@ -23,7 +23,7 @@ from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysParameterMan_page import SysAb
 # 系统管理→系统配置管理→系统参数管理
 # 系统管理→系统配置管理→系统参数管理→系统异常参数设置
 @ddt
-class TestSysBasicParaSet(TestCase, SysAbnormalParaSetPage):
+class TestSysAbnormalParaSet(TestCase, SysAbnormalParaSetPage):
     @classmethod
     def setUpClass(cls):
         # # 打开菜单（需要传入对应的菜单编号）

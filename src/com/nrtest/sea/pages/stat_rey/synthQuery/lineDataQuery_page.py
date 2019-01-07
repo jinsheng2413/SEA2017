@@ -14,16 +14,15 @@ from com.nrtest.sea.locators.stat_rey.synthQuery.lineDataQuery_locators import L
 
 # 统计查询→综合查询→线路数据查询
 class LineDataQueryPage(Page):
-    # 页面元素
     # 线路编号
     def inputStr_linenum(self, content):
-        self.input(content, *LineDataQueryLocators.QRY_LINENUM)
+        self.input(content)  # , *LineDataQueryLocators.QRY_LINENUM)
 
     # 查询按钮
     def btn_search(self):
-        self.click(LineDataQueryLocators.BTN_SEARCH)
+        # self.click(LineDataQueryLocators.BTN_SEARCH)
+        self.btn_query()
 
-    # 操作对象选择区
     # 电网结构
     def inputNode_electricpower(self):
         self.click(LineDataQueryLocators.TREE_ELECTRICPOWER)

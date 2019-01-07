@@ -147,7 +147,7 @@ class GatherSuccessRateStatPage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(GatherSuccessRateStatLocators.BTN_SEARCH)
-        self.btn_query()
+        self.btn_query(True)
 
 # 采集成功率→数据采集成功率明细
 class GatherSuccessRateDetailPage(Page):
@@ -204,7 +204,7 @@ class GatherSuccessRateDetailPage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(GatherSuccessRateDetailLocators.BTN_SEARCH)
-        self.btn_query()
+        self.btn_query(True)
 
 # 采集成功率→连续抄表失败明细
 class ContinuousFalseDetailPage(Page):
@@ -237,7 +237,7 @@ class ContinuousFalseDetailPage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(ContinuousFalseDetailLocators.BTN_SEARCH)
-        self.btn_query()
+        self.btn_query(True)
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率→按时间统计
@@ -333,4 +333,4 @@ class GatherSuccessRateTimePage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(GatherSuccessRateTimeLocators.BTN_SEARCH)
-        self.btn_query()
+        self.btn_query(True)

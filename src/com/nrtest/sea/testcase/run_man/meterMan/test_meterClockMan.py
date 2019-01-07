@@ -69,7 +69,7 @@ class TestMeterClockMan(TestCase, MeterClockManPage):
         self.inputStr_tmnladdr(para['TMNL_ADDR'])
         self.inputStr_userno(para['USER_NO'])
         self.inputStr_meterno(para['METER_NO'])
-        self.inputStr_date(para['DATE'])
+        self.inputDt_date(para['DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

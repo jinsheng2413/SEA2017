@@ -1,44 +1,41 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 
-"""
-@author: 陈越峰
+'''
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_sysDictMan.py
-@time: 2018/9/13 11:23
+@file: test_lineDataQuery.py
+@time: 2019-01-07 11:07
 @desc:
-"""
+'''
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.sys_mam.sysConfigMan.sysConfigMan_data import SysConfigManData
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysDictMan_page import SysDictManPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.lineDataQuery_page import LineDataQueryPage
 
 
-# 系统管理--》系统配置管理--》数据字典管理
 @ddt
-class TestSysDict(TestCase, SysDictManPage):
+class TestTmnlInstallDetai_debug(TestCase, LineDataQueryPage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(SysConfigManData.para_SysDictMan)
+        menuPage = MenuPage.openMenu(SynthQuery_data.lineDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
-
-
-
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        # 刷新浏览器
+        print("执行结束")
+        # 关闭菜单页面
         cls.closePages(cls)
 
     def setUp(self):
@@ -49,35 +46,29 @@ class TestSysDict(TestCase, SysDictManPage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         :return:
         """
-        # 去除查询干扰数据(要传入对应的page页面类)
-        # self.clear_values(SysDictManPage)
+
         # 回收左边树
-        # self.recoverLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
         """
+
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 分类名称
-        self.inputStr_catalog_name(para['CATALOG_NAME'])
-        # 生效日期
-        self.inputDt_start_date(para['START_DATE'])
-        # 失效日期
-        self.inputDt_end_date(para['END_DATE'])
-        # 维护类型
-        self.inputRSel_cons_type(para['EDIT_TYPE'])
-        # 维护人员
-        self.inputStr_editor(para['EDITOR'])
-        # 数据来源
-        self.inputRSel_data_source(para['DATA_SOURCE'])
+        # 打开左边树并选择
+        # self.openLeftTree(para['TREE_NODE'])
 
-        self.btn_query()
+        # 线路编号
+        self.inputStr_linenum(para['LINE_NO'])
+
+        self.btn_search()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -95,7 +86,7 @@ class TestSysDict(TestCase, SysDictManPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SysConfigManData.para_SysDictMan))
+    @data(*DataAccess.getCaseData(SynthQuery_data.lineDataQuery_para))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -103,7 +94,7 @@ class TestSysDict(TestCase, SysDictManPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SysConfigManData.para_SysDictMan, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.lineDataQuery_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

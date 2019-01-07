@@ -79,6 +79,9 @@ class TestRemoteCommModulVersionMain(TestCase, RemoteCommModulVersionMainPage):
         # 终端资产号
         self.inputStr_tmnlAssetNo(para['TMNL_ASSET_NO'])
 
+        # 终端规约
+        self.inputSel_tmnlProtocol(para['TMNL_PROTOCOL'])
+
         self.btn_qry()
         self.sleep_time(2)
 

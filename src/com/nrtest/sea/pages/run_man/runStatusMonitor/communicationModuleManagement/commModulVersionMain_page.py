@@ -32,8 +32,11 @@ class CommModulVersionMainPage(Page):
     def inputStr_tmnlAddr(self, value):
         self.input(value)#, *CommModulVersionMainLocators.QRY_TMNL_ADDR)
 
-        # 查询
+    # 终端规约
+    def inputSel_tmnlProtocol(self, option):
+        self.selectDropDown(option)
 
+    # 查询
     def btn_qry(self):
         # self.click(CommModulVersionMainLocators.BTN_QRY)
         self.btn_query()

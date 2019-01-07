@@ -17,13 +17,11 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.fieldMan.tmnlParamSetGroup2_data import TermParaSetGroup2_data
 from com.nrtest.sea.pages.run_man.fieldMan.tmnlParamSetGroup2_pages import TermParaSetGroup2Page
-from com.nrtest.sea.task.commonMath import *
 
 
 # 运行管理-现场管理-终端抄表参数设置
 @ddt
 class TestTmnlParamSetGroup2(unittest.TestCase, TermParaSetGroup2Page):
-
     @classmethod
     def setUpClass(cls):
         print("开始执行")

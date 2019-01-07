@@ -65,8 +65,6 @@ class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModul
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 打开左边树并选择
-        # self.openLeftTree(para['TREE_NODE'])
 
         # 模块属性标识
         self.inputStr_moduleAttrbuteSign(para['MODULE_ATTRBUTE_SIGN'])

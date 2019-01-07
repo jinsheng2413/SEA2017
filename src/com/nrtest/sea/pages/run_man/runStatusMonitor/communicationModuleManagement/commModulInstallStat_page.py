@@ -34,6 +34,10 @@ class CommModulInstallStatPage(Page):
         # self.delDropdownBoxHtml()
         self.selectDropDown(options)
 
+    # 模块版本
+    def inputSel_moduleVersion(self, option):
+        self.selectDropDown(option)
+
     # 查询
     def btn_qry(self):
         # self.click(CommModulInstallStatLocators.BTN_QRY)

@@ -65,10 +65,10 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 开始时间
-        self.inputStr_startTime_count(para['START_TIME'])
+        self.inputDt_startTime_count(para['START_TIME'])
 
         # 结束时间
-        self.inputStr_endTime_Count(para['END_TIME'])
+        self.inputDt_endTime_Count(para['END_TIME'])
 
         # 运行状态
         self.inputSel_runState_count(para['RUN_STATE'])

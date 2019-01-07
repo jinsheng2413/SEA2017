@@ -67,10 +67,10 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
         self.inputSel_TmnlType(para['TMNL_TYPE'])
 
         # 开始时间
-        self.inputStr_Start_time(para['START_TIME'])
+        self.inputDt_Start_time(para['START_TIME'])
 
         # 结束时间
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         self.btn_workCount_qry()
         self.sleep_time(2)

@@ -71,6 +71,7 @@ class TestSysCoverageQuery(TestCase, SysCoverageQueryPage):
 
         # 统计口径
         self.inputSel_statWay(para['STAT_WAY'])
+        
         # 用户类型
         self.inputSel_userType(para['USER_TYPE'])
 

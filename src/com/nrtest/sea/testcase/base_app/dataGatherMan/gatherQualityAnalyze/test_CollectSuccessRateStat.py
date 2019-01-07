@@ -7,6 +7,7 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
+import unittest
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -17,15 +18,16 @@ from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_qual
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.collectSuccessRateStat_page import \
     CollectSuccessRateStatPage
-from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.task.commonMath import *
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率综合统计
 @ddt
-class TestCollectSuccessRateStat(TestCase, CollectSuccessRateStatPage):
+class TestCollectSuccessRateStat(unittest.TestCase, CollectSuccessRateStatPage):
 
     @classmethod
     def setUpClass(cls):
+        print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.collectSuccessRateStat_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -63,9 +65,12 @@ class TestCollectSuccessRateStat(TestCase, CollectSuccessRateStatPage):
         """
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        # 查询方式
+        self.inputChk_queryType(para['QUERY_TYPE_DAY'])
         # 输入查询时间
         self.inputStr_checkDate(para['CHECK_DATE'])
+
 
         self.btn_qry()
 
@@ -90,7 +95,7 @@ class TestCollectSuccessRateStat(TestCase, CollectSuccessRateStatPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case()
+        self.end_case(para)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.collectSuccessRateStat_para, valCheck=True))
@@ -98,4 +103,4 @@ class TestCollectSuccessRateStat(TestCase, CollectSuccessRateStatPage):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case()
+        self.end_case(para)

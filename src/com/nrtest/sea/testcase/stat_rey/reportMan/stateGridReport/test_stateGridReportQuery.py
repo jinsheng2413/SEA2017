@@ -60,9 +60,6 @@ class TestStateGridReportQuery(TestCase, StateGridReportQueryPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 打开左边树并选择ljf
-        # self.openLeftTree(para['TREE_NODE'])
-
         # 报表类型类型
         self.inputSel_reportType(para['REPORT_TYPE'])
 

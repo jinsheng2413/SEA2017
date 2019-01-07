@@ -15,13 +15,14 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadCompleteRate_page import ReadCompleteRatePage
+from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadCompleteRate_page import \
+    ReadCompleteRate_detail_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→采集质量分析→采集完整率
 @ddt
-class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
+class TestReadCompleteRate(TestCase, ReadCompleteRate_detail_Page):
 
     @classmethod
     def setUpClass(cls):
@@ -29,7 +30,7 @@ class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
         menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.readCompleteRate_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(GatherQualityAnalyze_data.readCompleteRate_tab)
+        menuPage.clickTabPage(GatherQualityAnalyze_data.readCompleteRateDetail_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
     @classmethod
@@ -84,9 +85,9 @@ class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    @BeautifulReport.add_test_img()
+    # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
-                                  GatherQualityAnalyze_data.readCompleteRate_tab))
+                                  GatherQualityAnalyze_data.readCompleteRateDetail_tab))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.countQuery(para)
@@ -95,7 +96,7 @@ class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
-                                  GatherQualityAnalyze_data.readCompleteRate_tab))
+                                  GatherQualityAnalyze_data.readCompleteRateDetail_tab))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.countQuery(para)

@@ -16,13 +16,13 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.curCollectSuccessRate_page import \
-    CurCollectSuccessRatePage
+    CurCollectSuccessRate_detail_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→采集质量分析→实时采集成功率
 @ddt
-class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRatePage):
+class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_detail_Page):
 
     @classmethod
     def setUpClass(cls):
@@ -68,8 +68,8 @@ class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRatePage):
         # 台区名称
         self.inputStr_platformNo(para['PLATFORM_NAME'])
         # 日期时间
-        self.inputStr_dateTime_detail(para['DATE_TIME'])
-        self.btn_query(True)
+        self.inputDT_dateTime_detail(para['DATE_TIME'])
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

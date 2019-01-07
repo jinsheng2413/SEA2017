@@ -56,7 +56,7 @@ class MeterClockManPage(Page):
         self.input(content)
 
     # 日期
-    def inputStr_date(self, content):
+    def inputDt_date(self, content):
         # self.input(value, *MeterClockManLocators.QRY_DATE)
         self.inputDate(content)
 

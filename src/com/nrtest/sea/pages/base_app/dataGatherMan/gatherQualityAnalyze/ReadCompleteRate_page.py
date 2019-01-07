@@ -20,22 +20,6 @@ class ReadCompleteRatePage(Page):
         # self.click(locator)
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
-    #  蕊片厂家
-    def inputSel_chipFactoryCount(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_CHIP_FACTORY_COUNT)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_CHIP_FACTORY_COUNT_VALUE, name)
-        # self.click(locator)
-        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
-
-    #  蕊片厂家
-    def inputSel_chipFactoryDetail(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_CHIP_FACTORY_DETAIL)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_CHIP_FACTORY_DETAIL_VALUE, name)
-        # self.click(locator)
-        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
-
     # 终端厂家
     def inputSel_tmnlFactory(self, name):
         # self.click(ReadCompleteRateLocators.QRY_TMNL_FACTORY)
@@ -44,59 +28,14 @@ class ReadCompleteRatePage(Page):
         # self.click(locator)
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
-    # 终端厂家
-    def inputSel_tmnlFactoryCount(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_TMNL_FACTORY_COUNT)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_TMNL_FACTORY_COUNT_VALUE, name)
-        # self.click(locator)
-        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
-    # 终端厂家
-    def inputSel_ctmnlFactoryDetail(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_TMNL_FACTORY_DETAIL)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_TMNL_FACTORY_DETAIL_VALUE, name)
-        # self.click(locator)
-        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
 
     # 通信方式
     def inputSel_communicationMode(self, name):
         # self.click(ReadCompleteRateLocators.QRY_COMMUNICATION_MODE)
         # locator = self.get_select_locator(
         #     ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_VALUE, name)
-        # self.click(locator)
-        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
-
-    # 通信方式
-    def inputSel_communicationModeCount(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_COUNT)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_COUNT_VALUE, name)
-        # self.click(locator)
-        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
-
-    # 通信方式
-    def inputSel_communicationModeDetail(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_DETAIL)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_DETAIL_VALUE, name)
-        # self.click(locator)
-        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
-
-    # 用户类型
-    def inputSel_userType_detail(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_USER_TYPE_DETAIL)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_USER_TYPE_DETAIL_VALUE, name)
-        # self.click(locator)
-        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
-
-    # 用户类型
-    def inputSel_userType_count(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_USER_TYPE_COUNT)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_USER_TYPE_COUNT_VALUE, name)
         # self.click(locator)
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
@@ -120,13 +59,81 @@ class ReadCompleteRatePage(Page):
         # self.input(value)
         self.inputDate(value)
 
+
+class ReadCompleteRate_count_Page(Page):
     # 日期时间
     def inputDt_date_time_count(self, value):
         # self.input(value, *ReadCompleteRateLocators.QRY_DATE_TIME_COUNT)
         # self.input(value)
         self.inputDate(value)
 
-    # 日期时间
+    # 用户类型
+    def inputSel_userType_count(self, name):
+        # self.click(ReadCompleteRateLocators.QRY_USER_TYPE_COUNT)
+        # locator = self.get_select_locator(
+        #     ReadCompleteRateLocators.QRY_USER_TYPE_COUNT_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
+    # 通信方式
+    def inputSel_communicationModeCount(self, name):
+        # self.click(ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_COUNT)
+        # locator = self.get_select_locator(
+        #     ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_COUNT_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
+    # 终端厂家
+    def inputSel_tmnlFactoryCount(self, name):
+        # self.click(ReadCompleteRateLocators.QRY_TMNL_FACTORY_COUNT)
+        # locator = self.get_select_locator(
+        #     ReadCompleteRateLocators.QRY_TMNL_FACTORY_COUNT_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
+    #  蕊片厂家
+    def inputSel_chipFactoryCount(self, name):
+        # self.click(ReadCompleteRateLocators.QRY_CHIP_FACTORY_COUNT)
+        # locator = self.get_select_locator(
+        #     ReadCompleteRateLocators.QRY_CHIP_FACTORY_COUNT_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
+
+class ReadCompleteRate_detail_Page(Page):
+    # 用户类型
+    def inputSel_userType_detail(self, name):
+        # self.click(ReadCompleteRateLocators.QRY_USER_TYPE_DETAIL)
+        # locator = self.get_select_locator(
+        #     ReadCompleteRateLocators.QRY_USER_TYPE_DETAIL_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
+    # 通信方式
+    def inputSel_communicationModeDetail(self, name):
+        # self.click(ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_DETAIL)
+        # locator = self.get_select_locator(
+        #     ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_DETAIL_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
+    # 终端厂家
+    def inputSel_ctmnlFactoryDetail(self, name):
+        # self.click(ReadCompleteRateLocators.QRY_TMNL_FACTORY_DETAIL)
+        # locator = self.get_select_locator(
+        #     ReadCompleteRateLocators.QRY_TMNL_FACTORY_DETAIL_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
+    #  蕊片厂家
+    def inputSel_chipFactoryDetail(self, name):
+        # self.click(ReadCompleteRateLocators.QRY_CHIP_FACTORY_DETAIL)
+        # locator = self.get_select_locator(
+        #     ReadCompleteRateLocators.QRY_CHIP_FACTORY_DETAIL_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
+        # 日期时间
     def inputDt_date_time_detail(self, value):
         # self.input(value, *ReadCompleteRateLocators.QRY_DATE_TIME_DETAIL)
         # self.input(value)

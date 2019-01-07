@@ -56,7 +56,7 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
     def query(self, para):
 
         # 打开左边树并选择
-        self.driver = openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'])
 
         # 数据类型
         self.inputChk_data_type(para['DATA_TYPE'])

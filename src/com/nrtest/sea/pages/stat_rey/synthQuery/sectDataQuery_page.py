@@ -20,4 +20,18 @@ class SectDataQueryPage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(SectDataQueryLocators.BTN_SEARCH)
+        self.btn_query()
+
+    # 数据展示
+    # 查询日期，开始
+    def inputDt_start_date(self, index):
+        self.inputDate(index)
+
+    # 查询日期，结束
+    def inputDt_end_date(self, index):
+        self.inputDate(index)
+
+    # 查询按钮
+    def btn_tab_search(self):
+        # self.click(SectDataQueryLocators.BTN_TAB_SEARCH)
         self.btn_query(True)

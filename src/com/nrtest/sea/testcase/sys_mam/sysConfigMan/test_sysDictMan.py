@@ -67,9 +67,9 @@ class TestSysDict(TestCase, SysDictManPage):
         # 分类名称
         self.inputStr_catalog_name(para['CATALOG_NAME'])
         # 生效日期
-        self.inputStr_start_date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 失效日期
-        self.inputStr_end_date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
         # 维护类型
         self.inputRSel_cons_type(para['EDIT_TYPE'])
         # 维护人员

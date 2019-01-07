@@ -78,3 +78,5 @@ class SynthQuery_data:
     TmnlDataQuery_para = '99941200'
     # 统计查询--综合查询--配变数据查询
     CollcateDataQuery_para = '99941300'
+    # 统计查询--综合查询--线路数据查询
+    lineDataQuery_para = '99941400'

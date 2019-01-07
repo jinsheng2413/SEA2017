@@ -18,6 +18,9 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.collocateDataQuery import CollcateDataQueryPage
 
 
+# 统计查询--综合查询--配变数据查询
+
+
 @ddt
 class TestCollcateDataQuery(TestCase, CollcateDataQueryPage):
 

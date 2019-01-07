@@ -16,6 +16,10 @@ class CollectSuccessRateStatPage(Page):
     def inputStr_checkDate(self, value):
         self.inputDate(value)  # , *CollectSuccessRateStatLocators.QRY_CHECK_DATE)
 
+    # 查询方式
+    def inputChk_queryType(self, name):
+        self.clickRadioBox(name)
+
     # 查询
     def btn_qry(self):
         # self.click(CollectSuccessRateStatLocators.BTN_QRY)

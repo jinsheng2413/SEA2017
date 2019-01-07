@@ -3,8 +3,8 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_tgTopologyDiagram.py
-@time: 2018/10/9 10:31
+@file: test_sectDataQuery.py
+@time: 2018/9/29 16:13
 @desc:
 """
 
@@ -15,21 +15,20 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.pages.stat_rey.synthQuery.tgTopologyDiagram_page import TgTopologyDiagramPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.sectDataQuery_page import SectDataQueryPage
 from com.nrtest.sea.task.commonMath import *
 
 
-# 统计查询→综合查询→台区拓扑图
+# 统计查询→综合查询→抄表段数据查询→数据展示
 @ddt
-class TestTgTopologyDiagram(TestCase, TgTopologyDiagramPage):
+class TestSectDataQuery(TestCase, SectDataQueryPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
         # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(SynthQuery_data.TgTopologyDiagram_para)
+        menuPage = MenuPage.openMenu(SynthQuery_data.sectDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage()
+
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
 
@@ -54,16 +53,18 @@ class TestTgTopologyDiagram(TestCase, TgTopologyDiagramPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
-        # 专公变类型
-        self.inputSel_tmnl_type(para['TMNL_TYPE'])
-        # 台区编码
-        self.inputStr_tg_no(para['TG_NO'])
-        # 台区名称
-        self.inputStr_tg_name(para['TG_NAME'])
+        # 抄表段编号
+        self.inputStr_sect_no(para['SECT_NO'])
         # 查询按钮
         self.btn_search()
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        self.clickTabPage(SynthQuery_data.sectDataQuery_tabName_data)
+        # 查询日期，开始
+        self.inputDt_start_date(para['START_DATE'])
+        # 查询日期，结束
+        self.inputDt_end_date(para['END_DATE'])
+        # 点击数据展示,查询按钮
+        self.btn_tab_search()
 
     def assert_query_result(self, para):
         """
@@ -81,7 +82,7 @@ class TestTgTopologyDiagram(TestCase, TgTopologyDiagramPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.TgTopologyDiagram_para))
+    @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName_data))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -89,10 +90,10 @@ class TestTgTopologyDiagram(TestCase, TgTopologyDiagramPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.TgTopologyDiagram_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName_data,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
-

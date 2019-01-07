@@ -36,6 +36,10 @@ class RemoteCommModulVersionMainPage(Page):
     def inputStr_tmnlAssetNo(self, value):
         self.input(value)#, *RemoteCommModulVersionMainLocators.QRY_TMNL_ASSET_NO)
 
+    # 终端规约
+    def inputSel_tmnlProtocol(self, option):
+        self.selectDropDown(option)
+
     # 查询
     def btn_qry(self):
         # self.click(RemoteCommModulVersionMainLocators.BTN_QRY)

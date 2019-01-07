@@ -14,17 +14,17 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
-from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.realDataPage import RealDataPage
+from com.nrtest.sea.task.commonMath import *
 
 
 # 统计查询→综合查询→抄表数据查询（冀北）
 @ddt
 class TestRealData_Rdetail(TestCase, RealDataPage):
-
     @classmethod
     def setUpClass(cls):
-        # 打开菜单（需要传入对应的菜单编号）
+        print('开始执行')
+        # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(SynthQuery_data.realData_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
@@ -71,16 +71,14 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         # 相位
         self.inputSel_phase_Rdetail(para['PHASE'])
         # 查询日期
-        self.inputDt_Time_Rdetail(para['QUERY_TIME'])
+        self.inputStr_Time_Rdetail(para['QUERY_TIME'])
         # 数据类别
         self.inputSel_dataType(para['DATA_TYPE'])
         # 电能表抄读状态
         self.inputSel_meter_read_state_Rdetail(para['METER_READ_STATE'])
         # 终端运行状态
         self.inputSel_TmnlRunState_RDetail(para['TMNL_RUN_STATE'])
-
         self.btn_rdetail_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -106,7 +104,7 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.realData_para, SynthQuery_data.realData_rdetail_tab))
+    @data(*DataAccess.getCaseData(SynthQuery_data.realData_para, SynthQuery_data.realData_rdetail_tab, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

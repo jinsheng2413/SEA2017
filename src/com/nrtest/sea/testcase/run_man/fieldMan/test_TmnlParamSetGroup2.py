@@ -3,13 +3,13 @@
 """
 @author: 吴竹筠
 @license: (C) Copyright 2018, Nari.
-@file: test_TmnlParamSetGroup2.py
+@file: test_tmnlParamSetGroup2.py
 @time: 2018/11/8 0008 13:50
 @desc:
 """
 
+import unittest
 from time import sleep
-from unittest import TestCase
 
 from ddt import ddt, data
 
@@ -22,13 +22,16 @@ from com.nrtest.sea.pages.run_man.fieldMan.tmnlParamSetGroup2_pages import TermP
 
 # 运行管理-现场管理-终端抄表参数设置
 @ddt
-class TestTmnlParamSetGroup2(TestCase, TermParaSetGroup2Page):
-
+class TestTmnlParamSetGroup2(unittest.TestCase, TermParaSetGroup2Page):
     @classmethod
     def setUpClass(cls):
-        # 打开菜单（需要传入对应的菜单编号）
+        print("开始执行")
+        # # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
+        # cls.driver = openMenu(TermParaSetGroup2_data.TermParaSetGroup2_para)
+        # sleep(2)
+        # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(TermParaSetGroup2_data.TermParaSetGroup2_para)
-        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        super(unittest.TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(SysConfigManData.SysBasicParaSet_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
@@ -100,15 +103,15 @@ class TestTmnlParamSetGroup2(TestCase, TermParaSetGroup2Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TermParaSetGroup2_data.TermParaSetGroup2_para))
     def test_query(self, para):
-        self.start_case(para, __file__)
+        self.start_case(para)
         self.query(para)
         self.assert_query_result(para)
-        self.end_case()
+        self.end_case(para)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TermParaSetGroup2_data.TermParaSetGroup2_para, valCheck=True))
     def _test_checkValue(self, para):
-        self.start_case(para, __file__)
+        self.start_case(para)
         self.query(para)
         self.assert_query_criteria(para)
-        self.end_case()
+        self.end_case(para)

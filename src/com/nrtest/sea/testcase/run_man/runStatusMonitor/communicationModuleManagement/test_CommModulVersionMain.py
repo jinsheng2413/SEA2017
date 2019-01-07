@@ -67,6 +67,9 @@ class TestCommModulVersionMain(TestCase, CommModulVersionMainPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
+        # 终端规约
+        self.inputSel_tmnlProtocol(para['TMNL_PROTOCOL'])
+
         # 终端厂商
         self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
 

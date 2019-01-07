@@ -14,12 +14,12 @@ from com.nrtest.common.base_page import Page
 # 统计查询→综合查询→台区拓扑图
 class TgTopologyDiagramPage(Page):
     # 专公变类型
-    def inputSel_tmnl_type(self, option):
+    def inputSel_tmnl_type(self, index):
         # self.click(TgTopologyDiagramLocators.TMNL_TYPE)
         # locator = self.get_select_locator(
-        #     TgTopologyDiagramLocators.TMNL_TYPE_VALUE, option)
+        #     TgTopologyDiagramLocators.TMNL_TYPE_VALUE, index)
         # self.click(locator)
-        self.selectDropDown(option)
+        self.selectDropDown(index)
 
     # 台区编码
     def inputStr_tg_no(self, content):
@@ -27,7 +27,7 @@ class TgTopologyDiagramPage(Page):
 
     # 台区名称
     def inputStr_tg_name(self, content):
-        self.input(content)  # , *TgTopologyDiagramLocators.TG_NAME)
+        self.input(content)  #, *TgTopologyDiagramLocators.TG_NAME)
 
     # 查询按钮
     def btn_search(self):

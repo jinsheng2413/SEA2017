@@ -16,7 +16,7 @@ class CostControlManage_data:
     eleParaMan_para = '99922180'
 
     # 高级应用--》费控管理--》本地费控--》专变用户余额查询
-    specialUserBalanceQuery_para = ''
+    specialUserBalanceQuery_para = '99922150'
 
     # 高级应用--》费控管理--》本地费控--》费控投入调试
     custControlCommissioning_para = ''

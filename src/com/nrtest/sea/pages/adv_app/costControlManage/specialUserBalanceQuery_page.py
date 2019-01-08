@@ -23,12 +23,13 @@ class SpecialUserBalanceQueryPage(Page):
     def inputStr_terminal_addr(self, value):
         self.input(value)  # , *SpecialUserBalanceQuery_locators.QRY_TERMINAL_ADDR)
 
-    #   #越限类型
-    # def inputSel_more_cata(self,index):
-    #     self.click(SpecialUserBalanceQuery_locators.QRY_MORE_BOARD_CATA)
-    #     locator = self.get_select_locator(SpecialUserBalanceQuery_locators.QRY_MORE_BOARD_CATA_VALUE, index)
-    #     # print(locator)
-    #     self.click(locator)
+    # 越限类型
+    def inputSel_more_cata(self, index):
+        # self.click(SpecialUserBalanceQuery_locators.QRY_MORE_BOARD_CATA)
+        # locator = self.get_select_locator(SpecialUserBalanceQuery_locators.QRY_MORE_BOARD_CATA_VALUE, index)
+        # # print(locator)
+        # self.click(locator)
+        self.selectDropDown(index)
 
     # 召测日期
     def inputDt_call_date(self, value):

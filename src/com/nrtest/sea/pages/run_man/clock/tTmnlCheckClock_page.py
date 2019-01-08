@@ -12,7 +12,7 @@ from com.nrtest.common.base_page import Page
 
 
 # 运行管理→时钟管理→终端对时
-# 终端对时统计
+# 终端时钟统计
 class TmnlClockStaticPage(Page):
 
     # 终端类型--打开并选择

@@ -244,7 +244,7 @@ class Page():
                 el = self._find_element(loc)
             el.clear()
             el.send_keys(ls_values[1])
-            logger.info('文本框输入:{}'.format(values))
+            logger.info('list index out of range文本框输入:{}'.format(values))
         except AttributeError as ex:
             logger.error('输入错误:{}\n{}'.format(values, ex))
 
@@ -419,7 +419,7 @@ class Page():
                      'span': "//span[contains(text(), '{}')]"}
         clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(tag_text[0])
         script = BaseLocators.CLEAN_BLANK % clean_me
-        # print(script)
+        print(script)
         self.exec_script(script)
 
     def clean_btn(self, tag_text):
@@ -1029,7 +1029,7 @@ class Page():
             self.commonWait(MenuLocators.BTN_CONFIRM)
             self.driver.find_element(*MenuLocators.BTN_CONFIRM).click()
         except Exception as e:
-            print('没有出现确认按钮')
+            print('')
 
     def closePages(self, page_name='工作台', isCurPage=True):
         """
@@ -1151,6 +1151,17 @@ class Page():
         try:
             WebDriverWait(self.driver, 15).until(
                 EC.presence_of_element_located(locators))
+            try:
+
+                el = WebDriverWait(self.driver, 3).until(
+                    EC.presence_of_element_located((By.XPATH,"//span[contains(text(),'程序异常')]")))
+                res = self.driver.find_element((By.XPATH,"//span[contains(text(),'程序异常')]")).is_displayed()
+                if res:
+                    print('弹出程序异常错误')
+                    self.btn_confirm()
+                    return False
+            except:
+                print('')
             return self.driver.find_element(*locators).is_displayed()
         except:
             return False
@@ -1226,14 +1237,14 @@ class Page():
             self.commonWait((By.XPATH, displayElement))
             display_num = len(self._find_elements((By.XPATH, displayElement)))
             if display_num > 0:
-                try:
-                    sel = '//*[@class="x-grid3-row-checker"]'
-
-                    displayCheckbox = self.assert_context((By.XPATH, sel))  # 判断显示区是有复选框的还是没有复选框的
-                    print('显示区由复选框')
-                except:
-                    print('显示区没有复选框')
-                if displayCheckbox:
+                # try:
+                #     sel = '//*[@class="x-grid3-row-checker"]'
+                #
+                #     displayCheckbox = self.assert_context((By.XPATH, sel))  # 判断显示区是有复选框的还是没有复选框的
+                #     print('显示区有复选框')
+                # except:
+                #     print('显示区没有复选框')
+                if 1:
                     lineName = self.checkBoxAssertLine(assertValues[1])  # 判断是那一列
                     displayLine = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]'.format(
                         assertValues[0], 1, lineName + 1)
@@ -1246,9 +1257,8 @@ class Page():
                         try:
                             skipMenuName = '//*[@class="x-tab-strip-text "and contains(text(),"{}")]'.format(
                                 assertValues[2])
-                            print(assertValues[2])
                             result = self.assert_context((By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
-                            if result:
+                            if 1:
                                 self.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
                             return result
                         except BaseException:
@@ -1256,27 +1266,27 @@ class Page():
                     except:
                         print('跳转验证失败')
 
-            #
-            # elif displayCheckbox == False:
-            #     gl = self.checkBoxAssertLine(va[1])
-            #     for i in range(1, num + 1):
-            #         val2 = "(//*[text()=\'{0}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
-            #             va[0], i, gl + 1, va[2])
-            #         try:
-            #             hl = self.assert_context((By.XPATH, val2))
-            #             if hl == True:
-            #                 num2 += 1
-            #             else:
-            #                 print('第{0}行，{1}列显示的值与{2}不一致'.format(i, va[1], va[2]))
-            #                 break
-            #         except:
-            #             print('校验失败')
-            #
-            #     if num2 == num:
-            #         return True
-            #     else:
-            #         return False
-            #
+
+                # elif displayCheckbox == False:
+                #     gl = self.checkBoxAssertLine(va[1])
+                #     for i in range(1, num + 1):
+                #         val2 = "(//*[text()=\'{0}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
+                #             va[0], i, gl + 1, va[2])
+                #         try:
+                #             hl = self.assert_context((By.XPATH, val2))
+                #             if hl == True:
+                #                 num2 += 1
+                #             else:
+                #                 print('第{0}行，{1}列显示的值与{2}不一致'.format(i, va[1], va[2]))
+                #                 break
+                #         except:
+                #             print('校验失败')
+                #
+                #     if num2 == num:
+                #         return True
+                #     else:
+                #         return False
+
         except:
             print('验证失败')
 

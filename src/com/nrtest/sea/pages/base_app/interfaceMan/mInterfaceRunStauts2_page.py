@@ -16,22 +16,12 @@ from com.nrtest.common.base_page import Page
 class MInterfaceRunStatus2Page(Page):
     # 业务系统
     def inputSel_business_system(self, index):
-        # self.click(MInterfaceRunStatus2Locators.QRY_BUSINESS_SYSTEM)
-        # locator = self.get_select_locator(
-        #     MInterfaceRunStatus2Locators.QRY_BUSINESS_SYSTEM_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(index)
 
     # 服务对象名称
     def inputSel_service_name(self, index):
-        # self.click(MInterfaceRunStatus2Locators.QRY_SERVICE_NAME)
-        # locator = self.get_select_locator(
-        #     MInterfaceRunStatus2Locators.QRY_SERVICE_NAME_VALUE, index)
-        # self.click(locator)
-        # print('------')
         self.selectDropDown(index)
 
     # 查询
     def btn_qry(self):
-        # self.click(MInterfaceRunStatus2Locators.BTN_QRY)
         self.btn_query()

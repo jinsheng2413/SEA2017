@@ -65,21 +65,29 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompilePage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 任务类型
-        self.inputSel_taskType(para['TASK_TYPE'])
-        # 任务编号
-        self.inputStr_taskNo(para['TASK_NO'])
-        # 任务名称
-        self.inputStr_taskName(para['TASK_NAME'])
-        # 任务状态
-        self.inputSel_taskState(para['TASK_STATE'])
-        # 终端地址
-        self.inputStr_TMNL_ADDR(para['TMNL_ADDR'])
-        # 采集点名称
-        self.inputStr_CollectionPointName(para['COLLECTION_POINT_NAME'])
-        # 终端类型
-        self.inputRSel_TmnlType(para['TMNL_TYPE'])
 
+        # 任务类型
+        self.inputSel_task_type(para['TASK_TYPE'])
+
+        # 任务编号
+        self.inputStr_task_no(para['TASK_NO'])
+
+        # 任务名称
+        self.inputStr_task_name(para['TASK_NAME'])
+
+        # 任务状态
+        self.inputSel_task_state(para['TASK_STATE'])
+
+        # 终端地址
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
+        # 采集点名称
+        self.inputStr_collection_point_name(para['COLLECTION_POINT_NAME'])
+
+        # 终端类型
+        self.inputRSel_tmnl_type(para['TMNL_TYPE'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

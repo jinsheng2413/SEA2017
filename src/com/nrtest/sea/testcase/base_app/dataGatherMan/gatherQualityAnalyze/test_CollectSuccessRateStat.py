@@ -65,13 +65,15 @@ class TestCollectSuccessRateStat(unittest.TestCase, CollectSuccessRateStatPage):
         """
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])  # 'ORG_NO'])
+        self.openLeftTree(para['TREE_NODE'])
+
         # 查询方式
-        self.inputChk_queryType(para['QUERY_TYPE_DAY'])
+        self.inputChk_query_type_day(para['QUERY_TYPE_DAY'])
+
         # 输入查询时间
-        self.inputStr_checkDate(para['CHECK_DATE'])
+        self.inputDt_check_date(para['CHECK_DATE'])
 
-
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

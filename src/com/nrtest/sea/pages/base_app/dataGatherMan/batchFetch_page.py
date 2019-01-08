@@ -13,27 +13,21 @@ from com.nrtest.common.base_page import Page
 
 class BatchFetchPage(Page):
     # 任务名称
-    def inputStr_taskName(self, value):
-        self.input(value)  # , *BatchFetchLocators.QRY_TASK_NAME)
+    def inputStr_task_name(self, value):
+        self.input(value)
 
     # 有效性
     def inputSel_effectiveness(self, name):
-        # self.click(BatchFetchLocators.QRY_EFFECTIVENESS)
-        # locator = self.get_select_locator(
-        #     BatchFetchLocators.QRY_EFFECTIVENESS_VALUE, name)
-        # self.click(locator)
         self.selectDropDown(name)
 
     # 开始时间
-    def inputStr_startTime(self, value):
-        self.inputDate(value)  #, *BatchFetchLocators.QRY_START_TIME)
+    def inputDt_start_time(self, value):
+        self.inputDate(value)
 
     # 操作人
     def inputStr_performer(self, value):
-        self.input(value)  #, *BatchFetchLocators.QRY_PERFORMER)
+        self.input(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        # self.click(BatchFetchLocators.BTN_QRY)
         self.btn_query()

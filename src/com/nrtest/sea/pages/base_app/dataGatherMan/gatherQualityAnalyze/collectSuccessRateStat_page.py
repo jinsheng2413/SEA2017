@@ -13,14 +13,13 @@ from com.nrtest.common.base_page import Page
 
 class CollectSuccessRateStatPage(Page):
     # 查询时间
-    def inputStr_checkDate(self, value):
-        self.inputDate(value)  # , *CollectSuccessRateStatLocators.QRY_CHECK_DATE)
+    def inputDt_check_date(self, value):
+        self.inputDate(value)
 
     # 查询方式
-    def inputChk_queryType(self, name):
+    def inputChk_query_type_day(self, name):
         self.clickRadioBox(name)
 
     # 查询
     def btn_qry(self):
-        # self.click(CollectSuccessRateStatLocators.BTN_QRY)
         self.btn_query()

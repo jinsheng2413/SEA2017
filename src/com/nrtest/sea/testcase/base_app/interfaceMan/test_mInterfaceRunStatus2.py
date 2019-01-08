@@ -56,8 +56,10 @@ class Test_MInterfaceRunStatus2(TestCase, MInterfaceRunStatus2Page):
     def query(self, para):
         # 业务系统
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])
+
         # 服务对象名称
         self.inputSel_service_name(para['SERVICE_NAME'])
+
         # 查询
         self.btn_qry()
 

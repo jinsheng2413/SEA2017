@@ -9,21 +9,27 @@
 """
 from unittest import TestCase
 
+from ddt import ddt, data
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_para import CostControlManage_para
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.locators.adv_app.costControlManage.costControlManage_page_locators import \
-    CostControlManagePageLocators
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.task.feiMange import *
 
 
+@ddt
 # 高级应用--》费控管理--》本地费控--》专变用户费控管理
-class TestCostControlManage(TestCase, CostControlManagePage):
+class TestSpecialCostControlManage(TestCase, CostControlManagePage):
     @classmethod
     def setUpClass(cls):
-        cls.driver = specil_user_fei_mange()
-        cls.orl = Oracle()
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(CostControlManage_data.specialFeiCostManage_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(CostControlManage_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -40,105 +46,63 @@ class TestCostControlManage(TestCase, CostControlManagePage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
-        :return:
+       测试结束后的操作，这里基本上都是关闭浏览器
+       :return:
+       """
+        # self.clear_values(SpecialUserBalanceQueryPage)
+
+        # 回收左边树
+        self.recoverLeftTree()
+
+    def query(self, para):
+        self.openLeftTree(para['TREE_NODE'])
+        # 营销单号
+        self.inputStr_mark_sigle(para['MARK_SIGLE'])
+        # 终端地址
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+        # 按
+        self.inputRSel_buy_ele_date(para['BUY_ELE_DATE'])
+        # 开始时间
+        self.inputDT_start_date(para['START_TIME'])
+        # 结束时间
+        self.inputDT_end_date(para['END_TIME'])
+        # 用户编号
+        self.inputStr_user_No(para['USER_NO'])
+        # 用户名称
+        self.inputStr_user_name(para['USER_NAME'])
+        # 业务类型
+        self.inputSel_buniess_cata(para['BUNIESS_CATA'])
+        # 参数下发状态
+        self.inputSel_para_deve(para['PARA_DEVE'])
+        self.btn_qry()
+
+    def assert_query_result(self, para):
         """
-        # self.clear_values(CostControlManagePage)
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
 
-    # 营销单号查询
-    @BeautifulReport.add_test_img()
-    def test_mark_single(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                CostControlManage_para.para_test_mark_single)
-        # 输入营销单号
-        self.inputStr_mark_sigle(lip[0][0])
-        # 输入开始时间
-        self.input_start_date(lip[0][1])
-        # 输入结束时间
-        self.input_end_date(lip[0][2])
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # 用户编号查询
     @BeautifulReport.add_test_img()
-    def test_user_no(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                CostControlManage_para.para_test_user_no)
-        # 输入
-        self.inputStr_user_num(lip[0][0])
-        # 输入开始时间
-        self.input_start_date(lip[0][1])
-        # 输入结束时间
-        self.input_end_date(lip[0][2])
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
-        self.assertTrue(result)
+    @data(*DataAccess.getCaseData(CostControlManage_data.specialFeiCostManage_para))
+    def test_query(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
 
-    # 用户名称查询
     @BeautifulReport.add_test_img()
-    def test_user_name(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                CostControlManage_para.para_test_user_name)
-        # 输入
-        self.inputStr_user_name(lip[0][0])
-        # 输入开始时间
-        self.input_start_date(lip[0][1])
-        # 输入结束时间
-        self.input_end_date(lip[0][2])
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 时间查询
-    @BeautifulReport.add_test_img()
-    def test_date(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                CostControlManage_para.para_test_date)
-        # 输入开始时间
-        self.input_start_date(lip[0][0])
-        # 输入结束时间
-        self.input_end_date(lip[0][1])
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 业务类型查询
-    @BeautifulReport.add_test_img()
-    def test_buiness_cata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                CostControlManage_para.para_test_buiness_cata)
-        self.inputSel_buniess_cata(lip[0][0])
-        # 输入开始时间
-        self.input_start_date(lip[0][1])
-        # 输入结束时间
-        self.input_end_date(lip[0][2])
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 参数下发状态查询
-    @BeautifulReport.add_test_img()
-    def test_para_lower_hair(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, CostControlManage_para.para_test_para_lower_hair)
-        self.inputSel_para_deve(lip[0][0])
-        # 输入开始时间
-        self.input_start_date(lip[0][1])
-        # 输入结束时间
-        self.input_end_date(lip[0][2])
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(CostControlManagePageLocators.TAB_ONE)
-        self.assertTrue(result)
+    @data(*DataAccess.getCaseData(CostControlManage_data.specialFeiCostManage_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

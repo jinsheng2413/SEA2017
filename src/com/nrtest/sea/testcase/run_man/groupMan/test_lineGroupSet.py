@@ -24,7 +24,7 @@ from com.nrtest.sea.pages.run_man.groupMan.lineGroupSet_page import *
 class TestLineGroupSet(TestCase, LineGroupSetPage):
     @classmethod
     def setUpClass(cls):
-        # # 打开菜单（需要传入对应的菜单编号）
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(GroupMan_data.LineGroupSet_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
@@ -77,15 +77,6 @@ class TestLineGroupSet(TestCase, LineGroupSetPage):
             self.btn_search()
         else:
             self.openLeftTree(para['TREE_NODE'])
-
-    #     # 校验
-    #     result = self.assert_context(LineGroupSetLocators.CHECK_FIRST)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(GroupMan_data.LineGroupSet_para))
-    # def test_der(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

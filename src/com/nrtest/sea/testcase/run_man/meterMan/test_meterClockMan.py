@@ -63,25 +63,32 @@ class TestMeterClockMan(TestCase, MeterClockManPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        self.inputSel_eventtype(para['EVENT_TYPE'])
-        self.inputSel_tmnlfactory(para['TMNL_FACORY'])
-        self.inputSel_meterfactory(para['METER_FACTORY'])
-        self.inputStr_tmnladdr(para['TMNL_ADDR'])
-        self.inputStr_userno(para['USER_NO'])
-        self.inputStr_meterno(para['METER_NO'])
-        self.inputDt_date(para['DATE'])
 
+        # 电表事件类型
+        self.inputSel_event_type(para['EVENT_TYPE'])
+
+        # 终端厂家
+        self.inputSel_tmnl_factory(para['TMNL_FACORY'])
+
+        # 电表厂家
+        self.inputSel_meter_factory(para['METER_FACTORY'])
+
+        # 终端地址
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+
+        # 电表资产号
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
+
+        # 日期<=
+        self.inputDt_date_range(para['DATE_RANGE'])
+
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 
-    #     # 校验
-    #     # result = self.assert_context()
-    #     # self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(MeterClockMan_data.MeterClockMan_para))
-    # def test_query(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

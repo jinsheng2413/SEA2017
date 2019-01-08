@@ -57,6 +57,7 @@ class TestCountServeDeploy(TestCase, CountServeDeployPage):
 
         # JOB名称
         self.inputSel_job_name(para['JOB_NAME'])
+
         # 服务名称
         self.inputSel_serve_name(para['SERVE_NAME'])
 
@@ -67,15 +68,6 @@ class TestCountServeDeploy(TestCase, CountServeDeployPage):
         self.btn_search()
         sleep(2)
 
-    #     # 校验
-    #     result = self.assert_context(CountServeDeployLocators.CHECK_FIRST)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(SysConfigManData.CountServeDeploy_para))
-    # def test_der(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

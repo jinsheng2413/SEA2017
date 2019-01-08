@@ -15,12 +15,8 @@ from com.nrtest.common.base_page import Page
 class MsgSetPage(Page):
     # 重要性级别
     def inputSel_importance_level(self, option):
-        # self.click(MsgSetLocators.QRY_IMPORTANCE_LEVEL)
-        # locator = self.get_select_locator(MsgSetLocators.QRY_IMPORTANCE_LEVEL_VALUE, option)
-        # self.click(locator)
         self.selectDropDown(option)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(MsgSetLocators.BTN_SEARCH)
         self.btn_query()

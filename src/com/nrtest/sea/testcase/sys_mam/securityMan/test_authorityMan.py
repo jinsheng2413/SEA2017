@@ -56,10 +56,13 @@ class TestAuthorityMan(TestCase, AuthorityManPage):
     def query(self, para):
         # 工号
         self.inputStr_staff_no(para['STAFF_NO'])
+
         # 用户名
         self.inputStr_user_name(para['USER_NAME'])
+
         # 当前状态
         self.inputSel_cur_status(para['CUR_STATUS'])
+
         # 查询按钮
         self.btn_query()
 

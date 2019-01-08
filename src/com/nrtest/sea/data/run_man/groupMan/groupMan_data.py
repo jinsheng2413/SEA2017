@@ -12,5 +12,6 @@
 class GroupMan_data:
     # 运行管理→群组管理→普通群组设置
     GeneralGroupSet_para = '99935100'
+
     # 运行管理→群组管理→线路群组设置
     LineGroupSet_para = '99935300'

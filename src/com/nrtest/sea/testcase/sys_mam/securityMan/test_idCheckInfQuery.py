@@ -24,7 +24,7 @@ from com.nrtest.sea.pages.sys_mam.securityMan.idCheckInfQuery_page import *
 class TestIdCheckInfQuery(TestCase, IdCheckInfQueryPage):
     @classmethod
     def setUpClass(cls):
-        # # 打开菜单（需要传入对应的菜单编号）
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SecutityMan_data.IdCheckInfQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
@@ -55,10 +55,13 @@ class TestIdCheckInfQuery(TestCase, IdCheckInfQueryPage):
     def query(self, para):
         # 审核开始日期
         self.inputDt_start_date(para['START_DATE'])
+
         # 审核结束日期
         self.inputDt_end_date(para['END_DATE'])
+
         # 审核结果
         self.inputSel_result(para['RESULT'])
+
         # 查询按钮
         self.btn_query()
 

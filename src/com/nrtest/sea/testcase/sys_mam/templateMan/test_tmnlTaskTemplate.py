@@ -25,7 +25,7 @@ from com.nrtest.sea.pages.sys_mam.templateMan.tmnlTaskTemplate_page import TmnlT
 class TestTmnlTaskTemplate(TestCase, TmnlTaskTemplatePage):
     @classmethod
     def setUpClass(cls):
-        # # 打开菜单（需要传入对应的菜单编号）
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(TemplateManData.TmnlTaskTemplate_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
@@ -56,18 +56,24 @@ class TestTmnlTaskTemplate(TestCase, TmnlTaskTemplatePage):
     def query(self, para):
         # 任务状态
         self.inputSel_task_stat(para['TASK_STAT'])
+
         # 方案类型
         self.inputSel_scheme_type(para['SCHEME_TYPE'])
+
         # 执行优先级
         self.inputSel_execution_priority(para['EXECUTION_PRIORITY'])
+
         # 启用开始时间
         is_sel_start = self.inputChk_use_startdate(para['USE_STARTDATE'])
+
         # 启用结束时间
         is_sel_end = self.inputChk_use_enddate(para['USE_ENDDATE'])
+
         # 是否勾选启用开始时间
         if is_sel_start:
             # 开始时间
             self.inputDt_start_date(para['START_DATE'])
+
         # 是否勾选启用结束时间
         if is_sel_end:
             # 结束时间
@@ -77,15 +83,6 @@ class TestTmnlTaskTemplate(TestCase, TmnlTaskTemplatePage):
         self.btn_search()
         sleep(2)
 
-    #     # 校验
-    #     result = self.assert_context(TmnlTaskTemplateLocators.CHECK_FIRST)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(TemplateManData.TmnlTaskTemplate_para))
-    # def test_der(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

@@ -65,23 +65,24 @@ class TestTerParaSet(TestCase, TermParaSetPage):
         # 打开左边树并选择
         sleep(2)
         self.openLeftTree(para['TREE_NODE'])
+
+        # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
+        # 终端厂商
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+
+        # 任务状态
         self.inputSel_task_status(para['TASK_STATUS'])
+
+        # 规约
         self.inputSel_tmnl_protory(para['TMNL_PROTORY'])
 
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 
-        # 校验
-        # result = self.assert_context()
-        # self.assertTrue(result)
 
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(TermParaSet_data.TermParaSet_para))
-    # def test_query(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

@@ -15,23 +15,16 @@ from com.nrtest.common.base_page import Page
 class OperatorManPage(Page):
     # 工号
     def inputStr_staff_no(self, content):
-        # self.input(content, *OperatorManLocators.QRY_STAFF_NO)
         self.input(content)
 
     # 用户名
     def inputStr_user_name(self, content):
-        # self.input(content, *OperatorManLocators.QRY_USER_NAME)
         self.input(content)
 
     # 当前状态
     def inputSel_cur_status(self, option):
-        # self.click(OperatorManLocators.QRY_CUR_STATUS)
-        # locator = self.get_select_locator(OperatorManLocators.QRY_CUR_STATUS_VALUE, option)
-        # self.click(locator)
         self.selectDropDown(option)
 
-    #
     # 查询按钮
     def btn_search(self):
-        # self.click(OperatorManLocators.BTN_SEARCH)
         self.btn_query()

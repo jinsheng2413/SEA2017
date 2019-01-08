@@ -20,13 +20,12 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysParameterMan_page import SysAbnormalParaSetPage
 
 
-# 系统管理→系统配置管理→系统参数管理
 # 系统管理→系统配置管理→系统参数管理→系统异常参数设置
 @ddt
 class TestSysAbnormalParaSet(TestCase, SysAbnormalParaSetPage):
     @classmethod
     def setUpClass(cls):
-        # # 打开菜单（需要传入对应的菜单编号）
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SysConfigManData.SysParameterMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
@@ -57,25 +56,20 @@ class TestSysAbnormalParaSet(TestCase, SysAbnormalParaSetPage):
     def query(self, para):
         # 参数名称
         self.inputSel_para_name(para['PARA_NAME'])
+
         # 参数编码
         self.inputStr_para_no(para['PARA_NO'])
-        # 参数项 名称
+
+        # 参数项名称
         self.inputStr_para_item_name(para['PARA_ITEM_NAME'])
+
         # 参数项编码
         self.inputStr_para_item_no(para['PARA_ITEM_NO'])
+
         # 查询按钮
         self.btn_search()
         sleep(2)
 
-    #     # 校验
-    #     result = self.assert_context(SysAbnormalParaSetLocators.CHECK_FIRST)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(SysConfigManData.SysParameterMan_para, SysConfigManData.SysAbnormalParaSet_tabName))
-    # def test_der(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

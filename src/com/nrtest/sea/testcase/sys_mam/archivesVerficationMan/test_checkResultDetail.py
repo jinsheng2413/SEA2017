@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultDetail_page 
 
 # 系统管理--》档案核查管理--》核查结果明细查询
 @ddt
-class TestVerficationResultDetail(TestCase, CheckResultDetailPage):
+class TestCheckResultDetail(TestCase, CheckResultDetailPage):
 
     @classmethod
     def setUpClass(cls):

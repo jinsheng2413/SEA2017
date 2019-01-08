@@ -65,10 +65,23 @@ class TestTaskTemplateSet(TestCase, TaskTemplateSetPage):
         self.openLeftTree(para['TREE_NODE'])
         # 选择模板
         self.inputSel_selectModule(para['SELECT_MODULE'])
-
+        # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.taskTemplateSet_para))

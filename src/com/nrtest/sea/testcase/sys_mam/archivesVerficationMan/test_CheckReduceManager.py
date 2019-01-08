@@ -63,23 +63,14 @@ class TestCheckReduceManager(TestCase, CheckReduceManagerPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 开始时间
+        # 开始日期
         self.inputStr_startTime(para['START_TIME'])
-        # 结束时间
+        # 结束日期
         self.inputDt_end_time(para['END_TIME'])
         # 申请单号
         self.inputDt_applyNo(para['APPLY_NO'])
-
+        # 查询
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        # result = self.assert_context()
-        # self.assertTrue(result)
-
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReduceManager_para))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

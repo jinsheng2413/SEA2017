@@ -12,6 +12,9 @@ from com.nrtest.common.base_page import Page
 
 
 class CollectSuccessRateJbPage(Page):
+    # 电压类型
+    def inputChk_eleType(self, name):
+        self.clickRadioBox(name)
     # 通信规约
     def inputSel_conmunicationGlue(self, name):
         # self.click(CollectSuccessRateJbLocators.QRY_COMUNICATION_GLUE)

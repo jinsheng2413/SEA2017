@@ -30,7 +30,7 @@ class TestBackgroupServeMonitorDetail(TestCase, BackgroupServeMonitorDetailPage)
         sleep(1)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SysConfigManData.BackgroupServeMonitor_tabName)
+        menuPage.clickTabPage(SysConfigManData.BackgroupServeMonitorDetail_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -72,13 +72,6 @@ class TestBackgroupServeMonitorDetail(TestCase, BackgroupServeMonitorDetailPage)
 
         # 查询按钮
         self.btn_search()
-
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(SysConfigManData.BackgroundServeMonitor_para,
-    #                             SysConfigManData.BackgroupServeMonitorDetail_tabName))
-    # def test_der(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

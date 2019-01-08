@@ -55,18 +55,16 @@ class TestTmnlParaTemplate(TestCase, TmnlParaTemplatePage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
+
         # 终端规约
         self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
+
         # 查询按钮
         self.btn_search()
 
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(TemplateManData.TmnlParaTemplate_para))
-    # def test_der(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

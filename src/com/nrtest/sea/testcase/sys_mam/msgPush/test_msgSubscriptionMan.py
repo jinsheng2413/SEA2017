@@ -56,23 +56,17 @@ class TestMsgSubscriptionMan(TestCase, MsgSubscriptionManPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 订阅类型
         self.inputSel_sub_type(para['SUB_TYPE'])
+
         # 发送范围
         self.inputSel_send_scope(para['SEND_SCOPE'])
+
         # 查询按钮
         self.btn_search()
         sleep(2)
 
-    #     # 校验
-    #     result = self.assert_context(MsgSubscriptionManLocators.CHECK_FIRST)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(MsgPushData.MsgSubscriptionMan_para))
-    # def test_der(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

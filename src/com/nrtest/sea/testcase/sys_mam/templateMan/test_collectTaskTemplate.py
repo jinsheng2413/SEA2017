@@ -57,25 +57,20 @@ class TestCollectTaskTemplate(TestCase, CollectTaskTemplatePage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 任务分类
         self.inputSel_task_classify(para['TASK_CLASSIFY'])
+
         # 任务类型
         self.inputSel_task_type(para['TASK_TYPE'])
+
         # 模板名称
         self.inputStr_template_name(para['TEMPLATE_NAME'])
+
         # 查询按钮
         self.btn_search()
         sleep(2)
 
-        # 校验
-        # result = self.assert_context(CollectTaskTemplateLocators.CHECK_FIRST)
-        # self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(TemplateManData.CollectTaskTemplate_para))
-    # def test_der(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

@@ -58,25 +58,19 @@ class TestUserOperationMonitor(TestCase, UserOperationMonitorPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_stat_date(para['STAT_DATE'])
+
         # 操作模块
         self.inputSel_operation_module(para['OPERATION_MODULE'])
+
         # 操作人员
         self.inputStr_operator(para['OPERATOR'])
+
         # 查询按钮
         self.btn_search()
 
-    #     # 校验
-    #     sleep(2)
-    #     result = self.assert_context(UserOperationMonitorLocators.CHECK_FIRST)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(SysConfigManData.UserOperationMonitor_para))
-    # def test_der(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

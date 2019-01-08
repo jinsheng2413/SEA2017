@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.run_man.clock.tTmnlCheckClock_page import TmnlClockSta
 
 
 # 运行管理→时钟管理→终端对时
-# 终端对时统计
+# 终端时钟统计
 @ddt
 class TestTmnlClockStatic(TestCase, TmnlClockStaticPage):
 

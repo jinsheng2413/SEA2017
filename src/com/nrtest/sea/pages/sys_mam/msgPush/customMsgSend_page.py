@@ -15,20 +15,16 @@ from com.nrtest.common.base_page import Page
 class CustomMsgSendPage(Page):
     # 单位名称
     def inputStr_org_name(self, content):
-        # self.input(content, *CustomMsgSendLocators.QRY_ORG_NAME)
         self.input(content)
 
     # 联系人
     def inputStr_linkman(self, content):
-        # self.input(content, *CustomMsgSendLocators.QRY_LINKMAN)
         self.input(content)
 
     # 手机号码
     def inputStr_phone_no(self, content):
-        # self.input(content, *CustomMsgSendLocators.QRY_PHONE_NO)
         self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(CustomMsgSendLocators.BTN_SEARCH)
         self.btn_query()

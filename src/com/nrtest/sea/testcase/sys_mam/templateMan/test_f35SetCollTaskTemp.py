@@ -25,7 +25,7 @@ from com.nrtest.sea.pages.sys_mam.templateMan.f35SetCollTaskTemp_page import F35
 class TestF35SetCollTaskTemp(TestCase, F35SetCollTaskTempPage):
     @classmethod
     def setUpClass(cls):
-        # # 打开菜单（需要传入对应的菜单编号）
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(TemplateManData.F35SetCollTaskTemp_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
@@ -56,25 +56,20 @@ class TestF35SetCollTaskTemp(TestCase, F35SetCollTaskTempPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 任务分类
         self.inputSel_task_classify(para['TASK_CLASSIFY'])
+
         # 任务类型
         self.inputSel_task_type(para['TASK_TYPE'])
+
         # 模板名称
         self.inputStr_template_name(para['TEMPLATE_NAME'])
+
         # 查询按钮
         self.btn_search()
         sleep(2)
 
-    #     # 校验
-    #     result = self.assert_context(F35SetCollTaskTempLocators.CHECK_FIRST)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(TemplateManData.F35SetCollTaskTemp_para))
-    # def test_der(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

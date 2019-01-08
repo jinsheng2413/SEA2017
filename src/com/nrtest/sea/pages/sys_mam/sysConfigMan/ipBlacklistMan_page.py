@@ -15,10 +15,8 @@ from com.nrtest.common.base_page import Page
 class IpBlacklistManPage(Page):
     # IP地址
     def inputStr_ip_addr(self, content):
-        # self.input(content, *IpBlacklistManLocators.QRY_IP_ADDR)
         self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(IpBlacklistManLocators.BTN_SEARCH)
         self.btn_query()

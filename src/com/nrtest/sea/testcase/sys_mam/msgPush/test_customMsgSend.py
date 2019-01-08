@@ -56,18 +56,16 @@ class TestCustomMsgSend(TestCase, CustomMsgSendPage):
     def query(self, para):
         # 单位名称
         self.inputStr_org_name(para['ORG_NAME'])
+
         # 联系人
         self.inputStr_linkman(para['LINKMAN'])
+
         # 手机号码
         self.inputStr_phone_no(para['PHONE_NO'])
+
         # 查询按钮
         self.btn_search()
 
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(MsgPushData.CustomMsgSend_para))
-    # def test_der(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

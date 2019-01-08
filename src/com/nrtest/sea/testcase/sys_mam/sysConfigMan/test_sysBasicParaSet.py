@@ -20,7 +20,6 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysParameterMan_page import SysBasicParaSetPage
 
 
-# 系统管理→系统配置管理→系统参数管理
 # 系统管理→系统配置管理→系统参数管理→系统基本参数设置
 @ddt
 class TestSysBasicParaSet(TestCase, SysBasicParaSetPage):
@@ -57,25 +56,20 @@ class TestSysBasicParaSet(TestCase, SysBasicParaSetPage):
     def query(self, para):
         # 参数名称
         self.inputSel_para_name(para['PARA_NAME'])
+
         # 参数编码
         self.inputStr_para_no(para['PARA_NO'])
+
         # 参数项名称
         self.inputStr_para_item_name(para['PARA_ITEM_NAME'])
+
         # 参数项编码
         self.inputStr_para_item_no(para['PARA_ITEM_NO'])
+
         # 查询按钮
         self.btn_search()
         sleep(2)
 
-    #     # 校验
-    #     result = self.assert_context(SysBasicParaSetLocators.CHECK_FIRST)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(SysConfigManData.SysParameterMan_para, SysConfigManData.SysBasicParaSet_tabName))
-    # def test_der(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

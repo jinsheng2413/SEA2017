@@ -54,6 +54,7 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
         # 去除查询干扰数据(要传入对应的page页面类)
         # self.clear_values(SysDictManPage)
         # 回收左边树
+        print('----------------------')
         self.recoverLeftTree()
 
     def query(self, para):
@@ -93,7 +94,7 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_AvailableCapacityAnalyse))
+    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_AvailableCapacityAnalyse)[1:2])
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验

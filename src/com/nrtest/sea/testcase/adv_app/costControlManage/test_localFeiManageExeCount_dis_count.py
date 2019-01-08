@@ -50,62 +50,20 @@ class TestlocalFeiManageExeCount_dis_count(TestCase, LocalFeiManageExeCount_dis_
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
+        self.recoverLeftTree()
 
     def query(self, para):
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
         # 工单类型
         self.inputSel_app_type(para['APP_TYPE'])
         # 费控用户类型
         self.inputSel_fee_ctrl_type(para['FEE_CTRL_TYPE'])
-
+        # 接收时间
         self.inputDt_receive_time(para['RECEIVE_TIME'])
+        #结束时间
         self.inputDt_end_time(para['END_TIME'])
         self.btn_qry()
-
-    # # 工单总数明细
-    # def test_lfdc_workAll_detail(self):
-    #     self.commonTime()
-    #     # 点击查询
-    #     self.btn_qry()
-    #     self.sleep_time(1)
-    #     self.btn_work_all()
-    #
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(
-    #         *LocalFeiManageExeCount_dis_count_Locators.BTN_LOCAL_FEI_MANGE_EXE_COUNT)
-    #     self.assertTrue(result)
-    #     self.btn_localFeiMangeexeCount()
-    #
-    # # 执行成功工单总数明细
-    # def test_lfdc_workSuccessAll_detail(self):
-    #     self.commonTime()
-    #     # 点击查询
-    #     self.btn_qry()
-    #     self.sleep_time(1)
-    #     self.btn_work_success_all()
-    #
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(
-    #         *LocalFeiManageExeCount_dis_count_Locators.BTN_LOCAL_FEI_MANGE_EXE_COUNT)
-    #     self.assertTrue(result)
-    #     self.btn_localFeiMangeexeCount()
-    #
-    #     # 执行失败工单总数明细
-    #
-    # def test_lfdc_workfailAll_detail(self):
-    #     self.commonTime()
-    #     # 点击查询
-    #     self.btn_qry()
-    #     self.sleep_time(1)
-    #     self.btn_work_fail_all()
-    #
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(
-    #         *LocalFeiManageExeCount_dis_count_Locators.BTN_LOCAL_FEI_MANGE_EXE_COUNT)
-    #     self.assertTrue(result)
-    #     self.btn_localFeiMangeexeCount()
 
     def assert_query_result(self, para):
         """

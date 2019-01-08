@@ -52,6 +52,8 @@ class TestlocalFeiManageExeCount_dis_detail(TestCase, LocalFeiManageExeCount_dis
         """
 
     def query(self, para):
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
         # 费控用户类型
         self.inputSel_fee_ctrl_type(para['FEE_CTRL_TYPE'])
 

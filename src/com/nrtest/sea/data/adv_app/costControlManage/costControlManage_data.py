@@ -24,7 +24,7 @@ class CostControlManage_data:
     custControlCommissioning_tab_cust = ''
 
     # 高级应用--》费控管理--》本地费控--》本地费控执行统计
-    localFeiManageExeCount_para = ''
+    localFeiManageExeCount_para = '99922160'
     localFeiManageExeCount_tab_stats = '费控情况统计'
     localFeiManageExeCount_tab_detail = '费控情况明细'
     # 高级应用--》费控管理--》本地费控--》专变费控管理

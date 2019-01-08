@@ -1255,7 +1255,7 @@ class Page():
                         self.btn_confirm()
 
                         try:
-                            skipMenuName = '//*[@class="x-tab-strip-text "and contains(text(),"{}")]'.format(
+                            skipMenuName = "//span[@class=\"x-tab-strip-inner\"]/span[contains(text(),'{}')]".format(
                                 assertValues[2])
                             result = self.assert_context((By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
                             if 1:

@@ -10,10 +10,10 @@
 
 from unittest import TestSuite, TestLoader, TextTestRunner
 
-from com.nrtest.sea.testcase.stat_rey.reportMan.ItsChinese.test_tmnlInsertQuery import TestTmnlInsertQuery
+from com.nrtest.sea.testcase.adv_app.transformerMonitor.transformerLoadAnalyse.test_availableCapacityAnalyse import TestLoadRateStatic
 
 suite = TestSuite()
-suite.addTests(TestLoader().loadTestsFromTestCase(TestTmnlInsertQuery))
+suite.addTests(TestLoader().loadTestsFromTestCase(TestLoadRateStatic))
 # tests = [TestGatherSuccessRate('test_epp_task_type')]
 # suite.addTests(tests)
 

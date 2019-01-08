@@ -15,6 +15,7 @@ class ClockData:
     para_TTmnlCheckClock_static = '终端时钟统计'
     para_TTmnlCheckClock_detail = '终端时钟明细'
     para_TTmnlCheckClock_policy = '自动对时策略配置'
+    para_TTmnlCheckClock_manual = '终端手工对时'
     # 运行管理--》时钟管理--》电能表对时
     para_MetCheckClock = '99932200'
     para_MetCheckClock_monthstatic = '电表时钟月统计'

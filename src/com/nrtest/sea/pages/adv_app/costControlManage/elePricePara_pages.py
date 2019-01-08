@@ -39,25 +39,28 @@ class ElePricePages(Page):
         #     ElePricePara_locators.QRY_TASK_CATA_VALUE, index)
         # # print(locator)
         # self.click(locator)
+        self.clean_label(index)
         self.selectDropDown(index)
 
     # 执行状态
-    def inputSel_execute_state(self, index):
+    def inputSel_execute_state(self, option):
         # self.click(ElePricePara_locators.QRY_EXECUTE_STATE)
         # locator = self.get_select_locator(
         #     ElePricePara_locators.QRY_EXECUTE_STATE_VALUE, index)
         # # print(locator)
         # self.click(locator)
-        self.selectDropDown(index)
+        self.clean_label(option)
+        self.selectDropDown(option)
 
 
     # 接收时间
     def inputStr_receive_time(self, value):
-        self.input(value)  #, *ElePricePara_locators.QRY_RECEIVE_DATE)
+        self.clean_label(value)
+        self.inputDate(value)  # , *ElePricePara_locators.QRY_RECEIVE_DATE)
 
     # 结束时间
     def inputStr_end_time(self, value):
-        self.input(value)  #, *ElePricePara_locators.QRY_END_TIME)
+        self.inputDate(value)  #, *ElePricePara_locators.QRY_END_TIME)
 
     # 查询
     def btn_qry(self):

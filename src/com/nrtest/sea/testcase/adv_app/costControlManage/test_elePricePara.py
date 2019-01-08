@@ -9,21 +9,23 @@
 """
 from unittest import TestCase
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.adv_app.costControlManage.elePricePara_para import ElePricePara_para
-from com.nrtest.sea.data.common.data_common import DataCommon
-from com.nrtest.sea.locators.adv_app.costControlManage.elePricePara_locators import ElePricePara_locators
+from ddt import data
+
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.adv_app.costControlManage.localCostControl.localCostControl_para import LocalCostContral_data
 from com.nrtest.sea.pages.adv_app.costControlManage.elePricePara_pages import ElePricePages
-from com.nrtest.sea.task.feiMange import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》费控管理--》本地费控--》电价参数下发
 class TestElePricePara(TestCase, ElePricePages):
     @classmethod
     def setUpClass(cls):
-        cls.driver = ele_price_para()
-        cls.orl = Oracle()
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(LocalCostContral_data.elePricePara_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -43,130 +45,66 @@ class TestElePricePara(TestCase, ElePricePages):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # self.clear_values(ElePricePages)
+        # 回收左边树
+        self.recoverLeftTree()
 
-    def commomTime(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ElePricePara_para.para_test_epp_workNumber)
-        # 输入接收时间
-        self.inputStr_receive_time(lip[0][1])
-        # 输入结束时间
-        self.inputStr_end_time(lip[0][2])
-
-        # 工单编号查询
-
-    @BeautifulReport.add_test_img()
-    def test_epp_workNumber(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ElePricePara_para.para_test_epp_workNumber)
-        # 输入工单编号
-        self.inputStr_work_num(lip[0][0])
-        # 输入接收时间
-        self.inputStr_receive_time(lip[0][1])
-        # 输入结束时间
-        self.inputStr_end_time(lip[0][2])
-        # 点击查询
+    def query(self, para):
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+        # 工单编号
+        self.inputStr_work_num(para['WORK_NO'])
+        # 用户编号
+        self.inputStr_user_No(para['USER_NO'])
+        # 接收时间
+        self.inputStr_receive_time(para['RECEIVE_TIME'])
+        # 执行状态
+        self.inputSel_execute_state(para['EXECUTE_STATE'])
+        # 终端地址
+        self.inputStr_terminal_addr(para['TMNL_ADDR'])
+        # 电表地址
+        self.inputStr_meter_addr(para['METER_ADDR'])
+        # c抄表段号
+        self.inputStr_meter_reading_num(para['METER_READ_NUM'])
+        # 结束时间
+        self.inputStr_end_time(para['END_TIME'])
+        # 任务类型
+        self.inputSel_task_cata(para['TASK_CATA'])
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ElePricePara_locators.TAB_ONE)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # 用户编号查询
-    @BeautifulReport.add_test_img()
-    def test_epp_user_number(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ElePricePara_para.para_test_epp_user_number)
-        # 输入用户编号
-        self.inputStr_user_num(lip[0][0])
-        self.commomTime()
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ElePricePara_locators.TAB_ONE)
-        self.assertTrue(result)
+    @data(*DataAccess.getCaseData(LocalCostContral_data.elePricePara_para))
+    def test_query(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
 
-    # 终端地址查询
-    @BeautifulReport.add_test_img()
-    def test_epp_terminal_addr(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ElePricePara_para.para_test_epp_terminal_addr)
-        # 输入终端地址
-        self.inputStr_terminal_addr(lip[0][0])
-        self.commomTime()
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ElePricePara_locators.TAB_ONE)
-        self.assertTrue(result)
+    # #@BeautifulReport.add_test_img()
+    # @data(*DataAccess.getCaseData(LocalCostContral_data.elePricePara_para))
+    # def test_q(self, para):
+    #     self.start_case(para, __file__)
+    #     self.query(para)
+    #     self.assert_query_result(para)
+    #     self.end_case()
 
-    # 电表地址查询
-    @BeautifulReport.add_test_img()
-    def test_epp_meter_addr(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ElePricePara_para.para_test_epp_meter_addr)
-        # 输入电表地址
-        self.inputStr_meter_addr(lip[0][0])
-        self.commomTime()
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ElePricePara_locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 抄表段号
-    @BeautifulReport.add_test_img()
-    def test_epp_meter_reading_number(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, ElePricePara_para.para_test_epp_meter_reading_number)
-        # 输入抄表段号
-        self.inputStr_meter_reading_num(lip[0][0])
-        self.commomTime()
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ElePricePara_locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 时间查询
-    @BeautifulReport.add_test_img()
-    def test_epp_time(self):
-        self.commomTime()
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ElePricePara_locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 执行状态查询
-    @BeautifulReport.add_test_img()
-    def test_epp_execute_state(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ElePricePara_para.para_test_epp_execute_state)
-        self.commomTime()
-        self.inputSel_execute_state(lip[0][0])
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ElePricePara_locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 任务类型查询
-    @BeautifulReport.add_test_img()
-    def test_epp_task_type(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ElePricePara_para.para_test_epp_task_type)
-        self.commomTime()
-        self.inputSel_task_cata(lip[0][0])
-        # 点击查询
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ElePricePara_locators.TAB_ONE)
-        self.assertTrue(result)
+    # @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LocalCostContral_data.elePricePara_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

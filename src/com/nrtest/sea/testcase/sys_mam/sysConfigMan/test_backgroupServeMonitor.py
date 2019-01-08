@@ -68,6 +68,7 @@ class TestBackgroupServeMonitor(TestCase, BackgroupServeMonitorPage):
 
         # 运行状态
         self.inputSel_operation_stat(para['OPERATION_STAT'])
+
         # 查询按钮
         self.btn_search()
 

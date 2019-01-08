@@ -24,7 +24,7 @@ from com.nrtest.sea.pages.sys_mam.securityMan.roleMan_page import *
 class TestRoleMAn(TestCase, RoleMAnPage):
     @classmethod
     def setUpClass(cls):
-        # # 打开菜单（需要传入对应的菜单编号）
+        # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SecutityMan_data.RoleMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
@@ -55,6 +55,7 @@ class TestRoleMAn(TestCase, RoleMAnPage):
     def query(self, para):
         # 角色名称
         self.inputStr_role_name(para['ROLE_NAME'])
+
         # 查询按钮
         self.btn_query()
 

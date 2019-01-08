@@ -81,47 +81,6 @@ class TestGeneralGroupSet(TestCase, GeneralGroupSetPage):
         else:
             self.openLeftTree(para['TREE_NODE'])
 
-    #     # 校验
-    #     result = self.assert_context(GeneralGroupSetLocators.CHECK_FIRST)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para))
-    # def test_der(self, para):
-    #     self.query(para)
-
-    # def assert_query_result(self, para):
-    #     """
-    #     查询结果校验（包括跳转）
-    #     :param para:
-    #     """
-    #     self.assertTrue(self.check_query_result(para))
-    #
-    # def assert_query_criteria(self, para):
-    #     """
-    #     查询条件校验
-    #     :param para:
-    #     """
-    #     result = self.check_query_criteria(para)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para))
-    # def test_query(self, para):
-    #     self.start_case(para, __file__)
-    #     self.query(para)
-    #     if para['TAB_PAGE_SEL'] == self.tab_page:  #管理群组
-    #         self.assert_query_result(para)
-    #     self.end_case()
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para, valCheck=True))
-    # def _test_checkValue(self, para):
-    #     self.start_case(para, __file__)
-    #     self.query(para)
-    #     if para['TAB_PAGE_SEL'] == self.tab_page:  #管理群组
-    #         self.assert_query_criteria(para)
-    #     self.end_case()
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

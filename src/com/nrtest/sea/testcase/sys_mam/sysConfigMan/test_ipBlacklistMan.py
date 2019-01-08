@@ -55,14 +55,10 @@ class TestIpBlacklistMan(TestCase, IpBlacklistManPage):
     def query(self, para):
         # IP地址
         self.inputStr_ip_addr(para['IP_ADDR'])
+
         # 查询按钮
         self.btn_search()
 
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(SysConfigManData.IpBlacklistMan_para))
-    # def test_der(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

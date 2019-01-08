@@ -20,20 +20,14 @@ class BackgroupServeMonitorPage(Page):
 
     # 查询日期/从/到
     def inputDt_date(self, value):
-        # self.exec_script(BackgroupServeMonitorLocators.DATE_JS)
-        # self.input(value, *BackgroupServeMonitorLocators.QRY_DATE)
         self.inputDate(value, True)
 
     # 运行状态
     def inputSel_operation_stat(self, option):
-        # self.click(BackgroupServeMonitorLocators.QRY_OPERATION_STAT)
-        # locator = self.get_select_locator(BackgroupServeMonitorLocators.QRY_OPERATION_STAT_VALUE, option)
-        # self.click(locator)
         self.selectDropDown(option, True)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(BackgroupServeMonitorLocators.BTN_SEARCH)
         self.btn_query(True)
 
 
@@ -41,12 +35,10 @@ class BackgroupServeMonitorPage(Page):
 class BackgroupServeMonitorDetailPage(Page):
     # JOB名称
     def inputStr_job_name(self, content):
-        # self.input(index, *BackgroupServeMonitorDetailLocators.QRY_JOB_NAME)
         self.input(content)
 
     # 服务名称
     def inputStr_serve_name(self, content):
-        # self.input(index, *BackgroupServeMonitorDetailLocators.QRY_SERVE_NAME)
         self.input(content)
 
     # 日期类型选择
@@ -59,5 +51,4 @@ class BackgroupServeMonitorDetailPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(BackgroupServeMonitorDetailLocators.BTN_SEARCH)
         self.btn_query(True)

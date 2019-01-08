@@ -54,7 +54,8 @@ class TestDatabaseUpgradeStat(TestCase, DatabaseUpgradeStatPage):
 
     def query(self, para):
         # 升级日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_upgrade_date(para['UPGRADE_DATE'])
+
         # 查询按钮
         self.btn_query()
 

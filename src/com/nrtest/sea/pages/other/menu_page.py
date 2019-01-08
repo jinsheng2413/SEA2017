@@ -13,37 +13,11 @@ from com.nrtest.common import global_drv
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.login import Login
-from com.nrtest.sea.locators.other.menu_locators import MenuLocators
+from com.nrtest.common.setting import Setting
+from com.nrtest.sea.locators.other.menu_locators import *
 
 
 class MenuPage(Page):
-    # def click_menu(self, menu_no, by_name=True):
-    #     """
-    #     定位级菜单element,并调用Base_Page类的click方法选择级菜单
-    #     :param menu_no: 菜单编号
-    #     :param by_name: True-按菜单名定位；False-按菜单坐标定位
-    #     :return: 返回driver
-    #     """
-    #
-    #     # 按菜单名定位菜单
-    #     if by_name:
-    #         self.click_menu(menu_no)
-    #         return self.driver
-    #
-    #     coordinate = DataAccess.getMenu(menu_no, by_name)
-    #     items = coordinate.split(';')
-    #     l = len(items)
-    #     for i in range(len(items)):
-    #         locators = getattr(MenuLocators, 'MENU_LEVEL_IDX_' + str(i + 1))
-    #         idx = int(items[i])
-    #         idx = idx + 1 if i == 0 else idx
-    #         loc = (locators[0], locators[1] % idx)
-    #         if (l == 4 and i == 2) or (l == 5 and i in (2, 3)):
-    #             self.hover(*loc)
-    #         else:
-    #             self.click(loc)
-    #     return self.driver
-
     @staticmethod
     def openMenu(menuNo):
         """
@@ -62,13 +36,11 @@ class MenuPage(Page):
         :param isPath: True-menu_no是已确定的菜单路径，False-menu_no是菜单编码
         :return:各级菜单名，如：基本应用;档案管理;档案同步  一级菜单下第一个菜单下的第二个子菜单
         """
-
         menu_path = menu_no if isPath else DataAccess.getMenu(menu_no)
-        # items = menu_path.split(';')
-
         ls_menu = menu_path.split(',')
         menu_path = ls_menu[0]
-        is_scroll = ls_menu[1]
+        # 菜单动作：01-点击；02-悬浮（HOVER)；03-新窗口；11-滚屏且点击；12-滚屏且悬浮；13-滚屏且新窗口
+        action = ls_menu[1]
         items = menu_path.split(';')
 
         # 菜单编号、菜单名
@@ -80,39 +52,107 @@ class MenuPage(Page):
 
         # 当菜单已打开已打开时不再重新打开
         if not self.exists_menu:
-            item_cnt = len(items)
-            for i in range(item_cnt):
-                locators = getattr(MenuLocators, 'MENU_LEVEL' + str(i + 1))
-                loc = (locators[0], locators[1] % items[i])
-                if (item_cnt == 4 and i == 2) or (item_cnt == 5 and i in (2, 3)):
-                    self.hover(loc)
-                else:
-                    # 菜单太多需要滚屏处理,如：统计查询→综合查询→巡检仪综合查询
-                    if i + 1 == item_cnt and is_scroll == 'Y':
-                        self._scroll_menu(loc)
-                    else:
-                        self.click(loc)
-        sleep(2)
+            # SEA--SEA2017标设
+            # SEA2.0--新一代采集系统
+            # SZ_JLZDH--计量自动化(SZ)
+            # GX_JLZDH--计量自动化(GX)
+            # D5000--电能量采集系统（D5000/PBS5000)
+            project_no = Setting.PROJECT_NO
+            if project_no == 'SEA':
+                self.locator_class = MenuLocators
+                self._click_sea2017(items, action)
+            else:
+                if project_no == 'SEA2.0':
+                    self.locator_class = MenuSEA20Locators
+                elif project_no in (['D5000', 'PBS5000']):
+                    self.locator_class = MenuPBSLocators
+                elif project_no.endswith('JLZDH'):
+                    self.locator_class = MenuJLZDHLocators
+                self._click_common_menu(items, action)
 
-    def _scroll_menu(self, locator):
+    def _click_sea2017(self, items, action='01'):
+        """
+        国网2017标设菜单处理
+        :param items:
+        :param action:
+        :return:
+        """
+        item_cnt = len(items)
+        for i, item in enumerate(items):
+            # MenuLocators
+            locators = getattr(self.locator_class, 'MENU_LEVEL' + str(i + 1))
+            loc = (locators[0], locators[1] % item)
+            if (item_cnt == 4 and i == 2) or (item_cnt == 5 and i in (2, 3)):
+                self.hover(loc)
+            else:
+                # 菜单太多需要滚屏处理,如：统计查询→综合查询→巡检仪综合查询
+                # action:11-滚屏且点击
+                if i + 1 == item_cnt and action == '11':
+                    self._scroll_menu(loc, action)
+                else:
+                    self.click(loc)
+
+    def _click_common_menu(self, items, actions):
+        """
+        通用菜单打开操作
+        :param items: 菜单路径
+        :param actions:菜单操作动作
+        :return:
+        """
+        ls_action = actions.split('/')
+        if ls_action[-1] == '':
+            ls_action.pop()
+        for i, item in enumerate(items):
+            locators = getattr(self.locator_class, 'MENU_LEVEL' + str(i + 1))
+            loc = (locators[0], locators[1].format(item))
+            try:
+                action = ls_action[i]
+            except:
+                action = '01'
+            self._menu_action(loc, action)
+
+    def _menu_action(self, object, action):
+        """
+        菜单操作动作
+        :param object: 元素对象或xpath
+        :param action: 菜单动作
+        """
+        flag = action[-1]
+        if flag in ('1', '3'):  # 1-点击/3-新窗口
+            if isinstance(object, tuple):
+                self.click(object)
+            else:
+                object.click()
+            if flag == '3':  # 新窗口
+                sleep(2)  # 等待窗口打开
+                self.switch_to_window()
+        elif flag == '2':  # 悬浮
+            self.hover(object)  # 参数必须是locator
+
+    def _scroll_menu(self, locator, action):
         """
         菜单太多时需要滚屏
         :param locator: 菜单xpath
         """
         try:
-            # el_menu = self.driver.find_element(*locator)
+            flag = action[-1]
             el_menu = self._find_element(locator, ec_mode=1)
+            # 当菜单动作为hover时，_menu_action.object的值为xpath对象
+            object = locator if flag == 2 else el_menu
             if el_menu.is_displayed():
-                el_menu.click()
+                # el_menu.click()
+                self._menu_action(object, action)
             else:
-                el = self._find_element(MenuLocators.BTN_SCROLL_DOWN)
+                # el = self._find_element(MenuLocators.BTN_SCROLL_DOWN)
+                el = self._find_element(self.locator_class.BTN_SCROLL_DOWN)
                 cnt = 0  # 避免菜单不存在
                 while cnt < 15:
                     el.click()
                     sleep(0.5)
                     cnt += 1
                     if el_menu.is_displayed():
-                        el_menu.click()
+                        # el_menu.click()
+                        self._menu_action(object, action)
                         break
         except Exception as ex:
             DataAccess.el_operate_log(self.menu_name, None, locator, None, '找不到元素', ex)

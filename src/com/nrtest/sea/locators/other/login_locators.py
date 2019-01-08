@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-class LoginPageLocators:
+class LoginLocators:
     # 【输入框】
     # -->用户名
     # 国网标设
@@ -33,7 +33,7 @@ class LoginPageLocators:
     # 国网标设
     BTN_LOGIN = (By.XPATH, '//img[@src="./images/loginbutton.png"]')
     # 电量PBS5000
-    # BTN_LOGIN = (By.XPATH, '//button[@id = "buttonLogin"]')
+    # BTN_LOGIN = (By.XPATH, '//button[@id="buttonLogin"]')
 
     # 验证码刷新按钮
     BTN_IDENTIFYING_CODE = (By.XPATH, '//*[@id="imageMask"]')
@@ -52,4 +52,3 @@ class LoginPageLocators:
     # LOGIN_SUCCESS = (By.XPATH, '//i[@onclick="modifypassword()"]')
 
     BTN_INFORMATAIN_PUS = (By.XPATH, "//span[contains(text(),'重要信息推出')]")
-

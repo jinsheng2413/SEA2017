@@ -11,26 +11,24 @@ from selenium.webdriver.common.by import By
 
 
 class MenuLocators:
+    """
+    SEA2017标设的菜单元素
+    """
+
     # 一级菜单
-    # 通过菜单坐标定位
-    MENU_LEVEL_IDX_1 = (By.XPATH, '//*[@id ="menu1"]/tbody/tr/td[%s]')
     # 通过菜单名定位，下同
     MENU_LEVEL1 = (By.XPATH, '//*[@id ="menu1"]/tbody/tr//img[@id="%s"]')
 
     # 二级菜单
-    MENU_LEVEL_IDX_2 = (By.XPATH, '//*[@id="smenu"]//*[@class="x-toolbar-left-row"]/td[%s]')
     MENU_LEVEL2 = (By.XPATH, '//*[@id="smenu"]//*[@class="x-toolbar-left-row"]//*[@type="button" and text() = "%s"]')
 
     # 三级菜单
-    MENU_LEVEL_IDX_3 = (By.XPATH, '//ul[@class="x-menu-list"]/li[%s]')
     MENU_LEVEL3 = (By.XPATH, '//ul[@class="x-menu-list"]/li/a/span[text() = "%s"]')
-    #                             '//ul[@class="x-menu-list"]/li//*[text() = "%s"]'
 
     # 四级菜单
-    MENU_LEVEL_IDX_4 = (By.XPATH, '(//*[@class="x-menu x-menu-floating x-layer "])[2]/ul/li[%s]')
     MENU_LEVEL4 = (By.XPATH, '//div[@class="x-menu x-menu-floating x-layer "][2]/ul/li//*[text()= "%s"]')
+
     # 五级菜单
-    MENU_LEVEL_IDX_5 = (By.XPATH, '(//*[@class="x-menu x-menu-floating x-layer "])[3]/ul/li[%s]')
     MENU_LEVEL5 = (By.XPATH, '//div[@class="x-menu x-menu-floating x-layer "][3]/ul/li//*[text()= "%s"]')
 
     # 上下滚动菜单按钮
@@ -99,6 +97,38 @@ class MenuLocators:
     # TAB_ONE = (By.XPATH, '(//table[@class="x-grid3-row-table"])[1]')
     # TAB_VALUE = (By.XPATH, "//*[@class="x-grid3-row-table"])[{0}]//td[1]")
 
+
+class MenuPBSLocators:
+    """
+    D5000/PBS5000的菜单元素
+    """
+    # 首页窗口：
+    # 选择一级菜单
+    MENU_LEVEL1 = (By.XPATH, '//div[@id="project_head"]//p[@class="menu_p" and text()="{}"]')
+
+    # 选择二级菜单	 @class="nav-item selectMenu active"
+    MENU_LEVEL2 = (By.XPATH, '//div[@id="project_head"]//li[@class="nav-item selectMenu"]//p[text()="{}"]')
+
+    # 返回首页:
+    # //div[@id="project_head"]//li[@title="返回首页"]
+    GOTO_MAINPAGE = (By.XPATH, '//div[@id="project_head"]//h2[@class="home_btn"]')
+
+    # 当前页面选择的一级菜单
+    CONFORM_MENU = (By.XPATH, '//div[@id="project_head"]//h2[@class="home_btn" and text()={}]')
+
+
+class MenuSEA20Locators:
+    """
+    SEA2.0的菜单元素
+    """
+    pass
+
+
+class MenuJLZDHLocators:
+    """
+    JLZDH的菜单元素
+    """
+    pass
 
 if __name__ == '__main__':
     print(MenuLocators.NODE['02'])

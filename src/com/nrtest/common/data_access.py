@@ -36,10 +36,25 @@ class DataAccess:
         获取测试系统所有菜单
         :return:
         """
-
         pyoracle = PyOracle.getInstance()
         cur = pyoracle.callFCur('pkg_nrtest.get_all_menu', [Setting.DEFAULT_USER, Setting.PROJECT_NO])
         return cur
+
+    @staticmethod
+    def get_menu_setup(project_no):
+        """
+        用于默认刷新admin用户下的‘00000’用户组的测试用例
+        :param user_no: 测试用例用户
+        :param group_no: 测试用例组
+        :return:
+        """
+        sql = 'select param_item_val as menu_level, min_limit as action from tst_parameter pa \
+                WHERE pa.project_no = :1 \
+                  AND param_no = \'BASE\' \
+                  AND param_item_no = \'START_MENU_LEVEL\''
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [project_no])
+        return dataSet
 
     @staticmethod
     def getLeftTree(treeNO):

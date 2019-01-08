@@ -6,75 +6,6 @@
 @file: base_page.py
 @time: 2018-05-25 0:32
 @desc:
-类方法说明：
- 1.方法名：_find_element
-        功能：定位元素的具体某个元素WEBelement
-
-        *注释：_代表类的私有属性或方法
-        :param Locators: 元素的位置
-        :return: 返回定位的元素
- 2.方法名：input
-        功能：文本框输入内容
-
-        :param values: 文本框要输入的内容
-        :param locators: 元素的位置
-        :return: None
- 3.方法名：click
-        功能：点击元素
-
-        :param locators:元素的位置
-        :return:None
-4.方法名：get_current_url
-        功能：打开测试服务器地址
-        :return: None
-5. 方法名：switch_to_window
-        说明：在打开新页面时关闭旧的页面
-        参数：无
-6.方法名：closeBrowser
-        说明：关闭浏览器
-7.方法名：hover
-        说明：鼠标移动到某个元素上
-        :param Locators: 元素的xpath
-8.方法名：switch_frame
-        进入iframe层
-        :param locators:元祖形式存在的iframe的id
-        :return:
-9.方法名：back_parent_iframe
-        回到iframe上一层
-        :return:无
-10.方法名：back_home_iframe
-        回到ifrmae开始的地方
-        :return: 无
-11. 方法名：exec_script
-        执行js脚本
-        :param src:js脚本
-12.方法名：invisible_element
-        确认元素是否可见
-        :param locator:
-        :param wait_time:
-        :return:返回布尔值
-13.方法名：get_titile
-        获取当前页面标题
-        :return:返回当前页面标题
-14. 方法名：get_url
-        获取当前页面URL
-        :return:返回页面当前url地址
-15.方法名：on_page
-        通过title断言进入的页面是否正确。
-        使用title获取当前窗口title，检查输入的title是否在当前title中。
-        :param page_title:
-        :return: 返回比较结果（True 或 False）
-16.方法名：exists_element
-        判断元素是否存在
-        :param locator:
-        :return:布尔返回值
-17.法名：checkbox_is_selected
-        判断checkBox元素是否被选择
-        :param locator:元祖形式的xpath
-        :return:布尔返回值
-18.方法名：open_url
-        打开被测服务地址
-
 """
 import os
 import time
@@ -92,10 +23,10 @@ from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.base_locators import BaseLocators
-from com.nrtest.sea.locators.other.login_page_locators import LoginPageLocators
-# create a logger instance
+from com.nrtest.sea.locators.other.login_locators import LoginLocators
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 
+# create a logger instance
 logger = Logger(logger='Page').getlog()
 
 
@@ -133,6 +64,10 @@ class Page():
             self.menu_no = menu_page.menu_no
             self.menu_name = menu_page.menu_name
             self.menu_path = menu_page.menu_path
+        else:
+            self.menu_no = ''
+            self.menu_name = ''
+            self.menu_path = ''
         self.tst_case_id = None
         self.class_name = ''
 
@@ -189,6 +124,13 @@ class Page():
         return wrapper
 
     def _element_ec_mode(self, locator, seconds=5, ec_mode=0):
+        """
+        不同元素等待模式
+        :param locator:
+        :param seconds:
+        :param ec_mode:
+        :return:
+        """
         if ec_mode == 0:
             # 判断元素是否可点击
             WebDriverWait(self.driver, seconds).until(EC.element_to_be_clickable(locator))
@@ -208,7 +150,7 @@ class Page():
         *注释：_代表类的私有属性或方法
         :param locator: 元素的位置
         :param seconds:
-        :param ec_mode: 0:判断元素是否可点击;1:判断元素是否已加载出来;2:判断元素是否可见
+        :param ec_mode: 0:判断元素是否可点击;1:判断元素是否已加载;2:判断元素是否可见
         :return: 返回定位的元素
         """
         element = None
@@ -748,13 +690,15 @@ class Page():
 
         # 获取当前窗口句柄
         now_handle = self.driver.current_window_handle
+        self.driver.switch_to.window(now_handle)
+        print(self.driver.title)
         if switch_mode:
             # 获取所有窗口句柄
             all_handles = self.driver.window_handles
             for handle in all_handles:
                 if handle != now_handle:
                     self.driver.switch_to.window(handle)
-                    # self.driver.find_element_by_xpath("//*[@id='menu_projects']/a").click()
+                    print(self.driver.title)
                     self.driver.close()  # 关闭窗口
         self.driver.switch_to.window(now_handle)
 
@@ -780,7 +724,7 @@ class Page():
         except NameError as ex:
             logger.error('悬停失败：{}'.format(ex))
 
-    def switch_frame(self, locators):
+    def switch_to_frame(self, locators):
         """
         方法名：switch_frame
         进入iframe层
@@ -957,15 +901,15 @@ class Page():
 
         self.driver.refresh()
         sleep(2)
-        txt = self.driver.find_element_by_tag_name('body').text
-
+        # txt = self.driver.find_element_by_tag_name('body').text
+        txt = self.find_element_by_tag_name('body').text
         if '重要信息推出' in txt:
             if '登录异常' in txt:
                 print('-----')
-                self.driver.find_element(*LoginPageLocators.BTN_CONFIRM).click()
+                self.driver.find_element(*LoginLocators.BTN_CONFIRM).click()
             if '账号异常信息' in txt:
                 print('-----')
-                self.driver.find_element(*LoginPageLocators.BTN_ARROW).click()
+                self.driver.find_element(*LoginLocators.BTN_ARROW).click()
             # self._find_element(BaseLocators.BTN_ACCOUNT_EXCEPT).click()
             # self._find_element(BaseLocators.BTN_IMPORTANT_INFO).click()
 
@@ -1383,8 +1327,6 @@ class Page():
 
 
 if __name__ == '__main__':
-    pass
-
     # dr = webdriver.Chrome()
     # el = dr.find_element(*(By.XPATH, '')).get_attribute('class')
     # el.is_selected()

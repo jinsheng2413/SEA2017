@@ -14,28 +14,19 @@ from com.nrtest.common.base_page import Page
 class MServiceCallStatusPage(Page):
     # 业务系统
     def inputSel_business_system(self, value):
-        # self.click(MServiceCallStatusLocators.QRY_BUSINESS_SYSTEM)
-        # locator = self.get_select_locator(
-        #     MServiceCallStatusLocators.QRY_BUSINESS_SYSTEM_VALUE, value)
-        # self.click(locator)
         self.selectDropDown(value)
 
     # 服务名称
     def inputSel_business_name(self, value):
-        # self.click(MServiceCallStatusLocators.QRY_BUSINESS_NAME)
-        # locator = self.get_select_locator(
-        #     MServiceCallStatusLocators.QRY_BUSINESS_NAME_VALUE, value)
-        # self.click(locator)
         self.selectDropDown(value)
 
     # 调用时间
     def inputDt_start_date(self, value):
-        self.inputDate(value)  # , *MServiceCallStatusLocators.QRY_DATE_BEGIN)
+        self.inputDate(value)
 
     def inputDt_end_date(self, value):
-        self.inputDate(value)  #, *MServiceCallStatusLocators.QRY_DATE_END)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(MServiceCallStatusLocators.BTN_QUERY)
         self.btn_query()

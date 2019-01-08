@@ -56,22 +56,19 @@ class Test_mDataPublishStatus2(TestCase, MDataPublishStatus2Page):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        self.inputSel_BusinessSystem(para['BUSINESS_SYSTEM'])
+
+        self.inputSel_Business_system(para['BUSINESS_SYSTEM'])
+
         # 开始时间
-        self.inputStr_receive_time(para['START_DATE'])
+        self.inputDt_receive_time(para['START_DATE'])
+
         # 结束时间
-        self.inputStr_end_time(para['END_DATE'])
+        self.inputDt_end_time(para['END_DATE'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)
 
-    #     # 校验
-    #     result = self.assert_context(MDataPublishStatus2_locators.TAB_ONE)
-    #     self.assertTrue(result)
-    #
-    # @data(*DataAccess.getCaseData(InterfaceManager_data.para_MDataPublishStatus2))
-    # def test_query(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

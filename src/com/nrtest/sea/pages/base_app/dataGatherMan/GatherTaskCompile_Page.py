@@ -15,47 +15,33 @@ from com.nrtest.common.base_page import Page
 
 class GatherTaskCompilePage(Page):
     # 任务状态
-    def inputSel_taskState(self, name):
-        # self.click(GatherTaskCompileLocators.QRY_TASK_STATE)
-        # locator = self.get_select_locator(
-        #     GatherTaskCompileLocators.QRY_TASK_STATE_VALUE, name)
-        # self.click(locator)
+    def inputSel_task_state(self, name):
         self.selectDropDown(name)
 
     # 终端类型
-    def inputRSel_TmnlType(self, name):
-        # self.click(GatherTaskCompileLocators.QRY_TMAL_TYPE)
-        # locator = self.get_select_locator(
-        #     GatherTaskCompileLocators.QRY_TMAL_TYPE_VALUE, name)
-        # print(locator)
-        # self.click(locator)
+    def inputRSel_tmnl_type(self, name):
         self.selectDropDown(name)
 
     # 采集点名称
-    def inputStr_CollectionPointName(self, value):
-        self.input(value)  # , *GatherTaskCompileLocators.QRY_COLLECTION_POINT_NAME)
+    def inputStr_collection_point_name(self, value):
+        self.input(value)
 
     # 终端地址
-    def inputStr_TMNL_ADDR(self, value):
-        self.input(value)  #, *GatherTaskCompileLocators.QRY_TMNL_ADDR)
+    def inputStr_tmnl_addr(self, value):
+        self.input(value)
 
     # 任务名称
-    def inputStr_taskName(self, value):
-        self.input(value)  #, *GatherTaskCompileLocators.QRY_TASK_NAME)
+    def inputStr_task_name(self, value):
+        self.input(value)
 
     # 任务编号
-    def inputStr_taskNo(self, value):
-        self.input(value)  #, *GatherTaskCompileLocators.QRY_TAST_NO)
+    def inputStr_task_no(self, value):
+        self.input(value)
 
     # 任务类型
-    def inputSel_taskType(self, name):
-        # self.click(GatherTaskCompileLocators.QRY_TASK_TYPE)
-        # locator = self.get_select_locator(
-        #     GatherTaskCompileLocators.QRY_TASK_TYPE_VALUE, name)
-        # self.click(locator)
+    def inputSel_task_type(self, name):
         self.selectDropDown(name)
 
     # 查询
     def btn_qry(self):
-        # self.click(GatherTaskCompileLocators.BTN_QRY)
         self.btn_query()

@@ -18,6 +18,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.batchFetch_page import BatchFet
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用--》数据采集管理--》数据召测--》批量巡测
 @ddt
 class TestBatchFetch(TestCase, BatchFetchPage):
 
@@ -62,15 +63,20 @@ class TestBatchFetch(TestCase, BatchFetchPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 任务名称
-        self.inputStr_taskName(para['TASK_NAME'])
+        self.inputStr_task_name(para['TASK_NAME'])
+
         # 操作人
         self.inputStr_performer(para['PERFORMER'])
+
         # 开始时间
-        self.inputStr_startTime(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
+
         # 有效性
         self.inputSel_effectiveness(para['EFFECTIVENESS'])
 
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

@@ -9,5 +9,6 @@
 """
 
 
+# 基本应用--接口管理--营销业务接口--接口运行状态
 class InterfaceMan_data:
     para_mInterfaceRunStatus2 = '99914130'

@@ -59,12 +59,16 @@ class TestMServiceCallStatus(TestCase, MServiceCallStatusPage):
     def query(self, para):
         # 业务系统
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])
+
         # #服务名称
         self.inputSel_business_name(para['BUSINESS_NAME'])
+
         # 开始时间
         self.inputDt_start_date(para['START_DATE'])
+
         # 结束时间
         self.inputDt_end_date(para['END_DATE'])
+
         # 查询
         self.btn_qry()
 

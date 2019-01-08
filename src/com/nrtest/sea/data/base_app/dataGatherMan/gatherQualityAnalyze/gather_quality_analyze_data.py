@@ -17,20 +17,25 @@ class GatherQualityAnalyze_data:
     GatherSuccessRate_tabName_detail = '采集成功率明细'
     GatherSuccessRate_tabName_continuous = '连续抄表失败明细'
     GatherSuccessRate_tabName_time = '按时间统计'
+
     # 基本应用→数据采集管理→采集质量分析→事件记录结果统计
     eventRecResultStat_para = '99913280'
+
     # 基本应用→数据采集管理→采集质量分析→采集成功率综合统计
     collectSuccessRateStat_para = '99913270'
+
     # 基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
     collectSuccessRateJb_para = '99913260'
-    # 基本应用→数据采集管理→采集质量分析→采集完整率
 
+    # 基本应用→数据采集管理→采集质量分析→采集完整率
     readCompleteRate_para = '99913220'
     readCompleteRate_tab = '采集完整率'
     readCompleteRateCount_tab = '采集完整率统计'
     readCompleteRateDetail_tab = '采集完整率明细'
+
     # 基本应用→数据采集管理→采集质量分析→采集及时率
     readIntimeRate_para = '99913230'
+
     # 基本应用→数据采集管理→采集质量分析→实时采集成功率
     curCollectSuccessRate_para = '99913240'
     curCollectSuccessRate_tab = '实时采集成功率'

@@ -19,9 +19,7 @@ class CostControlManage_data:
     specialUserBalanceQuery_para = '99922150'
 
     # 高级应用--》费控管理--》本地费控--》费控投入调试
-    custControlCommissioning_para = ''
-    custControlCommissioning_tab_elec = '电量控'
-    custControlCommissioning_tab_cust = ''
+    custControlCommissioning_para = '99922170'
 
     # 高级应用--》费控管理--》本地费控--》本地费控执行统计
     localFeiManageExeCount_para = '99922160'

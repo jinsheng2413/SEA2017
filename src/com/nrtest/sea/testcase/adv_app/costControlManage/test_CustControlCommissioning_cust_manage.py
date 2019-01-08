@@ -10,6 +10,7 @@
 from unittest import TestCase
 
 from ddt import data
+from ddt import ddt
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
@@ -18,6 +19,9 @@ from com.nrtest.sea.pages.adv_app.costControlManage.custControlCommissioning_pag
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 高级应用--》费控管理--》本地费控--》费控投入调试
+
+@ddt
 class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissioning_page):
     @classmethod
     def setUpClass(cls):
@@ -25,7 +29,7 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         menuPage = MenuPage.openMenu(CostControlManage_data.custControlCommissioning_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(CostControlManage_data.custControlCommissioning_tab_cust)
+        # menuPage.clickTabPage(CostControlManage_data.custControlCommissioning_tab_cust)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -47,14 +51,16 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         """
 
     def query(self, para):
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
         # 营销单号查询
         self.inputStr_app_no(para['APP_NO'])
         # 开始时间
         self.inputDt_start_date(para['START_DATE'])
         # 结束时间
         self.inputDt_end_date(para['END_DATE'])
+        # 终端地址
         self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
-
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 用户名称
@@ -62,7 +68,9 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         # 按调试日期
         self.inputSel_debug_dt(para['DEBUG_DATE'])
         # 按调试日期
-        self.inputSel_send_status(para[''])
+        self.inputSel_send_status(para['SEND_STATUS'])
+        # 控制类型
+        self.inputChk_manageType(para['MANAGE_TYPE'])
 
         self.btn_qry()
 
@@ -82,7 +90,7 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(CostControlManage_data.custControlCommissioning_para, CostControlManage_data.custControlCommissioning_tab_cust))
+    @data(*DataAccess.getCaseData(CostControlManage_data.custControlCommissioning_para))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -90,8 +98,7 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(CostControlManage_data.custControlCommissioning_para, CostControlManage_data.custControlCommissioning_tab_cust,
-                                  valCheck=True))
+    @data(*DataAccess.getCaseData(CostControlManage_data.custControlCommissioning_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

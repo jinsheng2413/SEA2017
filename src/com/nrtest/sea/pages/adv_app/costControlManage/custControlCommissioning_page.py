@@ -11,6 +11,9 @@ from com.nrtest.common.base_page import Page
 
 
 class CustControlCommissioning_page(Page):
+    # 控制类型
+    def inputChk_manageType(self, name):
+        self.clickRadioBox(name)
     # 营销单号
     def inputStr_app_no(self, value):
         # self.input(value, *CustControlCommissioning_locators.QRY_MARKETINF_SINGLE_NUM)
@@ -31,10 +34,12 @@ class CustControlCommissioning_page(Page):
     # 开始时间
     def inputDt_start_date(self, value):
         # self.input(value, *CustControlCommissioning_locators.QRY_START_TIME)
+        self.clean_label(value)
         self.inputDate(value)
     # 结束时间
     def inputDt_end_date(self, value):
         # self.input(value, *CustControlCommissioning_locators.QRY_END_TIME)
+        self.clean_label(value)
         self.inputDate(value)
 
     # 按
@@ -52,6 +57,7 @@ class CustControlCommissioning_page(Page):
         # locator = self.get_select_locator(
         #     CustControlCommissioning_locators.QRY_PROVIDE_STATE_VALUE, option)
         # self.click(locator)
+        self.clean_label(option)
         self.selectDropDown(option)
 
     # 点击查询按钮

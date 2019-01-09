@@ -23,7 +23,7 @@ class ArchivesAutoReviewPage(Page):
 
     # 时间
     def inputStr_date(self, value):
-        self.input(value)  # , *ArchivesAutoReviewLocators.QRY_DATE)
+        self.inputDate(value)  # , *ArchivesAutoReviewLocators.QRY_DATE)
 
     # 查询
     def btn_qry(self):

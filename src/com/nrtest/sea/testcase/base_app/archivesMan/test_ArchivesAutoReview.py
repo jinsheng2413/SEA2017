@@ -65,7 +65,7 @@ class TestArchivesAutoRevie(TestCase, ArchivesAutoReviewPage):
         # 选择导入电表信息
         self.inputSel_leadInto_meter_info(para['LEADINTO_METER'])
         # 输入日期
-        self.inputStr_date(para['DATE'])
+        self.inputStr_date(para['STAT_DATE'])
 
         self.btn_qry()
 

@@ -66,7 +66,9 @@ class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
         # 台区编号
         self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])
         # 任务来源
-        # self.inputSel_taskFrom(para['TASK_FROM'])
+        self.inputSel_taskFrom(para['TASK_FROM'])
+        # 选择模板
+        # self.inputChk_SelectDemo(para)   此选项缺少选项内容
 
         self.btn_query()
 

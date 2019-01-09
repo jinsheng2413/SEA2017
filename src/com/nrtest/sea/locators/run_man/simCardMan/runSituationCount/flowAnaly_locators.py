@@ -51,8 +51,11 @@ class SIMFlowCountLocators:
     #统计时间
     QRY_COUNT_TIME = (By.XPATH, "//*[@id=\"simChargeDate\"]")
 
-    # 是否超流量
+    # 超流量
     QRY_IS_OVER_FLOW = (By.NAME, 'overFlowCheckbox')
+
+    # 超流量
+    QRY_NOT_OVER_FLOW = (By.NAME, 'noOverFlowCheckbox')
 
     # 【操作区】
     BTN_QRY = (By.XPATH,"(//*[text()='查询'])[2]")

@@ -20,6 +20,7 @@ from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page im
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
+# SIM卡超流量统计
 @ddt
 class TestOverFlowStatic(TestCase, OverFlowStaticPage):
 
@@ -63,16 +64,19 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        #sim卡号
+        # SIM卡号
         self.inputStr_simCardNo(para['SIM_CARD_NO'])
-        #终端地址
+        # 终端地址
         self.inputStr_tmnlAddr(para['TMNL_ADDR'])
-        #统计时间
-        self.inputStr_countTime(para['COUNT_TIME'])
+
         # 是否超流量
-        self.inputChk_is_over_flow(para['IS_OVER_FLOW'])
+        self.inputChk_is_over_flow(para)
+
         # 日期类型
-        self.inputChk_data_method(para['DATA_METHOD'])
+        self.inputChk_data_method(para['DATE_METHOD'])
+
+        # 统计时间
+        self.inputStr_static_time(para['STATIC_TIME'])
 
         self.btn_qry()
         self.sleep_time(2)

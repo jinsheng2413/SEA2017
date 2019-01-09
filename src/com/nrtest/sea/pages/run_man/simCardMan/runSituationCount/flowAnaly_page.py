@@ -47,13 +47,11 @@ class FlowDeatilPage(Page):
 class OverFlowStaticPage(Page):
 
     # 统计时间
-    def inputStr_countTime(self, value):
-        # self.input(value, *SIMFlowCountLocators.QRY_COUNT_TIME)
+    def inputStr_static_time(self, value):
         self.inputDate(value)
 
     #SIM卡号
     def inputStr_simCardNo(self,value):
-        # self.input(value,*SIMFlowCountLocators.QRY_SIM_NO)
         self.input(value)
 
     #终端地址
@@ -63,11 +61,13 @@ class OverFlowStaticPage(Page):
 
     # 日期类型
     def inputChk_data_method(self, option):
-        self.clickRadioBox(option, True, True)
+        self.clickRadioBox(option)
 
     # 是否超流量
-    def inputChk_is_over_flow(self, items):
-        self.clickCheckBox(items, SIMFlowCountLocators.QRY_IS_OVER_FLOW)
+    def inputChk_is_over_flow(self, para):
+        options = [para['IS_OVER_FLOW'], para['NO_OVER_FLOW']]
+        for option in options:
+            self.clickSingleCheckBox(option)
 
     # 查询
     def btn_qry(self):

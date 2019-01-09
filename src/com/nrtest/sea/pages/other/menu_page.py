@@ -242,6 +242,7 @@ class MenuPage(Page):
             else:
                 self.waitLeftTree()
                 self.btn_company_plus(int(items[2]) + int(items[1]))  # 点击公司加号
+                self.waitLeftTree()
                 self.btn_select_user(int(items[3]) + 1)
         elif l == 1:
             self.btn_select_province()

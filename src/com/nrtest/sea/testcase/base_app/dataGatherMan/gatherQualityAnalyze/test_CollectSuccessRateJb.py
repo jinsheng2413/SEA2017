@@ -78,7 +78,7 @@ class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
         # 通讯规约
         self.inputSel_conmunicationGlue(para['CONMUNICATION_GLUE'])
         # 时间
-        self.inputStr_date(para['DATE'])
+        self.inputDt_date(para['DATE'])
         # 相位
         self.inputSel_pieceFactory(para['PHASE'])
 

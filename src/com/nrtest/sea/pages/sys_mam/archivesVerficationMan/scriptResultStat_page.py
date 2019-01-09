@@ -25,7 +25,7 @@ class scriptResultStatPage(Page):
         self.input(value, *ScriptResultDetailLocators.QRY_START_TIME)
 
     # 结束时间
-    def inputStr_end_time(self, value):
+    def inputDt_end_date(self, value):
         self.input(value, *ScriptResultDetailLocators.QRY_END_TIME)
 
         # 查询

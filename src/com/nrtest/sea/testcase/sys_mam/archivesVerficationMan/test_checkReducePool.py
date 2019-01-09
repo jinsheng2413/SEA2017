@@ -64,10 +64,10 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 申请时间
-        self.inputStr_apply_time(para['START_TIME'])
+        # 申请开始时间
+        self.inputDt_start_time(para['START_TIME'])
         # 至
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputDt_end_date(para['END_TIME'])
         # 申请单号
         self.inputStr_applyNo(para['APPLY_NO'])
         # 工单状态

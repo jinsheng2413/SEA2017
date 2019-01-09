@@ -73,21 +73,12 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
         # 故障类别
         self.inputSel_fault_type(para['FAULT_TYPE'])
         # 故障开始日期
-        self.inputDt_query_start_date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 故障开始日期
-        self.inputDt_query_end_date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         self.btn_query()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(MeterQualityEvalDetailLocators.TABLE_DATA)
-        # self.assertTrue(result)
-
-    # @BeautifulReport.add_test_img()
-    # @data(
-    #     *DataAccess.getCaseData(OperOrganManData.para_MeterQualityEval, OperOrganManData.para_MeterQualityEvalDetail))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

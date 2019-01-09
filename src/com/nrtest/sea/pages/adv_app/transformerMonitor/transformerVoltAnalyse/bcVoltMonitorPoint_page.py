@@ -24,7 +24,7 @@ class BcVoltMonitorPointQueryPage(Page):
         self.input(value)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 点击查询
@@ -44,7 +44,7 @@ class BcVoltMonitorPointDataPage(Page):
         self.curr_input(value,is_multi_tab=True,is_multi_elements=True)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 点击查询

@@ -68,7 +68,7 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         # 表名称
         self.inputStr_listName(para['LIST_NAME'])
         # 核查日期
-        self.inputStr_examineDate(para['EXAMINE_DATE'])
+        self.inputDt_examine_date(para['EXAMINE_DATE'])
 
         # 查询
         self.btn_qry()

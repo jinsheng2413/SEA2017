@@ -85,7 +85,7 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
         # 抄表段号
         self.inputStr_meter_reading_number(para['METER_READ_NUMBER'])
         # 结束时间
-        self.inputStr_end_date(para['END_TIME'])
+        self.inputDt_end_date(para['END_TIME'])
         # 用户名称
         self.inputStr_user_name(para['USER_NAME'])
         # 电表局编号

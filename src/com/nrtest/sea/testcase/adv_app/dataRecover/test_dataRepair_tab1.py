@@ -64,10 +64,10 @@ class Test_DataRepair_1(TestCase, DataRepair_1Page):
         self.inputSel_data_type(para['DATA_TYPE'])
 
         # 开始日期
-        self.inputStr_start_date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
 
         # 结束日期
-        self.inputStr_end_date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 查询
         self.btn_qry()

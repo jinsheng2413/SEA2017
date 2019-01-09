@@ -60,7 +60,7 @@ class BalanceCheck_page(Page):
         self.inputDate(value)  #, *BalanceCheckLocator.QRY_RECEIVE_DATE)
 
     # (末)
-    def inputStr_end_date(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)  #, *BalanceCheckLocator.QRY_END_DATE)
 
     # 执行状态

@@ -25,12 +25,12 @@ class Knowledge_Page(Page):
         self.input(value)#, *Knowledge_Locators.QRY_FILE_NAME)
 
     # 开始日期
-    def inputStr_start_date(self, value):
+    def inputDt_start_date(self, value):
         # self.input(value)#, *Knowledge_Locators.QRY_START_DATE)
         self.inputDate(value)
 
     # 结束日期
-    def inputStr_end_date(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)  # , *Knowledge_Locators.QRY_END_DATE)
 
     # 查询

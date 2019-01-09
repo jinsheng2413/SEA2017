@@ -25,7 +25,7 @@ class LoadSortAnalysePage(Page):
         self.selectDropDown(options)
 
     # 结束日期
-    def inputStr_end_time(self, value):
+    def inputDt_end_date(self, value):
         self.input(value)#, *LoadSortAnalyseLocators.QRY_END_DATE)
 
     # 排名数量

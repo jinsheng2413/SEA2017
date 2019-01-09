@@ -64,7 +64,7 @@ class TestStaticByFac(TestCase, StaticByFacPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 类别
         self.inputChk_static_method(para['STATIC_METHOD'])
 
@@ -118,7 +118,7 @@ class TestStaticByFac(TestCase, StaticByFacPage):
     #     # 终端厂家
     #     self.inputRSel_tmnl_fac('宁波三星')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
+    #     self.inputDt_query_date('2018-09')
     #
     #     self.btn_query()
     #     self.sleep_time(2)

@@ -18,7 +18,7 @@ class BlackListQueryPage(Page):
         self.input(content)  # , *BlackListQueryLocators.CONS_NO)
 
     # 查询日期
-    def inputStr_date(self, content):
+    def inputDt_date(self, content):
         # self.exec_script(BlackListQueryLocators.DATE_JS)
         # self.input(content, *BlackListQueryLocators.DATE)
         self.inputDate(content)

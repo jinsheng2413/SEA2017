@@ -68,7 +68,7 @@ class TestLoadSortAnalyse(TestCase, LoadSortAnalysePage):
         self.inputStr_startDate(para['START_DATE'])
 
         # 结束时间
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputDt_end_date(para['END_TIME'])
 
         # 用户类型
         self.inputSel_userType(para['USER_TYPE'])

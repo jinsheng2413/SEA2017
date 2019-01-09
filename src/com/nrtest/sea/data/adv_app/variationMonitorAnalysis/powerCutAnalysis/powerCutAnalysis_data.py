@@ -16,7 +16,7 @@ class PowerCutAnalysis_data:
     ValidPowerCutEventQuery_tabName_Detail = '有效停电明细'
     # 高级应用→配变监测分析→停电分析→终端停电事件查询
     TmnlPowerCutEventQuery_para = '99925420'
-    TmnlPowerCutEventQuery_tabName = '终端停电事件查询'
+    TmnlPowerCutEventQuery_tabName = '终端停电统计'
     TmnlEventSendingFunction_tabName_Day = '日终端停电明细'
     TmnlPowerCutEventQuery_tabName_Month = '月终端停电明细'
     # 高级应用→配变监测分析→停电分析→智能表停电事件查询

@@ -68,7 +68,7 @@ class TestDistributedEnergyStat(TestCase, DistributedEnergyStatPage):
         # 发电量消纳方式
         self.inputSel_powerConsumptionMode(para['POWER_CONSUMPTION_MODE'])
         # 日期
-        self.inputStr_date(para['DATE'])
+        self.inputDt_date(para['DATE'])
         # 发电类型
         self.inputSel_powerMode(para['POWER_MODE'])
         # 点击查询按钮

@@ -25,7 +25,7 @@ class LowPressureQuery_Page(Page):
         self.input(value)#, *LowPressureQuery_Locators.QRY_CONS_NO)
 
     # 日期
-    def inputStr_date(self, value):
+    def inputDt_date(self, value):
         self.input(value)#, *LowPressureQuery_Locators.QRY_DATE)
 
     # 查询

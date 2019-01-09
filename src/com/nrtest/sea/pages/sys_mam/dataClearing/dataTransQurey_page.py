@@ -16,7 +16,7 @@ from com.nrtest.sea.locators.sys_mam.dataClearing.dataTransQurey_locators import
 # 系统管理-->数据清理管理-->数据传输查询
 class DataTransQureyPage(Page):
     # 核查日期
-    def inputStr_examineDate(self, value):
+    def inputDt_examine_date(self, value):
         self.inputDate(value)
 
     # 表名称

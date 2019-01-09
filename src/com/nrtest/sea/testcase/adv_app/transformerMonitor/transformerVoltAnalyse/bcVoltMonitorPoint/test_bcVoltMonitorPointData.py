@@ -69,7 +69,7 @@ class TestBcVoltMonitorPointData(TestCase, BcVoltMonitorPointDataPage):
         # 监测点名称
         self.inputStr_monitor_point_name(para['MONITOR_POINT_NAME'])
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -120,7 +120,7 @@ class TestBcVoltMonitorPointData(TestCase, BcVoltMonitorPointDataPage):
     #     # 监测点名称
     #     self.inputStr_monitor_point_name('')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09-01')
+    #     self.inputDt_query_date('2018-09-01')
     #
     #     self.btn_query()
     #     self.sleep_time(2)

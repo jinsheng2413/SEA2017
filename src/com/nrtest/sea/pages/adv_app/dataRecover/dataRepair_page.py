@@ -28,11 +28,11 @@ class DataRepair_1Page(Page):
         self.selectDropDown(options)
     # 开始时间
 
-    def inputStr_start_date(self, value):
+    def inputDt_start_date(self, value):
         self.input(value)#, *DataRepair_1Locators.QRY_START_DATE)
 
     # 结束时间
-    def inputStr_end_date(self, value):
+    def inputDt_end_date(self, value):
         self.input(value)#, *DataRepair_1Locators.QRY_END_DATE)
 
     # 查询
@@ -63,7 +63,7 @@ class DataRepair_2Page(Page):
 
     # 查询日期
 
-    def inputStr_date(self, value):
+    def inputDt_date(self, value):
         self.curr_input(value,True,True)#, *DataRepair_2Locators.QRY_DATE)
 
     # 用户编号

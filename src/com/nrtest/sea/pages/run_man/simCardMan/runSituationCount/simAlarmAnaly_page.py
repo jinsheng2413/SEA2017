@@ -17,7 +17,7 @@ from com.nrtest.common.base_page import Page
 class AbnoralStaticPage(Page):
 
     # 月份
-    def inputStr_month(self, value):
+    def inputDt_month(self, value):
         # self.input(value,*AbnormalCountLocators.QRY_MONTH)
         self.inputDate(value)
 
@@ -29,14 +29,14 @@ class AbnoralStaticPage(Page):
 class AbnormalDetailPage(Page):
 
     # 异常类型
-    def inputStr_AbnormalType(self, item):
+    def inputStr_Abnormal_Type(self, item):
         # self.click(AbnormalDetailLocators.QRY_ABNORMAL_TYPE)
         # locator = self.get_select_locator(AbnormalDetailLocators.QRY_ABNORMAL_TYPE_VALUE, name)
         # self.click(locator)
         self.selectDropDown(item)
 
     # 月份
-    def inputStr_month(self, value):
+    def inputDt_month(self, value):
         # self.input(value, *AbnormalDetailLocators.QRY_MONTH)
         self.inputDate(value)
 

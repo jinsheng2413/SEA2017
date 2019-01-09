@@ -69,7 +69,7 @@ class TestEventRecResultStat(TestCase, EventRecResultStatPage):
         # 开始时间
         self.inputStr_start_timme(para['START_TIME'])
         # 结束时间
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputDt_end_date(para['END_TIME'])
         # 事件类型
         self.inputSel_event_type(para['EVENT_TYPE'])
 

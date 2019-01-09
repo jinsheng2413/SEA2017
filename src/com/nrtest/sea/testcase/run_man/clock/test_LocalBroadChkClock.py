@@ -75,9 +75,6 @@ class TestLocalBroadChkClock(TestCase, LocalBroadChkClockPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(LocalBroadChkClockLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """
@@ -123,7 +120,7 @@ class TestLocalBroadChkClock(TestCase, LocalBroadChkClockPage):
     #     # 终端厂家
     #     self.inputRSel_tmnl_fac('宁波三星')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
+    #     self.inputDt_query_date('2018-09')
     #
     #     self.btn_query()
     #     self.sleep_time(2)

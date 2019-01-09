@@ -57,11 +57,11 @@ class News_Page(Page):
         self.selectDropDown(options)
 
     # 开始日期
-    def inputStr_start_date(self, value):
+    def inputDt_start_date(self, value):
         self.input(value)#, *News_Locators.QRY_START_DATE)
 
     # 结束日期
-    def inputStr_end_date(self, value):
+    def inputDt_end_date(self, value):
         self.input(value)#, *News_Locators.QRY_END_DATE)
 
     # 查询

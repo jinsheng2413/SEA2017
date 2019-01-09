@@ -67,7 +67,7 @@ class TestSpecTranRunQuery(TestCase, SpecTranRunQueryPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 查询月份
-        self.inputStr_date(para['DATE'])
+        self.inputDt_date(para['DATE'])
 
         # 统计口径
         self.inputSel_statWay(para['STAT_WAY'])

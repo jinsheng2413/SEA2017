@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 class AvailableCapacityAnalysePage(Page):
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 负载率

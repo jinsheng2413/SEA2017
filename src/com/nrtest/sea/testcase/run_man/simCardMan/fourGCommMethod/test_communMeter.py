@@ -77,7 +77,7 @@ class TestCommumMetter(TestCase, CommumMeterPage):
         self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
 
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

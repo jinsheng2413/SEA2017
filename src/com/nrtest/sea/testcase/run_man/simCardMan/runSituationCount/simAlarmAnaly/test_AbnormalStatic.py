@@ -66,13 +66,10 @@ class TestAbnormalCount(TestCase, AbnoralStaticPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         #月份
-        self.inputStr_month(para['MONTH_COUNT'])
+        self.inputDt_month(para['MONTH_COUNT'])
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(FlowCountLocators.TAB_ONE)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

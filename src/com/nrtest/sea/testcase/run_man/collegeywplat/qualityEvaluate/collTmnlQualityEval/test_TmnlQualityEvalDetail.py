@@ -73,9 +73,9 @@ class TestTmnlQualityEvalDetail(TestCase, TmnlQualityEvalDetailPage):
         # 故障类别
         self.inputSel_fault_type(para['FAULT_TYPE'])
         # 故障开始日期
-        self.inputStr_query_start_date(para['START_DATE'])
+        self.inputDt_Start_Date(para['START_DATE'])
         # 故障开始日期
-        self.inputStr_query_end_date(para['END_DATE'])
+        self.inputDt_End_Date(para['END_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -119,7 +119,7 @@ class TestTmnlQualityEvalDetail(TestCase, TmnlQualityEvalDetailPage):
     #     # 终端厂家
     #     self.inputRSel_tmnl_fac('宁波三星')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
+    #     self.inputDt_query_date('2018-09')
     #
     #     self.btn_query()
     #     self.sleep_time(2)

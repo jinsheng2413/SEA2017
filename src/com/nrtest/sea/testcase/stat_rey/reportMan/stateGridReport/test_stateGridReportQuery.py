@@ -67,7 +67,7 @@ class TestStateGridReportQuery(TestCase, StateGridReportQueryPage):
         self.inputChk_stat_type(para['STAT_TYPE'])
 
         # 查询日期
-        self.inputStr_date(para['DATE'])
+        self.inputDt_date(para['DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

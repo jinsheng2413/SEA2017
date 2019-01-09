@@ -65,9 +65,9 @@ class TestOrgLowVoltDayDetail(TestCase, OrgLowVoltDayDetailPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 开始日期
-        self.inputStr_start_date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 结束日期
-        self.inputStr_end_date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
         # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
 

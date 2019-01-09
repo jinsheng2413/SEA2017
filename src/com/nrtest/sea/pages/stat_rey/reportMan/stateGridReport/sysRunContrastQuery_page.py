@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 # 统计查询--》报表管理--》国网报表--》采集系统运行指标
 class SysRunContrastQueryPage(Page):
 
-    def inputStr_date(self, value):
+    def inputDt_date(self, value):
         self.inputDate(value)  # , *SysRunContrastQueryLocators.QRY_DATE)
 
     # 统计口径

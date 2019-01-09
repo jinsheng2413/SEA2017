@@ -21,7 +21,7 @@ class ArchivesAnalysisOfAnomaly_count_pages(Page):
         self.selectDropDown(option, is_multi_tab=True, is_multi_elements=True)
 
     # 日期
-    def inputStr_date(self, value):
+    def inputDt_date(self, value):
         self.inputDate(value)  # , *ArchivesAnalysisOfAnomaly_count_locators.QRY_DATE)
 
     # 【操作区】
@@ -45,7 +45,7 @@ class ArchivesAnalysisOfAnomaly_detail_pages(Page):
         self.selectDropDown(option, is_multi_elements=True, is_multi_tab=True)
 
     # 日期
-    def inputStr_date(self, value):
+    def inputDt_date(self, value):
         self.inputDate(value)  # , *ArchivesAnalysisOfAnomaly_detail_locators.QRY_DATE)
 
     # 档案类型

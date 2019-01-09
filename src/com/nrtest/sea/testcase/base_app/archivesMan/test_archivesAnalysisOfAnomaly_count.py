@@ -60,7 +60,7 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
         # 用户类型
         self.inputSel_user_cata(para['CONS_CATA'])
         # 日期
-        self.inputStr_date(para['DATE'])
+        self.inputDt_date(para['DATE'])
 
         self.btn_qry()
 

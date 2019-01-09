@@ -68,9 +68,9 @@ class TestCheckResultDetail(TestCase, CheckResultDetailPage):
         # 台区编号
         self.inputStr_tg_no(para['TG_NO'])
         # 开始时间
-        self.inputStr_start_time(para['START_TIME'])
+        self.inputDt_start_date(para['START_TIME'])
         # 结束时间
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputDt_end_date(para['END_TIME'])
 
         self.btn_qry()
         self.sleep_time(2)

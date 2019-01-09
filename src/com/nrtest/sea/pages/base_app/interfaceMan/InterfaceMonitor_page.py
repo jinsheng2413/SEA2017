@@ -23,12 +23,12 @@ class InterfaceMonitorPage(Page):
         self.selectDropDown(name)
 
     # 接收时间
-    def inputStr_start_time(self, value):
+    def inputDt_start_date(self, value):
         # self.input(value, *InterfaceMonitor_Locators.QRY_START_TIME)
         self.inputDate(value)
 
     # 结束时间
-    def inputStr_end_time(self, value):
+    def inputDt_end_date(self, value):
         # self.input(value, *InterfaceMonitor_Locators.QRY_END_TIME)
         self.inputDate(value)
     # 查询

@@ -13,7 +13,7 @@ from com.nrtest.common.base_page import Page
 
 class DistributedEnergyStatPage(Page):
     # 日期
-    def inputStr_date(self, value):
+    def inputDt_date(self, value):
         # self.input(value, *DistributedEnergyStatLocators.QRY_DATE)
         self.inputDate(value)
 

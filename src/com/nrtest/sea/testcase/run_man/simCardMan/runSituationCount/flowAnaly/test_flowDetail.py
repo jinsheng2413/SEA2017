@@ -64,7 +64,7 @@ class TestFlowDetail(TestCase, FlowDeatilPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         #月份
-        self.inputStr_month(para['MONTH_COUNT'])
+        self.inputDt_month(para['MONTH_COUNT'])
 
         self.btn_qry()
         self.sleep_time(2)

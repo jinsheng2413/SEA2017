@@ -64,9 +64,9 @@ class TestLogStatAnalysis(TestCase, LogStatAnalysis_man_Page):
         """
 
         # 查询时间
-        self.inputStr_queryDate(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 到
-        self.inputStr_TO(para['TO'])
+        self.inputDt_to(para['TO'])
 
         self.btn_qry()
         self.sleep_time(2)

@@ -71,7 +71,7 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 负载率
         self.inputStr_load_rate(para['LOAD_RATE'])
 
@@ -119,7 +119,7 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
     #     # 供电单位
     #     openLeftTree('13401')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
+    #     self.inputDt_query_date('2018-09')
     #     # 负载率
     #     self.inputStr_load_rate('')
     #

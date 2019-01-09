@@ -77,7 +77,7 @@ class TestallMeasureDataCountQuery(TestCase, AllMeasureDataCountQueryPage):
         self.inputSel_static_method(para['STATIC_METHOD'])
 
         # 日期
-        self.inputStr_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

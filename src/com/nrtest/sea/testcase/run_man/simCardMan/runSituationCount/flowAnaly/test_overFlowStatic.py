@@ -76,7 +76,7 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
         self.inputChk_data_method(para['DATE_METHOD'])
 
         # 统计时间
-        self.inputStr_static_time(para['STATIC_TIME'])
+        self.inputDt_static_time(para['STATIC_TIME'])
 
         self.btn_qry()
         self.sleep_time(2)

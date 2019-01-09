@@ -67,9 +67,9 @@ class TestCoreFunctionAudit(TestCase, CoreFunctionAuditPage):
         # 操作员
         self.inputStr_performer(para['PERFORMER'])
         # 访问时间
-        self.inputStr_visitTime(para['VISIT_TIME'])
+        self.inputDt_visit_time(para['VISIT_TIME'])
         # 到
-        self.inputStr_TO(para['TO'])
+        self.inputDt_to(para['TO'])
 
         # 查询
         self.btn_qry()

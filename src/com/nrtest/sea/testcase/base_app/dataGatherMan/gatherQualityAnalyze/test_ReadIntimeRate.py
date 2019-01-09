@@ -70,7 +70,7 @@ class TestReadIntimeRate(TestCase, ReadIntimeRatePage):
         # 芯片厂家
         self.inputSel_chipFactory(para['CHIP_FACTORY'])
         # 日期时间
-        self.inputStr_date_time(para['DATE_TIME'])
+        self.inputDt_date_time(para['DATE_TIME'])
 
         self.btn_query()
 

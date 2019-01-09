@@ -63,7 +63,7 @@ class DataRepair_2Page(Page):
 
     # 查询日期
 
-    def inputStr_date(self, value):
+    def inputDt_date(self, value):
         self.curr_input(value,True,True)#, *DataRepair_2Locators.QRY_DATE)
 
     # 用户编号

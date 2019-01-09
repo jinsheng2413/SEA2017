@@ -72,14 +72,6 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
 
         self.btn_query()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(MeterQualityEvalStaticLocators.TABLE_DATA)
-        # self.assertTrue(result)
-
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(OperOrganManData.para_MeterQualityEval, OperOrganManData.para_MeterQualityEvalStatic))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

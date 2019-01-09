@@ -77,12 +77,12 @@ class MeterQualityEvalDetailPage(Page):
         self.selectDropDown(name)
 
     # 故障开始日期
-    def inputDt_query_start_date(self, value):
+    def inputDt_start_date(self, value):
         # self.input(value, *MeterQualityEvalDetailLocators.START_DATE)
         self.inputDate(value)
 
     # 故障结束日期
-    def inputDt_query_end_date(self, value):
+    def inputDt_end_date(self, value):
         # self.input(value, *MeterQualityEvalDetailLocators.END_DATE)
         self.inputDate(value)
 

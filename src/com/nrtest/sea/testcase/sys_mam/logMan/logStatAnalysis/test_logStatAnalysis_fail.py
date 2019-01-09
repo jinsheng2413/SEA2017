@@ -63,7 +63,7 @@ class TestLogStatAnalysis_fail(TestCase, LogStatAnalysis_fial_Page):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # 查询时间
-        self.inputStr_date(para['QUERY_DATE'])
+        self.inputDt_date(para['QUERY_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

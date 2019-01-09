@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 # 运行管理--》采集信道管理--》通信模块管理--》通信模块安装统计
 class CommModulInstallStatPage(Page):
     # 日期
-    def inputStr_date(self, value):
+    def inputDt_date(self, value):
         self.input(value)#, *CommModulInstallStatLocators.QRY_DATE)
 
     # 模块类型

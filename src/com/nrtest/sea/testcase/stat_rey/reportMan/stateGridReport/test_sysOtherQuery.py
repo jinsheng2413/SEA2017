@@ -67,7 +67,7 @@ class TestSysOtherQuery(TestCase, SysOtherQueryPage):
         self.inputChk_stat_type(para['STAT_TYPE'])
 
         # 查询日期
-        self.inputStr_dateS(para['DATE'])
+        self.inputDt_dateS(para['DATE'])
 
         # 统计口径
         self.inputSel_statWay(para['STAT_WAY'])

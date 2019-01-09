@@ -67,7 +67,7 @@ class Test_LowPressureQuery(TestCase, LowPressureQuery_Page):
         self.inputStr_cons_no(para['CONS_NO'])
 
         # 日期
-        self.inputStr_date(para['DATE'])
+        self.inputDt_date(para['DATE'])
 
         # 查询
         self.btn_qry()

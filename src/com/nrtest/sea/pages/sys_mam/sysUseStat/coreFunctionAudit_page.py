@@ -20,11 +20,11 @@ class CoreFunctionAuditPage(Page):
         self.input(value)
 
     # 访问时间
-    def inputStr_visitTime(self, value):
+    def inputDt_visit_time(self, value):
         self.inputDate(value)
 
     # 到
-    def inputStr_TO(self, value):
+    def inputDt_to(self, value):
         self.inputDate(value)
 
     # 结束时间

@@ -24,11 +24,11 @@ class PowerSortAnalysePage(Page):
         # self.click(locator)
         self.selectDropDown(options)
     # 开始时间
-    def inputStr_start_time(self, value):
+    def inputDt_start_date(self, value):
         self.input(value)  # , *PowerSortAnalyseLocators.QRY_START_TIME)
 
     # 结束时间
-    def inputStr_end_time(self, value):
+    def inputDt_end_date(self, value):
         self.input(value)  # , *PowerSortAnalyseLocators.QRY_END_TIME)
 
         # 查询

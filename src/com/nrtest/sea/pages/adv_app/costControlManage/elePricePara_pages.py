@@ -59,7 +59,7 @@ class ElePricePages(Page):
         self.inputDate(value)  # , *ElePricePara_locators.QRY_RECEIVE_DATE)
 
     # 结束时间
-    def inputStr_end_time(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)  #, *ElePricePara_locators.QRY_END_TIME)
 
     # 查询

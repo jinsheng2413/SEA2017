@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 # 统计查询--》全量数据统计查询--》全量数据统计查询
 class AllMeasureDataCountQueryPage(Page):
     # 日期
-    def inputStr_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *AllMeasureDataCountQueryLocators.QRY_DATE)
         self.inputDate(value)
 

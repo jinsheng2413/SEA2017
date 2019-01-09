@@ -65,7 +65,7 @@ class CollectSuccessRateJbPage(Page):
         self.selectDropDown(name)
 
     # 日期时间
-    def inputStr_date(self, value):
+    def inputDt_date(self, value):
         # self.input(value, *CollectSuccessRateJbLocators.QRY_DATE_TIME)
         # self.input(value)
         self.inputDate(value)

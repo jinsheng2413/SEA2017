@@ -72,9 +72,9 @@ class TestAssetsManage(TestCase, AssetsManagePage):
         #运营商
         self.inputSel_operator(para['OPERATOR'])
         #导入日期
-        self.inputStr_lead_start_time(para['LEAD_START_TIME'])
+        self.inputDt_lead_start_time(para['LEAD_START_TIME'])
         #时间至
-        self.inputStr_lead_end_time(para['LEAD_END_TIME'])
+        self.inputDt_lead_end_time(para['LEAD_END_TIME'])
         #所属系统
         self.inputSel_subordinateSystem(para['SUBORDINATE_SYSTEM'])
 

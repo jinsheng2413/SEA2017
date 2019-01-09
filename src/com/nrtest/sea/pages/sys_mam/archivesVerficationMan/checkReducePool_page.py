@@ -24,11 +24,11 @@ class CheckReducePoolPage(Page):
         self.selectDropDown(options)
 
     # 申请时间
-    def inputStr_apply_time(self, value):
+    def inputDt_start_time(self, value):
         self.inputDate(value)
 
     # 结束时间
-    def inputStr_end_time(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)
 
     # 查询

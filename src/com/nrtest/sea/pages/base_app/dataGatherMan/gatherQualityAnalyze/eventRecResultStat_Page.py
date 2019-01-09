@@ -18,7 +18,7 @@ class EventRecResultStatPage(Page):
         self.inputDate(content)
 
     # 结束时间
-    def inputStr_end_time(self, content):
+    def inputDt_end_date(self, content):
         # self.input(value, *EventRecResultStatLocators.QRY_END_TIME)
         self.inputDate(content)
 

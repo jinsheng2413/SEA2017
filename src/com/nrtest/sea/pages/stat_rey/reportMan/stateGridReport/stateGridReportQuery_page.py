@@ -25,7 +25,7 @@ class StateGridReportQueryPage(Page):
 
     # 查询日期
 
-    def inputStr_date(self, value):
+    def inputDt_date(self, value):
         self.inputDate(value)  #, *StateGridReportQueryLocators.QRY_DATE)
 
     # 查询

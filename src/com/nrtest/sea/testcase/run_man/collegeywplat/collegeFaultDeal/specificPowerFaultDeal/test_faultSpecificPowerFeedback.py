@@ -67,9 +67,9 @@ class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
         self.openLeftTree(para['TREE_NODE'])
 
         #故障开始日期
-        self.inputStr_faultStartDate(para['FAULT_START_DATE'])
+        self.inputDt_Fault_Start_Date(para['FAULT_START_DATE'])
         #故障结束日期
-        self.inputStr_faultEndDate(para['FAULT_END_DATE'])
+        self.inputDt_Fault_End_Date(para['FAULT_END_DATE'])
         #流程状态
         self.inputSel_process(para['PROCESS_STATUS'])
         #故障来源

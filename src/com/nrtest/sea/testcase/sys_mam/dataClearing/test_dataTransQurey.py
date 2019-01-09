@@ -67,7 +67,7 @@ class TestDataTransQurey(TestCase, DataTransQureyPage):
         # 表名称
         self.inputStr_listName(para['LIST_NAME'])
         # 核查日期
-        self.inputStr_examineDate(para['EXAMINE_DATE'])
+        self.inputDt_examine_date(para['EXAMINE_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

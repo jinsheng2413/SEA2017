@@ -67,7 +67,7 @@ class TestElePricePara(TestCase, ElePricePages):
         # c抄表段号
         self.inputStr_meter_reading_num(para['SECT_NO'])
         # 结束时间
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputDt_end_date(para['END_TIME'])
         # 任务类型
         self.inputSel_task_cata(para['TASK_CATA'])
         self.btn_qry()

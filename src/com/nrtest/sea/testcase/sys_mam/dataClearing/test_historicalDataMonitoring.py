@@ -69,9 +69,9 @@ class TestHistoricalDataMonitoring(TestCase, HistoricalDataMonitoringPage):
         # 数据来源
         self.inputSel_data_from(para['DATA_FROM'])
         # 开始日期
-        self.inputStr_Start_time(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 结束日期
-        self.inputStr_end_time(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 查询
         self.btn_qry()

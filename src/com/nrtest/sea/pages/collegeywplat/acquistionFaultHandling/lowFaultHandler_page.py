@@ -43,7 +43,7 @@ class FaultLowPowerDealPage(Page):
         self.selectDropDown(options)
 
     # 故障开始日期
-    def inputStr_faultStartDate(self, value):
+    def inputDt_Fault_Start_Date(self, value):
         # self.input(value, *FaultHandlerLocators.QRY_FAULT_START_DATE)
         self.inputDate(value)
 
@@ -55,7 +55,7 @@ class FaultLowPowerDealPage(Page):
         self.selectDropDown(options)
 
     # 故障结束日期
-    def inputStr_faultEndDate(self, value):
+    def inputDt_Fault_End_Date(self, value):
         # self.input(value, *FaultHandlerLocators.QRY_FAULT_END_DATE)
         self.inputDate(value)
 
@@ -78,7 +78,7 @@ class FaultLowPowerFeedbackPage(Page):
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障开始日期
-    def inputStr_faultStartDate(self, value):
+    def inputDt_Fault_Start_Date(self, value):
         self.inputDate(value)
 
     # 流程状态
@@ -86,7 +86,7 @@ class FaultLowPowerFeedbackPage(Page):
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障结束日期
-    def inputStr_faultEndDate(self, value):
+    def inputDt_Fault_End_Date(self, value):
         self.inputDate(value)
 
     # 故障类型

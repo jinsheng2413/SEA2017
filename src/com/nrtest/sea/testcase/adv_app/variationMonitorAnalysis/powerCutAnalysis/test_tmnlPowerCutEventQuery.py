@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.tmnl
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→终端停电事件查询
+# 高级应用→配变监测分析→停电分析→终端停电事件查询→终端停电统计
 @ddt
 class TestTmnlPowerCutEventQuery(TestCase, TmnlPowerCutEventQueryPage):
     @classmethod

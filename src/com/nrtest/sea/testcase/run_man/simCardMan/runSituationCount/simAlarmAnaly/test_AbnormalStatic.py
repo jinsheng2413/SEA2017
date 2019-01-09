@@ -14,7 +14,7 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.runSituationCount_data import RunSituationCount_data
+from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardManData
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.simAlarmAnaly_page import AbnoralStaticPage
 
@@ -28,10 +28,10 @@ class TestAbnormalCount(TestCase, AbnoralStaticPage):
     def setUpClass(cls):
 
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(RunSituationCount_data.para_simAlarmAnaly)
+        menuPage = MenuPage.openMenu(SimCardManData.para_simAlarmAnaly)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(RunSituationCount_data.para_simAlarmAnaly_static)
+        menuPage.clickTabPage(SimCardManData.para_simAlarmAnaly_static)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -91,8 +91,8 @@ class TestAbnormalCount(TestCase, AbnoralStaticPage):
 
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunSituationCount_data.para_simAlarmAnaly,
-                                  RunSituationCount_data.para_simAlarmAnaly_static))
+    @data(*DataAccess.getCaseData(SimCardManData.para_simAlarmAnaly,
+                                  SimCardManData.para_simAlarmAnaly_static))
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验
@@ -105,8 +105,8 @@ class TestAbnormalCount(TestCase, AbnoralStaticPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunSituationCount_data.para_simAlarmAnaly,
-                                  RunSituationCount_data.para_simAlarmAnaly_static, valCheck=True))
+    @data(*DataAccess.getCaseData(SimCardManData.para_simAlarmAnaly,
+                                  SimCardManData.para_simAlarmAnaly_static, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

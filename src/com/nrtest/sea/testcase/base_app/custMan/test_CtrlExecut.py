@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.custMan.ctrlExecutPage import CtrlExecutPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》低压用户远程费控执行
+# 高级应用--》费控管理--》远程费控--》低压用户远程费控执行
 @ddt
 class TestCtrlExecut(TestCase, CtrlExecutPage):
     """
@@ -114,7 +114,7 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para))
+    @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para)[0:1])
     def test_query(self, para):
         """
         对查询结果有无、数据链接跳转等校验

@@ -11,6 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 高级应用--》费控管理--》远程费控--》低压用户远程费控执行
 class CtrlExecutPage(Page):
     # 用户编号
     def inputStr_userNo(self, value):
@@ -34,11 +35,11 @@ class CtrlExecutPage(Page):
 
     # 开始时间
     def inputStr_startTime(self, value):
-        self.input(value)  #, *CtrlExecutLocators.QRY_START_TIME)
+        self.inputDate(value)  # , *CtrlExecutLocators.QRY_START_TIME)
 
     # 结束时间
     def inputStr_ENDTIme(self, value):
-        self.input(value)  #, *CtrlExecutLocators.QRY_END_TIME)
+        self.inputDate(value)  #, *CtrlExecutLocators.QRY_END_TIME)
 
     # 控制类型
     def inputSel_controlType(self, options):

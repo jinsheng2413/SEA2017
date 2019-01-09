@@ -77,7 +77,7 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
         # 相位
         self.inputSel_phase_Faildetail(para['PHASE'])
         # 查询日期
-        self.inputStr_Time_Faildetail(para['QUERY_TIME'])
+        self.inputDt_Time_Faildetail(para['QUERY_TIME'])
         # 电能表抄读状态
         self.inputSel__meter_read_state_faildetail(para['METER_READ_STATE'])
         # 终端运行状态

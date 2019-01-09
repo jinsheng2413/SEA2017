@@ -155,14 +155,15 @@ class UpgradeEffectStatisticsPage(Page):
 
     # 执行日期
     def inputSel_box_exec_date(self, index):
-        if index == '1':
+        # self.click(UpgradeEffectStatisticsLocators.BOX_EXECUTE_DATE)
+        if index == 'c':
             self.click(UpgradeEffectStatisticsLocators.BOX_EXECUTE_DATE)
         else:
             pass
 
     # 确认日期
     def inputSel_box_affirm_date(self, index):
-        if index == '1':
+        if index == 'c':
             self.click(UpgradeEffectStatisticsLocators.BOX_AFFIRM_DATE)
         else:
             pass

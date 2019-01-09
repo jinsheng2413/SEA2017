@@ -105,12 +105,12 @@ class RealDataPage(Page):
         self.input(value)  #, *RealDataLocators.QRY_METER_ASSET_NO_FAILDETAIL)
 
     # 查询时间
-    def inputStr_Time_Rdetail(self, value):
-        self.input(value)  #, *RealDataLocators.QRY_TIME_RDETAIL)
+    def inputDt_Time_Rdetail(self, value):
+        self.inputDate(value)  # , *RealDataLocators.QRY_TIME_RDETAIL)
 
     # 查询时间
-    def inputStr_Time_Faildetail(self, value):
-        self.input(value)  #, *RealDataLocators.QRY_TIME_FAILTIME)
+    def inputDt_Time_Faildetail(self, value):
+        self.inputDate(value)  #, *RealDataLocators.QRY_TIME_FAILTIME)
 
     # 用户类型
     def inputSel_userType_Rdetail(self, name):

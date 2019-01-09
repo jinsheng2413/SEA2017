@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEditionApprove_locators import \
-    UpgradeEditionApproveLocators
 
 
 # 基本应用→终端管理→软件升级→升级版本审批
@@ -49,14 +47,17 @@ class UpgradeEditionApprovePage(Page):
 
     # 申请开始日期
     def inputDt_start_date(self, content):
-        self.exec_script(UpgradeEditionApproveLocators.START_DATE_JS)
-        self.input(content, *UpgradeEditionApproveLocators.START_DATE)
+        # self.exec_script(UpgradeEditionApproveLocators.START_DATE_JS)
+        # self.input(content, *UpgradeEditionApproveLocators.START_DATE)
+        self.inputDate(content)
 
     # 申请结束日期
     def inputDt_end_date(self, content):
-        self.exec_script(UpgradeEditionApproveLocators.END_DATE_JS)
-        self.input(content, *UpgradeEditionApproveLocators.END_DATE)
+        # self.exec_script(UpgradeEditionApproveLocators.END_DATE_JS)
+        # self.input(content, *UpgradeEditionApproveLocators.END_DATE)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(UpgradeEditionApproveLocators.BTN_SEARCH)
+        # self.click(UpgradeEditionApproveLocators.BTN_SEARCH)
+        self.btn_query()

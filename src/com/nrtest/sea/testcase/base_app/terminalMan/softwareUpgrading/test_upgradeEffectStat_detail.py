@@ -81,13 +81,13 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
         # 确认结果
         self.inputSel_detail_affirm_result(para['DETAIL_AFFIRM_RESULT'])
         # 执行日期
-        # self.btn_box_exec_date(para['BOX_EXEC_DATE'])
+        self.inputSel_box_exec_date(para['BOX_EXEC_DATE'])
         # 确认开始日期
         self.inputDt_affirm_start_date(para['AFFIRM_START_DATE'])
         # 确认结束日期
         self.inputDt_affirm_end_date(para['AFFIRM_END_DATE'])
         # 确认日期
-        # self.btn_box_affirm_date(para['BOX_AFFIRM_DATE'])
+        self.inputSel_box_affirm_date(para['BOX_AFFIRM_DATE'])
         # 执行开始日期
         self.inputDt_detail_start_date(para['DETAIL_START_DATE'])
         # 执行结束日期

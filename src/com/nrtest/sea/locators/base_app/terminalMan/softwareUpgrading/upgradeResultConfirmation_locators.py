@@ -30,6 +30,10 @@ class UpgradeResultConfirmationLocator:
     # 终端用途→值
     TMNL_PURPOSE_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    # 升级版本号
+    UPGRADE_VERSION_NO = (By.XPATH, '//label[contains(text(),"升级版本号")]/../div/div/input')
+    # 批次号复选框
+    UPGRADE_NO = (By.NAME, 'upgradeNoFlag')
     # 确认开始日期
     START_DATE = (
         By.XPATH, '//label[contains(text(),"确认开始日期")]/../div/div/input')

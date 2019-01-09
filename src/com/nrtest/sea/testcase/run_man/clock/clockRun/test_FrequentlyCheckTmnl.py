@@ -80,9 +80,6 @@ class TestFrequentlyCheckTmnl(TestCase, FrequentlyCheckTmnlPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(FrequentlyCheckTmnlLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

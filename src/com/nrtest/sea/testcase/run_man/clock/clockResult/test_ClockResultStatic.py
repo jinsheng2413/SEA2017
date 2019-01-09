@@ -65,8 +65,17 @@ class TestClockResultStatic(TestCase, ClockResultStaticPage):
         self.openLeftTree(para['TREE_NODE'])
         # 类别
         self.inputChk_static_method(para['STATIC_METHOD'])
-        # 终端厂商
-        self.inputSel_tmnl_fac(para['TMNL_FAC'])
+
+        # 根据类别进行选择
+        # print(para['STATIC_METHOD'].split(';')[-1])
+        if(para['STATIC_METHOD'].split(';')[-1] == '采集终端'):
+            print(para['STATIC_METHOD'])
+            # 终端厂商
+            self.inputSel_tmnl_fac(para['TMNL_FAC'])
+        elif(para['STATIC_METHOD'].split(';')[-1] == '电能表'):
+            print(para['STATIC_METHOD'])
+            # 电能表厂商
+            self.inputSel_met_fac(para['MET_FAC'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
 

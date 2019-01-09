@@ -47,6 +47,9 @@ class StaticByFacPage(Page):
         # self.input(value, *StaticByFacLocators.QUERY_DATE)
         self.inputDate(value)
 
+    def inputChk_static_method(self, option):
+        self.clickRadioBox(option)
+
     # 点击查询
     def btn_qry(self):
         # self.click(StaticByFacLocators.BTN_QUERY)

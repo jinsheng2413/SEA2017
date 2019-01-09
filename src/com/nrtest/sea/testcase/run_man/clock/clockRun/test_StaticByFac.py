@@ -65,12 +65,11 @@ class TestStaticByFac(TestCase, StaticByFacPage):
         self.openLeftTree(para['TREE_NODE'])
         # 查询日期
         self.inputStr_query_date(para['QUERY_DATE'])
+        # 类别
+        self.inputChk_static_method(para['STATIC_METHOD'])
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(StaticByFacLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """

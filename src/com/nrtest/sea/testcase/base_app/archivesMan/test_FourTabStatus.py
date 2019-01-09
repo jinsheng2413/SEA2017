@@ -63,10 +63,14 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
         """
         # 打开tab页
         self.clickTabPage(para['TAB_NAME'])
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 选择用状态
-        self.inputSel_userState(para['USER_STATE'])
+        self.inputSel_user_state(para['USER_STATE'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

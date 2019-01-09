@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.waveArchives_pages import WaveArc
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》载波档案矫正
+# 基本应用--》档案管理--》载波档案校正
 @ddt
 class TestWaveArchives(TestCase, WaveArchives_Page):
 
@@ -61,16 +61,22 @@ class TestWaveArchives(TestCase, WaveArchives_Page):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
 
         # 输入台区编号
         self.inputStr_zone_no(para['ZONE_NO'])
+
         # 输入台区名称
         self.inputStr_zone_name(para['ZONE_NAME'])
-        # 输入统计时间
-        self.inputStr_Count_time(para['COUNT_TIME'])
-        # 输入统计分类
-        self.inputSel_countType(para['COUNT_TYPE'])
 
+        # 输入统计时间
+        self.inputDt_count_time(para['COUNT_TIME'])
+
+        # 输入统计分类
+        self.inputSel_count_type(para['COUNT_TYPE'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

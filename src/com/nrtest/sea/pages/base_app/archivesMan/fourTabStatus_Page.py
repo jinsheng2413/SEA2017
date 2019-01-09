@@ -14,15 +14,9 @@ from com.nrtest.common.base_page import Page
 class FourTabStatusPage(Page):
 
     # 用户状态
-    def inputSel_userState(self, name):
-        # self.click(FourTabStatusLocators.QRY_USER_STATE)
-        # locator = self.get_select_locator(
-        #     FourTabStatusLocators.QRY_USER_STATE_VALUE, name)
-        # self.click(locator)
+    def inputSel_user_state(self, name):
         self.selectDropDown(name)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        # self.click(FourTabStatusLocators.BTN_QRY)
         self.btn_query()

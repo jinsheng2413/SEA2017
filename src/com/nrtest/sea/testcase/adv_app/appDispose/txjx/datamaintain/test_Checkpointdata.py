@@ -31,7 +31,7 @@ class TestCheckpointdata(TestCase, CheckpointdataPage):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -52,7 +52,7 @@ class TestCheckpointdata(TestCase, CheckpointdataPage):
         """
 
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         """
@@ -63,12 +63,15 @@ class TestCheckpointdata(TestCase, CheckpointdataPage):
         """
 
         # 用户编号
-        self.inputStr_userNo(para['USER_NO'])
-        # 用户名称
-        self.inputStr_userName(para['USER_NAME'])
-        # 电表正反向
-        self.inputSel_meterFr(para['METER_FR'])
+        self.inputStr_cons_no(para['CONS_NO'])
 
+        # 用户名称
+        self.inputStr_cons_name(para['CONS_NAME'])
+
+        # 电表正反向
+        self.inputSel_meter_fr(para['METER_FR'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

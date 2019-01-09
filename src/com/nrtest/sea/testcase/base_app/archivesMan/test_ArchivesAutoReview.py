@@ -63,10 +63,12 @@ class TestArchivesAutoRevie(TestCase, ArchivesAutoReviewPage):
         """
 
         # 选择导入电表信息
-        self.inputSel_leadInto_meter_info(para['LEADINTO_METER'])
-        # 输入日期
-        self.inputStr_date(para['STAT_DATE'])
+        self.inputSel_leadinto_meter(para['LEADINTO_METER'])
 
+        # 输入日期
+        self.inputDt_stat_date(para['STAT_DATE'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

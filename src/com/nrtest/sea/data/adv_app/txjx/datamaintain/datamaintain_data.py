@@ -12,7 +12,9 @@
 class Datamaintain_data:
     # 高级应用-->台线系统--》资料维护--》线路资料维护
     lineData_para = '9992D220'
+
     # 高级应用-->台线系统--》资料维护--》线路考核点资料维护
     checkpointdata_para = '9992D240'
+
     # 高级应用-->台线系统--》资料维护--》专变考核点资料维护
     checkPointDataRtu_para = '9992D250'

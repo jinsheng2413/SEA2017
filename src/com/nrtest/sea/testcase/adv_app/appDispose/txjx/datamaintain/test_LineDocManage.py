@@ -30,7 +30,7 @@ class TestLineDocManage(TestCase, LineDocManagePage):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -51,7 +51,7 @@ class TestLineDocManage(TestCase, LineDocManagePage):
         """
 
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         """
@@ -62,8 +62,11 @@ class TestLineDocManage(TestCase, LineDocManagePage):
         """
         # 输入负责人
         self.inputSel_master(para['MASTER'])
+
         # 输入线路名称
-        self.inputStr_lineName(para['LINE_NAME'])
+        self.inputStr_line_name(para['LINE_NAME'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

@@ -16,18 +16,12 @@ class LineDocManagePage(Page):
 
     # 负责人
     def inputSel_master(self, name):
-        # self.click(LineDataLocators.QRY_MASTER)
-        # locator = self.get_select_locator(
-        #     LineDataLocators.QRY_MASTER_VALUE, name)
-        # self.click(locator)
         self.selectDropDown(name)
 
     # 线路名称
-    def inputStr_lineName(self, value):
-        self.input(value)  # , *LineDataLocators.QRY_LINE_NAME)
+    def inputStr_line_name(self, value):
+        self.input(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        # self.click(LineDataLocators.BTN_QRY)
         self.btn_query()

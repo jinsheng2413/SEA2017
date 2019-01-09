@@ -24,7 +24,7 @@ class TmnlQualityEvalStaticPage(Page):
         self.selectDropDown(options)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *TmnlQualityEvalStaticLocators.QUERY_DATE)
         self.inputDate(value)
 

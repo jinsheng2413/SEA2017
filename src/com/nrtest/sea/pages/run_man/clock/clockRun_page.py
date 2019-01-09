@@ -30,7 +30,7 @@ class StaticByOrgPage(Page):
         self.selectDropDown(item)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *StaticByOrgLocators.QUERY_DATE)
         self.inputDate(value)
 
@@ -43,7 +43,7 @@ class StaticByOrgPage(Page):
 class StaticByFacPage(Page):
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *StaticByFacLocators.QUERY_DATE)
         self.inputDate(value)
 
@@ -85,7 +85,7 @@ class FrequentlyCheckTmnlPage(Page):
         self.input(value)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *FrequentlyCheckTmnlLocators.QUERY_DATE)
         self.inputDate(value)
 
@@ -124,7 +124,7 @@ class FrequentlyCheckMetPage(Page):
         self.input(value)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *FrequentlyCheckMetLocators.QUERY_DATE)
         self.inputDate(value)
 

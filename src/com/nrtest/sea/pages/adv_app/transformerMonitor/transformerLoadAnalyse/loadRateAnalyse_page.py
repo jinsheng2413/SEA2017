@@ -17,7 +17,7 @@ class LoadRateStaticPage(Page):
         self.selectDropDown(item)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate()
 
     # 点击查询
@@ -37,7 +37,7 @@ class LoadRateDetailPage(Page):
 
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value,True,True)
 
     # 点击查询

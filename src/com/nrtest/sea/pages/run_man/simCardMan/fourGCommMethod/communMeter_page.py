@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 class CommumMeterPage(Page):
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *FlowCountLocators.QRY_MONTH)
         self.inputDate(value)
 

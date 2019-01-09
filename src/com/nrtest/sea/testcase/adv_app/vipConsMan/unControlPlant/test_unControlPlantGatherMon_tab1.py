@@ -59,10 +59,10 @@ class Test_UnControlPlantGatherMon_1(TestCase, UnControlPlantGatherMon1_Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 开始日期
-        self.inputStr_start_date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
 
         # 结束日期
-        self.inputStr_end_date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 发电方式
         self.inputSel_generate_electricity_way(para['GENERATE_ELECTRICITY_WAY'])

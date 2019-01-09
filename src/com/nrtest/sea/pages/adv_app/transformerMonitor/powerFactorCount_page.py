@@ -20,7 +20,7 @@ class PowerFactorCountStaticPage(Page):
         self.selectDropDown(item)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 点击查询
@@ -40,7 +40,7 @@ class PowerFactorCountDetailPage(Page):
         self.selectDropDown(item)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 点击查询

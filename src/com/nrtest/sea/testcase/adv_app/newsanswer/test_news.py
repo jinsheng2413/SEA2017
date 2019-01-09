@@ -76,10 +76,10 @@ class Test_News(TestCase, News_Page):
         self.inputSel_question_status(para['QUESTION_STATUS'])
 
         # 开始日期
-        self.inputStr_start_date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
 
         # 结束日期
-        self.inputStr_end_date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 查询
         self.btn_qry()

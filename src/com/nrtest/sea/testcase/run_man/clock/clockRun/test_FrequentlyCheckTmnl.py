@@ -76,7 +76,7 @@ class TestFrequentlyCheckTmnl(TestCase, FrequentlyCheckTmnlPage):
         # 终端资产号
         self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -137,7 +137,7 @@ class TestFrequentlyCheckTmnl(TestCase, FrequentlyCheckTmnlPage):
     #     # 是否在线
     #     self.inputRSel_is_online('全部')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
+    #     self.inputDt_query_date('2018-09')
     #     # 对时结果
     #     self.inputRSel_call_status('全部')
     #

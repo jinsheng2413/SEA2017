@@ -23,7 +23,7 @@ class TmnlSimFlowJB_1Page(Page):
         self.input(value)  # , *TmnlSimFlowJB_1Locators.QRY_SIM_NO)
 
     # 日期
-    def inputStr_start_date(self, value):
+    def inputDt_start_date(self, value):
         self.input(value)  # , *TmnlSimFlowJB_1Locators.QRY_START_DATE)
 
     # 至 日期

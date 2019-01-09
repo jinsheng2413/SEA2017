@@ -69,7 +69,7 @@ class TestPowerFactorCountDetail(TestCase, PowerFactorCountDetailPage):
         # 无功补偿情况
         self.inputSel_power_quality_type(para['POWER_QUALITY_TYPE'])
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -120,7 +120,7 @@ class TestPowerFactorCountDetail(TestCase, PowerFactorCountDetailPage):
     #     # 无功补偿情况
     #     self.inputRSel_power_quality_type('全部')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09-01')
+    #     self.inputDt_query_date('2018-09-01')
     #
     #     self.btn_query()
     #     self.sleep_time(2)

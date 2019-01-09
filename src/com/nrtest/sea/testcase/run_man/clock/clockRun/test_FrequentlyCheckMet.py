@@ -73,7 +73,7 @@ class TestFrequentlyCheckMet(TestCase, FrequentlyCheckMetPage):
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -133,7 +133,7 @@ class TestFrequentlyCheckMet(TestCase, FrequentlyCheckMetPage):
     #     # 是否在线
     #     self.inputRSel_is_online('全部')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
+    #     self.inputDt_query_date('2018-09')
     #     # 对时结果
     #     self.inputRSel_call_status('全部')
     #

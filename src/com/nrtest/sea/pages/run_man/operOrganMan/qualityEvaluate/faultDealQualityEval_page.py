@@ -24,7 +24,7 @@ class FaultDealQualityStaticPage(Page):
         self.selectDropDown(options)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *FaultDealQualityStaticLocators.QUERY_DATE)
         self.inputDate(value)
 
@@ -46,7 +46,7 @@ class FaultDealQualityDetailPage(Page):
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *FaultDealQualityDetailLocators.QUERY_DATE)
         self.inputDate(value)
 
@@ -76,7 +76,7 @@ class StaffDealDetailPage(Page):
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *StaffDealDetailLocators.QUERY_DATE)
         self.inputDate(value)
 

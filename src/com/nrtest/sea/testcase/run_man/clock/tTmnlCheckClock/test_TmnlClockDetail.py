@@ -77,7 +77,7 @@ class TestTmnlClockDetail(TestCase, TmnlClockDetailPage):
         # 是否在线
         self.inputSel_is_online(para['IS_ONLINE'])
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 对时结果
         self.inputSel_call_status(para['CALL_STATUS'])
 
@@ -140,7 +140,7 @@ class TestTmnlClockDetail(TestCase, TmnlClockDetailPage):
     #     # 是否在线
     #     self.inputRSel_is_online('全部')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
+    #     self.inputDt_query_date('2018-09')
     #     # 对时结果
     #     self.inputRSel_call_status('全部')
     #

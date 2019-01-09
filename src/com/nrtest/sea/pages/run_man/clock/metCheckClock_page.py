@@ -32,7 +32,7 @@ class MetClockMonthStaticPage(Page):
         self.selectDropDown(item)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *MetClockMonthStaticLocators.QUERY_DATE)
         self.inputDate(value)
 
@@ -67,7 +67,7 @@ class MetClockDayStaticPage(Page):
 
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *MetClockDayStaticLocators.QUERY_DATE)
         self.inputDate(value)
 
@@ -118,7 +118,7 @@ class MetClockDetailPage(Page):
         self.input(value)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *MetClockDetailLocators.QUERY_DATE)
         self.inputDate(value)
 
@@ -148,7 +148,7 @@ class AutoCheckPolicyPage(Page):
         self.selectDropDown(item)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *AutoCheckPolicyLocators.QUERY_DATE)
         self.inputDate(value)
 

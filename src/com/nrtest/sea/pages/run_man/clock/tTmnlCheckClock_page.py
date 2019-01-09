@@ -32,7 +32,7 @@ class TmnlClockStaticPage(Page):
         self.selectDropDown(item)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *TmnlClockStaticLocators.QUERY_DATE)
         self.inputDate(value)
 
@@ -88,7 +88,7 @@ class TmnlClockDetailPage(Page):
         self.selectDropDown(item)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *TmnlClockDetailLocators.QUERY_DATE)
         self.inputDate(value)
 
@@ -125,7 +125,7 @@ class AutoCheckPolicyPage(Page):
         self.selectDropDown(item)
 
     # 查询日期
-    def inputStr_query_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *AutoCheckPolicyLocators.QUERY_DATE)
         self.inputDate(value)
 

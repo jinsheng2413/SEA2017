@@ -64,10 +64,10 @@ class Test_Knowledge(TestCase, Knowledge_Page):
         self.inputStr_file_name(para['FILE_NAME'])
 
         # 开始时间
-        self.inputStr_start_date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
 
         # 结束时间
-        self.inputStr_end_date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 查询
         self.btn_qry()

@@ -67,7 +67,7 @@ class TestSpVoltAnalyseStatic(TestCase, PowerFactorCountStaticPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -116,7 +116,7 @@ class TestSpVoltAnalyseStatic(TestCase, PowerFactorCountStaticPage):
     #     # 用户类型
     #     self.inputSel_cons_type('全部')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09-01')
+    #     self.inputDt_query_date('2018-09-01')
     #
     #     self.btn_query()
     #     self.sleep_time(2)

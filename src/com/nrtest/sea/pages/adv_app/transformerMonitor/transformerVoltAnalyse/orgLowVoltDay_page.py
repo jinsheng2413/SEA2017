@@ -16,12 +16,12 @@ from com.nrtest.common.base_page import Page
 class OrgLowVoltDayStaticPage(Page):
 
     # 开始日期
-    def inputStr_start_date(self, value):
+    def inputDt_start_date(self, value):
         # self.input(value, *OrgLowVoltDayStaticLocators.START_DATE)
         self.inputDate(value)
 
     # 结束日期
-    def inputStr_end_date(self, value):
+    def inputDt_end_date(self, value):
         # self.input(value, *OrgLowVoltDayStaticLocators.END_DATE)
         self.inputDate(value)
 
@@ -35,11 +35,11 @@ class OrgLowVoltDayStaticPage(Page):
 class OrgLowVoltDayDetailPage(Page):
 
     # 开始日期
-    def inputStr_start_date(self, value):
+    def inputDt_start_date(self, value):
         self.inputDate(value)
 
     # 结束日期
-    def inputStr_end_date(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)
 
     # 台区名称

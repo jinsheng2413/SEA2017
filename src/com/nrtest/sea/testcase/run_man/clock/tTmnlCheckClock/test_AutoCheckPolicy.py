@@ -65,7 +65,7 @@ class TestAutoCheckPolicy(TestCase, AutoCheckPolicyPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 间隔周期
         self.inputSel_interval_cycle(para['INTERVAL_CYCLE'])
         # 周期内自动对时次数
@@ -130,7 +130,7 @@ class TestAutoCheckPolicy(TestCase, AutoCheckPolicyPage):
     #     # 是否在线
     #     self.inputRSel_is_online('全部')
     #     # 查询日期
-    #     self.inputStr_query_date('2018-09')
+    #     self.inputDt_query_date('2018-09')
     #     # 对时结果
     #     self.inputRSel_call_status('全部')
     #

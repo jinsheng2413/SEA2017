@@ -63,7 +63,6 @@ class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
         # 软件版本号
         self.inputSel_software_version_no(para['SOFTWARE_VERSION_NO'])
         # 点击查询按钮
-        # self.btn_query()
         self.btn_search()
 
 

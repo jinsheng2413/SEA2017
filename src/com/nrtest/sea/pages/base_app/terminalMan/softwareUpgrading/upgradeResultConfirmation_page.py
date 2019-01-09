@@ -9,7 +9,8 @@
 """
 
 from com.nrtest.common.base_page import Page
-
+from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeResultConfirmation_locators import \
+    UpgradeResultConfirmationLocator
 
 # 基本应用→终端管理→软件升级→升级结果确认
 class UpgradeResultConfirmationPage(Page):
@@ -35,6 +36,38 @@ class UpgradeResultConfirmationPage(Page):
         # locator = self.get_select_locator(
         #     UpgradeResultConfirmationLocator.TMNL_PURPOSE_VALUE, index)
         # self.click(locator)
+        self.selectDropDown(index)
+
+    # 升级版本号
+    def inputSel_upgrade_version_no(self, index):
+        self.click(UpgradeResultConfirmationLocator.UPGRADE_VERSION_NO)
+        self.selectDropDown(index)
+
+    # 升级目的
+    def inputSel_upgrade_purpose(self, index):
+        self.selectDropDown(index)
+
+    # 确认状态
+    def inputSel_affirm_status(self, index):
+        self.selectDropDown(index)
+
+    # 升级状态
+    def inputSel_upgrade_status(self, index):
+        self.selectDropDown(index)
+
+    # 升级号
+    def inputChk_upgrade_no(self, index):
+        if index == '1':
+            self.click(UpgradeResultConfirmationLocator.UPGRADE_NO)
+        else:
+            pass
+
+    # 批次号
+    def inputStr_batch_no(self, index):
+        self.input(index)
+
+    # 前置下发状态
+    def inputSel_preposition_down_status(self, index):
         self.selectDropDown(index)
 
     # 确认开始日期

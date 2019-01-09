@@ -71,7 +71,7 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         # 相位
         self.inputSel_phase_Rdetail(para['PHASE'])
         # 查询日期
-        self.inputStr_Time_Rdetail(para['QUERY_TIME'])
+        self.inputDt_Time_Rdetail(para['QUERY_TIME'])
         # 数据类别
         self.inputSel_dataType(para['DATA_TYPE'])
         # 电能表抄读状态

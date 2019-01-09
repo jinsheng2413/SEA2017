@@ -10,11 +10,6 @@
 
 from com.nrtest.common.base_page import Page
 
-
-# from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_locators import \
-#     UpgradeEditionManLocators
-
-
 # 基本应用→终端管理→软件升级→升级版本管理
 class UpgradeEditionManPage(Page):
     # 终端版本信息登记

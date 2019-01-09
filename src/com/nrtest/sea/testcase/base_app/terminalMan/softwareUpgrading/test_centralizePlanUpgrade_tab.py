@@ -56,7 +56,6 @@ class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
 
     # 制定计划
     def query(self, para):
-        clickTabPage('制定计划')
         # 打开左边树选择供电单位
         self.openLeftTree(para['TREE_NODE'])
         # 忽略旧版本号

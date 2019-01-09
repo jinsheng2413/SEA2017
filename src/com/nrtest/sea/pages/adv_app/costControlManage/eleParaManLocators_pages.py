@@ -9,19 +9,16 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.costControlManage.eleParaMan_locators import EleParaManLocators
 
 
 # 高级应用--》费控管理--》本地费控--》电价参数管理
 
-class EleParaManPage(Page):
+class EleParaMan_rate_Page(Page):
+
+
 
     # 开始时间
-    def inputStr_startTimeTwo(self, value):
-        self.inputDate(value)  # , *EleParaManLocators.QRY_START_TIME_ONE)
-
-    # 开始时间
-    def inputStr_startTimeOne(self, value):
+    def inputDT_startTimeOne(self, value):
         self.inputDate(value)  #, *EleParaManLocators.QRY_START_TIME_ONE)
 
     # 是否已生成参数
@@ -32,6 +29,28 @@ class EleParaManPage(Page):
         # self.click(locator)
         self.selectDropDown(name)
 
+
+    # 结束时间
+    def inputDT_EndTimeOne(self, value):
+        self.inputDate(value, is_multi_tab=True)  # , *EleParaManLocators.QRY_END_TIME_ONE)
+
+    # 费率来源
+    def inputChk_fee_from(self, options):
+        ls_option = options.replace(';', ',')
+        self.clickCheckBox_g(ls_option)
+
+
+        # 查询
+
+    def btn_qry(self):
+        # self.click(EleParaManLocators.BTN_QRY_ONE)
+        self.btn_query(True)
+
+
+class EleParaMan_step_Page(Page):
+    # 开始时间
+    def inputStr_startTimeTwo(self, value):
+        self.inputDate(value)  # , *EleParaManLocators.QRY_START_TIME_ONE)
         # 是否已生成参数
 
     def inputSel_ComeIntoPara_Two(self, name):
@@ -42,18 +61,15 @@ class EleParaManPage(Page):
         self.selectDropDown(name)
 
     # 结束时间
-    def inputStr_EndTimeOne(self, value):
-        self.inputDate(value)  #, *EleParaManLocators.QRY_END_TIME_ONE)
-
-    # 结束时间
     def inputStr_endTimeTwo(self, value):
-        self.inputDate(value)  #, *EleParaManLocators.QRY_END_TIME_ONE)
+        self.inputDate(value)  # , *EleParaManLocators.QRY_END_TIME_ONE)
 
-        # 查询
+    # 费率来源
+    def inputChk_fee_from(self, options):
+        # ls_option =options.split(',')
+        # ls_option.pop()
+        self.clickCheckBox_g('来源营销')
 
-    def btn_qryOne(self):
-        self.click(EleParaManLocators.BTN_QRY_ONE)
-
-    # 查询
-    def btn_qryTwo(self):
-        self.click(EleParaManLocators.BTN_QRY_TWO)
+    def btn_qry(self):
+        # self.click(EleParaManLocators.BTN_QRY_ONE)
+        self.btn_query(True)

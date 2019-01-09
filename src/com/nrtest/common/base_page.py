@@ -1337,10 +1337,42 @@ class Page():
 
         WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
 
+    def clickCheckBox_g(self, CheckBoxName=','):
+        """
+        选中复选框
+
+        :param CheckBoxName: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
+        :return:
+        """
+        try:
+            lis = CheckBoxName.split(',')
+            xp = '//label[@class=\"x-form-cb-label\"]/preceding-sibling::input[@type="checkbox"]'
+            # 寻找所有复选框做清空处理
+            els = self.driver.find_elements(*(By.XPATH, xp))
+            for el in els:
+                # 判断是否被选中
+                sel = el.is_selected()
+                # 判断元素是否存在
+                tr = el.is_displayed()
+                if sel and tr:
+                    el.click()
+            # 根据复选框名称点击来点击所需要的复选框
+            for i in lis:
+                xp = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
+                    i)
+
+                lo = (By.XPATH, xp)
+                appear = self._find_displayed_element(lo)
+                appear.click()
+
+        except BaseException as e:
+            print('点击复选框失败')
+            print(e)
+
 
 if __name__ == '__main__':
     # dr = webdriver.Chrome()
-    # el = dr.find_element(*(By.XPATH, '')).get_attribute('class')
+    # el = dr.find_element(*(By.XPATH, '')
     # el.is_selected()
     # #
     # # p = Page(dr)

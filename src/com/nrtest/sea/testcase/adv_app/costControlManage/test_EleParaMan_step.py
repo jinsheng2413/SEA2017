@@ -14,24 +14,22 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
-from com.nrtest.sea.pages.adv_app.costControlManage.eleParaManLocators_pages import EleParaMan_rate_Page
+from com.nrtest.sea.pages.adv_app.costControlManage.eleParaManLocators_pages import EleParaMan_step_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》费控管理--》本地费控--》电价参数管理
 @ddt
-class TestEleParaMan(TestCase, EleParaMan_rate_Page):
+class TestEleParaMan(TestCase, EleParaMan_step_Page):
 
     @classmethod
     def setUpClass(cls):
-
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(CostControlManage_data.eleParaMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        menuPage.clickTabPage(CostControlManage_data.eleParaMan_rate_tab)
+        menuPage.clickTabPage(CostControlManage_data.eleParaMan_step_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-
 
     @classmethod
     def tearDownClass(cls):
@@ -66,11 +64,11 @@ class TestEleParaMan(TestCase, EleParaMan_rate_Page):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 开始时间
-        self.inputDT_startTimeOne(para['START_TIME'])
+        self.inputStr_startTimeTwo(para['START_TIME'])
         # 结束时间
-        self.inputDT_EndTimeOne(para['END_TIME'])
+        self.inputStr_endTimeTwo(para['END_TIME'])
         # 是否已生成参数
-        self.inputSel_ComeIntoPara_One(para['COME_INTO_PARA'])
+        # self.inputSel_ComeIntoPara_Two(para['COME_INTO_PARA'])
 
         # 费率来源
         self.inputChk_fee_from(para['FEE_FROM'])
@@ -93,7 +91,7 @@ class TestEleParaMan(TestCase, EleParaMan_rate_Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(CostControlManage_data.eleParaMan_para, CostControlManage_data.eleParaMan_rate_tab))
+    @data(*DataAccess.getCaseData(CostControlManage_data.eleParaMan_para, CostControlManage_data.eleParaMan_step_tab))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -101,7 +99,7 @@ class TestEleParaMan(TestCase, EleParaMan_rate_Page):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(CostControlManage_data.eleParaMan_para, CostControlManage_data.eleParaMan_rate_tab,
+    @data(*DataAccess.getCaseData(CostControlManage_data.eleParaMan_para, CostControlManage_data.eleParaMan_step_tab,
                                   valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

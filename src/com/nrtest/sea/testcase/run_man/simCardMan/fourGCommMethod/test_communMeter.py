@@ -14,7 +14,7 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardMan
+from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardManData
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.fourGCommMethod.communMeter_page import CommumMeterPage
 
@@ -25,7 +25,7 @@ class TestCommumMetter(TestCase, CommumMeterPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(SimCardMan.para_communMeter)
+        menuPage = MenuPage.openMenu(SimCardManData.para_communMeter)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
@@ -98,7 +98,7 @@ class TestCommumMetter(TestCase, CommumMeterPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SimCardMan.para_communMeter))
+    @data(*DataAccess.getCaseData(SimCardManData.para_communMeter))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -106,7 +106,7 @@ class TestCommumMetter(TestCase, CommumMeterPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SimCardMan.para_communMeter, valCheck=True))
+    @data(*DataAccess.getCaseData(SimCardManData.para_communMeter, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

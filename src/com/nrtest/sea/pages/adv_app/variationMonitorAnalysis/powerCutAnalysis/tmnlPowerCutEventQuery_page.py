@@ -23,7 +23,7 @@ class TmnlPowerCutEventQueryPage(Page):
         self.selectDropDown(index, True, True)
 
     # 月份
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(TmnlPowerCutEventQueryLocators.DATE_JS)
         # self.input(content, *TmnlPowerCutEventQueryLocators.QRY_DATE)
         self.inputDate(content)
@@ -49,7 +49,7 @@ class TmnlPowerCutEventQueryMonthPage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 月份
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(TmnlPowerCutEventQueryMonthLocators.DATE_JS)
         # self.input(content, *TmnlPowerCutEventQueryMonthLocators.QRY_DATE)
         self.inputDate(content)
@@ -84,7 +84,7 @@ class TmnlPowerCutEventQueryDayPage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(TmnlPowerCutEventQueryDayLocators.DATE_JS)
         # self.input(content, *TmnlPowerCutEventQueryDayLocators.QRY_DATE)
         self.inputDate(content)

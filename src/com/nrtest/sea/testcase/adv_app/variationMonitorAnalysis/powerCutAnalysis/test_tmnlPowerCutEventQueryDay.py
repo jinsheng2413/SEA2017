@@ -59,7 +59,7 @@ class TestTmnlPowerCutEventQueryDay(TestCase, TmnlPowerCutEventQueryDayPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 停复电标识
         self.inputSel_power_cut_identifying(para['POWER_CUT_IDENTIFYING'])
         # 终端厂家

@@ -1142,7 +1142,7 @@ class Page():
         right_click = self.driver.find_element(*locators)
         ActionChains(self.driver).context_click(right_click).perform()
 
-    def assert_context(self, locators):
+    def assert_context(self, locators, Num=0):
         """
         断言
         :param locators: 校验的值
@@ -1151,17 +1151,19 @@ class Page():
         try:
             WebDriverWait(self.driver, 15).until(
                 EC.presence_of_element_located(locators))
-            try:
+            if Num == 0:
 
-                el = WebDriverWait(self.driver, 3).until(
-                    EC.presence_of_element_located((By.XPATH,"//span[contains(text(),'程序异常')]")))
-                res = self.driver.find_element((By.XPATH,"//span[contains(text(),'程序异常')]")).is_displayed()
-                if res:
-                    print('弹出程序异常错误')
-                    self.btn_confirm()
-                    return False
-            except:
-                print('')
+                try:
+
+                    el = WebDriverWait(self.driver, 3).until(
+                        EC.presence_of_element_located((By.XPATH, "//span[contains(text(),'程序异常')]")))
+                    res = self.driver.find_element((By.XPATH, "//span[contains(text(),'程序异常')]")).is_displayed()
+                    if res:
+                        print('弹出程序异常错误')
+                        self.btn_confirm()
+                        return False
+                except:
+                    print('')
             return self.driver.find_element(*locators).is_displayed()
         except:
             return False
@@ -1195,7 +1197,7 @@ class Page():
                         displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
                                                                              assertValues[2])
                         try:
-                            assert_rslt = self.assert_context((By.XPATH, displayLineElement_index))
+                            assert_rslt = self.assert_context((By.XPATH, displayLineElement_index), Num=1)
                             if assert_rslt:
                                 ringhtNum += 1
                             else:
@@ -1303,7 +1305,7 @@ class Page():
         for row in rslt:  # 根据rslt有几个值来判断要做几次校验
             assert_type = row[0]
             if assert_type == '11':
-                assert_rslt = self.assert_context((By.XPATH, Display_tab.format(row[1])))  # 判断是否有值
+                assert_rslt = self.assert_context((By.XPATH, Display_tab.format(row[1])), Num=1)  # 判断是否有值
             elif assert_type == '12':
                 assert_rslt = self.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
             elif assert_type == '21':

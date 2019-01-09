@@ -9,18 +9,27 @@
 """
 from unittest import TestCase
 
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.base_app.archivesMan.archivesManage_para import ArchivesManage_para
-from com.nrtest.sea.data.common.data_common import DataCommon
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesManage_pages import ArchivesManage_pages
 from com.nrtest.sea.task.archivesManage import *
 
 
+# 基本应用--》档案管理--》档案同步
+@ddt
 class test_archivesManage(TestCase, ArchivesManage_pages):
     @classmethod
     def setUpClass(cls):
-        cls.driver = archivesMange()
-        cls.orl = Oracle()
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ArchivesMan_data.archivesManage_para)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -41,75 +50,56 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
         :return:
         """
         # self.clear_values(ArchivesManage_pages)
+        self.recoverLeftTree()
 
-    # 用户类型
-    def test_am_user_cata(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ArchivesManage_para.para_test_am_user_cata)
-        self.inputSel_user_cata(lip[0][0])
-        self.btn_qry()
+    def query(self, para):
+        """
+
+        :param para: Dict类型的字典，不是dict
+        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
+        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
+        """
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+        # 输入用户类型
+        self.inputSel_user_cata(para['USER_TYPE'])
+        # 户号
+        self.inputStr_family_no(para['USER_NO'])
+        # 终端资产号
+        self.inputStr_terminal_asset(para['TMNL_ASSET_NO'])
+        # 终端地址
+        self.inputStr_terminal_addr(para['TMNL_ADDR'])
+
+        self.btt_qry()
         self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ArchivesManage_locators.TAB_ONE)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # 户号
-    def test_am_family_no(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ArchivesManage_para.para_test_am_family_no)
-        self.inputStr_family_no(lip[0][0])
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ArchivesManage_locators.TAB_ONE)
-        self.assertTrue(result)
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesManage_para))
+    def test_query(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
 
-    # 终端资产号
-    def test_am_terminal_asset_no(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, ArchivesManage_para.para_test_am_terminal_asset_no)
-        self.inputStr_terminal_asset(lip[0][0])
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ArchivesManage_locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 终端地址
-    def test_am_termianl_addr(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ArchivesManage_para.para_test_am_termianl_addr)
-        self.inputStr_terminal_addr(lip[0][0])
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ArchivesManage_locators.TAB_ONE)
-        self.assertTrue(result)
-
-    # 用户编号明细
-    def test_am_family_no_detail(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ArchivesManage_para.para_test_am_family_no)
-        self.inputStr_family_no(lip[0][0])
-        self.btn_qry()
-        self.sleep_time(2)
-        self.btn_user_no_detail()
-
-        # 校验
-        result = self.assert_context(ArchivesManage_locators.TAB_USER_ASSERT)
-        self.assertTrue(result)
-        self.btn_menu()
-
-    # 终端资产号明细
-    def test_am_terminal_asset_no_detail(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, ArchivesManage_para.para_test_am_terminal_asset_no)
-        self.inputStr_terminal_asset(lip[0][0])
-        self.btn_qry()
-        self.sleep_time(2)
-        self.btn_terminal_asset_detail()
-        # 校验
-        result = self.assert_context(ArchivesManage_locators.BTN_CONFIRM)
-        self.assertTrue(result)
-        self.btn_confirm()
-        self.btn_menu()
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesManage_para, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

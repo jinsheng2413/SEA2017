@@ -9,18 +9,28 @@
 """
 from unittest import TestCase
 
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.base_app.archivesMan.archivesAnalysisOfAnomaly_para import ArchivesAnalysisOfAnomaly_para
-from com.nrtest.sea.data.common.data_common import DataCommon
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_pages import *
 from com.nrtest.sea.task.archivesManage import *
 
 
+# 基本应用--》档案管理--》档案异常分析
+
+@ddt
 class test_archivesAnalysisOfAnomaly_detail(TestCase, ArchivesAnalysisOfAnomaly_detail_pages):
     @classmethod
     def setUpClass(cls):
-        cls.driver = archivesAnalysisOfAnomaly_detail()
-        cls.orl = Oracle()
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ArchivesMan_data.archivesAnalysisOfAnomaly)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(ArchivesMan_data.archivesAnalysisOfAnomaly_detail_tab)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -39,54 +49,48 @@ class test_archivesAnalysisOfAnomaly_detail(TestCase, ArchivesAnalysisOfAnomaly_
         :return:
         """
         # self.clear_values(ArchivesAnalysisOfAnomaly_detail_pages)
+        self.recoverLeftTree()
 
     def query(self, para):
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
         # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
-
+        self.inputSel_cons_type(para['CONS_CATA'])
+        # 日期
+        self.inputStr_date(para['DATE'])
         # 档案类型
-        self.inputRSel_archives_type(para['ARCHIVES_TYPE'])
-
-        # 时间查询
-        self.inputStr_DT_QUERY(para['DT_QUERY'])
-
-        # 用户编号
-        self.btn_user_no_detail()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *ArchivesAnalysisOfAnomaly_detail_locators.BTN_USER_DATA_QRY)
-        self.assertTrue(result)
-        self.btn_menu_anchives_al()
-
-        # 终端档案异常数
-
-    def test_aaoad_terminal_anomals_detail(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
-        self.inputStr_date(lip[0][0])
+        self.inputRSel_archives_cata(para['ARCHIVES_CATA'])
         self.btn_qry()
-        self.btn_terminal_asset_no_detail()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *ArchivesAnalysisOfAnomaly_detail_locators.BTN_CONFIRM)
-        self.assertTrue(result)
-        self.btn_confirm()
-        self.btn_menu_anchives_al()
 
-    # 终端档案异常数
-    def test_aaoad_anomals_detail(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
-        self.inputStr_date(lip[0][0])
-        self.btn_qry()
-        self.btnAnomalsDetail()
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
 
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *ArchivesAnalysisOfAnomaly_detail_locators.BTN_LOS)
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
-        self.btn_los()
-        self.btn_menu_anchives_al()
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesAnalysisOfAnomaly,
+                                  ArchivesMan_data.archivesAnalysisOfAnomaly_detail_tab))
+    def test_query(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesAnalysisOfAnomaly,
+                                  ArchivesMan_data.archivesAnalysisOfAnomaly_detail_tab, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

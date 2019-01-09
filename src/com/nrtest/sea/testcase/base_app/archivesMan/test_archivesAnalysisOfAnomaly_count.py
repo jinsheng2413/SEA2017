@@ -8,19 +8,30 @@
 @desc:
 """
 import unittest
+from unittest import TestCase
 
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.base_app.archivesMan.archivesAnalysisOfAnomaly_para import ArchivesAnalysisOfAnomaly_para
-from com.nrtest.sea.data.common.data_common import DataCommon
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_pages import *
 from com.nrtest.sea.task.archivesManage import *
 
 
+# 基本应用--》档案管理--》档案异常分析
+
+@ddt
 class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOfAnomaly_count_pages):
     @classmethod
     def setUpClass(cls):
-        cls.driver = archivesAnalysisOfAnomaly_count()
-        cls.orl = Oracle()
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ArchivesMan_data.archivesAnalysisOfAnomaly)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(ArchivesMan_data.archivesAnalysisOfAnomaly_count_tab)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -41,72 +52,47 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
         :return:
         """
         # self.clear_values(ArchivesAnalysisOfAnomaly_count_pages)
+        self.recoverLeftTree()
 
-    # 用户类型
-    def test_aaoa_user_cata(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_user_cata)
-        self.inputStr_date(lip[0][1])
-        print(lip[0][1])
-        self.inputSel_user_cata(lip[0][0])
-        print(lip[0][0])
+    def query(self, para):
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+        # 用户类型
+        self.inputSel_user_cata(para['CONS_CATA'])
+        # 日期
+        self.inputStr_date(para['DATE'])
+
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # 时间查询
-    def test_aaoa_date(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
-        self.inputStr_date(lip[0][0])
-        self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *ArchivesAnalysisOfAnomaly_count_locators.TAB_ONE)
-        self.assertTrue(result)
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesAnalysisOfAnomaly,
+                                  ArchivesMan_data.archivesAnalysisOfAnomaly_count_tab))
+    def test_query(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
 
-    # 用户类型异常明细
-    def test_aaoa_user_cata_anomals_detail(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
-        self.inputStr_date(lip[0][0])
-        self.btn_qry()
-        self.btn_user_archives_anomalaum()
-        self.sleep_time(2)
-        result = self.assert_context(
-            *ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA)
-        self.assertTrue(result)
-        self.btn_menu_archives_anomals_count()
-
-    # 电表档案异常数
-    def test_aaoa_meter_anomals_detail(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
-        self.inputStr_date(lip[0][0])
-        self.btn_qry()
-        self.btn_meter_archives_anomalaum()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA)
-        self.assertTrue(result)
-        self.btn_menu_archives_anomals_count()
-
-        # 终端档案异常数
-
-    def test_aaoa_terminal_anomals_detail(self):
-        lip = self.orl.queryAll(
-            DataCommon.sql_commom, ArchivesAnalysisOfAnomaly_para.para_test_aaoa_date)
-        self.inputStr_date(lip[0][0])
-        self.btn_qry()
-        self.btn_termianal_archives_anomalaum()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(
-            *ArchivesAnalysisOfAnomaly_detail_locators.QRY_ARCHIVES_CATA)
-        self.assertTrue(result)
-        self.btn_menu_archives_anomals_count()
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesAnalysisOfAnomaly,
+                                  ArchivesMan_data.archivesAnalysisOfAnomaly_count_tab, valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

@@ -10,5 +10,5 @@
 
 
 class ArchivesManData:
-    # 基本应用--》档案管理--》
+    # 基本应用--》档案管理--》档案查询
     para_archivesQuery = '99911400'

@@ -9,18 +9,28 @@
 """
 from unittest import TestCase
 
-from com.nrtest.common.oracle_test import Oracle
-from com.nrtest.sea.data.base_app.archivesMan.archivesMaintain_para import ArchivesMaintain
-from com.nrtest.sea.data.common.data_common import DataCommon
+from ddt import ddt, data
+
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import ArchivesMaintain_factory_pages
 from com.nrtest.sea.task.archivesManage import *
 
 
+# 基本应用--》档案管理--》档案维护
+
+@ddt
 class TestarchivesMaintain_factory(TestCase, ArchivesMaintain_factory_pages):
     @classmethod
     def setUpClass(cls):
-        cls.driver = archivesMaintain_factory()
-        cls.orl = Oracle()
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ArchivesMan_data.archivesMenTain)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(ArchivesMan_data.archivesMenTain_factory_tab)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -40,13 +50,44 @@ class TestarchivesMaintain_factory(TestCase, ArchivesMaintain_factory_pages):
         :return:
         """
 
-    # 电压等级
-    def test_amf_eleGrade(self):
-        lip = self.orl.queryAll(DataCommon.sql_commom,
-                                ArchivesMaintain.para_test_amf_eleGrade)
-        self.inputSel_eleGrade(lip[0][0])
-        self.btn_factoryQry()
-        self.sleep_time(2)
-        # 校验
-        result = self.assert_context(ArchivesMaintain_locators.TAB_ONE)
+        self.recoverLeftTree()
+
+    def query(self, para):
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+        # 电压等级
+        self.inputSel_eleGrade(para['ELE_GRADE'])
+
+        self.btn_qry()
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
         self.assertTrue(result)
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesMenTain, ArchivesMan_data.archivesMenTain_factory_tab))
+    def test_query(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_result(para)
+        self.end_case()
+
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesMenTain, ArchivesMan_data.archivesMenTain_factory_tab,
+                                  valCheck=True))
+    def _test_checkValue(self, para):
+        self.start_case(para, __file__)
+        self.query(para)
+        self.assert_query_criteria(para)
+        self.end_case()

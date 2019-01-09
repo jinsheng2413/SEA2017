@@ -18,6 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesQuery_pages import Archiv
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用--》档案管理--》档案查询
 @ddt
 class TestArchivesQuery(TestCase, ArchivesQueryPages):
     @classmethod
@@ -45,7 +46,7 @@ class TestArchivesQuery(TestCase, ArchivesQueryPages):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        # self.recoverLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
         # 打开左边树并点击

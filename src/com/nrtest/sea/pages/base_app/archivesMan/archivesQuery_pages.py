@@ -23,7 +23,8 @@ class ArchivesQueryPages(Page):
 
     # 【查询条件】
     # 用户类型
-    def inputSel_cons_type(self, option):
+    def \
+            inputSel_cons_type(self, option):
         # if option == 'c':
         #     self._find_element(ArchivesQuery_locators.QRY_CONS_TYPE_CLEAR)
         # else:

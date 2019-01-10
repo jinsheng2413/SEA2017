@@ -16,7 +16,7 @@ from com.nrtest.sea.locators.sys_mam.logMan.logEdit_locators import LogEditLocat
 # 系统管理--》日志管理--》值班日志
 class LogEditPage(Page):
     # 值班人员工号
-    def inputStr_dutyPersonNo(self, value):
+    def inputStr_duty_person_no(self, value):
          self.input(value)
 
     # 值班时间

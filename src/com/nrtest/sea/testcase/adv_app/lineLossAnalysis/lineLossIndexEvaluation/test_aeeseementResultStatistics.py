@@ -62,7 +62,7 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
         self.inputDt_query_date_type(para['TIME_STAT'])
         print(para['DATE'])
         # 查询日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_search()
 

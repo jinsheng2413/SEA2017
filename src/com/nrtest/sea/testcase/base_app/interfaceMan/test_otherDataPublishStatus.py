@@ -3,8 +3,8 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_mServiceCallStatus.py
-@time: 2018-10-15 15:00
+@file: test_mDataPublishStatus.py
+@time: 2018-10-30 16:10
 @desc:
 """
 
@@ -14,26 +14,23 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.interfaceMan.mServiceCallStatus_data import InterfaceMan_data
-from com.nrtest.sea.pages.base_app.interfaceMan.mServiceCallStatus_page import MServiceCallStatusPage
+from com.nrtest.sea.data.base_app.interfaceMan.mDataPublishStatus2_data import InterfaceManager_data
+from com.nrtest.sea.pages.base_app.interfaceMan.otherDataPublishStatus_page import OtherDataPublishStatusPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--接口管理--其他业务接口--服务调用情况
+# 基本应用--接口管理--其他业务接口--数据发布情况
 @ddt
-class TestMServiceCallStatus(TestCase, MServiceCallStatusPage):
-
+class Test_otherDataPublishStatus(TestCase, OtherDataPublishStatusPage):
     @classmethod
     def setUpClass(cls):
-
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(InterfaceMan_data.para_MServiceCallStatus)
+        menuPage = MenuPage.openMenu(InterfaceManager_data.para_otherMDataPublishStatus)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(InterfaceMan_data.tmnlInstallDetail_tabOne)
+        # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-
 
     @classmethod
     def tearDownClass(cls):
@@ -54,23 +51,23 @@ class TestMServiceCallStatus(TestCase, MServiceCallStatusPage):
         """
 
         # 回收左边树
-        # self.recoverLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
-        # 业务系统
-        self.inputSel_business_system(para['BUSINESS_SYSTEM'])
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
 
-        # #服务名称
-        self.inputSel_business_name(para['BUSINESS_NAME'])
+        self.inputSel_Business_system(para['BUSINESS_SYSTEM'])
 
         # 开始时间
-        self.inputDt_start_date(para['START_DATE'])
+        self.inputDt_receive_time(para['START_DATE'])
 
         # 结束时间
-        self.inputDt_end_date(para['END_DATE'])
+        self.inputDt_end_time(para['END_DATE'])
 
         # 查询
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -88,7 +85,7 @@ class TestMServiceCallStatus(TestCase, MServiceCallStatusPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus))
+    @data(*DataAccess.getCaseData(InterfaceManager_data.para_otherMDataPublishStatus))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -96,7 +93,7 @@ class TestMServiceCallStatus(TestCase, MServiceCallStatusPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus, valCheck=True))
+    @data(*DataAccess.getCaseData(InterfaceManager_data.para_otherMDataPublishStatus, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

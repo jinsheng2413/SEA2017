@@ -15,7 +15,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.run_man.operOrganMan.qualityEvaluate.collTmnlQualityEval_page import \
+from com.nrtest.sea.pages.run_man.collegeywplat.qualityEvaluate.collTmnlQualityEval_page import \
     TmnlQualityEvalDetailPage
 
 
@@ -73,9 +73,9 @@ class TestTmnlQualityEvalDetail(TestCase, TmnlQualityEvalDetailPage):
         # 故障类别
         self.inputSel_fault_type(para['FAULT_TYPE'])
         # 故障开始日期
-        self.inputDt_Start_Date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 故障开始日期
-        self.inputDt_End_Date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

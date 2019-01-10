@@ -25,7 +25,7 @@ class AccountsAuditPage(Page):
         self.inputDate(value)
 
     # 账号状态
-    def inputSel_accountStatus(self, options):
+    def inputSel_account_status(self, options):
         self.selectDropDown(options)
 
     # 查询

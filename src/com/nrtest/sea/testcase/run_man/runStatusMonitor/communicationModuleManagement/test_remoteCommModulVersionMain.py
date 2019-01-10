@@ -74,7 +74,7 @@ class TestRemoteCommModulVersionMain(TestCase, RemoteCommModulVersionMainPage):
         self.inputSel_tmnlType(para['TMNL_TYPE'])
 
         # 终端地址
-        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 终端资产号
         self.inputStr_tmnlAssetNo(para['TMNL_ASSET_NO'])

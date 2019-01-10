@@ -67,7 +67,7 @@ class TestAbnormalDetail(TestCase, AbnormalDetailPage):
         # 月份
         self.inputDt_month(para['MONTH_COUNT'])
         #异常类型
-        self.inputStr_Abnormal_Type(para['ABNORMAL_TYPE'])
+        self.inputStr_abnormal_type(para['ABNORMAL_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)

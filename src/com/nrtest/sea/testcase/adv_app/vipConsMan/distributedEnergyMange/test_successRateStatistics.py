@@ -57,7 +57,7 @@ class TestSuccessRateStatistics(TestCase, SuccessRateStatisticsPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 本地通讯方式
         self.inputSel_comm_mode(para['COMM_MODE'])
         # 远程通讯方式

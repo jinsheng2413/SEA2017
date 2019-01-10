@@ -55,7 +55,7 @@ class TestSysOperationLog(TestCase, SysOperationLogPage):
 
     def query(self, para):
         # 操作模块
-        self.inputSel_operation_tem(para['OPERATION_TEM'])
+        self.inputSel_operation_module(para['OPERATION_MODULE'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询日期，开始

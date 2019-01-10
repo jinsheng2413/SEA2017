@@ -20,11 +20,11 @@ class HistoricalDataMonitoringPage(Page):
         self.selectDropDown(options)
 
     # 表名称
-    def inputStr_listName(self, value):
+    def inputSel_table_name(self, value):
         self.input(value)
 
     # 数据组
-    def inputSel_dataGroup(self, options):
+    def inputSel_data_group(self, options):
         self.selectDropDown(options)
 
     # 接收时间

@@ -60,7 +60,7 @@ class TmnlInstallDetaiPage(Page):
         self.input(value)
 
     # 终端地址
-    def inputStr_tmnlAddr_count(self, value):
+    def inputStr_tmnl_addr_count(self, value):
         # self.input(value) #, *TmnlInstallDetaiLocators.QRY_TMNL_ADDR_COUNT)
         self.input(value)
 

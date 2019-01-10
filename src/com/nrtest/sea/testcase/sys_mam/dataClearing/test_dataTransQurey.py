@@ -63,9 +63,9 @@ class TestDataTransQurey(TestCase, DataTransQureyPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # 数据组
-        self.inputSel_dataGroup(para['DATA_GROUP'])
+        self.inputSel_data_group(para['DATA_GROUP'])
         # 表名称
-        self.inputStr_listName(para['LIST_NAME'])
+        self.inputSel_table_name(para['TABLE_NAME'])
         # 核查日期
         self.inputDt_examine_date(para['EXAMINE_DATE'])
 

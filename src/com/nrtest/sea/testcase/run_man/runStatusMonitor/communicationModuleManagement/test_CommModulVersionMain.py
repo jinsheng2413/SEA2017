@@ -77,7 +77,7 @@ class TestCommModulVersionMain(TestCase, CommModulVersionMainPage):
         self.inputSel_tmnlType(para['TMNL_TYPE'])
 
         # 终端地址
-        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         self.btn_qry()
         self.sleep_time(2)

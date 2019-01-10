@@ -66,7 +66,7 @@ class Test_StrategicManualRecord(TestCase, StrategicManualRecordPage):
         # 电表地址
         self.inputStr_meter_addr(para['METER_ADDR'])
         # 日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 查询
         self.btn_qry()
         self.sleep_time(2)

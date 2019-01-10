@@ -58,7 +58,7 @@ class TestBlackListQuery(TestCase, BlackListQueryPage):
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 查询日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询按钮

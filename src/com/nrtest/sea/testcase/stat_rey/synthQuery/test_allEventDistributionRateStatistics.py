@@ -57,7 +57,7 @@ class TestAllEventDistributionRateStatistics(TestCase, AllEventDistributionRateS
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 时间
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_search()
 

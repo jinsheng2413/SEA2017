@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 #运行管理-->SIM卡管理-->资产管理
 class AssetsManagePage(Page):
     # 所属系统
-    def inputSel_subordinateSystem(self, item):
+    def inputSel_subordinate_system(self, item):
         self.selectDropDown(item)
 
     # 运营商
@@ -31,15 +31,15 @@ class AssetsManagePage(Page):
         self.inputDate(value)
 
     # SIM卡段号
-    def inputStr_simCardNo(self, value):
+    def inputStr_sim_card_no(self, value):
         self.input(value)
 
     # SIM卡段号至
-    def inputStr_simCardNoTO(self, value):
+    def inputStr_sim_card_no_to(self, value):
         self.input(value)
 
     # sim卡状态
-    def inputSel_simCardStatus(self, item):
+    def inputSel_sim_card_status(self, item):
         self.selectDropDown(item)
 
     # 查询

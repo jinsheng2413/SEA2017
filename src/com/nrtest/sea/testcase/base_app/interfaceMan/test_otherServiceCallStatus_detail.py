@@ -3,8 +3,8 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_mData_Publish_Status.py
-@time: 2018-09-21 10:47
+@file: test_otherServiceCallStatus_detail.py
+@time: 2018-10-31 9:14
 @desc:
 """
 
@@ -14,20 +14,22 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.interfaceMan.mDataPublishStatus_data import MDataPublishStatus_data
-from com.nrtest.sea.pages.base_app.interfaceMan.mDataPublishStatus_page import MDataPublishStatusPage
+from com.nrtest.sea.data.base_app.interfaceMan.mServiceCallStatus_data import InterfaceMan_data
+from com.nrtest.sea.pages.base_app.interfaceMan.mServiceCallStatus_page import MServiceCallStatus_detail_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用--接口管理--其他业务接口--服务调用情况
 @ddt
-class Test_mData_Publish_StatusPage(TestCase, MDataPublishStatusPage):
+class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Page):
     @classmethod
     def setUpClass(cls):
+
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(MDataPublishStatus_data.para_MDataPublishStatus)
+        menuPage = MenuPage.openMenu(InterfaceMan_data.para_MServiceCallStatus)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(MDataPublishStatus_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(InterfaceMan_data.para_MServiceCallStatus_detail)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -48,25 +50,24 @@ class Test_mData_Publish_StatusPage(TestCase, MDataPublishStatusPage):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
+
         # 回收左边树
-        # self.recoverLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
-        # 选择业务系统
-        self.inputSel_BusinessSystem(para['BUSINESS_SYSTEM'])
+        # 业务系统
+        self.inputSel_business_system(para['BUSINESS_SYSTEM'])
+        # #服务名称
+        self.inputSel_business_name(para['BUSINESS_NAME'])
         # 开始时间
-        self.inputDt_receive_time(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 结束时间
-        self.inputDt_end_time(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
+        # 工单编号
+        self.inputStr_app_no(para['APP_NO'])
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(MDataPublishStatus_locators.TAB_ONE)
-        # self.assertTrue(result)
-
-    # @data(*DataAccess.getCaseData(MDataPublishStatus_data.para_MDataPublishStatus))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """
@@ -84,7 +85,8 @@ class Test_mData_Publish_StatusPage(TestCase, MDataPublishStatusPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(MDataPublishStatus_data.para_MDataPublishStatus))
+    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus,
+                                  InterfaceMan_data.para_MServiceCallStatus_detail))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -92,7 +94,8 @@ class Test_mData_Publish_StatusPage(TestCase, MDataPublishStatusPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(MDataPublishStatus_data.para_MDataPublishStatus, valCheck=True))
+    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus_detail,
+                                  InterfaceMan_data.para_MServiceCallStatus_detail, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

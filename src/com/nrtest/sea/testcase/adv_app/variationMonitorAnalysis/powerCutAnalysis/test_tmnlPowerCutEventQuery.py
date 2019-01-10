@@ -59,7 +59,7 @@ class TestTmnlPowerCutEventQuery(TestCase, TmnlPowerCutEventQueryPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 月份
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 统计类型
         self.inputChk_stat_type(para['STAT_TYPE'])
         # 查询按钮

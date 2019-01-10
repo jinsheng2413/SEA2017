@@ -37,6 +37,10 @@ class MServiceCallStatus2Page(Page):
         # self.input(value, *MServiceCallStatus2Locators.QRY_DATE_END)
         self.inputDate(value)
 
+    # 工单编号
+    def inputStr_app_no(self, name):
+        self.input(name)
+
     # 查询
     def btn_qry(self):
         # self.click(MServiceCallStatus2Locators.BTN_QUERY)

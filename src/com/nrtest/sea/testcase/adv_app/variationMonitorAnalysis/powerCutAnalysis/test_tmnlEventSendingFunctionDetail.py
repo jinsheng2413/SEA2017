@@ -58,7 +58,7 @@ class TestTmnlEventSendingFunctionDeatil(TestCase, TmnlEventSendingFunctionDeati
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 查询日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 终端厂家

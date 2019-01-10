@@ -62,11 +62,11 @@ class TestDataStrategyManagenment(TestCase, DataStrategyManagenmentPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # 数据组
-        self.inputSel_dataGroup(para['DATA_GROUP'])
+        self.inputSel_data_group(para['DATA_GROUP'])
         # 表名称
-        self.inputStr_listName(para['LIST_NAME'])
+        self.inputStr_list_name(para['LIST_NAME'])
         # 存储周期
-        self.inputSel_storageCycle(para['STORYAGE_CYCLE'])
+        self.inputSel_storage_cycle(para['STORYAGE_CYCLE'])
 
         # 查询
         self.btn_qry()

@@ -68,7 +68,7 @@ class TestAccountsAudit(TestCase, AccountsAuditPage):
         # 时间
         self.inputDt_query_date(para['DATE'])
         # 账号状态
-        self.inputSel_accountStatus(para['ACCOUNT_STATUS'])
+        self.inputSel_account_status(para['ACCOUNT_STATUS'])
 
         # 查询
         self.btn_qry()

@@ -28,6 +28,7 @@ from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 # create a logger instance
 logger = Logger(logger='Page').getlog()
 
+
 # def func_info():
 #     info = inspect.stack()[1]
 #     clean_info = '{}.{}::{}'.format(info[1].split('src/')[1].split('.')[0], cls.__class__.__name__, info[3])
@@ -1340,8 +1341,6 @@ if __name__ == '__main__':
     # # p.clear_values(Page)
     # # p.base_url = 'hhhhhhhhhhh'
     #
-    # menu_name = '关闭其他所有页' if False else '关闭当前页'
-    # loc1 = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
     # print(loc1)
     page = Page(None)
     page._clean_blank('查询')

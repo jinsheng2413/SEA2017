@@ -18,7 +18,7 @@ class LoadRateStaticPage(Page):
 
     # 查询日期
     def inputDt_query_date(self, value):
-        self.inputDate()
+        self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):

@@ -33,6 +33,9 @@ class ManualEditQHPage(Page):
         # self.input(value, *ManualEditQH_Locators.QRY_DATE)
         self.inputDate(value)
 
+    def inputChk_powerEmpty(self, name):
+        self.clickSingleCheckBox(name)
+
     # 查询
     def btn_qry(self):
         # self.click(ManualEditQH_Locators.BTN_QRY)

@@ -65,13 +65,7 @@ class Test_ManualEdit(TestCase, ManualEditPage):
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        # result = self.assert_context(ManualEdit_Locators.TAB_ONE)
-        # self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(InterfaceManager_data.para_ManualEdit))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

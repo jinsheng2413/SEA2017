@@ -29,7 +29,7 @@ class TestArchivesQuery(TestCase, ArchivesQueryPages):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(ArchivesManData.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -51,12 +51,17 @@ class TestArchivesQuery(TestCase, ArchivesQueryPages):
     def query(self, para):
         # 打开左边树并点击
         self.openLeftTree(para['TREE_NODE'])
+
+        # 选择用户类型
+        self.inputSel_cons_sort(para['CONS_SORT'])
+
         # 输入抄表段号
         self.inputStr_sect_no(para['SECT_NO'])
-        # 选择用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
+
         # 选择终端地址
-        self.inputStr_tmnl_addr(para['TNML_ADDR'])
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 

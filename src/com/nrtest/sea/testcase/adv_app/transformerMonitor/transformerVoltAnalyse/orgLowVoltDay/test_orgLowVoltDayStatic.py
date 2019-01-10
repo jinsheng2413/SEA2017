@@ -121,7 +121,7 @@ class TestOrgLowVoltDayStatic(TestCase, OrgLowVoltDayStaticPage):
     #     # 供电单位
     #     openLeftTree('13401')
     #     # 开始日期
-    #     self.inputDt_start_date('2018-09-01')
+    #     self.inputDt_start_time('2018-09-01')
     #     # 结束日期
     #     self.inputDt_end_date('2018-09-01')
     #

@@ -11,130 +11,87 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→数据采集管理→采集质量分析→采集完整率:采集完整率
 class ReadCompleteRatePage(Page):
     # 蕊片厂家
-    def inputSel_chipFactory(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_CHIP_FACTORY)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_CHIP_FACTORY_VALUE, name)
-        # self.click(locator)
+    def inputSel_chip_factory(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 终端厂家
-    def inputSel_tmnlFactory(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_TMNL_FACTORY)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_TMNL_FACTORY_VALUE, name)
-        # self.click(locator)
+    def inputSel_tmnl_factory(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
-
-
-
     # 通信方式
-    def inputSel_communicationMode(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_COMMUNICATION_MODE)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_VALUE, name)
-        # self.click(locator)
+    def inputSel_commu_mode(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 用户类型
-    def inputSel_userType(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_USER_TYPE)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_USER_TYPE_VALUE, name)
-        # self.click(locator)
+    def inputSel_cons_sort(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 开始时间
     def inputDt_start_time(self, value):
-        # self.input(value, *ReadCompleteRateLocators.QRY_START_TIME)
-        # self.input(value)
         self.inputDate(value)
 
     # 结束时间
     def inputDt_end_time(self, value):
-        # self.input(value, *ReadCompleteRateLocators.QRY_END_TIME)
-        # self.input(value)
         self.inputDate(value)
 
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
+
+# 基本应用→数据采集管理→采集质量分析→采集完整率:采集完整率统计
 class ReadCompleteRate_count_Page(Page):
     # 日期时间
-    def inputDt_query_date_time_count(self, value):
-        # self.input(value, *ReadCompleteRateLocators.QRY_DATE_TIME_COUNT)
-        # self.input(value)
+    def inputDt_date_time_count(self, value):
         self.inputDate(value)
 
     # 用户类型
-    def inputSel_userType_count(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_USER_TYPE_COUNT)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_USER_TYPE_COUNT_VALUE, name)
-        # self.click(locator)
+    def inputSel_cons_sort(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 通信方式
-    def inputSel_communicationModeCount(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_COUNT)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_COUNT_VALUE, name)
-        # self.click(locator)
+    def inputSel_comm_mode(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 终端厂家
-    def inputSel_tmnlFactoryCount(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_TMNL_FACTORY_COUNT)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_TMNL_FACTORY_COUNT_VALUE, name)
-        # self.click(locator)
+    def inputSel_tmnl_factory(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     #  蕊片厂家
-    def inputSel_chipFactoryCount(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_CHIP_FACTORY_COUNT)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_CHIP_FACTORY_COUNT_VALUE, name)
-        # self.click(locator)
+    def inputSel_chip_factory(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
+
+# 基本应用→数据采集管理→采集质量分析→采集完整率:采集完整率明细
 class ReadCompleteRate_detail_Page(Page):
     # 用户类型
-    def inputSel_userType_detail(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_USER_TYPE_DETAIL)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_USER_TYPE_DETAIL_VALUE, name)
-        # self.click(locator)
+    def inputSel_cons_sort(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 通信方式
-    def inputSel_communicationModeDetail(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_DETAIL)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_COMMUNICATION_MODE_DETAIL_VALUE, name)
-        # self.click(locator)
+    def inputSel_comm_mode(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 终端厂家
-    def inputSel_ctmnlFactoryDetail(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_TMNL_FACTORY_DETAIL)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_TMNL_FACTORY_DETAIL_VALUE, name)
-        # self.click(locator)
+    def inputSel_tmnl_factory(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     #  蕊片厂家
-    def inputSel_chipFactoryDetail(self, name):
-        # self.click(ReadCompleteRateLocators.QRY_CHIP_FACTORY_DETAIL)
-        # locator = self.get_select_locator(
-        #     ReadCompleteRateLocators.QRY_CHIP_FACTORY_DETAIL_VALUE, name)
-        # self.click(locator)
+    def inputSel_chip_factory(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
         # 日期时间
-    def inputDt_query_date_time_detail(self, value):
-        # self.input(value, *ReadCompleteRateLocators.QRY_DATE_TIME_DETAIL)
-        # self.input(value)
+
+    def inputDt_date_time(self, value):
         self.inputDate(value)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)

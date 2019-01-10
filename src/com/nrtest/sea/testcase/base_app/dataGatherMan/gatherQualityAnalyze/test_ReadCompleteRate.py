@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 ReadCompleteRatePage
 
 
-# 基本应用→数据采集管理→采集质量分析→采集完整率
+# 基本应用→数据采集管理→采集质量分析→采集完整率:采集完整率
 @ddt
 class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
 
@@ -64,20 +64,27 @@ class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
         """
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 用户类型
-        self.inputSel_userType(para['USER_TYPE'])
+        self.inputSel_cons_sort(para['CONS_SORT'])
+
         # 通信方式
-        self.inputSel_communicationMode(para['COMMNUCATION_MODE'])
+        self.inputSel_commu_mode(para['COMM_MODE'])
+
         # 终端厂家
-        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+
         # 蕊片厂家
-        self.inputSel_chipFactory(para['CHIP_FACTORY'])
+        self.inputSel_chip_factory(para['CHIP_FACTORY'])
+
         # 开始时间
         self.inputDt_start_time(para['START_TIME'])
+
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
 
-        self.btn_query(True)
+        # 查询
+        self.btn_qry()
         self.sleep_time(2)
 
     def assert_query_result(self, para):

@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.PrePaidSta
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》远程费控--》远程费控执行统计
+# 高级应用--》费控管理--》远程费控--》远程费控执行统计:按用户执行统计
 @ddt
 class TestPrePaidStatus(TestCase, PrePaidStatusByUserPage):
 
@@ -64,14 +64,18 @@ class TestPrePaidStatus(TestCase, PrePaidStatusByUserPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 控制类型
-        self.inputSel_controlType(para['CONTROL_TYPE'])
+        self.inputSel_ctrl_type(para['CTRL_TYPE'])
+
         # 开始时间
         self.inputDt_start_time(para['START_TIME'])
+
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
 
-        self.btn_query(True)
+        # 查询
+        self.btn_qry()
         self.sleep_time(2)
 
     def assert_query_result(self, para):

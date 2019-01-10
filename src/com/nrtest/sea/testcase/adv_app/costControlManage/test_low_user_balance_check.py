@@ -19,7 +19,7 @@ from com.nrtest.sea.task.feiMange import *
 
 
 @ddt
-# 高级应用--》费控管理--》本地费控--》抵押用户余额查看
+# 高级应用--》费控管理--》本地费控--》低压用户余额查看：余额查看
 class TestBalanceCheck(TestCase, BalanceCheck_page):
     @classmethod
     def setUpClass(cls):
@@ -70,26 +70,38 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 工单编号
-        self.inputStr_work_order(para['WORK_ORDER'])
+        self.inputStr_app_no(para['APP_NO'])
+
         # 用户编号
-        self.inputStr_user_order(para['USER_ORDER'])
+        self.inputStr_cons_no(para['CONS_NO'])
+
         # 接收时间
         self.inputStr_receive_date(para['RECEIVE_DATE'])
+
         # 执行状态
         self.inputRSel_execute_state(para['EXECUTE_STATE'])
+
         # 终端地址
-        self.inputStr_terminal_addr(para['TMNL_ADDR'])
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
         # 电表地址
         self.inputStr_meter_addr(para['METER_ADDR'])
+
         # 抄表段号
-        self.inputStr_meter_reading_number(para['METER_READ_NUMBER'])
+        self.inputStr_sect_no(para['SECT_NO'])
+
         # 结束时间
         self.inputDt_end_date(para['END_TIME'])
+
         # 用户名称
-        self.inputStr_user_name(para['USER_NAME'])
+        self.inputStr_cons_name(para['CONS_NAME'])
+
         # 电表局编号
         self.inputStr_ele_meter_bureea_order(para['ELE_METER_BUREEA_ORDER'])
+
+        # 查询
         self.btn_qry()
 
     @BeautifulReport.add_test_img()

@@ -13,25 +13,20 @@ from com.nrtest.common.base_page import Page
 class ArchivesManage_pages(Page):
 
     # 用户类型
-    def inputSel_user_cata(self, option):
-        # self.click(ArchivesManage_locators.QRY_USER_CATA)
-        # locator = self.get_select_locator(
-        #     ArchivesManage_locators.QRY_USER_CATA_VALUE, index)
-        # # print(locator)
-        # self.click(locator)
+    def inputSel_cons_sort(self, option):
         self.selectDropDown(option)
 
     # 户号
-    def inputStr_family_no(self, value):
-        self.input(value)  # , *ArchivesManage_locators.QRY_FAMILY_NO)
+    def inputStr_cons_no(self, value):
+        self.input(value)
 
     # 终端资产号
-    def inputStr_terminal_asset(self, value):
-        self.input(value)  #, *ArchivesManage_locators.QRY_TERMINAL_ASSET_NO)
+    def inputStr_tmnl_asset_no(self, value):
+        self.input(value)
 
     # 终端地址
     def inputStr_terminal_addr(self, value):
-        self.input(value)  # , *ArchivesManage_locators.QRY_TERMINAL_ADDR)
+        self.input(value)
 
-    def btt_qry(self):
+    def btn_qry(self):
         self.btn_query()

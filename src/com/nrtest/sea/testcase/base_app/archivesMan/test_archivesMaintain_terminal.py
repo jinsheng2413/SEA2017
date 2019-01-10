@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import Arch
 from com.nrtest.sea.task.archivesManage import *
 
 
-# 基本应用--》档案管理--》档案维护
+# 基本应用--》档案管理--》档案维护：终端维护
 @ddt
 class TestarchivesMaintain_terminal(TestCase, ArchivesMaintain_terminal_pages):
     @classmethod
@@ -29,7 +29,7 @@ class TestarchivesMaintain_terminal(TestCase, ArchivesMaintain_terminal_pages):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         menuPage.clickTabPage(ArchivesMan_data.archivesMenTain_terminal_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -55,9 +55,11 @@ class TestarchivesMaintain_terminal(TestCase, ArchivesMaintain_terminal_pages):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 场站名称
-        self.inputSel_factoryName(para['FACTORY_NAME'])
 
+        # 厂站名称
+        self.inputSel_factory_name(para['FACTORY_NAME'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

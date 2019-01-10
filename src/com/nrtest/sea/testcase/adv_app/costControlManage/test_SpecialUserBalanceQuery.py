@@ -57,6 +57,7 @@ class TestSpecialUserBalanceQuery(TestCase, SpecialUserBalanceQueryPage):
 
     def query(self, para):
         self.openLeftTree(para['TREE_NODE'])
+
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
 
@@ -65,12 +66,14 @@ class TestSpecialUserBalanceQuery(TestCase, SpecialUserBalanceQueryPage):
 
         # 终端地址
         self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
         # 越线类型
-        self.inputSel_more_cata(para['MORE_CATA'])
+        self.inputSel_over_type(para['OVER_TYPE'])
 
         # 召测日期
         self.inputDt_call_date(para['CALL_DATE'])
 
+        # 查询
         self.btn_qry()
         sleep(2)
 

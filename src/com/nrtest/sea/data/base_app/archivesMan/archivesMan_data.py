@@ -33,11 +33,12 @@ class ArchivesMan_data:
 
     # 基本应用--》档案管理--》档案同步
     archivesManage_para = '99911100'
-    archivesGet_para = ''
+
     # 基本应用--》档案管理--》档案异常分析
     archivesAnalysisOfAnomaly = '99911200'
     archivesAnalysisOfAnomaly_count_tab = '档案异常统计'
     archivesAnalysisOfAnomaly_detail_tab = '档案异常明细'
+
     # 基本应用--》档案管理--》档案维护
     archivesMenTain = '99911300'
     archivesMenTain_factory_tab = '厂站维护'

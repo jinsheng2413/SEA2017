@@ -12,6 +12,7 @@
 class LocalCostContral_data:
     # 高级应用--》费控管理--》本地费控--》电价参数下发
     elePricePara_para = '99922110'
+
     # 高级应用--》费控管理--》本地费控--》低压用户余额查看
     lowUserBalanceCheck_para = '99922130'
     lowUserBalanceCheck_check_tab = '余额查看'

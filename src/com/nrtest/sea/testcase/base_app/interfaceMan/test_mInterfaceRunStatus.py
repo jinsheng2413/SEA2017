@@ -56,19 +56,14 @@ class Test_MInterfaceRunStatus(TestCase, MInterfaceRunStatusPage):
     def query(self, para):
         # 业务系统
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])
+
         # 服务对象名称
         self.inputSel_service_name(para['SERVICE_NAME'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)
 
-    #     result = self.assert_context(MInterfaceRunStatusLocators.TAB_ONE)
-    #     self.assertTrue(result)
-    #
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(InterfaceMan_data.para_mInterfaceRunStatus))
-    # def test_query(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

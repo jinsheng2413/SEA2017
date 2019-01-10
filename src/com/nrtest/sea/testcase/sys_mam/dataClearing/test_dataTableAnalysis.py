@@ -66,7 +66,7 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
         # 数据组
         self.inputSel_data_group(para['DATA_GROUP'])
         # 表名称
-        self.inputSel_list_name(para['LIST_NAME'])
+        self.inputSel_table_name(para['TABLE_NAME'])
         # 核查日期
         self.inputDt_examine_date(para['EXAMINE_DATE'])
 

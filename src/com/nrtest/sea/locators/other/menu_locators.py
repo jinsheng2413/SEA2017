@@ -35,6 +35,8 @@ class MenuLocators:
     BTN_SCROLL_DOWN = (By.XPATH, '//div[starts-with(@class,"x-menu-scroller x-menu-scroller-bottom x-unselectable")]')
     BTN_SCROLL_UP = (By.XPATH, '//div[starts-with(@class,"x-menu-scroller x-menu-scroller-top x-unselectable")]')
 
+    # 当前活动菜单页面
+    ACTIVE_MENU_PAGE = (By.XPATH, '//li[@id="maintab__{}"]')
 
     # 当前正在操作的菜单页面
     CURRENT_MENU = (By.XPATH, '//*[@class="x-tab-strip-inner"]//*[contains(text(),\'%s\')]')
@@ -74,8 +76,7 @@ class MenuLocators:
     BTN_COUNTY = (By.XPATH, "(//span[contains(text(),'直属用户')])[1]/../../../../li[%s]")
     # 县和用户
     BTN_COUNTY_AND_USER = (By.XPATH, "(//span[contains(text(),'直属用户')])[2]/../../../../li[%s]")
-    # 确定
-    BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
+
 
     # 【用户TAB页】
     NODE = {'02': (By.XPATH, '//*[@name="consNo"]'), '03': (By.XPATH, '//*[@name="terminalAddr"]'), '04': (By.XPATH, '//*[@name="meterAssetNo"]')}
@@ -109,19 +110,24 @@ class MenuPBSLocators:
     # 选择二级菜单	 @class="nav-item selectMenu active"
     MENU_LEVEL2 = (By.XPATH, '//div[@id="project_head"]//li[@class="nav-item selectMenu"]//p[text()="{}"]')
 
+    # 当前活动菜单页面
+    # ACTIVE_MENU_PAGE = (By.XPATH, '//div[@id="project_head"]//li[@class="nav-item selectMenu active"]//p[text()="{}"]')
+    ACTIVE_MENU_PAGE = (By.XPATH, '//div[@id="project_head"]//li[@class="nav-item selectMenu active"]')
+
     # 返回首页:
     # //div[@id="project_head"]//li[@title="返回首页"]
     GOTO_MAINPAGE = (By.XPATH, '//div[@id="project_head"]//h2[@class="home_btn"]')
 
     # 当前页面选择的一级菜单
-    CONFORM_MENU = (By.XPATH, '//div[@id="project_head"]//h2[@class="home_btn" and text()={}]')
+    # CONFORM_MENU = (By.XPATH, '//div[@id="project_head"]//h2[@class="home_btn" and text()="{}"]')
 
 
 class MenuSEA20Locators:
     """
     SEA2.0的菜单元素
     """
-    pass
+
+    BTN_SCROLL_DOWN = (By.XPATH, '')
 
 
 class MenuJLZDHLocators:

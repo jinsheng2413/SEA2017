@@ -108,7 +108,7 @@ class BaseLocators:
 
     # 【复选框】
     # 单个复选框
-    SINGLE_CHECK_BOX = (By.XPATH, '//label[text()="{}"]/..//input')
+    SINGLE_CHECK_BOX = (By.XPATH, '//label[text()="{}"]/..//input[@type="checkbox"]')
 
     # 被选择的复选框
     CHKBOX_UNCHECK_ALL = (By.XPATH, '//input[@type="checkbox" and @{}="{}" and @checked=""]')
@@ -116,13 +116,13 @@ class BaseLocators:
     # 根据INPUT的name找标签 checkbox/radio
     CHKBOX_INPUT2LABEL = (By.XPATH, '//input[@type="checkbox" and @{}="{}"]/../label[text()="{}"]')
 
-
     # 【按钮类元素】，如：查询按钮
     # BTN_QRY = (By.XPATH, '//button[@class =" x-btn-text" and contains(text(),"{}")]')
     BTN_QRY = (By.XPATH, '//button[normalize-space(text())="{}"]')
     BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
-    # 菜单页面定位{}=远程调试
-    MENU_PAGE = (By.XPATH, '//li[@id="maintab__{}"]')
+
+    # 确定
+    BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 
     # 定位一个菜单页面内的某一Tab页
     TAB_PAGE = (By.XPATH, '//span[@class="x-tab-strip-text " and text()="{}"]')

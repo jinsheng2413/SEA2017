@@ -12,6 +12,8 @@
 class IntelligentLock_data:
     # 高级应用→智能锁具→资产管理
     AssetMan_para = '99992100'
+    AssetMan_tabName_lock = '已增锁封列表'
+    AssetMan_tabName_key = '已增电子钥匙列表'
     # 高级应用→智能锁具→权限控制
     SecurityControl_para = '99992200'
     # 高级应用→智能锁具→记录查询

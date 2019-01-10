@@ -86,19 +86,19 @@ class RecordsQueryPage(Page):
     # 资产管理记录查询
     # 操作员名称
     def inputStr_tab_staff_name(self, content):
-        self.input(content)  #, *RecordsQueryLocators.TAB_STAFF_NAME)
+        self.curr_input(content, True, True)  # , *RecordsQueryLocators.TAB_STAFF_NAME)
 
     # 电子钥匙编号
     def inputStr_tab_key_no(self, content):
-        self.input(content)  #, *RecordsQueryLocators.TAB_KEY_NO)
+        self.curr_input(content, True, True)  #, *RecordsQueryLocators.TAB_KEY_NO)
 
     # 锁封编号
     def inputStr_tab_lock_no(self, content):
-        self.input(content)  #, *RecordsQueryLocators.TAB_LOCK_NO)
+        self.curr_input(content, True, True)  #, *RecordsQueryLocators.TAB_LOCK_NO)
 
     # 锁封用户编号
     def inputStr_tab_lock_user_no(self, content):
-        self.input(content)  #, *RecordsQueryLocators.TAB_LOCK_USER_NO)
+        self.curr_input(content, True, True)  #, *RecordsQueryLocators.TAB_LOCK_USER_NO)
 
     # 开始日期
     def inputDt_tab_start_date(self, content):

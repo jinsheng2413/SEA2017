@@ -15,20 +15,20 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.intelligentLock.intelligentLock_data import IntelligentLock_data
-from com.nrtest.sea.pages.adv_app.intelligentLock.assetMan_page import AssetManPage
+from com.nrtest.sea.pages.adv_app.intelligentLock.assetMan_page import AssetManTabPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→智能锁具→资产管理
+# 高级应用→智能锁具→资产管理→已增电子钥匙列表
 @ddt
-class TestAssetMan(TestCase, AssetManPage):
+class TestAssetManTab(TestCase, AssetManTabPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(IntelligentLock_data.AssetMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(IntelligentLock_data.AssetMan_tabName_lock)
+        menuPage.clickTabPage(IntelligentLock_data.AssetMan_tabName_key)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
 
@@ -55,22 +55,12 @@ class TestAssetMan(TestCase, AssetManPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 锁封编号
-        self.inputStr_lock_no(para['LOCK_NO'])
-        # 台区名称
-        self.inputStr_tg_name(para['TG_NAME'])
-        # 用户名称
-        self.inputStr_user_name(para['USER_NAME'])
-        # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
-        # 锁封资产状态
-        self.inputSel_lock_asset_ststus(para['LOCK_ASSET_STATUS'])
-        # 锁封状态
-        self.inputSel_lock_status(para['LOCK_STATUS'])
-        # 锁封类型
-        self.inputSel_lock_type(para['LOCK_TYPE'])
+        # 电子钥匙编号
+        self.inputStr_key_no(para['KEY_NO'])
+        # 电子钥匙状态
+        self.inputSel_key_status(para['KEY_STATUS'])
         # 查询按钮
-        self.btn_query()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
@@ -88,7 +78,7 @@ class TestAssetMan(TestCase, AssetManPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_lock))
+    @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_key))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -96,7 +86,7 @@ class TestAssetMan(TestCase, AssetManPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_lock))
+    @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_key))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 # 外包队伍管理
 class OutRanksManPage(Page):
     # 外包队伍名称
-    def inputStr_outName(self, value):
+    def inputStr_out_name(self, value):
         # self.input(value, *OutNameTroopLocators.QRY_OUT_NAME)
         self.input(value)
 
@@ -27,7 +27,7 @@ class OutRanksManPage(Page):
 # 外包队伍成员管理
 class OutMemberManPage(Page):
     # 外包队伍名称
-    def inputStr_outName(self, value):
+    def inputStr_out_name(self, value):
         # self.input(value, *OutNameTroopMemberLocators.QRY_OUT_NAME)
         self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 

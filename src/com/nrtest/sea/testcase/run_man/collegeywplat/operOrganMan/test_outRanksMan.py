@@ -65,7 +65,7 @@ class TestOutMemberMan(TestCase,OutRanksManPage):
         self.openLeftTree(para['TREE_NODE'])
 
         #外包队伍名称
-        self.inputStr_outName(para['OUT_NAME'])
+        self.inputStr_out_name(para['OUT_NAME'])
 
         self.btn_qry()
         self.sleep_time(2)

@@ -78,12 +78,12 @@ class TmnlQualityEvalDetailPage(Page):
         self.selectDropDown(options)
 
     # 故障开始日期
-    def inputDt_Start_Date(self, value):
+    def inputDt_start_date(self, value):
         # self.input(value, *TmnlQualityEvalDetailLocators.START_DATE)
         self.inputDate(value)
 
     # 故障结束日期
-    def inputDt_End_Date(self, value):
+    def inputDt_end_date(self, value):
         # self.input(value, *TmnlQualityEvalDetailLocators.END_DATE)
         self.inputDate(value)
 

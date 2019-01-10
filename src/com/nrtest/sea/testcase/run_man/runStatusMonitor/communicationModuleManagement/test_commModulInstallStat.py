@@ -68,7 +68,7 @@ class TestCommModulInstallStat(TestCase, CommModulInstallStatPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         # 模块类型
         self.inputSel_moduleType(para['MODULE_TYPE'])

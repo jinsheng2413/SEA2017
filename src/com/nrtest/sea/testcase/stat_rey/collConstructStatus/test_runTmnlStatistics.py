@@ -58,7 +58,7 @@ class TestRunTmnlStatistics(TestCase, RunTmnlStatisticsPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 统计日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_search()
 

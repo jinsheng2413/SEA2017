@@ -58,7 +58,7 @@ class TestAutomatedMeterAvailability(TestCase, AutomatedMeterAvailabilityPage):
         # 表计类型
         self.inputSel_meter_type(para['METER_TYPE'])
         # 日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_search()
 

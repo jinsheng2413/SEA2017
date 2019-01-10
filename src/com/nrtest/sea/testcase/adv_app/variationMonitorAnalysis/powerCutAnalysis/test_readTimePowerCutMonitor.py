@@ -60,7 +60,7 @@ class TestReadTimePowerCutMonitor(TestCase, ReadTimePowerCutMonitorPage):
         # 日期类型
         self.inputChk_date_type(para['DATE_TYPE'])
         # 查询日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_search()
 

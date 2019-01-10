@@ -58,7 +58,7 @@ class TestReadTimePowerCutDetail(TestCase, ReadTimePowerCutDetailPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 信息推送

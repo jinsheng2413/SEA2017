@@ -72,7 +72,7 @@ class TestWorkQuery(TestCase, WorkQueryPage):
         self.inputSel_abnormalStatus(para['ABNORMAL_STATUS'])
 
         # 日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

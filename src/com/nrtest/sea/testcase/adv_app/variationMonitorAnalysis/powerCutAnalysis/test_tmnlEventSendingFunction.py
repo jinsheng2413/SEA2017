@@ -58,7 +58,7 @@ class TestTmnlEventSendingFunction(TestCase, TmnlEventSendingFunctionPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 查询日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_search()
 

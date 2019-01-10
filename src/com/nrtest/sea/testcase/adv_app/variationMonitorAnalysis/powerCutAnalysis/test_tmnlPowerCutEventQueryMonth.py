@@ -60,7 +60,7 @@ class TestTmnlPowerCutEventQueryMonth(TestCase, TmnlPowerCutEventQueryMonthPage)
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 月份
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 停电次数
         self.inputStr_power_cut_time(para['POWER_CUT_TIME'])
         # 终端厂家

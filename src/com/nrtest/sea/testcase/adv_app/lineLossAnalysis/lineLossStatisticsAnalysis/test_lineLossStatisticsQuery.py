@@ -67,7 +67,7 @@ class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
         if para['QRY_TYPE'].count('日') > 2:
             self.inputChl_qryType_day(para['QRY_TYPE'])
             # 日期
-            self.inputDt_query_date(para['DATE'])
+            self.inputDt_query_date(para['QUERY_DATE'])
         elif para['QRY_TYPE_MONTH'].count('月') > 2:
             self.inputChl_qryType_month(para['QRY_TYPE_MONTH'])
             self.inputDT_from(para['FROM'])

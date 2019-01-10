@@ -62,7 +62,7 @@ class TestIntelligentMeterPowerCutEventQueryDetail(TestCase, IntelligentMeterPow
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 事件正确性
         self.inputSel_event_correctness(para['EVENT_CORRECTNESS'])
         # 停电时长

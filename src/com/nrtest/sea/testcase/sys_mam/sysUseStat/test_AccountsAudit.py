@@ -66,7 +66,7 @@ class TestAccountsAudit(TestCase, AccountsAuditPage):
         self.inputChk_data_method(para['DATE_METHOD'])
         self.sleep_time(2)
         # 时间
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 账号状态
         self.inputSel_account_status(para['ACCOUNT_STATUS'])
 

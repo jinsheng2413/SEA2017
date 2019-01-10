@@ -57,7 +57,7 @@ class test_archivesAnalysisOfAnomaly_detail(TestCase, ArchivesAnalysisOfAnomaly_
         # 用户类型
         self.inputSel_cons_type(para['CONS_CATA'])
         # 日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 档案类型
         self.inputRSel_archives_cata(para['ARCHIVES_CATA'])
         self.btn_qry()

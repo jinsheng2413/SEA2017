@@ -62,7 +62,7 @@ class TestIntelligentMeterPowerCutEventQuery(TestCase, IntelligentMeterPowerCutE
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_search()
 

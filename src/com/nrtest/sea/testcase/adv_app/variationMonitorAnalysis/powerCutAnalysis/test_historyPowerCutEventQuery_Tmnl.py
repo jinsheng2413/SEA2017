@@ -64,7 +64,7 @@ class TestHistoryPowerCutEventQuery_Tmnl(TestCase, TmnlPowerCutEventQueryPage):
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 查询日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 停复电标识
         self.inputSel_power_cut_identifying(para['POWER_CUT_IDENTIFYING'])
         # 终端厂家

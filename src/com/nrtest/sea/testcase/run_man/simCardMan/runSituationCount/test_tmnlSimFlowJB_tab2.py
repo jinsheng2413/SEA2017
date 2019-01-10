@@ -61,7 +61,7 @@ class Test_TnmlSimFlowJB_2(TestCase, TmnlSimFlowJB_2Page):
         # Sim卡号
         self.inputStr_sim_no(para['SIM_NO'])
         # 开始日期
-        self.inputDt_query_date(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         # 流量状态
         self.inputChk_flow_status(para['FLOW_STATUS'])

@@ -13,7 +13,7 @@ from com.nrtest.common.base_page import Page
 
 class TerminalOnlineMonitorPage(Page):
     # 日期
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *TerminalOnlineMonitorLocators.QRY_DATE)
         self.inputDate(value)
 

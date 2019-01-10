@@ -19,7 +19,7 @@ class SysOtherQueryPage(Page):
 
     # 查询日期
 
-    def inputDt_dateS(self, value):
+    def inputDt_query_dateS(self, value):
         self.inputDate(value)  # , *SysOtherQueryLocators.QRY_DATE)
 
     # 统计口径

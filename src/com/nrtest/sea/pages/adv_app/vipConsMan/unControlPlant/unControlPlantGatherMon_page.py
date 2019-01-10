@@ -64,7 +64,7 @@ class UnControlPlantGatherMon2_Page(Page):
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 查询日期
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)  # , *UnControlPlantGatherMon2_locators.QRY_DATE)
 
     # 户号

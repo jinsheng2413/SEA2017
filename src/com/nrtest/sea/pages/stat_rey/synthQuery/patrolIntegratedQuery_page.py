@@ -19,7 +19,7 @@ class PatrolIntegratedQueryPage(Page):
         self.clickRadioBox(index)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(PatrolIntegratedQueryLocators.DATE_JS)
         # self.input(content, *PatrolIntegratedQueryLocators.DATE)
         self.inputDate(content)

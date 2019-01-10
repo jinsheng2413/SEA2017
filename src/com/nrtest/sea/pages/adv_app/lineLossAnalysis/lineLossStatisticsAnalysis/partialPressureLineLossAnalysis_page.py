@@ -32,7 +32,7 @@ class PartialPressureLineLossAnalysisPage(Page):
     def inputDTTAB_statDateType(self, name):
         self.clickDt_Tab(name)
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(PartialPressureLineLossAnalysisLocators.DATE_JS)
         # self.input(content, *PartialPressureLineLossAnalysisLocators.QRY_DATE)
         self.inputDate(content)

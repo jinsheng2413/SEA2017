@@ -19,7 +19,7 @@ class BackgroupServeMonitorPage(Page):
         self.clickDt_Tab(tab_name, True, True)
 
     # 查询日期/从/到
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value, True)
 
     # 运行状态
@@ -46,7 +46,7 @@ class BackgroupServeMonitorDetailPage(Page):
         self.clickDt_Tab(tab_name, True, True)
 
     # 查询日期/从/到
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value, True)
 
     # 查询按钮

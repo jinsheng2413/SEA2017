@@ -20,11 +20,11 @@ class DataTableAnalysisPage(Page):
          self.inputDate(value)
 
     # 表名称
-    def inputStr_listName(self, value):
+    def inputSel_list_name(self, value):
         self.input(value)
 
     # 数据组
-    def inputSel_dataGroup(self, options):
+    def inputSel_data_group(self, options):
         self.selectDropDown(options)
 
     # 查询

@@ -17,7 +17,7 @@ class ReadTimePowerCutMonitorPage(Page):
         self.clickRadioBox(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(ReadTimePowerCutMonitorLocators.DATE_JS)
         # self.input(content, *ReadTimePowerCutMonitorLocators.QRY_DATE)
         self.inputDate(content)
@@ -30,7 +30,7 @@ class ReadTimePowerCutMonitorPage(Page):
 # 高级应用→配变监测分析→停电分析→实时停电监测→实时停电明细
 class ReadTimePowerCutDetailPage(Page):
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(ReadTimePowerCutDetailLocators.DATE_JS)
         # self.input(content, *ReadTimePowerCutDetailLocators.QRY_DATE)
         self.inputDate(content)

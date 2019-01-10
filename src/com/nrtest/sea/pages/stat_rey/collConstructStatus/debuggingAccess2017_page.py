@@ -35,7 +35,7 @@ class DebuggingAccess2017Page(Page):
         self.selectCheckBox(index)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(DebuggingAccess2017Locators.DATE_JS)
         # self.input(content, *DebuggingAccess2017Locators.DATE)
         self.inputDate(content)

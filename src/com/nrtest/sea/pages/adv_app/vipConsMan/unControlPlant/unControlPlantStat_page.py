@@ -28,7 +28,7 @@ class UnControlPlantStatPage(Page):
         self.selectDropDown(index)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(UnControlPlantStatLocators.DATE_JS)
         # self.input(content, *UnControlPlantStatLocators.QRY_DATE)
         self.inputDate(content)
@@ -55,7 +55,7 @@ class UnControlPlantDetailPage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 统计日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(UnControlPlantDetailLocators.DATE_JS)
         # self.input(content, *UnControlPlantDetailLocators.QRY_DATE)
         self.inputDate(content)

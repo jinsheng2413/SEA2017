@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测
 class SuspecteAreaPowerCutMonitorPage(Page):
     # 停电日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(SuspecteAreaPowerCutMonitorLocators.DATE_JS)
         # self.input(content, *SuspecteAreaPowerCutMonitorLocators.QRY_DATE)
         self.inputDate(content)
@@ -35,7 +35,7 @@ class SuspectePowerCutLineQueryPage(Page):
         self.selectDropDown(index)
 
     # 停电日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(SuspectePowerCutLineQueryLocators.DATE_JS)
         # self.input(content, *SuspectePowerCutLineQueryLocators.QRY_DATE)
         self.inputDate(content)
@@ -71,7 +71,7 @@ class SuspectePowerCutObjectQueryPage(Page):
         self.selectDropDown(index)
 
     # 停电日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(SuspectePowerCutObjectQueryLocators.DATE_JS)
         # self.input(content, *SuspectePowerCutObjectQueryLocators.QRY_DATE)
         self.inputDate(content)

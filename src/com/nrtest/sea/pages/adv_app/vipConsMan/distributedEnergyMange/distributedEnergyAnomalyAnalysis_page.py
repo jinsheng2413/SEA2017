@@ -18,7 +18,7 @@ class DistributedEnergyAnomalyAnalysisPage(Page):
         self.clickRadioBox(index)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(DistributedEnergyAnomalyAnalysisLocators.DATE_JS)
         # self.input(content, *DistributedEnergyAnomalyAnalysisLocators.QRY_DATE)
         self.inputDate(content)
@@ -51,7 +51,7 @@ class DistributedEnergyAnomalyDetailPage(Page):
         self.clickRadioBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(DistributedEnergyAnomalyDetailLocators.DATE_JS)
         # self.input(content, *DistributedEnergyAnomalyDetailLocators.QRY_DATE)
         self.inputDate(content)

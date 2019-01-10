@@ -29,7 +29,7 @@ class ValidPowerCutEventQueryPage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(ValidPowerCutEventQueryLocators.DATE_JS)
         # self.input(content, *ValidPowerCutEventQueryLocators.QRY_DATE)
         self.inputDate(content)
@@ -60,7 +60,7 @@ class ValidPowerCutDetailPage(Page):
         self.selectDropDown(index)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(ValidPowerCutDetailLocators.DATE_JS)
         # self.input(content, *ValidPowerCutDetailLocators.QRY_DATE)
         self.inputDate(content)

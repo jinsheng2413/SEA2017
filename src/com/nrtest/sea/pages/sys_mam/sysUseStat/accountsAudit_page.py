@@ -21,11 +21,11 @@ class AccountsAuditPage(Page):
         self.clickRadioBox(option)
 
     # 时间
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 账号状态
-    def inputSel_accountStatus(self, options):
+    def inputSel_account_status(self, options):
         self.selectDropDown(options)
 
     # 查询

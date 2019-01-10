@@ -16,15 +16,15 @@ from com.nrtest.sea.locators.sys_mam.dataClearing.dataStrategyManagenment_locato
 # 系统管理-->数据清理管理-->历史数据策略管理
 class DataStrategyManagenmentPage(Page):
     # 存储周期
-    def inputSel_storageCycle(self, options):
+    def inputSel_storage_cycle(self, options):
         self.selectDropDown(options)
 
     # 表名称
-    def inputStr_listName(self, value):
+    def inputStr_list_name(self, value):
         self.input(value)
 
     # 数据组
-    def inputSel_dataGroup(self, options):
+    def inputSel_data_group(self, options):
         self.selectDropDown(options)
 
     # 查询

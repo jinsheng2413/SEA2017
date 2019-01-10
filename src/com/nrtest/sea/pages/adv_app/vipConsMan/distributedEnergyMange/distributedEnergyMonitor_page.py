@@ -58,7 +58,7 @@ class DistributedEnergyMonitorDetailPage(Page):
         self.input(content)  #, *DistributedEnergyMonitorDetailLocators.QRY_TMNL_ADDR)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(DistributedEnergyMonitorDetailLocators.DATE_JS)
         # self.input(content, *DistributedEnergyMonitorDetailLocators.QRY_DATE)
         self.inputDate(content)
@@ -128,7 +128,7 @@ class DistributedEnergyUserFailedPage(Page):
         self.input(content)  #, *DistributedEnergyUserFailedLocators.QRY_TMNL_ADDR)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(DistributedEnergyUserFailedLocators.DATE_JS)
         # self.input(content, *DistributedEnergyUserFailedLocators.QRY_DATE)
         self.inputDate(content)

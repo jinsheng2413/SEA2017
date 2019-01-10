@@ -58,7 +58,7 @@ class TestSuspectePowerCutLineQuery(TestCase, SuspectePowerCutLineQueryPage):
         # 是否恢复停电
         self.inputSel_whether_recover_power_cut(para['WHETHER_RECOVER_POWER_CUT'])
         # 停电日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 停电时长
         self.inputStr_power_cut_start(para['POWER_CUT_START'])
         self.inputStr_power_cut_end(para['POWER_CUT_END'])

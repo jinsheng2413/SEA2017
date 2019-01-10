@@ -27,7 +27,7 @@ class IntelligentMeterPowerCutEventQueryPage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(IntelligentMeterPowerCutEventQueryLocators.DATE_JS)
         # self.input(content, *IntelligentMeterPowerCutEventQueryLocators.QRY_DATE)
         self.inputDate(content)
@@ -54,7 +54,7 @@ class IntelligentMeterPowerCutEventQueryDetailPage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script
         #     IntelligentMeterPowerCutEventQueryDetailLocators.DATE_JS)
         # self.input(

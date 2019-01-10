@@ -56,7 +56,7 @@ class TestOrgNoDataQuery(TestCase, OrgNoDataPage):
         # 打开左边树选择供电单位
         self.openLeftTree(para['TREE_NODE'])
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 

@@ -61,7 +61,7 @@ class Test_ManualEditQH(TestCase, ManualEditQHPage):
         # 数据来源
         self.inputSel_data_from(para['DATA_FROM'])
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 点击正向有功总为空
         self.click(ManualEditQH_Locators.QRY_IS_EMPTY)
         # 查询

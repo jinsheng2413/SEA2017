@@ -61,7 +61,7 @@ class TestContinuousFalseDetail(TestCase, ContinuousFalseDetailPage):
         # 运行状态
         self.inputSel_run_status(para['RUN_STATUS'])
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 点击查询按钮
         self.btn_query()
 

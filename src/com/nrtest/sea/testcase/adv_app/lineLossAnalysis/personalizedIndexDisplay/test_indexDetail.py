@@ -59,7 +59,7 @@ class TestIndexDetail(TestCase, IndexDetailPage):
         # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
         # 时间选择
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 

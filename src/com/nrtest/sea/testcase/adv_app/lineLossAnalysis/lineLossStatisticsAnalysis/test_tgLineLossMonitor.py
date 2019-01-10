@@ -57,7 +57,7 @@ class TestTgLineLossMonitor(TestCase, TgLineLossMonitorPage):
         # 指标类型
         self.inputSel_pointer_type(para['POINTER_TYPE'])
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 

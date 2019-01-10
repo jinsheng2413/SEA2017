@@ -83,7 +83,7 @@ class TgLineLossAnalysisPage(Page):
         self.clickDt_Tab(tab_name)
 
     # 查询时间
-    def inputDT_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 可算类型

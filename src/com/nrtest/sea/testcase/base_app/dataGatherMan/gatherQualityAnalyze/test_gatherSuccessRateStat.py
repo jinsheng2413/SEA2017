@@ -71,7 +71,7 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
         # 通讯规约
         self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 点击查询按钮
         self.btn_search()
 

@@ -57,7 +57,7 @@ class TestAllEventDistributionRateStatistics(TestCase, AllEventDistributionRateS
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 时间
-        self.inputDt_date_tab(para['DATE_TAB'])
+        self.inputDt_query_date_tab(para['DATE_TAB'])
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 查询按钮

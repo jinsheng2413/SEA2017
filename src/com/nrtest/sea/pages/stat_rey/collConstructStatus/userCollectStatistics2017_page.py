@@ -22,7 +22,7 @@ class UserCollectStatistics2017Page(Page):
         self.selectDropDown(index)
 
     # 统计月份
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(UserCollectStatistics2017Locators.DATE_JS)
         # self.input(content, *UserCollectStatistics2017Locators.DATE)
         self.inputDate(content)

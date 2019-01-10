@@ -40,7 +40,7 @@ class LineLossStatisticsQueryPage(Page):
         self.input(content)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(LineLossStatisticsQueryLocators.DATE_JS)
         # self.input(content, *LineLossStatisticsQueryLocators.QRY_DATE)
         self.inputDate(content)

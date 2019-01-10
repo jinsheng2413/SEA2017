@@ -61,7 +61,7 @@ class Test_ManualEdit(TestCase, ManualEditPage):
         # 处理类型
         self.inputSel_process_type(para['PROCESS_TYPE'])
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询
         self.btn_qry()
         self.sleep_time(2)

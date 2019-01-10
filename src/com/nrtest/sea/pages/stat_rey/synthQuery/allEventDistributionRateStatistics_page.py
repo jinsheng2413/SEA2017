@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 class AllEventDistributionRateStatisticsPage(Page):
     # 全事件配置率统计
     # 时间
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(AllEventDistributionRateStatisticsLocators.DATE_JS)
         # self.input(content, *AllEventDistributionRateStatisticsLocators.DATE)
         self.inputDate(content)
@@ -27,7 +27,7 @@ class AllEventDistributionRateStatisticsPage(Page):
 
     # 全事件未配置明细
     # 时间
-    def inputDt_date_tab(self, content):
+    def inputDt_query_date_tab(self, content):
         # self.exec_script(
         #     AllEventDistributionRateStatisticsLocators.DATE_TAB_JS)
         # self.input(content, *AllEventDistributionRateStatisticsLocators.DATE_TAB)

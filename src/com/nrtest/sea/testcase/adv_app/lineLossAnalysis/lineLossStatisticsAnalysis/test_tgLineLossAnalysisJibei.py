@@ -69,7 +69,7 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
         self.inputSel_line_loss_rate(para['LINE_LOSS_RATE'])
         # self.inputStr_line_loss_rate(para['LINE_LOSS_RATE_INPUT'])
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 可算
         self.inputChk_may(para['LINE_LOSS_TYPE_MAY'])
         # 达标

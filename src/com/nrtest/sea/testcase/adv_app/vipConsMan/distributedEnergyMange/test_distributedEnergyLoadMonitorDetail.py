@@ -66,7 +66,7 @@ class TestDistributedEnergyLoadMonitorDetail(TestCase, DistributedEnergyLoadMoni
         # 发电量消纳方式
         self.inputSel_abso_type(para['ABSO_TYPE'])
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 

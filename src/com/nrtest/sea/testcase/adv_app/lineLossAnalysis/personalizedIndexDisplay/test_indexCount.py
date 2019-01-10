@@ -58,7 +58,7 @@ class TestIndexDetail(TestCase, IndexDetailPage_count):
         # 工号
         self.inputStr_workNo(para['WORK_NO'])
         # 时间选择
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 

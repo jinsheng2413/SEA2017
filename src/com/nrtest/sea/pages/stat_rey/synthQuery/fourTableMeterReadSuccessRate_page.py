@@ -23,7 +23,7 @@ class FourTableMeterReadSuccessRatePage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(FourTableMeterReadSuccessRateLocators.DATE_JS)
         # self.input(content, *FourTableMeterReadSuccessRateLocators.DATE)
         self.inputDate(content)

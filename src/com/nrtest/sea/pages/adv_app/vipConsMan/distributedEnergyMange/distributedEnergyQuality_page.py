@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量→采集成功率趋势
 class SuccessRateTrendPage(Page):
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(SuccessRateTrendLocators.DATE_JS)
         # self.input(content, *SuccessRateTrendLocators.QRY_DATE)
         self.inputDate(content)
@@ -59,7 +59,7 @@ class SuccessRateTrendPage(Page):
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量→采集成功率统计
 class SuccessRateStatisticsPage(Page):
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(SuccessRateStatisticsLocators.DATE_JS)
         # self.input(content, *SuccessRateStatisticsLocators.QRY_DATE)
         self.inputDate(content)
@@ -128,7 +128,7 @@ class SuccessRateDetailPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(SuccessRateDetailLocators.DATE_JS)
         # self.input(content, *SuccessRateDetailLocators.QRY_DATE)
         self.inputDate(content)

@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 统计查询→综合查询→供电单位数据查询
 class OrgNoDataPage(Page):
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(OrgNoDataQueryLocator.DATE_JS)
         # self.input(content, *OrgNoDataQueryLocator.DATE)
         self.inputDate(content)

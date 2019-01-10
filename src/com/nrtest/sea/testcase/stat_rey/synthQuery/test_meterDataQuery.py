@@ -66,7 +66,7 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
         # 相位
         self.inputSel_phase_position(para['PHASE_POSITION'])
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 数据类别
         self.inputSel_data_sort(para['DATA_SORT'])
         # 电能表抄读状态

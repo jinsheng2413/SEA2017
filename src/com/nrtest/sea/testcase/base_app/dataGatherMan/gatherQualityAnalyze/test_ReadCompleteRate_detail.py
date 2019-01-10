@@ -67,7 +67,7 @@ class TestReadCompleteRate(TestCase, ReadCompleteRate_detail_Page):
         self.inputSel_chipFactoryDetail(para['CHIP_FACTORY'])
 
         # 日期时间
-        self.inputDt_date_time_detail(para['DATE_TIME'])
+        self.inputDt_query_date_time_detail(para['DATE_TIME'])
         self.btn_query(True)
 
     def assert_query_result(self, para):

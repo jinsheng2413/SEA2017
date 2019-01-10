@@ -61,7 +61,7 @@ class TestUnControlPlantDetail(TestCase, UnControlPlantDetailPage):
         # 采集方式
         self.inputSel_gather_way(para['GATHER_WAY'])
         # 统计日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 户号
         self.inputStr_cons_no(para['CONS_NO'])
         # 表资产编号

@@ -68,7 +68,7 @@ class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_detail_Page):
         # 台区名称
         self.inputStr_platformNo(para['PLATFORM_NAME'])
         # 日期时间
-        self.inputDT_dateTime_detail(para['DATE_TIME'])
+        self.inputDt_query_dateTime_detail(para['DATE_TIME'])
         self.btn_qry()
 
     def assert_query_result(self, para):

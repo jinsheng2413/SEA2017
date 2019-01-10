@@ -16,11 +16,11 @@ from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.checkReducePool_loca
 # 系统管理--》档案核查管理--》考核减免汇总
 class CheckReducePoolPage(Page):
     # 申请单号
-    def inputStr_applyNo(self, value):
+    def inputStr_apply_no(self, value):
         self.input(value)
 
     # 工单状态
-    def inputSel_workStatus(self, options):
+    def inputSel_work_status(self, options):
         self.selectDropDown(options)
 
     # 申请时间

@@ -65,7 +65,7 @@ class Test_UnControlPlantGatherMon_2(TestCase, UnControlPlantGatherMon2_Page):
         self.inputSel_gather_way(para['GATHER_WAY'])
 
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
 
         # 户号
         self.inputStr_cons_no(para['CONS_NO'])

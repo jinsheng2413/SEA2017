@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 class WorkCountPage(Page):
 
     # 日期
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         self.input(value)  # , *WorkCountLocators.QRY_DATE)
 
     # 查询
@@ -39,7 +39,7 @@ class WorkQueryPage(Page):
         self.selectDropDown(options)
         # 日期
 
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value, is_multi_tab=True)  # , *WorkQueryLocators.QRY_DATE)
 
     # 查询

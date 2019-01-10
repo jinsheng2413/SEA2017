@@ -18,6 +18,7 @@ from com.nrtest.sea.pages.base_app.multiTableOne.protocolLibManage_page import P
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用--》多表合一--》协议管理
 @ddt
 class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
 
@@ -78,16 +79,12 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
         self.inputStr_protocolVersionNo(para['PROTOCOL_VERSION_NO'])
         # 协议代码
         self.inputStr_protocolCode(para['PROTOCOL_CODE'])
+        # 查询方式
+        self.inputChk_queryType(para['QUERY_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(ProtocolLibManageLocators.TAB_ONE)
-        # self.assertTrue(result)
 
-    # @data(*DataAccess.getCaseData(MultiTableOne.protocolLibManage_para))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

@@ -56,7 +56,7 @@ class TestBatchDataQuery(TestCase, BatchDataQueryPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 日期
-        self.inputDt_date(para['DATA'])
+        self.inputDt_query_date(para['DATA'])
         # 终端资产号
         self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 用户类型

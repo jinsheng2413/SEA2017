@@ -60,7 +60,7 @@ class TestHistoryPowerCutEventQuery(TestCase, HistoryPowerCutEventQueryPage):
         # 日期类型
         self.inputChk_date_type(para['DATE_TYPE'])
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询按钮

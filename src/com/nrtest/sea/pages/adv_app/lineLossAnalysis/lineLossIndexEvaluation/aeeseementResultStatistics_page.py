@@ -22,13 +22,13 @@ class AeeseementResultStatisticsPage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(AeeseementResultStatisticsLocators.DATE_JS)
         # self.input(content, *AeeseementResultStatisticsLocators.QRY_DATE)
         self.inputDate(content)
 
     # 按日期类型统计
-    def inputDT_date_type(self, tab_name):
+    def inputDt_query_date_type(self, tab_name):
         self.clickDt_Tab(tab_name)
 
 

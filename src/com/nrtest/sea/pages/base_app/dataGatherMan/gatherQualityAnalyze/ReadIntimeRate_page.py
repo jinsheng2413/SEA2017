@@ -36,7 +36,7 @@ class ReadIntimeRatePage(Page):
         self.selectDropDown(name)
 
     # 日期时间
-    def inputDt_date_time(self, value):
+    def inputDt_query_date_time(self, value):
         # self.input(value, *ReadIntimeRate_Locators.QRY_DATE_TIME)
         self.inputDate(value)
 

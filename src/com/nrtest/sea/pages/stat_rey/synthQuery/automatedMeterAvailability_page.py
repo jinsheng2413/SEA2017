@@ -23,7 +23,7 @@ class AutomatedMeterAvailabilityPage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(AutomatedMeterAvailabilityLocators.DATE_JS)
         # self.input(content, *AutomatedMeterAvailabilityLocators.DATE)
         self.inputDate(content)

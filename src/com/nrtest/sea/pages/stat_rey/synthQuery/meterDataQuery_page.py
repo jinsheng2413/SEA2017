@@ -38,7 +38,7 @@ class MeterDataQueryPage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(MeterDataQueryLocators.DATE_JS)
         # self.input(content, *MeterDataQueryLocators.DATE)
         self.inputDate(content)

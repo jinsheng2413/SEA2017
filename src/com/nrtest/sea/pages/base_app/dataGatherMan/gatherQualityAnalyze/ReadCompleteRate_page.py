@@ -62,7 +62,7 @@ class ReadCompleteRatePage(Page):
 
 class ReadCompleteRate_count_Page(Page):
     # 日期时间
-    def inputDt_date_time_count(self, value):
+    def inputDt_query_date_time_count(self, value):
         # self.input(value, *ReadCompleteRateLocators.QRY_DATE_TIME_COUNT)
         # self.input(value)
         self.inputDate(value)
@@ -134,7 +134,7 @@ class ReadCompleteRate_detail_Page(Page):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
         # 日期时间
-    def inputDt_date_time_detail(self, value):
+    def inputDt_query_date_time_detail(self, value):
         # self.input(value, *ReadCompleteRateLocators.QRY_DATE_TIME_DETAIL)
         # self.input(value)
         self.inputDate(value)

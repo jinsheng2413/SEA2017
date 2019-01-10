@@ -60,7 +60,7 @@ class TestLineLossSynthesizeAnalysis(TestCase, LineLossSynthesizeAnalysisPage):
         # 日期统计类型
         self.inputDTTAB_statDateType(para['STAT_DATE_TYPE'])
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 

@@ -26,7 +26,7 @@ class LineLossAnalysisPage(Page):
         self.input(content)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(LineLossAnalysisLocators.DATE_JS)
         # self.input(content, *LineLossAnalysisLocators.QRY_DATE)
 

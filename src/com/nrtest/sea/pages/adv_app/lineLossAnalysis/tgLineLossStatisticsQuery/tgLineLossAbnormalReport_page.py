@@ -22,7 +22,7 @@ class TgLineLossAbnormalReportPage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(TgLineLossAbnormalReportLocators.DATE_JS)
         # self.input(content, *TgLineLossAbnormalReportLocators.QRY_DATE)
         self.inputDate(content)

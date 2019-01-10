@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 统计查询→综合查询→批量数据查询
 class BatchDataQueryPage(Page):
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(BatchDataQueryLocators.DATE_JS)
         # self.input(content, *BatchDataQueryLocators.DATE)
         self.inputDate(content)

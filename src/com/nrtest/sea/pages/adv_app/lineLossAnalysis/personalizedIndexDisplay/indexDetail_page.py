@@ -22,7 +22,7 @@ class IndexDetailPage(Page):
         self.curr_input(content, is_multi_tab=True)  #, *IndexDetailLocators.QRY_TG_NAME)
 
     # 时间选择
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(IndexDetailLocators.DATE_JS)
         # self.input(content, *IndexDetailLocators.QRY_DATE)
         self.inputDate(content, is_multi_tab=True)
@@ -39,7 +39,7 @@ class IndexDetailPage_count(Page):
         self.curr_input(name, is_multi_tab=True)
 
     # 时间选择
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(IndexDetailLocators.DATE_JS)
         # self.input(content, *IndexDetailLocators.QRY_DATE)
         self.inputDate(content, is_multi_tab=True)

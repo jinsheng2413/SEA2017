@@ -66,7 +66,7 @@ class TestDistributedEnergyUserFailed(TestCase, DistributedEnergyUserFailedPage)
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 

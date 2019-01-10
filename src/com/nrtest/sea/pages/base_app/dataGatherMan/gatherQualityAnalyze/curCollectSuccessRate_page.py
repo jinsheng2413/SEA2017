@@ -31,7 +31,7 @@ class CurCollectSuccessRatePage(Page):
 
 class CurCollectSuccessRate_count_Page(Page):
     # 日期时间
-    def inputDT_dateTime_count(self, value):
+    def inputDt_query_dateTime_count(self, value):
         # self.input(value, *CurCollectSuccessRateLocators.QRY_DATE_TIME_COUNT)
         self.inputDate(value)
 
@@ -54,7 +54,7 @@ class CurCollectSuccessRate_detail_Page(Page):
 
         # 日期时间
 
-    def inputDT_dateTime_detail(self, value):
+    def inputDt_query_dateTime_detail(self, value):
         # self.input(value, *CurCollectSuccessRateLocators.QRY_DATE_TIME_DETAIL)
         self.inputDate(value)
 

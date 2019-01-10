@@ -56,7 +56,7 @@ class TestAreaLineLossAnalysis(TestCase, AreaLineLossAnalysisPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 电量使用方式
         self.inputChk_StatTimeType(para['STAT_DATE_TYPE'])
         # 按时间类型统计

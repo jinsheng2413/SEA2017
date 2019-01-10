@@ -139,7 +139,7 @@ class GatherSuccessRateStatPage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(GatherSuccessRateStatLocators.DATE_JS)
         # self.input(content, *GatherSuccessRateStatLocators.DATE)
         self.inputDate(content)
@@ -196,7 +196,7 @@ class GatherSuccessRateDetailPage(Page):
         self.input(content)  # , *GatherSuccessRateDetailLocators.TMNL_ADDR)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(GatherSuccessRateDetailLocators.DATE_JS)
         # self.input(content, *GatherSuccessRateDetailLocators.DATE)
         self.inputDate(content)
@@ -229,7 +229,7 @@ class ContinuousFalseDetailPage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(ContinuousFalseDetailLocators.DATE_JS)
         # self.input(content, *ContinuousFalseDetailLocators.DATE)
         self.inputDate(content)

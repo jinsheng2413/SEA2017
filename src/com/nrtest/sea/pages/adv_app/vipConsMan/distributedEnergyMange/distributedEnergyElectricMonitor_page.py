@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测→分布式电源电量趋势
 class DistributedEnergyElectricTrendPage(Page):
     # 月份
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(DistributedEnergyElectricTrendLocators.DATE_JS)
         # self.input(content, *DistributedEnergyElectricTrendLocators.QRY_DATE)
         self.inputDate(content)
@@ -51,7 +51,7 @@ class DistributedEnergyElectricStatPage(Page):
         self.clickRadioBox(index)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(DistributedEnergyElectricStatLocators.DATE_JS)
         # self.input(content, *DistributedEnergyElectricStatLocators.QRY_DATE)
         self.inputDate(content)
@@ -108,7 +108,7 @@ class DistributedEnergyElectricDetailPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(DistributedEnergyElectricDetailLocators.DATE_JS)
         # self.input(content, *DistributedEnergyElectricDetailLocators.QRY_DATE)
         self.inputDate(content)

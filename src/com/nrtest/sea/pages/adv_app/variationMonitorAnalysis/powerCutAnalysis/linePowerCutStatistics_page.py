@@ -13,7 +13,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→配变监测分析→停电分析→线路停电统计
 class LinePowerCutStatisticsPage(Page):
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(LinePowerCutStatisticsLocators.DATE_JS)
         # self.input(content, *LinePowerCutStatisticsLocators.QRY_DATE)
         self.inputDate(content)

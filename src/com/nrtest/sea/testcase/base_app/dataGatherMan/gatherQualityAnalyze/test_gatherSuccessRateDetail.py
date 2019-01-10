@@ -69,7 +69,7 @@ class TestGatherSuccessRateDetail(TestCase, GatherSuccessRateDetailPage):
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 点击查询按钮
         self.btn_search()
 

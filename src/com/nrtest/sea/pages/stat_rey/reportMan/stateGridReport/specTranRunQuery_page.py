@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 class SpecTranRunQueryPage(Page):
 
     # 查询月份
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)  # , *SpecTranRunQueryLocators.QRY_DATE)
 
     # 统计口径

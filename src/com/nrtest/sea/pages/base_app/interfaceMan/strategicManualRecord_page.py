@@ -24,7 +24,7 @@ class StrategicManualRecordPage(Page):
     def inputStr_meter_addr(self, value):
         self.input(value)  # , *StrategicManualRecord_Locators.QRY_METER_ADDR)
 
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *StrategicManualRecord_Locators.QRY_DATE)
         self.inputDate(value)
 

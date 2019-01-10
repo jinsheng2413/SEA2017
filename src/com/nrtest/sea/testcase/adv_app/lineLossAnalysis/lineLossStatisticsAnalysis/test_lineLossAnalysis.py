@@ -62,7 +62,7 @@ class TestTgLineLossAnalysis(TestCase, LineLossAnalysisPage):
         # 按时间类型统计
         self.inputDTTAB_statDateType(para['STAT_DATE_TYPE'])
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 组合单元
         self.inputChk_compoistionUnit(para['COMPOSITION_UNIT'])
         # 线损类型

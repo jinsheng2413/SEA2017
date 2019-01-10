@@ -15,7 +15,7 @@ class IpConRunQueryPage(Page):
 
     # 查询月份
 
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)  # , *IpConRunQueryLocators.QRY_DATE)
 
     # 统计口径

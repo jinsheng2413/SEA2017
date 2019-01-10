@@ -59,10 +59,10 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
         # 责任人
         self.inputSel_charge_person(para['CHARGE_PERSON'])
         # 按日期类型统计
-        self.inputDT_date_type(para['TIME_STAT'])
+        self.inputDt_query_date_type(para['TIME_STAT'])
         print(para['DATE'])
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 

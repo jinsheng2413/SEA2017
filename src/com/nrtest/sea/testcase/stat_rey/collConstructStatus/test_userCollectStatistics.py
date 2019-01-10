@@ -58,7 +58,7 @@ class TestUserCollectStatistics(TestCase, UserCollectStatisticsPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 统计月份
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 统计口径
         self.inputSel_statistics_caliber(para['STATISTICS_CALIBER'])
         # 查询按钮

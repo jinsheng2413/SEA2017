@@ -21,7 +21,7 @@ class TgLineLossMonitorPage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(TgLineLossMonitorLocators.DATE_JS)
         # self.input(content, *TgLineLossMonitorLocators.QRY_DATE)
         self.inputDate(content)

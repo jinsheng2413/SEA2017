@@ -30,7 +30,7 @@ class ManualEditPage(Page):
         # self.delDropdownBoxHtml()
         self.selectDropDown(option)
 
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *ManualEdit_Locators.QRY_DATE)
         self.inputDate(value)
 

@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→配变监测分析→停电分析→终端是否具备停上电事件上送功能
 class TmnlEventSendingFunctionPage(Page):
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(TmnlEventSendingFunctionLocators.DATE_JS)
         # self.input(content, *TmnlEventSendingFunctionLocators.QRY_DATE)
         self.inputDate(content)
@@ -27,7 +27,7 @@ class TmnlEventSendingFunctionPage(Page):
 # 高级应用→配变监测分析→停电分析→终端是否具备停上电事件上送功能→终端是否具备停上电事件上送功能明细
 class TmnlEventSendingFunctionDeatilPage(Page):
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(TmnlEventSendingFunctionDeatilLocators.DATE_JS)
         # self.input(content, *TmnlEventSendingFunctionDeatilLocators.QRY_DATE)
         self.inputDate(content)

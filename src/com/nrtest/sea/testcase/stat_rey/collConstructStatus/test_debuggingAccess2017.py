@@ -60,7 +60,7 @@ class TestDebuggingAccess2017(TestCase, DebuggingAccess2017Page):
         # 装接方式
         self.inputCSel_assembling_way(para['ASSEMBLING_WAY'])
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 

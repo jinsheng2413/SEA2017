@@ -21,7 +21,7 @@ class LineLossSynthesizeAnalysisPage(Page):
         self.selectDropDown(index)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(LineLossSynthesizeAnalysisLocators.DATE_JS)
         ###self.input(content, *LineLossSynthesizeAnalysisLocators.QRY_DATE)
         self.inputDate(content)

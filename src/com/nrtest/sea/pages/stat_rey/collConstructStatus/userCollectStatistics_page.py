@@ -18,7 +18,7 @@ class UserCollectStatisticsPage(Page):
         self.selectCheckBox(options)
 
     # 统计月份
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(UserCollectStatisticsLocators.DATE_JS)
         # self.input(content, *UserCollectStatisticsLocators.DATE)
         self.inputDate(content)

@@ -27,7 +27,7 @@ class RunTmnlStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 统计日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         # self.exec_script(RunTmnlStatisticsLocators.DATE_JS)
         # self.input(content, *RunTmnlStatisticsLocators.DATE)
         self.inputDate(content)

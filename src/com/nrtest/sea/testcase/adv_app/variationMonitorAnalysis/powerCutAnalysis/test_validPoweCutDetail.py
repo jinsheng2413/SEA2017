@@ -62,7 +62,7 @@ class TestValidPowerCutDetail(TestCase, ValidPowerCutDetailPage):
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 当前是否停电
         self.inputSel_whether_power_cut(para['WHETHER_POWER_CUT'])
         # 是否有效停电

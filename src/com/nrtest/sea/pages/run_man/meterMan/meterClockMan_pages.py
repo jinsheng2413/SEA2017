@@ -41,7 +41,7 @@ class MeterClockManPage(Page):
         self.input(content)
 
     # 日期
-    def inputDt_date_range(self, content):
+    def inputDt_query_date_range(self, content):
         self.inputDate(content)
 
     # 查询

@@ -47,7 +47,7 @@ class TmnlSimFlowJB_2Page(Page):
         self.input(value)  # , *TmnlSimFlowJB_2Locators.QRY_SIM_NO)
 
     # 日期
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *TmnlSimFlowJB_2Locators.QRY_DATE)
         self.inputDate(value)
 

@@ -65,7 +65,7 @@ class TestDistributedEnergyMonitorDetail(TestCase, DistributedEnergyMonitorDetai
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 发电类型
         self.inputSel_elec_type(para['ELEC_TYPE'])
         # 查询按钮

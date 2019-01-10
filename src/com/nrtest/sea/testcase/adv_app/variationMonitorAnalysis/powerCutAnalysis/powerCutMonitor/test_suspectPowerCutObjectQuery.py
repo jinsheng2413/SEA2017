@@ -61,7 +61,7 @@ class TestSuspectePowerCutObjectQuery(TestCase, SuspectePowerCutObjectQueryPage)
         # 对象类型
         self.inputSel_object_type(para['OBJECT_TYPE'])
         # 停电日期
-        self.inputDt_date(para['DATE'])
+        self.inputDt_query_date(para['DATE'])
         # 查询按钮
         self.btn_search()
 

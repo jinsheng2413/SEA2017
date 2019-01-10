@@ -15,7 +15,7 @@ from com.nrtest.sea.locators.sys_mam.logMan.logStatAnalysis_locators import *
 # 系统管理--》日志管理--》日志统计分析
 class LogStatAnalysis_fial_Page(Page):
     # 
-    def inputDt_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 查询

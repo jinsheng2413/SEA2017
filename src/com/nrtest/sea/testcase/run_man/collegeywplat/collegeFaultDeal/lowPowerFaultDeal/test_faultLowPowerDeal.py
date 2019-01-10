@@ -66,15 +66,15 @@ class TestFaultLowPowerDeal(TestCase, FaultLowPowerDealPage):
         self.openLeftTree(para['TREE_NODE'])
 
         #故障开始日期
-        self.inputDt_Fault_Start_Date(para['FAULT_START_DATE'])
+        self.inputDt_fault_start_date(para['FAULT_START_DATE'])
         #故障结束日期
-        self.inputDt_Fault_End_Date(para['FAULT_END_DATE'])
+        self.inputDt_fault_end_date(para['FAULT_END_DATE'])
         #流程状态
         self.inputSel_process(para['PROCESS_STATUS'])
         #故障来源
-        self.inputSel_faultFrom(para['FAULT_FROM'])
+        self.inputDt_fault_from(para['FAULT_FROM'])
         #故障严重程度
-        self.inputSel_faultSeverity(para['FAULT_SEVERITY'])
+        self.inputSel_fault_severity(para['FAULT_SEVERITY'])
         # 故障类型
         self.inputChk_fault_type(para['FAULT_TYPE'])
 

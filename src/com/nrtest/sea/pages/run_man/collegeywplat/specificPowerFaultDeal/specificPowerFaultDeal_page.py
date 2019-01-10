@@ -41,21 +41,21 @@ class FaultSpecificPowerMyTodoPage(Page):
 #运行管理-->采集运维平台-->采集故障处理-->专变故障处理
 class FaultSpecificPowerDealPage(Page):
     # 故障严重程度
-    def inputSel_faultSeverity(self, options):
+    def inputSel_fault_severity(self, options):
         # self.click(FaultHandlerLocators.QRY_FAULT_SEVERITY)
         # locator = self.get_select_locator(FaultHandlerLocators.QRY_FAULT_SEVERITY_VALUE, name)
         # self.click(locator)
         self.selectDropDown(options)
 
     # 故障来源
-    def inputSel_faultFrom(self, options):
+    def inputDt_fault_from(self, options):
         # self.click(FaultHandlerLocators.QRY_FAULT_FROM)
         # locator = self.get_select_locator(FaultHandlerLocators.QRY_FAULT_FROM_VALUE, name)
         # self.click(locator)
         self.selectDropDown(options)
 
     # 故障开始日期
-    def inputDt_Fault_Start_Date(self, value):
+    def inputDt_fault_start_date(self, value):
         # self.input(value, *FaultHandlerLocators.QRY_FAULT_START_DATE)
         self.inputDate(value)
 
@@ -67,7 +67,7 @@ class FaultSpecificPowerDealPage(Page):
         self.selectDropDown(options)
 
     # 故障结束日期
-    def inputDt_Fault_End_Date(self, value):
+    def inputDt_fault_end_date(self, value):
         # self.input(value, *FaultHandlerLocators.QRY_FAULT_END_DATE)
         self.inputDate(value)
 
@@ -83,21 +83,21 @@ class FaultSpecificPowerDealPage(Page):
 
 class FaultSpecificPowerFeedbackPage(Page):
     # 故障严重程度
-    def inputSel_faultSeverity(self, options):
+    def inputSel_fault_severity(self, options):
         # self.click(FaultFeedBackLocators.QRY_FAULT_SEVERITY)
         # locator = self.get_select_locator(FaultFeedBackLocators.QRY_FAULT_SEVERITY_VALUE, name)
         # self.click(locator)
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障来源
-    def inputSel_faultFrom(self, options):
+    def inputDt_fault_from(self, options):
         # self.click(FaultFeedBackLocators.QRY_FAULT_FROM)
         # locator = self.get_select_locator(FaultFeedBackLocators.QRY_FAULT_FROM_VALUE, name)
         # self.click(locator)
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障开始日期
-    def inputDt_Fault_Start_Date(self, value):
+    def inputDt_fault_start_date(self, value):
         # self.input(value, *FaultFeedBackLocators.QRY_FAULT_START_DATE)
         self.inputDate(value)
 
@@ -109,7 +109,7 @@ class FaultSpecificPowerFeedbackPage(Page):
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障结束日期
-    def inputDt_Fault_End_Date(self, value):
+    def inputDt_fault_end_date(self, value):
         # self.input(value, *FaultFeedBackLocators.QRY_FAULT_END_DATE)
         self.inputDate(value)
 

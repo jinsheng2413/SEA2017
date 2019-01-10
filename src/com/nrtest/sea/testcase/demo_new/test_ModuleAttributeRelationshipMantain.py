@@ -72,7 +72,7 @@ class TestModuleAttributeRelationshipMantain(TestCase, ModuleAttributeRelationsh
         self.openLeftTree(para['TREE_NODE'])
 
         # 终端地址
-        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 终端厂商
         self.inputSel_tmnlFactory(para['TMNL_FACTORY'])

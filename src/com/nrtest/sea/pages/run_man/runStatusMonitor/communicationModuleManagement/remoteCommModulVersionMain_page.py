@@ -29,7 +29,7 @@ class RemoteCommModulVersionMainPage(Page):
         self.selectDropDown(options)
 
     # 终端地址
-    def inputStr_tmnlAddr(self, value):
+    def inputStr_tmnl_addr(self, value):
         self.input(value)#, *RemoteCommModulVersionMainLocators.QRY_TMNL_ADDR)
 
     # 终端资产号

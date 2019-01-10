@@ -64,7 +64,7 @@ class TestStrategicArchivesMaintain(TestCase, StrategicArchivesMaintainPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 输入中地址
-        self.inputStr_TmnlAddr(para['TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 输入终端资产号
         self.inputStr_TmnlNo(para['TMNL_NO'])
         # 输入用户编号

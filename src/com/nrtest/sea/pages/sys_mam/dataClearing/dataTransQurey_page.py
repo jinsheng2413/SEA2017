@@ -20,7 +20,7 @@ class DataTransQureyPage(Page):
         self.inputDate(value)
 
     # 表名称
-    def inputSel_list_name(self, value):
+    def inputSel_table_name(self, value):
         self.input(value)
 
     # 数据组

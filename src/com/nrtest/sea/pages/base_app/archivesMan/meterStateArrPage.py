@@ -14,7 +14,7 @@ from com.nrtest.sea.locators.base_app.archivesMan.meterStateArrLocators import M
 
 class MeterStateArrPage(Page):
     # 终端地址
-    def inputStr_tmnlAddr(self, value):
+    def inputStr_tmnl_addr(self, value):
         self.input(value, *MeterStateArrLocators.QRY_TMNLADDR)
 
     # 终端状态

@@ -55,7 +55,7 @@ class TestUserOperationLog(TestCase, UserOperationLogPage):
 
     def query(self, para):
         # 操作模块
-        self.inputSel_operation_tem(para['OPERATION_TEM'])
+        self.inputSel_operation_module(para['OPERATION_MODULE'])
         # 查询日期，开始
         self.inputDt_start_date(para['START_DATE'])
         # 查询日期，结束

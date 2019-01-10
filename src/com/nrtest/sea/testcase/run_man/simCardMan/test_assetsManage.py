@@ -64,11 +64,11 @@ class TestAssetsManage(TestCase, AssetsManagePage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         #SIM卡段
-        self.inputStr_simCardNo(para['SIM_CARD_NO'])
+        self.inputStr_sim_card_no(para['SIM_CARD_NO'])
         #至
-        self.inputStr_simCardNoTO(para['SIM_CARD_NO_TO'])
+        self.inputStr_sim_card_no_to(para['SIM_CARD_NO_TO'])
         #SIM卡状态
-        self.inputSel_simCardStatus(para['SIM_CARD_STATUS'])
+        self.inputSel_sim_card_status(para['SIM_CARD_STATUS'])
         #运营商
         self.inputSel_operator(para['OPERATOR'])
         #导入日期
@@ -76,7 +76,7 @@ class TestAssetsManage(TestCase, AssetsManagePage):
         #时间至
         self.inputDt_lead_end_time(para['LEAD_END_TIME'])
         #所属系统
-        self.inputSel_subordinateSystem(para['SUBORDINATE_SYSTEM'])
+        self.inputSel_subordinate_system(para['SUBORDINATE_SYSTEM'])
 
         self.btn_qry()
         self.sleep_time(2)

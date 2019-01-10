@@ -72,7 +72,7 @@ class TestArchivesGetLocators(TestCase, ArchivesGetPage):
         # 终端资产号
         self.inputStr_tmnlAssetNo(para['TMNL_ASSET_NO'])
         # 终端地址
-        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         self.btn_qry()
         self.sleep_time(2)

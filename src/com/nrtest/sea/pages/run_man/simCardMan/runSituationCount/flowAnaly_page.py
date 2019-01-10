@@ -19,7 +19,7 @@ from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.flowAnaly_loca
 class FlowStaticPage(Page):
 
     # 月份
-    def inputDt_month(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 查询
@@ -31,7 +31,7 @@ class FlowStaticPage(Page):
 class FlowDeatilPage(Page):
 
     # 月份
-    def inputDt_month(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 查询
@@ -47,11 +47,11 @@ class OverFlowStaticPage(Page):
         self.inputDate(value)
 
     #SIM卡号
-    def inputStr_simCardNo(self,value):
+    def inputStr_sim_card_no(self,value):
         self.input(value)
 
     #终端地址
-    def inputStr_tmnlAddr(self,value):
+    def inputStr_tmnl_addr(self,value):
         self.input(value)
 
     # 日期类型

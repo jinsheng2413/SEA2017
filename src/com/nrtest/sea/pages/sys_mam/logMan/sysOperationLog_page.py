@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 系统管理→日志管理→系统操作日志
 class SysOperationLogPage(Page):
     # 操作模块
-    def inputSel_operation_tem(self, options):
+    def inputSel_operation_module(self, options):
         self.selectDropDown(options)
 
     # 终端地址
@@ -40,7 +40,7 @@ class SysOperationLogPage(Page):
 # 系统管理→日志管理→系统操作日志→用户操作日志
 class UserOperationLogPage(Page):
     # 操作模块
-    def inputSel_operation_tem(self, options):
+    def inputSel_operation_module(self, options):
         self.selectDropDown(options,is_multi_tab=True,is_multi_elements=True)
 
     # 查询日期，开始

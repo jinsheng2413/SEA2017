@@ -29,7 +29,7 @@ class CommModulVersionMainPage(Page):
         self.selectDropDown(options)
 
     # 终端地址
-    def inputStr_tmnlAddr(self, value):
+    def inputStr_tmnl_addr(self, value):
         self.input(value)#, *CommModulVersionMainLocators.QRY_TMNL_ADDR)
 
     # 终端规约

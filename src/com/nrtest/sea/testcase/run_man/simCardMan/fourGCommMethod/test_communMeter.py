@@ -18,7 +18,7 @@ from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardManDat
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.fourGCommMethod.communMeter_page import CommumMeterPage
 
-
+# 运行管理-->SIM卡管理-->4G通信方式-->抄表情况
 @ddt
 class TestCommumMetter(TestCase, CommumMeterPage):
 
@@ -71,7 +71,7 @@ class TestCommumMetter(TestCase, CommumMeterPage):
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
 
         # 用户类型
-        self.inputSel_cons_type(para['RUN_STATE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 终端运行状态
         self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])

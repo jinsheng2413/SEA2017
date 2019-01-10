@@ -13,6 +13,7 @@ class DataGatherMan_data:
     # 基本应用→数据采集管理→定制任务管理
     gatherTaskCompile_para = '99913100'
     gatherTaskCompile_tab_query_task = '任务查询'
+    atherTaskCompile_tab_resultAnaylsis_task = '执行结果分析'
 
     # 基本应用→终端管理→电能表分级归类管理
     metclassfiy_para = '99912400'

@@ -32,7 +32,7 @@ class GatherTaskCompilePage(Page):
 
     # 任务名称
     def inputStr_task_name(self, value):
-        self.input(value)
+        self.curr_input(value, is_multi_elements=True, is_multi_tab=True)
 
     # 任务编号
     def inputStr_task_no(self, value):
@@ -44,4 +44,27 @@ class GatherTaskCompilePage(Page):
 
     # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)
+
+
+class GatherTaskCompile_result_Page(Page):
+    # 任务名称
+    def inputStr_task_name(self, value):
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
+
+    # 任务编号
+    def inputStr_task_no(self, value):
+        self.selectDropDown(value)
+
+    # 开始时间
+    def inputDT_startTime(self, value):
+        self.inputDate(value)
+
+    # 结束时间
+    def inputDT_endTime(self, value):
+        self.inputDate(value)
+
+        # 查询
+
+    def btn_qry(self):
+        self.btn_query(True)

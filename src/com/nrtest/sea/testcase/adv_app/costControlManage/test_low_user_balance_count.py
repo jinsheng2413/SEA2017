@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-# 高级应用--》费控管理--》本地费控--》低压用户余额查看
+# 高级应用--》费控管理--》本地费控--》低压用户余额查看：余额统计
 class TestBalanceCount(TestCase, BalanceCount_page):
     @classmethod
     def setUpClass(cls):
@@ -55,8 +55,11 @@ class TestBalanceCount(TestCase, BalanceCount_page):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 日期时间
-        self.inputStr_data_date(para['DATA_DATE'])
+        self.inputDt_date_time(para['DATE_TIME'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

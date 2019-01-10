@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.curCollect
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→数据采集管理→采集质量分析→实时采集成功率
+# 基本应用→数据采集管理→采集质量分析→实时采集成功率:实时采集成功率统计
 @ddt
 class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_count_Page):
 
@@ -64,9 +64,11 @@ class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_count_Page):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 日期时间
-        self.inputDt_query_dateTime_count(para['DATE_TIME'])
 
+        # 日期时间
+        self.inputDT_date_time(para['DATE_TIME'])
+
+        # 查询
         self.btn_count_qry()
         self.sleep_time(2)
 

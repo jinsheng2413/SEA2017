@@ -20,9 +20,6 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》费控管理--》远程费控--》专变用户远程费控执行
-# CtrlExecutSpecPage
-
-# 高级应用--》费控管理--》远程费控--》专变用户远程费控执行
 @ddt
 class TestCtrlExecutSpec(TestCase, CtrlExecutSpecPage):
 
@@ -66,23 +63,33 @@ class TestCtrlExecutSpec(TestCase, CtrlExecutSpecPage):
         """
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 输入用户编号
-        self.inputStr_userNo(para['USER_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
+
         # 输入用户名称
-        self.inputStr_userName(para['USER_NAME'])
+        self.inputStr_cons_name(para['CONS_NAME'])
+
         # 终端地址
-        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
         # 控制类型
-        self.inputSel_controlType(para['CONTROL_TYPE'])
+        self.inputSel_ctrl_type(para['CTRL_TYPE'])
+
         # 执行状态
-        self.inputSel_exeStatus(para['EXE_STATUS'])
+        self.inputSel_exe_status(para['EXE_STATUS'])
+
         # 工单号
-        self.inputStr_workOrder(para['WORK_ORDER'])
+        self.inputStr_app_no(para['APP_NO'])
+
         # 开始时间
-        self.inputDt_startTime(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
+
         # 结束时间
-        self.inputDt_endTime(para['END_TIME'])
-        self.btn_query()
+        self.inputDt_end_time(para['END_TIME'])
+
+        # 查询
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

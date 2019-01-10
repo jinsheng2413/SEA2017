@@ -56,24 +56,35 @@ class TestSpecialCostControlManage(TestCase, CostControlManagePage):
 
     def query(self, para):
         self.openLeftTree(para['TREE_NODE'])
+
         # 营销单号
-        self.inputStr_mark_sigle(para['MARK_SIGLE'])
+        self.inputStr_app_no(para['APP_NO'])
+
         # 终端地址
         self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
         # 按
-        self.inputRSel_buy_ele_date(para['BUY_ELE_DATE'])
+        self.inputSel_buy_ele_date(para['BUY_ELE_DATE'])
+
         # 开始时间
-        self.inputDT_start_date(para['START_TIME'])
+        self.inputDT_start_time(para['START_TIME'])
+
         # 结束时间
-        self.inputDT_end_date(para['END_TIME'])
+        self.inputDT_end_time(para['END_TIME'])
+
         # 用户编号
-        self.inputStr_user_No(para['USER_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
+
         # 用户名称
-        self.inputStr_user_name(para['USER_NAME'])
+        self.inputStr_cons_name(para['CONS_NAME'])
+
         # 业务类型
-        self.inputSel_buniess_cata(para['BUNIESS_CATA'])
+        self.inputSel_business_type(para['BUSINESS_TYPE'])
+
         # 参数下发状态
-        self.inputSel_para_deve(para['PARA_DEVE'])
+        self.inputSel_para_status(para['PARA_STATUS'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

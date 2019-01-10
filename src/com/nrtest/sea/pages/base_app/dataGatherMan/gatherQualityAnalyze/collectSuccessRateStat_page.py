@@ -13,11 +13,11 @@ from com.nrtest.common.base_page import Page
 
 class CollectSuccessRateStatPage(Page):
     # 查询时间
-    def inputDt_check_date(self, value):
+    def inputDt_date_time(self, value):
         self.inputDate(value)
 
     # 查询方式
-    def inputChk_query_type_day(self, name):
+    def inputChk_query_type(self, name):
         self.clickRadioBox(name)
 
     # 查询

@@ -11,36 +11,24 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→数据采集管理→采集质量分析→采集及时率
 class ReadIntimeRatePage(Page):
     # 芯片厂家
-    def inputSel_chipFactory(self, name):
-        # self.click(ReadIntimeRate_Locators.QRY_CHIP_FACTORY)
-        # locator = self.get_select_locator(
-        # ReadIntimeRate_Locators.QRY_CHIP_FACTORY_VALUE, name)
-        # self.click(locator)
+    def inputSel_chip_factory(self, name):
         self.selectDropDown(name)
+
     # 终端厂家
-    def inputSel_tmnlFactory(self, name):
-        # self.click(ReadIntimeRate_Locators.QRY_TMNL_FACTORY)
-        # locator = self.get_select_locator(
-        # ReadIntimeRate_Locators.QRY_TMNL_FACTORY_VALUE, name)
-        # self.click(locator)
+    def inputSel_tmnl_factory(self, name):
         self.selectDropDown(name)
 
     # 用户类型
-    def inputSel_userType(self, name):
-        # self.click(ReadIntimeRate_Locators.QRY_USER_TYPE)
-        # locator = self.get_select_locator(
-        # ReadIntimeRate_Locators.QRY_USER_TYPE_VALUE, name)
-        # self.click(locator)
+    def inputSel_cons_sort(self, name):
         self.selectDropDown(name)
 
     # 日期时间
-    def inputDt_query_date_time(self, value):
-        # self.input(value, *ReadIntimeRate_Locators.QRY_DATE_TIME)
+    def inputDt_date_time(self, value):
         self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(ReadIntimeRate_Locators.BTN_QRY)
         self.btn_query()

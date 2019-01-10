@@ -129,7 +129,7 @@ class TestFrequentlyCheckMet(TestCase, FrequentlyCheckMetPage):
     #     # 终端厂家
     #     self.inputRSel_tmnl_fac('宁波三星')
     #     # 终端地址
-    #     self.inputStr_tmnl_addr('')
+    #     self.inputStr_terminal_addr('')
     #     # 是否在线
     #     self.inputRSel_is_online('全部')
     #     # 查询日期

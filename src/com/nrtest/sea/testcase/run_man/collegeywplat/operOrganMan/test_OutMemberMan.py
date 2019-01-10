@@ -20,6 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 运行管理-->采集运维平台-->组织运维管理
+# 外包队伍管理
 @ddt
 class TestOutMemberManTroop(TestCase,OutMemberManPage):
 

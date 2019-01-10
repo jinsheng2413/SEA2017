@@ -116,7 +116,7 @@ class TestLoadRateDetail(TestCase, ThreeUnbalanceAnalyDetailPage):
     #     # 供电单位
     #     openLeftTree('13401')
     #     # 用户类型
-    #     self.inputSel_cons_type('全部')
+    #     self.inputSel_cons_sort('全部')
     #     # 查询日期
     #     self.inputDt_query_date('2018-9-1')
     #

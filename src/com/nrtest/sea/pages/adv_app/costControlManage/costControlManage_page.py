@@ -11,60 +11,45 @@
 from com.nrtest.common.base_page import Page
 
 
+# 高级应用--》费控管理--》本地费控--》专变用户费控管理
 class CostControlManagePage(Page):
 
     # 营销单号
-    def inputStr_mark_sigle(self, value):
-        self.input(value)  # , *CostControlManagePageLocators.QRY_MARKETINF_SINGLE_NUM)
+    def inputStr_app_no(self, value):
+        self.input(value)
 
     # 终端地址
     def inputStr_terminal_addr(self, value):
-        self.input(value)  # , *CostControlManagePageLocators.QRY_TERMIAL_ADDR)
+        self.input(value)
 
     # 用户编号
-    def inputStr_user_No(self, value):
-        self.input(value)  # , *CostControlManagePageLocators.QRY_USER_NUM)
+    def inputStr_cons_no(self, value):
+        self.input(value)
 
     # 用户名称
-    def inputStr_user_name(self, value):
-        self.input(value)  # , *CostControlManagePageLocators.QRY_USER_NAME)
+    def inputStr_cons_name(self, value):
+        self.input(value)
 
     # 业务类型
-    def inputSel_buniess_cata(self, index):
-        # self.click(CostControlManagePageLocators.SEL_BUNIESS_CATA)
-        # locator = self.get_select_locator(
-        #     CostControlManagePageLocators.SEL_BUNIESS_CATA_VALUE, index)
-        # # print(locator)
-        # self.click(locator)
+    def inputSel_business_type(self, index):
         self.selectDropDown(index)
 
     # 参数下发状态
-    def inputSel_para_deve(self, index):
-        # self.click(CostControlManagePageLocators.SEL_PARA_DEVE)
-        # locator = self.get_select_locator(
-        #     CostControlManagePageLocators.SEL_PARA_DEVE_VALUE, index)
-        # self.click(locator)
+    def inputSel_para_status(self, index):
         self.selectDropDown(index)
 
     # 购电日期
-    def inputRSel_buy_ele_date(self, index):
-        # self.click(CostControlManagePageLocators.SELR_ARRANGE)
-        # locator = self.get_select_locator(
-        #     CostControlManagePageLocators.SELR_ARRANGE_VALUE, index)
-        # self.click(locator)
+    def inputSel_buy_ele_date(self, index):
         self.selectDropDown(index)
 
     # 开始时间
-    def inputDT_start_date(self, value):
-        # self.exec_script(CostControlManagePageLocators.START_DATE_JS)
-        self.inputDate(value)  # , *CostControlManagePageLocators.DATE_START)
+    def inputDT_start_time(self, value):
+        self.inputDate(value)
 
     # 结束时间
-    def inputDT_end_date(self, value):
-        # self.exec_script(CostControlManagePageLocators.END_DATE_JS)
-        self.inputDate(value)  # , *CostControlManagePageLocators.DATE_END)
+    def inputDT_end_time(self, value):
+        self.inputDate(value)
 
     # 点击查询按钮
     def btn_qry(self):
-        # self.click(CostControlManagePageLocators.BTN_QRY)
         self.btn_query()

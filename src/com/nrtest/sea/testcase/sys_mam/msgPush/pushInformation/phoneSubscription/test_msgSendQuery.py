@@ -68,8 +68,10 @@ class TestMsgSendQuery(TestCase, MsgSendQueryPage):
         self.inputSel_send_way(para['SEND_WAY'])
         # 发送人
         self.inputStr_send_man(para['SEND_MAN'])
+
         # 查询按钮
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

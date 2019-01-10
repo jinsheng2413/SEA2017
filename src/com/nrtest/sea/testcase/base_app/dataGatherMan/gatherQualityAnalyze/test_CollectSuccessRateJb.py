@@ -23,9 +23,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 # 基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
 @ddt
 class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
-    """
-    基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
-    """
+
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
@@ -62,26 +60,34 @@ class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 电压类型
-        self.inputChk_eleType(para['ELE_TYPE'])
+        # 曲线类型
+        self.inputChk_curve_type(para['CURVE_TYPE'])
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 用户类型
-        self.inputSel_user_type(para['USER_TYPE'])
+        self.inputSel_cons_sort(para['CONS_SORT'])
 
         # 通信方式
-        self.inputSel_conmunicationMode(para['CONMUNICATION_MODE'])
-        # 终端厂家
-        self.inputSel_TmnlFactory(para['TMNL_FACTORY'])
-        # 芯片厂家
-        self.inputSel_pieceFactory(para['PIECE_FACTORY'])
-        # 通讯规约
-        self.inputSel_conmunicationGlue(para['CONMUNICATION_GLUE'])
-        # 时间
-        self.inputDt_query_date(para['QUERY_DATE'])
-        # 相位
-        self.inputSel_pieceFactory(para['PHASE'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
 
+        # 终端厂家
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+
+        # 芯片厂家
+        self.inputSel_chip_factory(para['CHIP_FACTORY'])
+
+        # 通讯规约
+        self.inputSel_coll_mode(para['COLL_MODE'])
+
+        # 时间
+        self.inputDt_date_time(para['DATE_TIME'])
+
+        # 相位
+        self.inputSel_phase_flag(para['PHASE_FLAG'])
+
+        # 查询
         self.btn_query()
 
     def assert_query_result(self, para):

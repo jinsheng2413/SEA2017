@@ -57,13 +57,14 @@ class Test_mDataPublishStatus2(TestCase, MDataPublishStatus2Page):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
+        # 业务系统
         self.inputSel_Business_system(para['BUSINESS_SYSTEM'])
 
         # 开始时间
-        self.inputDt_receive_time(para['START_DATE'])
+        self.inputDt_start_time(para['START_TIME'])
 
         # 结束时间
-        self.inputDt_end_time(para['END_DATE'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 查询
         self.btn_qry()

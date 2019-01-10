@@ -28,7 +28,7 @@ class TestAssetMan(TestCase, AssetManPage):
         menuPage = MenuPage.openMenu(IntelligentLock_data.AssetMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage()
+        menuPage.clickTabPage(IntelligentLock_data.AssetMan_tabName_lock)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
 
@@ -88,7 +88,7 @@ class TestAssetMan(TestCase, AssetManPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para))
+    @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_lock))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -96,7 +96,7 @@ class TestAssetMan(TestCase, AssetManPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para))
+    @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_lock))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

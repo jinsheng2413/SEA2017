@@ -20,6 +20,7 @@ class InterfaceMonitorPage(Page):
         #     InterfaceMonitor_Locators.QRY_INTERFACE_TYPE_VALUE, name)
         # print(locator)
         # self.click(locator)
+        self.clean_label(name)
         self.selectDropDown(name)
 
     # 接收时间

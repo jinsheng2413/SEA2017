@@ -15,7 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.collegeywplat.collegeywplat_data import Collegeywplat_data
-from com.nrtest.sea.pages.collegeywplat.outMemberMan_page import OutRanksManPage
+from com.nrtest.sea.pages.run_man.collegeywplat.outMemberMan_page import OutRanksManPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 

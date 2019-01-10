@@ -20,12 +20,10 @@ class FlowStaticPage(Page):
 
     # 月份
     def inputDt_month(self, value):
-        # self.input(value, *FlowCountLocators.QRY_MONTH)
         self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(FlowCountLocators.BTN_QRY)
         self.btn_query()
 
 
@@ -34,12 +32,10 @@ class FlowDeatilPage(Page):
 
     # 月份
     def inputDt_month(self, value):
-        # self.input(value, *FlowDetailLocators.QRY_MONTH)
         self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(FlowDetailLocators.BTN_QRY)
         self.btn_query(True)
 
 
@@ -56,7 +52,6 @@ class OverFlowStaticPage(Page):
 
     #终端地址
     def inputStr_tmnlAddr(self,value):
-        # self.input(value,*SIMFlowCountLocators.QRY_TMNL_ADDR)
         self.input(value)
 
     # 日期类型
@@ -71,5 +66,4 @@ class OverFlowStaticPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(SIMFlowCountLocators.BTN_QRY)
         self.btn_query(True)

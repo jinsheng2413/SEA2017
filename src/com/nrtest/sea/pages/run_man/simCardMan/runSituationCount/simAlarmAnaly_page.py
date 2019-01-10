@@ -26,6 +26,7 @@ class AbnoralStaticPage(Page):
         # self.click(AbnormalDetailLocators.BTN_QRY)
         self.btn_query()
 
+# 异常明细
 class AbnormalDetailPage(Page):
 
     # 异常类型

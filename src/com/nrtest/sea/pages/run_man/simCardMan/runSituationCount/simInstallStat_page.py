@@ -18,14 +18,10 @@ class SimInstallStatPageStatic(Page):
 
     # 运营商
     def inputSel_operator(self, item):
-        # self.click(SimInstallStatLocators.QRY_OPERATOR)
-        # locator = self.get_select_locator(SimInstallStatLocators.QRY_OPERATOR_VALUE, name)
-        # self.click(locator)
         self.selectDropDown(item)
 
     # 查询
     def btn_qry(self):
-        # self.click(SimInstallStatLocators.BTN_QRY)
         self.btn_query()
 
 
@@ -35,12 +31,8 @@ class SimInstallStatPageDetail(Page):
 
     # 运营商
     def inputSel_operator(self, item):
-        # self.click(SimInstallStatLocators.QRY_OPERATOR)
-        # locator = self.get_select_locator(SimInstallStatLocators.QRY_OPERATOR_VALUE, name)
-        # self.click(locator)
         self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
     # 查询
     def btn_qry(self):
-        # self.click(SimInstallStatLocators.BTN_QRY)
         self.btn_query(True)

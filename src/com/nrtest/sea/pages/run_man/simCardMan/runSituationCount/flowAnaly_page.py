@@ -19,7 +19,7 @@ from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.flowAnaly_loca
 class FlowStaticPage(Page):
 
     # 月份
-    def inputDt_month(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 查询
@@ -31,7 +31,7 @@ class FlowStaticPage(Page):
 class FlowDeatilPage(Page):
 
     # 月份
-    def inputDt_month(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 查询

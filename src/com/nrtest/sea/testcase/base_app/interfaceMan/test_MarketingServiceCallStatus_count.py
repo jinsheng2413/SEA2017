@@ -3,8 +3,8 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_otherServiceCallStatus_detail.py
-@time: 2018-10-31 9:14
+@file: test_otherServiceCallStatus_count.py
+@time: 2018-10-15 15:00
 @desc:
 """
 
@@ -15,21 +15,21 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.interfaceMan.mServiceCallStatus_data import InterfaceMan_data
-from com.nrtest.sea.pages.base_app.interfaceMan.mServiceCallStatus_page import MServiceCallStatus_detail_Page
+from com.nrtest.sea.pages.base_app.interfaceMan.marketingServiceCallStatus_page import MarketingServiceCallStatusPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--接口管理--其他业务接口--服务调用情况
+# 基本应用--接口管理--营销业务接口--服务调用情况
 @ddt
-class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Page):
+class TestOtherServiceCallStatus(TestCase, MarketingServiceCallStatusPage):
+
     @classmethod
     def setUpClass(cls):
-
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(InterfaceMan_data.para_MServiceCallStatus)
+        menuPage = MenuPage.openMenu(InterfaceMan_data.para_MarketingServiceCallStatus)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(InterfaceMan_data.para_MServiceCallStatus_detail)
+        menuPage.clickTabPage(InterfaceMan_data.para_MServiceCallStatus_count)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -52,22 +52,23 @@ class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Pag
         """
 
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         # 业务系统
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])
+
         # #服务名称
         self.inputSel_business_name(para['BUSINESS_NAME'])
+
         # 开始时间
         self.inputDt_start_date(para['START_DATE'])
+
         # 结束时间
         self.inputDt_end_date(para['END_DATE'])
-        # 工单编号
-        self.inputStr_app_no(para['APP_NO'])
+
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -86,7 +87,7 @@ class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Pag
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus,
-                                  InterfaceMan_data.para_MServiceCallStatus_detail))
+                                  InterfaceMan_data.para_MarketingServiceCallStatus_count))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -94,8 +95,8 @@ class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Pag
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus_detail,
-                                  InterfaceMan_data.para_MServiceCallStatus_detail, valCheck=True))
+    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus,
+                                  InterfaceMan_data.para_MarketingServiceCallStatus_count, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

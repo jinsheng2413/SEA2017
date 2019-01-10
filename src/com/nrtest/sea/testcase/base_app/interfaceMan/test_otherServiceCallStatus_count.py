@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 基本应用--接口管理--其他业务接口--服务调用情况
 @ddt
-class TestOtherServiceCallStatus(TestCase, MServiceCallStatusPage):
+class TestOtherServiceCallStatusCount(TestCase, MServiceCallStatusPage):
 
     @classmethod
     def setUpClass(cls):

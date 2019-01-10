@@ -15,21 +15,21 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.interfaceMan.mServiceCallStatus_data import InterfaceMan_data
-from com.nrtest.sea.pages.base_app.interfaceMan.mServiceCallStatus_page import MServiceCallStatus_detail_Page
+from com.nrtest.sea.pages.base_app.interfaceMan.marketingServiceCallStatus_page import \
+    MarketingServiceCallStatus_detail_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--接口管理--其他业务接口--服务调用情况
+# 基本应用--接口管理--营销业务接口--服务调用情况
 @ddt
-class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Page):
+class test_otherServiceCallStatus_count(TestCase, MarketingServiceCallStatus_detail_Page):
     @classmethod
     def setUpClass(cls):
-
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(InterfaceMan_data.para_MServiceCallStatus)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(InterfaceMan_data.para_MServiceCallStatus_detail)
+        menuPage.clickTabPage(InterfaceMan_data.para_MarketingServiceCallStatus_detail)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -95,7 +95,7 @@ class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Pag
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus_detail,
-                                  InterfaceMan_data.para_MServiceCallStatus_detail, valCheck=True))
+                                  InterfaceMan_data.para_MarketingServiceCallStatus_detail, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

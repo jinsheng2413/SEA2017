@@ -47,11 +47,11 @@ class OverFlowStaticPage(Page):
         self.inputDate(value)
 
     #SIM卡号
-    def inputStr_simCardNo(self,value):
+    def inputStr_sim_card_no(self,value):
         self.input(value)
 
     #终端地址
-    def inputStr_tmnlAddr(self,value):
+    def inputStr_tmnl_addr(self,value):
         self.input(value)
 
     # 日期类型

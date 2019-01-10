@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 # 运行管理-->采集运维平台-->辅助运维--》报文查询
 class OrigFrameHbaseQueryPage(Page):
     # 终端地址
-    def inputStr_tmnlAddr(self, value):
+    def inputStr_tmnl_addr(self, value):
         self.input(value)  # , *OrigFrameHbaseQueryLocators.QRY_TMNL_ADDR)
 
     # 报文类型

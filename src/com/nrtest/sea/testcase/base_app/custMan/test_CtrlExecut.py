@@ -72,7 +72,7 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         # 用户名称
         self.inputStr_userName(para['USER_NAME'])
         # 终端地址
-        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 控制类型
         self.inputSel_controlType(para['CONTROL_TYPE'])
         # 抄表段号

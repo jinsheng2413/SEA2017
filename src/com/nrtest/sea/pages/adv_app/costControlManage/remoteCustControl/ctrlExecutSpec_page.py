@@ -36,7 +36,7 @@ class CtrlExecutSpecPage(Page):
         self.inputDate(value)
 
     # 终端地址
-    def inputStr_tmnlAddr(self, value):
+    def inputStr_tmnl_addr(self, value):
         # self.input(value, *CtrlExecutSpecLocators.QRY_TMNL_ADDR)
         self.input(value)
 

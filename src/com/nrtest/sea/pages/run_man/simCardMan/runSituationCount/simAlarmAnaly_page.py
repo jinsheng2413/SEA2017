@@ -30,7 +30,7 @@ class AbnoralStaticPage(Page):
 class AbnormalDetailPage(Page):
 
     # 异常类型
-    def inputStr_Abnormal_Type(self, item):
+    def inputStr_abnormal_type(self, item):
         # self.click(AbnormalDetailLocators.QRY_ABNORMAL_TYPE)
         # locator = self.get_select_locator(AbnormalDetailLocators.QRY_ABNORMAL_TYPE_VALUE, name)
         # self.click(locator)

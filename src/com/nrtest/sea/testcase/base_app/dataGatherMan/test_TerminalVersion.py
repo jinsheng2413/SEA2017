@@ -68,7 +68,7 @@ class TestTerminalVersion(TestCase, TerminalVersionPage):
         # 用户编号
         self.inputStr_userNo(para['USER_NO'])
         # 终端地址
-        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询日期
         self.inputDt_queryTime(para['DATE'])
 

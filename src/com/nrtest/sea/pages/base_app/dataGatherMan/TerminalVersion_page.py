@@ -17,7 +17,7 @@ class TerminalVersionPage(Page):
         self.input(value)  # , *TerminalVersionLocators.QRY_USER_NO)
 
     # 终端地址
-    def inputStr_tmnlAddr(self, value):
+    def inputStr_tmnl_addr(self, value):
         self.input(value)  # , *TerminalVersionLocators.QRY_TMNL_ADDR)
 
     # 查询时间

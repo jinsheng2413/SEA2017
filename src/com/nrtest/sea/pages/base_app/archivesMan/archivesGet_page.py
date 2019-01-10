@@ -30,7 +30,7 @@ class ArchivesGetPage(Page):
         self.input(value)  # , *ArchivesGetLocators.QRY_TMNL_ASSET_NO)
 
     # 终端地址
-    def inputStr_tmnlAddr(self, value):
+    def inputStr_tmnl_addr(self, value):
         self.input(value)  # , *ArchivesGetLocators.QRY_TMNL_ADDR)
 
         # 查询

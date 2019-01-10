@@ -13,7 +13,7 @@ from com.nrtest.common.base_page import Page
 
 class StrategicArchivesMaintainPage(Page):
     # 终端地址
-    def inputStr_TmnlAddr(self, value):
+    def inputStr_tmnl_addr(self, value):
         self.input(value)  # , *StrategicArchivesMaintainLocators.QRY_TMNLADDR)
 
     # 终端资产号

@@ -22,7 +22,7 @@ class CtrlExecutPage(Page):
         self.input(value)  #, *CtrlExecutLocators.QRY_USER_NAME)
 
     # 终端地址
-    def inputStr_tmnlAddr(self, value):
+    def inputStr_tmnl_addr(self, value):
         self.input(value)  #, *CtrlExecutLocators.QRY_TMNL_ADDR)
 
     # 抄表段号

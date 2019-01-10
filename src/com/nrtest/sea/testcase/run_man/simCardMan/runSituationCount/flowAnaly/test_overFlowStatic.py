@@ -65,9 +65,9 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # SIM卡号
-        self.inputStr_simCardNo(para['SIM_CARD_NO'])
+        self.inputStr_sim_card_no(para['SIM_CARD_NO'])
         # 终端地址
-        self.inputStr_tmnlAddr(para['TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 是否超流量
         self.inputChk_is_over_flow(para)

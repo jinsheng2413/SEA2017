@@ -83,7 +83,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.inputStr_userNo_count(para['USER_NO'])
 
         # 终端地址
-        self.inputStr_tmnlAddr_count(para["TMNL_ADDR"])
+        self.inputStr_tmnl_addr_count(para["TMNL_ADDR"])
 
         # 终端厂家
         self.inputSel_tmnlFactory_count(para['TMNL_FACTORY'])

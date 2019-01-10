@@ -9,7 +9,7 @@
 """
 from unittest import TestCase
 
-from ddt import data
+from ddt import ddt, data
 
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.localCostControl.localCostControl_para import LocalCostContral_data
@@ -18,6 +18,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用--》费控管理--》本地费控--》电价参数下发
+@ddt
 class TestElePricePara(TestCase, ElePricePages):
     @classmethod
     def setUpClass(cls):
@@ -52,11 +53,11 @@ class TestElePricePara(TestCase, ElePricePages):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 工单编号
-        self.inputStr_work_num(para['WORK_NO'])
+        self.inputStr_app_no(para['APP_NO'])
         # 用户编号
-        self.inputStr_user_No(para['USER_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
         # 接收时间
-        self.inputStr_receive_time(para['RECEIVE_TIME'])
+        self.inputDt_receive_time(para['RECEIVE_TIME'])
         # 执行状态
         self.inputSel_execute_state(para['EXECUTE_STATE'])
         # 终端地址
@@ -64,9 +65,9 @@ class TestElePricePara(TestCase, ElePricePages):
         # 电表地址
         self.inputStr_meter_addr(para['METER_ADDR'])
         # c抄表段号
-        self.inputStr_meter_reading_num(para['METER_READ_NUM'])
+        self.inputStr_sect_no(para['SECT_NO'])
         # 结束时间
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
         # 任务类型
         self.inputSel_task_cata(para['TASK_CATA'])
         self.btn_qry()

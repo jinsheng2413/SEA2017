@@ -41,8 +41,8 @@ class Login:
         imageMask = driver.find_element_by_id('imageMask')
         left = imageMask.location['x']
         top = imageMask.location['y']
-        element_Width = imageMask.location['x'] + imageMask.size['width']
-        element_Height = imageMask.location['y'] + imageMask.size['height']
+        element_Width = left + imageMask.size['width']
+        element_Height = top + imageMask.size['height']
 
         with Image.open(Setting.SCREENSHOTS_PATH + 'photo.png') as img_file:  # type: Image.Image
             img_sizes = img_file.size
@@ -65,10 +65,8 @@ class Login:
 
         is_failed = True
         while is_failed:
-            # 验证码是否需要判断
-            # if self.is_valid_mask:
-            #     loginPage.waitForMask(driver)
             loginPage = LoginPage(driver)
+            loginPage.waitFor()
             loginPage.input_username(self.username)
             loginPage.input_password(self.password)
             if self.is_valid_mask:  # 是否需要验证码判断 yes是；no否

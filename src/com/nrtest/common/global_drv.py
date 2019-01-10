@@ -18,8 +18,8 @@ def __init():
     初始化webdriver
     """
     global __driver
-    lg = Login()
-    __driver = lg.login()
+    login = Login()
+    __driver = login.login()
 
     print('complete global webdriver init.')
 

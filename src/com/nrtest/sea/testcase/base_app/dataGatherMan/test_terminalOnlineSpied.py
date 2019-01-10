@@ -18,6 +18,8 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.terminalOnlineSpied_page import
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用→终端管理→终端版本召测
+
 @ddt
 class TestTerminalOnlineSpied(TestCase, TerminalOnlineSpiedPage):
 

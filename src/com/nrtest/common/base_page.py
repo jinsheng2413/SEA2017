@@ -23,10 +23,10 @@ from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.base_locators import BaseLocators
+from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 
 # create a logger instance
 logger = Logger(logger='Page').getlog()
-
 
 # def func_info():
 #     info = inspect.stack()[1]

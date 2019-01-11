@@ -22,7 +22,7 @@ class CheckResultStatPage(Page):
 
     # 台区编号
     def inputStr_tg_no(self, value):
-        self.inputDate(value)
+        self.input(value)
 
     # 任务类型
     def inputSel_task_type(self, options):

@@ -8,6 +8,7 @@
 @desc:
 """
 
+
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -63,7 +64,7 @@ class TestContinuousFalseDetail(TestCase, ContinuousFalseDetailPage):
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 点击查询按钮
-        self.btn_query()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

@@ -11,7 +11,7 @@ from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.variationMonitorAnalysis.powerCutAnalysis.intelligentMeterPowerCutEventQuery_locators import *
 
 
-# 高级应用→配变监测分析→停电分析→智能表停电事件查询
+# 高级应用→配变监测分析→停电分析→智能表停电事件查询：智能表停电统计
 class IntelligentMeterPowerCutEventQueryPage(Page):
     # 日期类型
     def inputChk_date_type(self, index):

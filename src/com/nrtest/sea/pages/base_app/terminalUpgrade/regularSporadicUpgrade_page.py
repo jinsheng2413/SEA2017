@@ -62,6 +62,6 @@ class RegularSporadicUpgradePage(Page):
         self.input(content)  # , *RegularSporadicUpgradeLocators.TMNL_ASSET_NO)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         # self.click(RegularSporadicUpgradeLocators.BTN_SEARCH)
         self.btn_query()

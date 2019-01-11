@@ -25,7 +25,8 @@ class PowerCutAnalysis_data:
     IntelligentMeterPowerCutEventQuery_tabName_Detail = '智能表停电明细'
     # 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测
     ImportantClientRealTimePowerCutMonitor_para = '99925441'
-    ImportantClientRealTimePowerCutMonitor_tabName = '重要客户历史停电查询'
+    ImportantClientRealTimePowerCutMonitor_tabName = '重要客户实时停电监测'
+    ImportantClientHistoryPowerCutQuery_tabName = '重要客户历史停电查询'
     # 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测
     SuspectedAreaPowerCutMonitor_para = '99925442'
     SuspectedAreaPowerCutMonitor_tabName = '疑似区域停电监测'

@@ -14,13 +14,13 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.intelligentLock.intelligentLock_data import IntelligentLock_data
-from com.nrtest.sea.pages.adv_app.intelligentLock.recordsQuery_page import RecordsQueryPage
+from com.nrtest.sea.pages.adv_app.intelligentLock.recordsQuery_page import RecordsQueryStaffPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→智能锁具→记录查询→资产管理记录查询
 @ddt
-class TestRecordsQuery(TestCase, RecordsQueryPage):
+class TestRecordsQuery(TestCase, RecordsQueryStaffPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -55,19 +55,19 @@ class TestRecordsQuery(TestCase, RecordsQueryPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 操作员名称
-        self.inputStr_tab_staff_name(para['TAB_STAFF_NAME'])
+        self.inputStr_staff_name(para['STAFF_NAME'])
         # 电子钥匙编号
-        self.inputStr_tab_key_no(para['TAB_KEY_NO'])
+        self.inputStr_key_no(para['KEY_NO'])
         # 锁封编号
-        self.inputStr_tab_lock_no(para['TAB_LOCK_NO'])
+        self.inputStr_lock_no(para['LOCK_NO'])
         # 锁封用户编号
-        self.inputStr_tab_lock_user_no(para['TAB_LOCK_USER_NO'])
+        self.inputStr_lock_user_no(para['LOCK_USER_NO'])
         # 开始日期
-        self.inputDt_tab_start_date(para['TAB_START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 结束日期
-        self.inputDt_tab_end_date(para['TAB_END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
         # 查询按钮
-        self.tab_btn_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """

@@ -13,6 +13,10 @@ from com.nrtest.common.base_page import Page
 
 # 统计查询→综合查询→采集建设情况→运行电能表统计
 class RunMeterStatisticsPage(Page):
+    # 区域类型
+    def inputChk_area_type(self, index):
+        self.clickSingleCheckBox(index)
+
     # 用户类型
     def inputSel_cons_type(self, index):
         # if index == 'c':

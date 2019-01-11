@@ -84,35 +84,38 @@ class RecordsQueryPage(Page):
         self.btn_query()
 
     # 资产管理记录查询
+
+
+class RecordsQueryStaffPage(Page):
     # 操作员名称
-    def inputStr_tab_staff_name(self, content):
+    def inputStr_staff_name(self, content):
         self.curr_input(content, True, True)  # , *RecordsQueryLocators.TAB_STAFF_NAME)
 
     # 电子钥匙编号
-    def inputStr_tab_key_no(self, content):
+    def inputStr_key_no(self, content):
         self.curr_input(content, True, True)  #, *RecordsQueryLocators.TAB_KEY_NO)
 
     # 锁封编号
-    def inputStr_tab_lock_no(self, content):
+    def inputStr_lock_no(self, content):
         self.curr_input(content, True, True)  #, *RecordsQueryLocators.TAB_LOCK_NO)
 
     # 锁封用户编号
-    def inputStr_tab_lock_user_no(self, content):
+    def inputStr_lock_user_no(self, content):
         self.curr_input(content, True, True)  #, *RecordsQueryLocators.TAB_LOCK_USER_NO)
 
     # 开始日期
-    def inputDt_tab_start_date(self, content):
+    def inputDt_start_date(self, content):
         # self.exec_script(RecordsQueryLocators.TAB_START_DATE_JS)
         # self.input(content, *RecordsQueryLocators.TAB_START_DATE)
         self.inputDate(content)
 
     # 结束日期
-    def inputDt_tab_end_date(self, content):
+    def inputDt_end_date(self, content):
         # self.exec_script(RecordsQueryLocators.TAB_END_DATE_JS)
         # self.input(content, *RecordsQueryLocators.TAB_END_DATE)
         self.inputDate(content)
 
     # 查询按钮
-    def tab_btn_search(self):
+    def btn_search(self):
         # self.click(RecordsQueryLocators.TAB_BTN_SEARCH)
         self.btn_query(True)

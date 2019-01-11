@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEffectSt
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→终端管理→软件升级→升级效果统计
+# 基本应用→终端管理→软件升级→升级效果统计:终端升级统计
 @ddt
 class TestUpgradeEffectStstistics(TestCase, UpgradeEffectStatisticsPage):
     @classmethod

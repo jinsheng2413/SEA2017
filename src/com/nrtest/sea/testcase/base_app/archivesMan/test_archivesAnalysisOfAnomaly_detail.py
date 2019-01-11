@@ -15,11 +15,10 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_pages import *
-from com.nrtest.sea.task.archivesManage import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》档案异常分析
-
+# 基本应用--》档案管理--》档案异常分析：档案异常明细
 @ddt
 class test_archivesAnalysisOfAnomaly_detail(TestCase, ArchivesAnalysisOfAnomaly_detail_pages):
     @classmethod
@@ -54,12 +53,17 @@ class test_archivesAnalysisOfAnomaly_detail(TestCase, ArchivesAnalysisOfAnomaly_
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 用户类型
-        self.inputSel_cons_type(para['CONS_CATA'])
-        # 日期
-        self.inputDt_query_date(para['QUERY_DATE'])
+
         # 档案类型
-        self.inputRSel_archives_cata(para['ARCHIVES_CATA'])
+        self.inputRSel_archives_type(para['ARCHIVES_TYPE'])
+
+        # 用户类型
+        self.inputSel_cons_sort(para['CONS_SORT'])
+
+        # 日期
+        self.inputDt_date_time(para['DATE_TIME'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

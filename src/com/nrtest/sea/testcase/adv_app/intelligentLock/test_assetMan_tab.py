@@ -1,36 +1,36 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 郭春彪
+@author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_WaveArchives.py
-@time: 2018/9/10 0010 9:21
+@file: test_assetMan.py
+@time: 2018/10/26 14:03
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
-from com.nrtest.sea.pages.base_app.archivesMan.waveArchives_pages import WaveArchives_Page
+from com.nrtest.sea.data.adv_app.intelligentLock.intelligentLock_data import IntelligentLock_data
+from com.nrtest.sea.pages.adv_app.intelligentLock.assetMan_page import AssetManTabPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》载波档案校正
+# 高级应用→智能锁具→资产管理→已增电子钥匙列表
 @ddt
-class TestWaveArchives(TestCase, WaveArchives_Page):
-
+class TestAssetManTab(TestCase, AssetManTabPage):
     @classmethod
     def setUpClass(cls):
-        # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(ArchivesMan_data.waveArchives_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(IntelligentLock_data.AssetMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(IntelligentLock_data.AssetMan_tabName_key)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -49,35 +49,18 @@ class TestWaveArchives(TestCase, WaveArchives_Page):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # 去除查询干扰数据(要传入对应的page页面类)
-        # self.clear_values(WaveArchives_Page)
         # 回收左边树
         self.recoverLeftTree()
 
     def query(self, para):
-        """
-
-        :param para: Dict类型的字典，不是dict
-        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
-        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        """
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-
-        # 输入台区编号
-        self.inputStr_zone_no(para['ZONE_NO'])
-
-        # 输入台区名称
-        self.inputStr_zone_name(para['ZONE_NAME'])
-
-        # 输入统计时间
-        self.inputDt_count_time(para['COUNT_TIME'])
-
-        # 输入统计分类
-        self.inputSel_count_type(para['COUNT_TYPE'])
-
-        # 查询
-        self.btn_qry()
+        # 电子钥匙编号
+        self.inputStr_key_no(para['KEY_NO'])
+        # 电子钥匙状态
+        self.inputSel_key_status(para['KEY_STATUS'])
+        # 查询按钮
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
@@ -95,7 +78,7 @@ class TestWaveArchives(TestCase, WaveArchives_Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesMan_data.waveArchives_para))
+    @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_key))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -103,7 +86,7 @@ class TestWaveArchives(TestCase, WaveArchives_Page):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesMan_data.waveArchives_para, valCheck=True))
+    @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_key))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

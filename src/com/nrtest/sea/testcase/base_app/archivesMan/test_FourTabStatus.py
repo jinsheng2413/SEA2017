@@ -61,10 +61,9 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 打开tab页
-        self.clickTabPage(para['TAB_NAME'])
+        self.clickTabPage(para['DISPLAY_TAB'])
 
-        # 打开左边树并选择
+        # 打开tab页,tab页先不不处理
         self.openLeftTree(para['TREE_NODE'])
 
         # 选择用状态

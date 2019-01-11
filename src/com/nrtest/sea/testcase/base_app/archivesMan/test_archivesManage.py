@@ -15,7 +15,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesManage_pages import ArchivesManage_pages
-from com.nrtest.sea.task.archivesManage import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用--》档案管理--》档案同步
@@ -29,7 +29,7 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -61,16 +61,21 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
         """
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 输入用户类型
-        self.inputSel_user_cata(para['USER_TYPE'])
-        # 户号
-        self.inputStr_family_no(para['USER_NO'])
-        # 终端资产号
-        self.inputStr_terminal_asset(para['TMNL_ASSET_NO'])
-        # 终端地址
-        self.inputStr_terminal_addr(para['TMNL_ADDR'])
 
-        self.btt_qry()
+        # 输入用户类型
+        self.inputSel_cons_sort(para['CONS_SORT'])
+
+        # 户号
+        self.inputStr_cons_no(para['CONS_NO'])
+
+        # 终端资产号
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
+
+        # 终端地址
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
+        # 查询
+        self.btn_qry()
         self.sleep_time(2)
 
     def assert_query_result(self, para):

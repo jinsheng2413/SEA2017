@@ -82,18 +82,29 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
         self.inputSel_detail_affirm_result(para['DETAIL_AFFIRM_RESULT'])
         # 执行日期
         self.inputSel_box_exec_date(para['BOX_EXEC_DATE'])
-        # 确认开始日期
-        self.inputDt_affirm_start_date(para['AFFIRM_START_DATE'])
-        # 确认结束日期
-        self.inputDt_affirm_end_date(para['AFFIRM_END_DATE'])
+        if para['BOX_EXEC_DATE'] == 'c':
+            # 确认开始日期
+            self.inputDt_affirm_start_date(para['AFFIRM_START_DATE'])
+            # 确认结束日期
+            self.inputDt_affirm_end_date(para['AFFIRM_END_DATE'])
         # 确认日期
         self.inputSel_box_affirm_date(para['BOX_AFFIRM_DATE'])
-        # 执行开始日期
-        self.inputDt_detail_start_date(para['DETAIL_START_DATE'])
-        # 执行结束日期
-        self.inputDt_detail_end_date(para['DETAIL_END_DATE'])
+        if para['BOX_AFFIRM_DATE'] == 'c':
+            # 执行开始日期
+            self.inputDt_detail_start_date(para['DETAIL_START_DATE'])
+            # 执行结束日期
+            self.inputDt_detail_end_date(para['DETAIL_END_DATE'])
+        if para['BOX_AFFIRM_DATE'] != 'c' and para['BOX_EXEC_DATE'] != 'c':
+            # 执行开始日期
+            self.inputDt_detail_start_date(para['DETAIL_START_DATE'])
+            # 执行结束日期
+            self.inputDt_detail_end_date(para['DETAIL_END_DATE'])
+            # 确认开始日期
+            self.inputDt_affirm_start_date(para['AFFIRM_START_DATE'])
+            # 确认结束日期
+            self.inputDt_affirm_end_date(para['AFFIRM_END_DATE'])
         # 点击查询按钮
-        self.btn_detail_search()
+        self.btn_qry()
 
 
     def assert_query_result(self, para):

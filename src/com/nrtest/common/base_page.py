@@ -57,7 +57,7 @@ class Page():
     def __init__(self, driver, menu_page=None):
         self.driver = driver
         self.base_url = Setting.TEST_URL
-        self.page_title = Setting.PAGE_TILE
+        self.main_page_title = Setting.PAGE_TILE
         self.project_no = Setting.PROJECT_NO
         self.menuPage = menu_page
         if bool(menu_page):
@@ -679,10 +679,9 @@ class Page():
         :param is_trust:  是否一直等待到页面真正打开
         """
         if is_trust:
-            WebDriverWait(self.driver, Setting.WAIT_TIME).until(
-                MustGetUrl(self.base_url))
+            WebDriverWait(self.driver, Setting.WAIT_TIME).until(MustGetUrl(self.base_url))
         else:
-            self._open(self.base_url, self.page_title)
+            self._open(self.base_url, self.main_page_title)
 
     def click(self, locator):
         """
@@ -702,7 +701,7 @@ class Page():
             except BaseException as e:
                 logger.error('点击元素失败:{}\n{}'.format(locator, e))
 
-    def switch_to_window(self, switch_mode=True):
+    def goto_window(self, switch_mode=True):
         """
         切换到新窗口
         :param switch_mode: True-关闭其他窗口，False-保留其他窗口
@@ -740,7 +739,7 @@ class Page():
         except NameError as ex:
             logger.error('悬停失败：{}'.format(ex))
 
-    def to_frame(self, frame_obj=0):
+    def goto_frame(self, frame_obj=0):
         """
         进入iframe层
         :param frame_obj:frame序号，name， id or (By.TAG_NAME, '')
@@ -748,18 +747,17 @@ class Page():
         logger.info('进入 %s 的iframe层', frame_obj)
         object = frame_obj
         if isinstance(frame_obj, tuple):
-            #
             object = self._find_element(frame_obj)
         return self.driver.switch_to.frame(object)
 
-    def to_parent_iframe(self):
+    def goto_parent_iframe(self):
         """
         回到iframe上一层
         """
         logger.info('回到iframe上一层')
         self.driver.switch_to.parent_frame()
 
-    def to_home_iframe(self):
+    def goto_home_iframe(self):
         """
         回到ifrmae开始的地方
         """
@@ -973,11 +971,7 @@ class Page():
         return (locator[0], locator[1] % num)
 
     def bock_wait(self, locator):
-        WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable(locator))
-
-    def implic_wait(self):
-        self.driver.implicitly_wait(10)
+        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(locator))
 
     def find_element_by_tag_name(self, value):
         """

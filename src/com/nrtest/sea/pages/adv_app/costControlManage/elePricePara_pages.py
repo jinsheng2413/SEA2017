@@ -14,41 +14,31 @@ from com.nrtest.common.base_page import Page
 class ElePricePages(Page):
     # 工单编号
     def inputStr_app_no(self, value):
-        self.input(value)  #, *ElePricePara_locators.QRY_EMPLOYEE_NUM)
+        self.input(value)
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value)  #, *ElePricePara_locators.QRY_USER_NUM)
+        self.input(value)
 
     # 终端地址
     def inputStr_terminal_addr(self, value):
-        self.input(value)  #, *ElePricePara_locators.QRY_TERMINAL_ADDR)
+        self.input(value)
 
     # 电表地址
     def inputStr_meter_addr(self, value):
-        self.input(value)  #, *ElePricePara_locators.QRY_METER_ADDR)
+        self.input(value)
 
     # 抄表段号
     def inputStr_sect_no(self, value):
-        self.input(value)  #, *ElePricePara_locators.QRY_METER_READING_NUMBER)
+        self.input(value)
 
     # 任务类型
     def inputSel_task_cata(self, option):
-        # self.click(ElePricePara_locators.QRY_TASK_CATA)
-        # locator = self.get_select_locator(
-        #     ElePricePara_locators.QRY_TASK_CATA_VALUE, option)
-        # # print(locator)
-        # self.click(locator)
         self.clean_label(option)
         self.selectDropDown(option)
 
     # 执行状态
     def inputSel_execute_state(self, option):
-        # self.click(ElePricePara_locators.QRY_EXECUTE_STATE)
-        # locator = self.get_select_locator(
-        #     ElePricePara_locators.QRY_EXECUTE_STATE_VALUE, option)
-        # # print(locator)
-        # self.click(locator)
         self.clean_label(option)
         self.selectDropDown(option)
 
@@ -64,5 +54,4 @@ class ElePricePages(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(ElePricePara_locators.BTN_QRY)
         self.btn_query()

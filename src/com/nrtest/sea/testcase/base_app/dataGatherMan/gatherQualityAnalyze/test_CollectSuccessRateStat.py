@@ -68,10 +68,10 @@ class TestCollectSuccessRateStat(unittest.TestCase, CollectSuccessRateStatPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 查询方式
-        self.inputChk_query_type_day(para['QUERY_TYPE_DAY'])
+        self.inputChk_query_type(para['QUERY_TYPE'])
 
         # 输入查询时间
-        self.inputDt_check_date(para['CHECK_DATE'])
+        self.inputDt_date_time(para['DATE_TIME'])
 
         # 查询
         self.btn_qry()

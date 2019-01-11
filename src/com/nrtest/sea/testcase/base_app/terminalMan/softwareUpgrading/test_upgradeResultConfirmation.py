@@ -56,30 +56,31 @@ class TestUpgradeResultConfirmation(TestCase, UpgradeResultConfirmationPage):
     def query(self, para):
         # 升级号
         self.inputChk_upgrade_no(para['UPGRADE_NO'])
-        # 打开左边树选择供电单位
-        self.openLeftTree(para['TREE_NODE'])
-        # 终端厂家
-        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        # 终端类型
-        self.inputSel_tmnl_type(para['TMNL_TYPE'])
-        # 终端用途
-        self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
-        # 升级版本号
-        self.inputSel_upgrade_version_no(para['UPGRADE_VERSION_NO'])
-        # 升级目的
-        self.inputSel_upgrade_purpose(para['UPGRADE_PURPOSE'])
-        # 确认状态
-        self.inputSel_affirm_status(para['AFFIRM_STATUS'])
+        if para['UPGRADE_NO'] != '1':
+            # 打开左边树选择供电单位
+            self.openLeftTree(para['TREE_NODE'])
+            # 终端厂家
+            self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+            # 终端类型
+            self.inputSel_tmnl_type(para['TMNL_TYPE'])
+            # 终端用途
+            self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
+            # 升级版本号
+            self.inputSel_upgrade_version_no(para['UPGRADE_VERSION_NO'])
+            # 升级目的
+            self.inputSel_upgrade_purpose(para['UPGRADE_PURPOSE'])
+            # 确认状态
+            self.inputSel_affirm_status(para['AFFIRM_STATUS'])
+            # 确认开始日期
+            self.inputDt_start_date(para['START_DATE'])
+            # 确认结束日期
+            self.inputDt_end_date(para['END_DATE'])
         # 升级状态
         self.inputSel_upgrade_status(para['UPGRADE_STATUS'])
         # 批次号
         self.inputStr_batch_no(para['BATCH_NO'])
         # 前置下发状态
         self.inputSel_preposition_down_status(para['PREPOSITION_DOWN_STATUS'])
-        # 确认开始日期
-        self.inputDt_start_date(para['START_DATE'])
-        # 确认结束日期
-        self.inputDt_end_date(para['END_DATE'])
         # 点击查询按钮
         self.btn_query()
 

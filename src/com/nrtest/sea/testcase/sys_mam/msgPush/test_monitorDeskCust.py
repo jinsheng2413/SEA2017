@@ -56,6 +56,7 @@ class TestMonitorDeskCust(TestCase, MonitorDeskCustPage):
 
         # 角色名称
         self.inputStr_role_name(para['ROLE_NAME'])
+
         # 查询按钮
         self.btn_qry()
         self.sleep_time(2)

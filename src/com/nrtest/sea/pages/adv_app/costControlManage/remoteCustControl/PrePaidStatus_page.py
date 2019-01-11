@@ -11,53 +11,39 @@
 from com.nrtest.common.base_page import Page
 
 
+# 高级应用--》费控管理--》远程费控--》远程费控执行统计:按指令执行统计
 class PrePaidStatusByActionPage(Page):
     # 控制类别
-    def inputSel_controlType(self, name):
-        # self.click(PrePaidStatus_Locators.QRY_CONTROL_TYPE_ONE)
-        # locator = self.get_select_locator(
-        # PrePaidStatus_Locators.QRY_CONTROL_TYPE_VALUE_ONE, name)
-        # print(locator)
-        # self.click(locator)
+    def inputSel_ctrl_type(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 开始时间
     def inputDt_start_time(self, value):
-        # self.input(value, *PrePaidStatus_Locators.QRY_START_TIME_ONE)
         self.inputDate(value)
 
     # 结束时间
     def inputDt_end_time(self, value):
-        # self.input(value, *PrePaidStatus_Locators.QRY_END_TIME_ONE)
         self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(PrePaidStatus_Locators.BTN_QRY_ONE)
         self.btn_query(True)
 
 
+# 高级应用--》费控管理--》远程费控--》远程费控执行统计:按用户执行统计
 class PrePaidStatusByUserPage(Page):
     # 控制类别
-    def inputSel_controlType(self, name):
-        # self.click(PrePaidStatus_Locators.QRY_CONTROL_TYPE_TWO)
-        # locator = self.get_select_locator(
-        # PrePaidStatus_Locators.QRY_CONTROL_TYPE_VALUE_TWO, name)
-        # print(locator)
-        # self.click(locator)
+    def inputSel_ctrl_type(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 开始时间
     def inputDt_start_time(self, value):
-        # self.input(value, *PrePaidStatus_Locators.QRY_START_TIME_TWO)
         self.inputDate(value)
 
     # 结束时间
     def inputDt_end_time(self, value):
-        # self.input(value, *PrePaidStatus_Locators.QRY_END_TIME_TWO)
         self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(PrePaidStatus_Locators.BTN_QRY_TWO)
         self.btn_query(True)

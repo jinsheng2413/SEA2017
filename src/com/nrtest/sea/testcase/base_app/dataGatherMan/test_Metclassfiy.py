@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.Metclassfiy_page import Metclas
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→数据采集管理→电能表分级归类管理
+# 基本应用→终端管理→电能表分级归类管理
 
 @ddt
 class TestMetclassfiy(TestCase, MetclassfiyPage):

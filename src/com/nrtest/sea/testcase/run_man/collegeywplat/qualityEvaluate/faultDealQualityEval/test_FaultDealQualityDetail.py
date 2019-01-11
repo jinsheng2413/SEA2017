@@ -69,7 +69,7 @@ class TestFaultDealQualityDetail(TestCase, FaultDealQualityDetailPage):
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 用户类型
-        self.inputRSel_flow_status(para['FLOW_STATUS'])
+        self.inputSel_flow_status(para['FLOW_STATUS'])
 
         self.btn_qry()
         self.sleep_time(2)

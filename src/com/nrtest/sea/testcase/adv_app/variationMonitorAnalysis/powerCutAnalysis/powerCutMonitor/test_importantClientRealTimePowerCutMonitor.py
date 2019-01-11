@@ -19,16 +19,16 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.powe
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测→重要客户历史停电查询
+# 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测→重要客户实时停电监测
 @ddt
-class TestImportantClientRealTimePowerCutMonitor(TestCase, ImportantClientRealTimePowerCutMonitorPage):
+class TestImportantClientHistoryPowerCutQuery(TestCase, ImportantClientHistoryPowerCutQueryPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(PowerCutAnalysis_data.ImportantClientRealTimePowerCutMonitor_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(PowerCutAnalysis_data.ImportantClientRealTimePowerCutMonitor_tabName)
+        menuPage.clickTabPage(PowerCutAnalysis_data.ImportantClientHistoryPowerCutQuery_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -81,7 +81,7 @@ class TestImportantClientRealTimePowerCutMonitor(TestCase, ImportantClientRealTi
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.ImportantClientRealTimePowerCutMonitor_para,
-                                  PowerCutAnalysis_data.ImportantClientRealTimePowerCutMonitor_tabName))
+                                  PowerCutAnalysis_data.ImportantClientHistoryPowerCutQuery_tabName))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -90,7 +90,7 @@ class TestImportantClientRealTimePowerCutMonitor(TestCase, ImportantClientRealTi
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.ImportantClientRealTimePowerCutMonitor_para,
-                                  PowerCutAnalysis_data.ImportantClientRealTimePowerCutMonitor_tabName, valCheck=True))
+                                  PowerCutAnalysis_data.ImportantClientHistoryPowerCutQuery_tabName, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

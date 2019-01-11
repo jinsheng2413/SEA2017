@@ -54,14 +54,16 @@ class TestlocalFeiManageExeCount_dis_detail(TestCase, LocalFeiManageExeCount_dis
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
+        # 工单类型
+        self.inputSel_app_type(para['APP_TYPE'])
+
         # 费控用户类型
         self.inputSel_fee_ctrl_type(para['FEE_CTRL_TYPE'])
 
         # 执行状态
         self.inputSel_exec_status(para['EXEC_STATUS'])
 
-        # 工单类型
-        self.inputSel_app_type(para['APP_TYPE'])
 
         # 工单编号
         self.inputStr_app_no(para['APP_NO'])
@@ -69,10 +71,13 @@ class TestlocalFeiManageExeCount_dis_detail(TestCase, LocalFeiManageExeCount_dis
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
 
+        # 接收日期
         self.inputDt_receive_time(para['RECEOVE_TIME'])
 
+        # 结束日期
         self.inputDt_end_time(para['END_TIME'])
 
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

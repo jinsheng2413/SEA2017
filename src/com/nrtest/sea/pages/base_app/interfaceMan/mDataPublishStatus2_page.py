@@ -18,7 +18,7 @@ class MDataPublishStatus2Page(Page):
         self.selectDropDown(option)
 
     # 发布时间 开始
-    def inputDt_receive_time(self, content):
+    def inputDt_start_time(self, content):
         self.inputDate(content)
 
     # 结束时间

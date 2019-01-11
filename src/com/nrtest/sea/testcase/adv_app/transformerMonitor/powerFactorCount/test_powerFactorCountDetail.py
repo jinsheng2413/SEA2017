@@ -116,7 +116,7 @@ class TestPowerFactorCountDetail(TestCase, PowerFactorCountDetailPage):
     #     # 供电单位
     #     openLeftTree('1340101')
     #     # 用户类型
-    #     self.inputSel_cons_type('全部')
+    #     self.inputSel_cons_sort('全部')
     #     # 无功补偿情况
     #     self.inputRSel_power_quality_type('全部')
     #     # 查询日期

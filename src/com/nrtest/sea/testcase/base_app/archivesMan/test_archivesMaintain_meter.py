@@ -15,10 +15,10 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import ArchivesMaintain_meter_pages
-from com.nrtest.sea.task.archivesManage import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》档案维护
+# 基本应用--》档案管理--》档案维护：电表维护
 @ddt
 class TestarchivesMaintain_meter(TestCase, ArchivesMaintain_meter_pages):
     @classmethod
@@ -29,7 +29,7 @@ class TestarchivesMaintain_meter(TestCase, ArchivesMaintain_meter_pages):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         menuPage.clickTabPage(ArchivesMan_data.archivesMenTain_meter_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -55,11 +55,14 @@ class TestarchivesMaintain_meter(TestCase, ArchivesMaintain_meter_pages):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 终端资产号
-        self.inputStr_termainalAssetNo(para['TERMINAL_ASSET_NO'])
-        # 终端地址
-        self.inputStr_termainalAddr(para['TERMINAL_ADDR'])
 
+        # 终端资产号
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
+
+        # 终端地址
+        self.inputStr_termainal_addr(para['TERMINAL_ADDR'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

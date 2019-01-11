@@ -63,15 +63,20 @@ class TestReadIntimeRate(TestCase, ReadIntimeRatePage):
         """
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 用户类型
-        self.inputSel_userType(para['USER_TYPE'])
-        # 终端厂家
-        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
-        # 芯片厂家
-        self.inputSel_chipFactory(para['CHIP_FACTORY'])
-        # 日期时间
-        self.inputDt_query_date_time(para['DATE_TIME'])
 
+        # 用户类型
+        self.inputSel_cons_sort(para['CONS_SORT'])
+
+        # 终端厂家
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+
+        # 芯片厂家
+        self.inputSel_chip_factory(para['CHIP_FACTORY'])
+
+        # 日期时间
+        self.inputDt_date_time(para['DATE_TIME'])
+
+        # 查询
         self.btn_query()
 
     def assert_query_result(self, para):

@@ -117,7 +117,7 @@ class TestSpVoltAnalyseStatic(TestCase, SpVoltAnalyseStaticPage):
     #     # 供电单位
     #     openLeftTree('13103')
     #     # 用户类型
-    #     self.inputSel_cons_type('公变')
+    #     self.inputSel_cons_sort('公变')
     #     # 查询日期
     #     self.inputDt_query_date('2018-09-01')
     #

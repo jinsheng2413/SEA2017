@@ -10,6 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 高级应用--》费控管理--》本地费控--》专变用户余额查询
 class SpecialUserBalanceQueryPage(Page):
     # 用户编号
     def inputStr_cons_no(self, value):
@@ -24,7 +25,7 @@ class SpecialUserBalanceQueryPage(Page):
         self.input(value)  # , *SpecialUserBalanceQuery_locators.QRY_TERMINAL_ADDR)
 
     # 越限类型
-    def inputSel_more_cata(self, index):
+    def inputSel_over_type(self, index):
         # self.click(SpecialUserBalanceQuery_locators.QRY_MORE_BOARD_CATA)
         # locator = self.get_select_locator(SpecialUserBalanceQuery_locators.QRY_MORE_BOARD_CATA_VALUE, index)
         # # print(locator)

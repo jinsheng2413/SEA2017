@@ -10,69 +10,63 @@
 from com.nrtest.common.base_page import Page
 
 
+# 高级应用--》费控管理--》本地费控--》低压用户余额查看：余额统计
 class BalanceCount_page(Page):
     # 数据日期查询
-    def inputStr_data_date(self, value):
+    def inputDt_date_time(self, value):
         print(value)
         self.clean_label(value)
-        self.inputDate(value)  # , *BalanceCountLocator.QRY_DATA_DATE)
+        self.inputDate(value)
 
     # 查询按钮
     def btn_qry(self):
-        # self.click(BalanceCountLocator.BTN_QRY)
         self.btn_query(True)
 
 
-
-
+# 高级应用--》费控管理--》本地费控--》低压用户余额查看：余额查看
 class BalanceCheck_page(Page):
     # 工单编号
-    def inputStr_work_order(self, value):
-        self.input(value)  #, *BalanceCheckLocator.QRY_WORK_ORDER)
+    def inputStr_app_no(self, value):
+        self.input(value)
 
     # 用户编号
-    def inputStr_user_order(self, value):
-        self.input(value)  #, *BalanceCheckLocator.QRY_USER_ORDER)
+    def inputStr_cons_no(self, value):
+        self.input(value)
 
     # 终端地址
     def inputStr_terminal_addr(self, value):
-        self.input(value)  #, *BalanceCheckLocator.QRY_TERMINAL_ADDR)
+        self.input(value)
 
     # 电表地址
     def inputStr_meter_addr(self, value):
-        self.input(value)  #, *BalanceCheckLocator.QRY_METER_ADDR)
+        self.input(value)
 
     # 抄表段号
-    def inputStr_meter_reading_number(self, value):
-        self.input(value)  #, *BalanceCheckLocator.QRY_METER_READING_NUMBER)
+    def inputStr_sect_no(self, value):
+        self.input(value)
 
     # 用户名称
-    def inputStr_user_name(self, value):
-        self.input(value)  #, *BalanceCheckLocator.QRY_USER_NAME)
+    def inputStr_cons_name(self, value):
+        self.input(value)
 
     # 电表局编号
     def inputStr_ele_meter_bureea_order(self, value):
-        self.input(value)  #, *BalanceCheckLocator.QRY_ELE_METER_BUREEA_ORDER)
+        self.input(value)
 
     # 接收时间
     def inputStr_receive_date(self, value):
         self.clean_label(value)
-        self.inputDate(value)  #, *BalanceCheckLocator.QRY_RECEIVE_DATE)
+        self.inputDate(value)
 
     # (末)
     def inputDt_end_date(self, value):
-        self.inputDate(value)  #, *BalanceCheckLocator.QRY_END_DATE)
+        self.inputDate(value)
 
     # 执行状态
     def inputRSel_execute_state(self, option):
-        # self.click(BalanceCheckLocator.QRY_EXECUTE_STATE)
-        # locator = self.get_select_locator(
-        #     BalanceCheckLocator.QRY_EXECUTE_STATE_VALUE, num)
-        # self.click(locator)
         self.clean_label(option)
         self.selectDropDown(option)
 
     # 查询
     def btn_qry(self):
-        # self.click(BalanceCheckLocator.BTN_QRY)
         self.btn_query(True)

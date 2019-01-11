@@ -14,7 +14,7 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.simCardMan.runSituationCount.tmnlSimFlowJB_data import RunSituationCount_data
+from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardManData
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.tmnlSimFlowJB_page import TmnlSimFlowJB_1Page
 
@@ -25,10 +25,10 @@ class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(RunSituationCount_data.para_TmnlSimFlowJB)
+        menuPage = MenuPage.openMenu(SimCardManData.para_TmnlSimFlowJB)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(RunSituationCount_data.TmnlSimFlowJB_tab_count_day)
+        menuPage.clickTabPage(SimCardManData.TmnlSimFlowJB_tab_count_day)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -68,14 +68,6 @@ class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        # result = self.assert_context(TmnlSimFlowJB_1Locators.TAB_ONE)
-        # self.assertTrue(result)
-
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(RunSituationCount_data.para_TmnlSimFlowJB,
-    #                               RunSituationCount_data.TmnlSimFlowJB_tab_count_day))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """
@@ -93,8 +85,8 @@ class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunSituationCount_data.para_TmnlSimFlowJB,
-                                  RunSituationCount_data.TmnlSimFlowJB_tab_count_day))
+    @data(*DataAccess.getCaseData(SimCardManData.para_TmnlSimFlowJB,
+                                  SimCardManData.TmnlSimFlowJB_tab_count_day))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -102,8 +94,8 @@ class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunSituationCount_data.para_TmnlSimFlowJB,
-                                  RunSituationCount_data.TmnlSimFlowJB_tab_count_day, valCheck=True))
+    @data(*DataAccess.getCaseData(SimCardManData.para_TmnlSimFlowJB,
+                                  SimCardManData.TmnlSimFlowJB_tab_count_day, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

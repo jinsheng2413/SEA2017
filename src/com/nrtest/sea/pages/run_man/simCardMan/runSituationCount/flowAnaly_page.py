@@ -11,15 +11,13 @@
 
 from com.nrtest.common.base_page import Page
 
-from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.flowAnaly_locators import SIMFlowCountLocators
-
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
 # 流量统计
 class FlowStaticPage(Page):
 
     # 月份
-    def inputDt_month(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 查询
@@ -31,7 +29,7 @@ class FlowStaticPage(Page):
 class FlowDeatilPage(Page):
 
     # 月份
-    def inputDt_month(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 查询

@@ -116,7 +116,7 @@ class TestSpVoltAnalyseDetail(TestCase, SpVoltAnalyseDetailPage):
     #     # 供电单位
     #     openLeftTree('13401')
     #     # 用户类型
-    #     self.inputSel_cons_type('专变')
+    #     self.inputSel_cons_sort('专变')
     #     # 查询日期
     #     self.inputDt_query_date('2018-09-01')
     #

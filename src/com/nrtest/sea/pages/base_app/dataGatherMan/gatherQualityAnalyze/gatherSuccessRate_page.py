@@ -235,7 +235,7 @@ class ContinuousFalseDetailPage(Page):
         self.inputDate(content)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         # self.click(ContinuousFalseDetailLocators.BTN_SEARCH)
         self.btn_query(True)
 

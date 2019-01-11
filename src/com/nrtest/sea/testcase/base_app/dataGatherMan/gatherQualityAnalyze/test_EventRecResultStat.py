@@ -67,22 +67,16 @@ class TestEventRecResultStat(TestCase, EventRecResultStatPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 开始时间
-        self.inputStr_start_timme(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
         # 结束时间
-        self.inputDt_end_date(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
         # 事件类型
         self.inputSel_event_type(para['EVENT_TYPE'])
 
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 
-    #     # 校验
-    #     result = self.assert_context(EventRecResultStatLocators.TAB_ONE)
-    #     self.assertTrue(result)
-    #
-    # @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.eventRecResultStat_para))
-    # def test_query(self, para):
-    #     self.query(para)
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.inte
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→智能表停电事件查询
+# 高级应用→配变监测分析→停电分析→智能表停电事件查询:智能表停电统计
 @ddt
 class TestIntelligentMeterPowerCutEventQuery(TestCase, IntelligentMeterPowerCutEventQueryPage):
     @classmethod

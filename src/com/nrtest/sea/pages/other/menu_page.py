@@ -22,7 +22,9 @@ from com.nrtest.sea.locators.other.menu_locators import *
 
 class MenuPage(Page):
     def __init__(self, driver):
+
         super().__init__(driver)
+
         # SEA--SEA2017标设
         # SEA2.0--新一代采集系统
         # SZ_JLZDH--计量自动化(SZ)
@@ -68,7 +70,7 @@ class MenuPage(Page):
         self.menu_no = menu_no
         self.menu_name = items[-1]
         # 菜单路径
-        self.menu_path = ls_menu[2] + '-->' + '-->'.join(items[1:])
+        self.menu_path = ls_menu[-1] + '-->' + '-->'.join(items[1:])
         print('开始执行：{} 相关用例....\r'.format(self.menu_path))
 
         # self.menu_para = DataAccess.get_menu_setup(self.project_no)
@@ -137,11 +139,11 @@ class MenuPage(Page):
         :param idx: 第 idx + 1 层级菜单
         :return: True-继续处理当前菜单；False-跳过处理当前菜单
         """
-        next_action = False
+        next_action = True
         ####################PBS5000的特殊判断处理############################
         if idx == 0 and self.project_no == 'PBS5000':
-            # 针对首页菜单处理
-            next_action = not self.goto_home_page(items[idx])
+            # 判断是否为首页及当前一级菜单
+            next_action = self.goto_home_page(items[idx])
 
         return next_action
 
@@ -159,7 +161,7 @@ class MenuPage(Page):
                 object.click()
             if flag == '3':  # 新窗口
                 sleep(2)  # 等待窗口打开
-                self.switch_to_window()
+                self.goto_window()
         elif flag == '2':  # 悬浮
             self.hover(object)  # 参数必须是locator
 
@@ -197,23 +199,25 @@ class MenuPage(Page):
         :param menu_name: 目标一级菜单名
         :return: True-已退回到一级菜单，False-仍驻留在menu_name菜单
         """
-        is_home_page = False
-        el = self._find_element(self.locator_class.GOTO_MAINPAGE, 1.5)
-        if bool(el):
-            # 当前菜单不是指定的一级菜单或无条件回退到首页菜单
-            if el.text != menu_name or menu_name == '':
-                is_home_page = True
-                el.click()
-                sleep(2)
-        return is_home_page
+        curr_page_title = self.get_titile()
 
-    # def exists_menu(self, active_page_loc):
-    #     """
-    #     判断菜单是否已打开，
-    #     :return: True-已打开
-    #     """
-    #     locator = self.format_xpath(active_page_loc, self.menu_name)
-    #     return bool(self._find_element(locator, seconds=0.5, ec_mode=1))
+        # 判断是否是首页
+        is_home_page = curr_page_title == self.main_page_title  # Setting.PAGE_TILE
+        if is_home_page:
+            return is_home_page
+
+        # 判断是否是当前页
+        if curr_page_title == menu_name:
+            return False
+        else:  # 都不是，则退回首页
+            el = self._find_element(self.locator_class.GOTO_MAINPAGE, 1.5)
+            if bool(el):
+                el.click()
+                is_home_page = True
+                sleep(2)
+            else:
+                raise ("疯了......")
+        return is_home_page
 
     def recoverLeftTree(self):
         """

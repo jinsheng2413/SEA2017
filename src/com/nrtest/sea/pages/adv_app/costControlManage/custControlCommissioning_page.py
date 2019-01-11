@@ -10,62 +10,47 @@
 from com.nrtest.common.base_page import Page
 
 
+# 高级应用--》费控管理--》本地费控--》费控投入调试
 class CustControlCommissioning_page(Page):
     # 控制类型
-    def inputChk_manageType(self, name):
+    def inputChk_ctrl_type(self, name):
         self.clickRadioBox(name)
+
     # 营销单号
     def inputStr_app_no(self, value):
-        # self.input(value, *CustControlCommissioning_locators.QRY_MARKETINF_SINGLE_NUM)
         self.input(value)
 
     # 终端地址
     def inputStr_terminal_addr(self, value):
-        self.input(value)  # , *CustControlCommissioning_locators.QRY_TERMIAL_ADDR)
+        self.input(value)
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value)  # , *CustControlCommissioning_locators.QRY_USER_NUM)
+        self.input(value)
 
     # 用户名称
     def inputStr_cons_name(self, value):
-        self.input(value)  # , *CustControlCommissioning_locators.QRY_USER_NAME)
+        self.input(value)
 
     # 开始时间
     def inputDt_start_date(self, value):
-        # self.input(value, *CustControlCommissioning_locators.QRY_START_TIME)
         self.clean_label(value)
         self.inputDate(value)
     # 结束时间
     def inputDt_end_date(self, value):
-        # self.input(value, *CustControlCommissioning_locators.QRY_END_TIME)
         self.clean_label(value)
         self.inputDate(value)
 
     # 按
     def inputSel_debug_dt(self, option):
-        # self.click(CustControlCommissioning_locators.SELR_ARRANGE)
-        # locator = self.get_select_locator(
-        #     CustControlCommissioning_locators.SELR_ARRANGE_VALUE, option)
-        # self.click(locator)
         self.selectDropDown(option)
 
     # 下发状态
     def inputSel_send_status(self, option):
-        # print('-------------')
-        # self.click(CustControlCommissioning_locators.QRY_PROVIDE_STATE)
-        # locator = self.get_select_locator(
-        #     CustControlCommissioning_locators.QRY_PROVIDE_STATE_VALUE, option)
-        # self.click(locator)
         self.clean_label(option)
         self.selectDropDown(option)
 
     # 点击查询按钮
     def btn_qry(self):
-        # self.click(CustControlCommissioning_locators.BTN_QRY)
         self.btn_query()
 
-    # 总加组
-    def btn_all_class(self):
-        # self.click(CustControlCommissioning_locators.TAB_ONE_ALL_CLASS)
-        self.btn_query()

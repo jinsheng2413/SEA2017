@@ -66,12 +66,6 @@ class TestTgLineLossUnifiedView_Tab(TestCase, TgLineLossUnifiedViewPage):
         # 月线损，查询按钮
         self.btn_search_month()
 
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, tabName='月线损'))
-    # def test_der(self, para):
-    #     clickTabPage('月线损')
-    #     self.query(para)
-
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

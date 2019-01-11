@@ -55,6 +55,8 @@ class TestRunMeterStatistics(TestCase, RunMeterStatisticsPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+        # 区域类型
+        self.inputChk_area_type(para['AREA_TYPE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 统计日期

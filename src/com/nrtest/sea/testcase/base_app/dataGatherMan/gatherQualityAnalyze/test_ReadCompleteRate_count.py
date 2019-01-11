@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.ReadComple
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→数据采集管理→采集质量分析→采集完整率
+# 基本应用→数据采集管理→采集质量分析→采集完整率:采集完整率统计
 @ddt
 class TestReadCompleteRate(TestCase, ReadCompleteRate_count_Page):
 
@@ -58,18 +58,24 @@ class TestReadCompleteRate(TestCase, ReadCompleteRate_count_Page):
     def countQuery(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 用户类型
-        self.inputSel_userType_count(para['USER_TYPE'])
+        self.inputSel_cons_sort(para['CONS_SORT'])
+
         # 通信方式
-        self.inputSel_communicationModeCount(para['COMMNUCATION_MODE'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
+
         # 终端厂家
-        self.inputSel_tmnlFactoryCount(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+
         # 蕊片厂家
-        self.inputSel_chipFactoryCount(para['CHIP_FACTORY'])
+        self.inputSel_chip_factory(para['CHIP_FACTORY'])
 
         # 日期时间
-        self.inputDt_query_date_time_count(para['DATE_TIME'])
-        self.btn_query(True)
+        self.inputDt_date_time_count(para['DATE_TIME'])
+
+        # 查询
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

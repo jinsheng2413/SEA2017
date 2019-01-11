@@ -53,25 +53,35 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
+        # 控制类型
+        self.inputChk_ctrl_type(para['CTRL_TYPE'])
+
         # 营销单号查询
         self.inputStr_app_no(para['APP_NO'])
-        # 开始时间
-        self.inputDt_start_date(para['START_DATE'])
-        # 结束时间
-        self.inputDt_end_date(para['END_DATE'])
-        # 终端地址
-        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
-        # 用户编号
-        self.inputStr_cons_no(para['CONS_NO'])
-        # 用户名称
-        self.inputStr_cons_name(para['CONS_NAME'])
+
         # 按调试日期
         self.inputSel_debug_dt(para['DEBUG_DATE'])
-        # 按调试日期
-        self.inputSel_send_status(para['SEND_STATUS'])
-        # 控制类型
-        self.inputChk_manageType(para['MANAGE_TYPE'])
 
+        # 开始时间
+        self.inputDt_start_date(para['START_DATE'])
+
+        # 结束时间
+        self.inputDt_end_date(para['END_DATE'])
+
+        # 终端地址
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+
+        # 用户名称
+        self.inputStr_cons_name(para['CONS_NAME'])
+
+        # 下发状态
+        self.inputSel_send_status(para['SEND_STATUS'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

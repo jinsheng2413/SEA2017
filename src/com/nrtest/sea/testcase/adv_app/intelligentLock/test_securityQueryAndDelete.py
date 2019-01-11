@@ -62,7 +62,7 @@ class TestSecurityQueryAndDelete(TestCase, SecurityQueryAndDeletePage):
         # 操作员工号
         self.inputStr_staff_no(para['STAFF_NO'])
         # 查询按钮
-        self.btn_query()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

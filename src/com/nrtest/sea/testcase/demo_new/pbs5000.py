@@ -20,10 +20,16 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 class TestPBS5000(TestCase, TreePage):
     @classmethod
     def setUpClass(cls):
-        # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu('0000302')
-        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        menuPage.to_frame()
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu('0000302')  # 电压等级树--20
+        # menuPage = MenuPage.openMenu('0000101')  # 厂站设备--30
+        # menuPage = MenuPage.openMenu('0000204')  # 带勾选--41
+
+        # 20-含电压等级厂站树； 11-并且带复选框
+        # 30-厂站档案设备树；   21-并且带复选框
+        # 40-普通树；         41-并且带复选框；采集运维-->手动对时
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage, '20')
+        menuPage.goto_frame()
         sleep(5)
 
     @classmethod
@@ -31,7 +37,7 @@ class TestPBS5000(TestCase, TreePage):
         print('执行结束')
         # 刷新浏览器
         # cls.closePages(cls)
-        cls.to_home_iframe(cls)
+        cls.goto_home_iframe(cls)
 
     def setUp(self):
         """
@@ -42,11 +48,13 @@ class TestPBS5000(TestCase, TreePage):
     def tearDown(self):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
-        :return:
         """
         sleep(5)
         self.colseLeftTree()
 
     def test_query(self):
-        node_no = '{"NODE_FLAG": "01", "NODE_VALE": "0107010203"}'
+        node_no = '{"NODE_FLAG": "01", "NODE_VALE": "01070110203"}'  # 电压等级树
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "0107012010301"}'  # 厂站档案
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "010701"}'          # 带复选框 010701301
+
         self.openLeftTree(node_no)

@@ -10,7 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.checkResultStat_locators import CheckResultStatLocators
 
 
 # 系统管理--》档案核查管理--》核查结果统计查询
@@ -22,7 +21,7 @@ class CheckResultStatPage(Page):
 
     # 台区编号
     def inputStr_tg_no(self, value):
-        self.inputDate(value)
+        self.input(value)
 
     # 任务类型
     def inputSel_task_type(self, options):

@@ -51,13 +51,11 @@ class Test_StrategicManualRecord(TestCase, StrategicManualRecordPage):
         """
 
         # 回收左边树
-        # self.recoverLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
-        # # 点击电网结构
-        # self.click(StrategicManualRecord_Locators.QRY_DWJG)
-        # # 点击供电单位
-        # self.click(StrategicManualRecord_Locators.QRY_ORG)
+        self.sleep_time(2)
+
         self.openLeftTree(para['TREE_NODE'])
         # 采集点名
         self.inputStr_gatherpoint_name(para['GATHERPOINT_NAME'])
@@ -70,13 +68,6 @@ class Test_StrategicManualRecord(TestCase, StrategicManualRecordPage):
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        # result = self.assert_context(StrategicManualRecord_Locators.TAB_ONE)
-        # self.assertTrue(result)
-
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(InterfaceManager_data.para_StrategicManualRecord))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

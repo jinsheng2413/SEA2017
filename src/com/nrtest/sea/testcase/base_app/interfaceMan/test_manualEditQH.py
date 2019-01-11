@@ -15,7 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.interfaceMan.manualEditQH_data import InterfaceManager_data
-from com.nrtest.sea.pages.base_app.interfaceMan.manualEditQH_page import ManualEditQH_Locators, ManualEditQHPage
+from com.nrtest.sea.pages.base_app.interfaceMan.manualEditQH_page import ManualEditQHPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
@@ -63,17 +63,11 @@ class Test_ManualEditQH(TestCase, ManualEditQHPage):
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 点击正向有功总为空
-        self.click(ManualEditQH_Locators.QRY_IS_EMPTY)
+        self.inputChk_powerEmpty(para['POWER_EMPTY'])
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-        # result = self.assert_context(ManualEditQH_Locators.TAB_ONE)
-        # self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(InterfaceManager_data.para_ManualEditQH))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

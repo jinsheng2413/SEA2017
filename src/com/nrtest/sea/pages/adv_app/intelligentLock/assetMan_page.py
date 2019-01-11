@@ -61,3 +61,18 @@ class AssetManPage(Page):
     def btn_search(self):
         # self.click(AssetManLocators.BTN_SEARCH)
         self.btn_query()
+
+
+# 高级应用→智能锁具→资产管理→已增电子钥匙列表
+class AssetManTabPage(Page):
+    # 电子钥匙编号
+    def inputStr_key_no(self, index):
+        self.input(index)
+
+    # 电子钥匙状态
+    def inputSel_key_status(self, index):
+        self.selectDropDown(index)
+
+    # 查询按钮
+    def btn_search(self):
+        self.btn_query(True)

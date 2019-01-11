@@ -11,6 +11,7 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.localCostControl.localCostControl_para import LocalCostContral_data
 from com.nrtest.sea.pages.adv_app.costControlManage.elePricePara_pages import ElePricePages
@@ -52,24 +53,35 @@ class TestElePricePara(TestCase, ElePricePages):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 工单编号
         self.inputStr_app_no(para['APP_NO'])
+
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
+
         # 接收时间
-        self.inputDt_receive_time(para['RECEIVE_TIME'])
+        self.inputStr_receive_time(para['RECEIVE_TIME'])
+
         # 执行状态
         self.inputSel_execute_state(para['EXECUTE_STATE'])
+
         # 终端地址
-        self.inputStr_terminal_addr(para['TMNL_ADDR'])
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
         # 电表地址
         self.inputStr_meter_addr(para['METER_ADDR'])
-        # c抄表段号
+
+        # 抄表段号
         self.inputStr_sect_no(para['SECT_NO'])
+
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
+
         # 任务类型
-        self.inputSel_task_cata(para['TASK_CATA'])
+        self.inputSel_task_type(para['TASK_TYPE'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):
@@ -87,6 +99,7 @@ class TestElePricePara(TestCase, ElePricePages):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LocalCostContral_data.elePricePara_para))
     def test_query(self, para):
         self.start_case(para, __file__)
@@ -94,15 +107,7 @@ class TestElePricePara(TestCase, ElePricePages):
         self.assert_query_result(para)
         self.end_case()
 
-    # #@BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(LocalCostContral_data.elePricePara_para))
-    # def test_q(self, para):
-    #     self.start_case(para, __file__)
-    #     self.query(para)
-    #     self.assert_query_result(para)
-    #     self.end_case()
-
-    # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LocalCostContral_data.elePricePara_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

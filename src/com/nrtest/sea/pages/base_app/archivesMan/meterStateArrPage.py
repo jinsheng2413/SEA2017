@@ -15,21 +15,27 @@ from com.nrtest.sea.locators.base_app.archivesMan.meterStateArrLocators import M
 class MeterStateArrPage(Page):
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value, *MeterStateArrLocators.QRY_TMNLADDR)
+        self.input(value)  # , *MeterStateArrLocators.QRY_TMNLADDR)
 
     # 终端状态
     def inputSel_tmnlStatus(self, name):
-        self.click(MeterStateArrLocators.QRY_TMNL_STATUS)
-        locator = self.get_select_locator(
-            MeterStateArrLocators.QRY_TMNL_STATUS_VALUE, name)
-        self.click(locator)
+        # self.click(MeterStateArrLocators.QRY_TMNL_STATUS)
+        # locator = self.get_select_locator(
+        #     MeterStateArrLocators.QRY_TMNL_STATUS_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name)
 
     # 终端类型
     def inputSel_tmnlType(self, name):
-        self.click(MeterStateArrLocators.QRY_TMNLTYPE)
-        locator = self.get_select_locator(
-            MeterStateArrLocators.QRY_TMNLTYPE_VALUE, name)
-        self.click(locator)
+        # self.click(MeterStateArrLocators.QRY_TMNLTYPE)
+        # locator = self.get_select_locator(
+        #     MeterStateArrLocators.QRY_TMNLTYPE_VALUE, name)
+        # self.click(locator)
+        self.selectDropDown(name)
+
+    # 包含下级单位
+    def inputChk_containOrg(self, name):
+        self.clickSingleCheckBox(name)
 
     # # 筛选条件
     # def inputSel_screenCondition(self, name):

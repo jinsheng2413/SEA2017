@@ -114,7 +114,7 @@ class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
     #     # 供电单位
     #     openLeftTree('13401')
     #     # 是否电压监测
-    #     self.inputSel_cons_type('是')
+    #     self.inputSel_cons_sort('是')
     #
     #     self.btn_query()
     #     self.sleep_time(2)

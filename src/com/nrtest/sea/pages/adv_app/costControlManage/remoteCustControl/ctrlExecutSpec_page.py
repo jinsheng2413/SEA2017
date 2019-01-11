@@ -11,54 +11,40 @@
 from com.nrtest.common.base_page import Page
 
 
+# 高级应用--》费控管理--》远程费控--》专变用户远程费控执行
 class CtrlExecutSpecPage(Page):
     # 控制类别
-    def inputSel_controlType(self, name):
-        # self.click(CtrlExecutSpecLocators.QRY_CONTROL_TYPE)
-        # locator = self.get_select_locator(
-        # CtrlExecutSpecLocators.QRY_CONTROL_TYPE_VALUE, name)
-        # self.click(locator)
+    def inputSel_ctrl_type(self, name):
         self.selectDropDown(name)
 
     # 工单号
-    def inputStr_workOrder(self, value):
-        # self.input(value, *CtrlExecutSpecLocators.QRY_WORK_ORDER)
+    def inputStr_app_no(self, value):
         self.input(value)
 
     # 结束时间
-    def inputDt_endTime(self, value):
-        # self.input(value, *CtrlExecutSpecLocators.QRY_END_TIME)
+    def inputDt_end_time(self, value):
         self.inputDate(value)
 
     # 开始时间
-    def inputDt_startTime(self, value):
-        # self.input(value, *CtrlExecutSpecLocators.QRY_START_TIME)
+    def inputDt_start_time(self, value):
         self.inputDate(value)
 
     # 终端地址
-    def inputStr_tmnl_addr(self, value):
-        # self.input(value, *CtrlExecutSpecLocators.QRY_TMNL_ADDR)
+    def inputStr_terminal_addr(self, value):
         self.input(value)
 
     # 用户名称
-    def inputStr_userName(self, value):
-        # self.input(value, *CtrlExecutSpecLocators.QRY_USER_NAME)
+    def inputStr_cons_name(self, value):
         self.input(value)
 
     # 用户编号
-    def inputStr_userNo(self, value):
-        # self.input(value, *CtrlExecutSpecLocators.QRY_USER_NO)
+    def inputStr_cons_no(self, value):
         self.input(value)
 
     # 执行状态
-    def inputSel_exeStatus(self, name):
-        # self.click(CtrlExecutSpecLocators.QRY_EXE_STATUS)
-        # locator = self.get_select_locator(
-        # CtrlExecutSpecLocators.QRY_EXE_STATUS_VALUE, name)
-        # self.click(locator)
+    def inputSel_exe_status(self, name):
         self.selectDropDown(name)
 
     # 查询
     def btn_qry(self):
-        # self.click(CtrlExecutSpecLocators.BTN_QRY)
         self.btn_query()

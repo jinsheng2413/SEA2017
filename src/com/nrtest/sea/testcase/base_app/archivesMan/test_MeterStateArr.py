@@ -18,6 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.meterStateArrPage import MeterSta
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用--》档案管理--》电能表状态维护
 @ddt
 class TestMeterStateArr(TestCase, MeterStateArrPage):
 
@@ -70,6 +71,8 @@ class TestMeterStateArr(TestCase, MeterStateArrPage):
         self.inputSel_tmnlType(para['TMNL_TYPE'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
+        # self.inputChk_containOrg(para['CONTAIN_ORG'])
 
         self.btn_tmnl_qry()
         self.sleep_time(2)

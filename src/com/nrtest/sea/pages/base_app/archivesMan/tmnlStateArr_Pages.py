@@ -26,8 +26,11 @@ class TmnlStateArrPage(Page):
 
     # 统计时间
     def inputStr_count_time(self, value):
-        self.input(value)  #, *TmnlStateArrLocators.QRY_COUNT_TIME)
+        self.inputDate(value)  # , *TmnlStateArrLocators.QRY_COUNT_TIME)
 
+    # 包含下级单位
+    def inputChk_containOrg(self, value):
+        self.clickRadioBox(value)
     # 查询
     def btn_qry(self):
         # self.click(TmnlStateArrLocators.BTN_QRY)

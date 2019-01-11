@@ -70,6 +70,8 @@ class TestTmnlStateArr(TestCase, TmnlStateArrPage):
         self.inputSel_tmnl_status(para['TMNL_STATUS'])
         # 统计时间
         self.inputStr_count_time(para['COUNT_TIME'])
+        # 包含下级单位
+        self.inputChk_containOrg(para['CONTAIN_ORG'])
         self.btn_qry()
 
     def assert_query_result(self, para):
@@ -90,6 +92,7 @@ class TestTmnlStateArr(TestCase, TmnlStateArrPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.tmnlStateArr_para))
     def test_query(self, para):
+
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

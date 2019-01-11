@@ -11,8 +11,23 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测→重要客户历史停电查询
+# 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测→重要客户实时停电监测
 class ImportantClientRealTimePowerCutMonitorPage(Page):
+    # 电压等级
+    def inputSel_volt_level(self, index):
+        self.selectDropDown(index)
+
+    # 停电状态
+    def inputSel_power_cut_status(self, index):
+        self.selectDropDown(index)
+
+    # 查询日期
+    def inputDt_query_date(self, index):
+        self.inputDate(index)
+
+
+# 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测→重要客户历史停电查询
+class ImportantClientHistoryPowerCutQueryPage(Page):
     # 电压等级
     def inputSel_volt_level(self, index):
         # self.click(*ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL)

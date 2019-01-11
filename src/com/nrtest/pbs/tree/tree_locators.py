@@ -58,8 +58,6 @@ class TreeLocators:
     NODE_LEVEL_IN_SUB = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/..//li[@class="level{}"]/a[@title="{}"]/../span')
     # NODE_LEVEL = (By.XPATH, '//div[@id="treeDemo"]//li[@class="level2"]/a[@title="贵阳局.800kV黎平变电站"]/..//li[@class="level3"]/a[@title="500kV"]/../span')
 
-
-
     # 左边树: 全模型/搜索/收藏夹
     NODE_TAB = (By.XPATH, '//div[@class="tabs-wrap"]//span[text()="{}"]')
 

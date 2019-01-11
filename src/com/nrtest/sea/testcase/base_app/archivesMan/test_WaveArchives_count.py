@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_WaveArchives.py
+@file: test_WaveArchives_count.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -14,13 +14,13 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
-from com.nrtest.sea.pages.base_app.archivesMan.waveArchives_pages import WaveArchives_Page
+from com.nrtest.sea.pages.base_app.archivesMan.waveArchives_pages import WaveArchives_count_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》载波档案校正
+# 基本应用--》档案管理--》载波档案校正：载波台区统计
 @ddt
-class TestWaveArchives(TestCase, WaveArchives_Page):
+class TestWaveArchives_count(TestCase, WaveArchives_count_Page):
 
     @classmethod
     def setUpClass(cls):
@@ -28,7 +28,7 @@ class TestWaveArchives(TestCase, WaveArchives_Page):
         menuPage = MenuPage.openMenu(ArchivesMan_data.waveArchives_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(ArchivesMan_data.waveArchives_count_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -95,7 +95,7 @@ class TestWaveArchives(TestCase, WaveArchives_Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesMan_data.waveArchives_para))
+    @data(*DataAccess.getCaseData(ArchivesMan_data.waveArchives_para, ArchivesMan_data.waveArchives_count_tab))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -103,7 +103,8 @@ class TestWaveArchives(TestCase, WaveArchives_Page):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesMan_data.waveArchives_para, valCheck=True))
+    @data(*DataAccess.getCaseData(ArchivesMan_data.waveArchives_para, ArchivesMan_data.waveArchives_count_tab,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

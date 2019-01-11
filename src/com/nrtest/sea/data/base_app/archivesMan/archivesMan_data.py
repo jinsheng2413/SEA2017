@@ -12,6 +12,10 @@
 class ArchivesMan_data:
     # 基本应用--》档案管理--》载波档案校正
     waveArchives_para = '99911500'
+    waveArchives_count_tab = '载波台区统计'
+    waveArchives_detail_tab = '载波用户明细'
+
+
 
     # 基本应用--》档案管理--》档案变更记录
     archivesChangeRecord_para = '99911D00'

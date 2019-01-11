@@ -11,18 +11,18 @@
 from com.nrtest.common.base_page import Page
 
 
-class WaveArchives_Page(Page):
+class WaveArchives_count_Page(Page):
     # 台区编号
     def inputStr_zone_no(self, value):
-        self.input(value)
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 台区名称
     def inputStr_zone_name(self, value):
-        self.input(value)
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 统计分类
     def inputSel_count_type(self, name):
-        self.selectDropDown(name)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 统计时间
     def inputDt_count_time(self, value):
@@ -30,4 +30,26 @@ class WaveArchives_Page(Page):
 
     # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)
+
+
+class WaveArchives_detail_Page(Page):
+    # 台区编号
+    def inputStr_zone_no(self, value):
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
+
+    # 台区名称
+    def inputStr_zone_name(self, value):
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
+
+    # 统计分类
+    def inputSel_count_type(self, name):
+        self.selectDropDown(name, is_multi_elements=True, is_multi_tab=True)
+
+    # 统计时间
+    def inputDt_count_time(self, value):
+        self.inputDate(value)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)

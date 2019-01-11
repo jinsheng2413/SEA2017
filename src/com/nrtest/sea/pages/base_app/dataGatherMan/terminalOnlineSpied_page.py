@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 class TerminalOnlineSpiedPage(Page):
     # 终端厂商
     def inputStr_TmnlManufactory(self, value):
-        self.input(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_MANUFACTURER)
+        self.selectCheckBox(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_MANUFACTURER)
 
     # 终端地址
     def inputSel_TmnlAddr(self, value):
@@ -22,15 +22,15 @@ class TerminalOnlineSpiedPage(Page):
 
     # 终端状态
     def inputStr_TmnlState(self, value):
-        self.input(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_STATE)
+        self.selectCheckBox(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_STATE)
 
     # 终端规约
     def inputStr_TmnlProtocol(self, value):
-        self.input(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_PROTOCOL)
+        self.selectCheckBox(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_PROTOCOL)
 
     # 终端类型
     def inputStr_TmnlType(self, value):
-        self.input(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_TYPE)
+        self.selectCheckBox(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_TYPE)
 
     # 查询
     def btn_qry(self):

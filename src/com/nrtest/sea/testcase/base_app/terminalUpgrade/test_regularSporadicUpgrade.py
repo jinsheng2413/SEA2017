@@ -75,7 +75,7 @@ class TestUpgradeEditionMan(TestCase, RegularSporadicUpgradePage):
         # 终端资产号
         self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 点击查询按钮
-        self.btn_query()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

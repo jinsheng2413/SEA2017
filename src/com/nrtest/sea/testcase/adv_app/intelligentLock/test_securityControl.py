@@ -55,6 +55,7 @@ class TestSecurityControl(TestCase, SecurityControlPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 供电单位，查询按钮
         self.btn_cons_search()
 

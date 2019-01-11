@@ -13,7 +13,7 @@ from com.nrtest.sea.locators.adv_app.variationMonitorAnalysis.powerCutAnalysis.v
     ValidPowerCutDetailLocators
 
 
-# 高级应用→配变监测分析→停电分析→有效停电事件查询
+# 高级应用→配变监测分析→停电分析→有效停电事件查询:有效停电事件查询
 class ValidPowerCutEventQueryPage(Page):
     # 日期类型
     def inputChk_date_type(self, index):

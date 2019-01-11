@@ -93,7 +93,7 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
         # 执行结束日期
         self.inputDt_detail_end_date(para['DETAIL_END_DATE'])
         # 点击查询按钮
-        self.btn_detail_search()
+        self.btn_qry()
 
 
     def assert_query_result(self, para):

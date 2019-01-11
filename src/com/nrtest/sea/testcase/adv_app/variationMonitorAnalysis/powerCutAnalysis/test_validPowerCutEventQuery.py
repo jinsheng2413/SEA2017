@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.vali
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→有效停电事件查询
+# 高级应用→配变监测分析→停电分析→有效停电事件查询:有效停电事件查询
 @ddt
 class TestValidPowerCutEventQuery(TestCase, ValidPowerCutEventQueryPage):
     @classmethod

@@ -193,6 +193,6 @@ class UpgradeEffectStatisticsPage(Page):
         self.inputDate(content)
 
     # 查询按钮
-    def btn_detail_search(self):
+    def btn_qry(self):
         # self.click(UpgradeEffectStatisticsLocators.BTN_DETAIL_SEARCH)
         self.btn_query(True)

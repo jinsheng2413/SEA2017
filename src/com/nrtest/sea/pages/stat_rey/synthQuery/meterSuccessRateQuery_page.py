@@ -16,32 +16,14 @@ class MeterSuccessRateQueryPage(Page):
     # 按地区、厂家统计
     # 日期
     def inputDt_factory_date(self, content):
-        # self.exec_script(MeterSuccessRateQueryLocators.FACTORY_DATE_JS)
-        # self.input(content, *MeterSuccessRateQueryLocators.FACTORY_DATE)
         self.inputDate(content)
 
     # 用户类型
     def inputSel_factory_cons_type(self, index):
-        # if index == 'c':
-        #     self._find_element(MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
-        # else:
-        #     self.click(MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
-        #     locator = self.get_select_locator(
-        #         MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE_VALUE, index)
-        #     self.click(locator)
-        #     self.click(MeterSuccessRateQueryLocators.FACTORY_CONS_TYPE)
         self.selectCheckBox(index)
 
     # 终端类型
     def inputSel_factory_tmnl_type(self, index):
-        # if index == 'c':
-        #     self._find_element(MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
-        # else:
-        #     self.click(MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
-        #     locator = self.get_select_locator(
-        #         MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE_VALUE, index)
-        #     self.click(locator)
-        #     self.click(MeterSuccessRateQueryLocators.FACTORY_TMNL_TYPE)
         self.clean_label(index)
         self.selectCheckBox(index)
 
@@ -63,5 +45,4 @@ class MeterSuccessRateQueryPage(Page):
 
     # 查询按钮
     def factory_btn_search(self):
-        # self.click(MeterSuccessRateQueryLocators.FACTORY_BTN_SEARCH)
         self.btn_query()

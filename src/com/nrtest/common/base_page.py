@@ -421,7 +421,7 @@ class Page():
                      'span': "//span[contains(text(), '{}')]"}
         clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(tag_text[0])
         script = BaseLocators.CLEAN_BLANK % clean_me
-        print(script)
+        # print(script)
         self.exec_script(script)
 
     def clean_btn(self, tag_text):

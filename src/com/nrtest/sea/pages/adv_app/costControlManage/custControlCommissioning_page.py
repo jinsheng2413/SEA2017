@@ -34,11 +34,9 @@ class CustControlCommissioning_page(Page):
 
     # 开始时间
     def inputDt_start_date(self, value):
-        self.clean_label(value)
         self.inputDate(value)
     # 结束时间
     def inputDt_end_date(self, value):
-        self.clean_label(value)
         self.inputDate(value)
 
     # 按
@@ -47,7 +45,6 @@ class CustControlCommissioning_page(Page):
 
     # 下发状态
     def inputSel_send_status(self, option):
-        self.clean_label(option)
         self.selectDropDown(option)
 
     # 点击查询按钮

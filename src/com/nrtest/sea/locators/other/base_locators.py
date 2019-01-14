@@ -40,6 +40,8 @@ class BaseLocators:
     # 缺少标签或id、name情况下的日期元素定位
     QRY_DT_INPUT = (By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-date-trigger")]/../input')
 
+    # $x('//label[not(text())]/../div/input') 标签值为空的input元素
+    # $x('(//body//label[text()="抄读成功率:"]/ancestor::tr//input)[4]')
 
     # 【日期等只读属性改变】
     # 去除查询条件只读属性，如：日期选择框
@@ -67,12 +69,12 @@ class BaseLocators:
     #         }
     #         getDom(%s);'''
 
-    # innerHTML  剔除空白字符，及中英文冒号
+    # innerHTML  剔除空白字符，及中英文冒号，英文中杠（-）及中英文圆括号
     CLEAN_BLANK = r'''var elements, el, txt;
                 elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                 for (var i = 0; i < elements.snapshotLength; i++) {
                     el= elements.snapshotItem(i);
-                    txt = el.innerText.replace(new RegExp(/[\s:：]/,'g'), '');
+                    txt = el.innerText.replace(new RegExp(/[\s:：\-\(\)（）]/,'g'), '');
                     if (txt != el.innerText)
                         el.innerText = txt
                 }'''

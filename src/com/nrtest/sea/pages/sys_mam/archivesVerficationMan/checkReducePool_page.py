@@ -10,11 +10,11 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.checkReducePool_locators import CheckReducePoolLocators
 
 
 # 系统管理--》档案核查管理--》考核减免汇总
 class CheckReducePoolPage(Page):
+
     # 申请单号
     def inputStr_apply_no(self, value):
         self.input(value)

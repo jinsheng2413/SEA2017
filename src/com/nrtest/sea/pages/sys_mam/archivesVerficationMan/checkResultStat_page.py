@@ -10,7 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.checkResultStat_locators import CheckResultStatLocators
 
 
 # 系统管理--》档案核查管理--》核查结果统计查询

@@ -10,7 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.sysUseStat.accountsAudit_locators import AccountsAuditLocators
 
 
 # 系统管理→系统使用情况统计→账号审计

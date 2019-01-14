@@ -92,6 +92,10 @@ class TestAccountsAudit(TestCase, AccountsAuditPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysUseStat_date.accountsAudit_para))
     def test_query(self, para):
+        """系统管理→系统使用情况统计→账号审计
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

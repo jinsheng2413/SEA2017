@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.sysUseStat.menuUseStat_locators import *
-
 
 # 系统管理→系统使用情况统计→菜单使用情况统计
 # 菜单使用统计
@@ -35,8 +33,6 @@ class MenuUseStatPage(Page):
     def btn_qry(self):
         self.btn_query(True)
 
-
-# 系统管理→系统使用情况统计→菜单使用情况统计
 # 菜单使用明细
 class MenuUseDetailPage(Page):
     # 菜单

@@ -30,7 +30,7 @@ class TestUserRegisterDetail(TestCase, UserRegisterDetailPage):
         menuPage = MenuPage.openMenu(SysUseStat_date.UserDistributionStat_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SysUseStat_date.UserRegisterDetail_tabName)
+        menuPage.clickTabPage(SysUseStat_date.UserDistributionStat_detail)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -80,16 +80,21 @@ class TestUserRegisterDetail(TestCase, UserRegisterDetailPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(
-        *DataAccess.getCaseData(SysUseStat_date.UserDistributionStat_para, SysUseStat_date.UserRegisterDetail_tabName))
+    @data(*DataAccess.getCaseData(SysUseStat_date.UserDistributionStat_para,
+                                  SysUseStat_date.UserDistributionStat_detail))
     def test_query(self, para):
+        """系统管理→系统使用情况统计→用户分布情况统计:注册用户明细
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SysUseStat_date.UserDistributionStat_para, SysUseStat_date.UserRegisterDetail_tabName, valCheck=True))
+    @data(*DataAccess.getCaseData(SysUseStat_date.UserDistributionStat_para,
+                                  SysUseStat_date.UserDistributionStat_detail, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

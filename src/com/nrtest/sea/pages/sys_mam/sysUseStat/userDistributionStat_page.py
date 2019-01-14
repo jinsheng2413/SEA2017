@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.sysUseStat.userDistributionStat_locators import *
 
 
 # 系统管理→系统使用情况统计→用户分布情况统计
@@ -19,7 +18,6 @@ class UserDistributionStatPage(Page):
     def btn_qry(self):
         self.btn_query()
 
-# 系统管理→系统使用情况统计→用户分布情况统计
 # 注册用户明细
 class UserRegisterDetailPage(Page):
     # 类型

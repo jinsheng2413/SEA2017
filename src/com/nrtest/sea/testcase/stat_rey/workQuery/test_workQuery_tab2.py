@@ -19,7 +19,6 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.workQuery.workQuery_page import WorkQueryPage
 
 
-# 统计查询→工单查询→工单查询(第二个tab页)
 @ddt
 class TestWorkQuery(TestCase, WorkQueryPage):
 
@@ -95,10 +94,9 @@ class TestWorkQuery(TestCase, WorkQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery_para, WorkQuery_data.WorkQuery_tab_query))
     def test_query(self, para):
-        """
+        """统计查询→工单查询→工单查询(第二个tab页)
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)

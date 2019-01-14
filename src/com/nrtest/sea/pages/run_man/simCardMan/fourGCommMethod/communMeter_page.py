@@ -17,7 +17,6 @@ class CommumMeterPage(Page):
 
     # 查询日期
     def inputDt_query_date(self, value):
-        # self.input(value, *FlowCountLocators.QRY_MONTH)
         self.inputDate(value)
 
     # 抄表段号

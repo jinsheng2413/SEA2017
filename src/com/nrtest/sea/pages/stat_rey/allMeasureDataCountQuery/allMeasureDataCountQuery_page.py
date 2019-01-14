@@ -14,9 +14,9 @@ from com.nrtest.common.base_page import Page
 
 # 统计查询--》全量数据统计查询--》全量数据统计查询
 class AllMeasureDataCountQueryPage(Page):
+
     # 日期
     def inputDt_query_date(self, value):
-        # self.input(value, *AllMeasureDataCountQueryLocators.QRY_DATE)
         self.inputDate(value)
 
     # 用户类型--打开并选择
@@ -33,10 +33,4 @@ class AllMeasureDataCountQueryPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(AllMeasureDataCountQueryLocators.BTN_QRY)
         self.btn_query()
-
-    # 重置
-    def btn_re(self):
-        # self.click(AllMeasureDataCountQueryLocators.BTN_RE)
-        self.btn_query('重置')

@@ -10,7 +10,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.sysUseStat.coreFunctionAudit_locators import CoreFunctionAuditLocators
 
 
 # 系统管理→系统使用情况统计→系统使用情况统计
@@ -26,10 +25,6 @@ class CoreFunctionAuditPage(Page):
     # 到
     def inputDt_to(self, value):
         self.inputDate(value)
-
-    # 结束时间
-    def inputStr_enDtime(self, value):
-        self.input(value)
 
     # 查询
     def btn_qry(self):

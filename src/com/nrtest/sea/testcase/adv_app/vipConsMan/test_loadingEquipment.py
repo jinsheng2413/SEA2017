@@ -19,7 +19,6 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.loadingEquipment_page import Loadin
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--重点用户监测--加载防窃电设备
 @ddt
 class Test_LoadingEquipment(TestCase, LoadingEquipment_Page):
     @classmethod
@@ -82,7 +81,7 @@ class Test_LoadingEquipment(TestCase, LoadingEquipment_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(VipConsMan.para_loadingEquipment))
     def test_query(self, para):
-        """
+        """高级应用--重点用户监测--加载防窃电设备
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

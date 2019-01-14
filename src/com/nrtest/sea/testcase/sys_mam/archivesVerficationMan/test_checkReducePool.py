@@ -64,6 +64,7 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 申请开始时间
         self.inputDt_start_time(para['START_TIME'])
         # 至
@@ -94,6 +95,10 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReducePool_para))
     def test_query(self, para):
+        """系统管理-->档案核查管理-->考核减免汇总
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -17,19 +17,15 @@ class OrgLowVoltDayStaticPage(Page):
 
     # 开始日期
     def inputDt_start_date(self, value):
-        # self.input(value, *OrgLowVoltDayStaticLocators.START_DATE)
         self.inputDate(value)
 
     # 结束日期
     def inputDt_end_date(self, value):
-        # self.input(value, *OrgLowVoltDayStaticLocators.END_DATE)
         self.inputDate(value)
 
     # 点击查询
     def btn_qry(self):
-        # self.click(OrgLowVoltDayStaticLocators.BTN_QUERY)
         self.btn_query()
-
 
 # 台区低电压日统计明细
 class OrgLowVoltDayDetailPage(Page):
@@ -49,7 +45,6 @@ class OrgLowVoltDayDetailPage(Page):
     # 点击查询
     def btn_qry(self):
         self.btn_query(True)
-
 
 # 低压用户电压监测配置
 class OrgLowVoltDayConfigPage(Page):

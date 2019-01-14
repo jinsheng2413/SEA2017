@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.run_man.collegeywplat.specificPowerFaultDeal.specificP
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-#运行管理-->采集运维平台-->采集故障处理-->专变故障处理
+# 运行管理-->采集运维平台-->采集故障处理-->专变故障处理
 # 故障处理专变
 @ddt
 class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerDealPage):
@@ -99,6 +99,10 @@ class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerDealPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultDeal_deal))
     def test_query(self, para):
+        """运行管理-->采集运维平台-->采集故障处理-->专变故障处理:故障处理专变
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

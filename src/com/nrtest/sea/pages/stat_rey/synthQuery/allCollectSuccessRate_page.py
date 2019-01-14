@@ -33,8 +33,8 @@ class AllCollectSuccessRatePage(Page):
         self.input(value)  # , *AllCollectSuccessRateLocators.QRY_USER_NO)
 
     # 用户类型
-    def inputStr_userType(self, name):
-        self.input(name)  #, *AllCollectSuccessRateLocators.QRY_USERTYPE)
+    def inputSel_userType(self, name):
+        self.selectCheckBox(name)
 
     # 表资产号
     def inputStr_surfaceAssetNo(self, value):

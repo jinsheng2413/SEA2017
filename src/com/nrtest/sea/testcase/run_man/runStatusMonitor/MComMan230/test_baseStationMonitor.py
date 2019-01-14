@@ -20,8 +20,6 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.runStatusMonitor.MComMan230.BaseStationMonitor_page import BaseStationMonitorPage
 
 
-# 运行管理--采集信道管理--230M通信管理--基站状态监控
-
 @ddt
 class TestBaseStationMonitor(TestCase, BaseStationMonitorPage):
 
@@ -89,10 +87,9 @@ class TestBaseStationMonitor(TestCase, BaseStationMonitorPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(MComMan230.baseStationMonitor_para))
     def test_query(self, para):
-        """
+        """运行管理--采集信道管理--230M通信管理--站点状态监控
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)

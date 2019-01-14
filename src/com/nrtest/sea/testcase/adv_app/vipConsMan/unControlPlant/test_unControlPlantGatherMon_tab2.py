@@ -20,7 +20,6 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.unControlPlant.unControlPlantGather
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--重点用户监测--非统调电厂管理--非统调电厂采集监测（第二个tab页）
 @ddt
 class Test_UnControlPlantGatherMon_2(TestCase, UnControlPlantGatherMon2_Page):
     @classmethod
@@ -99,7 +98,7 @@ class Test_UnControlPlantGatherMon_2(TestCase, UnControlPlantGatherMon2_Page):
     @data(*DataAccess.getCaseData(UnControlPlant.para_unControlPlantGatherMon,
                                   UnControlPlant.para_unControlPlantGatherMon_tab_detail))
     def test_query(self, para):
-        """
+        """高级应用--重点用户监测--非统调电厂管理--非统调电厂采集监测（第二个tab页）
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

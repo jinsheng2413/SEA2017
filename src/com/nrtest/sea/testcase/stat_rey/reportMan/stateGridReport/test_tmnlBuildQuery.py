@@ -18,7 +18,6 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_page import TmnlBuildQueryPage
 
 
-# 统计查询--》报表管理--》国网报表--》智能电能表及终端设备建设情况
 @ddt
 class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
 
@@ -101,6 +100,10 @@ class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TmnlBuildQuery_data.TmnlBuildQuery_para))
     def test_query(self, para):
+        """统计查询--报表管理--国网报表--智能电能表及终端设备建设情况
+        对查询结果有无、数据链接跳转等校验
+        :param para:用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

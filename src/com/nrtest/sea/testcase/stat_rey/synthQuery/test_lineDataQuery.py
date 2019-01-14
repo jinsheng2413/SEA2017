@@ -88,6 +88,10 @@ class TestTmnlInstallDetai_debug(TestCase, LineDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.lineDataQuery_para))
     def test_query(self, para):
+        """统计查询--综合查询--线路数据查询
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

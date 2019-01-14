@@ -63,15 +63,20 @@ class TestLoseCountPowerMan(TestCase, LoseCountPowerManPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 台区运行状态
-        self.inputSel_zoneAreaRunStatus(para['ZONE_AREA_RUN_STATUS'])
-        # 台区编码
-        self.inputStr_zoneAreaCode(para['ZONE_AREA_CODE'])
-        # 台区名称
-        self.inputStr_zoneAreaName(para['ZONE_AREA_NAME'])
-        # 责任人人工号
-        self.inputStr_responsibilierNo(para['RESPONSIBLLIER_NO'])
 
+        # 台区运行状态
+        self.inputSel_run_status(para['RUN_STATUS'])
+
+        # 台区编码
+        self.inputStr_tg_no(para['TG_NO'])
+
+        # 台区名称
+        self.inputStr_tg_name(para['TG_NAME'])
+
+        # 责任人人工号
+        self.inputStr_responsibilier_no(para['RESPONSIBLLIER_NO'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

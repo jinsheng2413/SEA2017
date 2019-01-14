@@ -15,26 +15,18 @@ from com.nrtest.common.base_page import Page
 class LineLossAnalysisPage(Page):
     # 线路编号
     def inputStr_line_no(self, content):
-        # self.input(content, *LineLossAnalysisLocators.QRY_LINE_NO)
-
         self.input(content)
 
     # 线路名称
     def inputStr_line_name(self, content):
-        # self.input(content, *LineLossAnalysisLocators.QRY_LINE_NAME)
-
         self.input(content)
 
     # 查询日期
     def inputDt_query_date(self, content):
-        # self.exec_script(LineLossAnalysisLocators.DATE_JS)
-        # self.input(content, *LineLossAnalysisLocators.QRY_DATE)
-
         self.input(content)
 
     # 按时间统计类型
     def inputDTTAB_statDateType(self, name):
-        print(name)
         self.clickDt_Tab(name)
 
     # 组合单元

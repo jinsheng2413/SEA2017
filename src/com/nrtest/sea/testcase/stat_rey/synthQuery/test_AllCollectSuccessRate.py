@@ -18,6 +18,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.allCollectSuccessRate_page import AllCollectSuccessRatePage
 
 
+# 统计查询→综合查询→掌机工单查询
 @ddt
 class TestAllCollectSuccessRate(TestCase, AllCollectSuccessRatePage):
 

@@ -55,16 +55,22 @@ class TestTgLineLossAnalysis(TestCase, LineLossAnalysisPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 线路编号
         self.inputStr_line_no(para['LINE_NO'])
+
         # 线路名称
         self.inputStr_line_name(para['LINE_NAME'])
+
         # 按时间类型统计
         self.inputDTTAB_statDateType(para['STAT_DATE_TYPE'])
+
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
         # 组合单元
         self.inputChk_compoistionUnit(para['COMPOSITION_UNIT'])
+
         # 线损类型
         self.inputSChk_lineLossType(para['LINE_LOSS_TYPE'])
 

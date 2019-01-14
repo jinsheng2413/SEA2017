@@ -18,6 +18,7 @@ from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardManDat
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.fourGCommMethod.communMeter_page import CommumMeterPage
 
+
 # 运行管理-->SIM卡管理-->4G通信方式-->抄表情况
 @ddt
 class TestCommumMetter(TestCase, CommumMeterPage):
@@ -100,6 +101,10 @@ class TestCommumMetter(TestCase, CommumMeterPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SimCardManData.para_communMeter))
     def test_query(self, para):
+        """运行管理-->SIM卡管理-->4G通信方式-->抄表情况
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

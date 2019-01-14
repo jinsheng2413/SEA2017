@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossUnifiedView.tgLineL
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损统计分析→台区线损监测
+# 高级应用→线损分析→线损统计分析→台区线损统一视图→台区线损统一视图
 @ddt
 class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
     @classmethod
@@ -65,11 +65,6 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
         self.inputDt_end_date(para['END_DATE'])
         # 日线损，查询按钮
         self.btn_search_day()
-
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, tabName='日线损'))
-    # def test_der(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

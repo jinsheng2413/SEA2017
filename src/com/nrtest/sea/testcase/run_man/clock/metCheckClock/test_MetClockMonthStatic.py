@@ -72,9 +72,6 @@ class TestMetClockMonthStatic(TestCase, MetClockMonthStaticPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(MetClockMonthStaticLocators.TABLE_DATA)
-        # self.assertTrue(result)
 
     def assert_query_result(self, para):
         """
@@ -96,10 +93,9 @@ class TestMetClockMonthStatic(TestCase, MetClockMonthStaticPage):
     @data(*DataAccess.getCaseData(ClockData.para_MetCheckClock,
                                   ClockData.para_MetCheckClock_monthstatic))
     def test_query(self, para):
-        """
+        """运行管理→时钟管理→电能表对时:电表时钟月统计
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -114,19 +110,3 @@ class TestMetClockMonthStatic(TestCase, MetClockMonthStaticPage):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
-
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 终端类型
-    #     self.inputRSel_tmnl_type('全部')
-    #     # 终端厂家
-    #     self.inputRSel_tmnl_fac('宁波三星')
-    #     # 查询日期
-    #     self.inputDt_query_date('2018-09')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(TmnlClockStaticLocators.TABLE_DATA)
-    #     self.assertTrue(result)

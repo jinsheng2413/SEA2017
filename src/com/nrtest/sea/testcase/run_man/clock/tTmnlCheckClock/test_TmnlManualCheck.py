@@ -12,10 +12,11 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.common.base_page import Page
+
 
 # 运行管理→时钟管理→终端对时
 # 终端手工对时
@@ -62,7 +63,6 @@ class TestTmnlManualCheck(TestCase,Page):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-
         self.sleep_time(2)
 
     def assert_query_result(self, para):
@@ -85,10 +85,9 @@ class TestTmnlManualCheck(TestCase,Page):
     @data(*DataAccess.getCaseData(ClockData.para_TTmnlCheckClock,
                                   ClockData.para_TTmnlCheckClock_manual))
     def test_query(self, para):
-        """
+        """运行管理→时钟管理→终端对时:终端手工对时
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -103,19 +102,3 @@ class TestTmnlManualCheck(TestCase,Page):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
-
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 终端类型
-    #     self.inputRSel_tmnl_type('全部')
-    #     # 终端厂家
-    #     self.inputRSel_tmnl_fac('宁波三星')
-    #     # 查询日期
-    #     self.inputDt_query_date('2018-09')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(TmnlClockStaticLocators.TABLE_DATA)
-    #     self.assertTrue(result)

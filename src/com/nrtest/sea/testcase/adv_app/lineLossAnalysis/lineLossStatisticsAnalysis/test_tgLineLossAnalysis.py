@@ -58,25 +58,31 @@ class TestTgLineLossAnalysis(TestCase, TgLineLossAnalysisPage):
         sleep(2)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 台区编号
         self.inputStr_tg_no(para['TG_NO'])
+
         # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
+
         # 安装率
         self.inputSel_installation_rate(para['INSTALLATION_RATE'])
-        # self.inputStr_installation_rate(para['INSTALLATION_RATE_INPUT'])
+
         # 抄读成功率
         self.inputSel_read_success_rate(para['READ_SUCCESS_RATE'])
-        # self.inputStr_read_success_rate(para['READ_SUCCESS_RATE_INPUT'])
+
         # 线损率
         self.inputSel_line_loss_rate(para['LINE_LOSS_RATE'])
-        # self.inputStr_line_loss_rate(para['LINE_LOSS_RATE_INPUT'])
+
         # 输入日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
         # 按日期类型
         self.inputDTT_type_sel(para['DATE_TYPE_SEL'])
+
         # 点击复选框
         self.inputChkRunType(para['LINE_LOSS_TYPE'])
+
         if self.get_para_value(para['LINE_LOSS_TYPE']) == '可算':
             # 点击达标
             self.inputChk_T(para['TG_TYPE'])

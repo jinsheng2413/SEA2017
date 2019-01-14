@@ -11,14 +11,15 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.localCostControl.localCostControl_para import LocalCostContral_data
 from com.nrtest.sea.pages.adv_app.costControlManage.elePricePara_pages import ElePricePages
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-@ddt
 # 高级应用--》费控管理--》本地费控--》电价参数下发
+@ddt
 class TestElePricePara(TestCase, ElePricePages):
     @classmethod
     def setUpClass(cls):
@@ -98,6 +99,7 @@ class TestElePricePara(TestCase, ElePricePages):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LocalCostContral_data.elePricePara_para))
     def test_query(self, para):
         self.start_case(para, __file__)
@@ -105,7 +107,7 @@ class TestElePricePara(TestCase, ElePricePages):
         self.assert_query_result(para)
         self.end_case()
 
-
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LocalCostContral_data.elePricePara_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

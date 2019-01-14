@@ -19,7 +19,6 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.differentialloopSetting_page import
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--重点用户监测--差动回路设置
 @ddt
 class Test_DifferentialloopSetting(TestCase, DifferentialloopSetting_Page):
     @classmethod
@@ -91,7 +90,7 @@ class Test_DifferentialloopSetting(TestCase, DifferentialloopSetting_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(VipConsMan.para_differentialloopSetting))
     def test_query(self, para):
-        """
+        """高级应用--重点用户监测--差动回路设置
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

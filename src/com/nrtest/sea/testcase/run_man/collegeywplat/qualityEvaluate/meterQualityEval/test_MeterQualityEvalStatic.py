@@ -91,6 +91,10 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(OperOrganManData.para_MeterQualityEval, OperOrganManData.para_MeterQualityEvalStatic))
     def test_query(self, para):
+        """运行管理→采集运维平台→采集终端质量评价:电表质量评价统计
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

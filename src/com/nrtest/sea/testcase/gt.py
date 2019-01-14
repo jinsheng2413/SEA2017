@@ -43,3 +43,8 @@ if __name__ == '__main__':
     cases = add_case()
     run(cases)
     global_drv.quit()
+
+    # # 用例集合
+    # cases = add_case()
+    # for case in cases:
+    #     run(case)

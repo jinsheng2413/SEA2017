@@ -61,6 +61,7 @@ class TestDataStrategyManagenment(TestCase, DataStrategyManagenmentPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+
         # 数据组
         self.inputSel_data_group(para['DATA_GROUP'])
         # 表名称
@@ -90,6 +91,10 @@ class TestDataStrategyManagenment(TestCase, DataStrategyManagenmentPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataClearing_data.dataStrategyManagenment_para))
     def test_query(self, para):
+        """系统管理-->数据清理管理-->历史数据策略管理
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

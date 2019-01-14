@@ -29,7 +29,7 @@ class TestUserDistributionStat(TestCase, UserDistributionStatPage):
         menuPage = MenuPage.openMenu(SysUseStat_date.UserDistributionStat_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SysUseStat_date.UserDistributionStat_tabName)
+        menuPage.clickTabPage(SysUseStat_date.UserDistributionStat_stat)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -78,8 +78,12 @@ class TestUserDistributionStat(TestCase, UserDistributionStatPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysUseStat_date.UserDistributionStat_para,
-                                SysUseStat_date.UserDistributionStat_tabName))
+                                  SysUseStat_date.UserDistributionStat_stat))
     def test_query(self, para):
+        """系统管理→系统使用情况统计→用户分布情况统计:用户分布统计
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
@@ -87,7 +91,7 @@ class TestUserDistributionStat(TestCase, UserDistributionStatPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysUseStat_date.UserDistributionStat_para,
-                                SysUseStat_date.UserDistributionStat_tabName, valCheck=True))
+                                  SysUseStat_date.UserDistributionStat_stat, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

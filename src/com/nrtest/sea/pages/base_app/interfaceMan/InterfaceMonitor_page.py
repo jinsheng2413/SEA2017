@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 class InterfaceMonitorPage(Page):
 
     # 接口类型
-    def inputSel_interfaceType(self, name):
+    def inputSel_interface_type(self, name):
         # self.click(InterfaceMonitor_Locators.QRY_INTERFACE_TYPE)
         # locator = self.get_select_locator(
         #     InterfaceMonitor_Locators.QRY_INTERFACE_TYPE_VALUE, name)

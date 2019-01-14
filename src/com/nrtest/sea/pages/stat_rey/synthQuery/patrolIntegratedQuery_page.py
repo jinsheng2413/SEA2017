@@ -27,7 +27,7 @@ class PatrolIntegratedQueryPage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(PatrolIntegratedQueryLocators.BTN_SEARCH)
-        self.btn_query()
+        self.btn_query(True)
 
     # 巡检仪运行指标明细
     # 日期

@@ -15,7 +15,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import ArchivesMaintain_factory_pages
-from com.nrtest.sea.task.archivesManage import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用--》档案管理--》档案维护:厂站维护

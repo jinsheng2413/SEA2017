@@ -9,8 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.logMan.sysUpgradeLog_locators import SysUpgradeLogLocators
-
 
 # 系统管理→日志管理→系统升级日志
 class SysUpgradeLogPage(Page):

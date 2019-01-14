@@ -115,7 +115,6 @@ class Page():
                     raise RuntimeError('page error--弹出框错误异常')
 
         return wrapper
-
     def fail_on_screenshot(self, func):
         """
         函数/方法报错截图处理

@@ -12,5 +12,6 @@
 class LineLossMantain_data:
     # 高级应用-->线损分析--》线损模型维护--》线损模型设计
     losePowerMan_para = '99924150'
+
     # 高级应用-->线损分析--》线损模型维护--》线损计算模型管理
     loseCountPowerMan_para = '99924160'

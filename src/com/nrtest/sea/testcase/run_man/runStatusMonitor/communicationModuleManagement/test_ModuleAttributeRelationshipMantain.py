@@ -22,8 +22,6 @@ from com.nrtest.sea.pages.run_man.runStatusMonitor.communicationModuleManagement
     ModuleAttributeRelationshipMantainPage
 
 
-# 运行管理--》采集信道管理--》通信模块管理--》通信模块属性维护
-
 @ddt
 class TestModuleAttributeRelationshipMantain(TestCase, ModuleAttributeRelationshipMantainPage):
 
@@ -100,7 +98,7 @@ class TestModuleAttributeRelationshipMantain(TestCase, ModuleAttributeRelationsh
     @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulPropMain_para,
                                   CommunicationModuleManagement.commModulPropMain_tab_relationship))
     def test_query(self, para):
-        """
+        """运行管理--》采集信道管理--》通信模块管理--》通信模块属性维护
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

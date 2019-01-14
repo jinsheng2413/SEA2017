@@ -15,11 +15,10 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
 from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_pages import *
-from com.nrtest.sea.task.archivesManage import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用--》档案管理--》档案异常分析：档案异常明细
-
 @ddt
 class test_archivesAnalysisOfAnomaly_detail(TestCase, ArchivesAnalysisOfAnomaly_detail_pages):
     @classmethod

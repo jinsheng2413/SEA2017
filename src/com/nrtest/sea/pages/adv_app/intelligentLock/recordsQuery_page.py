@@ -93,7 +93,7 @@ class RecordsQueryStaffPage(Page):
 
     # 电子钥匙编号
     def inputStr_key_no(self, content):
-        self.curr_input(content, True, True)  #, *RecordsQueryLocators.TAB_KEY_NO)
+        self.curr_input(content, True, True)  # , *RecordsQueryLocators.TAB_KEY_NO)
 
     # 锁封编号
     def inputStr_lock_no(self, content):

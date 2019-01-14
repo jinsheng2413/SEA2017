@@ -15,31 +15,21 @@ from com.nrtest.common.base_page import Page
 # 高级应用-->线损分析--》线损模型维护--》线损计算模型管理
 class LoseCountPowerManPage(Page):
     # 台区编码
-    def inputStr_zoneAreaCode(self, value):
-        # self.input(value, *LoseCountPowerManLocators.QRY_ZONE_AREA_CODE)
-
+    def inputStr_tg_no(self, value):
         self.input(value)
 
     # 台区运行状态
-    def inputSel_zoneAreaRunStatus(self, name):
-        # self.click(LoseCountPowerManLocators.QRY_ZONE_AREA_RUN_STATUS)
-        # locator = self.get_select_locator(
-        #     LoseCountPowerManLocators.QRY_ZONE_AREA_RUN_STATUS_VALUE, name)
-        # self.click(locator)
+    def inputSel_run_status(self, name):
         self.selectDropDown(name)
 
     # 台区名称
-    def inputStr_zoneAreaName(self, value):
-        # self.input(value, *LoseCountPowerManLocators.QRY_ZONE_NAME)
+    def inputStr_tg_name(self, value):
         self.input(value)
 
     # 责任人工号
-    def inputStr_responsibilierNo(self, value):
-        # self.input(value, *LoseCountPowerManLocators.QRY_RESPONSIBILITIER_NO)
+    def inputStr_responsibilier_no(self, value):
         self.input(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        # self.click(*LoseCountPowerManLocators.BTN_QRY)
         self.btn_query()

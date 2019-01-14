@@ -16,11 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.collegeywplat.acquistionFaultHandling.acquistionFaultHandling_data import \
     AcquistionFaultHandling_data
-from com.nrtest.sea.pages.run_man.collegeywplat.specificPowerFaultDeal.specificPowerFaultDeal_page import FaultSpecificPowerFeedbackPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.run_man.collegeywplat.specificPowerFaultDeal.specificPowerFaultDeal_page import \
+    FaultSpecificPowerFeedbackPage
 
 
-#运行管理-->采集运维平台-->采集故障处理-->专变故障处理
+# 运行管理-->采集运维平台-->采集故障处理-->专变故障处理
 # 故障反馈专变
 @ddt
 class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
@@ -100,6 +101,10 @@ class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_specificPowerFaultDeal, AcquistionFaultHandling_data.para_specificPowerFaultDeal_feedback))
     def test_query(self, para):
+        """运行管理-->采集运维平台-->采集故障处理-->专变故障处理:故障反馈专变
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

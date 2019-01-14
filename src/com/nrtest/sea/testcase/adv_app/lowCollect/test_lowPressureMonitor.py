@@ -19,7 +19,6 @@ from com.nrtest.sea.pages.adv_app.lowCollect.lowPressureMonitor_page import LowP
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--低压采集监控--配置采集任务
 @ddt
 class Test_LowPressureMonitor(TestCase, LowPressureMonitor_Page):
     @classmethod
@@ -88,7 +87,7 @@ class Test_LowPressureMonitor(TestCase, LowPressureMonitor_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LowColletc.para_LowPressureMonitor))
     def test_query(self, para):
-        """
+        """高级应用--低压采集监控--配置采集任务
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

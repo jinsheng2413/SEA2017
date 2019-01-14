@@ -19,7 +19,6 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.vipConsConfig_page import VipConsCo
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--重点用户监测--重点用户管理
 @ddt
 class Test_VipConsConfig(TestCase, VipConsConfig_Page):
     @classmethod
@@ -94,7 +93,7 @@ class Test_VipConsConfig(TestCase, VipConsConfig_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(VipConsMan.para_VipConsConfig))
     def test_query(self, para):
-        """
+        """高级应用--重点用户监测--重点用户管理
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

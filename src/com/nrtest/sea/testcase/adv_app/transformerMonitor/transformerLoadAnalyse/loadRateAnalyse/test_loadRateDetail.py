@@ -15,7 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse_page import LoadRateDetailPage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse_page import \
+    LoadRateDetailPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
@@ -99,10 +100,9 @@ class TestLoadRateDetail(TestCase, LoadRateDetailPage):
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_TradnsformerMonitor,
                                   TradnsformerMonitorData.para_TradnsformerMonitor_detail))
     def test_query(self, para):
-        """
+        """高级应用-->配变负载分析-->负载率分析:负载率明细
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -117,17 +117,3 @@ class TestLoadRateDetail(TestCase, LoadRateDetailPage):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
-
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 用户类型
-    #     self.inputSel_cons_sort('全部')
-    #     # 查询日期
-    #     self.inputDt_query_date('2018-9-1')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(LoadRateDetailLocators.TABLE_DATA)
-    #     self.assertTrue(result)

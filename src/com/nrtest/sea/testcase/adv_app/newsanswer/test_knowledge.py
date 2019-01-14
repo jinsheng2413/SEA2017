@@ -19,7 +19,6 @@ from com.nrtest.sea.pages.adv_app.newsanswer.knowledge_page import Knowledge_Pag
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--问题交流平台--知识库管理
 @ddt
 class Test_Knowledge(TestCase, Knowledge_Page):
     @classmethod
@@ -91,7 +90,7 @@ class Test_Knowledge(TestCase, Knowledge_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(NewsAnswer.para_Knowledge))
     def test_query(self, para):
-        """
+        """高级应用--问题交流平台--知识库管理
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

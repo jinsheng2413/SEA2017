@@ -18,7 +18,6 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.terminalDataQuery_page import *
 
 
-# 统计查询→综合查询→终端数据查询
 @ddt
 class TestTerminalDataQuery(TestCase, TerminalDataQueryPage):
     @classmethod
@@ -86,6 +85,10 @@ class TestTerminalDataQuery(TestCase, TerminalDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para))
     def test_query(self, para):
+        """统计查询→综合查询→终端数据查询
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

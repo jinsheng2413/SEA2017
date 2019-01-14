@@ -15,7 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint_page import BcVoltMonitorPointQueryPage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.bcVoltMonitorPoint_page import \
+    BcVoltMonitorPointQueryPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
@@ -91,10 +92,9 @@ class TestBcVoltMonitorPointQuery(TestCase, BcVoltMonitorPointQueryPage):
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_BcVoltMonitorPoint,
                                   TradnsformerMonitorData.para_BcVoltMonitorPointQuery))
     def test_query(self, para):
-        """
+        """高级应用-->配变监测分析-->电压质量分析-->B/C类电压监测点:B/C类电压监测点查询
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -109,17 +109,3 @@ class TestBcVoltMonitorPointQuery(TestCase, BcVoltMonitorPointQueryPage):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
-
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 监测点类型
-    #     self.inputRSel_monitor_point_type('全部')
-    #     # 监测点名称
-    #     self.inputStr_monitor_point_name('')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(BcVoltMonitorPointQueryLocators.TABLE_DATA)
-    #     self.assertTrue(result)

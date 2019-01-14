@@ -74,6 +74,8 @@ class TestTmnlClockDetail(TestCase, TmnlClockDetailPage):
         self.inputSel_tmnl_fac(para['TMNL_FAC'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        # 是否历史
+        self.inputChk_is_history(para['IS_HISTORY'])
         # 是否在线
         self.inputSel_is_online(para['IS_ONLINE'])
         # 查询日期
@@ -104,10 +106,9 @@ class TestTmnlClockDetail(TestCase, TmnlClockDetailPage):
     @data(*DataAccess.getCaseData(ClockData.para_TTmnlCheckClock,
                                   ClockData.para_TTmnlCheckClock_detail))
     def test_query(self, para):
-        """
+        """运行管理→时钟管理→终端对时:终端时钟明细
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -122,30 +123,3 @@ class TestTmnlClockDetail(TestCase, TmnlClockDetailPage):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
-
-    # def test_test(self):
-    #     # 供电单位
-    #     sleep(2)
-    #     openLeftTree('13401')
-    #     # 偏差范围
-    #     self.inputRSel_offset_range('全部')
-    #     # 终端类型
-    #     self.inputRSel_tmnl_type('全部')
-    #     # 终端型号
-    #     self.inputStr_tmnl_model('')
-    #     # 终端厂家
-    #     self.inputRSel_tmnl_fac('宁波三星')
-    #     # 终端地址
-    #     self.inputStr_terminal_addr('')
-    #     # 是否在线
-    #     self.inputRSel_is_online('全部')
-    #     # 查询日期
-    #     self.inputDt_query_date('2018-09')
-    #     # 对时结果
-    #     self.inputRSel_call_status('全部')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(TmnlClockDetailLocators.TABLE_DATA)
-    #     self.assertTrue(result)

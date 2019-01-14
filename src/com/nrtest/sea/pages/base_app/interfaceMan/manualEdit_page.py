@@ -9,29 +9,24 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.interfaceMan.manaualEdit_locators import ManualEdit_Locators
 
 
+# 基本应用--接口管理--人工补录
 class ManualEditPage(Page):
 
     # 抄表段号
-    def inputStr_meter_reading_paragraph(self, value):
-        self.input(value, *ManualEdit_Locators.QRY_METER_READING_PARAGRAPH)
+    def inputStr_mr_sect_no(self, value):
+        self.input(value)
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value)  # , *ManualEdit_Locators.QRY_CONS_NO)
+        self.input(value)
 
     # 处理类型
     def inputSel_process_type(self, option):
-        # self.click(ManualEdit_Locators.QRY_PROCESS_TYPE)
-        # locator = self.get_select_locator(ManualEdit_Locators.QRY_PROCESS_TYPE_VALUE, option)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(option)
 
     def inputDt_query_date(self, value):
-        # self.input(value, *ManualEdit_Locators.QRY_DATE)
         self.inputDate(value)
 
     # 查询

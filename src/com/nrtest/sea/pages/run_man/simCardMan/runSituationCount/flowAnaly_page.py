@@ -11,8 +11,6 @@
 
 from com.nrtest.common.base_page import Page
 
-from com.nrtest.sea.locators.run_man.simCardMan.runSituationCount.flowAnaly_locators import SIMFlowCountLocators
-
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
 # 流量统计
@@ -26,7 +24,6 @@ class FlowStaticPage(Page):
     def btn_qry(self):
         self.btn_query()
 
-
 # 流量明细
 class FlowDeatilPage(Page):
 
@@ -38,7 +35,6 @@ class FlowDeatilPage(Page):
     def btn_qry(self):
         self.btn_query(True)
 
-
 # SIM卡超流量统计
 class OverFlowStaticPage(Page):
 
@@ -46,11 +42,11 @@ class OverFlowStaticPage(Page):
     def inputDt_static_time(self, value):
         self.inputDate(value)
 
-    #SIM卡号
+    # SIM卡号
     def inputStr_sim_card_no(self,value):
         self.input(value)
 
-    #终端地址
+    # 终端地址
     def inputStr_tmnl_addr(self,value):
         self.input(value)
 

@@ -8,7 +8,7 @@
 @desc:
 """
 
-# 统计查询--数据分析--电量分析--电量排名分析
+
 
 from unittest import TestCase
 
@@ -98,10 +98,9 @@ class TestPowerSortAnalyse(TestCase, PowerSortAnalysePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LoadRankAnalyse_para.powerSortAnalyse_para))
     def test_query(self, para):
-        """
+        """统计查询--数据分析--电量分析--电量排名分析
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)

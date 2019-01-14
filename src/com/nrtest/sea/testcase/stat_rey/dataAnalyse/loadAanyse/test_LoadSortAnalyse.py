@@ -19,7 +19,6 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.dataAnalyse.loadAanyse.LoadSortAnalyse_pages import LoadSortAnalysePage
 
 
-#统计查询--数据分析--负荷分析--负荷排名分析
 @ddt
 class TestLoadSortAnalyse(TestCase, LoadSortAnalysePage):
 
@@ -97,10 +96,9 @@ class TestLoadSortAnalyse(TestCase, LoadSortAnalysePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LoadAanyse_data.loadSortAnalyse_para))
     def test_query(self, para):
-        """
+        """统计查询--数据分析--负荷分析--负荷排名分析
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)

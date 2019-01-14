@@ -20,6 +20,7 @@ from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.flowAnaly_page im
 
 
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
+# 流量明细
 @ddt
 class TestFlowDetail(TestCase, FlowDeatilPage):
 
@@ -88,10 +89,9 @@ class TestFlowDetail(TestCase, FlowDeatilPage):
     @data(*DataAccess.getCaseData(SimCardManData.para_flowAnaly,
                                   SimCardManData.para_flowAnaly_detail))
     def test_query(self, para):
-        """
+        """运行管理-->SIM卡管理-->运行情况分析-->流量分析:流量明细
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)

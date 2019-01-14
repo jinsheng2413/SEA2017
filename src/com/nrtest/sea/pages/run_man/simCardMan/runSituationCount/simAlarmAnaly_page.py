@@ -18,12 +18,10 @@ class AbnoralStaticPage(Page):
 
     # 月份
     def inputDt_month(self, value):
-        # self.input(value,*AbnormalCountLocators.QRY_MONTH)
         self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(AbnormalDetailLocators.BTN_QRY)
         self.btn_query()
 
 # 异常明细
@@ -31,17 +29,12 @@ class AbnormalDetailPage(Page):
 
     # 异常类型
     def inputStr_abnormal_type(self, item):
-        # self.click(AbnormalDetailLocators.QRY_ABNORMAL_TYPE)
-        # locator = self.get_select_locator(AbnormalDetailLocators.QRY_ABNORMAL_TYPE_VALUE, name)
-        # self.click(locator)
         self.selectDropDown(item)
 
     # 月份
     def inputDt_month(self, value):
-        # self.input(value, *AbnormalDetailLocators.QRY_MONTH)
         self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(AbnormalDetailLocators.BTN_QRY)
         self.btn_query(True)

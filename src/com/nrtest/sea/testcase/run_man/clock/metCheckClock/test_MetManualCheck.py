@@ -12,10 +12,11 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.common.base_page import Page
+
 
 # 运行管理→时钟管理→电能表对时
 # 电能表手工对时

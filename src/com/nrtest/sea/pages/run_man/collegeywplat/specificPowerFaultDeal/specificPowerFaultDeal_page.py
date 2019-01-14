@@ -25,6 +25,7 @@ class FaultSpecificPowerMyTodoPage(Page):
     def btn_qry(self):
         self.btn_query(True)
 
+
 # 故障处理专变
 
 class FaultSpecificPowerDealPage(Page):
@@ -55,6 +56,7 @@ class FaultSpecificPowerDealPage(Page):
     # 查询
     def btn_qry(self):
         self.btn_query(True)
+
 
 # 故障反馈专变
 class FaultSpecificPowerFeedbackPage(Page):

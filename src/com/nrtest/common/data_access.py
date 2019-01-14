@@ -141,9 +141,9 @@ class DataAccess:
         """
 
         pyoracle = PyOracle.getInstance()
-        cases = pyoracle.callproc('pkg_nrtesh.refresh_all_case')
+        para = [Setting.PROJECT_NO]
+        pyoracle.callproc('pkg_nrtest.refresh_all_case', para)
 
-        return cases
 
     @staticmethod
     def get_case_result(tst_case_id):
@@ -241,7 +241,7 @@ if __name__ == '__main__':
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
-    print(DataAccess.get_data_dictionary('FEE_FROM'))
+    DataAccess.refresh_all()
     # for i in  str[4:10]:
     #     print(i)
     # print(DataAccess.getAllMenu())

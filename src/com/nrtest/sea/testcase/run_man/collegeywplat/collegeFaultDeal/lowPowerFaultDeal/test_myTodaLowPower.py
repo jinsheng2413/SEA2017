@@ -16,8 +16,8 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.collegeywplat.acquistionFaultHandling.acquistionFaultHandling_data import \
     AcquistionFaultHandling_data
-from com.nrtest.sea.pages.run_man.collegeywplat.lowPowerFaultDeal.lowPowerFaultDeal_page import FaultLowPowerMyTodoPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.run_man.collegeywplat.lowPowerFaultDeal.lowPowerFaultDeal_page import FaultLowPowerMyTodoPage
 
 
 # 运行管理-->采集运维平台-->采集故障处理-->低压故障处理

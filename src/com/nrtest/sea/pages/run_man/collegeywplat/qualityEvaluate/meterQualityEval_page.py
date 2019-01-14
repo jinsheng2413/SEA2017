@@ -36,7 +36,7 @@ class MeterQualityEvalDetailPage(Page):
 
     # 用户类型--打开并选择
     def inputSel_cons_type(self, name):
-        self.selectDropDown(name,is_multi_tab=True,is_multi_elements=True)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 故障严重程度--打开并选择
     def inputSel_fault_level(self, name):
@@ -44,7 +44,7 @@ class MeterQualityEvalDetailPage(Page):
 
     # 电表厂家-打开并选择
     def inputRSel_meter_fac(self, name):
-        self.selectCheckBox(name,is_multi_tab=True,is_multi_elements=True)
+        self.selectCheckBox(name, is_multi_tab=True, is_multi_elements=True)
 
     # 故障类别-打开并选择
     def inputSel_fault_type(self, name):

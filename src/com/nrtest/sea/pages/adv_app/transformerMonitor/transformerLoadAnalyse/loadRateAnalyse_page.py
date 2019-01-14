@@ -10,6 +10,7 @@
 
 from com.nrtest.common.base_page import Page
 
+
 # 高级应用--》配变负载分析--》负载率分析
 # 负载率统计
 class LoadRateStaticPage(Page):
@@ -25,6 +26,7 @@ class LoadRateStaticPage(Page):
     # 点击查询
     def btn_qry(self):
         self.btn_query()
+
 
 # 负载率明细
 class LoadRateDetailPage(Page):

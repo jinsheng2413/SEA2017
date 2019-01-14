@@ -26,6 +26,7 @@ class FaultLowPowerMyTodoPage(Page):
     def btn_qry(self):
         self.btn_query(True)
 
+
 # 故障处理低压
 class FaultLowPowerDealPage(Page):
 
@@ -56,6 +57,7 @@ class FaultLowPowerDealPage(Page):
     # 查询
     def btn_qry(self):
         self.btn_query(True)
+
 
 # 故障反馈低压
 class FaultLowPowerFeedbackPage(Page):

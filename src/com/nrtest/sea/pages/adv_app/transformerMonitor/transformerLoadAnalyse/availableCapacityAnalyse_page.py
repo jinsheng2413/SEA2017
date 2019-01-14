@@ -10,6 +10,7 @@
 
 from com.nrtest.common.base_page import Page
 
+
 # 高级应用--》配变负载分析--》报装可用容量分析
 class AvailableCapacityAnalysePage(Page):
 

@@ -46,8 +46,16 @@ class TreePage(Page):
             node_vale = node_no
 
         node['NODE_VALE'] = DataAccess.getTreeNode(node_vale).split(';')
+        if self.tree_type[0] != '4':
+            self._click_node_tab(node['NODE_FLAG'])
+
         self._operate_left_tree(node)
         self.tree_node = node
+
+    def _click_node_tab(self, node_tab_idx):
+        node_tab = {'01': '全模型', '02': '搜索', '03': '收藏夹'}
+        loc = self.format_xpath(TreeLocators.NODE_TAB, node_tab[node_tab_idx])
+        self.click(loc)
 
     def colseLeftTree(self):
         node = deepcopy(self.tree_node)
@@ -69,12 +77,14 @@ class TreePage(Page):
                 new_idx = idx if is_open else levels - idx
 
                 # 厂站间有重复节点名，如电压等级、厂站设备等
-                if self._find_in_sub(item):
+                is_find_in_sub = self._find_in_sub(item)
+                if is_find_in_sub:
                     # 需厂站范围内找节点
                     parent_idx = idx - 1 if is_open else idx + 1
                     locator = self.format_xpath(TreeLocators.NODE_LEVEL_IN_SUB, (parent_idx, items[parent_idx], new_idx, item))
                 else:
                     locator = self.format_xpath(TreeLocators.NODE_LEVEL, (new_idx, item))
+
                 if self.tree_type[-1] == '1':  # 带复选框的左边树
                     els = self._find_elements(locator)
                     if bool(els):
@@ -82,6 +92,8 @@ class TreePage(Page):
                         if idx == levels:
                             self._node_click(els[1], is_open, idx, levels, True)
                 else:
+                    if idx == levels and is_open:  # 叶子节点只点击文本元素，不点击文本元素边上的图标元素
+                        locator = (locator[0], locator[1].replace('/../span', ''))  # 该替换操作只对PBS5000有效
                     el = self._find_element(locator)
                     if bool(el):
                         self._node_click(el, is_open, idx, levels)

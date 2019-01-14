@@ -21,14 +21,14 @@ class TestPBS5000(TestCase, TreePage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu('0000302')  # 电压等级树--20
-        # menuPage = MenuPage.openMenu('0000101')  # 厂站设备--30
-        # menuPage = MenuPage.openMenu('0000204')  # 带勾选--41
-
         # 20-含电压等级厂站树； 11-并且带复选框
         # 30-厂站档案设备树；   21-并且带复选框
         # 40-普通树；         41-并且带复选框；采集运维-->手动对时
-        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage, '20')
+        # menuPage = MenuPage.openMenu('0000302')  # 电压等级树--20
+        # menuPage = MenuPage.openMenu('0000101')  # 厂站设备--30
+        # menuPage = MenuPage.openMenu('0000204')  # 带勾选--41
+        menuPage = MenuPage.openMenu('0001103')  # 电压等级树--40
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage, menuPage.tree_type)
         menuPage.goto_frame()
         sleep(5)
 
@@ -53,8 +53,12 @@ class TestPBS5000(TestCase, TreePage):
         self.colseLeftTree()
 
     def test_query(self):
-        node_no = '{"NODE_FLAG": "01", "NODE_VALE": "01070110203"}'  # 电压等级树
-        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "0107012010301"}'  # 厂站档案
-        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "010701"}'          # 带复选框 010701301
+        """PBS500菜单及左边树功能测试
 
+        :return:
+        """
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "01070110203"}'       # 电压等级树
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "0107012010301"}'     # 厂站档案
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "010701"}'            # 带复选框
+        node_no = '{"NODE_FLAG": "01", "NODE_VALE": "020301"}'  # 普通树
         self.openLeftTree(node_no)

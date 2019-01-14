@@ -64,6 +64,9 @@ class MenuPage(Page):
         menu_path = ls_menu[0]
         # 菜单动作：01-点击；02-悬浮（HOVER)；03-新窗口；11-滚屏且点击；12-滚屏且悬浮；13-滚屏且新窗口
         action = ls_menu[1]
+        # PBS5000，用于区分每个菜单用到的左边树类型
+        self.tree_type = ls_menu[2] if bool(ls_menu[2]) else '20'
+
         items = menu_path.split(';')
 
         # 菜单编号、菜单名

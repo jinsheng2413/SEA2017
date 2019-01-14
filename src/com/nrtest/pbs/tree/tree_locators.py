@@ -21,28 +21,30 @@ class TreeLocators:
     # 数据字典 (By.XPATH, '//ul[@id="dataDictionaryTree"]//span[text()="{}"]')
 
     NODE_LEVEL = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/../span')
+    # 保留，暂时不用
+    LEEF_NODE = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]')
 
-    # 第一层
-    NODE_LEVEL0 = (By.XPATH, '//li[@class="level0"]/a[@title="{}"]/../span')
-    # span按钮打开状态：class="button level0 switch root_open"
-    # 	   关闭状态：class="button level0 switch root_close"
-
-    # 第二层 局
-    NODE_LEVEL1 = (By.XPATH, '//li[@class="level1"]/a[@title="{}"]/../span')
-    # class="button level1 switch center_open"
-
-    # 第三层 局下面的变电站
-    NODE_LEVEL2 = (By.XPATH, '//li[@class="level2"]/a[@title="{}"]/../span')
-    # NODE_LEVEL2 = (By.XPATH, '//li[@class="level2"]/a[@title="贵阳局.800kV黎平变电站"]/../span')
-
-    # class="button level2 switch center_open"
-
-    # 第四层
-    NODE_LEVEL3 = (By.XPATH, '//li[@class="level3"]/a[{}]/../span')
-    # class="button level3 switch center_close"
-
-    # 第五层 设备
-    NODE_LEVEL4 = (By.XPATH, '//li[@class="level4"]/a[{}]/../span')
+    # # 第一层
+    # NODE_LEVEL0 = (By.XPATH, '//li[@class="level0"]/a[@title="{}"]/../span')
+    # # span按钮打开状态：class="button level0 switch root_open"
+    # # 	   关闭状态：class="button level0 switch root_close"
+    #
+    # # 第二层 局
+    # NODE_LEVEL1 = (By.XPATH, '//li[@class="level1"]/a[@title="{}"]/../span')
+    # # class="button level1 switch center_open"
+    #
+    # # 第三层 局下面的变电站
+    # NODE_LEVEL2 = (By.XPATH, '//li[@class="level2"]/a[@title="{}"]/../span')
+    # # NODE_LEVEL2 = (By.XPATH, '//li[@class="level2"]/a[@title="贵阳局.800kV黎平变电站"]/../span')
+    #
+    # # class="button level2 switch center_open"
+    #
+    # # 第四层
+    # NODE_LEVEL3 = (By.XPATH, '//li[@class="level3"]/a[{}]/../span')
+    # # class="button level3 switch center_close"
+    #
+    # # 第五层 设备
+    # NODE_LEVEL4 = (By.XPATH, '//li[@class="level4"]/a[{}]/../span')
     # 			class="button level4 switch bottom_docu"   --只有一个节点或最后一个节点时是bottom  其他是center
     #
     # $x('//div[@id="treeDemo"]//li[@class="level3"]/a[@title="500kV"]/../span[@id="treeDemo_15_switch"]')

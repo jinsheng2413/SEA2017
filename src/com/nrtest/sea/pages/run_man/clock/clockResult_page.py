@@ -34,7 +34,6 @@ class ClockResultStaticPage(Page):
     def btn_qry(self):
         self.btn_query()
 
-
 # 对时结果明细
 class ClockResultDetailPage(Page):
 

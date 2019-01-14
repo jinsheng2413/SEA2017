@@ -90,10 +90,9 @@ class TestSimInstallStat(TestCase, SimInstallStatPageDetail):
     @data(*DataAccess.getCaseData(SimCardManData.para_simInstallStat,
                                   SimCardManData.para_simInstallStat_detail))
     def test_query(self, para):
-        """
+        """运行管理-->SIM卡管理-->运行情况分析-->安装情况统计:安装情况明细
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -91,7 +91,7 @@ class Page():
         使用信息：
 
         例如：
-        @error_window_process
+        @ERROR_WINDOW_PROCESS
         def btn_query(self, is_multi_tab=False):
         """
 
@@ -100,11 +100,11 @@ class Page():
             tag = False
             try:
 
-                el = args[0]._find_element(CommonLocators.error_window_process, seconds=2)
+                el = args[0]._find_element(CommonLocators.ERROR_WINDOW_PROCESS, seconds=2)
                 if el:
                     tag = True
                     print('弹窗错误信息：%s' % el.text)
-                    args[0]._find_element(CommonLocators.btn_confirm_locator).click()
+                    args[0]._find_element(CommonLocators.BTN_CONFIRM_LOCATORS).click()
                     if tag:
                         raise RuntimeError('PageError')
 

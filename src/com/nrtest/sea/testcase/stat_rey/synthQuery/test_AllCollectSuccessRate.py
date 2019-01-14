@@ -18,6 +18,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.allCollectSuccessRate_page import AllCollectSuccessRatePage
 
 
+# 统计查询→综合查询→掌机工单查询
 @ddt
 class TestAllCollectSuccessRate(TestCase, AllCollectSuccessRatePage):
 
@@ -69,7 +70,7 @@ class TestAllCollectSuccessRate(TestCase, AllCollectSuccessRatePage):
         # 电能表抄读状态
         self.inputStr_meterReadState(para['METER_READ_STATE'])
         # 用户类型
-        self.inputStr_userType(para['USER_TYPE'])
+        self.inputSel_userType(para['USER_TYPE'])
         # 终端运行状态
         self.inputStr_Tmnl_runState(para['TMNL_RUN_STATE'])
         # 查询

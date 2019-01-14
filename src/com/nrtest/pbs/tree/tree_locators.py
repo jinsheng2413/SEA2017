@@ -57,7 +57,8 @@ class TreeLocators:
     # 			class="button level4 switch bottom_docu"  --最后一个节点
 
     # 选择某变电站范围内搜索节点：如，某变电站下第n层的XXX节点: 省级用户level是2，市级用户level是1
-    NODE_LEVEL_IN_SUB = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/..//li[@class="level{}"]/a[@title="{}"]/../span')
+    NODE_LEVEL_IN_SUB = (
+        By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/..//li[@class="level{}"]/a[@title="{}"]/../span')
     # NODE_LEVEL = (By.XPATH, '//div[@id="treeDemo"]//li[@class="level2"]/a[@title="贵阳局.800kV黎平变电站"]/..//li[@class="level3"]/a[@title="500kV"]/../span')
 
     # 左边树: 全模型/搜索/收藏夹

@@ -31,7 +31,6 @@ class TreePage(Page):
         super().__init__(self, driver, menu_page)
         self.tree_type = tree_type
 
-
     def openLeftTree(self, node_no, op_mode=True):
         """
         打开左边树
@@ -81,7 +80,8 @@ class TreePage(Page):
                 if is_find_in_sub:
                     # 需厂站范围内找节点
                     parent_idx = idx - 1 if is_open else idx + 1
-                    locator = self.format_xpath(TreeLocators.NODE_LEVEL_IN_SUB, (parent_idx, items[parent_idx], new_idx, item))
+                    locator = self.format_xpath(TreeLocators.NODE_LEVEL_IN_SUB,
+                                                (parent_idx, items[parent_idx], new_idx, item))
                 else:
                     locator = self.format_xpath(TreeLocators.NODE_LEVEL, (new_idx, item))
 

@@ -16,12 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.patrolIntegratedQuery_page import PatrolIntegratedQueryPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.patrolIntegratedQuery_page import PatrolIntegratedQueryDetailPage
 
 
 # 统计查询→综合查询→巡检仪综合查询→巡检仪运行指标明细
 @ddt
-class TestPatrolIntegratedQuery_Detail(TestCase, PatrolIntegratedQueryPage):
+class TestPatrolIntegratedQuery_Detail(TestCase, PatrolIntegratedQueryDetailPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -53,14 +53,22 @@ class TestPatrolIntegratedQuery_Detail(TestCase, PatrolIntegratedQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
+        # 指标类型
+        self.inputChk_index_type(para['INDEX_TYPE'])
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 日期
-        self.inputDt_detail_date(para['DEATIL_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 指标
-        self.inputSel_detail_index(para['DETAIL_INDEX'])
+        self.inputSel_index(para['INDEX'])
         # 终端地址
-        self.inputStr_detail_tmnl_addr(para['DETAIL_TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        # 巡检仪标识
+        self.inputStr_patrol_indent(para['PATROL_INDENT'])
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+        # 电表地址
+        self.inputStr_meter_addr(para['METER_ADDR'])
         # 查询按钮
         self.btn_search()
 

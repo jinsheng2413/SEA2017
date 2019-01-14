@@ -16,12 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.collConstructStatus.collConstructStatus_data import CollConstructStatus_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.collConstructStatus.runTmnlStatistics_page import RunTmnlStatisticsPage
+from com.nrtest.sea.pages.stat_rey.collConstructStatus.runTmnlStatistics_page import RunTmnlStatDetailPage
 
 
 # 统计查询→综合查询→采集建设情况→运行终端统计→终端运行状态明细
 @ddt
-class TestRunTmnlStatistics_Detail(TestCase, RunTmnlStatisticsPage):
+class TestRunTmnlStatistics_Detail(TestCase, RunTmnlStatDetailPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -56,19 +56,19 @@ class TestRunTmnlStatistics_Detail(TestCase, RunTmnlStatisticsPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 用户类型
-        self.inputSel_detail_cons_type(para['DETAIL_CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 终端类型
-        self.inputSel_detail_tmnl_type(para['DETAIL_TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 通讯规约
-        self.inputSel_detail_tmnl_protocol(para['DETAIL_TMNL_PROTOCOL'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 通讯方式
-        self.inputSel_detail_tmnl_way(para['DETAIL_TMNL_WAY'])
+        self.inputSel_tmnl_way(para['TMNL_WAY'])
         # 终端厂家
-        self.inputSel_detail_tmnl_factory(para['DETAIL_TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端状态
-        self.inputSel_detail_tmnl_ststus(para['DETAIL_TMNL_STATUS'])
+        self.inputSel_tmnl_ststus(para['TMNL_STATUS'])
         # 查询按钮
-        self.btn_detail_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """

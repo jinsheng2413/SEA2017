@@ -23,6 +23,8 @@ from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.base_locators import BaseLocators
+from com.nrtest.sea.locators.other.common_locators import CommonLocators
+from com.nrtest.sea.locators.other.login_locators import LoginLocators
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 
 # create a logger instance
@@ -57,8 +59,7 @@ class Page():
     def __init__(self, driver, menu_page=None):
         self.driver = driver
         self.base_url = Setting.TEST_URL
-        self.main_page_title = Setting.PAGE_TILE
-        self.project_no = Setting.PROJECT_NO
+        self.page_title = Setting.PAGE_TILE
         self.menuPage = menu_page
         if bool(menu_page):
             self.menu_no = menu_page.menu_no
@@ -84,6 +85,36 @@ class Page():
 
         self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
 
+    def error_window_process(func):
+        """
+        出现弹出框异常，抛出页面报错
+        使用信息：
+
+        例如：
+        @error_window_process
+        def btn_query(self, is_multi_tab=False):
+        """
+
+        def wrapper(*args, **kwargs):
+            res = func(*args, **kwargs)
+            tag = False
+            try:
+
+                el = args[0]._find_element(CommonLocators.error_window_process, seconds=2)
+                if el:
+                    tag = True
+                    print('弹窗错误信息：%s' % el.text)
+                    args[0]._find_element(CommonLocators.btn_confirm_locator).click()
+                    if tag:
+                        raise RuntimeError('PageError')
+
+                    return res
+
+            except:
+                if tag:
+                    raise RuntimeError('page error--弹出框错误异常')
+
+        return wrapper
     def fail_on_screenshot(self, func):
         """
         函数/方法报错截图处理
@@ -174,7 +205,8 @@ class Page():
             except_info = ex
             logger.error(u'其他查找元素错误-->  {}\n{}'.format(locator, ex))
         if except_type != '':
-            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type, except_info)
+            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type,
+                                      except_info)
         return element
 
     def start_case(self, para, class_path=''):
@@ -207,15 +239,13 @@ class Page():
         # print('{}\n{}'.format(locators, idx))
         elements = self._find_elements(locators)
         pos = 1
-        element = None
         for el in elements:
             if el.is_displayed():
                 if pos == idx:
-                    element = el
                     break
                 else:
                     pos += 1
-        return element
+        return el
 
     def format_xpath_multi(self, xpath, format_val='', is_multi_tab=True):
         """
@@ -246,7 +276,7 @@ class Page():
                 el = self._find_element(loc)
             el.clear()
             el.send_keys(ls_values[1])
-            # logger.info('list index out of range文本框输入:{}'.format(values))
+            logger.info('list index out of range文本框输入:{}'.format(values))
         except AttributeError as ex:
             logger.error('输入错误:{}\n{}'.format(values, ex))
 
@@ -295,6 +325,7 @@ class Page():
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
 
+    @error_window_process
     def btn_query(self, is_multi_tab=False):
         """
         通用页面查询按钮
@@ -419,7 +450,8 @@ class Page():
         clean_obj = {'button': "//button[contains(text(), '{}')]",
                      'label': "//label[contains(text(), '{}')]",
                      'span': "//span[contains(text(), '{}')]"}
-        clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(tag_text[0])
+        clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(
+            tag_text[0])
         script = BaseLocators.CLEAN_BLANK % clean_me
         # print(script)
         self.exec_script(script)
@@ -489,6 +521,7 @@ class Page():
          """
         try:
             ls_option = options.split(';')
+            print('--------------', options)
             item = ls_option[1]
             # 赋值选中，不赋值不选中
             is_select = bool(item)
@@ -507,7 +540,7 @@ class Page():
 
     def clickCheckBox(self, items, attr, is_multi_tab=False):
         """
-        选择多个复选框【checkBox的name或id一致时调用此方法】
+        选择多个复选框
         :param items: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
         :param attr: 属性值
         :param is_multi_tab: 页面是否有多Tab页
@@ -529,25 +562,6 @@ class Page():
                     by_attr = (attr[0], attr[1], item)
                     xpath = self.format_xpath_multi(BaseLocators.CHKBOX_INPUT2LABEL, by_attr, is_multi_tab)
                     self.click(xpath)
-        except BaseException as ex:
-            print('点击复选框失败：{}'.format(ex))
-
-    def clickCheckBox_new(self, options, is_multi_tab=False):
-        """
-        选择多个复选框【checkBox的name或id不一致时调用此方法】
-        :param options: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
-        :param is_multi_tab: 页面是否有多Tab页
-        """
-        try:
-            ls_option = options.split(';')
-            ls_items = ls_option[2].split(',')
-            data_dict = DataAccess.get_data_dictionary(ls_option[1])
-            for data in data_dict:
-                xpath = self.format_xpath_multi(BaseLocators.SINGLE_CHECK_BOX, data, is_multi_tab=is_multi_tab)
-                el = self._find_displayed_element(xpath)
-                is_select = data in ls_items
-                if is_select != el.is_selected():
-                    el.click()
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
@@ -620,13 +634,14 @@ class Page():
         else:  # 选择其他节点
             self.menuPage.btn_user_nodes(node_flag, node_vale)  # 该方法细节待实现
 
-    # def exists_menu(self, active_page_loc):
-    #     """
-    #     判断菜单是否已打开，
-    #     :return: True-已打开
-    #     """
-    #     locator = self.format_xpath(active_page_loc, self.menu_name)
-    #     return bool(self._find_element(locator, seconds=0.5, ec_mode=1))
+    @property
+    def exists_menu(self):
+        """
+        判断菜单是否已打开，
+        :return: True-已打开
+        """
+        locator = self.format_xpath(BaseLocators.MENU_PAGE, self.menu_name)
+        return bool(self._find_element(locator, seconds=0.5, ec_mode=1))
 
     def input(self, values, *locators):
         """
@@ -679,9 +694,10 @@ class Page():
         :param is_trust:  是否一直等待到页面真正打开
         """
         if is_trust:
-            WebDriverWait(self.driver, Setting.WAIT_TIME).until(MustGetUrl(self.base_url))
+            WebDriverWait(self.driver, Setting.WAIT_TIME).until(
+                MustGetUrl(self.base_url))
         else:
-            self._open(self.base_url, self.main_page_title)
+            self._open(self.base_url, self.page_title)
 
     def click(self, locator):
         """
@@ -695,28 +711,30 @@ class Page():
         else:
             try:
                 element = self._find_element(locator)
-                # print(locator, '的状态', element.get_attribute('class'))
                 element.click()
                 logger.info('点击元素：{}'.format(locator))
             except BaseException as e:
                 logger.error('点击元素失败:{}\n{}'.format(locator, e))
 
-    def goto_window(self, switch_mode=True):
+    def switch_to_window(self, switch_mode=True):
         """
         切换到新窗口
         :param switch_mode: True-关闭其他窗口，False-保留其他窗口
         """
-        # 获取所有窗口句柄
-        all_handles = self.driver.window_handles
-        if switch_mode:
-            for handle in all_handles[:-1]:
-                self.driver.switch_to.window(handle)
-                print(self.driver.title)
-                self.driver.close()  # 关闭窗口
-        self.driver.switch_to.window(all_handles[-1])
 
-        # # 获取当前窗口句柄
-        # now_handle = self.driver.current_window_handle
+        # 获取当前窗口句柄
+        now_handle = self.driver.current_window_handle
+        self.driver.switch_to.window(now_handle)
+        print(self.driver.title)
+        if switch_mode:
+            # 获取所有窗口句柄
+            all_handles = self.driver.window_handles
+            for handle in all_handles:
+                if handle != now_handle:
+                    self.driver.switch_to.window(handle)
+                    print(self.driver.title)
+                    self.driver.close()  # 关闭窗口
+        self.driver.switch_to.window(now_handle)
 
     def closeBrowser(self):
         """
@@ -733,33 +751,39 @@ class Page():
         :param locator: 元素的xpath
         """
         try:
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(locator))
             above = self._find_element(locator)
             ActionChains(self.driver).move_to_element(above).perform()
         except NameError as ex:
             logger.error('悬停失败：{}'.format(ex))
 
-    def goto_frame(self, frame_obj=0):
+    def switch_to_frame(self, locators):
         """
+        方法名：switch_frame
         进入iframe层
-        :param frame_obj:frame序号，name， id or (By.TAG_NAME, '')
+        :param locators:元祖形式存在的iframe的id
+        :return:
         """
-        logger.info('进入 %s 的iframe层', frame_obj)
-        object = frame_obj
-        if isinstance(frame_obj, tuple):
-            object = self._find_element(frame_obj)
-        return self.driver.switch_to.frame(object)
+        logger.info('进入 %s 的iframe层', locators)
 
-    def goto_parent_iframe(self):
+        return self.driver.switch_to.frame(locators[1])
+
+    def back_parent_iframe(self):
         """
+        方法名：back_parent_iframe
         回到iframe上一层
+        :return:
         """
         logger.info('回到iframe上一层')
         self.driver.switch_to.parent_frame()
+        # return None
 
-    def goto_home_iframe(self):
+    def back_home_iframe(self):
         """
+        方法名：back_home_iframe
         回到ifrmae开始的地方
+        :return:
         """
         logger.info('回到ifrmae开始的地方')
         self.driver.switch_to.default_content()
@@ -893,7 +917,8 @@ class Page():
             except_type = '其他错误'
             except_info = ex
         if except_type != '':
-            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type, except_info)
+            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type,
+                                      except_info)
         return elements
 
     def wait(self):
@@ -903,29 +928,25 @@ class Page():
         """
         self.driver.implicitly_wait(Setting.WAIT_TIME)
 
-    def clean_screen(self, locators=None):
-        """
-        登录成功失败判断与清屏处理（如，告警提示框等）
-        """
-        if bool(locators):
-            # 重要信息推出窗口关闭 LoginLocators
-            el = self._find_displayed_element(locators.DLG_IMPORT)
-            if bool(el):
-                el.click()
-
-            # 账号异常信息弹窗确认
-            el = self._find_displayed_element(locators.DLG_EXCEPT)
-            if bool(el):
-                el.click()
-
-    def refreshPage(self, is_clean_screen=True, locators=None):
+    def refreshPage(self):
         """
         刷新页面
+        :return:
         """
+
         self.driver.refresh()
         sleep(2)
-        if is_clean_screen:
-            self.clean_screen(locators)
+        # txt = self.driver.find_element_by_tag_name('body').text
+        txt = self.find_element_by_tag_name('body').text
+        if '重要信息推出' in txt:
+            if '登录异常' in txt:
+                print('-----')
+                self.driver.find_element(*LoginLocators.BTN_CONFIRM).click()
+            if '账号异常信息' in txt:
+                print('-----')
+                self.driver.find_element(*LoginLocators.BTN_ARROW).click()
+            # self._find_element(BaseLocators.BTN_ACCOUNT_EXCEPT).click()
+            # self._find_element(BaseLocators.BTN_IMPORTANT_INFO).click()
 
     def clear(self, locator):
         """
@@ -952,8 +973,7 @@ class Page():
             obj = getattr(self, temp)
             if ((temp.startswith('inputSel_')) and callable(obj)):
                 obj('全部')
-            elif ((temp.startswith('inputStr') or temp.startswith('inputDt'))
-                  and callable(obj)):
+            elif (temp.startswith('inputStr') and callable(obj)):
                 obj('')
             elif (temp.startswith('inputCStr') and callable(obj)):
                 obj('c')
@@ -971,7 +991,11 @@ class Page():
         return (locator[0], locator[1] % num)
 
     def bock_wait(self, locator):
-        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(locator))
+        WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable(locator))
+
+    def implic_wait(self):
+        self.driver.implicitly_wait(10)
 
     def find_element_by_tag_name(self, value):
         """
@@ -983,22 +1007,47 @@ class Page():
         # print(len(element))
         return element
 
-    def recoverLeftTree(self):
-        self.menuPage.recoverLeftTree()
+    # def closeTab(self):
+    #     # ****定位到要右击的元素**
+    #     right_click = self.driver.find_element(*(By.XPATH,'//*[@id="maintab__工作台"]'))
+    #     # ****对定位到的元素执行鼠标右键操作
+    #     ActionChains(self.driver).context_click(right_click).perform()
+    #     self.driver.find_element(*(By.XPATH,"//div[@class="x-menu x-menu-floating x-layer "]//*[contains(text(),'关闭其他所有页')]")).click()
 
-        # num = self._find_elements(MenuLocators.TREE_MINUS)
-        # if self.assert_context(MenuLocators.TREE_END) is False:
-        #     pass
-        #
-        # else:
-        #     counter = len(num) - 1
-        #     while counter >= 0:
-        #         if num[counter] is MenuLocators.TREE_END:
-        #             self.click(MenuLocators.TREE_END)
-        #         else:
-        #             num[counter].click()
-        #         counter = counter - 1
-        #     self.click(MenuLocators.TREE_END)
+    def recoverLeftTree(self):
+        num = self._find_elements(MenuLocators.TREE_MINUS)
+        if self.assert_context(MenuLocators.TREE_END) is False:
+            pass
+
+        else:
+            counter = len(num) - 1
+            while counter >= 0:
+                if num[counter] is MenuLocators.TREE_END:
+                    self.click(MenuLocators.TREE_END)
+                else:
+                    num[counter].click()
+                counter = counter - 1
+            self.click(MenuLocators.TREE_END)
+
+    # def clickTabPage(self, name):
+    #     """
+    #     输入tab页名称，选中tab页
+    #     :param name: tab页的中文名称
+    #     :return:
+    #     """
+    #     try:
+    #         locators = (By.XPATH, "(//*[@class="x-tab-strip-text "])[contains(text(),'{}')]".format(name))
+    #         self.click(locators)
+    #     except NoSuchElementException  as e:
+    #         print('点击{}tab页失败'.format(name))
+    #
+    # def tableLineValue(self, i, l):
+    #     try:
+    #         str_xpath = "(//*[@class="x-grid3-row-table"])[{0}]//td[{1}]".format(i, l)
+    #         changeStr = self._find_element((By.XPATH, str_xpath)).text
+    #         return changeStr
+    #     except NameError as e:
+    #         print('获取显示区文字失败')
 
     def assertTableOne(self):
         try:
@@ -1012,8 +1061,8 @@ class Page():
         点击确认按钮
         """
         try:
-            self.commonWait(BaseLocators.BTN_CONFIRM)
-            self.driver.find_element(*BaseLocators.BTN_CONFIRM).click()
+            self.commonWait(MenuLocators.BTN_CONFIRM)
+            self.driver.find_element(*MenuLocators.BTN_CONFIRM).click()
         except Exception as e:
             print('')
 
@@ -1023,29 +1072,28 @@ class Page():
         :param page_name: 当“工作台”时相当于清屏操作：即关闭所有窗口
         :param isCurPage:True-关闭其他所有页；False-关闭当前页
         """
-        self.menuPage.closePages(page_name, isCurPage)
 
-        # # ****定位到要右击的元素**
-        #
-        # loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
-        #
-        # right_click = self.driver.find_element(*loc)
-        # # 鼠标右键操作
-        # WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
-        # sleep(2)
-        # ActionChains(self.driver).context_click(right_click).perform()
-        #
-        # # 待定位右键菜单
-        # forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
-        # loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
-        # pe = self.format_xpath(MenuLocators.CLOSE_PAGES_SPE, forMenu)
-        #
-        # try:
-        #     WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
-        # except:
-        #     loc = pe
-        #     print(loc)
-        # self.driver.find_element(*loc).click()
+        # ****定位到要右击的元素**
+
+        loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
+
+        right_click = self.driver.find_element(*loc)
+        # 鼠标右键操作
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
+        sleep(2)
+        ActionChains(self.driver).context_click(right_click).perform()
+
+        # 待定位右键菜单
+        forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
+        loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
+        pe = self.format_xpath(MenuLocators.CLOSE_PAGES_SPE, forMenu)
+
+        try:
+            WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
+        except:
+            loc = pe
+            print(loc)
+        self.driver.find_element(*loc).click()
 
     @staticmethod
     def format_xpath(xpath, format_val):
@@ -1165,7 +1213,8 @@ class Page():
         print('-------------------')
         try:
             # 显示区是否有值
-            xpath_table = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(assertValues[0])
+            xpath_table = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
+                assertValues[0])
             self.commonWait((By.XPATH, xpath_table))
             # 显示区查询出多少结果数量
             displayNum = len(self._find_elements((By.XPATH, xpath_table)))
@@ -1324,10 +1373,42 @@ class Page():
 
         WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
 
+    def clickCheckBox_g(self, CheckBoxName=','):
+        """
+        选中复选框
+
+        :param CheckBoxName: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
+        :return:
+        """
+        try:
+            lis = CheckBoxName.split(',')
+            xp = '//label[@class=\"x-form-cb-label\"]/preceding-sibling::input[@type="checkbox"]'
+            # 寻找所有复选框做清空处理
+            els = self.driver.find_elements(*(By.XPATH, xp))
+            for el in els:
+                # 判断是否被选中
+                sel = el.is_selected()
+                # 判断元素是否存在
+                tr = el.is_displayed()
+                if sel and tr:
+                    el.click()
+            # 根据复选框名称点击来点击所需要的复选框
+            for i in lis:
+                xp = "//label[@class=\"x-form-cb-label\"and contains(text(),'{}')]/preceding-sibling::input".format(
+                    i)
+
+                lo = (By.XPATH, xp)
+                appear = self._find_displayed_element(lo)
+                appear.click()
+
+        except BaseException as e:
+            print('点击复选框失败')
+            print(e)
+
 
 if __name__ == '__main__':
     # dr = webdriver.Chrome()
-    # el = dr.find_element(*(By.XPATH, '')).get_attribute('class')
+    # el = dr.find_element(*(By.XPATH, '')
     # el.is_selected()
     # #
     # # p = Page(dr)
@@ -1336,6 +1417,8 @@ if __name__ == '__main__':
     # # p.clear_values(Page)
     # # p.base_url = 'hhhhhhhhhhh'
     #
+    # menu_name = '关闭其他所有页' if False else '关闭当前页'
+    # loc1 = Page.format_xpath(MenuLocators.CLOSE_PAGES, menu_name)
     # print(loc1)
     page = Page(None)
     page._clean_blank('查询')

@@ -17,7 +17,8 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 # from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay.orgLowVoltDayConfig_page import \
 #     OrgLowVoltDayConfigPage
-from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay_page import OrgLowVoltDayConfigPage
+from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgLowVoltDay_page import \
+    OrgLowVoltDayConfigPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 

@@ -37,9 +37,11 @@ class RunTmnlStatisticsPage(Page):
         # self.click(RunTmnlStatisticsLocators.BTN_SEARCH)
         self.btn_query()
 
-    # 终端运行状态明细
+
+# 终端运行状态明细
+class RunTmnlStatDetailPage(Page):
     # 用户类型
-    def inputSel_detail_cons_type(self, index):
+    def inputSel_cons_type(self, index):
         # if index == 'c':
         #     self._find_element(RunTmnlStatisticsLocators.DETAIL_CONS_TYPE)
         # else:
@@ -51,7 +53,7 @@ class RunTmnlStatisticsPage(Page):
         self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 终端类型
-    def inputSel_detail_tmnl_type(self, index):
+    def inputSel_tmnl_type(self, index):
         # if index == 'c':
         #     self._find_element(RunTmnlStatisticsLocators.DETAIL_TMNL_TYPE)
         # else:
@@ -63,7 +65,7 @@ class RunTmnlStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 通讯规约
-    def inputSel_detail_tmnl_protocol(self, index):
+    def inputSel_tmnl_protocol(self, index):
         # if index == 'c':
         #     self._find_element(RunTmnlStatisticsLocators.DETAIL_TMNL_PROTOCOL)
         # else:
@@ -75,7 +77,7 @@ class RunTmnlStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 通讯方式
-    def inputSel_detail_tmnl_way(self, index):
+    def inputSel_tmnl_way(self, index):
         # if index == 'c':
         #     self._find_element(RunTmnlStatisticsLocators.DETAIL_TMNL_WAY)
         # else:
@@ -87,7 +89,7 @@ class RunTmnlStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 终端厂家
-    def inputSel_detail_tmnl_factory(self, index):
+    def inputSel_tmnl_factory(self, index):
         # if index == 'c':
         #     self._find_element(RunTmnlStatisticsLocators.DETAIL_TMNL_FACTORY)
         # else:
@@ -99,7 +101,7 @@ class RunTmnlStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 终端状态
-    def inputSel_detail_tmnl_ststus(self, index):
+    def inputSel_tmnl_ststus(self, index):
         # if index == 'c':
         #     self._find_element(RunTmnlStatisticsLocators.DETAIL_TMNL_STATUS)
         # else:
@@ -111,6 +113,6 @@ class RunTmnlStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 查询按钮
-    def btn_detail_search(self):
+    def btn_search(self):
         # self.click(RunTmnlStatisticsLocators.BTN_DETAIL_SEARCH)
         self.btn_query(True)

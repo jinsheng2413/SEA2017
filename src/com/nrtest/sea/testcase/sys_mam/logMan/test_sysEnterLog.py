@@ -81,9 +81,13 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LogEdit_data.sysEnterLog_para)[0:1])
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LogEdit_data.logEdit_para))
     def test_query(self, para):
+        """系统管理-->日志管理-->系统登录日志
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

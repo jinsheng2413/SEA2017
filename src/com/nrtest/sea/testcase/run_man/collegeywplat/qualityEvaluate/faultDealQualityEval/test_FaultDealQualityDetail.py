@@ -92,6 +92,10 @@ class TestFaultDealQualityDetail(TestCase, FaultDealQualityDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(OperOrganManData.para_FaultDealQualityEval, OperOrganManData.para_FaultDealQualityEval_detail))
     def test_query(self, para):
+        """运行管理→采集运维平台→故障处理质量评价:故障处理质量明细
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
@@ -104,19 +108,3 @@ class TestFaultDealQualityDetail(TestCase, FaultDealQualityDetailPage):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
-
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 终端类型
-    #     self.inputRSel_tmnl_type('全部')
-    #     # 终端厂家
-    #     self.inputRSel_tmnl_fac('宁波三星')
-    #     # 查询日期
-    #     self.inputDt_query_date('2018-09')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(TmnlClockStaticLocators.TABLE_DATA)
-    #     self.assertTrue(result)

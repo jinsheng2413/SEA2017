@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 运行管理-->采集运维平台-->组织运维管理
-# 外包队伍管理
+# 外包队伍成员管理
 @ddt
 class TestOutMemberManTroop(TestCase,OutMemberManPage):
 
@@ -88,6 +88,10 @@ class TestOutMemberManTroop(TestCase,OutMemberManPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(Collegeywplat_data.para_operOrganMan, Collegeywplat_data.para_operOrganMan_member))
     def test_query(self, para):
+        """运行管理-->采集运维平台-->组织运维管理:外包队伍成员管理
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -93,10 +93,9 @@ class TestSpVoltAnalyseDetail(TestCase, SpVoltAnalyseDetailPage):
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_SpVoltAnalyse,
                                   TradnsformerMonitorData.para_SpVoltAnalyse_detail))
     def test_query(self, para):
-        """
+        """高级应用-->配变监测分析-->电压质量分析-->专/公变电压质量分析:专/公变电压质量明细
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -111,17 +110,3 @@ class TestSpVoltAnalyseDetail(TestCase, SpVoltAnalyseDetailPage):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
-
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 用户类型
-    #     self.inputSel_cons_sort('专变')
-    #     # 查询日期
-    #     self.inputDt_query_date('2018-09-01')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(SpVoltAnalyseDetailLocators.TABLE_DATA)
-    #     self.assertTrue(result)

@@ -18,6 +18,7 @@ from com.nrtest.sea.pages.base_app.interfaceMan.InterfaceMonitor_page import Int
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用--》接口管理--》接口管理
 @ddt
 class TestInterfaceMonitor(TestCase, InterfaceMonitorPage):
 
@@ -60,7 +61,7 @@ class TestInterfaceMonitor(TestCase, InterfaceMonitorPage):
         """
 
         # 接口类型
-        self.inputSel_interfaceType(para['INTERFACE_TYPE'])
+        self.inputSel_interface_type(para['INTERFACE_TYPE'])
         # 开始时间
         self.inputDt_start_date(para['START_TIME'])
         # 结束时间

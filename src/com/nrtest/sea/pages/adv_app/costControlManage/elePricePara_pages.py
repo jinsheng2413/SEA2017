@@ -33,9 +33,9 @@ class ElePricePages(Page):
         self.input(value)
 
     # 任务类型
-    def inputSel_task_type(self, index):
-        self.clean_label(index)
-        self.selectDropDown(index)
+    def inputSel_task_cata(self, option):
+        self.clean_label(option)
+        self.selectDropDown(option)
 
     # 执行状态
     def inputSel_execute_state(self, option):
@@ -44,7 +44,7 @@ class ElePricePages(Page):
 
 
     # 接收时间
-    def inputStr_receive_time(self, value):
+    def inputDt_receive_time(self, value):
         self.clean_label(value)
         self.inputDate(value)
 
@@ -54,5 +54,4 @@ class ElePricePages(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(ElePricePara_locators.BTN_QRY)
         self.btn_query()

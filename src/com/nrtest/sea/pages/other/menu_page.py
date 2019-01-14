@@ -9,15 +9,37 @@
 """
 from time import sleep
 
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
 from com.nrtest.common import global_drv
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.login import Login
-from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.menu_locators import *
 
 
 class MenuPage(Page):
+    def __init__(self, driver):
+
+        super().__init__(driver)
+
+        # SEA--SEA2017标设
+        # SEA2.0--新一代采集系统
+        # SZ_JLZDH--计量自动化(SZ)
+        # GX_JLZDH--计量自动化(GX)
+        # D5000--电能量采集系统（D5000/PBS5000)
+        if self.project_no == 'SEA':
+            self.locator_class = MenuLocators
+        elif self.project_no == 'SEA2.0':
+            self.locator_class = MenuSEA20Locators
+        elif self.project_no in (['PBS5000', 'D5000']):
+            self.locator_class = MenuPBSLocators
+        elif self.project_no.endswith('JLZDH'):
+            self.locator_class = MenuJLZDHLocators
+        print('执行【{}】项目的菜单元素'.format(self.project_no))
+
     @staticmethod
     def openMenu(menuNo):
         """
@@ -27,6 +49,7 @@ class MenuPage(Page):
         """
         menuPage = MenuPage(global_drv.get_driver())
         menuPage.click_menu(menuNo)
+        sleep(3)
         return menuPage
 
     def click_menu(self, menu_no, isPath=False):
@@ -41,34 +64,31 @@ class MenuPage(Page):
         menu_path = ls_menu[0]
         # 菜单动作：01-点击；02-悬浮（HOVER)；03-新窗口；11-滚屏且点击；12-滚屏且悬浮；13-滚屏且新窗口
         action = ls_menu[1]
+        # PBS5000，用于区分每个菜单用到的左边树类型
+        self.tree_type = ls_menu[2] if bool(ls_menu[2]) else '20'
+
         items = menu_path.split(';')
 
         # 菜单编号、菜单名
         self.menu_no = menu_no
         self.menu_name = items[-1]
         # 菜单路径
-        self.menu_path = ls_menu[2] + '-->' + '-->'.join(items[1:])
+        self.menu_path = ls_menu[-1] + '-->' + '-->'.join(items[1:])
         print('开始执行：{} 相关用例....\r'.format(self.menu_path))
 
-        # 当菜单已打开已打开时不再重新打开
-        if not self.exists_menu:
-            # SEA--SEA2017标设
-            # SEA2.0--新一代采集系统
-            # SZ_JLZDH--计量自动化(SZ)
-            # GX_JLZDH--计量自动化(GX)
-            # D5000--电能量采集系统（D5000/PBS5000)
-            project_no = Setting.PROJECT_NO
-            if project_no == 'SEA':
-                self.locator_class = MenuLocators
-                self._click_sea2017(items, action)
-            else:
-                if project_no == 'SEA2.0':
-                    self.locator_class = MenuSEA20Locators
-                elif project_no in (['D5000', 'PBS5000']):
-                    self.locator_class = MenuPBSLocators
-                elif project_no.endswith('JLZDH'):
-                    self.locator_class = MenuJLZDHLocators
-                self._click_common_menu(items, action)
+        # self.menu_para = DataAccess.get_menu_setup(self.project_no)
+        if self.project_no == 'SEA':
+            self._click_sea2017(items, action)
+        else:
+            self._click_common_menu(items, action)
+
+    def driver_action(self, menu_level, menu_levels):
+        #     {'ACTION': '02', 'FIRST_LEVEL': 'N', 'LEVELS': ['2', '3']}
+        if self.menu_para['FIRST_LEVEL'] == 'Y':
+            is_pass = menu_level < menu_levels and menu_level >= self.menu_para['LEVELS']
+        else:
+            is_pass = menu_level < menu_levels and str(menu_level) in self.menu_para['LEVELS']
+        return self.menu_para['ACTION'] if is_pass else '01'
 
     def _click_sea2017(self, items, action='01'):
         """
@@ -97,19 +117,38 @@ class MenuPage(Page):
         通用菜单打开操作
         :param items: 菜单路径
         :param actions:菜单操作动作
-        :return:
         """
         ls_action = actions.split('/')
         if ls_action[-1] == '':
             ls_action.pop()
-        for i, item in enumerate(items):
-            locators = getattr(self.locator_class, 'MENU_LEVEL' + str(i + 1))
-            loc = (locators[0], locators[1].format(item))
-            try:
-                action = ls_action[i]
-            except:
-                action = '01'
-            self._menu_action(loc, action)
+        for idx, item in enumerate(items):
+            next_action = self._speical_deal(items, idx)
+            # next_action: True - 继续处理当前菜单；False - 跳过处理当前菜单
+            if next_action:
+                locators = getattr(self.locator_class, 'MENU_LEVEL' + str(idx + 1))
+                loc = self.format_xpath(locators, item)
+                try:
+                    action = ls_action[idx]
+                    if action == '':
+                        action = '01'
+                except:
+                    action = '01'
+                self._menu_action(loc, action)
+
+    def _speical_deal(self, items, idx):
+        """
+        通用菜单处理中，针对不同项目及层级菜单的特殊处理
+        :param items: 菜单列表
+        :param idx: 第 idx + 1 层级菜单
+        :return: True-继续处理当前菜单；False-跳过处理当前菜单
+        """
+        next_action = True
+        ####################PBS5000的特殊判断处理############################
+        if idx == 0 and self.project_no == 'PBS5000':
+            # 判断是否为首页及当前一级菜单
+            next_action = self.goto_home_page(items[idx])
+
+        return next_action
 
     def _menu_action(self, object, action):
         """
@@ -125,7 +164,7 @@ class MenuPage(Page):
                 object.click()
             if flag == '3':  # 新窗口
                 sleep(2)  # 等待窗口打开
-                self.switch_to_window()
+                self.goto_window()
         elif flag == '2':  # 悬浮
             self.hover(object)  # 参数必须是locator
 
@@ -143,7 +182,7 @@ class MenuPage(Page):
                 # el_menu.click()
                 self._menu_action(object, action)
             else:
-                # el = self._find_element(MenuLocators.BTN_SCROLL_DOWN)
+                # el = self._find_element(self.locator_class.BTN_SCROLL_DOWN)
                 el = self._find_element(self.locator_class.BTN_SCROLL_DOWN)
                 cnt = 0  # 避免菜单不存在
                 while cnt < 15:
@@ -157,13 +196,101 @@ class MenuPage(Page):
         except Exception as ex:
             DataAccess.el_operate_log(self.menu_name, None, locator, None, '找不到元素', ex)
 
+    def goto_home_page(self, menu_name=''):
+        """
+        PBS5000专用，当前菜单为
+        :param menu_name: 目标一级菜单名
+        :return: True-已退回到一级菜单，False-仍驻留在menu_name菜单
+        """
+        curr_page_title = self.get_titile()
+
+        # 判断是否是首页
+        is_home_page = curr_page_title == self.main_page_title  # Setting.PAGE_TILE
+        if is_home_page:
+            return is_home_page
+
+        # 判断是否是当前页
+        if curr_page_title == menu_name:
+            return False
+        else:  # 都不是，则退回首页
+            el = self._find_element(self.locator_class.GOTO_MAINPAGE, 1.5)
+            if bool(el):
+                el.click()
+                is_home_page = True
+                sleep(2)
+            else:
+                raise ("疯了......")
+        return is_home_page
+
+    def recoverLeftTree(self):
+        """
+        从BasePage类转来 MenuLocators
+        :return:
+        """
+        num = self._find_elements(self.locator_class.TREE_MINUS)
+        if self.assert_context(self.locator_class.TREE_END) is False:
+            pass
+
+        else:
+            counter = len(num) - 1
+            while counter >= 0:
+                if num[counter] is self.locator_class.TREE_END:
+                    self.click(self.locator_class.TREE_END)
+                else:
+                    num[counter].click()
+                counter = counter - 1
+            self.click(self.locator_class.TREE_END)
+
+    def closePages(self, page_name='工作台', isCurPage=True):
+        """
+        通过工作台或定位菜单页面，关闭当前页面或除当前页面外其他页面
+        :param page_name: 当“工作台”时相当于清屏操作：即关闭所有窗口
+        :param isCurPage:True-关闭其他所有页；False-关闭当前页
+        """
+
+        # ****定位到要右击的元素**  从BasePage类转来
+
+        loc = self.format_xpath(self.locator_class.CURRENT_MENU, page_name)
+
+        right_click = self.driver.find_element(*loc)
+        # 鼠标右键操作
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
+        sleep(2)
+        ActionChains(self.driver).context_click(right_click).perform()
+
+        # 待定位右键菜单
+        forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
+        loc = self.format_xpath(self.locator_class.CLOSE_PAGES, forMenu)
+        pe = self.format_xpath(self.locator_class.CLOSE_PAGES_SPE, forMenu)
+
+        try:
+            WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
+        except:
+            loc = pe
+            print(loc)
+        self.driver.find_element(*loc).click()
+
+    def displayTreeMenu(self):
+        """
+        打开左边树菜单栏 从BasePage转来
+        :return:
+        """
+        try:
+            # MenuLocators
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.locator_class.BTN_LEFT_MENU))
+            el = self.driver.find_element(*self.locator_class.BTN_LEFT_MENU)
+            if el.is_displayed():  # 左边树没显示时打开
+                el.click()
+        except:
+            print('左边树菜单栏已经打开')
+
     # 左边树
     def btn_plus(self, index):
-        locator = self.get_select_locator(MenuLocators.BTN_LEFT_PLUS, index)
+        locator = self.get_select_locator(self.locator_class.BTN_LEFT_PLUS, index)
         self.click(locator)
 
     def btn_company_plus(self, index):
-        locator = self.get_select_locator(MenuLocators.BTN_COMPANY_PLUS, index)
+        locator = self.get_select_locator(self.locator_class.BTN_COMPANY_PLUS, index)
         print(locator)
         self.click(locator)
 
@@ -171,7 +298,7 @@ class MenuPage(Page):
         """
         选择省份
         """
-        self.click(MenuLocators.BTN_LEFT_MENU_ELETRIC)
+        self.click(self.locator_class.BTN_LEFT_MENU_ELETRIC)
 
     def btn_select_company(self, number):
         """
@@ -179,21 +306,21 @@ class MenuPage(Page):
         :param number:
         """
         nb = number + 1
-        lr = self.get_select_locator(MenuLocators.BTN_COMPANY, nb)
+        lr = self.get_select_locator(self.locator_class.BTN_COMPANY, nb)
         self.click(lr)
 
     def btn_left_arrow(self):
         """
         点击双向箭头
         """
-        self.click(MenuLocators.BTN_LEFT_MENU)
+        self.click(self.locator_class.BTN_LEFT_MENU)
 
     def btn_select_county(self, index):
         """
         选择县
         :param index:
         """
-        lr = self.get_select_locator(MenuLocators.BTN_COUNTY, index)
+        lr = self.get_select_locator(self.locator_class.BTN_COUNTY, index)
         self.click(lr)
 
     def page_assert_body(self):
@@ -205,7 +332,7 @@ class MenuPage(Page):
         选供电所
         :param index:
         """
-        lr = self.get_select_locator(MenuLocators.BTN_COUNTY_AND_USER, index)
+        lr = self.get_select_locator(self.locator_class.BTN_COUNTY_AND_USER, index)
         self.click(lr)
 
     def btn_suitable_arrow(self):
@@ -262,28 +389,22 @@ class MenuPage(Page):
         # {02:代表用户编号，03：代表终端逻辑地址，04：电能表资产号}
 
         # 点击用户标签页
-        self.click(MenuLocators.NODE_USER)
-        self.input(node_value, *MenuLocators.NODE[node_flag])
+        self.click(self.locator_class.NODE_USER)
+        self.input(node_value, *self.locator_class.NODE[node_flag])
 
         # 点击查询按钮
-        self.click(MenuLocators.USER_TAB_BTN_QRY)
+        self.click(self.locator_class.USER_TAB_BTN_QRY)
 
         # 等待查询结果，最好通过其他途径判断查询已返回
-        self.commonWait(MenuLocators.NODE_USER_TAB_RSLT_DEFAULT)
-        self.clear(MenuLocators.NODE[node_flag])
+        self.commonWait(self.locator_class.NODE_USER_TAB_RSLT_DEFAULT)
+        self.clear(self.locator_class.NODE[node_flag])
 
         # 定位查询结果，默认选择第一行记录
-        xpath = self.format_xpath(MenuLocators.NODE_USER_TAB_RSLT, number)
+        xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, number)
         print(xpath)
 
         self.click(xpath)
         print('------------')
-
-    # def clickLeftTree(self, tree):
-    #     tree = tree.split(';')
-    #     self.btn_plus(1)
-    #     self.btn_company_plus(list[0])
-    #     self.btn_company_plus(list[1])
 
     def clickAllMenu(self):
         menus = DataAccess.getAllMenu()

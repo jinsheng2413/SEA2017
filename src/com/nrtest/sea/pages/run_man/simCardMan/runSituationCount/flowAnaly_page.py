@@ -11,6 +11,7 @@
 
 from com.nrtest.common.base_page import Page
 
+
 # 运行管理-->SIM卡管理-->运行情况分析-->流量分析
 # 流量统计
 class FlowStaticPage(Page):

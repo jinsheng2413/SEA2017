@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.eleParaManLocators_pages imp
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》电价参数管理
+# 高级应用--》费控管理--》本地费控--》电价参数管理::阶梯电价
 @ddt
 class TestEleParaMan(TestCase, EleParaMan_step_Page):
 
@@ -64,14 +64,14 @@ class TestEleParaMan(TestCase, EleParaMan_step_Page):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 开始时间
-        self.inputStr_startTimeTwo(para['START_TIME'])
+        self.inputStr_start_time(para['START_TIME'])
         # 结束时间
-        self.inputStr_endTimeTwo(para['END_TIME'])
+        self.inputStr_end_time(para['END_TIME'])
         # 是否已生成参数
-        # self.inputSel_ComeIntoPara_Two(para['COME_INTO_PARA'])
+        # self.inputSel_ComeIntoPara(para['COME_INTO_PARA'])
 
-        # 费率来源
-        self.inputChk_fee_from(para['FEE_FROM'])
+        # 任务来源
+        self.inputChk_task_from(para['TASK_FROM'])
 
         self.btn_qry()
 

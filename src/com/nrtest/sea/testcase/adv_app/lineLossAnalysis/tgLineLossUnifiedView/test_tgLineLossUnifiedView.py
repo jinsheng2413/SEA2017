@@ -66,11 +66,6 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
         # 日线损，查询按钮
         self.btn_search_day()
 
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, tabName='日线损'))
-    # def test_der(self, para):
-    #     self.query(para)
-
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

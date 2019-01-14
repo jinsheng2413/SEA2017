@@ -18,7 +18,7 @@ from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_qual
     GatherQualityAnalyze_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.collectSuccessRateStat_page import \
     CollectSuccessRateStatPage
-from com.nrtest.sea.task.commonMath import *
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率综合统计

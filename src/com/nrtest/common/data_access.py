@@ -48,19 +48,40 @@ class DataAccess:
         :param group_no: 测试用例组
         :return:
         """
-        sql = 'select param_item_val as menu_level, min_limit as action from tst_parameter pa \
+        sql = 'select param_item_val as menu_level, min_limit as menu_action from tst_parameter pa \
                 WHERE pa.project_no = :1 \
                   AND param_no = \'BASE\' \
                   AND param_item_no = \'START_MENU_LEVEL\''
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [project_no])
-        return dataSet
+        menu_level = dataSet[0][0]
+        # ('2:', '02')  从第2级菜单开始
+        # ('2,3', '02') 只有2,3两级菜单
+        menu_para = {'ACTION': dataSet[0][1]}
+        if menu_level[-1] == ':':
+            menu_para.setdefault('FIRST_LEVEL', 'Y')
+            menu_para.setdefault('LEVELS', int(menu_level[:-1]))
+        else:
+            menu_para.setdefault('FIRST_LEVEL', 'N')
+            menu_para.setdefault('LEVELS', menu_level.split(','))
+        return Dict(menu_para)
 
     @staticmethod
     def getLeftTree(treeNO):
         pyoracle = PyOracle.getInstance()
         org_path = pyoracle.callfunc('pkg_nrtest.get_org_path', 'str', [treeNO, Setting.PROJECT_NO])
         return org_path
+
+    @staticmethod
+    def getTreeNode(node_no):
+        """
+        应用于PBS等左边树管理
+        :param node_no:
+        :return:
+        """
+        pyoracle = PyOracle.getInstance()
+        node_path = pyoracle.callfunc('pkg_nrtest.get_tree_node_path', 'str', [node_no, Setting.PROJECT_NO])
+        return node_path
 
     @staticmethod
     def getCaseData(menuNo, tabName='01', valCheck=False):
@@ -139,6 +160,24 @@ class DataAccess:
         return dataSet
 
     @staticmethod
+    def get_data_dictionary(dict_catalog):
+        """
+        提取数据字典的查询条件类别
+        :param dict_catalog: 查询条件分类编码
+        :return:
+        """
+        sql = 'SELECT dict_name FROM tst_dictionary t \
+                WHERE project_no = :1  \
+                  AND dict_catalog = :2 \
+                ORDER BY t.dict_no'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, dict_catalog])
+
+        for idx, row in enumerate(dataSet):
+            dataSet[idx] = row[0]
+        return dataSet
+
+    @staticmethod
     def refresh_menu(p_menu_no=''):
         """
         刷新菜单关系（由坐标定位改为按名称定位）
@@ -163,8 +202,8 @@ class DataAccess:
     @staticmethod
     def el_operate_log(menu_no, tst_case_id, locator, class_path, except_type, except_info):
         pyoracle = PyOracle.getInstance()
-        sql = 'insert into tst_operate_log (operate_log_id, computer_name, project_no, menu_no, tst_case_id, locator, class_name, except_type, except_info) \
-        values (seq_tst_operate_log.nextval, :1, :2, :3, :4, :5, :6, :7, :8)'
+        sql = 'insert into tst_operate_log (computer_name, project_no, menu_no, tst_case_id, locator, class_name, except_type, except_info) \
+        values (:1, :2, :3, :4, :5, :6, :7, :8)'
         para = (os.environ['COMPUTERNAME'],
                 Setting.PROJECT_NO,
                 menu_no,
@@ -202,7 +241,7 @@ if __name__ == '__main__':
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
-    pass
+    print(DataAccess.get_data_dictionary('FEE_FROM'))
     # for i in  str[4:10]:
     #     print(i)
     # print(DataAccess.getAllMenu())

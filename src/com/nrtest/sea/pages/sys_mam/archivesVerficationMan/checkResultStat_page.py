@@ -17,7 +17,7 @@ class CheckResultStatPage(Page):
 
     # 异常类型
     def inputSel_except_type(self, options):
-        self.selectDropDown(options)
+        self.selectCheckBox(options)
 
     # 台区编号
     def inputStr_tg_no(self, value):
@@ -25,7 +25,7 @@ class CheckResultStatPage(Page):
 
     # 任务类型
     def inputSel_task_type(self, options):
-        self.selectDropDown(options)
+        self.selectCheckBox(options)
 
     # 开始时间
     def inputDt_start_date(self, value):

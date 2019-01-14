@@ -23,6 +23,7 @@ from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.base_locators import BaseLocators
+from com.nrtest.sea.locators.other.common_locators import CommonLocators
 from com.nrtest.sea.locators.other.login_locators import LoginLocators
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 
@@ -83,6 +84,37 @@ class Page():
         # path = os.path.abspath(self.img_path)
 
         self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
+
+    def error_window_process(func):
+        """
+        出现弹出框异常，抛出页面报错
+        使用信息：
+
+        例如：
+        @error_window_process
+        def btn_query(self, is_multi_tab=False):
+        """
+
+        def wrapper(*args, **kwargs):
+            res = func(*args, **kwargs)
+            tag = False
+            try:
+
+                el = args[0]._find_element(CommonLocators.error_window_process, seconds=2)
+                if el:
+                    tag = True
+                    print('弹窗错误信息：%s' % el.text)
+                    args[0]._find_element(CommonLocators.btn_confirm_locator).click()
+                    if tag:
+                        raise RuntimeError('PageError')
+
+                    return res
+
+            except:
+                if tag:
+                    raise RuntimeError('page error--弹出框错误异常')
+
+        return wrapper
 
     def fail_on_screenshot(self, func):
         """
@@ -174,7 +206,8 @@ class Page():
             except_info = ex
             logger.error(u'其他查找元素错误-->  {}\n{}'.format(locator, ex))
         if except_type != '':
-            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type, except_info)
+            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type,
+                                      except_info)
         return element
 
     def start_case(self, para, class_path=''):
@@ -293,6 +326,7 @@ class Page():
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
 
+    @error_window_process
     def btn_query(self, is_multi_tab=False):
         """
         通用页面查询按钮
@@ -417,7 +451,8 @@ class Page():
         clean_obj = {'button': "//button[contains(text(), '{}')]",
                      'label': "//label[contains(text(), '{}')]",
                      'span': "//span[contains(text(), '{}')]"}
-        clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(tag_text[0])
+        clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(
+            tag_text[0])
         script = BaseLocators.CLEAN_BLANK % clean_me
         print(script)
         self.exec_script(script)
@@ -883,7 +918,8 @@ class Page():
             except_type = '其他错误'
             except_info = ex
         if except_type != '':
-            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type, except_info)
+            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type,
+                                      except_info)
         return elements
 
     def wait(self):
@@ -1178,7 +1214,8 @@ class Page():
         print('-------------------')
         try:
             # 显示区是否有值
-            xpath_table = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(assertValues[0])
+            xpath_table = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
+                assertValues[0])
             self.commonWait((By.XPATH, xpath_table))
             # 显示区查询出多少结果数量
             displayNum = len(self._find_elements((By.XPATH, xpath_table)))
@@ -1268,7 +1305,6 @@ class Page():
                             pass
                     except:
                         print('跳转验证失败')
-
 
                 # elif displayCheckbox == False:
                 #     gl = self.checkBoxAssertLine(va[1])

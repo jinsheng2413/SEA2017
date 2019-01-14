@@ -56,6 +56,8 @@ class Test_ManualEdit(TestCase, ManualEditPage):
     def query(self, para):
         # 打开左边树选择供电单位
         self.openLeftTree(para['TREE_NODE'])
+        # 抄表段号
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 处理类型

@@ -20,6 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用--接口管理--营销业务接口--服务调用情况
+# 服务调用统计
 @ddt
 class TestOtherServiceCallStatus(TestCase, MarketingServiceCallStatusPage):
 

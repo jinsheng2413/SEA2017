@@ -29,7 +29,7 @@ class CommumMeterPage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, options):
-        self.selectDropDown(options)
+        self.selectCheckBox(options)
 
     # 终端运行状态
     def inputSel_tmnl_run_status(self, options):

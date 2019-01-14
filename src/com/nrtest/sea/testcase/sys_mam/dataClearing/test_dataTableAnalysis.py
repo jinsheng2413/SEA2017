@@ -92,6 +92,10 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataClearing_data.dataTableAnalysis_para))
     def test_query(self, para):
+        """系统管理-->数据清理管理-->数据表分析
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

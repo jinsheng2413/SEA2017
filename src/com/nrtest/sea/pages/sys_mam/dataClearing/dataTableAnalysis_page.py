@@ -10,11 +10,11 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.dataClearing.dataTableAnalysis_locators import DataTableAnalysisLocators
 
 
 # 系统管理-->数据清理管理-->数据表分析
 class DataTableAnalysisPage(Page):
+
     # 核查日期
     def inputDt_examine_date(self, value):
          self.inputDate(value)

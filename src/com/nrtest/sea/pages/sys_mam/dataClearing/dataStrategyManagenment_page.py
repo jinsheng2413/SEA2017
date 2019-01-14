@@ -9,12 +9,11 @@
 @desc:
 """
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.dataClearing.dataStrategyManagenment_locators import \
-    DataStrategyManagenmentLocators
 
 
 # 系统管理-->数据清理管理-->历史数据策略管理
 class DataStrategyManagenmentPage(Page):
+
     # 存储周期
     def inputSel_storage_cycle(self, options):
         self.selectDropDown(options)

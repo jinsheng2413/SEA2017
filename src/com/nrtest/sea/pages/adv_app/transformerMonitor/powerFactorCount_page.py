@@ -27,7 +27,6 @@ class PowerFactorCountStaticPage(Page):
     def btn_qry(self):
         self.btn_query()
 
-
 # 功率因数越限明细
 class PowerFactorCountDetailPage(Page):
 

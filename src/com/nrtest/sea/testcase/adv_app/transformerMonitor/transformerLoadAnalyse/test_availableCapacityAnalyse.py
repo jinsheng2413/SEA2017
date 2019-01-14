@@ -93,10 +93,9 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_AvailableCapacityAnalyse)[1:2])
     def test_query(self, para):
-        """
+        """高级应用-->配变负载分析-->报装可用容量分析
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -111,17 +110,3 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
-
-    # def test_test(self):
-    #     # 供电单位
-    #     openLeftTree('13401')
-    #     # 查询日期
-    #     self.inputDt_query_date('2018-09')
-    #     # 负载率
-    #     self.inputStr_load_rate('')
-    #
-    #     self.btn_query()
-    #     self.sleep_time(2)
-    #     # 校验
-    #     result = self.assert_context(AvailableCapacityAnalyseLocators.TABLE_DATA)
-    #     self.assertTrue(result)

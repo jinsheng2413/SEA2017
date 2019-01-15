@@ -18,7 +18,7 @@ from com.nrtest.pbs.tree.tree_locators import TreeLocators
 
 
 class TreePage(Page):
-    def __init__(self, driver, menu_page=None, tree_type='20'):
+    def __init__(self, driver, menu_page=None):
         """
 
         :param driver:
@@ -29,7 +29,10 @@ class TreePage(Page):
                 40-普通树         41-并且带复选框；采集运维-->手动对时
         """
         super().__init__(self, driver, menu_page)
-        self.tree_type = tree_type
+        if bool(menu_page):
+            self.tree_type = menu_page.tree_type
+        else:
+            self.tree_type = '20'
 
     def openLeftTree(self, node_no, op_mode=True):
         """

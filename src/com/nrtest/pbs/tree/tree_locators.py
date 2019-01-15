@@ -11,7 +11,8 @@ from selenium.webdriver.common.by import By
 
 
 class TreeLocators:
-    TREE_DIV = (By.XPATH, '//div[@class="panel layout-panel layout-panel-west layout-split-west"]')
+    # class = "panel layout-panel layout-panel-west layout-split-west"
+    TREE_DIV = (By.XPATH, '//div[ends-with(@class, "split-west"]')
 
     ROOT_NODE = (By.XPATH, '//ul[@id="treeDemo"]')
     # 计算公式：(By.XPATH, //div[@id = "treetab"]')'
@@ -51,30 +52,27 @@ class TreeLocators:
     # 		class="button level3 switch bottom_open"
     # 	设备
     # 	$x('//div[@id="treeDemo"]//li[@class="level4"]/a[@title="800kV.-高主表"]/../span[@id="treeDemo_19_switch"]')
-    # 			class="button level4 switch center_docu"  --第一个后中间节点
+    # 			class="button level4 switch center_docu"  --第一个、中间节点
     #
     # 	$x('//div[@id="treeDemo"]//li[@class="level4"]/a[@title="500kV.测试发电机组副表"]/../span[@id="treeDemo_22_switch"]')
     # 			class="button level4 switch bottom_docu"  --最后一个节点
 
     # 选择某变电站范围内搜索节点：如，某变电站下第n层的XXX节点: 省级用户level是2，市级用户level是1
     NODE_LEVEL_IN_SUB = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/..//li[@class="level{}"]/a[@title="{}"]/../span')
-    # NODE_LEVEL = (By.XPATH, '//div[@id="treeDemo"]//li[@class="level2"]/a[@title="贵阳局.800kV黎平变电站"]/..//li[@class="level3"]/a[@title="500kV"]/../span')
 
     # 左边树: 全模型/搜索/收藏夹
     NODE_TAB = (By.XPATH, '//div[@class="tabs-wrap"]//span[text()="{}"]')
 
-    # 搜索TAB
+    # 【搜索TAB】
     # 向下箭头按钮（hover）
     DOWN_ARROW = (By.XPATH, '//span[@class="m-btn-downarrow"]')
-
+    # 查询条件
     INPUT_SEARCH = (By.XPATH, '//span[@class="textbox searchbox"]//input[@placeholder="请输入关键字"]')
 
     # 查询按钮：
     BTN_SERCH = (By.XPATH, '//a[@class="textbox-icon searchbox-button"]')
 
     # 带复选框的树节点
+    # 不选中'//span[@class="button chk checkbox_false_full"'
+    # 选中'//span[@class="button chk checkbox_true_full"'
     NODE_CHK = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/../span[starts-with(@class,"button chk checkbox")]')
-    # # 不选中
-    # '//span[@class="button chk checkbox_false_full"'
-    # # 选中
-    # '//span[@class="button chk checkbox_true_full"'

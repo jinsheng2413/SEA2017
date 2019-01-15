@@ -46,14 +46,9 @@ class LoginPage(Page):
     def is_login_success(self):
         """
         根据特殊标签，确认登录是否成功 还在登录界面则表示登录不成功
-        :return:
+        :return: True-登录成功；False-登录失败
         """
-        element = None
-        try:
-            element = self.driver.find_element(*self.locator_class.QRY_USERNAME)
-        except:
-            pass
-        return not bool(element)
+        return not bool(self._direct_find_element(self.locator_class.QRY_USERNAME))
 
     def refresh_valid_mask(self):
         """

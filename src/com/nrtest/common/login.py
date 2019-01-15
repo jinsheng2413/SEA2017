@@ -73,7 +73,6 @@ class Login:
                 mask_code = self._getMaskCode(driver)
                 loginPage.input_identifying(mask_code)
             loginPage.btn_login()
-            sleep(2)
 
             # 确认是否登录成功
             is_logined = loginPage.is_login_success()

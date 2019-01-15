@@ -229,6 +229,18 @@ class Page():
         # print('结束... \n用例ID：{}'.format(para['TST_CASE_ID']))
         print('结束... \n用例ID：{}'.format(self.tst_case_id))
 
+    def _direct_find_element(self, locator):
+        """
+        直接查找元素，不存在时不需要抛出异常处理，如：登录成功判断、左边树是否已打开、菜单是否已存在等
+        :return:
+        """
+        element = None
+        try:
+            element = self.driver.find_element(*locator)
+        except:
+            pass
+        return element
+
     def _find_displayed_element(self, locators, idx=1):
         """
         当定位到多个元素时，返回第一个显示的元素
@@ -637,13 +649,15 @@ class Page():
             value = para
         return value
 
-    def openLeftTree(self, treeNo):
+    def openLeftTree(self, treeNo, is_closed=False):
         """
         打开左边树
         :param treeNo:
+        :param is_closed:Flase-左边树已处于打开状态，不需要再次点开；True-左边树处于关闭状态，需先点开
         """
         # 打开左边树
-        self.menuPage.displayTreeMenu()
+        if is_closed:
+            self.menuPage.displayTreeMenu()
         try:
             node = Dict(eval(treeNo))
             print(node)

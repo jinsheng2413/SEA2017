@@ -275,14 +275,19 @@ class MenuPage(Page):
         打开左边树菜单栏 从BasePage转来
         :return:
         """
-        try:
-            # MenuLocators
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.locator_class.BTN_LEFT_MENU))
-            el = self.driver.find_element(*self.locator_class.BTN_LEFT_MENU)
-            if el.is_displayed():  # 左边树没显示时打开
-                el.click()
-        except:
-            print('左边树菜单栏已经打开')
+        el = self._direct_find_element(self.locator_class.BTN_LEFT_MENU)
+        if bool(el) and el.is_displayed():
+            el.click()
+
+        # try:
+        #     # MenuLocators
+        #     WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable(self.locator_class.BTN_LEFT_MENU))
+        #     el = self.driver.find_element(*self.locator_class.BTN_LEFT_MENU)
+        #     if el.is_displayed():  # 左边树没显示时打开
+        #         el.click()
+        # except:
+        #     # print('左边树菜单栏已经打开')
+        #     pass
 
     # 左边树
     def btn_plus(self, index):

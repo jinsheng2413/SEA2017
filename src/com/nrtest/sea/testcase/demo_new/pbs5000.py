@@ -28,7 +28,7 @@ class TestPBS5000(TestCase, TreePage):
         # menuPage = MenuPage.openMenu('0000101')  # 厂站设备--30
         # menuPage = MenuPage.openMenu('0000204')  # 带勾选--41
         menuPage = MenuPage.openMenu('0001103')  # 电压等级树--40
-        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage, menuPage.tree_type)
+        super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.goto_frame()
         sleep(5)
 

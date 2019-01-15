@@ -359,8 +359,15 @@ class Page():
                     sleep(sleep_sec)
 
                 # 根据名称选择下拉框
-                option_value = self.format_xpath(BaseLocators.DROPDOWN_OPTION, ls_option[1])
-                self.click(option_value)
+                loc = self.format_xpath(BaseLocators.DROPDOWN_OPTION, ls_option[1])
+                self.click(loc)
+            else:  # 选择值为空时，表示选择全部
+                xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
+                if is_multi_elements:
+                    el = self._find_displayed_element(xpath)
+                    el.clear()
+                else:
+                    self.input('', *xpath)
 
     def _uncheck_all(self, option_name):
         """

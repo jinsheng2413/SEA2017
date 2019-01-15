@@ -39,10 +39,6 @@ class LoginLocators:
     # 重要信息推出窗口关闭
     DLG_IMPORT = (By.XPATH, '//button[contains(text(), "不再提醒")]')
 
-    # 【校验区】
-    # -->系统登录成功标志值
-    LOGIN_SUCCESS = (By.XPATH, '//span[text()="工作台"]')
-
 
 class LoginPBSLocators:
     # 【输入框】
@@ -71,10 +67,6 @@ class LoginPBSLocators:
     #
     # # 重要信息推出窗口关闭
     # DLG_IMPORT = (By.XPATH, '//button[contains(text(), "不再提醒")]')
-
-    # 【校验区】
-    # -->系统登录成功标志值
-    LOGIN_SUCCESS = (By.XPATH, '//i[@onclick="modifypassword()"]')
 
 
 class LoginSEA20Locators:
@@ -105,10 +97,6 @@ class LoginSEA20Locators:
     # 重要信息推出窗口关闭
     DLG_IMPORT = (By.XPATH, '//button[contains(text(), "不再提醒")]')
 
-    # 【校验区】
-    # -->系统登录成功标志值
-    LOGIN_SUCCESS = (By.XPATH, '//span[text()="工作台"]')
-
 
 class LoginJLZDHLocators:
     # 【输入框】
@@ -137,7 +125,3 @@ class LoginJLZDHLocators:
 
     # 重要信息推出窗口关闭
     DLG_IMPORT = (By.XPATH, '//button[contains(text(), "不再提醒")]')
-
-    # 【校验区】
-    # -->系统登录成功标志值
-    LOGIN_SUCCESS = (By.XPATH, '//span[text()="工作台"]')

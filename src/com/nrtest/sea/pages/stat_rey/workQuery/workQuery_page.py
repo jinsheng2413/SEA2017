@@ -17,7 +17,8 @@ class WorkCountPage(Page):
 
     # 日期
     def inputDt_query_date(self, value):
-        self.input(value)  # , *WorkCountLocators.QRY_DATE)
+        self.clean_label(value)
+        self.inputDate(value)  # , *WorkCountLocators.QRY_DATE)
 
     # 查询
     def btn_qry(self):
@@ -40,6 +41,7 @@ class WorkQueryPage(Page):
         # 日期
 
     def inputDt_query_date(self, value):
+        self.clean_label(value)
         self.inputDate(value, is_multi_tab=True)  # , *WorkQueryLocators.QRY_DATE)
 
     # 查询

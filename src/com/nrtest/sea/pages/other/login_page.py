@@ -48,10 +48,8 @@ class LoginPage(Page):
         根据特殊标签，确认登录是否成功 还在登录界面则表示登录不成功
         :return:
         """
-
         element = None
         try:
-            # 定位元素
             element = self.driver.find_element(*self.locator_class.QRY_USERNAME)
         except:
             pass

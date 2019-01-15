@@ -80,13 +80,13 @@ class Login:
                 # 登录清屏处理
                 if self.is_clean_screen:
                     loginPage.clean_screen()
-                logger.info('%s成功登陆系统' % self.username)
+                logger.info('%s成功登陆系统。' % self.username)
                 break
             elif self.is_valid_mask:
                 # 登录失败后，刷新验证码
                 loginPage.refresh_valid_mask()
                 sleep(1)
-                logger.info('%s登陆失败,点击刷新验证码' % self.username)
+                logger.info('%s登陆失败!!' % self.username)
         return loginPage.driver
 
     @classmethod

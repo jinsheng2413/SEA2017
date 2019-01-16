@@ -154,7 +154,7 @@ class DataAccess:
         :return:
         """
         sql = 'select assert_type,tab_column_name , column_name, expected_value \
-              from tst_case_result where tst_case_id = :id order by assert_type'
+              from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [tst_case_id])
         return dataSet
@@ -235,7 +235,7 @@ class DataAccess:
 
 if __name__ == '__main__':
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
-    print(DataAccess.getCaseData("99936100", tabName='01'))
+    print(DataAccess.get_case_result("999121009"))
     # print(DataAccess.refresh_all())
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))

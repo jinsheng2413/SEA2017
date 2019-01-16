@@ -402,7 +402,7 @@ class MenuPage(Page):
             self.clear(self.locator_class.NODE[node_flag])
 
             # 定位查询结果，默认选择第一行记录
-            xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, number)
+            xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, node_value)
             print(xpath)
 
             self.click(xpath)
@@ -417,12 +417,11 @@ class MenuPage(Page):
                 self.click(self.locator_class.GROUP_NODE[node_flag])
 
             # 打开群组信息
-            print(self._find_element(self.locator_class.GROUP_PLUS))
-            self.click(self._find_element(self.locator_class.GROUP_PLUS))
+            self.click(self.locator_class.GROUP_PLUS[node_flag])
 
             # 根据名称选择群组
-            xpath = ''
-            print(xpath)
+            xpath = self.format_xpath(self.locator_class.NODE_GROUP_RSLT[node_flag], node_value)
+            # print(xpath)
 
             self.click(xpath)
             print('------------')

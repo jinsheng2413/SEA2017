@@ -87,9 +87,9 @@ class MenuLocators:
     # 用户TAB页的查询按钮
     USER_TAB_BTN_QRY = (By.XPATH, '(//*[@id="indexUserPanel"]//*[text()="查询"])[5]')
     # 打开群组
-    GROUP_PLUS = {'05': (By.XPATH, '//div[@id="backTree"]//span[text()="群组"]/../preceding-sibling::img[2]'),
-                  '06': (By.XPATH, '//div[@id="impoUserGroupTree"]//span[text()="群组"]/../preceding-sibling::img[2]'),
-                  '07': (By.XPATH, '//div[@id="controlTree"]//span[text()="群组"]/../preceding-sibling::img[2]')}
+    GROUP_PLUS = {'05': (By.XPATH, '//div[@id="backTree"]//span[text()="群组"]/../../*[@class="x-tree-ec-icon x-tree-elbow-end-plus"]'),
+                  '06': (By.XPATH, '//div[@id="impoUserGroupTree"]//span[text()="群组"]/../../*[@class="x-tree-ec-icon x-tree-elbow-end-plus"]'),
+                  '07': (By.XPATH, '//div[@id="controlTree"]//span[text()="群组"]/../../*[@class="x-tree-ec-icon x-tree-elbow-end-plus"]')}
     # 查询结果区
     NODE_USER_TAB_RSLT_DEFAULT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[1]')
     NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[%s]//td[1]/div/div')

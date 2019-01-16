@@ -104,6 +104,9 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(MultiTableOne.protocolLibManage_para))
     def test_query(self, para):
+        """基本应用→多表合一→协议库管理
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -18,7 +18,6 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import Arch
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》档案维护：电表维护
 @ddt
 class TestarchivesMaintain_meter(TestCase, ArchivesMaintain_meter_pages):
     @classmethod
@@ -83,6 +82,10 @@ class TestarchivesMaintain_meter(TestCase, ArchivesMaintain_meter_pages):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesMenTain, ArchivesMan_data.archivesMenTain_meter_tab))
     def test_query(self, para):
+        """基本应用--》档案管理--》档案维护：电表维护
+        对查询结果有无、数据链接跳转等校验
+        :param para:用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

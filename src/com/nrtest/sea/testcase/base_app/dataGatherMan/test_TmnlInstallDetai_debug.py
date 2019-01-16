@@ -121,6 +121,9 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne))
     def test_query(self, para):
+        """基本应用--终端管理--远程调试（第二个tab页）
+        :param para:用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

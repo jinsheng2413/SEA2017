@@ -84,7 +84,7 @@ class DistributedEnergySuccessRatePage(Page):
         # locator = self.get_select_locator(
         #     DistributedEnergySuccessRateLocators.QRY_CONS_TYPE_VALUE, index)
         # self.click(*locator)
-        self.selectDropDown(index)
+        self.selectCheckBox(index)
 
     # 开始日期
     def inputDt_start_date(self, content):
@@ -113,7 +113,7 @@ class DistributedEnergyUserFailedPage(Page):
         #         DistributedEnergyUserFailedLocators.QRY_CONS_TYPE_VALUE, index)
         #     self.click(*locator)
         #     self.click(*DistributedEnergyUserFailedLocators.QRY_CONS_TYPE)
-        self.selectDropDown(index)
+        self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 电能表资产编号
     def inputStr_meter_asset_no(self, content):

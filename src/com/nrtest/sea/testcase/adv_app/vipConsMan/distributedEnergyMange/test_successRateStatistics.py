@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedE
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量→采集成功率统计
+# 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量:采集成功率统计
 @ddt
 class TestSuccessRateStatistics(TestCase, SuccessRateStatisticsPage):
     @classmethod
@@ -88,6 +88,11 @@ class TestSuccessRateStatistics(TestCase, SuccessRateStatisticsPage):
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyQuality_para,
                                   DistributedEnergyMange_data.DistributedEnergyQuality_tabName_Stat))
     def test_query(self, para):
+        """高级应用→重点用户监测→分布式电源管理→分布式电源采集质量:采集成功率统计
+
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

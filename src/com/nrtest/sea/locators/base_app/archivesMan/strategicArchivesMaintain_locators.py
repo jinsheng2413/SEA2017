@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》档案管理--》巡检仪档案管理
+# 基本应用→档案管理→巡检仪档案管理
 class StrategicArchivesMaintainLocators:
     # 【查询条件区】
     # 终端地址

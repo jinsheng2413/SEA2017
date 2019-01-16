@@ -10,8 +10,10 @@
 
 
 class DistributedEnergyMange_data:
-    # 高级应用--》重点用户检测--》分布式电源管理--》分布式电源接入统计
+    # 高级应用→重点用户检测→分布式电源管理→分布式电源接入统计
     DistributedEnergyStat_para = '99926110'
+    DistributedEnergyStat_tabName = '分布式电源接入统计'
+    DistributedEnergyStat_tabName_Detail = '分布式电源接入明细'
     # 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测
     DistributedEnergyMonitor_para = '99926120'
     DistributedEnergyMonitor_tabName = '分布式电源采集监测统计'

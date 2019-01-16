@@ -14,7 +14,7 @@ from com.nrtest.sea.locators.run_man.collegeywplat.acquistionFaultHandling.lowFa
     LowFaultHandlerLocators,LowFaultFeedBackLocators
 
 
-# 运行管理-->采集运维平台-->采集故障处理
+# 运行管理→采集运维平台→采集故障处理
 # 我的待办低压
 class FaultLowPowerMyTodoPage(Page):
 

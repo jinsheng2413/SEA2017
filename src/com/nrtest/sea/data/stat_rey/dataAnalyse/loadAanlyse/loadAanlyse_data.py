@@ -10,5 +10,5 @@
 
 
 class LoadAanyse_data:
-    # 统计查询--》数据分析--》负荷分析--》负荷排名分析
+    # 统计查询→数据分析→负荷分析→负荷排名分析
     loadSortAnalyse_para = '99943110'

@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》配变监测分析--》功率因数越限统计
+# 高级应用→配变监测分析→功率因数越限统计
 # 功率因数越限明细
 class PowerFactorCountDetailLocators:
     # 【查询条件】

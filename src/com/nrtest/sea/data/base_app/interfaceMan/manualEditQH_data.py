@@ -10,5 +10,5 @@
 
 
 class InterfaceManager_data:
-    # 基本应用--接口管理--人工补录（青海）
+    # 基本应用→接口管理→人工补录（青海）
     para_ManualEditQH = '99914800'

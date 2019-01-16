@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理--》档案核查管理--》考核减免管理
+# 系统管理→档案核查管理→考核减免管理
 class CheckReduceManagerLocators:
     # 【查询条件区】
     # 开始日期

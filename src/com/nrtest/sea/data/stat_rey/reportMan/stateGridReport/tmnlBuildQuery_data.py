@@ -9,5 +9,5 @@
 
 
 class TmnlBuildQuery_data:
-    # 统计查询--》报表管理--》国网报表--》智能电能表及终端设备建设情况
+    # 统计查询→报表管理→国网报表→智能电能表及终端设备建设情况
     TmnlBuildQuery_para = '99945110'

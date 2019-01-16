@@ -10,7 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 基本应用--》档案管理--》档案维护:厂站维护
+# 基本应用→档案管理→档案维护:厂站维护
 class ArchivesMaintain_factory_pages(Page):
 
 
@@ -22,7 +22,7 @@ class ArchivesMaintain_factory_pages(Page):
         self.btn_query(True)
 
 
-# 基本应用--》档案管理--》档案维护：终端维护
+# 基本应用→档案管理→档案维护：终端维护
 class ArchivesMaintain_terminal_pages(Page):
 
     # 厂站名称
@@ -33,7 +33,7 @@ class ArchivesMaintain_terminal_pages(Page):
         self.btn_query(True)
 
 
-# 基本应用--》档案管理--》档案维护：电表维护
+# 基本应用→档案管理→档案维护：电表维护
 class ArchivesMaintain_meter_pages(Page):
 
     # 终端资产号

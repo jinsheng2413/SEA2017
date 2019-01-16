@@ -12,7 +12,7 @@ from com.nrtest.sea.locators.run_man.runStatusMonitor.communicationModuleManagem
     ModuleAttributeRelationshipMantainLocators
 
 
-# 运行管理--》采集信道管理--》通信模块管理--》通信模块属性维护
+# 运行管理→采集信道管理→通信模块管理→通信模块属性维护
 class CommunicationModuleBaseInformationMantainPage(Page):
     # 模块厂商
     def inputSel_moduleFactory(self, item):

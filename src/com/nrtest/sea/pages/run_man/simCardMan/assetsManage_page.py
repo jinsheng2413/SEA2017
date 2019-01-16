@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-#运行管理-->SIM卡管理-->资产管理
+# 运行管理→SIM卡管理→资产管理
 class AssetsManagePage(Page):
     # 所属系统
     def inputSel_subordinate_system(self, item):

@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》档案管理--》电能表状态维护
+# 基本应用→档案管理→电能表状态维护
 class MeterStateArrLocators:
     # 【查询条件区】
     # 筛选条件

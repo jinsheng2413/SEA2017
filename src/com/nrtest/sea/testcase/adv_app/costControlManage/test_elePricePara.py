@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.elePricePara_pages import El
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》电价参数下发
+# 高级应用→费控管理→本地费控→电价参数下发
 @ddt
 class TestElePricePara(TestCase, ElePricePages):
     @classmethod

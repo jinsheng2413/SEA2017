@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.run_man.runStatusMonitor.communicationModuleManagement
     ModuleAttributeRelationshipMantainPage
 
 
-# 运行管理--》采集信道管理--》通信模块管理--》通信模块属性维护
+# 运行管理→采集信道管理→通信模块管理→通信模块属性维护
 
 @ddt
 class TestModuleAttributeRelationshipMantain(TestCase, ModuleAttributeRelationshipMantainPage):

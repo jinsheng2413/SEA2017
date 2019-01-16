@@ -9,5 +9,5 @@
 
 
 class SysOtherQuery_data:
-    # 统计查询--》报表管理--》国网报表--》系统其他运行指标
+    # 统计查询→报表管理→国网报表→系统其他运行指标
     SysOtherQuery_para = '99945170'

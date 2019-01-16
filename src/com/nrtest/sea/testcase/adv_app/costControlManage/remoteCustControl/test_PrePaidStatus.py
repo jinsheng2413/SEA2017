@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.PrePaidSta
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》远程费控--》远程费控执行统计:按指令执行统计
+# 高级应用→费控管理→远程费控→远程费控执行统计:按指令执行统计
 @ddt
 class TestPrePaidStatus(TestCase, PrePaidStatusByActionPage):
 

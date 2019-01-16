@@ -9,5 +9,5 @@
 
 
 class AllMeasureDataCountQuery_data:
-    # 统计查询--》全量数据统计查询--》全量数据统计查询
+    # 统计查询→全量数据统计查询→全量数据统计查询
     AllMeasureDataCountQuery_para = '99947100'

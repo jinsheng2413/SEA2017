@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》配变负载分析--》负载率分析
+# 高级应用→配变负载分析→负载率分析
 # 负载率统计
 class LoadRateStaticPage(Page):
 

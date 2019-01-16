@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用-->线损分析--》线损模型维护--》线损模型设计
+# 高级应用-->线损分析→线损模型维护→线损模型设计
 class LosePowerManPage(Page):
     # 考核单位状态
     def inputSel_assessUnitState(self, name):

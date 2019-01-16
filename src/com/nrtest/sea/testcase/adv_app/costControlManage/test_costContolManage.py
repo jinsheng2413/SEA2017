@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-# 高级应用--》费控管理--》本地费控--》专变用户费控管理
+# 高级应用→费控管理→本地费控→专变用户费控管理
 class TestSpecialCostControlManage(TestCase, CostControlManagePage):
     @classmethod
     def setUpClass(cls):

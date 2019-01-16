@@ -13,6 +13,10 @@ from com.nrtest.common.base_page import Page
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量→采集成功率趋势
 class SuccessRateTrendPage(Page):
+    # 查询类型
+    def inputChk_qry_type(self, index):
+        self.clickRadioBox(index)
+
     # 日期
     def inputDt_query_date(self, content):
         # self.exec_script(SuccessRateTrendLocators.DATE_JS)
@@ -55,6 +59,10 @@ class SuccessRateTrendPage(Page):
     def btn_search(self):
         # self.click(SuccessRateTrendLocators.BTN_SEARCH)
         self.btn_query()
+
+    # 成功率类型
+    def inputChk_success_type(self, index):
+        self.clickRadioBox(index)
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量→采集成功率统计
 class SuccessRateStatisticsPage(Page):

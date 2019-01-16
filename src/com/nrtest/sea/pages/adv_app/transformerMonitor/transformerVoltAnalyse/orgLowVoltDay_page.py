@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
+# 高级应用→配变监测分析→电压质量分析→低压用户电压分析
 # 台区低电压日统计
 class OrgLowVoltDayStaticPage(Page):
 

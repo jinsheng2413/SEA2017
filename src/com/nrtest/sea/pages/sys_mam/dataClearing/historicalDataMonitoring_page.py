@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理-->数据清理管理-->历史数据监控
+# 系统管理→数据清理管理→历史数据监控
 class HistoricalDataMonitoringPage(Page):
 
     # 数据来源

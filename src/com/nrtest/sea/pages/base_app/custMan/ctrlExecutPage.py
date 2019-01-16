@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》费控管理--》远程费控--》低压用户远程费控执行
+# 高级应用→费控管理→远程费控→低压用户远程费控执行
 class CtrlExecutPage(Page):
     # 用户编号
     def inputStr_userNo(self, value):

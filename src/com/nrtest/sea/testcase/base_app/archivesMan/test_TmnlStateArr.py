@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.tmnlStateArr_Pages import TmnlSta
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》终端状态维护
+# 基本应用→档案管理→终端状态维护
 @ddt
 class TestTmnlStateArr(TestCase, TmnlStateArrPage):
 

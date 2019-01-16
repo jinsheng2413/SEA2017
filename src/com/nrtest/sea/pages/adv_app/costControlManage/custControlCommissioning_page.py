@@ -10,7 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》费控管理--》本地费控--》费控投入调试
+# 高级应用→费控管理→本地费控→费控投入调试
 class CustControlCommissioning_page(Page):
     # 控制类型
     def inputChk_ctrl_type(self, name):

@@ -9,7 +9,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 统计查询--》报表管理--》国网报表--》国网报表新
+# 统计查询→报表管理→国网报表→国网报表新
 class StateGridReportQueryLocators:
     # 【查询条件区】
     # 报表管理

@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.lowUserBuyEleParaGiveOut_pag
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》低压用户购电参数下发
+# 高级应用→费控管理→本地费控→低压用户购电参数下发
 @ddt
 class TestLowUserBuyEleParaGiveOut(TestCase, LowUserBuyEleParaGiveOut_page):
     @classmethod

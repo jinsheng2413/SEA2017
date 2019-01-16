@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossMantain.loseCountPowe
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用-->线损分析--》线损模型维护--》线损计算模型管理
+# 高级应用-->线损分析→线损模型维护→线损计算模型管理
 @ddt
 class TestLoseCountPowerMan(TestCase, LoseCountPowerManPage):
 

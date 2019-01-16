@@ -11,7 +11,8 @@
 
 from com.nrtest.common.base_page import Page
 
-# 运行管理-->采集运维平台-->组织运维管理
+
+# 运行管理→采集运维平台→组织运维管理
 # 外包队伍管理
 class OutRanksManPage(Page):
     # 外包队伍名称

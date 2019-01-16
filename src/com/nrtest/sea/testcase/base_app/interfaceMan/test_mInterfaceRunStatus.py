@@ -19,6 +19,7 @@ from com.nrtest.sea.pages.base_app.interfaceMan.mInterfaceRunStatus_page import 
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用--接口管理--其他业务接口--接口运行状态
 @ddt
 class Test_MInterfaceRunStatus(TestCase, MInterfaceRunStatusPage):
     @classmethod
@@ -81,10 +82,6 @@ class Test_MInterfaceRunStatus(TestCase, MInterfaceRunStatusPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceMan_data.para_mInterfaceRunStatus))
     def test_query(self, para):
-        """基本应用--接口管理--其他业务接口--接口运行状态
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

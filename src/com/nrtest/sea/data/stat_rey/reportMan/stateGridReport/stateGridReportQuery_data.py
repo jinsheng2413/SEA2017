@@ -9,5 +9,5 @@
 
 
 class StateGridReportQuery_data:
-    # 统计查询--》报表管理--》国网报表--》国网报表新
+    # 统计查询→报表管理→国网报表→国网报表新
     StateGridReportQuery_para = '99945180'

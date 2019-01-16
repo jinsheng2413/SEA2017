@@ -102,7 +102,7 @@ class Test_News(TestCase, News_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(NewsAnswer.para_News))
     def test_query(self, para):
-        """高级应用--问题交流平台--问题在线交流
+        """高级应用→问题交流平台→问题在线交流
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

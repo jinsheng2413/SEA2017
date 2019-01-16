@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkResultDetail_page 
     CheckResultDetailPage
 
 
-# 系统管理--》档案核查管理--》核查结果明细查询
+# 系统管理→档案核查管理→核查结果明细查询
 @ddt
 class TestCheckResultDetail(TestCase, CheckResultDetailPage):
 

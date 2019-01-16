@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理--》档案核查管理--》档案核查模板编制
+# 系统管理→档案核查管理→档案核查模板编制
 class TaskTemplateSetPage(Page):
 
     # 选择模板

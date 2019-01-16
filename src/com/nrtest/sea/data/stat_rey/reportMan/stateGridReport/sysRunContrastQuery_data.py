@@ -9,5 +9,5 @@
 
 
 class SysRunContrastQuery_data:
-    # 统计查询--》报表管理--》国网报表--》采集系统运行指标
+    # 统计查询→报表管理→国网报表→采集系统运行指标
     SysRunContrastQuery_para = '99945140'

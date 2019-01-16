@@ -10,7 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》费控管理--》本地费控--》专变用户余额查询
+# 高级应用→费控管理→本地费控→专变用户余额查询
 class SpecialUserBalanceQueryPage(Page):
     # 用户编号
     def inputStr_cons_no(self, value):

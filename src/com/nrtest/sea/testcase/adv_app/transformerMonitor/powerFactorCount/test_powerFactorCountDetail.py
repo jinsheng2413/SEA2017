@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.transformerMonitor.powerFactorCount_page impor
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》配变监测分析--》功率因数越限统计
+# 高级应用→配变监测分析→功率因数越限统计
 # 功率因数越限明细
 @ddt
 class TestPowerFactorCountDetail(TestCase, PowerFactorCountDetailPage):

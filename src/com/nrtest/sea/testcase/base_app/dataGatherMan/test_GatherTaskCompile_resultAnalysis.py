@@ -91,10 +91,14 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompile_result_Page):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.gatherTaskCompile_para,
                                   DataGatherMan_data.atherTaskCompile_tab_resultAnaylsis_task))
     def test_query(self, para):
+        """基本应用→数据采集管理→定制任务管理:执行结果分析
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

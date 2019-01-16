@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.spVo
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》配变监测分析--》电压质量分析--》专/公变电压质量分析
+# 高级应用→配变监测分析→电压质量分析→专/公变电压质量分析
 # 专/公变电压质量分析
 @ddt
 class TestSpVoltAnalyseStatic(TestCase, SpVoltAnalyseStaticPage):
@@ -95,7 +95,7 @@ class TestSpVoltAnalyseStatic(TestCase, SpVoltAnalyseStaticPage):
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_SpVoltAnalyse,
                                   TradnsformerMonitorData.para_SpVoltAnalyse_static))
     def test_query(self, para):
-        """高级应用-->配变监测分析-->电压质量分析-->专/公变电压质量分析:专/公变电压质量分析
+        """高级应用→配变监测分析→电压质量分析→专/公变电压质量分析:专/公变电压质量分析
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

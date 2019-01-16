@@ -94,6 +94,10 @@ class TestCollectSuccessRateStat(unittest.TestCase, CollectSuccessRateStatPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.collectSuccessRateStat_para))
     def test_query(self, para):
+        """基本应用→数据采集管理→采集质量分析→采集成功率综合统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

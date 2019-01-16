@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理--》日志管理--》日志统计分析
+# 系统管理→日志管理→日志统计分析
 # 月统计登录失败top50
 class LogStatAnalysis_fial_Page(Page):
 

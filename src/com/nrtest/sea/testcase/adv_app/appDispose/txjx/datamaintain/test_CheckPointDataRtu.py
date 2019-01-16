@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.adv_app.txjx.datamaintain.checkPointDataRtu_page impor
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用-->台线系统--》资料维护--》专变考核点资料维护
+# 高级应用→台线系统→资料维护→专变考核点资料维护
 @ddt
 class TestCheckPointDataRtu(TestCase, CheckPointDataRtuPage):
 

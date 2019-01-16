@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 运行管理--》采集信道管理--》通信模块管理--》通信模块安装统计
+# 运行管理→采集信道管理→通信模块管理→通信模块安装统计
 class CommModulInstallStatLocators:
     # 【查询条件区】
     # 日期

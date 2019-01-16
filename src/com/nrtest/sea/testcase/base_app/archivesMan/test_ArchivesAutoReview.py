@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesAutoReview_page import Ar
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》电表批量导出（冀北）
+# 基本应用→档案管理→电表批量导出（冀北）
 @ddt
 class TestArchivesAutoRevie(TestCase, ArchivesAutoReviewPage):
 

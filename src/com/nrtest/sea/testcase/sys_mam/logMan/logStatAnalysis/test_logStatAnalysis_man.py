@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.logMan.logStatAnalysis_page import *
 
 
-# 系统管理--》日志管理--》日志统计分析
+# 系统管理→日志管理→日志统计分析
 # 管理员重置用户密码列表
 @ddt
 class TestLogStatAnalysis(TestCase, LogStatAnalysis_man_Page):
@@ -89,7 +89,7 @@ class TestLogStatAnalysis(TestCase, LogStatAnalysis_man_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LogEdit_data.logStatAnalysis_para, LogEdit_data.logStatAnalysis_tab_man))
     def test_query(self, para):
-        """系统管理--》日志管理--》日志统计分析:管理员重置用户密码列表
+        """系统管理→日志管理→日志统计分析:管理员重置用户密码列表
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

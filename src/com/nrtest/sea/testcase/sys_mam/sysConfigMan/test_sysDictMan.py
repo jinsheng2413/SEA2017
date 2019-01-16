@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysDictMan_page import SysDictManPage
 
 
-# 系统管理--》系统配置管理--》数据字典管理
+# 系统管理→系统配置管理→数据字典管理
 @ddt
 class TestSysDict(TestCase, SysDictManPage):
 

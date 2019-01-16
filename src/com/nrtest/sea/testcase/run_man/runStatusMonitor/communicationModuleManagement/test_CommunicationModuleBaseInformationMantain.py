@@ -99,7 +99,7 @@ class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModul
     @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulPropMain_para,
                                   CommunicationModuleManagement.commModulPropMain_tab_baseInf))
     def test_query(self, para):
-        """运行管理--》采集信道管理--》通信模块管理--》通信模块属性维护(第一个tab页)
+        """运行管理→采集信道管理→通信模块管理→通信模块属性维护(第一个tab页)
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

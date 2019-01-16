@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 基本应用--》档案管理--》电表批量导出（冀北）
+# 基本应用→档案管理→电表批量导出（冀北）
 class ArchivesGetPage(Page):
     # 户号
     def inputStr_userNO(self, value):

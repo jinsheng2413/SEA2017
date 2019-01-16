@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.localFeiManageExeCount_page 
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》本地费控执行统计: 费控情况明细
+# 高级应用→费控管理→本地费控→本地费控执行统计: 费控情况明细
 @ddt
 class TestlocalFeiManageExeCount_dis_detail(TestCase, LocalFeiManageExeCount_dis_detail_Page):
     @classmethod

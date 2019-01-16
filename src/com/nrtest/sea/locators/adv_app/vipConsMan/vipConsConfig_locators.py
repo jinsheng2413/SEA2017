@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》重点用户监测--》重点用户管理
+# 高级应用→重点用户监测→重点用户管理
 class VipConsConfig_locators:
     # [显示区]
     # 请选择节点

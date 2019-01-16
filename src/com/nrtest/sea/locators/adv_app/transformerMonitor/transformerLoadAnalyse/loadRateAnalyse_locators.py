@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》配变监测分析--》配变负载分析--》负载率分析
+# 高级应用→配变监测分析→配变负载分析→负载率分析
 # 负载率统计
 class LoadRateStaticLocators:
     # 【查询条件】
@@ -37,7 +37,8 @@ class LoadRateStaticLocators:
     TABLE_DATA = (
         By.XPATH, "((//div[@class=\"x-grid3-scroller\"])[1]/div/div)[1]")
 
-# 高级应用--》配变监测分析--》配变负载分析--》负载率分析
+
+# 高级应用→配变监测分析→配变负载分析→负载率分析
 # 负载率明细
 class LoadRateDetailLocators:
     # 【查询条件】

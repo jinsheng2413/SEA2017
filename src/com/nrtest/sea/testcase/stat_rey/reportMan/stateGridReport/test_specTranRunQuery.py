@@ -92,7 +92,7 @@ class TestSpecTranRunQuery(TestCase, SpecTranRunQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SpecTranRunQuery_data.SpecTranRunQuery_para))
     def test_query(self, para):
-        """统计查询--》报表管理--》国网报表--》专变用户运行指标
+        """统计查询→报表管理→国网报表→专变用户运行指标
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

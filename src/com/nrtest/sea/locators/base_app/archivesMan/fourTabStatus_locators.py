@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》档案管理--》多表合一运行状态
+# 基本应用→档案管理→多表合一运行状态
 class FourTabStatusLocators:
     # 【查询条件区】
     # 用户状态

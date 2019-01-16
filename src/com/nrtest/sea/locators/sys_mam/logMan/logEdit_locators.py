@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理--》日志管理--》值班日志
+# 系统管理→日志管理→值班日志
 class LogEditLocators:
     # 【查询条件区】
     # 值班时间

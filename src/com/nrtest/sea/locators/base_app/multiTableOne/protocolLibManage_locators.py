@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》多表合一--》协议管理
+# 基本应用→多表合一→协议管理
 class ProtocolLibManageLocators:
     # 【查询条件区】
     # 协议名称

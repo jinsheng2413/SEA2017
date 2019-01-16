@@ -387,24 +387,45 @@ class MenuPage(Page):
         """
         # 根据node_flag选择相应的节点查询条件xpath，并输入查询条件
         # {02:代表用户编号，03：代表终端逻辑地址，04：电能表资产号}
+        # {05:普通群组，06：重点用户群组，07：控制群组}
 
-        # 点击用户标签页
-        self.click(self.locator_class.NODE_USER)
-        self.input(node_value, *self.locator_class.NODE[node_flag])
+        if (node_flag in ('02', '03', '04')):
+            # 点击用户标签页
+            self.click(self.locator_class.NODE_USER)
+            self.input(node_value, *self.locator_class.NODE[node_flag])
 
-        # 点击查询按钮
-        self.click(self.locator_class.USER_TAB_BTN_QRY)
+            # 点击查询按钮
+            self.click(self.locator_class.USER_TAB_BTN_QRY)
 
-        # 等待查询结果，最好通过其他途径判断查询已返回
-        self.commonWait(self.locator_class.NODE_USER_TAB_RSLT_DEFAULT)
-        self.clear(self.locator_class.NODE[node_flag])
+            # 等待查询结果，最好通过其他途径判断查询已返回
+            self.commonWait(self.locator_class.NODE_USER_TAB_RSLT_DEFAULT)
+            self.clear(self.locator_class.NODE[node_flag])
 
-        # 定位查询结果，默认选择第一行记录
-        xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, number)
-        print(xpath)
+            # 定位查询结果，默认选择第一行记录
+            xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, number)
+            print(xpath)
 
-        self.click(xpath)
-        print('------------')
+            self.click(xpath)
+            print('------------')
+
+        elif (node_flag in ('05', '06', '07')):
+            # 点击群组标签页
+            self.click(self.locator_class.NODE_GROUP)
+
+            # 选择群组类型
+            if (node_flag != '05'):
+                self.click(self.locator_class.GROUP_NODE[node_flag])
+
+            # 打开群组信息
+            print(self._find_element(self.locator_class.GROUP_PLUS))
+            self.click(self._find_element(self.locator_class.GROUP_PLUS))
+
+            # 根据名称选择群组
+            xpath = ''
+            print(xpath)
+
+            self.click(xpath)
+            print('------------')
 
     def clickAllMenu(self):
         menus = DataAccess.getAllMenu()

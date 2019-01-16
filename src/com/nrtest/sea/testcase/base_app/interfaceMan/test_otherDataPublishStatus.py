@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.base_app.interfaceMan.otherDataPublishStatus_page impo
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--接口管理--其他业务接口--数据发布情况
+# 基本应用→接口管理→其他业务接口→数据发布情况
 @ddt
 class Test_otherDataPublishStatus(TestCase, OtherDataPublishStatusPage):
     @classmethod

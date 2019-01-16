@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用-->线损分析--》线损模型维护--》线损模型设计
+# 高级应用-->线损分析→线损模型维护→线损模型设计
 class LosePowerManLocators:
     # 【查询条件区】
     # 考核单元名称

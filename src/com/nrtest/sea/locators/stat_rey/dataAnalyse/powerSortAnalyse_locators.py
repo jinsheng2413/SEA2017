@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 统计查询--》数据分析--》电量分析--》电量排名分析
+# 统计查询→数据分析→电量分析→电量排名分析
 class PowerSortAnalyseLocators:
     # 【查询条件区】
     # 排名数量

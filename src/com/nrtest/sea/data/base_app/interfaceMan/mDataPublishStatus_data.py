@@ -10,7 +10,7 @@
 
 
 class MDataPublishStatus_data:
-    # 高级应用--》费控管理--》本地费控--》低压用户购电参数下发
+    # 高级应用→费控管理→本地费控→低压用户购电参数下发
     para_MDataPublishStatus = '99914210'
-    # 基本应用--》接口管理--》接口管理
+    # 基本应用→接口管理→接口管理
     interfaceMonitor_para = '99914300'

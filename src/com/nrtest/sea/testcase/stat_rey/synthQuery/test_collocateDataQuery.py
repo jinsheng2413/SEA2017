@@ -93,7 +93,7 @@ class TestCollcateDataQuery(TestCase, CollcateDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.CollcateDataQuery_para))
     def test_query(self, para):
-        """统计查询--综合查询--配变数据查询
+        """统计查询→综合查询→配变数据查询
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

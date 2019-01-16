@@ -19,7 +19,6 @@ from com.nrtest.sea.pages.base_app.interfaceMan.manualEdit_page import ManualEdi
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--接口管理--人工补录
 @ddt
 class Test_ManualEdit(TestCase, ManualEditPage):
     @classmethod
@@ -87,6 +86,10 @@ class Test_ManualEdit(TestCase, ManualEditPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceManager_data.para_ManualEdit))
     def test_query(self, para):
+        """基本应用--接口管理--人工补录
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

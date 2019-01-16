@@ -92,6 +92,9 @@ class TestTmnlStateArr(TestCase, TmnlStateArrPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.tmnlStateArr_para))
     def test_query(self, para):
+        """基本应用→档案管理→终端状态维护
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

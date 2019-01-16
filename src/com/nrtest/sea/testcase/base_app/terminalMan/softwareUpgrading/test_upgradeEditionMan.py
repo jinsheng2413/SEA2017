@@ -85,6 +85,9 @@ class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionMan_para,
                                   SoftwareUpgrading_data.UpgradeEditionMan_tabName))
     def test_query(self, para):
+        """基本应用→终端管理→软件升级→升级版本管理→终端版本信息登记
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

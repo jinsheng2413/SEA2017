@@ -18,7 +18,6 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesManage_pages import Archi
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》档案同步
 @ddt
 class test_archivesManage(TestCase, ArchivesManage_pages):
     @classmethod
@@ -96,6 +95,10 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesManage_para))
     def test_query(self, para):
+        """基本应用--》档案管理--》档案同步
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

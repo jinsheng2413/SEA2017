@@ -18,7 +18,6 @@ from com.nrtest.sea.pages.base_app.archivesMan.waveArchives_pages import WaveArc
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》载波档案校正：载波台区统计
 @ddt
 class TestWaveArchives_count(TestCase, WaveArchives_count_Page):
 
@@ -97,6 +96,10 @@ class TestWaveArchives_count(TestCase, WaveArchives_count_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.waveArchives_para, ArchivesMan_data.waveArchives_count_tab))
     def test_query(self, para):
+        """基本应用--》档案管理--》载波档案校正：载波台区统计
+        对查询结果有无、数据链接跳转等校验
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

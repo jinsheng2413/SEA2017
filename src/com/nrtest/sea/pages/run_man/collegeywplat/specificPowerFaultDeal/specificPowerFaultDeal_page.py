@@ -14,7 +14,7 @@ from com.nrtest.sea.locators.run_man.collegeywplat.acquistionFaultHandling.fault
     FaultHandlerLocators,FaultFeedBackLocators
 
 
-# 运行管理-->采集运维平台-->采集故障处理
+# 运行管理→采集运维平台→采集故障处理
 # 我的待办专变
 class FaultSpecificPowerMyTodoPage(Page):
     # 故障严重程度

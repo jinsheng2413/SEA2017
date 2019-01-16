@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》费控管理--》低压用户远程费控执行
+# 基本应用→费控管理→低压用户远程费控执行
 class CtrlExecutLocators:
     # 【查询条件区】
     # 用户编号

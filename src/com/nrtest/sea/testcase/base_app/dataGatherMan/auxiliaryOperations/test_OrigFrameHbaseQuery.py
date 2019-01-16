@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.auxiliaryOperations.origFrameHb
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 运行管理-->采集运维平台-->辅助运维--》报文查询
+# 运行管理→采集运维平台→辅助运维→报文查询
 @ddt
 class TestOrigFrameHbaseQuery(TestCase, OrigFrameHbaseQueryPage):
 

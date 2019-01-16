@@ -10,9 +10,9 @@
 
 
 class LogEdit_data:
-    # 系统管理--》日志管理--》值班日志
+    # 系统管理→日志管理→值班日志
     logEdit_para = '99955400'
-    # 系统管理--》日志管理--》日志统计分析
+    # 系统管理→日志管理→日志统计分析
     logStatAnalysis_para = '99955500'
     logStatAnalysis_tab_fail = '月统计登录失败top50'
     logStatAnalysis_tab_list = '用户权限变更列表'

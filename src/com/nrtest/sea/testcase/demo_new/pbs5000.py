@@ -23,7 +23,7 @@ class TestPBS5000(TestCase, TreePage):
         # 打开菜单（需要传入对应的菜单编号）
         # 20-含电压等级厂站树； 11-并且带复选框
         # 30-厂站档案设备树；   21-并且带复选框
-        # 40-普通树；         41-并且带复选框；采集运维-->手动对时
+        # 40-普通树；         41-并且带复选框；采集运维→手动对时
         # menuPage = MenuPage.openMenu('0000302')  # 电压等级树--20
         # menuPage = MenuPage.openMenu('0000101')  # 厂站设备--30
         # menuPage = MenuPage.openMenu('0000204')  # 带勾选--41

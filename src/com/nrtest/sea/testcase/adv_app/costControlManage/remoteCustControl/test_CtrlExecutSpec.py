@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.ctrlExecut
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》远程费控--》专变用户远程费控执行
+# 高级应用→费控管理→远程费控→专变用户远程费控执行
 @ddt
 class TestCtrlExecutSpec(TestCase, CtrlExecutSpecPage):
 

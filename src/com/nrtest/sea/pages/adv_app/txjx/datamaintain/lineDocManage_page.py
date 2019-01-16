@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用-->台线系统--》资料维护--》线路资料维护
+# 高级应用→台线系统→资料维护→线路资料维护
 class LineDocManagePage(Page):
 
     # 负责人

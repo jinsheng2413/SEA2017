@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptResultDetail_page import ScriptResultDetailPage
 
 
-# 系统管理--》档案核查管理--》脚本结果统计查询
+# 系统管理→档案核查管理→脚本结果统计查询
 @ddt
 class TestScriptResultStat(TestCase, ScriptResultDetailPage):
 

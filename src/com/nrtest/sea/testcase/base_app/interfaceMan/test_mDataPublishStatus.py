@@ -19,6 +19,7 @@ from com.nrtest.sea.pages.base_app.interfaceMan.mDataPublishStatus2_page import 
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用--接口管理--营销业务接口--数据发布情况
 @ddt
 class Test_mDataPublishStatus2(TestCase, MDataPublishStatus2Page):
     @classmethod
@@ -60,10 +61,10 @@ class Test_mDataPublishStatus2(TestCase, MDataPublishStatus2Page):
         self.inputSel_Business_system(para['BUSINESS_SYSTEM'])
 
         # 开始时间
-        self.inputDt_start_time(para['START_DATE'])
+        self.inputDt_start_time(para['START_TIME'])
 
         # 结束时间
-        self.inputDt_end_time(para['END_DATE'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 查询
         self.btn_qry()
@@ -87,11 +88,6 @@ class Test_mDataPublishStatus2(TestCase, MDataPublishStatus2Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceManager_data.para_MDataPublishStatus2))
     def test_query(self, para):
-        """基本应用--接口管理--营销业务接口--数据发布情况
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        :return:
-        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

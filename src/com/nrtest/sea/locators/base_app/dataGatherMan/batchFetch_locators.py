@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》数据采集管理--》数据召测--》批量巡测
+# 基本应用→数据采集管理→数据召测→批量巡测
 class BatchFetchLocators:
     # 【查询条件区】
     # 任务名称

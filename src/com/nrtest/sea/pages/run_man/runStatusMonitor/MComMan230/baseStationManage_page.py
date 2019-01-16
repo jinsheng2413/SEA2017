@@ -14,7 +14,7 @@ from com.nrtest.sea.locators.run_man.runStatusMonitor.MComMan230.baseStationMana
     BaseStationManageLocators
 
 
-# 运行管理--》采集信道管理--》230M通信管理--》基站信息维护
+# 运行管理→采集信道管理→230M通信管理→基站信息维护
 class BaseStationManagePage(Page):
     # 通信地址
     def inputStr_communicationAddr(self, value):

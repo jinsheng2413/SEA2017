@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
+# 高级应用→配变监测分析→电压质量分析→低压用户电压分析
 # 低压用户电压监测配置
 class OrgLowVoltDayConfigLocators:
     # 【查询条件】

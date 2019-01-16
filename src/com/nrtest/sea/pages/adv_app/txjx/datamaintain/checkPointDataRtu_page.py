@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用-->台线系统--》资料维护--》专变考核点资料维护
+# 高级应用-->台线系统→资料维护→专变考核点资料维护
 class CheckPointDataRtuPage(Page):
     # 电表正反向
     def inputSel_meter_fr(self, name):

@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》接口管理--》其他业务接口--》服务调用情况
+# 基本应用→接口管理→其他业务接口→服务调用情况
 class MServiceCallStatusLocators:
     # [显示区]
     # 业务系统

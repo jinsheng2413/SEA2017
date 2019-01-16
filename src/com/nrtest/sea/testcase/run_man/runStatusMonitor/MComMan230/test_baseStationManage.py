@@ -88,7 +88,7 @@ class TestbaseStationManage(TestCase, BaseStationManagePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(MComMan230.baseStationManage_para))
     def test_query(self, para):
-        """运行管理--》采集信道管理--》230M通信管理--》基站信息维护
+        """运行管理→采集信道管理→230M通信管理→基站信息维护
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

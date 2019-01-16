@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.meterStateArrPage import MeterSta
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》电能表状态维护
+# 基本应用→档案管理→电能表状态维护
 @ddt
 class TestMeterStateArr(TestCase, MeterStateArrPage):
 

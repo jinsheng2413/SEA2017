@@ -9,7 +9,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 统计查询--》报表管理--》国网报表--》智能电能表及终端设备建设情况
+# 统计查询→报表管理→国网报表→智能电能表及终端设备建设情况
 
 class TmnlBuildQueryPage(Page):
 

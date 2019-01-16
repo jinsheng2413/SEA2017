@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptCheckTaskSet_page import ScriptCheckTaskSetPage
 
 
-# 系统管理--》档案核查管理--》脚本核查任务编制
+# 系统管理→档案核查管理→脚本核查任务编制
 @ddt
 class TestScriptCheckTaskSet(TestCase, ScriptCheckTaskSetPage):
 

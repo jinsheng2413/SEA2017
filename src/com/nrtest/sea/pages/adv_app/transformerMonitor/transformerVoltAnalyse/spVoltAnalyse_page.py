@@ -10,7 +10,8 @@
 
 from com.nrtest.common.base_page import Page
 
-# 高级应用--》配变监测分析--》电压质量分析--》专/公变电压质量分析
+
+# 高级应用→配变监测分析→电压质量分析→专/公变电压质量分析
 # 专/公变电压质量分析
 class SpVoltAnalyseStaticPage(Page):
 

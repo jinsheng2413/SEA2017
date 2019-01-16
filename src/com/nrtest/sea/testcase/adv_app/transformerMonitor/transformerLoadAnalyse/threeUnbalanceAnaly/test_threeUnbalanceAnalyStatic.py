@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.thre
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》配变负载分析--》三相不平衡分析
+# 高级应用→配变负载分析→三相不平衡分析
 # 三相不平衡统计
 @ddt
 class TestLoadRateStatic(TestCase, ThreeUnbalanceAnalyStaticPage):
@@ -94,7 +94,7 @@ class TestLoadRateStatic(TestCase, ThreeUnbalanceAnalyStaticPage):
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_ThreeUnbalanceAnaly,
                                   TradnsformerMonitorData.para_ThreeUnbalanceAnaly_static))
     def test_query(self, para):
-        """高级应用-->配变负载分析-->三相不平衡分析:三相不平衡统计
+        """高级应用→配变负载分析→三相不平衡分析:三相不平衡统计
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

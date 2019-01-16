@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.multiTableOne.protocolLibManage_page import P
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》多表合一--》协议库管理
+# 基本应用→多表合一→协议库管理
 @ddt
 class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
 

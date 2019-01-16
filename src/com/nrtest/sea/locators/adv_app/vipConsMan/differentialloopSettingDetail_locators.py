@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》重点用户监测--》差动回路明细查询
+# 高级应用→重点用户监测→差动回路明细查询
 class DifferentialloopSettingDetail_locators:
     # [显示区]
     # 用户名称

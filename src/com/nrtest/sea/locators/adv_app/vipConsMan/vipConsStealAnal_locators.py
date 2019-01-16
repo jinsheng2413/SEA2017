@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》重点用户监测--》重点用户窃电分析
+# 高级应用→重点用户监测→重点用户窃电分析
 class VipConsStealAnal_locators:
     # [显示区]
     # 节点名

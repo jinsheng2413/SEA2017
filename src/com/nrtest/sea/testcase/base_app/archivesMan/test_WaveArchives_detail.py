@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.waveArchives_pages import WaveArc
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》载波档案校正：载波用户明细
+# 基本应用→档案管理→载波档案校正：载波用户明细
 @ddt
 class TestWaveArchives_detail(TestCase, WaveArchives_detail_Page):
 

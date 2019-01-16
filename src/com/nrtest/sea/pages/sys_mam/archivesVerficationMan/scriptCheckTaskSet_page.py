@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理--》档案核查管理--》脚本核查任务编制
+# 系统管理→档案核查管理→脚本核查任务编制
 class ScriptCheckTaskSetPage(Page):
     # 任务状态
     def inputSel_taskStatus(self, name):

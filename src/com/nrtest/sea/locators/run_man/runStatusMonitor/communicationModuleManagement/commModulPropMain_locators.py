@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 运行管理--》采集信道管理--》通信模块管理--》通信模块属性维护
+# 运行管理→采集信道管理→通信模块管理→通信模块属性维护
 class CommunicationModuleBaseInformationMantainLocators:
     # 【查询条件区】
     # 模块版本

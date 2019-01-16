@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理--》档案核查管理--》核查结果明细查询
+# 系统管理→档案核查管理→核查结果明细查询
 class VerficationResultDetailLocators:
     # 【查询条件区】
     # 台区编号

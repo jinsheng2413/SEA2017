@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》重点用户监测--》加载防窃电设备
+# 高级应用→重点用户监测→加载防窃电设备
 class LoadingEquipment_locators:
     # [显示区]
     # 供电单位

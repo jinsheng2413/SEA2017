@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理--》档案核查管理--》脚本结果明细查询
+# 系统管理→档案核查管理→脚本结果明细查询
 class ScriptResultDetailPage(Page):
     # 脚本名称
     def inputStr_scriptName(self, value):

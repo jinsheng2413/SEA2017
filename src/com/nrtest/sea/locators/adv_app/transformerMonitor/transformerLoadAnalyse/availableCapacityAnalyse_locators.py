@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》配变负载分析--》报装可用容量分析
+# 高级应用→配变负载分析→报装可用容量分析
 class AvailableCapacityAnalyseLocators:
     # 【查询条件】
     # 供电单位

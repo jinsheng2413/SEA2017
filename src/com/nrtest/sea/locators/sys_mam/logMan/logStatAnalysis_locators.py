@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理--》日志管理--》日志统计分析
+# 系统管理→日志管理→日志统计分析
 class LogStatAnalysis_fail_Locators:
     # 【查询条件区】
     # 查询日期
@@ -28,7 +28,7 @@ class LogStatAnalysis_fail_Locators:
     TAB_ONE_VALUE = (By.XPATH, "//*[@class=\"x-grid3-row-table\"])[]//div[]")
 
 
-# 系统管理--》日志管理--》日志统计分析
+# 系统管理→日志管理→日志统计分析
 class LogStatAnalysis_list_Locators:
     # 【查询条件区】
     # 查询日期
@@ -51,7 +51,7 @@ class LogStatAnalysis_list_Locators:
     TAB_ONE_VALUE = (By.XPATH, "//*[@class=\"x-grid3-row-table\"])[]//div[]")
 
 
-# 系统管理--》日志管理--》日志统计分析
+# 系统管理→日志管理→日志统计分析
 class LogStatAnalysis_man_Locators:
     # 【查询条件区】
     # 查询日期

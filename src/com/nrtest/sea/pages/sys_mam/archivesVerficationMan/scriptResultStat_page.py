@@ -14,7 +14,7 @@ from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.scriptResultDetail_l
     ScriptResultDetailLocators
 
 
-# 系统管理--》档案核查管理--》脚本结果统计查询
+# 系统管理→档案核查管理→脚本结果统计查询
 class scriptResultStatPage(Page):
     # 脚本名称
     def inputStr_scriptName(self, value):

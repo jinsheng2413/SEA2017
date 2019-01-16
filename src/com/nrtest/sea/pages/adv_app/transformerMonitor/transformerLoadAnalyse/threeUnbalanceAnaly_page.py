@@ -10,7 +10,8 @@
 
 from com.nrtest.common.base_page import Page
 
-# 高级应用--》配变负载分析--》三相不平衡分析
+
+# 高级应用→配变负载分析→三相不平衡分析
 # 三相不平衡统计
 class ThreeUnbalanceAnalyStaticPage(Page):
 

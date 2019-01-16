@@ -9,5 +9,5 @@
 
 
 class IpConRunQuery_data:
-    # 统计查询--》报表管理--》国网报表--》低压用户运行指标
+    # 统计查询→报表管理→国网报表→低压用户运行指标
     IpConRunQuery_para = '99945160'

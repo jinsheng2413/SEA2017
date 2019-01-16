@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 基本应用--接口管理--其他业务接口--数据发布情况
+# 基本应用→接口管理→其他业务接口→数据发布情况
 class OtherDataPublishStatusPage(Page):
     # 业务系统
     def inputSel_Business_system(self, option):

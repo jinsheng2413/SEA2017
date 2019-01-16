@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.load
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》配变负载分析--》负载率分析
+# 高级应用→配变负载分析→负载率分析
 # 负载率统计
 @ddt
 class TestLoadRateStatic(TestCase, LoadRateStaticPage):
@@ -97,7 +97,7 @@ class TestLoadRateStatic(TestCase, LoadRateStaticPage):
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_TradnsformerMonitor,
                                   TradnsformerMonitorData.para_TradnsformerMonitor_static))
     def test_query(self, para):
-        """高级应用-->配变负载分析-->负载率分析:负载率统计
+        """高级应用→配变负载分析→负载率分析:负载率统计
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

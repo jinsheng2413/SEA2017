@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.dataClearing.historicalDataMonitoring_page import HistoricalDataMonitoringPage
 
 
-# 系统管理-->数据清理管理-->历史数据监控
+# 系统管理→数据清理管理→历史数据监控
 @ddt
 class TestHistoricalDataMonitoring(TestCase, HistoricalDataMonitoringPage):
 
@@ -95,7 +95,7 @@ class TestHistoricalDataMonitoring(TestCase, HistoricalDataMonitoringPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataClearing_data.historicalDataMonitoring_para))
     def test_query(self, para):
-        """系统管理-->数据清理管理-->历史数据监控
+        """系统管理→数据清理管理→历史数据监控
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

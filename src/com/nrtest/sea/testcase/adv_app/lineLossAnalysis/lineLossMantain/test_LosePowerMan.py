@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-# 高级应用-->线损分析--》线损模型维护--》线损模型设计
+# 高级应用-->线损分析→线损模型维护→线损模型设计
 class TestLosePowerMan(TestCase, LosePowerManPage):
 
     @classmethod

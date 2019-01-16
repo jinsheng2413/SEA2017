@@ -99,7 +99,7 @@ class TestCommModulVersionMain(TestCase, CommModulVersionMainPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulVersionMain_para))
     def test_query(self, para):
-        """运行管理--》采集信道管理--》通信模块管理--》本地通信模块版本信息召测
+        """运行管理→采集信道管理→通信模块管理→本地通信模块版本信息召测
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

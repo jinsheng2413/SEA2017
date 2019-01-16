@@ -9,7 +9,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 统计查询--》报表管理--》国网报表--》低压用户运行指标
+# 统计查询→报表管理→国网报表→低压用户运行指标
 class IpConRunQueryLocators:
     # 【查询条件区】
     #

@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.batchFetch_page import BatchFet
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》数据采集管理--》数据召测--》批量巡测
+# 基本应用→数据采集管理→数据召测→批量巡测
 @ddt
 class TestBatchFetch(TestCase, BatchFetchPage):
 
@@ -97,6 +97,10 @@ class TestBatchFetch(TestCase, BatchFetchPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.batchFetch_para))
     def test_query(self, para):
+        """基本应用→数据采集管理→数据召测→批量巡测
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

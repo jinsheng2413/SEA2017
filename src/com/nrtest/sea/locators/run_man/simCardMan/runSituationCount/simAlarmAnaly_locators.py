@@ -9,7 +9,8 @@
 """
 from selenium.webdriver.common.by import By
 
-# 运行管理-->SIM卡管理-->运行情况分析-->异常分析
+
+# 运行管理→SIM卡管理→运行情况分析→异常分析
 class AbnormalDetailLocators:
     #【查询条件区】
     # 异常类型

@@ -9,7 +9,8 @@
 """
 from selenium.webdriver.common.by import By
 
-#运行管理-->SIM卡管理-->资产管理
+
+# 运行管理→SIM卡管理→资产管理
 class AssetsManageLocators:
     #【查询条件区】
     # 所属系统

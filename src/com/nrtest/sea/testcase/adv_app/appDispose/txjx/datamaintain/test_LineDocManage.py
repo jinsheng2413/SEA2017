@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-# 高级应用-->台线系统--》资料维护--》线路资料维护
+# 高级应用→台线系统→资料维护→线路资料维护
 class TestLineDocManage(TestCase, LineDocManagePage):
 
     @classmethod

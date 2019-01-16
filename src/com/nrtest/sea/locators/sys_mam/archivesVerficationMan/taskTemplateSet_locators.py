@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理--》档案核查管理--》档案核查模板编制
+# 系统管理→档案核查管理→档案核查模板编制
 class TaskTemplateSetLocators:
     # 【查询条件区】
 

@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》档案管理--》载波档案矫正
+# 基本应用→档案管理→载波档案矫正
 class WaveArchives_Locators:
     # 【查询条件区】
     # 台区编号

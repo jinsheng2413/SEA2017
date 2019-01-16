@@ -104,7 +104,7 @@ class TestWorkQuery2017_tab2(TestCase, WorkQuery2017Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(WorkQuery_data.WorkQuery2017_para, WorkQuery_data.WorkQuery2017_tab_query))
     def test_query(self, para):
-        """统计查询--工单查询--工单查询2017（第二个tab页）
+        """统计查询→工单查询→工单查询2017（第二个tab页）
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

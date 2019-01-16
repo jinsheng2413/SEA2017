@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.checkReduceApplication_page import CheckReduceApplicationPage
 
 
-# 系统管理--》档案核查管理--》考核减免申请
+# 系统管理→档案核查管理→考核减免申请
 @ddt
 class TestCheckReduceApplication(TestCase, CheckReduceApplicationPage):
 

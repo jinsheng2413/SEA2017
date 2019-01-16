@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-# 高级应用--》费控管理--》本地费控--》低压用户余额查看：余额统计
+# 高级应用→费控管理→本地费控→低压用户余额查看：余额统计
 class TestBalanceCount(TestCase, BalanceCount_page):
     @classmethod
     def setUpClass(cls):

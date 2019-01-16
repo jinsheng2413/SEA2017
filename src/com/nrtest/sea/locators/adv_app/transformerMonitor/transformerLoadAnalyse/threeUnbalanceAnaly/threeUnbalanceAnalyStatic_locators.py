@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》配变负载分析--》三相不平衡分析
+# 高级应用→配变负载分析→三相不平衡分析
 # 三相不平衡统计
 class ThreeUnbalanceAnalyStaticLocators:
     # 【查询条件】

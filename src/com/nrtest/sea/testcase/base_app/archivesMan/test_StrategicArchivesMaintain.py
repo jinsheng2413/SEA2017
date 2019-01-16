@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.StrategicArchivesMaintainPage imp
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》巡检仪档案管理
+# 基本应用→档案管理→巡检仪档案管理
 @ddt
 class TestStrategicArchivesMaintain(TestCase, StrategicArchivesMaintainPage):
 

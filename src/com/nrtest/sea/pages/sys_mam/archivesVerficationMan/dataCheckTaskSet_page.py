@@ -13,7 +13,7 @@ from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.dataCheckTaskSet_locators import DataCheckTaskSetLocators
 
 
-# 系统管理--》档案核查管理--》档案任务核查编制
+# 系统管理→档案核查管理→档案任务核查编制
 class DataCheckTaskSetPage(Page):
     # 选择模板
     def inputChk_SelectDemo(self, option):

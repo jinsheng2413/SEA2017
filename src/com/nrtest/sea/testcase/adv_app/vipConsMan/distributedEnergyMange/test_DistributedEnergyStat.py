@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedE
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》重点用户检测--》分布式电源管理--》分布式电源接入统计
+# 高级应用→重点用户检测→分布式电源管理→分布式电源接入统计
 @ddt
 class TestDistributedEnergyStat(TestCase, DistributedEnergyStatPage):
 

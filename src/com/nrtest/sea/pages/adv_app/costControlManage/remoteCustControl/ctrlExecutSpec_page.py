@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》费控管理--》远程费控--》专变用户远程费控执行
+# 高级应用→费控管理→远程费控→专变用户远程费控执行
 class CtrlExecutSpecPage(Page):
     # 控制类别
     def inputSel_ctrl_type(self, name):

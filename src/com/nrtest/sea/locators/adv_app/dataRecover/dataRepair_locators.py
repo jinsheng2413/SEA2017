@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》数据修复--》修复数据查询
+# 高级应用→数据修复→修复数据查询
 # 第一个tab页
 class DataRepair_1Locators:
     # [显示区]

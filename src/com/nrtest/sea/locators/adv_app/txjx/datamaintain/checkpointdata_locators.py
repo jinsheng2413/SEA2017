@@ -9,7 +9,8 @@
 """
 from selenium.webdriver.common.by import By
 
-# 高级应用-->台线系统--》资料维护--》线路考核点资料维护
+
+# 高级应用-->台线系统→资料维护→线路考核点资料维护
 
 
 class CheckpointdataLocators:

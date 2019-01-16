@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 统计查询--》报表管理--》国网报表--》采集系统运行指标
+# 统计查询→报表管理→国网报表→采集系统运行指标
 class SysRunContrastQueryLocators:
     QRY_DATE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'查询月份\')]/../../div[1]/div[1]//input")

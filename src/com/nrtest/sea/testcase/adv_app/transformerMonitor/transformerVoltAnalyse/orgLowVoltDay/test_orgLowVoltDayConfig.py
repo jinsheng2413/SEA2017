@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.orgL
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》配变监测分析--》电压质量分析--》低压用户电压分析
+# 高级应用→配变监测分析→电压质量分析→低压用户电压分析
 # 低压用户电压监测配置
 @ddt
 class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
@@ -92,7 +92,7 @@ class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_OrgLowVoltDay,
                                   TradnsformerMonitorData.para_OrgLowVoltDayConfig))
     def test_query(self, para):
-        """高级应用-->配变监测分析-->电压质量分析-->低压用户电压分析:低压用户电压监测配置
+        """高级应用→配变监测分析→电压质量分析→低压用户电压分析:低压用户电压监测配置
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

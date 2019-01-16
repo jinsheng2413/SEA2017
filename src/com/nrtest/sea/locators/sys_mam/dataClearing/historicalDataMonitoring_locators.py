@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理-->数据清理管理-->历史数据监控
+# 系统管理→数据清理管理→历史数据监控
 class HistoricalDataMonitoringLocators:
     # 【查询条件区】
     # 表名称

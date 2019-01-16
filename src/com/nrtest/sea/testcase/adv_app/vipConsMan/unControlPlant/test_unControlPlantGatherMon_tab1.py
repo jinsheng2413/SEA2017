@@ -92,7 +92,7 @@ class Test_UnControlPlantGatherMon_1(TestCase, UnControlPlantGatherMon1_Page):
     @data(*DataAccess.getCaseData(UnControlPlant.para_unControlPlantGatherMon,
                                   UnControlPlant.para_unControlPlantGatherMon_tab_count))
     def test_query(self, para):
-        """高级应用--重点用户监测--非统调电厂管理--非统调电厂采集监测（第一个tab页）
+        """高级应用→重点用户监测--非统调电厂管理--非统调电厂采集监测（第一个tab页）
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         :return:

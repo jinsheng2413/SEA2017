@@ -20,7 +20,7 @@ from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_d
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 系统管理--》档案核查管理--》核查结果明细查询
+# 系统管理→档案核查管理→核查结果明细查询
 @ddt
 class TestVerficationResultDetail(TestCase, VerficationResultDetailPage):
 

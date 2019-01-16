@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.avai
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》配变负载分析--》报装可用容量分析
+# 高级应用→配变负载分析→报装可用容量分析
 @ddt
 class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
 
@@ -93,7 +93,7 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_AvailableCapacityAnalyse)[1:2])
     def test_query(self, para):
-        """高级应用-->配变负载分析-->报装可用容量分析
+        """高级应用→配变负载分析→报装可用容量分析
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

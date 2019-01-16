@@ -18,11 +18,11 @@ from com.nrtest.sea.pages.base_app.custMan.ctrlExecutPage import CtrlExecutPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》低压用户远程费控执行
+# 高级应用→费控管理→低压用户远程费控执行
 @ddt
 class TestCtrlExecut(TestCase, CtrlExecutPage):
     """
-    高级应用--》费控管理--》低压用户远程费控执行
+    高级应用→费控管理→低压用户远程费控执行
     """
 
     @classmethod

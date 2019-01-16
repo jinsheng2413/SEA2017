@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》重点用户检测--》分布式电源管理--》分布式电源接入统计
+# 高级应用→重点用户检测→分布式电源管理→分布式电源接入统计
 
 
 class DistributedEnergyStatLocators:

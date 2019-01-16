@@ -17,6 +17,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.sysOtherQuery_page import SysOtherQueryPage
 
 
+# 统计查询--》报表管理--》国网报表--》系统其他运行指标
 @ddt
 class TestSysOtherQuery(TestCase, SysOtherQueryPage):
 

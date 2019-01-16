@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.tmnlSimFlowJB_page import TmnlSimFlowJB_2Page
 
 
-# 运行管理--SIM卡管理--运行情况分析--终端流量统计（冀北）（第一个tab页）
+# 运行管理→SIM卡管理→运行情况分析→终端流量统计（冀北）（第一个tab页）
 @ddt
 class Test_TnmlSimFlowJB_2(TestCase, TmnlSimFlowJB_2Page):
     @classmethod

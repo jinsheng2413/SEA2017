@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理--》档案核查管理--》考核减免汇总
+# 系统管理→档案核查管理→考核减免汇总
 class CheckReducePoolLocators:
     # 【查询条件区】
     # 申请日期

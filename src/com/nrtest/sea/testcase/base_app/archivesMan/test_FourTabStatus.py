@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.fourTabStatus_Page import FourTab
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》多表合一运行状态
+# 基本应用→档案管理→多表合一运行状态
 @ddt
 class TestFourTabStatus(TestCase, FourTabStatusPage):
 

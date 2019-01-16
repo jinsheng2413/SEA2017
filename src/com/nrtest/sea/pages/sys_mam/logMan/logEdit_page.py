@@ -10,10 +10,9 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.sys_mam.logMan.logEdit_locators import LogEditLocators
 
 
-# 系统管理--》日志管理--》值班日志
+# 系统管理→日志管理→值班日志
 class LogEditPage(Page):
     # 值班人员工号
     def inputStr_duty_person_no(self, value):

@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理--》档案核查管理--》档案任务核查编制
+# 系统管理→档案核查管理→档案任务核查编制
 class DataCheckTaskSetLocators:
     # 【查询条件区】
     # 台区编号

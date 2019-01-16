@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.specialUserBalanceQuery_page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》专变用户余额查询
+# 高级应用→费控管理→本地费控→专变用户余额查询
 @ddt
 class TestSpecialUserBalanceQuery(TestCase, SpecialUserBalanceQueryPage):
     @classmethod

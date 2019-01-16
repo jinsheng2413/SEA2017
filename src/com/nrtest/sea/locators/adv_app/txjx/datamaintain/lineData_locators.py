@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用-->台线系统--》资料维护--》线路资料维护
+# 高级应用-->台线系统→资料维护→线路资料维护
 
 
 class LineDataLocators:

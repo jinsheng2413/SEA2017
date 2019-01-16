@@ -67,4 +67,4 @@ class TmnlEventSendingFunctionDeatilPage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(TmnlEventSendingFunctionDeatilLocators.BTN_SEARCH)
-        self.btn_query()
+        self.btn_query(True)

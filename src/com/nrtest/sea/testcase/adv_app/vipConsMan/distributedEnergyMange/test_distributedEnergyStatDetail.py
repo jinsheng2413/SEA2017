@@ -1,10 +1,10 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_distributedEnergySuccessRate.py
-@time: 2018/11/9 9:25
+@file: test_DistributedEnergyStatDetail.py
+@time: 2019/1/16 0010 9:21
 @desc:
 """
 from unittest import TestCase
@@ -15,28 +15,29 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.vipConsMan.distributedEnergyMange.distributedEnergyManage_data import \
     DistributedEnergyMange_data
-from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedEnergyMonitor_page import \
-    DistributedEnergySuccessRatePage
+from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedEnergyStat_page import \
+    DistributedEnergyStatDetailPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测:分布式电源采集成功率
+# 高级应用--》重点用户检测--》分布式电源管理:分布式电源接入明细
 @ddt
-class TestDistributedEnergySuccessRate(TestCase, DistributedEnergySuccessRatePage):
+class TestDistributedEnergyStatDetail(TestCase, DistributedEnergyStatDetailPage):
+
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(DistributedEnergyMange_data.DistributedEnergyMonitor_para)
+        menuPage = MenuPage.openMenu(DistributedEnergyMange_data.DistributedEnergyStat_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(DistributedEnergyMange_data.DistributedEnergyMonitor_tabName_Success)
+        menuPage.clickTabPage(DistributedEnergyMange_data.DistributedEnergyStat_tabName_Detail)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
-        # 关闭菜单页面
+        # 刷新浏览器
         cls.closePages(cls)
 
     def setUp(self):
@@ -50,20 +51,34 @@ class TestDistributedEnergySuccessRate(TestCase, DistributedEnergySuccessRatePag
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
+
         # 回收左边树
         self.recoverLeftTree()
 
     def query(self, para):
+        """
+
+        :param para: Dict类型的字典，不是dict
+        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
+        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
+        """
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
-        # 开始日期
-        self.inputDt_start_date(para['START_DATE'])
-        # 结束日期
-        self.inputDt_end_date(para['END_DATE'])
-        # 查询按钮
-        self.btn_search()
+        # 电能表用途
+        self.inputSel_meter_purpose(para['METER_PURPOSE'])
+        # 发电类型
+        self.inputSel_power_mode(para['POWER_MODE'])
+        # 覆盖情况
+        self.inputSel_cover_status(para['COVER_STATUS'])
+        # 发电量消纳方式
+        self.inputSel_power_consumption_mode(para['POWER_CONSUMPTION_MODE'])
+        # 日期
+        self.inputDt_query_date(para['QUERY_DATE'])
+        # 台区编号
+        self.inputStr_tg_no(para['TG_NO'])
+        # 点击查询按钮
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """
@@ -81,11 +96,10 @@ class TestDistributedEnergySuccessRate(TestCase, DistributedEnergySuccessRatePag
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyMonitor_para,
-                                  DistributedEnergyMange_data.DistributedEnergyMonitor_tabName_Success))
+    @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyStat_para,
+                                  DistributedEnergyMange_data.DistributedEnergyStat_tabName_Detail))
     def test_query(self, para):
-        """高级应用→重点用户监测→分布式电源管理→分布式电源采集监测:分布式电源采集成功率
-
+        """高级应用--》重点用户检测--》分布式电源管理:分布式电源接入明细
         :param para:
         """
         self.start_case(para, __file__)
@@ -94,8 +108,8 @@ class TestDistributedEnergySuccessRate(TestCase, DistributedEnergySuccessRatePag
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyMonitor_para,
-                                  DistributedEnergyMange_data.DistributedEnergyMonitor_tabName_Success, valCheck=True))
+    @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyStat_para,
+                                  DistributedEnergyMange_data.DistributedEnergyStat_tabName_Detail, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

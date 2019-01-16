@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedE
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量→采集成功率趋势
+# 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量:采集成功率趋势
 @ddt
 class TestSuccessRateTrend(TestCase, SuccessRateTrendPage):
     @classmethod
@@ -57,6 +57,8 @@ class TestSuccessRateTrend(TestCase, SuccessRateTrendPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+        # 查询类型
+        self.inputChk_qry_type(para['QRY_TYPE'])
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 本地通讯方式
@@ -69,6 +71,9 @@ class TestSuccessRateTrend(TestCase, SuccessRateTrendPage):
         self.inputSel_elec_type(para['ELEC_TYPE'])
         # 查询按钮
         self.btn_search()
+        # 成功率类型
+        self.inputChk_success_type(para['SUCCESS_TYPE'])
+
 
     def assert_query_result(self, para):
         """
@@ -89,6 +94,10 @@ class TestSuccessRateTrend(TestCase, SuccessRateTrendPage):
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyQuality_para,
                                   DistributedEnergyMange_data.DistributedEnergyQuality_tabName_Trend))
     def test_query(self, para):
+        """高级应用→重点用户监测→分布式电源管理→分布式电源采集质量:采集成功率趋势
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

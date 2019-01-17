@@ -36,9 +36,8 @@ class LoadRateDetailPage(Page):
         self.selectDropDown(item,is_multi_elements=True,is_multi_tab=True)
 
     # 负载情况
-    def inputChk_load_status(self, para):
-        for i in range (7):
-            self.clickSingleCheckBox(para['LOAD_STATUS' + str(i)])
+    def inputChk_load_status(self, items):
+        self.clickCheckBox_new(items, is_multi_tab=True)
 
 
     # 查询日期

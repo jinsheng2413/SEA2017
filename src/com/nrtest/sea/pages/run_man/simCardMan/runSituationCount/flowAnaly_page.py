@@ -55,10 +55,8 @@ class OverFlowStaticPage(Page):
         self.clickRadioBox(option)
 
     # 是否超流量
-    def inputChk_is_over_flow(self, para):
-        options = [para['IS_OVER_FLOW'], para['NO_OVER_FLOW']]
-        for option in options:
-            self.clickSingleCheckBox(option)
+    def inputChk_over_flow_status(self, items):
+        self.clickCheckBox_new(items, is_multi_tab=True)
 
     # 查询
     def btn_qry(self):

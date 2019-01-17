@@ -73,7 +73,7 @@ class TestLoadRateDetail(TestCase, LoadRateDetailPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         #负载情况
-        self.inputChk_load_status(para)
+        self.inputChk_load_status(para['LOAD_STATUS'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 

@@ -11,7 +11,9 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→数据采集管理→采集质量分析→采集成功率(冀北)
 class CollectSuccessRateJbPage(Page):
+
     # 曲线类型
     def inputChk_curve_type(self, name):
         self.clickRadioBox(name)
@@ -34,7 +36,6 @@ class CollectSuccessRateJbPage(Page):
 
     # 用户类型
     def inputSel_cons_sort(self, options):
-        # self.selectDropDown(name)
         self.selectCheckBox(options)
 
     # 芯片厂家

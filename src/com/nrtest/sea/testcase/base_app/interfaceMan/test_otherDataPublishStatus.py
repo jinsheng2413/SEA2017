@@ -54,14 +54,15 @@ class Test_otherDataPublishStatus(TestCase, OtherDataPublishStatusPage):
         self.recoverLeftTree()
 
     def query(self, para):
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        self.inputSel_Business_system(para['BUSINESS_SYSTEM'])
+        # 业务系统
+        self.inputSel_business_system(para['BUSINESS_SYSTEM'])
 
         # 开始时间
         self.inputDt_receive_time(para['START_DATE'])
-
         # 结束时间
         self.inputDt_end_time(para['END_DATE'])
 

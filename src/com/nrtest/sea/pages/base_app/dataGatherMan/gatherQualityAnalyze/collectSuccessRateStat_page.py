@@ -11,7 +11,9 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→数据采集管理→采集质量分析→采集成功率综合统计
 class CollectSuccessRateStatPage(Page):
+
     # 查询时间
     def inputDt_date_time(self, value):
         self.inputDate(value)

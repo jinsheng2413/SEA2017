@@ -11,7 +11,9 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→数据采集管理→数据召测→批量巡测
 class BatchFetchPage(Page):
+
     # 任务名称
     def inputStr_task_name(self, value):
         self.input(value)

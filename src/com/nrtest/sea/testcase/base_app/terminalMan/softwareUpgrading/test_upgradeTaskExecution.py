@@ -96,6 +96,10 @@ class TestUpgradeTaskExecution(TestCase, UpgradeTaskExecutionPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeTaskExecution_para))
     def test_query(self, para):
+        """基本应用→终端管理→软件升级→升级任务执行
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

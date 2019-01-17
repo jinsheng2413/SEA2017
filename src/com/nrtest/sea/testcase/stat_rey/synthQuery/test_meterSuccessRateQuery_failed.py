@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_meterSuccessRateQuery.py
+@file: test_meterSuccessRateQuery_failed.py
 @time: 2018/10/10 15:07
 @desc:
 """
@@ -16,19 +16,19 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.meterSuccessRateQuery_page import MeterSuccessRateQueryPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.meterSuccessRateQuery_page import MeterSuccessRateQueryFailedPage
 
 
-# 统计查询→综合查询→抄表成功率查询（河北）:按地区、厂家统计
+# 统计查询→综合查询→抄表成功率查询（河北）:连续抄表失败明细
 @ddt
-class TestMeterSuccessRateQuery(TestCase, MeterSuccessRateQueryPage):
+class TestMeterSuccessRateFailedQuery(TestCase, MeterSuccessRateQueryFailedPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(SynthQuery_data.MeterSuccessRateQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName)
+        menuPage.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName_failed)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -54,29 +54,35 @@ class TestMeterSuccessRateQuery(TestCase, MeterSuccessRateQueryPage):
 
     def query(self, para):
         if para['TAB_NAME'] == '1':
-            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName1)
+            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName_failed1)
+            # 打开左边树并选择
+            self.openLeftTree(para['TREE_NODE'])
+            # 用户类型
+            self.inputSel_cons_type(para['CONS_TYPE'])
+            # 运行状态
+            self.inputSel_run_status(para['RUN_STATUS'])
+            # 日期
+            self.inputDt_query_date(para['QUERY_DATE'])
         if para['TAB_NAME'] == '2':
-            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName2)
-        if para['TAB_NAME'] == '3':
-            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName3)
-        if para['TAB_NAME'] == '4':
-            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName4)
-        # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
-        # 日期
-        self.inputDt_query_date(para['QUERY_DATE'])
-        # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
-        # 终端类型
-        self.inputSel_tmnl_type(para['TMNL_TYPE'])
-        # 通信方式
-        self.inputSel_comm_way(para['COMM_WAY'])
-        # 规约类型
-        self.inputSel_protocol_type(para['PROTOCOL_TYPE'])
-        # 用户范围
-        self.inputSel_cons_range(para['CONS_RANGE'])
-        # 统计类型
-        self.inputSel_stat_type(para['STAT_TYPE'])
+            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName_failed2)
+            # 打开左边树并选择
+            self.openLeftTree(para['TREE_NODE'])
+            # 用户类型
+            self.inputSel_cons_type(para['CONS_TYPE'])
+            # 接线方式
+            self.inputSel_conn_way(para['CONN_WAY'])
+            # 运行状态
+            self.inputSel_run_status(para['RUN_STATUS'])
+            # 用户编号
+            self.inputStr_cons_no(para['CONS_NO'])
+            # 终端地址
+            self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+            # 农排用户选择
+            self.inputSel_user_select(para['USER_SELECT'])
+            # 连续失败天数
+            self.inputStr_continuous_failed_start(para['CONTINUOUS_FAILED_START'])
+            # 到
+            self.inputStr_continuous_failed_end(para['CONTINUOUS_FAILED_END'])
         # 查询按钮
         self.btn_search()
 
@@ -97,9 +103,9 @@ class TestMeterSuccessRateQuery(TestCase, MeterSuccessRateQueryPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.MeterSuccessRateQuery_para,
-                                  SynthQuery_data.MeterSuccessRateQuery_tabName))
+                                  SynthQuery_data.MeterSuccessRateQuery_tabName_failed))
     def test_query(self, para):
-        """统计查询→综合查询→抄表成功率查询（河北）:按地区、厂家统计
+        """统计查询→综合查询→抄表成功率查询（河北）:连续抄表失败明细
 
         :param para:
         """
@@ -110,7 +116,7 @@ class TestMeterSuccessRateQuery(TestCase, MeterSuccessRateQueryPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.MeterSuccessRateQuery_para,
-                                  SynthQuery_data.MeterSuccessRateQuery_tabName, valCheck=True))
+                                  SynthQuery_data.MeterSuccessRateQuery_tabName_failed, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

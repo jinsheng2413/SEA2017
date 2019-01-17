@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.inte
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→智能表停电事件查询→智能表停电明细
+# 高级应用→配变监测分析→停电分析→智能表停电事件查询:智能表停电明细
 @ddt
 class TestIntelligentMeterPowerCutEventQueryDetail(TestCase, IntelligentMeterPowerCutEventQueryDetailPage):
     @classmethod
@@ -92,6 +92,10 @@ class TestIntelligentMeterPowerCutEventQueryDetail(TestCase, IntelligentMeterPow
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.IntelligentMeterPowerCutEventQuery_para,
                                   PowerCutAnalysis_data.IntelligentMeterPowerCutEventQuery_tabName_Detail))
     def test_query(self, para):
+        """高级应用→配变监测分析→停电分析→智能表停电事件查询:智能表停电明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

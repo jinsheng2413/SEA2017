@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedE
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测→分布式电源抄表示数查询
+# 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测:分布式电源抄表示数查询
 @ddt
 class TestDistributedEnergyQuery(TestCase, DistributedEnergyQueryPage):
     @classmethod
@@ -89,6 +89,10 @@ class TestDistributedEnergyQuery(TestCase, DistributedEnergyQueryPage):
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyElectricMonitor_para,
                                   DistributedEnergyMange_data.DistributedEnergyElectricMonitor_tabName_Query))
     def test_query(self, para):
+        """高级应用→重点用户监测→分布式电源管理→分布式电源电量监测:分布式电源抄表示数查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

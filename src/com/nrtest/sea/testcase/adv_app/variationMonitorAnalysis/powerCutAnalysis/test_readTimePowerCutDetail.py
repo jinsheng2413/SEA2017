@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.read
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→实时停电监测→实时停电明细
+# 高级应用→配变监测分析→停电分析→实时停电监测:实时停电明细
 @ddt
 class TestReadTimePowerCutDetail(TestCase, ReadTimePowerCutDetailPage):
     @classmethod
@@ -85,6 +85,10 @@ class TestReadTimePowerCutDetail(TestCase, ReadTimePowerCutDetailPage):
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.ReadTimePowerCutMonitor_para,
                                   PowerCutAnalysis_data.ReadTimePowerCutMonitor_tabName_Detail))
     def test_query(self, para):
+        """高级应用→配变监测分析→停电分析→实时停电监测:实时停电明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -82,6 +82,10 @@ class TestSecurityQueryAndDelete(TestCase, SecurityQueryAndDeletePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(IntelligentLock_data.SecurityQueryAndDelete_para))
     def test_query(self, para):
+        """高级应用→智能锁具→权限查询及删除
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

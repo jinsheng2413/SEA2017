@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.unControlPlant.unControlPlantStat_p
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→重点用户监测→非统调电厂管理→非统调电厂接入统计
+# 高级应用→重点用户监测→非统调电厂管理:非统调电厂接入统计
 @ddt
 class TestUnControlPlantStat(TestCase, UnControlPlantStatPage):
     @classmethod
@@ -82,10 +82,9 @@ class TestUnControlPlantStat(TestCase, UnControlPlantStatPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(UnControlPlant.UnControlPlantStat_para, UnControlPlant.UnControlPlantStat_tabName))
     def test_query(self, para):
-        """
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        :return:
+        """高级应用→重点用户监测→非统调电厂管理:非统调电厂接入统计
+
+        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

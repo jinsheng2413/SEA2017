@@ -80,6 +80,10 @@ class TestLinePowerCutStatistics(TestCase, LinePowerCutStatisticsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.LinePowerCutStatistics_para))
     def test_query(self, para):
+        """高级应用→配变监测分析→停电分析→线路停电统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedE
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→重点用户监测→分布式电源管理→分布式电源异常分析→分布式电源异常情况明细
+# 高级应用→重点用户监测→分布式电源管理→分布式电源异常分析:分布式电源异常情况明细
 @ddt
 class TestDistributedEnergyAnomalyDetail(TestCase, DistributedEnergyAnomalyDetailPage):
     @classmethod
@@ -89,6 +89,10 @@ class TestDistributedEnergyAnomalyDetail(TestCase, DistributedEnergyAnomalyDetai
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_para,
                                   DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_tabName_Detail))
     def test_query(self, para):
+        """高级应用→重点用户监测→分布式电源管理→分布式电源异常分析:分布式电源异常情况明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

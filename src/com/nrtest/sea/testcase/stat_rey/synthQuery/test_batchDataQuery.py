@@ -65,6 +65,14 @@ class TestBatchDataQuery(TestCase, BatchDataQueryPage):
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询按钮
         self.btn_search()
+        if para['TAB_NAME'] == '1':
+            self.clickTabPage(SynthQuery_data.BatchDataQuery_tabName1)
+        if para['TAB_NAME'] == '2':
+            self.clickTabPage(SynthQuery_data.BatchDataQuery_tabName2)
+        if para['TAB_NAME'] == '3':
+            self.clickTabPage(SynthQuery_data.BatchDataQuery_tabName3)
+        if para['TAB_NAME'] == '4':
+            self.clickTabPage(SynthQuery_data.BatchDataQuery_tabName4)
 
     def assert_query_result(self, para):
         """
@@ -84,6 +92,10 @@ class TestBatchDataQuery(TestCase, BatchDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.BatchDataQuery_para))
     def test_query(self, para):
+        """统计查询→综合查询→批量数据查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

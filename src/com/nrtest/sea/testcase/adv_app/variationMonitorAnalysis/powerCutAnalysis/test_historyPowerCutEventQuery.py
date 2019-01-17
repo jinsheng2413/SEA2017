@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.hist
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→历史停电事件查询
+# 高级应用→配变监测分析→停电分析→历史停电事件查询:停电事件统计
 @ddt
 class TestHistoryPowerCutEventQuery(TestCase, HistoryPowerCutEventQueryPage):
     @classmethod
@@ -85,6 +85,10 @@ class TestHistoryPowerCutEventQuery(TestCase, HistoryPowerCutEventQueryPage):
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.HistoryPowerCutEventQuery_para,
                                   PowerCutAnalysis_data.HistoryPowerCutEventQuery_tabName))
     def test_query(self, para):
+        """高级应用→配变监测分析→停电分析→历史停电事件查询:停电事件统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

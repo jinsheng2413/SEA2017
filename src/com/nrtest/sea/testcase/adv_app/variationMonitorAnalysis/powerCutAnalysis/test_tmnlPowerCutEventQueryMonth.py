@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.tmnl
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→终端停电事件查询→月终端停电明细
+# 高级应用→配变监测分析→停电分析→终端停电事件查询:月终端停电明细
 @ddt
 class TestTmnlPowerCutEventQueryMonth(TestCase, TmnlPowerCutEventQueryMonthPage):
     @classmethod
@@ -87,6 +87,10 @@ class TestTmnlPowerCutEventQueryMonth(TestCase, TmnlPowerCutEventQueryMonthPage)
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.TmnlPowerCutEventQuery_para,
                                   PowerCutAnalysis_data.TmnlPowerCutEventQuery_tabName_Month))
     def test_query(self, para):
+        """高级应用→配变监测分析→停电分析→终端停电事件查询:月终端停电明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

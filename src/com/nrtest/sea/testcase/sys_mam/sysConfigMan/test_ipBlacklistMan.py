@@ -77,6 +77,10 @@ class TestIpBlacklistMan(TestCase, IpBlacklistManPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysConfigManData.IpBlacklistMan_para))
     def test_query(self, para):
+        """系统管理→系统配置管理→IP黑名单管理
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

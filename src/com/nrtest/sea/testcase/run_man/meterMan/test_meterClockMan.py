@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.meterMan.meterClockMan_pages import MeterClockManPage
 
 
-# 运行管理-电能表管理-电能表状态查询
+# 运行管理→电能表管理→电能表状态查询
 @ddt
 class TestMeterClockMan(TestCase, MeterClockManPage):
 
@@ -107,6 +107,10 @@ class TestMeterClockMan(TestCase, MeterClockManPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(MeterClockMan_data.MeterClockMan_para))
     def test_query(self, para):
+        """运行管理→电能表管理→电能表状态查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

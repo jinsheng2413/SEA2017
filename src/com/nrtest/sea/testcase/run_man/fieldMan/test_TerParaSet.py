@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.fieldMan.termParaSet_pages import TermParaSetPage
 
 
-# 运行管理-现场管理-终端运行参数设置
+# 运行管理→现场管理→终端运行参数设置
 @ddt
 class TestTerParaSet(TestCase, TermParaSetPage):
 
@@ -101,6 +101,10 @@ class TestTerParaSet(TestCase, TermParaSetPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TermParaSet_data.TermParaSet_para))
     def test_query(self, para):
+        """运行管理→现场管理→终端运行参数设置
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

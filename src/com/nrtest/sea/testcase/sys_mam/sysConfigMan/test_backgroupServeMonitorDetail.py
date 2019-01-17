@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.sysConfigMan.backgroupServeMonitor_page import BackgroupServeMonitorDetailPage
 
 
-# 系统管理→系统配置管理→后台服务监测→后台服务监测明细
+# 系统管理→系统配置管理→后台服务监测:后台服务监测明细
 @ddt
 class TestBackgroupServeMonitorDetail(TestCase, BackgroupServeMonitorDetailPage):
     @classmethod
@@ -91,6 +91,10 @@ class TestBackgroupServeMonitorDetail(TestCase, BackgroupServeMonitorDetailPage)
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysConfigManData.BackgroundServeMonitor_para, SysConfigManData.BackgroupServeMonitorDetail_tabName))
     def test_query(self, para):
+        """系统管理→系统配置管理→后台服务监测:后台服务监测明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -89,6 +89,10 @@ class TestCollectTaskTemplate(TestCase, CollectTaskTemplatePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TemplateManData.CollectTaskTemplate_para))
     def test_query(self, para):
+        """系统管理→模板管理→采集任务模板
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

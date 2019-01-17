@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理→系统配置管理→后台服务监测
+# 系统管理→系统配置管理→后台服务监测:后台服务监测
 class BackgroupServeMonitorPage(Page):
 
     # 日期类型选择
@@ -31,7 +31,7 @@ class BackgroupServeMonitorPage(Page):
         self.btn_query(True)
 
 
-# 系统管理→系统配置管理→后台服务监测→后台服务监测明细
+# 系统管理→系统配置管理→后台服务监测:后台服务监测明细
 class BackgroupServeMonitorDetailPage(Page):
     # JOB名称
     def inputStr_job_name(self, content):

@@ -96,6 +96,10 @@ class TestLineGroupSet(TestCase, LineGroupSetPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GroupMan_data.LineGroupSet_para))
     def test_query(self, para):
+        """运行管理→群组管理→线路群组设置
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

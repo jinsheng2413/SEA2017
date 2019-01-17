@@ -77,6 +77,10 @@ class TestRoleMAn(TestCase, RoleMAnPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SecutityMan_data.RoleMan_para))
     def test_query(self, para):
+        """系统管理→权限密码管理→角色管理
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

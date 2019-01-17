@@ -82,6 +82,10 @@ class TestMsgSet(TestCase, MsgSetPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(MsgPushData.MsgSet_para))
     def test_query(self, para):
+        """系统管理→信息定制→推送信息定制→信息设置
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

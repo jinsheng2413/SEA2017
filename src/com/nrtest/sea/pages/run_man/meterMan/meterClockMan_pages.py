@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 运行管理-电能表管理-电能表状态查询
+# 运行管理→电能表管理→电能表状态查询
 class MeterClockManPage(Page):
 
     # 事件类型

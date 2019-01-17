@@ -11,6 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 系统管理→系统配置管理→数据字典管理
 class SysDictManPage(Page):
 
     # 分类名称

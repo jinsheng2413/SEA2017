@@ -27,7 +27,7 @@ class DistributedEnergyMange_data:
     DistributedEnergyQuality_tabName_Trend = '采集成功率趋势'
     # 高级应用→重点用户监测→分布式电源管理→分布式电源异常分析
     DistributedEnergyAnomalyAnalysis_para = '99926140'
-    DistributedEnergyAnomalyAnalysis_tabName = '分布式电源异常分析'
+    DistributedEnergyAnomalyAnalysis_tabName = '分布式电源异常情况统计'
     DistributedEnergyAnomalyAnalysis_tabName_Detail = '分布式电源异常情况明细'
     # 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测
     DistributedEnergyElectricMonitor_para = '99926150'

@@ -64,9 +64,8 @@ class MeterDataQueryPage(Page):
         self.selectDropDown(index)
 
     # 采集情况
-    def inputChk_read_status(self, para):
-        for i in range(3):
-            self.clickSingleCheckBox(para['READ_STATUS' + str(i)])
+    def inputChk_read_status(self, index):
+        self.clickCheckBox_new(index)
 
     # 查询按钮
     def btn_search(self):

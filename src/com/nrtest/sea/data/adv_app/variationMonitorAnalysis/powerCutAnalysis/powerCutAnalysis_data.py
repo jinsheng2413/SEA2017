@@ -53,7 +53,7 @@ class PowerCutAnalysis_data:
 
     # 高级应用→配变监测分析→停电分析→终端是否具备停上电事件上送功能
     TmnlEventSendingFunction_para = '99925450'
-    TmnlEventSendingFunction_tabName = '终端是否具备停上电事件上送功能'
+    TmnlEventSendingFunction_tabName = '终端是否具备停上电事件上送功能统计'
     TmnlEventSendingFunction_tabName_Detail = '终端是否具备停上电事件上送功能明细'
 
     # 高级应用→配变监测分析→停电分析→线路停电统计

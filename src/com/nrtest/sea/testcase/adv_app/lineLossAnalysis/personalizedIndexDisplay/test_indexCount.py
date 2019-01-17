@@ -55,10 +55,13 @@ class TestIndexDetail(TestCase, IndexDetailPage_count):
         self.clickTabPage(PersonalizedIndexDisplay_data.IndexDetail_count_tab)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 工号
         self.inputStr_workNo(para['WORK_NO'])
+
         # 时间选择
         self.inputDt_query_date(para['QUERY_DATE'])
+
         # 查询按钮
         self.btn_search()
 

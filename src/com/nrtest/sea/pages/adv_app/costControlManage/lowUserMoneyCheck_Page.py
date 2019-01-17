@@ -14,7 +14,6 @@ from com.nrtest.common.base_page import Page
 class BalanceCount_page(Page):
     # 数据日期查询
     def inputDt_date_time(self, value):
-        # print(value)
         self.clean_label(value)
         self.inputDate(value)
 
@@ -54,7 +53,7 @@ class BalanceCheck_page(Page):
         self.input(value)
 
     # 接收时间
-    def inputStr_receive_date(self, value):
+    def inputDt_receive_date(self, value):
         self.clean_label(value)
         self.inputDate(value)
 
@@ -64,7 +63,7 @@ class BalanceCheck_page(Page):
         self.inputDate(value)
 
     # 执行状态
-    def inputRSel_execute_state(self, option):
+    def inputSel_execute_state(self, option):
         self.clean_label(option)
         self.selectDropDown(option)
 

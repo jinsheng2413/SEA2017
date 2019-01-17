@@ -75,7 +75,6 @@ class TgLineLossAnalysisPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(TgLineLossAnalysisLocators.BTN_SEARCH)
         self.btn_query()
 
     # 日期选择类型

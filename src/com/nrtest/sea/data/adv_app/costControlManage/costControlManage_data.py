@@ -18,7 +18,7 @@ class CostControlManage_data:
     eleParaMan_rate_tab = '费率电价'
     eleParaMan_step_tab = '阶梯电价'
 
-    # 高级应用→费控管理→本地费控→专变用户余额查询
+    # 高级应用→费控管理→本地费控→专变用户余额查看
     specialUserBalanceQuery_para = '99922150'
 
     # 高级应用→费控管理→本地费控→费控投入调试

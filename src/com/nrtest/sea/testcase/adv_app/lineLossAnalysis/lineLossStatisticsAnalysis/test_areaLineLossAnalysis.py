@@ -55,12 +55,16 @@ class TestAreaLineLossAnalysis(TestCase, AreaLineLossAnalysisPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
         # 电量使用方式
         self.inputChk_StatTimeType(para['STAT_DATE_TYPE'])
+
         # 按时间类型统计
         self.inputSChk_ele_type(para['ELE_TYPE'])
+
         # 查询按钮
         self.btn_search()
 
@@ -82,6 +86,10 @@ class TestAreaLineLossAnalysis(TestCase, AreaLineLossAnalysisPage):
     # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.AreaLineLossAnalysis_para))
     def test_query(self, para):
+        """高级应用→线损分析→线损统计分析→区域线损分析
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

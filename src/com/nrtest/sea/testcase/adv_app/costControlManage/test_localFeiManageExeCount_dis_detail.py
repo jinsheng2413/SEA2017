@@ -98,6 +98,10 @@ class TestlocalFeiManageExeCount_dis_detail(TestCase, LocalFeiManageExeCount_dis
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CostControlManage_data.localFeiManageExeCount_para, CostControlManage_data.localFeiManageExeCount_tab_detail))
     def test_query(self, para):
+        """高级应用→费控管理→本地费控→本地费控执行统计: 费控情况明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

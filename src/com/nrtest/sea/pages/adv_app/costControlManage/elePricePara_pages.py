@@ -33,7 +33,7 @@ class ElePricePages(Page):
         self.input(value)
 
     # 任务类型
-    def inputSel_task_cata(self, option):
+    def inputSel_task_type(self, option):
         self.clean_label(option)
         self.selectDropDown(option)
 

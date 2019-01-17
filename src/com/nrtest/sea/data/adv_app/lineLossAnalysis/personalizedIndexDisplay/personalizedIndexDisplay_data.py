@@ -12,5 +12,6 @@
 class PersonalizedIndexDisplay_data:
     # 高级应用→线损分析→同期线损→指标配置
     IndexAllocation_para = '99924610'
+
     # 高级应用→线损分析→同期线损→指标明细
     IndexDetail_para = '99924620'

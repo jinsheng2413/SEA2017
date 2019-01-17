@@ -57,12 +57,16 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
     def query(self, para):
         # 台区编号
         self.inputStr_tg_no(para['TG_NO'])
+
         # 查询按钮
         self.btn_search()
+
         # 查询日期，开始
         self.inputDt_start_date(para['START_DATE'])
+
         # 查询日期，结束
         self.inputDt_end_date(para['END_DATE'])
+
         # 日线损，查询按钮
         self.btn_search_day()
 
@@ -84,6 +88,10 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_day))
     def test_query(self, para):
+        """高级应用→线损分析→线损统计分析→台区线损统一视图→台区线损统一视图
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

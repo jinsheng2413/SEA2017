@@ -97,6 +97,10 @@ class TestLoseCountPowerMan(TestCase, LoseCountPowerManPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossMantain_data.loseCountPowerMan_para))
     def test_query(self, para):
+        """高级应用-->线损分析→线损模型维护→线损计算模型管理
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

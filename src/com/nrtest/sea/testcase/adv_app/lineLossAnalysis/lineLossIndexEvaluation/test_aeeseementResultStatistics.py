@@ -56,13 +56,16 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 责任人
         self.inputSel_charge_person(para['CHARGE_PERSON'])
+
         # 按日期类型统计
         self.inputDt_query_date_type(para['TIME_STAT'])
-        print(para['DATE'])
+
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
         # 查询按钮
         self.btn_search()
 
@@ -84,6 +87,10 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
     # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossIndexEvaluation_data.AssessmentResultStatistics_para))
     def test_query(self, para):
+        """高级应用→线损分析→线损指标考核→考核结果统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

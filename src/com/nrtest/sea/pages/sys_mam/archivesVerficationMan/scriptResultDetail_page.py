@@ -15,11 +15,11 @@ from com.nrtest.common.base_page import Page
 # 系统管理→档案核查管理→脚本结果明细查询
 class ScriptResultDetailPage(Page):
     # 脚本名称
-    def inputStr_scriptName(self, value):
+    def inputStr_script_name(self, value):
         self.input(value)
 
     # 接收时间
-    def inputDt_receive_time(self, value):
+    def inputDt_start_time(self, value):
         self.inputDate(value)
 
     # 结束时间

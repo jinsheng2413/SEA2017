@@ -55,26 +55,37 @@ class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 采集覆盖率
         self.inputSel_collectCoverRate(para['COLLECT_COVER_RATE'])
+
         # 采集成功率
         self.inputSel_collectSuccessRate(para['COLLECT_SUCCESS__RATE'])
+
         # 同期线损率
         self.inputSel_lineLoss(para['COLLECLINE_LOSS__RATE'])
+
         # 日期类型
         self.inputChk_dateType(para['DATE_TYPE_DAY'])
+
         # 运算类型
         self.inputChk_runType(para['COMPUTE_TYPE'])
+
         # 台区编号
         self.inputStr_tg_no(para['TG_NO'])
+
         # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
+
         # 查询日期,开始
         self.inputDt_start_date(para['START_DATE'])
+
         # 查询日期，结束
         self.inputDt_end_date(para['END_DATE'])
+
         # 责任人工号
         self.inputStr_charge_person_no(para['CHARGE_PERSON'])
+
         # 查询按钮
         self.btn_search()
 
@@ -96,6 +107,10 @@ class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossDetail_para)[0:1])
     def test_query(self, para):
+        """高级应用→线损分析→线损统计分析→台区线损明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

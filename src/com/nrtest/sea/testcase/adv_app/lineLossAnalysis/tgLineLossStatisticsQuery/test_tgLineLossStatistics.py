@@ -55,11 +55,15 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossStatisticsPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 线损维度
         self.inputSel_line_loss_dimension(para['LINE_LOSS_DIMENSION'])
+
         # 开始时间
         self.inputDt_start_date(para['START_TIME'])
+
         self.inputDt_end_date(para['END_TIME'])
+
         # 查询按钮
         self.btn_search()
 
@@ -81,6 +85,10 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossStatisticsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossStatistics_para, ))
     def test_query(self, para):
+        """高级应用→线损分析→线损统计分析→台区线损统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

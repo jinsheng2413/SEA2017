@@ -55,10 +55,13 @@ class TestTgLineLossAbnormalReport(TestCase, TgLineLossAbnormalReportPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 线损维度
         self.inputSel_line_loss_dimension(para['LINE_LOSS_DIMENSION'])
+
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
         # 查询按钮
         self.btn_search()
 
@@ -80,6 +83,10 @@ class TestTgLineLossAbnormalReport(TestCase, TgLineLossAbnormalReportPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossAbnormalReport_para))
     def test_query(self, para):
+        """高级应用→线损分析→线损统计分析→台区线损异常报表
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

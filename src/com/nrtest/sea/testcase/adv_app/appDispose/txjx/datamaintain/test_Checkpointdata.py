@@ -92,6 +92,10 @@ class TestCheckpointdata(TestCase, CheckpointdataPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(Datamaintain_data.checkpointdata_para))
     def test_query(self, para):
+        """高级应用→台线系统→资料维护→线路考核点资料维护
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

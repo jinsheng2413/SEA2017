@@ -21,9 +21,6 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 # 高级应用→费控管理→远程费控→低压用户远程费控执行
 @ddt
 class TestCtrlExecut(TestCase, CtrlExecutPage):
-    """
-    高级应用→费控管理→低压用户远程费控执行
-    """
 
     @classmethod
     def setUpClass(cls):
@@ -67,34 +64,47 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 用户编号
-        self.inputStr_userNo(para['USER_NO'])
+        self.inputStr_user_no(para['USER_NO'])
+
         # 用户名称
-        self.inputStr_userName(para['USER_NAME'])
+        self.inputStr_user_name(para['USER_NAME'])
+
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
         # 控制类型
-        self.inputSel_controlType(para['CONTROL_TYPE'])
+        self.inputSel_control_type(para['CONTROL_TYPE'])
+
         # 抄表段号
-        self.inputStr_sectNo(para['SECT_NO'])
+        self.inputStr_sect_no(para['SECT_NO'])
+
         # 执行状态
-        self.inputSel_exeStatus(para['EXE_STATUS'])
+        self.inputSel_exe_status(para['EXE_STATUS'])
+
         # 数据来源
-        self.inputSel_dataCome(para['DATA_COME'])
+        self.inputSel_data_come(para['DATA_COME'])
+
         # 确认状态
-        self.inputSel_confirmStatus(para['CONFIRM_STATUS'])
+        self.inputSel_confirm_status(para['CONFIRM_STATUS'])
+
         # 时间区间
-        self.clickRadioBox(para['DT_INTERAL'])
+        self.inputChk_dt_interal(para['DT_INTERAL'])
 
         # 开始时间
-        self.inputStr_startTime(para['START_TIME'])
-        # 结束时间
-        self.inputStr_ENDTIme(para['END_TIME'])
-        # 工单号
-        self.inputStr_workOrder(para['WORK_ORDER'])
-        # 执行结果状态
-        self.inputSel_exeResultStatus(para['EXE_RESULT_STATUS'])
+        self.inputDt_start_time(para['START_TIME'])
 
+        # 结束时间
+        self.inputDt_end_time(para['END_TIME'])
+
+        # 工单号
+        self.inputStr_work_order(para['WORK_ORDER'])
+
+        # 执行结果状态
+        self.inputSel_exe_result_status(para['EXE_RESULT_STATUS'])
+
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 
@@ -114,12 +124,11 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para)[0:1])
+    @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para))
     def test_query(self, para):
-        """
+        """高级应用→费控管理→远程费控→低压用户远程费控执行
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)

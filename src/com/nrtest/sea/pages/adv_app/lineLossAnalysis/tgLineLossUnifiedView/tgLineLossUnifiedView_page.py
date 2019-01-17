@@ -14,44 +14,33 @@ from com.nrtest.common.base_page import Page
 class TgLineLossUnifiedViewPage(Page):
     # 台区编号
     def inputStr_tg_no(self, content):
-        self.input(content)  # , *TgLineLossUnifiedViewLocators.QRY_TG_NO)
+        self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(TgLineLossUnifiedViewLocators.BTN_SEARCH)
         self.btn_query(True)
     # 日线损
     # 查询日期，开始
     def inputDt_start_date(self, content):
-        # self.exec_script(TgLineLossUnifiedViewLocators.START_DATE_JS)
-        # self.input(content, *TgLineLossUnifiedViewLocators.QRY_START_DATE)
         self.inputDate(content)
 
     # 查询日期，结束
     def inputDt_end_date(self, content):
-        # self.exec_script(TgLineLossUnifiedViewLocators.END_DATE_JS)
-        # self.input(content, *TgLineLossUnifiedViewLocators.QRY_END_DATE)
         self.inputDate(content)
 
     # 查询按钮
     def btn_search_day(self):
-        # self.click(TgLineLossUnifiedViewLocators.BTN_SEARCH_DAY)
         self.btn_query(True)
 
     # 月线损
     # 查询日期，开始
     def inputDt_start_date_tab(self, content):
-        # self.exec_script(TgLineLossUnifiedViewLocators.START_DATE_TAB_JS)
-        # self.input(content, *TgLineLossUnifiedViewLocators.QRY_START_DATE_TAB)
         self.inputDate(content)
 
     # 查询日期，结束
     def inputDt_end_date_tab(self, content):
-        # self.exec_script(TgLineLossUnifiedViewLocators.END_DATE_TAB_JS)
-        # self.input(content, *TgLineLossUnifiedViewLocators.QRY_END_DATE_TAB)
         self.inputDate(content)
 
     # 查询按钮
     def btn_search_month(self):
-        # self.click(TgLineLossUnifiedViewLocators.BTN_SEARCH_MONTH)
         self.btn_query(True)

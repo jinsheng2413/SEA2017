@@ -65,9 +65,9 @@ class TestScriptResultStat(TestCase, ScriptResultDetailPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 脚本名称
-        self.inputStr_scriptName(para['SCRIPT_NAME'])
+        self.inputStr_script_name(para['SCRIPT_NAME'])
         # 开始时间
-        self.inputDt_receive_time(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
         # 结束时间
         self.inputDt_end_time(para["END_TIME"])
         # 查询

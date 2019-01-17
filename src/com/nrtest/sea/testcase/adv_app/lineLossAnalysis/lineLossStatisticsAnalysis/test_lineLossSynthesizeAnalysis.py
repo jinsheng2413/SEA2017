@@ -30,7 +30,7 @@ class TestLineLossSynthesizeAnalysis(TestCase, LineLossSynthesizeAnalysisPage):
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(LineLossStatisticsAnalysis_data.LineLossSynthesizeAnalysis_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        # menuPage.remove_dt_readonly()
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -55,12 +55,16 @@ class TestLineLossSynthesizeAnalysis(TestCase, LineLossSynthesizeAnalysisPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 线损类别
         self.inputSel_line_loss_type(para['LINE_LOSS_TYPE'])
+
         # 日期统计类型
         self.inputDTTAB_statDateType(para['STAT_DATE_TYPE'])
+
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
         # 查询按钮
         self.btn_search()
 
@@ -82,6 +86,10 @@ class TestLineLossSynthesizeAnalysis(TestCase, LineLossSynthesizeAnalysisPage):
     # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossSynthesizeAnalysis_para))
     def test_query(self, para):
+        """高级应用→线损分析→线损统计分析→线损综合分析
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

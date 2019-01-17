@@ -61,19 +61,26 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 考核单元名称
-        self.inputStr_assessUnitName(para['ASSESS_UNIT_NAME'])
+        self.inputStr_assess_unit_name(para['ASSESS_UNIT_NAME'])
+
         # 考核单元分类
-        self.inputSel_assessUnitClassfication(para['ASSESS_UNIT_CLASSFICCATION'])
+        self.inputSel_assess_unit_classficcation(para['ASSESS_UNIT_CLASSFICCATION'])
+
         # 组合标志
-        self.inputSel_CombinationSign(para['COMBINATION_SIGN'])
+        self.inputSel_combination_sign(para['COMBINATION_SIGN'])
+
         # 考核单元状态
-        self.inputSel_assessUnitState(para['ASSESS_UNIT_STATE'])
+        self.inputSel_assess_unit_state(para['ASSESS_UNIT_STATE'])
+
         # 台区状态
-        self.inputSel_ZoneAreaState(para['ZONE_AREA_STATE'])
+        self.inputSel_zone_area_state(para['ZONE_AREA_STATE'])
+
         # 点击复选框
         self.inputChk_uncover(para['UNCOVER'])
 
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):
@@ -92,8 +99,12 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         self.assertTrue(result)
 
     # @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LineLossMantain_data.losePowerMan_para)[0:1])
+    @data(*DataAccess.getCaseData(LineLossMantain_data.losePowerMan_para))
     def test_query(self, para):
+        """高级应用-->线损分析→线损模型维护→线损模型设计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

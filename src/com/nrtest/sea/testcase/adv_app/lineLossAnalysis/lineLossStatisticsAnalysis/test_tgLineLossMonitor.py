@@ -54,10 +54,13 @@ class TestTgLineLossMonitor(TestCase, TgLineLossMonitorPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 指标类型
         self.inputSel_pointer_type(para['POINTER_TYPE'])
+
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
         # 查询按钮
         self.btn_search()
 
@@ -79,6 +82,10 @@ class TestTgLineLossMonitor(TestCase, TgLineLossMonitorPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.TgLineLossMonitor_para))
     def test_query(self, para):
+        """高级应用→线损分析→线损统计分析→台区线损监测
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

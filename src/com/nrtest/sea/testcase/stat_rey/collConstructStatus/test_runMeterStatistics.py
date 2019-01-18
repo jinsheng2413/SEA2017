@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.collConstructStatus.runMeterStatistics_page import RunMeterStatisticsPage
 
 
-# 统计查询→综合查询→采集建设情况→运行电能表统计
+# 统计查询→采集建设情况→运行电能表统计:运行电能表统计
 @ddt
 class TestRunMeterStatistics(TestCase, RunMeterStatisticsPage):
     @classmethod
@@ -83,6 +83,10 @@ class TestRunMeterStatistics(TestCase, RunMeterStatisticsPage):
     @data(*DataAccess.getCaseData(CollConstructStatus_data.RunMeterStatistics_para,
                                   CollConstructStatus_data.RunMeterStatistics_tabName))
     def test_query(self, para):
+        """统计查询→采集建设情况→运行电能表统计:运行电能表统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

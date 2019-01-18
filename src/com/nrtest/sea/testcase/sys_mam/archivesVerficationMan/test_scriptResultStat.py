@@ -91,6 +91,10 @@ class TestScriptResultStat(TestCase, ScriptResultDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultDetail_para))
     def test_query(self, para):
+        """系统管理→档案核查管理→脚本结果统计查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

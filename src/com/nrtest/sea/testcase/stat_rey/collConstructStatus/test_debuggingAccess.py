@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.collConstructStatus.debuggingAccess_page import DebuggingAccessPage
 
 
-# 统计查询→综合查询→采集建设情况→调试接入情况
+# 统计查询→采集建设情况→调试接入情况
 @ddt
 class TestDebuggingAccess(TestCase, DebuggingAccessPage):
     @classmethod
@@ -49,8 +49,8 @@ class TestDebuggingAccess(TestCase, DebuggingAccessPage):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # # 回收左边树
-        # self.recoverLeftTree()
+        # 回收左边树
+        self.recoverLeftTree()
 
     def query(self, para):
         # 打开左边树并选择
@@ -82,6 +82,10 @@ class TestDebuggingAccess(TestCase, DebuggingAccessPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CollConstructStatus_data.DebuggingAccess_para))
     def test_query(self, para):
+        """统计查询→采集建设情况→调试接入情况
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

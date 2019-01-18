@@ -40,9 +40,11 @@ class RunMeterStatisticsPage(Page):
         # self.click(RunMeterStatisticsLocators.BTN_SEARCH)
         self.btn_query()
 
-    # 终端运行状态明细
+
+# 运行电能表明细
+class RunMeterDetailPage(Page):
     # 用户类型
-    def inputSel_detail_cons_type(self, index):
+    def inputSel_cons_type(self, index):
         # if index == 'c':
         #     self._find_element(RunMeterStatisticsLocators.DETAIL_CONS_TYPE)
         # else:
@@ -54,7 +56,7 @@ class RunMeterStatisticsPage(Page):
         self.selectCheckBox(index, is_multi_elements=True, is_multi_tab=True)
 
     # 通信方式
-    def inputSel_detail_tmnl_way(self, index):
+    def inputSel_tmnl_way(self, index):
         # if index == 'c':
         #     self._find_element(RunMeterStatisticsLocators.DETAIL_TMNL_WAY)
         # else:
@@ -66,7 +68,7 @@ class RunMeterStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 通讯规约
-    def inputSel_detail_tmnl_protocol(self, index):
+    def inputSel_tmnl_protocol(self, index):
         # if index == 'c':
         #     self._find_element(RunMeterStatisticsLocators.DETAIL_TMNL_PROTOCOL)
         # else:
@@ -78,7 +80,7 @@ class RunMeterStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 设备类型
-    def inputSel_detail_device_type(self, index):
+    def inputSel_device_type(self, index):
         # if index == 'c':
         #     self._find_element(RunMeterStatisticsLocators.DETAIL_DEVICE_TYPE)
         # else:
@@ -90,7 +92,7 @@ class RunMeterStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 电能表厂家
-    def inputSel_detail_meter_factory(self, index):
+    def inputSel_meter_factory(self, index):
         # if index == 'c':
         #     self._find_element(RunMeterStatisticsLocators.DETAIL_METER_FACTORY)
         # else:
@@ -102,7 +104,7 @@ class RunMeterStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 电能表状态
-    def inputSel_detail_meter_ststus(self, index):
+    def inputSel_meter_ststus(self, index):
         # if index == 'c':
         #     self._find_element(RunMeterStatisticsLocators.DETAIL_METER_STATUS)
         # else:
@@ -114,6 +116,6 @@ class RunMeterStatisticsPage(Page):
         self.selectCheckBox(index)
 
     # 查询按钮
-    def btn_detail_search(self):
+    def btn_search(self):
         # self.click(RunMeterStatisticsLocators.BTN_DETAIL_SEARCH)
         self.btn_query(True)

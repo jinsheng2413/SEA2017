@@ -23,9 +23,9 @@ class ArchivesVerficationMan_data:
     # 系统管理→档案核查管理→脚本核查任务编制
     scriptCheckTaskSet_para = '99959400'
     # 系统管理→档案核查管理→脚本结果明细查询
-    scriptResultDetail_para = '99959500'
+    scriptResultDetail_para = '99959600'
     # 系统管理→档案核查管理→脚本结果统计查询
-    scriptResultStat_para = '99959600'
+    scriptResultStat_para = '99959500'
     # 系统管理→档案核查管理→档案核查模板编制
     taskTemplateSet_para = '99959700'
     # 系统管理→档案核查管理→考核减免申请

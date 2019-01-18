@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryPage
 
 
-# 统计查询→综合查询→巡检仪数据查询→基本档案
+# 统计查询→综合查询→巡检仪数据查询:基本档案
 @ddt
 class TestPatrolDataQuery(TestCase, PatrolDataQueryPage):
     @classmethod
@@ -49,8 +49,6 @@ class TestPatrolDataQuery(TestCase, PatrolDataQueryPage):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # # 回收左边树
-        # self.recoverLeftTree()
 
     def query(self, para):
         # 终端资产号
@@ -80,6 +78,10 @@ class TestPatrolDataQuery(TestCase, PatrolDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para, SynthQuery_data.PatrolDataQuery_tabName))
     def test_query(self, para):
+        """统计查询→综合查询→巡检仪数据查询:基本档案
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

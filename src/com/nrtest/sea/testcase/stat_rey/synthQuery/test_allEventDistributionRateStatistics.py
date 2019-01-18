@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.allEventDistributionRateStatistics
     AllEventDistributionRateStatisticsPage
 
 
-# 统计查询→综合查询→全事件配置率统计
+# 统计查询→综合查询→全事件配置率统计:全事件配置率统计
 @ddt
 class TestAllEventDistributionRateStatistics(TestCase, AllEventDistributionRateStatisticsPage):
     @classmethod
@@ -80,6 +80,10 @@ class TestAllEventDistributionRateStatistics(TestCase, AllEventDistributionRateS
     @data(*DataAccess.getCaseData(SynthQuery_data.AllEventDistributionRateStatistics_para,
                                   SynthQuery_data.AllEventDistributionRateStatistics_tabName))
     def test_query(self, para):
+        """统计查询→综合查询→全事件配置率统计:全事件配置率统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

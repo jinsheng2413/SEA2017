@@ -16,12 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryCurveDataPage
 
 
-# 统计查询→综合查询→巡检仪数据查询→曲线数据
+# 统计查询→综合查询→巡检仪数据查询:曲线数据
 @ddt
-class TestPatrolDataQuery_CurveData(TestCase, PatrolDataQueryPage):
+class TestPatrolDataCurveDataQuery(TestCase, PatrolDataQueryCurveDataPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -56,13 +56,15 @@ class TestPatrolDataQuery_CurveData(TestCase, PatrolDataQueryPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 用户编号
-        self.inputStr_curve_data_cons_no(para['CURVE_DATA_CONS_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
         # 终端地址
-        self.inputStr_curve_data_tmnl_addr(para['CURVE_DATA_TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        # 日期
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 曲线类型
-        self.inputSel_curve_data_curve_type(para['CURVE_DATA_CURVE_TYPE'])
+        self.inputSel_curve_type(para['CURVE_TYPE'])
         # 查询按钮
-        self.btn_curve_data_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
@@ -82,6 +84,10 @@ class TestPatrolDataQuery_CurveData(TestCase, PatrolDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para, SynthQuery_data.PatrolDataQuery_tabName_curve))
     def test_query(self, para):
+        """统计查询→综合查询→巡检仪数据查询:曲线数据
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

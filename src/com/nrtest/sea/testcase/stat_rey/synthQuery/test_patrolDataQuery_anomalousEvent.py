@@ -16,12 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryAnomalousEventPage
 
 
-# 统计查询→综合查询→巡检仪数据查询→异常事件查询
+# 统计查询→综合查询→巡检仪数据查询:异常事件查询
 @ddt
-class TestPatrolDataQuery_AnomalousEvent(TestCase, PatrolDataQueryPage):
+class TestPatrolDataAnomalousEventQuery(TestCase, PatrolDataQueryAnomalousEventPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -56,14 +56,19 @@ class TestPatrolDataQuery_AnomalousEvent(TestCase, PatrolDataQueryPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 终端地址
-        self.inputStr_anomalous_event_tmnl_addr(
-            para['ANOMALOUS_EVENT_TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        # 终端资产号
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 用户编号
-        self.inputStr_anomalous_event_cons_no(para['ANOMALOUS_EVENT_CONS_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
         # 异常事件
         self.inputSel_anomalous_event(para['ANOMALOUS_EVENT'])
+        # 事件类型
+        self.inputChk_event_type(para['EVENT_TYPE'])
+        # 事件时间
+        self.inputDt_event_date(para['EVENT_DATE'])
         # 查询按钮
-        self.btn_anomalous_event_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
@@ -84,6 +89,10 @@ class TestPatrolDataQuery_AnomalousEvent(TestCase, PatrolDataQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para,
                                   SynthQuery_data.PatrolDataQuery_tabName_anomalous))
     def test_query(self, para):
+        """统计查询→综合查询→巡检仪数据查询:异常事件查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

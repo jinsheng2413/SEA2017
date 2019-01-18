@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.automatedMeterAvailability_page import AutomatedMeterAvailabilityPage
 
 
-# 统计查询→综合查询→自动化抄表可用率→全项失败明细
+# 统计查询→综合查询→自动化抄表可用率:全项失败明细
 @ddt
 class TestAutomatedMeterAvailability_Failed(TestCase, AutomatedMeterAvailabilityPage):
     @classmethod
@@ -83,6 +83,10 @@ class TestAutomatedMeterAvailability_Failed(TestCase, AutomatedMeterAvailability
     @data(*DataAccess.getCaseData(SynthQuery_data.AutomatedMeterAvailability_para,
                                   SynthQuery_data.AutomatedMeterAvailability_tabName_detail))
     def test_query(self, para):
+        """统计查询→综合查询→自动化抄表可用率:全项失败明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

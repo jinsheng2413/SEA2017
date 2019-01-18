@@ -60,7 +60,7 @@ class SynthQuery_data:
     PatrolDataQuery_tabName_contrast = '曲线对比'
     # 统计查询→综合查询→自动化抄表可用率
     AutomatedMeterAvailability_para = '99941C00'
-    AutomatedMeterAvailability_tabName = '自动化抄表可用率'
+    AutomatedMeterAvailability_tabName = '全项采集成功率'
     AutomatedMeterAvailability_tabName_detail = '全项失败明细'
     # 统计查询→综合查询→白名单查询
     WhiteListQuery_para = '99941O00'

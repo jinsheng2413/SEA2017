@@ -17,12 +17,12 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.fourTableMeterReadSuccessRate_page import \
-    FourTableMeterReadSuccessRatePage
+    FourTableMeterReadFailedDetailPage
 
 
-# 统计查询→综合查询→自动化抄表可用率→四表合一抄表失败明细
+# 统计查询→综合查询→自动化抄表可用率:四表合一抄表失败明细
 @ddt
-class TestAutomatedMeterAvailability_Failed(TestCase, FourTableMeterReadSuccessRatePage):
+class TestAutomatedMeterAvailability_Failed(TestCase, FourTableMeterReadFailedDetailPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -57,17 +57,17 @@ class TestAutomatedMeterAvailability_Failed(TestCase, FourTableMeterReadSuccessR
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 表计类型
-        self.inputSel_failed_meter_type(para['FAILED_METER_TYPE'])
+        self.inputSel_meter_type(para['METER_TYPE'])
         # 终端地址
-        self.inputStr_failed_tmnl_addr(para['FAILED_TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 日期
-        self.inputDt_failed_date(para['FAILED_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 仪表厂家
-        self.inputSel_failed_meter_factory(para['FAILED_METER_FACTORY'])
+        self.inputSel_meter_factory(para['METER_FACTORY'])
         # 终端厂家
-        self.inputSel_failed_tmnl_factory(para['FAILED_TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 查询按钮
-        self.failed_btn_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
@@ -88,6 +88,9 @@ class TestAutomatedMeterAvailability_Failed(TestCase, FourTableMeterReadSuccessR
     @data(*DataAccess.getCaseData(SynthQuery_data.FourTableMeterReadSuccessRate_para,
                                   SynthQuery_data.FourTableMeterReadSuccessRate_tabName_failed))
     def test_query(self, para):
+        """统计查询→综合查询→自动化抄表可用率:四表合一抄表失败明细
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

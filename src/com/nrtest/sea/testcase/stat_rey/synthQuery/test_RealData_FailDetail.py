@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.realDataPage import RealDataPage
 
 
-# 统计查询→综合查询→抄表数据查询（冀北）
+# 统计查询→综合查询→抄表数据查询（冀北）:抄表失败明细
 @ddt
 class TestRealData_Faildetail(TestCase, RealDataPage):
     @classmethod
@@ -27,7 +27,10 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SynthQuery_data.realData_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(SynthQuery_data.realData_fdetail_tab)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -56,11 +59,9 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        self.menuPage.clickTabPage(SynthQuery_data.realData_fdetail_tab)
-        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        self.menuPage.remove_dt_readonly()
 
+        # 曲线类型
+        self.inputChk_curve_type_failed(para['CURVE_TYPE_FAILED'])
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 选择抄表段号
@@ -70,7 +71,7 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
         self.inputStr_MeterAssert_Faildetail(para['METER_ASSERT'])
         # 用户类型
         self.inputSel_userType_Faildetail(para['USER_TYPE'])
-        # 反相结果集
+        # 反相采集结果
         self.inputSel_reversCollectionResult(para['REVERS_COLLECTION_RESULT'])
         # 终端生产厂家
         self.inputSel_Tmnl_manufacturer(para['TMNL_MANUFACTURER'])
@@ -103,6 +104,10 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.realData_para, SynthQuery_data.realData_fdetail_tab))
     def test_query(self, para):
+        """统计查询→综合查询→抄表数据查询（冀北）:抄表失败明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

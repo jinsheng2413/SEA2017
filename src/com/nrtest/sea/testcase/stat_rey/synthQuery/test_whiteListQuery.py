@@ -64,6 +64,12 @@ class TestWhiteListQuery(TestCase, WhiteListQueryPage):
         self.inputDt_end_date(para['END_DATE'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        # 电能表资产号
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
+        # 开户卡号
+        self.inputStr_open_card_no(para['OPEN_CARD_NO'])
+        # 白名单卡号
+        self.inputStr_white_card_no(para['WHITE_CARD_NO'])
         # 查询按钮
         self.btn_search()
 
@@ -85,6 +91,10 @@ class TestWhiteListQuery(TestCase, WhiteListQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.WhiteListQuery_para))
     def test_query(self, para):
+        """统计查询→综合查询→白名单查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

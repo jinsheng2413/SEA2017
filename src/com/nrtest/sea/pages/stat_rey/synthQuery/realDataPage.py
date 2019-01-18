@@ -13,6 +13,14 @@ from com.nrtest.common.base_page import Page
 
 # 统计查询→综合查询→抄表数据查询（冀北）
 class RealDataPage(Page):
+    # 曲线类型
+    def inputChk_curve_type(self, index):
+        self.clickRadioBox(index)
+
+    # 曲线类型
+    def inputChk_curve_type_failed(self, index):
+        self.clickRadioBox(index, is_multi_elements=True, is_multi_tab=True)
+
     # 终端生产厂家
     def inputSel_Tmnl_manufacturer(self, name):
         # self.click(RealDataLocators.QRY_TMNL_MANUFACTUREE)
@@ -119,7 +127,7 @@ class RealDataPage(Page):
         #     RealDataLocators.QRY_USER_TYPE_RDETAIL_VALUE, name)
         # print(locator)
         # self.click(locator)
-        self.selectDropDown(name)
+        self.selectCheckBox(name)
 
     # 用户类型
     def inputSel_userType_Faildetail(self, name):
@@ -127,7 +135,7 @@ class RealDataPage(Page):
         # locator = self.get_select_locator(
         #     RealDataLocators.QRY_USER_TYPE_FAILDETAIL_VALUE, name)
         # self.click(locator)
-        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+        self.selectCheckBox(name, is_multi_tab=True, is_multi_elements=True)
 
     # 查询
     def btn_rdetail_qry(self):

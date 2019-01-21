@@ -40,7 +40,7 @@ class LoginPage(Page):
         self.click(self.locator_class.BTN_LOGIN)
 
     # 等待登录按钮可点击
-    def waitFor(self, seconds=5):
+    def waitFor(self, seconds=3):
         self._element_ec_mode(self.locator_class.BTN_LOGIN, seconds)
 
     def is_login_success(self):

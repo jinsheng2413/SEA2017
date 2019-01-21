@@ -9,8 +9,54 @@
 """
 from selenium.webdriver.common.by import By
 
-
 class TreeLocators:
+    # 左边树不同Tab选择: 用户、终端、供电区域、行业、电网结构、群组
+    NODE_TAB = (By.XPATH, '//li//span[@class ="x-tab-strip-text " and text()="{}"]')
+    # 当前活动的TAB页内容
+    # class =" x-panel x-panel-noborder  x-hide-display 隐藏
+    # class =" x-panel x-panel-noborder  活动
+    ACTIVE_TAB_PAGE = '//div[@class=" x-panel x-panel-noborder "]'
+
+    # TREE_DIV = '//div[@id="mainwest"]'
+    #
+    # ROOT_NODE = '//div[@id="areaTree"]'
+
+    # NODE_LEVEL = (By.XPATH, '//div[@class=" x-panel x-panel-noborder "]//span[text()="{}"]/../preceding-sibling::img[2]')
+    # NODE_LEVEL = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]/../preceding-sibling::img[2]')
+    # NODE_LEVEL = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]/../preceding-sibling::img[2]')
+    NODE_LEVEL = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]/../preceding-sibling::img[2]')
+    # '//div[@class="x-tab-panel-body x-tab-panel-body-noborder x-tab-panel-body-top"]/div[not(contains(@class,"x-hide-display"))]'
+    LEEF_NODE = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]')
+
+    # $x('//div[@id="mainwest"]//div[@id="areaTree"]//span[text()="国网冀北电力有限公司"]/../preceding-sibling::img[2]/..')
+    # $x('//div[@id="mainwest"]//div[@id="areaTree"]//span[text()="国网冀北电力有限公司"]/../preceding-sibling::img[2]/parent::div')
+    #
+    # class ="x-tree-node-el x-unselectable x-tree-node-collapsed "  已关闭
+    #
+    # class ="x-tree-node-el x-unselectable x-tree-node-expanded"    已打开
+
+    # 选择节点范围内搜索节点：如，某供电局内搜索相关节点：
+    # $x('//div[@id="mainwest"]//div[@id="areaTree"]//span[text()="唐山供电公司"]/../../..//span[text()="直属用户"]/../preceding-sibling::img[2]')
+    NODE_LEVEL_IN_PARENT = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]/../../..//span[text()="{}"]/../preceding-sibling::img[2]')
+
+    # 【搜索TAB】
+
+    # 向下箭头按钮（hover）
+    DOWN_ARROW = (By.XPATH, '//span[@class="m-btn-downarrow"]')
+    # 查询条件
+    INPUT_SEARCH = (By.XPATH, '//span[@class="textbox searchbox"]//input[@placeholder="请输入关键字"]')
+    RREE_INPUT = (By.XPATH, '//label[normalize-space(text())="{}"]/..//input[@type!="hidden"]')
+
+    # 查询按钮：
+    BTN_SERCH = (By.XPATH, '//button[@class =" x-btn-text query" and text()="查询"]')
+
+    # 带复选框的树节点
+    # 不选中'//span[@class="button chk checkbox_false_full"'
+    # 选中'//span[@class="button chk checkbox_true_full"'
+    NODE_CHK = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/../span[starts-with(@class,"button chk checkbox")]')
+
+
+class TreePBSLocators:
     # class = "panel layout-panel layout-panel-west layout-split-west"
     TREE_DIV = (By.XPATH, '//div[ends-with(@class, "split-west"]')
 
@@ -22,7 +68,6 @@ class TreeLocators:
     # 数据字典 (By.XPATH, '//ul[@id="dataDictionaryTree"]//span[text()="{}"]')
 
     NODE_LEVEL = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/../span')
-    # 保留，暂时不用
     LEEF_NODE = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]')
 
     # # 第一层
@@ -58,7 +103,7 @@ class TreeLocators:
     # 			class="button level4 switch bottom_docu"  --最后一个节点
 
     # 选择某变电站范围内搜索节点：如，某变电站下第n层的XXX节点: 省级用户level是2，市级用户level是1
-    NODE_LEVEL_IN_SUB = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/..//li[@class="level{}"]/a[@title="{}"]/../span')
+    NODE_LEVEL_IN_PARENT = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/..//li[@class="level{}"]/a[@title="{}"]/../span')
 
     # 左边树: 全模型/搜索/收藏夹
     NODE_TAB = (By.XPATH, '//div[@class="tabs-wrap"]//span[text()="{}"]')

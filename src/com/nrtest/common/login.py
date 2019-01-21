@@ -65,6 +65,7 @@ class Login:
 
         loginPage = LoginPage(driver)
         loginPage.waitFor()
+
         is_failed = True
         while is_failed:
             loginPage.input_username(self.username)

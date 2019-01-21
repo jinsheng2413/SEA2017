@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理→系统配置管理→系统参数管理→系统基本参数设置
+# 系统管理→系统配置管理→系统参数管理:系统基本参数设置
 class SysBasicParaSetPage(Page):
     # 参数名称
     def inputSel_para_name(self, options):
@@ -34,7 +34,7 @@ class SysBasicParaSetPage(Page):
         self.btn_query(True)
 
 
-# 系统管理→系统配置管理→系统参数管理→系统异常参数设置
+# 系统管理→系统配置管理→系统参数管理:系统异常参数设置
 class SysAbnormalParaSetPage(Page):
     # 参数名称
     def inputSel_para_name(self, options):

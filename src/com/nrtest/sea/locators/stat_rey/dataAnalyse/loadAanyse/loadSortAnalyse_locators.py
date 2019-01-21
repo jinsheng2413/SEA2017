@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 统计查询--》数据分析--》负荷分析--》负荷排名分析
+# 统计查询→数据分析→负荷分析→负荷排名分析
 
 class LoadSortAnalyseLocators:
     # 【查询条件区】

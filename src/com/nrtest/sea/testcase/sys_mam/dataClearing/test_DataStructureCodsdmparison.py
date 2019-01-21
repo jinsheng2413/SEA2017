@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.dataClearing.dataStrategyManagenment_page import DataStrategyManagenmentPage
 
 
-# 系统管理-->数据清理管理-->历史数据策略管理
+# 系统管理→数据清理管理→历史数据策略管理
 @ddt
 class TestDataStrategyManagenment(TestCase, DataStrategyManagenmentPage):
 
@@ -91,7 +91,7 @@ class TestDataStrategyManagenment(TestCase, DataStrategyManagenmentPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataClearing_data.dataStrategyManagenment_para))
     def test_query(self, para):
-        """系统管理-->数据清理管理-->历史数据策略管理
+        """系统管理→数据清理管理→历史数据策略管理
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.vali
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→有效停电事件查询→有效停电明细
+# 高级应用→配变监测分析→停电分析→有效停电事件查询:有效停电明细
 @ddt
 class TestValidPowerCutDetail(TestCase, ValidPowerCutDetailPage):
     @classmethod
@@ -98,6 +98,10 @@ class TestValidPowerCutDetail(TestCase, ValidPowerCutDetailPage):
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.ValidPowerCutEventQuery_para,
                                   PowerCutAnalysis_data.ValidPowerCutEventQuery_tabName_Detail))
     def test_query(self, para):
+        """高级应用→配变监测分析→停电分析→有效停电事件查询:有效停电明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

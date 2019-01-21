@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 统计查询--》全量数据统计查询--》全量数据统计查询
+# 统计查询→全量数据统计查询→全量数据统计查询
 class AllMeasureDataCountQueryLocators:
     # 用户类型
     # QRY_USER_TITLE = (

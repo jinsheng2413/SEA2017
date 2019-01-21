@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.elePricePara_pages import El
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》电价参数下发
+# 高级应用→费控管理→本地费控→电价参数下发
 @ddt
 class TestElePricePara(TestCase, ElePricePages):
     @classmethod
@@ -61,7 +61,7 @@ class TestElePricePara(TestCase, ElePricePages):
         self.inputStr_cons_no(para['CONS_NO'])
 
         # 接收时间
-        self.inputStr_receive_time(para['RECEIVE_TIME'])
+        self.inputDt_receive_time(para['RECEIVE_TIME'])
 
         # 执行状态
         self.inputSel_execute_state(para['EXECUTE_STATE'])
@@ -102,6 +102,10 @@ class TestElePricePara(TestCase, ElePricePages):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LocalCostContral_data.elePricePara_para))
     def test_query(self, para):
+        """高级应用→费控管理→本地费控→电价参数下发
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

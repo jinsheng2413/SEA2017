@@ -57,8 +57,10 @@ class TestAssessmentParameterSetting(TestCase, AssessmentParameterSettingPage):
         print(para)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 台区/线路名称
         self.inputStr_tg_name(para['TG_NAME'])
+
         # 记录形式
         print(para['RECORDER_MANAGER'])
 
@@ -88,6 +90,10 @@ class TestAssessmentParameterSetting(TestCase, AssessmentParameterSettingPage):
     # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossIndexEvaluation_data.AssessmentParameterSetting_para))
     def test_query(self, para):
+        """高级应用→线损分析→线损指标考核→考核参数设置
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

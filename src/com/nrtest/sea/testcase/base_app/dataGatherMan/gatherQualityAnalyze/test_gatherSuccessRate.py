@@ -100,6 +100,10 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.GatherSuccessRate_para,
                                   GatherQualityAnalyze_data.GatherSuccessRate_tabName))
     def test_query(self, para):
+        """基本应用→数据采集管理→采集质量分析→采集成功率
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

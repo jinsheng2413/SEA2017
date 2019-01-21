@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》配变监测分析--》功率因数越限统计
+# 高级应用→配变监测分析→功率因数越限统计
 # 功率因数越限统计
 class PowerFactorCountStaticPage(Page):
 

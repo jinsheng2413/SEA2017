@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》重点用户监测--》非统调电厂管理--》非统调电厂采集监测 tab1
+# 高级应用→重点用户监测→非统调电厂管理→非统调电厂采集监测 tab1
 class UnControlPlantGatherMon1_locators:
     # [显示区]
     # 节点名

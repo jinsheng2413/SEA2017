@@ -15,8 +15,6 @@ from com.nrtest.common.base_page import Page
 class AreaLineLossAnalysisPage(Page):
     # 查询日期
     def inputDt_query_date(self, content):
-        # self.exec_script(AreaLineLossAnalysisLocators.DATE_JS)
-        # self.input(content, *AreaLineLossAnalysisLocators.QRY_DATE)
         self.inputDate(content)
 
 
@@ -31,5 +29,4 @@ class AreaLineLossAnalysisPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*AreaLineLossAnalysisLocators.BTN_SEARCH)
         self.btn_query()

@@ -91,10 +91,14 @@ class TestReadCompleteRate(TestCase, ReadCompleteRate_detail_Page):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
                                   GatherQualityAnalyze_data.readCompleteRateDetail_tab))
     def test_query(self, para):
+        """基本应用→数据采集管理→采集质量分析→采集完整率: 采集完整率明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.countQuery(para)
         self.assert_query_result(para)

@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.fourTableMeterReadSuccessRate_page
     FourTableMeterReadSuccessRatePage
 
 
-# 统计查询→综合查询→四表合一抄表成功率
+# 统计查询→综合查询→四表合一抄表成功率:四表合一抄表成功率
 @ddt
 class TestAutomatedMeterAvailability(TestCase, FourTableMeterReadSuccessRatePage):
     @classmethod
@@ -86,6 +86,10 @@ class TestAutomatedMeterAvailability(TestCase, FourTableMeterReadSuccessRatePage
     @data(*DataAccess.getCaseData(SynthQuery_data.FourTableMeterReadSuccessRate_para,
                                   SynthQuery_data.FourTableMeterReadSuccessRate_tabName))
     def test_query(self, para):
+        """统计查询→综合查询→四表合一抄表成功率:四表合一抄表成功率
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

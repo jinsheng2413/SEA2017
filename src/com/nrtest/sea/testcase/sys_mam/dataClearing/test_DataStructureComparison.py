@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.dataClearing.dataStructureComparison_page import DataStructureComparisonPage
 
 
-# 系统管理-->数据清理管理-->数模结构对照
+# 系统管理→数据清理管理→数模结构对照
 @ddt
 class TestDataStructureComparison(TestCase, DataStructureComparisonPage):
 
@@ -90,7 +90,7 @@ class TestDataStructureComparison(TestCase, DataStructureComparisonPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataClearing_data.dataStructureComparison_para))
     def test_query(self, para):
-        """系统管理-->数据清理管理-->数模结构对照
+        """系统管理→数据清理管理→数模结构对照
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

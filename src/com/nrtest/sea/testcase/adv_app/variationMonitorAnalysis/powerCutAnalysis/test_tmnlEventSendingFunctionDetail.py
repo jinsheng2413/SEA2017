@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.tmnl
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→终端是否具备停上电事件上送功能→终端是否具备停上电事件上送功能明细
+# 高级应用→配变监测分析→停电分析→终端是否具备停上电事件上送功能:终端是否具备停上电事件上送功能明细
 @ddt
 class TestTmnlEventSendingFunctionDeatil(TestCase, TmnlEventSendingFunctionDeatilPage):
     @classmethod
@@ -88,6 +88,10 @@ class TestTmnlEventSendingFunctionDeatil(TestCase, TmnlEventSendingFunctionDeati
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.TmnlEventSendingFunction_para, PowerCutAnalysis_data.TmnlEventSendingFunction_tabName_Detail))
     def test_query(self, para):
+        """高级应用→配变监测分析→停电分析→终端是否具备停上电事件上送功能:终端是否具备停上电事件上送功能明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

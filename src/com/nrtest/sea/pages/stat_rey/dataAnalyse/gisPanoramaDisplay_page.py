@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 统计查询--》数据分析--》电量分析--》电量数据查询
+# 统计查询→数据分析→电量分析→电量数据查询
 class GisPanoramaDisplayPage(Page):
     # 逐日显示
     def inputStr_day_display(self, value):

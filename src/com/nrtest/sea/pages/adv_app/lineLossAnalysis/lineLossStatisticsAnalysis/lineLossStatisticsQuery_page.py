@@ -20,10 +20,6 @@ class LineLossStatisticsQueryPage(Page):
     year = 0
     # 线损分类
     def inputSel_line_loss_type(self, index):
-        # self.click(LineLossStatisticsQueryLocators.QRY_LINE_LOSS_TYPE)
-        # locator = self.get_select_locator(
-        #     LineLossStatisticsQueryLocators.QRY_LINE_LOSS_TYPE_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(index)
 
     # 线损率
@@ -35,14 +31,10 @@ class LineLossStatisticsQueryPage(Page):
         self.selectDropDown(index)
 
     def inputStr_line_loss_rate(self, content):
-        # self.input(
-        #     content, *LineLossStatisticsQueryLocators.QRY_LINE_LOSS_RATE_INPUT)
         self.input(content)
 
     # 日期
     def inputDt_query_date(self, content):
-        # self.exec_script(LineLossStatisticsQueryLocators.DATE_JS)
-        # self.input(content, *LineLossStatisticsQueryLocators.QRY_DATE)
         self.inputDate(content)
 
     # 起
@@ -70,6 +62,5 @@ class LineLossStatisticsQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(LineLossStatisticsQueryLocators.BTN_SEARCH)
         self.clean_btn('查')
         self.btn_query(True)

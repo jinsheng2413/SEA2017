@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptResultDetail_page import ScriptResultDetailPage
 
 
-# 系统管理--》档案核查管理--》脚本结果统计查询
+# 系统管理→档案核查管理→脚本结果统计查询
 @ddt
 class TestScriptResultStat(TestCase, ScriptResultDetailPage):
 
@@ -65,9 +65,9 @@ class TestScriptResultStat(TestCase, ScriptResultDetailPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 脚本名称
-        self.inputStr_scriptName(para['SCRIPT_NAME'])
+        self.inputStr_script_name(para['SCRIPT_NAME'])
         # 开始时间
-        self.inputDt_receive_time(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
         # 结束时间
         self.inputDt_end_time(para["END_TIME"])
         # 查询
@@ -91,6 +91,10 @@ class TestScriptResultStat(TestCase, ScriptResultDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultDetail_para))
     def test_query(self, para):
+        """系统管理→档案核查管理→脚本结果统计查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

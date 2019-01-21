@@ -18,11 +18,11 @@ from com.nrtest.sea.pages.base_app.custMan.ctrlExecutPage import CtrlExecutPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》低压用户远程费控执行
+# 高级应用→费控管理→低压用户远程费控执行
 @ddt
 class TestCtrlExecut(TestCase, CtrlExecutPage):
     """
-    高级应用--》费控管理--》低压用户远程费控执行
+    高级应用→费控管理→低压用户远程费控执行
     """
 
     @classmethod
@@ -70,32 +70,32 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 用户编号
-        self.inputStr_userNo(para['USER_NO'])
+        self.inputStr_user_no(para['USER_NO'])
         # 用户名称
-        self.inputStr_userName(para['USER_NAME'])
+        self.inputStr_user_name(para['USER_NAME'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 控制类型
-        self.inputSel_controlType(para['CONTROL_TYPE'])
+        self.inputSel_control_type(para['CONTROL_TYPE'])
         # 抄表段号
-        self.inputStr_sectNo(para['SECT_NO'])
+        self.inputStr_sect_no(para['SECT_NO'])
         # 执行状态
-        self.inputSel_exeStatus(para['EXE_STATUS'])
+        self.inputSel_exe_status(para['EXE_STATUS'])
         # 数据来源
-        self.inputSel_dataCome(para['DATA_COME'])
+        self.inputSel_data_come(para['DATA_COME'])
         # 确认状态
-        self.inputSel_confirmStatus(para['CONFIRM_STATUS'])
+        self.inputSel_confirm_status(para['CONFIRM_STATUS'])
         # 时间区间
         self.clickRadioBox(para['DT_INTERAL'])
 
         # 开始时间
-        self.inputStr_startTime(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
         # 结束时间
-        self.inputStr_ENDTIme(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
         # 工单号
-        self.inputStr_workOrder(para['WORK_ORDER'])
+        self.inputStr_work_order(para['WORK_ORDER'])
         # 执行结果状态
-        self.inputSel_exeResultStatus(para['EXE_RESULT_STATUS'])
+        self.inputSel_exe_result_status(para['EXE_RESULT_STATUS'])
 
         self.btn_qry()
         self.sleep_time(2)

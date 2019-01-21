@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.base_app.interfaceMan.otherDataPublishStatus_page impo
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--接口管理--其他业务接口--数据发布情况
+# 基本应用→接口管理→其他业务接口→数据发布情况
 @ddt
 class Test_otherDataPublishStatus(TestCase, OtherDataPublishStatusPage):
     @classmethod
@@ -54,14 +54,15 @@ class Test_otherDataPublishStatus(TestCase, OtherDataPublishStatusPage):
         self.recoverLeftTree()
 
     def query(self, para):
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        self.inputSel_Business_system(para['BUSINESS_SYSTEM'])
+        # 业务系统
+        self.inputSel_business_system(para['BUSINESS_SYSTEM'])
 
         # 开始时间
         self.inputDt_receive_time(para['START_DATE'])
-
         # 结束时间
         self.inputDt_end_time(para['END_DATE'])
 

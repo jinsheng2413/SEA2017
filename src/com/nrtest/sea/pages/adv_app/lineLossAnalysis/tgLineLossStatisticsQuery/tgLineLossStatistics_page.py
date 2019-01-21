@@ -9,30 +9,22 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgLineLossStatistics_locators import \
-    TgLineLossStatisticsLocators
 
 
 # 高级应用→线损分析→台区线损统计查询→台区线损统计
 class TgLineLossStatisticsPage(Page):
     # 线损维度
     def inputSel_line_loss_dimension(self, index):
-        # self.click(TgLineLossStatisticsLocators.QRY_LINE_LOSS_DIMENSION)
-        # locator = self.get_select_locator(
-        #     TgLineLossStatisticsLocators.QRY_LINE_LOSS_DIMENSION_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(index)
 
     # 开始时间
     def inputDt_start_date(self, content):
-        # self.exec_script(TgLineLossStatisticsLocators.DATE_JS)
-        self.inputDate(content)  # , *TgLineLossStatisticsLocators.QRY_DATE)
+        self.inputDate(content)
 
     # 结束世间
     def inputDt_end_date(self, content):
-        # self.exec_script(TgLineLossStatisticsLocators.DATE_JS)
-        self.inputDate(content)  # , *TgLineLossStatisticsLocators.QRY_DATE)
+        self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        self.click(TgLineLossStatisticsLocators.BTN_SEARCH)
+        self.btn_query()

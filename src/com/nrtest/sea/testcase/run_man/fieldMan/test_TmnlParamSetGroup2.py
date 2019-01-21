@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.fieldMan.tmnlParamSetGroup2_pages import TermParaSetGroup2Page
 
 
-# 运行管理-现场管理-终端抄表参数设置
+# 运行管理→现场管理→终端抄表参数设置
 @ddt
 class TestTmnlParamSetGroup2(unittest.TestCase, TermParaSetGroup2Page):
     @classmethod
@@ -101,6 +101,10 @@ class TestTmnlParamSetGroup2(unittest.TestCase, TermParaSetGroup2Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TermParaSetGroup2_data.TermParaSetGroup2_para))
     def test_query(self, para):
+        """运行管理→现场管理→终端抄表参数设置
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

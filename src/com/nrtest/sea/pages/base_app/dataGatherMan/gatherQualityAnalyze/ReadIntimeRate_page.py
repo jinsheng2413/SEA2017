@@ -13,6 +13,7 @@ from com.nrtest.common.base_page import Page
 
 # 基本应用→数据采集管理→采集质量分析→采集及时率
 class ReadIntimeRatePage(Page):
+
     # 芯片厂家
     def inputSel_chip_factory(self, name):
         self.selectDropDown(name)

@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 运行管理-->SIM卡管理-->运行情况分析-->异常分析
+# 运行管理→SIM卡管理→运行情况分析→异常分析
 # 异常统计
 class AbnoralStaticPage(Page):
 

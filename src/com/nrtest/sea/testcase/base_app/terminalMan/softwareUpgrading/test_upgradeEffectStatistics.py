@@ -102,6 +102,10 @@ class TestUpgradeEffectStstistics(TestCase, UpgradeEffectStatisticsPage):
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEffectStatistics_para,
                                   SoftwareUpgrading_data.UpgradeEffectStatistics_tabName))
     def test_query(self, para):
+        """基本应用→终端管理→软件升级→升级效果统计:终端升级统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -14,6 +14,10 @@ from com.nrtest.common.base_page import Page
 # 统计查询→综合查询→采集建设情况→运行终端统计
 class RunTmnlStatisticsPage(Page):
     # 终端运行状态统计
+    # 市、县直
+    def inputChk_city(self, index):
+        self.clickSingleCheckBox(index)
+
     # 用户类型
     def inputSel_cons_type(self, index):
         # if index == 'c':

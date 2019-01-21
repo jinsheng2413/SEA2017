@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 运行管理-现场管理-终端运行参数设置
+# 运行管理→现场管理→终端抄表参数设置
 class TermParaSetGroup2Page(Page):
 
     # 终端地址

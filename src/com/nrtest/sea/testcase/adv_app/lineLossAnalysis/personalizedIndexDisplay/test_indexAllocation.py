@@ -54,12 +54,16 @@ class TestIndexAllocation(TestCase, IndexAllocationPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 台区编号
         self.inputStr_tg_no(para['TG_NO'])
+
         # 台区状态
         self.inputSel_tg_status(para['TG_STATUS'])
+
         # 责任人工号
         self.inputStr_charge_person_no(para['CHARGE_PERSON_NO'])
+
         # 查询按钮
         self.btn_search()
 
@@ -81,6 +85,10 @@ class TestIndexAllocation(TestCase, IndexAllocationPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PersonalizedIndexDisplay_data.IndexAllocation_para))
     def test_query(self, para):
+        """高级应用→线损分析→同期线损→指标配置
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

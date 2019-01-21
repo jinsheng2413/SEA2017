@@ -7,7 +7,7 @@
 @time: 2018/10/8 14:39
 @desc:
 """
-
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -57,6 +57,7 @@ class TestLineTopologyDiagram(TestCase, LineTopoLogyDiagramPage):
         self.openLeftTree(para['TREE_NODE'])
         # 线路名称
         self.inputStr_line_name(para['LINE_NAME'])
+        sleep(5)
         # 查询按钮
         self.btn_search()
 
@@ -78,6 +79,10 @@ class TestLineTopologyDiagram(TestCase, LineTopoLogyDiagramPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.LineTopologyDiagram_para))
     def test_query(self, para):
+        """统计查询→综合查询→线路拓扑图
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

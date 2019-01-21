@@ -15,21 +15,16 @@ from com.nrtest.common.base_page import Page
 class IndexAllocationPage(Page):
     # 台区编号
     def inputStr_tg_no(self, content):
-        self.input(content)  # *IndexAllocationLocators.QRY_TG_NO)
+        self.input(content)
 
     # 台区状态
     def inputSel_tg_status(self, index):
-        # self.click(IndexAllocationLocators.QRY_TG_STATUS)
-        # locator = self.get_select_locator(
-        #     IndexAllocationLocators.QRY_TG_STATUS_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(index)
 
     # 责任人工号
     def inputStr_charge_person_no(self, content):
-        self.input(content)  #, *IndexAllocationLocators.QRY_CHARGE_PERSON_NO)
+        self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(IndexAllocationLocators.BTN_SEARCH)
         self.btn_query()

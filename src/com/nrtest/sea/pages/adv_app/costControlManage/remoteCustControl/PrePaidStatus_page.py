@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》费控管理--》远程费控--》远程费控执行统计:按指令执行统计
+# 高级应用→费控管理→远程费控→远程费控执行统计:按指令执行统计
 class PrePaidStatusByActionPage(Page):
     # 控制类别
     def inputSel_ctrl_type(self, name):
@@ -30,7 +30,7 @@ class PrePaidStatusByActionPage(Page):
         self.btn_query(True)
 
 
-# 高级应用--》费控管理--》远程费控--》远程费控执行统计:按用户执行统计
+# 高级应用→费控管理→远程费控→远程费控执行统计:按用户执行统计
 class PrePaidStatusByUserPage(Page):
     # 控制类别
     def inputSel_ctrl_type(self, name):

@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.powe
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测
+# 高级应用→配变监测分析→停电分析→停电监测:疑似区域停电监测
 @ddt
 class TestSuspecteAreaPowerCutMonitor(TestCase, SuspecteAreaPowerCutMonitorPage):
     @classmethod
@@ -81,6 +81,10 @@ class TestSuspecteAreaPowerCutMonitor(TestCase, SuspecteAreaPowerCutMonitorPage)
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.SuspectedAreaPowerCutMonitor_para,
                                   PowerCutAnalysis_data.SuspectedAreaPowerCutMonitor_tabName))
     def test_query(self, para):
+        """高级应用→配变监测分析→停电分析→停电监测:疑似区域停电监测
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

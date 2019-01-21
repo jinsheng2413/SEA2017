@@ -13,24 +13,20 @@ from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.sys_mam.archivesVerficationMan.dataCheckTaskSet_locators import DataCheckTaskSetLocators
 
 
-# 系统管理--》档案核查管理--》档案任务核查编制
+# 系统管理→档案核查管理→档案任务核查编制
 class DataCheckTaskSetPage(Page):
     # 选择模板
     def inputChk_SelectDemo(self, option):
         self.selectDropDown(option)
+
     # 台区编号
     def inputStr_zoneAreaNo(self, value):
-        # self.input(value, *DataCheckTaskSetLocators.QRY_ZONE_AREA_NO)
-
         self.input(value)
 
     # 任务来源
     def inputSel_taskFrom(self, name):
-        # self.click(DataCheckTaskSetLocators.QRY_TASK_FROM)
-        # locator = self.get_select_locator(DataCheckTaskSetLocators.QRY_TASK_FROM_VALUE, name)
-        # self.click(locator)
-        # 查询
         self.selectCheckBox(name)
 
+    # 查询
     def btn_qry(self):
         self.click(DataCheckTaskSetLocators.BTN_QRY)

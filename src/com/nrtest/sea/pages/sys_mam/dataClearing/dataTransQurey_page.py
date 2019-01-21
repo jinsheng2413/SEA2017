@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理-->数据清理管理-->数据传输查询
+# 系统管理→数据清理管理→数据传输查询
 class DataTransQureyPage(Page):
 
     # 核查日期

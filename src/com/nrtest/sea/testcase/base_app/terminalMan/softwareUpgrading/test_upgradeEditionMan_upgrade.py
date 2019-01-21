@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionM
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→终端管理→软件升级→升级版本管理→升级版本管理
+# 基本应用→终端管理→软件升级→升级版本管理:升级版本管理
 @ddt
 class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
     @classmethod
@@ -89,6 +89,10 @@ class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionMan_para,
                                   SoftwareUpgrading_data.UpgradeEditionMan_tabName_upgrade))
     def test_query(self, para):
+        """基本应用→终端管理→软件升级→升级版本管理:升级版本管理
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

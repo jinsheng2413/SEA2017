@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_assetMan.py
+@file: test_assetManTab.py
 @time: 2018/10/26 14:03
 @desc:
 """
@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.intelligentLock.assetMan_page import AssetManT
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→智能锁具→资产管理→已增电子钥匙列表
+# 高级应用→智能锁具→资产管理:已增电子钥匙列表
 @ddt
 class TestAssetManTab(TestCase, AssetManTabPage):
     @classmethod
@@ -80,6 +80,10 @@ class TestAssetManTab(TestCase, AssetManTabPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_key))
     def test_query(self, para):
+        """高级应用→智能锁具→资产管理:已增电子钥匙列表
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

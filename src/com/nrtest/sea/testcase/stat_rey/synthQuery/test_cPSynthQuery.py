@@ -55,7 +55,7 @@ class TestCPSynthQuery(TestCase, CPSynthQueryPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 终端类型
+        # 终端状态
         self.inputSel_tmnl_status(para['TMNL_STATUS'])
         # 用户范围
         self.inputSel_cons_range(para['CONS_RANGE'])
@@ -92,6 +92,10 @@ class TestCPSynthQuery(TestCase, CPSynthQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.CPSynthQuery_para))
     def test_query(self, para):
+        """统计查询→综合查询→采集点综合查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

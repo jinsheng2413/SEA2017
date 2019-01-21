@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 统计查询→综合查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计
+# 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计
 class UserCollectStatisticsPage(Page):
     # 用户类型
     def inputSel_cons_type(self, options):

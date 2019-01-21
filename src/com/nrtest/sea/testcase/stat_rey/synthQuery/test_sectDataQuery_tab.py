@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.sectDataQuery_page import SectDataQueryPage
 
 
-# 统计查询→综合查询→抄表段数据查询→数据展示
+# 统计查询→综合查询→抄表段数据查询:数据展示
 @ddt
 class TestSectDataQuery(TestCase, SectDataQueryPage):
     @classmethod
@@ -28,7 +28,8 @@ class TestSectDataQuery(TestCase, SectDataQueryPage):
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(SynthQuery_data.sectDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(SynthQuery_data.sectDataQuery_tabName_data)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
 
@@ -57,8 +58,6 @@ class TestSectDataQuery(TestCase, SectDataQueryPage):
         self.inputStr_sect_no(para['SECT_NO'])
         # 查询按钮
         self.btn_search()
-        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        self.clickTabPage(SynthQuery_data.sectDataQuery_tabName_data)
         # 查询日期，开始
         self.inputDt_start_date(para['START_DATE'])
         # 查询日期，结束
@@ -84,6 +83,10 @@ class TestSectDataQuery(TestCase, SectDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName_data))
     def test_query(self, para):
+        """统计查询→综合查询→抄表段数据查询:数据展示
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

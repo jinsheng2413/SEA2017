@@ -85,6 +85,10 @@ class TestOperatorMan(TestCase, OperatorManPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SecutityMan_data.OperatorMan_para))
     def test_query(self, para):
+        """系统管理→权限密码管理→操作员管理
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

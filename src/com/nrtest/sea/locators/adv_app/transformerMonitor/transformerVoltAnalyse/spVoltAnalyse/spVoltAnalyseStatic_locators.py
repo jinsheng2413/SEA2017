@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》配变监测分析--》电压质量分析--》专/公变电压质量分析
+# 高级应用→配变监测分析→电压质量分析→专/公变电压质量分析
 # 专/公变电压质量分析统计
 class SpVoltAnalyseStaticLocators:
     # 【查询条件】

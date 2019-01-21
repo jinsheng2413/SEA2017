@@ -11,7 +11,9 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→数据采集管理→采集质量分析→事件记录结果统计
 class EventRecResultStatPage(Page):
+
     # 开始时间
     def inputDt_start_time(self, content):
         self.inputDate(content)

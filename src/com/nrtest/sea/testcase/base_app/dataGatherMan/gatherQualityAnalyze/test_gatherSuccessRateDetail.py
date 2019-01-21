@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.gatherSucc
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→数据采集管理→采集质量分析→采集成功率→采集成功率明细
+# 基本应用→数据采集管理→采集质量分析→采集成功率:采集成功率明细
 @ddt
 class TestGatherSuccessRateDetail(TestCase, GatherSuccessRateDetailPage):
     @classmethod
@@ -92,6 +92,10 @@ class TestGatherSuccessRateDetail(TestCase, GatherSuccessRateDetailPage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.GatherSuccessRate_para,
                                   GatherQualityAnalyze_data.GatherSuccessRate_tabName_detail))
     def test_query(self, para):
+        """基本应用→数据采集管理→采集质量分析→采集成功率:采集成功率明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -16,12 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.collConstructStatus.collConstructStatus_data import CollConstructStatus_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.collConstructStatus.runMeterStatistics_page import RunMeterStatisticsPage
+from com.nrtest.sea.pages.stat_rey.collConstructStatus.runMeterStatistics_page import RunMeterDetailPage
 
 
-# 统计查询→综合查询→采集建设情况→运行电能表统计→运行电能表明细
+# 统计查询→采集建设情况→运行电能表统计:运行电能表明细
 @ddt
-class TestRunMeterStatistics_Detail(TestCase, RunMeterStatisticsPage):
+class TestRunMeterStatistics_Detail(TestCase, RunMeterDetailPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -56,19 +56,19 @@ class TestRunMeterStatistics_Detail(TestCase, RunMeterStatisticsPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 用户类型
-        self.inputSel_detail_cons_type(para['DETAIL_CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 通信方式
-        self.inputSel_detail_tmnl_way(para['DETAIL_TMNL_WAY'])
+        self.inputSel_tmnl_way(para['TMNL_WAY'])
         # 通讯规约
-        self.inputSel_detail_tmnl_protocol(para['DETAIL_TMNL_PROTOCOL'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 设备类型
-        self.inputSel_detail_device_type(para['DETAIL_DEVICE_TYPE'])
+        self.inputSel_device_type(para['DEVICE_TYPE'])
         # 电能表厂家
-        self.inputSel_detail_meter_factory(para['DETAIL_METER_FACTORY'])
+        self.inputSel_meter_factory(para['METER_FACTORY'])
         # 电能表状态
-        self.inputSel_detail_meter_ststus(para['DETAIL_METER_STATUS'])
+        self.inputSel_meter_ststus(para['METER_STATUS'])
         # 查询按钮
-        self.btn_detail_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
@@ -89,6 +89,10 @@ class TestRunMeterStatistics_Detail(TestCase, RunMeterStatisticsPage):
     @data(*DataAccess.getCaseData(CollConstructStatus_data.RunMeterStatistics_para,
                                   CollConstructStatus_data.RunMeterStatistics_tabName_detail))
     def test_query(self, para):
+        """统计查询→采集建设情况→运行电能表统计:运行电能表明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

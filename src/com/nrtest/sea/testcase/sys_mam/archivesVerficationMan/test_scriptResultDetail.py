@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptResultDetail_page import ScriptResultDetailPage
 
 
-# 系统管理--》档案核查管理--》脚本结果明细查询
+# 系统管理→档案核查管理→脚本结果明细查询
 @ddt
 class TestScriptResultDetail(TestCase, ScriptResultDetailPage):
 
@@ -61,18 +61,21 @@ class TestScriptResultDetail(TestCase, ScriptResultDetailPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 注册菜单
-        self.menu_name = para['MENU_NAME']
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 脚本名称
-        self.inputStr_scriptName(para['SCRIPT_NAME'])
+        self.inputStr_script_name(para['SCRIPT_NAME'])
+
         # 开始时间
-        self.inputDt_receive_time(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
+
         # 结束时间
         self.inputDt_end_time(para["END_TIME"])
 
-        self.btn_query()
+        # 查询
+        self.btn_qry()
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）
@@ -91,6 +94,10 @@ class TestScriptResultDetail(TestCase, ScriptResultDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultDetail_para))
     def test_query(self, para):
+        """系统管理→档案核查管理→脚本结果明细查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanU
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→终端管理→软件升级→集中计划升级→制定计划
+# 基本应用→终端管理→软件升级→集中计划升级:制定计划
 @ddt
 class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
     @classmethod
@@ -90,6 +90,10 @@ class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.CentralizedPlanUpgrade_para,
                                   SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_plan))
     def test_query(self, para):
+        """基本应用→终端管理→软件升级→集中计划升级:制定计划
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

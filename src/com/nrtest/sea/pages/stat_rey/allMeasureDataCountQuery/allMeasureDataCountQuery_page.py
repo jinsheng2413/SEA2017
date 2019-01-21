@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 统计查询--》全量数据统计查询--》全量数据统计查询
+# 统计查询→全量数据统计查询→全量数据统计查询
 class AllMeasureDataCountQueryPage(Page):
 
     # 日期

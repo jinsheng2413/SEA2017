@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理--》档案核查管理--》核查结果统计查询
+# 系统管理→档案核查管理→核查结果统计查询
 class CheckResultStatLocators:
     # 【查询条件区】
     # 开始时间

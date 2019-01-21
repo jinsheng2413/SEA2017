@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-# 高级应用--》费控管理--》本地费控--》低压用户余额查看：余额查看
+# 高级应用→费控管理→本地费控→低压用户余额查看：余额查看
 class TestBalanceCheck(TestCase, BalanceCheck_page):
     @classmethod
     def setUpClass(cls):
@@ -78,10 +78,10 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
         self.inputStr_cons_no(para['CONS_NO'])
 
         # 接收时间
-        self.inputStr_receive_date(para['RECEIVE_DATE'])
+        self.inputDt_receive_date(para['RECEIVE_DATE'])
 
         # 执行状态
-        self.inputRSel_execute_state(para['EXECUTE_STATE'])
+        self.inputSel_execute_state(para['EXECUTE_STATE'])
 
         # 终端地址
         self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
@@ -103,6 +103,21 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
 
         # 查询
         self.btn_qry()
+
+    def assert_query_result(self, para):
+        """
+        查询结果校验（包括跳转）
+        :param para:
+        """
+        self.assertTrue(self.check_query_result(para))
+
+    def assert_query_criteria(self, para):
+        """
+        查询条件校验
+        :param para:
+        """
+        result = self.check_query_criteria(para)
+        self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LocalCostContral_data.lowUserBalanceCheck_para,

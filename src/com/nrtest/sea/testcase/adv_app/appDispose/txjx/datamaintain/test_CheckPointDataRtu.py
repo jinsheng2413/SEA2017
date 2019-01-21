@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.adv_app.txjx.datamaintain.checkPointDataRtu_page impor
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用-->台线系统--》资料维护--》专变考核点资料维护
+# 高级应用→台线系统→资料维护→专变考核点资料维护
 @ddt
 class TestCheckPointDataRtu(TestCase, CheckPointDataRtuPage):
 
@@ -94,6 +94,9 @@ class TestCheckPointDataRtu(TestCase, CheckPointDataRtuPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(Datamaintain_data.checkPointDataRtu_para))
     def test_query(self, para):
+        """高级应用→台线系统→资料维护→专变考核点资料维护
+        :param para:用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -10,6 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 高级应用→费控管理→本地费控→低压用户购电参数下发
 class LowUserBuyEleParaGiveOut_page(Page):
     # 工单编号
     def inputStr_app_no(self, value):

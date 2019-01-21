@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用--》费控管理--》本地费控--》电价参数管理
+# 高级应用→费控管理→本地费控→电价参数管理
 class EleParaManLocators:
     # 【查询条件区】
     # 起始日期

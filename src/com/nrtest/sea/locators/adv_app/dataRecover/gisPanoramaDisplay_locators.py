@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 统计查询--》数据分析--》电量分析--》电量数据查询
+# 统计查询→数据分析→电量分析→电量数据查询
 class GisPanoramaDisplayLocators:
     # 【查询条件区】
     # 用户类型

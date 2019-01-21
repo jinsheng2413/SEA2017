@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.localFeiManageExeCount_page 
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》本地费控执行统计:费控情况统计
+# 高级应用→费控管理→本地费控→本地费控执行统计:费控情况统计
 @ddt
 class TestlocalFeiManageExeCount_dis_count(TestCase, LocalFeiManageExeCount_dis_count_Page):
     @classmethod
@@ -89,6 +89,10 @@ class TestlocalFeiManageExeCount_dis_count(TestCase, LocalFeiManageExeCount_dis_
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CostControlManage_data.localFeiManageExeCount_para, CostControlManage_data.localFeiManageExeCount_tab_stats))
     def test_query(self, para):
+        """高级应用→费控管理→本地费控→本地费控执行统计:费控情况统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

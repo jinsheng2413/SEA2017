@@ -88,6 +88,10 @@ class TestF35SetCollTaskTemp(TestCase, F35SetCollTaskTempPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TemplateManData.F35SetCollTaskTemp_para))
     def test_query(self, para):
+        """系统管理→模板管理→F35设置采集任务模板
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.intelligentLock.recordsQuery_page import Recor
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→智能锁具→记录查询
+# 高级应用→智能锁具→记录查询:开关锁操作日志
 @ddt
 class TestRecordsQuery(TestCase, RecordsQueryPage):
     @classmethod
@@ -100,6 +100,10 @@ class TestRecordsQuery(TestCase, RecordsQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(IntelligentLock_data.RecordsQuery_para, IntelligentLock_data.RecordsQuery_tabName))
     def test_query(self, para):
+        """高级应用→智能锁具→记录查询:开关锁操作日志
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

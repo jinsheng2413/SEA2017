@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEffectSt
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→终端管理→软件升级→升级效果统计→终端升级明细
+# 基本应用→终端管理→软件升级→升级效果统计:终端升级明细
 @ddt
 class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
     @classmethod
@@ -126,6 +126,10 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEffectStatistics_para,
                                   SoftwareUpgrading_data.UpgradeEffectStatistics_tabName_detail))
     def test_query(self, para):
+        """基本应用→终端管理→软件升级→升级效果统计:终端升级明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

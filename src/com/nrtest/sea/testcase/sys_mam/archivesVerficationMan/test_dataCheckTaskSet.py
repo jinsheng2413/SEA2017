@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.dataCheckTaskSet_page import DataCheckTaskSetPage
 
 
-# 系统管理--》档案核查管理--》档案核查任务编制
+# 系统管理→档案核查管理→档案核查任务编制
 @ddt
 class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
 
@@ -63,13 +63,17 @@ class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
         """
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 台区编号
         self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])
+
         # 任务来源
         self.inputSel_taskFrom(para['TASK_FROM'])
+
         # 选择模板
         # self.inputChk_SelectDemo(para)   此选项缺少选项内容
 
+        # 查询
         self.btn_query()
 
     def assert_query_result(self, para):
@@ -90,6 +94,10 @@ class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.dataCheckTaskSet_para))
     def test_query(self, para):
+        """系统管理→档案核查管理→档案核查任务编制
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

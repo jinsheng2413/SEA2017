@@ -9,7 +9,8 @@
 """
 from selenium.webdriver.common.by import By
 
-# 运行管理-->SIM卡管理-->运行情况分析-->流量分析
+
+# 运行管理→SIM卡管理→运行情况分析→流量分析
 class FlowCountLocators:
     #【查询条件区】
     #月份

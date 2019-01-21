@@ -14,6 +14,7 @@ from com.nrtest.common.base_page import Page
 # 基本应用→数据采集管理→定制任务管理
 
 class GatherTaskCompilePage(Page):
+
     # 任务状态
     def inputSel_task_state(self, name):
         self.selectDropDown(name)
@@ -48,6 +49,7 @@ class GatherTaskCompilePage(Page):
 
 
 class GatherTaskCompile_result_Page(Page):
+
     # 任务名称
     def inputStr_task_name(self, value):
         self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
@@ -64,7 +66,6 @@ class GatherTaskCompile_result_Page(Page):
     def inputDT_endTime(self, value):
         self.inputDate(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
         self.btn_query(True)

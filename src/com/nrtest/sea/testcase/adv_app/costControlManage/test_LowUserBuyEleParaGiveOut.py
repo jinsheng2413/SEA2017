@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.lowUserBuyEleParaGiveOut_pag
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》低压用户购电参数下发
+# 高级应用→费控管理→本地费控→低压用户购电参数下发
 @ddt
 class TestLowUserBuyEleParaGiveOut(TestCase, LowUserBuyEleParaGiveOut_page):
     @classmethod
@@ -96,6 +96,10 @@ class TestLowUserBuyEleParaGiveOut(TestCase, LowUserBuyEleParaGiveOut_page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CostControlManage_data.lowUserBuyEleParaGiveOut_para))
     def test_query(self, para):
+        """高级应用→费控管理→本地费控→低压用户购电参数下发
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

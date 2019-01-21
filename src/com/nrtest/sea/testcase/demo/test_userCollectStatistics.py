@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.collConstructStatus.userCollectStatistics_page import UserCollectStatisticsPage
 
 
-# 统计查询→综合查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计
+# 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计
 @ddt
 class TestUserCollectStatistics(TestCase, UserCollectStatisticsPage):
     @classmethod
@@ -64,17 +64,6 @@ class TestUserCollectStatistics(TestCase, UserCollectStatisticsPage):
         # 查询按钮
         self.btn_search()
 
-
-    @data(*(DataAccess.getCaseData(CollConstructStatus_data.UserCollectStatistics_para)))
-    def test_der(self, para):
-        """
-        下拉复选框选择
-        :param para:
-        :return:
-        """
-        print(para)
-        self.query(para)
-
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）
@@ -93,6 +82,10 @@ class TestUserCollectStatistics(TestCase, UserCollectStatisticsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CollConstructStatus_data.UserCollectStatistics_para))
     def test_query(self, para):
+        """统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

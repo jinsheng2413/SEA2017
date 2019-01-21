@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.intelligentLock.assetMan_page import AssetManP
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→智能锁具→资产管理
+# 高级应用→智能锁具→资产管理:已增锁封列表
 @ddt
 class TestAssetMan(TestCase, AssetManPage):
     @classmethod
@@ -90,6 +90,10 @@ class TestAssetMan(TestCase, AssetManPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_lock))
     def test_query(self, para):
+        """高级应用→智能锁具→资产管理:已增锁封列表
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

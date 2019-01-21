@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理--》系统配置管理--》数据字典管理
+# 系统管理→系统配置管理→数据字典管理
 class SysDictManLocators:
     # 【查询条件】
     # 分类名称

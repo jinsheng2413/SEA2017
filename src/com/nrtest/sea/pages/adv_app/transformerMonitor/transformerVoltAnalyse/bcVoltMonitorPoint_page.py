@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》配变监测分析--》电压质量分析--》B/C类电压监测点
+# 高级应用→配变监测分析→电压质量分析→B/C类电压监测点
 # B/C类电压监测点查询
 class BcVoltMonitorPointQueryPage(Page):
 

@@ -9,7 +9,8 @@
 """
 from selenium.webdriver.common.by import By
 
-# 运行管理-->采集运维平台-->组织运维管理
+
+# 运行管理→采集运维平台→组织运维管理
 class OutNameTroopLocators:
     #【查询条件区】
     #外包队伍名称

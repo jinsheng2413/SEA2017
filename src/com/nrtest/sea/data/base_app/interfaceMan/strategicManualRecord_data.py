@@ -10,5 +10,5 @@
 
 
 class InterfaceManager_data:
-    # 基本应用--接口管理--关口人工补录
+    # 基本应用→接口管理→关口人工补录
     para_StrategicManualRecord = '99914700'

@@ -19,6 +19,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import Tm
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用--终端管理--远程调试（第一个tab页）
 @ddt
 class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
 
@@ -94,6 +95,9 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
                                   DataGatherMan_data.tmnlInstallDetail_tab_workCount))
     def test_query(self, para):
+        """基本应用--终端管理--远程调试（第二个tab页）
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

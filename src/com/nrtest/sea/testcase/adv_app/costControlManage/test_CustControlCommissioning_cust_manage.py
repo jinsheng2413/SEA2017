@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.custControlCommissioning_pag
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》费控投入调试
+# 高级应用→费控管理→本地费控→费控投入调试
 
 @ddt
 class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissioning_page):
@@ -102,6 +102,10 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CostControlManage_data.custControlCommissioning_para))
     def test_query(self, para):
+        """高级应用→费控管理→本地费控→费控投入调试
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

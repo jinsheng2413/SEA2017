@@ -9,7 +9,8 @@
 """
 from selenium.webdriver.common.by import By
 
-#运行管理-->采集运维平台-->采集故障处理-->专变故障处理
+
+# 运行管理→采集运维平台→采集故障处理→专变故障处理
 class FaultHandlerLocators:
     #【查询条件区】
     # 故障来源

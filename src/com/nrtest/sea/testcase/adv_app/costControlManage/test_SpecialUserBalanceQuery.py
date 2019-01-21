@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.specialUserBalanceQuery_page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》专变用户余额查询
+# 高级应用→费控管理→本地费控→专变用户余额查看
 @ddt
 class TestSpecialUserBalanceQuery(TestCase, SpecialUserBalanceQueryPage):
     @classmethod
@@ -95,6 +95,10 @@ class TestSpecialUserBalanceQuery(TestCase, SpecialUserBalanceQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CostControlManage_data.specialUserBalanceQuery_para))
     def test_query(self, para):
+        """# 高级应用→费控管理→本地费控→专变用户余额查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

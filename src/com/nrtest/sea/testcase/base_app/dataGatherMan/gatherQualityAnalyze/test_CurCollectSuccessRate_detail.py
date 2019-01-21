@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.curCollect
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→数据采集管理→采集质量分析→实时采集成功率：实时采集失败明细
+# 基本应用→数据采集管理→采集质量分析→实时采集成功率:实时采集失败明细
 @ddt
 class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_detail_Page):
 
@@ -94,7 +94,11 @@ class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_detail_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.curCollectSuccessRate_para,
                                   GatherQualityAnalyze_data.curCollectSuccessRateDetail_tab))
-    def test_DetailQuery(self, para):
+    def test_query(self, para):
+        """基本应用→数据采集管理→采集质量分析→实时采集成功率:实时采集失败明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
@@ -103,7 +107,7 @@ class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_detail_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.curCollectSuccessRate_para,
                                   GatherQualityAnalyze_data.curCollectSuccessRateDetail_tab))
-    def _test_DetailQuery(self, para):
+    def _test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)

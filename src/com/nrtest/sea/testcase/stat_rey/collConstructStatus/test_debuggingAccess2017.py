@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.collConstructStatus.debuggingAccess2017_page import DebuggingAccess2017Page
 
 
-# 统计查询→综合查询→采集建设情况→调试接入情况2017
+# 统计查询→采集建设情况→调试接入情况2017
 @ddt
 class TestDebuggingAccess2017(TestCase, DebuggingAccess2017Page):
     @classmethod
@@ -82,6 +82,10 @@ class TestDebuggingAccess2017(TestCase, DebuggingAccess2017Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CollConstructStatus_data.DebuggingAccess2017_para))
     def test_query(self, para):
+        """统计查询→采集建设情况→调试接入情况2017
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

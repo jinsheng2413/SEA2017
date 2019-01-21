@@ -70,7 +70,7 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 是否超流量
-        self.inputChk_is_over_flow(para)
+        self.inputChk_over_flow_status(para['OVER_FLOW_STATUS'])
 
         # 日期类型
         self.inputChk_data_method(para['DATE_METHOD'])

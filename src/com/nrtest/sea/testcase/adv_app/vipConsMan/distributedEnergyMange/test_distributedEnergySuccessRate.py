@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.distributedEnergyMange.distributedE
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测→分布式电源采集成功率
+# 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测:分布式电源采集成功率
 @ddt
 class TestDistributedEnergySuccessRate(TestCase, DistributedEnergySuccessRatePage):
     @classmethod
@@ -84,6 +84,10 @@ class TestDistributedEnergySuccessRate(TestCase, DistributedEnergySuccessRatePag
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyMonitor_para,
                                   DistributedEnergyMange_data.DistributedEnergyMonitor_tabName_Success))
     def test_query(self, para):
+        """高级应用→重点用户监测→分布式电源管理→分布式电源采集监测:分布式电源采集成功率
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

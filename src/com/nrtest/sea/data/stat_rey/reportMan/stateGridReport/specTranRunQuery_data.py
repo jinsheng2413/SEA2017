@@ -9,5 +9,5 @@
 
 
 class SpecTranRunQuery_data:
-    # 统计查询--》报表管理--》国网报表--》专变用户运行指标
+    # 统计查询→报表管理→国网报表→专变用户运行指标
     SpecTranRunQuery_para = '99945150'

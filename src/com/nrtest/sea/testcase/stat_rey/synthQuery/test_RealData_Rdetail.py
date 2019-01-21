@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.realDataPage import RealDataPage
 
 
-# 统计查询→综合查询→抄表数据查询（冀北）
+# 统计查询→综合查询→抄表数据查询（冀北）:抄表明细
 @ddt
 class TestRealData_Rdetail(TestCase, RealDataPage):
     @classmethod
@@ -59,7 +59,8 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
+        # 曲线类型
+        self.inputChk_curve_type(para['CURVE_TYPE'])
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 选择抄表段号
@@ -98,6 +99,9 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.realData_para, SynthQuery_data.realData_rdetail_tab))
     def test_query(self, para):
+        """统计查询→综合查询→抄表数据查询（冀北）:抄表明细
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

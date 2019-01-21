@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 运行管理-->采集运维平台-->辅助运维--》报文查询
+# 运行管理-->采集运维平台-->辅助运维→报文查询
 class OrigFrameHbaseQueryPage(Page):
     # 终端地址
     def inputStr_tmnl_addr(self, value):

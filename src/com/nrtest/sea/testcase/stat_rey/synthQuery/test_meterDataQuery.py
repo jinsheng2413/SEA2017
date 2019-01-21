@@ -78,7 +78,7 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
         # 用户类别
         self.inputSel_cons_sort(para['CONS_SORT'])
         # 采集情况
-        self.inputChk_read_status(para)
+        self.inputChk_read_status(para['READ_STATUS'])
         # 查询按钮
         self.btn_search()
 
@@ -100,6 +100,10 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.MeterDataQuery_para))
     def test_query(self, para):
+        """统计查询→综合查询→抄表数据查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

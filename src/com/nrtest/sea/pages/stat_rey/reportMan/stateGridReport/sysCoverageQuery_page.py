@@ -10,7 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 统计查询--》报表管理--》国网报表--》系统采集覆盖情况
+# 统计查询→报表管理→国网报表→系统采集覆盖情况
 
 class SysCoverageQueryPage(Page):
 

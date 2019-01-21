@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.base_app.interfaceMan.mServiceCallStatus_page import M
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--接口管理--其他业务接口--服务调用情况
+# 基本应用→接口管理→其他业务接口→服务调用情况
 # 服务调用统计
 @ddt
 class TestOtherServiceCallStatusCount(TestCase, MServiceCallStatusPage):
@@ -92,6 +92,10 @@ class TestOtherServiceCallStatusCount(TestCase, MServiceCallStatusPage):
     @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus,
                                   InterfaceMan_data.para_MServiceCallStatus_count))
     def test_query(self, para):
+        """基本应用→接口管理→其他业务接口→服务调用情况:服务调用统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

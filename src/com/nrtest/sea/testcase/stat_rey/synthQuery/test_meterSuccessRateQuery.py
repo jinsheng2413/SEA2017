@@ -19,9 +19,9 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.meterSuccessRateQuery_page import MeterSuccessRateQueryPage
 
 
-# 统计查询→综合查询→抄表成功率查询（河北）
+# 统计查询→综合查询→抄表成功率查询（河北）:按地区、厂家统计
 @ddt
-class TestAllEventMeterEventQuery(TestCase, MeterSuccessRateQueryPage):
+class TestMeterSuccessRateQuery(TestCase, MeterSuccessRateQueryPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -53,14 +53,22 @@ class TestAllEventMeterEventQuery(TestCase, MeterSuccessRateQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
+        if para['TAB_NAME'] == '1':
+            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName1)
+        if para['TAB_NAME'] == '2':
+            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName2)
+        if para['TAB_NAME'] == '3':
+            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName3)
+        if para['TAB_NAME'] == '4':
+            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName4)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 日期
-        self.inputDt_factory_date(para['FACTORY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 用户类型
-        self.inputSel_factory_cons_type(para['FACTORY_CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 终端类型
-        self.inputSel_factory_tmnl_type(para['FACTORY_TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 通信方式
         self.inputSel_comm_way(para['COMM_WAY'])
         # 规约类型
@@ -70,7 +78,7 @@ class TestAllEventMeterEventQuery(TestCase, MeterSuccessRateQueryPage):
         # 统计类型
         self.inputSel_stat_type(para['STAT_TYPE'])
         # 查询按钮
-        self.factory_btn_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
@@ -91,6 +99,10 @@ class TestAllEventMeterEventQuery(TestCase, MeterSuccessRateQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.MeterSuccessRateQuery_para,
                                   SynthQuery_data.MeterSuccessRateQuery_tabName))
     def test_query(self, para):
+        """统计查询→综合查询→抄表成功率查询（河北）:按地区、厂家统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

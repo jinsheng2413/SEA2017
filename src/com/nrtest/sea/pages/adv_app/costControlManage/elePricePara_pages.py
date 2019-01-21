@@ -10,7 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》费控管理--》本地费控--》电价参数下发
+# 高级应用→费控管理→本地费控→电价参数下发
 class ElePricePages(Page):
     # 工单编号
     def inputStr_app_no(self, value):
@@ -33,7 +33,7 @@ class ElePricePages(Page):
         self.input(value)
 
     # 任务类型
-    def inputSel_task_cata(self, option):
+    def inputSel_task_type(self, option):
         self.clean_label(option)
         self.selectDropDown(option)
 

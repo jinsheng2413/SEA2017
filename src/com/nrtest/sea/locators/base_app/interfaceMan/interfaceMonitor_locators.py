@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》接口管理--》接口管理
+# 基本应用→接口管理→接口管理
 class InterfaceMonitor_Locators:
     # 【查询条件区】
 

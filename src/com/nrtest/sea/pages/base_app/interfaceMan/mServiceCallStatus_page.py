@@ -13,7 +13,10 @@ from selenium.webdriver.common.by import By
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→接口管理→其他业务接口→服务调用情况
+# 服务调用统计
 class MServiceCallStatusPage(Page):
+
     # 业务系统
     def inputSel_business_system(self, value):
         self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
@@ -34,30 +37,22 @@ class MServiceCallStatusPage(Page):
         self.click((By.XPATH, '//button[text()="统计"]'))
 
 
+# 服务调用明细
 class MServiceCallStatus_detail_Page(Page):
+
     # 业务系统
     def inputSel_business_system(self, value):
-        # self.click(MServiceCallStatus2Locators.QRY_BUSINESS_SYSTEM)
-        # locator = self.get_select_locator(
-        #     MServiceCallStatus2Locators.QRY_BUSINESS_SYSTEM_VALUE, value)
-        # self.click(locator)
         self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
 
     # 服务名称
     def inputSel_business_name(self, value):
-        # self.click(MServiceCallStatus2Locators.QRY_BUSINESS_NAME)
-        # locator = self.get_select_locator(
-        #     MServiceCallStatus2Locators.QRY_BUSINESS_NAME_VALUE, value)
-        # self.click(locator)
         self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
 
     # 调用时间
     def inputDt_start_date(self, value):
-        # self.input(value, *MServiceCallStatus2Locators.QRY_DATE_BEGIN)
         self.inputDate(value)
 
     def inputDt_end_date(self, value):
-        # self.input(value, *MServiceCallStatus2Locators.QRY_DATE_END)
         self.inputDate(value)
 
     # 工单编号
@@ -66,5 +61,4 @@ class MServiceCallStatus_detail_Page(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(MServiceCallStatus2Locators.BTN_QUERY)
         self.btn_query()

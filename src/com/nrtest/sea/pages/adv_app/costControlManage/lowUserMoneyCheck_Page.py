@@ -10,11 +10,10 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用--》费控管理--》本地费控--》低压用户余额查看：余额统计
+# 高级应用→费控管理→本地费控→低压用户余额查看：余额统计
 class BalanceCount_page(Page):
     # 数据日期查询
     def inputDt_date_time(self, value):
-        # print(value)
         self.clean_label(value)
         self.inputDate(value)
 
@@ -23,7 +22,7 @@ class BalanceCount_page(Page):
         self.btn_query(True)
 
 
-# 高级应用--》费控管理--》本地费控--》低压用户余额查看：余额查看
+# 高级应用→费控管理→本地费控→低压用户余额查看：余额查看
 class BalanceCheck_page(Page):
     # 工单编号
     def inputStr_app_no(self, value):
@@ -54,7 +53,7 @@ class BalanceCheck_page(Page):
         self.input(value)
 
     # 接收时间
-    def inputStr_receive_date(self, value):
+    def inputDt_receive_date(self, value):
         self.clean_label(value)
         self.inputDate(value)
 
@@ -64,7 +63,7 @@ class BalanceCheck_page(Page):
         self.inputDate(value)
 
     # 执行状态
-    def inputRSel_execute_state(self, option):
+    def inputSel_execute_state(self, option):
         self.clean_label(option)
         self.selectDropDown(option)
 

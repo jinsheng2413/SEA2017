@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 运行管理--SIM卡管理--运行情况分析--终端流量统计（冀北）
+# 运行管理→SIM卡管理→运行情况分析→终端流量统计（冀北）
 # 第一个tab页
 class TmnlSimFlowJB_1Page(Page):
     # 终端地址

@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.patrolIntegratedQuery_page import PatrolIntegratedQueryDetailPage
 
 
-# 统计查询→综合查询→巡检仪综合查询→巡检仪运行指标明细
+# 统计查询→综合查询→巡检仪综合查询:巡检仪运行指标明细
 @ddt
 class TestPatrolIntegratedQuery_Detail(TestCase, PatrolIntegratedQueryDetailPage):
     @classmethod
@@ -91,6 +91,10 @@ class TestPatrolIntegratedQuery_Detail(TestCase, PatrolIntegratedQueryDetailPage
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolIntegratedQuery_para,
                                   SynthQuery_data.PatrolIntegratedQuery_tabName_detail))
     def test_query(self, para):
+        """统计查询→综合查询→巡检仪综合查询:巡检仪运行指标明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

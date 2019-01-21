@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》档案管理--》电表批量导出（冀北）
+# 基本应用→档案管理→电表批量导出（冀北）
 
 class ArchivesGetLocators:
     # 【查询条件区】

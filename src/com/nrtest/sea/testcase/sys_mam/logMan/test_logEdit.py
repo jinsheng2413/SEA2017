@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.logMan.logEdit_page import LogEditPage
 
 
-# 系统管理--》日志管理--》值班日志
+# 系统管理→日志管理→值班日志
 @ddt
 class TestLogEdit(TestCase, LogEditPage):
 
@@ -91,7 +91,7 @@ class TestLogEdit(TestCase, LogEditPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LogEdit_data.logEdit_para))
     def test_query(self, para):
-        """系统管理-->日志管理-->值班日志
+        """系统管理→日志管理→值班日志
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

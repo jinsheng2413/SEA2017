@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理--》档案核查管理--》核查结果明细查询
+# 系统管理→档案核查管理→核查结果明细查询
 class CheckResultDetailPage(Page):
 
     # 台区编号

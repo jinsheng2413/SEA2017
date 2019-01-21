@@ -97,6 +97,9 @@ class TestTerminalOnlineSpied(TestCase, TerminalOnlineSpiedPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.terminalOnlineSpied_para))
     def test_query(self, para):
+        """基本应用→终端管理→终端版本召测
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理-->数据清理管理-->数模结构对照
+# 系统管理→数据清理管理→数模结构对照
 class DataStructureComparisonLocators:
     # 【查询条件区】
     # 核查日期

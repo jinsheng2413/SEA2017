@@ -96,6 +96,10 @@ class TestReadCompleteRate(TestCase, ReadCompleteRate_count_Page):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readCompleteRate_para,
                                   GatherQualityAnalyze_data.readCompleteRateCount_tab))
     def test_query(self, para):
+        """基本应用→数据采集管理→采集质量分析→采集完整率:采集完整率统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.countQuery(para)
         self.assert_query_result(para)

@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysParameterMan_page import SysBasicParaSetPage
 
 
-# 系统管理→系统配置管理→系统参数管理→系统基本参数设置
+# 系统管理→系统配置管理→系统参数管理:系统基本参数设置
 @ddt
 class TestSysBasicParaSet(TestCase, SysBasicParaSetPage):
     @classmethod
@@ -88,6 +88,10 @@ class TestSysBasicParaSet(TestCase, SysBasicParaSetPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysConfigManData.SysParameterMan_para, SysConfigManData.SysBasicParaSet_tabName))
     def test_query(self, para):
+        """系统管理→系统配置管理→系统参数管理:系统基本参数设置
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

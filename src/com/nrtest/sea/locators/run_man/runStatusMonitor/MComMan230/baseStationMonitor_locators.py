@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 运行管理--》采集信道管理--》230M通信管理--》基站信息维护
+# 运行管理→采集信道管理→230M通信管理→基站信息维护
 class BaseStationMonitorlocators:
     # 【查询条件区】
     # 通信地址

@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.sysConfigMan.sysParameterMan_page import SysAbnormalParaSetPage
 
 
-# 系统管理→系统配置管理→系统参数管理→系统异常参数设置
+# 系统管理→系统配置管理→系统参数管理:系统异常参数设置
 @ddt
 class TestSysAbnormalParaSet(TestCase, SysAbnormalParaSetPage):
     @classmethod
@@ -89,6 +89,10 @@ class TestSysAbnormalParaSet(TestCase, SysAbnormalParaSetPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysConfigManData.SysParameterMan_para, SysConfigManData.SysAbnormalParaSet_tabName))
     def test_query(self, para):
+        """系统管理→系统配置管理→系统参数管理:系统异常参数设置
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -11,8 +11,9 @@
 from com.nrtest.common.base_page import Page
 
 
-# 基本应用→数据采集管理→采集质量分析→实时采集成功率：实时采集成功率
+# 基本应用→数据采集管理→采集质量分析→实时采集成功率:实时采集成功率
 class CurCollectSuccessRatePage(Page):
+
     # 开始时间
     def inputDT_start_time(self, value):
         self.inputDate(value, True)
@@ -37,7 +38,7 @@ class CurCollectSuccessRate_count_Page(Page):
         self.btn_query(True)
 
 
-# 基本应用→数据采集管理→采集质量分析→实时采集成功率：实时采集失败明细
+# 基本应用→数据采集管理→采集质量分析→实时采集成功率:实时采集失败明细
 class CurCollectSuccessRate_detail_Page(Page):
     # 台区编号
     def inputStr_tg_no(self, value):
@@ -47,8 +48,7 @@ class CurCollectSuccessRate_detail_Page(Page):
     def inputStr_tg_name(self, value):
         self.input(value)
 
-        # 日期时间
-
+    # 日期时间
     def inputDT_date_time(self, value):
         self.inputDate(value)
 

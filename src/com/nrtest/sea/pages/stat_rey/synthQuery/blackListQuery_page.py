@@ -27,6 +27,18 @@ class BlackListQueryPage(Page):
     def inputStr_tmnl_addr(self, content):
         self.input(content)  #, *BlackListQueryLocators.TMNL_ADDR)
 
+    # 电能表资产号
+    def inputStr_meter_asset_no(self, index):
+        self.input(index)
+
+    # 开户卡号
+    def inputStr_open_card_no(self, index):
+        self.input(index)
+
+    # 白名单卡号
+    def inputStr_white_card_no(self, index):
+        self.input(index)
+
     # 查询按钮
     def btn_search(self):
         # self.click(BlackListQueryLocators.BTN_SEARCH)

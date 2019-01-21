@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理-->数据清理管理-->数模结构对照
+# 系统管理→数据清理管理→数模结构对照
 class DataStructureComparisonPage(Page):
 
     # 核查日期

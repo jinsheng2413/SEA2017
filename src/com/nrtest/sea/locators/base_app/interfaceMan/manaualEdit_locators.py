@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 基本应用--》接口管理--》人工补录
+# 基本应用→接口管理→人工补录
 class ManualEdit_Locators:
     # 【查询条件区】
     # 抄表段号

@@ -92,6 +92,10 @@ class TestMeterRealTimePowerCutQuery(TestCase, MeterRealTimePowerCutQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.MeterRealTimePowerCutQuery_para))
     def test_query(self, para):
+        """高级应用→配变监测分析→停电分析→表计实时停上电信息查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

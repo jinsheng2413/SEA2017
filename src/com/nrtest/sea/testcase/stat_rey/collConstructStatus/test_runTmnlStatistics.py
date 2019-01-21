@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.collConstructStatus.runTmnlStatistics_page import RunTmnlStatisticsPage
 
 
-# 统计查询→综合查询→采集建设情况→运行终端统计
+# 统计查询→采集建设情况→运行终端统计:运行终端统计
 @ddt
 class TestRunTmnlStatistics(TestCase, RunTmnlStatisticsPage):
     @classmethod
@@ -55,6 +55,8 @@ class TestRunTmnlStatistics(TestCase, RunTmnlStatisticsPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+        # 市、县直
+        self.inputChk_city(para['CITY'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 统计日期
@@ -81,6 +83,10 @@ class TestRunTmnlStatistics(TestCase, RunTmnlStatisticsPage):
     @data(*DataAccess.getCaseData(CollConstructStatus_data.RunTmnlStatistics_para,
                                   CollConstructStatus_data.RunTmnlStatistics_tabName))
     def test_query(self, para):
+        """统计查询→采集建设情况→运行终端统计:运行终端统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 系统管理-->数据清理管理-->历史数据策略管理
+# 系统管理→数据清理管理→历史数据策略管理
 class DataStrategyManagenmentPage(Page):
 
     # 存储周期

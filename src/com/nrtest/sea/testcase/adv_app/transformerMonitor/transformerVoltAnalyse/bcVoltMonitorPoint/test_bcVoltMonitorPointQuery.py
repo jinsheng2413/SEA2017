@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerVoltAnalyse.bcVo
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》配变监测分析--》电压质量分析--》B/C类电压监测点
+# 高级应用→配变监测分析→电压质量分析→B/C类电压监测点
 # B/C类电压监测点查询
 @ddt
 class TestBcVoltMonitorPointQuery(TestCase, BcVoltMonitorPointQueryPage):
@@ -92,7 +92,7 @@ class TestBcVoltMonitorPointQuery(TestCase, BcVoltMonitorPointQueryPage):
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_BcVoltMonitorPoint,
                                   TradnsformerMonitorData.para_BcVoltMonitorPointQuery))
     def test_query(self, para):
-        """高级应用-->配变监测分析-->电压质量分析-->B/C类电压监测点:B/C类电压监测点查询
+        """高级应用→配变监测分析→电压质量分析→B/C类电压监测点:B/C类电压监测点查询
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

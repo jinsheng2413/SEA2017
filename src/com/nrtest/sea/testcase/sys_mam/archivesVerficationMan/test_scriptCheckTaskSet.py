@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptCheckTaskSet_page import ScriptCheckTaskSetPage
 
 
-# 系统管理--》档案核查管理--》脚本核查任务编制
+# 系统管理→档案核查管理→脚本核查任务编制
 @ddt
 class TestScriptCheckTaskSet(TestCase, ScriptCheckTaskSetPage):
 
@@ -31,7 +31,7 @@ class TestScriptCheckTaskSet(TestCase, ScriptCheckTaskSetPage):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(ArchivesVerficationMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -63,16 +63,21 @@ class TestScriptCheckTaskSet(TestCase, ScriptCheckTaskSetPage):
         """
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 脚本类型
-        self.inputSel_scriptType(para['SCRIPT_TYPE'])
-        # 脚本名称
-        self.inputStr_scriptName(para['SCRIPT_NAME'])
-        # 创建员工
-        self.inputStr_creatStall(para['CREATE_STALL'])
-        # 任务状态
-        self.inputSel_taskStatus(para['TASK_STATUS'])
 
-        self.btn_query()
+        # 脚本类型
+        self.inputSel_script_type(para['SCRIPT_TYPE'])
+
+        # 脚本名称
+        self.inputStr_script_name(para['SCRIPT_NAME'])
+
+        # 创建员工
+        self.inputStr_create_stall(para['CREATE_STALL'])
+
+        # 任务状态
+        self.inputSel_task_status(para['TASK_STATUS'])
+
+        # 查询
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """
@@ -92,6 +97,10 @@ class TestScriptCheckTaskSet(TestCase, ScriptCheckTaskSetPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptCheckTaskSet_para))
     def test_query(self, para):
+        """系统管理→档案核查管理→脚本核查任务编制
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

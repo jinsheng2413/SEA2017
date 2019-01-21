@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理-->数据清理管理-->数据传输查询
+# 系统管理→数据清理管理→数据传输查询
 class DataTransQureyLocators:
     # 【查询条件区】
     # 核查日期

@@ -16,12 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.patrolDataQuery_page import PatrolDataQueryCurveContrastPage
 
 
-# 统计查询→综合查询→巡检仪数据查询→曲线对比
+# 统计查询→综合查询→巡检仪数据查询:曲线对比
 @ddt
-class TestPatrolDataQuery_CurveContrast(TestCase, PatrolDataQueryPage):
+class TestPatrolDataCurveContrastQuery(TestCase, PatrolDataQueryCurveContrastPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -54,16 +54,21 @@ class TestPatrolDataQuery_CurveContrast(TestCase, PatrolDataQueryPage):
 
     def query(self, para):
         # 终端资产号
-        self.inputStr_curve_contrast_tmnl_asset_no(
-            para['CURVR_CONTRAST_TMNL_ASSET_NO'])
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 终端地址
-        self.inputStr_curve_contrast_tmnl_addr(
-            para['CURVR_CONTRAST_TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 曲线类型
-        self.inputSel_curve_contrast_curve_type(
-            para['CURVR_CONTRAST_CURVE_TYPE'])
+        self.inputSel_curve_type(para['CURVE_TYPE'])
+        # 电表资产号
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
+        # 日期
+        self.inputDt_query_date(para['QUERY_DATE'])
+        # 相别
+        self.inputChk_phase_flag(para['PHASE_FLAG'])
+        # 参照对象
+        self.inputChk_reference_object(para['REFERENCE_OBJECT'])
         # 查询按钮
-        self.btn_curve_contrast_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
@@ -84,6 +89,10 @@ class TestPatrolDataQuery_CurveContrast(TestCase, PatrolDataQueryPage):
     @data(
         *DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para, SynthQuery_data.PatrolDataQuery_tabName_contrast))
     def test_query(self, para):
+        """统计查询→综合查询→巡检仪数据查询:曲线对比
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

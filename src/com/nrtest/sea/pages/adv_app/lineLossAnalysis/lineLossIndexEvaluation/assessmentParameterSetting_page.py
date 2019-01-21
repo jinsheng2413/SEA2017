@@ -15,7 +15,6 @@ from com.nrtest.common.base_page import Page
 class AssessmentParameterSettingPage(Page):
     # 台区/线路名称
     def inputStr_tg_name(self, content):
-        # self.input(content, *AssessmentParameterSettingLocators.QRY_TG_NAME)
         self.input(content)
 
     # 记录形式

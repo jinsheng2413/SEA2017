@@ -10,7 +10,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 系统管理--》档案核查管理--》脚本核查任务编制
+# 系统管理→档案核查管理→脚本核查任务编制
 class ScriptCheckTaskSetLocators:
     # 【查询条件区】
     #

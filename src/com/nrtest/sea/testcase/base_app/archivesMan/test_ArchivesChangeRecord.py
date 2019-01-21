@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesChangeRecordPage import A
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》档案变更记录
+# 基本应用→档案管理→档案变更记录
 @ddt
 class TestArchivesChangeRecordPage(TestCase, ArchivesChangeRecordPage):
 

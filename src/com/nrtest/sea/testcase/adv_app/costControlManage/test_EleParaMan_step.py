@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.eleParaManLocators_pages imp
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用--》费控管理--》本地费控--》电价参数管理::阶梯电价
+# 高级应用→费控管理→本地费控→电价参数管理::阶梯电价
 @ddt
 class TestEleParaMan(TestCase, EleParaMan_step_Page):
 
@@ -63,16 +63,20 @@ class TestEleParaMan(TestCase, EleParaMan_step_Page):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 开始时间
-        self.inputStr_start_time(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
+
         # 结束时间
-        self.inputStr_end_time(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
+
         # 是否已生成参数
-        # self.inputSel_ComeIntoPara(para['COME_INTO_PARA'])
+        self.inputSel_ComeIntoPara(para['COME_INTO_PARA'])
 
         # 任务来源
         self.inputChk_task_from(para['TASK_FROM'])
 
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):
@@ -93,6 +97,10 @@ class TestEleParaMan(TestCase, EleParaMan_step_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CostControlManage_data.eleParaMan_para, CostControlManage_data.eleParaMan_step_tab))
     def test_query(self, para):
+        """高级应用→费控管理→本地费控→电价参数管理::阶梯电价
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

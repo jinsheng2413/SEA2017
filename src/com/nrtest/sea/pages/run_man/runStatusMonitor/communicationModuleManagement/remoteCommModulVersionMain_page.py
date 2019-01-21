@@ -12,7 +12,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 运行管理--》采集信道管理--》通信模块管理--》远程通信模块版本信息召测
+# 运行管理→采集信道管理→通信模块管理→远程通信模块版本信息召测
 class RemoteCommModulVersionMainPage(Page):
     # 终端类型
     def inputSel_tmnlType(self, options):

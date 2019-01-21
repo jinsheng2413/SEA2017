@@ -85,6 +85,10 @@ class TestIntelligentMeterPowerCutEventQuery(TestCase, IntelligentMeterPowerCutE
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.IntelligentMeterPowerCutEventQuery_para,
                                   PowerCutAnalysis_data.IntelligentMeterPowerCutEventQuery_tabName))
     def test_query(self, para):
+        """高级应用→配变监测分析→停电分析→智能表停电事件查询:智能表停电统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

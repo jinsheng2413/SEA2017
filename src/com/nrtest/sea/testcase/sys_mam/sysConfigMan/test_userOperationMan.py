@@ -89,6 +89,10 @@ class TestUserOperationMonitor(TestCase, UserOperationMonitorPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SysConfigManData.UserOperationMonitor_para))
     def test_query(self, para):
+        """系统管理→系统配置管理→用户操作监测
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

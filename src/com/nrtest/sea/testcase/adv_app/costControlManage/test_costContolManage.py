@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-# 高级应用--》费控管理--》本地费控--》专变用户费控管理
+# 高级应用→费控管理→本地费控→专变用户费控管理
 class TestSpecialCostControlManage(TestCase, CostControlManagePage):
     @classmethod
     def setUpClass(cls):
@@ -105,6 +105,10 @@ class TestSpecialCostControlManage(TestCase, CostControlManagePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CostControlManage_data.specialFeiCostManage_para))
     def test_query(self, para):
+        """高级应用→费控管理→本地费控→专变用户费控管理
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

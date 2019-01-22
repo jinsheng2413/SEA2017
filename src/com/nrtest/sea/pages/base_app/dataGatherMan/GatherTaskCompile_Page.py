@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 基本应用→数据采集管理→定制任务管理
+# 基本应用→数据采集管理→定制任务管理:任务查询
 
 class GatherTaskCompilePage(Page):
 
@@ -48,6 +48,7 @@ class GatherTaskCompilePage(Page):
         self.btn_query(True)
 
 
+# 基本应用→数据采集管理→定制任务管理:执行结果分析
 class GatherTaskCompile_result_Page(Page):
 
     # 任务名称

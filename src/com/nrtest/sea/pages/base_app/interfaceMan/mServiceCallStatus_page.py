@@ -8,13 +8,10 @@
 @desc:
 """
 
-from selenium.webdriver.common.by import By
-
 from com.nrtest.common.base_page import Page
 
 
-# 基本应用→接口管理→其他业务接口→服务调用情况
-# 服务调用统计
+# 基本应用→接口管理→其他业务接口→服务调用情况:服务调用统计
 class MServiceCallStatusPage(Page):
 
     # 业务系统
@@ -34,10 +31,11 @@ class MServiceCallStatusPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click((By.XPATH, '//button[text()="统计"]'))
+        # self.click((By.XPATH, '//button[text()="统计"]'))
+        self.curr_click(btn_name='统计')
 
 
-# 服务调用明细
+# 基本应用→接口管理→其他业务接口→服务调用情况:服务调用明细
 class MServiceCallStatus_detail_Page(Page):
 
     # 业务系统

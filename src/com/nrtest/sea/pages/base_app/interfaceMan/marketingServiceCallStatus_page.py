@@ -8,8 +8,6 @@
 @desc:
 """
 
-from selenium.webdriver.common.by import By
-
 from com.nrtest.common.base_page import Page
 
 
@@ -34,7 +32,8 @@ class MarketingServiceCallStatusPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.click((By.XPATH, '//button[text()="统计"]'))
+        # self.click((By.XPATH, '//button[text()="统计"]'))
+        self.curr_click(btn_name='统计')
 
 
 # 服务调用明细

@@ -17,7 +17,7 @@ class TreeLocators:
     # class =" x-panel x-panel-noborder  活动
     ACTIVE_TAB_PAGE = '//div[@class=" x-panel x-panel-noborder "]'
 
-    # TREE_DIV = '//div[@id="mainwest"]'
+    TREE_DIV = '//div[@id="mainwest"]'
     #
     # ROOT_NODE = '//div[@id="areaTree"]'
 
@@ -47,14 +47,29 @@ class TreeLocators:
     INPUT_SEARCH = (By.XPATH, '//span[@class="textbox searchbox"]//input[@placeholder="请输入关键字"]')
     RREE_INPUT = (By.XPATH, '//label[normalize-space(text())="{}"]/..//input[@type!="hidden"]')
 
-    # 查询按钮：
-    BTN_SERCH = (By.XPATH, '//button[@class =" x-btn-text query" and text()="查询"]')
+
 
     # 带复选框的树节点
     # 不选中'//span[@class="button chk checkbox_false_full"'
     # 选中'//span[@class="button chk checkbox_true_full"'
     NODE_CHK = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/../span[starts-with(@class,"button chk checkbox")]')
 
+    # 【用户Tab页】
+    USER_QRY_INPUT = {'02': (By.XPATH, '//div[@id="mainwest"]//div[@id="indexUserPanel"]//input[@name="consNo"]'),
+                      '03': (By.XPATH, '//div[@id="mainwest"]//div[@id="indexUserPanel"]//input[@name="terminalAddr"]'),
+                      '04': (By.XPATH, '//div[@id="mainwest"]//div[@id="indexUserPanel"]//input[@name="meterAssetNo"]')}
+    # 查询按钮：
+    USER_BTN_QUERY = (By.XPATH, '//div[@id="mainwest"]//div[@id="indexUserPanel"]//button[@class =" x-btn-text query" and text()="查询"]')
+
+    NODE_USER_TAB_RSLT_DEFAULT = (By.XPATH, '//div[@id="mainwest"]//div[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[1]')
+    NODE_USER_TAB_RSLT = (By.XPATH, '//div[@id="mainwest"]//div[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[%s]//td[1]/div/div')
+
+    # 【群组Tab页】
+    # 普通群组/重点用户群组/按单位展示/控制群组
+    GROUP_NODE = {'05': (By.XPATH, '//div[@id="mainwest"]//div[@id="backTree"]'),
+                  '06': (By.XPATH, '//div[@id="mainwest"]//div[@id="impoUserGroupTree"]'),
+                  '07': (By.XPATH, '//div[@id="mainwest"]//div[@id="orgBackTree"]'),
+                  '08': (By.XPATH, '//div[@id="mainwest"]//div[@id="controlTree"]')}
 
 class TreePBSLocators:
     # class = "panel layout-panel layout-panel-west layout-split-west"

@@ -208,6 +208,10 @@ class TreePage(BaseTreePage):
             if idx == levels and self.tree_type[1] == '0':
                 locator = self.format_xpath(TreeLocators.LEEF_NODE, item)
 
+        # 对群组类型元素定位做特殊处理
+        if self.tree_type == '50':
+            locator = (locator[0], locator[1].replace(TreeLocators.TREE_DIV, self.group_node[1]))
+
         return locator
 
     def _node_click(self, element, curr_idx, node_levels, is_chk_node=False):
@@ -235,6 +239,63 @@ class TreePage(BaseTreePage):
         if is_click:
             element.click()
             sleep(0.3)
+
+    def _other_left_tree(self, node_info):
+        node_flag = node_info['NODE_FLAG']
+        if node_flag in ('02', '03', '04'):
+            self.user_tab_query(node_flag, node_info['NODE_VALE'])
+        elif node_flag in ('05', '06', '07'):
+            self.group_tab_query(node_flag, node_info['NODE_VALE'])
+
+    def user_tab_query(self, node_flag, node_value, number=1):
+
+        """
+        选择左边树用户Tab页面，并根据节点类型，输入并查询相应结果
+        :param node_flag: 节点分类
+        :param node_value: 节点值
+        :param number:查询结果显示的区域，number：代表第几个行，默认是1
+
+        """
+        # 根据node_flag选择相应的节点查询条件xpath，并输入查询条件
+        # {02:代表用户编号，03：代表终端逻辑地址，04：电能表资产号}
+        # {05:普通群组，06：重点用户群组，07：控制群组}
+        # 点击用户标签页
+        self._click_node_tab('02')
+
+        self.input(node_value, *self.TreeLocators.USER_QRY_INPUT[node_flag])
+
+        # 点击查询按钮
+        self.click(self.TreeLocators.USER_BTN_QUERY)
+
+        # 等待查询结果，最好通过其他途径判断查询已返回
+        self.commonWait(self.TreeLocators.NODE_USER_TAB_RSLT_DEFAULT)
+        self.clear(self.TreeLocators.USER_QRY_INPUT[node_flag])
+
+        # 定位查询结果，默认选择第一行记录
+        xpath = self.format_xpath(self.TreeLocators.NODE_USER_TAB_RSLT, node_value)
+        print(xpath)
+
+        self.click(xpath)
+        print('------------')
+
+    def group_tab_query(self, node_flag, node_value, number=1):
+        # 点击群组标签页
+        # @TODO 还需考虑“群组”标签页滚动后才能找到
+        self._click_node_tab('06')
+
+        # 选择群组类型
+        self.group_node = self.TreeLocators.GROUP_NODE[node_flag]
+        el = self._find_displayed_element(self.group_node)
+        attrs = el.get_attribute('class').strip()
+        if attrs.endswith('collapsed'):
+            el.click()
+
+        node_info = {'NODE_FLAG': '01'}
+        node_info.setdefault('NODE_VALE', node_value.split(','))
+        self.node_list = []
+        self.tree_type = '50'
+        self._operate_left_tree(node_info)
+
 
 # class TreePBSPage(Page):
 #     def __init__(self, driver, menu_page=None):

@@ -16,12 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptResultDetail_page import ScriptResultDetailPage
+from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptResultStat_page import ScriptResultStatPage
 
 
 # 系统管理→档案核查管理→脚本结果统计查询
 @ddt
-class TestScriptResultStat(TestCase, ScriptResultDetailPage):
+class TestScriptResultStat(TestCase, ScriptResultStatPage):
 
     @classmethod
     def setUpClass(cls):
@@ -66,10 +66,10 @@ class TestScriptResultStat(TestCase, ScriptResultDetailPage):
         self.openLeftTree(para['TREE_NODE'])
         # 脚本名称
         self.inputStr_script_name(para['SCRIPT_NAME'])
-        # 开始时间
-        self.inputDt_start_time(para['START_TIME'])
+        # 接收时间
+        self.inputDt_start_date(para['START_DATE'])
         # 结束时间
-        self.inputDt_end_time(para["END_TIME"])
+        self.inputDt_end_date(para["END_DATE"])
         # 查询
         self.btn_qry()
 
@@ -89,7 +89,7 @@ class TestScriptResultStat(TestCase, ScriptResultDetailPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultDetail_para))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultStat_para))
     def test_query(self, para):
         """系统管理→档案核查管理→脚本结果统计查询
 
@@ -101,7 +101,7 @@ class TestScriptResultStat(TestCase, ScriptResultDetailPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultDetail_para, valCheck=True))
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultStat_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

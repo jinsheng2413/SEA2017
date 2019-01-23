@@ -23,15 +23,15 @@ class AllCollectSuccessRateLocators:
     QRY_TMNL_RUN_STATE_VALUE = (
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//div[contains(text(),'运行')]/../div[contains(text(),'%s')]")
     # 用户编号
-    QRY_USER_NO = (By.XPATH, "//*[@id=\"realTimeReadTaskQueryConsNo\"]")
+    QRY_CONS_NO = (By.XPATH, "//*[@id=\"realTimeReadTaskQueryConsNo\"]")
     # 表资产号
     QRY_SURFACE_ASSERT_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'表资产号')]/../../div[1]/div[1]//input")
     QRY_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'新增')]/../div[contains(text(),'%s')]")
     # 用户类型
-    QRY_USERTYPE = (By.XPATH, "//*[@id=\"taskConsSortCombo\"]")
-    QRY_USERTYPE_VALUE = (
+    QRY_CONS_TYPE = (By.XPATH, "//*[@id=\"taskConsSortCombo\"]")
+    QRY_CONS_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//*[contains(text(),\'%s\')]//img")
     #
     QRY_ = (
@@ -46,4 +46,4 @@ class AllCollectSuccessRateLocators:
     TAB_ONE_VALUE = (By.XPATH, "//*[@class=\"x-grid3-row-table\"])[]//div[]")
     # 【JS属性】
     # 采集开始时间，删除readonly属性
-    USERTYPE_JS = 'document.getElementById("taskConsSortCombo").removeAttribute("readonly");'
+    CONS_TYPE_JS = 'document.getElementById("taskConsSortCombo").removeAttribute("readonly");'

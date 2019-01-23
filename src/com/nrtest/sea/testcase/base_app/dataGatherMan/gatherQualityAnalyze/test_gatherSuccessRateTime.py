@@ -65,7 +65,7 @@ class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 用户范围
-        self.inputSel_user_range(para['USER_RANGE'])
+        self.inputSel_cons_range(para['CONS_RANGE'])
         # 停电标志
         self.inputSel_power_cut_sign(para['POWER_CUT_SIGN'])
         # 终端类型

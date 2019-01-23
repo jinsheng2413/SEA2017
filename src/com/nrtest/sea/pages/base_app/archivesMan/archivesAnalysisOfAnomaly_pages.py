@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 class ArchivesAnalysisOfAnomaly_count_pages(Page):
 
     # 用户类型
-    def inputSel_cons_sort(self, option):
+    def inputSel_cons_type(self, option):
         self.selectDropDown(option, is_multi_tab=True, is_multi_elements=True)
 
     # 日期
@@ -34,7 +34,7 @@ class ArchivesAnalysisOfAnomaly_detail_pages(Page):
         self.btn_query(True)
 
     # 用户类型
-    def inputSel_cons_sort(self, option):
+    def inputSel_cons_type(self, option):
         self.selectDropDown(option, is_multi_elements=True, is_multi_tab=True)
 
     # 日期

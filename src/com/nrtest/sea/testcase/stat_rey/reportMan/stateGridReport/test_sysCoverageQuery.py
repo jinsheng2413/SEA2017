@@ -72,7 +72,7 @@ class TestSysCoverageQuery(TestCase, SysCoverageQueryPage):
         self.inputSel_statWay(para['STAT_WAY'])
         
         # 用户类型
-        self.inputSel_userType(para['USER_TYPE'])
+        self.inputSel_userType(para['CONS_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)

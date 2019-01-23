@@ -13,10 +13,10 @@ from selenium.webdriver.common.by import By
 class SpecialUserBalanceQuery_locators:
     # 【查询条件】
     # 用户编号
-    QRY_USER_NUM = (
+    QRY_CONS_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户编号')]/../../div[1]/div[1]/input")
     # 用户名称
-    QRY_USER_NAME = (
+    QRY_CONS_NAME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户名称')]/../../div[1]/div[1]/input")
     # 终端地址
     QRY_TERMINAL_ADDR = (

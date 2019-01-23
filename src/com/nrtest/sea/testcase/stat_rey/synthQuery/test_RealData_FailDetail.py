@@ -70,7 +70,7 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
         # 电表资产号
         self.inputStr_MeterAssert_Faildetail(para['METER_ASSERT'])
         # 用户类型
-        self.inputSel_userType_Faildetail(para['USER_TYPE'])
+        self.inputSel_userType_Faildetail(para['CONS_TYPE'])
         # 反相采集结果
         self.inputSel_reversCollectionResult(para['REVERS_COLLECTION_RESULT'])
         # 终端生产厂家

@@ -70,9 +70,9 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 用户编号
-        self.inputStr_user_no(para['USER_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
         # 用户名称
-        self.inputStr_user_name(para['USER_NAME'])
+        self.inputStr_cons_name(para['CONS_NAME'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 控制类型

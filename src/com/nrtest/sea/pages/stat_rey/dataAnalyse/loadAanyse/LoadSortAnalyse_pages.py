@@ -18,9 +18,9 @@ class LoadSortAnalysePage(Page):
 
     # 用户类型
     def inputSel_userType(self, options):
-        # self.click(LoadSortAnalyseLocators.QRY_USER_TYPE)
+        # self.click(LoadSortAnalyseLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(
-        #     LoadSortAnalyseLocators.QRY_USER_TYPE_VALUE, name)
+        #     LoadSortAnalyseLocators.QRY_CONS_TYPE_VALUE, name)
         # self.click(locator)
         self.selectDropDown(options)
 

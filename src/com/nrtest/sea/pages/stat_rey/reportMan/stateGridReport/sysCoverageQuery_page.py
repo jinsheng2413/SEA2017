@@ -32,8 +32,8 @@ class SysCoverageQueryPage(Page):
     # 用户类型
 
     def inputSel_userType(self, options):
-        # self.click(SysCoverageQueryLocators.QRY_USER_TYPE)
-        # locator = self.get_select_locator(SysCoverageQueryLocators.QRY_USER_TYPE_VALUE, index)
+        # self.click(SysCoverageQueryLocators.QRY_CONS_TYPE)
+        # locator = self.get_select_locator(SysCoverageQueryLocators.QRY_CONS_TYPE_VALUE, index)
         # self.click(locator)
         self.selectCheckBox(options)
 

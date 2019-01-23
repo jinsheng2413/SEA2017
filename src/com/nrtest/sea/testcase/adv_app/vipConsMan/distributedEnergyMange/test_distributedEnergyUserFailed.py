@@ -62,7 +62,7 @@ class TestDistributedEnergyUserFailed(TestCase, DistributedEnergyUserFailedPage)
         # 电能表资产编号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 发电用户编号
-        self.inputStr_energy_user_no(para['ENERGY_USER_NO'])
+        self.inputStr_gc_cons_no(para['GC_CONS_NO'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询日期

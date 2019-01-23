@@ -75,7 +75,7 @@ class DistributedEnergyUserFailedLocators:
     # 电能表资产编号
     QRY_METER_ASSET_NO = (By.XPATH, '//label[contains(text(),"电能表资产编号")]/../div/input')
     # 发电用户编号
-    QRY_ENERGY_USER_NO = (By.XPATH, '//label[contains(text(),"发电用户编号")]/../div/input')
+    QRY_GC_CONS_NO = (By.XPATH, '//label[contains(text(),"发电用户编号")]/../div/input')
     # 终端地址
     QRY_TMNL_ADDR = (By.XPATH, '//label[contains(text(),"终端地址")]/../div/input')
     # 查询日期

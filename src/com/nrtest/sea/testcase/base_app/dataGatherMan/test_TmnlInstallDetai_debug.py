@@ -80,7 +80,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.inputStr_applyNo_count(para['APPLY_NO'])
 
         # 用户编号
-        self.inputStr_userNo_count(para['USER_NO'])
+        self.inputStr_cons_no_count(para['CONS_NO'])
 
         # 终端地址
         self.inputStr_tmnl_addr_count(para["TMNL_ADDR"])

@@ -57,7 +57,7 @@ class Test_DataRepair_1(TestCase, DataRepair_1Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 数据类型
         self.inputSel_data_type(para['DATA_TYPE'])

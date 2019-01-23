@@ -20,7 +20,7 @@ class CtrlExecutSpecLocators:
     QRY_EXE_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'待下发命令')]/../div[contains(text(),'%s')]")
     # 用户编号
-    QRY_USER_NO = (
+    QRY_CONS_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户编号')]/../../div[1]/div[1]//input")
     # 控制类型
     QRY_CONTROL_TYPE = (

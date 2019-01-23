@@ -23,7 +23,7 @@ class AssetManPage(Page):
     # 用户名称
 
     def inputStr_user_name(self, content):
-        self.input(content)  #, *AssetManLocators.USER_NAME)
+        self.input(content)  # , *AssetManLocators.CONS_NAME)
     # 用户类型
 
     def inputSel_cons_type(self, index):

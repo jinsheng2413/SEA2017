@@ -53,7 +53,7 @@ class TestArchivesQuery(TestCase, ArchivesQueryPages):
         self.openLeftTree(para['TREE_NODE'])
 
         # 选择用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 输入抄表段号
         self.inputStr_sect_no(para['SECT_NO'])

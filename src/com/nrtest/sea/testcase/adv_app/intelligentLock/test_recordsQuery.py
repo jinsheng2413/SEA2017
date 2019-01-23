@@ -64,7 +64,7 @@ class TestRecordsQuery(TestCase, RecordsQueryPage):
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 用户名称
-        self.inputStr_user_name(para['USER_NAME'])
+        self.inputStr_user_name(para['CONS_NAME'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 操作行为

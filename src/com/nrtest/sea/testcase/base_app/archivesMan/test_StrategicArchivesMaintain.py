@@ -68,7 +68,7 @@ class TestStrategicArchivesMaintain(TestCase, StrategicArchivesMaintainPage):
         # 输入终端资产号
         self.inputStr_TmnlNo(para['TMNL_NO'])
         # 输入用户编号
-        self.inputStr_userNo(para['USER_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
 
         self.btn_qry()
         self.sleep_time(2)

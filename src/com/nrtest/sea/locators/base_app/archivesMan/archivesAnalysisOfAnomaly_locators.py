@@ -81,7 +81,7 @@ class ArchivesAnalysisOfAnomaly_detail_locators:
     # 【显示区】
     TAB_ONE = (By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[1]')
     # 用户编号
-    TAB_ONE_USER_NO_DETAIL = (
+    TAB_ONE_CONS_NO_DETAIL = (
         By.XPATH, '(//*[@class=\"x-grid3-row-table\"])[1]/tbody/tr/td[4]/div/a')
     # 终端资产号
     TAB_ONE_TERMINAL_ASSET_NO_DETAIL = (

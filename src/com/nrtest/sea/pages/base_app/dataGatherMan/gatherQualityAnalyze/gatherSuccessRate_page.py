@@ -271,10 +271,10 @@ class GatherSuccessRateTimePage(Page):
         self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 用户范围
-    def inputSel_user_range(self, index):
-        # self.click(GatherSuccessRateTimeLocators.USER_RANGE)
+    def inputSel_cons_range(self, index):
+        # self.click(GatherSuccessRateTimeLocators.CONS_RANGE)
         # locator = self.get_select_locator(
-        #     GatherSuccessRateTimeLocators.USER_RANGE_VALUE, index)
+        #     GatherSuccessRateTimeLocators.CONS_RANGE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 

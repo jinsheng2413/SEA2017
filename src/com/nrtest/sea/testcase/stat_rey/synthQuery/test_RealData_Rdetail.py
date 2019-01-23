@@ -68,7 +68,7 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         # 电表资产号
         self.inputStr_MeterAssert_Rdetail(para['METER_ASSERT'])
         # 用户类型
-        self.inputSel_userType_Rdetail(para['USER_TYPE'])
+        self.inputSel_userType_Rdetail(para['CONS_TYPE'])
         # 相位
         self.inputSel_phase_Rdetail(para['PHASE'])
         # 查询日期

@@ -14,11 +14,11 @@ from com.nrtest.common.base_page import Page
 # 高级应用→费控管理→远程费控→低压用户远程费控执行
 class CtrlExecutPage(Page):
     # 用户编号
-    def inputStr_user_no(self, value):
+    def inputStr_cons_no(self, value):
         self.input(value)
 
     # 用户名称
-    def inputStr_user_name(self, value):
+    def inputStr_cons_name(self, value):
         self.input(value)
 
     # 终端地址

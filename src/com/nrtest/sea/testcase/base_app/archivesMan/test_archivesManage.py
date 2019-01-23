@@ -63,7 +63,7 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
         self.openLeftTree(para['TREE_NODE'])
 
         # 输入用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 户号
         self.inputStr_cons_no(para['CONS_NO'])

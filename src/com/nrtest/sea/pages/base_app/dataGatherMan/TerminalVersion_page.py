@@ -13,8 +13,8 @@ from com.nrtest.common.base_page import Page
 
 class TerminalVersionPage(Page):
     # 用户编号
-    def inputStr_userNo(self, value):
-        self.input(value)  # , *TerminalVersionLocators.QRY_USER_NO)
+    def inputStr_cons_no(self, value):
+        self.input(value)  # , *TerminalVersionLocators.QRY_CONS_NO)
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):

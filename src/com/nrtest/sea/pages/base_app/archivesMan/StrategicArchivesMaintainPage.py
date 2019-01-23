@@ -21,7 +21,7 @@ class StrategicArchivesMaintainPage(Page):
         self.input(value)  # , *StrategicArchivesMaintainLocators.QRY_TMNLNO)
 
     # 用户编号
-    def inputStr_userNo(self, value):
+    def inputStr_cons_no(self, value):
         self.input(value)  # , *StrategicArchivesMaintainLocators.QRY_USERNO)
 
         # 查询

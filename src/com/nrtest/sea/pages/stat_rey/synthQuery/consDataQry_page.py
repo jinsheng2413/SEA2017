@@ -17,7 +17,7 @@ from com.nrtest.sea.locators.stat_rey.synthQuery.consDataQry_locators import Con
 class ConsDataQryPage(Page):
     # 用户数据
     def inputStr_userNo(self, value):
-        self.input(value, *ConsDataQryLocators.QRY_USER_NO)
+        self.input(value, *ConsDataQryLocators.QRY_CONS_NO)
 
 
         # 查询

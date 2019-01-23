@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 class ConsDataQryLocators:
     #【查询条件区】
     #用户编号
-    QRY_USER_NO = (By.XPATH, "//*[@name=\"consDataQry.seaNodeField\"]")
+    QRY_CONS_NO = (By.XPATH, "//*[@name=\"consDataQry.seaNodeField\"]")
 
 
     # 【操作区】

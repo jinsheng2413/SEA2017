@@ -75,10 +75,10 @@ class LocalFeiManageExeCount_dis_detail_Locators:
     QRY_EXECUTE_STATE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'失败')]/../div[%s]")
     # 工单编号
-    QRY_EMPLOYEE_NUM = (
+    QRY_APP_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'工单编号')]/../../div[1]/div[1]/input")
     # 用户编号
-    QRY_USER_NUM = (
+    QRY_CONS_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户编号')]/../../div[1]/div[1]/input")
 
     # 【操作区】

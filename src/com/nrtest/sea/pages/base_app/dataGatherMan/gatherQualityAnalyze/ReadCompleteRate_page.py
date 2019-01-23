@@ -26,7 +26,7 @@ class ReadCompleteRatePage(Page):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 用户类型
-    def inputSel_cons_sort(self, name):
+    def inputSel_cons_type(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 开始时间
@@ -49,7 +49,7 @@ class ReadCompleteRate_count_Page(Page):
         self.inputDate(value)
 
     # 用户类型
-    def inputSel_cons_sort(self, name):
+    def inputSel_cons_type(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 通信方式
@@ -72,7 +72,7 @@ class ReadCompleteRate_count_Page(Page):
 # 基本应用→数据采集管理→采集质量分析→采集完整率:采集完整率明细
 class ReadCompleteRate_detail_Page(Page):
     # 用户类型
-    def inputSel_cons_sort(self, name):
+    def inputSel_cons_type(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 通信方式

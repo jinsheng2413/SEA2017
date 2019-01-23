@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 class CtrlExecutLocators:
     # 【查询条件区】
     # 用户编号
-    QRY_USER_NO = (
+    QRY_CONS_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户编号')]/../../div[1]/div[1]/input")
     # 用户名称
     QRY_USER_NAME = (

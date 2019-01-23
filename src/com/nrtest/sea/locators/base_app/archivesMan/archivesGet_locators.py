@@ -15,10 +15,10 @@ from selenium.webdriver.common.by import By
 class ArchivesGetLocators:
     # 【查询条件区】
     # 户号
-    QRY_USER_NO = (By.XPATH, "//*[@name=\"consNo\"]")
+    QRY_CONS_NO = (By.XPATH, "//*[@name=\"consNo\"]")
     # 用户类型
-    QRY_USER_TYPE = (By.XPATH, "//*[@name=\"consTypeCombox\"]")
-    QRY_USER_TYPE_VALUE = (
+    QRY_CONS_TYPE = (By.XPATH, "//*[@name=\"consTypeCombox\"]")
+    QRY_CONS_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'公变')]/../div[contains(text(),'%s')]")
     # 终端资产号
     QRY_TMNL_ASSET_NO = (By.XPATH, "//*[@name=\"tmnlNo\"]")

@@ -120,8 +120,8 @@ class DistributedEnergyUserFailedPage(Page):
         self.input(content)  #, *DistributedEnergyUserFailedLocators.QRY_METER_ASSET_NO)
 
     # 发电用户编号
-    def inputStr_energy_user_no(self, content):
-        self.input(content)  #, *DistributedEnergyUserFailedLocators.QRY_ENERGY_USER_NO)
+    def inputStr_gc_cons_no(self, content):
+        self.input(content)  # , *DistributedEnergyUserFailedLocators.QRY_GC_CONS_NO)
 
     # 终端地址
     def inputStr_tmnl_addr(self, content):

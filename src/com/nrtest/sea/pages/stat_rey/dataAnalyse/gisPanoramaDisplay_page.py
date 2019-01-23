@@ -17,15 +17,15 @@ class GisPanoramaDisplayPage(Page):
     def inputStr_day_display(self, value):
         # self.click(GisPanoramaDisplayLocators.QRY_DAY_DISPLAY)
         # locator = self.get_select_locator(
-        #     GisPanoramaDisplayLocators.QRY_USER_TYPE_VALUE, value)
+        #     GisPanoramaDisplayLocators.QRY_CONS_TYPE_VALUE, value)
         # self.click(locator)
         self.selectDropDown(value)
 
     # 用户类型
     def inputSel_userType(self, name):
-        # self.click(GisPanoramaDisplayLocators.QRY_USER_TYPE)
+        # self.click(GisPanoramaDisplayLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(
-        #     GisPanoramaDisplayLocators.QRY_USER_TYPE_VALUE, name)
+        #     GisPanoramaDisplayLocators.QRY_CONS_TYPE_VALUE, name)
         # self.click(locator)
         self.selectDropDown(name)
 

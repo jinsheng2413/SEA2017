@@ -13,7 +13,7 @@ from com.nrtest.common.base_page import Page
 
 class DataRepair_1Page(Page):
     # 用户类型
-    def inputSel_cons_sort(self, options):
+    def inputSel_cons_type(self, options):
         # self.click(DataRepair_1Locators.QRY_CONS_SORT)
         # locator = self.get_select_locator(
         #     DataRepair_1Locators.QRY_CONS_SORT_VALUE, index)
@@ -53,7 +53,7 @@ class DataRepair_2Page(Page):
         self.selectDropDown(options,is_multi_tab=True,is_multi_elements=True)
 
     # 用户类型
-    def inputSel_cons_sort(self, options):
+    def inputSel_cons_type(self, options):
         # self.click(DataRepair_2Locators.QRY_CONS_SORT)
         # locator = self.get_select_locator(
         #     DataRepair_2Locators.QRY_CONS_SORT_VALUE, index)

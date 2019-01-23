@@ -23,7 +23,7 @@ class ReadIntimeRatePage(Page):
         self.selectDropDown(name)
 
     # 用户类型
-    def inputSel_cons_sort(self, name):
+    def inputSel_cons_type(self, name):
         self.selectDropDown(name)
 
     # 日期时间

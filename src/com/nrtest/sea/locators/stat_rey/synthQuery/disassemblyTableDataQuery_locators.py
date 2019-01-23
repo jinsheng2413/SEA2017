@@ -14,13 +14,13 @@ from selenium.webdriver.common.by import By
 # 统计查询→综合查询→销户和拆表数据查询
 class DisassemblyTableDataQueryLocators:
     # 用户名称
-    USER_NAME = (By.XPATH, '//label[contains(text(),"用户名称")]/../div/input')
+    CONS_NAME = (By.XPATH, '//label[contains(text(),"用户名称")]/../div/input')
     # 用户编号
-    USER_NO = (By.XPATH, '//label[contains(text(),"用户编号")]/../div/input')
+    CONS_NO = (By.XPATH, '//label[contains(text(),"用户编号")]/../div/input')
     # 用户类型
-    USER_TYPE = (By.XPATH, '//label[contains(text(),"用户类型")]/../div/div/img')
+    CONS_TYPE = (By.XPATH, '//label[contains(text(),"用户类型")]/../div/div/img')
     # 用户类型→值
-    USER_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    CONS_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 终端地址
     TMNL_ADDR = (By.XPATH, '//label[contains(text(),"终端地址")]/../div/input')
     # 电能表资产号

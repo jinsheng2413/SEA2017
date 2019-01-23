@@ -70,7 +70,7 @@ class TestLoadSortAnalyse(TestCase, LoadSortAnalysePage):
         self.inputDt_end_date(para['END_TIME'])
 
         # 用户类型
-        self.inputSel_userType(para['USER_TYPE'])
+        self.inputSel_userType(para['CONS_TYPE'])
 
         # 排名数量
         self.inputStr_anking_number(para['RANKING_NUMBER'])

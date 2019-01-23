@@ -75,7 +75,7 @@ class TestPowerSortAnalyse(TestCase, PowerSortAnalysePage):
         self.inputStr_rankingNumber(para['RANKING_NUMBER'])
 
         # 用户类型
-        self.inputSel_userType(para['USER_TYPE'])
+        self.inputSel_userType(para['CONS_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)

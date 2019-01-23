@@ -60,7 +60,7 @@ class Test_DataRepair_2(TestCase, DataRepair_2Page):
         self.inputSel_data_type(para['DATA_TYPE'])
 
         # 用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])

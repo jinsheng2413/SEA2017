@@ -16,7 +16,7 @@ from selenium.webdriver.common.by import By
 class CheckpointdataLocators:
     # 【查询条件区】
     # 用户编号
-    QRY_USER_NO = (By.XPATH, "//*[@id=\"lineCpNo\"]")
+    QRY_CONS_NO = (By.XPATH, "//*[@id=\"lineCpNo\"]")
     # 电表正反向
     QRY_METER_FR = (By.XPATH, "//*[@id=\"meterzfx\"]")
     QRY_METER_FR_VALUE = (

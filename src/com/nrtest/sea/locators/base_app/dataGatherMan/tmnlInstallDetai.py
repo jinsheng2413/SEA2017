@@ -44,7 +44,7 @@ class TmnlInstallDetaiLocators:
     QRY_APPLY_STATE_COUNT = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'申请单号')]/../../div[1]/div[1]//input)[1]")
     # 用户编号
-    QRY_USER_NO_COUNT = (
+    QRY_CONS_NO_COUNT = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'用户编号')]/../../div[1]/div[1]//input)[1]")
 
     # 终端地址

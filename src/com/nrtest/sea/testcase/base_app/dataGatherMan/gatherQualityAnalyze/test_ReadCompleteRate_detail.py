@@ -59,7 +59,7 @@ class TestReadCompleteRate(TestCase, ReadCompleteRate_detail_Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 蕊片厂家
         self.inputSel_chip_factory(para['CHIP_FACTORY'])

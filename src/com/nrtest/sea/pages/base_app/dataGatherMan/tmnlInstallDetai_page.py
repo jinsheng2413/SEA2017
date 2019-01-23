@@ -55,8 +55,8 @@ class TmnlInstallDetaiPage(Page):
         self.input(value)
 
     # 用户编号
-    def inputStr_userNo_count(self, value):
-        # self.input(value) #, *TmnlInstallDetaiLocators.QRY_USER_NO_COUNT)
+    def inputStr_cons_no_count(self, value):
+        # self.input(value) #, *TmnlInstallDetaiLocators.QRY_CONS_NO_COUNT)
         self.input(value)
 
     # 终端地址

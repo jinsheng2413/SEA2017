@@ -66,7 +66,7 @@ class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 通信方式
         self.inputSel_commu_mode(para['COMM_MODE'])

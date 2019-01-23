@@ -12,7 +12,7 @@ from com.nrtest.common.base_page import Page
 
 class ArchivesQueryPages(Page):
     # 用户类型
-    def inputSel_cons_sort(self, option):
+    def inputSel_cons_type(self, option):
         self.selectCheckBox(option)
 
     # 抄表段号

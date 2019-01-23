@@ -16,12 +16,12 @@ from com.nrtest.common.base_page import Page
 class ArchivesGetPage(Page):
     # 户号
     def inputStr_userNO(self, value):
-        self.input(value)  # , *ArchivesGetLocators.QRY_USER_NO)
+        self.input(value)  # , *ArchivesGetLocators.QRY_CONS_NO)
 
     # 用户类型
     def inputSel_userType(self, option):
-        # self.click(ArchivesGetLocators.QRY_USER_TYPE)
-        # locator = self.get_select_locator(ArchivesGetLocators.QRY_USER_TYPE_VALUE, option)
+        # self.click(ArchivesGetLocators.QRY_CONS_TYPE)
+        # locator = self.get_select_locator(ArchivesGetLocators.QRY_CONS_TYPE_VALUE, option)
         # self.click(locator)
         self.selectDropDown(option)
 

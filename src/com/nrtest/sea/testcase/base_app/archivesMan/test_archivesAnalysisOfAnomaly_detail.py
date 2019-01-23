@@ -58,7 +58,7 @@ class test_archivesAnalysisOfAnomaly_detail(TestCase, ArchivesAnalysisOfAnomaly_
         self.inputRSel_archives_type(para['ARCHIVES_TYPE'])
 
         # 用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 日期
         self.inputDt_date_time(para['DATE_TIME'])

@@ -29,10 +29,10 @@ class CostControlManagePageLocators:
     # 结束时间
     DATE_END = (By.XPATH, '//*[@id="buyEndDate"]')
     # 用户编号
-    QRY_USER_NUM = (By.XPATH,
+    QRY_CONS_NO = (By.XPATH,
                     "//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//label[contains(text(),'用户编号')]/../div/input")
     # 用户名称
-    QRY_USER_NAME = (By.XPATH,
+    QRY_CONS_NAME = (By.XPATH,
                      "//div[@class=\"x-panel-body x-panel-body-noheader x-panel-body-noborder\"]//label[contains(text(),'用户名称')]/../div/input")
     # 业务类型
     SEL_BUNIESS_CATA = (By.XPATH,

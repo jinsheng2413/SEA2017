@@ -30,7 +30,7 @@ class AllCollectSuccessRatePage(Page):
 
     # 用户编号
     def inputStr_userNo(self, value):
-        self.input(value)  # , *AllCollectSuccessRateLocators.QRY_USER_NO)
+        self.input(value)  # , *AllCollectSuccessRateLocators.QRY_CONS_NO)
 
     # 用户类型
     def inputSel_userType(self, name):

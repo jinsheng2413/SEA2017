@@ -58,7 +58,7 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
         self.openLeftTree(para['TREE_NODE'])
 
         # 用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 日期
         self.inputDt_date_time(para['DATE_TIME'])

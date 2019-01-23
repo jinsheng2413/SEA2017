@@ -65,7 +65,7 @@ class TestReadIntimeRate(TestCase, ReadIntimeRatePage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 用户类型
-        self.inputSel_cons_sort(para['CONS_SORT'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])

@@ -18,7 +18,7 @@ class CheckPointDataRtuLocators:
     QRY_READ_NO_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'1')]/../div[contains(text(),'%s')]")
     # 用户编号
-    QRY_USER_NO = (By.XPATH, "//*[@id=\"rtuCpNo\"]")
+    QRY_CONS_NO = (By.XPATH, "//*[@id=\"rtuCpNo\"]")
     QRY_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'新增')]/../div[contains(text(),'%s')]")
     # 用户名称

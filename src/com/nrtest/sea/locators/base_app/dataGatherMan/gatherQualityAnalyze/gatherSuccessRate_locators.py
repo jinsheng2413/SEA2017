@@ -141,8 +141,8 @@ class GatherSuccessRateTimeLocators:
     CONS_TYPE = (By.XPATH, '(//label[text()="用户类型"])[2]/../div/div/img')
     CONS_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     # 用户范围
-    USER_RANGE = (By.XPATH, '//label[text()="用户范围"]/../div/div/img')
-    USER_RANGE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    CONS_RANGE = (By.XPATH, '//label[text()="用户范围"]/../div/div/img')
+    CONS_RANGE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 停电标志
     POWER_CUT_SIGN = (By.XPATH, '//label[text()="停电标志"]/../div/div/img')
     POWER_CUT_SIGN_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')

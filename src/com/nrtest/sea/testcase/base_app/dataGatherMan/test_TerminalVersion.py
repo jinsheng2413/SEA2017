@@ -66,7 +66,7 @@ class TestTerminalVersion(TestCase, TerminalVersionPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 用户编号
-        self.inputStr_userNo(para['USER_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询日期

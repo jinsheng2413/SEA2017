@@ -35,7 +35,7 @@ class CollectSuccessRateJbPage(Page):
         self.selectDropDown(name)
 
     # 用户类型
-    def inputSel_cons_sort(self, options):
+    def inputSel_cons_type(self, options):
         self.selectCheckBox(options)
 
     # 芯片厂家

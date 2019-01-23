@@ -10,6 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→档案管理→档案查询
 class ArchivesQueryPages(Page):
     # 用户类型
     def inputSel_cons_type(self, option):

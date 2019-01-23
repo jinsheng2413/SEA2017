@@ -1,34 +1,34 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 郭春彪
+@author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_InterfaceMonitor.py
-@time: 2018/9/10 0010 9:21
+@file: test_multipleTableDataQuery_tmnl.py
+@time: 2018/10/11 15:07
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.interfaceMan.mDataPublishStatus_data import MDataPublishStatus_data
-from com.nrtest.sea.pages.base_app.interfaceMan.InterfaceMonitor_page import InterfaceMonitorPage
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.multipleTableDataQuery_page import MultipleTableDataQueryTmnlPage
 
 
-# 基本应用→接口管理→接口管理
+# 统计查询→综合查询→多表合一抄表数据查询:终端抄表数据
 @ddt
-class TestInterfaceMonitor(TestCase, InterfaceMonitorPage):
-
+class TestMultipleTableDataQuery(TestCase, MultipleTableDataQueryTmnlPage):
     @classmethod
     def setUpClass(cls):
-        # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(MDataPublishStatus_data.interfaceMonitor_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(SynthQuery_data.MultipleTableDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(MDataPublishStatus_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(SynthQuery_data.MultipleTableDataQuery_tabName_tmnl)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -50,28 +50,17 @@ class TestInterfaceMonitor(TestCase, InterfaceMonitorPage):
         :return:
         """
         # 回收左边树
-        # self.recoverLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
-        """
-
-        :param para: Dict类型的字典，不是dict
-        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
-        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
-        """
-
-        # 接口类型
-        self.inputSel_interface_type(para['INTERFACE_TYPE'])
-
-        # 开始时间
-        self.inputDt_start_time(para['START_TIME'])
-
-        # 结束时间
-        self.inputDt_end_time(para['END_TIME'])
-
-        # 查询
-        self.btn_qry()
-        self.sleep_time(2)
+        # 终端地址
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        # 用户状态
+        self.inputSel_cons_status(para['CONS_STATUS'])
+        # 查询日期
+        self.inputDt_query_date(para['QUERY_DATE'])
+        # 查询按钮
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
@@ -89,9 +78,10 @@ class TestInterfaceMonitor(TestCase, InterfaceMonitorPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(MDataPublishStatus_data.interfaceMonitor_para))
+    @data(*DataAccess.getCaseData(SynthQuery_data.MultipleTableDataQuery_para,
+                                  SynthQuery_data.MultipleTableDataQuery_tabName_tmnl))
     def test_query(self, para):
-        """基本应用→接口管理→接口管理
+        """统计查询→综合查询→多表合一抄表数据查询:终端抄表数据
 
         :param para:
         """
@@ -101,7 +91,8 @@ class TestInterfaceMonitor(TestCase, InterfaceMonitorPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(MDataPublishStatus_data.interfaceMonitor_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.MultipleTableDataQuery_para,
+                                  SynthQuery_data.MultipleTableDataQuery_tabName_tmnl, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesQuery_pages import Archiv
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》档案管理--》档案查询
+# 基本应用→档案管理→档案查询
 @ddt
 class TestArchivesQuery(TestCase, ArchivesQueryPages):
     @classmethod
@@ -83,6 +83,10 @@ class TestArchivesQuery(TestCase, ArchivesQueryPages):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesManData.para_archivesQuery))
     def test_query(self, para):
+        """基本应用→档案管理→档案查询
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

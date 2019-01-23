@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.multipleTableDataQuery_page import MultipleTableDataQueryPage
 
 
-# 统计查询→综合查询→多表合一抄表数据查询
+# 统计查询→综合查询→多表合一抄表数据查询:用户抄表数据
 @ddt
 class TestMultipleTableDataQuery(TestCase, MultipleTableDataQueryPage):
     @classmethod
@@ -54,13 +54,13 @@ class TestMultipleTableDataQuery(TestCase, MultipleTableDataQueryPage):
 
     def query(self, para):
         # 用户编号
-        self.inputStr_cons_cons_no(para['CONS_CONS_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
         # 开始时间
-        self.inputDt_cons_start_date(para['CONS_START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 结束时间
-        self.inputDt_cons_end_date(para['CONS_END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
         # 用户状态
-        self.inputSel_cons_cons_status(para['CONS_CONS_STATUS'])
+        self.inputSel_cons_status(para['CONS_STATUS'])
         # 查询按钮
         self.btn_search()
 
@@ -83,6 +83,10 @@ class TestMultipleTableDataQuery(TestCase, MultipleTableDataQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.MultipleTableDataQuery_para,
                                   SynthQuery_data.MultipleTableDataQuery_tabName))
     def test_query(self, para):
+        """统计查询→综合查询→多表合一抄表数据查询:用户抄表数据
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

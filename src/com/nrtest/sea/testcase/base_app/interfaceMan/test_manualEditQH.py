@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.base_app.interfaceMan.manualEditQH_page import ManualE
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--接口管理--人工补录(青海)
+# 基本应用→接口管理→人工补录（青海）
 @ddt
 class Test_ManualEditQH(TestCase, ManualEditQHPage):
     @classmethod
@@ -56,14 +56,21 @@ class Test_ManualEditQH(TestCase, ManualEditQHPage):
     def query(self, para):
         # 打开左边树选择供电单位
         self.openLeftTree(para['TREE_NODE'])
+
+        # 抄表段号
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
+
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
+
         # 数据来源
         self.inputSel_data_src(para['DATA_SRC'])
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
         # 点击正向有功总为空
-        self.inputChk_powerEmpty(para['POWER_EMPTY'])
+        self.inputChk_power_empty(para['POWER_EMPTY'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)
@@ -87,6 +94,10 @@ class Test_ManualEditQH(TestCase, ManualEditQHPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceManager_data.para_ManualEditQH))
     def test_query(self, para):
+        """基本应用→接口管理→人工补录（青海）
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

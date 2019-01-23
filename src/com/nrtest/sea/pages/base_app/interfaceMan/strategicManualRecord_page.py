@@ -11,24 +11,24 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→接口管理→关口人工补录
 class StrategicManualRecordPage(Page):
     # 采集点名
     def inputStr_gatherpoint_name(self, value):
-        self.input(value)  # , *StrategicManualRecord_Locators.QRY_GATHERPOINT_NAME)
+        self.input(value)
 
     # 电表名称
     def inputStr_meter_name(self, value):
-        self.input(value)  # , *StrategicManualRecord_Locators.QRY_METER_NAME)
+        self.input(value)
 
     # 电表地址
     def inputStr_meter_addr(self, value):
-        self.input(value)  # , *StrategicManualRecord_Locators.QRY_METER_ADDR)
+        self.input(value)
 
+    # 日期
     def inputDt_query_date(self, value):
-        # self.input(value, *StrategicManualRecord_Locators.QRY_DATE)
         self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(StrategicManualRecord_Locators.BTN_QRY)
         self.btn_query()

@@ -11,8 +11,12 @@
 from com.nrtest.common.base_page import Page
 
 
-# 基本应用--接口管理--人工补录
+# 基本应用→接口管理→人工补录
 class ManualEditPage(Page):
+
+    # 计划编号
+    def inputStr_plan_no(self, value):
+        self.input(value)
 
     # 抄表段号
     def inputStr_mr_sect_no(self, value):
@@ -26,10 +30,14 @@ class ManualEditPage(Page):
     def inputSel_process_type(self, option):
         self.selectDropDown(option)
 
+    # 日期
     def inputDt_query_date(self, value):
         self.inputDate(value)
 
+    # 是否白名单
+    def inputChk_white_list(self, name):
+        self.clickSingleCheckBox(name)
+
     # 查询
     def btn_qry(self):
-        # self.click(ManualEdit_Locators.BTN_QRY)
         self.btn_query()

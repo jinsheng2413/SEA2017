@@ -105,7 +105,7 @@ class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossDetail_para)[0:1])
+    @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossDetail_para))
     def test_query(self, para):
         """高级应用→线损分析→线损统计分析→台区线损明细
 

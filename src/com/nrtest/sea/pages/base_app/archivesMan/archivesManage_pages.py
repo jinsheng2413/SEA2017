@@ -10,6 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→档案管理→档案同步
 class ArchivesManage_pages(Page):
 
     # 用户类型

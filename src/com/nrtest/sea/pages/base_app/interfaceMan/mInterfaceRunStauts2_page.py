@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 基本应用--接口管理--营销业务接口--接口运行状态
+# 基本应用→接口管理→营销业务接口→接口运行状态
 
 class MInterfaceRunStatus2Page(Page):
     # 业务系统

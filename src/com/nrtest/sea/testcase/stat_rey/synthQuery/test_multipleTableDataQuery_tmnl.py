@@ -3,8 +3,8 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_tgLineLossDetail.py
-@time: 2018/11/2 10:15
+@file: test_multipleTableDataQuery_tmnl.py
+@time: 2018/10/11 15:07
 @desc:
 """
 
@@ -14,28 +14,28 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgLineLossStatisticsQuery_data import \
-    TgLineLossStatisticsQuery_data
-from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgLineLossDetail_page import \
-    TgLineLossDetailPage
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.multipleTableDataQuery_page import MultipleTableDataQueryTmnlPage
 
 
-# 高级应用→线损分析→线损统计分析→台区线损明细
+# 统计查询→综合查询→多表合一抄表数据查询:终端抄表数据
 @ddt
-class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
+class TestMultipleTableDataQuery(TestCase, MultipleTableDataQueryTmnlPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(TgLineLossStatisticsQuery_data.TgLineLossDetail_para)
+        menuPage = MenuPage.openMenu(SynthQuery_data.MultipleTableDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        menuPage.clickTabPage(SynthQuery_data.MultipleTableDataQuery_tabName_tmnl)
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
-
 
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
-        # 关闭菜单页面
+        # 刷新浏览器
         cls.closePages(cls)
 
     def setUp(self):
@@ -53,39 +53,12 @@ class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
-
-        # 采集覆盖率
-        self.inputSel_collectCoverRate(para['COLLECT_COVER_RATE'])
-
-        # 采集成功率
-        self.inputSel_collectSuccessRate(para['COLLECT_SUCCESS__RATE'])
-
-        # 同期线损率
-        self.inputSel_lineLoss(para['COLLECLINE_LOSS__RATE'])
-
-        # 日期类型
-        self.inputChk_dateType(para['DATE_TYPE_DAY'])
-
-        # 运算类型
-        self.inputChk_runType(para['COMPUTE_TYPE'])
-
-        # 台区编号
-        self.inputStr_tg_no(para['TG_NO'])
-
-        # 台区名称
-        self.inputStr_tg_name(para['TG_NAME'])
-
-        # 查询日期,开始
-        self.inputDt_start_date(para['START_DATE'])
-
-        # 查询日期，结束
-        self.inputDt_end_date(para['END_DATE'])
-
-        # 责任人工号
-        self.inputStr_charge_person_no(para['CHARGE_PERSON'])
-
+        # 终端地址
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        # 用户状态
+        self.inputSel_cons_status(para['CONS_STATUS'])
+        # 查询日期
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_search()
 
@@ -105,9 +78,10 @@ class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossDetail_para))
+    @data(*DataAccess.getCaseData(SynthQuery_data.MultipleTableDataQuery_para,
+                                  SynthQuery_data.MultipleTableDataQuery_tabName_tmnl))
     def test_query(self, para):
-        """高级应用→线损分析→线损统计分析→台区线损明细
+        """统计查询→综合查询→多表合一抄表数据查询:终端抄表数据
 
         :param para:
         """
@@ -117,7 +91,8 @@ class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossDetail_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.MultipleTableDataQuery_para,
+                                  SynthQuery_data.MultipleTableDataQuery_tabName_tmnl, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -56,13 +56,19 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossStatisticsPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        # 线损维度
-        self.inputSel_line_loss_dimension(para['LINE_LOSS_DIMENSION'])
+        # 查询维度
+        self.inputChk_date_type(para['DATE_TYPE'])
 
         # 开始时间
         self.inputDt_start_date(para['START_TIME'])
 
         self.inputDt_end_date(para['END_TIME'])
+
+        # 线损维度
+        self.inputSel_line_loss_dimension(para['LINE_LOSS_DIMENSION'])
+
+        # 责任人工号
+        self.inputStr_cons_no(para['CONS_NO'])
 
         # 查询按钮
         self.btn_search()

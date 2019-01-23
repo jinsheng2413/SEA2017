@@ -47,6 +47,7 @@ class SynthQuery_data:
     # 统计查询→综合查询→多表合一抄表数据查询
     MultipleTableDataQuery_para = '99941A00'
     MultipleTableDataQuery_tabName = '用户抄表数据'
+    MultipleTableDataQuery_tabName_tmnl = '终端抄表数据'
     # 统计查询→综合查询→全事件配置率统计
     AllEventDistributionRateStatistics_para = '99941945'
     AllEventDistributionRateStatistics_tabName = '全事件配置率统计'

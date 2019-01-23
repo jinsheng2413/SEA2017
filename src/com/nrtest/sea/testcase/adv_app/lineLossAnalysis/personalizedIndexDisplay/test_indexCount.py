@@ -21,13 +21,14 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.personalizedIndexDisplay.inde
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→同期线损→指标明细
+# 高级应用→线损分析→同期线损→指标明细：指标统计
 @ddt
 class TestIndexDetail(TestCase, IndexDetailPage_count):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(PersonalizedIndexDisplay_data.IndexDetail_para)
+        menuPage.clickTabPage(PersonalizedIndexDisplay_data.IndexDetail_count_tab)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.remove_dt_readonly()
 
@@ -52,7 +53,6 @@ class TestIndexDetail(TestCase, IndexDetailPage_count):
         self.recoverLeftTree()
 
     def query(self, para):
-        self.clickTabPage(PersonalizedIndexDisplay_data.IndexDetail_count_tab)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
@@ -84,6 +84,10 @@ class TestIndexDetail(TestCase, IndexDetailPage_count):
     @data(*DataAccess.getCaseData(PersonalizedIndexDisplay_data.IndexDetail_para,
                                   tabName=PersonalizedIndexDisplay_data.IndexDetail_count_tab))
     def test_query(self, para):
+        """高级应用→线损分析→同期线损→指标明细：指标统计
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

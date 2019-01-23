@@ -20,13 +20,14 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.personalizedIndexDisplay.inde
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→同期线损→指标明细
+# 高级应用→线损分析→同期线损→指标明细:指标明细
 @ddt
 class TestIndexDetail(TestCase, IndexDetailPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(PersonalizedIndexDisplay_data.IndexDetail_para)
+        menuPage.clickTabPage(PersonalizedIndexDisplay_data.IndexDetail_detail_tab)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.remove_dt_readonly()
 
@@ -51,7 +52,6 @@ class TestIndexDetail(TestCase, IndexDetailPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        self.clickTabPage(PersonalizedIndexDisplay_data.IndexDetail_detail_tab)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 台区编号
@@ -78,10 +78,14 @@ class TestIndexDetail(TestCase, IndexDetailPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PersonalizedIndexDisplay_data.IndexDetail_para,
                                   tabName=PersonalizedIndexDisplay_data.IndexDetail_detail_tab))
     def test_query(self, para):
+        """高级应用→线损分析→同期线损→指标明细:指标明细
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

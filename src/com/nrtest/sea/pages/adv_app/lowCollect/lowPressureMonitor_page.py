@@ -9,13 +9,12 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.adv_app.lowCollect.lowPressureMonitor_locators import LowPressureMonitor_Locators
 
 
 class LowPressureMonitor_Page(Page):
     # 台区名称
     def inputStr_tg_name(self, value):
-        self.input(value, *LowPressureMonitor_Locators.QRY_TG_NAME)
+        self.input(value)  # , *LowPressureMonitor_Locators.QRY_TG_NAME)
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):

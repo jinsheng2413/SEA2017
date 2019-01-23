@@ -18,8 +18,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.GatherTaskCompile_Page import G
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→数据采集管理→定制任务管理
-# 执行结果分析
+# 基本应用→数据采集管理→定制任务管理:执行结果分析
 @ddt
 class TestGatherTaskCompile(TestCase, GatherTaskCompile_result_Page):
 

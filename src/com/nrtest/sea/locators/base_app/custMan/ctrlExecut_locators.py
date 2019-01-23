@@ -46,9 +46,9 @@ class CtrlExecutLocators:
     QRY_EXE_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'待下发命令')]/../div[contains(text(),'%s')]")
     # 数据来源
-    QRY_DATA_COME = (
+    QRY_DATA_SRC = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'数据来源')]/../../div[1]/div[1]/div/input")
-    QRY_DATA_COME_VALUE = (
+    QRY_DATA_SRC_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'营销系统')]/../div[contains(text(),'%s')]")
     # 确认状态
     QRY_CONFIRM_STATUS = (

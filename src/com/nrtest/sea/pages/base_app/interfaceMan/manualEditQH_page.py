@@ -22,9 +22,9 @@ class ManualEditQHPage(Page):
         self.input(value)  # , *ManualEditQH_Locators.QRY_CONS_NO)
 
     # 数据来源
-    def inputSel_data_from(self, option):
-        # self.click(ManualEditQH_Locators.QRY_DATA_FROM)
-        # locator = self.get_select_locator(ManualEditQH_Locators.QRY_DATA_FROM_VALUE, option)
+    def inputSel_data_src(self, option):
+        # self.click(ManualEditQH_Locators.QRY_DATA_SRC)
+        # locator = self.get_select_locator(ManualEditQH_Locators.QRY_DATA_SRC_VALUE, option)
         # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(option)

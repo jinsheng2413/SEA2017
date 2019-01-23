@@ -67,7 +67,7 @@ class TestHistoricalDataMonitoring(TestCase, HistoricalDataMonitoringPage):
         # 表名称
         self.inputSel_table_name(para['TABLE_NAME'])
         # 数据来源
-        self.inputSel_data_from(para['DATA_FROM'])
+        self.inputSel_data_src(para['DATA_SRC'])
         # 开始日期
         self.inputDt_start_date(para['START_DATE'])
         # 结束日期

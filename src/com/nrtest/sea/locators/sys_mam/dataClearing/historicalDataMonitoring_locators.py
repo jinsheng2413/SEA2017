@@ -17,9 +17,9 @@ class HistoricalDataMonitoringLocators:
     QRY_LIST_NAME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'表名称')]/../../div[1]/div[1]//input")
     # 数据来源
-    QRY_DATA_FROM = (
+    QRY_DATA_SRC = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'数据来源')]/../../div[1]/div[1]//img")
-    QRY_DATA_FROM_VALUE = (
+    QRY_DATA_SRC_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'采集生产库')]/../div[contains(text(),'%s')]")
     # 数据组
     QRY_DATA_GROUP = (

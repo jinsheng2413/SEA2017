@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 class HistoricalDataMonitoringPage(Page):
 
     # 数据来源
-    def inputSel_data_from(self, options):
+    def inputSel_data_src(self, options):
         self.selectDropDown(options)
 
     # 表名称

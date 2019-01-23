@@ -59,7 +59,7 @@ class Test_ManualEditQH(TestCase, ManualEditQHPage):
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 数据来源
-        self.inputSel_data_from(para['DATA_FROM'])
+        self.inputSel_data_src(para['DATA_SRC'])
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 点击正向有功总为空

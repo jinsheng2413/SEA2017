@@ -35,7 +35,7 @@ class SysDictManPage(Page):
         self.input(content)
 
     # 维护类型--打开并选择
-    def inputRSel_data_source(self, option):
+    def inputRSel_data_src(self, option):
         self.selectDropDown(option)
 
     # 查询

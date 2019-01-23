@@ -82,7 +82,7 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         # 执行状态
         self.inputSel_exe_status(para['EXE_STATUS'])
         # 数据来源
-        self.inputSel_data_come(para['DATA_COME'])
+        self.inputSel_data_src(para['DATA_SRC'])
         # 确认状态
         self.inputSel_confirm_status(para['CONFIRM_STATUS'])
         # 时间区间

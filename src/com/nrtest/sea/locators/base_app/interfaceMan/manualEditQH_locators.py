@@ -19,9 +19,9 @@ class ManualEditQH_Locators:
     # 用户编号
     QRY_CONS_NO = (By.XPATH, "//label[contains(text(),'用户编号')]/../div/input")
     # 数据来源
-    QRY_DATA_FROM = (By.XPATH, "//label[contains(text(),'数据来源')]/../div/div/input")
+    QRY_DATA_SRC = (By.XPATH, "//label[contains(text(),'数据来源')]/../div/div/input")
     # 值（数据来源）
-    QRY_DATA_FROM_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
+    QRY_DATA_SRC_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
     # 日期
     QRY_DATE = (By.XPATH, "(//label[contains(text(),'日期')]/../div/div/input)[1]")
     # 正向有功总为空

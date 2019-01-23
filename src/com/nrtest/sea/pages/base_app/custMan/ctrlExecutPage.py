@@ -50,7 +50,7 @@ class CtrlExecutPage(Page):
         self.selectDropDown(options)
 
     # 数据来源
-    def inputSel_data_come(self, options):
+    def inputSel_data_src(self, options):
         self.selectDropDown(options)
 
     # 确认状态

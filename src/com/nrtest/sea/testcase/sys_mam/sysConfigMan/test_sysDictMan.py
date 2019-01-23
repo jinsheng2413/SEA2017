@@ -80,7 +80,7 @@ class TestSysDict(TestCase, SysDictManPage):
         self.inputStr_editor(para['EDITOR'])
 
         # 数据来源
-        self.inputRSel_data_source(para['DATA_SOURCE'])
+        self.inputRSel_data_src(para['DATA_SRC'])
 
         # 查询
         self.btn_query()

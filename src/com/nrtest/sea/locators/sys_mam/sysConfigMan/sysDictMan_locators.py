@@ -33,10 +33,10 @@ class SysDictManLocators:
     EDITOR = (
         By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'维护人员')]/../div/input")
     # 数据来源-下拉框
-    DATA_SOURCE_SEL = (
+    DATA_SRC_SEL = (
         By.XPATH, '//div[@class=\"x-form-item \"]//*[contains(text(),"数据来源")]/../div/div/img')
     # 数据来源
-    DATA_SOURCE = (
+    DATA_SRC = (
         By.XPATH, '(//div[@class =\"x-layer x-combo-list  x-resizable-pinned\"])[2]//*[contains(text(),"%s")]')
 
     # 【按钮】

@@ -65,10 +65,10 @@ class TestWaveArchives_detail(TestCase, WaveArchives_detail_Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 输入台区编号
-        self.inputStr_zone_no(para['ZONE_NO'])
+        self.inputStr_tg_no(para['TG_NO'])
 
         # 输入台区名称
-        self.inputStr_zone_name(para['ZONE_NAME'])
+        self.inputStr_tg_name(para['TG_NAME'])
 
         # 输入统计时间
         self.inputDt_count_time(para['COUNT_TIME'])

@@ -29,7 +29,7 @@ class CheckResultStatLocators:
     QRY_EXCEPTION_TYPE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'异常类型')]/../../div[1]/div[1]//input")
     # 台区编号
-    QRY_ZONE_AREA_NO = (
+    QRY_TG_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'台区编号')]/../../div[1]/div[1]//input")
 
     # 【操作区】

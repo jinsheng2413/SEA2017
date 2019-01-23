@@ -75,7 +75,7 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         self.inputSel_assess_unit_state(para['ASSESS_UNIT_STATE'])
 
         # 台区状态
-        self.inputSel_zone_area_state(para['ZONE_AREA_STATE'])
+        self.inputSel_tg_status(para['TG_STATUS'])
 
         # 点击复选框
         self.inputChk_uncover(para['UNCOVER'])

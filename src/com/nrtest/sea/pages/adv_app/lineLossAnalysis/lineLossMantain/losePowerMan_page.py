@@ -25,7 +25,7 @@ class LosePowerManPage(Page):
 
 
     # 台区状态
-    def inputSel_zone_area_state(self, name):
+    def inputSel_tg_status(self, name):
         self.selectDropDown(name)
 
     # 考核单位名称

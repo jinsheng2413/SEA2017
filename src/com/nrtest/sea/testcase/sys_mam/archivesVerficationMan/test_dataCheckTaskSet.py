@@ -65,7 +65,7 @@ class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 台区编号
-        self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])
+        self.inputStr_tg_no(para['TG_NO'])
 
         # 任务来源
         self.inputSel_taskFrom(para['TASK_FROM'])

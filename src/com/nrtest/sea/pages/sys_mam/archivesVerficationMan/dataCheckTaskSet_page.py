@@ -20,7 +20,7 @@ class DataCheckTaskSetPage(Page):
         self.selectDropDown(option)
 
     # 台区编号
-    def inputStr_zoneAreaNo(self, value):
+    def inputStr_tg_no(self, value):
         self.input(value)
 
     # 任务来源

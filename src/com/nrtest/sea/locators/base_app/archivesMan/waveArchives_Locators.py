@@ -14,13 +14,13 @@ from selenium.webdriver.common.by import By
 class WaveArchives_Locators:
     # 【查询条件区】
     # 台区编号
-    QRY_ZONE_NO = (
+    QRY_TG_NO = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'台区编号')])[1]/../../div[1]/div[1]/input")
     # 统计时间
     QRY_COUNT_TIME = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'统计时间')])[1]/../../div[1]/div[1]/div/input")
     # 台区名称
-    QRY_ZONE_NAME = (
+    QRY_TG_NAME = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'台区名称')])[1]/../../div[1]/div[1]/input")
     # 统计分类
     QRY_COUNT_TYPE = (By.XPATH, "//*[@name=\"archivesTypeCombox\"]")

@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 class VerficationResultDetailLocators:
     # 【查询条件区】
     # 台区编号
-    QRY_ZONE_AREA_NO = (By.XPATH, "//input[@name=\"lockNoText\"]")
+    QRY_TG_NO = (By.XPATH, "//input[@name=\"lockNoText\"]")
     # 开始日期
     QRY_START_DATE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'开始日期')]/../../div[1]/div[1]//input")

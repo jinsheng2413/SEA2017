@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 class DataCheckTaskSetLocators:
     # 【查询条件区】
     # 台区编号
-    QRY_ZONE_AREA_NO = (By.XPATH, "//*[@name=\"lockNoText\"]")
+    QRY_TG_NO = (By.XPATH, "//*[@name=\"lockNoText\"]")
     # 任务模板
     QRY_ = (By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'')]/../../div[1]/div[1]//input")
     QRY_VALUE = (

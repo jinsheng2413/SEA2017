@@ -68,7 +68,7 @@ class TestVerficationResultDetail(TestCase, VerficationResultDetailPage):
         self.openLeftTree(para['TREE_NODE'])  # 'TMNL_ADDR'])
 
         # # 台区编号
-        # self.inputStr_zoneAreaNo(para['ZONE_AREA_NO'])
+        # self.inputStr_tg_no(para['TG_NO'])
         # # 开始时间
         # self.inputDt_start_time(para['START_TIME'])
         # # 结束时间

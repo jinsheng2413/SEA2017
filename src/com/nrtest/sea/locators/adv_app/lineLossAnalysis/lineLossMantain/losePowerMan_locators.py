@@ -33,9 +33,9 @@ class LosePowerManLocators:
     QRY_ASSESS_UNIT_STATE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'启用')]/../div[contains(text(),'%s')]")
     # 台区状态
-    QRY_ZONE_AREA_STATE = (
+    QRY_TG_STATUS = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'台区状态')]/../../div[1]/div[1]//img")
-    QRY_ZONE_AREA_STATE_VALUE = (
+    QRY_TG_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'运行')]/../div[contains(text(),'%s')]")
     # 【操作区】
     BTN_QRY = (By.XPATH,

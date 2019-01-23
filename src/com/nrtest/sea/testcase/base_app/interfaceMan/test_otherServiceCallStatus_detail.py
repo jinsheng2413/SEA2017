@@ -98,7 +98,7 @@ class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Pag
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus_detail,
+    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus,
                                   InterfaceMan_data.para_MServiceCallStatus_detail, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

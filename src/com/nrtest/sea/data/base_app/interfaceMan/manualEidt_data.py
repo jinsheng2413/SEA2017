@@ -10,5 +10,5 @@
 
 
 class InterfaceManager_data:
-    # 基本应用--接口管理--人工补录
+    # 基本应用→接口管理→人工补录
     para_ManualEdit = '99914500'

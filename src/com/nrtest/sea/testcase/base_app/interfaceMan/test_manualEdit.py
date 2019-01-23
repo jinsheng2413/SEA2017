@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.base_app.interfaceMan.manualEdit_page import ManualEdi
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--接口管理--人工补录
+# 基本应用→接口管理→人工补录
 @ddt
 class Test_ManualEdit(TestCase, ManualEditPage):
     @classmethod
@@ -56,14 +56,25 @@ class Test_ManualEdit(TestCase, ManualEditPage):
     def query(self, para):
         # 打开左边树选择供电单位
         self.openLeftTree(para['TREE_NODE'])
+
+        # 计划编号
+        self.inputStr_plan_no(para['PLAN_NO'])
+
         # 抄表段号
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
+
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
+
         # 处理类型
         self.inputSel_process_type(para['PROCESS_TYPE'])
+
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
+        # 是否白名单
+        self.inputChk_white_list(para['WHITE_LIST'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)
@@ -87,6 +98,10 @@ class Test_ManualEdit(TestCase, ManualEditPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceManager_data.para_ManualEdit))
     def test_query(self, para):
+        """基本应用→接口管理→人工补录
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

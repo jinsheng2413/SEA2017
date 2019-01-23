@@ -11,13 +11,14 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→档案管理→载波档案校正：载波台区统计
 class WaveArchives_count_Page(Page):
     # 台区编号
-    def inputStr_zone_no(self, value):
+    def inputStr_tg_no(self, value):
         self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 台区名称
-    def inputStr_zone_name(self, value):
+    def inputStr_tg_name(self, value):
         self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 统计分类
@@ -33,13 +34,14 @@ class WaveArchives_count_Page(Page):
         self.btn_query(True)
 
 
+# 基本应用→档案管理→载波档案校正：载波用户明细
 class WaveArchives_detail_Page(Page):
     # 台区编号
-    def inputStr_zone_no(self, value):
+    def inputStr_tg_no(self, value):
         self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 台区名称
-    def inputStr_zone_name(self, value):
+    def inputStr_tg_name(self, value):
         self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 统计分类

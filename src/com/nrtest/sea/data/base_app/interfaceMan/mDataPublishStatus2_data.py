@@ -12,5 +12,6 @@
 class InterfaceManager_data:
     # 基本应用→接口管理→营销业务接口→数据发布情况
     para_MDataPublishStatus2 = '99914110'
+
     # 基本应用→接口管理→其他业务接口→数据发布情况
     para_otherMDataPublishStatus = '99914210'

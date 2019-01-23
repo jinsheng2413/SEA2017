@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.interfaceMan.InterfaceMonitor_page import Int
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--》接口管理--》接口管理
+# 基本应用→接口管理→接口管理
 @ddt
 class TestInterfaceMonitor(TestCase, InterfaceMonitorPage):
 
@@ -62,11 +62,14 @@ class TestInterfaceMonitor(TestCase, InterfaceMonitorPage):
 
         # 接口类型
         self.inputSel_interface_type(para['INTERFACE_TYPE'])
-        # 开始时间
-        self.inputDt_start_date(para['START_TIME'])
-        # 结束时间
-        self.inputDt_end_date(para['END_TIME'])
 
+        # 开始时间
+        self.inputDt_start_time(para['START_TIME'])
+
+        # 结束时间
+        self.inputDt_end_time(para['END_TIME'])
+
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 
@@ -88,6 +91,10 @@ class TestInterfaceMonitor(TestCase, InterfaceMonitorPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(MDataPublishStatus_data.interfaceMonitor_para))
     def test_query(self, para):
+        """基本应用→接口管理→接口管理
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

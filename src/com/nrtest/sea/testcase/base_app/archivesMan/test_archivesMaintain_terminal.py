@@ -80,6 +80,10 @@ class TestarchivesMaintain_terminal(TestCase, ArchivesMaintain_terminal_pages):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesMenTain, ArchivesMan_data.archivesMenTain_terminal_tab))
     def test_query(self, para):
+        """基本应用→档案管理→档案维护：终端维护
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

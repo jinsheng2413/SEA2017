@@ -11,32 +11,27 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→接口管理→人工补录（青海）
 class ManualEditQHPage(Page):
 
     # 抄表段号
-    def inputStr_meter_reading_paragraph(self, value):
-        self.input(value)  # , *ManualEditQH_Locators.QRY_METER_READING_PARAGRAPH)
+    def inputStr_mr_sect_no(self, value):
+        self.input(value)
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value)  # , *ManualEditQH_Locators.QRY_CONS_NO)
+        self.input(value)
 
     # 数据来源
     def inputSel_data_from(self, option):
-        # self.click(ManualEditQH_Locators.QRY_DATA_FROM)
-        # locator = self.get_select_locator(ManualEditQH_Locators.QRY_DATA_FROM_VALUE, option)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(option)
 
     def inputDt_query_date(self, value):
-        # self.input(value, *ManualEditQH_Locators.QRY_DATE)
         self.inputDate(value)
 
-    def inputChk_powerEmpty(self, name):
+    def inputChk_power_empty(self, name):
         self.clickSingleCheckBox(name)
 
     # 查询
     def btn_qry(self):
-        # self.click(ManualEditQH_Locators.BTN_QRY)
         self.btn_query()

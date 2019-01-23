@@ -19,8 +19,7 @@ from com.nrtest.sea.pages.base_app.interfaceMan.marketingServiceCallStatus_page 
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→接口管理→营销业务接口→服务调用情况
-# 服务调用统计
+# 基本应用→接口管理→营销业务接口→服务调用情况:服务调用统计
 @ddt
 class TestOtherServiceCallStatus(TestCase, MarketingServiceCallStatusPage):
 
@@ -30,7 +29,7 @@ class TestOtherServiceCallStatus(TestCase, MarketingServiceCallStatusPage):
         menuPage = MenuPage.openMenu(InterfaceMan_data.para_MarketingServiceCallStatus)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(InterfaceMan_data.para_MServiceCallStatus_count)
+        menuPage.clickTabPage(InterfaceMan_data.para_MarketingServiceCallStatus_count)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -87,7 +86,7 @@ class TestOtherServiceCallStatus(TestCase, MarketingServiceCallStatusPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus,
+    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MarketingServiceCallStatus,
                                   InterfaceMan_data.para_MarketingServiceCallStatus_count))
     def test_query(self, para):
         """基本应用→接口管理→营销业务接口→服务调用情况:服务调用统计
@@ -100,7 +99,7 @@ class TestOtherServiceCallStatus(TestCase, MarketingServiceCallStatusPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MServiceCallStatus,
+    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MarketingServiceCallStatus,
                                   InterfaceMan_data.para_MarketingServiceCallStatus_count, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

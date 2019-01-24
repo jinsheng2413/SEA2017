@@ -15,7 +15,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.realDataPage import RealDataPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.realData_page import RealDataPage
 
 
 # 统计查询→综合查询→抄表数据查询（冀北）:抄表明细
@@ -61,25 +61,26 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         """
         # 曲线类型
         self.inputChk_curve_type(para['CURVE_TYPE'])
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 选择抄表段号
-        self.inputStr_mr_sect_no_Rdetail(para['MR_SECT_NO'])
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 电表资产号
-        self.inputStr_meter_asset_no_Rdetail(para['METER_ASSET_NO'])
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 用户类型
-        self.inputSel_cons_type_Rdetail(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 相位
-        self.inputSel_phase_Rdetail(para['PHASE'])
+        self.inputSel_phase(para['PHASE'])
         # 查询日期
-        self.inputDt_Time_Rdetail(para['QUERY_TIME'])
+        self.inputDt_Time(para['QUERY_TIME'])
         # 数据类别
         self.inputSel_data_type(para['DATA_TYPE'])
         # 电能表抄读状态
-        self.inputSel_meter_read_status_Rdetail(para['METER_READ_STATUS'])
+        self.inputSel_meter_read_status(para['METER_READ_STATUS'])
         # 终端运行状态
-        self.inputSel_tmnl_run_status_RDetail(para['TMNL_RUN_STATE'])
-        self.btn_rdetail_qry()
+        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATE'])
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

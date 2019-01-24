@@ -68,7 +68,7 @@ class TestMeterClockMan(TestCase, MeterClockManPage):
         self.inputSel_event_type(para['EVENT_TYPE'])
 
         # 终端厂家
-        self.inputSel_tmnl_factory(para['TMNL_FACORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         # 电表厂家
         self.inputSel_meter_factory(para['METER_FACTORY'])

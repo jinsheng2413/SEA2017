@@ -15,13 +15,13 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
-from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_page import UpgradeEditionManPage
+from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_page import UpgradeEditionManUpPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→升级版本管理:升级版本管理
 @ddt
-class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
+class TestUpgradeEditionManUp(TestCase, UpgradeEditionManUpPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
@@ -56,19 +56,19 @@ class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
 
     def query(self, para):
         # 终端厂家
-        self.inputSel_upgrade_tmnl_factory(para['UPGRADE_TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端类型
-        self.inputSel_upgrade_tmnl_type(para['UPGRADE_TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 终端用途
-        self.inputSel_upgrade_tmnl_purpose(para['UPGRADE_TMNL_PURPOSE'])
+        self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
         # 申请状态
-        self.inputSel_upgrade_apply_status(para['UPGRADE_APPLY_STATUS'])
+        self.inputSel_apply_status(para['APPLY_STATUS'])
         # 申请开始日期
-        self.inputDt_upgrade_start_date(para['UPGRADE_START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 申请结束日期
-        self.inputDt_upgrade_end_date(para['UPGRADE_END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
         # 点击查询按钮
-        self.btn_upgrade_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """

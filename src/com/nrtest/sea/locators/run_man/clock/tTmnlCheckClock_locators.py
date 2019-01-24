@@ -25,10 +25,10 @@ class TmnlClockStaticLocators:
         By.XPATH, '//div[@class=\"x-combo-list-inner\"]//div[contains(text(),"%s")]')
     #(By.XPATH, '(//div[@class =\"x-layer x-combo-list  x-resizable-pinned\"])[1]//*[contains(text(),"%s")]')
     # 终端厂商-下拉框
-    TMNL_FAC_SEL = (
+    TMNL_FACTORY_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂商')]/../div/div/img)[1]")
     # 终端厂商
-    TMNL_FAC = (
+    TMNL_FACTORY = (
         By.XPATH, '//div[@class=\"x-combo-list-inner\"]//div[contains(text(),"%s")]')
     # 日期
     QUERY_DATE = (
@@ -72,10 +72,10 @@ class TmnlClockDetailLocators:
     TMNL_MODEL = (
         By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'终端型号')]/../div/input")
     # 终端厂商-下拉框
-    TMNL_FAC_SEL = (
+    TMNL_FACTORY_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂商')]/../div/div/img)[2]")
     # 终端厂商
-    TMNL_FAC = (
+    TMNL_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'宁波三星')]/../div[contains(text(),'%s')]")
     # 终端地址
     TMNL_ADDR = (

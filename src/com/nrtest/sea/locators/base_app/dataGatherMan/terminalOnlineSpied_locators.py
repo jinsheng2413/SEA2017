@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 class TerminalOnlineSpiedLocators:
     # 【查询条件区】
     # 终端厂商
-    QRY_TMNL_MANUFACTURER = (By.XPATH, "//*[@id=\"tmnlFactory\"]")
+    QRY_TMNL_FACTORY = (By.XPATH, "//*[@id=\"tmnlFactory\"]")
     # 终端地址
     QRY_TMNL_ADDR = (By.XPATH, "//*[@id=\"terminalAddr1\"]")
     # 终端状态
@@ -31,7 +31,7 @@ class TerminalOnlineSpiedLocators:
 
     # 【js区】
     # 终端厂商
-    TMNL_MANUFACTURER_JS = 'document.getElementById("tmnlFactory").removeAttribute("readonly");'
+    TMNL_FACTORY_JS = 'document.getElementById("tmnlFactory").removeAttribute("readonly");'
     # 终端状态
     TMNL_STATE_JS = 'document.getElementById("tmnlOnline").removeAttribute("readonly");'
     # 终端状态

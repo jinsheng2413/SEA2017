@@ -15,12 +15,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.realDataPage import RealDataPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.realData_page import RealDataFailDetailPage
 
 
 # 统计查询→综合查询→抄表数据查询（冀北）:抄表失败明细
 @ddt
-class TestRealData_Faildetail(TestCase, RealDataPage):
+class TestRealData_Faildetail(TestCase, RealDataFailDetailPage):
     @classmethod
     def setUpClass(cls):
         print('开始执行')
@@ -61,30 +61,29 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
         """
 
         # 曲线类型
-        self.inputChk_curve_type_failed(para['CURVE_TYPE_FAILED'])
+        self.inputChk_curve_type(para['CURVE_TYPE'])
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 选择抄表段号
-        self.inputStr_mr_sect_no_Faildetail(
-            para['MR_SECT_NO'])
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 电表资产号
-        self.inputStr_meter_asset_no_Faildetail(para['METER_ASSET_NO'])
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 用户类型
-        self.inputSel_cons_type_Faildetail(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 反相采集结果
         self.inputSel_reversCollectionResult(para['REVERS_COLLECTION_RESULT'])
         # 终端生产厂家
-        self.inputSel_Tmnl_manufacturer(para['TMNL_MANUFACTURER'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 相位
-        self.inputSel_phase_Faildetail(para['PHASE'])
+        self.inputSel_phase(para['PHASE'])
         # 查询日期
-        self.inputDt_Time_Faildetail(para['QUERY_TIME'])
+        self.inputDt_Time(para['QUERY_TIME'])
         # 电能表抄读状态
-        self.inputSel_meter_read_status_faildetail(para['METER_READ_STATUS'])
+        self.inputSel_meter_read_status(para['METER_READ_STATUS'])
         # 终端运行状态
-        self.inputSel_TmnlRunState_Failtime(para['TMNL_RUN_STATE'])
+        self.inputSel_TmnlRunState(para['TMNL_RUN_STATE'])
         # 查询
-        self.btn_Faildetail_qry()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

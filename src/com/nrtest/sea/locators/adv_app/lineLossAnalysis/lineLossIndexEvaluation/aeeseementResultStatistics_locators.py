@@ -14,9 +14,9 @@ from selenium.webdriver.common.by import By
 # 高级应用→线损分析→线损指标考核→考核结果统计
 class AeeseementResultStatisticsLocators:
     # 责任人
-    QRY_CHARGE_PERSON = (
+    QRY_PERSON_RESP_NO = (
         By.XPATH, '//label[contains(text(),"责任人")]/../div/div/img')
-    QRY_CHARGE_PERSON_VALUE = (
+    QRY_PERSON_RESP_NO_VALUE = (
         By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询日期
     QRY_DATE = (By.XPATH, '//label[contains(text(),"查询日期")]/../div/div/input')

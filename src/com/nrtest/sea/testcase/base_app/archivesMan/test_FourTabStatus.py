@@ -67,7 +67,7 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 选择用状态
-        self.inputSel_cons_status(para['USER_STATE'])
+        self.inputSel_cons_status(para['CONS_STATUS'])
 
         # 查询
         self.btn_qry()
@@ -90,6 +90,10 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.fourTabStatus_para))
     def test_query(self, para):
+        """基本应用→档案管理→多表合一运行状态
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

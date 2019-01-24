@@ -16,7 +16,7 @@ class AuthorityManLocators:
     # 工号
     QRY_STAFF_NO = (By.XPATH, '//label[contains(text(),"工号")]/../div/input')
     # 用户名
-    QRY_USER_NAME = (By.XPATH, '//label[contains(text(),"用户名")]/../div/input')
+    QRY_STAFF_NAME = (By.XPATH, '//label[contains(text(),"用户名")]/../div/input')
     # 当前状态
     QRY_CUR_STATUS = (By.XPATH, '//label[contains(text(),"当前状态")]/../div/div/img')
     QRY_CUR_STATUS_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')

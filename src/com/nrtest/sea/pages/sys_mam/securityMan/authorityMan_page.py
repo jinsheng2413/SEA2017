@@ -18,7 +18,7 @@ class AuthorityManPage(Page):
         self.input(content)
 
     # 用户名
-    def inputStr_user_name(self, content):
+    def inputStr_staff_name(self, content):
         self.input(content)
 
     # 当前状态

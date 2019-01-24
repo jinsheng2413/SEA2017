@@ -58,7 +58,7 @@ class TestAuthorityMan(TestCase, AuthorityManPage):
         self.inputStr_staff_no(para['STAFF_NO'])
 
         # 用户名
-        self.inputStr_user_name(para['CONS_NAME'])
+        self.inputStr_staff_name(para['STAFF_NAME'])
 
         # 当前状态
         self.inputSel_cur_status(para['CUR_STATUS'])

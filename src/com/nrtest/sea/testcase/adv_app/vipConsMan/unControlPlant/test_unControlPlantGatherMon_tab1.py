@@ -67,7 +67,7 @@ class Test_UnControlPlantGatherMon_1(TestCase, UnControlPlantGatherMon1_Page):
         self.inputSel_gc_mode(para['GC_MODE'])
 
         # 采集方式
-        self.inputSel_gather_way(para['GATHER_WAY'])
+        self.inputSel_coll_mode(para['COLL_MODE'])
 
         # 查询
         self.btn_qry()

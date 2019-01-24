@@ -27,8 +27,8 @@ class TmnlInsertQueryLocators:
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'东方电子')]/../..//div[contains(text(),'%s')]/img")
 
     # 统计口径
-    QRY_COUNT_CALIBER = (By.XPATH, "//input[@name=\"insertStatScopeCombo\"]")
-    QRY_COUNT_CALIBER_VALUE = (
+    QRY_STAT_SCOPE = (By.XPATH, "//input[@name=\"insertStatScopeCombo\"]")
+    QRY_STAT_SCOPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'全口径')]/../..//div[contains(text(),'%s')]")
 
     # 【操作区】

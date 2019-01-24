@@ -17,8 +17,8 @@ class UnControlPlantStatLocators:
     QRY_GC_MODE = (By.XPATH, '//input[@id="unGenElecTypeCombox"]')
     QRY_GC_MODE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 采集方式
-    QRY_GATHER_WAY = (By.XPATH, "//input[@id='unCommModelCombo']")
-    QRY_GATHER_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_COLL_MODE = (By.XPATH, "//input[@id='unCommModelCombo']")
+    QRY_COLL_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 统计日期
     QRY_DATE = (By.XPATH, '//label[contains(text(),"统计日期")]/../div/div/input')
     # 查询按钮
@@ -35,8 +35,8 @@ class UnControlPlantDetailLocators:
     QRY_GC_MODE = (By.XPATH, '//input[@id="unGenElecTypeDetCombox"]')
     QRY_GC_MODE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 采集方式
-    QRY_GATHER_WAY = (By.XPATH, "//input[@id='unCommModelDetCombo']")
-    QRY_GATHER_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_COLL_MODE = (By.XPATH, "//input[@id='unCommModelDetCombo']")
+    QRY_COLL_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 统计日期
     QRY_DATE = (By.XPATH, '(//label[contains(text(),"统计日期")])[2]/../div/div/input')
     # 户号

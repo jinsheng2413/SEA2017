@@ -24,7 +24,7 @@ class UserCollectStatisticsPage(Page):
         self.inputDate(content)
 
     # 统计口径
-    def inputSel_statistics_caliber(self, options):
+    def inputSel_stat_scope(self, options):
         self.selectDropDown(options)
 
     # 查询按钮

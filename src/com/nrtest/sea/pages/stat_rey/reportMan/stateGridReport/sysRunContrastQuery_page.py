@@ -20,7 +20,7 @@ class SysRunContrastQueryPage(Page):
 
     # 统计口径
 
-    def inputSel_stat_mode(self, option):
+    def inputSel_stat_scope(self, option):
         # self.click(SysRunContrastQueryLocators.QRY_STAT_SCOPE)
         # locator = self.get_select_locator(SysRunContrastQueryLocators.QRY_STAT_SCOPE_VALUE, index)
         # self.click(locator)

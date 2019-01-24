@@ -22,7 +22,7 @@ class TmnlStateArrLocators:
     QRY_TMNL_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'停运')]/../div[contains(text(),'%s')]")
     # 统计日期
-    QRY_COUNT_TIME = (
+    QRY_STAT_DATE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'统计日期')]/../../div[1]/div[1]//input")
 
     # 【操作区】

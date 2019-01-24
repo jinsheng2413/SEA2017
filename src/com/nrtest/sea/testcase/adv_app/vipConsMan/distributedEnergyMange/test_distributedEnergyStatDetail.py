@@ -72,7 +72,7 @@ class TestDistributedEnergyStatDetail(TestCase, DistributedEnergyStatDetailPage)
         # 覆盖情况
         self.inputSel_cover_status(para['COVER_STATUS'])
         # 发电量消纳方式
-        self.inputSel_power_consumption_mode(para['POWER_CONSUMPTION_MODE'])
+        self.inputSel_abso_type(para['ABSO_TYPE'])
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 台区编号

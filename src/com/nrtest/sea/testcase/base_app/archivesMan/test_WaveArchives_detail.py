@@ -71,10 +71,10 @@ class TestWaveArchives_detail(TestCase, WaveArchives_detail_Page):
         self.inputStr_tg_name(para['TG_NAME'])
 
         # 输入统计时间
-        self.inputDt_count_time(para['COUNT_TIME'])
+        self.inputDt_stat_date(para['STAT_DATE'])
 
         # 输入统计分类
-        self.inputSel_count_type(para['COUNT_TYPE'])
+        self.inputSel_stat_type(para['STAT_TYPE'])
 
         # 查询
         self.btn_qry()

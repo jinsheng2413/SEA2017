@@ -148,7 +148,7 @@ class UpgradeEffectStatisticsDetailPage(Page):
         self.selectDropDown(index)
 
     # 确认结果
-    def inputSel_affirm_result(self, index):
+    def inputSel_confirm_result(self, index):
         # self.click(UpgradeEffectStatisticsLocators.DETAIL_AFFIRM_RESULT)
         # locator = self.get_select_locator(
         #     UpgradeEffectStatisticsLocators.DETAIL_AFFIRM_RESULT_VALUE, index)

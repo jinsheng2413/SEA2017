@@ -50,7 +50,7 @@ class SIMFlowCountLocators:
     QRY_TMNL_ADDR = (By.XPATH,'//*[@id="terminalAddr"]')
 
     #统计时间
-    QRY_COUNT_TIME = (By.XPATH, "//*[@id=\"simChargeDate\"]")
+    QRY_STAT_DATE = (By.XPATH, "//*[@id=\"simChargeDate\"]")
 
     # 超流量
     QRY_IS_OVER_FLOW = (By.NAME, 'overFlowCheckbox')

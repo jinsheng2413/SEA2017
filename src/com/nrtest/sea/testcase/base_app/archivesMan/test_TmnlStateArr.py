@@ -75,7 +75,7 @@ class TestTmnlStateArr(TestCase, TmnlStateArrPage):
         self.inputSel_tmnl_status(para['TMNL_STATUS'])
 
         # 统计时间
-        self.inputDt_count_time(para['COUNT_TIME'])
+        self.inputDt_stat_date(para['STAT_DATE'])
 
         # 查询
         self.btn_qry()

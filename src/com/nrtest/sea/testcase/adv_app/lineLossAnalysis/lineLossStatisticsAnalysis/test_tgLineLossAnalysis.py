@@ -66,7 +66,7 @@ class TestTgLineLossAnalysis(TestCase, TgLineLossAnalysisPage):
         self.inputStr_tg_name(para['TG_NAME'])
 
         # 安装率
-        self.inputSel_installation_rate(para['INSTALLATION_RATE'])
+        self.inputSel_install_rate(para['INSTALL_RATE'])
 
         # 抄读成功率
         self.inputSel_read_success_rate(para['READ_SUCCESS_RATE'])

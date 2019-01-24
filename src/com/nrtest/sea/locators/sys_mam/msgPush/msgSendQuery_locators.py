@@ -20,11 +20,11 @@ class MsgSendQueryLocators:
     # 结束时间
     QRY_END_DATE = (By.XPATH, '//label[contains(text(),"至")]/../div/div/input')
     # 发送状态
-    QRY_SEND_STAT = (By.XPATH, '//label[contains(text(),"发送状态")]/../div/div/img')
-    QRY_SEND_STAT_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_SEND_STATUS = (By.XPATH, '//label[contains(text(),"发送状态")]/../div/div/img')
+    QRY_SEND_STATUS_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 发送方式
-    QRY_SEND_WAY = (By.XPATH, '//label[contains(text(),"发送方式")]/../div/div/img')
-    QRY_SEND_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_SEND_MODE = (By.XPATH, '//label[contains(text(),"发送方式")]/../div/div/img')
+    QRY_SEND_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 发送人
     QRY_SEND_MAN = (By.XPATH, '//label[contains(text(),"发送人")]/../div/input')
     # 查询按钮

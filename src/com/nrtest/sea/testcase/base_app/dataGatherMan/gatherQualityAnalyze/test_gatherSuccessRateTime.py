@@ -75,7 +75,7 @@ class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
         # 规约类型
         self.inputSel_protocol_type(para['PROTOCOL_TYPE'])
         # 计量方式
-        self.inputSel_measure_way(para['MEASURE_WAY'])
+        self.inputSel_meas_mode(para['MEAS_MODE'])
         # 点击查询按钮
         self.btn_search()
 

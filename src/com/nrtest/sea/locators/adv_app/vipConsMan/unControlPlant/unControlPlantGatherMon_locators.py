@@ -26,9 +26,9 @@ class UnControlPlantGatherMon1_locators:
     QRY_GC_MODE_VALUE = (
     By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'火力')])[1]/../div[contains(text(),'%s')]")
     # 采集方式
-    QRY_GATHER_WAY = (By.XPATH, "//input[@id='monCommModelCombo']")
+    QRY_COLL_MODE = (By.XPATH, "//input[@id='monCommModelCombo']")
     # 值（采集方式）
-    QRY_GATHER_WAY_VALUE = (
+    QRY_COLL_MODE_VALUE = (
     By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'CDMA')])[1]/../div[contains(text(),'%s')]")
 
     # 【操作区】
@@ -55,9 +55,9 @@ class UnControlPlantGatherMon2_locators:
     # 值（发电方式）
     QRY_GC_MODE_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
     # 采集方式
-    QRY_GATHER_WAY = (By.XPATH, "//input[@id='monCommModelDetCombo']")
+    QRY_COLL_MODE = (By.XPATH, "//input[@id='monCommModelDetCombo']")
     # 值（采集方式）
-    QRY_GATHER_WAY_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
+    QRY_COLL_MODE_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
     # 查询日期
     QRY_DATE = (By.XPATH, "//input[@id='startDetailDate']")
     # 户号

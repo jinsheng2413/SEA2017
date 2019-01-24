@@ -68,7 +68,7 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 数据类别
-        self.inputSel_data_sort(para['DATA_SORT'])
+        self.inputSel_data_type(para['DATA_TYPE'])
         # 电能表抄读状态
         self.inputSel_meter_read_status(para['METER_READ_STATUS'])
         # 终端运行状态

@@ -20,7 +20,7 @@ class PowerSortAnalysePage(Page):
     def inputSel_userType(self, options):
         # self.click(PowerSortAnalyseLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(
-        #     PowerSortAnalyseLocators.QRY__USER_TYPE_VALUE, name)
+        #     PowerSortAnalyseLocators.QRY__CONS_TYPE_VALUE, name)
         # self.click(locator)
         self.selectDropDown(options)
     # 开始时间

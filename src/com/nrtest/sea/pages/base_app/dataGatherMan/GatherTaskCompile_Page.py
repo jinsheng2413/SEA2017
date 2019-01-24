@@ -24,7 +24,7 @@ class GatherTaskCompilePage(Page):
         self.selectDropDown(name)
 
     # 采集点名称
-    def inputStr_collection_point_name(self, value):
+    def inputStr_cp_name(self, value):
         self.input(value)
 
     # 终端地址

@@ -70,7 +70,7 @@ class TestMeterSuccessRateFailedQuery(TestCase, MeterSuccessRateQueryFailedPage)
             # 用户类型
             self.inputSel_cons_type(para['CONS_TYPE'])
             # 接线方式
-            self.inputSel_conn_way(para['CONN_WAY'])
+            self.inputSel_wiring_mode(para['WIRING_MODE'])
             # 运行状态
             self.inputSel_run_status(para['RUN_STATUS'])
             # 用户编号

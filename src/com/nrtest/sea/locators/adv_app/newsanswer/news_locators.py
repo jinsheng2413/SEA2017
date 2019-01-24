@@ -37,10 +37,10 @@ class News_Locators:
     QRY_EMERGENCY_DEGREE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'紧急')]/../div[contains(text(),'%s')]")
     # 查询方式
-    QRY_QUERY_METHOD = (
+    QRY_QUERY_TYPE = (
         By.XPATH, "//label[contains(text(),'查询方式')]/../div/div/input")
     # 值（查询方式）
-    QRY_QUERY_METHOD_VALUE = (
+    QRY_QUERY_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'自己发布的')]/../div[contains(text(),'%s')]")
     # 问题状态
     QRY_QUESTION_STATUS = (

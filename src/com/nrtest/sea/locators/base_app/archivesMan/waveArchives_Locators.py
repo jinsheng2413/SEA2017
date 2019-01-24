@@ -17,14 +17,14 @@ class WaveArchives_Locators:
     QRY_TG_NO = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'台区编号')])[1]/../../div[1]/div[1]/input")
     # 统计时间
-    QRY_COUNT_TIME = (
+    QRY_STAT_DATE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'统计时间')])[1]/../../div[1]/div[1]/div/input")
     # 台区名称
     QRY_TG_NAME = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'台区名称')])[1]/../../div[1]/div[1]/input")
     # 统计分类
-    QRY_COUNT_TYPE = (By.XPATH, "//*[@name=\"archivesTypeCombox\"]")
-    QRY_COUNT_TYPE_VALUE = (
+    QRY_STAT_TYPE = (By.XPATH, "//*[@name=\"archivesTypeCombox\"]")
+    QRY_STAT_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
 
     # 【操作区】

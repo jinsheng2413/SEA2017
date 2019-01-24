@@ -75,21 +75,21 @@ class ReadCompleteRateLocators:
     QRY_ = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'')]/../../div[1]/div[1]//input")
     # 用户类型
-    QRY_USER_TYPE = (
+    QRY_CONS_TYPE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'用户类型')]/../../div[1]/div[1]//input)[1]")
-    QRY_USER_TYPE_VALUE = (
+    QRY_CONS_TYPE_VALUE = (
         By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'专变')]/../div[contains(text(),'%s')])[1]")
 
     # 用户类型
-    QRY_USER_TYPE_COUNT = (
+    QRY_CONS_TYPE_COUNT = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'用户类型')]/../../div[1]/div[1]//input)[2]")
-    QRY_USER_TYPE_COUNT_VALUE = (
+    QRY_CONS_TYPE_COUNT_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'专变\')]/../div[contains(text(),'%s')]")
 
     # 用户类型
-    QRY_USER_TYPE_DETAIL = (
+    QRY_CONS_TYPE_DETAIL = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'用户类型')]/../../div[1]/div[1]//input)[3]")
-    QRY_USER_TYPE_DETAIL_VALUE = (
+    QRY_CONS_TYPE_DETAIL_VALUE = (
         By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'专变')]/../div[contains(text(),'%s')])[3]")
     # 开始时间
     QRY_START_TIME = (

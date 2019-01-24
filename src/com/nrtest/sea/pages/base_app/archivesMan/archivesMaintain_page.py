@@ -26,7 +26,7 @@ class ArchivesMaintain_factory_pages(Page):
 class ArchivesMaintain_terminal_pages(Page):
 
     # 厂站名称
-    def inputSel_factory_name(self, option):
+    def inputSel_sub_station_name(self, option):
         self.selectDropDown(option)
 
     def btn_qry(self):

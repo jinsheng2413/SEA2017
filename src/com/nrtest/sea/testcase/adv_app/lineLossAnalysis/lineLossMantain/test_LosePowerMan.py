@@ -63,16 +63,16 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 考核单元名称
-        self.inputStr_assess_unit_name(para['ASSESS_UNIT_NAME'])
+        self.inputStr_chkunit_name(para['CHKUNIT_NAME'])
 
         # 考核单元分类
-        self.inputSel_assess_unit_classficcation(para['ASSESS_UNIT_CLASSFICCATION'])
+        self.inputSel_chkunit_type(para['CHKUNIT_TYPE'])
 
         # 组合标志
         self.inputSel_combination_sign(para['COMBINATION_SIGN'])
 
         # 考核单元状态
-        self.inputSel_assess_unit_state(para['ASSESS_UNIT_STATE'])
+        self.inputSel_chkunit_status(para['CHKUNIT_STATUS'])
 
         # 台区状态
         self.inputSel_tg_status(para['TG_STATUS'])

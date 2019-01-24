@@ -60,8 +60,8 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
         # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
         # 安装率
-        self.inputSel_installation_rate(para['INSTALLATION_RATE'])
-        # self.inputStr_installation_rate(para['INSTALLATION_RATE_INPUT'])
+        self.inputSel_install_rate(para['INSTALL_RATE'])
+        # self.inputStr_installation_rate(para['INSTALL_RATE_INPUT'])
         # 抄读成功率
         self.inputSel_read_success_rate(para['READ_SUCCESS_RATE'])
         # self.inputStr_read_success_rate(para['READ_SUCCESS_RATE_INPUT'])

@@ -20,7 +20,7 @@ class StrategicManualRecord_Locators:
     QRY_ORG = (By.XPATH, "(//span[contains(text(),'国网冀北电力有限公司')])[2]")
     # 【查询条件区】
     # 采集点名
-    QRY_GATHERPOINT_NAME = (By.XPATH, "//label[contains(text(),'采集点名')]/../div/input")
+    QRY_CP_NAME = (By.XPATH, "//label[contains(text(),'采集点名')]/../div/input")
     # 电表名称
     QRY_METER_NAME = (By.XPATH, "//label[contains(text(),'电表名称')]/../div/input")
     # 处理类型

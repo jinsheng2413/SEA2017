@@ -78,7 +78,7 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsDetailPage):
         # 确认状态
         self.inputSel_confirm_status(para['CONFIRM_STATUS'])
         # 确认结果
-        self.inputSel_affirm_result(para['AFFIRM_RESULT'])
+        self.inputSel_confirm_result(para['CONFIRM_RESULT'])
         # 执行日期
         self.inputSel_box_exec_date(para['BOX_EXEC_DATE'])
         if para['BOX_EXEC_DATE'] == 'c':

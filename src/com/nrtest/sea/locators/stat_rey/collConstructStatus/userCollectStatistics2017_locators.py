@@ -21,10 +21,10 @@ class UserCollectStatistics2017Locators:
     # 统计月份
     DATE = (By.XPATH, '//label[contains(text(),"统计月份")]/../div/div/input')
     # 统计口径
-    STATISTICS_CALIBER = (
+    STAT_SCOPE = (
         By.XPATH, '//label[contains(text(),"统计口径")]/../div/div/input')
     # 统计口径→值
-    STATISTICS_CALIBER_VALUE = (
+    STAT_SCOPE_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')

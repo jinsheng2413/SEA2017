@@ -24,8 +24,8 @@ class GatherSuccessRateLocators:
     TMNL_FACTORY = (By.XPATH, '//label[text()="终端厂家"]/../div/div/img')
     TMNL_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 计量方式
-    MEASURE_WAY = (By.XPATH, '//label[text()="计量方式"]/../div/div/img')
-    MEASURE_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    MEAS_MODE = (By.XPATH, '//label[text()="计量方式"]/../div/div/img')
+    MEAS_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 所属区域
     AREA = (By.XPATH, '//label[text()="所属区域"]/../div/div/img')
     AREA_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
@@ -156,8 +156,8 @@ class GatherSuccessRateTimeLocators:
     PROTOCOL_TYPE = (By.XPATH, '//label[text()="规约类型"]/../div/div/img')
     PROTOCOL_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[7]/div[%s]')
     # 计量方式
-    MEASURE_WAY = (By.XPATH, '(//label[text()="计量方式"])[2]/../div/div/img')
-    MEASURE_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    MEAS_MODE = (By.XPATH, '(//label[text()="计量方式"])[2]/../div/div/img')
+    MEAS_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[2]')
 

@@ -14,9 +14,9 @@ from selenium.webdriver.common.by import By
 class GisPanoramaDisplayLocators:
     # 【查询条件区】
     # 用户类型
-    QRY_USER_TYPE = (
+    QRY_CONS_TYPE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户类型')]/../../div[1]/div[1]//input")
-    QRY_USER_TYPE_VALUE = (
+    QRY_CONS_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'专变用户')]/../div[contains(text(),'%s')]")
 
     # 逐日显示

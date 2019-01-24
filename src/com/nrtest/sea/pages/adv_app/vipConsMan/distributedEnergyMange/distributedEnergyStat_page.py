@@ -19,10 +19,10 @@ class DistributedEnergyStatPage(Page):
         self.inputDate(value)
 
     # 发电量消纳方式
-    def inputSel_powerConsumptionMode(self, name):
-        # self.click(*DistributedEnergyStatLocators.QRY_POWER_CONSUMPTION_MODE)
+    def inputSel_abso_type(self, name):
+        # self.click(*DistributedEnergyStatLocators.QRY_ABSO_TYPE)
         # locator = self.get_select_locator(
-        #     DistributedEnergyStatLocators.QRY_POWER_CONSUMPTION_MODE_VALUE, name)
+        #     DistributedEnergyStatLocators.QRY_ABSO_TYPE_VALUE, name)
         # self.click(*locator)
         self.selectDropDown(name)
 
@@ -55,7 +55,7 @@ class DistributedEnergyStatDetailPage(Page):
         self.selectDropDown(index)
 
     # 发电量消纳方式
-    def inputSel_power_consumption_mode(self, index):
+    def inputSel_abso_type(self, index):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 日期

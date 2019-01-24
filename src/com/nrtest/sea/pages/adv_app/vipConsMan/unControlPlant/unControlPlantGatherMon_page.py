@@ -32,9 +32,9 @@ class UnControlPlantGatherMon1_Page(Page):
         self.selectDropDown(options)
 
     # 采集方式
-    def inputSel_gather_way(self, options):
-        # self.click(UnControlPlantGatherMon1_locators.QRY_GATHER_WAY)
-        # locator = self.get_select_locator(UnControlPlantGatherMon1_locators.QRY_GATHER_WAY_VALUE, index)
+    def inputSel_coll_mode(self, options):
+        # self.click(UnControlPlantGatherMon1_locators.QRY_COLL_MODE)
+        # locator = self.get_select_locator(UnControlPlantGatherMon1_locators.QRY_COLL_MODE_VALUE, index)
         # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(options)
@@ -56,9 +56,9 @@ class UnControlPlantGatherMon2_Page(Page):
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 采集方式
-    def inputSel_gather_way(self, options):
-        # self.click(UnControlPlantGatherMon2_locators.QRY_GATHER_WAY)
-        # locator = self.get_select_locator(UnControlPlantGatherMon2_locators.QRY_GATHER_WAY_VALUE, index)
+    def inputSel_coll_mode(self, options):
+        # self.click(UnControlPlantGatherMon2_locators.QRY_COLL_MODE)
+        # locator = self.get_select_locator(UnControlPlantGatherMon2_locators.QRY_COLL_MODE_VALUE, index)
         # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)

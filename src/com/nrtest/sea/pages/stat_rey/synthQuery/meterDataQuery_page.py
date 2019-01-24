@@ -44,7 +44,7 @@ class MeterDataQueryPage(Page):
         self.inputDate(content)
 
     # 数据类别
-    def inputSel_data_sort(self, index):
+    def inputSel_data_type(self, index):
         self.selectDropDown(index)
 
     # 电能表抄读状态

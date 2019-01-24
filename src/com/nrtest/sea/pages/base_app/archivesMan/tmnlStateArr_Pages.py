@@ -22,7 +22,7 @@ class TmnlStateArrPage(Page):
         self.selectDropDown(name)
 
     # 统计时间
-    def inputDt_count_time(self, value):
+    def inputDt_stat_date(self, value):
         self.inputDate(value)
 
     # 包含下级单位

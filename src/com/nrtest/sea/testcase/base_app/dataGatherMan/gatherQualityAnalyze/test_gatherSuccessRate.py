@@ -69,7 +69,7 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePage):
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 计量方式
-        self.inputSel_measure_way(para['MEASURE_WAY'])
+        self.inputSel_meas_mode(para['MEAS_MODE'])
         # 所属区域
         self.inputSel_area(para['AREA'])
         # 芯片厂家

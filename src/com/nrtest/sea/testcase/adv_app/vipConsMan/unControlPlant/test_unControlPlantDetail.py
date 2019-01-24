@@ -59,7 +59,7 @@ class TestUnControlPlantDetail(TestCase, UnControlPlantDetailPage):
         # 发电方式
         self.inputSel_gc_mode(para['GC_MODE'])
         # 采集方式
-        self.inputSel_gather_way(para['GATHER_WAY'])
+        self.inputSel_coll_mode(para['COLL_MODE'])
         # 统计日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 户号

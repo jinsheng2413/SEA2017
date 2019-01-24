@@ -47,10 +47,10 @@ class GatherSuccessRatePage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 计量方式
-    def inputSel_measure_way(self, index):
-        # self.click(GatherSuccessRateLocators.MEASURE_WAY)
+    def inputSel_meas_mode(self, index):
+        # self.click(GatherSuccessRateLocators.MEAS_MODE)
         # locator = self.get_select_locator(
-        #     GatherSuccessRateLocators.MEASURE_WAY_VALUE, index)
+        #     GatherSuccessRateLocators.MEAS_MODE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
@@ -323,10 +323,10 @@ class GatherSuccessRateTimePage(Page):
         self.selectCheckBox(index, is_multi_tab=False, is_multi_elements=False)
 
     # 计量方式
-    def inputSel_measure_way(self, index):
-        # self.click(GatherSuccessRateTimeLocators.MEASURE_WAY)
+    def inputSel_meas_mode(self, index):
+        # self.click(GatherSuccessRateTimeLocators.MEAS_MODE)
         # locator = self.get_select_locator(
-        #     GatherSuccessRateTimeLocators.MEASURE_WAY_VALUE, index)
+        #     GatherSuccessRateTimeLocators.MEAS_MODE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 

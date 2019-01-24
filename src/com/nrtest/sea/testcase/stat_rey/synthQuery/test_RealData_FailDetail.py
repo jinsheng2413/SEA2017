@@ -71,7 +71,7 @@ class TestRealData_Faildetail(TestCase, RealDataFailDetailPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 反相采集结果
-        self.inputSel_reversCollectionResult(para['REVERS_COLLECTION_RESULT'])
+        self.inputSel_revers_collection_result(para['REVERS_COLLECTION_RESULT'])
         # 终端生产厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 相位

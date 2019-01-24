@@ -16,7 +16,7 @@ class ProtocolLibManageLocators:
     # 协议名称
     QRY_PROTOCOL_NAME = (By.XPATH, '//*[@id="protocolLib_protocolName"]')
     # 厂商名称
-    QRY_MANUFACTORY_NAME = (By.XPATH, "//*[@id=\"protocolLib_factoryName\"]")
+    QRY_MANUSUB_STATION_NAME = (By.XPATH, "//*[@id=\"protocolLib_factoryName\"]")
     # 协议类型
     QRY_PROTOCOL_TYPE = (By.XPATH, "//*[@id=\"protocolLib_protocolType\"]")
 

@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用-->线损分析→线损模型维护→线损模型设计
 class LosePowerManPage(Page):
     # 考核单位状态
-    def inputSel_assess_unit_state(self, name):
+    def inputSel_chkunit_status(self, name):
         self.selectDropDown(name)
 
     # 组合标志
@@ -29,11 +29,11 @@ class LosePowerManPage(Page):
         self.selectDropDown(name)
 
     # 考核单位名称
-    def inputStr_assess_unit_name(self, value):
+    def inputStr_chkunit_name(self, value):
         self.input(value)
 
     # 考核单位分类
-    def inputSel_assess_unit_classficcation(self, name):
+    def inputSel_chkunit_type(self, name):
         self.selectDropDown(name)
 
     # 点击复选框

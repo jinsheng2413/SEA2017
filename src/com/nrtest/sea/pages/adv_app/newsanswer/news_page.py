@@ -41,10 +41,10 @@ class News_Page(Page):
         self.selectDropDown(options)
 
     # 查询方式
-    def inputSel_query_method(self, options):
-        # self.click(News_Locators.QRY_QUERY_METHOD)
+    def inputSel_query_type(self, options):
+        # self.click(News_Locators.QRY_QUERY_TYPE)
         # locator = self.get_select_locator(
-        #     News_Locators.QRY_QUERY_METHOD_VALUE, index)
+        #     News_Locators.QRY_QUERY_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(options)
 

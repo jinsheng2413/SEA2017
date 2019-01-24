@@ -21,9 +21,9 @@ class UnControlPlantStatPage(Page):
         self.selectDropDown(index)
 
     # 采集方式
-    def inputSel_gather_way(self, index):
-        # self.click(UnControlPlantStatLocators.QRY_GATHER_WAY)
-        # locator = self.get_select_locator(UnControlPlantStatLocators.QRY_GATHER_WAY_VALUE, index)
+    def inputSel_coll_mode(self, index):
+        # self.click(UnControlPlantStatLocators.QRY_COLL_MODE)
+        # locator = self.get_select_locator(UnControlPlantStatLocators.QRY_COLL_MODE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 
@@ -48,9 +48,9 @@ class UnControlPlantDetailPage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 采集方式
-    def inputSel_gather_way(self, index):
-        # self.click(UnControlPlantDetailLocators.QRY_GATHER_WAY)
-        # locator = self.get_select_locator(UnControlPlantDetailLocators.QRY_GATHER_WAY_VALUE, index)
+    def inputSel_coll_mode(self, index):
+        # self.click(UnControlPlantDetailLocators.QRY_COLL_MODE)
+        # locator = self.get_select_locator(UnControlPlantDetailLocators.QRY_COLL_MODE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 

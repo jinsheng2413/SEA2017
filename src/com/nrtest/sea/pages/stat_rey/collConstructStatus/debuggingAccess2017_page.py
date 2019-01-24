@@ -23,15 +23,15 @@ class DebuggingAccess2017Page(Page):
         self.selectDropDown(index)
 
     # 装接方式
-    def inputCSel_assembling_way(self, index):
+    def inputSel_install_mode(self, index):
         # if index == 'c':
-        #     self._find_element(DebuggingAccess2017Locators.ASSEMBLING_WAY)
+        #     self._find_element(DebuggingAccess2017Locators.INSTALL_MODE)
         # else:
-        #     self.click(DebuggingAccess2017Locators.ASSEMBLING_WAY)
+        #     self.click(DebuggingAccess2017Locators.INSTALL_MODE)
         #     locator = self.get_select_locator(
-        #         DebuggingAccess2017Locators.ASSEMBLING_WAY_VALUE, index)
+        #         DebuggingAccess2017Locators.INSTALL_MODE_VALUE, index)
         #     self.click(locator)
-        #     self.click(DebuggingAccess2017Locators.ASSEMBLING_WAY)
+        #     self.click(DebuggingAccess2017Locators.INSTALL_MODE)
         self.selectCheckBox(index)
 
     # 日期

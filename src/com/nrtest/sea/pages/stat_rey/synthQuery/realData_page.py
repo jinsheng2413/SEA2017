@@ -103,7 +103,7 @@ class RealDataFailDetailPage(Page):
         self.selectCheckBox(name, is_multi_tab=True, is_multi_elements=True)
 
     # 反相采集结果
-    def inputSel_reversCollectionResult(self, name):
+    def inputSel_revers_collection_result(self, name):
         self.selectDropDown(name)
 
     # 查询

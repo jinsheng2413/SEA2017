@@ -131,7 +131,7 @@ class MeterSuccessRateQueryFailedPage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 接线方式
-    def inputSel_conn_way(self, index):
+    def inputSel_wiring_mode(self, index):
         self.selectDropDown(index)
 
     # 用户编号

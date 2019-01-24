@@ -50,7 +50,7 @@ class CPSynthQueryPage(Page):
         self.clickRadioBox(value)
 
     # 接线方式
-    def inputSel_line_way(self, value):
+    def inputSel_wiring_mode(self, value):
         self.selectDropDown(value)
 
     # 查询按钮

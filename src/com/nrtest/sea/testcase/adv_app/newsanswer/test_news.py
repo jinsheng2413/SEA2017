@@ -69,7 +69,7 @@ class Test_News(TestCase, News_Page):
         self.inputSel_emergency_degree(para['EMERGENCY_DEGREE'])
 
         # 查询方式
-        self.inputSel_query_method(para['QUERY_METHOD'])
+        self.inputSel_query_type(para['QUERY_TYPE'])
 
         # 问题状态
         self.inputSel_question_status(para['QUESTION_STATUS'])

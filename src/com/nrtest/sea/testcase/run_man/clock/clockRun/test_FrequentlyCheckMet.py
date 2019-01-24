@@ -69,7 +69,7 @@ class TestFrequentlyCheckMet(TestCase, FrequentlyCheckMetPage):
         # 电表类别
         self.inputSel_met_type(para['MET_TYPE'])
         # 电能表资产号
-        self.inputStr_met_asset_no(para['MET_ASSET_NO'])
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 查询日期

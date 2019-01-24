@@ -84,7 +84,7 @@ class FrequentlyCheckMetPage(Page):
         self.selectDropDown(item)
 
     # 电能表资产号
-    def inputStr_met_asset_no(self, value):
+    def inputStr_meter_asset_no(self, value):
         self.input(value)
 
     # 用户编号

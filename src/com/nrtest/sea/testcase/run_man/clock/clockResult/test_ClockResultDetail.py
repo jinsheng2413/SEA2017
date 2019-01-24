@@ -67,7 +67,7 @@ class TestClockResultDetail(TestCase, ClockResultDetailPage):
         # 类别
         self.inputSel_clock_model(para['CLOCK_MODEL'])
         # 电表资产号
-        self.inputStr_met_asset_no(para['MET_ASSET_NO'])
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 终端资产号
         self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 终端地址

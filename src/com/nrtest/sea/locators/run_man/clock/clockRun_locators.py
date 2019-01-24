@@ -132,7 +132,7 @@ class FrequentlyCheckMetLocators:
     MET_TYPE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'有功表')]/../div[contains(text(),'%s')]")
     # 电能表资产号
-    MET_ASSET_NO = (
+    METER_ASSET_NO = (
         By.XPATH, ("//div[@class=\"x-form-item \"]//*[contains(text(),'电能表资产号')]/../div/input"))
     # 用户编号
     CONS_NO = (

@@ -54,7 +54,7 @@ class ClockResultDetailLocators:
     CLOCK_MODEL = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'手工对时')]/../div[contains(text(),'%s')]")
     # 电表资产号
-    MET_ASSET_NO = (
+    METER_ASSET_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//*[contains(text(),'电表资产号')]/../div/input")
     # 终端资产号
     TMNL_ASSET_NO = (

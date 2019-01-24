@@ -66,7 +66,7 @@ class MetClockDetailPage(Page):
         self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 电能表资产号
-    def inputStr_met_asset_no(self, value):
+    def inputStr_meter_asset_no(self, value):
         self.input(value)
 
     # 用户编号

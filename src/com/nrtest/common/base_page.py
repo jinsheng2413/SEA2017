@@ -607,9 +607,13 @@ class Page():
         打开Tab页
         :param tab_name:
         """
-        # locators = self.format_xpath(BaseLocators.TAB_PAGE, tab_name)
-        # self.click(locators)
-        xpath = self.format_xpath_multi(BaseLocators.TAB_PAGE, tab_name, is_multi_tab)
+        if tab_name.find(';'):
+            ls_items = tab_name.split(';')
+            tab = ls_items[1]
+        else:
+            tab = tab_name
+
+        xpath = self.format_xpath_multi(BaseLocators.TAB_PAGE, tab, is_multi_tab)
         if is_multi_elements:
             el = self._find_displayed_element(xpath)
             el.click()

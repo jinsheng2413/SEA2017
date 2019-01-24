@@ -36,9 +36,9 @@ class CtrlExecutLocators:
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'工单号')]/../../div[1]/div[1]/input")
 
     # 控制类型
-    QRY_CONTROL_TYPE = (
+    QRY_ = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'控制类型')]/../../div[1]/div[1]/div/input")
-    QRY_CONTROL_TYPE_VALUE = (
+    QRY__VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'保电投入')]/../div[contains(text(),'%s')]")
     # 执行状态
     QRY_EXE_STATUS = (

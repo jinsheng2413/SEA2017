@@ -13,9 +13,9 @@ from selenium.webdriver.common.by import By
 class PrePaidStatus_Locators:
     # 【查询条件区】
     # 控制类别
-    QRY_CONTROL_TYPE_TWO = (
+    QRY__TWO = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'控制类别')]/../../div[1]/div[1]//input)[2]")
-    QRY_CONTROL_TYPE_VALUE_TWO = (
+    QRY__VALUE_TWO = (
         By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'主站远程费控')]/..)[2]/div[%s]")
     # 开始时间
     QRY_START_TIME_ONE = (
@@ -28,9 +28,9 @@ class PrePaidStatus_Locators:
     QRY_END_TIME_TWO = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'到')]/../../div[1]/div[1]//input)[2]")
     # 控制类别
-    QRY_CONTROL_TYPE_ONE = (
+    QRY__ONE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'控制类别')]/../../div[1]/div[1]//input)[1]")
-    QRY_CONTROL_TYPE_VALUE_ONE = (
+    QRY__VALUE_ONE = (
         By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'主站远程费控')]/..)[1]/div[%s]")
 
     # 【操作区】

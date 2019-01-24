@@ -76,7 +76,7 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 控制类型
-        self.inputSel_control_type(para['CONTROL_TYPE'])
+        self.inputSel_control_type(para[''])
         # 抄表段号
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 执行状态

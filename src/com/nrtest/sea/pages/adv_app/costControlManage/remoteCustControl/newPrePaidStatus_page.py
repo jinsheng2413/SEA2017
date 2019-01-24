@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→费控管理→远程费控→新远程费控执行统计
 class NewPrePaidStatusPage(Page):
     # 控制类别
-    def inputSel_controlType(self, name):
+    def inputSel_ctrl_type(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 开始时间

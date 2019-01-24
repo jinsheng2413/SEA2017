@@ -95,7 +95,7 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
                                   DataGatherMan_data.tmnlInstallDetail_tab_appCount))
     def test_query(self, para):
-        """基本应用--终端管理--远程调试（第二个tab页）
+        """基本应用--终端管理--远程调试（第一个tab页）
         :param para: 用例数据
         """
         self.start_case(para, __file__)

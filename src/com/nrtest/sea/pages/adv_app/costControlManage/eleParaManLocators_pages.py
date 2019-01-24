@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 
 class EleParaMan_rate_Page(Page):
     # 开始时间
-    def inputDT_start_time(self, value):
+    def inputDt_start_time(self, value):
         self.inputDate(value)
 
     # 是否已生成参数
@@ -24,7 +24,7 @@ class EleParaMan_rate_Page(Page):
 
 
     # 结束时间
-    def inputDT_end_time(self, value):
+    def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
 
     # 费率来源

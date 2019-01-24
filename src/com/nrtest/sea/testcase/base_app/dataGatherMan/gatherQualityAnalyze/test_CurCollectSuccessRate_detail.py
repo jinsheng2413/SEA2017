@@ -71,7 +71,7 @@ class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_detail_Page):
         self.inputStr_tg_name(para['TG_NAME'])
 
         # 日期时间
-        self.inputDT_date_time(para['DATE_TIME'])
+        self.inputDt_date_time(para['DATE_TIME'])
 
         # 查询
         self.btn_qry()

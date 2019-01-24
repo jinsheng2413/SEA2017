@@ -43,11 +43,11 @@ class CostControlManagePage(Page):
         self.selectDropDown(index)
 
     # 开始时间
-    def inputDT_start_time(self, value):
+    def inputDt_start_time(self, value):
         self.inputDate(value)
 
     # 结束时间
-    def inputDT_end_time(self, value):
+    def inputDt_end_time(self, value):
         self.inputDate(value)
 
     # 点击查询按钮

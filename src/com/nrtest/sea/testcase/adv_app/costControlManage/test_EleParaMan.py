@@ -67,10 +67,10 @@ class TestEleParaMan(TestCase, EleParaMan_rate_Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 开始时间
-        self.inputDT_start_time(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
 
         # 结束时间
-        self.inputDT_end_time(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 是否已生成参数
         self.inputSel_ComeIntoPara(para['COME_INTO_PARA'])

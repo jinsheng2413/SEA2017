@@ -66,7 +66,7 @@ class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_count_Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 日期时间
-        self.inputDT_date_time(para['DATE_TIME'])
+        self.inputDt_date_time(para['DATE_TIME'])
 
         # 查询
         self.btn_count_qry()

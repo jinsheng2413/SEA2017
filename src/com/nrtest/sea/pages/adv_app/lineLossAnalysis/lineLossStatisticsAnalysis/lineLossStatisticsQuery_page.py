@@ -38,11 +38,11 @@ class LineLossStatisticsQueryPage(Page):
         self.inputDate(content)
 
     # 起
-    def inputDT_from(self, name):
+    def inputDt_from(self, name):
         self.inputDate(name)
 
     # 止
-    def inputDT_to(self, name):
+    def inputDt_to(self, name):
         self.input(name)
 
     # 按底码

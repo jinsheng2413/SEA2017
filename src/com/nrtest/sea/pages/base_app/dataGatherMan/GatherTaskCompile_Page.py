@@ -60,11 +60,11 @@ class GatherTaskCompile_result_Page(Page):
         self.selectDropDown(value)
 
     # 开始时间
-    def inputDT_startTime(self, value):
+    def inputDt_startTime(self, value):
         self.inputDate(value)
 
     # 结束时间
-    def inputDT_endTime(self, value):
+    def inputDt_endTime(self, value):
         self.inputDate(value)
 
     # 查询

@@ -67,10 +67,10 @@ class TestSpecialCostControlManage(TestCase, CostControlManagePage):
         self.inputSel_buy_ele_date(para['BUY_ELE_DATE'])
 
         # 开始时间
-        self.inputDT_start_time(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
 
         # 结束时间
-        self.inputDT_end_time(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])

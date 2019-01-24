@@ -74,7 +74,7 @@ class TestLoseCountPowerMan(TestCase, LoseCountPowerManPage):
         self.inputStr_tg_name(para['TG_NAME'])
 
         # 责任人人工号
-        self.inputStr_person_resp_no(para['RESPONSIBLLIER_NO'])
+        self.inputStr_person_resp_no(para['PERSON_RESP_NO'])
 
         # 查询
         self.btn_qry()

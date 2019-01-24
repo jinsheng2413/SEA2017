@@ -58,7 +58,7 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 责任人
-        self.inputSel_charge_person(para['CHARGE_PERSON'])
+        self.inputSel_person_resp_no(para['PERSON_RESP_NO'])
 
         # 按日期类型统计
         self.inputDt_query_date_type(para['TIME_STAT'])

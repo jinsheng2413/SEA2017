@@ -68,7 +68,7 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossStatisticsPage):
         self.inputSel_line_loss_dimension(para['LINE_LOSS_DIMENSION'])
 
         # 责任人工号
-        self.inputStr_person_resp_no(para['CONS_NO'])
+        self.inputStr_person_resp_no(para['PERSON_RESP_NO'])
 
         # 查询按钮
         self.btn_search()

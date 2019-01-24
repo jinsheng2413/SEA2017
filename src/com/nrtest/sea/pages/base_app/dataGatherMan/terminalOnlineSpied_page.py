@@ -11,28 +11,28 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→终端管理→终端版本召测
 class TerminalOnlineSpiedPage(Page):
     # 终端厂商
-    def inputStr_TmnlManufactory(self, value):
-        self.selectCheckBox(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_MANUFACTURER)
+    def inputStr_tmnl_manufactory(self, value):
+        self.selectCheckBox(value)
 
     # 终端地址
-    def inputSel_TmnlAddr(self, value):
-        self.input(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_ADDR)
+    def inputSel_terminal_addr(self, value):
+        self.input(value)
 
     # 终端状态
-    def inputStr_TmnlState(self, value):
-        self.selectCheckBox(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_STATE)
+    def inputStr_tmnl_state(self, value):
+        self.selectCheckBox(value)
 
     # 终端规约
-    def inputStr_TmnlProtocol(self, value):
-        self.selectCheckBox(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_PROTOCOL)
+    def inputStr_tmnl_protocol(self, value):
+        self.selectCheckBox(value)
 
     # 终端类型
-    def inputStr_TmnlType(self, value):
-        self.selectCheckBox(value)  # , *TerminalOnlineSpiedLocators.QRY_TMNL_TYPE)
+    def inputStr_tmnl_type(self, value):
+        self.selectCheckBox(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(TerminalOnlineSpiedLocators.BTN_QRY)
         self.btn_query()

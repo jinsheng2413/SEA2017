@@ -70,7 +70,7 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
         # 数据类别
         self.inputSel_data_sort(para['DATA_SORT'])
         # 电能表抄读状态
-        self.inputSel_meter_read_status(para['METER_READ_STAT'])
+        self.inputSel_meter_read_status(para['METER_READ_STATUS'])
         # 终端运行状态
         self.inputSel_tmnl_run_status(para['TMNL_RUN_STAT'])
         # 农排用户选择

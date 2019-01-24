@@ -57,17 +57,17 @@ class RealDataPage(Page):
 
     # 电能表抄读状态
     def inputSel_meter_read_status_Rdetail(self, name):
-        # self.click(RealDataLocators.QRY_METER_READ_STATE_RDETAIL)
+        # self.click(RealDataLocators.QRY_METER_READ_STATUS_RDETAIL)
         # locator = self.get_select_locator(
-        #     RealDataLocators.QRY_METER_READ_STATE_RDETAIL_VALUE, name)
+        #     RealDataLocators.QRY_METER_READ_STATUS_RDETAIL_VALUE, name)
         # self.click(locator)
         self.selectDropDown(name)
 
     # 电能表抄读状态
     def inputSel_meter_read_status_faildetail(self, name):
-        # self.click(RealDataLocators.QRY_METER_READ_STATE_FAILDETAIL)
+        # self.click(RealDataLocators.QRY_METER_READ_STATUS_FAILDETAIL)
         # locator = self.get_select_locator(
-        #     RealDataLocators.QRY_METER_READ_STATE_FAILDETAIL_VALUE, name)
+        #     RealDataLocators.QRY_METER_READ_STATUS_FAILDETAIL_VALUE, name)
         # self.click(locator)
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 

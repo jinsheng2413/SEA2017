@@ -65,15 +65,15 @@ class RealDataLocators:
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//div[contains(text(),'正常采集')]/../div[contains(text(),'%s')]")
 
     # 电能表抄表状态
-    QRY_METER_READ_STATE_RDETAIL = (
+    QRY_METER_READ_STATUS_RDETAIL = (
         By.XPATH, "//*[@id=\"metStatusComboBoxJb\"]")
-    QRY_METER_READ_STATE_RDETAIL_VALUE = (
+    QRY_METER_READ_STATUS_RDETAIL_VALUE = (
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//div[contains(text(),'未停抄')]/../div[contains(text(),'%s')]")
 
     # 电能表抄表状态
-    QRY_METER_READ_STATE_FAILDETAIL = (
+    QRY_METER_READ_STATUS_FAILDETAIL = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'电能表抄表状态')]/../../div[1]/div[1]//input)[2]")
-    QRY_METER_READ_STATE_FAILDETAIL_VALUE = (
+    QRY_METER_READ_STATUS_FAILDETAIL_VALUE = (
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//div[contains(text(),'未停抄')]/../div[contains(text(),'%s')]")
 
     # 终端运行状态

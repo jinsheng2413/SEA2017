@@ -80,7 +80,7 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
         # 查询日期
         self.inputDt_Time_Faildetail(para['QUERY_TIME'])
         # 电能表抄读状态
-        self.inputSel_meter_read_status_faildetail(para['METER_READ_STATE'])
+        self.inputSel_meter_read_status_faildetail(para['METER_READ_STATUS'])
         # 终端运行状态
         self.inputSel_TmnlRunState_Failtime(para['TMNL_RUN_STATE'])
         # 查询

@@ -68,7 +68,7 @@ class TestAllCollectSuccessRate(TestCase, AllCollectSuccessRatePage):
         # 输入表资产号
         self.inputStr_meter_asset_no(para['SURFACE_ASSET_NO'])
         # 电能表抄读状态
-        self.inputStr_meter_read_status(para['METER_READ_STATE'])
+        self.inputStr_meter_read_status(para['METER_READ_STATUS'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 终端运行状态

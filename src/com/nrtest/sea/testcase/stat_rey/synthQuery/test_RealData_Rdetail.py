@@ -76,7 +76,7 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         # 数据类别
         self.inputSel_data_type(para['DATA_TYPE'])
         # 电能表抄读状态
-        self.inputSel_meter_read_status_Rdetail(para['METER_READ_STATE'])
+        self.inputSel_meter_read_status_Rdetail(para['METER_READ_STATUS'])
         # 终端运行状态
         self.inputSel_tmnl_run_status_RDetail(para['TMNL_RUN_STATE'])
         self.btn_rdetail_qry()

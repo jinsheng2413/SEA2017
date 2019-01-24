@@ -13,9 +13,9 @@ from selenium.webdriver.common.by import By
 class AllCollectSuccessRateLocators:
     # 【查询条件区】
     # 电能表抄表状态
-    QRY_METER_READ_STATE = (
+    QRY_METER_READ_STATUS = (
         By.XPATH, "//*[@id=\"taskMetStatusComboBox\"]")
-    QRY_METER_READ_STATE_VALUE = (
+    QRY_METER_READ_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//div[contains(text(),'未停抄')]/../div[contains(text(),'%s')]")
     # 终端运行状态
     QRY_TMNL_RUN_STATE = (

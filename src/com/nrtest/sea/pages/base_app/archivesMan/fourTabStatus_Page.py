@@ -18,6 +18,11 @@ class FourTabStatusPage(Page):
     def inputSel_cons_status(self, name):
         self.selectDropDown(name)
 
+    def inputChk_cons_tab(self, tab_name):
+        self.clickTabPage(tab_name)
+
+
+
     # 查询
     def btn_qry(self):
         self.btn_query()

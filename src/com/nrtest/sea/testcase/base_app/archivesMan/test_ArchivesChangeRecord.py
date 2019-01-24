@@ -64,16 +64,23 @@ class TestArchivesChangeRecordPage(TestCase, ArchivesChangeRecordPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 用户类别
+
+        # 用户类型
         self.inputChk_cons_type(para['CONS_TYPE'])
+
         # 选择设备类型
         self.inputSel_device_type(para['DEVICE_TYPE'])
+
         # 变更类型
         self.inputSel_change_type(para['CHANGE_TYPE'])
+
         # 开始时间
         self.inputDt_start_time(para['START_TIME'])
+
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
+
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 
@@ -95,6 +102,10 @@ class TestArchivesChangeRecordPage(TestCase, ArchivesChangeRecordPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesChangeRecord_para))
     def test_query(self, para):
+        """ 基本应用→档案管理→档案变更记录
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -52,7 +52,7 @@ class TestArchivesAutoRevie(TestCase, ArchivesAutoReviewPage):
         # 去除查询干扰数据(要传入对应的page页面类)
         # self.clear_values(ArchivesAutoReviewPage)
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         """

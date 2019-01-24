@@ -9,55 +9,26 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.base_app.archivesMan.meterStateArrLocators import MeterStateArrLocators
 
 
+# 基本应用→档案管理→电能表状态维护
 class MeterStateArrPage(Page):
     # 终端地址
-    def inputStr_tmnl_addr(self, value):
-        self.input(value)  # , *MeterStateArrLocators.QRY_TMNL_ADDR)
+    def inputStr_terminal_addr(self, value):
+        self.input(value)
 
     # 终端状态
-    def inputSel_tmnlStatus(self, name):
-        # self.click(MeterStateArrLocators.QRY_TMNL_STATUS)
-        # locator = self.get_select_locator(
-        #     MeterStateArrLocators.QRY_TMNL_STATUS_VALUE, name)
-        # self.click(locator)
+    def inputSel_tmnl_status(self, name):
         self.selectDropDown(name)
 
     # 终端类型
-    def inputSel_tmnlType(self, name):
-        # self.click(MeterStateArrLocators.QRY_TMNLTYPE)
-        # locator = self.get_select_locator(
-        #     MeterStateArrLocators.QRY_TMNLTYPE_VALUE, name)
-        # self.click(locator)
+    def inputSel_tmnl_type(self, name):
         self.selectDropDown(name)
 
     # 包含下级单位
-    def inputChk_containOrg(self, name):
+    def inputChk_contain_org(self, name):
         self.clickSingleCheckBox(name)
 
-    # # 筛选条件
-    # def inputSel_screenCondition(self, name):
-    #     self.click(MeterStateArrLocators.QRY_SCREEN_CONDITION)
-    #     locator = self.get_select_locator(MeterStateArrLocators.QRY_SCREEN_CONDITION_VALUE, name)
-    #     self.click(locator)
-
-    # #筛选条件输入框
-    # def inputStr_screenConditionInput(self,value):
-    #     self.input(value, *MeterStateArrLocators.QRY_SCREEN_CONDITION_INPUT)
-
-    # # 电能表状态
-    # def inputSel_meterStatus(self, name):
-    #     self.click(MeterStateArrLocators.QRY_METER_STATUS)
-    #     locator = self.get_select_locator(MeterStateArrLocators.QRY_METER_STATUS_VALUE, name)
-    #     self.click(locator)
-
     # 查询
-    def btn_tmnl_qry(self):
-        self.click(MeterStateArrLocators.BTN_TMNL_QRY)
-
-        # 查询
-
-    def btn_meter_qry(self):
-        self.click(MeterStateArrLocators.BTN_METER_QRY)
+    def btn_qry(self):
+        self.btn_query()

@@ -31,7 +31,7 @@ class TestMeterStateArr(TestCase, MeterStateArrPage):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -65,21 +65,26 @@ class TestMeterStateArr(TestCase, MeterStateArrPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
+        # 是否包含下级供电单位
+        self.inputChk_contain_org(para['CONTAIN_ORG'])
+
         # 终端状态
-        self.inputSel_tmnlStatus(para['TMNL_STATUS'])
+        self.inputSel_tmnl_status(para['TMNL_STATUS'])
+
         # 终端类型
-        self.inputSel_tmnlType(para['TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
+
         # 终端地址
-        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
 
-        # self.inputChk_containOrg(para['CONTAIN_ORG'])
-
-        self.btn_tmnl_qry()
+        # 查询
+        self.btn_qry()
         self.sleep_time(2)
 
-    @data(*DataAccess.getCaseData(ArchivesMan_data.meterStateArr_para))
-    def test_tmnl_query(self, para):
-        self.query(para)
+    # @data(*DataAccess.getCaseData(ArchivesMan_data.meterStateArr_para))
+    # def test_tmnl_query(self, para):
+    #     self.query(para)
 
     def assert_query_result(self, para):
         """
@@ -99,6 +104,10 @@ class TestMeterStateArr(TestCase, MeterStateArrPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.meterStateArr_para))
     def test_query(self, para):
+        """基本应用→档案管理→电能表状态维护
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

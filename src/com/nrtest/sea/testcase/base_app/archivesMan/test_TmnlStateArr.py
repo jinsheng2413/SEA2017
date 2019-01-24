@@ -64,14 +64,20 @@ class TestTmnlStateArr(TestCase, TmnlStateArrPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
+        # 包含下级单位
+        self.inputChk_contain_org(para['CONTAIN_ORG'])
+
         # 终端地址
-        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        self.inputStr_terminal_addr(para['TMNL_ADDR'])
+
         # 终端状态
         self.inputSel_tmnl_status(para['TMNL_STATUS'])
+
         # 统计时间
-        self.inputStr_count_time(para['COUNT_TIME'])
-        # 包含下级单位
-        self.inputChk_containOrg(para['CONTAIN_ORG'])
+        self.inputDt_count_time(para['COUNT_TIME'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

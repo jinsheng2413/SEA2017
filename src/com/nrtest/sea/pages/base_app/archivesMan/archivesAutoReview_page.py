@@ -11,6 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→档案管理→电表批量导出（冀北）
 class ArchivesAutoReviewPage(Page):
 
     # 导入电表信息

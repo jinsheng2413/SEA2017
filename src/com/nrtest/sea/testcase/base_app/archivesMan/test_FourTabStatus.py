@@ -30,7 +30,7 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -61,13 +61,16 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        self.clickTabPage(para['DISPLAY_TAB'])
+        # self.clickTabPage(para['DISPLAY_TAB'])
 
         # 打开tab页,tab页先不不处理
         self.openLeftTree(para['TREE_NODE'])
 
-        # 选择用状态
+        # 选择用户状态
         self.inputSel_cons_status(para['CONS_STATUS'])
+
+        # 选择用户列表
+        self.inputChk_cons_tab(para['CONS_TAB'])
 
         # 查询
         self.btn_qry()

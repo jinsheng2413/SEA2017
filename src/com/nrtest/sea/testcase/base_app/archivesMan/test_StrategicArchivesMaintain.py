@@ -63,13 +63,17 @@ class TestStrategicArchivesMaintain(TestCase, StrategicArchivesMaintainPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 输入中地址
-        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+
         # 输入终端资产号
-        self.inputStr_TmnlNo(para['TMNL_NO'])
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
+
         # 输入用户编号
         self.inputStr_cons_no(para['CONS_NO'])
 
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 
@@ -95,6 +99,10 @@ class TestStrategicArchivesMaintain(TestCase, StrategicArchivesMaintainPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.strategicArchivesMaintain_para))
     def test_query(self, para):
+        """基本应用→档案管理→巡检仪档案管理
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -11,27 +11,24 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→档案管理→终端状态维护
 class TmnlStateArrPage(Page):
     # 终端地址
-    def inputStr_tmnl_addr(self, value):
-        self.input(value)  # , *TmnlStateArrLocators.QRY_TMNL_ADDR)
+    def inputStr_terminal_addr(self, value):
+        self.input(value)
 
     # 终端状态
     def inputSel_tmnl_status(self, name):
-        # self.click(TmnlStateArrLocators.QRY_TMNL_STATUS)
-        # locator = self.get_select_locator(
-        #     TmnlStateArrLocators.QRY_TMNL_STATUS_VALUE, name)
-        # self.click(locator)
         self.selectDropDown(name)
 
     # 统计时间
-    def inputStr_count_time(self, value):
-        self.inputDate(value)  # , *TmnlStateArrLocators.QRY_COUNT_TIME)
+    def inputDt_count_time(self, value):
+        self.inputDate(value)
 
     # 包含下级单位
-    def inputChk_containOrg(self, value):
-        self.clickRadioBox(value)
+    def inputChk_contain_org(self, value):
+        self.clickSingleCheckBox(value)
+
     # 查询
     def btn_qry(self):
-        # self.click(TmnlStateArrLocators.BTN_QRY)
         self.btn_query()

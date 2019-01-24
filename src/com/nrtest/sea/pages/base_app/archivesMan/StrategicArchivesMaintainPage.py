@@ -11,21 +11,20 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→档案管理→巡检仪档案管理
 class StrategicArchivesMaintainPage(Page):
     # 终端地址
-    def inputStr_tmnl_addr(self, value):
-        self.input(value)  # , *StrategicArchivesMaintainLocators.QRY_TMNL_ADDR)
+    def inputStr_terminal_addr(self, value):
+        self.input(value)
 
     # 终端资产号
-    def inputStr_TmnlNo(self, value):
-        self.input(value)  # , *StrategicArchivesMaintainLocators.QRY_TMNLNO)
+    def inputStr_tmnl_asset_no(self, value):
+        self.input(value)
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value)  # , *StrategicArchivesMaintainLocators.QRY_CONS_NO)
+        self.input(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        # self.click(StrategicArchivesMaintainLocators.BTN_QRY)
         self.btn_query()

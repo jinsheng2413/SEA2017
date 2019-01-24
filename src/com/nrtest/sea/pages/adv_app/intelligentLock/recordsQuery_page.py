@@ -31,7 +31,7 @@ class RecordsQueryPage(Page):
         self.input(content)  #, *RecordsQueryLocators.CONS_NO)
 
     # 用户名称
-    def inputStr_user_name(self, content):
+    def inputStr_cons_name(self, content):
         self.input(content)  # , *RecordsQueryLocators.CONS_NAME)
 
     # 用户类型

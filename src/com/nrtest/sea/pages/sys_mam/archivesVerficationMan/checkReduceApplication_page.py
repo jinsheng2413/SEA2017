@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 class CheckReduceApplicationPage(Page):
     # 申请单号
     def inputStr_applyNo(self, value):
-        self.input(value)  # , *CheckReduceApplicationLocators.QRY_APPLY_NO)
+        self.input(value)  # , *CheckReduceApplicationLocators.QRY_APP_NO)
 
     # 接收时间
     def inputDt_start_time(self, value):

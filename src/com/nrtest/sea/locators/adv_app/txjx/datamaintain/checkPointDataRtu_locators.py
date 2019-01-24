@@ -14,15 +14,15 @@ from selenium.webdriver.common.by import By
 class CheckPointDataRtuLocators:
     # 【查询条件区】
     # 抄表段号
-    QRY_READ_NO = (By.XPATH, "//*[@id=\"mrSectNoRtu\"]")
-    QRY_READ_NO_VALUE = (
+    QRY_MR_SECT_NO = (By.XPATH, "//*[@id=\"mrSectNoRtu\"]")
+    QRY_MR_SECT_NO_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'1')]/../div[contains(text(),'%s')]")
     # 用户编号
     QRY_CONS_NO = (By.XPATH, "//*[@id=\"rtuCpNo\"]")
     QRY_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'新增')]/../div[contains(text(),'%s')]")
     # 用户名称
-    QRY_USER_NAME = (By.XPATH, "//*[@id=\"rtuCpName\"]")
+    QRY_CONS_NAME = (By.XPATH, "//*[@id=\"rtuCpName\"]")
     # 电表正反向
     QRY_METER_FR = (By.XPATH, "//*[@id=\"meterzfxRtu\"]")
     QRY_METER_FR_VALUE = (

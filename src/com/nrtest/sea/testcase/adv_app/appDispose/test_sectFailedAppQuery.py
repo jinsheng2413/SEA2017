@@ -56,7 +56,7 @@ class TestAssetMan(TestCase, SectfailedAppQueryPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 抄表段号
-        self.inputStr_sect_no(para['SECT_NO'])
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 抄表管理员工号
         self.inputStr_sect_manager_no(para['SECT_MANAGER_NO'])
         # 查询按钮

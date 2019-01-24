@@ -14,8 +14,8 @@ from com.nrtest.common.base_page import Page
 # 统计查询→综合查询→抄表段数据查询
 class SectDataQueryPage(Page):
     # 抄表段编号
-    def inputStr_sect_no(self, content):
-        self.input(content)  # , *SectDataQueryLocators.SECT_NO)
+    def inputStr_mr_sect_no(self, content):
+        self.input(content)  # , *SectDataQueryLocators.MR_SECT_NO)
 
     # 查询按钮
     def btn_search(self):

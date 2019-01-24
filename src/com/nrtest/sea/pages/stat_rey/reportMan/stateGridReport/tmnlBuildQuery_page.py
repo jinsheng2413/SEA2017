@@ -34,15 +34,15 @@ class TmnlBuildQueryPage(Page):
 
     # 终端厂商
     def inputSel_tmnlFac(self, options):
-        # self.click(TmnlBuildQueryLocators.QRY_TMNL_FAC)
-        # locator = self.get_select_locator(TmnlBuildQueryLocators.QRY_TMNL_FAC_VALUE, index)
+        # self.click(TmnlBuildQueryLocators.QRY_TMNL_FACTORY)
+        # locator = self.get_select_locator(TmnlBuildQueryLocators.QRY_TMNL_FACTORY_VALUE, index)
         # self.click(locator)
         self.selectDropDown(options)
 
     # 统计口径
     def inputSel_statWay(self, options):
-        # self.click(TmnlBuildQueryLocators.QRY_STAT_WAY)
-        # locator = self.get_select_locator(TmnlBuildQueryLocators.QRY_STAT_WAY_VALUE, index)
+        # self.click(TmnlBuildQueryLocators.QRY_STAT_SCOPE)
+        # locator = self.get_select_locator(TmnlBuildQueryLocators.QRY_STAT_SCOPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(options)
 

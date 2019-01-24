@@ -17,7 +17,7 @@ class ArchivesQueryPages(Page):
         self.selectCheckBox(option)
 
     # 抄表段号
-    def inputStr_sect_no(self, value):
+    def inputStr_mr_sect_no(self, value):
         self.input(value)
 
     # 终端地址

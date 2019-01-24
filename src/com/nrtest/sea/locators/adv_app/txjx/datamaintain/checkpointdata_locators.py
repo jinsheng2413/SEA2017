@@ -22,7 +22,7 @@ class CheckpointdataLocators:
     QRY_METER_FR_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'正')]/../div[contains(text(),'%s')]")
     # 用户名称
-    QRY_USER_NAME = (By.XPATH, "//*[@id=\"lineCpName\"]")
+    QRY_CONS_NAME = (By.XPATH, "//*[@id=\"lineCpName\"]")
 
     # 【操作区】
     BTN_QRY = (By.XPATH,

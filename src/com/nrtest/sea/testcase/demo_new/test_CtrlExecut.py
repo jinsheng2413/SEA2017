@@ -78,7 +78,7 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         # 控制类型
         self.inputSel_control_type(para['CONTROL_TYPE'])
         # 抄表段号
-        self.inputStr_sect_no(para['SECT_NO'])
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 执行状态
         self.inputSel_exe_status(para['EXE_STATUS'])
         # 数据来源
@@ -93,7 +93,7 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
         # 工单号
-        self.inputStr_work_order(para['WORK_ORDER'])
+        self.inputStr_app_no(para['WORK_ORDER'])
         # 执行结果状态
         self.inputSel_exe_result_status(para['EXE_RESULT_STATUS'])
 

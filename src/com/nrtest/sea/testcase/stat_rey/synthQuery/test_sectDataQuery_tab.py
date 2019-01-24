@@ -55,7 +55,7 @@ class TestSectDataQuery(TestCase, SectDataQueryPage):
 
     def query(self, para):
         # 抄表段编号
-        self.inputStr_sect_no(para['SECT_NO'])
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 查询按钮
         self.btn_search()
         # 查询日期，开始

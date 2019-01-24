@@ -30,10 +30,9 @@ class TmnlInstallDetaiPage(Page):
     def inputDt_end_time(self, value):
         self.input(value)  # , *TmnlInstallDetaiLocators.QRY_END_TIME)
 
-        # 查询
-
-    def btn_workCount_qry(self):
-        # self.click(TmnlInstallDetaiLocators.BTN_WORK_COUNT_QRY)
+    # 查询
+    def btn_appCount_qry(self):
+        # self.click(TmnlInstallDetaiLocators.BTN_APP_COUNT_QRY)
         self.btn_query(True)
 
 
@@ -65,7 +64,7 @@ class TmnlInstallDetaiPage(Page):
         self.input(value)
 
     # 终端厂家
-    def inputSel_tmnlFactory_count(self, options):
+    def inputSel_tmnl_factory_count(self, options):
         # self.input(options) #, *TmnlInstallDetaiLocators.QRY_TMNL_FACTORY_COUNT)
         self.selectCheckBox(options, sleep_sec=2)
 

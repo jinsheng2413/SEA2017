@@ -26,11 +26,11 @@ class CtrlExecutPage(Page):
         self.input(value)
 
     # 抄表段号
-    def inputStr_sect_no(self, value):
+    def inputStr_mr_sect_no(self, value):
         self.input(value)
 
     # 工单号
-    def inputStr_work_order(self, value):
+    def inputStr_app_no(self, value):
         self.input(value)
 
     # 开始时间

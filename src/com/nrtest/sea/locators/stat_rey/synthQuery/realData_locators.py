@@ -15,9 +15,9 @@ class RealDataLocators:
     # 【查询条件区】
 
     # 抄表段号
-    QRY_READ_METER_SEGMENT_NO_RDETAIL = (
+    QRY_MR_SECT_NO_RDETAIL = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'抄表段号')]/../../div[1]/div[1]//input)[1]")
-    QRY_READ_METER_SEGMENT_NO_FAILDETAIL = (
+    QRY_MR_SECT_NO_FAILDETAIL = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'抄表段号')]/../../div[1]/div[1]//input)[2]")
 
     # 电表资产号

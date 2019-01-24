@@ -27,7 +27,7 @@ class LoseCountPowerManPage(Page):
         self.input(value)
 
     # 责任人工号
-    def inputStr_responsibilier_no(self, value):
+    def inputStr_person_resp_no(self, value):
         self.input(value)
 
     # 查询

@@ -71,7 +71,7 @@ class TestModuleAttributeRelationshipMantain(TestCase, ModuleAttributeRelationsh
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 终端厂商
-        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         # 维护状态
         self.inputChk_mainten_status(para['MAINTEN_STATUS'])

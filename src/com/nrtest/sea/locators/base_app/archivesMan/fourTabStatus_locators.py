@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 class FourTabStatusLocators:
     # 【查询条件区】
     # 用户状态
-    QRY_USER_STATE = (
+    QRY_CONS_STATUS = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户状态')]/../../div[1]/div[1]//input")
     QRY_USER_STATE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'正常')]/../div[contains(text(),'%s')]")

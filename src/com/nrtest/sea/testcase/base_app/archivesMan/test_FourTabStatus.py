@@ -67,7 +67,7 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 选择用状态
-        self.inputSel_user_state(para['USER_STATE'])
+        self.inputSel_cons_status(para['USER_STATE'])
 
         # 查询
         self.btn_qry()

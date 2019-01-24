@@ -125,7 +125,7 @@ class SecurityCommonManPageLocators:
     BTN_DATAANALYSE = (By.XPATH, '//button[contains(text(),"数据分析")]')
 
     # 工单查询
-    BTN_WORKQUERY = (By.XPATH, '//button[contains(text(),"工单查询")]')
+    BTN_APP_QUERY = (By.XPATH, '//button[contains(text(),"工单查询")]')
 
     # 【三级菜单-数据分析】
     # 负荷分析
@@ -133,7 +133,7 @@ class SecurityCommonManPageLocators:
 
     # 【三级菜单-工单查询】
     # 工单查询2017
-    BTN_WORKQUERY_2017 = (By.XPATH, '//span[contains(text(),"工单查询2017")]')
+    BTN_APP_QUERY_2017 = (By.XPATH, '//span[contains(text(),"工单查询2017")]')
 
     # 【四级菜单-负荷分析】
     # 负荷排名分析

@@ -65,12 +65,12 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 选择抄表段号
-        self.inputStr_ReadMeterSegmentNo_Faildetail(
-            para['READ_METER_SEGMENT_NO'])
+        self.inputStr_mr_sect_no_Faildetail(
+            para['MR_SECT_NO'])
         # 电表资产号
-        self.inputStr_MeterAssert_Faildetail(para['METER_ASSERT'])
+        self.inputStr_meter_asset_no_Faildetail(para['METER_ASSERT'])
         # 用户类型
-        self.inputSel_userType_Faildetail(para['CONS_TYPE'])
+        self.inputSel_cons_type_Faildetail(para['CONS_TYPE'])
         # 反相采集结果
         self.inputSel_reversCollectionResult(para['REVERS_COLLECTION_RESULT'])
         # 终端生产厂家
@@ -80,7 +80,7 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
         # 查询日期
         self.inputDt_Time_Faildetail(para['QUERY_TIME'])
         # 电能表抄读状态
-        self.inputSel__meter_read_state_faildetail(para['METER_READ_STATE'])
+        self.inputSel_meter_read_status_faildetail(para['METER_READ_STATE'])
         # 终端运行状态
         self.inputSel_TmnlRunState_Failtime(para['TMNL_RUN_STATE'])
         # 查询

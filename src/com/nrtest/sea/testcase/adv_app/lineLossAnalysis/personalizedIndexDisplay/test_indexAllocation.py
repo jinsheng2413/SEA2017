@@ -62,7 +62,7 @@ class TestIndexAllocation(TestCase, IndexAllocationPage):
         self.inputSel_tg_status(para['TG_STATUS'])
 
         # 责任人工号
-        self.inputStr_charge_person_no(para['CHARGE_PERSON_NO'])
+        self.inputStr_person_resp_no(para['CHARGE_PERSON_NO'])
 
         # 查询按钮
         self.btn_search()

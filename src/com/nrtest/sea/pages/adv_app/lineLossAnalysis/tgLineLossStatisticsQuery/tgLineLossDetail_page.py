@@ -29,7 +29,7 @@ class TgLineLossDetailPage(Page):
         self.inputDate(content)
 
     # 责任人工号
-    def inputStr_charge_person_no(self, content):
+    def inputStr_person_resp_no(self, content):
         self.input(content)
 
     # 采集覆盖率

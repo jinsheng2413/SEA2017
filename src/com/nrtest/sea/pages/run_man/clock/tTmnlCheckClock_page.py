@@ -20,7 +20,7 @@ class TmnlClockStaticPage(Page):
         self.selectDropDown(item)
 
     # 终端厂商--打开并选择
-    def inputSel_tmnl_fac(self, item):
+    def inputSel_tmnl_factory(self, item):
         self.selectDropDown(item)
 
     # 查询日期
@@ -47,7 +47,7 @@ class TmnlClockDetailPage(Page):
         self.input(value)
 
     # 终端厂商--打开并选择
-    def inputSel_tmnl_fac(self, item):
+    def inputSel_tmnl_factory(self, item):
         self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 终端地址

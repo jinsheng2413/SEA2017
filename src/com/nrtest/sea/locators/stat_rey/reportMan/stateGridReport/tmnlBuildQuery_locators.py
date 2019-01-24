@@ -24,14 +24,14 @@ class TmnlBuildQueryLocators:
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'专变终端\')]/../div[contains(text(),'%s')]")
 
     # 终端厂家
-    QRY_TMNL_FAC = (
+    QRY_TMNL_FACTORY = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'终端厂家\')]/../../div[1]/div[1]//input")
-    QRY_TMNL_FAC_VALUE = (
+    QRY_TMNL_FACTORY_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'东方电子\')]/../div[contains(text(),'%s')]")
     # 统计口径
-    QRY_STAT_WAY = (
+    QRY_STAT_SCOPE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'统计口径\')]/../../div[1]/div[1]//input")
-    QRY_STAT_WAY_VALUE = (
+    QRY_STAT_SCOPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'直供直管\')]/../div[contains(text(),'%s')]")
 
     # 【操作区】

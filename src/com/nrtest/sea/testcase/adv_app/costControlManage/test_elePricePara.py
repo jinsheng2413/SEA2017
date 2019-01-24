@@ -73,7 +73,7 @@ class TestElePricePara(TestCase, ElePricePages):
         self.inputStr_meter_addr(para['METER_ADDR'])
 
         # 抄表段号
-        self.inputStr_sect_no(para['SECT_NO'])
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
 
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])

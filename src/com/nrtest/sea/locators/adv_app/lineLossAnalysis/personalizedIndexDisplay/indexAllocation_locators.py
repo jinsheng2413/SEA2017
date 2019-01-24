@@ -21,7 +21,7 @@ class IndexAllocationLocators:
     QRY_TG_STATUS_VALUE = (
         By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 责任人工号
-    QRY_CHARGE_PERSON_NO = (
+    QRY_PERSON_RESP_NO = (
         By.XPATH, '//label[contains(text(),"责任人工号")]/../div/input')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')

@@ -21,23 +21,23 @@ class MeterClockManLocators:
     QRY_EVENTTYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'时钟电池正常')]/../div[contains(text(),'%s')]")
     # 终端厂家
-    QRY_TMNLFACORY = (
+    QRY_TMNL_FACTORY = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'终端厂家\')]/../../div[1]/div[1]//img")
-    QRY_TMNLFACORY_VALUE = (
+    QRY_TMNL_FACTORY_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'东方电子')]/../div[contains(text(),'%s')]")
     # 电表厂家
-    QRY_METERFACTORY = (
+    QRY_METER_FACTORY = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'电表厂家\')]/../../div[1]/div[1]//img")
-    QRY_METERFACTORY_VALUE = (
+    QRY_METER_FACTORY_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'ABB公司\')]/../div[contains(text(),'%s')]")
     # 终端地址
-    QRY_TMNLADDR = (
+    QRY_TMNL_ADDR = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'终端地址\')]/../../div[1]/div[1]//input")
     # 用户编号
-    QRY_USERNO = (
+    QRY_CONS_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'用户编号\')]/../../div[1]/div[1]//input")
     # 电表资产号
-    QRY_METERNO = (
+    QRY_METER_ASSET_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'电表资产号\')]/../../div[1]/div[1]//input")
     # 日期
     QRY_DATE = (

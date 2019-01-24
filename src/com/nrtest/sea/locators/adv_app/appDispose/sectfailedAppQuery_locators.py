@@ -15,7 +15,7 @@ from selenium.webdriver.common.by import By
 
 class SectfailedAppQueryLocators:
     # 抄表段号
-    SECT_NO = (By.XPATH, '//label[contains(text(),"抄表段号")]/../div/input')
+    MR_SECT_NO = (By.XPATH, '//label[contains(text(),"抄表段号")]/../div/input')
     # 抄表管理员工号
     SECT_MANAGER_NO = (
         By.XPATH, '//label[contains(text(),"抄表管理员工号")]/../div/input')

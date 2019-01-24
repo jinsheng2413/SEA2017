@@ -47,9 +47,9 @@ class BalanceCountLocator:
 class BalanceCheckLocator:
     # 【查询条件】
     # 工单编号
-    QRY_WORK_ORDER = (By.XPATH, '//*[@id="appNoFieldb"]')
+    QRY_APP_NO = (By.XPATH, '//*[@id="appNoFieldb"]')
     # 用户编号
-    QRY_USER_ORDER = (By.XPATH, '//*[@id="staffNoFieldb"]')
+    QRY_CONS_NO = (By.XPATH, '//*[@id="staffNoFieldb"]')
     # 终端地址
     QRY_TERMINAL_ADDR = (By.XPATH, '//*[@id="tmnlAddrFieldb"]')
     # 电表地址
@@ -57,7 +57,7 @@ class BalanceCheckLocator:
     # 抄表段号
     QRY_METER_READING_NUMBER = (By.XPATH, '//*[@id="readMeterSegNoFieldb"]')
     # 用户名称
-    QRY_USER_NAME = (By.XPATH, '//*[@id="readMeterConsName"]')
+    QRY_CONS_NAME = (By.XPATH, '//*[@id="readMeterConsName"]')
     # 电表局编号
     QRY_ELE_METER_BUREEA_ORDER = (By.XPATH, '//*[@id="readMeterAssetNo"]')
     # 接收时间

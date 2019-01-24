@@ -26,9 +26,9 @@ class TmnlQualityEvalStaticLocators:
     QUERY_DATE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//*[contains(text(),'月份')])[1]/../div/div/input")
     # 终端厂家-下拉框
-    TMNL_FAC_SEL = (By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂家')]/../div/div/img)[1]")
+    TMNL_FACTORY_SEL = (By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂家')]/../div/div/img)[1]")
     # 终端厂家
-    TMNL_FAC = (
+    TMNL_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'上海协同')]/../div[contains(text(),'%s')]")
 
     # 【按钮】
@@ -62,9 +62,9 @@ class TmnlQualityEvalDetailLocators:
     FAULT_LEVEL = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'严重')]/../div[contains(text(),'%s')]")
     # 终端厂家-下拉框
-    TMNL_FAC_SEL = (By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂家')]/../div/div/img)[1]")
+    TMNL_FACTORY_SEL = (By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂家')]/../div/div/img)[1]")
     # 终端厂家
-    TMNL_FAC = (
+    TMNL_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'上海协同')]/../div[contains(text(),'%s')]")
     # 故障类别-下拉框
     FAULT_TYPE_SEL = (By.XPATH, "//div[@ class =\"x-form-item \"]//*[contains(text(),'故障类别')]/../div/div/img")

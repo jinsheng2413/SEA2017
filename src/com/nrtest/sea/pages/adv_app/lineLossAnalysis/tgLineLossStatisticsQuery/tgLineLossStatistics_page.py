@@ -30,7 +30,7 @@ class TgLineLossStatisticsPage(Page):
         self.selectDropDown(index)
 
     # 责任人工号
-    def inputStr_cons_no(self, index):
+    def inputStr_person_resp_no(self, index):
         self.input(index)
 
     # 查询按钮

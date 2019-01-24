@@ -20,7 +20,7 @@ class TmnlInsertQueryPage(Page):
         self.clickRadioBox(option)
 
     # 终端厂家
-    def inputSel_tmnlFactory(self, options):
+    def inputSel_tmnl_factory(self, options):
         # self.click(TmnlInsertQueryLocators.QRY_TMNL_FACTORY)
         # locator = self.get_select_locator(TmnlInsertQueryLocators.QRY_TMNL_FACTORY_VALUE, name)
         # self.click(locator)

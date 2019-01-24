@@ -20,12 +20,12 @@ class CheckReducePoolLocators:
     QRY_APPLY_DATE_TO = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'申请日期')]/../../div[1]/div[1]//input)[2]")
     # 工单状态
-    QRY_WORK_STATUS = (
+    QRY_APP_STATUS = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'工单状态')]/../../div[1]/div[1]//input")
-    QRY_WORK_STATUS_VALUE = (
+    QRY_APP_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'管控组核实通过')]/../div[contains(text(),'%s')]")
     # 申请单号
-    QRY_APPLY_NO = (
+    QRY_APP_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'申请单号')]/../../div[1]/div[1]//input")
 
     # 【操作区】

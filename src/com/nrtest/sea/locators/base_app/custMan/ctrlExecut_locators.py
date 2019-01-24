@@ -17,13 +17,13 @@ class CtrlExecutLocators:
     QRY_CONS_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户编号')]/../../div[1]/div[1]/input")
     # 用户名称
-    QRY_USER_NAME = (
+    QRY_CONS_NAME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户名称')]/../../div[1]/div[1]/input")
     # 终端地址
     QRY_TMNL_ADDR = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端地址')]/../../div[1]/div[1]/input")
     # 抄表段编号
-    QRY_SECT_NO = (
+    QRY_MR_SECT_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'抄表段号')]/../../div[1]/div[1]/input")
     # 开始时间
     QRY_START_TIME = (

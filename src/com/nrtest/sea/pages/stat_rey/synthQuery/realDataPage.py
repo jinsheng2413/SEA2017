@@ -47,7 +47,7 @@ class RealDataPage(Page):
         self.selectDropDown(name, is_multi_elements=True, is_multi_tab=True)
 
     # 终端运行状态
-    def inputSel_TmnlRunState_RDetail(self, name):
+    def inputSel_tmnl_run_status_RDetail(self, name):
         # self.click(RealDataLocators.QRY_TMNL_RUN_STATE_RDETAIL)
         # locator = self.get_select_locator(
         #     RealDataLocators.QRY_TMNL_RUN_STATE_RDETAIL_VALUE, name)
@@ -56,7 +56,7 @@ class RealDataPage(Page):
         self.selectDropDown(name)
 
     # 电能表抄读状态
-    def inputSel_meter_read_state_Rdetail(self, name):
+    def inputSel_meter_read_status_Rdetail(self, name):
         # self.click(RealDataLocators.QRY_METER_READ_STATE_RDETAIL)
         # locator = self.get_select_locator(
         #     RealDataLocators.QRY_METER_READ_STATE_RDETAIL_VALUE, name)
@@ -64,7 +64,7 @@ class RealDataPage(Page):
         self.selectDropDown(name)
 
     # 电能表抄读状态
-    def inputSel__meter_read_state_faildetail(self, name):
+    def inputSel_meter_read_status_faildetail(self, name):
         # self.click(RealDataLocators.QRY_METER_READ_STATE_FAILDETAIL)
         # locator = self.get_select_locator(
         #     RealDataLocators.QRY_METER_READ_STATE_FAILDETAIL_VALUE, name)
@@ -72,7 +72,7 @@ class RealDataPage(Page):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 数据类型
-    def inputSel_dataType(self, name):
+    def inputSel_data_type(self, name):
         # self.click(RealDataLocators.QRY_DATATYPE_RDETAIL)
         # locator = self.get_select_locator(
         #     RealDataLocators.QRY_DATATYPE_RDETAIL_VALUE, name)
@@ -97,19 +97,19 @@ class RealDataPage(Page):
         self.selectDropDown(name, is_multi_elements=True, is_multi_tab=True)
 
     # 抄表段号
-    def inputStr_ReadMeterSegmentNo_Rdetail(self, value):
-        self.input(value)  # , *RealDataLocators.QRY_READ_METER_SEGMENT_NO_RDETAIL)
+    def inputStr_mr_sect_no_Rdetail(self, value):
+        self.input(value)  # , *RealDataLocators.QRY_MR_SECT_NO_RDETAIL)
 
     # 抄表段号
-    def inputStr_ReadMeterSegmentNo_Faildetail(self, value):
-        self.input(value)  #, *RealDataLocators.QRY_READ_METER_SEGMENT_NO_FAILDETAIL)
+    def inputStr_mr_sect_no_Faildetail(self, value):
+        self.input(value)  # , *RealDataLocators.QRY_MR_SECT_NO_FAILDETAIL)
 
     # 电表资产号
-    def inputStr_MeterAssert_Rdetail(self, value):
+    def inputStr_meter_asset_no_Rdetail(self, value):
         self.input(value)  #, *RealDataLocators.QRY_METER_ASSET_NO_RDETAIL)
 
     # 电表资产号
-    def inputStr_MeterAssert_Faildetail(self, value):
+    def inputStr_meter_asset_no_Faildetail(self, value):
         self.input(value)  #, *RealDataLocators.QRY_METER_ASSET_NO_FAILDETAIL)
 
     # 查询时间
@@ -121,7 +121,7 @@ class RealDataPage(Page):
         self.inputDate(value)  #, *RealDataLocators.QRY_TIME_FAILTIME)
 
     # 用户类型
-    def inputSel_userType_Rdetail(self, name):
+    def inputSel_cons_type_Rdetail(self, name):
         # self.click(RealDataLocators.QRY_USER_TYPE_RDETAIL)
         # locator = self.get_select_locator(
         #     RealDataLocators.QRY_USER_TYPE_RDETAIL_VALUE, name)
@@ -130,7 +130,7 @@ class RealDataPage(Page):
         self.selectCheckBox(name)
 
     # 用户类型
-    def inputSel_userType_Faildetail(self, name):
+    def inputSel_cons_type_Faildetail(self, name):
         # self.click(RealDataLocators.QRY_USER_TYPE_FAILDETAIL)
         # locator = self.get_select_locator(
         #     RealDataLocators.QRY_USER_TYPE_FAILDETAIL_VALUE, name)

@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 class StrategicArchivesMaintainPage(Page):
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value)  # , *StrategicArchivesMaintainLocators.QRY_TMNLADDR)
+        self.input(value)  # , *StrategicArchivesMaintainLocators.QRY_TMNL_ADDR)
 
     # 终端资产号
     def inputStr_TmnlNo(self, value):
@@ -22,7 +22,7 @@ class StrategicArchivesMaintainPage(Page):
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value)  # , *StrategicArchivesMaintainLocators.QRY_USERNO)
+        self.input(value)  # , *StrategicArchivesMaintainLocators.QRY_CONS_NO)
 
         # 查询
 

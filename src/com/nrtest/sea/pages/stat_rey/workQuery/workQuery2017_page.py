@@ -14,10 +14,10 @@ from com.nrtest.common.base_page import Page
 # 统计查询→工单查询→工单查询2017
 class WorkCount2017Page(Page):
     # 工单类型
-    def inputSel_workTitle(self, options):
-        # self.click(WorkCount2017Locators.QRY_WORK_TITLE)
+    def inputSel_app_type(self, options):
+        # self.click(WorkCount2017Locators.QRY_APP_TYPE)
         # locator = self.get_select_locator(
-        #     WorkCount2017Locators.QRY_WORK_TITLE_VALUE, index)
+        #     WorkCount2017Locators.QRY_APP_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(options)
 
@@ -29,26 +29,26 @@ class WorkCount2017Page(Page):
 
 class WorkQuery2017Page(Page):
     # 工单编号
-    def inputStr_workNo(self, value):
-        self.input(value)  # , *WorkQuery2017Locators.QRY_WORK_NO)
+    def inputStr_app_no(self, value):
+        self.input(value)  # , *WorkQuery2017Locators.QRY_APP_NO)
 
     # 工单处理人
-    def inputStr_workMan(self, value):
-        self.input(value)  # , *WorkQuery2017Locators.QRY_WORK_MAN)
+    def inputStr_app_no_deal_man(self, value):
+        self.input(value)  # , *WorkQuery2017Locators.QRY_APP_NO_DEAL_MAN)
 
     # 工单类型
-    def inputSel_workTitle(self, options):
-        # self.click(WorkQuery2017Locators.QRY_WORK_TITLE)
+    def inputSel_app_type(self, options):
+        # self.click(WorkQuery2017Locators.QRY_APP_TYPE)
         # locator = self.get_select_locator(
-        #     WorkQuery2017Locators.QRY_WORK_TITLE_VALUE, index)
+        #     WorkQuery2017Locators.QRY_APP_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 工单状态
-    def inputSel_workStatus(self, options):
-        # self.click(WorkQuery2017Locators.QRY_WORK_STATUS)
+    def inputSel_app_status(self, options):
+        # self.click(WorkQuery2017Locators.QRY_APP_STATUS)
         # locator = self.get_select_locator(
-        #     WorkQuery2017Locators.QRY_WORK_STATUS_VALUE, index)
+        #     WorkQuery2017Locators.QRY_APP_STATUS_VALUE, index)
         # self.click(locator)
         self.selectDropDown(options)
     # 工单发生时间

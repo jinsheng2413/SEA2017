@@ -56,7 +56,7 @@ class TestArchivesQuery(TestCase, ArchivesQueryPages):
         self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 输入抄表段号
-        self.inputStr_sect_no(para['SECT_NO'])
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
 
         # 选择终端地址
         self.inputStr_terminal_addr(para['TERMINAL_ADDR'])

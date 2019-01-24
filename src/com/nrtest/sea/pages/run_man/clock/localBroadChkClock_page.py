@@ -23,7 +23,7 @@ class LocalBroadChkClockPage(Page):
         self.selectDropDown(item)
 
     # 终端厂家--打开并选择
-    def inputSel_tmnl_fac(self, item):
+    def inputSel_tmnl_factory(self, item):
         self.selectDropDown(item)
 
     # 终端规约--打开并选择

@@ -69,7 +69,7 @@ class TestTmnlQualityEvalDetail(TestCase, TmnlQualityEvalDetailPage):
         # 故障严重程度
         self.inputSel_fault_level(para['FAULT_LEVEL'])
         # 终端厂家
-        self.inputSel_tmnl_fac(para['TMNL_FAC'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 故障类别
         self.inputSel_fault_type(para['FAULT_TYPE'])
         # 故障开始日期

@@ -24,7 +24,7 @@ class ArchivesQuery_locators:
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]/div/div[%s]/div/img")
 
     # 抄表段号
-    QRY_SECT_NO = (By.XPATH, '//*[@id="mrSectNo"]')
+    QRY_MR_SECT_NO = (By.XPATH, '//*[@id="mrSectNo"]')
 
     # 终端地址
     QRY_TMNL_ADDR = (

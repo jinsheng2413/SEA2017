@@ -66,7 +66,7 @@ class TestTmnlClockStatic(TestCase, TmnlClockStaticPage):
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 终端厂家
-        self.inputSel_tmnl_fac(para['TMNL_FAC'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 

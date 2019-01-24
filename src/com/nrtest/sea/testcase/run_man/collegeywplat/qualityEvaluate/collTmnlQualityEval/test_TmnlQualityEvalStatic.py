@@ -69,7 +69,7 @@ class TestTmnlQualityEvalStatic(TestCase, TmnlQualityEvalStaticPage):
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 终端厂家
-        self.inputSel_tmnl_fac(para['TMNL_FAC'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         self.btn_qry()
         self.sleep_time(2)

@@ -20,8 +20,8 @@ class IpConRunQueryPage(Page):
 
     # 统计口径
     def inputSel_statWay(self, option):
-        # self.click(IpConRunQueryLocators.QRY_STAT_WAY)
-        # locator = self.get_select_locator(IpConRunQueryLocators.QRY_STAT_WAY_VALUE, index)
+        # self.click(IpConRunQueryLocators.QRY_STAT_SCOPE)
+        # locator = self.get_select_locator(IpConRunQueryLocators.QRY_STAT_SCOPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(option)
 

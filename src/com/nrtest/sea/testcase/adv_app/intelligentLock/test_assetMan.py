@@ -60,7 +60,7 @@ class TestAssetMan(TestCase, AssetManPage):
         # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
         # 用户名称
-        self.inputStr_user_name(para['CONS_NAME'])
+        self.inputStr_cons_name(para['CONS_NAME'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 锁封资产状态

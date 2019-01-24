@@ -86,7 +86,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.inputStr_tmnl_addr_count(para["TMNL_ADDR"])
 
         # 终端厂家
-        self.inputSel_tmnlFactory_count(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory_count(para['TMNL_FACTORY'])
 
         # 装接类型
         self.inputSel_moutingType_count(para['MOUNTING_TYPE'])

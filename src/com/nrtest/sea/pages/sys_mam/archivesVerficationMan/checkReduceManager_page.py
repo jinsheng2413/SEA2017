@@ -26,7 +26,7 @@ class CheckReduceManagerPage(Page):
 
     # 申请单号
     def inputDt_applyNo(self, value):
-        self.input(value)  # , *CheckReduceManagerLocators.QRY_APPLY_NO)
+        self.input(value)  # , *CheckReduceManagerLocators.QRY_APP_NO)
 
     # 查询
     def btn_qry(self):

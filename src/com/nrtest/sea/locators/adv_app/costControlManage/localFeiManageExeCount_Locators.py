@@ -13,9 +13,9 @@ from selenium.webdriver.common.by import By
 class LocalFeiManageExeCount_dis_count_Locators:
     # 【显示区】
     # 工单类型
-    QRY_WORK_CATA = (
+    QRY_APP_TYPE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'工单类型')]/../div[1]/div/img)[1]")
-    QRY_WORK_CATA_VALUE = (
+    QRY_APP_TYPE_VALUE = (
         By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'电价参数下发')])[1]/../div[%s]")
     # 费控用户类型
     QRY_FEI_USER_CATA = (
@@ -36,13 +36,13 @@ class LocalFeiManageExeCount_dis_count_Locators:
     # 【显示区】
     TAB_ONE = (By.XPATH, '(//div[@class=\"x-grid3-row-checker\"])[1]')
     # 工单总数
-    TAB_ONE_WORK_ALL = (
+    TAB_ONE_APP_ALL = (
         By.XPATH, '(// div[@class =\"x-grid3-row-checker\"])[1]/../../../td[7]/div/a')
     # 执行成功工单数
-    TAB_ONE_WORK_SUECESS_ALL = (
+    TAB_ONE_APP_SUECESS_ALL = (
         By.XPATH, '(// div[@class =\"x-grid3-row-checker\"])[1]/../../../td[8]/div/a')
     # 执行失败工单数
-    TAB_ONE_WORK_FAIL_ALL = (
+    TAB_ONE_APP_FAIL_ALL = (
         By.XPATH, '(// div[@class =\"x-grid3-row-checker\"])[1]/../../../td[9]/div/a')
 
     # 本地费控执行统计
@@ -53,9 +53,9 @@ class LocalFeiManageExeCount_dis_count_Locators:
 class LocalFeiManageExeCount_dis_detail_Locators:
     # 【显示区】
     # 工单类型
-    QRY_WORK_CATA = (
+    QRY_APP_TYPE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'工单类型')]/../div[1]/div/img)[2]")
-    QRY_WORK_CATA_VALUE = (
+    QRY_APP_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'电价参数下发')]/../div[%s]")
     # 费控用户类型
     QRY_FEI_USER_CATA = (

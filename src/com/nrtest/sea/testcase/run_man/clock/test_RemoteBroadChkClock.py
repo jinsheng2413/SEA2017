@@ -67,7 +67,7 @@ class TestRemoteBroadChkClock(TestCase, RemoteBroadChkClockPage):
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 终端厂家
-        self.inputSel_tmnl_fac(para['TMNL_FAC'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端规约
         self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 设置状态

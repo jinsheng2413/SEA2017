@@ -14,8 +14,8 @@ from com.nrtest.common.base_page import Page
 # 高级应用→工单处理→抄表失败工单查询
 class SectfailedAppQueryPage(Page):
     # 抄表段号
-    def inputStr_sect_no(self, content):
-        self.input(content)  # , *SectfailedAppQueryLocators.SECT_NO)
+    def inputStr_mr_sect_no(self, content):
+        self.input(content)  # , *SectfailedAppQueryLocators.MR_SECT_NO)
 
     # 抄表管理员工号
     def inputStr_sect_manager_no(self, content):

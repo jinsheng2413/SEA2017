@@ -84,7 +84,7 @@ class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
         self.inputDt_end_date(para['END_DATE'])
 
         # 责任人工号
-        self.inputStr_charge_person_no(para['CHARGE_PERSON'])
+        self.inputStr_person_resp_no(para['CHARGE_PERSON'])
 
         # 查询按钮
         self.btn_search()

@@ -18,8 +18,8 @@ class MeterDataQueryPage(Page):
         self.clickRadioBox(options)
 
     # 抄表段号
-    def inputStr_sect_no(self, content):
-        self.input(content)  # , *MeterDataQueryLocators.SECT_NO)
+    def inputStr_mr_sect_no(self, content):
+        self.input(content)  # , *MeterDataQueryLocators.MR_SECT_NO)
 
     # 电表资产号
     def inputStr_meter_asset_no(self, content):
@@ -48,11 +48,11 @@ class MeterDataQueryPage(Page):
         self.selectDropDown(index)
 
     # 电能表抄读状态
-    def inputSel_meter_read_stat(self, index):
+    def inputSel_meter_read_status(self, index):
         self.selectDropDown(index)
 
     # 终端运行状态
-    def inputSel_tmnl_run_stat(self, index):
+    def inputSel_tmnl_run_status(self, index):
         self.selectDropDown(index)
 
     # 农排用户选择

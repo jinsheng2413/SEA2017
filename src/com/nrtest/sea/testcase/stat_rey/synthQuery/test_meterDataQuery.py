@@ -58,7 +58,7 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 抄表段号
-        self.inputStr_sect_no(para['SECT_NO'])
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 电表资产号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 用户类型
@@ -70,9 +70,9 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
         # 数据类别
         self.inputSel_data_sort(para['DATA_SORT'])
         # 电能表抄读状态
-        self.inputSel_meter_read_stat(para['METER_READ_STAT'])
+        self.inputSel_meter_read_status(para['METER_READ_STAT'])
         # 终端运行状态
-        self.inputSel_tmnl_run_stat(para['TMNL_RUN_STAT'])
+        self.inputSel_tmnl_run_status(para['TMNL_RUN_STAT'])
         # 农排用户选择
         self.inputSel_user_select(para['USER_SELECT'])
         # 用户类别

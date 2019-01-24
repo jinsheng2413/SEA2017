@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 class FourTabStatusPage(Page):
 
     # 用户状态
-    def inputSel_user_state(self, name):
+    def inputSel_cons_status(self, name):
         self.selectDropDown(name)
 
     # 查询

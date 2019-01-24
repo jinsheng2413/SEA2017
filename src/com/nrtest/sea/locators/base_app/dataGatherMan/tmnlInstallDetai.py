@@ -26,7 +26,7 @@ class TmnlInstallDetaiLocators:
     QRY_END_TIME = (By.XPATH, "//*[@id=\"tmnlInstallEndMonth\"]")
 
     # 【操作区】
-    BTN_WORK_COUNT_QRY = (By.XPATH,
+    BTN_APP_COUNT_QRY = (By.XPATH,
                           "(//div[@class=\"x-column-inner\"]//tbody[@class=\"x-btn-small x-btn-icon-small-left\"]//button[contains(text(),'查询')])[1]")
 
     # 【js区】

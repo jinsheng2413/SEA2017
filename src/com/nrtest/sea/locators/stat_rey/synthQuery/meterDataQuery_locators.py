@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 # 统计查询→综合查询→抄表数据查询
 class MeterDataQueryLocators:
     # 抄表段号
-    SECT_NO = (By.XPATH, '//label[contains(text(),"抄表段号")]/../div/input')
+    MR_SECT_NO = (By.XPATH, '//label[contains(text(),"抄表段号")]/../div/input')
     # 电表资产号
     METER_ASSET_NO = (
         By.XPATH, '//label[contains(text(),"电表资产号")]/../div/input')

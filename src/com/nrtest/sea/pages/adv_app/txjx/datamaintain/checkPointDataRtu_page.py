@@ -22,7 +22,7 @@ class CheckPointDataRtuPage(Page):
         self.input(value)
 
     # 抄表段号
-    def inputSel_read_no(self, name):
+    def inputSel_mr_read_no(self, name):
         self.selectDropDown(name)
 
     # 用户名称

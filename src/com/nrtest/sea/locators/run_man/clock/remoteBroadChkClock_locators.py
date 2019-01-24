@@ -26,10 +26,10 @@ class RemoteBroadChkClockLocators:
     TMNL_TYPE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'低压集中器')]/../div[contains(text(),'%s')]")
     # 终端厂家-下拉框
-    TMNL_FAC_SEL = (
+    TMNL_FACTORY_SEL = (
         By.XPATH, "//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂家')]/../div/div/img")
     # 终端厂家
-    TMNL_FAC = (
+    TMNL_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'宁波三星')]/../div[contains(text(),'%s')]")
     # 终端规约-下拉框
     TMNL_PROTOCOL_SEL = (

@@ -29,7 +29,7 @@ class ElePricePages(Page):
         self.input(value)
 
     # 抄表段号
-    def inputStr_sect_no(self, value):
+    def inputStr_mr_sect_no(self, value):
         self.input(value)
 
     # 任务类型

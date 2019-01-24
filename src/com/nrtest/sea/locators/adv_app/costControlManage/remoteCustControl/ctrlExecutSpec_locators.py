@@ -28,7 +28,7 @@ class CtrlExecutSpecLocators:
     QRY_CONTROL_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'预警')]/../div[contains(text(),'%s')]")
     # 用户名称
-    QRY_USER_NAME = (
+    QRY_CONS_NAME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户名称')]/../../div[1]/div[1]//input")
     # 终端地址
     QRY_TMNL_ADDR = (
@@ -40,7 +40,7 @@ class CtrlExecutSpecLocators:
     QRY_END_TIME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'结束时间')]/../../div[1]/div[1]//input")
     # 工单号
-    QRY_WORK_ORDER = (
+    QRY_APP_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'工单号')]/../../div[1]/div[1]//input")
 
     # 【操作区】

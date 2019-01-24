@@ -24,7 +24,7 @@ class TmnlQualityEvalStaticPage(Page):
         self.inputDate(value)
 
     # 终端厂家--打开并选择
-    def inputSel_tmnl_fac(self, options):
+    def inputSel_tmnl_factory(self, options):
         self.selectDropDown(options)
 
     # 点击查询
@@ -43,7 +43,7 @@ class TmnlQualityEvalDetailPage(Page):
         self.selectDropDown(options)
 
     # 终端厂家-打开并选择
-    def inputSel_tmnl_fac(self, options):
+    def inputSel_tmnl_factory(self, options):
         self.selectDropDown(options, is_multi_elements=True, is_multi_tab=True)
 
     # 故障类别-打开并选择

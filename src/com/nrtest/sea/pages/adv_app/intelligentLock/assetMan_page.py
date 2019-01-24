@@ -20,12 +20,12 @@ class AssetManPage(Page):
 
     def inputStr_tg_name(self, content):
         self.input(content)  #, *AssetManLocators.TG_NAME)
+
     # 用户名称
-
-    def inputStr_user_name(self, content):
+    def inputStr_cons_name(self, content):
         self.input(content)  # , *AssetManLocators.CONS_NAME)
-    # 用户类型
 
+    #  用户类型
     def inputSel_cons_type(self, index):
         # self.click(AssetManLocators.CONS_TYPE)
         # locator = self.get_select_locator(

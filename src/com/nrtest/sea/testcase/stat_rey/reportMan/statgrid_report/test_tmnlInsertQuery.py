@@ -79,7 +79,7 @@ class TestTmnlInsertQuery(TestCase, TmnlInsertQueryPage):
         self.inputSel_tmnlType(para['TMNL_TYPE'])
 
         #终端厂商
-        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         #统计口径
         self.inputSel_countCaliber(para['COUNT_CALIBER'])

@@ -29,7 +29,7 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
         menuPage = MenuPage.openMenu(DataGatherMan_data.tmnlInstallDetail_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tab_workCount)
+        menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tab_appCount)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -73,7 +73,7 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
 
-        self.btn_workCount_qry()
+        self.btn_appCount_qry()
         self.sleep_time(2)
 
     def assert_query_result(self, para):
@@ -93,7 +93,7 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
-                                  DataGatherMan_data.tmnlInstallDetail_tab_workCount))
+                                  DataGatherMan_data.tmnlInstallDetail_tab_appCount))
     def test_query(self, para):
         """基本应用--终端管理--远程调试（第二个tab页）
         :param para: 用例数据
@@ -105,7 +105,7 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
-                                  DataGatherMan_data.tmnlInstallDetail_tab_workCount, valCheck=True))
+                                  DataGatherMan_data.tmnlInstallDetail_tab_appCount, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

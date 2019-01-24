@@ -10,7 +10,6 @@
 
 
 class LoadRankAnalyse_para:
-    para_test_rank_border = {'pa': 'test_rank_border'}
     # 统计查询→数据分析→电量分析→电量排名分析
     powerSortAnalyse_para = '99943210'
     # 统计查询→数据分析→电量分析→电量数据查询

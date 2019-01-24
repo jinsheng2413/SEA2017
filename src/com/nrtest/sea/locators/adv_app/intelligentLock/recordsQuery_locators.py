@@ -25,7 +25,7 @@ class RecordsQueryLocators:
     # 用户编号
     CONS_NO = (By.XPATH, '//label[contains(text(),"用户编号")]/../div/div/input')
     # 用户名称
-    USER_NAME = (By.XPATH, '//label[contains(text(),"用户名称")]/../div/div/input')
+    CONS_NAME = (By.XPATH, '//label[contains(text(),"用户名称")]/../div/div/input')
     # 用户类型
     CONS_TYPE = (By.XPATH, '//label[contains(text(),"用户类型")]/../div/div/input')
     # 用户类型→值

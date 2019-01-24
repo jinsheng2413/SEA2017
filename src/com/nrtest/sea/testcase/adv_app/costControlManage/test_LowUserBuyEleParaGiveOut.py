@@ -64,7 +64,7 @@ class TestLowUserBuyEleParaGiveOut(TestCase, LowUserBuyEleParaGiveOut_page):
         self.inputStr_meter_addr(para['METER_ADDR'])
 
         # 抄表段号
-        self.inputStr_sect_no(para['SECT_NO'])
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
 
         # 执行状态查询
         self.inputSel_execute_status(para['EXECUTE_STATUS'])

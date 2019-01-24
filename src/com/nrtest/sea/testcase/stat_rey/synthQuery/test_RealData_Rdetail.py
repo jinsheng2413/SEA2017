@@ -64,21 +64,21 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 选择抄表段号
-        self.inputStr_ReadMeterSegmentNo_Rdetail(para['READ_METER_SEGMENT_NO'])
+        self.inputStr_mr_sect_no_Rdetail(para['MR_SECT_NO'])
         # 电表资产号
-        self.inputStr_MeterAssert_Rdetail(para['METER_ASSERT'])
+        self.inputStr_meter_asset_no_Rdetail(para['METER_ASSERT'])
         # 用户类型
-        self.inputSel_userType_Rdetail(para['CONS_TYPE'])
+        self.inputSel_cons_type_Rdetail(para['CONS_TYPE'])
         # 相位
         self.inputSel_phase_Rdetail(para['PHASE'])
         # 查询日期
         self.inputDt_Time_Rdetail(para['QUERY_TIME'])
         # 数据类别
-        self.inputSel_dataType(para['DATA_TYPE'])
+        self.inputSel_data_type(para['DATA_TYPE'])
         # 电能表抄读状态
-        self.inputSel_meter_read_state_Rdetail(para['METER_READ_STATE'])
+        self.inputSel_meter_read_status_Rdetail(para['METER_READ_STATE'])
         # 终端运行状态
-        self.inputSel_TmnlRunState_RDetail(para['TMNL_RUN_STATE'])
+        self.inputSel_tmnl_run_status_RDetail(para['TMNL_RUN_STATE'])
         self.btn_rdetail_qry()
 
     def assert_query_result(self, para):

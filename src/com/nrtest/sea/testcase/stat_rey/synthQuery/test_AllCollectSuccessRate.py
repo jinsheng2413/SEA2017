@@ -64,15 +64,15 @@ class TestAllCollectSuccessRate(TestCase, AllCollectSuccessRatePage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 输入用户编号
-        self.inputStr_userNo(para['CONS_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
         # 输入表资产号
-        self.inputStr_surfaceAssetNo(para['SURFACE_ASSET_NO'])
+        self.inputStr_meter_asset_no(para['SURFACE_ASSET_NO'])
         # 电能表抄读状态
-        self.inputStr_meterReadState(para['METER_READ_STATE'])
+        self.inputStr_meter_read_status(para['METER_READ_STATE'])
         # 用户类型
-        self.inputSel_userType(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 终端运行状态
-        self.inputStr_Tmnl_runState(para['TMNL_RUN_STATE'])
+        self.inputStr_tmnl_run_status(para['TMNL_RUN_STATE'])
         # 查询
         self.btn_qry()
 

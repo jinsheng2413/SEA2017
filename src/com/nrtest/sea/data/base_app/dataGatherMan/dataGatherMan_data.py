@@ -21,7 +21,7 @@ class DataGatherMan_data:
     # 基本应用→终端管理→远程调试
     tmnlInstallDetail_para = '99912100'
     tmnlInstallDetail_tabOne = '终端调试'
-    tmnlInstallDetail_tab_workCount = '终端调试工单统计'
+    tmnlInstallDetail_tab_appCount = '终端调试工单统计'
 
     # 基本应用→终端管理→终端版本召测
     terminalOnlineSpied_para = '99912910'

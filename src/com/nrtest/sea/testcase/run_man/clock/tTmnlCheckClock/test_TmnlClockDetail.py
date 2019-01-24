@@ -71,7 +71,7 @@ class TestTmnlClockDetail(TestCase, TmnlClockDetailPage):
         # 终端型号
         self.inputStr_tmnl_model(para['TMNL_MODEL'])
         # 终端厂家
-        self.inputSel_tmnl_fac(para['TMNL_FAC'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 是否历史

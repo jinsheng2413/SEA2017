@@ -14,9 +14,9 @@ from selenium.webdriver.common.by import By
 # 统计查询→工单查询→工单查询2017
 class WorkCount2017Locators:
     # 工单类型
-    QRY_WORK_TITLE = (
+    QRY_APP_TYPE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),\'工单类型\')]/../../div[1]/div[1]//input)[1]")
-    QRY_WORK_TITLE_VALUE = (
+    QRY_APP_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'采集运维工单\')]/../div[contains(text(),'%s')]")
 
     # 【操作区】
@@ -31,20 +31,20 @@ class WorkCount2017Locators:
 class WorkQuery2017Locators:
     # 【查询条件区】
     # 工单编号
-    QRY_WORK_NO = (
+    QRY_APP_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'工单编号\')]/../../div[1]/div[1]//input")
     # 工单处理人
-    QRY_WORK_MAN = (
+    QRY_APP_NO_DEAL_MAN = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'工单处理人\')]/../../div[1]/div[1]//input")
     # 工单类型
-    QRY_WORK_TITLE = (
+    QRY_APP_TYPE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),\'工单类型\')]/../../div[1]/div[1]//input)[2]")
-    QRY_WORK_TITLE_VALUE = (
+    QRY_APP_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'采集运维工单\')]/../div[contains(text(),'%s')]")
     # 工单状态
-    QRY_WORK_STATUS = (
+    QRY_APP_STATUS = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'工单状态\')]/../../div[1]/div[1]//input")
-    QRY_WORK_STATUS_VALUE = (
+    QRY_APP_STATUS_VALUE = (
         By.XPATH,
         "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'待处理工单\')]/../div[contains(text(),'%s')]")
     # 工单发生时间

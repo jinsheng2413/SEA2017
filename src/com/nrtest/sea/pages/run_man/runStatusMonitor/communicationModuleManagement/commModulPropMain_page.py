@@ -50,7 +50,7 @@ class ModuleAttributeRelationshipMantainPage(Page):
         self.input(value)  #, *ModuleAttributeRelationshipMantainLocators.QRY_TMNL_ADDR)
 
     # 终端厂家
-    def inputSel_tmnlFactory(self, item):
+    def inputSel_tmnl_factory(self, item):
         # self.input(name, *ModuleAttributeRelationshipMantainLocators.QRY_TMNL_FACTORY)
         self.selectDropDown(item)
 

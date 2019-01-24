@@ -68,7 +68,7 @@ class TestMetClockDayStatic(TestCase, MetClockDayStaticPage):
         # 电表类别
         self.inputSel_met_type(para['MET_TYPE'])
         # 电能表厂商
-        self.inputSel_met_fac(para['MET_FAC'])
+        self.inputSel_meter_factory(para['METER_FACTORY'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 

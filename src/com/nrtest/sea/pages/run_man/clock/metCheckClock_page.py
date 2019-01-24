@@ -43,7 +43,7 @@ class MetClockDayStaticPage(Page):
         self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 电能表厂商--打开并选择
-    def inputSel_met_fac(self, item):
+    def inputSel_meter_factory(self, item):
         self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
     # 查询日期
@@ -58,7 +58,7 @@ class MetClockDayStaticPage(Page):
 class MetClockDetailPage(Page):
 
     # 电能表厂商--打开并选择
-    def inputSel_met_fac(self, item):
+    def inputSel_meter_factory(self, item):
         self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 电表类别

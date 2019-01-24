@@ -24,10 +24,10 @@ class MetClockMonthStaticLocators:
     MET_TYPE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'有功表')]/../div[contains(text(),'%s')]")
     # 电能表厂商-下拉框
-    MET_FAC_SEL = (
+    METER_FACTORY_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'电能表厂商')]/../div/div/img)[1]")
     # 电能表厂商
-    MET_FAC = (
+    METER_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'ABB公司')]/../div[contains(text(),'%s')]")
     # 日期
     QUERY_DATE = (
@@ -60,10 +60,10 @@ class MetClockDayStaticLocators:
     MET_TYPE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'有功表')]/../div[contains(text(),'%s')]")
     # 电能表厂商-下拉框
-    MET_FAC_SEL = (
+    METER_FACTORY_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'电能表厂商')]/../div/div/img)[2]")
     # 电能表厂商
-    MET_FAC = (
+    METER_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'ABB公司')]/../div[contains(text(),'%s')]")
     # 日期
     QUERY_DATE = (
@@ -90,10 +90,10 @@ class MetClockDetailLocators:
     ORG_NO = (
         By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[2]"))
     # 电能表厂商-下拉框
-    MET_FAC_SEL = (
+    METER_FACTORY_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'电能表厂商')]/../div/div/img)[2]")
     # 电能表厂商
-    MET_FAC = (
+    METER_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'ABB公司')]/../div[contains(text(),'%s')]")
     # 电表类别-下拉框
     MET_TYPE_SEL = (

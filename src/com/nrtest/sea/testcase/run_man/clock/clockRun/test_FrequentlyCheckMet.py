@@ -65,7 +65,7 @@ class TestFrequentlyCheckMet(TestCase, FrequentlyCheckMetPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 电能表厂商
-        self.inputSel_met_fac(para['MET_FAC'])
+        self.inputSel_meter_factory(para['METER_FACTORY'])
         # 电表类别
         self.inputSel_met_type(para['MET_TYPE'])
         # 电能表资产号

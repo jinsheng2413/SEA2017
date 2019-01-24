@@ -16,12 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.automatedMeterAvailability_page import AutomatedMeterAvailabilityPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.automatedMeterAvailability_page import AutomatedMeterAvailabilityDetailPage
 
 
 # 统计查询→综合查询→自动化抄表可用率:全项失败明细
 @ddt
-class TestAutomatedMeterAvailability_Failed(TestCase, AutomatedMeterAvailabilityPage):
+class TestAutomatedMeterAvailability_Failed(TestCase, AutomatedMeterAvailabilityDetailPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -58,11 +58,11 @@ class TestAutomatedMeterAvailability_Failed(TestCase, AutomatedMeterAvailability
         # 表计类型
         self.inputSel_meter_type(para['METER_TYPE'])
         # 终端地址
-        self.inputStr_failed_tmnl_addr(para['FAILED_TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 日期
-        self.inputDt_failed_date(para['FAILED_DATE'])
+        self.inputDt_date(para['QUERY_DATE'])
         # 查询按钮
-        self.failed_btn_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """

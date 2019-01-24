@@ -11,48 +11,35 @@
 from com.nrtest.common.base_page import Page
 
 
-# 统计查询→综合查询→自动化抄表可用率
+# 统计查询→综合查询→自动化抄表可用率:全项采集成功率
 class AutomatedMeterAvailabilityPage(Page):
-    # 全项采集成功率
     # 表计类型
     def inputSel_meter_type(self, index):
-        # self.click(AutomatedMeterAvailabilityLocators.METER_TYPE)
-        # locator = self.get_select_locator(
-        #     AutomatedMeterAvailabilityLocators.METER_TYPE_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(index)
 
     # 查询日期
     def inputDt_query_date(self, content):
-        # self.exec_script(AutomatedMeterAvailabilityLocators.DATE_JS)
-        # self.input(content, *AutomatedMeterAvailabilityLocators.DATE)
         self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(AutomatedMeterAvailabilityLocators.BTN_SEARCH)
         self.btn_query()
 
-    # 全项采集失败明细
+
+# 统计查询→综合查询→自动化抄表可用率:全项采集失败明细
+class AutomatedMeterAvailabilityDetailPage(Page):
     # 表计类型
     def inputSel_meter_type(self, index):
-        # self.click(AutomatedMeterAvailabilityLocators.METER_TYPE)
-        # locator = self.get_select_locator(
-        #     AutomatedMeterAvailabilityLocators.METER_TYPE_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 终端地址
-    def inputStr_failed_tmnl_addr(self, content):
-        self.input(content)  # , *AutomatedMeterAvailabilityLocators.FAILED_TMNL_ADDR)
+    def inputStr_tmnl_addr(self, value):
+        self.input(value)
 
     # 查询日期
-    def inputDt_failed_date(self, content):
-        # self.exec_script(AutomatedMeterAvailabilityLocators.FAILED_DATE_JS)
-        # self.input(content, *AutomatedMeterAvailabilityLocators.FAILED_DATE)
+    def inputDt_date(self, content):
         self.inputDate(content)
 
     # 查询按钮
-    def failed_btn_search(self):
-        # self.click(AutomatedMeterAvailabilityLocators.FAILED_BTN_SEARCH)
+    def btn_search(self):
         self.btn_query(True)

@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import Tm
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用--终端管理--远程调试（第二个tab页）
+# 基本应用→终端管理→远程调试:终端调试
 @ddt
 class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
 
@@ -66,18 +66,6 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
 
         # 终端装接状态
         self.inputChk_assemblingStatus(para['ASSEMBLING_STATUS'])
-
-        # # 调试失败
-        # self.inputChk_testFailue(para['TEST_FAILUE'])
-        #
-        # # 装接成功
-        # self.inputChk_assembingSuccess(para['ASSEMBLING_SUCCESS'])
-        #
-        # # 处理中
-        # self.inputChk_isProcessing(para['IS_PROCESSING'])
-        #
-        # # 建档失败
-        # self.inputChk_buildFailue(para['BUILD_FAILUE'])
 
         # 查询状态
         self.inputChk_queryType(para['QUERY_TYPE'])
@@ -138,7 +126,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne))
     def test_query(self, para):
-        """基本应用--终端管理--远程调试（第二个tab页）
+        """基本应用→终端管理→远程调试:终端调试
         :param para:用例数据
         """
         self.start_case(para, __file__)

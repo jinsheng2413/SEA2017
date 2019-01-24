@@ -13,10 +13,3 @@ class Dict(dict):
     def __missing__(self, key):
         print('该KEY值“{}”不存在！！'.format(key))
         return ''
-
-
-if __name__ == '__main__':
-    a = {'a': 1, 'b': 2}
-    b = Dict(a)
-    print(a['a'])
-    print(b['c'])

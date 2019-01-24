@@ -11,6 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→档案管理→多表合一运行状态
 class FourTabStatusPage(Page):
 
     # 用户状态

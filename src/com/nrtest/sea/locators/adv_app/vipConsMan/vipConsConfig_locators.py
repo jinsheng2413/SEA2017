@@ -24,7 +24,7 @@ class VipConsConfig_locators:
         By.XPATH,
         "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'<50')])[1]/../div[contains(text(),'%s')]")
     # 供电电压
-    QRY_VOLTAGE_LEVEL = (
+    QRY_VOLT_CODE = (
         By.XPATH, "//label[contains(text(),'供电电压')]/../div/div/img")
     # 行业--选择
     BTN_FACTORY_SELECT = (By.XPATH, "//button[contains(text(),'选择')]")

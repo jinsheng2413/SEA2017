@@ -57,7 +57,7 @@ class TestTgLineLossAnalysis(TestCase, PartialPressureLineLossAnalysisPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 电压等级
-        self.inputSel_voltage_level(para['VOLTAGE_LEVEL'])
+        self.inputSel_volt_code(para['VOLT_CODE'])
 
         # 日期统计类型
         self.inputDTTAB_statDateType(para['STAT_DATE_TYPE'])

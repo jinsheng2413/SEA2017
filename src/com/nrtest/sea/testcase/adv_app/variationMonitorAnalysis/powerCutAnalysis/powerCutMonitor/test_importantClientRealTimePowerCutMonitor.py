@@ -56,7 +56,7 @@ class TestImportantClientHistoryPowerCutQuery(TestCase, ImportantClientHistoryPo
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 电压等级
-        self.inputSel_volt_level(para['VOLT_LEVEL'])
+        self.inputSel_volt_code(para['VOLT_CODE'])
         # 停电开始日期
         self.inputDt_start_date(para['START_DATE'])
         # 停电结束日期

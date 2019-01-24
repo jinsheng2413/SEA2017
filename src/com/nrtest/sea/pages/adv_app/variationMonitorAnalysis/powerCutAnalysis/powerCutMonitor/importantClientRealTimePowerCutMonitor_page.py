@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测→重要客户实时停电监测
 class ImportantClientRealTimePowerCutMonitorPage(Page):
     # 电压等级
-    def inputSel_volt_level(self, index):
+    def inputSel_volt_code(self, index):
         self.selectDropDown(index)
 
     # 停电状态
@@ -29,10 +29,10 @@ class ImportantClientRealTimePowerCutMonitorPage(Page):
 # 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测→重要客户历史停电查询
 class ImportantClientHistoryPowerCutQueryPage(Page):
     # 电压等级
-    def inputSel_volt_level(self, index):
-        # self.click(*ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL)
+    def inputSel_volt_code(self, index):
+        # self.click(*ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_CODE)
         # locator = self.get_select_locator(
-        #     ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_LEVEL_VALUE, index)
+        #     ImportantClientRealTimePowerCutMonitorLocators.QRY_VOLT_CODE_VALUE, index)
         # self.click(*locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)

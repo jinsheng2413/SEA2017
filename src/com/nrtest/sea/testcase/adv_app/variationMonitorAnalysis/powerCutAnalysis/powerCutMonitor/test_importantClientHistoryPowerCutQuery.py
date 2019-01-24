@@ -56,7 +56,7 @@ class TestImportantClientRealTimePowerCutMonitor(TestCase, ImportantClientRealTi
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 电压等级
-        self.inputSel_volt_level(para['VOLT_LEVEL'])
+        self.inputSel_volt_code(para['VOLT_CODE'])
         # 停电状态
         self.inputSel_power_cut_status(para['POWER_CUT_STATUS'])
         # 查询日期

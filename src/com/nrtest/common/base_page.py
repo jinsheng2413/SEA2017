@@ -938,7 +938,7 @@ class Page():
 
     def _find_elements(self, locator):
         """
-        #校验一组元素
+        校验一组元素
         :param locator:
         :return: 查找元素个数
         """

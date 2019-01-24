@@ -99,7 +99,7 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         self.inputDt_end_time(para['END_TIME'])
 
         # 工单号
-        self.inputStr_app_no(para['WORK_ORDER'])
+        self.inputStr_app_no(para['APP_NO'])
 
         # 执行结果状态
         self.inputSel_exe_result_status(para['EXE_RESULT_STATUS'])

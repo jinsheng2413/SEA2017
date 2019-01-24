@@ -20,7 +20,7 @@ class CheckReduceManagerLocators:
     QRY_END_TIME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'结束日期')]/../../div[1]/div[1]//input")
     # 申请单号
-    QRY_APPLY_NO = (
+    QRY_APP_NO = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'申请单号')]/../../div[1]/div[1]//input")
 
     # 【操作区】

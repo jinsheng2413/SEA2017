@@ -57,7 +57,7 @@ class TestIndexDetail(TestCase, IndexDetailPage_count):
         self.openLeftTree(para['TREE_NODE'])
 
         # 工号
-        self.inputStr_app_no(para['WORK_NO'])
+        self.inputStr_app_no(para['APP_NO'])
 
         # 时间选择
         self.inputDt_query_date(para['QUERY_DATE'])

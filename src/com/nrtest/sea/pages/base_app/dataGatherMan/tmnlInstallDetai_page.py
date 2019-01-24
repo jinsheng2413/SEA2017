@@ -49,7 +49,7 @@ class TmnlInstallDetaiPage(Page):
         self.inputDate(value)
 
     # 申请单号
-    def inputStr_applyNo_count(self, value):
+    def inputStr_app_no_count(self, value):
         # self.input(value) #, *TmnlInstallDetaiLocators.QRY_APPLY_STATE_COUNT)
         self.input(value)
 

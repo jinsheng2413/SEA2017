@@ -69,9 +69,9 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
         # 至
         self.inputDt_end_date(para['END_TIME'])
         # 申请单号
-        self.inputStr_app_no(para['APPLY_NO'])
+        self.inputStr_app_no(para['APP_NO'])
         # 工单状态
-        self.inputSel_app_status(para['WORK_STATUS'])
+        self.inputSel_app_status(para['APP_STATUS'])
 
         self.btn_qry()
         self.sleep_time(2)

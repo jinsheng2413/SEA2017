@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 # 系统管理→档案核查管理→考核减免申请
 class CheckReduceApplicationPage(Page):
     # 申请单号
-    def inputStr_applyNo(self, value):
+    def inputStr_app_no(self, value):
         self.input(value)  # , *CheckReduceApplicationLocators.QRY_APP_NO)
 
     # 接收时间

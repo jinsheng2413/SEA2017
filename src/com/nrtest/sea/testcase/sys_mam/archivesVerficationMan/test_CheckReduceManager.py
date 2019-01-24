@@ -69,7 +69,7 @@ class TestCheckReduceManager(TestCase, CheckReduceManagerPage):
         # 结束日期
         self.inputDt_end_time(para['END_TIME'])
         # 申请单号
-        self.inputDt_applyNo(para['APPLY_NO'])
+        self.inputStr_app_no(para['APP_NO'])
         # 查询
         self.btn_qry()
 

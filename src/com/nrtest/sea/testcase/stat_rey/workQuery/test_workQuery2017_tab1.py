@@ -66,7 +66,7 @@ class TestWorkQuery2017_tab1(TestCase, WorkCount2017Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 工单类型
-        self.inputSel_app_type(para['WORK_TITLE'])
+        self.inputSel_app_type(para['APP_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)

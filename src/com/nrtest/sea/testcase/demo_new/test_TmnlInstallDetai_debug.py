@@ -77,7 +77,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.inputSel_processID_count(para['PROCESS_ID'])
 
         # 申请单号
-        self.inputStr_applyNo_count(para['APPLY_NO'])
+        self.inputStr_app_no_count(para['APP_NO'])
 
         # 用户编号
         self.inputStr_cons_no_count(para['CONS_NO'])

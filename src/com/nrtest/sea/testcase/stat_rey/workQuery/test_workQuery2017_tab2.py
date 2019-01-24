@@ -66,16 +66,16 @@ class TestWorkQuery2017_tab2(TestCase, WorkQuery2017Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 工单编号
-        self.inputStr_app_no(para['WORK_NO'])
+        self.inputStr_app_no(para['APP_NO'])
 
         # 工单处理人
-        self.inputStr_app_no_deal_man(para['WORK_MAN'])
+        self.inputStr_app_no_deal_man(para['APP_NO_DEAL_MAN'])
 
         # 工单类型
-        self.inputSel_app_type(para['WORK_TITLE'])
+        self.inputSel_app_type(para['APP_TYPE'])
 
         # 工单状态
-        self.inputSel_app_status(para['WORK_STATUS'])
+        self.inputSel_app_status(para['APP_STATUS'])
 
         # 工单发生时间
         self.inputDt_startDate(para['START_DATE'])

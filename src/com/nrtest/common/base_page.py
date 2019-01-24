@@ -607,7 +607,7 @@ class Page():
         打开Tab页
         :param tab_name:
         """
-        if tab_name.find(';'):
+        if tab_name.find(';') >= 0:
             ls_items = tab_name.split(';')
             tab = ls_items[1]
         else:
@@ -627,7 +627,7 @@ class Page():
         :param is_multi_tab:
         :param is_multi_elements:
         """
-        if tab_name.find(';'):
+        if tab_name.find(';') >= 0:
             ls_items = tab_name.split(';')
             tab = ls_items[2]
             tab = tab if len(tab) > 0 else ls_items[1]
@@ -642,7 +642,7 @@ class Page():
         :param para:
         :return:
         """
-        if para.find(';'):
+        if para.find(';') >= 0:
             ls_items = para.split(';')
             if len(ls_items) == 2:
                 value = ls_items[1]

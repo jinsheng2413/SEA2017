@@ -67,18 +67,20 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         # 终端装接状态
         self.inputChk_assemblingStatus(para['ASSEMBLING_STATUS'])
 
-        # 调试失败
-        self.inputChk_testFailue(para['TEST_FAILUE'])
+        # # 调试失败
+        # self.inputChk_testFailue(para['TEST_FAILUE'])
+        #
+        # # 装接成功
+        # self.inputChk_assembingSuccess(para['ASSEMBLING_SUCCESS'])
+        #
+        # # 处理中
+        # self.inputChk_isProcessing(para['IS_PROCESSING'])
+        #
+        # # 建档失败
+        # self.inputChk_buildFailue(para['BUILD_FAILUE'])
 
-        # 装接成功
-        self.inputChk_assembingSuccess(para['ASSEMBLING_SUCCESS'])
-
-        # 处理中
-        self.inputChk_isProcessing(para['IS_PROCESSING'])
-
-        # 建档失败
-        self.inputChk_buildFailue(para['BUILD_FAILUE'])
-
+        # 查询状态
+        self.inputChk_queryType(para['QUERY_TYPE'])
         # 开始时间
         self.inputDt_startTime_count(para['START_TIME'])
 

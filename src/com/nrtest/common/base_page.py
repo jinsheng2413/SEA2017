@@ -358,7 +358,9 @@ class Page():
             print('............请配置查询条件的标签值............')
         else:
             ls_option = option.split(';')
-            if len(ls_option[1]) > 0:
+            item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
+            # if len(ls_option[1]) > 0:
+            if bool(item):
                 # 打开下拉框
                 xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
                 if is_multi_elements:
@@ -371,15 +373,17 @@ class Page():
                     sleep(sleep_sec)
 
                 # 根据名称选择下拉框
-                loc = self.format_xpath(BaseLocators.DROPDOWN_OPTION, ls_option[1])
+                loc = self.format_xpath(BaseLocators.DROPDOWN_OPTION, item)  # ls_option[1])
                 self.click(loc)
             else:  # 选择值为空时，表示选择全部
                 xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
-                if is_multi_elements:
-                    el = self._find_displayed_element(xpath)
-                    el.clear()
-                else:
-                    self.input('', *xpath)
+                # if is_multi_elements:
+                #     el = self._find_displayed_element(xpath)
+                #     el.clear()
+                # else:
+                #     self.input('', *xpath)
+                el = self._find_displayed_element(xpath)
+                self.driver.execute_script("arguments[0].value=arguments[1]", el, '')
 
     def _uncheck_all(self, option_name):
         """

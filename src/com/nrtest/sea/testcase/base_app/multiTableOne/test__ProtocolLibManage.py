@@ -68,7 +68,7 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
         # 协议类型
         self.inputStr_protocolType(para['PROTOCOL_TYPE'])
         # 表记类型
-        self.inputStr_surfaceType(para['SURFACE_TYPE'])
+        self.inputStr_meter_type(para['METER_TYPE'])
         # 维护时间
         self.inputStr_maintenanceTmie(para['MANUFACTURER_TMIE'])
         # 结束时间

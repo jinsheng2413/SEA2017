@@ -72,7 +72,7 @@ class Test_DataRepair_2(TestCase, DataRepair_2Page):
         self.inputStr_tmnl_asst_no(para['TMNL_ASST_NO'])
 
         # 电表局编号
-        self.inputStr_meter_no(para['METER_NO'])
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
 
         # 查询
         self.btn_qry()

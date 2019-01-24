@@ -26,7 +26,7 @@ class DifferentialloopSetting_Page(Page):
 
     # 终端资产号
     def inputStr_tmnl_asst_no(self, value):
-        self.input(value)  #, *DifferentialloopSetting_locators.QRY_TMNL_ASST_NO)
+        self.input(value)  # , *DifferentialloopSetting_locators.QRY_TMNL_ASSET_NO)
 
     # 查询
     def btn_qry(self):

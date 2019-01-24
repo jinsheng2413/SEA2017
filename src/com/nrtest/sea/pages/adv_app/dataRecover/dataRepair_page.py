@@ -72,11 +72,11 @@ class DataRepair_2Page(Page):
 
     # 终端资产号
     def inputStr_tmnl_asst_no(self, value):
-        self.input(value)#, *DataRepair_2Locators.QRY_TMNL_ASST_NO)
+        self.input(value)  # , *DataRepair_2Locators.QRY_TMNL_ASSET_NO)
 
     # 电表局编号
-    def inputStr_meter_no(self, value):
-        self.input(value)#, *DataRepair_2Locators.QRY_METER_NO)
+    def inputStr_meter_asset_no(self, value):
+        self.input(value)  # , *DataRepair_2Locators.QRY_METER_ASSET_NO)
 
     # 查询
     def btn_qry(self):

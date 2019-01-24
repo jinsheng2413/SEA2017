@@ -24,10 +24,10 @@ class AutomatedMeterAvailabilityLocators:
     BTN_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[4]')
     # 全项采集失败明细
     # 表计类型
-    FAILED_METER_TYPE = (
+    METER_TYPE = (
         By.XPATH, '(//label[contains(text(),"表计类型")]/../div/div/img)[2]')
     # 表计类型→值
-    FAILED_METER_TYPE_VALUE = (
+    METER_TYPE_VALUE = (
         By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 终端地址
     FAILED_TMNL_ADDR = (

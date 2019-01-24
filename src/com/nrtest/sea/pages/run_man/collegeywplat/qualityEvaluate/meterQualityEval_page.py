@@ -24,7 +24,7 @@ class MeterQualityEvalStaticPage(Page):
         self.inputDate(value)
 
     # 电表厂家--打开并选择
-    def inputSel_meter_fac(self, name):
+    def inputSel_meter_factory(self, name):
         self.selectCheckBox(name)
 
     # 点击查询
@@ -43,7 +43,7 @@ class MeterQualityEvalDetailPage(Page):
         self.selectDropDown(name)
 
     # 电表厂家-打开并选择
-    def inputRSel_meter_fac(self, name):
+    def inputRSel_meter_factory(self, name):
         self.selectCheckBox(name, is_multi_tab=True, is_multi_elements=True)
 
     # 故障类别-打开并选择

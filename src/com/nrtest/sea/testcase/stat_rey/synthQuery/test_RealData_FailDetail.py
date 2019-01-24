@@ -68,7 +68,7 @@ class TestRealData_Faildetail(TestCase, RealDataPage):
         self.inputStr_mr_sect_no_Faildetail(
             para['MR_SECT_NO'])
         # 电表资产号
-        self.inputStr_meter_asset_no_Faildetail(para['METER_ASSERT'])
+        self.inputStr_meter_asset_no_Faildetail(para['METER_ASSET_NO'])
         # 用户类型
         self.inputSel_cons_type_Faildetail(para['CONS_TYPE'])
         # 反相采集结果

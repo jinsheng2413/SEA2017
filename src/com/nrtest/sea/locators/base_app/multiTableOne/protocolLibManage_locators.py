@@ -23,7 +23,7 @@ class ProtocolLibManageLocators:
     QRY_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'新增')]/../div[contains(text(),'%s')]")
     # 表记类型
-    QRY_SURFACE_TYPE = (By.XPATH, "//*[@id=\"protocolLib_meterType\"]")
+    QRY_METER_TYPE = (By.XPATH, "//*[@id=\"protocolLib_meterType\"]")
     # 维护时间
     QRY_MAINTENANCE_TIME = (By.XPATH, "//*[@id=\"protocolLib_startDate\"]")
     # 结束时间

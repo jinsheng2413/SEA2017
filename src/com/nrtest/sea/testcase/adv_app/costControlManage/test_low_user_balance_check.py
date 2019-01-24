@@ -99,7 +99,7 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
         self.inputStr_cons_name(para['CONS_NAME'])
 
         # 电表局编号
-        self.inputStr_ele_meter_bureea_order(para['ELE_METER_BUREEA_ORDER'])
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
 
         # 查询
         self.btn_qry()

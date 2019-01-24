@@ -66,7 +66,7 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         # 选择抄表段号
         self.inputStr_mr_sect_no_Rdetail(para['MR_SECT_NO'])
         # 电表资产号
-        self.inputStr_meter_asset_no_Rdetail(para['METER_ASSERT'])
+        self.inputStr_meter_asset_no_Rdetail(para['METER_ASSET_NO'])
         # 用户类型
         self.inputSel_cons_type_Rdetail(para['CONS_TYPE'])
         # 相位

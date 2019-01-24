@@ -74,9 +74,9 @@ class TmnlInstallDetaiLocators:
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'终端安装')]/../div[contains(text(),'%s')]")
 
     # 表类型
-    QRY_SURFACE_TYPE_COUNT = (
+    QRY_METER_TYPE_COUNT = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'表类型')]/../../div[1]/div[1]/div/img")
-    QRY_SURFACE_TYPE_VALUE = (
+    QRY_METER_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'电表')]/../div[contains(text(),'%s')]")
 
     # 终端厂家

@@ -63,9 +63,9 @@ class UnControlPlantGatherMon2_locators:
     # 户号
     QRY_CONS_NO = (By.XPATH, "//input[@id='consNoGather']")
     # 表资产编号
-    QRY_METER_ASST_NO = (By.XPATH, "//input[@id='meterNoGather']")
+    QRY_METER_ASSET_NO = (By.XPATH, "//input[@id='meterNoGather']")
     # 终端资产号
-    QRY_TMNL_ASST_NO = (By.XPATH, "tmnlNoGather")
+    QRY_TMNL_ASSET_NO = (By.XPATH, "tmnlNoGather")
 
     # 【操作区】
     # 【查询】

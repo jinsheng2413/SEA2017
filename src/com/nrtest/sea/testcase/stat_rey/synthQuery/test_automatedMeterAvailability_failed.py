@@ -56,7 +56,7 @@ class TestAutomatedMeterAvailability_Failed(TestCase, AutomatedMeterAvailability
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 表计类型
-        self.inputSel_failed_meter_type(para['FAILED_METER_TYPE'])
+        self.inputSel_meter_type(para['METER_TYPE'])
         # 终端地址
         self.inputStr_failed_tmnl_addr(para['FAILED_TMNL_ADDR'])
         # 日期

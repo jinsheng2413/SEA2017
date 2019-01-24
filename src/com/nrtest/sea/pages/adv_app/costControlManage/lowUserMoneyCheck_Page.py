@@ -49,7 +49,7 @@ class BalanceCheck_page(Page):
         self.input(value)
 
     # 电表局编号
-    def inputStr_ele_meter_bureea_order(self, value):
+    def inputStr_meter_asset_no(self, value):
         self.input(value)
 
     # 接收时间

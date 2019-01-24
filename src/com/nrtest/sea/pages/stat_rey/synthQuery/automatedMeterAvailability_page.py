@@ -35,10 +35,10 @@ class AutomatedMeterAvailabilityPage(Page):
 
     # 全项采集失败明细
     # 表计类型
-    def inputSel_failed_meter_type(self, index):
-        # self.click(AutomatedMeterAvailabilityLocators.FAILED_METER_TYPE)
+    def inputSel_meter_type(self, index):
+        # self.click(AutomatedMeterAvailabilityLocators.METER_TYPE)
         # locator = self.get_select_locator(
-        #     AutomatedMeterAvailabilityLocators.FAILED_METER_TYPE_VALUE, index)
+        #     AutomatedMeterAvailabilityLocators.METER_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 

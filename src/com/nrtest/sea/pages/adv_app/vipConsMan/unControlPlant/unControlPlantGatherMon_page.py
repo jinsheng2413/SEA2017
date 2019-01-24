@@ -73,11 +73,11 @@ class UnControlPlantGatherMon2_Page(Page):
 
     # 表资产编号
     def inputStr_meter_asst_no(self, value):
-        self.input(value)  #, *UnControlPlantGatherMon2_locators.QRY_METER_ASST_NO)
+        self.input(value)  # , *UnControlPlantGatherMon2_locators.QRY_METER_ASSET_NO)
 
     # 终端资产号
     def inputStr_tmnl_asst_no(self, value):
-        self.input(value)  #, *UnControlPlantGatherMon2_locators.QRY_TMNL_ASST_NO)
+        self.input(value)  # , *UnControlPlantGatherMon2_locators.QRY_TMNL_ASSET_NO)
 
     # 查询
     def btn_qry(self):

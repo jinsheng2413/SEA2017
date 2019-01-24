@@ -80,11 +80,11 @@ class TmnlInstallDetaiPage(Page):
         self.selectCheckBox(options)
 
     # 表类型
-    def inputSel_surfaceType_count(self, options):
+    def inputSel_meter_type_count(self, options):
         # print(options)
-        # self.click(TmnlInstallDetaiLocators.QRY_SURFACE_TYPE_COUNT)
+        # self.click(TmnlInstallDetaiLocators.QRY_METER_TYPE_COUNT)
         # locator = self.get_select_locator(
-        #     TmnlInstallDetaiLocators.QRY_SURFACE_TYPE_VALUE, options)
+        #     TmnlInstallDetaiLocators.QRY_METER_TYPE_VALUE, options)
         # self.click(locator)
         self.selectDropDown(options)
 

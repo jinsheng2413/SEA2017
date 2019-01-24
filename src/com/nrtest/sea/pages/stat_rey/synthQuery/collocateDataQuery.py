@@ -19,5 +19,5 @@ class CollcateDataQueryPage(Page):
         self.input(value)  # , *PublicDataQueryLocators.QRY_PUBLICCONSNO)
 
     # 配变表号
-    def inputSel_meterNo(self, value):
+    def inputSel_meter_asset_no(self, value):
         self.input(value)  # , *PublicDataQueryLocators.QRY_PUBLICNUM)

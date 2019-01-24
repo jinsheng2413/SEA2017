@@ -68,7 +68,7 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 终端厂家
-        self.inputRSel_meter_fac(para['METER_FAC'])
+        self.inputRSel_meter_factory(para['METER_FACTORY'])
 
         self.btn_query()
         self.sleep_time(2)

@@ -70,7 +70,7 @@ class Test_UnControlPlantGatherMon_2(TestCase, UnControlPlantGatherMon2_Page):
         self.inputStr_cons_no(para['CONS_NO'])
 
         # 表资产编号
-        self.inputStr_meter_asst_no(para['METER_ASST_NO'])
+        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
 
         # 终端资产号
         self.inputStr_tmnl_asst_no(para['TMNL_ASST_NO'])

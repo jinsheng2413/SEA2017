@@ -28,7 +28,7 @@ class MeterQualityEvalStaticLocators:
     # 电表厂家-下拉框
     METER_FAC_SEL = (By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'电表厂家')]/../div/div/img)[1]")
     # 电表厂家
-    METER_FAC = (
+    METER_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'上海协同')]/../div[contains(text(),'%s')]")
 
     # 【按钮】
@@ -64,7 +64,7 @@ class MeterQualityEvalDetailLocators:
     # 电表厂家-下拉框
     METER_FAC_SEL = (By.XPATH, "//div[@ class =\"x-form-item \"]//*[contains(text(),'电表厂家')]/../div/div/img")
     # 电表厂家
-    METER_FAC = (
+    METER_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'上海协同')]/../div[contains(text(),'%s')]")
     # 故障类别-下拉框
     FAULT_TYPE_SEL = (By.XPATH, "//div[@ class =\"x-form-item \"]//*[contains(text(),'故障类别')]/../div/div/img")

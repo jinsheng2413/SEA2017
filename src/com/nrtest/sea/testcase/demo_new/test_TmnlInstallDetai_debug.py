@@ -98,7 +98,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.inputSel_LCT_count(para['LCT'])
 
         # 表类型
-        self.inputSel_surfaceType_count(para['SURFACE_TYPE'])
+        self.inputSel_meter_type_count(para['METER_TYPE'])
 
         self.btn_tmnl_qry()
         self.sleep_time(2)

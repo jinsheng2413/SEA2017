@@ -69,7 +69,7 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
         # 故障严重程度
         self.inputSel_fault_level(para['FAULT_LEVEL'])
         # 电表厂家
-        self.inputRSel_meter_fac(para['METER_FAC'])
+        self.inputRSel_meter_factory(para['METER_FACTORY'])
         # 故障类别
         self.inputSel_fault_type(para['FAULT_TYPE'])
         # 故障开始日期

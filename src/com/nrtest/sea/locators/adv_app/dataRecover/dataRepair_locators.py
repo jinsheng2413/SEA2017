@@ -71,7 +71,7 @@ class DataRepair_2Locators:
     QRY_TMNL_ASST_NO = (
         By.XPATH, "//label[contains(text(),'终端资产号')]/../div/input")
     # 电表局编号
-    QRY_METER_NO = (By.XPATH, "//label[contains(text(),'电表局编号')]/../div/input")
+    QRY_METER_ASSET_NO = (By.XPATH, "//label[contains(text(),'电表局编号')]/../div/input")
     # 查询日期
     QRY_DATE = (By.XPATH, "//label[contains(text(),'查询日期')]/../div/div/input")
 

@@ -59,7 +59,7 @@ class BalanceCheckLocator:
     # 用户名称
     QRY_CONS_NAME = (By.XPATH, '//*[@id="readMeterConsName"]')
     # 电表局编号
-    QRY_ELE_METER_BUREEA_ORDER = (By.XPATH, '//*[@id="readMeterAssetNo"]')
+    QRY_METER_ASSET_NO = (By.XPATH, '//*[@id="readMeterAssetNo"]')
     # 接收时间
     QRY_RECEIVE_DATE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'接收时间：')]/../div/div/input")

@@ -70,7 +70,7 @@ class TestCollcateDataQuery(TestCase, CollcateDataQueryPage):
         # self.inputStr_user(para['USER'])
 
         # 配变表号
-        self.inputSel_meterNo(para['METER_NO'])
+        self.inputSel_meter_asset_no(para['METER_ASSET_NO'])
 
         self.btn_tmnl_qry()
         self.sleep_time(2)

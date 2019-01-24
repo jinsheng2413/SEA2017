@@ -35,7 +35,6 @@ class TmnlInstallDetaiPage(Page):
         # self.click(TmnlInstallDetaiLocators.BTN_APP_COUNT_QRY)
         self.btn_query(True)
 
-
     # --------------------------------------终端调试------------------------------------------
     # 开始时间
     def inputDt_startTime_count(self, value):
@@ -119,3 +118,23 @@ class TmnlInstallDetaiPage(Page):
         # self.click(TmnlInstallDetaiLocators.BTN_TMNL_QRY)
         # self.click(None)
         self.btn_query(True)
+
+    # 终端装接状态
+    def inputChk_assemblingStatus(self, value):
+        self.clickSingleCheckBox(value)
+
+    # 调试失败
+    def inputChk_testFailue(self, value):
+        self.clickRadioBox(value)
+
+    # 装接成功
+    def inputChk_assembingSuccess(self, value):
+        self.clickRadioBox(value)
+
+    # 处理中
+    def inputChk_isProcessing(self, value):
+        self.clickRadioBox(value)
+
+    # 建档失败
+    def inputChk_buildFailue(self, value):
+        self.clickRadioBox(value)

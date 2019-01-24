@@ -72,7 +72,7 @@ class TestAllCollectSuccessRate(TestCase, AllCollectSuccessRatePage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 终端运行状态
-        self.inputStr_tmnl_run_status(para['TMNL_RUN_STATE'])
+        self.inputStr_tmnl_run_status(para['TMNL_RUN_STATUS'])
         # 查询
         self.btn_qry()
 

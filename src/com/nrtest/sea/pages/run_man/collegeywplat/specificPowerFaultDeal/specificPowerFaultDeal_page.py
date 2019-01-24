@@ -42,7 +42,7 @@ class FaultSpecificPowerDealPage(Page):
         self.inputDate(value)
 
     # 流程状态
-    def inputSel_process(self, options):
+    def inputSel_flow_status(self, options):
         self.selectDropDown(options)
 
     # 故障结束日期
@@ -74,7 +74,7 @@ class FaultSpecificPowerFeedbackPage(Page):
         self.inputDate(value)
 
     # 流程状态
-    def inputSel_process(self, options):
+    def inputSel_flow_status(self, options):
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)
 
     # 故障结束日期

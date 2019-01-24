@@ -71,7 +71,7 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 相位
-        self.inputSel_phase(para['PHASE'])
+        self.inputSel_phase(para['PHASE_CODE'])
         # 查询日期
         self.inputDt_Time(para['QUERY_TIME'])
         # 数据类别
@@ -79,7 +79,7 @@ class TestRealData_Rdetail(TestCase, RealDataPage):
         # 电能表抄读状态
         self.inputSel_meter_read_status(para['METER_READ_STATUS'])
         # 终端运行状态
-        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATE'])
+        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
         self.btn_qry()
 
     def assert_query_result(self, para):

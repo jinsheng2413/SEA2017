@@ -46,7 +46,7 @@ class CPSynthQueryPage(Page):
         self.inputDate(value)
 
     # 终端用途
-    def inputChk_tmnl_way(self, value):
+    def inputChk_tmnl_purpose(self, value):
         self.clickRadioBox(value)
 
     # 接线方式

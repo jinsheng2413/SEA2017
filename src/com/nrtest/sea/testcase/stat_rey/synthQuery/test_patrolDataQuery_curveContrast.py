@@ -64,7 +64,7 @@ class TestPatrolDataCurveContrastQuery(TestCase, PatrolDataQueryCurveContrastPag
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 相别
-        self.inputChk_phase_flag(para['PHASE_FLAG'])
+        self.inputChk_phase_code(para['PHASE_CODE'])
         # 参照对象
         self.inputChk_reference_object(para['REFERENCE_OBJECT'])
         # 查询按钮

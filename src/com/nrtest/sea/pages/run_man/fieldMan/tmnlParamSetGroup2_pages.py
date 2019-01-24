@@ -19,7 +19,7 @@ class TermParaSetGroup2Page(Page):
         self.input(content)
 
     # 终端规约
-    def inputSel_tmnl_protory(self, option):
+    def inputSel_tmnl_protocol(self, option):
         self.selectDropDown(option)
 
     # 下发状态

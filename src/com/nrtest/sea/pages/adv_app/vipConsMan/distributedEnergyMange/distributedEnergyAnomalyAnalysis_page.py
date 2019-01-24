@@ -24,10 +24,10 @@ class DistributedEnergyAnomalyAnalysisPage(Page):
         self.inputDate(content)
 
     # 发电类型
-    def inputSel_elec_type(self, index):
-        # self.click(DistributedEnergyAnomalyAnalysisLocators.QRY_ELEC_TYPE)
+    def inputSel_gc_type(self, index):
+        # self.click(DistributedEnergyAnomalyAnalysisLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
-        #     DistributedEnergyAnomalyAnalysisLocators.QRY_ELEC_TYPE_VALUE, index)
+        #     DistributedEnergyAnomalyAnalysisLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 
@@ -65,10 +65,10 @@ class DistributedEnergyAnomalyDetailPage(Page):
         self.selectDropDown(index)
 
     # 发电类型
-    def inputSel_elec_type(self, index):
-        # self.click(DistributedEnergyAnomalyDetailLocators.QRY_ELEC_TYPE)
+    def inputSel_gc_type(self, index):
+        # self.click(DistributedEnergyAnomalyDetailLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
-        #     DistributedEnergyAnomalyDetailLocators.QRY_ELEC_TYPE_VALUE, index)
+        #     DistributedEnergyAnomalyDetailLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 

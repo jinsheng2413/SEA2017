@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 class GatherTaskCompilePage(Page):
 
     # 任务状态
-    def inputSel_task_state(self, name):
+    def inputSel_task_status(self, name):
         self.selectDropDown(name)
 
     # 终端类型

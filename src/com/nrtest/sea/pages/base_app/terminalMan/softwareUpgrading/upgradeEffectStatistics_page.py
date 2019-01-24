@@ -140,10 +140,10 @@ class UpgradeEffectStatisticsDetailPage(Page):
         self.selectDropDown(index)
 
     # 确认状态
-    def inputSel_affirm_status(self, index):
-        # self.click(UpgradeEffectStatisticsLocators.DETAIL_AFFIRM_STATUS)
+    def inputSel_confirm_status(self, index):
+        # self.click(UpgradeEffectStatisticsLocators.DETAIL_phase_code)
         # locator = self.get_select_locator(
-        #     UpgradeEffectStatisticsLocators.DETAIL_AFFIRM_STATUS_VALUE, index)
+        #     UpgradeEffectStatisticsLocators.DETAIL_phase_code_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 

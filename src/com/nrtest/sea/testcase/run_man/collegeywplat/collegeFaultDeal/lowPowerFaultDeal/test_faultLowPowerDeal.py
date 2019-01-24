@@ -70,7 +70,7 @@ class TestFaultLowPowerDeal(TestCase, FaultLowPowerDealPage):
         #故障结束日期
         self.inputDt_fault_end_date(para['FAULT_END_DATE'])
         #流程状态
-        self.inputSel_process(para['PROCESS_STATUS'])
+        self.inputSel_flow_status(para['FLOW_STATUS'])
         #故障来源
         self.inputDt_fault_from(para['FAULT_FROM'])
         #故障严重程度

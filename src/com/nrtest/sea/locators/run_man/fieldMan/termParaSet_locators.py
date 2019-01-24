@@ -23,9 +23,9 @@ class TermParaSetLocators:
     QRY_TMNL_FACTORY_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'上海协同\')]/../div[contains(text(),'%s')]")
     # 规约
-    QRY_TMNL_PROTORY = (
+    QRY_TMNL_PROTOCOL = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'规约\')]/../../div[1]/div[1]//img")
-    QRY_TMNL_PROTORY_VALUE = (
+    QRY_TMNL_PROTOCOL_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'698规约\')]/../div[contains(text(),'%s')]")
     # 任务状态
     QRY_TAST_STATUS = (

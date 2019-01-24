@@ -34,7 +34,7 @@ class MeterDataQueryPage(Page):
         self.selectCheckBox(index)
 
     # 相位
-    def inputSel_phase_position(self, index):
+    def inputSel_phase_code(self, index):
         self.selectDropDown(index)
 
     # 查询日期

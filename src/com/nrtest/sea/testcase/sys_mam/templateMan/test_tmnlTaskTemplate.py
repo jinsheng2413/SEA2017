@@ -55,7 +55,7 @@ class TestTmnlTaskTemplate(TestCase, TmnlTaskTemplatePage):
 
     def query(self, para):
         # 任务状态
-        self.inputSel_task_stat(para['TASK_STAT'])
+        self.inputSel_task_status(para['TASK_STATUS'])
 
         # 方案类型
         self.inputSel_scheme_type(para['SCHEME_TYPE'])

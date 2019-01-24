@@ -76,7 +76,7 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsDetailPage):
         # 升级状态
         self.inputSel_upgrade_ststus(para['UPGRADE_STATUS'])
         # 确认状态
-        self.inputSel_affirm_status(para['AFFIRM_STATUS'])
+        self.inputSel_confirm_status(para['CONFIRM_STATUS'])
         # 确认结果
         self.inputSel_affirm_result(para['AFFIRM_RESULT'])
         # 执行日期

@@ -24,9 +24,9 @@ class UnControlPlantGatherMon1_Page(Page):
         self.inputDate(value)  # , *UnControlPlantGatherMon1_locators.QRY_END_DATE)
 
     # 发电方式
-    def inputSel_generate_electricity_way(self, options):
-        # self.click(UnControlPlantGatherMon1_locators.QRY_GENERATE_ELECTRICITY_WAY)
-        # locator = self.get_select_locator(UnControlPlantGatherMon1_locators.QRY_GENERATE_ELECTRICITY_WAY_VALUE, index)
+    def inputSel_gc_mode(self, options):
+        # self.click(UnControlPlantGatherMon1_locators.QRY_GC_MODE)
+        # locator = self.get_select_locator(UnControlPlantGatherMon1_locators.QRY_GC_MODE_VALUE, index)
         # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(options)
@@ -48,9 +48,9 @@ class UnControlPlantGatherMon1_Page(Page):
 # 第二个tab页
 class UnControlPlantGatherMon2_Page(Page):
     # 发电方式
-    def inputSel_generate_electricity_way(self, options):
-        # self.click(UnControlPlantGatherMon2_locators.QRY_GENERATE_ELECTRICITY_WAY)
-        # locator = self.get_select_locator(UnControlPlantGatherMon2_locators.QRY_GENERATE_ELECTRICITY_WAY_VALUE, index)
+    def inputSel_gc_mode(self, options):
+        # self.click(UnControlPlantGatherMon2_locators.QRY_GC_MODE)
+        # locator = self.get_select_locator(UnControlPlantGatherMon2_locators.QRY_GC_MODE_VALUE, index)
         # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(options, is_multi_tab=True, is_multi_elements=True)

@@ -75,13 +75,13 @@ class TestRealData_Faildetail(TestCase, RealDataFailDetailPage):
         # 终端生产厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 相位
-        self.inputSel_phase(para['PHASE'])
+        self.inputSel_phase(para['PHASE_CODE'])
         # 查询日期
         self.inputDt_Time(para['QUERY_TIME'])
         # 电能表抄读状态
         self.inputSel_meter_read_status(para['METER_READ_STATUS'])
         # 终端运行状态
-        self.inputSel_TmnlRunState(para['TMNL_RUN_STATE'])
+        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
         # 查询
         self.btn_qry()
 

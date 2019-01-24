@@ -71,7 +71,7 @@ class TestTmnlParamSetGroup2(unittest.TestCase, TermParaSetGroup2Page):
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 终端规约
-        self.inputSel_tmnl_protory(para['TMNL_PROTORY'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
 
         # 下发状态
         self.inputSel_task_status(para['TASK_STATUS'])

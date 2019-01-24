@@ -88,10 +88,10 @@ class TmnlInstallDetaiPage(Page):
         self.selectDropDown(options)
 
     # 流程标识
-    def inputSel_processID_count(self, options):
-        # self.click(TmnlInstallDetaiLocators.QRY_PROCESS_ID_COUNT)
+    def inputSel_flow_id_count(self, options):
+        # self.click(TmnlInstallDetaiLocators.QRY_FLOW_ID_COUNT)
         # locator = self.get_select_locator(
-        #     TmnlInstallDetaiLocators.QRY_PROCESS_ID_COUNT_VALUE, options)
+        #     TmnlInstallDetaiLocators.QRY_FLOW_ID_COUNT_VALUE, options)
         # print(locator)
         # self.click(locator)
         # print(locator)

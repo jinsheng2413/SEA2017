@@ -76,7 +76,7 @@ class TestTerParaSet(TestCase, TermParaSetPage):
         self.inputSel_task_status(para['TASK_STATUS'])
 
         # 规约
-        self.inputSel_tmnl_protory(para['TMNL_PROTORY'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
 
         # 查询
         self.btn_qry()

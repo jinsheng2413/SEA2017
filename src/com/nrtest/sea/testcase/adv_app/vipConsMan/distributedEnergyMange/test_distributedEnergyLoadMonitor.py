@@ -62,7 +62,7 @@ class TestDistributedEnergyLoadMonitor(TestCase, DistributedEnergyLoadMonitorPag
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 发电类型
-        self.inputSel_elec_type(para['ELEC_TYPE'])
+        self.inputSel_gc_type(para['GC_TYPE'])
         # 发电量消纳方式
         self.inputSel_abso_type(para['ABSO_TYPE'])
         # 负荷类型

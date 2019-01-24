@@ -56,15 +56,15 @@ class RunMeterDetailPage(Page):
         self.selectCheckBox(index, is_multi_elements=True, is_multi_tab=True)
 
     # 通信方式
-    def inputSel_tmnl_way(self, index):
+    def inputSel_tmnl_purpose(self, index):
         # if index == 'c':
-        #     self._find_element(RunMeterStatisticsLocators.DETAIL_TMNL_WAY)
+        #     self._find_element(RunMeterStatisticsLocators.DETAIL_TMNL_PURPOSE)
         # else:
-        #     self.click(RunMeterStatisticsLocators.DETAIL_TMNL_WAY)
+        #     self.click(RunMeterStatisticsLocators.DETAIL_TMNL_PURPOSE)
         #     locator = self.get_select_locator(
-        #         RunMeterStatisticsLocators.DETAIL_TMNL_WAY_VALUE, index)
+        #         RunMeterStatisticsLocators.DETAIL_TMNL_PURPOSE_VALUE, index)
         #     self.click(locator)
-        #     self.click(RunMeterStatisticsLocators.DETAIL_TMNL_WAY)
+        #     self.click(RunMeterStatisticsLocators.DETAIL_TMNL_PURPOSE)
         self.selectCheckBox(index)
 
     # 通讯规约

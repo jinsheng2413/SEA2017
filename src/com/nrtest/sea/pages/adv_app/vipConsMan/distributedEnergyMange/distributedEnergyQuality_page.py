@@ -48,10 +48,10 @@ class SuccessRateTrendPage(Page):
         self.selectDropDown(index)
 
     # 发电类型
-    def inputSel_elec_type(self, index):
-        # self.click(SuccessRateTrendLocators.QRY_ELEC_TYPE)
+    def inputSel_gc_type(self, index):
+        # self.click(SuccessRateTrendLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
-        #     SuccessRateTrendLocators.QRY_ELEC_TYPE_VALUE, index)
+        #     SuccessRateTrendLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 
@@ -97,10 +97,10 @@ class SuccessRateStatisticsPage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 发电类型
-    def inputSel_elec_type(self, index):
-        # self.click(SuccessRateStatisticsLocators.QRY_ELEC_TYPE)
+    def inputSel_gc_type(self, index):
+        # self.click(SuccessRateStatisticsLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
-        #     SuccessRateStatisticsLocators.QRY_ELEC_TYPE_VALUE, index)
+        #     SuccessRateStatisticsLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
@@ -120,10 +120,10 @@ class SuccessRateDetailPage(Page):
         self.selectDropDown(index)
 
     # 发电类型
-    def inputSel_elec_type(self, index):
-        # self.click(SuccessRateDetailLocators.QRY_ELEC_TYPE)
+    def inputSel_gc_type(self, index):
+        # self.click(SuccessRateDetailLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
-        #     SuccessRateDetailLocators.QRY_ELEC_TYPE_VALUE, index)
+        #     SuccessRateDetailLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 

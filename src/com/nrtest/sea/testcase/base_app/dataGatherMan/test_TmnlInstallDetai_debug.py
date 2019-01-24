@@ -65,7 +65,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 终端装接状态
-        self.inputChk_assemblingStatus(para['ASSEMBLING_STATUS'])
+        self.inputChk_install_status(para['INSTALL_STATUS'])
 
         # 查询状态
         self.inputChk_queryType(para['QUERY_TYPE'])
@@ -79,7 +79,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.inputSel_runState_count(para['RUN_STATE'])
 
         # 流程标识
-        self.inputSel_processID_count(para['PROCESS_ID'])
+        self.inputSel_flow_id_count(para['FLOW_ID'])
 
         # 申请单号
         self.inputStr_app_no_count(para['APP_NO'])

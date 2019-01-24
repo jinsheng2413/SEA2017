@@ -16,8 +16,8 @@ class DistributedEnergyAnomalyAnalysisLocators:
     # 日期
     QRY_DATE = (By.XPATH, '//label[contains(text(),"日期")]/../div/div/input')
     # 发电类型
-    QRY_ELEC_TYPE = (By.XPATH, '//input[@id="genPowerTypeCombox"]')
-    QRY_ELEC_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_GC_TYPE = (By.XPATH, '//input[@id="genPowerTypeCombox"]')
+    QRY_GC_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 发电量消纳方式
     QRY_ABSO_MODE = (By.XPATH, '//input[@id="genAbsoModeCombox"]')
     QRY_ABSO_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
@@ -37,8 +37,8 @@ class DistributedEnergyAnomalyDetailLocators:
     QRY_ANOMALY_TYPE = (By.XPATH, '//input[@id="genExcepTypeCombox"]')
     QRY_ANOMALY_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 发电类型
-    QRY_ELEC_TYPE = (By.XPATH, '//input[@id="genPowerTypeDetailCombox"]')
-    QRY_ELEC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_GC_TYPE = (By.XPATH, '//input[@id="genPowerTypeDetailCombox"]')
+    QRY_GC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 发电量消纳方式
     QRY_ABSO_MODE = (By.XPATH, '//input[@id="genAbsoModeDetailCombox"]')
     QRY_ABSO_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')

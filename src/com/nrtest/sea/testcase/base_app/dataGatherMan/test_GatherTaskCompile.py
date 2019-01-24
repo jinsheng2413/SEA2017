@@ -76,7 +76,7 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompilePage):
         self.inputStr_task_name(para['TASK_NAME'])
 
         # 任务状态
-        self.inputSel_task_state(para['TASK_STATE'])
+        self.inputSel_task_status(para['TASK_STATUS'])
 
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])

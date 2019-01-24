@@ -64,7 +64,7 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 相位
-        self.inputSel_phase_position(para['PHASE_POSITION'])
+        self.inputSel_phase_code(para['PHASE_CODE'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 数据类别

@@ -60,7 +60,7 @@ class TestPatrolDataCurrentStatusQuery(TestCase, PatrolDataQueryCurrentStatusPag
         # 电流回路状态
         self.inputSel_current_status(para['CURRENT_STATUS'])
         # 相别
-        self.inputChk_phase_flag(para['PHASE_FLAG'])
+        self.inputChk_phase_code(para['PHASE_CODE'])
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 终端资产号

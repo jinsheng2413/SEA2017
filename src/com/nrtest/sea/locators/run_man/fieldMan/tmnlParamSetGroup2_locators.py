@@ -18,9 +18,9 @@ class TermParaSetGroup2Locators:
     QRY_TMNL_ADDR = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'终端地址\')]/../../div[1]/div[1]//input")
     # 终端规约
-    QRY_TMNL_PROTORY = (
+    QRY_TMNL_PROTOCOL = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'终端规约\')]/../../div[1]/div[1]//img")
-    QRY_TMNL_PROTORY_VALUE = (
+    QRY_TMNL_PROTOCOL_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'698规约\')]/../div[contains(text(),'%s')]")
     # 下发状态
     QRY_TAST_STATUS = (

@@ -35,7 +35,7 @@ class CommModulInstallStatPage(Page):
         self.selectDropDown(options)
 
     # 模块版本
-    def inputSel_moduleVersion(self, option):
+    def inputSel_module_ver(self, option):
         self.selectDropDown(option)
 
     # 查询

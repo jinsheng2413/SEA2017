@@ -18,8 +18,8 @@ class GatherSuccessRateLocators:
     CONS_TYPE = (By.XPATH, '//label[text()="用户类型"]/../div/div/img')
     CONS_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[6]/div[%s]')
     # 通信方式
-    COMM_WAY = (By.XPATH, '//label[text()="通信方式"]/../div/div/img')
-    COMM_WAY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    COMM_MODE = (By.XPATH, '//label[text()="通信方式"]/../div/div/img')
+    COMM_MODE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 终端厂家
     TMNL_FACTORY = (By.XPATH, '//label[text()="终端厂家"]/../div/div/img')
     TMNL_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
@@ -56,8 +56,8 @@ class GatherSuccessRateStatLocators:
     CONS_TYPE = (By.XPATH, '(//label[text()="用户类型"])[2]/../div/div/img')
     CONS_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[5]/div[%s]')
     # 通信方式
-    COMM_WAY = (By.XPATH, '(//label[text()="通信方式"])[2]/../div/div/img')
-    COMM_WAY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    COMM_MODE = (By.XPATH, '(//label[text()="通信方式"])[2]/../div/div/img')
+    COMM_MODE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 终端厂家
     TMNL_FACTORY = (By.XPATH, '(//label[text()="终端厂家"])[2]/../div/div/img')
     TMNL_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
@@ -93,8 +93,8 @@ class GatherSuccessRateDetailLocators:
     TMNL_FACTORY = (By.XPATH, '(//label[text()="终端厂家"])[2]/../div/div/img')
     TMNL_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 通信方式
-    COMM_WAY = (By.XPATH, '(//label[text()="通信方式"])[2]/../div/div/img')
-    COMM_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    COMM_MODE = (By.XPATH, '(//label[text()="通信方式"])[2]/../div/div/img')
+    COMM_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 用户编号
     CONS_NO = (By.XPATH, '//input[@name="consNo"]')
     # 终端地址
@@ -144,14 +144,14 @@ class GatherSuccessRateTimeLocators:
     CONS_RANGE = (By.XPATH, '//label[text()="用户范围"]/../div/div/img')
     CONS_RANGE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 停电标志
-    POWER_CUT_SIGN = (By.XPATH, '//label[text()="停电标志"]/../div/div/img')
-    POWER_CUT_SIGN_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    POWER_CUT_FLAG = (By.XPATH, '//label[text()="停电标志"]/../div/div/img')
+    POWER_CUT_FLAG_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 终端类型
     TMNL_TYPE = (By.XPATH, '//label[text()="终端类型"]/../div/div/img')
     TMNL_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[5]/div[%s]')
     # 通信方式
-    COMM_WAY = (By.XPATH, '(//label[text()="通信方式"])[2]/../div/div/img')
-    COMM_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[6]/div[%s]')
+    COMM_MODE = (By.XPATH, '(//label[text()="通信方式"])[2]/../div/div/img')
+    COMM_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[6]/div[%s]')
     # 规约类型
     PROTOCOL_TYPE = (By.XPATH, '//label[text()="规约类型"]/../div/div/img')
     PROTOCOL_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[7]/div[%s]')

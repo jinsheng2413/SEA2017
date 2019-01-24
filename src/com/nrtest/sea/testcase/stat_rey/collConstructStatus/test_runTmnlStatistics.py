@@ -56,7 +56,7 @@ class TestRunTmnlStatistics(TestCase, RunTmnlStatisticsPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 市、县直
-        self.inputChk_city(para['CITY'])
+        self.inputChk_area_type(para['AREA_TYPE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 统计日期

@@ -16,8 +16,8 @@ class DistributedEnergyLoadMonitorLocators:
     # 日期
     QRY_DATE = (By.XPATH, '//label[contains(text(),"日期")]/../div/div/input')
     # 发电类型
-    QRY_ELEC_TYPE = (By.XPATH, '//input[@id="loadMonGenElecTypeCombox"]')
-    QRY_ELEC_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_GC_TYPE = (By.XPATH, '//input[@id="loadMonGenElecTypeCombox"]')
+    QRY_GC_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 发电量消纳方式
     QRY_ABSO_MODE = (By.XPATH, '//input[@id="genConTypeCombox"]')
     QRY_ABSO_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
@@ -35,8 +35,8 @@ class DistributedEnergyLoadMonitorDetailLocators:
     QRY_METER_PURPOSE = (By.XPATH, '//input[@name="detailUsageType"]')
     QRY_METER_PURPOSE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 发电类型
-    QRY_ELEC_TYPE = (By.XPATH, '//input[@name="detailGenElecTypeCombox"]')
-    QRY_ELEC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_GC_TYPE = (By.XPATH, '//input[@name="detailGenElecTypeCombox"]')
+    QRY_GC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 发电量消纳方式
     QRY_ABSO_MODE = (By.XPATH, '//input[@name="detailGenConTypeCombox"]')
     QRY_ABSO_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')

@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 系统管理→模板管理→终端任务模板
 class TmnlTaskTemplatePage(Page):
     # 任务状态
-    def inputSel_task_stat(self, option):
+    def inputSel_task_status(self, option):
         self.selectDropDown(option)
 
     # 方案类型

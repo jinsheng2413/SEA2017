@@ -19,8 +19,8 @@ class DistributedEnergyMonitorStatisticsLocators:
     # 查询日期，结束
     QRY_END_DATE = (By.XPATH, '//label[contains(text(),"-")]/../div/div/input')
     # 发电类型
-    QRY_ELEC_TYPE = (By.XPATH, '//input[@name="genElecTypeCombox"]')
-    QRY_ELEC_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_GC_TYPE = (By.XPATH, '//input[@name="genElecTypeCombox"]')
+    QRY_GC_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')
 
@@ -42,8 +42,8 @@ class DistributedEnergyMonitorDetailLocators:
     # 日期
     QRY_DATE = (By.XPATH, '//label[contains(text(),"日期")]/../div/div/input')
     # 发电类型
-    QRY_ELEC_TYPE = (By.XPATH, '//input[@name="genElecTypeDetailCombox"]')
-    QRY_ELEC_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_GC_TYPE = (By.XPATH, '//input[@name="genElecTypeDetailCombox"]')
+    QRY_GC_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '(//button[text()="查询"])[2]')
 

@@ -80,9 +80,9 @@ class TestMeterSuccessRateFailedQuery(TestCase, MeterSuccessRateQueryFailedPage)
             # 农排用户选择
             self.inputSel_user_select(para['USER_SELECT'])
             # 连续失败天数
-            self.inputStr_continuous_failed_start(para['CONTINUOUS_FAILED_START'])
+            self.inputStr_read_fail_days_start(para['READ_FAIL_DAYS_START'])
             # 到
-            self.inputStr_continuous_failed_end(para['CONTINUOUS_FAILED_END'])
+            self.inputStr_read_fail_days_end(para['READ_FAIL_DAYS_END'])
         # 查询按钮
         self.btn_search()
 

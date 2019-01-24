@@ -54,6 +54,9 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
         self.recoverLeftTree()
 
     def query(self, para):
+        # TAB页选择
+        self.inputChk_tab_name(para['TAB_NAME'])
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
@@ -61,10 +64,13 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
         self.inputSel_person_resp_no(para['PERSON_RESP_NO'])
 
         # 按日期类型统计
-        self.inputDt_query_date_type(para['TIME_STAT'])
-
-        # 查询日期
-        self.inputDt_query_date(para['QUERY_DATE'])
+        self.inputChk_date_type_sel(para['DATE_TYPE_SEL'])
+        if para['DATE_TYPE_SEL'] == '按季统计':
+            # 季度选择
+            self.inputChk_quarter_sel(para['QUARTER_SEL'])
+        else:
+            # 查询日期
+            self.inputDt_query_date(para['QUERY_DATE'])
 
         # 查询按钮
         self.btn_search()

@@ -15,3 +15,4 @@ class LineLossIndexEvaluation_data:
 
     # 高级应用→线损分析→线损指标考核→考核结果统计
     AssessmentResultStatistics_para = '99924320'
+    AssessmentResultStatistics_tabName = '线路统计信息'

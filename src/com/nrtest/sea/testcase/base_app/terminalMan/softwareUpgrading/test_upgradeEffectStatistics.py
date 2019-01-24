@@ -61,7 +61,7 @@ class TestUpgradeEffectStstistics(TestCase, UpgradeEffectStatisticsPage):
         """
 
         # 统计方式
-        self.inputChk_stat_way(para['STAT_WAY'])
+        self.inputChk_stat_mode(para['STAT_MODE'])
         # 日期类型
         self.inputChk_date_type(para['DATE_TYPE'])
         # 打开左边树选择供电单位

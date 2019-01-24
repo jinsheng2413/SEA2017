@@ -40,7 +40,7 @@ class TmnlBuildQueryPage(Page):
         self.selectDropDown(options)
 
     # 统计口径
-    def inputSel_statWay(self, options):
+    def inputSel_stat_mode(self, options):
         # self.click(TmnlBuildQueryLocators.QRY_STAT_SCOPE)
         # locator = self.get_select_locator(TmnlBuildQueryLocators.QRY_STAT_SCOPE_VALUE, index)
         # self.click(locator)

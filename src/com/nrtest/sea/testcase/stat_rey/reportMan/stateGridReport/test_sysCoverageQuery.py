@@ -69,7 +69,7 @@ class TestSysCoverageQuery(TestCase, SysCoverageQueryPage):
         self.inputDt_stat_date(para['STAT_DATE'])
 
         # 统计口径
-        self.inputSel_statWay(para['STAT_WAY'])
+        self.inputSel_stat_mode(para['STAT_MODE'])
         
         # 用户类型
         self.inputSel_userType(para['CONS_TYPE'])

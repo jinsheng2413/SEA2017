@@ -77,7 +77,7 @@ class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
         self.inputSel_tmnlFac(para['TMNL_FACTORY'])
 
         # 统计口径
-        self.inputSel_statWay(para['STAT_WAY'])
+        self.inputSel_stat_mode(para['STAT_MODE'])
 
         self.btn_qry()
         self.sleep_time(2)

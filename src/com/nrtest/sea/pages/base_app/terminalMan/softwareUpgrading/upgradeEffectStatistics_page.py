@@ -16,7 +16,7 @@ from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEffec
 # 基本应用→终端管理→软件升级→升级效果统计
 class UpgradeEffectStatisticsPage(Page):
     # 统计方式
-    def inputChk_stat_way(self, index):
+    def inputChk_stat_mode(self, index):
         self.clickRadioBox(index)
 
     # 日期类型

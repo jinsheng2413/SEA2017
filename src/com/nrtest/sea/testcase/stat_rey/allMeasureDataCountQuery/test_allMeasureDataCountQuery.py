@@ -74,7 +74,7 @@ class TestallMeasureDataCountQuery(TestCase, AllMeasureDataCountQueryPage):
         self.inputSel_protocol_item(para['PROTOCOL_ITEM'])
 
         # 统计维度
-        self.inputSel_static_method(para['STATIC_METHOD'])
+        self.inputSel_stat_mode(para['STAT_MODE'])
 
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])

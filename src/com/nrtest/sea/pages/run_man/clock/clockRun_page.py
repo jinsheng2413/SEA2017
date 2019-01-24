@@ -38,7 +38,7 @@ class StaticByFacPage(Page):
     def inputDt_query_date(self, value):
         self.inputDate(value)
 
-    def inputChk_static_method(self, option):
+    def inputChk_stat_mode(self, option):
         self.clickRadioBox(option)
 
     # 点击查询

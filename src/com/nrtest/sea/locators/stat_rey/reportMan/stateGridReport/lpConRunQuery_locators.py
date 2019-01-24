@@ -16,9 +16,9 @@ class IpConRunQueryLocators:
     QRY_DATE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'查询月份\')]/../../div[1]/div[1]//input")
     # 统计口径
-    QRY_STAT_WAY = (
+    QRY_STAT_MODE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),\'统计口径\')]/../../div[1]/div[1]//input")
-    QRY_STAT_WAY_VALUE = (
+    QRY_STAT_MODE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),\'直供直管\')]/../div[contains(text(),'%s')]")
 
     # 【操作区】

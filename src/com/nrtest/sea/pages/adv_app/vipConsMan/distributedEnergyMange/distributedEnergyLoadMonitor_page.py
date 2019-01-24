@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→重点用户监测→分布式电源管理→分布式电源负荷监测
 class DistributedEnergyLoadMonitorPage(Page):
     # 统计方式
-    def inputChk_stat_way(self, index):
+    def inputChk_stat_mode(self, index):
         self.clickRadioBox(index)
 
     # 日期
@@ -51,7 +51,7 @@ class DistributedEnergyLoadMonitorPage(Page):
 # 高级应用→重点用户监测→分布式电源管理→分布式电源负荷监测→分布式电源负荷监测明细
 class DistributedEnergyLoadMonitorDetailPage(Page):
     # 统计方式
-    def inputChk_stat_way(self, index):
+    def inputChk_stat_mode(self, index):
         self.clickRadioBox(index, is_multi_elements=True, is_multi_tab=True)
 
     # 电能表用途

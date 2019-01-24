@@ -58,7 +58,7 @@ class TestDistributedEnergyLoadMonitorDetail(TestCase, DistributedEnergyLoadMoni
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 统计方式
-        self.inputChk_stat_way(para['STAT_WAY'])
+        self.inputChk_stat_mode(para['STAT_MODE'])
         # 电能表用途
         self.inputSel_meter_purpose(para['METER_PURPOSE'])
         # 发电类型

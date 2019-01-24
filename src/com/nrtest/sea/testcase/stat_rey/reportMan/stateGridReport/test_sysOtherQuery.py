@@ -70,7 +70,7 @@ class TestSysOtherQuery(TestCase, SysOtherQueryPage):
         self.inputDt_query_dateS(para['DATE'])
 
         # 统计口径
-        self.inputSel_statWay(para['STAT_WAY'])
+        self.inputSel_stat_mode(para['STAT_MODE'])
 
         self.btn_qry()
         self.sleep_time(2)

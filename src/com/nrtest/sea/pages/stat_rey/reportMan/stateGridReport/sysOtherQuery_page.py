@@ -23,7 +23,7 @@ class SysOtherQueryPage(Page):
         self.inputDate(value)  # , *SysOtherQueryLocators.QRY_DATE)
 
     # 统计口径
-    def inputSel_statWay(self, option):
+    def inputSel_stat_mode(self, option):
         # self.click(SysOtherQueryLocators.QRY_STAT_SCOPE)
         # locator = self.get_select_locator(SysOtherQueryLocators.QRY_STAT_SCOPE_VALUE, index)
         # self.click(locator)

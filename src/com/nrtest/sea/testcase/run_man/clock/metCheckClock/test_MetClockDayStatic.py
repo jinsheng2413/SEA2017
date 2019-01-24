@@ -62,7 +62,7 @@ class TestMetClockDayStatic(TestCase, MetClockDayStaticPage):
         """
 
         # 统计方式
-        self.inputChk_static_method(para['STATIC_METHOD'])
+        self.inputChk_stat_mode(para['STAT_MODE'])
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 电表类别

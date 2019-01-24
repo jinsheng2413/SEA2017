@@ -10,5 +10,5 @@
 
 
 class MultiTableOne:
-    # 基本应用→多表合一→协议管理
+    # 基本应用→多表合→协议管理
     protocolLibManage_para = '99917100'

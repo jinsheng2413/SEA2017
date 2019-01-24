@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.multiTableOne.protocolLibManage_page import P
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→多表合一→协议库管理
+# 基本应用→多表合→协议库管理
 @ddt
 class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
 
@@ -62,26 +62,36 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
         """
 
         # 协议名称
-        self.inputStr_protocolName(para['PROTOCOL_NAME'])
+        self.inputStr_protocol_name(para['PROTOCOL_NAME'])
+
         # 厂商名称
-        self.inputStr_manufacturerName(para['MANUFACTURER_NAME'])
+        self.inputStr_manufacturer_name(para['MANUFACTURER_NAME'])
+
         # 协议类型
-        self.inputStr_protocolType(para['PROTOCOL_TYPE'])
+        self.inputStr_protocol_type(para['PROTOCOL_TYPE'])
+
         # 表记类型
         self.inputStr_meter_type(para['METER_TYPE'])
-        # 维护时间
-        self.inputStr_maintenanceTmie(para['MANUFACTURER_TMIE'])
-        # 结束时间
-        self.inputStr_endTime(para['END_TIME'])
-        # 有效标志
-        self.inputSel_effectiveSign(para['EFFECTIVE_SIGN'])
-        # 协议版本号
-        self.inputStr_protocolVersionNo(para['PROTOCOL_VERSION_NO'])
-        # 协议代码
-        self.inputStr_protocolCode(para['PROTOCOL_CODE'])
-        # 查询方式
-        self.inputChk_queryType(para['QUERY_TYPE'])
 
+        # 查询方式
+        self.inputChk_query_type(para['QUERY_TYPE'])
+        if self.get_para_value(para['QUERY_TYPE']) == '查询时间段':
+            # 维护时间
+            self.inputDt_maintenance_tmie(para['MANUFACTURER_TMIE'])
+
+            # 到
+            self.inputDt_end_time(para['END_TIME'])
+
+        # 有效标志
+        self.inputSel_effective_sign(para['EFFECTIVE_SIGN'])
+
+        # 协议版本号
+        self.inputStr_protocol_version_no(para['PROTOCOL_VERSION_NO'])
+
+        # 协议代码
+        self.inputStr_protocol_code(para['PROTOCOL_CODE'])
+
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 
@@ -104,7 +114,7 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(MultiTableOne.protocolLibManage_para))
     def test_query(self, para):
-        """基本应用→多表合一→协议库管理
+        """基本应用→多表合→协议库管理
         :param para: 用例数据
         """
         self.start_case(para, __file__)

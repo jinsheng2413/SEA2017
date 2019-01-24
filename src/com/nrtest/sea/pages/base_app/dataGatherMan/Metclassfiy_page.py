@@ -11,26 +11,21 @@
 from com.nrtest.common.base_page import Page
 
 
+# 基本应用→终端管理→电能表分级归类管理
 class MetclassfiyPage(Page):
 
     # 模板名称
-    def inputStr_templetName(self, value):
-        self.input(value)  # , *MetclassfiyLocators.QRY_TEMPLET_NAME)
+    def inputStr_templet_name(self, value):
+        self.input(value)
 
     # 电能表类型
-    def inputSel_meterType(self, option):
-        # self.click(*MetclassfiyLocators.QRY_METER_TYPE)
-        # locator = self.get_select_locator(
-        #     MetclassfiyLocators.QRY_METER_TYPE_VALUE, name)
-        # self.click(*locator)
+    def inputSel_meter_type(self, option):
         self.selectDropDown(option)
 
     # 操作
     def inputStr_perform(self, value):
-        self.input(value)  # *MetclassfiyLocators.QRY_PERFORMER)
+        self.input(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
-        # self.click(*MetclassfiyLocators.BTN_QRY)
         self.btn_query()

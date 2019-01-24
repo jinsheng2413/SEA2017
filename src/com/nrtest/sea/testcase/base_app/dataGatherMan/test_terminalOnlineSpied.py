@@ -31,7 +31,7 @@ class TestTerminalOnlineSpied(TestCase, TerminalOnlineSpiedPage):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(DataGatherMan_data.)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -64,18 +64,23 @@ class TestTerminalOnlineSpied(TestCase, TerminalOnlineSpiedPage):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 终端厂商
-        self.inputStr_TmnlManufactory(para['TMNL_MANUFACTORY'])
-        print(para['TMNL_ADDR'])
-        # 终端地址
-        self.inputSel_TmnlAddr(para['TMNL_ADDR'])
-        # 终端状态
-        self.inputStr_TmnlState(para['TMNL_STATE'])
-        # 终端规约
-        self.inputStr_TmnlProtocol(para['TMNL_PROTOCOL'])
-        # 终端类型
-        self.inputStr_TmnlType(para['TMNL_TYPE'])
 
+        # 终端厂商
+        self.inputStr_tmnl_manufactory(para['TMNL_MANUFACTORY'])
+
+        # 终端地址
+        self.inputSel_terminal_addr(para['TERMINAL_ADDR'])
+
+        # 终端状态
+        self.inputStr_tmnl_state(para['TMNL_STATE'])
+
+        # 终端规约
+        self.inputStr_tmnl_protocol(para['TMNL_PROTOCOL'])
+
+        # 终端类型
+        self.inputStr_tmnl_type(para['TMNL_TYPE'])
+
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
 

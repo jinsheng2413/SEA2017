@@ -69,7 +69,7 @@ class TestTmnlStateArr(TestCase, TmnlStateArrPage):
         self.inputChk_contain_org(para['CONTAIN_ORG'])
 
         # 终端地址
-        self.inputStr_terminal_addr(para['TMNL_ADDR'])
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
 
         # 终端状态
         self.inputSel_tmnl_status(para['TMNL_STATUS'])

@@ -70,7 +70,7 @@ class TestTerminalVersion(TestCase, TerminalVersionPage):
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询日期
-        self.inputDt_queryTime(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

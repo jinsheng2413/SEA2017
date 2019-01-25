@@ -69,7 +69,7 @@ class TestFrequentlyCheckTmnl(TestCase, FrequentlyCheckTmnlPage):
         # 终端型号
         self.inputStr_tmnl_model(para['TMNL_MODEL'])
         # 终端厂商
-        self.inputSel_tmnl_fac(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端资产号
         self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 查询日期

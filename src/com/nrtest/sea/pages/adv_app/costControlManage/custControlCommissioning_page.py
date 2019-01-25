@@ -40,7 +40,7 @@ class CustControlCommissioning_page(Page):
         self.inputDate(value)
 
     # 按
-    def inputSel_debug_dt(self, option):
+    def inputSel_debug_date(self, option):
         self.selectDropDown(option)
 
     # 下发状态

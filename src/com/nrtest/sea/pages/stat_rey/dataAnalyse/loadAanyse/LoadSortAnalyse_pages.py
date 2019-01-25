@@ -13,26 +13,21 @@ from com.nrtest.common.base_page import Page
 
 class LoadSortAnalysePage(Page):
     # 开始日期
-    def inputStr_startDate(self, value):
-        self.input(value)#, *LoadSortAnalyseLocators.QRY_START_DATE)
+    def inputDt_start_date(self, value):
+        self.inputDate(value)
 
     # 用户类型
-    def inputSel_userType(self, options):
-        # self.click(LoadSortAnalyseLocators.QRY_CONS_TYPE)
-        # locator = self.get_select_locator(
-        #     LoadSortAnalyseLocators.QRY_CONS_TYPE_VALUE, name)
-        # self.click(locator)
+    def inputSel_cons_type(self, options):
         self.selectDropDown(options)
 
     # 结束日期
     def inputDt_end_date(self, value):
-        self.input(value)#, *LoadSortAnalyseLocators.QRY_END_DATE)
+        self.inputDate(value)
 
     # 排名数量
-    def inputStr_anking_number(self, value):
-        self.input(value)#, *LoadSortAnalyseLocators.QRY_RANKING_NUMBER)
+    def inputStr_ranking_number(self, value):
+        self.input(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(LoadSortAnalyseLocators.BTN_QRY)
         self.btn_query()

@@ -64,7 +64,7 @@ class TestAssetMan(TestCase, AssetManPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 锁封资产状态
-        self.inputSel_lock_asset_ststus(para['LOCK_ASSET_STATUS'])
+        self.inputSel_lock_asset_status(para['LOCK_ASSET_STATUS'])
         # 锁封状态
         self.inputSel_lock_status(para['LOCK_STATUS'])
         # 锁封类型

@@ -78,14 +78,14 @@ class TestTgLineLossAnalysis(TestCase, TgLineLossAnalysisPage):
         self.inputDt_query_date(para['QUERY_DATE'])
 
         # 按日期类型
-        self.inputDTT_type_sel(para['DATE_TYPE_SEL'])
+        self.inputDt_by_date_type(para['BY_DATE_TYPE'])
 
         # 点击复选框
-        self.inputChkRunType(para['LINE_LOSS_TYPE'])
+        self.inputChk_line_loss_type(para['LINE_LOSS_TYPE'])
 
         if self.get_para_value(para['LINE_LOSS_TYPE']) == '可算':
             # 点击达标
-            self.inputChk_T(para['TG_TYPE'])
+            self.inputChk_tg_type(para['TG_TYPE'])
         # 查询按钮
         self.btn_search()
 

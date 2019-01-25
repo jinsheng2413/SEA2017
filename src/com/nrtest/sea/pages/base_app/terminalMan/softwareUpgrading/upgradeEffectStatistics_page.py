@@ -132,7 +132,7 @@ class UpgradeEffectStatisticsDetailPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 升级状态
-    def inputSel_upgrade_ststus(self, index):
+    def inputSel_upgrade_status(self, index):
         # self.click(UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_STATUS)
         # locator = self.get_select_locator(
         #     UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_STATUS_VALUE, index)

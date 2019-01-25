@@ -18,7 +18,7 @@ class CountServeDeployPage(Page):
         self.selectDropDown(option)
 
     # 服务名称
-    def inputSel_serve_name(self, option):
+    def inputSel_service_name(self, option):
         self.selectDropDown(option)
 
     # 统计分类

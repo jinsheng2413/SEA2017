@@ -22,7 +22,7 @@ class GisPanoramaDisplayPage(Page):
         self.selectDropDown(value)
 
     # 用户类型
-    def inputSel_userType(self, name):
+    def inputSel_cons_type(self, name):
         # self.click(GisPanoramaDisplayLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(
         #     GisPanoramaDisplayLocators.QRY_CONS_TYPE_VALUE, name)
@@ -30,7 +30,7 @@ class GisPanoramaDisplayPage(Page):
         self.selectDropDown(name)
 
     # 查询时间
-    def inputDt_query_time(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *GisPanoramaDisplayLocators.QRY_QUERY_TIME)
         self.inputDate(value)
 

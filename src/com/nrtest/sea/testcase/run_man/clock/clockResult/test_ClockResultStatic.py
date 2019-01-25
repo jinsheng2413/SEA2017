@@ -69,7 +69,7 @@ class TestClockResultStatic(TestCase, ClockResultStaticPage):
         # 根据类别进行选择
         if (para['STAT_MODE'].split(';')[-1] == '采集终端'):
             # 终端厂商
-            self.inputSel_tmnl_fac(para['TMNL_FACTORY'])
+            self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         elif (para['STAT_MODE'].split(';')[-1] == '电能表'):
             # 电能表厂商
             self.inputSel_meter_factory(para['METER_FACTORY'])

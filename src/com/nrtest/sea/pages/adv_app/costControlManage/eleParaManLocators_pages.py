@@ -19,7 +19,7 @@ class EleParaMan_rate_Page(Page):
         self.inputDate(value)
 
     # 是否已生成参数
-    def inputSel_ComeIntoPara(self, name):
+    def inputSel_come_into_para(self, name):
         self.selectDropDown(name)
 
 
@@ -43,7 +43,7 @@ class EleParaMan_step_Page(Page):
         self.inputDate(value)
         # 是否已生成参数
 
-    def inputSel_ComeIntoPara(self, name):
+    def inputSel_come_into_para(self, name):
         self.selectDropDown(name)
 
     # 结束时间

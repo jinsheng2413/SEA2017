@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 class TaskTemplateSetPage(Page):
 
     # 选择模板
-    def inputSel_selectModule(self, option):
+    def inputSel_select_module(self, option):
         # self.click(TaskTemplateSetLocators.QRY_SELECT_MODULE)
         # locator = self.get_select_locator(TaskTemplateSetLocators.QRY_SELECT_MODULE, option)
         # self.click(locator)

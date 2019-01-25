@@ -83,13 +83,13 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.inputStr_cons_no(para['CONS_NO'])
 
         # 终端地址
-        self.inputStr_tmnl_addr(para["TMNL_ADDR"])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         # 装接类型
-        self.inputSel_mouting_type(para['MOUNTING_TYPE'])
+        self.inputSel_mounting_type(para['MOUNTING_TYPE'])
 
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])

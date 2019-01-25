@@ -72,7 +72,7 @@ class TestlocalFeiManageExeCount_dis_detail(TestCase, LocalFeiManageExeCount_dis
         self.inputStr_cons_no(para['CONS_NO'])
 
         # 接收日期
-        self.inputDt_receive_time(para['RECEOVE_TIME'])
+        self.inputDt_receive_time(para['RECEIVE_TIME'])
 
         # 结束日期
         self.inputDt_end_time(para['END_TIME'])

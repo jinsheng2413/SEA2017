@@ -65,9 +65,9 @@ class TestDataStrategyManagenment(TestCase, DataStrategyManagenmentPage):
         # 数据组
         self.inputSel_data_group(para['DATA_GROUP'])
         # 表名称
-        self.inputStr_list_name(para['TABLE_NAME'])
+        self.inputStr_table_name(para['TABLE_NAME'])
         # 存储周期
-        self.inputSel_storage_cycle(para['STORYAGE_CYCLE'])
+        self.inputSel_storage_cycle(para['STORAGE_CYCLE'])
 
         # 查询
         self.btn_qry()

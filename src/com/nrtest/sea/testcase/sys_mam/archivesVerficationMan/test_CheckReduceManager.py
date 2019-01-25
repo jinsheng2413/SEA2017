@@ -65,7 +65,7 @@ class TestCheckReduceManager(TestCase, CheckReduceManagerPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 开始日期
-        self.inputStr_startTime(para['START_TIME'])
+        self.inputStr_start_time(para['START_TIME'])
         # 结束日期
         self.inputDt_end_time(para['END_TIME'])
         # 申请单号

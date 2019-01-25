@@ -39,7 +39,7 @@ class AutomatedMeterAvailabilityDetailPage(Page):
         self.input(value)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
         self.clean_label(content)
         self.inputDate(content)
 

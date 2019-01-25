@@ -57,19 +57,19 @@ class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 采集覆盖率
-        self.inputSel_collectCoverRate(para['COLLECT_COVER_RATE'])
+        self.inputSel_collect_cover_rate(para['COLLECT_COVER_RATE'])
 
         # 采集成功率
-        self.inputSel_collectSuccessRate(para['COLLECT_SUCCESS__RATE'])
+        self.inputSel_collect_success_rate(para['COLLECT_SUCCESS_RATE'])
 
         # 同期线损率
-        self.inputSel_lineLoss(para['COLLECLINE_LOSS__RATE'])
+        self.inputSel_collecline_loss_rate(para['COLLECLINE_LOSS_RATE'])
 
         # 日期类型
-        self.inputChk_dateType(para['DATE_TYPE_DAY'])
+        self.inputChk_date_type(para['DATE_TYPE'])
 
         # 运算类型
-        self.inputChk_runType(para['COMPUTE_TYPE'])
+        self.inputChk_compute_type(para['COMPUTE_TYPE'])
 
         # 台区编号
         self.inputStr_tg_no(para['TG_NO'])

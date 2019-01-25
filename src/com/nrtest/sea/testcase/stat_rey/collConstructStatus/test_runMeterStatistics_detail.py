@@ -66,7 +66,7 @@ class TestRunMeterStatistics_Detail(TestCase, RunMeterDetailPage):
         # 电能表厂家
         self.inputSel_meter_factory(para['METER_FACTORY'])
         # 电能表状态
-        self.inputSel_meter_ststus(para['METER_STATUS'])
+        self.inputSel_meter_status(para['METER_STATUS'])
         # 查询按钮
         self.btn_search()
 

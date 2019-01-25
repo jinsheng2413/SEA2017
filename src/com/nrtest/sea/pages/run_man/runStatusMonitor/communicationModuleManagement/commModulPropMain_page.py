@@ -15,7 +15,7 @@ from com.nrtest.sea.locators.run_man.runStatusMonitor.communicationModuleManagem
 # 运行管理→采集信道管理→通信模块管理→通信模块属性维护
 class CommunicationModuleBaseInformationMantainPage(Page):
     # 模块厂商
-    def inputSel_moduleFactory(self, item):
+    def inputSel_module_factory(self, item):
         # self.click(CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_FACTORY)
         # locator = self.get_select_locator(CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_FACTORY_VALUE,
         #                                   item)
@@ -31,7 +31,7 @@ class CommunicationModuleBaseInformationMantainPage(Page):
         self.input(value)  # , *CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_ATTR_ID)
 
     # 模块类型
-    def inputSel_moduleType(self, item):
+    def inputSel_module_type(self, item):
         # self.click(CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE)
         # locator = self.get_select_locator(
         #     CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE_VALUE, item)

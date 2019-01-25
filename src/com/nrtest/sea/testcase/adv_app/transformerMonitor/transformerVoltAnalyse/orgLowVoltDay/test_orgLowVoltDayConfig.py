@@ -68,7 +68,7 @@ class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 是否电压监测
-        self.inputSel_volt_monitor(para['IS_VOLT_MONITOR_SEL'])
+        self.inputSel_is_volt_monitor(para['IS_VOLT_MONITOR'])
 
         self.btn_qry()
         self.sleep_time(2)

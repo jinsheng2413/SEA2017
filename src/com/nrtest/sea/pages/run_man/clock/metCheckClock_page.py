@@ -20,7 +20,7 @@ class MetClockMonthStaticPage(Page):
         self.selectDropDown(item)
 
     # 电能表厂商--打开并选择
-    def inputSel_tmnl_fac(self, item):
+    def inputSel_module_factory(self, item):
         self.selectDropDown(item)
 
     # 查询日期

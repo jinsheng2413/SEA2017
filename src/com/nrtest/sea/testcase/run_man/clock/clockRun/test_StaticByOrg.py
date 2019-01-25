@@ -64,7 +64,7 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 终端厂商
-        self.inputSel_tmnl_fac(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 电能表厂商
         self.inputSel_meter_factory(para['METER_FACTORY'])
         # 查询日期

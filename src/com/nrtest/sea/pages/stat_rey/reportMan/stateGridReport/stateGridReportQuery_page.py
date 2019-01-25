@@ -13,7 +13,7 @@ from com.nrtest.common.base_page import Page
 
 class StateGridReportQueryPage(Page):
     # 报表类型
-    def inputSel_reportType(self, option):
+    def inputSel_report_type(self, option):
         # self.click(StateGridReportQueryLocators.QRY_REPORT_TYPE)
         # locator = self.get_select_locator(StateGridReportQueryLocators.QRY_REPORT_TYPE_VALUE, index)
         # self.click(locator)

@@ -104,7 +104,7 @@ class RunMeterDetailPage(Page):
         self.selectCheckBox(index)
 
     # 电能表状态
-    def inputSel_meter_ststus(self, index):
+    def inputSel_meter_status(self, index):
         # if index == 'c':
         #     self._find_element(RunMeterStatisticsLocators.DETAIL_METER_STATUS)
         # else:

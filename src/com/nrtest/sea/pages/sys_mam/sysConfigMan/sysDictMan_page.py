@@ -27,7 +27,7 @@ class SysDictManPage(Page):
         self.inputDate(content)
 
     # 维护类型--打开并选择
-    def inputRSel_cons_type(self, option):
+    def inputSel_edit_type(self, option):
         self.selectDropDown(option)
 
     # 维护人员
@@ -35,7 +35,7 @@ class SysDictManPage(Page):
         self.input(content)
 
     # 维护类型--打开并选择
-    def inputRSel_data_src(self, option):
+    def inputSel_data_src(self, option):
         self.selectDropDown(option)
 
     # 查询

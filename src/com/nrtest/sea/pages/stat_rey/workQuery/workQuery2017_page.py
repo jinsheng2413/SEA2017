@@ -52,11 +52,11 @@ class WorkQuery2017Page(Page):
         # self.click(locator)
         self.selectDropDown(options)
     # 工单发生时间
-    def inputDt_startDate(self, value):
+    def inputDt_start_date(self, value):
         self.inputDate(value)  # , *WorkQuery2017Locators.QRY_STARTDATE)
 
     # 工单完成时间
-    def inputDt_endDate(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)  # , *WorkQuery2017Locators.QRY_ENDDATE)
 
     # 查询

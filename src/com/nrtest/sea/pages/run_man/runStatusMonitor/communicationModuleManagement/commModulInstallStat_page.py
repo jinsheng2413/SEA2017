@@ -19,7 +19,7 @@ class CommModulInstallStatPage(Page):
         self.input(value)#, *CommModulInstallStatLocators.QRY_DATE)
 
     # 模块类型
-    def inputSel_moduleType(self, options):
+    def inputSel_module_type(self, options):
         # self.click(CommModulInstallStatLocators.QRY_MODULE_TYPE)
         # locator = self.get_select_locator(CommModulInstallStatLocators.QRY_MODULE_TYPE_VALUE, name)
         # self.click(locator)
@@ -27,7 +27,7 @@ class CommModulInstallStatPage(Page):
         self.selectDropDown(options)
 
     # 模块厂商
-    def inputSel_moduleFactory(self, options):
+    def inputSel_module_factory(self, options):
         # self.click(CommModulInstallStatLocators.QRY_MODULE_FACTORY)
         # locator = self.get_select_locator(CommModulInstallStatLocators.QRY_MODULE_FACTORY_VALUE, name)
         # self.click(locator)

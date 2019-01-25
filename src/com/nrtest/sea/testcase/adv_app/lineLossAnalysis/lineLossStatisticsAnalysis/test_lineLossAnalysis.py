@@ -63,16 +63,16 @@ class TestTgLineLossAnalysis(TestCase, LineLossAnalysisPage):
         self.inputStr_line_name(para['LINE_NAME'])
 
         # 按时间类型统计
-        self.inputDTTAB_statDateType(para['STAT_DATE_TYPE'])
+        self.inputDt_stat_date_type(para['STAT_DATE_TYPE'])
 
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 
         # 组合单元
-        self.inputChk_compoistionUnit(para['COMPOSITION_UNIT'])
+        self.inputChk_composition_unit(para['COMPOSITION_UNIT'])
 
         # 线损类型
-        self.inputSChk_lineLossType(para['LINE_LOSS_TYPE'])
+        self.inputSChk_line_loss_type(para['LINE_LOSS_TYPE'])
 
         # 查询按钮
         self.btn_search()

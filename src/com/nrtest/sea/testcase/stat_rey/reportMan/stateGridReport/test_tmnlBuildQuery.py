@@ -65,16 +65,16 @@ class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
         self.inputChk_stat_type(para['STAT_TYPE'])
 
         # 日期
-        self.inputStr_startDate(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
 
         # 到
-        self.inputStr_endDate(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 终端类型
-        self.inputSel_tmnlType(para['TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
 
         # 终端厂商
-        self.inputSel_tmnlFac(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         # 统计口径
         self.inputSel_stat_mode(para['STAT_MODE'])

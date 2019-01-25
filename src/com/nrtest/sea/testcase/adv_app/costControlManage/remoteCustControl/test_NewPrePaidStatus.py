@@ -67,7 +67,7 @@ class TestNewPrePaidStatus(TestCase, NewPrePaidStatusPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 控制类型
-        self.inputSel_ctrl_type(para[''])
+        self.inputSel_ctrl_type(para['CTRL_TYPE'])
         # 开始时间
         self.inputDt_start_time(para['START_TIME'])
 

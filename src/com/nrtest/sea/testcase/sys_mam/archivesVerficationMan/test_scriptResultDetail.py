@@ -72,7 +72,7 @@ class TestScriptResultDetail(TestCase, ScriptResultDetailPage):
         self.inputDt_start_time(para['START_TIME'])
 
         # 结束时间
-        self.inputDt_end_time(para["END_TIME"])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 查询
         self.btn_qry()

@@ -26,15 +26,15 @@ class LineLossAnalysisPage(Page):
         self.input(content)
 
     # 按时间统计类型
-    def inputDTTAB_statDateType(self, name):
+    def inputDt_stat_date_type(self, name):
         self.clickDt_Tab(name)
 
     # 组合单元
-    def inputChk_compoistionUnit(self, name):
+    def inputChk_composition_unit(self, name):
         self.clickSingleCheckBox(name)
 
     # 线损类型
-    def inputSChk_lineLossType(self, name):
+    def inputSChk_line_loss_type(self, name):
         self.clickRadioBox(name)
 
     # 查询按钮

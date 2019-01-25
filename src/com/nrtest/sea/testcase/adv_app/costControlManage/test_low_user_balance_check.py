@@ -93,7 +93,7 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
 
         # 结束时间
-        self.inputDt_end_date(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 用户名称
         self.inputStr_cons_name(para['CONS_NAME'])

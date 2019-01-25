@@ -22,7 +22,7 @@ class ReadCompleteRatePage(Page):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 通信方式
-    def inputSel_commu_mode(self, name):
+    def inputSel_comm_mode(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 用户类型
@@ -45,7 +45,7 @@ class ReadCompleteRatePage(Page):
 # 基本应用→数据采集管理→采集质量分析→采集完整率:采集完整率统计
 class ReadCompleteRate_count_Page(Page):
     # 日期时间
-    def inputDt_date_time_count(self, value):
+    def inputDt_date_time(self, value):
         self.inputDate(value)
 
     # 用户类型

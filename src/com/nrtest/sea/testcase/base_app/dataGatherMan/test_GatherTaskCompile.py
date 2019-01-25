@@ -12,6 +12,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.GatherTaskCompile_Page import GatherTaskCompilePage
@@ -76,13 +77,13 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompilePage):
         self.inputStr_task_name(para['TASK_NAME'])
 
         # 任务状态
-        self.inputSel_task_state(para['TASK_STATE'])
+        self.inputSel_task_status(para['TASK_STATUS'])
 
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 采集点名称
-        self.inputStr_collection_point_name(para['COLLECTION_POINT_NAME'])
+        self.inputStr_cp_name(para['CP_NAME'])
 
         # 终端类型
         self.inputRSel_tmnl_type(para['TMNL_TYPE'])
@@ -95,7 +96,7 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompilePage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

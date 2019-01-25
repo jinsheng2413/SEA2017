@@ -94,10 +94,10 @@ class UpgradeEditionManLocators:
     EDITION_TMNL_PURPOSE_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 终端规约
-    EDITION_TMNL_PROTOCOL = (
+    tmnl_purpose = (
         By.XPATH, '//label[contains(text(),"终端规约")]/../div/div/img')
     # 终端规约→值
-    EDITION_TMNL_PROTOCOL_VALUE = (
+    tmnl_purpose_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     # 终端地址
     EDITION_TMNL_ADDR = (

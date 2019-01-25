@@ -20,7 +20,7 @@ class StaticByOrgPage(Page):
         self.selectDropDown(item)
 
     # 电能表厂商--打开并选择
-    def inputSel_met_fac(self, item):
+    def inputSel_meter_factory(self, item):
         self.selectDropDown(item)
 
     # 查询日期
@@ -76,7 +76,7 @@ class FrequentlyCheckTmnlPage(Page):
 class FrequentlyCheckMetPage(Page):
 
     # 电能表厂商--打开并选择
-    def inputSel_met_fac(self, item):
+    def inputSel_meter_factory(self, item):
         self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
     # 电表类别--打开并选择

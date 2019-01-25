@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 class MetclassfiyPage(Page):
 
     # 模板名称
-    def inputStr_templet_name(self, value):
+    def inputStr_template_name(self, value):
         self.input(value)
 
     # 电能表类型

@@ -21,10 +21,10 @@ class DebuggingAccess2017Locators:
     MANAGE_STYLE_VALUE = (
         By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 装接方式
-    ASSEMBLING_WAY = (
+    INSTALL_MODE = (
         By.XPATH, '//label[contains(text(),"装接方式")]/../div/div/input')
     # 装接方式→值
-    ASSEMBLING_WAY_VALUE = (
+    INSTALL_MODE_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 日期
     DATE = (By.XPATH, '//label[contains(text(),"日期")]/../div/div/input')

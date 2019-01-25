@@ -62,7 +62,7 @@ class TestRunTmnlStatistics_Detail(TestCase, RunTmnlStatDetailPage):
         # 通讯规约
         self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 通讯方式
-        self.inputSel_tmnl_way(para['TMNL_WAY'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端状态

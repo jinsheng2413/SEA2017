@@ -28,7 +28,7 @@ class MeterSuccessRateQueryPage(Page):
         self.selectCheckBox(index)
 
     # 通信方式
-    def inputSel_comm_way(self, index):
+    def inputSel_comm_mode(self, index):
         self.selectCheckBox(index)
 
     # 规约类型
@@ -68,7 +68,7 @@ class MeterSuccessRateQueryTimePage(Page):
         self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 通信方式
-    def inputSel_comm_way(self, index):
+    def inputSel_comm_mode(self, index):
         self.selectCheckBox(index, is_multi_elements=True, is_multi_tab=True)
 
     # 规约类型
@@ -104,7 +104,7 @@ class MeterSuccessRateQueryHuaBeiPage(Page):
         self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 通信方式
-    def inputSel_comm_way(self, index):
+    def inputSel_comm_mode(self, index):
         self.selectCheckBox(index, is_multi_elements=True, is_multi_tab=True)
 
     # 规约类型
@@ -131,7 +131,7 @@ class MeterSuccessRateQueryFailedPage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 接线方式
-    def inputSel_conn_way(self, index):
+    def inputSel_wiring_mode(self, index):
         self.selectDropDown(index)
 
     # 用户编号
@@ -147,11 +147,11 @@ class MeterSuccessRateQueryFailedPage(Page):
         self.selectDropDown(index)
 
     # 连续失败天数
-    def inputStr_continuous_failed_start(self, index):
+    def inputStr_read_fail_days_start(self, index):
         self.input(index)
 
     # 到
-    def inputStr_continuous_failed_end(self, index):
+    def inputStr_read_fail_days_end(self, index):
         self.input(index)
 
     # 查询按钮

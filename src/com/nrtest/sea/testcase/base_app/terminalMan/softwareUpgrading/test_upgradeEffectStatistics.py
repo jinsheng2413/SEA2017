@@ -60,12 +60,13 @@ class TestUpgradeEffectStstistics(TestCase, UpgradeEffectStatisticsPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
+        # 打开左边树选择供电单位
+        self.openLeftTree(para['TREE_NODE'])
+
         # 统计方式
         self.inputChk_stat_mode(para['STAT_MODE'])
         # 日期类型
         self.inputChk_date_type(para['DATE_TYPE'])
-        # 打开左边树选择供电单位
-        self.openLeftTree(para['TREE_NODE'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 升级目的

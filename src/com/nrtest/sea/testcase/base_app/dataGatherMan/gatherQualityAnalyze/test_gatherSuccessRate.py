@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
@@ -34,6 +35,7 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePage):
         menuPage.clickTabPage(GatherQualityAnalyze_data.GatherSuccessRate_tabName)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
+
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
@@ -65,11 +67,11 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 通信方式
-        self.inputSel_comm_type(para['COMM_TYPE'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 计量方式
-        self.inputSel_measure_way(para['MEASURE_WAY'])
+        self.inputSel_meas_mode(para['MEAS_MODE'])
         # 所属区域
         self.inputSel_area(para['AREA'])
         # 芯片厂家
@@ -86,7 +88,7 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

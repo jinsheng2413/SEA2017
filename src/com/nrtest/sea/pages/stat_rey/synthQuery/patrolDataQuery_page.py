@@ -91,7 +91,7 @@ class PatrolDataQueryCurveContrastPage(Page):
         self.inputDate(content)
 
     # 相别
-    def inputChk_phase_flag(self, index):
+    def inputChk_phase_code(self, index):
         self.clickRadioBox(index)
 
     # 参照对象
@@ -119,7 +119,7 @@ class PatrolDataQueryCurrentStatusPage(Page):
         self.selectDropDown(index)
 
     # 相别
-    def inputChk_phase_flag(self, index):
+    def inputChk_phase_code(self, index):
         self.clickCheckBox_new(index)
 
     # 日期

@@ -13,16 +13,16 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
-from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEffectStatistics_page import \
-    UpgradeEffectStatisticsPage
+from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEffectStatistics_page import UpgradeEffectStatisticsDetailPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→升级效果统计:终端升级明细
 @ddt
-class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
+class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsDetailPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
@@ -63,23 +63,23 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
         # 打开左边树选择供电单位
         self.openLeftTree(para['TREE_NODE'])
         # 终端厂家
-        self.inputSel_detail_tmnl_factory(para['DETAIL_TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 升级目的
-        self.inputSel_detail_upgrade_purpose(para['DETAIL_UPGRADE_PURPOSE'])
+        self.inputSel_upgrade_purpose(para['UPGRADE_PURPOSE'])
         # 升级类型
-        self.inputSel_detail_upgrade_type(para['DETAIL_UPGRADE_TYPE'])
+        self.inputSel_upgrade_type(para['UPGRADE_TYPE'])
         # 终端用途
-        self.inputSel_detail_tmnl_purpose(para['DETAIL_TMNL_PURPOSE'])
+        self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
         # 是否成功
-        self.inputSel_detail_whether_success(para['DETAIL_WHETHER_SUCCESS'])
+        self.inputSel_is_success(para['IS_SUCCESS'])
         # 终端类型
-        self.inputSel_detail_tmnl_type(para['DETAIL_TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 升级状态
-        self.inputSel_detail_upgrade_ststus(para['DETAIL_UPGRADE_STATUS'])
+        self.inputSel_upgrade_ststus(para['UPGRADE_STATUS'])
         # 确认状态
-        self.inputSel_detail_affirm_status(para['DETAIL_AFFIRM_STATUS'])
+        self.inputSel_confirm_status(para['CONFIRM_STATUS'])
         # 确认结果
-        self.inputSel_detail_affirm_result(para['DETAIL_AFFIRM_RESULT'])
+        self.inputSel_confirm_result(para['CONFIRM_RESULT'])
         # 执行日期
         self.inputSel_box_exec_date(para['BOX_EXEC_DATE'])
         if para['BOX_EXEC_DATE'] == 'c':
@@ -91,14 +91,14 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
         self.inputSel_box_affirm_date(para['BOX_AFFIRM_DATE'])
         if para['BOX_AFFIRM_DATE'] == 'c':
             # 执行开始日期
-            self.inputDt_detail_start_date(para['DETAIL_START_DATE'])
+            self.inputDt_start_date(para['START_DATE'])
             # 执行结束日期
-            self.inputDt_detail_end_date(para['DETAIL_END_DATE'])
+            self.inputDt_end_date(para['END_DATE'])
         if para['BOX_AFFIRM_DATE'] != 'c' and para['BOX_EXEC_DATE'] != 'c':
             # 执行开始日期
-            self.inputDt_detail_start_date(para['DETAIL_START_DATE'])
+            self.inputDt_start_date(para['START_DATE'])
             # 执行结束日期
-            self.inputDt_detail_end_date(para['DETAIL_END_DATE'])
+            self.inputDt_end_date(para['END_DATE'])
             # 确认开始日期
             self.inputDt_affirm_start_date(para['AFFIRM_START_DATE'])
             # 确认结束日期
@@ -112,7 +112,7 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsPage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

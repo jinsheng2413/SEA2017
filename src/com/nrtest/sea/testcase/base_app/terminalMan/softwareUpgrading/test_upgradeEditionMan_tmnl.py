@@ -13,15 +13,16 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
-from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_page import UpgradeEditionManPage
+from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEditionMan_page import UpgradeEditionManCallPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→升级版本管理:终端版本召测
 @ddt
-class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
+class TestUpgradeEditionManCall(TestCase, UpgradeEditionManCallPage):
     @classmethod
     def setUpClass(cls):
 
@@ -57,24 +58,24 @@ class TestUpgradeEditionMan(TestCase, UpgradeEditionManPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 终端厂家
-        self.inputSel_edition_tmnl_factory(para['EDITION_TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端类型
-        self.inputSel_edition_tmnl_type(para['EDITION_TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 终端用途
-        self.inputSel_edition_tmnl_purpose(para['EDITION_TMNL_PURPOSE'])
+        self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
         # 终端规约
-        self.inputSel_edition_tmnl_protocol(para['EDITION_TMNL_PROTOCOL'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 终端地址
-        self.inputStr_edition_tmnl_addr(para['EDITION_TMNL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 查询按钮
-        self.btn_edition_search()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

@@ -58,10 +58,10 @@ class Test_UnControlPlantGatherMon_2(TestCase, UnControlPlantGatherMon2_Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 发电方式
-        self.inputSel_generate_electricity_way(para['GENERATE_ELECTRICITY_WAY'])
+        self.inputSel_gc_mode(para['GC_MODE'])
 
         # 采集方式
-        self.inputSel_gather_way(para['GATHER_WAY'])
+        self.inputSel_coll_mode(para['COLL_MODE'])
 
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])

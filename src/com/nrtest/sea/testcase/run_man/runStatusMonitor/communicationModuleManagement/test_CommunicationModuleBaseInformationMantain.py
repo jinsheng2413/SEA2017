@@ -66,7 +66,7 @@ class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModul
         """
 
         # 模块属性标识
-        self.inputStr_moduleAttrbuteSign(para['MODULE_ATTRBUTE_SIGN'])
+        self.inputStr_module_attr_id(para['MODULE_ATTR_ID'])
 
         # 模块类型
         self.inputSel_moduleType(para['MODULE_TYPE'])
@@ -75,7 +75,7 @@ class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModul
         self.inputSel_moduleFactory(para['MODULE_FACTORY'])
 
         # 模块版本
-        self.inputSel_moduleVer(para['MODULE_VER'])
+        self.inputSel_module_ver(para['MODULE_VER'])
 
         self.btn_qry()
         self.sleep_time(2)

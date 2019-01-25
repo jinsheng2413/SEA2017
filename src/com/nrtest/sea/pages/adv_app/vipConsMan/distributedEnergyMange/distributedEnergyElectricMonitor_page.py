@@ -20,10 +20,10 @@ class DistributedEnergyElectricTrendPage(Page):
         self.inputDate(content)
 
     # 发电类型
-    def inputSel_elec_type(self, index):
-        # self.click(*DistributedEnergyElectricTrendLocators.QRY_ELEC_TYPE)
+    def inputSel_gc_type(self, index):
+        # self.click(*DistributedEnergyElectricTrendLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
-        #     DistributedEnergyElectricTrendLocators.QRY_ELEC_TYPE_VALUE, index)
+        #     DistributedEnergyElectricTrendLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(*locator)
         self.selectDropDown(index)
 
@@ -36,7 +36,7 @@ class DistributedEnergyElectricTrendPage(Page):
         self.selectDropDown(index)
 
     # 电量方式
-    def inputChk_elec_way(self, index):
+    def inputChk_gc_mode(self, index):
         self.clickRadioBox(index)
 
     # 查询按钮
@@ -57,10 +57,10 @@ class DistributedEnergyElectricStatPage(Page):
         self.inputDate(content)
 
     # 发电类型
-    def inputSel_elec_type(self, index):
-        # self.click(*DistributedEnergyElectricStatLocators.QRY_ELEC_TYPE)
+    def inputSel_gc_type(self, index):
+        # self.click(*DistributedEnergyElectricStatLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
-        #     DistributedEnergyElectricStatLocators.QRY_ELEC_TYPE_VALUE, index)
+        #     DistributedEnergyElectricStatLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(*locator)
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
@@ -100,10 +100,10 @@ class DistributedEnergyElectricDetailPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 发电类型
-    def inputSel_elec_type(self, index):
-        # self.click(*DistributedEnergyElectricDetailLocators.QRY_ELEC_TYPE)
+    def inputSel_gc_type(self, index):
+        # self.click(*DistributedEnergyElectricDetailLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
-        #     DistributedEnergyElectricDetailLocators.QRY_ELEC_TYPE_VALUE, index)
+        #     DistributedEnergyElectricDetailLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(*locator)
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
@@ -129,10 +129,10 @@ class DistributedEnergyQueryPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 发电类型
-    def inputSel_elec_type(self, index):
-        # self.click(*DistributedEnergyQueryLocators.QRY_ELEC_TYPE)
+    def inputSel_gc_type(self, index):
+        # self.click(*DistributedEnergyQueryLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
-        #     DistributedEnergyQueryLocators.QRY_ELEC_TYPE_VALUE, index)
+        #     DistributedEnergyQueryLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(*locator)
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 

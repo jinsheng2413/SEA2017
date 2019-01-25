@@ -14,11 +14,11 @@ from selenium.webdriver.common.by import By
 # 高级应用→重点用户监测→非统调电厂管理→非统调电厂接入统计
 class UnControlPlantStatLocators:
     # 发电方式
-    QRY_ELEC_WAY = (By.XPATH, '//input[@id="unGenElecTypeCombox"]')
-    QRY_ELEC_WAY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_GC_MODE = (By.XPATH, '//input[@id="unGenElecTypeCombox"]')
+    QRY_GC_MODE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 采集方式
-    QRY_GATHER_WAY = (By.XPATH, "//input[@id='unCommModelCombo']")
-    QRY_GATHER_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_COLL_MODE = (By.XPATH, "//input[@id='unCommModelCombo']")
+    QRY_COLL_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 统计日期
     QRY_DATE = (By.XPATH, '//label[contains(text(),"统计日期")]/../div/div/input')
     # 查询按钮
@@ -32,11 +32,11 @@ class UnControlPlantStatLocators:
 # 高级应用→重点用户监测→非统调电厂管理→非统调电厂接入统计→非统调电厂接入明细
 class UnControlPlantDetailLocators:
     # 发电方式
-    QRY_ELEC_WAY = (By.XPATH, '//input[@id="unGenElecTypeDetCombox"]')
-    QRY_ELEC_WAY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_GC_MODE = (By.XPATH, '//input[@id="unGenElecTypeDetCombox"]')
+    QRY_GC_MODE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 采集方式
-    QRY_GATHER_WAY = (By.XPATH, "//input[@id='unCommModelDetCombo']")
-    QRY_GATHER_WAY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_COLL_MODE = (By.XPATH, "//input[@id='unCommModelDetCombo']")
+    QRY_COLL_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 统计日期
     QRY_DATE = (By.XPATH, '(//label[contains(text(),"统计日期")])[2]/../div/div/input')
     # 户号

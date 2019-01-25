@@ -61,7 +61,7 @@ class TestUserCollectStatistics2017(TestCase, UserCollectStatistics2017Page):
         # 统计月份
         self.inputDt_query_date(para['QUERY_DATE'])
         # 统计口径
-        self.inputSel_statistics_caliber(para['STATISTICS_CALIBER'])
+        self.inputSel_stat_scope(para['STAT_SCOPE'])
         # 查询按钮
         self.btn_search()
 

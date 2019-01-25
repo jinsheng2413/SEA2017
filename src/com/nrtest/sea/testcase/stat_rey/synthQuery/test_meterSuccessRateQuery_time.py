@@ -64,7 +64,7 @@ class TestMeterSuccessRateQueryTime(TestCase, MeterSuccessRateQueryTimePage):
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 通信方式
-        self.inputSel_comm_way(para['COMM_WAY'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
         # 规约类型
         self.inputSel_protocol_type(para['PROTOCOL_TYPE'])
         # 用户范围

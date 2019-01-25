@@ -65,8 +65,8 @@ class UpgradeEffectStatisticsLocators:
     DETAIL_UPGRADE_STATUS = (By.XPATH, '//label[contains(text(),"升级状态")]/../div/div/img')
     DETAIL_UPGRADE_STATUS_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[7]/div[%s]')
     # 确认状态
-    DETAIL_AFFIRM_STATUS = (By.XPATH, '//label[text()="确认状态"]/../div/div/img')
-    DETAIL_AFFIRM_STATUS_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[8]/div[%s]')
+    DETAIL_phase_code = (By.XPATH, '//label[text()="确认状态"]/../div/div/img')
+    DETAIL_phase_code_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[8]/div[%s]')
     # 确认结果
     DETAIL_AFFIRM_RESULT = (By.XPATH, '//label[text()="确认结果"]/../div/div/img')
     DETAIL_AFFIRM_RESULT_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[9]/div[%s]')

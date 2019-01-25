@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 基本应用→终端管理→终端版本召测
 class TerminalOnlineSpiedPage(Page):
     # 终端厂商
-    def inputStr_tmnl_manufactory(self, value):
+    def inputStr_tmnl_factory(self, value):
         self.selectCheckBox(value)
 
     # 终端地址

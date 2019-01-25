@@ -17,9 +17,9 @@ class PowerSortAnalyseLocators:
     QRY_RANKING_NUMBER = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'排名数量')]/../../div[1]/div[1]//input")
     # 用户类型
-    QRY_USER_TYPE = (
+    QRY_CONS_TYPE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'用户类型')]/../../div[1]/div[1]//input")
-    QRY__USER_TYPE_VALUE = (
+    QRY__CONS_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'专变')]/../div[contains(text(),'%s')]")
     # 开始时间
     QRY_START_TIME = (

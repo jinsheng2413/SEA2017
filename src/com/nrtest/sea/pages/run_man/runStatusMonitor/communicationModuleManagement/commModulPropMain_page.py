@@ -27,8 +27,8 @@ class CommunicationModuleBaseInformationMantainPage(Page):
         self.selectDropDown(item)
 
     # 模块属性标识
-    def inputStr_moduleAttrbuteSign(self, value):
-        self.input(value)  # , *CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_ATTRBUTE_SIGN)
+    def inputStr_module_attr_id(self, value):
+        self.input(value)  # , *CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_ATTR_ID)
 
     # 模块类型
     def inputSel_moduleType(self, item):

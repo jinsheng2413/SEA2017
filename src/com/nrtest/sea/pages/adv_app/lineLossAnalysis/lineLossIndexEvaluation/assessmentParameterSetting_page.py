@@ -18,8 +18,12 @@ class AssessmentParameterSettingPage(Page):
         self.input(content)
 
     # 记录形式
-    def inputChk_recorderModel(self, value):
-        self.clickSingleCheckBox(value)
+    def inputChk_recorder_model(self, value):
+        self.clickCheckBox_new(value)
+
+    # Tab页选择
+    def inputChk_tab_name(self, tab_name):
+        self.clickTabPage(tab_name)
 
     # 查询按钮
     def btn_search(self):

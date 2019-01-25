@@ -18,11 +18,11 @@ class TgLineLossAnalysisLocators:
     # 台区名称
     QRY_TG_NAME = (By.XPATH, '//label[contains(text(),"台区名称")]/../div/input')
     # 安装率
-    QRY_INSTALLATION_RATE = (
+    QRY_INSTALL_RATE = (
         By.XPATH, '//label[contains(text(),"安")]/../div/div/input')
-    QRY_INSTALLATION_RATE_VALUE = (
+    QRY_INSTALL_RATE_VALUE = (
         By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
-    QRY_INSTALLATION_RATE_INPUT = (
+    QRY_INSTALL_RATE_INPUT = (
         By.XPATH, '//input[@class=" x-form-text x-form-field x-form-num-field "]')
     # 抄读成功率
     QRY_READ_SUCCESS_RATE = (

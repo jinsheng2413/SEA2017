@@ -67,7 +67,7 @@ class TestDistributedEnergyMonitorDetail(TestCase, DistributedEnergyMonitorDetai
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 发电类型
-        self.inputSel_elec_type(para['ELEC_TYPE'])
+        self.inputSel_gc_type(para['GC_TYPE'])
         # 查询按钮
         self.btn_search()
 

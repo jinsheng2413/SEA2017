@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 基本应用→接口管理→关口人工补录
 class StrategicManualRecordPage(Page):
     # 采集点名
-    def inputStr_gatherpoint_name(self, value):
+    def inputStr_cp_name(self, value):
         self.input(value)
 
     # 电表名称

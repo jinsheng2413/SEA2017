@@ -66,7 +66,7 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
         # 终端厂商
         self.inputSel_tmnl_fac(para['TMNL_FACTORY'])
         # 电能表厂商
-        self.inputSel_met_fac(para['MET_FAC'])
+        self.inputSel_meter_factory(para['METER_FACTORY'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 

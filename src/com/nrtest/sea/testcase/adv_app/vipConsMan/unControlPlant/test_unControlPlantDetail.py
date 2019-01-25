@@ -57,9 +57,9 @@ class TestUnControlPlantDetail(TestCase, UnControlPlantDetailPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 发电方式
-        self.inputSel_elec_way(para['ELEC_WAY'])
+        self.inputSel_gc_mode(para['GC_MODE'])
         # 采集方式
-        self.inputSel_gather_way(para['GATHER_WAY'])
+        self.inputSel_coll_mode(para['COLL_MODE'])
         # 统计日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 户号

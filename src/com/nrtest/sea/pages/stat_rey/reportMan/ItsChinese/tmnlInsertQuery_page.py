@@ -28,8 +28,8 @@ class TmnlInsertQueryPage(Page):
 
     # 统计口径
     def inputSel_countCaliber(self, option):
-        # self.click(TmnlInsertQueryLocators.QRY_COUNT_CALIBER)
-        # locator = self.get_select_locator(TmnlInsertQueryLocators.QRY_COUNT_CALIBER_VALUE, name)
+        # self.click(TmnlInsertQueryLocators.QRY_STAT_SCOPE)
+        # locator = self.get_select_locator(TmnlInsertQueryLocators.QRY_STAT_SCOPE_VALUE, name)
         # self.click(locator)
         self.selectDropDown(option)
 

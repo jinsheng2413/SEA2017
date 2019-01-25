@@ -20,7 +20,7 @@ class MeterRealTimePowerCutQueryLocators:
     # 电表资产号
     QRY_METER_ASSET_NO = (By.XPATH, '//label[contains(text(),"电表资产号")]/../div/input')
     # 停电标志
-    QRY_POWER_CUT_MARK = (By.XPATH, '//label[contains(text(),"停电标志")]/../div/div/img')
-    QRY_POWER_CUT_MARK_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_POWER_CUT_FLAG = (By.XPATH, '//label[contains(text(),"停电标志")]/../div/div/img')
+    QRY_POWER_CUT_FLAG_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')

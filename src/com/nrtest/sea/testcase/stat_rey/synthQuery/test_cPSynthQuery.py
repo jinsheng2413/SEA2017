@@ -68,9 +68,9 @@ class TestCPSynthQuery(TestCase, CPSynthQueryPage):
         # 结束日期
         self.inputDt_end_date(para['END_DATE'])
         # 终端用途
-        self.inputChk_tmnl_way(para['TMNL_WAY'])
+        self.inputChk_tmnl_purpose(para['TMNL_PURPOSE'])
         # 接线方式
-        self.inputSel_line_way(para['LINE_WAY'])
+        self.inputSel_wiring_mode(para['WIRING_MODE'])
         # 查询按钮
         self.btn_search()
 

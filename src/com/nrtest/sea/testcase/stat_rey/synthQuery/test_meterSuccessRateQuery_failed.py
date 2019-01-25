@@ -70,7 +70,7 @@ class TestMeterSuccessRateFailedQuery(TestCase, MeterSuccessRateQueryFailedPage)
             # 用户类型
             self.inputSel_cons_type(para['CONS_TYPE'])
             # 接线方式
-            self.inputSel_conn_way(para['CONN_WAY'])
+            self.inputSel_wiring_mode(para['WIRING_MODE'])
             # 运行状态
             self.inputSel_run_status(para['RUN_STATUS'])
             # 用户编号
@@ -80,9 +80,9 @@ class TestMeterSuccessRateFailedQuery(TestCase, MeterSuccessRateQueryFailedPage)
             # 农排用户选择
             self.inputSel_user_select(para['USER_SELECT'])
             # 连续失败天数
-            self.inputStr_continuous_failed_start(para['CONTINUOUS_FAILED_START'])
+            self.inputStr_read_fail_days_start(para['READ_FAIL_DAYS_START'])
             # 到
-            self.inputStr_continuous_failed_end(para['CONTINUOUS_FAILED_END'])
+            self.inputStr_read_fail_days_end(para['READ_FAIL_DAYS_END'])
         # 查询按钮
         self.btn_search()
 

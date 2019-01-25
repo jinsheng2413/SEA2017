@@ -22,7 +22,7 @@ class TermParaSetPage(Page):
         self.selectDropDown(option)
 
     # 规约
-    def inputSel_tmnl_protory(self, option):
+    def inputSel_tmnl_protocol(self, option):
         self.selectDropDown(option)
 
     # 任务状态

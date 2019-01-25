@@ -81,15 +81,15 @@ class RunTmnlStatDetailPage(Page):
         self.selectCheckBox(index)
 
     # 通讯方式
-    def inputSel_tmnl_way(self, index):
+    def inputSel_tmnl_purpose(self, index):
         # if index == 'c':
-        #     self._find_element(RunTmnlStatisticsLocators.DETAIL_TMNL_WAY)
+        #     self._find_element(RunTmnlStatisticsLocators.DETAIL_TMNL_PURPOSE)
         # else:
-        #     self.click(RunTmnlStatisticsLocators.DETAIL_TMNL_WAY)
+        #     self.click(RunTmnlStatisticsLocators.DETAIL_TMNL_PURPOSE)
         #     locator = self.get_select_locator(
-        #         RunTmnlStatisticsLocators.DETAIL_TMNL_WAY_VALUE, index)
+        #         RunTmnlStatisticsLocators.DETAIL_TMNL_PURPOSE_VALUE, index)
         #     self.click(locator)
-        #     self.click(RunTmnlStatisticsLocators.DETAIL_TMNL_WAY)
+        #     self.click(RunTmnlStatisticsLocators.DETAIL_TMNL_PURPOSE)
         self.selectCheckBox(index)
 
     # 终端厂家

@@ -13,7 +13,7 @@ from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEffec
     UpgradeEffectStatisticsLocators
 
 
-# 基本应用→终端管理→软件升级→升级效果统计
+# 基本应用→终端管理→软件升级→升级效果统计:终端升级统计
 class UpgradeEffectStatisticsPage(Page):
     # 统计方式
     def inputChk_stat_mode(self, index):
@@ -80,9 +80,11 @@ class UpgradeEffectStatisticsPage(Page):
         # self.click(UpgradeEffectStatisticsLocators.BTN_SEARCH)
         self.btn_query()
 
-    # 终端升级明细
+
+# 基本应用→终端管理→软件升级→升级效果统计：终端升级明细
+class UpgradeEffectStatisticsDetailPage(Page):
     #终端厂家
-    def inputSel_detail_tmnl_factory(self, index):
+    def inputSel_tmnl_factory(self, index):
         # self.click(UpgradeEffectStatisticsLocators.DETAIL_TMNL_FACTORY)
         # locator = self.get_select_locator(
         #     UpgradeEffectStatisticsLocators.DETAIL_TMNL_FACTORY_VALUE, index)
@@ -90,7 +92,7 @@ class UpgradeEffectStatisticsPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 升级目的
-    def inputSel_detail_upgrade_purpose(self, index):
+    def inputSel_upgrade_purpose(self, index):
         # self.click(UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_PURPOSE)
         # locator = self.get_select_locator(
         #     UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_PURPOSE_VALUE, index)
@@ -98,7 +100,7 @@ class UpgradeEffectStatisticsPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 升级类型
-    def inputSel_detail_upgrade_type(self, index):
+    def inputSel_upgrade_type(self, index):
         # self.click(UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_TYPE)
         # locator = self.get_select_locator(
         #     UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_TYPE_VALUE, index)
@@ -106,7 +108,7 @@ class UpgradeEffectStatisticsPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 终端用途
-    def inputSel_detail_tmnl_purpose(self, index):
+    def inputSel_tmnl_purpose(self, index):
         # self.click(UpgradeEffectStatisticsLocators.DETAIL_TMNL_PURPOSE)
         # locator = self.get_select_locator(
         #     UpgradeEffectStatisticsLocators.DETAIL_TMNL_PURPOSE_VALUE, index)
@@ -114,7 +116,7 @@ class UpgradeEffectStatisticsPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 是否成功
-    def inputSel_detail_whether_success(self, index):
+    def inputSel_is_success(self, index):
         # self.click(UpgradeEffectStatisticsLocators.DETAIL_WHETHER_SUCCESS)
         # locator = self.get_select_locator(
         #     UpgradeEffectStatisticsLocators.DETAIL_WHETHER_SUCCESS_VALUE, index)
@@ -122,7 +124,7 @@ class UpgradeEffectStatisticsPage(Page):
         self.selectDropDown(index)
 
     # 终端类型
-    def inputSel_detail_tmnl_type(self, index):
+    def inputSel_tmnl_type(self, index):
         # self.click(UpgradeEffectStatisticsLocators.DETAIL_TMNL_TYPE)
         # locator = self.get_select_locator(
         #     UpgradeEffectStatisticsLocators.DETAIL_TMNL_TYPE_VALUE, index)
@@ -130,7 +132,7 @@ class UpgradeEffectStatisticsPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 升级状态
-    def inputSel_detail_upgrade_ststus(self, index):
+    def inputSel_upgrade_ststus(self, index):
         # self.click(UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_STATUS)
         # locator = self.get_select_locator(
         #     UpgradeEffectStatisticsLocators.DETAIL_UPGRADE_STATUS_VALUE, index)
@@ -138,15 +140,15 @@ class UpgradeEffectStatisticsPage(Page):
         self.selectDropDown(index)
 
     # 确认状态
-    def inputSel_detail_affirm_status(self, index):
-        # self.click(UpgradeEffectStatisticsLocators.DETAIL_AFFIRM_STATUS)
+    def inputSel_confirm_status(self, index):
+        # self.click(UpgradeEffectStatisticsLocators.DETAIL_phase_code)
         # locator = self.get_select_locator(
-        #     UpgradeEffectStatisticsLocators.DETAIL_AFFIRM_STATUS_VALUE, index)
+        #     UpgradeEffectStatisticsLocators.DETAIL_phase_code_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 
     # 确认结果
-    def inputSel_detail_affirm_result(self, index):
+    def inputSel_confirm_result(self, index):
         # self.click(UpgradeEffectStatisticsLocators.DETAIL_AFFIRM_RESULT)
         # locator = self.get_select_locator(
         #     UpgradeEffectStatisticsLocators.DETAIL_AFFIRM_RESULT_VALUE, index)
@@ -169,13 +171,13 @@ class UpgradeEffectStatisticsPage(Page):
             pass
 
     # 执行开始日期
-    def inputDt_detail_start_date(self, content):
+    def inputDt_start_date(self, content):
         # self.exec_script(UpgradeEffectStatisticsLocators.DETAIL_START_DATE_JS)
         # self.input(content, *UpgradeEffectStatisticsLocators.DETAIL_START_DATE)
         self.inputDate(content)
 
     # 执行结束日期
-    def inputDt_detail_end_date(self, content):
+    def inputDt_end_date(self, content):
         # self.exec_script(UpgradeEffectStatisticsLocators.DETAIL_END_DATE_JS)
         # self.input(content, *UpgradeEffectStatisticsLocators.DETAIL_END_DATE)
         self.inputDate(content)

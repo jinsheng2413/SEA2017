@@ -60,7 +60,7 @@ class TestDistributedEnergyQuery(TestCase, DistributedEnergyQueryPage):
         # 电能表用途
         self.inputSel_meter_purpose(para['METER_PURPOSE'])
         # 发电类型
-        self.inputSel_elec_type(para['ELEC_TYPE'])
+        self.inputSel_gc_type(para['GC_TYPE'])
         # 发电量消纳方式
         self.inputSel_abso_type(para['ABSO_TYPE'])
         # 开始日期

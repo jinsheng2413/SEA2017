@@ -26,7 +26,7 @@ class MeterRealTimePowerCutQueryPage(Page):
         self.input(content)  #, *MeterRealTimePowerCutQueryLocators.QRY_METER_ASSET_NO)
 
     # 停电标志
-    def inputSel_power_cut_mark(self, index):
+    def inputSel_power_cut_sign(self, index):
         # self.click(MeterRealTimePowerCutQueryLocators.QRY_POWER_CUT_MARK)
         # locator = self.get_select_locator(MeterRealTimePowerCutQueryLocators.QRY_POWER_CUT_MARK_VALUE, index)
         # self.click(locator)

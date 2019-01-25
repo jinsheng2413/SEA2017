@@ -57,7 +57,7 @@ class TestarchivesMaintain_terminal(TestCase, ArchivesMaintain_terminal_pages):
         self.openLeftTree(para['TREE_NODE'])
 
         # 厂站名称
-        self.inputSel_factory_name(para['FACTORY_NAME'])
+        self.inputSel_sub_station_name(para['SUB_STATION_NAME'])
 
         # 查询
         self.btn_qry()

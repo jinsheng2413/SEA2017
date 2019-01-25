@@ -74,7 +74,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.inputSel_runState_count(para['RUN_STATE'])
 
         # 流程标识
-        self.inputSel_processID_count(para['PROCESS_ID'])
+        self.inputSel_flow_id_count(para['FLOW_ID'])
 
         # 申请单号
         self.inputStr_app_no_count(para['APP_NO'])

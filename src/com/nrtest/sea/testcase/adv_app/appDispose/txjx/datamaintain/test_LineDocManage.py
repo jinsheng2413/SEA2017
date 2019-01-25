@@ -60,11 +60,18 @@ class TestLineDocManage(TestCase, LineDocManagePage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+
+        # 选择变电站
+        self.inputSel_subs(para['SUBS'])
+
         # 输入负责人
         self.inputSel_master(para['MASTER'])
 
         # 输入线路名称
         self.inputStr_line_name(para['LINE_NAME'])
+
+        # 无负责人
+        self.Chk_no_master(para['NO_MASTER'])
 
         # 查询
         self.btn_qry()

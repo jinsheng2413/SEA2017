@@ -66,7 +66,7 @@ class TestTerminalOnlineSpied(TestCase, TerminalOnlineSpiedPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 终端厂商
-        self.inputStr_tmnl_manufactory(para['TMNL_MANUFACTORY'])
+        self.inputStr_tmnl_factory(para['TMNL_FACTORY'])
 
         # 终端地址
         self.inputSel_terminal_addr(para['TERMINAL_ADDR'])

@@ -26,11 +26,11 @@ class MsgSendQueryPage(Page):
         self.inputDate(content)
 
     # 发送状态
-    def inputSel_send_stat(self, options):
+    def inputSel_send_status(self, options):
         self.selectDropDown(options)
 
     # 发送方式
-    def inputSel_send_way(self, options):
+    def inputSel_send_mode(self, options):
         self.selectDropDown(options)
 
     # 发送人

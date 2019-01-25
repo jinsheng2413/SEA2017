@@ -31,10 +31,10 @@ class GatherSuccessRatePage(Page):
         self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 通信方式
-    def inputSel_comm_type(self, index):
-        # self.click(GatherSuccessRateLocators.COMM_WAY)
+    def inputSel_comm_mode(self, index):
+        # self.click(GatherSuccessRateLocators.COMM_MODE)
         # locator = self.get_select_locator(
-        #     GatherSuccessRateLocators.COMM_WAY_VALUE, index)
+        #     GatherSuccessRateLocators.COMM_MODE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
@@ -47,10 +47,10 @@ class GatherSuccessRatePage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 计量方式
-    def inputSel_measure_way(self, index):
-        # self.click(GatherSuccessRateLocators.MEASURE_WAY)
+    def inputSel_meas_mode(self, index):
+        # self.click(GatherSuccessRateLocators.MEAS_MODE)
         # locator = self.get_select_locator(
-        #     GatherSuccessRateLocators.MEASURE_WAY_VALUE, index)
+        #     GatherSuccessRateLocators.MEAS_MODE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
@@ -107,10 +107,10 @@ class GatherSuccessRateStatPage(Page):
         self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 通信方式
-    def inputSel_comm_type(self, index):
-        # self.click(GatherSuccessRateStatLocators.COMM_WAY)
+    def inputSel_comm_mode(self, index):
+        # self.click(GatherSuccessRateStatLocators.COMM_MODE)
         # locator = self.get_select_locator(
-        #     GatherSuccessRateStatLocators.COMM_WAY_VALUE, index)
+        #     GatherSuccessRateStatLocators.COMM_MODE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
@@ -180,10 +180,10 @@ class GatherSuccessRateDetailPage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 通信方式
-    def inputSel_comm_type(self, index):
-        # self.click(GatherSuccessRateDetailLocators.COMM_WAY)
+    def inputSel_comm_mode(self, index):
+        # self.click(GatherSuccessRateDetailLocators.COMM_MODE)
         # locator = self.get_select_locator(
-        #     GatherSuccessRateDetailLocators.COMM_WAY_VALUE, index)
+        #     GatherSuccessRateDetailLocators.COMM_MODE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
@@ -279,10 +279,10 @@ class GatherSuccessRateTimePage(Page):
         self.selectDropDown(index)
 
     # 停电标志
-    def inputSel_power_cut_sign(self, index):
-        # self.click(GatherSuccessRateTimeLocators.POWER_CUT_SIGN)
+    def inputSel_power_cut_flag(self, index):
+        # self.click(GatherSuccessRateTimeLocators.POWER_CUT_FLAG)
         # locator = self.get_select_locator(
-        #     GatherSuccessRateTimeLocators.POWER_CUT_SIGN_VALUE, index)
+        #     GatherSuccessRateTimeLocators.POWER_CUT_FLAG_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 
@@ -299,15 +299,15 @@ class GatherSuccessRateTimePage(Page):
         self.selectCheckBox(index, is_multi_tab=False, is_multi_elements=False)
 
     # 通信方式
-    def inputSel_comm_way(self, index):
+    def inputSel_comm_mode(self, index):
         # if index == 'c':
-        #     self._find_elements(GatherSuccessRateTimeLocators.COMM_WAY)
+        #     self._find_elements(GatherSuccessRateTimeLocators.COMM_MODE)
         # else:
-        #     self.click(GatherSuccessRateTimeLocators.COMM_WAY)
+        #     self.click(GatherSuccessRateTimeLocators.COMM_MODE)
         #     locator = self.get_select_locator(
-        #         GatherSuccessRateTimeLocators.COMM_WAY_VALUE, index)
+        #         GatherSuccessRateTimeLocators.COMM_MODE_VALUE, index)
         #     self.click(locator)
-        #     self.click(GatherSuccessRateTimeLocators.COMM_WAY)
+        #     self.click(GatherSuccessRateTimeLocators.COMM_MODE)
         self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 规约类型
@@ -323,10 +323,10 @@ class GatherSuccessRateTimePage(Page):
         self.selectCheckBox(index, is_multi_tab=False, is_multi_elements=False)
 
     # 计量方式
-    def inputSel_measure_way(self, index):
-        # self.click(GatherSuccessRateTimeLocators.MEASURE_WAY)
+    def inputSel_meas_mode(self, index):
+        # self.click(GatherSuccessRateTimeLocators.MEAS_MODE)
         # locator = self.get_select_locator(
-        #     GatherSuccessRateTimeLocators.MEASURE_WAY_VALUE, index)
+        #     GatherSuccessRateTimeLocators.MEAS_MODE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 

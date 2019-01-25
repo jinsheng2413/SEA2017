@@ -85,7 +85,7 @@ class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
         self.inputDt_date_time(para['DATE_TIME'])
 
         # 相位
-        self.inputSel_phase_flag(para['PHASE_FLAG'])
+        self.inputSel_phase_code(para['PHASE_CODE'])
 
         # 查询
         self.btn_query()

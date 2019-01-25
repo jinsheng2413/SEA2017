@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 class MetclassfiyLocators:
     # 【查询条件区】
     # 模板名称
-    QRY_TEMPLET_NAME = (
+    QRY_TEMPLATE_NAME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'模板名称')]/../../div[1]/div[1]//input")
     # 电能表类型
     QRY_METER_TYPE = (

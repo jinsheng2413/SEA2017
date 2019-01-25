@@ -38,7 +38,7 @@ class TestSpVoltAnalyseStatic(TestCase, PowerFactorCountStaticPage):
     def tearDownClass(cls):
         print('执行结束')
         # 刷新浏览器
-        # cls.closePages(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """

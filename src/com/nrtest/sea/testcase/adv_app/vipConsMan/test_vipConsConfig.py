@@ -60,7 +60,7 @@ class Test_VipConsConfig(TestCase, VipConsConfig_Page):
         self.inputSel_run_level(para['RUN_LEVEL'])
 
         # 供电电压
-        self.inputSel_power_voltage(para['POWER_VOLTAGE'])
+        self.inputSel_volt_code(para['VOLT_CODE'])
 
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])

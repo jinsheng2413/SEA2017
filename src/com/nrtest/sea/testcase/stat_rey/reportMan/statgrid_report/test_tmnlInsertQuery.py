@@ -82,7 +82,7 @@ class TestTmnlInsertQuery(TestCase, TmnlInsertQueryPage):
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         #统计口径
-        self.inputSel_countCaliber(para['COUNT_CALIBER'])
+        self.inputSel_countCaliber(para['STAT_SCOPE'])
 
         self.btn_qry()
         self.sleep_time(2)

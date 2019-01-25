@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 class GatherTaskCompilePage(Page):
 
     # 任务状态
-    def inputSel_task_state(self, name):
+    def inputSel_task_status(self, name):
         self.selectDropDown(name)
 
     # 终端类型
@@ -24,7 +24,7 @@ class GatherTaskCompilePage(Page):
         self.selectDropDown(name)
 
     # 采集点名称
-    def inputStr_collection_point_name(self, value):
+    def inputStr_cp_name(self, value):
         self.input(value)
 
     # 终端地址

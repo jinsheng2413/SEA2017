@@ -61,15 +61,15 @@ class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
         # 忽略旧版本号
         self.inputChk_history_version(para['HISTORY_VERSION'])
         # 终端厂家
-        self.inputSel_tab_tmnl_factory(para['TAB_TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端类型
-        self.inputSel_tab_tmnl_type(para['TAB_TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 终端用途
-        self.inputSel_tab_tmnl_purpose(para['TAB_TMNL_PURPOSE'])
+        self.inputSel_tmnl_purpose(para['TMNL_PURPOSE'])
         # 升级版本号
-        self.inputSel_tab_upgrade_version_no(para['TAB_UPGRADE_VERSION_NO'])
+        self.inputSel_upgrade_version_no(para['UPGRADE_VERSION_NO'])
         # 点击查询按钮
-        self.btn_tab_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

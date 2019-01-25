@@ -48,7 +48,7 @@ class UpgradeResultConfirmationPage(Page):
         self.selectDropDown(index)
 
     # 确认状态
-    def inputSel_affirm_status(self, index):
+    def inputSel_confirm_status(self, index):
         self.selectDropDown(index)
 
     # 升级状态

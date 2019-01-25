@@ -63,9 +63,9 @@ class TestMsgSendQuery(TestCase, MsgSendQueryPage):
         # 结束时间
         self.inputDt_end_date(para['END_DATE'])
         # 发送状态
-        self.inputSel_send_stat(para['SEND_STAT'])
+        self.inputSel_send_status(para['SEND_STATUS'])
         # 发送方式
-        self.inputSel_send_way(para['SEND_WAY'])
+        self.inputSel_send_mode(para['SEND_MODE'])
         # 发送人
         self.inputStr_send_man(para['SEND_MAN'])
 

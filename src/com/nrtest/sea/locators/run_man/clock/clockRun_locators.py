@@ -18,16 +18,16 @@ class StaticByOrgLocators:
     ORG_NO = (
         By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[1]"))
     # 终端厂商-下拉框
-    TMNL_FAC_SEL = (
+    TMNL_FACTORY_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂商')]/../div/div/img)[1]")
     # 终端厂商
-    TMNL_FAC = (
+    TMNL_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'宁波三星')]/../div[contains(text(),'%s')]")
     # 电能表厂商-下拉框
-    MET_FAC_SEL = (
+    METER_FACTORY_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'电能表厂商')]/../div/div/img)[1]")
     # 电能表厂商
-    MET_FAC = (
+    METER_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),' ABB公司')]/../div[contains(text(),'%s')]")
     # 日期
     QUERY_DATE = (
@@ -87,10 +87,10 @@ class FrequentlyCheckTmnlLocators:
     TMNL_MODEL = (
         By.XPATH, ("//div[@class=\"x-form-item \"]//*[contains(text(),'终端型号')]/../div/input"))
     # 终端厂商-下拉框
-    TMNL_FAC_SEL = (
+    TMNL_FACTORY_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂商')]/../div/div/img)[2]")
     # 终端厂商
-    TMNL_FAC = (
+    TMNL_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'宁波三星')]/../div[contains(text(),'%s')]")
     # 终端资产号
     TMNL_ASSET_NO = (
@@ -120,10 +120,10 @@ class FrequentlyCheckMetLocators:
     ORG_NO = (
         By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[2]"))
     # 电能表厂商-下拉框
-    MET_FAC_SEL = (
+    METER_FACTORY_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'电能表厂商')]/../div/div/img)[2]")
     # 电能表厂商
-    MET_FAC = (
+    METER_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'ABB公司')]/../div[contains(text(),'%s')]")
     # 电表类别-下拉框
     MET_TYPE_SEL = (

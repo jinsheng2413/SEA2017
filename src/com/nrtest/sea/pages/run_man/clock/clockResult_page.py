@@ -23,7 +23,7 @@ class ClockResultStaticPage(Page):
         self.selectDropDown(item)
 
     # 电能表厂商--打开并选择
-    def inputSel_met_fac(self, item):
+    def inputSel_meter_factory(self, item):
         self.selectDropDown(item)
 
     # 查询日期

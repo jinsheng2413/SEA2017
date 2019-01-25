@@ -66,7 +66,7 @@ class TestMetclassfiy(TestCase, MetclassfiyPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 模板名称
-        self.inputStr_templet_name(para['TEMPLET_NAME'])
+        self.inputStr_template_name(para['TEMPLATE_NAME'])
 
         # 电能表类型
         self.inputSel_meter_type(para['METER_TYPE'])

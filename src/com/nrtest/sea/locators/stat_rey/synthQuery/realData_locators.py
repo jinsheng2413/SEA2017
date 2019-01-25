@@ -27,13 +27,13 @@ class RealDataLocators:
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'电表资产号')]/../../div[1]/div[1]//input)[2]")
 
     # 用户类型
-    QRY_USER_TYPE_RDETAIL = (By.XPATH, "//*[@id=\"consSortComboJb\"]")
-    QRY_USER_TYPE_RDETAIL_VALUE = (
+    QRY_CONS_TYPE_RDETAIL = (By.XPATH, "//*[@id=\"consSortComboJb\"]")
+    QRY_CONS_TYPE_RDETAIL_VALUE = (
         By.XPATH,
         "//div[@class=\"x-layer x-combo-list \"]//div[contains(text(),'专变')]/../div[contains(text(),'%s')]//img")
 
-    QRY_USER_TYPE_FAILDETAIL = (By.XPATH, "//*[@id=\"consSortCombo_failJb\"]")
-    QRY_USER_TYPE_FAILDETAIL_VALUE = (
+    QRY_CONS_TYPE_FAILDETAIL = (By.XPATH, "//*[@id=\"consSortCombo_failJb\"]")
+    QRY_CONS_TYPE_FAILDETAIL_VALUE = (
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//div[contains(text(),'专变')]/../div[contains(text(),'%s')]")
     # 终端生产厂家
     QRY_TMNL_MANUFACTUREE = (By.XPATH, '//*[@id="tmnlFactoryComboJb"]')
@@ -77,18 +77,18 @@ class RealDataLocators:
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//div[contains(text(),'未停抄')]/../div[contains(text(),'%s')]")
 
     # 终端运行状态
-    QRY_TMNL_RUN_STATE_RDETAIL = (
+    QRY_TMNL_RUN_STATUS_RDETAIL = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'终端运行状态')]/../../div[1]/div[1]//input)[1]")
-    QRY_TMNL_RUN_STATE_RDETAIL_VALUE = (
+    QRY_TMNL_RUN_STATUS_RDETAIL_VALUE = (
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//div[contains(text(),'运行')]/../div[contains(text(),'%s')]")
     # 查询时间
     QRY_TIME_RDETAIL = (By.XPATH, '//*[@id="sendDataQueryDateStartJb"]')
     QRY_TIME_FAILTIME = (By.XPATH, '//*[@id="sendDataQueryDateStart_failJb"]')
 
     # 终端运行状态
-    QRY_TMNL_RUN_STATE_FAILDETAIL = (
+    QRY_TMNL_RUN_STATUS_FAILDETAIL = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'终端运行状态')]/../../div[1]/div[1]//input)[1]")
-    QRY_TMNL_RUN_STATE_FAILDETAIL_VALUE = (
+    QRY_TMNL_RUN_STATUS_FAILDETAIL_VALUE = (
         By.XPATH, "//div[@class=\"x-layer x-combo-list \"]//div[contains(text(),'运行')]/../div[contains(text(),'%s')]")
 
     # 【操作区】

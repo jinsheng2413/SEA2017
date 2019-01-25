@@ -18,10 +18,10 @@ class ClockResultStaticLocators:
     ORG_NO = (
         By.XPATH, ("(//div[@class=\"x-form-item \"]//*[contains(text(),'供电单位')]/../div/input)[1]"))
     # 终端厂商-下拉框
-    TMNL_FAC_SEL = (
+    TMNL_FACTORY_SEL = (
         By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂商')]/../div/div/img)[1]")
     # 终端厂商
-    TMNL_FAC = (
+    TMNL_FACTORY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'宁波三星')]/../div[contains(text(),'%s')]")
     # 开始时间
     QUERY_DATE = (

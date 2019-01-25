@@ -29,10 +29,10 @@ class RunMeterStatisticsLocators:
     DETAIL_CONS_TYPE_VALUE = (
         By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 通信方式
-    DETAIL_TMNL_WAY = (
+    DETAIL_TMNL_PURPOSE = (
         By.XPATH, '//label[contains(text(),"通信方式")]/../div/div/input')
     # 通信方式→值
-    DETAIL_TMNL_WAY_VALUE = (
+    DETAIL_TMNL_PURPOSE_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 通讯规约
     DETAIL_TMNL_PROTOCOL = (

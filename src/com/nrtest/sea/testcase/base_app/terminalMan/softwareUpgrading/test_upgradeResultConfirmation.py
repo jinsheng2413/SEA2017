@@ -70,7 +70,7 @@ class TestUpgradeResultConfirmation(TestCase, UpgradeResultConfirmationPage):
             # 升级目的
             self.inputSel_upgrade_purpose(para['UPGRADE_PURPOSE'])
             # 确认状态
-            self.inputSel_affirm_status(para['AFFIRM_STATUS'])
+            self.inputSel_confirm_status(para['CONFIRM_STATUS'])
             # 确认开始日期
             self.inputDt_start_date(para['START_DATE'])
             # 确认结束日期

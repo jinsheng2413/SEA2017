@@ -82,10 +82,7 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
         查询结果校验（包括跳转）
         :param para:
         """
-        ar = AssertResult()
-
-        self.assertTrue(ar.check_query_result(para))
-        # self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

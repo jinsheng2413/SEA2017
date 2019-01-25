@@ -44,7 +44,7 @@ class GatherTaskCompileLocators:
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端地址')]/../../div[1]/div[1]//input")
 
     # 采集点名称
-    QRY_COLLECTION_POINT_NAME = (
+    QRY_CP_NAME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'采集点名称')]/../../div[1]/div[1]//input")
 
     # 【操作区】

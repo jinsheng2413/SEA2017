@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
@@ -67,15 +68,15 @@ class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
         # 用户范围
         self.inputSel_cons_range(para['CONS_RANGE'])
         # 停电标志
-        self.inputSel_power_cut_sign(para['POWER_CUT_SIGN'])
+        self.inputSel_power_cut_flag(para['POWER_CUT_FLAG'])
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 通信方式
-        self.inputSel_comm_way(para['COMM_WAY'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
         # 规约类型
         self.inputSel_protocol_type(para['PROTOCOL_TYPE'])
         # 计量方式
-        self.inputSel_measure_way(para['MEASURE_WAY'])
+        self.inputSel_meas_mode(para['MEAS_MODE'])
         # 点击查询按钮
         self.btn_search()
 
@@ -84,7 +85,7 @@ class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

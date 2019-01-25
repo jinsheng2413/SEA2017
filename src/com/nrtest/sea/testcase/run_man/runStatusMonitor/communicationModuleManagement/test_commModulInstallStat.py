@@ -76,7 +76,7 @@ class TestCommModulInstallStat(TestCase, CommModulInstallStatPage):
         self.inputSel_moduleFactory(para['MODULE_FACTORY'])
 
         # 模块版本
-        self.inputSel_moduleVersion(para['MODULE_VERSION'])
+        self.inputSel_module_ver(para['MODULE_VER'])
 
         self.btn_qry()
         self.sleep_time(2)

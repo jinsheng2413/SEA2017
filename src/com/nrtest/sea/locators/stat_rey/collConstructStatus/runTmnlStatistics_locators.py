@@ -42,10 +42,10 @@ class RunTmnlStatisticsLocators:
     DETAIL_TMNL_PROTOCOL_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 通讯方式
-    DETAIL_TMNL_WAY = (
+    DETAIL_TMNL_PURPOSE = (
         By.XPATH, '//label[contains(text(),"通讯方式")]/../div/div/input')
     # 通讯方式→值
-    DETAIL_TMNL_WAY_VALUE = (
+    DETAIL_TMNL_PURPOSE_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     # 终端厂家
     DETAIL_TMNL_FACTORY = (

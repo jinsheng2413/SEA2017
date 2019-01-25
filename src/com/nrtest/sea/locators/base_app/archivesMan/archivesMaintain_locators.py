@@ -24,9 +24,9 @@ class ArchivesMaintain_locators:
         By.XPATH, "(//*[contains(text(),'电表维护')])[@class=\"x-tab-strip-text \"]")
     # 【查询名称】
     # 厂站名称
-    QRY_FACTORY_NAME = (
+    QRY_SUB_STATION_NAME = (
         By.XPATH, "//*[@class=\"x-form-item \"]//*[contains(text(),'厂站名称')]/../div[1]/div/img")
-    QRY_FACTORY_NAME_VALUE = (
+    QRY_SUB_STATION_NAME_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'--全部--')]/../div[%s]")
     # 电压等级
     QRY_ELE_GRADE = (

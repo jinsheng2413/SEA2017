@@ -21,7 +21,7 @@ class VipConsConfig_Page(Page):
         self.selectDropDown(options)
 
     # 供电电压
-    def inputSel_power_voltage(self, option):
+    def inputSel_volt_code(self, option):
         self.selectDropDown(option)
 
     # 已定义重点用户

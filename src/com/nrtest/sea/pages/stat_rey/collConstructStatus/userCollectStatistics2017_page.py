@@ -28,10 +28,10 @@ class UserCollectStatistics2017Page(Page):
         self.inputDate(content)
 
     # 统计口径
-    def inputSel_statistics_caliber(self, index):
-        # self.click(UserCollectStatistics2017Locators.STATISTICS_CALIBER)
+    def inputSel_stat_scope(self, index):
+        # self.click(UserCollectStatistics2017Locators.STAT_SCOPE)
         # locator = self.get_select_locator(
-        #     UserCollectStatistics2017Locators.STATISTICS_CALIBER_VALUE, index)
+        #     UserCollectStatistics2017Locators.STAT_SCOPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 

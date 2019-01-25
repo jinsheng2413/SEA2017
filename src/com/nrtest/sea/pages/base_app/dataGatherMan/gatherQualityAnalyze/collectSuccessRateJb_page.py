@@ -27,7 +27,7 @@ class CollectSuccessRateJbPage(Page):
         self.selectDropDown(name)
 
     # 相位
-    def inputSel_phase_flag(self, name):
+    def inputSel_phase_code(self, name):
         self.selectDropDown(name)
 
     # 通信方式

@@ -64,7 +64,7 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 通信方式
-        self.inputSel_comm_type(para['COMM_TYPE'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 芯片厂家
@@ -81,10 +81,7 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
         查询结果校验（包括跳转）
         :param para:
         """
-        p = AssertResult()
-        p.check_query_result(para)
-
-        # self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

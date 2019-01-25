@@ -58,7 +58,7 @@ class TestDebuggingAccess2017(TestCase, DebuggingAccess2017Page):
         # 管理方式
         self.inputSel_manage_style(para['MANAGE_STYLE'])
         # 装接方式
-        self.inputCSel_assembling_way(para['ASSEMBLING_WAY'])
+        self.inputSel_install_mode(para['INSTALL_MODE'])
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮

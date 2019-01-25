@@ -25,8 +25,8 @@ class SuccessRateTrendLocators:
     QRY_ABSO_MODE = (By.XPATH, '//input[@id="succRateTrendAbsoModeCombo"]')
     QRY_ABSO_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 发电类型
-    QRY_ELEC_TYPE = (By.XPATH, '//input[@id="succRateTrendElecTypeCombox"]')
-    QRY_ELEC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
+    QRY_GC_TYPE = (By.XPATH, '//input[@id="succRateTrendElecTypeCombox"]')
+    QRY_GC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')
 
@@ -49,8 +49,8 @@ class SuccessRateStatisticsLocators:
     QRY_ABSO_MODE = (By.XPATH, '//input[@id="succRateStatAbsoModeCombo"]')
     QRY_ABSO_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
     # 发电类型
-    QRY_ELEC_TYPE = (By.XPATH, '//input[@id="succRateStatElecTypeCombox"]')
-    QRY_ELEC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
+    QRY_GC_TYPE = (By.XPATH, '//input[@id="succRateStatElecTypeCombox"]')
+    QRY_GC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '(//button[text()="查询"])[2]')
 
@@ -65,8 +65,8 @@ class SuccessRateDetailLocators:
     QRY_METER_PURPOSE = (By.XPATH, '//input[@id="succRateDetailUsageTypeCombox"]')
     QRY_METER_PURPOSE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 发电类型
-    QRY_ELEC_TYPE = (By.XPATH, '//input[@id="succRateDetailElecTypeCombox"]')
-    QRY_ELEC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_GC_TYPE = (By.XPATH, '//input[@id="succRateDetailElecTypeCombox"]')
+    QRY_GC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 发电量消纳方式
     QRY_ABSO_MODE = (By.XPATH, '//input[@id="succRateDetailAbsoModeCombo"]')
     QRY_ABSO_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')

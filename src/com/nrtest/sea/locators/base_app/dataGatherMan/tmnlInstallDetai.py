@@ -62,9 +62,9 @@ class TmnlInstallDetaiLocators:
     QRY_RUN_STATE_COUNT_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'离线')]/../div[contains(text(),'%s')]")
     # 流程标识
-    QRY_PROCESS_ID_COUNT = (
+    QRY_FLOW_ID_COUNT = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'流程标识')]/../../div[1]/div[1]//input)[1]")
-    QRY_PROCESS_ID_COUNT_VALUE = (
+    QRY_FLOW_ID_COUNT_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'负控')]/../div[contains(text(),'%s')]")
 
     # 装接类型

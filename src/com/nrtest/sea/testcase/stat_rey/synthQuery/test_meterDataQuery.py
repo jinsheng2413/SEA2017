@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
@@ -64,11 +65,11 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 相位
-        self.inputSel_phase_position(para['PHASE_POSITION'])
+        self.inputSel_phase_code(para['PHASE_CODE'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 数据类别
-        self.inputSel_data_sort(para['DATA_SORT'])
+        self.inputSel_data_type(para['DATA_TYPE'])
         # 电能表抄读状态
         self.inputSel_meter_read_status(para['METER_READ_STATUS'])
         # 终端运行状态
@@ -87,7 +88,7 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

@@ -71,10 +71,10 @@ class TestTmnlParamSetGroup2(unittest.TestCase, TermParaSetGroup2Page):
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 终端规约
-        self.inputSel_tmnl_protory(para['TMNL_PROTORY'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
 
         # 下发状态
-        self.inputSel_task_status(para['TASK_STATUS'])
+        self.inputSel_send_status(para['SEND_STATUS'])
 
         # 是否有f10下发失败的测量点
         self.inputChk_f10_failsn(para['F10_FAILSN'])

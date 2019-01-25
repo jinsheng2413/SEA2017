@@ -67,39 +67,22 @@ class CentralizePlanUpgradePage(Page):
         self.clickSingleCheckBox(index)
 
     # 终端厂家
-    def inputSel_tab_tmnl_factory(self, index):
-        # self.click(CentralizePlanUpgradeLocators.TAB_TMNL_FACTORY)
-        # locator = self.get_select_locator(
-        #     CentralizePlanUpgradeLocators.TAB_TMNL_FACTORY_VALUE, index)
-        # self.click(locator)
+    def inputSel_tmnl_factory(self, index):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 终端类型
-    def inputSel_tab_tmnl_type(self, index):
-        # self.click(CentralizePlanUpgradeLocators.TAB_TMNL_TYPE)
-        # locator = self.get_select_locator(
-        #     CentralizePlanUpgradeLocators.TAB_TMNL_TYPE_VALUE, index)
-        # self.click(locator)
+    def inputSel_tmnl_type(self, index):
         self.selectDropDown(index)
 
     # 终端用途
     def inputSel_tab_tmnl_purpose(self, index):
-        # self.click(CentralizePlanUpgradeLocators.TAB_TMNL_PURPOSE)
-        # locator = self.get_select_locator(
-        #     CentralizePlanUpgradeLocators.TAB_TMNL_PURPOSE_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 升级版本号
-    def inputSel_tab_upgrade_version_no(self, index):
-        # self.click(CentralizePlanUpgradeLocators.TAB_UPGRADE_VERSION_NO)
-        # locator = self.get_select_locator(
-        #     CentralizePlanUpgradeLocators.TAB_UPGRADE_VERSION_NO_VALUE, index)
-        # self.click(locator)
+    def inputSel_upgrade_version_no(self, index):
         self.click(CentralizePlanUpgradeLocators.TAB_UPGRADE_VERSION_NO)
         self.selectDropDown(index)
 
     # 查询按钮
-    def btn_tab_search(self):
-        # self.click(CentralizePlanUpgradeLocators.TAB_BTN_SEARCH)
+    def btn_qry(self):
         self.btn_query(True)

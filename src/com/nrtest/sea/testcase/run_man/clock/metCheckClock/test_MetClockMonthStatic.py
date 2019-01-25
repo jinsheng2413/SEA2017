@@ -12,6 +12,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
 from com.nrtest.sea.pages.other.menu_page import MenuPage
@@ -64,9 +65,9 @@ class TestMetClockMonthStatic(TestCase, MetClockMonthStaticPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 电表类别
-        self.inputSel_tmnl_type(para['MET_TYPE'])
+        self.inputSel_met_type(para['MET_TYPE'])
         # 电能表厂商
-        self.inputSel_tmnl_fac(para['MET_FAC'])
+        self.inputSel_meter_factory(para['METER_FACTORY'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 
@@ -78,7 +79,7 @@ class TestMetClockMonthStatic(TestCase, MetClockMonthStaticPage):
         查询结果校验
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

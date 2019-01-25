@@ -21,7 +21,7 @@ class CommunicationModuleBaseInformationMantainLocators:
     QRY_MODULE_FACTORY_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'东软')]/../div[contains(text(),'%s')]")
     # 模块属性标识
-    QRY_MODULE_ATTRBUTE_SIGN = (
+    QRY_MODULE_ATTR_ID = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'模块属性标识')]/../../div[1]/div[1]//input")
     # 模块类型
     QRY_MODULE_TYPE = (

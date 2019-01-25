@@ -13,13 +13,15 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→终端管理→远程调试:终端调试
+# 基本应用→终端管理→远程调试
+# 终端调试
 @ddt
 class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
 
@@ -65,7 +67,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 终端装接状态
-        self.inputChk_assemblingStatus(para['ASSEMBLING_STATUS'])
+        self.inputChk_install_status(para['INSTALL_STATUS'])
 
         # 查询状态
         self.inputChk_queryType(para['QUERY_TYPE'])
@@ -79,7 +81,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.inputSel_runState_count(para['RUN_STATE'])
 
         # 流程标识
-        self.inputSel_processID_count(para['PROCESS_ID'])
+        self.inputSel_flow_id_count(para['FLOW_ID'])
 
         # 申请单号
         self.inputStr_app_no_count(para['APP_NO'])
@@ -113,7 +115,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
@@ -63,7 +64,7 @@ class TestGatherSuccessRateDetail(TestCase, GatherSuccessRateDetailPage):
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 通信方式
-        self.inputSel_comm_type(para['COMM_WAY'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 终端地址
@@ -78,7 +79,7 @@ class TestGatherSuccessRateDetail(TestCase, GatherSuccessRateDetailPage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

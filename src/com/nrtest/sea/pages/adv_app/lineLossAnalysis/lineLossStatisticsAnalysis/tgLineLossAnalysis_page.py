@@ -30,16 +30,16 @@ class TgLineLossAnalysisPage(Page):
 
 
     # 安装率
-    def inputSel_installation_rate(self, index):
-        self.click(TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE)
+    def inputSel_install_rate(self, index):
+        self.click(TgLineLossAnalysisLocators.QRY_INSTALL_RATE)
         locator = locator = self.get_select_locator(
-            TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE_VALUE, index)
+            TgLineLossAnalysisLocators.QRY_INSTALL_RATE_VALUE, index)
         self.click(locator)
         # self.selectDropDown(index)
 
     def inputStr_installation_rate(self, content):
         # self.input(
-        # content, *TgLineLossAnalysisLocators.QRY_INSTALLATION_RATE_INPUT)
+        # content, *TgLineLossAnalysisLocators.QRY_INSTALL_RATE_INPUT)
         self.input(content)
     # 抄读成功率
     def inputSel_read_success_rate(self, index):

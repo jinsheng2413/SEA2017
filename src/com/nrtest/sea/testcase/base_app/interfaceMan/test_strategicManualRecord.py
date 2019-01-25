@@ -59,7 +59,7 @@ class Test_StrategicManualRecord(TestCase, StrategicManualRecordPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 采集点名
-        self.inputStr_gatherpoint_name(para['GATHERPOINT_NAME'])
+        self.inputStr_cp_name(para['CP_NAME'])
 
         # 电表名称
         self.inputStr_meter_name(para['METER_NAME'])

@@ -69,11 +69,11 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompilePage):
         # 任务名称
         self.inputStr_task_name(para['TASK_NAME'])
         # 任务状态
-        self.inputSel_task_state(para['TASK_STATE'])
+        self.inputSel_task_status(para['TASK_STATUS'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 采集点名称
-        self.inputStr_collection_point_name(para['COLLECTION_POINT_NAME'])
+        self.inputStr_cp_name(para['CP_NAME'])
         # 终端类型
         self.inputRSel_tmnl_type(para['TMNL_TYPE'])
 

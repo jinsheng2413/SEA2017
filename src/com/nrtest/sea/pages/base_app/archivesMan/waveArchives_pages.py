@@ -22,11 +22,11 @@ class WaveArchives_count_Page(Page):
         self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 统计分类
-    def inputSel_count_type(self, name):
+    def inputSel_stat_type(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 统计时间
-    def inputDt_count_time(self, value):
+    def inputDt_stat_date(self, value):
         self.inputDate(value)
 
     # 查询
@@ -45,11 +45,11 @@ class WaveArchives_detail_Page(Page):
         self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 统计分类
-    def inputSel_count_type(self, name):
+    def inputSel_stat_type(self, name):
         self.selectDropDown(name, is_multi_elements=True, is_multi_tab=True)
 
     # 统计时间
-    def inputDt_count_time(self, value):
+    def inputDt_stat_date(self, value):
         self.inputDate(value)
 
     # 查询

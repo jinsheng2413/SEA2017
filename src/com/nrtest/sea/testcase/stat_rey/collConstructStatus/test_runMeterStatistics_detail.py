@@ -58,7 +58,7 @@ class TestRunMeterStatistics_Detail(TestCase, RunMeterDetailPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 通信方式
-        self.inputSel_tmnl_way(para['TMNL_WAY'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
         # 通讯规约
         self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 设备类型

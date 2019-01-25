@@ -18,6 +18,7 @@ class AllEventDistributionRateStatisticsPage(Page):
     def inputDt_query_date(self, content):
         # self.exec_script(AllEventDistributionRateStatisticsLocators.DATE_JS)
         # self.input(content, *AllEventDistributionRateStatisticsLocators.DATE)
+        self.clean_label(content)
         self.inputDate(content)
 
     # 查询按钮
@@ -31,6 +32,7 @@ class AllEventDistributionRateStatisticsPage(Page):
         # self.exec_script(
         #     AllEventDistributionRateStatisticsLocators.DATE_TAB_JS)
         # self.input(content, *AllEventDistributionRateStatisticsLocators.DATE_TAB)
+        self.clean_label(content)
         self.inputDate(content)
 
     # 终端类型

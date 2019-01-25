@@ -19,6 +19,7 @@ class AutomatedMeterAvailabilityPage(Page):
 
     # 查询日期
     def inputDt_query_date(self, content):
+        self.clean_label(content)
         self.inputDate(content)
 
     # 查询按钮
@@ -39,6 +40,7 @@ class AutomatedMeterAvailabilityDetailPage(Page):
 
     # 查询日期
     def inputDt_date(self, content):
+        self.clean_label(content)
         self.inputDate(content)
 
     # 查询按钮

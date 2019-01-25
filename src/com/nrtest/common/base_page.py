@@ -100,11 +100,11 @@ class Page():
             tag = False
             try:
 
-                el = args[0].driver.find_element(*CommonLocators.ERROR_WINDOW_PROCESS).is_displayed()
+                el = args[0].driver.find_element(*CommonLocators.ERROR_WINDOW_PROCESS)
                 if el:
                     tag = True
                     print('弹窗错误信息：%s' % el.text)
-                    args[0].driver.find_element(*CommonLocators.BTN_CONFIRM_LOCATORS).click()
+
                     if tag:
                         raise RuntimeError('PageError')
 
@@ -113,6 +113,10 @@ class Page():
             except:
                 if tag:
                     raise RuntimeError('page error--弹出框错误异常')
+                    try:
+                        args[0].driver.find_element(*CommonLocators.BTN_CONFIRM_LOCATORS).click()
+                    except:
+                        pass
 
         return wrapper
     def fail_on_screenshot(self, func):

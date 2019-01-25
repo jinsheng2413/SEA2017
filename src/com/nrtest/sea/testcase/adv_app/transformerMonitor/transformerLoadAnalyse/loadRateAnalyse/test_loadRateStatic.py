@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.loadRateAnalyse_page import \
@@ -79,7 +80,10 @@ class TestLoadRateStatic(TestCase, LoadRateStaticPage):
         查询结果校验
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        ar = AssertResult()
+
+        self.assertTrue(ar.check_query_result(para))
+        # self.assertTrue(self.check_query_result(para))
 
     def assert_query_criteria(self, para):
         """
@@ -92,7 +96,7 @@ class TestLoadRateStatic(TestCase, LoadRateStaticPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_TradnsformerMonitor,
-                                  TradnsformerMonitorData.para_TradnsformerMonitor_static))
+                                  TradnsformerMonitorData.para_TradnsformerMonitor_static)[0:1])
     def test_query(self, para):
         """高级应用→配变负载分析→负载率分析:负载率统计
         对查询结果有无、数据链接跳转等校验

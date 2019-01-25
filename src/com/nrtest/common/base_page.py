@@ -1168,10 +1168,12 @@ class Page():
         """
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
 
+
     def checkBoxAssertLine(self, value):
         xp = '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td'.format(
             value)
         el = self._find_elements((By.XPATH, xp))
+        dl = 0
         l = 0
         for i in el:
             l += 1

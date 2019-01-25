@@ -17,9 +17,13 @@ class PartialPressureLineLossAnalysisPage(Page):
     def inputSel_volt_code(self, index):
         self.selectCheckBox(index)
 
-    # 按日期统计类型
-    def inputDTTAB_statDateType(self, name):
-        self.clickDt_Tab(name)
+    # 按日期类型选择
+    def inputChk_date_type_sel(self, tab_name):
+        self.clickDt_Tab(tab_name)
+
+    # 季度选择
+    def inputChk_quarter_sel(self, value):
+        self.clickRadioBox(value)
 
     # 查询日期
     def inputDt_query_date(self, content):

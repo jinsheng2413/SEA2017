@@ -24,11 +24,11 @@ class TmnlSimFlowJB_1Page(Page):
 
     # 日期
     def inputDt_start_date(self, value):
-        self.input(value)  # , *TmnlSimFlowJB_1Locators.QRY_START_DATE)
+        self.inputDate(value)
 
     # 至 日期
     def inputDt_end_date(self, value):
-        self.input(value)  # , *TmnlSimFlowJB_1Locators.QRY_END_DATE)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):

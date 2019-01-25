@@ -34,6 +34,7 @@ class AutomatedMeterAvailabilityDetailPage(Page):
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):
+        self.clean_label(value)
         self.input(value)
 
     # 查询日期

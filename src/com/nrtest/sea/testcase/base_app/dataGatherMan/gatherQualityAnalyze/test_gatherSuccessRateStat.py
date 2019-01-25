@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
     GatherQualityAnalyze_data
@@ -80,7 +81,10 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        p = AssertResult()
+        p.check_query_result(para)
+
+        # self.assertTrue(self.check_query_result(para))
 
     def assert_query_criteria(self, para):
         """
@@ -92,7 +96,7 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.GatherSuccessRate_para,
-                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName_stat))
+                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName_stat)[0:1])
     def test_query(self, para):
         """基本应用→数据采集管理→采集质量分析→采集成功率:采集成功率统计
 

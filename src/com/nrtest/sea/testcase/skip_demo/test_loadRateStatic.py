@@ -93,7 +93,6 @@ class TestLoadRateStatic(TestCase, LoadRateStaticPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_TradnsformerMonitor,
                                   TradnsformerMonitorData.para_TradnsformerMonitor_static)[0:1])
@@ -106,7 +105,6 @@ class TestLoadRateStatic(TestCase, LoadRateStaticPage):
         self.query(para)
         self.assert_query_result(para)
         self.end_case()
-
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_TradnsformerMonitor,

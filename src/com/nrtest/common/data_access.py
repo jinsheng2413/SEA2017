@@ -144,7 +144,6 @@ class DataAccess:
         para = [Setting.PROJECT_NO]
         pyoracle.callproc('pkg_nrtest.refresh_all_case', para)
 
-
     @staticmethod
     def get_case_result(tst_case_id):
         """
@@ -153,8 +152,11 @@ class DataAccess:
         :param group_no: 测试用例组
         :return:
         """
+        # tab确定哪个显示区、列明、点击的那一列
         sql = 'select assert_type,tab_column_name , column_name, expected_value \
-              from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type'
+                      from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type'
+        # sql = 'select assert_type,tab_column_name , column_name, expected_value ,row_num,is_space\
+        #       from tst_case_result where tst_case_id = :id order by assert_type'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [tst_case_id])
         return dataSet
@@ -232,16 +234,45 @@ class DataAccess:
         # return ''.join(temp)
         return re.sub('[' + pattern + ']', '', src.strip())
 
+    @staticmethod
+    def get_skip_data(case_id, colu_name):
+        sql = 'select tres.tab_column_name,lr.tab_name ,tres.column_name,tres.row_num,lr.xpath_type,lr.xpath ,lr.target_tab_name,lr.trans_type,' \
+              'lr.target_xpath,lr.trans_value, lr.is_trans,lr.element_sn ' \
+              'from tst_case_result tres,TST_COL_LINK_RELA  lr,tst_case case ' \
+              'where tres.tst_case_id = case.tst_case_id and tres.column_name = lr.col_name and case.menu_no = lr.menu_no and case.tab_name = lr.tab_name and tres.tst_case_id =:case_id  and tres.assert_type in (\'21\',\'23\') and tres.column_name =:col_name order by lr.element_sn'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [case_id, colu_name])
+        return dataSet
+
+    @staticmethod
+    def get_xpath_tab_data(xpath, caseid, tab_name):
+        sql = 'select ts.xpath_name from tst_menu_xpath_list ts \
+              where ts.xpath =:xpath \
+              and ts.menu_no in (select u.menu_no from tst_case u where u.tst_case_id =:caseid)\
+              and ts.tab_name =:tabName'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [xpath, caseid, tab_name])
+        return dataSet
+
+    @staticmethod
+    def get_xpath_menu_data(xpath, menuName):
+        sql = 'select ts.xpath_name from tst_menu_xpath_list ts \
+                 where ts.xpath =:xpath \
+                 and ts.menu_no in (select u.menu_no from tst_menu u where u.menu_name =:menuName)'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [xpath, menuName])
+        return dataSet
 
 if __name__ == '__main__':
+    print(DataAccess.get_xpath_menu_data('CONS_NO', '用户数据查询'))
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
-    print(DataAccess.get_case_result("999121009"))
+    # print(DataAccess.getCaseData("99926400", tabName='01'))
     # print(DataAccess.refresh_all())
     # print(type(str))
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
-    # DataAccess.refresh_all()
+    DataAccess.refresh_all()
     # for i in  str[4:10]:
     #     print(i)
     # print(DataAccess.getAllMenu())

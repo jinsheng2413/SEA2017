@@ -64,7 +64,7 @@ class TestMeterRealTimePowerCutQuery(TestCase, MeterRealTimePowerCutQueryPage):
         # 电表资产号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 停电标志
-        self.inputSel_power_cut_flag(para['POWER_CUT_FLAG'])
+        self.inputSel_power_cut_sign(para['POWER_CUT_SIGN'])
         # 查询类型
         self.inputChk_qry_type(para['QRY_TYPE'])
         # 开始日期

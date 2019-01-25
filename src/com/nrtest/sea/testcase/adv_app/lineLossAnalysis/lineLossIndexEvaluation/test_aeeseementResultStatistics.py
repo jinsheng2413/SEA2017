@@ -61,11 +61,11 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 责任人
-        self.inputSel_person_resp_no(para['PERSON_RESP_NO'])
+        self.inputSel_charge_person(para['CHARGE_PERSON'])
 
         # 按日期类型统计
         self.inputChk_date_type_sel(para['DATE_TYPE_SEL'])
-        if para['DATE_TYPE_SEL'] == '按季统计':
+        if '按季统计' in para['DATE_TYPE_SEL']:
             # 季度选择
             self.inputChk_quarter_sel(para['QUARTER_SEL'])
         else:
@@ -90,7 +90,7 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossIndexEvaluation_data.AssessmentResultStatistics_para))
     def test_query(self, para):
         """高级应用→线损分析→线损指标考核→考核结果统计

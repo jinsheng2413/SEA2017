@@ -8,7 +8,6 @@
 @desc:
 """
 
-from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -54,7 +53,6 @@ class TestAssessmentParameterSetting(TestCase, AssessmentParameterSettingPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        print(para)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
@@ -62,13 +60,11 @@ class TestAssessmentParameterSetting(TestCase, AssessmentParameterSettingPage):
         self.inputStr_tg_name(para['TG_NAME'])
 
         # 记录形式
-        print(para['RECORDER_MANAGER'])
+        self.inputChk_recorder_model(para['RECORDER_MODEL'])
 
-        if '已录入管理员' in para['RECORDER_MANAGER']:
-            sleep(2)
-            self.inputChk_recorderModel(para['RECORDER_MANAGER'])
-        else:
-            self.inputChk_recorderModel(para['UNRECORDER_MANAGER'])
+        # Tab页选择
+        self.inputChk_tab_name(para['TAB_NAME'])
+
         # 查询按钮
         self.btn_search()
 

@@ -20,9 +20,8 @@ class TgLineLossMonitorPage(Page):
     def inputDt_query_date(self, content):
         self.inputDate(content)
 
-        # 时间统计类型
-
-    def inputDTTAB_statDateType(self, name):
+    # 时间统计类型
+    def inputChk_date_type(self, name):
         self.clickDt_Tab(name)
 
     # 查询按钮

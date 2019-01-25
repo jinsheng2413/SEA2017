@@ -17,15 +17,17 @@ class AreaLineLossAnalysisPage(Page):
     def inputDt_query_date(self, content):
         self.inputDate(content)
 
+    # 按日期类型选择
+    def inputChk_date_type_sel(self, tab_name):
+        self.clickDt_Tab(tab_name)
 
+    # 季度选择
+    def inputChk_quarter_sel(self, value):
+        self.clickRadioBox(value)
 
-    # 电量使用方式
-    def inputSChk_ele_type(self, name):
+    # 电量供应类型
+    def inputChk_ele_type(self, name):
         self.clickRadioBox(name)
-
-    # 按时间统计
-    def inputChk_StatTimeType(self, name):
-        self.clickDt_Tab(name)
 
     # 查询按钮
     def btn_search(self):

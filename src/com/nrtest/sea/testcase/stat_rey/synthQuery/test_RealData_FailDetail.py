@@ -75,9 +75,9 @@ class TestRealData_Faildetail(TestCase, RealDataFailDetailPage):
         # 终端生产厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 相位
-        self.inputSel_phase(para['PHASE_CODE'])
+        self.inputSel_phase_code(para['PHASE_CODE'])
         # 查询日期
-        self.inputDt_Time(para['QUERY_TIME'])
+        self.inputDt_query_time(para['QUERY_TIME'])
         # 电能表抄读状态
         self.inputSel_meter_read_status(para['METER_READ_STATUS'])
         # 终端运行状态

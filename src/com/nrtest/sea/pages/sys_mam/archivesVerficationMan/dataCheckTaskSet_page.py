@@ -24,7 +24,7 @@ class DataCheckTaskSetPage(Page):
         self.input(value)
 
     # 任务来源
-    def inputSel_taskFrom(self, name):
+    def inputSel_task_from(self, name):
         self.selectCheckBox(name)
 
     # 查询

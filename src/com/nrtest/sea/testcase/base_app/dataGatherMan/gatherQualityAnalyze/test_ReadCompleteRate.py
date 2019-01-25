@@ -69,7 +69,7 @@ class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
         self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 通信方式
-        self.inputSel_commu_mode(para['COMM_MODE'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
 
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])

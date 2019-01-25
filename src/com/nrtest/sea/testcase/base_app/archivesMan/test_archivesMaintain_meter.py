@@ -60,7 +60,7 @@ class TestarchivesMaintain_meter(TestCase, ArchivesMaintain_meter_pages):
         self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
 
         # 终端地址
-        self.inputStr_termainal_addr(para['TERMINAL_ADDR'])
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
 
         # 查询
         self.btn_qry()

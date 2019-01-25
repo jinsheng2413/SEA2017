@@ -15,7 +15,7 @@ from com.nrtest.sea.locators.stat_rey.synthQuery.lineDataQuery_locators import L
 # 统计查询→综合查询→线路数据查询
 class LineDataQueryPage(Page):
     # 线路编号
-    def inputStr_linenum(self, content):
+    def inputStr_line_no(self, content):
         self.input(content)  # , *LineDataQueryLocators.QRY_LINENUM)
 
     # 查询按钮

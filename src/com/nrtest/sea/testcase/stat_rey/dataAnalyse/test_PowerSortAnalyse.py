@@ -66,16 +66,16 @@ class TestPowerSortAnalyse(TestCase, PowerSortAnalysePage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 开始时间
-        self.inputDt_start_date(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
 
         # 结束时间
-        self.inputDt_end_date(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 数量排名
-        self.inputStr_rankingNumber(para['RANKING_NUMBER'])
+        self.inputStr_ranking_number(para['RANKING_NUMBER'])
 
         # 用户类型
-        self.inputSel_userType(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)

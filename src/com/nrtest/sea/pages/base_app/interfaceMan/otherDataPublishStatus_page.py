@@ -19,11 +19,11 @@ class OtherDataPublishStatusPage(Page):
         self.selectDropDown(option)
 
     # 发布时间 开始
-    def inputDt_receive_time(self, content):
+    def inputDt_start_date(self, content):
         self.inputDate(content)
 
     # 结束时间
-    def inputDt_end_time(self, content):
+    def inputDt_end_date(self, content):
         self.inputDate(content)
 
     # 查询

@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 class StaticByOrgPage(Page):
 
     # 终端厂商--打开并选择
-    def inputSel_tmnl_fac(self, item):
+    def inputSel_tmnl_factory(self, item):
         self.selectDropDown(item)
 
     # 电能表厂商--打开并选择
@@ -57,7 +57,7 @@ class FrequentlyCheckTmnlPage(Page):
         self.input(value)
 
     # 终端厂商--打开并选择
-    def inputSel_tmnl_fac(self, item):
+    def inputSel_tmnl_factory(self, item):
         self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
     # 终端资产号

@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_GisPanoramaDisplay.py
+@file: test_ProtocolLibManage.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -13,21 +13,22 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.stat_rey.dataAnalyse.loadrankanalyse_para import LoadRankAnalyse_para
+from com.nrtest.sea.data.base_app.multiTableOne.multiTableOne import MultiTableOne
+from com.nrtest.sea.pages.base_app.multiTableOne.protocolLibManage_page import ProtocolLibManageLocatorsPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.dataAnalyse.gisPanoramaDisplay_page import GisPanoramaDisplayPage
 
 
+# 基本应用→多表合→协议库管理
 @ddt
-class TestGisPanoramaDisplay(TestCase, GisPanoramaDisplayPage):
+class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(LoadRankAnalyse_para.gisPanoramaDisplay_para)
+        menuPage = MenuPage.openMenu(MultiTableOne.protocolLibManage_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(LoadRankAnalyse_para.tmnlInstallDetail_tabOne)
+        # menuPage.clickTabPage(MultiTableOne.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -48,9 +49,8 @@ class TestGisPanoramaDisplay(TestCase, GisPanoramaDisplayPage):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         """
@@ -60,23 +60,39 @@ class TestGisPanoramaDisplay(TestCase, GisPanoramaDisplayPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
-        # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
-        # 逐日显示
-        self.inputStr_day_display(para['DAY_DISPLAY'])
-        # 查询日期
-        self.inputDt_query_date(para['QUERY_DATE'])
+        # 协议名称
+        self.inputStr_protocol_name(para['PROTOCOL_NAME'])
+
+        # 厂商名称
+        self.inputStr_manufacturer_name(para['MANUFACTURER_NAME'])
+
+        # 协议类型
+        self.inputStr_protocol_type(para['PROTOCOL_TYPE'])
+
+        # 表记类型
+        self.inputStr_meter_type(para['METER_TYPE'])
+
+        # 查询方式
+        self.inputChk_query_type(para['QUERY_TYPE'])
+        if self.get_para_value(para['QUERY_TYPE']) == '查询时间段':
+            # 维护时间
+            self.inputDt_maintenance_time(para['MAINTENANCE_TIME'])
+
+            # 到
+            self.inputDt_end_time(para['END_TIME'])
+
+        # 有效标志
+        self.inputSel_effective_sign(para['EFFECTIVE_SIGN'])
+
+        # 协议版本号
+        self.inputStr_protocol_version_no(para['PROTOCOL_VERSION_NO'])
+
+        # 协议代码
+        self.inputStr_protocol_code(para['PROTOCOL_CODE'])
+
+        # 查询
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context()
-        # self.assertTrue(result)
-
-    # @data(*DataAccess.getCaseData(LoadRankAnalyse_para.gisPanoramaDisplay_para))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """
@@ -94,15 +110,18 @@ class TestGisPanoramaDisplay(TestCase, GisPanoramaDisplayPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LoadRankAnalyse_para.gisPanoramaDisplay_para))
+    @data(*DataAccess.getCaseData(MultiTableOne.protocolLibManage_para))
     def test_query(self, para):
+        """基本应用→多表合→协议库管理
+        :param para: 用例数据
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LoadRankAnalyse_para.gisPanoramaDisplay_para, valCheck=True))
+    @data(*DataAccess.getCaseData(MultiTableOne.protocolLibManage_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

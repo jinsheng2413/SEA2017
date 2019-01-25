@@ -71,7 +71,7 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 可算
-        self.inputChk_may(para['LINE_LOSS_TYPE_MAY'])
+        self.inputChk_line_loss_type(para['LINE_LOSS_TYPE'])
         # 达标
         self.inputChk_loss_line_type(para['LOSS_LINE_TYPE'])
         # 查询按钮

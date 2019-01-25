@@ -65,7 +65,7 @@ class TestbaseStationManage(TestCase, BaseStationManagePage):
         #self.openLeftTree(para['TREE_NODE'])
 
         # 通信地址
-        self.inputStr_communicationAddr(para['COMMUNICATION_ADDR'])
+        self.inputStr_comm_addr(para['COMM_ADDR'])
 
         self.btn_qry()
         self.sleep_time(2)

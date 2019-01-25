@@ -50,12 +50,12 @@ class LineLossStatisticsQueryPage(Page):
         self.clickSingleCheckBox(name)
 
     # 月
-    def inputChl_qryType_month(self, name):
+    def inputChl_qry_type_month(self, name):
         self.clickSingleCheckBox(name)
         self.month = 1
 
     # 日
-    def inputChl_qryType_day(self, name):
+    def inputChl_qry_type(self, name):
         self.clickSingleCheckBox(name)
         self.day = 1
 

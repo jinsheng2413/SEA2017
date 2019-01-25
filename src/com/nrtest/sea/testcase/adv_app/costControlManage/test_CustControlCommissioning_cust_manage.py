@@ -61,7 +61,7 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         self.inputStr_app_no(para['APP_NO'])
 
         # 按调试日期
-        self.inputSel_debug_dt(para['DEBUG_DATE'])
+        self.inputSel_debug_date(para['DEBUG_DATE'])
 
         # 开始时间
         self.inputDt_start_date(para['START_DATE'])

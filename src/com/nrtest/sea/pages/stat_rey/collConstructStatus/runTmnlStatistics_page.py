@@ -105,7 +105,7 @@ class RunTmnlStatDetailPage(Page):
         self.selectCheckBox(index)
 
     # 终端状态
-    def inputSel_tmnl_ststus(self, index):
+    def inputSel_tmnl_status(self, index):
         # if index == 'c':
         #     self._find_element(RunTmnlStatisticsLocators.DETAIL_TMNL_STATUS)
         # else:

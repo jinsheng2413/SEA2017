@@ -70,7 +70,7 @@ class TgLineLossAnalysisPage(Page):
 
         # 运算类型
 
-    def inputChkRunType(self, value):
+    def inputChk_line_loss_type(self, value):
         self.clickRadioBox(value)
 
     # 查询按钮
@@ -78,7 +78,7 @@ class TgLineLossAnalysisPage(Page):
         self.btn_query()
 
     # 日期选择类型
-    def inputDTT_type_sel(self, tab_name):
+    def inputDt_by_date_type(self, tab_name):
         self.clickDt_Tab(tab_name)
 
     # 查询时间
@@ -86,5 +86,5 @@ class TgLineLossAnalysisPage(Page):
         self.inputDate(value)
 
     # 可算类型
-    def inputChk_T(self, value):
+    def inputChk_tg_type(self, value):
         self.clickRadioBox(value)

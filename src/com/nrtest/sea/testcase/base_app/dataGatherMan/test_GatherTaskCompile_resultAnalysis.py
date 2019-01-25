@@ -69,9 +69,9 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompile_result_Page):
         # 任务编号
         self.inputStr_task_no(para['TASK_NO'])
         # 开始时间
-        self.inputDt_startTime(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
         # 结束时间
-        self.inputDt_endTime(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 查询
         self.btn_qry()

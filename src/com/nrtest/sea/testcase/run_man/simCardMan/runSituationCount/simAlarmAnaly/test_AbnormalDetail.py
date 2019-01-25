@@ -65,7 +65,7 @@ class TestAbnormalDetail(TestCase, AbnormalDetailPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 月份
-        self.inputDt_month(para['MONTH_COUNT'])
+        self.inputDt_month_count(para['MONTH_COUNT'])
         #异常类型
         self.inputStr_except_type(para['EXCEPT_TYPE'])
 

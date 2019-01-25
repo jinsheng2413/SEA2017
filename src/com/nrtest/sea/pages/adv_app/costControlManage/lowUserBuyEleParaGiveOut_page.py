@@ -14,6 +14,7 @@ from com.nrtest.common.base_page import Page
 class LowUserBuyEleParaGiveOut_page(Page):
     # 工单编号
     def inputStr_app_no(self, value):
+        self.clean_label(value)
         self.input(value)
 
     # 用户编号
@@ -34,6 +35,7 @@ class LowUserBuyEleParaGiveOut_page(Page):
 
     # 执行状态
     def inputSel_execute_status(self, option):
+        self.clean_label(option)
         self.selectDropDown(option)
 
     # 接收时间

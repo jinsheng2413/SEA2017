@@ -100,11 +100,11 @@ class Page():
             tag = False
             try:
 
-                el = args[0]._find_element(CommonLocators.ERROR_WINDOW_PROCESS, seconds=2)
+                el = args[0].driver.find_element(*CommonLocators.ERROR_WINDOW_PROCESS).is_displayed()
                 if el:
                     tag = True
                     print('弹窗错误信息：%s' % el.text)
-                    args[0]._find_element(CommonLocators.BTN_CONFIRM_LOCATORS).click()
+                    args[0].driver.find_element(*CommonLocators.BTN_CONFIRM_LOCATORS).click()
                     if tag:
                         raise RuntimeError('PageError')
 

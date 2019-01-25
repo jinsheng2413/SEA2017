@@ -40,6 +40,7 @@ class LowUserBuyEleParaGiveOut_page(Page):
 
     # 接收时间
     def inputDt_start_time(self, value):
+        self.clean_label(value)
         self.inputDate(value)
 
     # 结束时间

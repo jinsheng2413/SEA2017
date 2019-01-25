@@ -87,7 +87,7 @@ class TestSpecialUserBalanceQuery(TestCase, SpecialUserBalanceQueryPage):
     def assert_query_criteria(self, para):
         """
         查询条件校验
-        :param para:
+        :param para:test_SpecialUserBalanceQuery.py
         """
         result = self.check_query_criteria(para)
         self.assertTrue(result)

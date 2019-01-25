@@ -13,7 +13,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→线损分析→线损统计分析→台区线损监测
 class TgLineLossMonitorPage(Page):
     # 指标类型
-    def inputSel_pointer_type(self, index):
+    def inputSel_index_type(self, index):
         self.selectDropDown(index)
 
     # 查询日期

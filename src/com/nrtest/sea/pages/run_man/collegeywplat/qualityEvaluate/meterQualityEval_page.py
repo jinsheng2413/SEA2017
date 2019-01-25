@@ -39,7 +39,7 @@ class MeterQualityEvalDetailPage(Page):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 故障严重程度--打开并选择
-    def inputSel_fault_level(self, name):
+    def inputSel_fault_severity(self, name):
         self.selectDropDown(name)
 
     # 电表厂家-打开并选择

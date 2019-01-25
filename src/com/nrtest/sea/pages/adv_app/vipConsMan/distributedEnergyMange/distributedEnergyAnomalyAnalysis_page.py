@@ -57,10 +57,10 @@ class DistributedEnergyAnomalyDetailPage(Page):
         self.inputDate(content)
 
     # 异常类型
-    def inputSel_anomaly_type(self, index):
-        # self.click(DistributedEnergyAnomalyDetailLocators.QRY_ANOMALY_TYPE)
+    def inputStr_except_type(self, index):
+        # self.click(DistributedEnergyAnomalyDetailLocators.QRY_EXCEPT_TYPE)
         # locator = self.get_select_locator(
-        #     DistributedEnergyAnomalyDetailLocators.QRY_ANOMALY_TYPE_VALUE, index)
+        #     DistributedEnergyAnomalyDetailLocators.QRY_EXCEPT_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 

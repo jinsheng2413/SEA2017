@@ -28,9 +28,9 @@ class DistributedEnergyStatPage(Page):
 
     # 发电方式
     def inputSel_powerMode(self, name):
-        # self.click(*DistributedEnergyStatLocators.QRY_POWER_MODE)
+        # self.click(*DistributedEnergyStatLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
-        #     DistributedEnergyStatLocators.QRY_POWER_MODE_VALUE, name)
+        #     DistributedEnergyStatLocators.QRY_GC_TYPE_VALUE, name)
         # self.click(*locator)
         self.selectDropDown(name)
 
@@ -47,7 +47,7 @@ class DistributedEnergyStatDetailPage(Page):
         self.selectDropDown(index)
 
     # 发电类型
-    def inputSel_power_mode(self, index):
+    def inputSel_gc_type(self, index):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 覆盖情况

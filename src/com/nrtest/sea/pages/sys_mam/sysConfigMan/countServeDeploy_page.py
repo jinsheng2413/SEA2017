@@ -22,7 +22,7 @@ class CountServeDeployPage(Page):
         self.selectDropDown(option)
 
     # 统计分类
-    def inputChk_stats_type(self, option):
+    def inputChk_stat_type(self, option):
         self.clickRadioBox(option)
 
     # 查询按钮

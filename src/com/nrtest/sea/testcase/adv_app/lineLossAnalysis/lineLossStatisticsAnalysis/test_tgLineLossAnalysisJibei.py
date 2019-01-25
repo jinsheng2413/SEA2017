@@ -73,7 +73,7 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
         # 可算
         self.inputChk_may(para['LINE_LOSS_TYPE_MAY'])
         # 达标
-        self.inputChk_reach(para['LINE_LOSS_TYPE_REACH'])
+        self.inputChk_loss_line_type(para['LOSS_LINE_TYPE'])
         # 查询按钮
         self.btn_search()
 

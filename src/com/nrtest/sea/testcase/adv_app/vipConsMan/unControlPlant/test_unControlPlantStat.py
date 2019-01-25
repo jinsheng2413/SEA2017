@@ -56,7 +56,7 @@ class TestUnControlPlantStat(TestCase, UnControlPlantStatPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 发电方式
-        self.inputSel_gc_mode(para['GC_MODE'])
+        self.inputSel_gc_type(para['GC_TYPE'])
         # 采集方式
         self.inputSel_coll_mode(para['COLL_MODE'])
         # 日期

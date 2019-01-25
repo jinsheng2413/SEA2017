@@ -24,9 +24,9 @@ class DistributedEnergyStatLocators:
     QRY_ABSO_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'全部自用')]/../div[contains(text(),'%s')]")
     # 发电类型
-    QRY_POWER_MODE = (
+    QRY_GC_TYPE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'发电类型')]/../../div[1]/div[1]//input")
-    QRY_POWER_MODE_VALUE = (
+    QRY_GC_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'水力')]/../div[contains(text(),'%s')]")
 
     # 【操作区】

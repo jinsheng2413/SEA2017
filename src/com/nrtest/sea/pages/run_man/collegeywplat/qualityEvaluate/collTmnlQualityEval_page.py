@@ -39,7 +39,7 @@ class TmnlQualityEvalDetailPage(Page):
         self.selectDropDown(options, is_multi_elements=True, is_multi_tab=True)
 
     # 故障严重程度--打开并选择
-    def inputSel_fault_level(self, options):
+    def inputSel_fault_severity(self, options):
         self.selectDropDown(options)
 
     # 终端厂家-打开并选择

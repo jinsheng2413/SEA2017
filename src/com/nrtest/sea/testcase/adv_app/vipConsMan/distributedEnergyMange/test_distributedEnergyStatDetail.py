@@ -68,7 +68,7 @@ class TestDistributedEnergyStatDetail(TestCase, DistributedEnergyStatDetailPage)
         # 电能表用途
         self.inputSel_meter_purpose(para['METER_PURPOSE'])
         # 发电类型
-        self.inputSel_power_mode(para['POWER_MODE'])
+        self.inputSel_gc_type(para['GC_TYPE'])
         # 覆盖情况
         self.inputSel_cover_status(para['COVER_STATUS'])
         # 发电量消纳方式

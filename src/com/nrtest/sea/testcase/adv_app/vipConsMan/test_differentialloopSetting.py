@@ -63,7 +63,7 @@ class Test_DifferentialloopSetting(TestCase, DifferentialloopSetting_Page):
         self.inputStr_cons_name(para['CONS_NAME'])
 
         # 终端资产号
-        self.inputStr_tmnl_asst_no(para['TMNL_ASST_NO'])
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
 
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])

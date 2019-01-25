@@ -27,7 +27,7 @@ class BatchFetchPage(Page):
         self.inputDate(value)
 
     # 操作人
-    def inputStr_performer(self, value):
+    def inputStr_operator(self, value):
         self.input(value)
 
     # 查询

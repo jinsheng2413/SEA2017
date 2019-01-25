@@ -38,7 +38,7 @@ class ElePricePages(Page):
         self.selectDropDown(option)
 
     # 执行状态
-    def inputSel_execute_state(self, option):
+    def inputSel_execute_status(self, option):
         self.clean_label(option)
         self.selectDropDown(option)
 

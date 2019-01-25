@@ -74,7 +74,7 @@ class TestUpgradeTaskExecution(TestCase, UpgradeTaskExecutionPage):
         # 升级类型
         self.inputSel_upgrade_type(para['UPGRADE_TYPE'])
         # 执行状态
-        self.inputSel_execution_state(para['EXECUTION_STATE'])
+        self.inputSel_execute_status(para['EXECUTE_STATUS'])
         # 点击查询按钮
         self.btn_query()
 

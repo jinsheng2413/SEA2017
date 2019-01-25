@@ -64,7 +64,7 @@ class TestElePricePara(TestCase, ElePricePages):
         self.inputDt_receive_time(para['RECEIVE_TIME'])
 
         # 执行状态
-        self.inputSel_execute_state(para['EXECUTE_STATE'])
+        self.inputSel_execute_status(para['EXECUTE_STATUS'])
 
         # 终端地址
         self.inputStr_terminal_addr(para['TERMINAL_ADDR'])

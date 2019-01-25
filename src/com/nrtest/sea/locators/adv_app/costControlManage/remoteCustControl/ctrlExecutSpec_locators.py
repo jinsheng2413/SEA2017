@@ -15,9 +15,9 @@ class CtrlExecutSpecLocators:
     # 【查询条件区】
 
     # 执行状态
-    QRY_EXE_STATUS = (
+    QRY_EXECUTE_STATUS = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'执行状态')]/../../div[1]/div[1]//input")
-    QRY_EXE_STATUS_VALUE = (
+    QRY_EXECUTE_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'待下发命令')]/../div[contains(text(),'%s')]")
     # 用户编号
     QRY_CONS_NO = (

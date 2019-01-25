@@ -68,7 +68,7 @@ class TestBatchFetch(TestCase, BatchFetchPage):
         self.inputStr_task_name(para['TASK_NAME'])
 
         # 操作人
-        self.inputStr_performer(para['PERFORMER'])
+        self.inputStr_operator(para['OPERATOR'])
 
         # 开始时间
         self.inputDt_start_time(para['START_TIME'])

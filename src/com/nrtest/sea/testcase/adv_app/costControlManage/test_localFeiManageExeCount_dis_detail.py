@@ -62,7 +62,7 @@ class TestlocalFeiManageExeCount_dis_detail(TestCase, LocalFeiManageExeCount_dis
         self.inputSel_fee_ctrl_type(para['FEE_CTRL_TYPE'])
 
         # 执行状态
-        self.inputSel_exec_status(para['EXEC_STATUS'])
+        self.inputSel_execute_status(para['EXECUTE_STATUS'])
 
 
         # 工单编号

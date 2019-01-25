@@ -57,9 +57,9 @@ class TmnlQualityEvalDetailLocators:
     CONS_TYPE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'专变')]/../div[contains(text(),'%s')]")
     # 故障严重程度-下拉框
-    FAULT_LEVEL_SEL = (By.XPATH, "//div[@ class =\"x-form-item \"]//*[contains(text(),'故障严重程度')]/../div/div/img")
+    FAULT_SEVERITY_SEL = (By.XPATH, "//div[@ class =\"x-form-item \"]//*[contains(text(),'故障严重程度')]/../div/div/img")
     # 故障严重程度
-    FAULT_LEVEL = (
+    FAULT_SEVERITY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'严重')]/../div[contains(text(),'%s')]")
     # 终端厂家-下拉框
     TMNL_FACTORY_SEL = (By.XPATH, "(//div[@ class =\"x-form-item \"]//*[contains(text(),'终端厂家')]/../div/div/img)[1]")

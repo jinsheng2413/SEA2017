@@ -21,9 +21,9 @@ class UnControlPlantGatherMon1_locators:
     # 结束时间
     QRY_END_DATE = (By.XPATH, "//input[@id='endDate']")
     # 发电方式
-    QRY_GC_MODE = (By.XPATH, "//input[@id='monGenElecTypeCombox']")
+    QRY_GC_TYPE = (By.XPATH, "//input[@id='monGenElecTypeCombox']")
     # 值（发电方式）
-    QRY_GC_MODE_VALUE = (
+    QRY_GC_TYPE_VALUE = (
     By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'火力')])[1]/../div[contains(text(),'%s')]")
     # 采集方式
     QRY_COLL_MODE = (By.XPATH, "//input[@id='monCommModelCombo']")
@@ -51,9 +51,9 @@ class UnControlPlantGatherMon2_locators:
     # 节点名
     QRY_ORG = (By.XPATH, "//input[@id='unConGaDetailOrgTextField']")
     # 发电方式
-    QRY_GC_MODE = (By.XPATH, "//input[@id='monGenElecTypeDetCombox']")
+    QRY_GC_TYPE = (By.XPATH, "//input[@id='monGenElecTypeDetCombox']")
     # 值（发电方式）
-    QRY_GC_MODE_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
+    QRY_GC_TYPE_VALUE = (By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'%s')]")
     # 采集方式
     QRY_COLL_MODE = (By.XPATH, "//input[@id='monCommModelDetCombo']")
     # 值（采集方式）

@@ -19,7 +19,7 @@ class MServiceCallStatusPage(Page):
         self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
 
     # 服务名称
-    def inputSel_business_name(self, value):
+    def inputSel_service_name(self, value):
         self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
 
     # 调用时间
@@ -43,7 +43,7 @@ class MServiceCallStatus_detail_Page(Page):
         self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
 
     # 服务名称
-    def inputSel_business_name(self, value):
+    def inputSel_service_name(self, value):
         self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
 
     # 调用时间

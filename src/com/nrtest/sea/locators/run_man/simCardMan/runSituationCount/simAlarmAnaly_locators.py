@@ -14,8 +14,8 @@ from selenium.webdriver.common.by import By
 class AbnormalDetailLocators:
     #【查询条件区】
     # 异常类型
-    QRY_ABNORMAL_TYPE = (By.XPATH, "//*[@name=\"alarmTypeDetailCombox\"]")
-    QRY_ABNORMAL_TYPE_VALUE = (
+    QRY_EXCEPT_TYPE = (By.XPATH, "//*[@name=\"alarmTypeDetailCombox\"]")
+    QRY_EXCEPT_TYPE_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'SIM卡号为空')]/../div[contains(text(),'%s')]")
     #月份
     QRY_MONTH = (By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'月份')]/../../div[1]/div[1]//input)[2]")

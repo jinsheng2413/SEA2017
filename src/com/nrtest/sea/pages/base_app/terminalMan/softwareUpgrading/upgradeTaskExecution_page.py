@@ -70,10 +70,10 @@ class UpgradeTaskExecutionPage(Page):
         self.selectDropDown(index)
 
     # 执行状态
-    def inputSel_execution_state(self, index):
-        # self.click(UpgradeTaskExecutionLocators.EXECUTION_STATE)
+    def inputSel_execute_status(self, index):
+        # self.click(UpgradeTaskExecutionLocators.EXECUTE_STATUS)
         # locator = self.get_select_locator(
-        #     UpgradeTaskExecutionLocators.EXECUTION_STATE_VALUE, index)
+        #     UpgradeTaskExecutionLocators.EXECUTE_STATUS_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 

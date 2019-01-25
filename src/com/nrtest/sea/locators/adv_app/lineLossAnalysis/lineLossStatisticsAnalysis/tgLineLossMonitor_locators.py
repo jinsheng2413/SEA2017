@@ -14,9 +14,9 @@ from selenium.webdriver.common.by import By
 # 高级应用→线损分析→线损统计分析→台区线损监测
 class TgLineLossMonitorLocators:
     # 指标类型
-    QRY_POINTER_TYPE = (
+    QRY_INDEX_TYPE = (
         By.XPATH, '//label[contains(text(),"指标类型")]/../div/div/img')
-    QRY_POINTER_TYPE_VALUE = (
+    QRY_INDEX_TYPE_VALUE = (
         By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询日期
     QRY_DATE = (By.XPATH, '//label[contains(text(),"查询日期")]/../div/div/input')

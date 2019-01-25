@@ -56,7 +56,7 @@ class TestTgLineLossMonitor(TestCase, TgLineLossMonitorPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 指标类型
-        self.inputSel_pointer_type(para['POINTER_TYPE'])
+        self.inputSel_index_type(para['INDEX_TYPE'])
 
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])

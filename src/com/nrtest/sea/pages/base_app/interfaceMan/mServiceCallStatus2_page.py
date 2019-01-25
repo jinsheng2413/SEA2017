@@ -21,10 +21,10 @@ class MServiceCallStatus2Page(Page):
         self.selectDropDown(value)
 
     # 服务名称
-    def inputSel_business_name(self, value):
-        # self.click(MServiceCallStatus2Locators.QRY_BUSINESS_NAME)
+    def inputSel_service_name(self, value):
+        # self.click(MServiceCallStatus2Locators.QRY_SERVICE_NAME)
         # locator = self.get_select_locator(
-        #     MServiceCallStatus2Locators.QRY_BUSINESS_NAME_VALUE, value)
+        #     MServiceCallStatus2Locators.QRY_SERVICE_NAME_VALUE, value)
         # self.click(locator)
         self.selectDropDown(value)
 

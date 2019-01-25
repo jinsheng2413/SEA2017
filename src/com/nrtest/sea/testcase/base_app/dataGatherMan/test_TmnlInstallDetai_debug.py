@@ -67,45 +67,46 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         # 终端装接状态
         self.inputChk_install_status(para['INSTALL_STATUS'])
 
+
         # 查询状态
-        self.inputChk_queryType(para['QUERY_TYPE'])
+        self.inputChk_query_type(para['QUERY_TYPE'])
         # 开始时间
-        self.inputDt_startTime_count(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
 
         # 结束时间
-        self.inputDt_endTime_Count(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 运行状态
-        self.inputSel_runState_count(para['RUN_STATE'])
+        self.inputSel_run_status(para['RUN_STATUS'])
 
         # 流程标识
-        self.inputSel_flow_id_count(para['FLOW_ID'])
+        self.inputSel_flow_id(para['FLOW_ID'])
 
         # 申请单号
-        self.inputStr_app_no_count(para['APP_NO'])
+        self.inputStr_app_no(para['APP_NO'])
 
         # 用户编号
-        self.inputStr_cons_no_count(para['CONS_NO'])
+        self.inputStr_cons_no(para['CONS_NO'])
 
         # 终端地址
-        self.inputStr_tmnl_addr_count(para["TMNL_ADDR"])
+        self.inputStr_tmnl_addr(para["TMNL_ADDR"])
 
         # 终端厂家
-        self.inputSel_tmnl_factory_count(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         # 装接类型
-        self.inputSel_moutingType_count(para['MOUNTING_TYPE'])
+        self.inputSel_mouting_type(para['MOUNTING_TYPE'])
 
         # 终端类型
-        self.inputSel_tmnlType_count(para['TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
 
         # 通信规约
-        self.inputSel_LCT_count(para['LCT'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
 
         # 表类型
-        self.inputSel_meter_type_count(para['METER_TYPE'])
+        self.inputSel_meter_type(para['METER_TYPE'])
 
-        self.btn_tmnl_qry()
+        self.btn_qry()
         self.sleep_time(2)
 
     def assert_query_result(self, para):

@@ -21,10 +21,10 @@ class MServiceCallStatusLocators:
     QRY_BUSINESS_SYSTEM_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'数据中心')]/../div[contains(text(),'%s')]")
     # 服务名称
-    QRY_BUSINESS_NAME = (
+    QRY_SERVICE_NAME = (
         By.XPATH, "//label[contains(text(),'服务名称')]/../div/div/input")
     # 执行状态的值
-    QRY_BUSINESS_NAME_VALUE = (
+    QRY_SERVICE_NAME_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'数据接入')]/../div[contains(text(),'%s')]")
     # 调用时间（开始）
     QRY_DATE_BEGIN = (

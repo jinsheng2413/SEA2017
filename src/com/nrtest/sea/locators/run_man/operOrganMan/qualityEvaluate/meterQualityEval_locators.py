@@ -57,9 +57,9 @@ class MeterQualityEvalDetailLocators:
     CONS_TYPE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'专变')]/../div[contains(text(),'%s')]")
     # 故障严重程度-下拉框
-    FAULT_LEVEL_SEL = (By.XPATH, "//div[@ class =\"x-form-item \"]//*[contains(text(),'故障严重程度')]/../div/div/img")
+    FAULT_SEVERITY_SEL = (By.XPATH, "//div[@ class =\"x-form-item \"]//*[contains(text(),'故障严重程度')]/../div/div/img")
     # 故障严重程度
-    FAULT_LEVEL = (
+    FAULT_SEVERITY = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'严重')]/../div[contains(text(),'%s')]")
     # 电表厂家-下拉框
     METER_FAC_SEL = (By.XPATH, "//div[@ class =\"x-form-item \"]//*[contains(text(),'电表厂家')]/../div/div/img")

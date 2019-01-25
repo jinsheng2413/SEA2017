@@ -67,7 +67,7 @@ class TestTerminalOnlineSpied(TestCase, TerminalOnlineSpiedPage):
         # 终端地址
         self.inputSel_terminal_addr(para['TMNL_ADDR'])
         # 终端状态
-        self.inputStr_tmnl_state(para['TMNL_STATE'])
+        self.inputStr_tmnl_status(para['TMNL_STATUS'])
         # 终端规约
         self.inputStr_tmnl_protocol(para["TMNL_PROTOCOL"])
         # 终端类型

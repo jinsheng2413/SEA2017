@@ -57,7 +57,7 @@ class TestUnControlPlantDetail(TestCase, UnControlPlantDetailPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 发电方式
-        self.inputSel_gc_mode(para['GC_MODE'])
+        self.inputSel_gc_type(para['GC_TYPE'])
         # 采集方式
         self.inputSel_coll_mode(para['COLL_MODE'])
         # 统计日期
@@ -67,7 +67,7 @@ class TestUnControlPlantDetail(TestCase, UnControlPlantDetailPage):
         # 表资产编号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 终端资产编号
-        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 查询按钮
         self.btn_search()
 

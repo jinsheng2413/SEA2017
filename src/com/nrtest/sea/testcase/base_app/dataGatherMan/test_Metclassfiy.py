@@ -69,7 +69,7 @@ class TestMetclassfiy(TestCase, MetclassfiyPage):
         self.inputSel_meter_type(para['METER_TYPE'])
 
         # 操作
-        self.inputStr_perform(para['PERFORM'])
+        self.inputStr_operator(para['OPERATOR'])
 
         # 查询
         self.btn_qry()

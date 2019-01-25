@@ -77,7 +77,7 @@ class TestCtrlExecutSpec(TestCase, CtrlExecutSpecPage):
         self.inputSel_ctrl_type(para['CTRL_TYPE'])
 
         # 执行状态
-        self.inputSel_exe_status(para['EXE_STATUS'])
+        self.inputSel_execute_status(para['EXECUTE_STATUS'])
 
         # 工单号
         self.inputStr_app_no(para['APP_NO'])

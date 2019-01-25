@@ -42,11 +42,11 @@ class CtrlExecutPage(Page):
         self.inputDate(value)
 
     # 控制类型
-    def inputSel_control_type(self, options):
+    def inputSel_ctrl_type(self, options):
         self.selectDropDown(options)
 
     # 执行状态
-    def inputSel_exe_status(self, options):
+    def inputSel_execute_status(self, options):
         self.selectDropDown(options)
 
     # 数据来源

@@ -69,7 +69,7 @@ class Test_DataRepair_2(TestCase, DataRepair_2Page):
         self.inputStr_cons_no(para['CONS_NO'])
 
         # 终端资产号
-        self.inputStr_tmnl_asst_no(para['TMNL_ASST_NO'])
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
 
         # 电表局编号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])

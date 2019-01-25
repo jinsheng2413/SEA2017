@@ -58,7 +58,7 @@ class Test_UnControlPlantGatherMon_2(TestCase, UnControlPlantGatherMon2_Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 发电方式
-        self.inputSel_gc_mode(para['GC_MODE'])
+        self.inputSel_gc_type(para['GC_TYPE'])
 
         # 采集方式
         self.inputSel_coll_mode(para['COLL_MODE'])
@@ -73,7 +73,7 @@ class Test_UnControlPlantGatherMon_2(TestCase, UnControlPlantGatherMon2_Page):
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
 
         # 终端资产号
-        self.inputStr_tmnl_asst_no(para['TMNL_ASST_NO'])
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
 
         # 查询
         self.btn_qry()

@@ -62,7 +62,7 @@ class TestOtherServiceCallStatusCount(TestCase, MServiceCallStatusPage):
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])
 
         # #服务名称
-        self.inputSel_business_name(para['BUSINESS_NAME'])
+        self.inputSel_service_name(para['SERVICE_NAME'])
 
         # 开始时间
         self.inputDt_start_date(para['START_DATE'])

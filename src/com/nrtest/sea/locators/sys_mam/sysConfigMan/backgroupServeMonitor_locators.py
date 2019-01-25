@@ -16,8 +16,8 @@ class BackgroupServeMonitorLocators:
     # 查询日期
     QRY_DATE = (By.XPATH, '//label[contains(text(),"查询日期")]/../div/div/input')
     # 运行状态
-    QRY_OPERATION_STAT = (By.XPATH, '//label[contains(text(),"运行状态")]/../div/div/img')
-    QRY_OPERATION_STAT_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_RUN_STATUS = (By.XPATH, '//label[contains(text(),"运行状态")]/../div/div/img')
+    QRY_RUN_STATUS_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')
 
@@ -31,7 +31,7 @@ class BackgroupServeMonitorDetailLocators:
     # Job名称
     QRY_JOB_NAME = (By.XPATH, '//label[contains(text(),"Job名称")]/../div/input')
     # 服务名称
-    QRY_SERVE_NAME = (By.XPATH, '//label[contains(text(),"服务名称")]/../div/input')
+    QRY_SERVICE_NAME = (By.XPATH, '//label[contains(text(),"服务名称")]/../div/input')
     # 查询日期
     QRY_DATE = (By.XPATH, '(//label[contains(text(),"查询日期")])[2]/../div/div/input')
     # 查询按钮

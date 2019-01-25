@@ -64,7 +64,7 @@ class Test_UnControlPlantGatherMon_1(TestCase, UnControlPlantGatherMon1_Page):
         self.inputDt_end_date(para['END_DATE'])
 
         # 发电方式
-        self.inputSel_gc_mode(para['GC_MODE'])
+        self.inputSel_gc_type(para['GC_TYPE'])
 
         # 采集方式
         self.inputSel_coll_mode(para['COLL_MODE'])

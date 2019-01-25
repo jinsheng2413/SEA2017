@@ -16,14 +16,13 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiPage
+from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import TmnlInstallDetaiStatPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→终端管理→远程调试
-# 终端调试工单统计
+# 基本应用→终端管理→远程调试：终端调试工单统计
 @ddt
-class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
+class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiStatPage):
 
     @classmethod
     def setUpClass(cls):
@@ -75,7 +74,7 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
 
-        self.btn_appCount_qry()
+        self.btn_qry()
         self.sleep_time(2)
 
     def assert_query_result(self, para):
@@ -97,7 +96,7 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiPage):
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
                                   DataGatherMan_data.tmnlInstallDetail_tab_appCount))
     def test_query(self, para):
-        """基本应用--终端管理--远程调试（第一个tab页）
+        """基本应用→终端管理→远程调试：终端调试工单统计
         :param para: 用例数据
         """
         self.start_case(para, __file__)

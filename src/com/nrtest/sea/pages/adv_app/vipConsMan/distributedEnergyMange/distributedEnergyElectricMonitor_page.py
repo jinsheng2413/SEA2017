@@ -36,7 +36,7 @@ class DistributedEnergyElectricTrendPage(Page):
         self.selectDropDown(index)
 
     # 电量方式
-    def inputChk_gc_mode(self, index):
+    def inputChk_elec_mode(self, index):
         self.clickRadioBox(index)
 
     # 查询按钮

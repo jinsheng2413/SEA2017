@@ -68,7 +68,7 @@ class DataRepair_2Locators:
     # 用户编号
     QRY_CONS_NO = (By.XPATH, "//label[contains(text(),'用户编号')]/../div/input")
     # 终端资产号
-    QRY_TMNL_ASST_NO = (
+    QRY_TMNL_ASSET_NO = (
         By.XPATH, "//label[contains(text(),'终端资产号')]/../div/input")
     # 电表局编号
     QRY_METER_ASSET_NO = (By.XPATH, "//label[contains(text(),'电表局编号')]/../div/input")

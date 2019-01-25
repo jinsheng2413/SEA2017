@@ -68,7 +68,7 @@ class TestSpVoltAnalyseDetail(TestCase, SpVoltAnalyseDetailPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 日期类型
-        self.inputChk_data_method(para['DATA_METHOD'])
+        self.inputChk_date_type(para['DATE_TYPE'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 

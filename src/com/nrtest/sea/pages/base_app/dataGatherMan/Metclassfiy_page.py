@@ -23,7 +23,7 @@ class MetclassfiyPage(Page):
         self.selectDropDown(option)
 
     # 操作
-    def inputStr_perform(self, value):
+    def inputStr_operator(self, value):
         self.input(value)
 
     # 查询

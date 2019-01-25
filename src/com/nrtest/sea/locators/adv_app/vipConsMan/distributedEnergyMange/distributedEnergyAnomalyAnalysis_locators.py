@@ -34,8 +34,8 @@ class DistributedEnergyAnomalyDetailLocators:
     # 日期
     QRY_DATE = (By.XPATH, '(//label[contains(text(),"日期")]/../div/div/input)[2]')
     # 异常类型
-    QRY_ANOMALY_TYPE = (By.XPATH, '//input[@id="genExcepTypeCombox"]')
-    QRY_ANOMALY_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_EXCEPT_TYPE = (By.XPATH, '//input[@id="genExcepTypeCombox"]')
+    QRY_EXCEPT_TYPE_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 发电类型
     QRY_GC_TYPE = (By.XPATH, '//input[@id="genPowerTypeDetailCombox"]')
     QRY_GC_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')

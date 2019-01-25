@@ -73,7 +73,7 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
         self.inputChk_over_flow_status(para['OVER_FLOW_STATUS'])
 
         # 日期类型
-        self.inputChk_data_method(para['DATE_METHOD'])
+        self.inputChk_date_type(para['DATE_TYPE'])
 
         # 统计时间
         self.inputDt_static_time(para['STATIC_TIME'])

@@ -23,7 +23,7 @@ class DifferentialloopSetting_locators:
     # 终端地址
     QRY_TMNL_ADDR = (By.XPATH, "//input[@id='zddz']")
     # 终端资产号
-    QRY_TMNL_ASST_NO = (By.XPATH, "//input[@id='zdzch']")
+    QRY_TMNL_ASSET_NO = (By.XPATH, "//input[@id='zdzch']")
 
     # 【操作区】
     # 【查询】

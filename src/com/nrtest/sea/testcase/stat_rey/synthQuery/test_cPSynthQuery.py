@@ -67,8 +67,8 @@ class TestCPSynthQuery(TestCase, CPSynthQueryPage):
         self.inputDt_start_date(para['START_DATE'])
         # 结束日期
         self.inputDt_end_date(para['END_DATE'])
-        # 终端用途
-        self.inputChk_tmnl_purpose(para['TMNL_PURPOSE'])
+        # 终端类型
+        self.inputChk_tmnl_type(para['TMNL_TYPE'])
         # 接线方式
         self.inputSel_wiring_mode(para['WIRING_MODE'])
         # 查询按钮

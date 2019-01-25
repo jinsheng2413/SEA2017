@@ -28,7 +28,7 @@ class AbnoralStaticPage(Page):
 class AbnormalDetailPage(Page):
 
     # 异常类型
-    def inputStr_abnormal_type(self, item):
+    def inputStr_except_type(self, item):
         self.selectDropDown(item)
 
     # 月份

@@ -17,8 +17,8 @@ class CountServeDeployLocators:
     QRY_JOB_NAME = (By.XPATH, '//label[contains(text(),"JOB名称")]/../div/div/img')
     QRY_JOB_NAME_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 服务名称
-    QRY_SERVE_NAME = (By.XPATH, '//label[contains(text(),"服务名称")]/../div/div/img')
-    QRY_SERVE_NAME_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    QRY_SERVICE_NAME = (By.XPATH, '//label[contains(text(),"服务名称")]/../div/div/img')
+    QRY_SERVICE_NAME_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[text()="查询"]')
 

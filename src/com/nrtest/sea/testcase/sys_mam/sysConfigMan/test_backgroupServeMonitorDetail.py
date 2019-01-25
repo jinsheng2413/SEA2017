@@ -58,7 +58,7 @@ class TestBackgroupServeMonitorDetail(TestCase, BackgroupServeMonitorDetailPage)
         # JOB名称
         self.inputStr_job_name(para['JOB_NAME'])
         # 服务名称
-        self.inputStr_serve_name(para['SERVE_NAME'])
+        self.inputStr_service_name(para['SERVICE_NAME'])
 
         # 日期类型选择
         self.inputChk_date_type_sel(para['DATE_TYPE_SEL'])

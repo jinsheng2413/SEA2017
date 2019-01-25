@@ -17,7 +17,7 @@ class BatchFetchLocators:
     QRY_TASK_NAME = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'任务名称')]/../../div[1]/div[1]//input")
     # 操作人
-    QRY_PERFORMER = (
+    QRY_OPERATOR = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'操作人')]/../../div[1]/div[1]//input")
 
     # 有效性

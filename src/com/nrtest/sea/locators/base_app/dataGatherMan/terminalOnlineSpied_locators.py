@@ -18,7 +18,7 @@ class TerminalOnlineSpiedLocators:
     # 终端地址
     QRY_TMNL_ADDR = (By.XPATH, "//*[@id=\"terminalAddr1\"]")
     # 终端状态
-    QRY_TMNL_STATE = (By.XPATH, "//*[@id=\"tmnlOnline\"]")
+    QRY_inputStr_tmnl_asset_no = (By.XPATH, "//*[@id=\"tmnlOnline\"]")
     # 终端规约
     QRY_TMNL_PROTOCOL = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'终端规约')]/../../div[1]/div[1]//input")
@@ -33,7 +33,7 @@ class TerminalOnlineSpiedLocators:
     # 终端厂商
     TMNL_FACTORY_JS = 'document.getElementById("tmnlFactory").removeAttribute("readonly");'
     # 终端状态
-    TMNL_STATE_JS = 'document.getElementById("tmnlOnline").removeAttribute("readonly");'
+    inputStr_tmnl_asset_no_JS = 'document.getElementById("tmnlOnline").removeAttribute("readonly");'
     # 终端状态
     TMNL_PROTOCOL_JS = 'document.getElementsByTagName(\'input\')[7].removeAttribute(\"readOnly\")'
     # 终端类型

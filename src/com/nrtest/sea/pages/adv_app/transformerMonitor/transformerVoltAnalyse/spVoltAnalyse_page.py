@@ -20,7 +20,7 @@ class SpVoltAnalyseStaticPage(Page):
         self.selectDropDown(item)
 
     # 日期类型
-    def inputChk_data_method(self, option):
+    def inputChk_date_type(self, option):
         self.clickRadioBox(option, True, True)
 
     # 查询日期
@@ -39,7 +39,7 @@ class SpVoltAnalyseDetailPage(Page):
         self.selectDropDown(item,is_multi_tab=True,is_multi_elements=True)
 
     # 日期类型
-    def inputChk_data_method(self, option):
+    def inputChk_date_type(self, option):
         self.clickRadioBox(option, True, True)
 
     # 查询日期

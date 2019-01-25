@@ -66,7 +66,7 @@ class TestGeneralGroupSet(TestCase, GeneralGroupSetPage):
             # 名称
             self.inputStr_name(para['NAME'])
             # 类别
-            self.inputChk_stats_type(para['STATS_TYPE'])
+            self.inputChk_stat_type(para['STAT_TYPE'])
             # 有效日期
             self.inputChk_valid_date(para['VALID_DATE'])
 

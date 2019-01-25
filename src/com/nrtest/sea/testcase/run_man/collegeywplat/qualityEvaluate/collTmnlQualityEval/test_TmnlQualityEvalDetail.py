@@ -67,7 +67,7 @@ class TestTmnlQualityEvalDetail(TestCase, TmnlQualityEvalDetailPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 故障严重程度
-        self.inputSel_fault_level(para['FAULT_LEVEL'])
+        self.inputSel_fault_severity(para['FAULT_SEVERITY'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 故障类别

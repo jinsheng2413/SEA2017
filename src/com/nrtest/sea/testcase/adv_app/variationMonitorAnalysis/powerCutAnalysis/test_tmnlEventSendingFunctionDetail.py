@@ -64,7 +64,7 @@ class TestTmnlEventSendingFunctionDeatil(TestCase, TmnlEventSendingFunctionDeati
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端规约
-        self.inputSel_tmnl_protocol(para['TMNL_PROYOCOL'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 是否具备停上电事件上送功能
         self.inputSel_sending_function(para['SENDING_FUNCTION'])
         # 查询按钮

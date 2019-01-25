@@ -69,10 +69,10 @@ class LocalFeiManageExeCount_dis_detail_Locators:
     QRY_END_DATE = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'--至--')]/../div[1]/div/input)[2]")
     # 执行状态
-    QRY_EXECUTE_STATE = (
+    QRY_EXECUTE_STATUS = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'执行状态:')]/../div[1]/div/img")
     # 执行状态的值
-    QRY_EXECUTE_STATE_VALUE = (
+    QRY_EXECUTE_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'失败')]/../div[%s]")
     # 工单编号
     QRY_APP_NO = (

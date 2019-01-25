@@ -57,9 +57,9 @@ class TmnlInstallDetaiLocators:
     QRY_END_TIME_COUNT = (By.XPATH, '//*[@id="tmnlEndDate"]')
 
     # 运行状态
-    QRY_RUN_STATE_COUNT = (
+    QRY_RUN_STATUS_COUNT = (
         By.XPATH, "(//div[@class=\"x-form-item \"]//label[contains(text(),'运行状态')]/../../div[1]/div[1]//input)[1]")
-    QRY_RUN_STATE_COUNT_VALUE = (
+    QRY_RUN_STATUS_COUNT_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'离线')]/../div[contains(text(),'%s')]")
     # 流程标识
     QRY_FLOW_ID_COUNT = (
@@ -87,7 +87,7 @@ class TmnlInstallDetaiLocators:
     QRY_TMNL_TYPE_COUNT = (By.XPATH, '//*[@id="tilldet_interfaceType"]')
 
     # 通信规约
-    QRY_LCT_COUNT = (By.XPATH, '//*[@id="protocolCodeName_tmnlTaskConfig"]')
+    QRY_TMNL_PROTOCOL_COUNT = (By.XPATH, '//*[@id="protocolCodeName_tmnlTaskConfig"]')
 
     # 【操作区】
     BTN_TMNL_QRY = (By.XPATH,
@@ -103,6 +103,6 @@ class TmnlInstallDetaiLocators:
     # 终端类型
     TMNL_TYPE_JS_COUNT = 'document.getElementById("tilldet_interfaceType").removeAttribute("readonly");'
     # 通信规约
-    LCT_JS_COUNT = 'document.getElementById("protocolCodeName_tmnlTaskConfig").removeAttribute("readonly");'
+    TMNL_PROTOCOL_JS_COUNT = 'document.getElementById("protocolCodeName_tmnlTaskConfig").removeAttribute("readonly");'
     # 电表类型
     METER_TYPE_JS_COUNT = 'document.getElementsByTagName(\'input\')[29].removeAttribute("readonly");'

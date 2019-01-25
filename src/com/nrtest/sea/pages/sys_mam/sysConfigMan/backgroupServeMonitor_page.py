@@ -23,7 +23,7 @@ class BackgroupServeMonitorPage(Page):
         self.inputDate(value, True)
 
     # 运行状态
-    def inputSel_operation_stat(self, option):
+    def inputSel_run_status(self, option):
         self.selectDropDown(option, True)
 
     # 查询按钮
@@ -38,7 +38,7 @@ class BackgroupServeMonitorDetailPage(Page):
         self.input(content)
 
     # 服务名称
-    def inputStr_serve_name(self, content):
+    def inputStr_service_name(self, content):
         self.input(content)
 
     # 日期类型选择

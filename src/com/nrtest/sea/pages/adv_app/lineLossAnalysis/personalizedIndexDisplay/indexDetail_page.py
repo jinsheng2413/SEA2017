@@ -35,7 +35,7 @@ class IndexDetailPage(Page):
 
 class IndexDetailPage_count(Page):
     # 工号
-    def inputStr_app_no(self, name):
+    def inputStr_staff_no(self, name):
         self.curr_input(name, is_multi_tab=True)
 
     # 时间选择

@@ -22,7 +22,7 @@ class TerminalOnlineSpiedPage(Page):
         self.input(value)
 
     # 终端状态
-    def inputStr_tmnl_state(self, value):
+    def inputStr_tmnl_status(self, value):
         self.selectCheckBox(value)
 
     # 终端规约

@@ -42,7 +42,7 @@ class CtrlExecutSpecPage(Page):
         self.input(value)
 
     # 执行状态
-    def inputSel_exe_status(self, name):
+    def inputSel_execute_status(self, name):
         self.selectDropDown(name)
 
     # 查询

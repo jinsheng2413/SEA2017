@@ -81,7 +81,7 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
         self.inputDt_receive_date(para['RECEIVE_DATE'])
 
         # 执行状态
-        self.inputSel_execute_state(para['EXECUTE_STATE'])
+        self.inputSel_execute_status(para['EXECUTE_STATUS'])
 
         # 终端地址
         self.inputStr_terminal_addr(para['TERMINAL_ADDR'])

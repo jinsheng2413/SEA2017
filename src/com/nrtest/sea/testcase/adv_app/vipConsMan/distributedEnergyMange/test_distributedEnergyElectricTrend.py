@@ -64,7 +64,7 @@ class TestDistributedEnergyElectricTrend(TestCase, DistributedEnergyElectricTren
         # 发电量消纳方式
         self.inputSel_abso_type(para['ABSO_TYPE'])
         # 电量方式
-        self.inputChk_gc_mode(para['GC_MODE'])
+        self.inputChk_elec_mode(para['ELEC_MODE'])
         # 查询按钮
         self.btn_search()
 

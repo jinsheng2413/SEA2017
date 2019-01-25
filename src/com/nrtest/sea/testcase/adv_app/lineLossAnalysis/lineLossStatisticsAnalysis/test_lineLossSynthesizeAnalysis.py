@@ -59,11 +59,17 @@ class TestLineLossSynthesizeAnalysis(TestCase, LineLossSynthesizeAnalysisPage):
         # 线损类别
         self.inputSel_line_loss_type(para['LINE_LOSS_TYPE'])
 
-        # 日期统计类型
-        self.inputDTTAB_statDateType(para['STAT_DATE_TYPE'])
+        # 按日期类型统计
+        self.inputChk_date_type_sel(para['DATE_TYPE_SEL'])
+        if '按季统计' in para['DATE_TYPE_SEL']:
+            # 季度选择
+            self.inputChk_quarter_sel(para['QUARTER_SEL'])
+        else:
+            # 查询日期
+            self.inputDt_query_date(para['QUERY_DATE'])
 
-        # 查询日期
-        self.inputDt_query_date(para['QUERY_DATE'])
+        # TAB页选择
+        self.inputChk_tab_name(para['TAB_NAME'])
 
         # 查询按钮
         self.btn_search()

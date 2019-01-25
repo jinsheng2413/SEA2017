@@ -62,7 +62,7 @@ class TestDistributedEnergyAnomalyDetail(TestCase, DistributedEnergyAnomalyDetai
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 异常类型
-        self.inputSel_anomaly_type(para['ANOMALY_TYPE'])
+        self.inputStr_except_type(para['EXCEPT_TYPE'])
         # 发电类型
         self.inputSel_gc_type(para['GC_TYPE'])
         # 发电量消纳方式

@@ -19,7 +19,7 @@ class CollectSuccessRateJbPage(Page):
         self.clickRadioBox(name)
 
     # 通讯规约
-    def inputSel_coll_mode(self, name):
+    def inputSel_tmnl_protocol(self, name):
         self.selectDropDown(name)
 
     # 终端厂家

@@ -71,7 +71,7 @@ class DataRepair_2Page(Page):
         self.input(value)#, *DataRepair_2Locators.QRY_CONS_NO)
 
     # 终端资产号
-    def inputStr_tmnl_asst_no(self, value):
+    def inputStr_tmnl_asset_no(self, value):
         self.input(value)  # , *DataRepair_2Locators.QRY_TMNL_ASSET_NO)
 
     # 电表局编号

@@ -41,9 +41,9 @@ class CtrlExecutLocators:
     QRY__VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'保电投入')]/../div[contains(text(),'%s')]")
     # 执行状态
-    QRY_EXE_STATUS = (
+    QRY_EXECUTE_STATUS = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'执行状态')]/../../div[1]/div[1]/div/input")
-    QRY_EXE_STATUS_VALUE = (
+    QRY_EXECUTE_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'待下发命令')]/../div[contains(text(),'%s')]")
     # 数据来源
     QRY_DATA_SRC = (
@@ -56,9 +56,9 @@ class CtrlExecutLocators:
     QRY_CONFIRM_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'执行待确认')]/../div[contains(text(),'%s')]")
     # 执行结果状态
-    QRY_EXE_STATUS_RESULT = (
+    QRY_EXECUTE_STATUS_RESULT = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'执行结果状态')]/../../div[1]/div[1]/div/input")
-    QRY_EXE_STATUS_RESULT_VALUE = (
+    QRY_EXECUTE_STATUS_RESULT_VALUE = (
         By.XPATH, "(//div[@class=\"x-combo-list-inner\"]//*[contains(text(),'成功')])[2]/../div[contains(text(),'%s')]")
 
     # 【操作区】

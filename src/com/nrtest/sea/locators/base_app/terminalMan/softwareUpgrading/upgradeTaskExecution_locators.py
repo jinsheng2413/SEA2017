@@ -50,10 +50,10 @@ class UpgradeTaskExecutionLocators:
     UPGRADE_TYPE_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[5]/div[%s]')
     # 执行状态
-    EXECUTION_STATE = (
+    EXECUTE_STATUS = (
         By.XPATH, '//label[contains(text(),"执行状态")]/../div/div/img')
     # 执行状态→值
-    EXECUTION_STATE_VALUE = (
+    EXECUTE_STATUS_VALUE = (
         By.XPATH, '(//div[@class="x-combo-list-inner"])[6]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '//button[contains(text(),"查询")]')

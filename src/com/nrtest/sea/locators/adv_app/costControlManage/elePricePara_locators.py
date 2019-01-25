@@ -32,9 +32,9 @@ class ElePricePara_locators:
     # 结束时间
     QRY_END_TIME = (By.XPATH, '//*[@id="appRecieveEndTime"]')
     # 执行状态
-    QRY_EXECUTE_STATE = (By.XPATH, '//*[@id="elecPriceParamStatus"]')
+    QRY_EXECUTE_STATUS = (By.XPATH, '//*[@id="elecPriceParamStatus"]')
     # 执行状态的值
-    QRY_EXECUTE_STATE_VALUE = (
+    QRY_EXECUTE_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'执行失败')]/../div[%s]")
     # 任务类型
     QRY_TASK_CATA = (By.XPATH, '// *[ @ id = "elecPriceParamType"]')

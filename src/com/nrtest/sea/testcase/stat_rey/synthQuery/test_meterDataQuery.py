@@ -73,7 +73,7 @@ class TestMeterDataQuery(TestCase, MeterDataQueryPage):
         # 电能表抄读状态
         self.inputSel_meter_read_status(para['METER_READ_STATUS'])
         # 终端运行状态
-        self.inputSel_tmnl_run_status(para['TMNL_RUN_STAT'])
+        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
         # 农排用户选择
         self.inputSel_user_select(para['USER_SELECT'])
         # 用户类别

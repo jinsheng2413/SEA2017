@@ -59,10 +59,10 @@ class TestCountServeDeploy(TestCase, CountServeDeployPage):
         self.inputSel_job_name(para['JOB_NAME'])
 
         # 服务名称
-        self.inputSel_serve_name(para['SERVE_NAME'])
+        self.inputSel_serve_name(para['SERVICE_NAME'])
 
         # 统计分类
-        self.inputChk_stats_type(para['STATS_TYPE'])
+        self.inputChk_stat_type(para['STAT_TYPE'])
 
         # 查询按钮
         self.btn_search()

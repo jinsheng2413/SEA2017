@@ -14,9 +14,9 @@ from com.nrtest.common.base_page import Page
 # 高级应用→重点用户监测→非统调电厂管理→非统调电厂接入统计
 class UnControlPlantStatPage(Page):
     # 发电方式
-    def inputSel_gc_mode(self, index):
-        # self.click(UnControlPlantStatLocators.QRY_GC_MODE)
-        # locator = self.get_select_locator(UnControlPlantStatLocators.QRY_GC_MODE_VALUE, index)
+    def inputSel_gc_type(self, index):
+        # self.click(UnControlPlantStatLocators.QRY_GC_TYPE)
+        # locator = self.get_select_locator(UnControlPlantStatLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index)
 
@@ -41,9 +41,9 @@ class UnControlPlantStatPage(Page):
 # 高级应用→重点用户监测→非统调电厂管理→非统调电厂接入统计→非统调电厂接入明细
 class UnControlPlantDetailPage(Page):
     # 发电方式
-    def inputSel_gc_mode(self, index):
-        # self.click(UnControlPlantDetailLocators.QRY_GC_MODE)
-        # locator = self.get_select_locator(UnControlPlantDetailLocators.QRY_GC_MODE_VALUE, index)
+    def inputSel_gc_type(self, index):
+        # self.click(UnControlPlantDetailLocators.QRY_GC_TYPE)
+        # locator = self.get_select_locator(UnControlPlantDetailLocators.QRY_GC_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
@@ -69,7 +69,7 @@ class UnControlPlantDetailPage(Page):
         self.input(content)  #, *UnControlPlantDetailLocators.QRY_METER_ASSET_NO)
 
     # 终端资产编号
-    def inputStr_tmnl_addr(self, content):
+    def inputStr_tmnl_asset_no(self, content):
         self.input(content)  #, *UnControlPlantDetailLocators.QRY_TMNL_ASSET_NO)
 
     # 查询

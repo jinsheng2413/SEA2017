@@ -51,7 +51,7 @@ class OverFlowStaticPage(Page):
         self.input(value)
 
     # 日期类型
-    def inputChk_data_method(self, option):
+    def inputChk_date_type(self, option):
         self.clickRadioBox(option)
 
     # 是否超流量

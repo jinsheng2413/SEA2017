@@ -23,7 +23,7 @@ class GeneralGroupSetPage(Page):
         self.input(content)
 
     # 类别
-    def inputChk_stats_type(self, option):
+    def inputChk_stat_type(self, option):
         self.clickRadioBox(option)
 
     # 有效日期

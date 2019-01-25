@@ -32,9 +32,9 @@ class LowUserBuyEleParaGiveOutLocators:
     # 结束时间
     QRY_END_TIME = (By.XPATH, '//*[@id="elecParamRecieveEndTime"]')
     # 执行状态
-    QRY_EXECUTE_STATE = (By.XPATH, '//*[@id="purchaseParamStatus"]')
+    QRY_EXECUTE_STATUS = (By.XPATH, '//*[@id="purchaseParamStatus"]')
     # 执行状态的值
-    QRY_EXECUTE_STATE_VALUE = (
+    QRY_EXECUTE_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'执行失败')]/../div[%s]")
 
     # 【操作区】

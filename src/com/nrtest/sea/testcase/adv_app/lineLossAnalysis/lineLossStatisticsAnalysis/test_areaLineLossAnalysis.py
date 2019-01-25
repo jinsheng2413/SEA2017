@@ -56,14 +56,17 @@ class TestAreaLineLossAnalysis(TestCase, AreaLineLossAnalysisPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        # 查询日期
-        self.inputDt_query_date(para['QUERY_DATE'])
+        # 电量供应类型
+        self.inputChk_ele_type(para['ELE_TYPE'])
 
-        # 电量使用方式
-        self.inputChk_StatTimeType(para['STAT_DATE_TYPE'])
-
-        # 按时间类型统计
-        self.inputSChk_ele_type(para['ELE_TYPE'])
+        # 按日期类型统计
+        self.inputChk_date_type_sel(para['DATE_TYPE_SEL'])
+        if '按季统计' in para['DATE_TYPE_SEL']:
+            # 季度选择
+            self.inputChk_quarter_sel(para['QUARTER_SEL'])
+        else:
+            # 查询日期
+            self.inputDt_query_date(para['QUERY_DATE'])
 
         # 查询按钮
         self.btn_search()

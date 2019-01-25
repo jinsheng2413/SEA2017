@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 # 系统管理→系统使用情况统计→系统使用情况统计
 class CoreFunctionAuditPage(Page):
     # 操作员
-    def inputStr_performer(self, value):
+    def inputStr_operator(self, value):
         self.input(value)
 
     # 访问时间

@@ -63,7 +63,7 @@ class TestAccountsAudit(TestCase, AccountsAuditPage):
         """
 
         # 日期类型
-        self.inputChk_data_method(para['DATE_METHOD'])
+        self.inputChk_date_type(para['DATE_TYPE'])
         self.sleep_time(2)
         # 时间
         self.inputDt_query_date(para['QUERY_DATE'])

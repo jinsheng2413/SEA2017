@@ -67,10 +67,10 @@ class BalanceCheckLocator:
     QRY_END_DATE = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'（末）')]/../div/div/input")
     # 执行状态
-    QRY_EXECUTE_STATE = (
+    QRY_EXECUTE_STATUS = (
         By.XPATH, "//div[@class=\"x-form-item \"]//label[contains(text(),'执行状态:')]/../div/div/input")
     # 执行状态选择的值
-    QRY_EXECUTE_STATE_VALUE = (
+    QRY_EXECUTE_STATUS_VALUE = (
         By.XPATH, "//div[@class=\"x-combo-list-inner\"]//div[contains(text(),'执行成功')]/../div[%s]")
     # 【操作区】
     BTN_QRY = (By.XPATH,

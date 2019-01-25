@@ -76,13 +76,13 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 控制类型
-        self.inputSel_control_type(para[''])
+        self.inputSel_ctrl_type(para['CTRL_TYPE'])
 
         # 抄表段号
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
 
         # 执行状态
-        self.inputSel_exe_status(para['EXE_STATUS'])
+        self.inputSel_execute_status(para['EXECUTE_STATUS'])
 
         # 数据来源
         self.inputSel_data_src(para['DATA_SRC'])

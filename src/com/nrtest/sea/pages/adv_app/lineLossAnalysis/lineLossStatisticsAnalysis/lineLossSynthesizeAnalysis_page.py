@@ -20,9 +20,17 @@ class LineLossSynthesizeAnalysisPage(Page):
     def inputDt_query_date(self, content):
         self.inputDate(content)
 
-    # 按日期统计类型
-    def inputDTTAB_statDateType(self, name):
-        self.clickDt_Tab(name)
+    # 按日期类型选择
+    def inputChk_date_type_sel(self, tab_name):
+        self.clickDt_Tab(tab_name)
+
+    # 季度选择
+    def inputChk_quarter_sel(self, value):
+        self.clickRadioBox(value)
+
+    # TAB页选择
+    def inputChk_tab_name(self, tab_name):
+        self.clickTabPage(tab_name)
 
     # 查询按钮
     def btn_search(self):

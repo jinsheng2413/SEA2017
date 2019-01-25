@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 class CoreFunctionAuditLocators:
     # 【查询条件区】
     # 操作员
-    QRY_PERFORMER = (By.XPATH, "//*[@id=\"menuCoreUseStat_staffField_1\"]")
+    QRY_OPERATOR = (By.XPATH, "//*[@id=\"menuCoreUseStat_staffField_1\"]")
     # 访问日期
     QRY_VISIST_DATE = (By.XPATH, "//*[@id=\"menuCoreUseStat_startDate_1\"]")
     # 到

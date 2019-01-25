@@ -79,7 +79,7 @@ class TestCollectSuccessRateJb(TestCase, CollectSuccessRateJbPage):
         self.inputSel_chip_factory(para['CHIP_FACTORY'])
 
         # 通讯规约
-        self.inputSel_coll_mode(para['COLL_MODE'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
 
         # 时间
         self.inputDt_date_time(para['DATE_TIME'])

@@ -13,26 +13,43 @@ from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.centralizePl
     CentralizePlanUpgradeLocators
 
 
-# 基本应用→终端管理→软件升级→集中计划升级:集中计划升级
-class UpgradeTaskExecutionPage(Page):
+# 基本应用→终端管理→软件升级→集中计划升级
+class CentralizePlanUpgradePage(Page):
+    # 集中计划升级
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
+        # self.click(CentralizePlanUpgradeLocators.TMNL_FACTORY)
+        # locator = self.get_select_locator(
+        #     CentralizePlanUpgradeLocators.TMNL_FACTORY_VALUE, index)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 升级目的
     def inputSel_upgrade_purpose(self, index):
+        # self.click(CentralizePlanUpgradeLocators.UPGRADE_PURPOSE)
+        # locator = self.get_select_locator(
+        #     CentralizePlanUpgradeLocators.UPGRADE_PURPOSE_VALUE, index)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 终端用途
     def inputSel_tmnl_purpose(self, index):
+        # self.click(CentralizePlanUpgradeLocators.TMNL_PURPOSE)
+        # locator = self.get_select_locator(
+        #     CentralizePlanUpgradeLocators.TMNL_PURPOSE_VALUE, index)
+        # self.click(locator)
         self.selectDropDown(index)
 
     # 开始时间
     def inputDt_start_date(self, content):
+        # self.exec_script(CentralizePlanUpgradeLocators.START_DATE_JS)
+        # self.input(content, *CentralizePlanUpgradeLocators.START_DATE)
         self.inputDate(content)
 
     # 结束时间
     def inputDt_end_date(self, content):
+        # self.exec_script(CentralizePlanUpgradeLocators.END_DATE_JS)
+        # self.input(content, *CentralizePlanUpgradeLocators.END_DATE)
         self.inputDate(content)
 
     # 批次号
@@ -41,11 +58,9 @@ class UpgradeTaskExecutionPage(Page):
 
     # 查询按钮
     def btn_search(self):
+        # self.click(CentralizePlanUpgradeLocators.BTN_SEARCH)
         self.btn_query()
 
-
-# 基本应用→终端管理→软件升级→集中计划升级:制定计划
-class UpgradeTaskExecutionPage(Page):
     # 制定计划
     # 忽略旧版本号
     def inputChk_history_version(self, index):
@@ -60,7 +75,7 @@ class UpgradeTaskExecutionPage(Page):
         self.selectDropDown(index)
 
     # 终端用途
-    def inputSel_tmnl_purpose(self, index):
+    def inputSel_tab_tmnl_purpose(self, index):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 升级版本号
@@ -69,5 +84,5 @@ class UpgradeTaskExecutionPage(Page):
         self.selectDropDown(index)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query(True)

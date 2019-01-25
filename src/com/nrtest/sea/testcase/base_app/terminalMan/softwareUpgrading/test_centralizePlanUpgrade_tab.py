@@ -15,13 +15,14 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
-from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_page import UpgradeTaskExecutionPage
+from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_page import \
+    CentralizePlanUpgradePage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→集中计划升级:制定计划
 @ddt
-class TestUpgradeTaskExecution(TestCase, UpgradeTaskExecutionPage):
+class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
     @classmethod
     def setUpClass(cls):
 
@@ -68,7 +69,7 @@ class TestUpgradeTaskExecution(TestCase, UpgradeTaskExecutionPage):
         # 升级版本号
         self.inputSel_upgrade_version_no(para['UPGRADE_VERSION_NO'])
         # 点击查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

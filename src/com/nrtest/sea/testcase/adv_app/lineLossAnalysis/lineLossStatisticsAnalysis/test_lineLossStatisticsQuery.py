@@ -67,9 +67,9 @@ class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
         if qry_date_type == '日':
             self.inputDt_query_date(para['QUERY_DATE'])
         else:
-            self.inputDt_from(para['FROM'])
+            self.inputDt_start_date(para['START_DATE'])
             self.sleep_time(0.5)
-            self.inputDt_to(para['TO'])
+            self.inputDt_end_date(para['END_DATE'])
 
         # if para['QRY_DATE_TYPE'].count('日') > 2:
         #     self.inputChl_qry_type(para['QRY_TYPE'])
@@ -77,9 +77,9 @@ class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
         #     self.inputDt_query_date(para['QUERY_DATE'])
         # elif para['QRY_TYPE_MONTH'].count('月') > 2:
         #     self.inputChl_qry_type_month(para['QRY_TYPE_MONTH'])
-        #     self.inputDt_from(para['FROM'])
+        #     self.inputDt_start_date(para['FROM'])
         #     self.sleep_time(2)
-        #     self.inputDt_to(para['TO'])
+        #     self.inputDt_end_date(para['END_DATE'])
         # 查询按钮
         self.btn_search()
 

@@ -75,10 +75,10 @@ class TestArchivesChangeRecordPage(TestCase, ArchivesChangeRecordPage):
         self.inputSel_change_type(para['CHANGE_TYPE'])
 
         # 开始时间
-        self.inputDt_start_time(para['START_TIME'])
+        self.inputDt_start_date(para['START_DATE'])
 
         # 结束时间
-        self.inputDt_end_time(para['END_TIME'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 查询
         self.btn_qry()

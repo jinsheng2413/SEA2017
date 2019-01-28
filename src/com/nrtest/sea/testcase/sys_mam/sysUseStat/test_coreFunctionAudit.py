@@ -69,7 +69,7 @@ class TestCoreFunctionAudit(TestCase, CoreFunctionAuditPage):
         # 访问时间
         self.inputDt_visit_time(para['VISIT_TIME'])
         # 到
-        self.inputDt_to(para['TO'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 查询
         self.btn_qry()

@@ -62,19 +62,16 @@ class TestCollcateDataQuery(TestCase, CollcateDataQueryPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 注册菜单
-        # self.menu_name = para['MENU_NAME']
-
         # 打开左边树并选择ljf
         self.openLeftTree(para['TREE_NODE'])
 
         # 配变用户
-        # self.inputStr_user(para['USER'])
+        # self.inputStr_cons_no(para['CONS_NO'])
 
         # 配变表号
         self.inputSel_meter_asset_no(para['METER_ASSET_NO'])
 
-        self.btn_tmnl_qry()
+        self.btn_qry()
         self.sleep_time(2)
 
     def assert_query_result(self, para):

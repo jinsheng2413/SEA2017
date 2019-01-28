@@ -78,7 +78,7 @@ class TgLineLossAnalysisPage(Page):
         self.btn_query()
 
     # 日期选择类型
-    def inputDt_by_date_type(self, tab_name):
+    def inputDt_qry_date_type(self, tab_name):
         self.clickDt_Tab(tab_name)
 
     # 查询时间

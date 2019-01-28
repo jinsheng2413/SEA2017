@@ -57,21 +57,29 @@ class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 线损分类
-
         self.inputSel_line_loss_type(para['LINE_LOSS_TYPE'])
         # 线损率
         self.inputSel_line_loss_rate(para['LINE_LOSS_RATE'])
-        # self.inputStr_line_loss_rate(para['LINE_LOSS_RATE_INPUT'])
+        # 选择日期类型
+        self.inputChk_qry_date_type(para['QRY_DATE_TYPE'])
 
-        if para['QRY_TYPE'].count('日') > 2:
-            self.inputChl_qry_type(para['QRY_TYPE'])
-            # 日期
+        qry_date_type = self.get_para_value(para['QRY_DATE_TYPE'])
+        if qry_date_type == '日':
             self.inputDt_query_date(para['QUERY_DATE'])
-        elif para['QRY_TYPE_MONTH'].count('月') > 2:
-            self.inputChl_qry_type_month(para['QRY_TYPE_MONTH'])
+        else:
             self.inputDt_from(para['FROM'])
-            self.sleep_time(2)
+            self.sleep_time(0.5)
             self.inputDt_to(para['TO'])
+
+        # if para['QRY_DATE_TYPE'].count('日') > 2:
+        #     self.inputChl_qry_type(para['QRY_TYPE'])
+        #     # 日期
+        #     self.inputDt_query_date(para['QUERY_DATE'])
+        # elif para['QRY_TYPE_MONTH'].count('月') > 2:
+        #     self.inputChl_qry_type_month(para['QRY_TYPE_MONTH'])
+        #     self.inputDt_from(para['FROM'])
+        #     self.sleep_time(2)
+        #     self.inputDt_to(para['TO'])
         # 查询按钮
         self.btn_search()
 

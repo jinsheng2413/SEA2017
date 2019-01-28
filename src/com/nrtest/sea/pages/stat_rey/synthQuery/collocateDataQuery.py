@@ -15,9 +15,12 @@ from com.nrtest.common.base_page import Page
 class CollcateDataQueryPage(Page):
 
     # 配变用户
-    def inputStr_user(self, value):
-        self.input(value)  # , *PublicDataQueryLocators.QRY_PUBLICCONSNO)
+    def inputStr_cons_no(self, value):
+        self.input(value)
 
     # 配变表号
     def inputSel_meter_asset_no(self, value):
-        self.input(value)  # , *PublicDataQueryLocators.QRY_PUBLICNUM)
+        self.input(value)
+
+    def btn_qry(self):
+        self.btn_query()

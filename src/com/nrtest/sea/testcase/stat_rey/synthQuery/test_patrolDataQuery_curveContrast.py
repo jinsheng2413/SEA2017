@@ -68,7 +68,7 @@ class TestPatrolDataCurveContrastQuery(TestCase, PatrolDataQueryCurveContrastPag
         # 参照对象
         self.inputChk_reference_object(para['REFERENCE_OBJECT'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

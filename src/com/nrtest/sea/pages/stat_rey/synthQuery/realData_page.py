@@ -74,7 +74,7 @@ class RealDataFailDetailPage(Page):
         self.selectDropDown(name)
 
     # 终端运行状态
-    def inputSel_TmnlRunState(self, name):
+    def inputSel_tmnl_run_status(self, name):
         self.selectDropDown(name, is_multi_elements=True, is_multi_tab=True)
 
     # 电能表抄读状态

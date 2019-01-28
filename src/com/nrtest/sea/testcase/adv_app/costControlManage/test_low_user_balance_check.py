@@ -52,21 +52,6 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
         # 回收左边树
         self.recoverLeftTree()
 
-    def assert_query_result(self, para):
-        """
-        查询结果校验（包括跳转）
-        :param para:
-        """
-        self.assertTrue(self.check_query_result(para))
-
-    def assert_query_criteria(self, para):
-        """
-        查询条件校验
-        :param para:
-        """
-        result = self.check_query_criteria(para)
-        self.assertTrue(result)
-
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])

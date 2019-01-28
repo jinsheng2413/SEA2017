@@ -77,10 +77,6 @@ class TestStrategicArchivesMaintain(TestCase, StrategicArchivesMaintainPage):
         self.btn_qry()
         self.sleep_time(2)
 
-    @data(*DataAccess.getCaseData(ArchivesMan_data.strategicArchivesMaintain_para))
-    def test_query(self, para):
-        self.query(para)
-
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

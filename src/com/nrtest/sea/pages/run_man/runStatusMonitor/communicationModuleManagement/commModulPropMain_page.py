@@ -23,7 +23,7 @@ class CommunicationModuleBaseInformationMantainPage(Page):
         self.selectDropDown(item)
 
     # 模块版本
-    def inputSel_moduleVer(self, item):
+    def inputSel_module_ver(self, item):
         self.selectDropDown(item)
 
     # 模块属性标识

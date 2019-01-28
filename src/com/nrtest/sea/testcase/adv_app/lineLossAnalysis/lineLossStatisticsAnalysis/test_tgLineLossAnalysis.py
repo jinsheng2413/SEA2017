@@ -78,7 +78,7 @@ class TestTgLineLossAnalysis(TestCase, TgLineLossAnalysisPage):
         self.inputDt_query_date(para['QUERY_DATE'])
 
         # 按日期类型
-        self.inputDt_by_date_type(para['BY_DATE_TYPE'])
+        self.inputDt_qry_date_type(para['QRY_DATE_TYPE'])
 
         # 点击复选框
         self.inputChk_line_loss_type(para['LINE_LOSS_TYPE'])

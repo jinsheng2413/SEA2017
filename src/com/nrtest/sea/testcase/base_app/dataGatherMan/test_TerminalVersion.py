@@ -74,13 +74,6 @@ class TestTerminalVersion(TestCase, TerminalVersionPage):
 
         self.btn_qry()
         self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(TerminalVersionLocators.TAB_ONE)
-        # self.assertTrue(result)
-
-    @data(*DataAccess.getCaseData(DataGatherMan_data.terminalVersion_para))
-    def test_query(self, para):
-        self.query(para)
 
     def assert_query_result(self, para):
         """

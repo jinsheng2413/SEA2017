@@ -102,8 +102,6 @@ class TestTmnlParamSetGroup2(unittest.TestCase, TermParaSetGroup2Page):
     @data(*DataAccess.getCaseData(TermParaSetGroup2_data.TermParaSetGroup2_para))
     def test_query(self, para):
         """运行管理→现场管理→终端抄表参数设置
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

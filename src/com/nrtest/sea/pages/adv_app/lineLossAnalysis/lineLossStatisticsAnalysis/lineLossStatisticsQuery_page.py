@@ -33,6 +33,9 @@ class LineLossStatisticsQueryPage(Page):
     def inputStr_line_loss_rate(self, content):
         self.input(content)
 
+    def inputChk_qry_date_type(self, value):
+        self.clickSingleCheckBox(value)
+
     # 日期
     def inputDt_query_date(self, content):
         self.inputDate(content)

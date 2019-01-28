@@ -47,8 +47,8 @@ class TmnlPowerCutEventQueryLocators:
     QRY_TMNL_FACTORY = (By.XPATH, '//label[contains(text(),"终端厂家")]/../div/div/img')
     QRY_TMNL_FACTORY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 是否有效
-    QRY_WHETHER_VALID = (By.XPATH, '//label[contains(text(),"是否有效")]/../div/div/img')
-    QRY_WHETHER_VALID_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_IS_VALID = (By.XPATH, '//label[contains(text(),"是否有效")]/../div/div/img')
+    QRY_IS_VALID_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '(//button[text()="查询"])[2]')
 
@@ -74,8 +74,8 @@ class IntelligentMeterPowerCutEventQueryLocators:
     QRY_METER_FACTORY = (By.XPATH, '//label[contains(text(),"电表厂家")]/../div/div/img')
     QRY_METER_FACTORY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 是否有效
-    QRY_WHETHER_VALID = (By.XPATH, '//label[contains(text(),"是否有效")]/../div/div/img')
-    QRY_WHETHER_VALID_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    QRY_IS_VALID = (By.XPATH, '//label[contains(text(),"是否有效")]/../div/div/img')
+    QRY_IS_VALID_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '(//button[text()="查询"])[2]')
 

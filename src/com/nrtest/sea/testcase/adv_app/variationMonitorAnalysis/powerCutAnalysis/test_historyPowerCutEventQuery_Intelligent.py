@@ -71,7 +71,7 @@ class TestHistoryPowerCutEventQuery_Intelligent(TestCase, IntelligentMeterPowerC
         # 电表厂家
         self.inputSel_meter_factory(para['METER_FACTORY'])
         # 是否有效
-        self.inputSel_whether_valid(para['WHETHER_VALID'])
+        self.inputSel_is_valid(para['IS_VALID'])
         # 查询按钮
         self.btn_search()
 

@@ -9,7 +9,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.groupMan.lineGroupSet_locators import LineGroupSetLocators
 
 
 # 运行管理→群组管理→线路群组设置
@@ -25,7 +24,7 @@ class LineGroupSetPage(Page):
 
     # 有效日期
     def inputChk_valid_date(self, item):
-        return self.clickSingleCheckBox(item, True, True, LineGroupSetLocators.QRY_VALID_DATE)
+        return self.clickSingleCheckBox(item)  # , True, True, LineGroupSetLocators.QRY_VALID_DATE)
 
     # 查询日期，开始
     def inputDt_start_date(self, content):

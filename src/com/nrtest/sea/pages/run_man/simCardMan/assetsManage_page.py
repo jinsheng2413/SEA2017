@@ -23,11 +23,11 @@ class AssetsManagePage(Page):
         self.selectDropDown(item)
 
     # 导入日期
-    def inputDt_start_time(self, value):
+    def inputDt_start_date(self, value):
         self.inputDate(value)
 
     # 时间至
-    def inputDt_end_time(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)
 
     # SIM卡段号

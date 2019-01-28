@@ -64,16 +64,16 @@ class TestLoadSortAnalyse(TestCase, LoadSortAnalysePage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 开始时间
-        self.inputStr_startDate(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
 
         # 结束时间
-        self.inputDt_end_date(para['END_TIME'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 用户类型
-        self.inputSel_userType(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 排名数量
-        self.inputStr_anking_number(para['RANKING_NUMBER'])
+        self.inputStr_ranking_number(para['RANKING_NUMBER'])
 
         self.btn_qry()
         self.sleep_time(2)

@@ -65,7 +65,7 @@ class TestTmnlInstallDetai_debug(TestCase, LineDataQueryPage):
         # self.openLeftTree(para['TREE_NODE'])
 
         # 线路编号
-        self.inputStr_linenum(para['LINE_NO'])
+        self.inputStr_line_no(para['LINE_NO'])
 
         self.btn_search()
         self.sleep_time(2)

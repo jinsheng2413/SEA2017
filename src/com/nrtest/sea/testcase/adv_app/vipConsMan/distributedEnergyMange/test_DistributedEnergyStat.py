@@ -70,7 +70,7 @@ class TestDistributedEnergyStat(TestCase, DistributedEnergyStatPage):
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 发电类型
-        self.inputSel_powerMode(para['GC_TYPE'])
+        self.inputSel_gc_type(para['GC_TYPE'])
         # 点击查询按钮
         self.btn_qry()
 

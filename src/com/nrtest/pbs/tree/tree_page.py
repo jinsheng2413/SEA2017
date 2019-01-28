@@ -262,17 +262,17 @@ class TreePage(BaseTreePage):
         # 点击用户标签页
         self._click_node_tab('02')
 
-        self.input(node_value, *self.TreeLocators.USER_QRY_INPUT[node_flag])
+        self.input(node_value, *TreeLocators.USER_QRY_INPUT[node_flag])
 
         # 点击查询按钮
-        self.click(self.TreeLocators.USER_BTN_QUERY)
+        self.click(TreeLocators.USER_BTN_QUERY)
 
         # 等待查询结果，最好通过其他途径判断查询已返回
-        self.commonWait(self.TreeLocators.NODE_USER_TAB_RSLT_DEFAULT)
-        self.clear(self.TreeLocators.USER_QRY_INPUT[node_flag])
+        self.commonWait(TreeLocators.NODE_USER_TAB_RSLT_DEFAULT)
+        self.clear(TreeLocators.USER_QRY_INPUT[node_flag])
 
         # 定位查询结果，默认选择第一行记录
-        xpath = self.format_xpath(self.TreeLocators.NODE_USER_TAB_RSLT, node_value)
+        xpath = self.format_xpath(TreeLocators.NODE_USER_TAB_RSLT, node_value)
         print(xpath)
 
         self.click(xpath)
@@ -284,7 +284,7 @@ class TreePage(BaseTreePage):
         self._click_node_tab('06')
 
         # 选择群组类型
-        self.group_node = self.TreeLocators.GROUP_NODE[node_flag]
+        self.group_node = TreeLocators.GROUP_NODE[node_flag]
         el = self._find_displayed_element(self.group_node)
         attrs = el.get_attribute('class').strip()
         if attrs.endswith('collapsed'):

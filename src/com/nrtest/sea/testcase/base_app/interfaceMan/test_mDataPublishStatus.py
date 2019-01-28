@@ -58,7 +58,7 @@ class Test_mDataPublishStatus2(TestCase, MDataPublishStatus2Page):
         self.openLeftTree(para['TREE_NODE'])
 
         # 业务系统
-        self.inputSel_Business_system(para['BUSINESS_SYSTEM'])
+        self.inputSel_business_system(para['BUSINESS_SYSTEM'])
 
         # 开始时间
         self.inputDt_start_time(para['START_TIME'])

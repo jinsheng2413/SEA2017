@@ -16,13 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.allEventDistributionRateStatistics_page import \
-    AllEventDistributionRateStatisticsPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.allEventDistributionRateStatistics_page import AllEventDistributionRateDetailPage
 
 
 # 统计查询→综合查询→全事件配置率统计:全事件未配置明细
 @ddt
-class TestAllEventDistributionRateStatistics(TestCase, AllEventDistributionRateStatisticsPage):
+class TestAllEventDistributionRateStatistics(TestCase, AllEventDistributionRateDetailPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
@@ -57,7 +56,7 @@ class TestAllEventDistributionRateStatistics(TestCase, AllEventDistributionRateS
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 时间
-        self.inputDt_query_date_tab(para['DATE_TAB'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 查询按钮

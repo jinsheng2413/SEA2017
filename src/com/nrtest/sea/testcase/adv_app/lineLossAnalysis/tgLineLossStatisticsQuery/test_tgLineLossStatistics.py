@@ -60,9 +60,9 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossStatisticsPage):
         self.inputChk_date_type(para['DATE_TYPE'])
 
         # 开始时间
-        self.inputDt_start_date(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
 
-        self.inputDt_end_date(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 线损维度
         self.inputSel_line_loss_dimension(para['LINE_LOSS_DIMENSION'])

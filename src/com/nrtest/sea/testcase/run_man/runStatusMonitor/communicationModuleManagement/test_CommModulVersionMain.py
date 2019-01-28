@@ -67,13 +67,13 @@ class TestCommModulVersionMain(TestCase, CommModulVersionMainPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 终端规约
-        self.inputSel_tmnlProtocol(para['TMNL_PROTOCOL'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
 
         # 终端厂商
-        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         # 终端类型
-        self.inputSel_tmnlType(para['TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
 
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])

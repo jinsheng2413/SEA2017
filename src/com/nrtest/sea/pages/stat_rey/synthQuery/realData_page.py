@@ -38,7 +38,7 @@ class RealDataPage(Page):
         self.selectDropDown(name)
 
     # 相位
-    def inputSel_phase(self, name):
+    def inputSel_phase_code(self, name):
         self.selectDropDown(name)
 
     # 抄表段号
@@ -50,7 +50,7 @@ class RealDataPage(Page):
         self.input(value)
 
     # 查询时间
-    def inputDt_Time(self, value):
+    def inputDt_query_time(self, value):
         self.inputDate(value)
 
     # 用户类型
@@ -74,7 +74,7 @@ class RealDataFailDetailPage(Page):
         self.selectDropDown(name)
 
     # 终端运行状态
-    def inputSel_TmnlRunState(self, name):
+    def inputSel_tmnl_run_status(self, name):
         self.selectDropDown(name, is_multi_elements=True, is_multi_tab=True)
 
     # 电能表抄读状态
@@ -82,7 +82,7 @@ class RealDataFailDetailPage(Page):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 相位
-    def inputSel_phase(self, name):
+    def inputSel_phase_code(self, name):
         self.selectDropDown(name, is_multi_elements=True, is_multi_tab=True)
 
     # 抄表段号
@@ -94,7 +94,7 @@ class RealDataFailDetailPage(Page):
         self.input(value)
 
     # 查询时间
-    def inputDt_Time(self, value):
+    def inputDt_query_time(self, value):
         self.inputDate(value)
 
 

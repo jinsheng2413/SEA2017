@@ -67,7 +67,7 @@ class TestSpecialUserBalanceQuery(TestCase, SpecialUserBalanceQueryPage):
         # 终端地址
         self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
 
-        # 越线类型
+        # 越限类型
         self.inputSel_over_type(para['OVER_TYPE'])
 
         # 召测日期

@@ -19,6 +19,7 @@ class AutomatedMeterAvailabilityPage(Page):
 
     # 查询日期
     def inputDt_query_date(self, content):
+        self.clean_label(content)
         self.inputDate(content)
 
     # 查询按钮
@@ -34,10 +35,12 @@ class AutomatedMeterAvailabilityDetailPage(Page):
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):
+        self.clean_label(value)
         self.input(value)
 
     # 查询日期
-    def inputDt_date(self, content):
+    def inputDt_query_date(self, content):
+        self.clean_label(content)
         self.inputDate(content)
 
     # 查询按钮

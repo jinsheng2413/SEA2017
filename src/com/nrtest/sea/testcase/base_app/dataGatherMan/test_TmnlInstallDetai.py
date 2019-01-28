@@ -66,10 +66,10 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiStatPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 终端类型
-        self.inputSel_TmnlType(para['TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
 
         # 开始时间
-        self.inputDt_Start_time(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
 
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])

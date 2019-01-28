@@ -62,7 +62,7 @@ class TestCheckPointDataRtu(TestCase, CheckPointDataRtuPage):
         """
 
         # 抄表段号
-        self.inputSel_mr_read_no(para['MR_SECT_NO'])
+        self.inputSel_mr_sect_no(para['MR_SECT_NO'])
 
         # 用户名称
         self.inputStr_cons_name(para['CONS_NAME'])

@@ -50,7 +50,7 @@ class OrgLowVoltDayDetailPage(Page):
 class OrgLowVoltDayConfigPage(Page):
 
     # 是否电压监测--打开并选择
-    def inputSel_volt_monitor(self, item):
+    def inputSel_is_volt_monitor(self, item):
         self.selectDropDown(item)
 
     # 点击查询

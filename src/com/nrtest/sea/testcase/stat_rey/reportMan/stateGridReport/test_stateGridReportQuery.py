@@ -60,7 +60,7 @@ class TestStateGridReportQuery(TestCase, StateGridReportQueryPage):
         """
 
         # 报表类型类型
-        self.inputSel_reportType(para['REPORT_TYPE'])
+        self.inputSel_report_type(para['REPORT_TYPE'])
 
         # 查询方式
         self.inputChk_stat_type(para['STAT_TYPE'])

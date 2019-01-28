@@ -53,7 +53,7 @@ class TestPrePaidStatus(TestCase, PrePaidStatusByActionPage):
         # 回收左边树
         self.recoverLeftTree()
 
-    def instructionQuery(self, para):
+    def query(self, para):
         """
 
         :param para: Dict类型的字典，不是dict
@@ -99,7 +99,7 @@ class TestPrePaidStatus(TestCase, PrePaidStatusByActionPage):
         :param para:
         """
         self.start_case(para, __file__)
-        self.instructionQuery(para)
+        self.query(para)
         self.assert_query_result(para)
         self.end_case()
 

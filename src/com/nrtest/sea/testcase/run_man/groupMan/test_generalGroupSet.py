@@ -60,13 +60,13 @@ class TestGeneralGroupSet(TestCase, GeneralGroupSetPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 群组分类
-        self.inputChk_group_type(para['GROUP_TYPE'])
-        if self.get_para_value(para['GROUP_TYPE']) == '管理群组':
-            # 名称
-            self.inputStr_name(para['NAME'])
-            # 类别
-            self.inputChk_stat_type(para['STAT_TYPE'])
+        # 群组操作处理
+        self.inputChk_group_deal(para['GROUP_DEAL'])
+        if self.get_para_value(para['GROUP_DEAL']) == '管理群组':
+            # 名称  群组名称
+            self.inputStr_group_name(para['GROUP_NAME'])
+            # 类别  群组类别
+            self.inputChk_group_type(para['GROUP_TYPE'])
             # 有效日期
             self.inputChk_valid_date(para['VALID_DATE'])
 

@@ -67,19 +67,19 @@ class TestRemoteCommModulVersionMain(TestCase, RemoteCommModulVersionMainPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 终端厂商
-        self.inputSel_tmnlFactory(para['TMNL_FACTORY'])
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         # 终端类型
-        self.inputSel_tmnlType(para['TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
 
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 终端资产号
-        self.inputStr_tmnlAssetNo(para['TMNL_ASSET_NO'])
+        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
 
         # 终端规约
-        self.inputSel_tmnlProtocol(para['TMNL_PROTOCOL'])
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
 
         self.btn_qry()
         self.sleep_time(2)

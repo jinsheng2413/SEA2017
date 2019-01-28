@@ -99,7 +99,7 @@ class PatrolDataQueryCurveContrastPage(Page):
         self.clickRadioBox(index)
 
     # 查询按钮
-    def btn_curve_contrast_search(self):
+    def btn_qry(self):
         # self.click(PatrolDataQueryLocators.BTN_CONTRAST_DATA_SEARCH)
         self.btn_query(True)
 

@@ -63,11 +63,11 @@ class TestGisPanoramaDisplay(TestCase, GisPanoramaDisplayPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 用户类型
-        self.inputSel_userType(para['CONS_TYPE'])
+        self.inputSel_cons_type(para['CONS_TYPE'])
         # 逐日显示
         self.inputStr_day_display(para['DAY_DISPLAY'])
         # 查询日期
-        self.inputDt_query_time(para['DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         self.btn_qry()
         self.sleep_time(2)
         # 校验

@@ -74,13 +74,13 @@ class TestSysDict(TestCase, SysDictManPage):
         self.inputDt_end_date(para['END_DATE'])
 
         # 维护类型
-        self.inputRSel_cons_type(para['EDIT_TYPE'])
+        self.inputSel_edit_type(para['EDIT_TYPE'])
 
         # 维护人员
         self.inputStr_editor(para['EDITOR'])
 
         # 数据来源
-        self.inputRSel_data_src(para['DATA_SRC'])
+        self.inputSel_data_src(para['DATA_SRC'])
 
         # 查询
         self.btn_query()

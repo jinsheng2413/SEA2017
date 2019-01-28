@@ -19,21 +19,21 @@ class TmnlBuildQueryPage(Page):
 
     # 查询日期
 
-    def inputStr_startDate(self, value):
+    def inputDt_start_date(self, value):
         self.inputDate(value)  # , *TmnlBuildQueryLocators.QRY_DATE_S)
 
-    def inputStr_endDate(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)  # , *TmnlBuildQueryLocators.QRY_DATE_E)
 
     # 终端类型
-    def inputSel_tmnlType(self, options):
+    def inputSel_tmnl_type(self, options):
         # self.click(TmnlBuildQueryLocators.QRY_TMNL_TYPE)
         # locator = self.get_select_locator(TmnlBuildQueryLocators.QRY_TMNL_TYPE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(options)
 
     # 终端厂商
-    def inputSel_tmnlFac(self, options):
+    def inputSel_tmnl_factory(self, options):
         # self.click(TmnlBuildQueryLocators.QRY_TMNL_FACTORY)
         # locator = self.get_select_locator(TmnlBuildQueryLocators.QRY_TMNL_FACTORY_VALUE, index)
         # self.click(locator)

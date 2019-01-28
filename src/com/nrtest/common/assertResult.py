@@ -25,29 +25,47 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class AssertResult(Page):
     def __init__(self):
-        super(AssertResult, self).__init__(get_driver())
+        # super(AssertResult, self).__init__(get_driver())
+        super().__init__(get_driver())
 
-    # 点击链接
     def click_link(self, column_name, line, colum_only_one='', only=1):
-
-        column = self.checkBoxAssertLine(column_name)
-        num = self.element_num(column_name)
-        if only == 1 and num > 0:
-            self.click(self.combination_xpath(column_name, column, line))
-        elif only == 2 and num > 0:
-            self.click(self.combination_xpath(colum_only_one, column, line))
-
-    # 判断跳转的页面的名称是否正确
-    def assert_page_name(self, name):
-        skipMenuName = assertResultLocators.MENU_NAME[1].format(
-            name)
-        result = self.assert_context((By.XPATH, skipMenuName))
-        return result
-
-    # 跳转到另一个页面
-    def skip_into_page(self, skipValue):
         """
-        链接跳转
+        点击链接
+        :param column_name:
+        :param line:
+        :param colum_only_one:
+        :param only:
+        """
+        column = self.checkBoxAssertLine(column_name)
+        num = self.element_cnt(column_name)
+        if num > 0:
+            if only == 1:
+                col_name = column_name
+            else:  # 2
+                col_name = colum_only_one
+            xpath = self.format_xpath(AssertResultLocators.DISPLAY_LINE, (col_name, column, line))
+            self.click(xpath)
+
+            # if only == 1 and num > 0:
+            #     self.click(self.combination_xpath(column_name, column, line))
+            # elif only == 2 and num > 0:
+            #     self.click(self.combination_xpath(colum_only_one, column, line))
+
+    def assert_page_name(self, page_name):
+        """
+        判断跳转的页面的名称是否正确
+        :param page_name:
+        :return:
+        """
+        xpath = self.format_xpath(AssertResultLocators.MENU_NAME, page_name)
+        return self.assert_context(xpath)
+        # skipMenuName = AssertResultLocators.MENU_NAME[1].format(page_name)
+        # result = self.assert_context((By.XPATH, skipMenuName))
+        # return result
+
+    def skip_to_page(self, skipValue):
+        """
+        链接跳转:跳转到另一个页面
         :param skipValue:
         :return:
         """
@@ -64,10 +82,8 @@ class AssertResult(Page):
                     try:
                         # 点击要跳转的链接
                         self.click((By.XPATH, displayLine))
-
                     except:
                         print('跳转验证失败')
-
         except:
             print('验证失败')
 
@@ -80,11 +96,7 @@ class AssertResult(Page):
         :param popUpWindow: 弹窗
         :return:
         """
-        dic = {
-            1: menuPage,
-            2: tab,
-            3: popUpWindow
-        }
+        dic = {1: menuPage, 2: tab, 3: popUpWindow}
         # 判断跳转是什么类型的页面
         page = None
         for key, value in dic.items():
@@ -97,16 +109,15 @@ class AssertResult(Page):
         elif page == 2:
             # 切换到另一个tab页
             self.clickTabPage(tab)
-
         elif page == 3:
-            self.click(assertResultLocators.WINDOWS_CLOSE)
+            self.click(AssertResultLocators.WINDOWS_CLOSE)
 
     def skip_tab_page(self, para, caseId='', caseData=''):
         """
         # tab页跳转sxs
         :param para: tst_case_result 校验数据
         :param caseId:  用例编号
-        :param caseData: 整个用力的数据
+        :param caseData: 整个用例的数据
         :return:
         """
         if para[len(para) - 1] == 'Y':
@@ -128,7 +139,7 @@ class AssertResult(Page):
                 old_page_list.append(self.driver.find_element(*locator).text)
         pageRes = ''
         # 跳转到对应的页面
-        self.skip_into_page(para)
+        self.skip_to_page(para)
         # 校验页面的名称是否正确
         name = self.assert_page_name(para[2])
         if name == False:
@@ -137,7 +148,7 @@ class AssertResult(Page):
         for item in old_data:
             if item[8] == None and item[4] == '04':
                 try:
-                    resd = self.driver.find_element(*assertResultLocators.LINK_DATA).text
+                    resd = self.driver.find_element(*AssertResultLocators.LINK_DATA).text
                     resd_new = resd[resd.index('/') + 1:len(resd)].strip()
                     new_page_list.append(resd_new)
                 except:
@@ -147,13 +158,13 @@ class AssertResult(Page):
 
             else:
                 try:
-
                     ta = DataAccess.get_xpath_tab_data(item[8], caseId, para[2])
                     text = self.get_text(self.get_xpath(ta[0][0]), second=1)
                     new_page_list.append(text)
                 except:
                     logger.error('跳转的新页面时数据没有带过去')
                     return False
+
         # 返回前一个tab页
         self.clickTabPage(caseData['TAB_NAME'])
         # 跳转传值验证是否正确
@@ -161,8 +172,7 @@ class AssertResult(Page):
         l = 0
         for x, y, item in zip(old_page_list, new_page_list, old_data):
             if x == y:
-                logger.error(
-                    'element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
+                logger.error('element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
                         sn=item[11], xpath_old=item[5], xpath_old_value=x, xpath_new=item[9], xpath_new_value=y))
                 res = True
             else:
@@ -170,39 +180,39 @@ class AssertResult(Page):
                     '跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
                         sn=item[11], xpath_old=item[5], xpath_old_value=x, xpath_new=item[9], xpath_new_value=y))
                 l += 1
-        if l > 0:
-            res = False
-        return res
+        # if l > 0:
+        #     res = False
+        # return res
+        return not bool(l)
 
-    # 校验期望值是否正确
-    def assert_expect_value(self, locator, name):
+    def assert_expect_value(self, locator, value):
+        """
+        校验期望值是否正确
+        :param locator:
+        :param value:
+        :return:
+        """
         res = self.driver.find_element(*locator).text
         res2 = Utils.replace_chrs(res)
+        return value in res2
 
-        if name in res2:
-            return True
-        else:
-            return False
-
-    # 窗口跳转
     def skip_windows_page(self, para):
         """
-        '手机,外包队伍名称,test'
+        窗口跳转
         :param para: 以，为分隔符，第一位是显示区唯一列明，第二位是要校验值的列明，第三位是校验值
         :return:
         """
         try:
-            pageRes = False
-            self.skip_into_page(para)
-            xpath = assertResultLocators.WINDOWS_NAME[1].format(para[2])
+            self.skip_to_page(para)
+            xpath = AssertResultLocators.WINDOWS_NAME[1].format(para[2])
             self.commonWait((By.XPATH, xpath))
-            pageRes = True
+            is_skiped = True
         except:
-            pageRes = False
+            is_skiped = False
         finally:
-            self.click(assertResultLocators.WINDOWS_CLOSE)
+            self.click(AssertResultLocators.WINDOWS_CLOSE)
 
-        return pageRes
+        return is_skiped
 
     def assertValue(self, assertValues):
         """
@@ -228,7 +238,6 @@ class AssertResult(Page):
             displayLineElement = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//*[contains(text(),"{3}")]'
             if displayNum > 0:
                 if displayCheck:
-
                     for i in range(1, displayNum + 1):
                         # 显示区结果的每一行对应列的数据的xpath
                         displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
@@ -244,11 +253,11 @@ class AssertResult(Page):
                             print('校验失败')
                     return ringhtNum == displayNum
 
-                elif not displayCheck:  # 非带有复选框显示区
+                # elif not displayCheck:  # 非带有复选框显示区
+                else:
                     for i in range(1, displayNum + 1):
                         # 显示区结果的每一行对应列的数据的xpath
-                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
-                                                                             assertValues[2])
+                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1, assertValues[2])
                         try:
                             assert_rslt = self.assert_context((By.XPATH, displayLineElement_index))
                             if assert_rslt:
@@ -304,7 +313,7 @@ class AssertResult(Page):
                                 result = self.assert_context((By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
                                 if model == 2:
                                     # 校验期望值是否正确
-                                    value = self.assert_expect_value(assertResultLocators.TAB_PAGE_TEXT,
+                                    value = self.assert_expect_value(AssertResultLocators.TAB_PAGE_TEXT,
                                                                      assertValues[3])
 
                                 self.menuPage.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
@@ -324,14 +333,13 @@ class AssertResult(Page):
                                         old_page_list.append(item[9])
                                     # 获取查询条件输入框的值
                                     elif item[4] == '01':
-                                        locator_qry = self.get_xpath(
-                                            DataAccess.get_xpath_tab_data(item[5], caseId, caseData['TAB_NAME'])[0][0])
+                                        locator_qry = self.get_xpath(DataAccess.get_xpath_tab_data(item[5], caseId, caseData['TAB_NAME'])[0][0])
                                         old_page_list.append(self.get_text(locator_qry))
                                     else:
                                         old_page_list.append(self.driver.find_element(*locator).text)
                                 pageRes = ''
                                 # 跳转到对应的页面
-                                self.skip_into_page(assertValues)
+                                self.skip_to_page(assertValues)
                                 # 校验页面的名称是否正确
                                 name = self.assert_page_name(assertValues[2])
                                 if name == False:
@@ -340,14 +348,13 @@ class AssertResult(Page):
                                 for item in old_data:
                                     if item[8] == None and item[4] == '04':
                                         try:
-                                            resd = self.driver.find_element(*assertResultLocators.LINK_DATA).text
+                                            resd = self.driver.find_element(*AssertResultLocators.LINK_DATA).text
                                             resd_new = resd[resd.index('/') + 1:len(resd)].strip()
                                             new_page_list.append(resd_new)
                                         except:
                                             new_page_list.append('0')
                                     elif item[10] == '1':
                                         new_page_list.append(item[9])
-
                                     else:
                                         try:
 
@@ -402,12 +409,12 @@ class AssertResult(Page):
         """
         esplain = {'11': '显示区未查询出结果', '12': '按条件查询出的结果与期望值不一致', '21': '跳转菜单页面不正确', '22': '跳转弹窗不正确', '23': '跳转tab页不正确'}
         rslt = DataAccess.get_case_result(para['TST_CASE_ID'])
-        Display_tab = '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'  # 根据XPATH判断显示区是否有值
+        display_tab = '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'  # 根据XPATH判断显示区是否有值
         ls_check_rslt = {}
         for row in rslt:  # 根据rslt有几个值来判断要做几次校验
             assert_type = row[0]
             if assert_type == '11':
-                assert_rslt = self.assert_context((By.XPATH, Display_tab.format(row[1])))  # 判断是否有值
+                assert_rslt = self.assert_context((By.XPATH, display_tab.format(row[1])))  # 判断是否有值
             elif assert_type == '12':
                 assert_rslt = self.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
             elif assert_type == '21':
@@ -432,15 +439,19 @@ class AssertResult(Page):
         return result
 
     # 组合替换xpath
-    def combination_xpath(self, column_name, cloumn, line):
-        # 定位目标xpath
-        xpath = assertResultLocators.DISPLAY_LINE.format(column_name, cloumn, line)
-        return xpath
+    # def combination_xpath(self, column_name, cloumn, line):
+    #     # 定位目标xpath
+    #     xpath = AssertResultLocators.DISPLAY_LINE.format(column_name, cloumn, line)
+    #     return xpath
 
-    # 判定显示区有多少数据
-    def element_num(self, column_name):
-        # 显示区有多少个数据
-        num = self._find_elements(assertResultLocators.DISPLAY_ELEMENT.format(column_name))
+    def element_cnt(self, column_name):
+        """
+        判定显示区有多少数据
+        :param column_name:
+        :return:
+        """
+        xpath = self.format_xpath(AssertResultLocators.DISPLAY_ELEMENT, column_name)
+        num = self._find_elements(xpath)
         return num
 
     # 获取文本框的内容
@@ -452,10 +463,10 @@ class AssertResult(Page):
 
         """
         if type == 1:
-            xpath = assertResultLocators.INPUT_BASE_GU[1].format(agrs[0])
+            xpath = AssertResultLocators.INPUT_BASE_GU[1].format(agrs[0])
             return (By.XPATH, xpath)
         elif type == 2:
-            xpath = assertResultLocators.DISPLAY_LINE[1].format(agrs[0], agrs[1], agrs[2])
+            xpath = AssertResultLocators.DISPLAY_LINE[1].format(agrs[0], agrs[1], agrs[2])
             return (By.XPATH, xpath)
 
     def clean_empty_blank(self, tag_text, tag_name='div'):
@@ -467,7 +478,7 @@ class AssertResult(Page):
         clean_obj = {'div': "//div[contains(text(),'{}')]".format(tag_text)}
         tn = clean_obj[tag_name]
         print(tn)
-        script = assertResultLocators.CLEAN_BLANK % tn
+        script = AssertResultLocators.CLEAN_BLANK % tn
         print(script)
         self.exec_script(script)
 
@@ -482,9 +493,7 @@ class AssertResult(Page):
 
     def get_text(self, locator, second=0):
         el = self._find_displayed_element(locator)
-        text = el.get_attribute('value')
-
-        return text
+        return el.get_attribute('value')
 
     def _closePages(self, page_name='工作台', isCurPage=True):
         """
@@ -494,7 +503,6 @@ class AssertResult(Page):
         """
 
         # ****定位到要右击的元素**
-
         loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
 
         right_click = self.driver.find_element(*loc)
@@ -516,7 +524,7 @@ class AssertResult(Page):
         self.driver.find_element(*loc).click()
 
 
-class assertResultLocators:
+class AssertResultLocators:
     # 弹窗的关闭xpath
     WINDOWS_CLOSE = (By.XPATH,
                      '//*[@class=\" x-window x-window-plain x-resizable-pinned\"]/div[@class=\"x-window-tl\"]//div[@class=\"x-tool x-tool-close\"]')
@@ -559,6 +567,7 @@ class assertResultLocators:
 
 
 if __name__ == '__main__':
-    skipMenuName = assertResultLocators.MENU_NAME[1].format(
-        'cdscsdc')
-    print(skipMenuName)
+    # skipMenuName = AssertResultLocators.MENU_NAME[1].format(
+    #     'cdscsdc')
+    # print(skipMenuName)
+    pass

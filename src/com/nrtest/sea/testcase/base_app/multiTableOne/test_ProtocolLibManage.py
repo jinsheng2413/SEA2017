@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test__ProtocolLibManage.py
+@file: test_ProtocolLibManage.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -24,7 +24,6 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
 
     @classmethod
     def setUpClass(cls):
-
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(MultiTableOne.protocolLibManage_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
@@ -77,7 +76,7 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
         self.inputChk_query_type(para['QUERY_TYPE'])
         if self.get_para_value(para['QUERY_TYPE']) == '查询时间段':
             # 维护时间
-            self.inputDt_maintenance_tmie(para['MANUFACTURER_TMIE'])
+            self.inputDt_maintenance_time(para['MAINTENANCE_TIME'])
 
             # 到
             self.inputDt_end_time(para['END_TIME'])
@@ -94,7 +93,6 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
         # 查询
         self.btn_qry()
         self.sleep_time(2)
-
 
     def assert_query_result(self, para):
         """

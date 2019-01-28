@@ -75,7 +75,7 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsDetailPage):
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
         # 升级状态
-        self.inputSel_upgrade_ststus(para['UPGRADE_STATUS'])
+        self.inputSel_upgrade_status(para['UPGRADE_STATUS'])
         # 确认状态
         self.inputSel_confirm_status(para['CONFIRM_STATUS'])
         # 确认结果

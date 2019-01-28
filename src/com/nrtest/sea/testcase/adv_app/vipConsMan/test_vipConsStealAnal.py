@@ -63,7 +63,7 @@ class Test_VipConsStealAnal(TestCase, VipConsStealAnal_Page):
         self.inputStr_cons_name(para['CONS_NAME'])
 
         # 类型
-        self.inputChk_type(para)
+        self.inputChk_use_elec_type(para['USE_ELEC_TYPE'])
 
         # 查询
         self.btn_qry()

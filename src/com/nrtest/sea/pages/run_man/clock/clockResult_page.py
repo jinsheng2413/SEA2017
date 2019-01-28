@@ -19,7 +19,7 @@ class ClockResultStaticPage(Page):
         self.clickRadioBox(option)
 
     # 终端厂商--打开并选择
-    def inputSel_tmnl_fac(self, item):
+    def inputSel_tmnl_factory(self, item):
         self.selectDropDown(item)
 
     # 电能表厂商--打开并选择

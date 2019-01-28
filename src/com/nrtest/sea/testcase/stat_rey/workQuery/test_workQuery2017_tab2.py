@@ -78,10 +78,10 @@ class TestWorkQuery2017_tab2(TestCase, WorkQuery2017Page):
         self.inputSel_app_status(para['APP_STATUS'])
 
         # 工单发生时间
-        self.inputDt_startDate(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
 
         # 工单完成时间
-        self.inputDt_endDate(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

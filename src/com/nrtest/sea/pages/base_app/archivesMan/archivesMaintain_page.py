@@ -41,7 +41,7 @@ class ArchivesMaintain_meter_pages(Page):
         self.input(value)
 
     # 终端地址
-    def inputStr_termainal_addr(self, value):
+    def inputStr_terminal_addr(self, value):
         self.input(value)
 
     def btn_qry(self):

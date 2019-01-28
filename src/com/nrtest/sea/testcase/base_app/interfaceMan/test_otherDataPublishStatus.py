@@ -62,9 +62,9 @@ class Test_otherDataPublishStatus(TestCase, OtherDataPublishStatusPage):
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])
 
         # 开始时间
-        self.inputDt_receive_time(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 结束时间
-        self.inputDt_end_time(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 查询
         self.btn_qry()

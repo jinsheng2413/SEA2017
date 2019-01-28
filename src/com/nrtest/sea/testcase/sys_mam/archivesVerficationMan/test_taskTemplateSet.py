@@ -64,7 +64,7 @@ class TestTaskTemplateSet(TestCase, TaskTemplateSetPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 选择模板
-        self.inputSel_selectModule(para['SELECT_MODULE'])
+        self.inputSel_select_module(para['SELECT_MODULE'])
         # 查询
         self.btn_qry()
 

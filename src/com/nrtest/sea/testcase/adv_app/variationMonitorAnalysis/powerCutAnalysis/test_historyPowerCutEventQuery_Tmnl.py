@@ -70,7 +70,7 @@ class TestHistoryPowerCutEventQuery_Tmnl(TestCase, TmnlPowerCutEventQueryPage):
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 是否有效
-        self.inputSel_whether_valid(para['WHETHER_VALID'])
+        self.inputSel_is_valid(para['IS_VALID'])
         # 查询按钮
         self.btn_search()
 

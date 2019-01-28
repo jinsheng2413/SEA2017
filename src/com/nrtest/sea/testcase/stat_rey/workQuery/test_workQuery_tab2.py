@@ -65,10 +65,10 @@ class TestWorkQuery(TestCase, WorkQueryPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 异常编号
-        self.inputStr_abnormalNo(para['ABNORMAL_NO'])
+        self.inputStr_abnormal_no(para['ABNORMAL_NO'])
 
         # 异常状态
-        self.inputSel_abnormalStatus(para['ABNORMAL_STATUS'])
+        self.inputSel_abnormal_status(para['ABNORMAL_STATUS'])
 
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])

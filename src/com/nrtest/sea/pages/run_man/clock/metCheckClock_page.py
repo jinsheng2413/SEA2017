@@ -16,11 +16,11 @@ from com.nrtest.common.base_page import Page
 class MetClockMonthStaticPage(Page):
 
     # 电表类别--打开并选择
-    def inputSel_tmnl_type(self, item):
+    def inputSel_met_type(self, item):
         self.selectDropDown(item)
 
     # 电能表厂商--打开并选择
-    def inputSel_tmnl_fac(self, item):
+    def inputSel_meter_factory(self, item):
         self.selectDropDown(item)
 
     # 查询日期

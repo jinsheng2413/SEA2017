@@ -60,7 +60,7 @@ class TestAutomatedMeterAvailability_Failed(TestCase, AutomatedMeterAvailability
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 日期
-        self.inputDt_date(para['QUERY_DATE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_search()
 

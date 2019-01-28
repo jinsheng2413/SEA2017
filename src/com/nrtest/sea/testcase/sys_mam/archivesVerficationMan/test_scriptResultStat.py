@@ -69,7 +69,7 @@ class TestScriptResultStat(TestCase, ScriptResultStatPage):
         # 接收时间
         self.inputDt_start_date(para['START_DATE'])
         # 结束时间
-        self.inputDt_end_date(para["END_DATE"])
+        self.inputDt_end_date(para['END_DATE'])
         # 查询
         self.btn_qry()
 

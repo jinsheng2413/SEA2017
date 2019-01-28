@@ -27,7 +27,7 @@ class DistributedEnergyStatPage(Page):
         self.selectDropDown(name)
 
     # 发电方式
-    def inputSel_powerMode(self, name):
+    def inputSel_gc_type(self, name):
         # self.click(*DistributedEnergyStatLocators.QRY_GC_TYPE)
         # locator = self.get_select_locator(
         #     DistributedEnergyStatLocators.QRY_GC_TYPE_VALUE, name)

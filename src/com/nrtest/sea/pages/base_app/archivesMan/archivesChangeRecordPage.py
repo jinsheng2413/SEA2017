@@ -22,11 +22,11 @@ class ArchivesChangeRecordPage(Page):
         self.selectDropDown(name)
 
     # 接收时间
-    def inputDt_start_time(self, value):
+    def inputDt_start_date(self, value):
         self.inputDate(value)
 
     # 结束时间
-    def inputDt_end_time(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)
 
     # 用户类型

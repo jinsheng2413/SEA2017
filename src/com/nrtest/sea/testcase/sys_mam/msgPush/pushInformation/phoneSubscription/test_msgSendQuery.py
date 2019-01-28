@@ -59,7 +59,7 @@ class TestMsgSendQuery(TestCase, MsgSendQueryPage):
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 开始时间
-        self.inputDt_start_date(para['START_END'])
+        self.inputDt_start_date(para['START_DATE'])
         # 结束时间
         self.inputDt_end_date(para['END_DATE'])
         # 发送状态

@@ -15,13 +15,13 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.run_man.collegeywplat.qualityEvaluate.meterQualityEval_page import MeterQualityEvalDetailPage
+from com.nrtest.sea.pages.run_man.collegeywplat.qualityEvaluate.meterQualityEval_page import MeterQualityEvalStaticPage
 
 
-# 运行管理→采集运维平台→采集终端质量评价
-# 电表质量评价统计
+# 运行管理→采集运维平台→采集终端质量评价:电表质量评价统计
+#
 @ddt
-class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
+class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalStaticPage):
 
     @classmethod
     def setUpClass(cls):
@@ -67,8 +67,8 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
-        # 终端厂家
-        self.inputRSel_meter_factory(para['METER_FACTORY'])
+        # 电表厂家
+        self.inputSel_meter_factory(para['METER_FACTORY'])
 
         self.btn_query()
         self.sleep_time(2)

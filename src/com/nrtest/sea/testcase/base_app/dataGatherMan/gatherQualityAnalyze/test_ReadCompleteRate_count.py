@@ -72,7 +72,7 @@ class TestReadCompleteRate(TestCase, ReadCompleteRate_count_Page):
         self.inputSel_chip_factory(para['CHIP_FACTORY'])
 
         # 日期时间
-        self.inputDt_date_time_count(para['DATE_TIME'])
+        self.inputDt_date_time(para['DATE_TIME'])
 
         # 查询
         self.btn_qry()

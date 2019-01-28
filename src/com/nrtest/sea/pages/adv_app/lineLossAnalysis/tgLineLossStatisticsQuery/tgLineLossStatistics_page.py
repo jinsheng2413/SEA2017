@@ -18,11 +18,11 @@ class TgLineLossStatisticsPage(Page):
         self.clickRadioBox(index)
 
     # 开始时间
-    def inputDt_start_date(self, content):
+    def inputDt_start_time(self, content):
         self.inputDate(content)
 
     # 结束世间
-    def inputDt_end_date(self, content):
+    def inputDt_end_time(self, content):
         self.inputDate(content)
 
     # 线损维度

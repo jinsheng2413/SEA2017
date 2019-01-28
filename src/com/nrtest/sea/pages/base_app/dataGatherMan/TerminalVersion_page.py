@@ -21,7 +21,7 @@ class TerminalVersionPage(Page):
         self.input(value)  # , *TerminalVersionLocators.QRY_TMNL_ADDR)
 
     # 查询时间
-    def inputDt_queryTime(self, value):
+    def inputDt_query_date(self, value):
         # self.input(value, *TerminalVersionLocators.QRY_DATE)
         self.inputDate(value)
 

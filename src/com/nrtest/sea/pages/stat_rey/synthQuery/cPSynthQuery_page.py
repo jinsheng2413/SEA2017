@@ -35,6 +35,7 @@ class CPSynthQueryPage(Page):
 
     # 终端投运日期
     def inputChk_tmnl_comm_date(self, index):
+        self.clean_label(index)
         self.clickSingleCheckBox(index)
 
     # 开始日期

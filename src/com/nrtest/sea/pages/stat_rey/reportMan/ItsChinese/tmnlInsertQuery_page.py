@@ -21,34 +21,24 @@ class TmnlInsertQueryPage(Page):
 
     # 终端厂家
     def inputSel_tmnl_factory(self, options):
-        # self.click(TmnlInsertQueryLocators.QRY_TMNL_FACTORY)
-        # locator = self.get_select_locator(TmnlInsertQueryLocators.QRY_TMNL_FACTORY_VALUE, name)
-        # self.click(locator)
         self.selectDropDown(options)
 
     # 统计口径
-    def inputSel_countCaliber(self, option):
-        # self.click(TmnlInsertQueryLocators.QRY_STAT_SCOPE)
-        # locator = self.get_select_locator(TmnlInsertQueryLocators.QRY_STAT_SCOPE_VALUE, name)
-        # self.click(locator)
+    def inputSel_stat_scope(self, option):
         self.selectDropDown(option)
 
     # 终端类型
-    def inputSel_tmnlType(self, options):
-        # self.click(TmnlInsertQueryLocators.QRY_TMNL_TYPE)
-        # locator = self.get_select_locator(TmnlInsertQueryLocators.QRY_TMNL_TYPE_VALUE, name)
-        # self.click(locator)
+    def inputSel_tmnl_type(self, options):
         self.selectDropDown(options)
 
     # 日期
-    def inputStr_startTime_count(self, value):
-        self.inputDate(value)  # , *TmnlInsertQueryLocators.QRY_DATE)
+    def inputDt_dt_from(self, value):
+        self.inputDate(value)
 
     # 到
-    def inputStr_endTime_Count(self, value):
-        self.inputDate(value)  # , *TmnlInsertQueryLocators.QRY_TO)
+    def inputDt_dt_to(self, value):
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(TmnlInsertQueryLocators.BTN_QRY)
         self.btn_query()

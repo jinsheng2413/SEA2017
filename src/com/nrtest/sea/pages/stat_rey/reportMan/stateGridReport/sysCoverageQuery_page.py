@@ -31,7 +31,7 @@ class SysCoverageQueryPage(Page):
 
     # 用户类型
 
-    def inputSel_userType(self, options):
+    def inputSel_cons_type(self, options):
         # self.click(SysCoverageQueryLocators.QRY_CONS_TYPE)
         # locator = self.get_select_locator(SysCoverageQueryLocators.QRY_CONS_TYPE_VALUE, index)
         # self.click(locator)

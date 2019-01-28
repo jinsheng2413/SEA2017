@@ -66,7 +66,7 @@ class TestRunTmnlStatistics_Detail(TestCase, RunTmnlStatDetailPage):
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端状态
-        self.inputSel_tmnl_ststus(para['TMNL_STATUS'])
+        self.inputSel_tmnl_status(para['TMNL_STATUS'])
         # 查询按钮
         self.btn_search()
 

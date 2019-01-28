@@ -54,12 +54,14 @@ class FourTableMeterReadFailedDetailPage(Page):
 
     # 终端地址
     def inputStr_tmnl_addr(self, content):
+        self.clean_label(content)
         self.input(content)  #, *FourTableMeterReadSuccessRateLocators.FAILED_TMNL_ADDR)
 
     # 查询日期
     def inputDt_query_date(self, content):
         # self.exec_script(FourTableMeterReadSuccessRateLocators.FAILED_DATE_JS)
         # self.input(content, *FourTableMeterReadSuccessRateLocators.FAILED_DATE)
+        self.clean_label(content)
         self.inputDate(content)
 
     # 仪表厂家

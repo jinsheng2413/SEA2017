@@ -83,7 +83,7 @@ class TestMeterClockMan(TestCase, MeterClockManPage):
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
 
         # 日期<=
-        self.inputDt_query_date_range(para['DATE_RANGE'])
+        self.inputDt_date_range(para['DATE_RANGE'])
 
         # 查询
         self.btn_qry()

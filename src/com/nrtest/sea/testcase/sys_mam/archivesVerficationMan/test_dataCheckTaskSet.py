@@ -68,7 +68,7 @@ class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
         self.inputStr_tg_no(para['TG_NO'])
 
         # 任务来源
-        self.inputSel_taskFrom(para['TASK_FROM'])
+        self.inputSel_task_from(para['TASK_FROM'])
 
         # 选择模板
         # self.inputChk_SelectDemo(para)   此选项缺少选项内容

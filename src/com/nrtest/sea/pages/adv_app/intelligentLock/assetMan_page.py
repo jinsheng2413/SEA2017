@@ -34,7 +34,7 @@ class AssetManPage(Page):
         self.selectDropDown(index)
 
     # 锁封资产状态
-    def inputSel_lock_asset_ststus(self, index):
+    def inputSel_lock_asset_status(self, index):
         # self.click(AssetManLocators.LOCK_ASSET_STATUS)
         # locator = self.get_select_locator(
         #     AssetManLocators.LOCK_ASSET_STATUS_VALUE, index)

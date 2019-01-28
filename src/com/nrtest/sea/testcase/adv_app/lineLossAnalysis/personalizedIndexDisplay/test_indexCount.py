@@ -17,13 +17,13 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.lineLossAnalysis.personalizedIndexDisplay.personalizedIndexDisplay_data import \
     PersonalizedIndexDisplay_data
 from com.nrtest.sea.pages.adv_app.lineLossAnalysis.personalizedIndexDisplay.indexDetail_page import \
-    IndexDetailPage_count
+    IndexDetailStatPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→线损分析→同期线损→指标明细：指标统计
 @ddt
-class TestIndexDetail(TestCase, IndexDetailPage_count):
+class TestIndexDetailStat(TestCase, IndexDetailStatPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf

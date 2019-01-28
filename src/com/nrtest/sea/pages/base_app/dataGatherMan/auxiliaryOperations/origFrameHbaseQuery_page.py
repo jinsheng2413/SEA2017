@@ -19,7 +19,7 @@ class OrigFrameHbaseQueryPage(Page):
         self.input(value)  # , *OrigFrameHbaseQueryLocators.QRY_TMNL_ADDR)
 
     # 报文类型
-    def inputSel_messageType(self, name):
+    def inputSel_message_type(self, name):
         # self.click(OrigFrameHbaseQueryLocators.QRY_MESSAGE_TYPE)
         # locator = self.get_select_locator(OrigFrameHbaseQueryLocators.QRY_MESSAGE_TYPE_VALUE, name)
         # self.click(locator)
@@ -30,11 +30,11 @@ class OrigFrameHbaseQueryPage(Page):
         self.input(value)  # , *OrigFrameHbaseQueryLocators.QRY_QUERY_TIME)
 
     # 从
-    def inputDt_from(self, value):
+    def inputDt_start_date(self, value):
         # self.input(value, *OrigFrameHbaseQueryLocators.QRY_FROM)
         self.inputDate(value)
      # 到
-    def inputDt_to(self, value):
+    def inputDt_end_date(self, value):
         # self.input(value, *OrigFrameHbaseQueryLocators.QRY_TO)
         self.inputDate(value)
 

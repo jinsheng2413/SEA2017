@@ -15,11 +15,11 @@ from com.nrtest.common.base_page import Page
 class TmnlInstallDetaiStatPage(Page):
 
     # 终端类型
-    def inputSel_TmnlType(self, options):
+    def inputSel_tmnl_type(self, options):
         self.selectDropDown(options)
 
     # 开始时间
-    def inputDt_Start_time(self, value):
+    def inputDt_start_time(self, value):
         self.inputDate(value)
 
     # 结束时间
@@ -81,7 +81,7 @@ class TmnlInstallDetaiPage(Page):
         self.selectDropDown(options)
 
     # 装接类型
-    def inputSel_mouting_type(self, options):
+    def inputSel_mounting_type(self, options):
         self.selectDropDown(options)
 
     # 查询

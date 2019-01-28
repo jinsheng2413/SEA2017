@@ -19,7 +19,7 @@ class DataStrategyManagenmentPage(Page):
         self.selectDropDown(options)
 
     # 表名称
-    def inputStr_list_name(self, value):
+    def inputStr_table_name(self, value):
         self.input(value)
 
     # 数据组

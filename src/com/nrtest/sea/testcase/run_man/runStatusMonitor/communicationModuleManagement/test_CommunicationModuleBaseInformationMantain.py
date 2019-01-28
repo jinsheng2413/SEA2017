@@ -69,10 +69,10 @@ class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModul
         self.inputStr_module_attr_id(para['MODULE_ATTR_ID'])
 
         # 模块类型
-        self.inputSel_moduleType(para['MODULE_TYPE'])
+        self.inputSel_module_type(para['MODULE_TYPE'])
 
         # 模块厂商
-        self.inputSel_moduleFactory(para['MODULE_FACTORY'])
+        self.inputSel_module_factory(para['MODULE_FACTORY'])
 
         # 模块版本
         self.inputSel_module_ver(para['MODULE_VER'])

@@ -73,7 +73,7 @@ class TestEleParaMan(TestCase, EleParaMan_rate_Page):
         self.inputDt_end_time(para['END_TIME'])
 
         # 是否已生成参数
-        self.inputSel_ComeIntoPara(para['COME_INTO_PARA'])
+        self.inputSel_come_into_para(para['COME_INTO_PARA'])
 
         # 任务来源
         self.inputChk_task_from(para['TASK_FROM'])

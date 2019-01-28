@@ -83,9 +83,9 @@ class TmnlPowerCutEventQueryPage(Page):
         self.selectDropDown(index)
 
     # 是否有效
-    def inputSel_whether_valid(self, index):
-        # self.click(TmnlPowerCutEventQueryLocators.QRY_WHETHER_VALID)
-        # locator = self.get_select_locator(TmnlPowerCutEventQueryLocators.QRY_WHETHER_VALID_VALUE, index)
+    def inputSel_is_valid(self, index):
+        # self.click(TmnlPowerCutEventQueryLocators.QRY_IS_VALID)
+        # locator = self.get_select_locator(TmnlPowerCutEventQueryLocators.QRY_IS_VALID_VALUE, index)
         # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
@@ -141,9 +141,9 @@ class IntelligentMeterPowerCutEventQueryDetailPage(Page):
         self.selectDropDown(index)
 
     # 是否有效
-    def inputSel_whether_valid(self, index):
-        # self.click(IntelligentMeterPowerCutEventQueryLocators.QRY_WHETHER_VALID)
-        # locator = self.get_select_locator(IntelligentMeterPowerCutEventQueryLocators.QRY_WHETHER_VALID_VALUE, index)
+    def inputSel_is_valid(self, index):
+        # self.click(IntelligentMeterPowerCutEventQueryLocators.QRY_IS_VALID)
+        # locator = self.get_select_locator(IntelligentMeterPowerCutEventQueryLocators.QRY_IS_VALID_VALUE, index)
         # self.click(locator)
         # self.delDropdownBoxHtml()
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)

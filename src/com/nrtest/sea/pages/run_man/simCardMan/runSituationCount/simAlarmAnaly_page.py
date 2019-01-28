@@ -17,7 +17,7 @@ from com.nrtest.common.base_page import Page
 class AbnoralStaticPage(Page):
 
     # 月份
-    def inputDt_month(self, value):
+    def inputDt_month_count(self, value):
         self.inputDate(value)
 
     # 查询
@@ -32,7 +32,7 @@ class AbnormalDetailPage(Page):
         self.selectDropDown(item)
 
     # 月份
-    def inputDt_month(self, value):
+    def inputDt_month_count(self, value):
         self.inputDate(value)
 
     # 查询

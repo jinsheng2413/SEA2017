@@ -61,17 +61,14 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
         self.inputStr_tg_name(para['TG_NAME'])
         # 安装率
         self.inputSel_install_rate(para['INSTALL_RATE'])
-        # self.inputStr_installation_rate(para['INSTALL_RATE_INPUT'])
         # 抄读成功率
         self.inputSel_read_success_rate(para['READ_SUCCESS_RATE'])
-        # self.inputStr_read_success_rate(para['READ_SUCCESS_RATE_INPUT'])
         # 线损率
         self.inputSel_line_loss_rate(para['LINE_LOSS_RATE'])
-        # self.inputStr_line_loss_rate(para['LINE_LOSS_RATE_INPUT'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 可算
-        self.inputChk_may(para['LINE_LOSS_TYPE_MAY'])
+        self.inputChk_line_loss_type(para['LINE_LOSS_TYPE'])
         # 达标
         self.inputChk_loss_line_type(para['LOSS_LINE_TYPE'])
         # 查询按钮

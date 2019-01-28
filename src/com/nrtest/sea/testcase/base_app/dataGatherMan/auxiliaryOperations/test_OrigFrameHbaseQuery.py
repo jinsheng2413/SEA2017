@@ -69,11 +69,11 @@ class TestOrigFrameHbaseQuery(TestCase, OrigFrameHbaseQueryPage):
         #查询时间
         self.inputStr_query_time(para['QUERY_TIME'])
         #报文类型
-        self.inputSel_messageType(para['MESSAGE'])
+        self.inputSel_message_type(para['MESSAGE_TYPE'])
         # 从
-        self.inputDt_from(para['FROM'])
+        self.inputDt_start_date(para['START_DATE'])
         # 到
-        self.inputDt_to(para['TO'])
+        self.inputDt_end_date(para['END_DATE'])
 
         self.btn_qry()
         self.sleep_time(2)

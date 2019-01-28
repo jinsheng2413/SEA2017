@@ -28,11 +28,11 @@ class WorkCountPage(Page):
 class WorkQueryPage(Page):
 
     # 异常编号
-    def inputStr_abnormalNo(self, value):
+    def inputStr_abnormal_no(self, value):
         self.input(value)  # , *WorkQueryLocators.QRY_ABNORMAL_NO)
 
     # 异常状态
-    def inputSel_abnormalStatus(self, options):
+    def inputSel_abnormal_status(self, options):
         # self.click(WorkQueryLocators.QRY_ABNORMAL_STATUS)
         # locator = self.get_select_locator(
         #     WorkQueryLocators.QRY_ABNORMAL_STATUS_VALUE, index)

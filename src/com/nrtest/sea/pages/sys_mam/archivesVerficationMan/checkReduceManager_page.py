@@ -15,12 +15,12 @@ from com.nrtest.common.base_page import Page
 # 系统管理→档案核查管理→考核减免管理
 class CheckReduceManagerPage(Page):
     # 开始时间
-    def inputStr_startTime(self, value):
+    def inputStr_start_date(self, value):
         # self.input(value, *CheckReduceManagerLocators.QRY_START_TIME)
         self.inputDate(value)
 
     # 结束时间
-    def inputDt_end_time(self, value):
+    def inputDt_end_date(self, value):
         # self.input(value, *CheckReduceManagerLocators.QRY_END_TIME)
         self.inputDate(value)
 

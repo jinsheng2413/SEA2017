@@ -33,23 +33,23 @@ class TgLineLossDetailPage(Page):
         self.input(content)
 
     # 采集覆盖率
-    def inputSel_collectCoverRate(self, value):
+    def inputSel_collect_cover_rate(self, value):
         self.selectDropDown(value)
 
     # 采集成功率
-    def inputSel_collectSuccessRate(self, value):
+    def inputSel_collect_success_rate(self, value):
         self.selectDropDown(value)
 
     # 同期线损率
-    def inputSel_lineLoss(self, value):
+    def inputSel_collecline_loss_rate(self, value):
         self.selectDropDown(value)
 
     # 时间类型
-    def inputChk_dateType(self, value):
+    def inputChk_date_type(self, value):
         self.clickRadioBox(value)
 
     # 运算类型
-    def inputChk_runType(self, value):
+    def inputChk_compute_type(self, value):
         self.clickRadioBox(value)
 
     # 查询按钮

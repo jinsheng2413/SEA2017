@@ -70,19 +70,19 @@ class TestTmnlInsertQuery(TestCase, TmnlInsertQueryPage):
         self.inputChk_stat_type(para['STAT_TYPE'])
 
         #日期
-        self.inputStr_startTime_count(para['DT_FROM'])
+        self.inputDt_dt_from(para['DT_FROM'])
 
         #到
-        self.inputStr_endTime_Count(para["DT_TO"])
+        self.inputDt_dt_to(para['DT_TO'])
 
         #终端类型
-        self.inputSel_tmnlType(para['TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
 
         #终端厂商
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         #统计口径
-        self.inputSel_countCaliber(para['STAT_SCOPE'])
+        self.inputSel_stat_scope(para['STAT_SCOPE'])
 
         self.btn_qry()
         self.sleep_time(2)

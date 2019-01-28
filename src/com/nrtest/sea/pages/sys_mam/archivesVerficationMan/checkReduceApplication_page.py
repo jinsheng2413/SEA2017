@@ -19,12 +19,12 @@ class CheckReduceApplicationPage(Page):
         self.input(value)  # , *CheckReduceApplicationLocators.QRY_APP_NO)
 
     # 接收时间
-    def inputDt_start_time(self, value):
+    def inputDt_start_date(self, value):
         # self.input(value, *CheckReduceApplicationLocators.QRY_START_TIME)
         self.inputDate(value)
 
     # 结束时间
-    def inputDt_end_time(self, value):
+    def inputDt_end_date(self, value):
         # self.input(value, *CheckReduceApplicationLocators.QRY_END_TIME)
         self.inputDate(value)
 

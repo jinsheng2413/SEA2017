@@ -65,9 +65,9 @@ class TestLogEdit(TestCase, LogEditPage):
         # 值班人员工号
         self.inputStr_duty_person_no(para['DUTY_PERSON_NO'])
         # 值班时间
-        self.inputDt_start_date(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
         # 到
-        self.inputDt_end_date(para['TO'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 查询
         self.btn_qry()

@@ -263,8 +263,57 @@ class DataAccess:
         dataSet = pyoracle.query(sql, [xpath, menuName])
         return dataSet
 
+    @staticmethod
+    def get_menu_xpath_list(menu_no, tab_name='01', script_type='01'):
+        sql = 'SELECT xpath, xpath_name, use_share_xpath \
+                FROM tst_menu_xpath_list  \
+                WHERE project_no = :1 \
+                  AND menu_no = :2 \
+                  AND tab_name = :3 ' + (" AND use_share_xpath !='00'" if script_type == '01' else '') + ' ORDER BY element_sn'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, menu_no, tab_name])
+        return dataSet
+
+    @staticmethod
+    def get_el_script_setup(script_type='01'):
+        sql = 'select el_type, script_line, script \
+                from tst_element_script_setup t \
+                where script_type = :1 \
+                ORDER BY el_type, script_line'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [script_type])
+        el_type = ''
+        el_scripts = {}
+        lines = []
+        for row in dataSet:
+            if bool(el_type):
+                if row[0] == el_type:
+                    lines.append(' ' * 8 + row[2] + '\r')
+                else:
+                    el_scripts.setdefault(el_type, lines)
+                    el_type = row[0]
+                    lines = [' ' * (4 if script_type == '01' else 8) + row[2] + '\r']
+            else:
+                el_type = row[0]
+                lines = [' ' * (4 if script_type == '01' else 8) + row[2] + '\r']
+        el_scripts.setdefault(el_type, lines)
+        return el_scripts
+
+    @staticmethod
+    def get_template(script_type='01'):
+        sql = 'SELECT line_flag, script, script_line FROM tst_script_template t \
+                WHERE template_type = :1 \
+                ORDER BY script_line'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [script_type])
+
+        return dataSet
+
+
 if __name__ == '__main__':
-    print(DataAccess.get_xpath_menu_data('CONS_NO', '用户数据查询'))
+    pass
+
+    # print(DataAccess.get_xpath_menu_data('CONS_NO', '用户数据查询'))
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
     # print(DataAccess.getCaseData("99926400", tabName='01'))
     # print(DataAccess.refresh_all())
@@ -272,7 +321,7 @@ if __name__ == '__main__':
     # print(DataAccess.get_case_result('999111003'))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
-    DataAccess.refresh_all()
+    # DataAccess.refresh_all()
     # for i in  str[4:10]:
     #     print(i)
     # print(DataAccess.getAllMenu())
@@ -280,4 +329,5 @@ if __name__ == '__main__':
     # pass
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
-    # DataAccess.get_case_result('999111003')
+    print(DataAccess.get_el_script_setup('02'))
+    # print(DataAccess.get_menu_xpath_list('99912100','终端调试', '02'))

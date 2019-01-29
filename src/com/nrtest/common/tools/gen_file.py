@@ -32,7 +32,7 @@ en_tab_name = ''
 # 生成文件存放路径
 filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
 
-# 当前执行想要生成的文件
+# 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
 page_type = '02'
 
 class GenPageFile():

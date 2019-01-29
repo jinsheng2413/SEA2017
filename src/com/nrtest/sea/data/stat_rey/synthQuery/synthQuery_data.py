@@ -94,3 +94,5 @@ class SynthQuery_data:
     CollcateDataQuery_para = '99941300'
     # 统计查询--综合查询--线路数据查询
     lineDataQuery_para = '99941400'
+    # 统计查询→综合查询→专公变明细查询(江西)
+    FailListJx_para = '99941I00'

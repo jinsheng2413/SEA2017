@@ -34,3 +34,6 @@ class DataGatherMan_data:
 
     # 基本应用→数据采集管理→数据召测→批量巡测
     batchFetch_para = '99913340'
+
+    # 基本应用→数据采集管理→终端任务配置
+    tmnlTaskDeploy_para = '99913800'

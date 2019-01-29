@@ -74,12 +74,12 @@ class GenPageFile():
     # 05	菜单编号
     def get_menu_no(self, file=''):
         menu = data_file + '.' + self._format_name(file, True) + '_para'
-        return menu, menu + ' = \'' + menu_no + '\'\r'
+        return menu, menu.split('.')[-1] + ' = \'' + menu_no + '\'\r'
 
     # 06	Tab页名称
     def get_tab_name(self, file=''):
         tab = data_file + '.' + self._format_name(file, True) + ('_' + en_tab_name if bool(en_tab_name) else '')
-        return tab, (tab + ' = \'' + tab_name + '\'\r') if bool(tab_name) else ''
+        return tab, (tab.split('.')[-1] + ' = \'' + tab_name + '\'\r') if bool(tab_name) else ''
 
     # 07 菜单编号和Tab页名称
     def get_menu_no_and_table_name(self, line, file=''):

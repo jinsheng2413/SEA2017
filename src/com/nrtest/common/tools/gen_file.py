@@ -15,23 +15,25 @@ from com.nrtest.common.data_access import DataAccess
 author = '李建方'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'tmnl_install_detai_debug'
+file_name = 'Tg_Line_Loss_Analysis_Jibei'
 
 # 存放菜单编号的数据文件类名
-data_file = 'DataGatherMan_data'
+data_file = 'LineLossStatisticsAnalysis_data'
 
 # 菜单编号
-menu_no = '99912100'
+menu_no = '99924240'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = '终端调试'
+tab_name = ''
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
-en_tab_name = 'abc'
+en_tab_name = ''
 
 # 生成文件存放路径
 filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
 
+# 当前执行想要生成的文件
+page_type = '02'
 
 class GenPageFile():
     def __init__(self, script_type='01'):
@@ -113,6 +115,9 @@ class GenPageFile():
                 raise Exception('该节点配置错误:{},use_share_xpath不能为00'.format(','.join(qry_xpath)))
 
             if qry_xpath[0] == 'TREE_NODE':
+                if self.script_type == '01':
+                    continue
+
                 el_scripts = self.el_setup['00']
             else:
                 el_scripts = self.el_setup[qry_xpath[2]]
@@ -195,5 +200,5 @@ class GenPageFile():
 
 
 if __name__ == '__main__':
-    genPageFile = GenPageFile('02')
+    genPageFile = GenPageFile(page_type)
     genPageFile.gen_file()

@@ -271,7 +271,7 @@ class DataAccess:
                   AND menu_no = :2 \
                   AND tab_name = :3 ' + (" AND use_share_xpath !='00'" if script_type == '01' else '') + ' ORDER BY element_sn'
         pyoracle = PyOracle.getInstance()
-        dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, menu_no, tab_name])
+        dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, menu_no, (tab_name if bool(tab_name) else '01')])
         return dataSet
 
     @staticmethod

@@ -98,7 +98,7 @@ class GenPageFile():
         menu_path = ls_menu[0]
         items = menu_path.split(';')
         # 菜单路径
-        return ls_menu[-1] + '-->' + '-->'.join(items[1:]) + (':' + tab_name if bool(tab_name) else '')
+        return ls_menu[-1] + '→' + '→'.join(items[1:]) + (':' + tab_name if bool(tab_name) else '')
 
     # 09	page的class名
     def get_page_class_name(self, file=''):

@@ -109,7 +109,13 @@ class GenPageFile():
         menu_xpath_list = DataAccess.get_menu_xpath_list(menu_no, tab_name, self.script_type)
         # print(menu_xpath_list)
         for qry_xpath in menu_xpath_list:
-            el_scripts = self.el_setup[qry_xpath[2]]
+            if qry_xpath[0] != 'TREE_NODE' and qry_xpath[2] == '00':
+                raise Exception('该节点配置错误:{},use_share_xpath不能为00'.format(','.join(qry_xpath)))
+
+            if qry_xpath[0] == 'TREE_NODE':
+                el_scripts = self.el_setup['00']
+            else:
+                el_scripts = self.el_setup[qry_xpath[2]]
             fun_name = qry_xpath[0].lower()
             if self.script_type == '01':
                 blank = ' ' * 4
@@ -120,7 +126,8 @@ class GenPageFile():
             else:
                 blank = ' ' * 8
                 lines.append(blank + '# ' + qry_xpath[1] + '\r')
-                if qry_xpath[2] == '00':
+                # if qry_xpath[2] == '00':
+                if qry_xpath[0] == 'TREE_NODE':
                     lines.append(el_scripts[0].format(qry_xpath[0]))
                 else:
                     lines.append(el_scripts[0].format(fun_name, fun_name.upper()))

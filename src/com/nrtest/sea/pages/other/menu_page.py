@@ -351,6 +351,7 @@ class MenuPage(Page):
 
     # 选择左边树
     def btn_left_tree(self, tree_no):
+        self.sleep_time(2)
         tree = DataAccess.getLeftTree(tree_no)
 
         # self.btn_suitable_arrow()

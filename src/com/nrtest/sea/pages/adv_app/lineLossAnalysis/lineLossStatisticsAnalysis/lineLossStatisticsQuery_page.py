@@ -30,8 +30,8 @@ class LineLossStatisticsQueryPage(Page):
         # self.click(locator)
         self.selectDropDown(index)
 
-    def inputStr_line_loss_rate(self, content):
-        self.input(content)
+    def inputStr_line_loss_rate_input(self, value):
+        self.input(value)
 
     def inputChk_qry_date_type(self, value):
         self.clickSingleCheckBox(value)

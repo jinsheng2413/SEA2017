@@ -60,7 +60,9 @@ class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
         self.inputSel_line_loss_type(para['LINE_LOSS_TYPE'])
         # 线损率
         self.inputSel_line_loss_rate(para['LINE_LOSS_RATE'])
-        # 选择日期类型
+        # 线损率值
+        self.inputStr_line_loss_rate(para['LINE_LOSS_RATE_INPUT'])
+        # 日期类型
         self.inputChk_qry_date_type(para['QRY_DATE_TYPE'])
 
         qry_date_type = self.get_para_value(para['QRY_DATE_TYPE'])

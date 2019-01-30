@@ -73,14 +73,16 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         # 考核单元状态
         self.inputSel_chkunit_status(para['CHKUNIT_STATUS'])
 
-        # 台区编号
-        self.inputStr_tg_no(para['TG_NO'])
+        para_value = self.get_para_value(para['CHKUNIT_TYPE'])
+        if para_value == '台区':
+            # 台区编号
+            self.inputStr_tg_no(para['TG_NO'])
 
-        # 台区状态
-        self.inputSel_tg_status(para['TG_STATUS'])
-
-        # 线路编号
-        self.inputStr_line_no(para['LINE_NO'])
+            # 台区状态
+            self.inputSel_tg_status(para['TG_STATUS'])
+        elif para_value == '线路':
+            # 线路编号
+            self.inputStr_line_no(para['LINE_NO'])
 
         # 未覆盖
         self.inputChk_uncover(para['UNCOVER'])

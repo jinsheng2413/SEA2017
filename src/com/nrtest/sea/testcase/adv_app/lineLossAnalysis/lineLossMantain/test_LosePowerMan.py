@@ -58,8 +58,7 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
-        # 打开左边树并选择
+        # 选择节点
         self.openLeftTree(para['TREE_NODE'])
 
         # 考核单元名称
@@ -69,15 +68,23 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         self.inputSel_chkunit_type(para['CHKUNIT_TYPE'])
 
         # 组合标志
-        self.inputSel_combination_sign(para['COMBINATION_SIGN'])
+        self.inputSel_combination_flag(para['COMBINATION_FLAG'])
 
         # 考核单元状态
         self.inputSel_chkunit_status(para['CHKUNIT_STATUS'])
 
-        # 台区状态
-        self.inputSel_tg_status(para['TG_STATUS'])
+        para_value = self.get_para_value(para['CHKUNIT_TYPE'])
+        if para_value == '台区':
+            # 台区编号
+            self.inputStr_tg_no(para['TG_NO'])
 
-        # 点击复选框
+            # 台区状态
+            self.inputSel_tg_status(para['TG_STATUS'])
+        elif para_value == '线路':
+            # 线路编号
+            self.inputStr_line_no(para['LINE_NO'])
+
+        # 未覆盖
         self.inputChk_uncover(para['UNCOVER'])
 
         # 查询

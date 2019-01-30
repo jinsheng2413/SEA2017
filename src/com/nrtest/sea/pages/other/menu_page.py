@@ -49,7 +49,7 @@ class MenuPage(Page):
         """
         menuPage = MenuPage(global_drv.get_driver())
         menuPage.click_menu(menuNo)
-        sleep(3)
+        sleep(2)
         return menuPage
 
     def click_menu(self, menu_no, isPath=False):

@@ -79,11 +79,11 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
         self.inputStr_read_success_rate_input(para['READ_SUCCESS_RATE_INPUT'])
 
         if self.get_para_value(para['READ_SUCCESS_RATE']).startswith('大于'):
-            # 线损率TO
-            self.inputSel_line_loss_rate_to(para['LINE_LOSS_RATE_TO'])
+            # 抄读成功TO率
+            self.inputSel_read_success_rate_to(para['READ_SUCCESS_RATE_TO'])
 
-            # 线损率TO值
-            self.inputStr_line_loss_rate_to_input(para['LINE_LOSS_RATE_TO_INPUT'])
+            # 抄读成功TO率值
+            self.inputStr_read_success_rate_to_input(para['READ_SUCCESS_RATE_TO_INPUT'])
 
         # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
@@ -94,11 +94,11 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
         # 线损率值
         self.inputStr_line_loss_rate_input(para['LINE_LOSS_RATE_INPUT'])
         if self.get_para_value(para['LINE_LOSS_RATE']).startswith('大于'):
-            # 抄读成功TO率
-            self.inputSel_read_success_rate_to(para['READ_SUCCESS_RATE_TO'])
+            # 线损率TO
+            self.inputSel_line_loss_rate_to(para['LINE_LOSS_RATE_TO'])
 
-            # 抄读成功TO率值
-            self.inputStr_read_success_rate_to_input(para['READ_SUCCESS_RATE_TO_INPUT'])
+            # 线损率TO值
+            self.inputStr_line_loss_rate_to_input(para['LINE_LOSS_RATE_TO_INPUT'])
 
         # 是否可算
         self.inputChk_is_can_calc(para['IS_CAN_CALC'])

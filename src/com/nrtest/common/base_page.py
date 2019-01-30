@@ -409,13 +409,13 @@ class Page():
                 loc = locator_clean
             else:
                 loc = (locator[0], locator[1] + '/preceding-sibling::input')
-            el = self._find_displayed_element(locator_clean, idx)
+            el = self._find_displayed_element(loc, idx)
             self.driver.execute_script("arguments[0].value=arguments[1]", el, '')
 
     def specialInput(self, locator, value, idx=1):
         # 页面元素位置变动时，会存在定位错误问题，需人工调整
         loc = self.format_xpath_multi(locator, idx, True)
-        el = self._find_displayed_element(locator, idx)
+        el = self._find_displayed_element(loc, idx)
         el.send_keys(value.split(';')[1])
 
     def noLabelInput(self, value, idx=1):

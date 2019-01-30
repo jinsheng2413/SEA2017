@@ -210,7 +210,7 @@ class DataAccess:
                 Setting.PROJECT_NO,
                 menu_no,
                 tst_case_id,
-                locator[0] + '-->' + locator[1],
+                (locator[0] + '-->' + locator[1] if bool(locator) else locator),
                 class_path,
                 except_type,
                 str(except_info))

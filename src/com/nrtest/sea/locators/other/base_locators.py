@@ -80,6 +80,9 @@ class BaseLocators(Locators):
     # $x('//label[not(text())]/../div/input') 标签值为空的input元素
     # $x('(//body//label[text()="抄读成功率:"]/ancestor::tr//input)[4]')
 
+    # 输入框边上LABEL标签文本为空的定位处理:菜单编号/第n个元素
+    QRY_INPUT_NOLABEL = (By.XPATH, '//label[not(text())]/..//input')
+
 
 
 
@@ -99,12 +102,14 @@ class BaseLocators(Locators):
     # 选择指定复选项@class="ux-lovcombo-item-text" and
     # SEL_OPTION = (By.XPATH, '//div[@class="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img')
     SEL_OPTION = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/..//img')
+    SEL_OPTION_EQUAL = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[text()="{}"]/..//img')
 
 
     # 【下拉单选框相关】
     # 下拉单选项选择@class="x-combo-list-item" and
     # DROPDOWN_OPTION = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[contains(text(),"{}")]')
     DROPDOWN_OPTION = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]')
+    DROPDOWN_OPTION_EQUAL = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[text()="{}"]')
     # $x('//div[@class="x-layer x-combo-list  x-resizable-pinned" and contains(@style,"visible;")]//div[contains(text(),"巡检仪")]')
 
     # 【单选框】

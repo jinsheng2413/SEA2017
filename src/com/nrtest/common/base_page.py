@@ -350,20 +350,20 @@ class Page():
         """
         self.curr_click(is_multi_tab)
 
-    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False):
+    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False):
         """
         下拉单选框选择
         :param option: 参数格式：查询条件标签名;查询条件
         :param is_multi_tab: 多Tab页时，如果查询条件有重复，则该值填True
         :param sleep_sec:休眠n秒
         :param is_multi_elements:是否存在重复元素
+        :param is_equalText: True-下拉选择值需完全匹配，Fase-部分匹配
         """
         if (option.find(';') == -1):
             print('............请配置查询条件的标签值............')
         else:
             ls_option = option.split(';')
             item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
-            # if len(ls_option[1]) > 0:
             if bool(item):
                 # 打开下拉框
                 xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
@@ -377,17 +377,52 @@ class Page():
                     sleep(sleep_sec)
 
                 # 根据名称选择下拉框
-                loc = self.format_xpath(BaseLocators.DROPDOWN_OPTION, item)  # ls_option[1])
+                if is_equalText:
+                    loc = self.format_xpath(BaseLocators.DROPDOWN_OPTION_EQUAL, item)
+                else:
+                    loc = self.format_xpath(BaseLocators.DROPDOWN_OPTION, item)
                 self.click(loc)
             else:  # 选择值为空时，表示选择全部
                 xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
-                # if is_multi_elements:
-                #     el = self._find_displayed_element(xpath)
-                #     el.clear()
-                # else:
-                #     self.input('', *xpath)
                 el = self._find_displayed_element(xpath)
                 self.driver.execute_script("arguments[0].value=arguments[1]", el, '')
+
+    def specialDropdown(self, option, locator, idx=1, locator_clean=None):
+        """
+        无法通过通用定位方法定位元素时，通过特殊locator定位选择
+        :param option: 要选择的选项
+        :param locator: 要定位的元素
+        :param idx:选择定位到的第idx个元素
+        :param locator_clean:全选时的清空处理
+        """
+        ls_option = option.split(';')
+        item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
+
+        el = self._find_displayed_element(locator, idx)
+        el.click()
+        # 根据名称选择下拉框
+        if bool(item):
+            loc = self.format_xpath(BaseLocators.DROPDOWN_OPTION_EQUAL, item)
+            self.click(loc)
+        else:  # 选择值为空时，表示选择全部
+            if bool(locator_clean):
+                loc = locator_clean
+            else:
+                loc = (locator[0], locator[1] + '/preceding-sibling::input')
+            el = self._find_displayed_element(locator_clean, idx)
+            self.driver.execute_script("arguments[0].value=arguments[1]", el, '')
+
+    def specialInput(self, locator, value, idx=1):
+        # 页面元素位置变动时，会存在定位错误问题，需人工调整
+        loc = self.format_xpath_multi(locator, idx, True)
+        el = self._find_displayed_element(locator, idx)
+        el.send_keys(value.split(';')[1])
+
+    def noLabelInput(self, value, idx=1):
+        # 页面元素位置变动时，会存在定位错误问题，需人工调整
+        locator = self.format_xpath_multi(BaseLocators.QRY_INPUT_NOLABEL, idx, True)
+        el = self._find_displayed_element(locator, idx)
+        el.send_keys(value.split(';')[1])
 
     def _uncheck_all(self, option_name):
         """
@@ -402,13 +437,14 @@ class Page():
             #     el.click()
             el.click()
 
-    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False):
+    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False):
         """
         下拉复选框选择
         :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
         :param is_multi_tab: 多Tab页时，如果查询条件有重复，则该值填True
         :param sleep_sec:休眠n秒
         :param is_multi_elements:同一菜单是否存在重复元素
+        :param is_equalText: True-下拉选择值需完全匹配，Fase-部分匹配
         """
         # print ('selectCheckBox', options, is_multi_tab)
         if (options.find(';') == -1):
@@ -431,7 +467,10 @@ class Page():
 
             if len(ls_option[2]) > 0 and ls_option[2] != '全部':
                 for option in ls_option[2].split(','):
-                    img_chk_xpath = self.format_xpath(BaseLocators.SEL_OPTION, option)
+                    if is_equalText:
+                        img_chk_xpath = self.format_xpath(BaseLocators.SEL_OPTION_EQUAL, option)
+                    else:
+                        img_chk_xpath = self.format_xpath(BaseLocators.SEL_OPTION, option)
                     self.click(img_chk_xpath)
 
             # 回收下拉框
@@ -703,9 +742,7 @@ class Page():
         :return: None
         """
         try:
-            # print('input', values)
             if values.find(';') > -1:
-                # print('execute curr_input')
                 self.curr_input(values)
             else:
                 element = self._find_element(locators)
@@ -863,23 +900,23 @@ class Page():
         """
         return self.driver.current_url()
 
-    def exists_element(self, locator, ec_mode=0):
-        """
-        方法名：exists_element
-        判断元素是否存在,
-        :param locator:元祖形式的xpath
-        :return:布尔返回值
-        """
-        return bool(self._find_element(locator, ec_mode))
+    # def exists_element(self, locator, ec_mode=0):
+    #     """
+    #     方法名：exists_element
+    #     判断元素是否存在,
+    #     :param locator:元祖形式的xpath
+    #     :return:布尔返回值
+    #     """
+    #     return bool(self._find_element(locator, ec_mode))
 
-    def checkbox_is_selected(self, locator):
-        """
-        方法名：checkbox_is_selected
-        判断checkBox元素是否被选择
-        :param locator:元祖形式的xpath
-        :return:布尔返回值
-        """
-        return True if (self._find_element(locator).is_selected()) else False
+    # def checkbox_is_selected(self, locator):
+    #     """
+    #     方法名：checkbox_is_selected
+    #     判断checkBox元素是否被选择
+    #     :param locator:元祖形式的xpath
+    #     :return:布尔返回值
+    #     """
+    #     return True if (self._find_element(locator).is_selected()) else False
 
     def open_url(self):
         """

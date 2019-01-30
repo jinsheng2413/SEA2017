@@ -7,6 +7,7 @@
 @time: 2019-01-28 23:18
 @desc:
 """
+
 import time
 
 from com.nrtest.common.data_access import DataAccess
@@ -117,20 +118,19 @@ class GenPageFile():
             if qry_xpath[0] == 'TREE_NODE':
                 if self.script_type == '01':
                     continue
-
                 el_scripts = self.el_setup['00']
             else:
                 el_scripts = self.el_setup[qry_xpath[2]]
             fun_name = qry_xpath[0].lower()
             if self.script_type == '01':
-                blank = ' ' * 4
-                lines.append(blank + '# ' + qry_xpath[1] + '\r')
+                # blank = ' ' * 4
+                lines.append(' ' * 4 + '# ' + qry_xpath[1] + '\r')
                 lines.append(el_scripts[0].format(fun_name))
                 lines.append(el_scripts[1])
                 lines.append('\r')
             else:
-                blank = ' ' * 8
-                lines.append(blank + '# ' + qry_xpath[1] + '\r')
+                # blank = ' ' * 8
+                lines.append(' ' * 8 + '# ' + qry_xpath[1] + '\r')
                 # if qry_xpath[2] == '00':
                 if qry_xpath[0] == 'TREE_NODE':
                     lines.append(el_scripts[0].format(qry_xpath[0]))
@@ -153,51 +153,54 @@ class GenPageFile():
                 if line_flag == '01':
                     line = self.get_author(script)
                 # 02	文件名
-                if line_flag == '02':
+                elif line_flag == '02':
                     line = self.get_file_name(script)
                 # 03	时间
-                if line_flag == '03':
+                elif line_flag == '03':
                     line = self.get_dt(script)
                 # 04	test&page的class名
-                if line_flag == '04':
+                elif line_flag == '04':
                     line = self.get_test_class(script)
                 # 05	菜单编号
-                if line_flag == '05':
+                elif line_flag == '05':
                     line, menu = self.get_menu_no()
                     line = script.format(line)
                     print('# ' + self.get_menu_path().split(':')[0])
                     print(menu)
                 # 06	Tab页名称
-                if line_flag == '06':
+                elif line_flag == '06':
                     line, tab = self.get_tab_name()
                     line = script.format(line)
                     print(tab)
 
                 # 07 菜单编号和Tab页名称
-                if line_flag == '07':
+                elif line_flag == '07':
                     line = self.get_menu_no_and_table_name(script)
 
                 # 08	菜单路径
-                if line_flag == '08':
+                elif line_flag == '08':
                     line = script.format(self.get_menu_path())
 
                 # 09	page的class名
-                if line_flag == '09':
+                elif line_flag == '09':
                     line = script.format(self.get_page_class_name())
 
+                if bool(line):
+                    lines.append(line)
+
                 # 10	查询条件
-                if line_flag == '10':
+                elif line_flag == '10':
                     line = self.get_querys()
                     lines = lines + line
 
-                if bool(line):
-                    if line_flag != '10':
-                        lines.append(line)
+                # if bool(line):
+                #     if line_flag != '10':
+                #         lines.append(line)
             else:
                 lines.append(script)
+
         with open(filelistlog, 'a+', encoding='utf-8') as fo:
             fo.writelines(lines)
-
 
 if __name__ == '__main__':
     genPageFile = GenPageFile(page_type)

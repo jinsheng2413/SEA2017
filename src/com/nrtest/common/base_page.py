@@ -22,6 +22,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
+from com.nrtest.sea.locators.other.base_g_locators import BaseTabLocators
 from com.nrtest.sea.locators.other.base_locators import BaseLocators
 from com.nrtest.sea.locators.other.common_locators import CommonLocators
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
@@ -99,9 +100,9 @@ class Page():
             res = func(*args, **kwargs)
             tag = False
             try:
-
+                re = args[0].driver.find_element(*CommonLocators.ERROR_WINDOW_PROCESS).is_displayed()
                 el = args[0].driver.find_element(*CommonLocators.ERROR_WINDOW_PROCESS)
-                if el:
+                if re:
                     tag = True
                     print('弹窗错误信息：%s' % el.text)
 
@@ -1432,6 +1433,14 @@ class Page():
         locators = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-plus"]')
 
         WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
+
+    def format_locator(self, *args, model=1, **keways, ):
+        if model == 1:
+            xpath = BaseTabLocators.TREE_TAB_ELE[1].format(args[0])
+            return (By.XPATH, xpath)
+
+
+
 
 
 if __name__ == '__main__':

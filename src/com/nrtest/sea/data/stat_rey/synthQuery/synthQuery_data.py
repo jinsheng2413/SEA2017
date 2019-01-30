@@ -94,3 +94,6 @@ class SynthQuery_data:
     CollcateDataQuery_para = '99941300'
     # 统计查询--综合查询--线路数据查询
     lineDataQuery_para = '99941400'
+    # 统计查询--综合查询--专公变综合查询
+    onlyChangeSysthesisQuery_para = '99941R00'
+    onlyChangeSysthesisQuery_loadCount_tab = '负荷统计'

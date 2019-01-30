@@ -12,15 +12,15 @@ from com.nrtest.common.base_page import Page
 
 class ZoneAreaSameGoodStandard_page(Page):
     # 选择人员
-    def inputSel_selectPerson(self, value):
+    def inputSel_select_person(self, value):
         self.selectDropDown(value)
 
     # 开始时间
-    def inputStr_StartDate(self, startDate):
+    def inputStr_start_date(self, startDate):
         self.inputDate(startDate)
 
     # 结束时间
-    def inputStr_EndDate(self, end_Date):
+    def inputStr_end_date(self, end_Date):
         self.clean_label(end_Date)
         self.inputDate(end_Date)
 

@@ -57,11 +57,11 @@ class TestRecordsQuery(TestCase, ZoneAreaSameGoodStandard_page):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 选择人员
-        self.inputSel_selectPerson(para['SELECT_PERSON'])
+        self.inputSel_select_person(para['SELECT_PERSON'])
         # 开始时间
-        self.inputStr_StartDate(para['START_DATE'])
+        self.inputStr_start_date(para['START_DATE'])
         # 结束日期
-        self.inputStr_EndDate(para['END_DATE'])
+        self.inputStr_end_date(para['END_DATE'])
 
         self.btn_qry()
 

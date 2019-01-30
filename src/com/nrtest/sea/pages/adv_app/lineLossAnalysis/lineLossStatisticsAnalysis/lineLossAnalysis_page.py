@@ -51,15 +51,15 @@ class LineLossAnalysisPage(Page):
 
     # 查询日期
     def inputDt_query_date(self, value):
-        self.inputDt(value)
+        self.inputDate(value)
 
     # 从
     def inputDt_start_date(self, value):
-        self.inputDt(value)
+        self.inputDate(value)
 
     # 到
     def inputDt_end_date(self, value):
-        self.inputDt(value)
+        self.inputDate(value)
 
     # 季度
     def inputChk_quarter(self, option):

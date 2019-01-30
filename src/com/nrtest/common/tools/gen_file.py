@@ -16,13 +16,13 @@ from com.nrtest.common.data_access import DataAccess
 author = '李建方'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'Lose_Power_Man'
+file_name = 'lineLossCount'
 
 # 存放菜单编号的数据文件类名
 data_file = 'LineLossMantain_data'
 
 # 菜单编号
-menu_no = '99924150'
+menu_no = '99991370'
 
 # Tab页名【中文】，没Tab页时，填空串：''
 tab_name = ''
@@ -34,7 +34,7 @@ en_tab_name = ''
 filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
 
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
-page_type = '02'
+page_type = '01'
 
 class GenPageFile():
     def __init__(self, script_type='01'):

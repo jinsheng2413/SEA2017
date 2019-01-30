@@ -1164,7 +1164,7 @@ class Page():
         :param format_val: 格式化值，可以是单个字符串，元组
         :return:
         """
-        if xpath[1].find('%') > -1:  # 'abc%s' 格式
+        if xpath[1].find('%s') > -1:  # 'abc%s' 格式
             # print('xpath:', xpath, 'format val', format_val)
             return (xpath[0], xpath[1] % format_val)
         if isinstance(format_val, tuple):

@@ -16,13 +16,13 @@ from com.nrtest.common.data_access import DataAccess
 author = '李建方'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'Tg_Line_Loss_Analysis_Jibei'
+file_name = 'Lose_Power_Man'
 
 # 存放菜单编号的数据文件类名
-data_file = 'LineLossStatisticsAnalysis_data'
+data_file = 'LineLossMantain_data'
 
 # 菜单编号
-menu_no = '99924240'
+menu_no = '99924150'
 
 # Tab页名【中文】，没Tab页时，填空串：''
 tab_name = ''
@@ -79,14 +79,17 @@ class GenPageFile():
 
     # 06	Tab页名称
     def get_tab_name(self, file=''):
-        tab = data_file + '.' + self._format_name(file, True) + ('_' + en_tab_name if bool(en_tab_name) else '')
-        return tab, (tab.split('.')[-1] + ' = \'' + tab_name + '\'\r') if bool(tab_name) else ''
+        if bool(tab_name) and tab_name != '01':
+            tab = data_file + '.' + self._format_name(file, True) + ('_' + en_tab_name if bool(en_tab_name) else '')
+            return tab, (tab.split('.')[-1] + ' = \'' + tab_name + '\'\r') if bool(tab_name) else ''
+        else:
+            return '', ''
 
     # 07 菜单编号和Tab页名称
     def get_menu_no_and_table_name(self, line, file=''):
         menu, pa = self.get_menu_no(file)
         tab, pa1 = self.get_tab_name(file)
-        if bool(tab_name):
+        if bool(tab_name) and tab_name != '01':
             para = menu + ', ' + tab
         else:
             para = menu
@@ -171,6 +174,9 @@ class GenPageFile():
                 elif line_flag == '06':
                     line, tab = self.get_tab_name()
                     line = script.format(line)
+                    if not bool(tab_name):
+                        pos = line.find('menuPage')
+                        line = line[:pos] + '# ' + line[pos:]
                     print(tab)
 
                 # 07 菜单编号和Tab页名称

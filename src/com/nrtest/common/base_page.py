@@ -323,7 +323,7 @@ class Page():
         except Exception as ex:
             logger.error('输入错误:{}\n{}'.format(value, ex))
 
-    def curr_click(self, is_multi_tab=False, btn_name=''):
+    def curr_click(self, is_multi_tab=False, btn_name='', idx=1):
         """
         新版点击方法
         :param btn_name:按钮元素文本值
@@ -333,7 +333,7 @@ class Page():
             btn_name = btn_name if bool(btn_name) else '查询'
             loc = self.format_xpath_multi(BaseLocators.BTN_QRY, btn_name, is_multi_tab)
             if is_multi_tab:
-                el = self._find_displayed_element(loc)
+                el = self._find_displayed_element(loc, idx)
             else:
                 el = self._find_element(loc)
             el.click()
@@ -343,12 +343,12 @@ class Page():
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
 
     @error_window_process
-    def btn_query(self, is_multi_tab=False):
+    def btn_query(self, is_multi_tab=False, idx=1):
         """
         通用页面查询按钮
         :param is_multi_tab: 多Tab页时，如果查询按钮名有重复，则该值填True
         """
-        self.curr_click(is_multi_tab)
+        self.curr_click(is_multi_tab, idx=idx)
 
     def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False):
         """
@@ -419,6 +419,11 @@ class Page():
         el.send_keys(value.split(';')[1])
 
     def noLabelInput(self, value, idx=1):
+        """
+        输入框左边有label但没text值的定位
+        :param value: 输入值
+        :param idx: 第idx个此类可见输入框
+        """
         # 页面元素位置变动时，会存在定位错误问题，需人工调整
         locator = self.format_xpath_multi(BaseLocators.QRY_INPUT_NOLABEL, idx, True)
         el = self._find_displayed_element(locator, idx)

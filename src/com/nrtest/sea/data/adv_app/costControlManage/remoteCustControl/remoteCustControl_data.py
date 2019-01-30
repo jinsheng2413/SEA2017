@@ -17,6 +17,8 @@ class RemoteCustControl_data:
 
     # 高级应用→费控管理→远程费控→新远程费控执行统计
     NewPrePaidStatus_para = '99922280'
+    NewTab_ByAction = '按指令执行统计'
+    NewTab_ByUser = '按用户执行统计'
 
     # 高级应用→费控管理→远程费控→专变用户远程费控执行
     CtrlExecutSpec_para = '99922220'

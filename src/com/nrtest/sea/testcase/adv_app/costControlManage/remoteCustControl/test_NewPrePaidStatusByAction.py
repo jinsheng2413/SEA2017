@@ -3,39 +3,41 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_CustControlCommissioning_ele_manage.py
-@time: 2018/8/23 0023 11:20
+@file: test_NewPrePaidStatusByAction.py
+@time: 2018/9/10 0010 9:21
 @desc:
 """
 from unittest import TestCase
 
-from ddt import data
-from ddt import ddt
+from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
-from com.nrtest.sea.pages.adv_app.costControlManage.custControlCommissioning_page import CustControlCommissioning_page
+from com.nrtest.sea.data.adv_app.costControlManage.remoteCustControl.remoteCustControl_data import \
+    RemoteCustControl_data
+from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.newPrePaidStatusByAction_page import \
+    NewPrePaidStatusByActionPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→费控管理→本地费控→费控投入调试
-
+# 高级应用→费控管理→远程费控→新远程费控执行统计:按指令执行统计
 @ddt
-class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissioning_page):
+class TestNewPrePaidStatusByAction(TestCase, NewPrePaidStatusByActionPage):
+
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(CostControlManage_data.custControlCommissioning_para)
+        menuPage = MenuPage.openMenu(RemoteCustControl_data.NewPrePaidStatus_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(CostControlManage_data.custControlCommissioning_tab_cust)
+        menuPage.clickTabPage(RemoteCustControl_data.NewTab_ByAction)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        # 关闭菜单
+        print('执行结束')
+        # 刷新浏览器
         cls.closePages(cls)
 
     def setUp(self):
@@ -49,40 +51,32 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
+        # 回收左边树
+        self.recoverLeftTree()
 
     def query(self, para):
+        """
+
+        :param para: Dict类型的字典，不是dict
+        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
+        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
+        """
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+        # 控制类型
+        self.inputSel_ctrl_type(para['CTRL_TYPE'])
 
-        # 控制方式
-        self.inputChk_ctrl_type(para['CTRL_TYPE'])
-
-        # 营销单号
-        self.inputStr_app_no(para['APP_NO'])
-
-        # 按调试日期
-        self.inputSel_debug_date_type(para['DEBUG_DATE_TYPE'])
+        # 时间区间
+        self.inputChk_dt_interal(para['DT_INTERAL'])
 
         # 开始时间
-        self.inputDt_start_date(para['START_DATE'])
+        self.inputDt_start_time(para['START_TIME'])
 
         # 结束时间
-        self.inputDt_end_date(para['END_DATE'])
+        self.inputDt_end_time(para['END_TIME'])
 
-        # 终端地址
-        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
-
-        # 用户编号
-        self.inputStr_cons_no(para['CONS_NO'])
-
-        # 用户名称
-        self.inputStr_cons_name(para['CONS_NAME'])
-
-        # 下发状态
-        self.inputSel_send_status(para['SEND_STATUS'])
-
-        # 查询
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -100,9 +94,9 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(CostControlManage_data.custControlCommissioning_para))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.NewTab_ByAction))
     def test_query(self, para):
-        """高级应用→费控管理→本地费控→费控投入调试
+        """高级应用→费控管理→远程费控→新远程费控执行统计:按指令执行统计
 
         :param para:
         """
@@ -112,7 +106,7 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(CostControlManage_data.custControlCommissioning_para, valCheck=True))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.NewTab_ByAction, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_PrePaidStatus_user.py
+@file: test_NewPrePaidStatusByAction.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -15,24 +15,25 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.remoteCustControl.remoteCustControl_data import \
     RemoteCustControl_data
-from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.PrePaidStatus_page import \
-    PrePaidStatusByActionPage
+from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.newPrePaidStatusByAction_page import \
+    NewPrePaidStatusByUserPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→费控管理→远程费控→远程费控执行统计:按指令执行统计
+# 高级应用→费控管理→远程费控→新远程费控执行统计:按用户执行统计
 @ddt
-class TestPrePaidStatus(TestCase, PrePaidStatusByActionPage):
+class TestNewPrePaidStatusByUser(TestCase, NewPrePaidStatusByUserPage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(RemoteCustControl_data.prePaidStatus_para)
+        menuPage = MenuPage.openMenu(RemoteCustControl_data.NewPrePaidStatus_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(RemoteCustControl_data.Tab_ByAction)
+        menuPage.clickTabPage(RemoteCustControl_data.Tab_ByUser)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
+
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
@@ -62,9 +63,11 @@ class TestPrePaidStatus(TestCase, PrePaidStatusByActionPage):
         """
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-
         # 控制类型
         self.inputSel_ctrl_type(para['CTRL_TYPE'])
+
+        # 时间区间
+        self.inputChk_dt_interal(para['DT_INTERAL'])
 
         # 开始时间
         self.inputDt_start_time(para['START_TIME'])
@@ -72,7 +75,6 @@ class TestPrePaidStatus(TestCase, PrePaidStatusByActionPage):
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
 
-        # 查询
         self.btn_qry()
         self.sleep_time(2)
 
@@ -92,9 +94,9 @@ class TestPrePaidStatus(TestCase, PrePaidStatusByActionPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_ByAction))
-    def test_InstructionQuery(self, para):
-        """高级应用→费控管理→远程费控→远程费控执行统计:按指令执行统计
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.Tab_ByUser))
+    def test_query(self, para):
+        """高级应用→费控管理→远程费控→新远程费控执行统计:按用户执行统计
 
         :param para:
         """
@@ -104,7 +106,7 @@ class TestPrePaidStatus(TestCase, PrePaidStatusByActionPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_ByAction, valCheck=True))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.Tab_ByUser, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

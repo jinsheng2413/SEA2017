@@ -23,7 +23,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→线损分析→线损统计分析→线路线损分析
 @ddt
-class TestTgLineLossAnalysis(TestCase, LineLossAnalysisPage):
+class TestLineLossAnalysis(TestCase, LineLossAnalysisPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
@@ -53,8 +53,21 @@ class TestTgLineLossAnalysis(TestCase, LineLossAnalysisPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        # 打开左边树并选择
+        # 节点名称
         self.openLeftTree(para['TREE_NODE'])
+
+        # 线损率
+        self.inputSel_line_loss_rate(para['LINE_LOSS_RATE'])
+
+        # 线损率值
+        self.inputStr_line_loss_rate_input(para['LINE_LOSS_RATE_INPUT'])
+
+        if self.get_para_value(para['READ_SUCCESS_RATE']).startswith('大于'):
+            # 线损率TO
+            self.inputSel_line_loss_rate_to(para['LINE_LOSS_RATE_TO'])
+
+            # 线损率TO值
+            self.inputStr_line_loss_rate_to_input(para['LINE_LOSS_RATE_TO_INPUT'])
 
         # 线路编号
         self.inputStr_line_no(para['LINE_NO'])
@@ -62,20 +75,32 @@ class TestTgLineLossAnalysis(TestCase, LineLossAnalysisPage):
         # 线路名称
         self.inputStr_line_name(para['LINE_NAME'])
 
-        # 按时间类型统计
-        self.inputDt_stat_date_type(para['STAT_DATE_TYPE'])
+        # 线损类型
+        self.inputChk_loss_line_type(para['LOSS_LINE_TYPE'])
 
-        # 查询日期
-        self.inputDt_query_date(para['QUERY_DATE'])
+        # 按日期类型
+        self.inputChk_qry_date_type(para['QRY_DATE_TYPE'])
+
+        qry_date_type = self.get_para_value(para['QRY_DATE_TYPE'])
+
+        if qry_date_type in ('按日', '按月', '按年'):
+            # 查询日期
+            self.inputDt_query_date(para['QUERY_DATE'])
+        elif qry_date_type in ('按时间段', '按周'):
+            # 从
+            self.inputDt_start_date(para['START_DATE'])
+
+            # 到
+            self.inputDt_end_date(para['END_DATE'])
+        else:
+            # 季度
+            self.inputChk_quarter(para['QUARTER'])
 
         # 组合单元
-        self.inputChk_composition_unit(para['COMPOSITION_UNIT'])
+        self.inputChk_combination_unit(para['COMBINATION_UNIT'])
 
-        # 线损类型
-        self.inputSChk_line_loss_type(para['LINE_LOSS_TYPE'])
-
-        # 查询按钮
-        self.btn_search()
+        # 查询
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

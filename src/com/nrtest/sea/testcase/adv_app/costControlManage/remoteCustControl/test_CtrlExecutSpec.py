@@ -64,14 +64,14 @@ class TestCtrlExecutSpec(TestCase, CtrlExecutSpecPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        # 输入用户编号
+        # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
 
-        # 输入用户名称
+        # 用户名称
         self.inputStr_cons_name(para['CONS_NAME'])
 
         # 终端地址
-        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 控制类型
         self.inputSel_ctrl_type(para['CTRL_TYPE'])
@@ -79,8 +79,8 @@ class TestCtrlExecutSpec(TestCase, CtrlExecutSpecPage):
         # 执行状态
         self.inputSel_execute_status(para['EXECUTE_STATUS'])
 
-        # 工单号
-        self.inputStr_app_no(para['APP_NO'])
+        # 时间区间
+        self.inputChk_dt_interal(para['DT_INTERAL'])
 
         # 开始时间
         self.inputDt_start_time(para['START_TIME'])
@@ -88,8 +88,12 @@ class TestCtrlExecutSpec(TestCase, CtrlExecutSpecPage):
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
 
+        # 工单号
+        self.inputStr_app_no(para['APP_NO'])
+
         # 查询
         self.btn_qry()
+        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

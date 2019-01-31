@@ -12,25 +12,25 @@ from com.nrtest.common.base_page import Page
 
 class LoadCountPage(Page):
     # 数据类型
-    def inputCHR_dataType(self, value):
+    def inputChk_data_type(self, value):
         self.dateType = s = value.split(';;')[1]
         self.clickRadioBox(value, is_multi_tab=True, is_multi_elements=True)
 
-    def inputDT_monthDay(self, value):
+    def inputDt_month_day(self, value):
         self.inputDate(value)
 
-    def inputDT_yearDay(self, value):
+    def inputDt_year_day(self, value):
         self.inputDate(value)
 
     # 日期
-    def inputDT_displayDate(self, value):
+    def inputDt_display_date(self, value):
         self.inputDate(value)
 
-    def inputCHR_quantityType(self, value):
+    def inputChk_quantity_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True, is_multi_elements=True)
 
     # 曲线类型
-    def inputCHR_power_type(self, value):
+    def inputChk_power_type(self, value):
         self.clickCheckBox_new(value)
 
     # 曲线类型
@@ -38,7 +38,7 @@ class LoadCountPage(Page):
         self.clickCheckBox_new(value)
 
     # 曲线间隔
-    def inputStr_curveBetween(self, value):
+    def inputStr_curve_between(self, value):
         self.selectDropDown(value)
 
     def btn_qry(self):

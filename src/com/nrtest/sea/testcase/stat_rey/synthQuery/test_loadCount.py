@@ -55,25 +55,25 @@ class TestMeterDataQuery(TestCase, LoadCountPage):
     def query(self, para):
         self.openLeftTree(para['TREE_CONS_NO'])
         # 数据类型
-        self.inputCHR_dataType(para['DATA_TYPE'])
+        self.inputChk_data_type(para['DATA_TYPE'])
         if self.dateType == '日数据':
             # 有功
-            self.inputCHR_power_type(para['POWER_TYPE'])
+            self.inputChk_power_type(para['POWER_TYPE'])
             # 日期
-            self.inputDT_displayDate(para['DISPLAY_DATE'])
+            self.inputDt_display_date(para['DISPLAY_DATE'])
             # 瞬时量
-            self.inputCHR_quantityType(para['QUANTITY_TYPE'])
+            self.inputChk_quantity_type(para['QUANTITY_TYPE'])
             # 曲线间隔
-            self.inputStr_curveBetween(para['CURVE_BETWEEN'])
+            self.inputStr_curve_between(para['CURVE_BETWEEN'])
         elif self.dateType == '月数据':
-            self.inputDT_monthDay(para['MONTH_DAY'])
+            self.inputDt_month_day(para['MONTH_DAY'])
             # 有功
-            self.inputCHR_power_type(para['POWER_TYPE'])
+            self.inputChk_power_type(para['POWER_TYPE'])
             self.inputCHR_max_min(para['MAX_MIN_TYPE'])
         elif self.dateType == '年数据':
             # 有功
-            self.inputCHR_power_type(para['POWER_TYPE'])
-            self.inputDT_yearDay(para['YEAR_DAY'])
+            self.inputChk_power_type(para['POWER_TYPE'])
+            self.inputDt_year_day(para['YEAR_DAY'])
 
         self.btn_qry()
 

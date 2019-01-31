@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.sys_mam.sysUseStat.sysUseStat_data import SysUseStat_date
 from com.nrtest.sea.pages.other.menu_page import MenuPage
@@ -55,7 +56,7 @@ class TestMenuUseDetail(TestCase, MenuUseDetailPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
         # 菜单
         self.inputSel_menu(para['MENU'])
         # 操作员
@@ -74,7 +75,7 @@ class TestMenuUseDetail(TestCase, MenuUseDetailPage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

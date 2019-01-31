@@ -1,44 +1,41 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 
 """
-@author: 陈越峰
+@author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: loadRateStatic_locators.py
-@time: 2018/9/30 8:42
+@file: test_dayReadData.py
+@time: 2019/1/31 0031 14:40
 @desc:
 """
-
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
-from com.nrtest.sea.pages.adv_app.transformerMonitor.powerFactorCount_page import PowerFactorCountStaticPage
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+# 统计查询→综合查询→专公变综合查询:日抄表数据
+from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery import DayReadDataPage
 
 
-# 高级应用→配变监测分析→功率因数越限统计
-# 功率因数越限统计
 @ddt
-class TestSpVoltAnalyseStatic(TestCase, PowerFactorCountStaticPage):
+class test_DayReadData(TestCase, DayReadDataPage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(TradnsformerMonitorData.para_PowerFactorCount)
+        menuPage = MenuPage.openMenu(SynthQuery_data.onlyChangeSysthesisQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(TradnsformerMonitorData.para_PowerFactorCount_static)
+        menuPage.clickTabPage(SynthQuery_data.onlyChangeSysthesisQuery_dayReadData_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        # 刷新浏览器
+        print("执行结束")
+        # 关闭菜单页面
         cls.closePages(cls)
 
     def setUp(self):
@@ -49,7 +46,7 @@ class TestSpVoltAnalyseStatic(TestCase, PowerFactorCountStaticPage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         :return:
         """
 
@@ -58,27 +55,35 @@ class TestSpVoltAnalyseStatic(TestCase, PowerFactorCountStaticPage):
 
     def query(self, para):
         """
+
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        # 用户编号
+        self.openLeftTree(para['TREE_CONS_NO'])
+        # 显示方式
+        self.inputChk_display_type(para['DISPLAY_TYPE'])
 
-        # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
-        # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
-        # 查询日期
-        self.inputDt_query_date(para['QUERY_DATE'])
+        # 从
+        self.inputDt_from_date(para['FROM_DATE'])
 
+        # 到
+        self.inputDt_from_to(para['FROM_TO'])
+        valu = self.get_para_value(para['DISPLAY_ALL_TMNL_INFO'])
+        if '是否显示所有终端信息' == valu:
+            # 是否显示所有终端信息
+            self.inputChk_display_all_tmnl_info(para['DISPLAY_ALL_TMNL_INFO'])
+
+        # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
-        查询结果校验
+        查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(AssertResult().check_query_result(para))
+        self.assertTrue(self.check_query_result(para))
 
     def assert_query_criteria(self, para):
         """
@@ -89,12 +94,10 @@ class TestSpVoltAnalyseStatic(TestCase, PowerFactorCountStaticPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_PowerFactorCount,
-                                  TradnsformerMonitorData.para_PowerFactorCount_static))
+    @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para,
+                                  SynthQuery_data.onlyChangeSysthesisQuery_dayReadData_tab)[2:3])
     def test_query(self, para):
-        """高级应用-->配变监测分析-->功率因数越限统计:功率因数越限统计
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
+        """统计查询→综合查询→专公变综合查询:日抄表数据
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -102,8 +105,8 @@ class TestSpVoltAnalyseStatic(TestCase, PowerFactorCountStaticPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_PowerFactorCount,
-                                  TradnsformerMonitorData.para_PowerFactorCount_static, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para,
+                                  SynthQuery_data.onlyChangeSysthesisQuery_dayReadData_tab, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

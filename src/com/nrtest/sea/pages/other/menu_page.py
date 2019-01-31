@@ -351,6 +351,7 @@ class MenuPage(Page):
 
     # 选择左边树
     def btn_left_tree(self, tree_no):
+        self.sleep_time(2)
         tree = DataAccess.getLeftTree(tree_no)
 
         # self.btn_suitable_arrow()
@@ -407,7 +408,7 @@ class MenuPage(Page):
             self.clear(self.locator_class.NODE[node_flag])
 
             # 定位查询结果，默认选择第一行记录
-            xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, node_value)
+            xpath = self.format_locator(node_value)
             print(xpath)
 
             self.click(xpath)

@@ -96,3 +96,8 @@ class SynthQuery_data:
     lineDataQuery_para = '99941400'
     # 统计查询→综合查询→专公变明细查询(江西)
     FailListJx_para = '99941I00'
+    # 统计查询--综合查询--专公变综合查询
+    onlyChangeSysthesisQuery_para = '99941R00'
+    onlyChangeSysthesisQuery_loadCount_tab = '负荷统计'
+    onlyChangeSysthesisQuery_eleMap_tab = '电量曲线图'
+    onlyChangeSysthesisQuery_dayReadData_tab = '日抄表数据'

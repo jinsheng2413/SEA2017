@@ -97,3 +97,4 @@ class SynthQuery_data:
     # 统计查询--综合查询--专公变综合查询
     onlyChangeSysthesisQuery_para = '99941R00'
     onlyChangeSysthesisQuery_loadCount_tab = '负荷统计'
+    onlyChangeSysthesisQuery_eleMap_tab = '电量曲线图'

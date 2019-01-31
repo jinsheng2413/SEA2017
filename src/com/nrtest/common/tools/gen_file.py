@@ -16,27 +16,28 @@ from com.nrtest.common.data_access import DataAccess
 author = '李建方'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'lineLossCount'
+file_name = 'line_Loss_Count'
 
 # 存放菜单编号的数据文件类名
-data_file = 'LineLossMantain_data'
+data_file = r'com/nrtest/sea/data/stat_rey/synthQuery/synthQuery_data.LineLossMantain_data'
 
 # 菜单编号
 menu_no = '99991370'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = ''
+tab_name = '查询统计'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
-en_tab_name = ''
+en_tab_name = 'ByQuery'
 
 # 生成文件存放路径
 filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
 
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
-page_type = '01'
+page_type = '02'
 
-class GenPageFile():
+
+class GenFile():
     def __init__(self, script_type='01'):
         self.script_type = script_type
         self.el_setup = DataAccess.get_el_script_setup(script_type)
@@ -74,13 +75,17 @@ class GenPageFile():
 
     # 05	菜单编号
     def get_menu_no(self, file=''):
-        menu = data_file + '.' + self._format_name(file, True) + '_para'
+        data_import = self.get_menu_import()
+        data_class = data_import.split('import')[-1].strip()
+        menu = data_class + '.' + self._format_name(file, True) + '_para'
         return menu, menu.split('.')[-1] + ' = \'' + menu_no + '\'\r'
 
     # 06	Tab页名称
     def get_tab_name(self, file=''):
         if bool(tab_name) and tab_name != '01':
-            tab = data_file + '.' + self._format_name(file, True) + ('_' + en_tab_name if bool(en_tab_name) else '')
+            data_import = self.get_menu_import()
+            data_class = data_import.split('import')[-1].strip()
+            tab = data_class + '.' + self._format_name(file, True) + ('_' + en_tab_name if bool(en_tab_name) else '')
             return tab, (tab.split('.')[-1] + ' = \'' + tab_name + '\'\r') if bool(tab_name) else ''
         else:
             return '', ''
@@ -113,7 +118,6 @@ class GenPageFile():
         lines = []
         # xpath, xpath_name, use_share_xpath
         menu_xpath_list = DataAccess.get_menu_xpath_list(menu_no, tab_name, self.script_type)
-        # print(menu_xpath_list)
         for qry_xpath in menu_xpath_list:
             if qry_xpath[0] != 'TREE_NODE' and qry_xpath[2] == '00':
                 raise Exception('该节点配置错误:{},use_share_xpath不能为00'.format(','.join(qry_xpath)))
@@ -126,15 +130,12 @@ class GenPageFile():
                 el_scripts = self.el_setup[qry_xpath[2]]
             fun_name = qry_xpath[0].lower()
             if self.script_type == '01':
-                # blank = ' ' * 4
                 lines.append(' ' * 4 + '# ' + qry_xpath[1] + '\r')
                 lines.append(el_scripts[0].format(fun_name))
                 lines.append(el_scripts[1])
                 lines.append('\r')
             else:
-                # blank = ' ' * 8
                 lines.append(' ' * 8 + '# ' + qry_xpath[1] + '\r')
-                # if qry_xpath[2] == '00':
                 if qry_xpath[0] == 'TREE_NODE':
                     lines.append(el_scripts[0].format(qry_xpath[0]))
                 else:
@@ -142,6 +143,23 @@ class GenPageFile():
                 lines.append('\r')
 
         return lines
+
+    # 11   菜单编号、Tab页存放类引入
+    def get_menu_import(self):
+        data_import = data_file.replace('/', '.')
+        data_import = data_import.replace('\\', '.')
+        data_import = data_import.replace('..', '.')
+        data_import = data_import.replace('\n', '.n')
+        data_import = data_import.replace('\t', '.t')
+        data_import = data_import.replace('\r', '.r')
+        data_import = data_import.replace('\f', '.f')
+        if data_import.find('.') > 0:
+            if data_import.find('.src.'):
+                data_import = data_import.split('.src.')[-1]
+            ls_data_import = data_import.split('.')
+            return 'from ' + '.'.join(ls_data_import[:-1]) + ' import ' + ls_data_import[-1]
+        else:
+            return data_file
 
     def gen_file(self):
         # line_flag, script, script_line
@@ -191,17 +209,16 @@ class GenPageFile():
                 elif line_flag == '09':
                     line = script.format(self.get_page_class_name())
 
+                # 11   菜单编号、Tab页存放类引入
+                elif line_flag == '11':
+                    line = script.format(self.get_menu_import())
+
+
                 if bool(line):
                     lines.append(line)
-
-                # 10	查询条件
-                elif line_flag == '10':
+                elif line_flag == '10':  # 10	查询条件
                     line = self.get_querys()
                     lines = lines + line
-
-                # if bool(line):
-                #     if line_flag != '10':
-                #         lines.append(line)
             else:
                 lines.append(script)
 
@@ -209,5 +226,5 @@ class GenPageFile():
             fo.writelines(lines)
 
 if __name__ == '__main__':
-    genPageFile = GenPageFile(page_type)
+    genPageFile = GenFile(page_type)
     genPageFile.gen_file()

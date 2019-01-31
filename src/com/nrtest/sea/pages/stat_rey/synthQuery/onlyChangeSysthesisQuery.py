@@ -66,3 +66,30 @@ class EleMapPage(Page):
 
     def btn_qry(self):
         self.btn_query(True)
+
+
+# 统计查询→综合查询→专公变综合查询:日抄表数据
+class DayReadDataPage(Page):
+    # 显示方式
+    def inputChk_display_type(self, option):
+        self.clickRadioBox(option)
+
+    # 从
+    def inputDt_from_date(self, value):
+        self.inputDate(value)
+
+    # 到
+    def inputDt_from_to(self, value):
+        self.inputDate(value)
+
+    # 是否显示所有终端信息
+    def inputChk_display_all_tmnl_info(self, option):
+        self.clickSingleCheckBox(option, is_multi_tab=True)
+
+    # 用户编号
+    def inputStr_tree_cons_no(self, value):
+        self.input(value)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)

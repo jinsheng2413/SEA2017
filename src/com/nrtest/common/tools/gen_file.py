@@ -16,22 +16,22 @@ from com.nrtest.common.data_access import DataAccess
 author = '李建方'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'Lose_Power_Man'
+file_name = 'day_read_data'
 
 # 存放菜单编号的数据文件类名
-data_file = 'LineLossMantain_data'
+data_file = 'synthQuery_data'
 
 # 菜单编号
-menu_no = '99924150'
+menu_no = '99941R00'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = ''
+tab_name = '日抄表数据'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
 en_tab_name = ''
 
 # 生成文件存放路径
-filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
+filelistlog = r"D:\pythonworkspace\SEA2017\\logs\filelistlog.log"
 
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
 page_type = '02'

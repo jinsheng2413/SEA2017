@@ -98,3 +98,4 @@ class SynthQuery_data:
     onlyChangeSysthesisQuery_para = '99941R00'
     onlyChangeSysthesisQuery_loadCount_tab = '负荷统计'
     onlyChangeSysthesisQuery_eleMap_tab = '电量曲线图'
+    onlyChangeSysthesisQuery_dayReadData_tab = '日抄表数据'

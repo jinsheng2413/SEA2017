@@ -56,25 +56,23 @@ class TestMeterDataQuery(TestCase, LoadCountPage):
         self.openLeftTree(para['TREE_CONS_NO'])
         # 数据类型
         self.inputChk_data_type(para['DATA_TYPE'])
-        if self.dateType == '日数据':
-            # 有功
-            self.inputChk_power_type(para['POWER_TYPE'])
+        data_type_value = self.get_para_value(para['DATA_TYPE'])
+        if data_type_value == '日数据':
             # 日期
             self.inputDt_display_date(para['DISPLAY_DATE'])
             # 瞬时量
             self.inputChk_quantity_type(para['QUANTITY_TYPE'])
             # 曲线间隔
             self.inputStr_curve_between(para['CURVE_BETWEEN'])
-        elif self.dateType == '月数据':
+        elif data_type_value == '月数据':
             self.inputDt_month_day(para['MONTH_DAY'])
-            # 有功
-            self.inputChk_power_type(para['POWER_TYPE'])
-            self.inputCHR_max_min(para['MAX_MIN_TYPE'])
-        elif self.dateType == '年数据':
-            # 有功
-            self.inputChk_power_type(para['POWER_TYPE'])
-            self.inputDt_year_day(para['YEAR_DAY'])
 
+            self.inputCHR_max_min(para['MAX_MIN_TYPE'])
+        elif data_type_value == '年数据':
+
+            self.inputDt_year_day(para['YEAR_DAY'])
+        # 有功
+        self.inputChk_power_type(para['POWER_TYPE'])
         self.btn_qry()
 
     def assert_query_result(self, para):

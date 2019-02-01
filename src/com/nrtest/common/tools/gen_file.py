@@ -13,25 +13,25 @@ import time
 from com.nrtest.common.data_access import DataAccess
 
 # 作者
-author = '韩笑'
+author = '郭春彪'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'tgData'
+file_name = 'tmnl_event'
 
 # 存放菜单编号的数据文件类名
-data_file = 'Datamaintain_data'
+data_file = 'SynthQuery_data'
 
 # 菜单编号
-menu_no = '9992D230'
+menu_no = '99941R00'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = ''
+tab_name = '终端事件'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
 en_tab_name = ''
 
 # 生成文件存放路径
-filelistlog = r"D:\develop\workspace\SEA2017\src\com\nrtest\sea\testcase\adv_app\appDispose\txjx\datamaintain\test_tgDate.py"
+filelistlog = r"D:\pythonworkspace\SEA2017\logs\filelistlog.log"
 
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
 page_type = '02'

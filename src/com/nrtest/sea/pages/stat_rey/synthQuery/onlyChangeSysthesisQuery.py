@@ -103,9 +103,7 @@ from com.nrtest.common.base_page import Page
 
 # 统计查询→综合查询→专公变综合查询:负荷日数据
 class LoadDayDataPage(Page):
-    # 用户编号
-    def inputStr_tree_cons_no(self, value):
-        self.input(value)
+
 
     # 数据类型
     def inputChk_data_type(self, option):
@@ -143,6 +141,26 @@ class LoadDayDataPage(Page):
 
 
 
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
+
+
+# 统计查询→综合查询→专公变综合查询:实时抄表数据
+class SynthqueryDataPage(Page):
+
+    # 查询日期从
+    def inputDt_query_time_from(self, value):
+        self.inputDate(value)
+
+    # 到
+    def inputDt_query_time_to(self, value):
+        self.inputDate(value)
+
+    # 是否显示正向有功电能量
+    def inputChk_or_power(self, options):
+        self.clickCheckBox_new(options)
 
     # 查询
     def btn_qry(self):

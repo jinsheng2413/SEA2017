@@ -10,6 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 统计查询--综合查询--专公变综合查询:负荷统计
 class LoadCountPage(Page):
     # 数据类型
     def inputChk_data_type(self, value):
@@ -41,5 +42,54 @@ class LoadCountPage(Page):
     def inputStr_curve_between(self, value):
         self.selectDropDown(value)
 
+    def btn_qry(self):
+        self.btn_query(True)
+
+
+# 统计查询--综合查询--专公变综合查询:电量曲线图
+class EleMapPage(Page):
+    # 数据类型
+    def inputChk_data_type(self, value):
+        self.clickRadioBox(value, is_multi_tab=True, is_multi_elements=True)
+
+    # 日期
+    def inputDt_collect_time(self, value):
+        self.inputDate(value)
+
+    # 做功类型
+    def inputChk_have_power_type(self, value):
+        self.clickCheckBox_new(value, is_multi_tab=True)
+
+    # 电量获取方式
+    def inputChk_ele_get_type(self, value):
+        self.clickRadioBox(value)
+
+    def btn_qry(self):
+        self.btn_query(True)
+
+
+# 统计查询→综合查询→专公变综合查询:日抄表数据
+class DayReadDataPage(Page):
+    # 显示方式
+    def inputChk_display_type(self, option):
+        self.clickRadioBox(option)
+
+    # 从
+    def inputDt_from_date(self, value):
+        self.inputDate(value)
+
+    # 到
+    def inputDt_from_to(self, value):
+        self.inputDate(value)
+
+    # 是否显示所有终端信息
+    def inputChk_display_all_tmnl_info(self, option):
+        self.clickSingleCheckBox(option, is_multi_tab=True)
+
+    # 用户编号
+    def inputStr_tree_cons_no(self, value):
+        self.input(value)
+
+    # 查询
     def btn_qry(self):
         self.btn_query(True)

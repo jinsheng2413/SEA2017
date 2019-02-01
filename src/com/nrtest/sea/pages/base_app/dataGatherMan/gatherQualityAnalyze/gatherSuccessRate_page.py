@@ -30,14 +30,6 @@ class GatherSuccessRatePage(Page):
         #     self.click(GatherSuccessRateLocators.CONS_TYPE)
         self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
 
-    # 通信方式
-    def inputSel_comm_mode(self, index):
-        # self.click(GatherSuccessRateLocators.COMM_MODE)
-        # locator = self.get_select_locator(
-        #     GatherSuccessRateLocators.COMM_MODE_VALUE, index)
-        # self.click(locator)
-        self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
-
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
         # self.click(GatherSuccessRateLocators.TMNL_FACTORY)
@@ -82,6 +74,10 @@ class GatherSuccessRatePage(Page):
         # self.input(content, *GatherSuccessRateLocators.END_DATE)
         self.inputDate(content)
 
+    #相位
+    def inputSel_phase_code(self,index):
+        self.selectDropDown(index)
+
     # 查询按钮
     def btn_search(self):
         # self.click(GatherSuccessRateLocators.BTN_SEARCH)
@@ -105,14 +101,6 @@ class GatherSuccessRateStatPage(Page):
         #     self.click(locator)
         #     self.click(GatherSuccessRateStatLocators.CONS_TYPE)
         self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
-
-    # 通信方式
-    def inputSel_comm_mode(self, index):
-        # self.click(GatherSuccessRateStatLocators.COMM_MODE)
-        # locator = self.get_select_locator(
-        #     GatherSuccessRateStatLocators.COMM_MODE_VALUE, index)
-        # self.click(locator)
-        self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
@@ -143,6 +131,10 @@ class GatherSuccessRateStatPage(Page):
         # self.exec_script(GatherSuccessRateStatLocators.DATE_JS)
         # self.input(content, *GatherSuccessRateStatLocators.DATE)
         self.inputDate(content)
+
+    #相位
+    def inputSel_phase_code(self,index):
+        self.selectDropDown(index,is_multi_elements=True,is_multi_tab=True)
 
     # 查询按钮
     def btn_search(self):
@@ -298,18 +290,6 @@ class GatherSuccessRateTimePage(Page):
         #     self.click(GatherSuccessRateTimeLocators.TMNL_TYPE)
         self.selectCheckBox(index, is_multi_tab=False, is_multi_elements=False)
 
-    # 通信方式
-    def inputSel_comm_mode(self, index):
-        # if index == 'c':
-        #     self._find_elements(GatherSuccessRateTimeLocators.COMM_MODE)
-        # else:
-        #     self.click(GatherSuccessRateTimeLocators.COMM_MODE)
-        #     locator = self.get_select_locator(
-        #         GatherSuccessRateTimeLocators.COMM_MODE_VALUE, index)
-        #     self.click(locator)
-        #     self.click(GatherSuccessRateTimeLocators.COMM_MODE)
-        self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
-
     # 规约类型
     def inputSel_protocol_type(self, index):
         # if index == 'c':
@@ -329,6 +309,10 @@ class GatherSuccessRateTimePage(Page):
         #     GatherSuccessRateTimeLocators.MEAS_MODE_VALUE, index)
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
+
+    #相位
+    def inputSel_phase_code(self,index):
+        self.selectDropDown(index,is_multi_elements=True,is_multi_tab=True)
 
     # 查询按钮
     def btn_search(self):

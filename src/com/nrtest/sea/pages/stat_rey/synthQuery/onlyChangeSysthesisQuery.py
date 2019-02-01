@@ -11,6 +11,9 @@ from com.nrtest.common.base_page import Page
 
 
 # 统计查询--综合查询--专公变综合查询:负荷统计
+from com.nrtest.sea.locators.other.base_g_locators import BaseTabLocators
+
+
 class LoadCountPage(Page):
     # 数据类型
     def inputChk_data_type(self, value):
@@ -89,6 +92,57 @@ class DayReadDataPage(Page):
     # 用户编号
     def inputStr_tree_cons_no(self, value):
         self.input(value)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
+
+
+from com.nrtest.common.base_page import Page
+
+
+# 统计查询→综合查询→专公变综合查询:负荷日数据
+class LoadDayDataPage(Page):
+    # 用户编号
+    def inputStr_tree_cons_no(self, value):
+        self.input(value)
+
+    # 数据类型
+    def inputChk_data_type(self, option):
+        self.clickRadioBox(option)
+
+    # 时段类型
+    def inputChk_time_type(self, option):
+        self.clickRadioBox(option, is_multi_tab=True, is_multi_elements=True)
+
+    # 日期
+    def inputDt_day_date(self, value):
+        self.inputDate(value)
+
+    # 日期从
+    def inputDt_date_from(self, value):
+        self.inputDate(value)
+
+    # 到
+    def inputDt_date_to(self, value):
+        self.inputDate(value)
+
+    # 电量平衡类型
+    def inputChk_ele_type(self, options):
+        self.clickCheckBox_new(options)
+
+    # 做功方式
+    def inputChk_alphabet_power_type(self, options):
+        self.clickCheckBox_new(options)
+
+    # 充值次数
+    def inputSel_time_value(self, value):
+        self.click(BaseTabLocators.RECHARGE_TIME)
+        locator = self.get_select_locator(BaseTabLocators.RECHARGE_TIME_VALUE, value)
+        self.click(locator)
+
+
+
 
     # 查询
     def btn_qry(self):

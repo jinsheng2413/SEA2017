@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import Tm
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→终端管理→远程调试
+# 基本应用→终端管理→远程调试：终端调试
 # 终端调试
 @ddt
 class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):

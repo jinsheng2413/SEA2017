@@ -36,6 +36,7 @@ class IndexDetailPage(Page):
         self.btn_query(True)
 
 
+# 高级应用→线损分析→个性化指标展示→指标明细：指标统计
 class IndexDetailStatPage(Page):
     # 工号
     def inputStr_staff_no(self, name):

@@ -103,3 +103,5 @@ class SynthQuery_data:
     onlyChangeSysthesisQuery_dayReadData_tab = '日抄表数据'
     onlyChangeSysthesisQuery_loadDayData_tab = '负荷日数据'
     onlyChangeSysthesisQuery_realTtimeReadData_tab = '实时抄表数据'
+    onlyChangeSysthesisQuery_tmnlEvent_tab = '终端事件'
+    onlyChangeSysthesisQuery_TransformerLoadRateMonitoring_tab = '变压器负载率监控'

@@ -165,3 +165,31 @@ class SynthqueryDataPage(Page):
     # 查询
     def btn_qry(self):
         self.btn_query(True)
+
+
+# 统计查询→综合查询→专公变综合查询:终端事件
+class TmnlEventPage(Page):
+
+    # 从
+    def inputDt_time_from(self, value):
+        self.inputDate(value)
+
+    # 到
+    def inputDt_time_to(self, value):
+        self.inputDate(value)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
+
+
+# 统计查询→综合查询→专公变综合查询:变压器负载率监控
+class TransformerLoadRateMonitoringPage(Page):
+
+    # 日期
+    def inputDt_query_date(self, value):
+        self.inputDate(value)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)

@@ -28,7 +28,7 @@ class LoadRateStaticPage(Page):
         self.btn_query()
 
 
-# 负载率明细
+# 高级应用→配变负载分析→负载率分析：负载率明细
 class LoadRateDetailPage(Page):
 
     # 用户类型--打开并选择

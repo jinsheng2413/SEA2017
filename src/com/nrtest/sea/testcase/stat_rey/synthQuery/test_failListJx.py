@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: jinsheng
+@author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_vipConsConfig.py
-@time: 2018-11-05 11:22
+@file: test_failListJx.py
+@time: 2018/10/9 14:21
 @desc:
 """
 
@@ -13,22 +13,23 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.vipConsMan.vipConsConfig_data import VipConsMan
-from com.nrtest.sea.pages.adv_app.vipConsMan.vipConsConfig_page import VipConsConfig_Page
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.failListJX_page import failListJxPage
 
 
-# 高级应用→重点用户监测→重点用户管理
+# 统计查询→综合查询→专公变明细查询(江西)
 @ddt
-class Test_VipConsConfig(TestCase, VipConsConfig_Page):
+class TestDisassemblyTableDataQuery(TestCase, failListJxPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(VipConsMan.para_VipConsConfig)
+        menuPage = MenuPage.openMenu(SynthQuery_data.FailListJx_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # menuPage.clickTabPage()
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -49,39 +50,25 @@ class Test_VipConsConfig(TestCase, VipConsConfig_Page):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-
         # 回收左边树
         self.recoverLeftTree()
 
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-
-        # 运行容量等级
-        self.inputSel_run_level(para['RUN_LEVEL'])
-
-        # 供电电压
-        self.inputSel_volt_code(para['VOLT_CODE'])
-
-        # 用户编号
-        self.inputStr_cons_no(para['CONS_NO'])
-
-        # 用户名称
-        self.inputStr_cons_name(para['CONS_NAME'])
-
-        # 已定义重点用户
-        self.inputChk_vip_cons(para['VIP_CONS'])
-
-        # 查询
-        self.btn_qry()
-        self.sleep_time(2)
+        # 查询日期
+        self.inputDt_query_date(para['QUERY_DATE'])
+        # Tab页名称
+        self.inputChk_tab_name(para['TAB_NAME'])
+        # 查询按钮
+        self.btn_search()
 
     def assert_query_result(self, para):
         """
-        查询结果校验
+        查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult().check_query_result(para))
 
     def assert_query_criteria(self, para):
         """
@@ -92,12 +79,11 @@ class Test_VipConsConfig(TestCase, VipConsConfig_Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(VipConsMan.para_VipConsConfig))
+    @data(*DataAccess.getCaseData(SynthQuery_data.FailListJx_para))
     def test_query(self, para):
-        """高级应用→重点用户监测→重点用户管理
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        :return:
+        """统计查询→综合查询→专公变明细查询(江西)
+
+        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -105,7 +91,7 @@ class Test_VipConsConfig(TestCase, VipConsConfig_Page):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(VipConsMan.para_VipConsConfig, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.FailListJx_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

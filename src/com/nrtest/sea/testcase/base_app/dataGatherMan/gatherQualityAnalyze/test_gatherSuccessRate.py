@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.gatherSucc
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→数据采集管理→采集质量分析→采集成功率
+# 基本应用→数据采集管理→采集质量分析→采集成功率:采集成功率
 @ddt
 class TestGatherSuccessRate(TestCase, GatherSuccessRatePage):
 
@@ -60,14 +60,10 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-
         # 数据类型
         self.inputChk_data_type(para['DATA_TYPE'])
-
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
-        # 通信方式
-        self.inputSel_comm_mode(para['COMM_MODE'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 计量方式
@@ -80,6 +76,8 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePage):
         self.inputDt_start_date(para['START_DATE'])
         # 结束时间
         self.inputDt_end_date(para['END_DATE'])
+        #相位
+        self.inputSel_phase_code(para['PHASE_CODE'])
         # 点击查询按钮
         self.btn_search()
 
@@ -102,7 +100,7 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.GatherSuccessRate_para,
                                   GatherQualityAnalyze_data.GatherSuccessRate_tabName))
     def test_query(self, para):
-        """基本应用→数据采集管理→采集质量分析→采集成功率
+        """基本应用→数据采集管理→采集质量分析→采集成功率:采集成功率
 
         :param para:
         """

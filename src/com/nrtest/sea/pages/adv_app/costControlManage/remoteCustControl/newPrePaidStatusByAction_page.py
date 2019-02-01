@@ -19,7 +19,7 @@ class NewPrePaidStatusByActionPage(Page):
 
     # 时间区间
     def inputChk_dt_interal(self, option):
-        self.clickRadioBox(option)
+        self.clickRadioBox(option, is_multi_tab=True, is_multi_elements=True)
 
     # 开始时间
     def inputDt_start_time(self, value):
@@ -42,7 +42,7 @@ class NewPrePaidStatusByUserPage(Page):
 
     # 时间区间
     def inputChk_dt_interal(self, option):
-        self.clickRadioBox(option)
+        self.clickRadioBox(option, is_multi_tab=True, is_multi_elements=True)
     # 开始时间
     def inputDt_start_time(self, value):
         self.inputDate(value)

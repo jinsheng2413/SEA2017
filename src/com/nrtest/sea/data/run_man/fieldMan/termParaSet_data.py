@@ -9,5 +9,5 @@
 """
 
 class TermParaSet_data:
-   # 运行管理-》现场管理-》终端运行参数设置
+    # 运行管理→现场管理→终端运行参数设置
   TermParaSet_para='99937100'

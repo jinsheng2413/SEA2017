@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→费控管理→本地费控→电价参数管理::费率电价
+# 高级应用→费控管理→本地费控→电价参数管理:费率电价
 
 class EleParaMan_rate_Page(Page):
     # 开始时间
@@ -36,7 +36,7 @@ class EleParaMan_rate_Page(Page):
         self.btn_query(True)
 
 
-# 高级应用→费控管理→本地费控→电价参数管理::阶梯电价
+# 高级应用→费控管理→本地费控→电价参数管理:阶梯电价
 class EleParaMan_step_Page(Page):
     # 开始时间
     def inputDt_start_time(self, value):

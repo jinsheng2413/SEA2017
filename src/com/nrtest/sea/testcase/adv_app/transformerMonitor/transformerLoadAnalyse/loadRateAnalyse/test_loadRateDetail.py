@@ -20,8 +20,8 @@ from com.nrtest.sea.pages.adv_app.transformerMonitor.transformerLoadAnalyse.load
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变负载分析→负载率分析
-# 负载率明细
+# 高级应用→配变负载分析→负载率分析：负载率明细
+
 @ddt
 class TestLoadRateDetail(TestCase, LoadRateDetailPage):
 

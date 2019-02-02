@@ -1,0 +1,1 @@
+# -*- coding: utf-8 -*-"""@author: 韩笑@license: (C) Copyright 2018, Nari.@file: rxsfzr_page.py@time: 2019-02-02 10:09:35@desc:"""from com.nrtest.common.base_page import Page# 高级应用→台线系统→台区日线损综合汇总报表(公司)class RxsfzrPage(Page):    # 查询日期    def inputDt_query_date(self, value):        self.inputDate(value)    # 查询    def btn_qry(self):        self.btn_query()

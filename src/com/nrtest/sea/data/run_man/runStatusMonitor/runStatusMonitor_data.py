@@ -12,3 +12,5 @@
 class RunStatusMonitor_data:
     # 运行管理→采集信道管理→运行情况监测
     tmnlOnlineStat_para = '99931100'
+    runStatusMonitor_stat = '终端在线率统计'
+    runStatusMonitor_detail = '终端在线明细'

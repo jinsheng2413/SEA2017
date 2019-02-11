@@ -402,7 +402,7 @@ class Page():
             except TimeoutException as te:
                 cost_seconds = round(time.time() - start_time, 2)
                 except_type = '用例超时'
-                info = '用例配置：{}秒，实际耗时>{}秒。'.format(self.timeout_seconds, cost_seconds)
+                info = '用例要求<={}秒，实际耗时>{}秒。'.format(self.timeout_seconds, cost_seconds)
                 raise te
             except Exception as ex:
                 # cost_seconds = round(time.time() - start_time, 2)

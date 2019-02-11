@@ -69,9 +69,11 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         # 终端装接状态
         self.inputChk_install_status(para['INSTALL_STATUS'])
 
+        install_status = self.get_para_value(para['INSTALL_STATUS'])
+        if bool(install_status):
+            # 查询状态
+            self.inputChk_query_type(para['QUERY_TYPE'])
 
-        # 查询状态
-        self.inputChk_query_type(para['QUERY_TYPE'])
         # 开始时间
         self.inputDt_start_time(para['START_TIME'])
 

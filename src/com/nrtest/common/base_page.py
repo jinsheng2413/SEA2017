@@ -372,8 +372,9 @@ class Page():
     def curr_click(self, is_multi_tab=False, btn_name='', idx=1):
         """
         新版点击方法
-        :param btn_name:按钮元素文本值
         :param is_multi_tab:菜单面内是否有多个TAB页
+        :param btn_name:按钮元素文本值
+        :param idx:第idx个可见按钮
         """
         try:
             btn_name = btn_name if bool(btn_name) else '查询'
@@ -404,23 +405,28 @@ class Page():
                 except_type = ''
             except TimeoutException as te:
                 cost_seconds = round(time.time() - start_time, 2)
-                except_type = 'te'
+                except_type = '用例超时'
                 raise te
             except Exception as ex:
                 cost_seconds = round(time.time() - start_time, 2)
-                except_type = 'ex'
+                except_type = '用例异常'
                 raise ex
             finally:
-                print('用例配置{}：{}秒，实际耗时:{}秒。</br>'.format(except_type, self.timeout_seconds, cost_seconds))
+                info = '用例配置：{}秒，实际耗时:{}秒。</br>'.format(self.timeout_seconds, cost_seconds)
+                # print(info)
+                if bool(except_type):
+                    DataAccess.el_operate_log(self.menu_no, self.tst_case_id, '', self.class_name, except_type, info)
             return cost_seconds
 
     @BeautifulReport.add_popup_img()
-    def btn_query(self, is_multi_tab=False, idx=1):
+    def btn_query(self, is_multi_tab=False, btn_name='', idx=1):
         """
         通用页面查询按钮
         :param is_multi_tab: 多Tab页时，如果查询按钮名有重复，则该值填True
+        :param btn_name:按钮元素文本值
+        :param idx:第idx个可见按钮
         """
-        self.curr_click(is_multi_tab, idx=idx)
+        self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx)
         self.query_timeout()
 
 
@@ -649,7 +655,7 @@ class Page():
                 item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
 
             if len(item) == 0:
-                raise '单选框必须指定选择项：{}'.format(option)
+                raise BaseException('单选框必须指定选择项：{}'.format(option))
             xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, item, is_multi_tab)
             if is_multi_elements:
                 el = self._find_displayed_element(xpath)

@@ -97,9 +97,10 @@ class Page():
         action = '00'
         info = ''
         # dlg_src:1-一般用例；2-查询条件有效性用例;3-点菜单时报错；4-add_test_img弹窗处理
-        dlg_src = int(self.para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
         if len(args) > 0:  # 带参弹窗处理优先级高于用例优先级
             dlg_src = args[0]
+        else:
+            dlg_src = int(self.case_para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
         el = self._direct_find_element(CommonLocators.POPUP_DLG)
         if bool(el):  # 有对话框
             if el.is_displayed():  # 找到且显示
@@ -112,7 +113,7 @@ class Page():
                     # 03-针对符合期望值的弹窗有效性判断；
                     action = '01'
                 elif dlg_src == 2:
-                    if self.para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
+                    if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
                         action = '03'
                     else:  # 有对话框，但与期望值不一致
                         action = '01'  # 暂按不符合期望值
@@ -124,9 +125,9 @@ class Page():
                 if bool(btn_el):
                     btn_el.click()
         elif dlg_src == '2':
-            if bool(self.para['EXPECTED_VAL']):  # 期望异常对话框
+            if bool(self.case_para['EXPECTED_VAL']):  # 期望异常对话框
                 action = '04'
-                info = '期望有对话框，且提示信息为：\r{}'.format(self.para['EXPECTED_VAL'])
+                info = '期望有对话框，且提示信息为：\r{}'.format(self.case_para['EXPECTED_VAL'])
                 self.save_img(img_path=Setting.IMG_PATH + file_name)
             else:
                 action = '00'

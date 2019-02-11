@@ -19,16 +19,17 @@ author = '李建方'
 file_name = 'line_Loss_Count'
 
 # 存放菜单编号的数据文件类名
-data_file = r'com/nrtest/sea/data/stat_rey/synthQuery/synthQuery_data.LineLossMantain_data'
+# 路径
+data_file = r'com/nrtest/sea/data/stat_rey/allMeasureDataCountQuery/allMeasureDataCountQuery_data.py'
 
 # 菜单编号
 menu_no = '99991370'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = '查询统计'
+tab_name = '按用户查询'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
-en_tab_name = 'ByQuery'
+en_tab_name = 'ByUser'
 
 # 生成文件存放路径
 filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
@@ -186,8 +187,9 @@ class GenFile():
                 elif line_flag == '05':
                     line, menu = self.get_menu_no()
                     line = script.format(line)
-                    print('# ' + self.get_menu_path().split(':')[0])
-                    print(menu)
+                    print(' ' * 4 + '# ' + self.get_menu_path().split(':')[0])
+                    print(' ' * 4 + menu)
+
                 # 06	Tab页名称
                 elif line_flag == '06':
                     line, tab = self.get_tab_name()
@@ -195,7 +197,7 @@ class GenFile():
                     if not bool(tab_name):
                         pos = line.find('menuPage')
                         line = line[:pos] + '# ' + line[pos:]
-                    print(tab)
+                    print(' ' * 4 + tab)
 
                 # 07 菜单编号和Tab页名称
                 elif line_flag == '07':

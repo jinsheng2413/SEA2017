@@ -77,7 +77,7 @@ class AssertResult(Page):
                 if 1:
                     lineName = self.checkBoxAssertLine(skipValue[1])  # 判断是那一列
                     displayLine = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//a'.format(
-                        skipValue[0], 1, lineName + 1)
+                        skipValue[0], skipValue[3], lineName + 1)
                     try:
                         # 点击要跳转的链接
                         self.click((By.XPATH, displayLine))
@@ -85,6 +85,7 @@ class AssertResult(Page):
                         print('跳转验证失败')
         except:
             print('验证失败')
+        return ()
 
     def page_back(self, menuPage='请输入菜单页名称', tab='请输入tab页名称', popUpWindow='请输入弹窗页名称'):
         """
@@ -171,13 +172,16 @@ class AssertResult(Page):
         l = 0
         for x, y, item in zip(old_page_list, new_page_list, old_data):
             if x == y:
-                logger.error('element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                        sn=item[11], xpath_old=item[5], xpath_old_value=x, xpath_new=item[9], xpath_new_value=y))
+                logger.info(
+                    '跳转坐标（{row}行,{col列}）element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
+                        row=para[3], col=self.checkBoxAssertLine(para[1]) + 1, sn=item[11], xpath_old=item[5],
+                        xpath_old_value=x, xpath_new=item[8], xpath_new_value=y))
                 res = True
             else:
                 logger.error(
-                    '跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                        sn=item[11], xpath_old=item[5], xpath_old_value=x, xpath_new=item[9], xpath_new_value=y))
+                    '跳转坐标（{row}行，{col}列）,跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
+                        row=para[3], col=self.checkBoxAssertLine(para[1]) + 1, sn=item[11], xpath_old=item[5],
+                        xpath_old_value=x, xpath_new=item[8], xpath_new_value=y))
                 l += 1
         # if l > 0:
         #     res = False
@@ -372,15 +376,17 @@ class AssertResult(Page):
                                 l = 0
                                 for x, y, item in zip(old_page_list, new_page_list, old_data):
                                     if x == y:
-                                        logger.error(
-                                            'element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                                                sn=item[11], xpath_old=item[5], xpath_old_value=x, xpath_new=item[9],
+                                        logger.info(
+                                            '跳转坐标（{row}行,{col列}），element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
+                                                row=assertValues[3], col=self.checkBoxAssertLine(assertValues[1]) + 1,
+                                                sn=item[11], xpath_old=item[5], xpath_old_value=x, xpath_new=item[8],
                                                 xpath_new_value=y))
                                         res = True
                                     else:
                                         logger.error(
-                                            '跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                                                sn=item[11], xpath_old=item[5], xpath_old_value=x, xpath_new=item[9],
+                                            '跳转坐标（{row}行,{col列}）跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
+                                                row=assertValues[3], col=self.checkBoxAssertLine(assertValues[1]) + 1,
+                                                sn=item[11], xpath_old=item[5], xpath_old_value=x, xpath_new=item[8],
                                                 xpath_new_value=y))
                                         l += 1
                                 if l > 0:
@@ -399,7 +405,7 @@ class AssertResult(Page):
         except:
             print('验证失败')
 
-    def check_query_result(self, para, version=1):
+    def check_query_result(self, para, version=2):
         """
 
         :param para: 用例数据

@@ -153,7 +153,7 @@ class DataAccess:
         :return:
         """
         # tab确定哪个显示区、列明、点击的那一列
-        sql = 'select assert_type,tab_column_name , column_name, expected_value \
+        sql = 'select assert_type,tab_column_name , column_name, expected_value,row_num \
                       from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type'
         # sql = 'select assert_type,tab_column_name , column_name, expected_value ,row_num,is_space\
         #       from tst_case_result where tst_case_id = :id order by assert_type'

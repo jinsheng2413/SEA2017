@@ -20,14 +20,14 @@ import platform
 class ParseNrTest(object):
     @staticmethod
     def pattern():
-        return r'\\' if platform.system() == 'Windows' else r'/'
+        return '\\' if platform.system() == 'Windows' else '/'
 
     def __init__(self, file=None):
         self.parse = configparser.ConfigParser()  # 注意大小写
 
         # 获取当前文件的上一级目录,并定位setup路径
         path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) \
-               + self.pattern()[0] + ('setup') + self.pattern()[0]
+               + self.pattern() + ('setup') + self.pattern()
 
         file = path + ('nari_test.conf' if file is None else file)
         # a = os.path.abspath(file)

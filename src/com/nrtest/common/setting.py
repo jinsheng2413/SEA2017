@@ -8,7 +8,6 @@
 @desc:
 """
 import os
-import platform
 import sys
 
 from com.nrtest.common.parse_nrtest import ParseNrTest
@@ -48,31 +47,31 @@ class Setting():
     PROJECT_NO = parse.get('Project', 'PROJECT_NO').upper()
 
     # 区分windows与linux间不同的路径符号
-    PATTERN = parse.pattern()[0]
+    PATTERN = parse.pattern()
 
     # 基础路径
     # BASE_PATH = r'D:\\PycharmProjects\\MyPython\\' if platform.system() == 'Windows' else r'/PycharmProjects/MyPython/'
     PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
 
-    BASE_PATH = PROJECT_PATH.split('src')[0]
+    BASE_PATH = PROJECT_PATH.split(PATTERN + 'src')[0]
 
     CONIFG_PATH = BASE_PATH + '/src/com/nrtest/setup/nr_test.yaml'
 
     # 报表路径
-    REPORT_PATH = BASE_PATH + r'{}reports/'.format(PATTERN)
+    REPORT_PATH = BASE_PATH + r'{}reports{}'.format(PATTERN, PATTERN)
 
     # 日志路径
-    LOG_PATH = BASE_PATH + r'{}logs/'.format(PATTERN)
+    LOG_PATH = BASE_PATH + r'{}logs{}'.format(PATTERN, PATTERN)
 
     # 截图路径
 
-    IMG_PATH = BASE_PATH + r'{}img/'.format(PATTERN)
+    IMG_PATH = BASE_PATH + r'{}img{}'.format(PATTERN, PATTERN)
 
     # 自定义截图路径
-    SCREENSHOTS_PATH = BASE_PATH + r'{}screenshots/'.format(PATTERN)
+    SCREENSHOTS_PATH = BASE_PATH + r'{}screenshots{}'.format(PATTERN, PATTERN)
 
     # 校验图片路径
-    SHOT_PATH = BASE_PATH + r'{}screenshots/'.format(PATTERN)
+    SHOT_PATH = BASE_PATH + r'{}screenshots{}'.format(PATTERN, PATTERN)
     # 数据库连接
     # 用户名
     DB_USER = parse.get('Db_setup', 'user_name')
@@ -90,8 +89,10 @@ class Setting():
     GROUP_USER = parse.get('Login', 'user_group')
     GROUP_NO = parse.get('Login', 'group_no')
 
+
 if __name__ == '__main__':
     p = Setting()
-    print(p.PROJECT_NO)
+    print(p.PROJECT_PATH)
     print(Setting.BASE_PATH)
-    print(platform.system())
+    print(Setting.IMG_PATH)
+    print(Setting.REPORT_PATH)

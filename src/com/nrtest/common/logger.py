@@ -49,7 +49,7 @@ class Logger(object):
     @staticmethod
     def get_module(file):
         dirname = os.path.dirname(os.path.abspath(file))
-        return dirname[dirname.find('src') + 4:] + Setting.PATTERN[0]
+        return dirname[dirname.find('src') + 4:] + Setting.PATTERN
 
     def getlog(self):
         return self.logger

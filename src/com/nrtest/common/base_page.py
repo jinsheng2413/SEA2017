@@ -73,24 +73,20 @@ class Page():
         self.tst_case_id = None
         self.class_name = ''
 
-
-    def save_img(self, img_name):
+    def save_img(self, img_path, img_name):
         """
             传入一个img_name, 并存储到默认的文件路径下
+        :param img_path:
         :param img_name:
         :return:
         """
-        # 调自己封装类com.nrtest.common下的BeautifulReport.py
-        path = Setting.IMG_PATH
-        # 调LIB下类D:\Python\Python36-32\Lib\BeautifulReport.py
-        # path = os.path.abspath(self.img_path)
+        self.driver.get_screenshot_as_file(img_path + img_name)
 
-        self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
-
-    def popup(self, file_name, *args):
+    def popup(self, img_path, img_name, *args):
         """
         捕获弹窗信息，并判断处理
-        :param file_name: 截图文件名
+        :param img_path:截图存放路径
+        :param img_name: 截图文件名
         :param *args: 测试用例外的其他途径弹窗判断：01-点击菜单直接弹窗报错；
         :return: 弹窗信息，弹窗按钮，辅助信息（有弹窗只截图，不抛异常）
         """
@@ -119,7 +115,7 @@ class Page():
                         action = '01'  # 暂按不符合期望值
 
                 if action in ('01', '02'):
-                    self.save_img(img_path=Setting.IMG_PATH + file_name)
+                    self.save_img(img_path, img_name)
 
                 btn_el = self._direct_find_element(CommonLocators.POPUP_DLG_CONFIRM)
                 if bool(btn_el):
@@ -128,7 +124,7 @@ class Page():
             if bool(self.case_para['EXPECTED_VAL']):  # 期望异常对话框
                 action = '04'
                 info = '期望有对话框，且提示信息为：\r{}'.format(self.case_para['EXPECTED_VAL'])
-                self.save_img(img_path=Setting.IMG_PATH + file_name)
+                self.save_img(img_path, img_name)
             else:
                 action = '00'
 
@@ -444,7 +440,10 @@ class Page():
             print('............请配置查询条件的标签值............')
         else:
             ls_option = option.split(';')
-            item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
+            if len(ls_option) == 2:
+                item = ls_option[1]
+            else:
+                item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
             if bool(item):
                 # 打开下拉框
                 xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)

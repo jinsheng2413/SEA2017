@@ -75,7 +75,7 @@ class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
         self.inputSel_protocol_type(para['PROTOCOL_TYPE'])
         # 计量方式
         self.inputSel_meas_mode(para['MEAS_MODE'])
-        #相位
+        # 相位
         self.inputSel_phase_code(para['PHASE_CODE'])
         # 点击查询按钮
         self.btn_search()

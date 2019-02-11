@@ -13,8 +13,8 @@ from com.nrtest.common.base_page import Page
 
 # 高级应用→智能锁具→权限控制
 class SecurityControlPage(Page):
-    #可操作电子钥匙
-    def inputSel_key_no(self,index):
+    # 可操作电子钥匙
+    def inputSel_key_no(self, index):
         self.selectCheckBox(index)
 
     # 供电单位，查询按钮

@@ -413,7 +413,6 @@ class Page():
                 print('用例配置{}：{}秒，实际耗时:{}秒。</br>'.format(except_type, self.timeout_seconds, cost_seconds))
             return cost_seconds
 
-    # @error_window_process
     @BeautifulReport.add_popup_img()
     def btn_query(self, is_multi_tab=False, idx=1):
         """

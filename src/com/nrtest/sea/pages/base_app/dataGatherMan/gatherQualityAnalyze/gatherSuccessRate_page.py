@@ -74,8 +74,8 @@ class GatherSuccessRatePage(Page):
         # self.input(content, *GatherSuccessRateLocators.END_DATE)
         self.inputDate(content)
 
-    #相位
-    def inputSel_phase_code(self,index):
+    # 相位
+    def inputSel_phase_code(self, index):
         self.selectDropDown(index)
 
     # 查询按钮
@@ -132,9 +132,9 @@ class GatherSuccessRateStatPage(Page):
         # self.input(content, *GatherSuccessRateStatLocators.DATE)
         self.inputDate(content)
 
-    #相位
-    def inputSel_phase_code(self,index):
-        self.selectDropDown(index,is_multi_elements=True,is_multi_tab=True)
+    # 相位
+    def inputSel_phase_code(self, index):
+        self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 查询按钮
     def btn_search(self):
@@ -310,9 +310,9 @@ class GatherSuccessRateTimePage(Page):
         # self.click(locator)
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
-    #相位
-    def inputSel_phase_code(self,index):
-        self.selectDropDown(index,is_multi_elements=True,is_multi_tab=True)
+    # 相位
+    def inputSel_phase_code(self, index):
+        self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 查询按钮
     def btn_search(self):

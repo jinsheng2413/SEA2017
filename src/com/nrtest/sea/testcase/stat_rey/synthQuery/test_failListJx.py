@@ -10,10 +10,10 @@
 
 from unittest import TestCase
 
+from com.nrtest.common.assertResult import AssertResult
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage

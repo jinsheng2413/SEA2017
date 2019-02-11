@@ -76,7 +76,7 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePage):
         self.inputDt_start_date(para['START_DATE'])
         # 结束时间
         self.inputDt_end_date(para['END_DATE'])
-        #相位
+        # 相位
         self.inputSel_phase_code(para['PHASE_CODE'])
         # 点击查询按钮
         self.btn_search()

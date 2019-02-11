@@ -15,5 +15,5 @@ class BaseTabLocators:
 
     # 专公变综合查询--》负荷日数据：下拉选择按钮
     RECHARGE_TIME = (
-    By.XPATH, '((//label[text()="任意时段"]/ancestor::div[@class=" x-panel x-panel-noborder x-border-panel"])[3]//img)[2]')
+        By.XPATH, '((//label[text()="任意时段"]/ancestor::div[@class=" x-panel x-panel-noborder x-border-panel"])[3]//img)[2]')
     RECHARGE_TIME_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[text()="%s"]')

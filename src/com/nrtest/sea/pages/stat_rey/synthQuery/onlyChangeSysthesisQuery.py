@@ -9,7 +9,6 @@
 """
 from com.nrtest.common.base_page import Page
 
-
 # 统计查询--综合查询--专公变综合查询:负荷统计
 from com.nrtest.sea.locators.other.base_g_locators import BaseTabLocators
 
@@ -104,7 +103,6 @@ from com.nrtest.common.base_page import Page
 # 统计查询→综合查询→专公变综合查询:负荷日数据
 class LoadDayDataPage(Page):
 
-
     # 数据类型
     def inputChk_data_type(self, option):
         self.clickRadioBox(option)
@@ -138,9 +136,6 @@ class LoadDayDataPage(Page):
         self.click(BaseTabLocators.RECHARGE_TIME)
         locator = self.get_select_locator(BaseTabLocators.RECHARGE_TIME_VALUE, value)
         self.click(locator)
-
-
-
 
     # 查询
     def btn_qry(self):

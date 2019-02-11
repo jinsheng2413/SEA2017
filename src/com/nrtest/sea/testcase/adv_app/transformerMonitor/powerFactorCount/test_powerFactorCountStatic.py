@@ -10,10 +10,10 @@
 
 from unittest import TestCase
 
+from com.nrtest.common.assertResult import AssertResult
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.assertResult import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.pages.adv_app.transformerMonitor.powerFactorCount_page import PowerFactorCountStaticPage

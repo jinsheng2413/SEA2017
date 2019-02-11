@@ -101,7 +101,6 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.inputSel_meter_type(para['METER_TYPE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -121,6 +120,8 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para, DataGatherMan_data.tmnlInstallDetail_tabOne))
     def test_query(self, para):
+        """基本应用→终端管理→远程调试:终端调试
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
@@ -133,3 +134,4 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
+

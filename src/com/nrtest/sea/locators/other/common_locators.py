@@ -12,5 +12,5 @@ from selenium.webdriver.common.by import By
 
 class CommonLocators:
     # 弹框处理
-    ERROR_WINDOW_PROCESS = (By.XPATH, '//div[@class=\" x-window x-window-plain x-window-dlg\"]')
-    BTN_CONFIRM_LOCATORS = (By.XPATH, "//*[text()='确定']")
+    POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
+    POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')

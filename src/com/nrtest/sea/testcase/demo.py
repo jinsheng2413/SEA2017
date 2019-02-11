@@ -44,8 +44,8 @@ if __name__ == '__main__':
     # curpath = 'D:\pythonworkspace\SEA2017\src\com/nrtest\sea/testcase/adv_app\dataRecover'
     cases = add_case()
 
-    # print(cases)
-    # for case in cases:
+    # print(test_suite)
+    # for case in test_suite:
     #     print(case)
     #     run(case)
     run(cases)

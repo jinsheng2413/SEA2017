@@ -12,7 +12,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.assertResult import AssertResult
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_para import ArchivesManData
 from com.nrtest.sea.pages.base_app.archivesMan.archivesQuery_pages import ArchivesQueryPages

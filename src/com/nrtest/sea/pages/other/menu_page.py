@@ -14,6 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 from com.nrtest.common import global_drv
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.login import Login
@@ -49,9 +50,10 @@ class MenuPage(Page):
         """
         menuPage = MenuPage(global_drv.get_driver())
         menuPage.click_menu(menuNo)
-        sleep(2)
+        sleep(1)
         return menuPage
 
+    @BeautifulReport.add_popup_img(3)
     def click_menu(self, menu_no, isPath=False):
         """
         定位级菜单element,并调用Base_Page类的click方法选择级菜单
@@ -175,7 +177,7 @@ class MenuPage(Page):
         """
         try:
             flag = action[-1]
-            el_menu = self._find_element(locator, ec_mode=1)
+            el_menu = self._find_element(locator, ec_mode=2)
             # 当菜单动作为hover时，_menu_action.object的值为xpath对象
             object = locator if flag == 2 else el_menu
             if el_menu.is_displayed():
@@ -296,7 +298,7 @@ class MenuPage(Page):
 
     def btn_company_plus(self, index):
         locator = self.get_select_locator(self.locator_class.BTN_COMPANY_PLUS, index)
-        print(locator)
+        # print(locator)
         self.click(locator)
 
     def btn_select_province(self):
@@ -361,7 +363,7 @@ class MenuPage(Page):
         if l == 2:
             self.btn_plus(1)
             self.btn_select_company(int(items[1]))
-            print(int(items[1]))
+            # print(int(items[1]))
         elif l in (3, 4):
             self.btn_plus(1)  # 点击省公司加号
             if int(items[1]) == 5:  # 承德供电公司的加号xpath与前4个有所区别需要做特殊处理

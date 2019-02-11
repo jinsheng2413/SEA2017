@@ -45,6 +45,6 @@ if __name__ == '__main__':
     global_drv.quit()
 
     # # 用例集合
-    # cases = add_case()
-    # for case in cases:
+    # test_suite = add_case()
+    # for case in test_suite:
     #     run(case)

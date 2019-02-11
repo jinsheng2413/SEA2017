@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: assertResult.py
+@file: assert_result.py
 @time: 2019/1/15 0015 9:32
 @desc:
 """
@@ -25,7 +25,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class AssertResult(Page):
     def __init__(self):
-        # super(AssertResult, self).__init__(get_driver())
         super().__init__(get_driver())
 
     def click_link(self, column_name, line, colum_only_one='', only=1):

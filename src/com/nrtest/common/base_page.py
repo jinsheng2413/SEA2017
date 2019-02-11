@@ -130,36 +130,36 @@ class Page():
 
         return dlg_src, action, info
 
-    def error_window_process(func):
-        """
-        出现弹出框异常，抛出页面报错
-        使用信息：
-
-        例如：
-        @ERROR_WINDOW_PROCESS
-        def btn_query(self, is_multi_tab=False):
-        """
-
-        def wrapper(*args, **kwargs):
-            res = func(*args, **kwargs)
-            tag = False
-            try:
-                # re = args[0].driver.find_element(*CommonLocators.POPUP_DLG).is_displayed()
-                el = args[0].driver.find_element(*CommonLocators.POPUP_DLG)
-                if el.is_displayed():
-                    tag = True
-                    print('弹窗错误信息：%s' % el.text)
-                    raise RuntimeError('PageError')
-
-                return res
-            except:
-                if tag:
-                    raise RuntimeError('page error--弹出框错误异常')
-                    try:
-                        args[0].driver.find_element(*CommonLocators.BTN_CONFIRM_LOCATORS).click()
-                    except:
-                        pass
-        return wrapper
+    # def error_window_process(func):
+    #     """
+    #     出现弹出框异常，抛出页面报错
+    #     使用信息：
+    #
+    #     例如：
+    #     @ERROR_WINDOW_PROCESS
+    #     def btn_query(self, is_multi_tab=False):
+    #     """
+    #
+    #     def wrapper(*args, **kwargs):
+    #         res = func(*args, **kwargs)
+    #         tag = False
+    #         try:
+    #             # re = args[0].driver.find_element(*CommonLocators.POPUP_DLG).is_displayed()
+    #             el = args[0].driver.find_element(*CommonLocators.POPUP_DLG)
+    #             if el.is_displayed():
+    #                 tag = True
+    #                 print('弹窗错误信息：%s' % el.text)
+    #                 raise RuntimeError('PageError')
+    #
+    #             return res
+    #         except:
+    #             if tag:
+    #                 raise RuntimeError('page error--弹出框错误异常')
+    #                 try:
+    #                     args[0].driver.find_element(*CommonLocators.BTN_CONFIRM_LOCATORS).click()
+    #                 except:
+    #                     pass
+    #     return wrapper
 
     def fail_on_screenshot(self, func):
         """

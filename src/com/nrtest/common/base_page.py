@@ -406,13 +406,14 @@ class Page():
             except TimeoutException as te:
                 cost_seconds = round(time.time() - start_time, 2)
                 except_type = '用例超时'
+                info = '用例配置：{}秒，实际耗时>{}秒。'.format(self.timeout_seconds, cost_seconds)
                 raise te
             except Exception as ex:
-                cost_seconds = round(time.time() - start_time, 2)
+                # cost_seconds = round(time.time() - start_time, 2)
                 except_type = '用例异常'
+                info = ex.__str__()
                 raise ex
             finally:
-                info = '用例配置：{}秒，实际耗时:{}秒。</br>'.format(self.timeout_seconds, cost_seconds)
                 # print(info)
                 if bool(except_type):
                     DataAccess.el_operate_log(self.menu_no, self.tst_case_id, '', self.class_name, except_type, info)

@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: loadRateStatic_locators.py
+@file: threeUnbalanceAnalyDetail_locators.py
 @time: 2018/9/27 16:42
 @desc:
 """

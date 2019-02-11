@@ -67,7 +67,7 @@ class TestMeterDataQuery(TestCase, LoadCountPage):
         elif data_type_value == '月数据':
             self.inputDt_month_day(para['MONTH_DAY'])
 
-            self.inputCHR_max_min(para['MAX_MIN_TYPE'])
+            self.inputChk_max_min_type(para['MAX_MIN_TYPE'])
         elif data_type_value == '年数据':
 
             self.inputDt_year_day(para['YEAR_DAY'])

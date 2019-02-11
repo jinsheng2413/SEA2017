@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: test_Tmnl.py
+@file: test_MeterQualityEvalDetail.py
 @time: 2018/11/13 9:20
 @desc:
 """
@@ -69,7 +69,7 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
         # 故障严重程度
         self.inputSel_fault_severity(para['FAULT_SEVERITY'])
         # 电表厂家
-        self.inputRSel_meter_factory(para['METER_FACTORY'])
+        self.inputSel_meter_factory(para['METER_FACTORY'])
         # 故障类别
         self.inputSel_fault_type(para['FAULT_TYPE'])
         # 故障开始日期

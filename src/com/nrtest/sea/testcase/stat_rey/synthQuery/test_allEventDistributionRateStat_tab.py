@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_allEventDistributionRateStatistics.py
+@file: test_allEventDistributionRateStat_tab.py
 @time: 2018/12/27 9:49
 @desc:
 """

@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_low_user_balance_count.py
+@file: test_low_user_balance_check.py
 @time: 2018/8/10 0010 11:03
 @desc:
 """

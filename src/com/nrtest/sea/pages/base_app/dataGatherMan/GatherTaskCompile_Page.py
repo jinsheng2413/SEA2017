@@ -20,7 +20,7 @@ class GatherTaskCompilePage(Page):
         self.selectDropDown(name)
 
     # 终端类型
-    def inputRSel_tmnl_type(self, name):
+    def inputSel_tmnl_type(self, name):
         self.selectDropDown(name)
 
     # 采集点名称

@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: loadRateStatic_locators.py
+@file: spVoltAnalyse_page.py
 @time: 2018/9/29 10:42
 @desc:
 """

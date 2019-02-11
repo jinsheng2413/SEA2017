@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: loadRateStatic_locators.py
+@file: test_orgLowVoltDayStatic.py
 @time: 2018/9/29 14:42
 @desc:
 """

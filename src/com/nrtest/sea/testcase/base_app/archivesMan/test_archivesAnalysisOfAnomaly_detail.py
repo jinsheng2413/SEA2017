@@ -14,7 +14,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
-from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_pages import *
+from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_page import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
@@ -55,7 +55,7 @@ class test_archivesAnalysisOfAnomaly_detail(TestCase, ArchivesAnalysisOfAnomaly_
         self.openLeftTree(para['TREE_NODE'])
 
         # 档案类型
-        self.inputRSel_archives_type(para['ARCHIVES_TYPE'])
+        self.inputSel_archives_type(para['ARCHIVES_TYPE'])
 
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])

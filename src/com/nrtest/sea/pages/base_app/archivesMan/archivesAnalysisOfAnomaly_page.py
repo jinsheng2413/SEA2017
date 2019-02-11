@@ -11,7 +11,7 @@ from com.nrtest.common.base_page import Page
 
 
 # 基本应用→档案管理→档案异常分析：档案异常统计
-class ArchivesAnalysisOfAnomaly_count_pages(Page):
+class ArchivesAnalysisOfAnomaly_count_page(Page):
 
     # 用户类型
     def inputSel_cons_type(self, option):
@@ -42,5 +42,5 @@ class ArchivesAnalysisOfAnomaly_detail_pages(Page):
         self.inputDate(value)
 
     # 档案类型
-    def inputRSel_archives_type(self, index):
+    def inputSel_archives_type(self, index):
         self.selectDropDown(index)

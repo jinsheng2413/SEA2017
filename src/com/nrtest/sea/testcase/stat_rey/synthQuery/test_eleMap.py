@@ -3,16 +3,16 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_loadCount.py
+@file: test_eleMap.py
 @time: 2019/1/30 0030 9:12
 @desc:
 """
 from unittest import TestCase
 
-from com.nrtest.common.assertResult import AssertResult
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage

@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_assetManTab.py
+@file: test_assetMan_tab.py
 @time: 2018/10/26 14:03
 @desc:
 """

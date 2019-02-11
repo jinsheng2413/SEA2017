@@ -15,13 +15,13 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
-from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_pages import *
+from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_page import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→档案管理→档案异常分析：档案异常统计
 @ddt
-class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOfAnomaly_count_pages):
+class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOfAnomaly_count_page):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
@@ -50,7 +50,7 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # self.clear_values(ArchivesAnalysisOfAnomaly_count_pages)
+        # self.clear_values(ArchivesAnalysisOfAnomaly_count_page)
         self.recoverLeftTree()
 
     def query(self, para):

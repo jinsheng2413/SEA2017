@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: loadRateStatic_locators.py
+@file: test_powerFactorCountDetail.py
 @time: 2018/9/30 8:42
 @desc:
 """

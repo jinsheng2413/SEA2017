@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_DistributedEnergyStatDetail.py
+@file: test_distributedEnergyStatDetail.py
 @time: 2019/1/16 0010 9:21
 @desc:
 """

@@ -3,17 +3,17 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: loadRateStatic_locators.py
+@file: test_powerFactorCountStatic.py
 @time: 2018/9/30 8:42
 @desc:
 """
 
 from unittest import TestCase
 
-from com.nrtest.common.assertResult import AssertResult
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.transformerMonitor.transformerMonitor_data import TradnsformerMonitorData
 from com.nrtest.sea.pages.adv_app.transformerMonitor.powerFactorCount_page import PowerFactorCountStaticPage

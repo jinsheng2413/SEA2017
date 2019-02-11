@@ -37,7 +37,7 @@ class LoadCountPage(Page):
         self.clickCheckBox_new(value)
 
     # 曲线类型
-    def inputCHR_max_min(self, value):
+    def inputChk_max_min_type(self, value):
         self.clickCheckBox_new(value)
 
     # 曲线间隔

@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: regularSporadicUpgrade_locators.py
+@file: test_regularSporadicUpgrade.py
 @time: 2018/9/26 16:12
 @desc:
 """

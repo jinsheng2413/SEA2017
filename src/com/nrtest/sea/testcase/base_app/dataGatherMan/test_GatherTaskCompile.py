@@ -86,7 +86,7 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompilePage):
         self.inputStr_cp_name(para['CP_NAME'])
 
         # 终端类型
-        self.inputRSel_tmnl_type(para['TMNL_TYPE'])
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
 
         # 查询
         self.btn_qry()

@@ -1,0 +1,1 @@
+# -*- coding: utf-8 -*-"""@author: 韩笑@license: (C) Copyright 2018, Nari.@file: tmnlTaskDeploy_page.py@time: 2019-02-01 14:30:07@desc:"""from com.nrtest.common.base_page import Page# 基本应用→数据采集管理→终端任务配置class TmnlTaskDeployPage(Page):    # 查询    def btn_qry(self):        self.btn_query()

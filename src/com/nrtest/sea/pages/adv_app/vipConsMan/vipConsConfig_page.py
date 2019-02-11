@@ -11,6 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 高级应用→重点用户监测→重点用户管理
 class VipConsConfig_Page(Page):
     # 运行容量等级
     def inputSel_run_level(self, options):

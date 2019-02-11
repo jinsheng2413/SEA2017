@@ -78,7 +78,7 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
 
         # 结束时间
-        self.inputDt_end_time(para['END_TIME'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 用户名称
         self.inputStr_cons_name(para['CONS_NAME'])
@@ -108,6 +108,10 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
     @data(*DataAccess.getCaseData(LocalCostContral_data.lowUserBalanceCheck_para,
                                   LocalCostContral_data.lowUserBalanceCheck_check_tab))
     def test_query(self, para):
+        """高级应用→费控管理→本地费控→低压用户余额查看：余额查看
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

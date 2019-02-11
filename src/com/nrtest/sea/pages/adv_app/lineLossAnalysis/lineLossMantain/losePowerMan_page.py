@@ -11,8 +11,10 @@
 
 from com.nrtest.common.base_page import Page
 
+# 高级应用→线损分析→线损模型维护→线损模型设计
+from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossMantain.losePowerMan_locators import LosePowerManLocators
 
-# 高级应用-->线损分析→线损模型维护→线损模型设计
+
 class LosePowerManPage(Page):
     # 考核单元名称
     def inputStr_chkunit_name(self, value):
@@ -24,6 +26,7 @@ class LosePowerManPage(Page):
 
     # 组合标志
     def inputSel_combination_flag(self, option):
+        self.clean_label(option)
         self.selectDropDown(option)
 
     # 考核单元状态
@@ -32,7 +35,9 @@ class LosePowerManPage(Page):
 
     # 台区编号
     def inputStr_tg_no(self, value):
-        self.input(value)
+        loc = self.format_xpath(LosePowerManLocators.QRY_NO, value.split(';')[0])
+        self.specialInput(loc, value)
+        # self.input(value)
 
     # 台区状态
     def inputSel_tg_status(self, option):
@@ -40,7 +45,8 @@ class LosePowerManPage(Page):
 
     # 线路编号
     def inputStr_line_no(self, value):
-        self.input(value)
+        loc = self.format_xpath(LosePowerManLocators.QRY_NO, value.split(';')[0])
+        self.specialInput(loc, value)
 
     # 未覆盖
     def inputChk_uncover(self, options):

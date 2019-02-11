@@ -11,6 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
+# 高级应用→重点用户监测→重点用户窃电分析
 class VipConsStealAnal_Page(Page):
     # 用户编号
     def inputStr_cons_no(self, value):

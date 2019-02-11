@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.adv_app.costControlManage.eleParaManLocators_pages imp
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→费控管理→本地费控→电价参数管理::阶梯电价
+# 高级应用→费控管理→本地费控→电价参数管理:阶梯电价
 @ddt
 class TestEleParaMan(TestCase, EleParaMan_step_Page):
 
@@ -97,7 +97,7 @@ class TestEleParaMan(TestCase, EleParaMan_step_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CostControlManage_data.eleParaMan_para, CostControlManage_data.eleParaMan_step_tab))
     def test_query(self, para):
-        """高级应用→费控管理→本地费控→电价参数管理::阶梯电价
+        """高级应用→费控管理→本地费控→电价参数管理:阶梯电价
 
         :param para:
         """

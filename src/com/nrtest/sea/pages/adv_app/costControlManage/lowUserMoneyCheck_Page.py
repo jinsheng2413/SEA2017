@@ -58,7 +58,7 @@ class BalanceCheck_page(Page):
         self.inputDate(value)
 
     # (末)
-    def inputDt_end_time(self, value):
+    def inputDt_end_date(self, value):
         self.clean_label(value)
         self.inputDate(value)
 

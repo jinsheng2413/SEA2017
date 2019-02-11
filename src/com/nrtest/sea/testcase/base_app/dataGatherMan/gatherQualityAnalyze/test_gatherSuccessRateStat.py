@@ -55,16 +55,12 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
         self.recoverLeftTree()
 
     def query(self, para):
-
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-
         # 数据类型
         self.inputChk_data_type(para['DATA_TYPE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
-        # 通信方式
-        self.inputSel_comm_mode(para['COMM_MODE'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 芯片厂家
@@ -73,6 +69,8 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
         self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
+        #相位
+        self.inputSel_phase_code(para['PHASE_CODE'])
         # 点击查询按钮
         self.btn_search()
 
@@ -93,7 +91,7 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.GatherSuccessRate_para,
-                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName_stat)[0:1])
+                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName_stat))
     def test_query(self, para):
         """基本应用→数据采集管理→采集质量分析→采集成功率:采集成功率统计
 

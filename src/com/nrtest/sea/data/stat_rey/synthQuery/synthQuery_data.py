@@ -94,6 +94,14 @@ class SynthQuery_data:
     CollcateDataQuery_para = '99941300'
     # 统计查询--综合查询--线路数据查询
     lineDataQuery_para = '99941400'
+    # 统计查询→综合查询→专公变明细查询(江西)
+    FailListJx_para = '99941I00'
     # 统计查询--综合查询--专公变综合查询
     onlyChangeSysthesisQuery_para = '99941R00'
     onlyChangeSysthesisQuery_loadCount_tab = '负荷统计'
+    onlyChangeSysthesisQuery_eleMap_tab = '电量曲线图'
+    onlyChangeSysthesisQuery_dayReadData_tab = '日抄表数据'
+    onlyChangeSysthesisQuery_loadDayData_tab = '负荷日数据'
+    onlyChangeSysthesisQuery_realTtimeReadData_tab = '实时抄表数据'
+    onlyChangeSysthesisQuery_tmnlEvent_tab = '终端事件'
+    onlyChangeSysthesisQuery_TransformerLoadRateMonitoring_tab = '变压器负载率监控'

@@ -8,6 +8,7 @@
 @time: 2018/10/31 0031 13:35
 @desc:
 """
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -20,7 +21,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-# 高级应用-->线损分析→线损模型维护→线损模型设计
+# 高级应用→线损分析→线损模型维护→线损模型设计
 class TestLosePowerMan(TestCase, LosePowerManPage):
 
     @classmethod
@@ -66,13 +67,7 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
 
         # 考核单元分类
         self.inputSel_chkunit_type(para['CHKUNIT_TYPE'])
-
-        # 组合标志
-        self.inputSel_combination_flag(para['COMBINATION_FLAG'])
-
-        # 考核单元状态
-        self.inputSel_chkunit_status(para['CHKUNIT_STATUS'])
-
+        sleep(0.5)
         para_value = self.get_para_value(para['CHKUNIT_TYPE'])
         if para_value == '台区':
             # 台区编号
@@ -83,6 +78,12 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         elif para_value == '线路':
             # 线路编号
             self.inputStr_line_no(para['LINE_NO'])
+
+        # 组合标志
+        self.inputSel_combination_flag(para['COMBINATION_FLAG'])
+
+        # 考核单元状态
+        self.inputSel_chkunit_status(para['CHKUNIT_STATUS'])
 
         # 未覆盖
         self.inputChk_uncover(para['UNCOVER'])
@@ -108,7 +109,7 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
     # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossMantain_data.losePowerMan_para))
     def test_query(self, para):
-        """高级应用-->线损分析→线损模型维护→线损模型设计
+        """高级应用→线损分析→线损模型维护→线损模型设计
 
         :param para:
         """

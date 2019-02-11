@@ -19,6 +19,7 @@ from com.nrtest.sea.pages.adv_app.vipConsMan.vipConsStealAnal_page import VipCon
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 高级应用→重点用户监测→重点用户窃电分析
 @ddt
 class Test_VipConsStealAnal(TestCase, VipConsStealAnal_Page):
     @classmethod

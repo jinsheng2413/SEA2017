@@ -139,11 +139,9 @@ class BaseLocators(Locators):
     # 定位一个菜单页面内的某一Tab页
     TAB_PAGE = (By.XPATH, '//span[@class="x-tab-strip-text " and text()="{}"]')
 
-    # 登录后弹出窗口：账号异常
-    # BTN_ACCOUNT_EXCEPT = (By.XPATH, '//div[@class="x-window-header x-unselectable x-window-draggable"]/span[@class="x-window-header-text"]/../div[contains(@class,"x-tool-close")]')
-
-    # 登录后弹出窗口：推出重要信息
-    # BTN_IMPORTANT_INFO = (By.XPATH, '//button[@class=" x-btn-text cancel" and text()="不再提醒"]')
+    # 数据加载中
+    DATA_LOADING = (By.XPATH, '//div[@class="ext-el-mask-msg x-mask-loading"]')
+    DATA_LOADING1 = (By.XPATH, '//div[@class="x-panel-bwrap  x-masked-relative x-masked"]')
 
 
 class BasePbsLocators(Locators):

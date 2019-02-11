@@ -9,11 +9,11 @@
 """
 
 import os
-import re
 
 from com.nrtest.common.db_driver import PyOracle
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.setting import Setting
+from com.nrtest.common.utils import Utils
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
@@ -105,7 +105,7 @@ class DataAccess:
         try:
             rslt = []
             for row in tst_case:
-                temp = DataAccess.replace_chrs(row[0])
+                temp = Utils.replace_chrs(row[0])
                 rslt.append(Dict(eval(temp)))
             if len(rslt) == 0:
                 print('没配置{}用例数据...\nqry:{}；valCheck：{}\n'.format(('查询条件校验' if valCheck else '测试'), qry, valCheck))
@@ -217,22 +217,17 @@ class DataAccess:
         pyoracle.insert(sql, para)
 
     @staticmethod
-    def replace_chrs(src, pattern='\r\n\t'):
+    def load_tests_ByMenuList():
         """
-        # 去除\r\n\t字符
-        s = '\r\nabc\t123\nxyz'
-        print(re.sub('[\r\n\t]', '', s))
-        :param src:
+        指定菜单用例清单
         :return:
         """
-        # # % 希望使用左右括号、空格以及*分割
-        # # % 核心两句代码如下
-        # # % 正则表达式切分字符串，但会有空串出现，注意中间需要转义
-        # temp = re.split('\(|\)| |\*',src)
-        # # %使用过滤器筛掉空串得到了迭代器，再重新构造出列表
-        # temp = [item for item in filter(lambda x:x != '', temp)]
-        # return ''.join(temp)
-        return re.sub('[' + pattern + ']', '', src.strip())
+        pyoracle = PyOracle.getInstance()
+        qry = [Setting.PROJECT_NO, Setting.GROUP_NO]
+        funName = 'pkg_nrtest.load_tests_ByMenuList'
+        dataSet = pyoracle.callFCur(funName, qry)
+        # print(dataSet)
+        return dataSet
 
     @staticmethod
     def get_skip_data(case_id, colu_name):
@@ -329,5 +324,5 @@ if __name__ == '__main__':
     # pass
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
-    print(DataAccess.get_el_script_setup('02'))
+    print(DataAccess.load_tests_ByMenuList())
     # print(DataAccess.get_menu_xpath_list('99912100','终端调试', '02'))

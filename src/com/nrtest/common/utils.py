@@ -28,3 +28,83 @@ class Utils:
         # temp = [item for item in filter(lambda x:x != '', temp)]
         # return ''.join(temp)
         return re.sub('[' + pattern + ']', '', src.strip())
+
+    @staticmethod
+    def map_module(package, file_name):
+        """
+        根据package与类文件，引入模块
+        :param package: 类路径
+        :param file_name: 类存放文件名
+        :return:
+        """
+        module_name = file_name.split('.')[0]
+        moduleObj = __import__(package + '.' + module_name, fromlist=True)
+        return moduleObj
+
+    @staticmethod
+    def map_module_by_file_path(file_path):
+        """
+        根据package与类文件，引入模块
+        :param file_path: 用例文件路径：package + file_name, 中间用.分割
+        :return:
+        """
+        path = file_path[:-3] if file_path.endswith('.py') else file_path
+        path = path.replace('/', '.')
+        moduleObj = __import__(path, fromlist=True)
+        return moduleObj
+
+    @staticmethod
+    def map_class(package, file_name, class_name, instance=True):
+        """
+        根据package与类文件，导入class对象
+        例如，直接实例化类对象，然后调用对象函数
+        testClass = Utils.map_class(package, file_name, 'TestClass')
+        testClass.test_me()
+
+        :param package: 类路径
+        :param file_name: 类存放文件名
+        :param class_name: class对象名
+        :param instance:True-实例化类为对象实例，False-类对象
+        :return:
+        """
+        module = Utils.map_module(package, file_name)
+        if instance:
+            # 导入并实例化对象
+            return getattr(module, class_name)()
+        else:
+            # 只导入对象
+            return getattr(module, class_name)
+
+    @staticmethod
+    def map_class_By_file_path(file_path, class_name, instance=True):
+        """
+        根据package与类文件，导入class对象
+        :param package: 类路径
+        :param file_name: 类存放文件名
+        :param class_name: class对象名
+        :return:
+        """
+        path = file_path[:-3] if file_path.endswith('.py') else file_path
+        path = path.replace('/', '.')
+        module = Utils.map_module_by_file_path(path)
+        if instance:
+            # 导入并实例化对象
+            return getattr(module, class_name)()
+        else:
+            # 只导入对象
+            return getattr(module, class_name)
+
+    @staticmethod
+    def map_class_by_module(module, class_name, instance=False):
+        """
+        根据package与类文件，导入class对象
+        :param module: 模块实例
+        :param class_name: class对象名
+        :return:
+        """
+        if instance:
+            # 导入并实例化对象
+            return getattr(module, class_name)()
+        else:
+            # 只导入对象
+            return getattr(module, class_name)

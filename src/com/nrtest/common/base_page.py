@@ -18,11 +18,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
-from com.nrtest.sea.locators.other.base_g_locators import BaseTabLocators
 from com.nrtest.sea.locators.other.base_locators import BaseLocators
 from com.nrtest.sea.locators.other.common_locators import CommonLocators
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
@@ -73,6 +73,7 @@ class Page():
         self.tst_case_id = None
         self.class_name = ''
 
+
     def save_img(self, img_name):
         """
             传入一个img_name, 并存储到默认的文件路径下
@@ -85,6 +86,52 @@ class Page():
         # path = os.path.abspath(self.img_path)
 
         self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
+
+    def popup(self, file_name, *args):
+        """
+        捕获弹窗信息，并判断处理
+        :param file_name: 截图文件名
+        :param *args: 测试用例外的其他途径弹窗判断：01-点击菜单直接弹窗报错；
+        :return: 弹窗信息，弹窗按钮，辅助信息（有弹窗只截图，不抛异常）
+        """
+        action = '00'
+        info = ''
+        # dlg_src:1-一般用例；2-查询条件有效性用例;3-点菜单时报错；4-add_test_img弹窗处理
+        dlg_src = int(self.para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
+        if len(args) > 0:  # 带参弹窗处理优先级高于用例优先级
+            dlg_src = args[0]
+        el = self._direct_find_element(CommonLocators.POPUP_DLG)
+        if bool(el):  # 有对话框
+            if el.is_displayed():  # 找到且显示
+                info = ':'.join(el.text.replace(' ', '').split('\n')[:-1])
+                # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
+                if dlg_src in (1, 3, 4):
+                    # action：00-没弹窗,正确结果；01-截图，且抛异常；02-只截图，不抛异常；
+                    #         03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
+                    # 01-针对普通用例、不符合期望值的弹窗有效性判断、点击菜单异常；02-有弹窗，但不想抛异常；
+                    # 03-针对符合期望值的弹窗有效性判断；
+                    action = '01'
+                elif dlg_src == 2:
+                    if self.para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
+                        action = '03'
+                    else:  # 有对话框，但与期望值不一致
+                        action = '01'  # 暂按不符合期望值
+
+                if action in ('01', '02'):
+                    self.save_img(img_path=Setting.IMG_PATH + file_name)
+
+                btn_el = self._direct_find_element(CommonLocators.POPUP_DLG_CONFIRM)
+                if bool(btn_el):
+                    btn_el.click()
+        elif dlg_src == '2':
+            if bool(self.para['EXPECTED_VAL']):  # 期望异常对话框
+                action = '04'
+                info = '期望有对话框，且提示信息为：\r{}'.format(self.para['EXPECTED_VAL'])
+                self.save_img(img_path=Setting.IMG_PATH + file_name)
+            else:
+                action = '00'
+
+        return dlg_src, action, info
 
     def error_window_process(func):
         """
@@ -100,17 +147,14 @@ class Page():
             res = func(*args, **kwargs)
             tag = False
             try:
-                re = args[0].driver.find_element(*CommonLocators.ERROR_WINDOW_PROCESS).is_displayed()
-                el = args[0].driver.find_element(*CommonLocators.ERROR_WINDOW_PROCESS)
-                if re:
+                # re = args[0].driver.find_element(*CommonLocators.POPUP_DLG).is_displayed()
+                el = args[0].driver.find_element(*CommonLocators.POPUP_DLG)
+                if el.is_displayed():
                     tag = True
                     print('弹窗错误信息：%s' % el.text)
+                    raise RuntimeError('PageError')
 
-                    if tag:
-                        raise RuntimeError('PageError')
-
-                    return res
-
+                return res
             except:
                 if tag:
                     raise RuntimeError('page error--弹出框错误异常')
@@ -118,8 +162,8 @@ class Page():
                         args[0].driver.find_element(*CommonLocators.BTN_CONFIRM_LOCATORS).click()
                     except:
                         pass
-
         return wrapper
+
     def fail_on_screenshot(self, func):
         """
         函数/方法报错截图处理
@@ -159,34 +203,32 @@ class Page():
 
         return wrapper
 
-    def _element_ec_mode(self, locator, seconds=5, ec_mode=0):
+    def _element_ec_mode(self, locator, seconds=5, ec_mode=1):
         """
         不同元素等待模式
         :param locator:
-        :param seconds:
-        :param ec_mode:
+        :param seconds:超时秒数
+        :param ec_mode:等待元素模式：0-不做任何等待；1-判断元素是否可点击；2-判断元素是否已加载出来；3-判断元素是否可见
         :return:
         """
-        if ec_mode == 0:
+        if ec_mode == 1:
             # 判断元素是否可点击
             WebDriverWait(self.driver, seconds).until(EC.element_to_be_clickable(locator))
-        elif ec_mode == 1:
+        elif ec_mode == 2:
             # 判断元素是否已加载出来
             WebDriverWait(self.driver, seconds).until(EC.presence_of_element_located(locator))
-        elif ec_mode == 2:
+        elif ec_mode == 3:
             # 判断元素是否可见
             WebDriverWait(self.driver, seconds).until(EC.visibility_of_element_located(locator))
 
-    def _find_element(self, locator, seconds=5, ec_mode=0):
+    def _find_element(self, locator, seconds=5, ec_mode=1):
         """
-        方法名：_element
         功能：定位元素的具体某个元素WEBelement
             presence_of_element_located： 当我们不关心元素是否可见，只关心元素是否存在在页面中。
             visibility_of_element_located： 当我们需要找到元素，并且该元素也可见。
-        *注释：_代表类的私有属性或方法
         :param locator: 元素的位置
         :param seconds:
-        :param ec_mode: 0:判断元素是否可点击;1:判断元素是否已加载;2:判断元素是否可见
+        :param ec_mode:等待元素模式：0-不做任何等待；1:判断元素是否可点击;2:判断元素是否已加载;3:判断元素是否可见
         :return: 返回定位的元素
         """
         element = None
@@ -220,10 +262,12 @@ class Page():
         """
         # print(class_path)
         self.class_name = class_path.split('src')[1][1:]
+        self.case_para = para
         self.tst_case_id = para['TST_CASE_ID']
-        # print('开始执行... \n用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}。'.format(*list(para.values())[:4]))
-        print('开始执行... \n')
-        print('用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}'.format(self.tst_case_id, self.menu_no,
+        self.timeout_seconds = int(para['TIMEOUT_SECONDS'])
+
+        print('开始执行... </br>')
+        print('用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}</br>'.format(self.tst_case_id, self.menu_no,
                                                          self.menu_path, para['TAB_NAME']))
 
     def end_case(self):
@@ -343,13 +387,42 @@ class Page():
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
 
-    @error_window_process
+    def query_timeout(self):
+        """
+        查询超时判断,当用例不配置超时时间或值为0时，不做等待超时判断
+        :return: 查询耗时时间（单位：秒）
+        """
+        if self.timeout_seconds > 0:
+            start_time = time.time()
+            sec = 0.5
+            sleep(sec)
+            try:
+                # 找到元素，并且该元素也可见
+                WebDriverWait(self.driver, self.timeout_seconds - sec).until_not(EC.visibility_of_element_located(BaseLocators.DATA_LOADING))
+                cost_seconds = round(time.time() - start_time, 2)
+                except_type = ''
+            except TimeoutException as te:
+                cost_seconds = round(time.time() - start_time, 2)
+                except_type = 'te'
+                raise te
+            except Exception as ex:
+                cost_seconds = round(time.time() - start_time, 2)
+                except_type = 'ex'
+                raise ex
+            finally:
+                print('用例配置{}：{}秒，实际耗时:{}秒。</br>'.format(except_type, self.timeout_seconds, cost_seconds))
+            return cost_seconds
+
+    # @error_window_process
+    @BeautifulReport.add_popup_img()
     def btn_query(self, is_multi_tab=False, idx=1):
         """
         通用页面查询按钮
         :param is_multi_tab: 多Tab页时，如果查询按钮名有重复，则该值填True
         """
         self.curr_click(is_multi_tab, idx=idx)
+        self.query_timeout()
+
 
     def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False):
         """
@@ -636,16 +709,17 @@ class Page():
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
-    def clickCheckBox_new(self, options, is_multi_tab=False):
+    def clickCheckBox_new(self, options, is_multi_tab=False, data_dict=None):
         """
         选择多个复选框【checkBox的name或id不一致时调用此方法】
         :param options: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
         :param is_multi_tab: 页面是否有多Tab页
+        :param data_dict:复选框的所有选项列表
         """
         try:
             ls_option = options.split(';')
             ls_items = ls_option[2].split(',')
-            data_dict = DataAccess.get_data_dictionary(ls_option[1])
+            data_dict = data_dict if bool(data_dict) else DataAccess.get_data_dictionary(ls_option[1])
             for data in data_dict:
                 xpath = self.format_xpath_multi(BaseLocators.SINGLE_CHECK_BOX, data, is_multi_tab=is_multi_tab)
                 el = self._find_displayed_element(xpath)
@@ -717,7 +791,7 @@ class Page():
             self.menuPage.displayTreeMenu()
         try:
             node = Dict(eval(treeNo))
-            print(node)
+            # print(node)
             node_flag = node['NODE_FLAG']
             node_vale = node['NODE_VALE']
         except:
@@ -1433,11 +1507,6 @@ class Page():
         locators = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-plus"]')
 
         WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
-
-    def format_locator(self, *args, model=1, **keways, ):
-        if model == 1:
-            xpath = BaseTabLocators.TREE_TAB_ELE[1].format(args[0])
-            return (By.XPATH, xpath)
 
 
 

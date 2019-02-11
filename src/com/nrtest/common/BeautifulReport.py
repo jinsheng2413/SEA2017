@@ -20,6 +20,7 @@ from functools import wraps
 from io import StringIO
 
 from com.nrtest.common.setting import Setting
+from com.nrtest.common.user_except import PopupError, TestImgError
 
 __all__ = ['BeautifulReport']
 
@@ -70,8 +71,7 @@ class PATH:
     """ all file PATH meta """
     # config_tmp_path = SITE_PAKAGE_PATH + '\\BeautifulReport\\template\\template'
     # config_tmp_path = SITE_PAKAGE_PATH + '/BeautifulReport/template/template'
-    config_tmp_path = os.path.dirname(
-        __file__) + '{}template'.format('/' if platform.system() != 'Windows' else '\\')
+    config_tmp_path = os.path.dirname(__file__) + '{}template'.format('/' if platform.system() != 'Windows' else '\\')
     # print('template file path is \'{}\''.format(config_tmp_path))
 
 
@@ -360,8 +360,8 @@ class BeautifulReport(ReportTestResult, PATH):
         """
 
         if filename:
-            self.filename = filename if filename.endswith(
-                '.html') else filename + '.html'
+            self.filename = filename if filename.endswith('.html') else filename + '.html'
+
 
         if description:
             self.title = description
@@ -421,16 +421,29 @@ class BeautifulReport(ReportTestResult, PATH):
 
                 try:
                     result = func(*args, **kwargs)
+                    # -----------------------
+                    # 页面弹窗判断处理
+                    file_name = time.strftime('%Y%m%d%H%M%S') + '_' + func.__name__
+                    popup = getattr(args[0], 'popup')
+                    dlg_src, action, info = popup(file_name, 4)
+                    # action：00-没弹窗；01-截图，且抛异常；02-只截图，不抛异常；
+                    #         03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
+                    if action in ('01', '02', '04'):
+                        print('<h3><font face="verdana">页面截图：</font></h3><br/>')
+                        data = BeautifulReport.img2base(img_path, file_name + '.png')
+                        print(HTML_IMG_TEMPLATE.format(data, data))
+                        if action in ['01', '04']:
+                            raise TestImgError(info)
+                except (PopupError, TestImgError) as pe:
+                    raise pe
                 except Exception as ex:
-                    # print(dir(args[0]))
-                    file_name = func.__name__
+                    file_name = func.__name__ + '_' + time.strftime('%Y%m%d%H%M%S')
                     if 'save_img' in dir(args[0]):
                         save_img = getattr(args[0], 'save_img')
                         save_img(file_name)
-                        print('<h3><font face="verdana">报错页面：</font></h3><br/>')
-                        data = BeautifulReport.img2base(
-                            img_path, file_name + '.png')
-                        print(HTML_IMG_TEMPLATE.format(data, data))
+                    print('<h3><font face="verdana">页面截图：</font></h3><br/>')
+                    data = BeautifulReport.img2base(img_path, file_name + '.png')
+                    print(HTML_IMG_TEMPLATE.format(data, data))
 
                     # sys.exit(0)
                     raise ex
@@ -441,12 +454,40 @@ class BeautifulReport(ReportTestResult, PATH):
                     for parg in pargs:
                         file = img_path + parg + '.png'
                         if os.path.isfile(file):
-                            print('<h3><font face="verdana"><b>' +
-                                  parg + '：</b></font></h3><br/>')
-                            data = BeautifulReport.img2base(
-                                img_path, parg + '.png')
+                            print('<h3><font face="verdana"><b>' + parg + '：</b></font></h3><br/>')
+                            data = BeautifulReport.img2base(img_path, parg + '.png')
                             print(HTML_IMG_TEMPLATE.format(data, data))
                     return result
+                return result
+
+            return __wrap
+
+        return _wrap
+
+    def add_popup_img(*pargs):
+        """
+            接受若干个图片元素, 并展示在测试报告中
+        :param pargs:
+        :return:
+        """
+
+        def _wrap(func):
+            @wraps(func)
+            def __wrap(*args, **kwargs):
+                result = func(*args, **kwargs)
+                # 页面弹窗判断处理
+                popup = getattr(args[0], 'popup')
+                file_name = time.strftime('%Y%m%d%H%M%S') + '_' + func.__name__
+                dlg_src, action, info = popup(file_name, *pargs)
+                # action：00-没弹窗；01-截图，且抛异常；02-只截图，不抛异常；
+                #        03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
+                if action in ('01', '02', '04'):
+                    print('<h3><font face="verdana">对话框截图：</font></h3><br/>')
+                    img_path = Setting.IMG_PATH
+                    data = BeautifulReport.img2base(img_path, file_name + '.png')
+                    print(HTML_IMG_TEMPLATE.format(data, data))
+                if action in ['01', '04']:
+                    raise PopupError(action, info if action == '04' else '对话框信息：{}'.format(info))
                 return result
 
             return __wrap

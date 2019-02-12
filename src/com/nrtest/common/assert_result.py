@@ -246,7 +246,7 @@ class AssertResult(Page):
                         displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
                                                                              assertValues[2])
                         try:
-                            assert_rslt = self.assert_context((By.XPATH, displayLineElement_index), Num=1)
+                            assert_rslt = self.assert_context((By.XPATH, displayLineElement_index))
                             if assert_rslt:
                                 ringhtNum += 1
                             else:

@@ -66,6 +66,8 @@ class Page():
             self.menu_no = menu_page.menu_no
             self.menu_name = menu_page.menu_name
             self.menu_path = menu_page.menu_path
+            # 提取点查询按钮后报共性异常对话框信息
+            self.except_dlgs = DataAccess.get_data_dictionary('EXCEPT_DLG')
         else:
             self.menu_no = ''
             self.menu_name = ''
@@ -83,7 +85,11 @@ class Page():
         self.driver.get_screenshot_as_file(img_path + img_name)
 
     def _expected_rst(self):
-        expected_rst = self.case_para['EXPECTED_RST']
+        """
+        提取用例期望值或弹窗信息
+        :return:
+        """
+        expected_rst = self.case_para['EXPECTED_RST'].strip()
         rst = {}
         if expected_rst.find(':') > 0:
             ls = expected_rst.split(':')
@@ -108,51 +114,55 @@ class Page():
         else:
             dlg_src = int(self.case_para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
         el = self._direct_find_element(CommonLocators.POPUP_DLG)
-        if bool(el):  # 有对话框
-            if el.is_displayed():  # 找到且显示
-                # info = el.text
-                info = ':'.join(el.text.replace(' ', '').split('\n')[:-2])
-                # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
-                if dlg_src in (1, 3, 4):
-                    # action：00-没弹窗,正确结果；01-截图，且抛异常；02-只截图，不抛异常；
-                    #         03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
-                    # 01-针对普通用例、不符合期望值的弹窗有效性判断、点击菜单异常；02-有弹窗，但不想抛异常；
-                    # 03-针对符合期望值的弹窗有效性判断；
-                    action = '01'
-                    if dlg_src == 1:
+        if bool(el) and el.is_displayed():  # 有对话框，且显示
+            info = ':'.join(el.text.replace(' ', '').split('\n')[:-2])
+            # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
+            if dlg_src in (1, 3, 4):
+                # action：00-没弹窗,正确结果；01-截图，且抛异常；02-只截图，不抛异常；
+                #         03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
+                # 01-针对普通用例、不符合期望值的弹窗有效性判断、点击菜单异常；02-有弹窗，但不想抛异常；
+                # 03-针对符合期望值的弹窗有效性判断；
+                action = '01'
+                if dlg_src == 1:
+                    # 弹窗是共性报错弹窗
+                    is_find = False
+                    for dlg in self.except_dlgs:
+                        is_find = dlg in info
+                        if is_find:
+                            break
+
+                    if not is_find:
                         rst = self._expected_rst()
-                        if bool(rst):
-                            if 'DLG' in rst:  # 期望有弾窗
-                                if rst['DLG'] in info:
-                                    action = '03'
-                                else:
-                                    info = '期望提示框信息：' + rst['DLG'] + '\r实际提示信息' + info
-                elif dlg_src == 2:
-                    if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
-                        action = '03'
-                    else:  # 有对话框，但与期望值不一致
-                        action = '01'  # 暂按不符合期望值
+                        if bool(rst) and 'DLG' in rst:  # 期望有弾窗
+                            if rst['DLG'] in info:
+                                # @TODO tst_case.IS_ERROR_PAGE 改为 IS_ERR_POPUP
+                                # IS_ERR_POPUP:Y-弹窗为异常对话框；N-对查询结果结论性弹窗
+                                action = '03' if self.case_para['IS_ERR_POPUP'] == 'N' else '01'
+                            else:
+                                info = '期望提示框信息：' + rst['DLG'] + '\r实际提示信息' + info
+            elif dlg_src == 2:
+                if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
+                    action = '03'
+                else:  # 有对话框，但与期望值不一致
+                    action = '01'
 
-                if action in ('01', '02'):
-                    self.save_img(img_path, img_name)
+            if action in ('01', '02'):
+                self.save_img(img_path, img_name)
 
-                btn_el = self._direct_find_element(CommonLocators.POPUP_DLG_CONFIRM)
-                if bool(btn_el):
-                    btn_el.click()
+            btn_el = self._direct_find_element(CommonLocators.POPUP_DLG_CONFIRM)
+            if bool(btn_el):
+                btn_el.click()
         elif dlg_src == 1:
             rst = self._expected_rst()
-            if bool(rst):
-                if 'DLG' in rst:  # 期望有弾窗
-                    action = '04'
-                    info = '期望提示框信息：' + rst['DLG']
-                    self.save_img(img_path, img_name)
+            if bool(rst) and 'DLG' in rst:  # 期望有弾窗
+                action = '04'
+                info = '期望有提示框，且提示信息为：' + rst['DLG']
+                self.save_img(img_path, img_name)
         elif dlg_src == 2:
             if bool(self.case_para['EXPECTED_VAL']):  # 期望异常对话框
                 action = '04'
-                info = '期望有提示框，且提示信息为：\r{}'.format(self.case_para['EXPECTED_VAL'])
+                info = '期望有提示框，且提示信息为：\r' + self.case_para['EXPECTED_VAL']
                 self.save_img(img_path, img_name)
-            else:
-                action = '00'
 
         return dlg_src, action, info
 
@@ -260,7 +270,7 @@ class Page():
 
         print('开始执行... </br>')
         print('用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}</br>'.format(self.tst_case_id, self.menu_no,
-                                                         self.menu_path, para['TAB_NAME']))
+                                                              self.menu_path, para['TAB_NAME']))
 
     def end_case(self):
         """
@@ -380,7 +390,7 @@ class Page():
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
 
-    def query_timeout(self):
+    def query_timeout(self, locator):
         """
         查询超时判断,当用例不配置超时时间或值为0时，不做等待超时判断
         :return: 查询耗时时间（单位：秒）
@@ -391,7 +401,8 @@ class Page():
             sleep(sec)
             try:
                 # 找到元素，并且该元素也可见
-                WebDriverWait(self.driver, self.timeout_seconds - sec).until_not(EC.visibility_of_element_located(BaseLocators.DATA_LOADING))
+                loc = locator if bool(locator) else BaseLocators.DATA_LOADING
+                WebDriverWait(self.driver, self.timeout_seconds - sec).until_not(EC.visibility_of_element_located(loc))
                 cost_seconds = round(time.time() - start_time, 2)
                 except_type = ''
             except TimeoutException as te:
@@ -420,7 +431,6 @@ class Page():
         """
         self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx)
         self.query_timeout()
-
 
     def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False):
         """
@@ -1291,7 +1301,6 @@ class Page():
         """
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
 
-
     def checkBoxAssertLine(self, value):
         xp = '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td'.format(
             value)
@@ -1305,42 +1314,30 @@ class Page():
                 break
         return dl
 
-    def rightClick(self, locators):
+    def rightClick(self, locator):
         """
         右键点击元素
-        :param locators: 传入xpath即可
+        :param locator: 传入xpath即可
         :return:
         """
-        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locators))
-        right_click = self.driver.find_element(*locators)
-        ActionChains(self.driver).context_click(right_click).perform()
+        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locator))
+        el = self.driver.find_element(*locator)
+        ActionChains(self.driver).context_click(el).perform()
 
-    def assert_context(self, locators, Num=0):
+    def assert_context(self, locators):
         """
         断言
         :param locators: 校验的值
         :return: 布尔返回值
         """
-        try:
+        el = self._direct_find_element(locators)
+        return el.is_displayed() if bool(el) else False
 
-            if Num == 0:
-
-                try:
-
-                    el = WebDriverWait(self.driver, 3).until(
-                        EC.presence_of_element_located((By.XPATH, "//span[contains(text(),'程序异常')]")))
-                    res = self.driver.find_element(*(By.XPATH, "//span[contains(text(),'程序异常')]")).is_displayed()
-                    if res:
-                        print('弹出程序异常错误')
-                        self.btn_confirm()
-                        return False
-                except:
-                    print('')
-            WebDriverWait(self.driver, 15).until(
-                EC.presence_of_element_located(locators))
-            return self.driver.find_element(*locators).is_displayed()
-        except:
-            return False
+        # try:
+        #     WebDriverWait(self.driver, 15).until(EC.presence_of_element_located(locators))
+        #     return self.driver.find_element(*locators).is_displayed()
+        # except:
+        #     return False
 
     def assertValue(self, assertValues):
         """
@@ -1371,7 +1368,7 @@ class Page():
                         displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
                                                                              assertValues[2])
                         try:
-                            assert_rslt = self.assert_context((By.XPATH, displayLineElement_index), Num=1)
+                            assert_rslt = self.assert_context((By.XPATH, displayLineElement_index))
                             if assert_rslt:
                                 ringhtNum += 1
                             else:
@@ -1473,12 +1470,13 @@ class Page():
         """
         esplain = {'11': '显示区未查询出结果', '12': '按条件查询出的结果与期望值不一致', '21': '跳转页面不正确'}
         rslt = DataAccess.get_case_result(para['TST_CASE_ID'])
-        Display_tab = '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'  # 根据XPATH判断显示区是否有值
+        display_tab = (
+            By.XPATH, '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]')  # 根据XPATH判断显示区是否有值
         ls_check_rslt = {}
         for row in rslt:  # 根据rslt有几个值来判断要做几次校验
             assert_type = row[0]
             if assert_type == '11':
-                assert_rslt = self.assert_context((By.XPATH, Display_tab.format(row[1])))  # 判断是否有值
+                assert_rslt = self.assert_context(self.format_xpath(display_tab, row[1]))  # 判断是否有值
             elif assert_type == '12':
                 assert_rslt = self.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
             elif assert_type == '21':
@@ -1509,9 +1507,6 @@ class Page():
         locators = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-plus"]')
 
         WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
-
-
-
 
 
 if __name__ == '__main__':

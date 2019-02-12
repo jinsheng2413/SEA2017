@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.variationMonitorAnalysis.powerCutAnalysis.powe
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测:重要客户实时停电监测
+# 高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测:重要客户历史停电查询
 @ddt
 class TestImportantClientHistoryPowerCutQuery(TestCase, ImportantClientHistoryPowerCutQueryPage):
     @classmethod
@@ -83,7 +83,7 @@ class TestImportantClientHistoryPowerCutQuery(TestCase, ImportantClientHistoryPo
     @data(*DataAccess.getCaseData(PowerCutAnalysis_data.ImportantClientRealTimePowerCutMonitor_para,
                                   PowerCutAnalysis_data.ImportantClientHistoryPowerCutQuery_tabName))
     def test_query(self, para):
-        """高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测:重要客户实时停电监测
+        """高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测:重要客户历史停电查询
 
         :param para:
         """

@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.run_man.collegeywplat.outMemberMan_page import OutMemb
 # 运行管理-->采集运维平台-->组织运维管理
 # 外包队伍成员管理
 @ddt
-class TestOutMemberManTroop(TestCase,OutMemberManPage):
+class TestOutMemberManTroop(TestCase, OutMemberManPage):
 
     @classmethod
     def setUpClass(cls):
@@ -64,7 +64,7 @@ class TestOutMemberManTroop(TestCase,OutMemberManPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        #外包队伍名称
+        # 外包队伍名称
         self.inputStr_out_name(para['OUT_NAME'])
 
         self.btn_qry()

@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.sys_mam.logMan.sysOperationLog_page import *
 
 
 # 系统管理→日志管理→系统操作日志
-# 系统操作日志
+# 终端操作日志
 @ddt
 class TestSysOperationLog(TestCase, SysOperationLogPage):
     @classmethod

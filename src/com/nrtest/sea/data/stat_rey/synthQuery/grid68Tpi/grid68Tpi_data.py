@@ -20,3 +20,5 @@ class Grid68Tpi_data:
     gridFullTPIcollectionPublicChange_detail_tab = '公变抄表失败明细'
     # 统计查询 →综合查询→  国网68项指标 →国网指标全量采集低压单相
     gridFullTPIcollectionLowSinglePhase_para = '99941941'
+    # 统计查询 →综合查询→  国网68项指标 →国网指标全量采集低压三相
+    gridFullTPIcollectionLowThreePhase_para = '99941942'

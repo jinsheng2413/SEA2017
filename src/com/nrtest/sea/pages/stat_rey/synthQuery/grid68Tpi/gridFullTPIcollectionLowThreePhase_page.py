@@ -11,8 +11,8 @@
 from com.nrtest.common.base_page import Page
 
 
-# 统计查询→综合查询→国网68项指标→国网指标全量采集低压单相
-class GridFullTpiCollectionLowSinglePhasePage(Page):
+# 统计查询→综合查询→国网68项指标→国网指标全量采集低压三相
+class GridFullTpiCollectionLowThreePhasePage(Page):
     # 日期
     def inputDt_query_date(self, value):
         self.clean_label(value)

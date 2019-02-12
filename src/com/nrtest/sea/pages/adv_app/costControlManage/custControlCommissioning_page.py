@@ -15,7 +15,7 @@ class CustControlCommissioning_page(Page):
     # 电量下发成功自动发送短信
     def inputChk_auto_send_sms(self, value):
         self.clickCheckBox_new(value)
-        
+
     # 控制类型
     def inputChk_ctrl_type(self, name):
         self.clickRadioBox(name)

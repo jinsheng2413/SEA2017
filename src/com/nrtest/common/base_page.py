@@ -82,6 +82,16 @@ class Page():
         """
         self.driver.get_screenshot_as_file(img_path + img_name)
 
+    def _expected_rst(self):
+        expected_rst = self.case_para['EXPECTED_RST']
+        rst = {}
+        if expected_rst.find(':') > 0:
+            ls = expected_rst.split(':')
+            rst.setdefault(ls[0], ls[1])
+        elif len(expected_rst) > 0:
+            rst.setdefault('00', expected_rst)
+        return Dict(rst)
+
     def popup(self, img_path, img_name, *args):
         """
         捕获弹窗信息，并判断处理
@@ -94,13 +104,14 @@ class Page():
         info = ''
         # dlg_src:1-一般用例；2-查询条件有效性用例;3-点菜单时报错；4-add_test_img弹窗处理
         if len(args) > 0:  # 带参弹窗处理优先级高于用例优先级
-            dlg_src = args[0]
+            dlg_src = int(args[0])
         else:
             dlg_src = int(self.case_para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
         el = self._direct_find_element(CommonLocators.POPUP_DLG)
         if bool(el):  # 有对话框
             if el.is_displayed():  # 找到且显示
-                info = ':'.join(el.text.replace(' ', '').split('\n')[:-1])
+                # info = el.text
+                info = ':'.join(el.text.replace(' ', '').split('\n')[:-2])
                 # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
                 if dlg_src in (1, 3, 4):
                     # action：00-没弹窗,正确结果；01-截图，且抛异常；02-只截图，不抛异常；
@@ -108,6 +119,14 @@ class Page():
                     # 01-针对普通用例、不符合期望值的弹窗有效性判断、点击菜单异常；02-有弹窗，但不想抛异常；
                     # 03-针对符合期望值的弹窗有效性判断；
                     action = '01'
+                    if dlg_src == 1:
+                        rst = self._expected_rst()
+                        if bool(rst):
+                            if 'DLG' in rst:  # 期望有弾窗
+                                if rst['DLG'] in info:
+                                    action = '03'
+                                else:
+                                    info = '期望提示框信息：' + rst['DLG'] + '\r实际提示信息' + info
                 elif dlg_src == 2:
                     if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
                         action = '03'
@@ -120,46 +139,22 @@ class Page():
                 btn_el = self._direct_find_element(CommonLocators.POPUP_DLG_CONFIRM)
                 if bool(btn_el):
                     btn_el.click()
-        elif dlg_src == '2':
+        elif dlg_src == 1:
+            rst = self._expected_rst()
+            if bool(rst):
+                if 'DLG' in rst:  # 期望有弾窗
+                    action = '04'
+                    info = '期望提示框信息：' + rst['DLG']
+                    self.save_img(img_path, img_name)
+        elif dlg_src == 2:
             if bool(self.case_para['EXPECTED_VAL']):  # 期望异常对话框
                 action = '04'
-                info = '期望有对话框，且提示信息为：\r{}'.format(self.case_para['EXPECTED_VAL'])
+                info = '期望有提示框，且提示信息为：\r{}'.format(self.case_para['EXPECTED_VAL'])
                 self.save_img(img_path, img_name)
             else:
                 action = '00'
 
         return dlg_src, action, info
-
-    # def error_window_process(func):
-    #     """
-    #     出现弹出框异常，抛出页面报错
-    #     使用信息：
-    #
-    #     例如：
-    #     @ERROR_WINDOW_PROCESS
-    #     def btn_query(self, is_multi_tab=False):
-    #     """
-    #
-    #     def wrapper(*args, **kwargs):
-    #         res = func(*args, **kwargs)
-    #         tag = False
-    #         try:
-    #             # re = args[0].driver.find_element(*CommonLocators.POPUP_DLG).is_displayed()
-    #             el = args[0].driver.find_element(*CommonLocators.POPUP_DLG)
-    #             if el.is_displayed():
-    #                 tag = True
-    #                 print('弹窗错误信息：%s' % el.text)
-    #                 raise RuntimeError('PageError')
-    #
-    #             return res
-    #         except:
-    #             if tag:
-    #                 raise RuntimeError('page error--弹出框错误异常')
-    #                 try:
-    #                     args[0].driver.find_element(*CommonLocators.BTN_CONFIRM_LOCATORS).click()
-    #                 except:
-    #                     pass
-    #     return wrapper
 
     def fail_on_screenshot(self, func):
         """
@@ -272,8 +267,8 @@ class Page():
         测试用例执行结束
         :param para:
         """
-        # print('结束... \n用例ID：{}'.format(para['TST_CASE_ID']))
-        print('结束... \n用例ID：{}'.format(self.tst_case_id))
+        # print('结束... \n用例ID：{}'.format(self.tst_case_id))
+        print('结束... \n')
 
     def _direct_find_element(self, locator):
         """

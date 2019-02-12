@@ -24,13 +24,18 @@ from com.nrtest.common.user_except import PopupError, TestImgError
 
 __all__ = ['BeautifulReport']
 
+# HTML_IMG_TEMPLATE = """
+#     <div align="center"><a href="data:image/png;base64, {}">
+#     <img src="data:image/png;base64, {}" width="800px" height="500px" />
+#     </a></div>
+#     <br></br>
+# """
 HTML_IMG_TEMPLATE = """
-    <div align="center"><a href="data:image/png;base64, {}">
+    <div align="center">
     <img src="data:image/png;base64, {}" width="800px" height="500px" />
     </a></div>
     <br></br>
 """
-
 
 class OutputRedirector():
     """ Wrapper to redirect stdout or stderr """
@@ -417,11 +422,11 @@ class BeautifulReport(ReportTestResult, PATH):
         def _wrap(func):
             @wraps(func)
             def __wrap(*args, **kwargs):
+                img_path = Setting.IMG_PATH
                 try:
                     result = func(*args, **kwargs)
                     # -----------------------
                     # 页面弹窗判断处理
-                    img_path = Setting.IMG_PATH
                     img_name = time.strftime('%Y%m%d%H%M%S') + '_' + func.__name__ + '.png'
                     popup = getattr(args[0], 'popup')
                     dlg_src, action, info = popup(img_path, img_name, 4)
@@ -430,7 +435,7 @@ class BeautifulReport(ReportTestResult, PATH):
                     if action in ('01', '02', '04'):
                         print('<h3><font face="verdana">页面截图：</font></h3><br/>')
                         data = BeautifulReport.img2base(img_path, img_name)
-                        print(HTML_IMG_TEMPLATE.format(data, data))
+                        print(HTML_IMG_TEMPLATE.format(data))
                         if action in ['01', '04']:
                             raise TestImgError(info)
                 except (PopupError, TestImgError) as pe:
@@ -442,7 +447,7 @@ class BeautifulReport(ReportTestResult, PATH):
                         save_img(img_path, img_name)
                         print('<h3><font face="verdana">页面截图：</font></h3><br/>')
                         data = BeautifulReport.img2base(img_path, img_name)
-                        print(HTML_IMG_TEMPLATE.format(data, data))
+                        print(HTML_IMG_TEMPLATE.format(data))
 
                     # sys.exit(0)
                     raise ex
@@ -455,7 +460,7 @@ class BeautifulReport(ReportTestResult, PATH):
                         if os.path.isfile(file):
                             print('<h3><font face="verdana"><b>' + parg + '：</b></font></h3><br/>')
                             data = BeautifulReport.img2base(img_path, parg + '.png')
-                            print(HTML_IMG_TEMPLATE.format(data, data))
+                            print(HTML_IMG_TEMPLATE.format(data))
                     return result
                 return result
 
@@ -473,10 +478,10 @@ class BeautifulReport(ReportTestResult, PATH):
         def _wrap(func):
             @wraps(func)
             def __wrap(*args, **kwargs):
+                img_path = Setting.IMG_PATH
                 result = func(*args, **kwargs)
                 # 页面弹窗判断处理
                 popup = getattr(args[0], 'popup')
-                img_path = Setting.IMG_PATH
                 img_name = time.strftime('%Y%m%d%H%M%S') + '_' + func.__name__ + '.png'
                 dlg_src, action, info = popup(img_path, img_name, *pargs)
                 # action：00-没弹窗；01-截图，且抛异常；02-只截图，不抛异常；
@@ -484,7 +489,7 @@ class BeautifulReport(ReportTestResult, PATH):
                 if action in ('01', '02', '04'):
                     print('<h3><font face="verdana">对话框截图：</font></h3><br/>')
                     data = BeautifulReport.img2base(img_path, img_name)
-                    print(HTML_IMG_TEMPLATE.format(data, data))
+                    print(HTML_IMG_TEMPLATE.format(data))
                 if action in ['01', '04']:
                     raise PopupError(action, info if action == '04' else '对话框信息：{}'.format(info))
                 return result

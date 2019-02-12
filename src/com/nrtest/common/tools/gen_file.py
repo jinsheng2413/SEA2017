@@ -16,17 +16,17 @@ from com.nrtest.common.data_access import DataAccess
 author = '郭春彪'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'grid_Full_TPI_collection_OnlyChange'
+file_name = 'Meter_Data_Query_Fail_detail'
 
 # 存放菜单编号的数据文件类名
 # 路径
-data_file = r'D:\pythonworkspace\SEA2017\src\com\nrtest\sea\data\stat_rey\synthQuery\grid68Tpi\grid68Tpi_data'
+data_file = r'D:\pythonworkspace\SEA2017\src\com\nrtest\sea\data\stat_rey\synthQuery\synthQuery_data'
 
 # 菜单编号
-menu_no = '99941944'
+menu_no = '99941910'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = '专变抄表失败明细'
+tab_name = '抄表失败明细'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
 en_tab_name = ''

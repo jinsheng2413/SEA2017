@@ -32,6 +32,11 @@ class SynthQuery_data:
     DisassemblyTableDataQuery_para = '99941704'
     # 统计查询→综合查询→抄表数据查询
     MeterDataQuery_para = '99941910'
+    MeterDataQuery_detail_tab = '抄表明细'
+    MeterDataQuery_count_tab = '抄表失败统计'
+    MeterDataQuery_fialDetail_tab = '抄表失败明细'
+
+
     # 统计查询→综合查询→抄表成功率查询（河北）
     MeterSuccessRateQuery_para = '99941930'
     MeterSuccessRateQuery_tabName = '按地区、厂家统计'

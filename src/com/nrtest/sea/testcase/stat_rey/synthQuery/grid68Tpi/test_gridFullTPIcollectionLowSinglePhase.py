@@ -16,21 +16,21 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.grid68Tpi.grid68Tpi_data import Grid68Tpi_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-# 统计查询→综合查询→国网68项指标→国网指标全量采集公变:公变抄表成功率统计
-from com.nrtest.sea.pages.stat_rey.synthQuery.grid68Tpi.gridFullTPIcollectionPublicChange_page import \
-    GridFullTpiCollectionPublicChange_count_Page
+# 统计查询→综合查询→国网68项指标→国网指标全量采集低压单相
+from com.nrtest.sea.pages.stat_rey.synthQuery.grid68Tpi.gridFullTPIcollectionLowSinglePhase_page import \
+    GridFullTpiCollectionLowSinglePhasePage
 
 
 @ddt
-class test_GridFullTpiCollectionOnlychange(TestCase, GridFullTpiCollectionPublicChange_count_Page):
+class test_GridFullTpiCollectionOnlychange(TestCase, GridFullTpiCollectionLowSinglePhasePage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(Grid68Tpi_data.gridFullTPIcollectionPublicChange_para)
+        menuPage = MenuPage.openMenu(Grid68Tpi_data.gridFullTPIcollectionLowSinglePhase_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(Grid68Tpi_data.gridFullTPIcollectionPublicChange_count_tab)
+        # menuPage.clickTabPage(Grid68Tpi_data.gridFullTPIcollectionPublicChange_count_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -87,10 +87,9 @@ class test_GridFullTpiCollectionOnlychange(TestCase, GridFullTpiCollectionPublic
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(Grid68Tpi_data.gridFullTPIcollectionPublicChange_para,
-                                  Grid68Tpi_data.gridFullTPIcollectionPublicChange_count_tab))
+    @data(*DataAccess.getCaseData(Grid68Tpi_data.gridFullTPIcollectionLowSinglePhase_para))
     def test_query(self, para):
-        """统计查询→综合查询→国网68项指标→国网指标全量采集公变:公变抄表成功率统计
+        """统计查询→综合查询→国网68项指标→国网指标全量采集低压单相
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -98,8 +97,7 @@ class test_GridFullTpiCollectionOnlychange(TestCase, GridFullTpiCollectionPublic
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(Grid68Tpi_data.gridFullTPIcollectionPublicChange_para,
-                                  Grid68Tpi_data.gridFullTPIcollectionPublicChange_count_tab, valCheck=True))
+    @data(*DataAccess.getCaseData(Grid68Tpi_data.gridFullTPIcollectionLowSinglePhase_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -15,6 +15,8 @@ class Grid68Tpi_data:
     gridFullTPIcollectionOnlyChange_count_tab = '专变抄表成功率统计'
     gridFullTPIcollectionOnlyChange_detail_tab = '专变抄表失败明细'
     # 统计查询 →综合查询→  国网68项指标 →国网指标全量采集公变
-    gridFullTPIcollectionPublicChange_para = '99941944'
+    gridFullTPIcollectionPublicChange_para = '99941943'
     gridFullTPIcollectionPublicChange_count_tab = '公变抄表成功率统计'
     gridFullTPIcollectionPublicChange_detail_tab = '公变抄表失败明细'
+    # 统计查询 →综合查询→  国网68项指标 →国网指标全量采集低压单相
+    gridFullTPIcollectionLowSinglePhase_para = '99941941'

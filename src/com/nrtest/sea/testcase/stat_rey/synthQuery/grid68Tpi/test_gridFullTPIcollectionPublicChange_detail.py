@@ -17,12 +17,12 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.grid68Tpi.grid68Tpi_data import Grid68Tpi_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 # 统计查询→综合查询→国网68项指标→国网指标全量采集公变:公变抄表失败明细
-from com.nrtest.sea.pages.stat_rey.synthQuery.grid68Tpi.gridFullTPIcollectionOnlyChange_page import \
-    GridFullTpiCollectionOnlychange_detail_Page
+from com.nrtest.sea.pages.stat_rey.synthQuery.grid68Tpi.gridFullTPIcollectionPublicChange_page import \
+    GridFullTpiCollectionPublicChange_detail_Page
 
 
 @ddt
-class test_GridFullTpiCollectionOnlychange(TestCase, GridFullTpiCollectionOnlychange_detail_Page):
+class test_GridFullTpiCollectionOnlychange(TestCase, GridFullTpiCollectionPublicChange_detail_Page):
 
     @classmethod
     def setUpClass(cls):

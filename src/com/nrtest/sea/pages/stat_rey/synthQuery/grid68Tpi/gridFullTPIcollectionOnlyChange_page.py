@@ -15,6 +15,7 @@ from com.nrtest.common.base_page import Page
 class GridFullTpiCollectionOnlychange_count_Page(Page):
     # 日期
     def inputDt_query_date(self, value):
+        self.clean_label(value)
         self.inputDate(value)
 
     # 查询
@@ -26,6 +27,7 @@ class GridFullTpiCollectionOnlychange_count_Page(Page):
 class GridFullTpiCollectionOnlychange_detail_Page(Page):
     # 日期
     def inputDt_query_date(self, value):
+        self.clean_label(value)
         self.inputDate(value)
 
     # 查询

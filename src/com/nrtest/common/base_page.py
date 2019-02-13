@@ -122,8 +122,8 @@ class Page():
                         if popup_type > '00':
                             dlg_info = self.case_para['EXPECTED_RST']
                             if dlg_info in info:
-                                # POPUP_TYPE:01-弹窗为异常对话框；02-对查询结果结论性弹窗
-                                action = '03' if popup_type == '02' else '01'
+                                # POPUP_TYPE:01-报错弹窗；02-没查询结果的提示弹窗；09-其他普通弹窗
+                                action = '01' if popup_type == '01' else '03'
                             else:
                                 info = '期望提示框信息：' + dlg_info + '\r实际提示信息' + info
             elif dlg_src == 2:
@@ -378,7 +378,7 @@ class Page():
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
 
-    def query_timeout(self, locator):
+    def query_timeout(self, locator=None):
         """
         查询超时判断,当用例不配置超时时间或值为0时，不做等待超时判断
         :return: 查询耗时时间（单位：秒）
@@ -1318,14 +1318,12 @@ class Page():
         :param locators: 校验的值
         :return: 布尔返回值
         """
-        el = self._direct_find_element(locators)
-        return el.is_displayed() if bool(el) else False
-
-        # try:
-        #     WebDriverWait(self.driver, 15).until(EC.presence_of_element_located(locators))
-        #     return self.driver.find_element(*locators).is_displayed()
-        # except:
-        #     return False
+        # 02-没查询结果的提示弹窗；
+        if self.case_para['POPUP_TYPE'] == '02':
+            return True
+        else:
+            el = self._direct_find_element(locators)
+            return el.is_displayed() if bool(el) else False
 
     def assertValue(self, assertValues):
         """
@@ -1458,8 +1456,8 @@ class Page():
         """
         esplain = {'11': '显示区未查询出结果', '12': '按条件查询出的结果与期望值不一致', '21': '跳转页面不正确'}
         rslt = DataAccess.get_case_result(para['TST_CASE_ID'])
-        display_tab = (
-            By.XPATH, '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]')  # 根据XPATH判断显示区是否有值
+        # 根据XPATH判断显示区是否有值
+        display_tab = (By.XPATH, '//div[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]')
         ls_check_rslt = {}
         for row in rslt:  # 根据rslt有几个值来判断要做几次校验
             assert_type = row[0]

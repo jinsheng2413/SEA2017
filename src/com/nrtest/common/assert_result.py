@@ -24,8 +24,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class AssertResult(Page):
-    def __init__(self):
+    def __init__(self, call_from):
         super().__init__(get_driver())
+        self.case_para = call_from.case_para
 
     def click_link(self, column_name, line, colum_only_one='', only=1):
         """

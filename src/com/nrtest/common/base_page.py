@@ -94,7 +94,7 @@ class Page():
         """
         action = '00'
         info = ''
-        # dlg_src:1-一般用例；2-查询条件有效性用例;3-点菜单时报错；4-add_test_img弹窗处理
+        # dlg_src:1-一般用例；2-查询条件有效性用例;3-点菜单时报错；4-add_test_img弹窗处理;5-左边树选择弹窗
         if len(args) > 0:  # 带参弹窗处理优先级高于用例优先级
             dlg_src = int(args[0])
         else:
@@ -126,6 +126,13 @@ class Page():
                                 action = '01' if popup_type == '01' else '03'
                             else:
                                 info = '期望提示框信息：' + dlg_info + '\r实际提示信息' + info
+
+            elif dlg_src == 5:
+                action = '01'
+                case_type = int(self.case_para['CASE_TYPE'])
+                if case_type == 2 and self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
+                    action = '03'
+
             elif dlg_src == 2:
                 if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
                     action = '03'
@@ -780,6 +787,7 @@ class Page():
             value = para
         return value
 
+    @BeautifulReport.add_popup_img(5)
     def openLeftTree(self, treeNo, is_closed=False):
         """
         打开左边树

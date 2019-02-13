@@ -18,6 +18,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.login import Login
+from com.nrtest.sea.locators.other.base_locators import BaseLocators
 from com.nrtest.sea.locators.other.menu_locators import *
 
 
@@ -355,7 +356,7 @@ class MenuPage(Page):
     def btn_left_tree(self, tree_no):
         self.sleep_time(2)
         tree = DataAccess.getLeftTree(tree_no)
-
+        self.click(BaseLocators.POWER_SUPPLY_AREA)
         # self.btn_suitable_arrow()
         items = tree.split(';')
         l = len(items)

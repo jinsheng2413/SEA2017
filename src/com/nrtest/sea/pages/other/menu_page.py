@@ -231,10 +231,10 @@ class MenuPage(Page):
         :return:
         """
         num = self._find_elements(self.locator_class.TREE_MINUS)
-        if self.assert_context(self.locator_class.TREE_END) is False:
-            pass
 
-        else:
+        el = self._direct_find_element(self.locator_class.TREE_END)
+        is_exists = el.is_displayed() if bool(el) else False
+        if is_exists:
             counter = len(num) - 1
             while counter >= 0:
                 if num[counter] is self.locator_class.TREE_END:

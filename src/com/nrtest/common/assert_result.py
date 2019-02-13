@@ -24,8 +24,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class AssertResult(Page):
-    def __init__(self):
+    def __init__(self, call_from):
         super().__init__(get_driver())
+        self.case_para = call_from.case_para
 
     def click_link(self, column_name, line, colum_only_one='', only=1):
         """
@@ -173,7 +174,7 @@ class AssertResult(Page):
         for x, y, item in zip(old_page_list, new_page_list, old_data):
             if x == y:
                 logger.info(
-                    '跳转坐标（{row}行,{col列}）element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
+                    '跳转坐标（{row}行,{col}列）element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
                         row=para[3], col=self.checkBoxAssertLine(para[1]) + 1, sn=item[11], xpath_old=item[5],
                         xpath_old_value=x, xpath_new=item[8], xpath_new_value=y))
                 res = True
@@ -246,7 +247,7 @@ class AssertResult(Page):
                         displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
                                                                              assertValues[2])
                         try:
-                            assert_rslt = self.assert_context((By.XPATH, displayLineElement_index), Num=1)
+                            assert_rslt = self.assert_context((By.XPATH, displayLineElement_index))
                             if assert_rslt:
                                 ringhtNum += 1
                             else:

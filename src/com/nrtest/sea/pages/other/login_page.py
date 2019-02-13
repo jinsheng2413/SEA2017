@@ -7,6 +7,8 @@
 @time: 2018/5/27 0027 9:01
 @desc:
 """
+from time import sleep
+
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.other.login_locators import *
 
@@ -60,6 +62,7 @@ class LoginPage(Page):
         """
         登录成功失败判断与清屏处理（如，告警提示框等）
         """
+        sleep(0.5)
         # 登录异常弹窗确认
         el = self._find_displayed_element(self.locator_class.BTN_CONFIRM)
         if bool(el):

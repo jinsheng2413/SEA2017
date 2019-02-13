@@ -162,22 +162,28 @@ class DataAccess:
         return dataSet
 
     @staticmethod
-    def get_data_dictionary(dict_catalog):
+    def get_data_dictionary(dict_catalog, rsltType='01'):
         """
         提取数据字典的查询条件类别
         :param dict_catalog: 查询条件分类编码
+        :param rsltType:01-dict_name List；02-dict
         :return:
         """
-        sql = 'SELECT dict_name FROM tst_dictionary t \
+        sql = 'SELECT dict_no, dict_name FROM tst_dictionary t \
                 WHERE project_no = :1  \
                   AND dict_catalog = :2 \
                 ORDER BY t.dict_no'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, dict_catalog])
-
-        for idx, row in enumerate(dataSet):
-            dataSet[idx] = row[0]
-        return dataSet
+        if rsltType == '01':
+            rslt = []
+            for idx, row in enumerate(dataSet):
+                rslt.append(row[1])
+        else:
+            rslt = {}
+            for row in dataSet:
+                rslt.setdefault(row[0], row[1])
+        return rslt
 
     @staticmethod
     def refresh_menu(p_menu_no=''):
@@ -324,5 +330,5 @@ if __name__ == '__main__':
     # pass
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
-    print(DataAccess.load_tests_ByMenuList())
+    print(DataAccess.get_data_dictionary('EXCEPT_DLG'))
     # print(DataAccess.get_menu_xpath_list('99912100','终端调试', '02'))

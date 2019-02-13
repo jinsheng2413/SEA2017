@@ -84,7 +84,7 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(AssertResult().check_query_result(para, version=2))
+        self.assertTrue(AssertResult(self).check_query_result(para, version=2))
 
     def assert_query_criteria(self, para):
         """

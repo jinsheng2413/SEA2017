@@ -22,7 +22,7 @@ class VipConsStealAnal_Page(Page):
         self.input(value)
 
     # 类型
-    def inputChk_type(self, options):
+    def inputChk_use_elec_type(self, options):
         self.clickCheckBox_new(options)
 
     # 查询

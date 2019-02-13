@@ -84,20 +84,6 @@ class Page():
         """
         self.driver.get_screenshot_as_file(img_path + img_name)
 
-    def _expected_rst(self):
-        """
-        提取用例期望值或弹窗信息
-        :return:
-        """
-        expected_rst = self.case_para['EXPECTED_RST'].strip()
-        rst = {}
-        if expected_rst.find(':') > 0:
-            ls = expected_rst.split(':')
-            rst.setdefault(ls[0], ls[1])
-        elif len(expected_rst) > 0:
-            rst.setdefault('00', expected_rst)
-        return Dict(rst)
-
     def popup(self, img_path, img_name, *args):
         """
         捕获弹窗信息，并判断处理
@@ -132,14 +118,14 @@ class Page():
                             break
 
                     if not is_find:
-                        rst = self._expected_rst()
-                        if bool(rst) and 'DLG' in rst:  # 期望有弾窗
-                            if rst['DLG'] in info:
-                                # @TODO tst_case.IS_ERROR_PAGE 改为 IS_ERR_POPUP
-                                # IS_ERR_POPUP:Y-弹窗为异常对话框；N-对查询结果结论性弹窗
-                                action = '03' if self.case_para['IS_ERR_POPUP'] == 'N' else '01'
+                        popup_type = self.case_para['POPUP_TYPE']
+                        if popup_type > '00':
+                            dlg_info = self.case_para['EXPECTED_RST']
+                            if dlg_info in info:
+                                # POPUP_TYPE:01-弹窗为异常对话框；02-对查询结果结论性弹窗
+                                action = '03' if popup_type == '02' else '01'
                             else:
-                                info = '期望提示框信息：' + rst['DLG'] + '\r实际提示信息' + info
+                                info = '期望提示框信息：' + dlg_info + '\r实际提示信息' + info
             elif dlg_src == 2:
                 if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
                     action = '03'
@@ -152,12 +138,14 @@ class Page():
             btn_el = self._direct_find_element(CommonLocators.POPUP_DLG_CONFIRM)
             if bool(btn_el):
                 btn_el.click()
+
         elif dlg_src == 1:
-            rst = self._expected_rst()
-            if bool(rst) and 'DLG' in rst:  # 期望有弾窗
+            popup_type = self.case_para['POPUP_TYPE']
+            if popup_type > '00':  # 期望有弾窗
                 action = '04'
-                info = '期望有提示框，且提示信息为：' + rst['DLG']
+                info = '期望有提示框，且提示信息为：' + self.case_para['EXPECTED_RST']
                 self.save_img(img_path, img_name)
+
         elif dlg_src == 2:
             if bool(self.case_para['EXPECTED_VAL']):  # 期望异常对话框
                 action = '04'

@@ -629,16 +629,10 @@ class Page():
         """
         self._clean_blank(tag_text, 'span')
 
-    def scrollToElement(self, locator):
-        """
-        滚动元素到指定位置
-        :param locator:
-        :return:
-        """
-        el = self._find_element(locator)
-        logger.info('scroll view element')
-        # // roll down and keep the element to the center of browser：scrollIntoView
-        self.driver.execute_script('arguments[0].scrollIntoView();', el)
+    def scrollTo(self, locator):
+        el = self.driver.find_element(*locator)
+        self.driver.execute_script("arguments[0].scrollIntoView();", el)
+
 
     def clickRadioBox(self, option, is_multi_tab=False, is_multi_elements=False):
         """

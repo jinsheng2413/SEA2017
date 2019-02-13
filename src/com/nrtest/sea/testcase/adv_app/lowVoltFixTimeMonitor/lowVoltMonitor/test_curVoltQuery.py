@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: test_fix_time_volt_cur_query.py
+@file: test_curVoltQuery.py
 @time: 2019-02-13 09:11:11
 @desc:
 """

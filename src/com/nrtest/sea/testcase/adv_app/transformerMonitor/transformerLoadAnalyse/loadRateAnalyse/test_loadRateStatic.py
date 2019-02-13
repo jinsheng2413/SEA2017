@@ -80,7 +80,7 @@ class TestLoadRateStatic(TestCase, LoadRateStaticPage):
         查询结果校验
         :param para:
         """
-        self.assertTrue(AssertResult().check_query_result(para))
+        self.assertTrue(AssertResult(self).check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

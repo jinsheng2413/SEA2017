@@ -174,7 +174,7 @@ class AssertResult(Page):
         for x, y, item in zip(old_page_list, new_page_list, old_data):
             if x == y:
                 logger.info(
-                    '跳转坐标（{row}行,{col列}）element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
+                    '跳转坐标（{row}行,{col}列）element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
                         row=para[3], col=self.checkBoxAssertLine(para[1]) + 1, sn=item[11], xpath_old=item[5],
                         xpath_old_value=x, xpath_new=item[8], xpath_new_value=y))
                 res = True

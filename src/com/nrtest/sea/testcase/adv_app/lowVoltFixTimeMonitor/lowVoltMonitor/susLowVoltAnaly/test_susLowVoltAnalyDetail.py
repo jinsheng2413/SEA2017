@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: test_sus_low_volt_analy.py
+@file: test_susLowVoltAnalyDetail.py
 @time: 2019-02-13 15:13:21
 @desc:
 """

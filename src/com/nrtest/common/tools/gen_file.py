@@ -13,26 +13,26 @@ import time
 from com.nrtest.common.data_access import DataAccess
 
 # 作者
-author = '李建方'
+author = '郭春彪'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'line_Loss_Count'
+file_name = 'Meter_Data_Query_Fail_detail'
 
 # 存放菜单编号的数据文件类名
 # 路径
-data_file = r'com/nrtest/sea/data/stat_rey/allMeasureDataCountQuery/allMeasureDataCountQuery_data.py'
+data_file = r'D:\pythonworkspace\SEA2017\src\com\nrtest\sea\data\stat_rey\synthQuery\synthQuery_data'
 
 # 菜单编号
-menu_no = '99991370'
+menu_no = '99941910'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = '按用户查询'
+tab_name = '抄表失败明细'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
-en_tab_name = 'ByUser'
+en_tab_name = ''
 
 # 生成文件存放路径
-filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
+filelistlog = r"D:\pythonworkspace\SEA2017\logs\filelistlog.log"
 
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
 page_type = '02'

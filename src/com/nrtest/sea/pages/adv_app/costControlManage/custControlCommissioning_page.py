@@ -12,6 +12,10 @@ from com.nrtest.common.base_page import Page
 
 # 高级应用→费控管理→本地费控→费控投入调试
 class CustControlCommissioning_page(Page):
+    # 电量下发成功自动发送短信
+    def inputChk_auto_send_sms(self, value):
+        self.clickCheckBox_new(value)
+
     # 控制类型
     def inputChk_ctrl_type(self, name):
         self.clickRadioBox(name)

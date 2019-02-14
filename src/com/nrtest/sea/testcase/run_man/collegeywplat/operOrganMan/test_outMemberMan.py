@@ -17,13 +17,13 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.collegeywplat.collegeywplat_data import Collegeywplat_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.run_man.collegeywplat.outMemberMan_page import OutRanksManPage
+from com.nrtest.sea.pages.run_man.collegeywplat.outMemberMan_page import OutMemberManPage
 
 
 # 运行管理-->采集运维平台-->组织运维管理
 # 外包队伍管理
 @ddt
-class TestOutMemberMan(TestCase, OutRanksManPage):
+class TestOutMemberMan(TestCase, OutMemberManPage):
 
     @classmethod
     def setUpClass(cls):

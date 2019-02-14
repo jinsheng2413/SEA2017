@@ -145,6 +145,16 @@ class BaseLocators(Locators):
     # 左边树
     POWER_SUPPLY_AREA = (By.XPATH, '//span[text()="供电区域"]')
 
+    # 弹框处理
+    POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
+    POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
+
+    # 账号异常信息弹窗确认
+    DLG_EXCEPT = (By.XPATH, '//div[@id="index.loginExceptionWin"]//div[contains(@class, "x-tool-close")]')
+    # $x('//div[@id="index.loginExceptionWin"]//div[@class="x-tool x-tool-close "]')
+
+    # 重要信息推出窗口关闭
+    DLG_IMPORT = (By.XPATH, '//button[contains(text(), "不再提醒")]')
 
 class BasePbsLocators(Locators):
     # 多个TAB页情况下的元素定位附加内容: '//div[@class =" x-panel x-panel-noborder  x-hide-display"]'
@@ -201,6 +211,10 @@ class BasePbsLocators(Locators):
 
     # 定位一个菜单页面内的某一Tab页
     TAB_PAGE = (By.XPATH, '//span[@class="x-tab-strip-text " and text()="{}"]')
+
+    # 弹框处理
+    POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
+    POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
 
 if __name__ == '__main__':
     # print(BaseLocators.OBJ % '/查\s{1,}询/')

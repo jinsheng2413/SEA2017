@@ -69,6 +69,7 @@ class MenuPage(Page):
         action = ls_menu[1]
         # PBS5000，用于区分每个菜单用到的左边树类型
         self.tree_type = ls_menu[2] if bool(ls_menu[2]) else '20'
+        self.is_refresh = ls_menu[3]  # 关闭菜单时是否需要刷新页面
 
         items = menu_path.split(';')
 
@@ -272,6 +273,9 @@ class MenuPage(Page):
             loc = pe
             print(loc)
         self.driver.find_element(*loc).click()
+
+        if self.is_refresh == 'Y':
+            self.refreshPage()
 
     def displayTreeMenu(self):
         """

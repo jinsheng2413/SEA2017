@@ -67,4 +67,5 @@ class LoginPage(Page):
         el = self._find_displayed_element(self.locator_class.BTN_CONFIRM)
         if bool(el):
             el.click()
-        super().clean_screen(self.locator_class)
+        # super().clean_screen(self.locator_class)
+        super().clean_screen()

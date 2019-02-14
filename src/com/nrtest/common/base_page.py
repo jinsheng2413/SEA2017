@@ -24,7 +24,6 @@ from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
 from com.nrtest.sea.locators.other.base_locators import BaseLocators
-from com.nrtest.sea.locators.other.common_locators import CommonLocators
 from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 
 # create a logger instance
@@ -99,7 +98,7 @@ class Page():
             dlg_src = int(args[0])
         else:
             dlg_src = int(self.case_para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
-        el = self._direct_find_element(CommonLocators.POPUP_DLG)
+        el = self._direct_find_element(BaseLocators.POPUP_DLG)
         if bool(el) and el.is_displayed():  # 有对话框，且显示
             info = ':'.join(el.text.replace(' ', '').split('\n')[:-2])
             # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
@@ -142,7 +141,7 @@ class Page():
             if action in ('01', '02'):
                 self.save_img(img_path, img_name)
 
-            btn_el = self._direct_find_element(CommonLocators.POPUP_DLG_CONFIRM)
+            btn_el = self._direct_find_element(BaseLocators.POPUP_DLG_CONFIRM)
             if bool(btn_el):
                 btn_el.click()
 
@@ -607,7 +606,9 @@ class Page():
         """
         clean_obj = {'button': "//button[contains(text(), '{}')]",
                      'label': "//label[contains(text(), '{}')]",
-                     'span': "//span[contains(text(), '{}')]"}
+                     'span': "//span[contains(text(), '{}')]",
+                     'dropdown': '//div[contains(@class,\'x-layer x-combo-list \') and contains(@style,\'visible;\')]'
+                     }
         clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(tag_text[0])
         script = BaseLocators.CLEAN_BLANK % clean_me
         # print(script)
@@ -633,6 +634,13 @@ class Page():
         :param tag_text: 标签名的部分内容
         """
         self._clean_blank(tag_text, 'span')
+
+    def clean_dropdown(self, tag_text):
+        """
+        清下拉选择项的空格
+        :param tag_text: 标签名的部分内容
+        """
+        self._clean_blank(tag_text, 'dropdown')
 
     def scrollTo(self, locator):
         el = self.driver.find_element(*locator)
@@ -1092,29 +1100,28 @@ class Page():
         """
         self.driver.implicitly_wait(Setting.WAIT_TIME)
 
-    def clean_screen(self, locators=None):
+    def clean_screen(self):
         """
         登录成功失败判断与清屏处理（如，告警提示框等）
         """
-        if bool(locators):
-            # 重要信息推出窗口关闭 LoginLocators
-            el = self._find_displayed_element(locators.DLG_IMPORT)
-            if bool(el):
-                el.click()
+        # 重要信息推出窗口关闭
+        el = self._find_displayed_element(BaseLocators.DLG_IMPORT)
+        if bool(el):
+            el.click()
 
-            # 账号异常信息弹窗确认
-            el = self._find_displayed_element(locators.DLG_EXCEPT)
-            if bool(el):
-                el.click()
+        # 账号异常信息弹窗确认
+        el = self._find_displayed_element(BaseLocators.DLG_EXCEPT)
+        if bool(el):
+            el.click()
 
-    def refreshPage(self, is_clean_screen=True, locators=None):
+    def refreshPage(self):
         """
         刷新页面
         """
         self.driver.refresh()
         sleep(2)
-        if is_clean_screen:
-            self.clean_screen(locators)
+        if Setting.CLEAN_SCREEN.lower().startswith('y'):
+            self.clean_screen()
 
     def clear(self, locator):
         """

@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.eventRecRe
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→数据采集管理→采集质量分析→事件记录结果统计
+# 基本应用→数据采集管理→采集质量分析→事件记录结果统计查询
 @ddt
 class TestEventRecResultStat(TestCase, EventRecResultStatPage):
 
@@ -95,7 +95,7 @@ class TestEventRecResultStat(TestCase, EventRecResultStatPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.eventRecResultStat_para))
     def test_query(self, para):
-        """基本应用→数据采集管理→采集质量分析→事件记录结果统计
+        """基本应用→数据采集管理→采集质量分析→事件记录结果统计查询
 
         :param para:
         """

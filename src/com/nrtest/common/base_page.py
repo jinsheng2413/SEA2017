@@ -427,7 +427,7 @@ class Page():
         self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx)
         self.query_timeout()
 
-    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False):
+    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True):
         """
         下拉单选框选择
         :param option: 参数格式：查询条件标签名;查询条件
@@ -435,6 +435,7 @@ class Page():
         :param sleep_sec:休眠n秒
         :param is_multi_elements:是否存在重复元素
         :param is_equalText: True-下拉选择值需完全匹配，Fase-部分匹配
+        :param byImg: 存在点下拉框下拉图标时，不能弹出下拉选择的问题，True-下拉框下拉图标，False-下拉框的INPUT
         """
         if (option.find(';') == -1):
             print('............请配置查询条件的标签值............')
@@ -446,7 +447,11 @@ class Page():
                 item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
             if bool(item):
                 # 打开下拉框
-                xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
+                if byImg:
+                    xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
+                else:
+                    xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
+
                 if is_multi_elements:
                     el = self._find_displayed_element(xpath)
                     el.click()

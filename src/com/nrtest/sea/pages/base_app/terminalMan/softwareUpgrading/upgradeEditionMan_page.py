@@ -26,8 +26,8 @@ class UpgradeEditionManPage(Page):
         self.selectDropDown(index)
 
     # 软件版本号
-    def inputSel_software_version_no(self, index):
-        self.selectDropDown(index)
+    def inputSel_software_version_no(self, option):
+        self.selectDropDown(option, byImg=False)
 
     # 查询按钮
     def btn_search(self):

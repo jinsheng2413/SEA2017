@@ -4,10 +4,11 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_OutMemberMan_Troop.py
+@file: test_outRanksMan.py
 @time: 2018/11/13 0013 10:16
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data

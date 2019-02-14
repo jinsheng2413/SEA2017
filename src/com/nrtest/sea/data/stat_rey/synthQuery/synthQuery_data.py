@@ -113,4 +113,4 @@ class SynthQuery_data:
     # 统计查询--综合查询--农排用户信息接入统计
     agriculturaiRowSta_para = '99941Q00'
     agriculturaiRowSta_stat = '农排用户信息接入统计'
-    agriculturaiRowSta_detail = '农排用户信息接入明细'
+    agriculturaiRowSta_detail = '农排用户接入明细'

@@ -41,3 +41,8 @@ class GatherQualityAnalyze_data:
     curCollectSuccessRate_tab = '实时采集成功率'
     curCollectSuccessRateCount_tab = '实时采集成功率统计'
     curCollectSuccessRateDetail_tab = '实时采集失败明细'
+
+    # 基本应用→数据采集管理→采集质量分析→关口采集质量分析
+    stratCollQualityAnalyze_para = '99913250'
+    stratCollQualityAnalyze_tabName_rate = '采集成功率'
+    stratCollQualityAnalyze_tabName_detail = '采集失败列表明细'

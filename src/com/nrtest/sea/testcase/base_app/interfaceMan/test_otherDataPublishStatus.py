@@ -56,7 +56,7 @@ class Test_otherDataPublishStatus(TestCase, OtherDataPublishStatusPage):
     def query(self, para):
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 业务系统
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])
@@ -88,6 +88,10 @@ class Test_otherDataPublishStatus(TestCase, OtherDataPublishStatusPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(InterfaceManager_data.para_otherMDataPublishStatus))
     def test_query(self, para):
+        """基本应用→接口管理→其他业务接口→数据发布情况
+
+        :param para:
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

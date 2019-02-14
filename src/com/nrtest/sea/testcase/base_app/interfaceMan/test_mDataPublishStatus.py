@@ -55,7 +55,7 @@ class Test_mDataPublishStatus2(TestCase, MDataPublishStatus2Page):
 
     def query(self, para):
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 业务系统
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])

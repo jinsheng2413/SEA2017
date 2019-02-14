@@ -1,42 +1,43 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 陈越峰
+@author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_StaticByOrg.py
-@time: 2018/10/30 13:46
+@file: test_work_order_statistical_analysis.py
+@time: 2019-02-14 10:39:23
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
+from com.nrtest.sea.data.run_man.equipmentInspection.equipmentInspection_data import EquipmentInspection_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.run_man.clock.clockRun_page import StaticByOrgPage
+# 运行管理→设备巡检→工单统计分析:工单明细查询
+from com.nrtest.sea.pages.run_man.equipmentInspection.workOrderStatisticalAnalysis_page import \
+    WorkOrderStatisticalAnalysis_query_Page
 
 
-# 运行管理→时钟管理→时钟运行质量分析
-# 按单位统计
 @ddt
-class TestStaticByOrg(TestCase, StaticByOrgPage):
+class test_WorkOrderStatisticalAnalysis_query(TestCase, WorkOrderStatisticalAnalysis_query_Page):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(ClockData.para_ClockRun)
+        menuPage = MenuPage.openMenu(EquipmentInspection_data.workOrderStatisticalAnalysis_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(ClockData.para_ClockRun_staticbyorg)
+        menuPage.clickTabPage(EquipmentInspection_data.workOrderStatisticalAnalysis_query_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        # 关闭页面
+        print("执行结束")
+        # 关闭菜单页面
         cls.closePages(cls)
 
     def setUp(self):
@@ -47,7 +48,7 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         :return:
         """
 
@@ -56,26 +57,41 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
 
     def query(self, para):
         """
+
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
-        # 打开左边树并选择
+        # 节点名
         self.openLeftTree(para['TREE_NODE'])
-        # 终端厂商
-        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        # 电能表厂商
-        self.inputSel_meter_factory(para['METER_FACTORY'])
-        # 查询日期
-        self.inputDt_query_date(para['QUERY_DATE'])
 
+        # 开始日期
+        self.inputDt_start_date(para['START_DATE'])
+
+        # 结束日期
+        self.inputDt_end_date(para['END_DATE'])
+
+        # 参数指标项
+        self.inputSel_para_tpi_nape(para['PARA_TPI_NAPE'])
+
+        # 包含仪器
+        self.inputChk_instrument(para['INSTRUMENT'])
+
+        # 厂家
+        self.inputSel_manufactory(para['MANUFACTORY'])
+
+        # 工单状态
+        self.inputSel_work_order_status(para['WORK_ORDER_STATUS'])
+
+        # 工单编号
+        self.inputStr_work_order_no(para['WORK_ORDER_NO'])
+
+        # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
-        查询结果校验
+        查询结果校验（包括跳转）
         :param para:
         """
         self.assertTrue(self.check_query_result(para))
@@ -88,14 +104,11 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_ClockRun,
-                                  ClockData.para_ClockRun_staticbyorg))
+    @data(*DataAccess.getCaseData(EquipmentInspection_data.workOrderStatisticalAnalysis_para,
+                                  EquipmentInspection_data.workOrderStatisticalAnalysis_query_tab))
     def test_query(self, para):
-        """运行管理→时钟管理→时钟运行质量分析:按单位统计
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
+        """运行管理→设备巡检→工单统计分析:工单明细查询
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -103,8 +116,8 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_ClockRun,
-                                  ClockData.para_ClockRun_staticbyorg, valCheck=True))
+    @data(*DataAccess.getCaseData(EquipmentInspection_data.workOrderStatisticalAnalysis_para,
+                                  EquipmentInspection_data.workOrderStatisticalAnalysis_query_tab, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: test_Tmnl.py
+@file: test_MetClockMonthStatic.py
 @time: 2018/11/1 9:46
 @desc:
 """

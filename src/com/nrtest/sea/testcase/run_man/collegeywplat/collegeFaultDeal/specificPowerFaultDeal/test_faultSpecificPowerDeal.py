@@ -4,7 +4,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_faultHandler.py
+@file: test_faultSpecificPowerDeal.py
 @time: 2018/11/12 0012 9:31
 @desc:
 """

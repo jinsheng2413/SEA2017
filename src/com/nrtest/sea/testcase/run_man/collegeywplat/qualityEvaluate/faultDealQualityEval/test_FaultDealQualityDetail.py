@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: test_Tmnl.py
+@file: test_FaultDealQualityDetail.py
 @time: 2018/11/12 9:20
 @desc:
 """

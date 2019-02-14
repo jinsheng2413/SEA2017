@@ -3,10 +3,11 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: test_Tmnl.py
+@file: test_TmnlManualCheck.py
 @time: 2018/10/30 13:46
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data

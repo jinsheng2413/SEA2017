@@ -1,42 +1,42 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 陈越峰
+@author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_StaticByOrg.py
-@time: 2018/10/30 13:46
+@file: test_sim_archives_man.py
+@time: 2019-02-14 10:01:57
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.clock.clock_data import ClockData
+from com.nrtest.sea.data.run_man.simCardMan import simCardMan_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.run_man.clock.clockRun_page import StaticByOrgPage
+from com.nrtest.sea.pages.run_man.simCardMan.sim_archives_man_page import SimArchivesManPage
 
 
-# 运行管理→时钟管理→时钟运行质量分析
-# 按单位统计
+# 运行管理→SIM卡管理→档案管理:01
 @ddt
-class TestStaticByOrg(TestCase, StaticByOrgPage):
+class test_SimArchivesMan(TestCase, SimArchivesManPage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(ClockData.para_ClockRun)
+        menuPage = MenuPage.openMenu(simCardMan_data.simArchivesMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(ClockData.para_ClockRun_staticbyorg)
+        menuPage.clickTabPage()
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        # 关闭页面
+        print("执行结束")
+        # 关闭菜单页面
         cls.closePages(cls)
 
     def setUp(self):
@@ -47,7 +47,7 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         :return:
         """
 
@@ -56,26 +56,29 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
 
     def query(self, para):
         """
+
         :param para: Dict类型的字典，不是dict
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        # 待提交批次号
+        self.inputStr_batch_no(para['BATCH_NO'])
 
-        # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
-        # 终端厂商
-        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        # 电能表厂商
-        self.inputSel_meter_factory(para['METER_FACTORY'])
-        # 查询日期
-        self.inputDt_query_date(para['QUERY_DATE'])
+        # 工作表名称
+        self.inputSel_work_table_name(para['WORK_TABLE_NAME'])
 
+        # 统一地区
+        self.inputSel_area_name(para['AREA_NAME'])
+
+        # 统一运营商
+        self.inputSel_operator(para['OPERATOR'])
+
+        # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
-        查询结果校验
+        查询结果校验（包括跳转）
         :param para:
         """
         self.assertTrue(self.check_query_result(para))
@@ -88,14 +91,10 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_ClockRun,
-                                  ClockData.para_ClockRun_staticbyorg))
+    @data(*DataAccess.getCaseData(simCardMan_data.simArchivesMan_para))
     def test_query(self, para):
-        """运行管理→时钟管理→时钟运行质量分析:按单位统计
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
+        """运行管理→SIM卡管理→档案管理:01
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -103,8 +102,7 @@ class TestStaticByOrg(TestCase, StaticByOrgPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ClockData.para_ClockRun,
-                                  ClockData.para_ClockRun_staticbyorg, valCheck=True))
+    @data(*DataAccess.getCaseData(simCardMan_data.simArchivesMan_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -92,8 +92,6 @@ class TestCurCollectSuccessRate(TestCase, CurCollectSuccessRate_count_Page):
                                   GatherQualityAnalyze_data.curCollectSuccessRateCount_tab))
     def test_query(self, para):
         """基本应用→数据采集管理→采集质量分析→实时采集成功率:实时采集成功率统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

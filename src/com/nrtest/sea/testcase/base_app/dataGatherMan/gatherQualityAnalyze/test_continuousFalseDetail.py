@@ -87,8 +87,6 @@ class TestContinuousFalseDetail(TestCase, ContinuousFalseDetailPage):
                                   GatherQualityAnalyze_data.GatherSuccessRate_tabName_continuous))
     def test_query(self, para):
         """基本应用→数据采集管理→采集质量分析→采集成功率:连续抄表失败明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

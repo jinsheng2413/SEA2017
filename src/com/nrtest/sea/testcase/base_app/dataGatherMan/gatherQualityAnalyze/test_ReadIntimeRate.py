@@ -7,6 +7,7 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -98,8 +99,6 @@ class TestReadIntimeRate(TestCase, ReadIntimeRatePage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.readIntimeRate_para))
     def test_query(self, para):
         """基本应用→数据采集管理→采集质量分析→采集及时率
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -96,8 +96,6 @@ class TestEventRecResultStat(TestCase, EventRecResultStatPage):
     @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.eventRecResultStat_para))
     def test_query(self, para):
         """基本应用→数据采集管理→采集质量分析→事件记录结果统计查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

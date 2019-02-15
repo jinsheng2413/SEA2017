@@ -100,8 +100,6 @@ class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
                                   GatherQualityAnalyze_data.GatherSuccessRate_tabName_time))
     def test_query(self, para):
         """基本应用→数据采集管理→采集质量分析→采集成功率:按时间统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

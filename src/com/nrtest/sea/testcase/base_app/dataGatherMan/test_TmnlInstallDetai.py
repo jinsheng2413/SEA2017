@@ -97,7 +97,6 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiStatPage):
                                   DataGatherMan_data.tmnlInstallDetail_tab_appCount))
     def test_query(self, para):
         """基本应用→终端管理→远程调试：终端调试工单统计
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

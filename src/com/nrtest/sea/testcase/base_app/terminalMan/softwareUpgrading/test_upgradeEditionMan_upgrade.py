@@ -91,8 +91,6 @@ class TestUpgradeEditionManUp(TestCase, UpgradeEditionManUpPage):
                                   SoftwareUpgrading_data.UpgradeEditionMan_tabName_upgrade))
     def test_query(self, para):
         """基本应用→终端管理→软件升级→升级版本管理:升级版本管理
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

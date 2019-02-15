@@ -95,8 +95,6 @@ class TestMetClockMonthStatic(TestCase, MetClockMonthStaticPage):
                                   ClockData.para_MetCheckClock_monthstatic))
     def test_query(self, para):
         """运行管理→时钟管理→电能表对时:电表时钟月统计
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

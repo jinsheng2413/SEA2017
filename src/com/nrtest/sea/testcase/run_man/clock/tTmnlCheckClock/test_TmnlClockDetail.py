@@ -108,8 +108,6 @@ class TestTmnlClockDetail(TestCase, TmnlClockDetailPage):
                                   ClockData.para_TTmnlCheckClock_detail))
     def test_query(self, para):
         """运行管理→时钟管理→终端对时:终端时钟明细
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

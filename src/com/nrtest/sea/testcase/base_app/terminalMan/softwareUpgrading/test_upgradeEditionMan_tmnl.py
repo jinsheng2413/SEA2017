@@ -90,8 +90,6 @@ class TestUpgradeEditionManCall(TestCase, UpgradeEditionManCallPage):
                                   SoftwareUpgrading_data.UpgradeEditionMan_tabName_tmnl))
     def test_query(self, para):
         """基本应用→终端管理→软件升级→升级版本管理:终端版本召测
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

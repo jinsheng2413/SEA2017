@@ -149,10 +149,9 @@ class BaseLocators(Locators):
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
     POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
 
+    # 【登录后清屏处理】
     # 账号异常信息弹窗确认
     DLG_EXCEPT = (By.XPATH, '//div[@id="index.loginExceptionWin"]//div[contains(@class, "x-tool-close")]')
-    # $x('//div[@id="index.loginExceptionWin"]//div[@class="x-tool x-tool-close "]')
-
     # 重要信息推出窗口关闭
     DLG_IMPORT = (By.XPATH, '//button[contains(text(), "不再提醒")]')
 

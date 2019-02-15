@@ -62,7 +62,7 @@ class TestWaveArchives_count(TestCase, WaveArchives_count_Page):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 输入台区编号
         self.inputStr_tg_no(para['TG_NO'])

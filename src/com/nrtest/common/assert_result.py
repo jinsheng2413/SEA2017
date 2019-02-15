@@ -438,7 +438,6 @@ class AssertResult(Page):
         result = True
         # 处理判断结果，具体那一步出错
         for item in ls_check_rslt.items():
-            print(item)
             if item[1] == False:
                 logger.error(
                     '用例编号:{case_id},错误类型:{type}'.format(case_id=para['TST_CASE_ID'], type=esplain[item[0]]))  # 出错具体原因

@@ -67,6 +67,9 @@ class TestTerminaldataquery(TestCase, TerminalDataQueryDataPage):
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
+        # 父级查询
+        self.btn_search()
+
         # Tab页名称
         self.inputChk_tab_name(para['TAB_NAME'])
 

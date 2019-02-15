@@ -52,5 +52,9 @@ class TerminalDataQueryDataPage(Page):
         self.input(value)
 
     # 查询
+    def btn_search(self):
+        self.btn_query(True)
+
+    # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True, idx=2)

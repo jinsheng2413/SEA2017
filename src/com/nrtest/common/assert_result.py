@@ -11,6 +11,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.global_drv import *
@@ -63,6 +64,7 @@ class AssertResult(Page):
         # result = self.assert_context((By.XPATH, skipMenuName))
         # return result
 
+    @BeautifulReport.add_popup_img(6)
     def skip_to_page(self, skipValue):
         """
         链接跳转:跳转到另一个页面
@@ -171,17 +173,18 @@ class AssertResult(Page):
         # 跳转传值验证是否正确
         res = False
         l = 0
+        line = self.checkBoxAssertLine(para[1])
         for x, y, item in zip(old_page_list, new_page_list, old_data):
             if x == y:
                 logger.info(
                     '跳转坐标（{row}行,{col}列）element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                        row=para[3], col=self.checkBoxAssertLine(para[1]) + 1, sn=item[11], xpath_old=item[5],
+                        row=para[3], col=line + 1, sn=item[11], xpath_old=item[5],
                         xpath_old_value=x, xpath_new=item[8], xpath_new_value=y))
                 res = True
             else:
                 logger.error(
                     '跳转坐标（{row}行，{col}列）,跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                        row=para[3], col=self.checkBoxAssertLine(para[1]) + 1, sn=item[11], xpath_old=item[5],
+                        row=para[3], col=line + 1, sn=item[11], xpath_old=item[5],
                         xpath_old_value=x, xpath_new=item[8], xpath_new_value=y))
                 l += 1
         # if l > 0:

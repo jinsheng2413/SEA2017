@@ -35,7 +35,7 @@ class MetClockMonthStaticPage(Page):
 class MetClockDayStaticPage(Page):
 
     # 统计类型
-    def inputChk_stat_mode(self, option):
+    def inputChk_stat_scope(self, option):
         self.clickRadioBox(option)
 
     # 电表类别--打开并选择

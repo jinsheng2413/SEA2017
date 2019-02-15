@@ -1,34 +1,35 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_dayReadData.py
-@time: 2019/1/31 0031 14:40
+@file: test_param_abnormal.py
+@time: 2019-02-15 14:37:38
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
+from com.nrtest.sea.data.run_man.equipmentInspection.equipmentInspection_data import EquipmentInspection_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-# 统计查询→综合查询→专公变综合查询:日抄表数据
-from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery import DayReadDataPage
+from com.nrtest.sea.pages.run_man.equipmentInspection.paramIndexMan_page import ParamIndexManPage
 
 
+# 运行管理→设备巡检→参数指标管理
 @ddt
-class test_DayReadData(TestCase, DayReadDataPage):
+class test_ParamAbnormal(TestCase, ParamIndexManPage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(SynthQuery_data.onlyChangeSysthesisQuery_para)
+        menuPage = MenuPage.openMenu(EquipmentInspection_data.paramIndexMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SynthQuery_data.onlyChangeSysthesisQuery_dayReadData_tab)
+        # menuPage.clickTabPage()
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -60,20 +61,14 @@ class test_DayReadData(TestCase, DayReadDataPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 用户编号
-        self.openLeftTree(para['TREE_CONS_NO'])
-        # 显示方式
-        self.inputChk_display_type(para['DISPLAY_TYPE'])
+        # 参数指标项
+        self.inputSel_para_tpi_nape(para['PARA_TPI_NAPE'])
 
-        # 从
-        self.inputDt_from_date(para['FROM_DATE'])
+        # 仪器
+        self.inputChk_instrument(para['INSTRUMENT'])
 
-        # 到
-        self.inputDt_from_to(para['FROM_TO'])
-        valu = self.get_para_value(para['DISPLAY_ALL_TMNL_INFO'])
-        if '是否显示所有终端信息' == valu:
-            # 是否显示所有终端信息
-            self.inputChk_display_all_tmnl_info(para['DISPLAY_ALL_TMNL_INFO'])
+        # 巡检类型
+        self.inputSel_polling_type(para['POLLING_TYPE'])
 
         # 查询
         self.btn_qry()
@@ -94,10 +89,9 @@ class test_DayReadData(TestCase, DayReadDataPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para,
-                                  SynthQuery_data.onlyChangeSysthesisQuery_dayReadData_tab))
+    @data(*DataAccess.getCaseData(EquipmentInspection_data.paramIndexMan_para))
     def test_query(self, para):
-        """统计查询→综合查询→专公变综合查询:日抄表数据
+        """运行管理→设备巡检→参数指标管理
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -105,8 +99,7 @@ class test_DayReadData(TestCase, DayReadDataPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para,
-                                  SynthQuery_data.onlyChangeSysthesisQuery_dayReadData_tab, valCheck=True))
+    @data(*DataAccess.getCaseData(EquipmentInspection_data.paramIndexMan_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

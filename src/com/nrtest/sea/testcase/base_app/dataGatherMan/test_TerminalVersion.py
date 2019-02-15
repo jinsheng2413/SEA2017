@@ -19,7 +19,6 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→终端离线明细
-
 @ddt
 class TestTerminalVersion(TestCase, TerminalVersionPage):
 
@@ -93,6 +92,8 @@ class TestTerminalVersion(TestCase, TerminalVersionPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.terminalVersion_para))
     def test_query(self, para):
+        """基本应用→终端管理→终端离线明细
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -22,3 +22,5 @@ class EquipmentInspection_data:
     paramAbnormal_para = '99938200'
     paramAbnormal_collect_tab = '反校汇总信息'
     paramAbnormal_detail_tab = '反校明细信息'
+    # 运行管理 →设备巡检 →参数指标管理
+    paramIndexMan_para = '99938100'

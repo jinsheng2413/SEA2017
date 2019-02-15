@@ -12,7 +12,7 @@ from com.nrtest.common.base_page import Page
 
 
 # 系统管理→日志管理→系统操作日志
-# 系统操作日志
+# 终端操作日志
 class SysOperationLogPage(Page):
     # 操作模块
     def inputSel_operation_module(self, options):

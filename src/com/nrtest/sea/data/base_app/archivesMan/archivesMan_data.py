@@ -26,6 +26,9 @@ class ArchivesMan_data:
 
     # 基本应用→档案管理→多表合一运行状态
     fourTabStatus_para = '99911930'
+    fourTabStatus_water_tab = '水户列表'
+    fourTabStatus_gas_tab = '气户列表'
+    fourTabStatus_heat_tab = '热户列表'
 
     # 基本应用→档案管理→电表批量导出（冀北）
     archivesAutoReview_para = '99911B00'

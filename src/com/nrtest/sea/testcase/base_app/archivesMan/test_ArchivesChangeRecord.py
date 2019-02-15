@@ -103,8 +103,6 @@ class TestArchivesChangeRecordPage(TestCase, ArchivesChangeRecordPage):
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesChangeRecord_para))
     def test_query(self, para):
         """ 基本应用→档案管理→档案变更记录
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

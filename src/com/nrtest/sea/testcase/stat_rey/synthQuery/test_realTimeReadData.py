@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_synthquery_data.py
+@file: test_realTimeReadData.py
 @time: 2019-02-01 14:05:55
 @desc:
 """

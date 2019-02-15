@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_archivesAnalysisOfAnomaly_count.py
+@file: test_archivesAnalysisOfAnomaly_detail.py
 @time: 2018/8/30 0030 9:11
 @desc:
 """
@@ -86,8 +86,6 @@ class test_archivesAnalysisOfAnomaly_detail(TestCase, ArchivesAnalysisOfAnomaly_
                                   ArchivesMan_data.archivesAnalysisOfAnomaly_detail_tab))
     def test_query(self, para):
         """基本应用→档案管理→档案异常分析：档案异常明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

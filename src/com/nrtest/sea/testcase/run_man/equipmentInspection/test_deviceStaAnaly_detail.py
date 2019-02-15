@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_device_sta_analy.py
+@file: test_deviceStaAnaly_detail.py
 @time: 2019-02-14 15:53:58
 @desc:
 """

@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_archivesManage.py
+@file: test_archivesQuery.py
 @time: 2018/8/29 0029 14:26
 @desc:
 """
@@ -85,8 +85,6 @@ class TestArchivesQuery(TestCase, ArchivesQueryPages):
     @data(*DataAccess.getCaseData(ArchivesManData.para_archivesQuery))
     def test_query(self, para):
         """基本应用→档案管理→档案查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -86,8 +86,6 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
                                   ArchivesMan_data.archivesAnalysisOfAnomaly_count_tab))
     def test_query(self, para):
         """基本应用→档案管理→档案异常分析：档案异常统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

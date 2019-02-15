@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_archivesMaintain_factory.py
+@file: test_archivesMaintain_meter.py
 @time: 2018/8/30 0030 15:30
 @desc:
 """
@@ -84,8 +84,6 @@ class TestarchivesMaintain_meter(TestCase, ArchivesMaintain_meter_pages):
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesMenTain, ArchivesMan_data.archivesMenTain_meter_tab))
     def test_query(self, para):
         """基本应用→档案管理→档案维护:电表维护
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

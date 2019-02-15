@@ -3,10 +3,11 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_WaveArchives_count.py
+@file: test_WaveArchives_detail.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -98,8 +99,6 @@ class TestWaveArchives_detail(TestCase, WaveArchives_detail_Page):
     @data(*DataAccess.getCaseData(ArchivesMan_data.waveArchives_para, ArchivesMan_data.waveArchives_detail_tab))
     def test_query(self, para):
         """基本应用→档案管理→载波档案校正:载波用户明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

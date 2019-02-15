@@ -96,8 +96,6 @@ class TestStrategicArchivesMaintain(TestCase, StrategicArchivesMaintainPage):
     @data(*DataAccess.getCaseData(ArchivesMan_data.strategicArchivesMaintain_para))
     def test_query(self, para):
         """基本应用→档案管理→巡检仪档案管理
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

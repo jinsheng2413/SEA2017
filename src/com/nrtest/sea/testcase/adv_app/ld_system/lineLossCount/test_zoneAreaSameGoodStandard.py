@@ -59,9 +59,9 @@ class TestRecordsQuery(TestCase, ZoneAreaSameGoodStandard_page):
         # 选择人员
         self.inputSel_select_person(para['SELECT_PERSON'])
         # 开始时间
-        self.inputStr_start_date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
         # 结束日期
-        self.inputStr_end_date(para['END_DATE'])
+        self.inputDt_end_date(para['END_DATE'])
 
         self.btn_qry()
 
@@ -83,7 +83,7 @@ class TestRecordsQuery(TestCase, ZoneAreaSameGoodStandard_page):
     # @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossCount_data.lineLossCount_para))
     def test_query(self, para):
-        """高级应用→智能锁具→记录查询:资产管理记录查询
+        """# 高级应用 → 台线系统 →线损统计 →台区同期月优秀达标查询
 
         :param para:
         """

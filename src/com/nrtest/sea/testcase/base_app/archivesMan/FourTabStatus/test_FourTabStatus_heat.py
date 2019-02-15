@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_FourTabStatus.py
+@file: test_FourTabStatus_heat.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.fourTabStatus_Page import FourTab
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→档案管理→多表合一运行状态
+# 基本应用→档案管理→多表合一运行状态:热户列表
 @ddt
 class TestFourTabStatus(TestCase, FourTabStatusPage):
 
@@ -28,7 +28,7 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
         menuPage = MenuPage.openMenu(ArchivesMan_data.fourTabStatus_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(ArchivesMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(ArchivesMan_data.fourTabStatus_heat_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
 
@@ -61,16 +61,12 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # self.clickTabPage(para['DISPLAY_TAB'])
 
         # 打开tab页,tab页先不不处理
         self.openLeftTree(para['TREE_NODE'])
 
         # 选择用户状态
         self.inputSel_cons_status(para['CONS_STATUS'])
-
-        # 选择用户列表
-        self.inputChk_cons_tab(para['CONS_TAB'])
 
         # 查询
         self.btn_qry()
@@ -91,11 +87,10 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesMan_data.fourTabStatus_para))
+    @data(*DataAccess.getCaseData(ArchivesMan_data.fourTabStatus_para,
+                                  ArchivesMan_data.fourTabStatus_heat_tab))
     def test_query(self, para):
-        """基本应用→档案管理→多表合一运行状态
-
-        :param para:
+        """基本应用→档案管理→多表合一运行状态:水户列表
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -103,7 +98,8 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesMan_data.fourTabStatus_para, valCheck=True))
+    @data(*DataAccess.getCaseData(ArchivesMan_data.fourTabStatus_para,
+                                  ArchivesMan_data.fourTabStatus_heat_tab, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

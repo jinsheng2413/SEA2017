@@ -7,6 +7,7 @@
 @time: 2018/9/10 0010 9:21
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -96,8 +97,6 @@ class TestReadCompleteRate(TestCase, ReadCompleteRate_detail_Page):
                                   GatherQualityAnalyze_data.readCompleteRateDetail_tab))
     def test_query(self, para):
         """基本应用→数据采集管理→采集质量分析→采集完整率: 采集完整率明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.countQuery(para)

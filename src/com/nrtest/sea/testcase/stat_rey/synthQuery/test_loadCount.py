@@ -92,7 +92,7 @@ class TestMeterDataQuery(TestCase, LoadCountPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para,
-                                  SynthQuery_data.onlyChangeSysthesisQuery_loadCount_tab)[0:1])
+                                  SynthQuery_data.onlyChangeSysthesisQuery_loadCount_tab))
     def test_query(self, para):
         """# 统计查询--综合查询--专公变综合查询：负荷统计
 

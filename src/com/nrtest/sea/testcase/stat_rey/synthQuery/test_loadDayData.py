@@ -108,7 +108,7 @@ class test_LoadDayData(TestCase, LoadDayDataPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para,
-                                  SynthQuery_data.onlyChangeSysthesisQuery_loadDayData_tab)[1:2])
+                                  SynthQuery_data.onlyChangeSysthesisQuery_loadDayData_tab))
     def test_query(self, para):
         """统计查询→综合查询→专公变综合查询:负荷日数据
         """

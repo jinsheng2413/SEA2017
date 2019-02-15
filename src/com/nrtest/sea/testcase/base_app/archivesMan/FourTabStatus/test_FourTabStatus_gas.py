@@ -90,7 +90,7 @@ class TestFourTabStatus(TestCase, FourTabStatusPage):
     @data(*DataAccess.getCaseData(ArchivesMan_data.fourTabStatus_para,
                                   ArchivesMan_data.fourTabStatus_gas_tab))
     def test_query(self, para):
-        """基本应用→档案管理→多表合一运行状态:水户列表
+        """基本应用→档案管理→多表合一运行状态:气户列表
         """
         self.start_case(para, __file__)
         self.query(para)

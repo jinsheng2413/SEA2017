@@ -186,6 +186,10 @@ class AssertResult(Page):
                     '跳转坐标（{row}行，{col}列）,跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
                         row=para[3], col=line + 1, sn=item[11], xpath_old=item[5],
                         xpath_old_value=x, xpath_new=item[8], xpath_new_value=y))
+                print(
+                    '\r\n跳转坐标（{row}行，{col}列）,跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
+                        row=para[3], col=line + 1, sn=item[11], xpath_old=item[5],
+                        xpath_old_value=x, xpath_new=item[8], xpath_new_value=y) + '\r\t')
                 l += 1
         # if l > 0:
         #     res = False

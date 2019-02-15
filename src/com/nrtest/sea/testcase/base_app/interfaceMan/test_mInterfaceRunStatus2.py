@@ -82,8 +82,6 @@ class Test_MInterfaceRunStatus2(TestCase, MInterfaceRunStatus2Page):
     @data(*DataAccess.getCaseData(InterfaceMan_data.para_mInterfaceRunStatus2))
     def test_query(self, para):
         """基本应用→接口管理→营销业务接口→接口运行状态
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_ArchivesAutoRevie.py
+@file: test_ArchivesAutoReview.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -90,7 +90,6 @@ class TestArchivesAutoRevie(TestCase, ArchivesAutoReviewPage):
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesAutoReview_para))
     def test_query(self, para):
         """基本应用→档案管理→电表批量导出（冀北）
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

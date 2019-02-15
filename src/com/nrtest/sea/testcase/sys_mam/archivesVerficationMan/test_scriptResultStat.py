@@ -4,7 +4,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_scriptResultDetail.py
+@file: test_scriptResultStat.py
 @time: 2018/11/20 0020 8:52
 @desc:
 """
@@ -92,8 +92,6 @@ class TestScriptResultStat(TestCase, ScriptResultStatPage):
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultStat_para))
     def test_query(self, para):
         """系统管理→档案核查管理→脚本结果统计查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

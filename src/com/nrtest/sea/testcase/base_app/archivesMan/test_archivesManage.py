@@ -98,8 +98,6 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesManage_para)[1:2])
     def test_query(self, para):
         """基本应用→档案管理→档案同步
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

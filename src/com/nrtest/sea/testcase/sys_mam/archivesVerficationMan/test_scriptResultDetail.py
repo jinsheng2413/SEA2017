@@ -95,8 +95,6 @@ class TestScriptResultDetail(TestCase, ScriptResultDetailPage):
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptResultDetail_para))
     def test_query(self, para):
         """系统管理→档案核查管理→脚本结果明细查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

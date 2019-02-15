@@ -98,8 +98,6 @@ class TestBatchFetch(TestCase, BatchFetchPage):
     @data(*DataAccess.getCaseData(DataGatherMan_data.batchFetch_para))
     def test_query(self, para):
         """基本应用→数据采集管理→数据召测→批量巡测
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

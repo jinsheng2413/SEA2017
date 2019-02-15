@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_transformer_load_rate_monitoring.py
+@file: test_transformerLoadRateMonitoring.py
 @time: 2019-02-01 15:48:44
 @desc:
 """

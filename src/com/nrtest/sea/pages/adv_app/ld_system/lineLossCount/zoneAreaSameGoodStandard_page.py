@@ -16,11 +16,11 @@ class ZoneAreaSameGoodStandard_page(Page):
         self.selectDropDown(value)
 
     # 开始时间
-    def inputStr_start_date(self, startDate):
+    def inputDt_start_date(self, startDate):
         self.inputDate(startDate)
 
     # 结束时间
-    def inputStr_end_date(self, end_Date):
+    def inputDt_end_date(self, end_Date):
         self.clean_label(end_Date)
         self.inputDate(end_Date)
 

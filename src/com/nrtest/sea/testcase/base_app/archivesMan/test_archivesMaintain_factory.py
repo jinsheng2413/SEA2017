@@ -81,8 +81,6 @@ class TestarchivesMaintain_factory(TestCase, ArchivesMaintain_factory_pages):
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesMenTain, ArchivesMan_data.archivesMenTain_factory_tab))
     def test_query(self, para):
         """基本应用→档案管理→档案维护:厂站维护
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

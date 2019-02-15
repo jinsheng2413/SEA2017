@@ -4,7 +4,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_verficationResultDetail.py
+@file: test_checkResultDetail.py
 @time: 2018/11/16 0016 14:33
 @desc:
 """
@@ -93,6 +93,8 @@ class TestCheckResultDetail(TestCase, CheckResultDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultDetail_para))
     def test_query(self, para):
+        """系统管理→档案核查管理→核查结果明细查询
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -99,8 +99,6 @@ class Test_ManualEdit(TestCase, ManualEditPage):
     @data(*DataAccess.getCaseData(InterfaceManager_data.para_ManualEdit))
     def test_query(self, para):
         """基本应用→接口管理→人工补录
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

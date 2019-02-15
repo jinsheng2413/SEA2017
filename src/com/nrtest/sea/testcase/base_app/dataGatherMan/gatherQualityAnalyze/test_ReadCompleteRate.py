@@ -107,8 +107,6 @@ class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
                                   GatherQualityAnalyze_data.readCompleteRate_tab))
     def test_query(self, para):
         """基本应用→数据采集管理→采集质量分析→采集完整率:采集完整率
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

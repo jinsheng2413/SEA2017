@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_EventRecResultStat.py
+@file: test_FourTabStatus_water.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -13,26 +13,24 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
-    GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.eventRecResultStat_Page import \
-    EventRecResultStatPage
+from com.nrtest.sea.data.base_app.archivesMan.archivesMan_data import ArchivesMan_data
+from com.nrtest.sea.pages.base_app.archivesMan.fourTabStatus_Page import FourTabStatusPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→数据采集管理→采集质量分析→事件记录结果统计查询
+# 基本应用→档案管理→多表合一运行状态:水户列表
 @ddt
-class TestEventRecResultStat(TestCase, EventRecResultStatPage):
+class TestFourTabStatus(TestCase, FourTabStatusPage):
 
     @classmethod
     def setUpClass(cls):
-        # # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.eventRecResultStat_para)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(ArchivesMan_data.fourTabStatus_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
+        menuPage.clickTabPage(ArchivesMan_data.fourTabStatus_water_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -52,7 +50,7 @@ class TestEventRecResultStat(TestCase, EventRecResultStatPage):
         :return:
         """
         # 去除查询干扰数据(要传入对应的page页面类)
-        # self.clear_values(EventRecResultStatPage)
+        # self.clear_values(FourTabStatusPage)
         # 回收左边树
         self.recoverLeftTree()
 
@@ -64,18 +62,14 @@ class TestEventRecResultStat(TestCase, EventRecResultStatPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 打开左边树并选择
+        # 打开tab页,tab页先不不处理
         self.openLeftTree(para['TREE_NODE'])
-        # 开始时间
-        self.inputDt_start_time(para['START_TIME'])
-        # 结束时间
-        self.inputDt_end_time(para['END_TIME'])
-        # 事件类型
-        self.inputSel_event_type(para['EVENT_TYPE'])
+
+        # 选择用户状态
+        self.inputSel_cons_status(para['CONS_STATUS'])
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -93,9 +87,10 @@ class TestEventRecResultStat(TestCase, EventRecResultStatPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.eventRecResultStat_para))
+    @data(*DataAccess.getCaseData(ArchivesMan_data.fourTabStatus_para,
+                                  ArchivesMan_data.fourTabStatus_water_tab))
     def test_query(self, para):
-        """基本应用→数据采集管理→采集质量分析→事件记录结果统计查询
+        """基本应用→档案管理→多表合一运行状态:水户列表
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -103,7 +98,8 @@ class TestEventRecResultStat(TestCase, EventRecResultStatPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.eventRecResultStat_para, valCheck=True))
+    @data(*DataAccess.getCaseData(ArchivesMan_data.fourTabStatus_para,
+                                  ArchivesMan_data.fourTabStatus_water_tab, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

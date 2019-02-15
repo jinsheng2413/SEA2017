@@ -261,7 +261,8 @@ class AssertResult(Page):
                 else:
                     for i in range(1, displayNum + 1):
                         # 显示区结果的每一行对应列的数据的xpath
-                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1, assertValues[2])
+                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
+                                                                             assertValues[2])
                         try:
                             assert_rslt = self.assert_context((By.XPATH, displayLineElement_index))
                             if assert_rslt:
@@ -337,7 +338,8 @@ class AssertResult(Page):
                                         old_page_list.append(item[9])
                                     # 获取查询条件输入框的值
                                     elif item[4] == '01':
-                                        locator_qry = self.get_xpath(DataAccess.get_xpath_tab_data(item[5], caseId, caseData['TAB_NAME'])[0][0])
+                                        locator_qry = self.get_xpath(
+                                            DataAccess.get_xpath_tab_data(item[5], caseId, caseData['TAB_NAME'])[0][0])
                                         old_page_list.append(self.get_text(locator_qry))
                                     else:
                                         old_page_list.append(self.driver.find_element(*locator).text)
@@ -436,10 +438,11 @@ class AssertResult(Page):
         result = True
         # 处理判断结果，具体那一步出错
         for item in ls_check_rslt.items():
-            print(item)
             if item[1] == False:
                 logger.error(
                     '用例编号:{case_id},错误类型:{type}'.format(case_id=para['TST_CASE_ID'], type=esplain[item[0]]))  # 出错具体原因
+
+                print('用例编号:{case_id},错误类型:{type}'.format(case_id=para['TST_CASE_ID'], type=esplain[item[0]]))
                 result = item[1]
                 return result
         return result
@@ -560,7 +563,7 @@ class AssertResultLocators:
 
     # link 数据是否对应(显示区右下角查询的数据总量)
     LINK_DATA = (
-    By.XPATH, '(//*[@id="UserDistStat_DetailGrid"]//tr[@class="x-toolbar-right-row"]//div[@class="xtb-text"])[1]')
+        By.XPATH, '(//*[@id="UserDistStat_DetailGrid"]//tr[@class="x-toolbar-right-row"]//div[@class="xtb-text"])[1]')
     # 删除空格
     CLEAN_BLANK = r'''var elements,el,txt;
                     elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);

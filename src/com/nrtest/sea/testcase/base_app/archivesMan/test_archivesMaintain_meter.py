@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_archivesMaintain_factory.py
+@file: test_archivesMaintain_meter.py
 @time: 2018/8/30 0030 15:30
 @desc:
 """
@@ -18,7 +18,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesMaintain_page import Arch
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→档案管理→档案维护：电表维护
+# 基本应用→档案管理→档案维护:电表维护
 @ddt
 class TestarchivesMaintain_meter(TestCase, ArchivesMaintain_meter_pages):
     @classmethod
@@ -83,9 +83,7 @@ class TestarchivesMaintain_meter(TestCase, ArchivesMaintain_meter_pages):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesMenTain, ArchivesMan_data.archivesMenTain_meter_tab))
     def test_query(self, para):
-        """基本应用→档案管理→档案维护：电表维护
-
-        :param para:
+        """基本应用→档案管理→档案维护:电表维护
         """
         self.start_case(para, __file__)
         self.query(para)

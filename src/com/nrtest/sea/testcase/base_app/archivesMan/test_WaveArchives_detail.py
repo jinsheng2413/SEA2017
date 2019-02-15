@@ -3,10 +3,11 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_WaveArchives_count.py
+@file: test_WaveArchives_detail.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -18,7 +19,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.waveArchives_pages import WaveArc
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→档案管理→载波档案校正：载波用户明细
+# 基本应用→档案管理→载波档案校正:载波用户明细
 @ddt
 class TestWaveArchives_detail(TestCase, WaveArchives_detail_Page):
 
@@ -62,7 +63,7 @@ class TestWaveArchives_detail(TestCase, WaveArchives_detail_Page):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 输入台区编号
         self.inputStr_tg_no(para['TG_NO'])
@@ -97,9 +98,7 @@ class TestWaveArchives_detail(TestCase, WaveArchives_detail_Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesMan_data.waveArchives_para, ArchivesMan_data.waveArchives_detail_tab))
     def test_query(self, para):
-        """基本应用→档案管理→载波档案校正：载波用户明细
-
-        :param para:
+        """基本应用→档案管理→载波档案校正:载波用户明细
         """
         self.start_case(para, __file__)
         self.query(para)

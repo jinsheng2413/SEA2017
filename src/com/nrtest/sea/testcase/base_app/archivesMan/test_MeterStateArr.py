@@ -82,10 +82,6 @@ class TestMeterStateArr(TestCase, MeterStateArrPage):
         self.btn_qry()
         self.sleep_time(2)
 
-    # @data(*DataAccess.getCaseData(ArchivesMan_data.meterStateArr_para))
-    # def test_tmnl_query(self, para):
-    #     self.query(para)
-
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）
@@ -105,8 +101,6 @@ class TestMeterStateArr(TestCase, MeterStateArrPage):
     @data(*DataAccess.getCaseData(ArchivesMan_data.meterStateArr_para))
     def test_query(self, para):
         """基本应用→档案管理→电能表状态维护
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

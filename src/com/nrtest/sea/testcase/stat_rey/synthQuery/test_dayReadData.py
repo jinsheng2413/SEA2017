@@ -95,7 +95,7 @@ class test_DayReadData(TestCase, DayReadDataPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para,
-                                  SynthQuery_data.onlyChangeSysthesisQuery_dayReadData_tab)[2:3])
+                                  SynthQuery_data.onlyChangeSysthesisQuery_dayReadData_tab))
     def test_query(self, para):
         """统计查询→综合查询→专公变综合查询:日抄表数据
         """

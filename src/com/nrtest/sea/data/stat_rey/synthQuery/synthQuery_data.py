@@ -93,6 +93,9 @@ class SynthQuery_data:
     ConsDataQuery_para = '99941100'
     # 统计查询→综合查询→终端数据查询
     TmnlDataQuery_para = '99941200'
+    TmnlDataQuery_Doc = '基本档案'
+    TmnlDataQuery_DataDisp = '数据展示'
+
     # 统计查询--综合查询--配变数据查询
     CollcateDataQuery_para = '99941300'
     # 统计查询--综合查询--线路数据查询

@@ -227,6 +227,7 @@ class GenFile():
         with open(filelistlog, 'a+', encoding='utf-8') as fo:
             fo.writelines(lines)
 
+
 if __name__ == '__main__':
     genPageFile = GenFile(page_type)
     genPageFile.gen_file()

@@ -67,6 +67,9 @@ class Page():
             self.menu_path = menu_page.menu_path
             # 提取点查询按钮后报共性异常对话框信息
             self.except_dlgs = DataAccess.get_data_dictionary('EXCEPT_DLG')
+
+            # 跳转时目标页面报错信息
+            self.skip_except_dlg = []
         else:
             self.menu_no = ''
             self.menu_name = ''
@@ -91,6 +94,16 @@ class Page():
         :param *args: 测试用例外的其他途径弹窗判断：01-点击菜单直接弹窗报错；
         :return: 弹窗信息，弹窗按钮，辅助信息（有弹窗只截图，不抛异常）
         """
+
+        def find_except_dlg(info):
+            # 弹窗是共性报错弹窗
+            is_find = False
+            for dlg in self.except_dlgs:
+                is_find = dlg in info
+                if is_find:
+                    break
+            return is_find
+
         action = '00'
         info = ''
         # dlg_src:1-一般用例；2-查询条件有效性用例;3-点菜单时报错；4-add_test_img弹窗处理;5-左边树选择弹窗;6-查询结果跳转异常
@@ -109,14 +122,14 @@ class Page():
                 # 03-针对符合期望值的弹窗有效性判断；
                 action = '01'
                 if dlg_src == 1:
-                    # 弹窗是共性报错弹窗
-                    is_find = False
-                    for dlg in self.except_dlgs:
-                        is_find = dlg in info
-                        if is_find:
-                            break
+                    # # 弹窗是共性报错弹窗
+                    # is_find = False
+                    # for dlg in self.except_dlgs:
+                    #     is_find = dlg in info
+                    #     if is_find:
+                    #         break
 
-                    if not is_find:
+                    if not find_except_dlg(info):
                         popup_type = self.case_para['POPUP_TYPE']
                         if popup_type > '00':
                             dlg_info = self.case_para['EXPECTED_RST']
@@ -125,6 +138,10 @@ class Page():
                                 action = '01' if popup_type == '01' else '03'
                             else:
                                 info = '期望提示框信息：' + dlg_info + '\r实际提示信息' + info
+                elif dlg_src == 6:
+                    action = '02'
+                    key = '01' if find_except_dlg(info) else '02'
+                    self.skip_except_dlg.append({key, info})
 
             elif dlg_src == 5:
                 action = '01'
@@ -159,6 +176,15 @@ class Page():
                 self.save_img(img_path, img_name)
 
         return dlg_src, action, info
+
+    def get_skip_except_info(self):
+        """
+        获取skip跳转弹窗异常信息
+        :return: None-没弹窗异常发生；否则有弹窗异常，返回数据是个字典，格式如下：
+                key：01-明确为异常弹窗；02-其他未知弹窗
+                value：弹窗信息
+        """
+        return self.skip_except_dlg.pop() if bool(self.skip_except_dlg) else None
 
     def fail_on_screenshot(self, func):
         """

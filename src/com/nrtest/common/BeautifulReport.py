@@ -20,7 +20,7 @@ from functools import wraps
 from io import StringIO
 
 from com.nrtest.common.setting import Setting
-from com.nrtest.common.user_except import PopupError, TestImgError
+from com.nrtest.common.user_except import PopupError, TestImgError, TestSkipError
 
 __all__ = ['BeautifulReport']
 
@@ -438,7 +438,7 @@ class BeautifulReport(ReportTestResult, PATH):
                         print(HTML_IMG_TEMPLATE.format(data))
                         if action in ['01', '04']:
                             raise TestImgError(info)
-                except (PopupError, TestImgError) as pe:
+                except (PopupError, TestImgError, TestSkipError) as pe:
                     raise pe
                 except Exception as ex:
                     img_name = func.__name__ + '_' + time.strftime('%Y%m%d%H%M%S') + '.png'

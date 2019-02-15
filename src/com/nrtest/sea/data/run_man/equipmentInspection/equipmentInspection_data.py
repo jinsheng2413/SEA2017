@@ -18,3 +18,7 @@ class EquipmentInspection_data:
     deviceStaAnaly_para = '99938300'
     deviceStaAnaly_count_tab = '设备巡检合格率统计'
     deviceStaAnaly_detail_tab = '设备巡检指标参数明细'
+    # 运行管理 →设备巡检 →参数档案异常反校
+    paramAbnormal_para = '99938200'
+    paramAbnormal_collect_tab = '反校汇总信息'
+    paramAbnormal_detail_tab = '反校明细信息'

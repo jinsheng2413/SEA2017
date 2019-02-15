@@ -37,3 +37,9 @@ class DataGatherMan_data:
 
     # 基本应用→数据采集管理→终端任务配置
     tmnlTaskDeploy_para = '99913800'
+
+    # 基本应用→数据采集管理→数据发布(河北)
+    synDayReadDatahb_para = '99913500'
+
+    # 基本应用→数据采集管理→巡检仪采集完整率
+    readCompleteRateCT_para = '99913910'

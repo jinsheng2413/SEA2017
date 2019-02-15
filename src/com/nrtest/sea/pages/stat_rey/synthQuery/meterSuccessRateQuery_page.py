@@ -14,6 +14,11 @@ from com.nrtest.common.base_page import Page
 # 统计查询→综合查询→抄表成功率查询（河北）
 # 按地区、厂家统计
 class MeterSuccessRateQueryPage(Page):
+
+    # Tab页选项选择
+    def inputChk_tab_name(self, tab_name):
+        self.clickTabPage(tab_name)
+
     # 日期
     def inputDt_query_date(self, content):
         self.inputDate(content)
@@ -118,6 +123,10 @@ class MeterSuccessRateQueryHuaBeiPage(Page):
 
 # 连续抄表失败明细
 class MeterSuccessRateQueryFailedPage(Page):
+    # Tab页选项选择
+    def inputChk_tab_name(self, tab_name):
+        self.clickTabPage(tab_name)
+
     # 日期
     def inputDt_query_date(self, index):
         self.inputDate(index)

@@ -53,14 +53,7 @@ class TestMeterSuccessRateQuery(TestCase, MeterSuccessRateQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        if para['TAB_NAME'] == '1':
-            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName1)
-        if para['TAB_NAME'] == '2':
-            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName2)
-        if para['TAB_NAME'] == '3':
-            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName3)
-        if para['TAB_NAME'] == '4':
-            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName4)
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 日期
@@ -75,8 +68,14 @@ class TestMeterSuccessRateQuery(TestCase, MeterSuccessRateQueryPage):
         self.inputSel_protocol_type(para['PROTOCOL_TYPE'])
         # 用户范围
         self.inputSel_cons_range(para['CONS_RANGE'])
-        # 统计类型
-        self.inputSel_stat_type(para['STAT_TYPE'])
+
+        if self.get_para_value(para['TAB_NAME']) == '按地区':
+            # 统计类型
+            self.inputSel_stat_type(para['STAT_TYPE'])
+
+        # Tab页选项选择
+        self.inputChk_tab_name(para['TAB_NAME'])
+
         # 查询按钮
         self.btn_search()
 

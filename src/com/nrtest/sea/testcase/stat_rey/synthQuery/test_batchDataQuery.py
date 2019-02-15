@@ -56,24 +56,24 @@ class TestBatchDataQuery(TestCase, BatchDataQueryPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
         # 终端资产号
         self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
+
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
+
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
+        # 采集数据Tab页选择
+        self.inputChk_tab_name(para['TAB_NAME'])
+
         # 查询按钮
         self.btn_search()
-        if para['TAB_NAME'] == '1':
-            self.clickTabPage(SynthQuery_data.BatchDataQuery_tabName1)
-        if para['TAB_NAME'] == '2':
-            self.clickTabPage(SynthQuery_data.BatchDataQuery_tabName2)
-        if para['TAB_NAME'] == '3':
-            self.clickTabPage(SynthQuery_data.BatchDataQuery_tabName3)
-        if para['TAB_NAME'] == '4':
-            self.clickTabPage(SynthQuery_data.BatchDataQuery_tabName4)
 
     def assert_query_result(self, para):
         """
@@ -94,8 +94,6 @@ class TestBatchDataQuery(TestCase, BatchDataQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.BatchDataQuery_para))
     def test_query(self, para):
         """统计查询→综合查询→批量数据查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

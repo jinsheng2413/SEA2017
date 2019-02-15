@@ -791,7 +791,10 @@ class Page():
         """
         if tab_name.find(';') >= 0:
             ls_items = tab_name.split(';')
-            tab = ls_items[1]
+            if len(ls_items) == 2:
+                tab = ls_items[1]
+            else:
+                tab = ls_items[2] if bool(ls_items[2]) else ls_items[1]
         else:
             tab = tab_name
 

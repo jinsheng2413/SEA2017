@@ -18,10 +18,7 @@ class SynthQuery_data:
     sectDataQuery_tabName_data = '数据展示'
     # 统计查询→综合查询→批量数据查询
     BatchDataQuery_para = '99941700'
-    BatchDataQuery_tabName1 = '电压曲线'
-    BatchDataQuery_tabName2 = '电流曲线'
-    BatchDataQuery_tabName3 = '电量'
-    BatchDataQuery_tabName4 = '负荷'
+
     # 统计查询→综合查询→全事件电表事件查询
     AllEventMeterEventQuery_para = '99941702'
     # 统计查询→综合查询→线路拓扑图
@@ -40,15 +37,16 @@ class SynthQuery_data:
     # 统计查询→综合查询→抄表成功率查询（河北）
     MeterSuccessRateQuery_para = '99941930'
     MeterSuccessRateQuery_tabName = '按地区、厂家统计'
-    MeterSuccessRateQuery_tabName1 = '按地区'
-    MeterSuccessRateQuery_tabName2 = '按终端厂家'
-    MeterSuccessRateQuery_tabName3 = '按芯片厂家'
-    MeterSuccessRateQuery_tabName4 = '按电表芯片厂家'
     MeterSuccessRateQuery_tabName_time = '按时间统计'
     MeterSuccessRateQuery_tabName_huaBei = '按华北要求统计'
     MeterSuccessRateQuery_tabName_failed = '连续抄表失败明细'
-    MeterSuccessRateQuery_tabName_failed1 = '连续抄表失败统计'
-    MeterSuccessRateQuery_tabName_failed2 = '连续N天抄表失败明细'
+
+    # MeterSuccessRateQuery_tabName1 = '按地区'
+    # MeterSuccessRateQuery_tabName2 = '按终端厂家'
+    # MeterSuccessRateQuery_tabName3 = '按芯片厂家'
+    # MeterSuccessRateQuery_tabName4 = '按电表芯片厂家'
+    # MeterSuccessRateQuery_tabName_failed1 = '连续抄表失败统计'
+    # MeterSuccessRateQuery_tabName_failed2 = '连续N天抄表失败明细'
     # 统计查询→综合查询→多表合一抄表数据查询
     MultipleTableDataQuery_para = '99941A00'
     MultipleTableDataQuery_tabName = '用户抄表数据'

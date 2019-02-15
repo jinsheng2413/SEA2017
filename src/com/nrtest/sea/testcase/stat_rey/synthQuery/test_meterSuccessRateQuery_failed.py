@@ -53,26 +53,22 @@ class TestMeterSuccessRateFailedQuery(TestCase, MeterSuccessRateQueryFailedPage)
         self.recoverLeftTree()
 
     def query(self, para):
-        if para['TAB_NAME'] == '1':
-            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName_failed1)
-            # 打开左边树并选择
-            self.openLeftTree(para['TREE_NODE'])
-            # 用户类型
-            self.inputSel_cons_type(para['CONS_TYPE'])
-            # 运行状态
-            self.inputSel_run_status(para['RUN_STATUS'])
+        # Tab页选项选择
+        self.inputChk_tab_name(para['TAB_NAME'])
+
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
+        # 用户类型
+        self.inputSel_cons_type(para['CONS_TYPE'])
+        # 运行状态
+        self.inputSel_run_status(para['RUN_STATUS'])
+
+        if self.get_para_value(para['TAB_NAME']) == '连续抄表失败统计':
             # 日期
             self.inputDt_query_date(para['QUERY_DATE'])
-        if para['TAB_NAME'] == '2':
-            self.clickTabPage(SynthQuery_data.MeterSuccessRateQuery_tabName_failed2)
-            # 打开左边树并选择
-            self.openLeftTree(para['TREE_NODE'])
-            # 用户类型
-            self.inputSel_cons_type(para['CONS_TYPE'])
+        else:
             # 接线方式
             self.inputSel_wiring_mode(para['WIRING_MODE'])
-            # 运行状态
-            self.inputSel_run_status(para['RUN_STATUS'])
             # 用户编号
             self.inputStr_cons_no(para['CONS_NO'])
             # 终端地址
@@ -83,6 +79,7 @@ class TestMeterSuccessRateFailedQuery(TestCase, MeterSuccessRateQueryFailedPage)
             self.inputStr_read_fail_days_start(para['READ_FAIL_DAYS_START'])
             # 到
             self.inputStr_read_fail_days_end(para['READ_FAIL_DAYS_END'])
+
         # 查询按钮
         self.btn_search()
 

@@ -85,7 +85,7 @@ class TestTerminalDataQueryDoc(TestCase, TerminalDataQueryDocPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para))
+    @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para, SynthQuery_data.TmnlDataQuery_Doc))
     def test_query(self, para):
         """统计查询→综合查询→终端数据查询:基本档案
         """
@@ -95,7 +95,7 @@ class TestTerminalDataQueryDoc(TestCase, TerminalDataQueryDocPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para, SynthQuery_data.TmnlDataQuery_Doc, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

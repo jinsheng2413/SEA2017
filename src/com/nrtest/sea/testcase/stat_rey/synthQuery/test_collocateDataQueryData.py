@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 韩笑
+@author: 李建方
 @license: (C) Copyright 2018, Nari.
-@file: test_publicDataQueryPage.py
-@time: 2018/8/16 0002 10:20
+@file: test_collocateDataQueryData.py
+@time: 2019-02-15 16:15
 """
 
 from unittest import TestCase
@@ -16,12 +16,12 @@ from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.collocateDataQuery import CollcateDataQueryPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.collocateDataQuery_page import CollcateDataQueryDataPage
 
 
-# 统计查询→综合查询→配变数据查询
+# 统计查询→综合查询→配变数据查询:基本档案
 @ddt
-class TestCollcateDataQuery(TestCase, CollcateDataQueryPage):
+class TestCollcateDataQueryDoc(TestCase, CollcateDataQueryDataPage):
 
     @classmethod
     def setUpClass(cls):
@@ -29,9 +29,9 @@ class TestCollcateDataQuery(TestCase, CollcateDataQueryPage):
         menuPage = MenuPage.openMenu(SynthQuery_data.CollcateDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(SynthQuery_data.CollcateDataQuery_Data)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        # menuPage.remove_dt_readonly()
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -62,17 +62,27 @@ class TestCollcateDataQuery(TestCase, CollcateDataQueryPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 打开左边树并选择ljf
+        # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-
-        # 配变用户
-        # self.inputStr_cons_no(para['CONS_NO'])
 
         # 配变表号
         self.inputSel_meter_asset_no(para['METER_ASSET_NO'])
 
+        # 父级查询
+        self.btn_search()
+
+        # Tab页名称
+        self.inputChk_tab_name(para['TAB_NAME'])
+
+        # 查询日期
+        self.inputStr_query_date(para['QUERY_DATE'])
+
+        if self.get_para_value(para['TAB_NAME']) != '功率因数曲线':
+            # 一二次测量值
+            self.inputSel_meas_value(para['MEAS_VALUE'])
+
+        # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -90,9 +100,9 @@ class TestCollcateDataQuery(TestCase, CollcateDataQueryPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.CollcateDataQuery_para))
+    @data(*DataAccess.getCaseData(SynthQuery_data.CollcateDataQuery_para, SynthQuery_data.CollcateDataQuery_Data))
     def test_query(self, para):
-        """统计查询→综合查询→配变数据查询
+        """统计查询→综合查询→配变数据查询:基本档案
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -100,7 +110,7 @@ class TestCollcateDataQuery(TestCase, CollcateDataQueryPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.CollcateDataQuery_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.CollcateDataQuery_para, SynthQuery_data.CollcateDataQuery_Data, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

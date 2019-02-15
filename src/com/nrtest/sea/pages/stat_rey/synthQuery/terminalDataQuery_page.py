@@ -51,7 +51,7 @@ class TerminalDataQueryDataPage(Page):
     def inputStr_end_date(self, value):
         self.input(value)
 
-    # 查询
+    # 父级查询
     def btn_search(self):
         self.btn_query(True)
 

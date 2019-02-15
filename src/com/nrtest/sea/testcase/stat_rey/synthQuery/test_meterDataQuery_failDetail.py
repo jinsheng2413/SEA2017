@@ -20,6 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.meterDataQuery_page import MeterDataQueryFailDetailPage
 
 
+# 统计查询→综合查询→抄表数据查询:抄表失败明细
 @ddt
 class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
 
@@ -61,18 +62,17 @@ class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+
         # 节点名
         self.openLeftTree(para['TREE_NODE'])
 
         # 日冻结曲线类型
         self.inputChk_day_freeze_curve_type(para['DAY_FREEZE_CURVE_TYPE'])
         val = self.get_para_value(para['DAY_FREEZE_CURVE_TYPE'])
-        if '日' in val:
+        is_uip_curve = val in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线']
+        if is_uip_curve:
             # 相位
             self.inputSel_phase_code(para['PHASE_CODE'])
-
-        # 日冻结示值
-        self.inputChk_day_reeze_show_value(para['DAY_REEZE_SHOW_VALUE'])
 
         # 抄表段号
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
@@ -83,29 +83,33 @@ class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
 
-        # 查询日期
-        self.inputDt_query_date(para['QUERY_DATE'])
-
-        # 数据类别
-        self.inputChk_data_sort(para['DATA_SORT'])
-
-        # 电能表抄读状态
-        self.inputSel_meter_read_status(para['METER_READ_STATUS'])
-
-        # 终端运行状态
-        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
-
-        # 农排用户选择
-        self.inputSel_user_select(para['USER_SELECT'])
-
-        # 用户类别
-        self.inputSel_cons_sort(para['CONS_SORT'])
+        if val == '日冻结电能示值':
+            # 反相采集结果
+            self.inputSel_recerse_collection_result(para['RECERSE_COLLECTION_RESULT'])
+            # 数据类别
+            self.inputChk_data_sort(para['DATA_SORT'])
 
         # 终端厂家
         self.inputSel_tmnl_manufacturer(para['TMNL_MANUFACTURER'])
 
-        # 反相采集结果
-        self.inputSel_recerse_collection_result(para['RECERSE_COLLECTION_RESULT'])
+        # 终端运行状态
+        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
+
+        # 电能表抄读状态
+        self.inputSel_meter_read_status(para['METER_READ_STATUS'])
+
+        # 用户类别
+        self.inputSel_cons_sort(para['CONS_SORT'])
+
+        # 查询日期
+        self.inputDt_query_date(para['QUERY_DATE'])
+
+        if is_uip_curve:
+            # 到
+            self.inputDt_to_date(para['TO_DATE'])
+
+        # 农排用户选择
+        self.inputSel_user_select(para['USER_SELECT'])
 
         # 查询
         self.btn_qry()

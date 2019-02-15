@@ -98,6 +98,9 @@ class SynthQuery_data:
 
     # 统计查询--综合查询--配变数据查询
     CollcateDataQuery_para = '99941300'
+    CollcateDataQuery_Doc = '基本档案'
+    CollcateDataQuery_Data = '数据展示'
+
     # 统计查询--综合查询--线路数据查询
     lineDataQuery_para = '99941400'
     # 统计查询→综合查询→专公变明细查询(江西)

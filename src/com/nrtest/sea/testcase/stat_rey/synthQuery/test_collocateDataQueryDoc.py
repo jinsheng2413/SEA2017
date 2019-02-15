@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 郭春彪
+@author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_meterDataQuery_count.py
-@time: 2019-02-12 15:50:00
-@desc:
+@file: test_collocateDataQueryDoc.py
+@time: 2018/8/16 0002 10:20
 """
 
 from unittest import TestCase
@@ -13,23 +12,24 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.meterDataQuery_page import MeterDataQueryCountPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.collocateDataQuery_page import CollcateDataQueryDocPage
 
 
-# 统计查询→综合查询→抄表数据查询:抄表失败统计
+# 统计查询→综合查询→配变数据查询:基本档案
 @ddt
-class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryCountPage):
+class TestCollcateDataQueryDoc(TestCase, CollcateDataQueryDocPage):
 
     @classmethod
     def setUpClass(cls):
-        # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(SynthQuery_data.MeterDataQuery_para)
+        # 打开菜单（需要传入对应的菜单编号）ljf
+        menuPage = MenuPage.openMenu(SynthQuery_data.CollcateDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SynthQuery_data.MeterDataQuery_count_tab)
+        menuPage.clickTabPage(SynthQuery_data.CollcateDataQuery_Doc)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -61,25 +61,13 @@ class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryCountPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 节点名
+
+        # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        # 日冻结曲线类型
-        self.inputChk_day_freeze_curve_type(para['DAY_FREEZE_CURVE_TYPE'])
+        # 配变表号
+        self.inputSel_meter_asset_no(para['METER_ASSET_NO'])
 
-        val = self.get_para_value(para['DAY_FREEZE_CURVE_TYPE'])
-        if val in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线']:
-            # 相位
-            self.inputSel_phase_code(para['PHASE_CODE'])
-
-
-        # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
-
-        # 查询日期
-        self.inputDt_query_date(para['QUERY_DATE'])
-
-        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):
@@ -87,7 +75,7 @@ class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryCountPage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult(self).check_query_result(para))
 
     def assert_query_criteria(self, para):
         """
@@ -98,9 +86,9 @@ class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryCountPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.MeterDataQuery_para, SynthQuery_data.MeterDataQuery_count_tab))
+    @data(*DataAccess.getCaseData(SynthQuery_data.CollcateDataQuery_para, SynthQuery_data.CollcateDataQuery_Doc))
     def test_query(self, para):
-        """统计查询→综合查询→抄表数据查询:抄表失败统计
+        """统计查询→综合查询→配变数据查询:基本档案
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -108,8 +96,7 @@ class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryCountPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.MeterDataQuery_para, SynthQuery_data.MeterDataQuery_count_tab,
-                                  valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.CollcateDataQuery_para, SynthQuery_data.CollcateDataQuery_Doc, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -89,8 +89,6 @@ class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Pag
                                   InterfaceMan_data.para_MServiceCallStatus_detail))
     def test_query(self, para):
         """基本应用→接口管理→其他业务接口→服务调用情况:服务调用明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -95,8 +95,6 @@ class Test_ManualEditQH(TestCase, ManualEditQHPage):
     @data(*DataAccess.getCaseData(InterfaceManager_data.para_ManualEditQH))
     def test_query(self, para):
         """基本应用→接口管理→人工补录（青海）
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

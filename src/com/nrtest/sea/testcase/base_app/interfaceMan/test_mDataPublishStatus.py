@@ -89,8 +89,6 @@ class Test_mDataPublishStatus2(TestCase, MDataPublishStatus2Page):
     @data(*DataAccess.getCaseData(InterfaceManager_data.para_MDataPublishStatus2))
     def test_query(self, para):
         """基本应用→接口管理→营销业务接口→数据发布情况
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

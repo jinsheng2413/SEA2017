@@ -92,8 +92,6 @@ class TestInterfaceMonitor(TestCase, InterfaceMonitorPage):
     @data(*DataAccess.getCaseData(MDataPublishStatus_data.interfaceMonitor_para))
     def test_query(self, para):
         """基本应用→接口管理→接口管理
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

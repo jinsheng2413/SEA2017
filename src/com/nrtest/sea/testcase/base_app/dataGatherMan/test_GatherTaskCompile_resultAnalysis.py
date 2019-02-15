@@ -96,8 +96,6 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompile_result_Page):
                                   DataGatherMan_data.atherTaskCompile_tab_resultAnaylsis_task))
     def test_query(self, para):
         """基本应用→数据采集管理→定制任务管理:执行结果分析
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

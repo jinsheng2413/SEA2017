@@ -61,8 +61,11 @@ class TestTerminaldataquery(TestCase, TerminalDataQueryDataPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 终端资产号
-        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
+        if 'TREE_NODE' in para:
+            self.openLeftTree(para['TREE_NODE'])
+        else:
+            # 终端资产号
+            self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
 
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])

@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.base_app.dataGatherMan.tmnlInstallDetai_page import Tm
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→终端管理→远程调试：终端调试工单统计
+# 基本应用→终端管理→远程调试:终端调试工单统计
 @ddt
 class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiStatPage):
 
@@ -96,7 +96,7 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiStatPage):
     @data(*DataAccess.getCaseData(DataGatherMan_data.tmnlInstallDetail_para,
                                   DataGatherMan_data.tmnlInstallDetail_tab_appCount))
     def test_query(self, para):
-        """基本应用→终端管理→远程调试：终端调试工单统计
+        """基本应用→终端管理→远程调试:终端调试工单统计
         """
         self.start_case(para, __file__)
         self.query(para)

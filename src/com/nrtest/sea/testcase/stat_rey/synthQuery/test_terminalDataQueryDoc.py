@@ -19,16 +19,16 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.terminalDataQuery_page import *
 
 
-# 统计查询→综合查询→终端数据查询
+# 统计查询→综合查询→终端数据查询:基本档案
 @ddt
-class TestTerminalDataQuery(TestCase, TerminalDataQueryPage):
+class TestTerminalDataQueryDoc(TestCase, TerminalDataQueryDocPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SynthQuery_data.TmnlDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(SynthQuery_data.TmnlDataQuery_Doc)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -59,9 +59,11 @@ class TestTerminalDataQuery(TestCase, TerminalDataQueryPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
-        # 终端资产号
-        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
+        if 'TREE_NODE' in para:
+            self.openLeftTree(para['TREE_NODE'])
+        else:
+            # 终端资产号
+            self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
 
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
@@ -85,11 +87,9 @@ class TestTerminalDataQuery(TestCase, TerminalDataQueryPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para))
+    @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para, SynthQuery_data.TmnlDataQuery_Doc))
     def test_query(self, para):
-        """统计查询→综合查询→终端数据查询
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
+        """统计查询→综合查询→终端数据查询:基本档案
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -97,7 +97,7 @@ class TestTerminalDataQuery(TestCase, TerminalDataQueryPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.TmnlDataQuery_para, SynthQuery_data.TmnlDataQuery_Doc, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

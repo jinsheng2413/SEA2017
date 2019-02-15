@@ -95,6 +95,8 @@ class TesterminalOnlineMonitor(TestCase, TerminalOnlineMonitorPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.terminalOnlineMonitor_para))
     def test_query(self, para):
+        """基本应用→终端管理→终端在线监视
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

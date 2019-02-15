@@ -94,7 +94,6 @@ class TestMetclassfiy(TestCase, MetclassfiyPage):
     @data(*DataAccess.getCaseData(DataGatherMan_data.metclassfiy_para))
     def test_query(self, para):
         """基本应用→终端管理→电能表分级归类管理
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

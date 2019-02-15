@@ -496,6 +496,47 @@ class Page():
             el = self._find_displayed_element(loc, idx)
             self.driver.execute_script("arguments[0].value=arguments[1]", el, '')
 
+    def specialSelCheckBox(self, options, locator=None, sleep_sec=0, checked_loc=None, is_equalText=False):
+        """
+        下拉复选框选择
+        :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
+        :param locator: 点击下拉框特殊处理元素
+        :param sleep_sec:休眠n秒
+        :param checked_loc: 已选择项定位特殊处理
+        :param is_equalText: True-下拉选择值需完全匹配，Fase-部分匹配
+        """
+        if (options.find(';') == -1):
+            print('请配置查询条件的标签值。')
+        else:
+            ls_option = options.split(';')
+            if bool(locator):
+                xpath = locator
+            else:
+                xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], True)
+            el = self._find_displayed_element(xpath)
+            el.click()
+
+            if bool(sleep_sec):
+                sleep(sleep_sec)
+
+            # 清除已选项
+            unchek_all_path = self.format_xpath(checked_loc, ls_option[1])
+            elements = self._find_elements(unchek_all_path)
+            for el in elements:
+                el.click()
+
+            if len(ls_option[2]) > 0 and ls_option[2] != '全部':
+                if is_equalText:
+                    img_chk_loc = BaseLocators.SEL_OPTION_EQUAL
+                else:
+                    img_chk_loc = BaseLocators.SEL_OPTION
+                for option in ls_option[2].split(','):
+                    img_chk_xpath = self.format_xpath(img_chk_loc, option)
+                    self.click(img_chk_xpath)
+
+            # 回收下拉框
+            el.click()
+
     def specialInput(self, locator, value, idx=1):
         # 页面元素位置变动时，会存在定位错误问题，需人工调整
         loc = self.format_xpath_multi(locator, idx, True)

@@ -83,34 +83,36 @@ class GatherSuccessRateStatLocators:
 
 # 采集成功率→数据采集成功率明细
 class GatherSuccessRateDetailLocators:
-    # 用户类型
-    CONS_TYPE = (By.XPATH, '(//label[text()="用户类型"])[2]/../div/div/img')
-    CONS_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
-    # 芯片厂家
-    CHIP_FACTORY = (By.XPATH, '(//label[text()="芯片厂家"])[2]/../div/div/img')
-    CHIP_FACTORY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
-    # 终端厂家
-    TMNL_FACTORY = (By.XPATH, '(//label[text()="终端厂家"])[2]/../div/div/img')
-    TMNL_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
-    # 通信方式
-    COMM_MODE = (By.XPATH, '(//label[text()="通信方式"])[2]/../div/div/img')
-    COMM_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
-    # 用户编号
-    CONS_NO = (By.XPATH, '//input[@name="consNo"]')
-    # 终端地址
-    TMNL_ADDR = (By.XPATH, '//input[@name="tmnlAddr"]')
-    # 查询日期
-    DATE = (By.XPATH, '//input[@id="failDetail_statDate"]')
-    # 查询按钮
-    BTN_SEARCH = (By.XPATH, '//table[@id="gatherFailDetailQueryBtn"]')
-
-    # 【JS属性】
-    # 采集成功率明细，查询日期，删除readonly属性
-    DATE_JS = 'document.getElementById("failDetail_statDate").removeAttribute("readonly");'
-
-    # 【校验区】
-    # 第一行数据
-    CHECK_FIRST = (By.XPATH, '//div[@class="x-panel-bwrap "]//div[@class="x-grid3-body"]')
+    CONS_TYPE_CHECKED = (By.XPATH,
+                         '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//img[contains(@class,"-checked")]')
+    # # 用户类型
+    # CONS_TYPE = (By.XPATH, '(//label[text()="用户类型"])[2]/../div/div/img')
+    # CONS_TYPE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[4]/div[%s]')
+    # # 芯片厂家
+    # CHIP_FACTORY = (By.XPATH, '(//label[text()="芯片厂家"])[2]/../div/div/img')
+    # CHIP_FACTORY_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
+    # # 终端厂家
+    # TMNL_FACTORY = (By.XPATH, '(//label[text()="终端厂家"])[2]/../div/div/img')
+    # TMNL_FACTORY_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[2]/div[%s]')
+    # # 通信方式
+    # COMM_MODE = (By.XPATH, '(//label[text()="通信方式"])[2]/../div/div/img')
+    # COMM_MODE_VALUE = (By.XPATH, '(//div[@class="x-combo-list-inner"])[3]/div[%s]')
+    # # 用户编号
+    # CONS_NO = (By.XPATH, '//input[@name="consNo"]')
+    # # 终端地址
+    # TMNL_ADDR = (By.XPATH, '//input[@name="tmnlAddr"]')
+    # # 查询日期
+    # DATE = (By.XPATH, '//input[@id="failDetail_statDate"]')
+    # # 查询按钮
+    # BTN_SEARCH = (By.XPATH, '//table[@id="gatherFailDetailQueryBtn"]')
+    #
+    # # 【JS属性】
+    # # 采集成功率明细，查询日期，删除readonly属性
+    # DATE_JS = 'document.getElementById("failDetail_statDate").removeAttribute("readonly");'
+    #
+    # # 【校验区】
+    # # 第一行数据
+    # CHECK_FIRST = (By.XPATH, '//div[@class="x-panel-bwrap "]//div[@class="x-grid3-body"]')
 
 
 # 采集成功率→连续抄表失败明细

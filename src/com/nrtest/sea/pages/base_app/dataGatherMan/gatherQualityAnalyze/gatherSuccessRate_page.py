@@ -13,6 +13,9 @@ from com.nrtest.common.base_page import Page
 
 # 基本应该→数据采集管理→采集质量分析→采集成功率
 # 采集成功率→采集成功率
+from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_locators import GatherSuccessRateDetailLocators
+
+
 class GatherSuccessRatePage(Page):
     # 数据类型
     def inputChk_data_type(self, options):
@@ -144,16 +147,8 @@ class GatherSuccessRateStatPage(Page):
 # 采集成功率→数据采集成功率明细
 class GatherSuccessRateDetailPage(Page):
     # 用户类型
-    def inputSel_cons_type(self, index):
-        # if index == 'c':
-        #     self._find_elements(GatherSuccessRateDetailLocators.CONS_TYPE)
-        # else:
-        #     self.click(GatherSuccessRateDetailLocators.CONS_TYPE)
-        #     locator = self.get_select_locator(
-        #         GatherSuccessRateDetailLocators.CONS_TYPE_VALUE, index)
-        #     self.click(locator)
-        #     self.click(GatherSuccessRateDetailLocators.CONS_TYPE)
-        self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
+    def inputSel_cons_type(self, options):
+        self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.CONS_TYPE_CHECKED)
 
     # 芯片厂家
     def inputSel_chip_factory(self, index):

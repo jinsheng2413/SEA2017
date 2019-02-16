@@ -95,8 +95,6 @@ class TestLineDocManage(TestCase, LineDocManagePage):
     @data(*DataAccess.getCaseData(Datamaintain_data.lineData_para))
     def test_query(self, para):
         """高级应用→台线系统→资料维护→线路资料维护
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

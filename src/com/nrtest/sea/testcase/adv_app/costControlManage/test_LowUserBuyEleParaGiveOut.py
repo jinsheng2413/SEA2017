@@ -97,8 +97,6 @@ class TestLowUserBuyEleParaGiveOut(TestCase, LowUserBuyEleParaGiveOut_page):
     @data(*DataAccess.getCaseData(CostControlManage_data.lowUserBuyEleParaGiveOut_para))
     def test_query(self, para):
         """高级应用→费控管理→本地费控→低压用户购电参数下发
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

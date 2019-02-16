@@ -82,8 +82,6 @@ class TestBalanceCount(TestCase, BalanceCount_page):
                                   LocalCostContral_data.lowUserBalanceCheck_count_tab))
     def test_query(self, para):
         """高级应用→费控管理→本地费控→低压用户余额查看：余额统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

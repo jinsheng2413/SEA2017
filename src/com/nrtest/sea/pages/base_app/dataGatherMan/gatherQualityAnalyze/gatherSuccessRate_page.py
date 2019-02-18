@@ -25,6 +25,10 @@ class GatherSuccessRatePage(Page):
     def inputSel_cons_type(self, index):
         self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
 
+    # 通信方式
+    def inputSel_comm_mode(self, option):
+        self.selectCheckBox(option, is_multi_tab=True, is_multi_elements=False)
+
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
@@ -80,6 +84,10 @@ class GatherSuccessRateStatPage(Page):
     def inputSel_tmnl_protocol(self, index):
         self.selectDropDown(index)
 
+    # 通信方式
+    def inputSel_comm_mode(self, option):
+        self.selectCheckBox(option, is_multi_tab=True, is_multi_elements=False)
+
     # 查询日期
     def inputDt_query_date(self, content):
         self.inputDate(content)
@@ -128,20 +136,56 @@ class GatherSuccessRateDetailPage(Page):
 # 采集成功率→连续抄表失败明细
 class ContinuousFalseDetailPage(Page):
     # 用户类型
-    def inputSel_cons_type(self, index):
-        self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
+    def inputSel_cons_type(self, options):
+        self.selectCheckBox(options)
 
     # 运行状态
-    def inputSel_run_status(self, index):
-        self.selectDropDown(index)
+    def inputSel_run_status(self, option):
+        self.selectDropDown(option)
 
-    # 查询日期
-    def inputDt_query_date(self, content):
-        self.inputDate(content)
+    # 日期
+    def inputDt_query_date(self, value):
+        self.inputDate(value)
 
-    # 查询按钮
+    # Tab项名称
+    def inputChk_tab_name(self, tab_name):
+        self.clickTabPage(tab_name)
+
+    # 用户编号
+    def inputStr_cons_no(self, value):
+        self.input(value)
+
+    # 接线方式
+    def inputSel_wiring_mode(self, option):
+        self.selectDropDown(option)
+
+    # 终端地址
+    def inputStr_tmnl_addr(self, value):
+        self.input(value)
+
+    # 连续失败天数
+    def inputStr_read_fail_days(self, value):
+        self.input(value)
+
+    # 查询条件
+    def inputSel_query_condition(self, option):
+        self.selectDropDown(option)
+
+    # 终端生产厂家
+    def inputSel_tmnl_factory(self, option):
+        self.selectDropDown(option)
+
+    # 终端类型
+    def inputSel_tmnl_type(self, options):
+        self.selectCheckBox(options)
+
+    # 计量方式
+    def inputSel_meas_mode(self, option):
+        self.selectDropDown(option)
+
+    # 查询
     def btn_qry(self):
-        self.btn_query(True)
+        self.btn_query()
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率→按时间统计
@@ -173,6 +217,10 @@ class GatherSuccessRateTimePage(Page):
     # 终端类型
     def inputSel_tmnl_type(self, index):
         self.selectCheckBox(index, is_multi_tab=False, is_multi_elements=False)
+
+    # 通信方式
+    def inputSel_comm_mode(self, option):
+        self.selectCheckBox(option, is_multi_tab=True, is_multi_elements=False)
 
     # 规约类型
     def inputSel_protocol_type(self, index):

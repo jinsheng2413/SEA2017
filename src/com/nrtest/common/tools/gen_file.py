@@ -23,10 +23,10 @@ file_name = 'terminalDataQuery'
 data_file = r'com/nrtest/sea/data/stat_rey/synthQuery/synthQuery_data'
 
 # 菜单编号
-menu_no = '99941200'
+menu_no = '99913210'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = '数据展示'
+tab_name = '连续抄表失败明细'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
 en_tab_name = 'DataDis'

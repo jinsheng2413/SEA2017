@@ -56,15 +56,55 @@ class TestContinuousFalseDetail(TestCase, ContinuousFalseDetailPage):
 
     def query(self, para):
 
-        # 打开左边树并选择
+        # Tab项名称
+        self.inputChk_tab_name(para['TAB_NAME'])
+
+        tab_name = self.get_para_value(para['TAB_NAME'])
+
+        # 供电单位
         self.openLeftTree(para['TREE_NODE'])
+
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
-        # 运行状态
-        self.inputSel_run_status(para['RUN_STATUS'])
-        # 日期
-        self.inputDt_query_date(para['QUERY_DATE'])
-        # 点击查询按钮
+
+        if tab_name in ['连续抄表失败统计']:
+            # 运行状态
+            self.inputSel_run_status(para['RUN_STATUS'])
+
+            # 日期
+            self.inputDt_query_date(para['QUERY_DATE'])
+
+        else:
+            if tab_name == '连续N天抄表失败明细':  # , '应采集电表明细']:
+                # 终端类型
+                self.inputSel_tmnl_type(para['TMNL_TYPE'])
+                # 计量方式
+                self.inputSel_meas_mode(para['MEAS_MODE'])
+                # 终端地址
+                self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+            else:
+                # 接线方式
+                self.inputSel_wiring_mode(para['WIRING_MODE'])
+
+                # 运行状态
+                self.inputSel_run_status(para['RUN_STATUS'])
+
+                # 用户编号
+                self.inputStr_cons_no(para['CONS_NO'])
+
+                # 终端地址
+                self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
+                # 连续失败天数
+                self.inputStr_read_fail_days(para['READ_FAIL_DAYS'])
+
+                # 查询条件
+                self.inputSel_query_condition(para['QUERY_CONDITION'])
+
+                # 终端生产厂家
+                self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

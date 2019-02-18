@@ -44,12 +44,12 @@ class ElePricePages(Page):
 
 
     # 接收时间
-    def inputDt_receive_time(self, value):
+    def inputDt_receive_date(self, value):
         self.clean_label(value)
         self.inputDate(value)
 
     # 结束时间
-    def inputDt_end_time(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)
 
     # 查询

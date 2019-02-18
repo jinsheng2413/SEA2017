@@ -61,7 +61,7 @@ class TestElePricePara(TestCase, ElePricePages):
         self.inputStr_cons_no(para['CONS_NO'])
 
         # 接收时间
-        self.inputDt_receive_time(para['RECEIVE_TIME'])
+        self.inputDt_receive_date(para['RECEIVE_DATE'])
 
         # 执行状态
         self.inputSel_execute_status(para['EXECUTE_STATUS'])
@@ -76,7 +76,7 @@ class TestElePricePara(TestCase, ElePricePages):
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
 
         # 结束时间
-        self.inputDt_end_time(para['END_TIME'])
+        self.inputDt_end_date(para['END_DATE'])
 
         # 任务类型
         self.inputSel_task_type(para['TASK_TYPE'])
@@ -103,8 +103,6 @@ class TestElePricePara(TestCase, ElePricePages):
     @data(*DataAccess.getCaseData(LocalCostContral_data.elePricePara_para))
     def test_query(self, para):
         """高级应用→费控管理→本地费控→电价参数下发
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

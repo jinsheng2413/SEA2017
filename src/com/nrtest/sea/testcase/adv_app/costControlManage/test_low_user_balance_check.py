@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-# 高级应用→费控管理→本地费控→低压用户余额查看：余额查看
+# 高级应用→费控管理→本地费控→低压用户余额查看:余额查看
 class TestBalanceCheck(TestCase, BalanceCheck_page):
     @classmethod
     def setUpClass(cls):
@@ -108,9 +108,7 @@ class TestBalanceCheck(TestCase, BalanceCheck_page):
     @data(*DataAccess.getCaseData(LocalCostContral_data.lowUserBalanceCheck_para,
                                   LocalCostContral_data.lowUserBalanceCheck_check_tab))
     def test_query(self, para):
-        """高级应用→费控管理→本地费控→低压用户余额查看：余额查看
-
-        :param para:
+        """高级应用→费控管理→本地费控→低压用户余额查看:余额查看
         """
         self.start_case(para, __file__)
         self.query(para)

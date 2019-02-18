@@ -100,8 +100,6 @@ class TestEleParaMan(TestCase, EleParaMan_rate_Page):
     @data(*DataAccess.getCaseData(CostControlManage_data.eleParaMan_para, CostControlManage_data.eleParaMan_rate_tab))
     def test_query(self, para):
         """高级应用→费控管理→本地费控→电价参数管理:费率电价
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

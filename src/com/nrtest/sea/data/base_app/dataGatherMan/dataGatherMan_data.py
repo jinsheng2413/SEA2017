@@ -43,3 +43,10 @@ class DataGatherMan_data:
 
     # 基本应用→数据采集管理→巡检仪采集完整率
     readCompleteRateCT_para = '99913910'
+    readCompleteRateCT_tabName_rate = '采集完整率'
+    readCompleteRateCT_tabName_detail = '采集完整率明细'
+
+    # 基本应用→数据采集管理→关口采集任务编制
+    gateTaskCompile_para = '99913600'
+    gateTaskCompile_tabName_temp = '任务模板'
+    gateTaskCompile_tabName_qry = '任务查询'

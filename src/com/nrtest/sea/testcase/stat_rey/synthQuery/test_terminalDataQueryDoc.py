@@ -59,7 +59,7 @@ class TestTerminalDataQueryDoc(TestCase, TerminalDataQueryDocPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        if 'TREE_NODE' in para:
+        if self.is_tree_node_first():
             self.openLeftTree(para['TREE_NODE'])
         else:
             # 终端资产号

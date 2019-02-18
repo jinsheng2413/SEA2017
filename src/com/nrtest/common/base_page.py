@@ -864,6 +864,9 @@ class Page():
             value = para
         return value
 
+    def is_tree_node_first(self):
+        return bool(self.get_para_value(self.case_para['TREE_NODE']))
+
     @BeautifulReport.add_popup_img(5)
     def openLeftTree(self, treeNo, is_closed=False):
         """

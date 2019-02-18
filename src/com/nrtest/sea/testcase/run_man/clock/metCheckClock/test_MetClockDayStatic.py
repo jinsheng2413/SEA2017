@@ -64,7 +64,7 @@ class TestMetClockDayStatic(TestCase, MetClockDayStaticPage):
         # 统计方式
         self.inputChk_stat_scope(para['STAT_SCOPE'])
 
-        if 'TMNL_ADDR' in para:
+        if self.is_tree_node_first():
             # 打开左边树并选择
             self.openLeftTree(para['TREE_NODE'])
         else:

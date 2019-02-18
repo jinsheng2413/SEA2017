@@ -114,8 +114,6 @@ class TestCtrlExecutSpec(TestCase, CtrlExecutSpecPage):
     @data(*DataAccess.getCaseData(RemoteCustControl_data.CtrlExecutSpec_para))
     def test_query(self, para):
         """高级应用→费控管理→远程费控→专变用户远程费控执行
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

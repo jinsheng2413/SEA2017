@@ -97,8 +97,6 @@ class TestNewPrePaidStatusByAction(TestCase, NewPrePaidStatusByActionPage):
     @data(*DataAccess.getCaseData(RemoteCustControl_data.NewPrePaidStatus_para, RemoteCustControl_data.NewTab_ByAction))
     def test_query(self, para):
         """高级应用→费控管理→远程费控→新远程费控执行统计:按指令执行统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

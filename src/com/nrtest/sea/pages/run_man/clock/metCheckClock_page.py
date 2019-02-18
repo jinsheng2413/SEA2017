@@ -46,6 +46,10 @@ class MetClockDayStaticPage(Page):
     def inputSel_meter_factory(self, item):
         self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
+    # 终端地址
+    def inputStr_tmnl_addr(self, value):
+        self.curr_input(value, True, True)
+
     # 查询日期
     def inputDt_query_date(self, value):
         self.inputDate(value)
@@ -79,7 +83,7 @@ class MetClockDetailPage(Page):
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value)
+        self.curr_input(value, True, True)
 
     # 查询日期
     def inputDt_query_date(self, value):

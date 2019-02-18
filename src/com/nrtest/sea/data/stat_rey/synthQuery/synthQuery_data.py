@@ -86,9 +86,6 @@ class SynthQuery_data:
     realData_fdetail_tab = '抄表失败明细'
     # 统计查询→综合查询→掌机工单查询
     allCollectSuccessRate_para = '99941920'
-    # 统计查询→综合查询→用户数据
-    consDataQry_para = '99941110'
-    consDataQry_tab_ele = '数据展示'
     # 统计查询→综合查询→用户数据查询
     ConsDataQuery_para = '99941100'
     # 统计查询→综合查询→终端数据查询
@@ -118,3 +115,9 @@ class SynthQuery_data:
     agriculturaiRowSta_para = '99941Q00'
     agriculturaiRowSta_stat = '农排用户信息接入统计'
     agriculturaiRowSta_detail = '农排用户接入明细'
+    # 统计查询--综合查询--实时数据查询
+    realtimeData_para = '99941M00'
+    # 统计查询→综合查询→用户数据
+    consDataQry_para = '99941110'
+    consDataQry_file_tab = '数据展示'
+    consDataQry_ele_tab = '数据展示'

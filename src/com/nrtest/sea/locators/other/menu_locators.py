@@ -92,7 +92,9 @@ class MenuLocators:
                   '07': (By.XPATH, '//div[@id="controlTree"]//span[text()="群组"]/../../*[@class="x-tree-ec-icon x-tree-elbow-end-plus"]')}
     # 查询结果区
     NODE_USER_TAB_RSLT_DEFAULT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[1]')
-    NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[%s]//td[1]/div/div')
+    # 2019-02-18
+    # NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[%s]//td[1]/div/div')
+    NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table//span[text()={}]')
     NODE_USER = (By.XPATH, '//*[@class="x-tab-strip-text " and text()=\'用户\']')
     NODE_GROUP = (By.XPATH, '//*[@class="x-tab-strip-text " and text()=\'群组\']')
     NODE_GROUP_RSLT = {'05': (By.XPATH, '//div[@id="backTree"]//span[text()="%s"]'),
@@ -110,8 +112,6 @@ class MenuLocators:
     # # 【table显示区】
     # TAB_ONE = (By.XPATH, '(//table[@class="x-grid3-row-table"])[1]')
     # TAB_VALUE = (By.XPATH, "//*[@class="x-grid3-row-table"])[{0}]//td[1]")
-    # 左边按用户查询
-    USER_QUERY = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table//span[text()={}]')
 
 
 class MenuPBSLocators:

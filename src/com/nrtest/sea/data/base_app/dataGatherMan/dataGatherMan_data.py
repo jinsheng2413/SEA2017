@@ -50,3 +50,11 @@ class DataGatherMan_data:
     gateTaskCompile_para = '99913600'
     gateTaskCompile_tabName_temp = '任务模板'
     gateTaskCompile_tabName_qry = '任务查询'
+
+    # 基本应用→数据采集管理→面向对象采集成功率
+    oopCollectSuccessRate_para = '99913B00'
+    oopCollectSuccessRate_tabName_stat = '采集成功率统计'
+    oopCollectSuccessRate_tabName_detail = '采集成功率明细'
+
+    # 基本应用→数据采集管理→数据发布(江西)
+    synDayReadData_JX_para = '99913801'

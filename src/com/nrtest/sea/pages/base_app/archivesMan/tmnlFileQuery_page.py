@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: lowUserBuyEleParaGiveOut_page.py
+@file: tmnlFileQuery_page.py
 @time: 2018/8/22 0022 11:31
 @desc:
 """
@@ -12,7 +12,7 @@ from com.nrtest.common.base_page import Page
 
 
 # 基本应用→档案管理→巡检仪档案管理
-class StrategicArchivesMaintainPage(Page):
+class TmnlFileQueryPage(Page):
     # 终端地址
     def inputStr_terminal_addr(self, value):
         self.input(value)

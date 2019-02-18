@@ -3,8 +3,8 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_sectFailedAppQuery.py
-@time: 2018/10/29 11:24
+@file: test_sectFaliedAppStatistics.py
+@time: 2019/02/18 17:54
 @desc:
 """
 
@@ -15,17 +15,17 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.appDispose.appDispose_data import AppDispose_data
-from com.nrtest.sea.pages.adv_app.appDispose.sectfailedAppQuery_page import SectfailedAppQueryPage
+from com.nrtest.sea.pages.adv_app.appDispose.sectFaliedAppStatistics_page import SectfailedAppStatisticsPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→工单处理→抄表失败工单查询
 @ddt
-class TestSectFailedAppQuery(TestCase, SectfailedAppQueryPage):
+class TestSectFaliedAppStatistics(TestCase, SectfailedAppStatisticsPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(AppDispose_data.SectFailedAppQuery_para)
+        menuPage = MenuPage.openMenu(AppDispose_data.SectFaliedAppStatistics_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(AppDispose_data.tmnlInstallDetail_tabOne)
@@ -62,10 +62,6 @@ class TestSectFailedAppQuery(TestCase, SectfailedAppQueryPage):
             self.inputDt_start_date(para['START_DATE'])
             # 结束日期
             self.inputDt_end_date(para['END_DATE'])
-        # 抄表段号
-        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
-        # 抄表管理员工号
-        self.inputStr_sect_manager_no(para['SECT_MANAGER_NO'])
         # 查询按钮
         self.btn_search()
 
@@ -85,7 +81,7 @@ class TestSectFailedAppQuery(TestCase, SectfailedAppQueryPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(AppDispose_data.SectFailedAppQuery_para))
+    @data(*DataAccess.getCaseData(AppDispose_data.SectFaliedAppStatistics_para))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -93,7 +89,7 @@ class TestSectFailedAppQuery(TestCase, SectfailedAppQueryPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(AppDispose_data.SectFailedAppQuery_para, valCheck=True))
+    @data(*DataAccess.getCaseData(AppDispose_data.SectFaliedAppStatistics_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

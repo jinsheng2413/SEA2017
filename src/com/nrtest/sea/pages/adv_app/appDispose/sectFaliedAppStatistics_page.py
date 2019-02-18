@@ -3,8 +3,8 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: sectfailedAppQuery_page.py
-@time: 2018/10/29 11:19
+@file: sectFaliedAppStatistics_page.py
+@time: 2019/02/18 17:50
 @desc:
 """
 
@@ -12,7 +12,7 @@ from com.nrtest.common.base_page import Page
 
 
 # 高级应用→工单处理→抄表失败工单查询
-class SectfailedAppQueryPage(Page):
+class SectfailedAppStatisticsPage(Page):
     # 时间范围
     def inputChk_date_range(self, content):
         self.clickRadioBox(content)
@@ -24,14 +24,6 @@ class SectfailedAppQueryPage(Page):
     # 结束日期
     def inputDt_end_date(self, content):
         self.inputDate(content)
-
-    # 抄表段号
-    def inputStr_mr_sect_no(self, content):
-        self.input(content)
-
-    # 抄表管理员工号
-    def inputStr_sect_manager_no(self, content):
-        self.input(content)
 
     # 查询按钮
     def btn_search(self):

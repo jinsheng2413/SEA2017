@@ -61,20 +61,25 @@ class TestMetClockDayStatic(TestCase, MetClockDayStaticPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
         # 统计方式
         self.inputChk_stat_scope(para['STAT_SCOPE'])
-        # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
-        # 电表类别
-        self.inputSel_met_type(para['MET_TYPE'])
-        # 电能表厂商
-        self.inputSel_meter_factory(para['METER_FACTORY'])
+
+        if 'TMNL_ADDR' in para:
+            # 打开左边树并选择
+            self.openLeftTree(para['TREE_NODE'])
+        else:
+            self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
+        if self.get_para_value(para['STAT_SCOPE']) == '按供电单位':
+            # 电表类别
+            self.inputSel_met_type(para['MET_TYPE'])
+            # 电能表厂商
+            self.inputSel_meter_factory(para['METER_FACTORY'])
+
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

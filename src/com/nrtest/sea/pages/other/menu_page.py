@@ -415,7 +415,7 @@ class MenuPage(Page):
             self.clear(self.locator_class.NODE[node_flag])
 
             # 定位查询结果，默认选择第一行记录
-            xpath = self.format_locator(node_value)
+            xpath = self.format_xpath(MenuLocators.USER_QUERY, node_value)
             print(xpath)
 
             self.click(xpath)

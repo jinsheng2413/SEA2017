@@ -110,6 +110,8 @@ class MenuLocators:
     # # 【table显示区】
     # TAB_ONE = (By.XPATH, '(//table[@class="x-grid3-row-table"])[1]')
     # TAB_VALUE = (By.XPATH, "//*[@class="x-grid3-row-table"])[{0}]//td[1]")
+    # 左边按用户查询
+    USER_QUERY = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table//span[text()={}]')
 
 
 class MenuPBSLocators:

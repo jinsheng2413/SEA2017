@@ -54,7 +54,7 @@ class Test_Knowledge(TestCase, Knowledge_Page):
 
     def query(self, para):
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'],is_closed=True)
 
         # 文件类型
         self.inputSel_file_type(para['FILE_TYPE'])

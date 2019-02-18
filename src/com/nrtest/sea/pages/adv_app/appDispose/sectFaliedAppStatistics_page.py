@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→工单处理→抄表失败工单查询
+# 高级应用→工单处理→抄表失败工单统计
 class SectfailedAppStatisticsPage(Page):
     # 时间范围
     def inputChk_date_range(self, content):

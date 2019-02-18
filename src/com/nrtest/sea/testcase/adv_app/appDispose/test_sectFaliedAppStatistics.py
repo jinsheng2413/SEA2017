@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.adv_app.appDispose.sectFaliedAppStatistics_page import
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→工单处理→抄表失败工单查询
+# 高级应用→工单处理→抄表失败工单统计
 @ddt
 class TestSectFaliedAppStatistics(TestCase, SectfailedAppStatisticsPage):
     @classmethod

@@ -61,6 +61,8 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
         self.inputChk_data_type(para['DATA_TYPE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
+        # 通信方式
+        self.inputSel_comm_mode(para['COMM_MODE'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 芯片厂家
@@ -69,8 +71,10 @@ class TestGatherSuccessRateStat(TestCase, GatherSuccessRateStatPage):
         self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
-        # 相位
-        self.inputSel_phase_code(para['PHASE_CODE'])
+        if self.get_para_value(para['DATA_TYPE']) in ['功率曲线', '电压曲线', '电流曲线']:
+            # 相位
+            self.inputSel_phase_code(para['PHASE_CODE'])
+
         # 点击查询按钮
         self.btn_search()
 

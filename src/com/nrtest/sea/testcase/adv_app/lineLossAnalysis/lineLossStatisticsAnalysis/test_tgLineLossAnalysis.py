@@ -165,7 +165,7 @@ class TestTgLineLossAnalysis(TestCase, TgLineLossAnalysisPage):
         #     # 点击达标
         #     self.inputChk_tg_type(para['TG_TYPE'])
         # # 查询按钮
-        # self.btn_search()
+        # self.btn_qry()
 
     def assert_query_result(self, para):
         """

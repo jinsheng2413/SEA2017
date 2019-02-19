@@ -62,7 +62,7 @@ class TestLineLossAnalysis(TestCase, LineLossAnalysisPage):
         # 线损率值
         self.inputStr_line_loss_rate_input(para['LINE_LOSS_RATE_INPUT'])
 
-        if self.get_para_value(para['READ_SUCCESS_RATE']).startswith('大于'):
+        if self.get_para_value(para['LINE_LOSS_RATE']).startswith('大于'):
             # 线损率TO
             self.inputSel_line_loss_rate_to(para['LINE_LOSS_RATE_TO'])
 

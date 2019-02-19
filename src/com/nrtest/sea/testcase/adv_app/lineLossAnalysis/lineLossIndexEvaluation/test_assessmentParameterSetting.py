@@ -87,8 +87,6 @@ class TestAssessmentParameterSetting(TestCase, AssessmentParameterSettingPage):
     @data(*DataAccess.getCaseData(LineLossIndexEvaluation_data.AssessmentParameterSetting_para))
     def test_query(self, para):
         """高级应用→线损分析→线损指标考核→考核参数设置
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

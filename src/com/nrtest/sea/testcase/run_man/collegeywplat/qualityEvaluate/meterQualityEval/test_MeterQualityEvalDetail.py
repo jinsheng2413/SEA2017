@@ -19,8 +19,7 @@ from com.nrtest.sea.pages.run_man.collegeywplat.qualityEvaluate.meterQualityEval
     MeterQualityEvalDetailPage
 
 
-# 运行管理→采集运维平台→采集终端质量评价
-# 电表质量评价明细
+# 运行管理→采集运维平台→电能表质量评价:电表质量评价明细
 @ddt
 class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
 
@@ -77,7 +76,7 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
         # 故障开始日期
         self.inputDt_end_date(para['END_DATE'])
 
-        self.btn_query()
+        self.btn_qry()
         self.sleep_time(2)
 
     def assert_query_result(self, para):
@@ -85,7 +84,7 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue()
 
     def assert_query_criteria(self, para):
         """
@@ -100,7 +99,6 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
     def test_query(self, para):
         """运行管理→采集运维平台→采集终端质量评价:电表质量评价明细
         对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

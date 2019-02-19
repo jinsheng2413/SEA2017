@@ -71,7 +71,6 @@ class test_NewSpecRemoteCtrlExecut(TestCase, NewSpecRemoteCtrlExecutPage):
         self.inputDt_end_date(para['END_DATE'])
 
         # 营销U1验签结果
-
         self.inputSel_u1_result(para['U1_RESULT'])
 
         # 统计类型

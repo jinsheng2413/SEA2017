@@ -8,33 +8,27 @@
 @desc:
 """
 
-# from lxml import etree
 from selenium import webdriver
 
-# from com.nrtest.sea.common.logger import Logger
 from com.nrtest.common.logger import Logger
-from com.nrtest.common.setting import Setting
 
 logger = Logger(logger='BrowserEngine').getlog()
 
 
 class BaseTest():
-    # def __init__(self, browser):
-    #     self.driver = self.openBrowser(browser)
-    #     pass
 
-    def save_img(self, img_name):
-        """
-            传入一个img_name, 并存储到默认的文件路径下
-        :param img_name:
-        :return:
-        """
-        # 调自己封装类com.nrtest.common下的BeautifulReport.py
-        path = Setting.IMG_PATH
-        # 调LIB下类D:\Python\Python36-32\Lib\BeautifulReport.py
-        # path = os.path.abspath(self.img_path)
-
-        self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
+    # def save_img(self, img_name):
+    #     """
+    #         传入一个img_name, 并存储到默认的文件路径下
+    #     :param img_name:
+    #     :return:
+    #     """
+    #     # 调自己封装类com.nrtest.common下的BeautifulReport.py
+    #     path = Setting.IMG_PATH
+    #     # 调LIB下类D:\Python\Python36-32\Lib\BeautifulReport.py
+    #     # path = os.path.abspath(self.img_path)
+    #
+    #     self.driver.get_screenshot_as_file('{}/{}.png'.format(path, img_name))
 
     @staticmethod
     def openBrowser(browser):

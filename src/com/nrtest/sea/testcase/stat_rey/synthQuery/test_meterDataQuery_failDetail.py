@@ -86,8 +86,8 @@ class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         if val == '日冻结电能示值':
             # 反相采集结果
             self.inputSel_recerse_collection_result(para['RECERSE_COLLECTION_RESULT'])
-            # 数据类别
-            self.inputChk_data_sort(para['DATA_SORT'])
+            # # 数据类别
+            # self.inputChk_data_sort(para['DATA_SORT'])
 
         # 终端厂家
         self.inputSel_tmnl_manufacturer(para['TMNL_MANUFACTURER'])

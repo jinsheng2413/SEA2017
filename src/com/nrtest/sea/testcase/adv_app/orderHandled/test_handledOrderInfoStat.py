@@ -1,30 +1,22 @@
 # -*- coding:utf-8 -*-
 
-'''
+"""
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_handledOrderInfoStat.py
 @time: 2019-02-13 9:26
 @desc:
-'''
-
-# -*- coding: utf-8 -*-
-from com.nrtest.sea.pages.adv_app.orderHandled.handledOrderInfoStat_page import HandledOrderInfoStatPage
-
-"""
-@author: jinsheng
-@license: (C) Copyright 2018, Nari.
-@file: test_handled_order_info_stat.py
-@time: 2019-02-13 09:18:55
-@desc:
 """
 
 from unittest import TestCase
+
 from ddt import ddt, data
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.data.adv_app.orderHandled import orderHandled_data
+from com.nrtest.sea.pages.adv_app.orderHandled.handledOrderInfoStat_page import HandledOrderInfoStatPage
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→工单处理→掌机抄表工单统计（青海）

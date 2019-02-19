@@ -225,7 +225,7 @@ class TgQueryCpPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)
 
 # 统计查询→综合查询→专公变综合查询:变压器负载率监控
 class TransformerLoadRateMonitoringPage(Page):

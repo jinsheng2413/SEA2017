@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_new_spec_remote_ctrl_execut.py
+@file: test_costControlManagerTab2.py
 @time: 2019-02-13 16:08:54
 @desc:
 """

@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_param_abnormal.py
+@file: test_paramAbnormal_detail.py
 @time: 2019-02-15 13:24:23
 @desc:
 """

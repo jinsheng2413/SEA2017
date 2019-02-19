@@ -39,7 +39,7 @@ class ConsDataQueryPage(Page):
         self.inputDate(value)
 
     # 至
-    def inputDt_end_date(self, value):
+    def inputDt_end_time(self, value):
         self.inputDate(value)
 
     # 第二个查询按钮

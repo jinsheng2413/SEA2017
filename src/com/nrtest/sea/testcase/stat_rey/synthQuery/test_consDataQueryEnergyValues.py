@@ -81,7 +81,7 @@ class TestConsDataQuery(TestCase, ConsDataQueryPage):
         self.inputDt_start_time(para['START_TIME'])
 
         # 至
-        self.inputDt_end_date(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 查询
         self.btn_search_tab()

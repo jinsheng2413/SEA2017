@@ -1,39 +1,41 @@
 # -*- coding: utf-8 -*-
 
-
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_LosePowerMan.py
-@time: 2018/10/31 0031 13:35
+@file: test_meter_state_arr.py
+@time: 2019-02-19 08:56:34
 @desc:
 """
-from time import sleep
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossMantain.lineLossMantain_data import LineLossMantain_data
-from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossMantain.losePowerMan_page import LosePowerManPage
+from com.nrtest.sea.data.run_man.meterMan.meterClockMan_data import MeterClockMan_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.run_man.meterMan.meterStateArr_page import MeterStateArrPage
 
 
+# 运行管理→电能表管理→电能表状态维护(蒙东)
 @ddt
-# 高级应用→线损分析→线损模型维护→线损模型设计
-class TestLosePowerMan(TestCase, LosePowerManPage):
+class test_MeterStateArr(TestCase, MeterStateArrPage):
 
     @classmethod
     def setUpClass(cls):
-        # 打开菜单（需要传入对应的菜单编号）ljf
-        menuPage = MenuPage.openMenu(LineLossMantain_data.losePowerMan_para)
+        # 打开菜单（需要传入对应的菜单编号）
+        menuPage = MenuPage.openMenu(MeterClockMan_data.meterStateArr_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-
+        # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
+        # menuPage.clickTabPage()
+        # 菜单页面上如果没日期型的查询条件时，请注释下面代码
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
+        print("执行结束")
         # 关闭菜单页面
         cls.closePages(cls)
 
@@ -45,7 +47,7 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         :return:
         """
 
@@ -59,34 +61,20 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 选择节点
+        # 供电单位
         self.openLeftTree(para['TREE_NODE'])
 
-        # 考核单元名称
-        self.inputStr_chkunit_name(para['CHKUNIT_NAME'])
+        # 终端状态
+        self.inputSel_tmnl_status(para['TMNL_STATUS'])
 
-        # 考核单元分类
-        self.inputSel_chkunit_type(para['CHKUNIT_TYPE'])
-        sleep(0.5)
-        para_value = self.get_para_value(para['CHKUNIT_TYPE'])
-        if para_value == '台区':
-            # 台区编号
-            self.inputStr_tg_no(para['TG_NO'])
+        # 终端类型
+        self.inputSel_tmnl_type(para['TMNL_TYPE'])
 
-            # 台区状态
-            self.inputSel_tg_status(para['TG_STATUS'])
-        elif para_value == '线路':
-            # 线路编号
-            self.inputStr_line_no(para['LINE_NO'])
+        # 终端地址
+        self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
 
-        # 组合标志
-        self.inputSel_combination_flag(para['COMBINATION_FLAG'])
-
-        # 考核单元状态
-        self.inputSel_chkunit_status(para['CHKUNIT_STATUS'])
-
-        # 未覆盖
-        self.inputChk_uncover(para['UNCOVER'])
+        # 包含下级供电单位
+        self.inputChk_contain_org(para['CONTAIN_ORG'])
 
         # 查询
         self.btn_qry()
@@ -106,10 +94,10 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LineLossMantain_data.losePowerMan_para))
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(MeterClockMan_data.meterStateArr_para))
     def test_query(self, para):
-        """高级应用→线损分析→线损模型维护→线损模型设计
+        """运行管理→电能表管理→电能表状态维护(蒙东)
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -117,7 +105,7 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LineLossMantain_data.losePowerMan_para, valCheck=True))
+    @data(*DataAccess.getCaseData(MeterClockMan_data.meterStateArr_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

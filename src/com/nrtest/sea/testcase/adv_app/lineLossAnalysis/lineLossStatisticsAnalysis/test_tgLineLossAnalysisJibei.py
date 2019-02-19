@@ -172,8 +172,6 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.TgLineLossAnalysisJibei_para)[0:1])
     def test_query(self, para):
         """高级应用→线损分析→线损统计分析→台区线损分析（冀北）
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

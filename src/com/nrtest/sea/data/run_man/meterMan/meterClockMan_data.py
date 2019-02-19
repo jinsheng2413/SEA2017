@@ -11,4 +11,6 @@
 
 class MeterClockMan_data:
     # 运行管理-》电能表管理-》电能表状态查询
-    MeterClockMan_para = '99936100'
+    meterClockMan_para = '99936100'
+    # 运行管理-》电能表管理-》电能表状态维护(蒙东)
+    meterStateArr_para = '99936200'

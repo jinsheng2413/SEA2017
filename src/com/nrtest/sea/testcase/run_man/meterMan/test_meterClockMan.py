@@ -25,7 +25,7 @@ class TestMeterClockMan(TestCase, MeterClockManPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(MeterClockMan_data.MeterClockMan_para)
+        menuPage = MenuPage.openMenu(MeterClockMan_data.meterClockMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
@@ -104,7 +104,7 @@ class TestMeterClockMan(TestCase, MeterClockManPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(MeterClockMan_data.MeterClockMan_para))
+    @data(*DataAccess.getCaseData(MeterClockMan_data.meterClockMan_para))
     def test_query(self, para):
         """运行管理→电能表管理→电能表状态查询
 
@@ -116,7 +116,7 @@ class TestMeterClockMan(TestCase, MeterClockManPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(MeterClockMan_data.MeterClockMan_para, valCheck=True))
+    @data(*DataAccess.getCaseData(MeterClockMan_data.meterClockMan_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

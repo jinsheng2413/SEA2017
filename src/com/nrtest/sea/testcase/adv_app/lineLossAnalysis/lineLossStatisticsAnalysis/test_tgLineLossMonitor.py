@@ -86,8 +86,6 @@ class TestTgLineLossMonitor(TestCase, TgLineLossMonitorPage):
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.TgLineLossMonitor_para))
     def test_query(self, para):
         """高级应用→线损分析→线损统计分析→台区线损监测
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

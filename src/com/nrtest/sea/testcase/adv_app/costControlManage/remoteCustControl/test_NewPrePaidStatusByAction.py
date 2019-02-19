@@ -75,8 +75,8 @@ class TestNewPrePaidStatusByAction(TestCase, NewPrePaidStatusByActionPage):
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
 
+        # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

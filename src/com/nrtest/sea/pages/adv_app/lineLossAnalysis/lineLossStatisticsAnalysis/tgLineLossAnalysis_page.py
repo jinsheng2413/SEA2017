@@ -170,7 +170,7 @@ class TgLineLossAnalysisPage(Page):
     #     self.clickRadioBox(value)
     # 
     # # 查询按钮
-    # def btn_search(self):
+    # def btn_qry(self):
     #     self.btn_query()
     # 
     # # 日期选择类型

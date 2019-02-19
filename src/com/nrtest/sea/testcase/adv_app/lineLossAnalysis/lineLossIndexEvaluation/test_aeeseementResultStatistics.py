@@ -94,8 +94,6 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
     @data(*DataAccess.getCaseData(LineLossIndexEvaluation_data.AssessmentResultStatistics_para))
     def test_query(self, para):
         """高级应用→线损分析→线损指标考核→考核结果统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

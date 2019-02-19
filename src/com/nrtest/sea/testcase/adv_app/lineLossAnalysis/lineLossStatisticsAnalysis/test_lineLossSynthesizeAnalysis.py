@@ -60,8 +60,8 @@ class TestLineLossSynthesizeAnalysis(TestCase, LineLossSynthesizeAnalysisPage):
         self.inputSel_line_loss_type(para['LINE_LOSS_TYPE'])
 
         # 按日期类型统计
-        self.inputChk_by_date_type(para['BY_DATE_TYPE'])
-        if '按季统计' in para['BY_DATE_TYPE']:
+        self.inputChk_by_date_type(para['QRY_DATE_TYPE'])
+        if '按季统计' in para['QRY_DATE_TYPE']:
             # 季度选择
             self.inputChk_quarter_sel(para['QUARTER_SEL'])
         else:
@@ -72,7 +72,7 @@ class TestLineLossSynthesizeAnalysis(TestCase, LineLossSynthesizeAnalysisPage):
         self.inputChk_tab_name(para['TAB_NAME'])
 
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

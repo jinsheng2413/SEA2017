@@ -64,13 +64,13 @@ class TestClockResultStatic(TestCase, ClockResultStaticPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 类别
-        self.inputChk_stat_mode(para['STAT_MODE'])
+        self.inputChk_stat_type(para['STAT_TYPE'])
 
         # 根据类别进行选择
-        if (para['STAT_MODE'].split(';')[-1] == '采集终端'):
+        if (para['STAT_TYPE'].split(';')[-1] == '采集终端'):
             # 终端厂商
             self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        elif (para['STAT_MODE'].split(';')[-1] == '电能表'):
+        elif (para['STAT_TYPE'].split(';')[-1] == '电能表'):
             # 电能表厂商
             self.inputSel_meter_factory(para['METER_FACTORY'])
 

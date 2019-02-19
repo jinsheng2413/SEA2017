@@ -62,7 +62,7 @@ class TestWorkQuery(TestCase, WorkQueryPage):
         """
         self.sleep_time(2)
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 异常编号
         self.inputStr_abnormal_no(para['ABNORMAL_NO'])

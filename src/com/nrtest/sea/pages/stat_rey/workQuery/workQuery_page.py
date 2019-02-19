@@ -18,33 +18,28 @@ class WorkCountPage(Page):
     # 日期
     def inputDt_query_date(self, value):
         self.clean_label(value)
-        self.inputDate(value)  # , *WorkCountLocators.QRY_DATE)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(WorkCountLocators.BTN_QRY)
         self.btn_query()
 
 class WorkQueryPage(Page):
 
     # 异常编号
     def inputStr_abnormal_no(self, value):
-        self.input(value)  # , *WorkQueryLocators.QRY_ABNORMAL_NO)
+        self.input(value)
 
     # 异常状态
     def inputSel_abnormal_status(self, options):
-        # self.click(WorkQueryLocators.QRY_ABNORMAL_STATUS)
-        # locator = self.get_select_locator(
-        #     WorkQueryLocators.QRY_ABNORMAL_STATUS_VALUE, index)
-        # self.click(locator)
-        self.selectDropDown(options)
-        # 日期
 
+        self.selectDropDown(options)
+
+    # 日期
     def inputDt_query_date(self, value):
         self.clean_label(value)
-        self.inputDate(value, is_multi_tab=True)  # , *WorkQueryLocators.QRY_DATE)
+        self.inputDate(value, is_multi_tab=True)
 
     # 查询
     def btn_qry(self):
-        # self.click(WorkQueryLocators.BTN_QRY)
         self.btn_query(True)

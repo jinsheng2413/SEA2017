@@ -98,8 +98,6 @@ class TestFrequentlyCheckMet(TestCase, FrequentlyCheckMetPage):
                                   ClockData.para_ClockRun_checkmet))
     def test_query(self, para):
         """运行管理→时钟管理→时钟运行质量分析:频繁对时电表
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

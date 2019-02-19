@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→工单处理→抄表失败工单查询
 @ddt
-class TestAssetMan(TestCase, SectfailedAppQueryPage):
+class TestSectFailedAppQuery(TestCase, SectfailedAppQueryPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
@@ -55,6 +55,13 @@ class TestAssetMan(TestCase, SectfailedAppQueryPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+        # 时间范围
+        self.inputChk_date_range(para['DATE_RANGE'])
+        if para['DATE_RANGE'] != '当月':
+            # 开始日期
+            self.inputDt_start_date(para['START_DATE'])
+            # 结束日期
+            self.inputDt_end_date(para['END_DATE'])
         # 抄表段号
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 抄表管理员工号

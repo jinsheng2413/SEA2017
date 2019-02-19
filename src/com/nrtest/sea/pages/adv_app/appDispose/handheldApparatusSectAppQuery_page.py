@@ -3,16 +3,16 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: sectfailedAppQuery_page.py
-@time: 2018/10/29 11:19
+@file: handheldApparatusSectAppQuery_page.py
+@time: 2019/02/18 18:19
 @desc:
 """
 
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→工单处理→抄表失败工单查询
-class SectfailedAppQueryPage(Page):
+# 高级应用→工单处理→掌机抄表工单查询（青海）
+class HandheldApparatusSectAppQueryPage(Page):
     # 时间范围
     def inputChk_date_range(self, content):
         self.clickRadioBox(content)

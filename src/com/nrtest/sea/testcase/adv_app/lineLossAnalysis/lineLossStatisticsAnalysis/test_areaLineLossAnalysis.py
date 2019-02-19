@@ -90,8 +90,6 @@ class TestAreaLineLossAnalysis(TestCase, AreaLineLossAnalysisPage):
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.AreaLineLossAnalysis_para))
     def test_query(self, para):
         """高级应用→线损分析→线损统计分析→区域线损分析
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

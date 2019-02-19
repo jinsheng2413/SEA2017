@@ -19,7 +19,7 @@ class ArchivesMan_data:
     archivesChangeRecord_para = '99911D00'
 
     # 基本应用→档案管理→巡检仪档案管理
-    strategicArchivesMaintain_para = '99911900'
+    tmnlFileQuery_para = '99911900'
 
     # 基本应用→档案管理→电能表状态维护
     meterStateArr_para = '99911910'
@@ -49,3 +49,20 @@ class ArchivesMan_data:
     archivesMenTain_factory_tab = '厂站维护'
     archivesMenTain_meter_tab = '电表维护'
     archivesMenTain_terminal_tab = '终端维护'
+
+    # 基本应用→档案管理→关口参数管理
+    strategicArchivesMaintain_para = '99911800'
+    strategicArchivesMaintain_tabName_aisle = '通道信息维护'
+    strategicArchivesMaintain_tabName_dit = '点号信息维护'
+
+    # 基本应用→档案管理→电能表运行状态
+    meterStatusStatis_para = '99911920'
+
+    # 基本应用→档案管理→关口档案维护
+    strategicArchivesQuery_para = '99911700'
+    strategicArchivesQuery_tabName_sub = '厂站档案查询'
+    strategicArchivesQuery_tabName_tmnl = '终端档案查询'
+    strategicArchivesQuery_tabName_meter = '电表档案查询'
+
+    # 基本应用→档案管理→整点数据查询
+    everyDataShow_para = '99911410'

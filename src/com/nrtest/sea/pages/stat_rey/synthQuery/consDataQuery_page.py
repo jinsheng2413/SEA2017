@@ -21,3 +21,27 @@ class ConsDataQueryPage(Page):
     def btn_search(self):
         # self.click(ConsDataQueryLocators.BTN_SEARCH)
         self.btn_query()
+
+    # tab页选择
+    def inputChk_tab_name(self, tab_name):
+        self.clickTabPage(tab_name)
+
+    # 查询方式（实时或冻结）
+    def inputChk_query_type(self, value):
+        self.clickRadioBox(value)
+
+    # 电表
+    def inputSel_meter(self, value):
+        self.selectDropDown(value)
+
+    # 查询日期
+    def inputDt_start_time(self, value):
+        self.inputDate(value)
+
+    # 至
+    def inputDt_end_date(self, value):
+        self.inputDate(value)
+
+    # 第二个查询按钮
+    def btn_search_tab(self):
+        self.btn_query(True, idx=2)

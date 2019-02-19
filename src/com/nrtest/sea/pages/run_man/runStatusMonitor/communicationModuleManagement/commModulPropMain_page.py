@@ -28,26 +28,21 @@ class CommunicationModuleBaseInformationMantainPage(Page):
 
     # 模块属性标识
     def inputStr_module_attr_id(self, value):
-        self.input(value)  # , *CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_ATTR_ID)
+        self.input(value)
 
     # 模块类型
     def inputSel_module_type(self, item):
-        # self.click(CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE)
-        # locator = self.get_select_locator(
-        #     CommunicationModuleBaseInformationMantainLocators.QRY_MODULE_TYPE_VALUE, item)
-        # self.click(locator)
         self.selectDropDown(item)
 
     # 查询
     def btn_qry(self):
-        # self.click(CommunicationModuleBaseInformationMantainLocators.BTN_QRY)
         self.btn_query(True)
 
 
 class ModuleAttributeRelationshipMantainPage(Page):
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value)  #, *ModuleAttributeRelationshipMantainLocators.QRY_TMNL_ADDR)
+        self.input(value)  # , *ModuleAttributeRelationshipMantainLocators.QRY_TMNL_ADDR)
 
     # 终端厂家
     def inputSel_tmnl_factory(self, item):
@@ -56,9 +51,9 @@ class ModuleAttributeRelationshipMantainPage(Page):
 
     # 维护状态
     def inputChk_mainten_status(self, items):
-        self.clickCheckBox(items, ModuleAttributeRelationshipMantainLocators.QRY_MAINTEN_STATUS)
+        self.clickCheckBox_new(items,
+                               is_multi_tab=True)  # , ModuleAttributeRelationshipMantainLocators.QRY_MAINTEN_STATUS)
 
     # 查询
     def btn_qry(self):
-        # self.click(ModuleAttributeRelationshipMantainLocators.BTN_QRY)
         self.btn_query(True)

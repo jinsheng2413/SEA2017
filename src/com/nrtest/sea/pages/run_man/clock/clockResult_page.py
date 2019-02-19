@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 # 对时结果分析
 class ClockResultStaticPage(Page):
 
-    def inputChk_stat_mode(self, option):
+    def inputChk_stat_type(self, option):
         self.clickRadioBox(option)
 
     # 终端厂商--打开并选择

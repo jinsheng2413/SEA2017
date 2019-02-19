@@ -30,6 +30,7 @@ class TestAssessmentParameterSetting(TestCase, AssessmentParameterSettingPage):
         # 打开菜单（需要传入对应的菜单编号）ljf
         menuPage = MenuPage.openMenu(LineLossIndexEvaluation_data.AssessmentParameterSetting_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        menuPage.remove_dt_readonly()
 
 
     @classmethod

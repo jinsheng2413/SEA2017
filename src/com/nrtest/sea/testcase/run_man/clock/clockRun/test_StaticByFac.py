@@ -66,7 +66,7 @@ class TestStaticByFac(TestCase, StaticByFacPage):
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 类别
-        self.inputChk_stat_mode(para['STAT_MODE'])
+        self.inputChk_stat_type(para['STAT_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)
@@ -92,8 +92,6 @@ class TestStaticByFac(TestCase, StaticByFacPage):
                                   ClockData.para_ClockRun_staticbyfac))
     def test_query(self, para):
         """运行管理→时钟管理→时钟运行质量分析:按厂家统计
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -99,8 +99,6 @@ class TestFrequentlyCheckTmnl(TestCase, FrequentlyCheckTmnlPage):
                                   ClockData.para_ClockRun_checktmnl))
     def test_query(self, para):
         """运行管理→时钟管理→时钟运行质量分析:频繁对时终端
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

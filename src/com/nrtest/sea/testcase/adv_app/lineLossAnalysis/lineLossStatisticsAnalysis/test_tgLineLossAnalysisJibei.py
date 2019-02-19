@@ -100,11 +100,11 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
             # 线损率TO值
             self.inputStr_line_loss_rate_to_input(para['LINE_LOSS_RATE_TO_INPUT'])
 
-        # 是否可算
-        self.inputChk_is_can_calc(para['IS_CAN_CALC'])
-        if self.get_para_value(para['IS_CAN_CALC']) == '可算':
-            # 可算分类
-            self.inputChk_can_calc_type(para['CAN_CALC_TYPE'])
+        # # 是否可算
+        # self.inputChk_is_can_calc(para['IS_CAN_CALC'])
+        # if self.get_para_value(para['IS_CAN_CALC']) == '可算':
+        #     # 可算分类
+        #     self.inputChk_can_calc_type(para['CAN_CALC_TYPE'])
 
         # 按日期类型
         self.inputChk_qry_date_type(para['QRY_DATE_TYPE'])
@@ -126,6 +126,9 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
 
         # 组合单元
         self.inputChk_combination_unit(para['COMBINATION_UNIT'])
+
+        # 达标
+        self.inputChk_loss_line_type(para['LOSS_LINE_TYPE'])
 
         # 查询
         self.btn_qry()
@@ -151,7 +154,7 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
         # # 达标
         # self.inputChk_loss_line_type(para['LOSS_LINE_TYPE'])
         # # 查询按钮
-        # self.btn_search()
+        # self.btn_qry()
 
     def assert_query_result(self, para):
         """

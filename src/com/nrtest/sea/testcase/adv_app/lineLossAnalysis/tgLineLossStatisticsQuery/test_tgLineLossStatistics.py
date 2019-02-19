@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgL
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损统计分析→台区线损统计
+# 高级应用→线损分析→台区线损统计查询→台区线损统计
 @ddt
 class TestTgLineLossUnifiedView(TestCase, TgLineLossStatisticsPage):
     @classmethod
@@ -62,13 +62,11 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossStatisticsPage):
         # 开始时间
         self.inputDt_start_time(para['START_TIME'])
 
+        # 结束时间
         self.inputDt_end_time(para['END_TIME'])
 
         # 线损维度
         self.inputSel_line_loss_dimension(para['LINE_LOSS_DIMENSION'])
-
-        # 责任人工号
-        self.inputStr_person_resp_no(para['PERSON_RESP_NO'])
 
         # 查询按钮
         self.btn_search()
@@ -91,9 +89,7 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossStatisticsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossStatistics_para, ))
     def test_query(self, para):
-        """高级应用→线损分析→线损统计分析→台区线损统计
-
-        :param para:
+        """高级应用→线损分析→台区线损统计查询→台区线损统计
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -539,8 +539,8 @@ class Page():
                 xpath = locator
             else:
                 xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], True)
-            el = self._find_displayed_element(xpath)
-            el.click()
+            el_sel = self._find_displayed_element(xpath)
+            el_sel.click()
 
             if bool(sleep_sec):
                 sleep(sleep_sec)
@@ -561,7 +561,7 @@ class Page():
                     self.click(img_chk_xpath)
 
             # 回收下拉框
-            el.click()
+            el_sel.click()
 
     def specialInput(self, locator, value, idx=1):
         # 页面元素位置变动时，会存在定位错误问题，需人工调整

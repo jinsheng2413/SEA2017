@@ -93,8 +93,6 @@ class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
                                   TradnsformerMonitorData.para_OrgLowVoltDayConfig))
     def test_query(self, para):
         """高级应用→配变监测分析→电压质量分析→低压用户电压分析:低压用户电压监测配置
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

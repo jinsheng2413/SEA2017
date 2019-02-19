@@ -142,8 +142,6 @@ class BaseLocators(Locators):
     # 数据加载中
     DATA_LOADING = (By.XPATH, '//div[@class="ext-el-mask-msg x-mask-loading"]')
     DATA_LOADING1 = (By.XPATH, '//div[@class="x-panel-bwrap  x-masked-relative x-masked"]')
-    # 左边树
-    POWER_SUPPLY_AREA = (By.XPATH, '//span[text()="供电区域"]')
 
     # 弹框处理
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')

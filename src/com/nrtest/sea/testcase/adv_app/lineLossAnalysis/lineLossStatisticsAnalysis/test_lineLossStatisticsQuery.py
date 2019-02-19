@@ -97,8 +97,6 @@ class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossStatisticsQuery_para))
     def test_query(self, para):
         """高级应用→线损分析→线损统计分析→线损统计查询
-
-        :param para:
         """
         print(para)
         self.start_case(para, __file__)

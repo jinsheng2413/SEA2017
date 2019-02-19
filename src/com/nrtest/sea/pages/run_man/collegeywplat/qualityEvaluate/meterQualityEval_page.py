@@ -25,10 +25,10 @@ class MeterQualityEvalStaticPage(Page):
 
     # 电表厂家--打开并选择
     def inputSel_meter_factory(self, name):
-        self.selectCheckBox(name)
+        self.selectDropDown(name, is_multi_elements=True, is_multi_tab=True)
 
     # 点击查询
-    def btn_query(self):
+    def btn_qry(self):
         self.btn_query(True)
 
 # 电表质量评价明细
@@ -44,7 +44,7 @@ class MeterQualityEvalDetailPage(Page):
 
     # 电表厂家-打开并选择
     def inputSel_meter_factory(self, name):
-        self.selectCheckBox(name, is_multi_tab=True, is_multi_elements=True)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 故障类别-打开并选择
     def inputSel_fault_type(self, name):
@@ -59,5 +59,5 @@ class MeterQualityEvalDetailPage(Page):
         self.inputDate(value)
 
     # 点击查询
-    def btn_query(self):
+    def btn_qry(self):
         self.btn_query(True)

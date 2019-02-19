@@ -12,14 +12,14 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.operOrganMan.operOrganMan_data import OperOrganManData
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.collegeywplat.qualityEvaluate.meterQualityEval_page import MeterQualityEvalStaticPage
 
 
-# 运行管理→采集运维平台→采集终端质量评价:电表质量评价统计
-#
+# 运行管理→采集运维平台→电能表质量评价:电表质量评价统计
 @ddt
 class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalStaticPage):
 
@@ -70,15 +70,15 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalStaticPage):
         # 电表厂家
         self.inputSel_meter_factory(para['METER_FACTORY'])
 
-        self.btn_query()
-        self.sleep_time(2)
+        self.btn_qry()
+        self.sleep_time(4)
 
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult(self).check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

@@ -18,3 +18,5 @@ class LoadRankAnalyse_data:
     powerCurveAnalyse_para = '99943230'
     powerStat_tab = '电量统计'
     powerDetail_tab = '电量明细'
+    # 统计查询→数据分析→电量分析→时段用电分析
+    periodUsePowerAnalyse_para = '99943240'

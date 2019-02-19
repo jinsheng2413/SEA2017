@@ -56,7 +56,7 @@ class ModuleAttributeRelationshipMantainPage(Page):
 
     # 维护状态
     def inputChk_mainten_status(self, items):
-        self.clickCheckBox(items, ModuleAttributeRelationshipMantainLocators.QRY_MAINTEN_STATUS)
+        self.clickCheckBox(items)#, ModuleAttributeRelationshipMantainLocators.QRY_MAINTEN_STATUS)
 
     # 查询
     def btn_qry(self):

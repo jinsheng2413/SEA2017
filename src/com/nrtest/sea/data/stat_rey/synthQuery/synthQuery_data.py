@@ -86,8 +86,20 @@ class SynthQuery_data:
     realData_fdetail_tab = '抄表失败明细'
     # 统计查询→综合查询→掌机工单查询
     allCollectSuccessRate_para = '99941920'
+
     # 统计查询→综合查询→用户数据查询
     ConsDataQuery_para = '99941100'
+    # ConsDataQuery_tab_info = '基本档案'
+    # ConsDataQuery_tab_display = '数据展示'
+    # ConsDataQuery_tab_energy_values_ = '电能示值'
+    # ConsDataQuery_tab_voltage_curve = '电压曲线'
+    # ConsDataQuery_tab_current_curve = '电流曲线'
+    # ConsDataQuery_tab_power_curve = '功率曲线'
+    # ConsDataQuery_tab_power_factory_curve = '功率因数曲线'
+    # ConsDataQuery_tab_total_energy = '电量'
+    # ConsDataQuery_tab_load = '负荷'
+    # ConsDataQuery_tab_electricity_abnormal = '用电异常'
+
     # 统计查询→综合查询→终端数据查询
     TmnlDataQuery_para = '99941200'
     TmnlDataQuery_Doc = '基本档案'

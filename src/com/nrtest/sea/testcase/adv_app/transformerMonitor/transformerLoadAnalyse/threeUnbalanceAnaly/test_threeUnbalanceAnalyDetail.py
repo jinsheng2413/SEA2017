@@ -95,8 +95,6 @@ class TestLoadRateDetail(TestCase, ThreeUnbalanceAnalyDetailPage):
                                   TradnsformerMonitorData.para_ThreeUnbalanceAnaly_detail))
     def test_query(self, para):
         """高级应用→配变负载分析→三相不平衡分析:三相不平衡明细
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

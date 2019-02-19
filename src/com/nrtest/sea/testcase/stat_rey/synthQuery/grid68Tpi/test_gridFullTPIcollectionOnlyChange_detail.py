@@ -87,7 +87,7 @@ class test_GridFullTpiCollectionOnlychange(TestCase, GridFullTpiCollectionOnlych
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(Grid68Tpi_data.gridFullTpiCollectionOnlychange_para,
+    @data(*DataAccess.getCaseData(Grid68Tpi_data.gridFullTPIcollectionOnlyChange_para,
                                   Grid68Tpi_data.gridFullTPIcollectionOnlyChange_detail_tab))
     def test_query(self, para):
         """统计查询→综合查询→国网68项指标→国网指标全量采集专变:专变抄表失败明细
@@ -98,7 +98,7 @@ class test_GridFullTpiCollectionOnlychange(TestCase, GridFullTpiCollectionOnlych
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(Grid68Tpi_data.gridFullTpiCollectionOnlychange_para,
+    @data(*DataAccess.getCaseData(Grid68Tpi_data.gridFullTPIcollectionOnlyChange_para,
                                   Grid68Tpi_data.gridFullTPIcollectionOnlyChange_detail_tab, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

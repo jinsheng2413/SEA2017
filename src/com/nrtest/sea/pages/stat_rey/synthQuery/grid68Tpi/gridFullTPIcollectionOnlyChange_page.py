@@ -16,7 +16,7 @@ class GridFullTpiCollectionOnlychange_count_Page(Page):
     # 日期
     def inputDt_query_date(self, value):
         self.clean_label(value)
-        self.inputDate(value)
+        self.inputDate(value, is_multi_tab=True)
 
     # 查询
     def btn_qry(self):
@@ -28,7 +28,7 @@ class GridFullTpiCollectionOnlychange_detail_Page(Page):
     # 日期
     def inputDt_query_date(self, value):
         self.clean_label(value)
-        self.inputDate(value)
+        self.inputDate(value, is_multi_tab=True)
 
     # 查询
     def btn_qry(self):

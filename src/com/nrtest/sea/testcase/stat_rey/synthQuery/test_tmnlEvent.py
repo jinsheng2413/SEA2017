@@ -18,7 +18,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery import TmnlEventPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page import TmnlEventPage
 
 
 # 统计查询→综合查询→专公变综合查询:终端事件
@@ -75,10 +75,10 @@ class test_TmnlEvent(TestCase, TmnlEventPage):
         self.inputSel_meter(para['METER'])
 
         # 从
-        self.inputDt_time_from(para['TIME_FROM'])
+        self.inputDt_from_date(para['FROM_DATE'])
 
         # 到
-        self.inputDt_time_to(para['TIME_TO'])
+        self.inputDt_to_date(para['TO_DATE'])
 
         # 查询
         self.btn_qry()

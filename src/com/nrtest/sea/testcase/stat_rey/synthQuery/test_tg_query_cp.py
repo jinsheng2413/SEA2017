@@ -10,13 +10,13 @@
 
 from unittest import TestCase
 
-from com.nrtest.sea.data.stat_rey.synthQuery.SynthQuery_data import SynthQuery_data
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery import TgQueryCpPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page import TgQueryCpPage
 
 
 # 统计查询→综合查询→专公变综合查询:采集点信息

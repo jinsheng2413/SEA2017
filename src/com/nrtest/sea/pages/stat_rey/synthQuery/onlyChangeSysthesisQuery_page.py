@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: onlyChangeSysthesisQuery.py
+@file: onlyChangeSysthesisQuery_page.py
 @time: 2019/1/30 0030 8:51
 @desc:
 """
@@ -12,6 +12,9 @@ from com.nrtest.common.base_page import Page
 # 统计查询--综合查询--专公变综合查询:负荷统计
 
 # 统计查询--综合查询--专公变综合查询：负荷统计
+from com.nrtest.sea.locators.stat_rey.synthQuery.onlyChangeSysthesisQuery_locators import LoadDayDataLocators
+
+
 class LoadCountPage(Page):
     # 终端地址
     def inputSel_tmnl_addr(self, option):
@@ -23,7 +26,7 @@ class LoadCountPage(Page):
 
     # 数据类型
     def inputChk_data_type(self, option):
-        self.clickRadioBox(option)
+        self.clickRadioBox(option, True, True)
 
     # 日期
     def inputDt_query_date(self, value):
@@ -42,7 +45,7 @@ class LoadCountPage(Page):
         self.clickSingleCheckBox(option)
 
     # 曲线间隔
-    def inputSel_curve_between(self, option):
+    def inputSel_curve_period(self, option):
         self.selectDropDown(option)
 
     # 最大最小值分类
@@ -65,7 +68,7 @@ class EleMapPage(Page):
 
     # 数据类型
     def inputChk_data_type(self, option):
-        self.clickRadioBox(option)
+        self.clickRadioBox(option, True, True)
 
     # 日期
     def inputDt_query_date(self, value):
@@ -99,16 +102,16 @@ class DayReadDataPage(Page):
         self.inputDate(value)
 
     # 到
-    def inputDt_from_to(self, value):
+    def inputDt_to_date(self, value):
         self.inputDate(value)
 
     # 是否显示所有终端信息
-    def inputChk_display_all_tmnl_info(self, options):
+    def inputChk_disp_all(self, options):
         self.clickSingleCheckBox(options, True, True)
 
     # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)
 
 
 from com.nrtest.common.base_page import Page
@@ -126,11 +129,11 @@ class LoadDayDataPage(Page):
 
     # 数据类型
     def inputChk_data_type(self, option):
-        self.clickRadioBox(option)
+        self.clickRadioBox(option, True, True)
 
     # 时段类型
     def inputChk_time_type(self, option):
-        self.clickRadioBox(option)
+        self.clickRadioBox(option, True, True)
 
     # 日期
     def inputDt_query_date(self, value):
@@ -146,12 +149,15 @@ class LoadDayDataPage(Page):
 
     # 一二次侧
     def inputSel_ps_side(self, option):
-        self.selectDropDown(option)
+        self.specialDropdown(option, LoadDayDataLocators.PS_SIDE)
 
     # PQUI
     def inputChk_pqui(self, options):
         self.clickCheckBox_new(options)
 
+    # 功率电流平衡度
+    def inputChk_pi_balance_type(self, options):
+        self.clickCheckBox_new(options)
     # 查询
     def btn_qry(self):
         self.btn_query(True)
@@ -195,11 +201,11 @@ class TmnlEventPage(Page):
         self.selectDropDown(option)
 
     # 从
-    def inputDt_time_from(self, value):
+    def inputDt_from_date(self, value):
         self.inputDate(value)
 
     # 到
-    def inputDt_time_to(self, value):
+    def inputDt_to_date(self, value):
         self.inputDate(value)
 
     # 查询

@@ -112,7 +112,7 @@ class SynthQuery_data:
     onlyChangeSysthesisQuery_tmnlEvent_tab = '终端事件'
     onlyChangeSysthesisQuery_cp_tab = '采集点信息'
     onlyChangeSysthesisQuery_cons_doc_tab = '用户档案'
-    onlyChangeSysthesisQuery_TransformerLoadRateMonitoring_tab = '变压器负载率监控'
+    onlyChangeSysthesisQuery_TransLoadRateMonitor_tab = '变压器负载率监控'
 
     # 统计查询--综合查询--农排用户信息接入统计
     agriculturaiRowSta_para = '99941Q00'

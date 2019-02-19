@@ -131,5 +131,5 @@ class SynthQuery_data:
     realtimeData_para = '99941M00'
     # 统计查询→综合查询→用户数据
     consDataQry_para = '99941110'
-    consDataQry_file_tab = '数据展示'
-    consDataQry_ele_tab = '数据展示'
+    consDataQry_file_tab = '基本档案'
+    consDataQry_display_tab = '数据展示'

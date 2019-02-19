@@ -15,7 +15,8 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.lowVoltFixTimeMonitor.lowVoltFixTimeMonitor_data import LowVoltFixTimeMonitorData
-from com.nrtest.sea.pages.adv_app.lowVoltFixTimeMonitor.lowVoltMonitor.SusLowVoltAnaly_page import SusLowVoltAnalyStaticPage
+from com.nrtest.sea.pages.adv_app.lowVoltFixTimeMonitor.lowVoltMonitor.SusLowVoltAnaly_page import \
+    SusLowVoltAnalyStaticPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
@@ -92,7 +93,8 @@ class test_SusLowVoltAnaly(TestCase, SusLowVoltAnalyStaticPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LowVoltFixTimeMonitorData.susLowVoltAnaly_para, LowVoltFixTimeMonitorData.para_SusLowVoltAnaly_static))
+    @data(*DataAccess.getCaseData(LowVoltFixTimeMonitorData.SusLowVoltAnaly_para,
+                                  LowVoltFixTimeMonitorData.para_SusLowVoltAnaly_static))
     def test_query(self, para):
         """高级应用→低压固定时间点电压电流监测→低电压监测→疑似低电压分析:疑似低电压用户统计
         """
@@ -103,7 +105,8 @@ class test_SusLowVoltAnaly(TestCase, SusLowVoltAnalyStaticPage):
 
     @BeautifulReport.add_test_img()
     @data(
-        *DataAccess.getCaseData(LowVoltFixTimeMonitorData.susLowVoltAnaly_para, LowVoltFixTimeMonitorData.para_SusLowVoltAnaly_static, valCheck=True))
+        *DataAccess.getCaseData(LowVoltFixTimeMonitorData.SusLowVoltAnaly_para,
+                                LowVoltFixTimeMonitorData.para_SusLowVoltAnaly_static, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

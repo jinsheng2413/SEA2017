@@ -21,7 +21,8 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossUnifiedView.tgLineL
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损统计分析→台区线损统一视图→台区线损统一视图
+# 高级应用→线损分析→线损统计分析→台区线损统一视图
+# 首页
 @ddt
 class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
     @classmethod
@@ -30,7 +31,7 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
         menuPage = MenuPage.openMenu(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_day)
+        menuPage.clickTabPage(TgLineLossUnifiedView_data.TgLineLossUnifiedView_home_page)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -86,11 +87,9 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_day))
+    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_home_page))
     def test_query(self, para):
-        """高级应用→线损分析→线损统计分析→台区线损统一视图→台区线损统一视图
-
-        :param para:
+        """高级应用→线损分析→线损统计分析→台区线损统一视图:首页
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -98,7 +97,7 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_day,
+    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_home_page,
                                   valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

@@ -21,7 +21,8 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossUnifiedView.tgLineL
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损统计分析→台区线损监测→月线损
+# 高级应用→线损分析→线损统计分析→台区线损统一视图
+# 月线损
 @ddt
 class TestTgLineLossUnifiedView_Tab(TestCase, TgLineLossUnifiedViewPage):
     @classmethod
@@ -84,6 +85,8 @@ class TestTgLineLossUnifiedView_Tab(TestCase, TgLineLossUnifiedViewPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_month))
     def test_query(self, para):
+        """高级应用→线损分析→线损统计分析→台区线损统一视图:月线损
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

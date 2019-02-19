@@ -12,10 +12,11 @@
 from unittest import TestCase
 
 from ddt import ddt, data
-
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.runStatusMonitor.MComMan230.mComMan230 import MComMan230
+from com.nrtest.sea.locators.run_man.runStatusMonitor.MComMan230.baseStationManage_locators import \
+    BaseStationManageLocators
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.runStatusMonitor.MComMan230.baseStationManage_page import BaseStationManagePage
 
@@ -62,8 +63,6 @@ class TestbaseStationManage(TestCase, BaseStationManagePage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 打开左边树并选择
-        #self.openLeftTree(para['TREE_NODE'])
 
         # 通信地址
         self.inputStr_comm_addr(para['COMM_ADDR'])

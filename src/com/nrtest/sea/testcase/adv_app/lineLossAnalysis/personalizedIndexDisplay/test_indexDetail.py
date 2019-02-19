@@ -83,8 +83,6 @@ class TestIndexDetail(TestCase, IndexDetailPage):
                                   tabName=PersonalizedIndexDisplay_data.IndexDetail_detail_tab))
     def test_query(self, para):
         """高级应用→线损分析→同期线损→指标明细:指标明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

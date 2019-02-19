@@ -86,8 +86,6 @@ class TestIndexAllocation(TestCase, IndexAllocationPage):
     @data(*DataAccess.getCaseData(PersonalizedIndexDisplay_data.IndexAllocation_para))
     def test_query(self, para):
         """高级应用→线损分析→同期线损→指标配置
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

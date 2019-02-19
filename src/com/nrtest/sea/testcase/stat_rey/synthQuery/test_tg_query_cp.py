@@ -1,27 +1,27 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 郭春彪
+@author: 李建方
 @license: (C) Copyright 2018, Nari.
-@file: test_realTimeReadData.py
-@time: 2019-02-01 14:05:55
+@file: test_tg_query_cp.py
+@time: 2019-02-19 09:17:09
 @desc:
 """
-from time import sleep
+
 from unittest import TestCase
 
+from com.nrtest.sea.data.stat_rey.synthQuery.SynthQuery_data import SynthQuery_data
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery import SynthqueryDataPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery import TgQueryCpPage
 
 
-# 统计查询→综合查询→专公变综合查询:实时抄表数据
+# 统计查询→综合查询→专公变综合查询:采集点信息
 @ddt
-class test_RealTimeReadData(TestCase, SynthqueryDataPage):
+class test_TgQueryCp(TestCase, TgQueryCpPage):
 
     @classmethod
     def setUpClass(cls):
@@ -29,9 +29,9 @@ class test_RealTimeReadData(TestCase, SynthqueryDataPage):
         menuPage = MenuPage.openMenu(SynthQuery_data.onlyChangeSysthesisQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SynthQuery_data.onlyChangeSysthesisQuery_realTtimeReadData_tab)
+        menuPage.clickTabPage(SynthQuery_data.onlyChangeSysthesisQuery_cp_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -61,24 +61,14 @@ class test_RealTimeReadData(TestCase, SynthqueryDataPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 用户编号
+        # 户号
         self.openLeftTree(para['TREE_NODE'])
-        sleep(1)
 
         # 终端地址
         self.inputSel_tmnl_addr(para['TMNL_ADDR'])
 
         # 电能表
         self.inputSel_meter(para['METER'])
-
-        # 查询日期从
-        self.inputDt_from_date(para['FROM_DATE'])
-
-        # 到
-        self.inputDt_to_date(para['TO_DATE'])
-
-        # 是否显示正向有功电能量
-        self.inputChk_disp_all(para['DISP_ALL'])
 
         # 查询
         self.btn_qry()
@@ -99,10 +89,9 @@ class test_RealTimeReadData(TestCase, SynthqueryDataPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para,
-                                  SynthQuery_data.onlyChangeSysthesisQuery_realTtimeReadData_tab))
+    @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para, SynthQuery_data.onlyChangeSysthesisQuery_cp_tab))
     def test_query(self, para):
-        """统计查询→综合查询→专公变综合查询:实时抄表数据
+        """统计查询→综合查询→专公变综合查询:采集点信息
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -110,8 +99,7 @@ class test_RealTimeReadData(TestCase, SynthqueryDataPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para,
-                                  SynthQuery_data.onlyChangeSysthesisQuery_realTtimeReadData_tab, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para, SynthQuery_data.onlyChangeSysthesisQuery_cp_tab, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -7,6 +7,7 @@
 @time: 2019/1/31 0031 16:05
 @desc:
 """
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -61,32 +62,38 @@ class test_LoadDayData(TestCase, LoadDayDataPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # 用户编号
-        self.openLeftTree(para['TREE_CONS_NO'])
+        self.openLeftTree(para['TREE_NODE'])
+        sleep(1)
 
         # 数据类型
         self.inputChk_data_type(para['DATA_TYPE'])
-        data_value = self.get_para_value(para['DATA_TYPE'])
+
+        # 终端地址
+        self.inputSel_tmnl_addr(para['TMNL_ADDR'])
+
+        # 电能表
+        self.inputSel_meter(para['METER'])
+
         # 时段类型
         self.inputChk_time_type(para['TIME_TYPE'])
-        type_value = self.get_para_value(para['TIME_TYPE'])
-        if data_value == '瞬时量' and type_value == '日数据':
-            # 电量平衡类型
-            self.inputChk_ele_type(para['ELE_TYPE'])
-            print('------')
 
-        if type_value == '日数据':
+        if self.get_para_value(para['TIME_TYPE']) == '日数据':
             # 日期
-            self.inputDt_day_date(para['DAY_DATE'])
-        elif type_value == '任意时段':
+            self.inputDt_query_date(para['QUERY_DATE'])
+        else:
             # 日期从
-            self.inputDt_date_from(para['DATE_FROM'])
-
+            self.inputDt_from_date(para['FROM_DATE'])
             # 到
-            self.inputDt_date_to(para['DATE_TO'])
-        # 值次数
-        # self.inputSel_time_value(para['TIME_VALUE']) #页面变化是xpath也在变，所以暂时不用
-        # 做功方式
-        self.inputChk_alphabet_power_type(para['ALPHABET_POWER_TYPE'])
+            self.inputDt_to_date(para['TO_DATE'])
+
+        # 功率电流平度
+        self.inputChk_pi_balance_type(para['PI_BALANCE_TYPE'])
+
+        # 一二次侧
+        self.inputSel_ps_side(para['PS_SIDE'])
+
+        # PQUI
+        self.inputChk_pqui(para['PQUI'])
 
         # 查询
         self.btn_qry()

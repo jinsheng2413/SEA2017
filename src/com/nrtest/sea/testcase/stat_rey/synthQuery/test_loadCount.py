@@ -7,6 +7,7 @@
 @time: 2019/1/30 0030 9:12
 @desc:
 """
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -53,26 +54,40 @@ class TestMeterDataQuery(TestCase, LoadCountPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        self.openLeftTree(para['TREE_CONS_NO'])
+        # 用户编号
+        self.openLeftTree(para['TREE_NODE'])
+        sleep(1)
+
+        # 终端地址
+        self.inputSel_tmnl_addr(para['TMNL_ADDR'])
+
+        # 电能表
+        self.inputSel_meter(para['METER'])
+
         # 数据类型
         self.inputChk_data_type(para['DATA_TYPE'])
-        data_type_value = self.get_para_value(para['DATA_TYPE'])
-        if data_type_value == '日数据':
-            # 日期
-            self.inputDt_display_date(para['DISPLAY_DATE'])
+
+        # 日期
+        self.inputDt_query_date(para['QUERY_DATE'])
+
+        data_type = self.get_para_value(para['DATA_TYPE'])
+        if data_type == '日数据':
             # 瞬时量
             self.inputChk_quantity_type(para['QUANTITY_TYPE'])
+
+            # 积分曲线
+            self.inputChk_integral_curve(para['INTEGRAL_CURVE'])
+
             # 曲线间隔
-            self.inputStr_curve_between(para['CURVE_BETWEEN'])
-        elif data_type_value == '月数据':
-            self.inputDt_month_day(para['MONTH_DAY'])
-
+            self.inputSel_curve_period(para['CURVE_PERIOD'])
+        else:
+            # 最大最小值分类
             self.inputChk_max_min_type(para['MAX_MIN_TYPE'])
-        elif data_type_value == '年数据':
 
-            self.inputDt_year_day(para['YEAR_DAY'])
         # 有功
         self.inputChk_power_type(para['POWER_TYPE'])
+
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

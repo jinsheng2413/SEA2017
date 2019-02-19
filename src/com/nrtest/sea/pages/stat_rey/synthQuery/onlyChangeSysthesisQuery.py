@@ -10,39 +10,44 @@
 from com.nrtest.common.base_page import Page
 
 # 统计查询--综合查询--专公变综合查询:负荷统计
-from com.nrtest.sea.locators.other.base_g_locators import BaseTabLocators
 
-
+# 统计查询--综合查询--专公变综合查询：负荷统计
 class LoadCountPage(Page):
+    # 终端地址
+    def inputSel_tmnl_addr(self, option):
+        self.selectDropDown(option)
+
+    # 电能表
+    def inputSel_meter(self, option):
+        self.selectDropDown(option)
+
     # 数据类型
-    def inputChk_data_type(self, value):
-        self.dateType = s = value.split(';;')[1]
-        self.clickRadioBox(value, is_multi_tab=True, is_multi_elements=True)
-
-    def inputDt_month_day(self, value):
-        self.inputDate(value)
-
-    def inputDt_year_day(self, value):
-        self.inputDate(value)
+    def inputChk_data_type(self, option):
+        self.clickRadioBox(option)
 
     # 日期
-    def inputDt_display_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
-    def inputChk_quantity_type(self, value):
-        self.clickRadioBox(value, is_multi_tab=True, is_multi_elements=True)
+    # 瞬时量
+    def inputChk_quantity_type(self, option):
+        self.clickRadioBox(option)
 
-    # 曲线类型
-    def inputChk_power_type(self, value):
-        self.clickCheckBox_new(value)
+    # 有功
+    def inputChk_power_type(self, options):
+        self.clickCheckBox_new(options)
 
-    # 曲线类型
-    def inputChk_max_min_type(self, value):
-        self.clickCheckBox_new(value)
+    # 积分曲线
+    def inputChk_integral_curve(self, option):
+        self.clickSingleCheckBox(option)
 
     # 曲线间隔
-    def inputStr_curve_between(self, value):
-        self.selectDropDown(value)
+    def inputSel_curve_between(self, option):
+        self.selectDropDown(option)
+
+    # 最大最小值分类
+    def inputChk_max_min_type(self, options):
+        self.clickCheckBox_new(options)
 
     def btn_qry(self):
         self.btn_query(True)
@@ -50,28 +55,41 @@ class LoadCountPage(Page):
 
 # 统计查询--综合查询--专公变综合查询:电量曲线图
 class EleMapPage(Page):
+    # 终端地址
+    def inputSel_tmnl_addr(self, option):
+        self.selectDropDown(option)
+
+    # 电能表
+    def inputSel_meter(self, option):
+        self.selectDropDown(option)
+
     # 数据类型
-    def inputChk_data_type(self, value):
-        self.clickRadioBox(value, is_multi_tab=True, is_multi_elements=True)
+    def inputChk_data_type(self, option):
+        self.clickRadioBox(option)
 
     # 日期
-    def inputDt_collect_time(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
-    # 做功类型
-    def inputChk_have_power_type(self, value):
-        self.clickCheckBox_new(value, is_multi_tab=True)
+    # 正反功率值分类
+    def inputChk_power_type(self, options):
+        self.clickCheckBox_new(options)
 
     # 电量获取方式
-    def inputChk_ele_get_type(self, value):
-        self.clickRadioBox(value)
+    def inputChk_ele_get_type(self, option):
+        self.clickRadioBox(option)
 
+    # 查询
     def btn_qry(self):
         self.btn_query(True)
 
 
 # 统计查询→综合查询→专公变综合查询:日抄表数据
 class DayReadDataPage(Page):
+    # 终端地址
+    def inputSel_tmnl_addr(self, option):
+        self.selectDropDown(option)
+
     # 显示方式
     def inputChk_display_type(self, option):
         self.clickRadioBox(option)
@@ -85,16 +103,12 @@ class DayReadDataPage(Page):
         self.inputDate(value)
 
     # 是否显示所有终端信息
-    def inputChk_display_all_tmnl_info(self, option):
-        self.clickSingleCheckBox(option, is_multi_tab=True)
-
-    # 用户编号
-    def inputStr_tree_cons_no(self, value):
-        self.input(value)
+    def inputChk_display_all_tmnl_info(self, options):
+        self.clickSingleCheckBox(options, True, True)
 
     # 查询
     def btn_qry(self):
-        self.btn_query(True)
+        self.btn_query()
 
 
 from com.nrtest.common.base_page import Page
@@ -102,6 +116,13 @@ from com.nrtest.common.base_page import Page
 
 # 统计查询→综合查询→专公变综合查询:负荷日数据
 class LoadDayDataPage(Page):
+    # 终端地址
+    def inputSel_tmnl_addr(self, option):
+        self.selectDropDown(option)
+
+    # 电能表
+    def inputSel_meter(self, option):
+        self.selectDropDown(option)
 
     # 数据类型
     def inputChk_data_type(self, option):
@@ -109,33 +130,27 @@ class LoadDayDataPage(Page):
 
     # 时段类型
     def inputChk_time_type(self, option):
-        self.clickRadioBox(option, is_multi_tab=True, is_multi_elements=True)
+        self.clickRadioBox(option)
 
     # 日期
-    def inputDt_day_date(self, value):
+    def inputDt_query_date(self, value):
         self.inputDate(value)
 
     # 日期从
-    def inputDt_date_from(self, value):
+    def inputDt_from_date(self, value):
         self.inputDate(value)
 
     # 到
-    def inputDt_date_to(self, value):
+    def inputDt_to_date(self, value):
         self.inputDate(value)
 
-    # 电量平衡类型
-    def inputChk_ele_type(self, options):
-        self.clickCheckBox_new(options)
+    # 一二次侧
+    def inputSel_ps_side(self, option):
+        self.selectDropDown(option)
 
-    # 做功方式
-    def inputChk_alphabet_power_type(self, options):
+    # PQUI
+    def inputChk_pqui(self, options):
         self.clickCheckBox_new(options)
-
-    # 充值次数
-    def inputSel_time_value(self, value):
-        self.click(BaseTabLocators.RECHARGE_TIME)
-        locator = self.get_select_locator(BaseTabLocators.RECHARGE_TIME_VALUE, value)
-        self.click(locator)
 
     # 查询
     def btn_qry(self):
@@ -144,17 +159,24 @@ class LoadDayDataPage(Page):
 
 # 统计查询→综合查询→专公变综合查询:实时抄表数据
 class SynthqueryDataPage(Page):
+    # 终端地址
+    def inputSel_tmnl_addr(self, option):
+        self.selectDropDown(option)
 
     # 查询日期从
-    def inputDt_query_time_from(self, value):
+    def inputDt_from_date(self, value):
         self.inputDate(value)
 
+    # 电能表
+    def inputSel_meter(self, option):
+        self.selectDropDown(option)
+
     # 到
-    def inputDt_query_time_to(self, value):
+    def inputDt_to_date(self, value):
         self.inputDate(value)
 
     # 是否显示正向有功电能量
-    def inputChk_or_power(self, options):
+    def inputChk_disp_all(self, options):
         self.clickCheckBox_new(options)
 
     # 查询
@@ -164,6 +186,13 @@ class SynthqueryDataPage(Page):
 
 # 统计查询→综合查询→专公变综合查询:终端事件
 class TmnlEventPage(Page):
+    # 终端地址
+    def inputSel_tmnl_addr(self, option):
+        self.selectDropDown(option)
+
+    # 电能表
+    def inputSel_meter(self, option):
+        self.selectDropDown(option)
 
     # 从
     def inputDt_time_from(self, value):
@@ -178,8 +207,29 @@ class TmnlEventPage(Page):
         self.btn_query(True)
 
 
+# 统计查询→综合查询→专公变综合查询:采集点信息/用户档案
+class TgQueryCpPage(Page):
+    # 终端地址
+    def inputSel_tmnl_addr(self, option):
+        self.selectDropDown(option)
+
+    # 电能表
+    def inputSel_meter(self, option):
+        self.selectDropDown(option)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query()
+
 # 统计查询→综合查询→专公变综合查询:变压器负载率监控
 class TransformerLoadRateMonitoringPage(Page):
+    # 终端地址
+    def inputSel_tmnl_addr(self, option):
+        self.selectDropDown(option)
+
+    # 电能表
+    def inputSel_meter(self, option):
+        self.selectDropDown(option)
 
     # 日期
     def inputDt_query_date(self, value):

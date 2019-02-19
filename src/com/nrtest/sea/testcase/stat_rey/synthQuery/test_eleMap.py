@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery import EleMapPage
 
 
-# 统计查询--综合查询--专公变综合查询：电量曲线分布图
+# 统计查询--综合查询--专公变综合查询：电量曲线图
 @ddt
 class TestMeterDataQuery(TestCase, EleMapPage):
     @classmethod
@@ -53,16 +53,28 @@ class TestMeterDataQuery(TestCase, EleMapPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        self.openLeftTree(para['TREE_CONS_NO'])
+        # 节点名
+        self.openLeftTree(para['TREE_NODE'])
+
+        # 终端地址
+        self.inputSel_tmnl_addr(para['TMNL_ADDR'])
+
+        # 电能表
+        self.inputSel_meter(para['METER'])
+
         # 数据类型
         self.inputChk_data_type(para['DATA_TYPE'])
+
         # 日期
-        self.inputDt_collect_time(para['COLLECT_TIME'])
-        # 做工类型
-        self.inputChk_have_power_type(para['HAVE_POWER_TYPE'])
+        self.inputDt_query_date(para['QUERY_DATE'])
+
+        # 正反功率值分类
+        self.inputChk_power_type(para['POWER_TYPE'])
+
         # 电量获取方式
         self.inputChk_ele_get_type(para['ELE_GET_TYPE'])
 
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):
@@ -84,7 +96,7 @@ class TestMeterDataQuery(TestCase, EleMapPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para,
                                   SynthQuery_data.onlyChangeSysthesisQuery_eleMap_tab))
     def test_query(self, para):
-        """# 统计查询--综合查询--专公变综合查询：负荷统计
+        """# 统计查询--综合查询--专公变综合查询：电量曲线图
 
         :param para:
         """

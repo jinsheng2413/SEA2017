@@ -66,7 +66,7 @@ class TestStaticByFac(TestCase, StaticByFacPage):
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 类别
-        self.inputChk_stat_mode(para['STAT_MODE'])
+        self.inputChk_stat_type(para['STAT_TYPE'])
 
         self.btn_qry()
         self.sleep_time(2)

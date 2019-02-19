@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.sim_archives_man_page import SimArchivesManPage
 
 
-# 运行管理→SIM卡管理→档案管理:01
+# 运行管理→SIM卡管理→档案管理
 @ddt
 class test_SimArchivesMan(TestCase, SimArchivesManPage):
 
@@ -94,7 +94,7 @@ class test_SimArchivesMan(TestCase, SimArchivesManPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(simCardMan_data.simArchivesMan_para))
     def test_query(self, para):
-        """运行管理→SIM卡管理→档案管理:01
+        """运行管理→SIM卡管理→档案管理
         """
         self.start_case(para, __file__)
         self.query(para)

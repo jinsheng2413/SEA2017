@@ -16,20 +16,20 @@ from com.nrtest.common.data_access import DataAccess
 author = '李建方'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'terminalDataQuery'
+file_name = 'Tg_query_cp'
 
 # 存放菜单编号的数据文件类名
 # 路径
 data_file = r'com/nrtest/sea/data/stat_rey/synthQuery/synthQuery_data'
 
 # 菜单编号
-menu_no = '99913210'
+menu_no = '99941R00'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = '连续抄表失败明细'
+tab_name = '采集点信息'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
-en_tab_name = 'DataDis'
+en_tab_name = 'cp'
 
 # 生成文件存放路径
 filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"

@@ -63,7 +63,7 @@ class TestWorkCount(TestCase, WorkCountPage):
         """
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])

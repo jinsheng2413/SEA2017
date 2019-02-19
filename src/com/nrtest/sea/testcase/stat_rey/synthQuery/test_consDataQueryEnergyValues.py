@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
 """
-@author: 韩笑
-@license: (C) Copyright 2018, Nari.
-@file: test_consDataQuery.py
-@time: 2018/12/13 10:09
+@author: js
+@file:test_consDataQueryEnergyValues.py
+@time:2019/2/19 9:38
 @desc:
 """
+
 
 from unittest import TestCase
 
@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.consDataQuery_page import *
 
 
-# 统计查询→综合查询→用户数据查询
+# 统计查询--综合查询--用户数据查询：电能示值
 @ddt
 class TestConsDataQuery(TestCase, ConsDataQueryPage):
     @classmethod
@@ -62,17 +62,31 @@ class TestConsDataQuery(TestCase, ConsDataQueryPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # tab页选择
-        self.inputChk_tab_name(para['TAB_NAME'])
-
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
 
         # 点击查询按钮
         self.btn_search()
 
-        # 校验
+        # tab页选择
+        self.inputChk_tab_name(para['TAB_NAME'])
 
+        # tab页选择2
+        self.inputChk_tab_name(para['TAB_NAME2'])
+
+        # 查询方式
+        self.inputChk_query_type(para['QUERY_TYPE'])
+
+        # 查询日期
+        self.inputDt_start_time(para['START_TIME'])
+
+        # 至
+        self.inputDt_end_date(para['END_TIME'])
+
+        # 查询
+        self.btn_search_tab()
+
+    # 校验
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）
@@ -91,7 +105,7 @@ class TestConsDataQuery(TestCase, ConsDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.ConsDataQuery_para))
     def test_query(self, para):
-        """统计查询→综合查询→用户数据查询
+        """# 统计查询--综合查询--用户数据查询：电能示值
         对查询结果有无、数据链接跳转等校验
         :param para: 用例数据
         """

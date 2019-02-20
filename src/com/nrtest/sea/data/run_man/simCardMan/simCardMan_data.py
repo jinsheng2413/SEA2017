@@ -8,7 +8,7 @@
 @desc:
 """
 class SimCardManData:
-    # 运行管理-->SIM卡管理-->资产管理
+    # 运行管理-->SIM卡管理-->档案管理
     dataManage_para = '99933100'
     # 运行管理-->SIM卡管理-->资产管理
     assetsManage_para = '99933200'

@@ -2,7 +2,7 @@
 
 
 """
-@author: 郭春彪
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_remoteCommModulVersionMain.py
 @time: 2018/11/6 0006 15:15

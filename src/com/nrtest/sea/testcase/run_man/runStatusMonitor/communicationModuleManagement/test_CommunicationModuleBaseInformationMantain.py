@@ -2,7 +2,7 @@
 
 
 """
-@author: 郭春彪
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_CommunicationModuleBaseInformationMantain.py
 @time: 2018/11/2 0002 11:37

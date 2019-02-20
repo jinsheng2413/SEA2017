@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-@author: 卢炎炎
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_sysOtherQuery.py
 @time: 2018/11/8 11:07

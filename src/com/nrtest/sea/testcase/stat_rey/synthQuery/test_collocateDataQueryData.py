@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 李建方
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_collocateDataQueryData.py
 @time: 2019-02-15 16:15

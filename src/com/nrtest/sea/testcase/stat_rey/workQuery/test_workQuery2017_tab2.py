@@ -2,7 +2,7 @@
 
 
 """
-@author: 卢炎炎
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_workQuery2017_tab2.py
 @time: 2018/11/1 15:27

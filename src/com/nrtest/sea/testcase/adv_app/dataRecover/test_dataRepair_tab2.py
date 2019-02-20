@@ -19,6 +19,7 @@ from com.nrtest.sea.pages.adv_app.dataRecover.dataRepair_page import DataRepair_
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 高级应用--数据修复--修复数据查询：数据修复明细
 @ddt
 class Test_DataRepair_2(TestCase, DataRepair_2Page):
     @classmethod
@@ -96,10 +97,7 @@ class Test_DataRepair_2(TestCase, DataRepair_2Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataRepair.para_DataRepair,DataRepair.DataRepair_tab_detail))
     def test_query(self, para):
-        """高级应用--数据修复--修复数据查询（第二个tab页）
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        :return:
+        """高级应用--数据修复--修复数据查询：数据修复明细
         """
         self.start_case(para, __file__)
         self.query(para)

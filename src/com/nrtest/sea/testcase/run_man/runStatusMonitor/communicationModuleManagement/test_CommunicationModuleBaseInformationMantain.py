@@ -2,7 +2,7 @@
 
 
 """
-@author: 郭春彪
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_CommunicationModuleBaseInformationMantain.py
 @time: 2018/11/2 0002 11:37
@@ -22,6 +22,7 @@ from com.nrtest.sea.pages.run_man.runStatusMonitor.communicationModuleManagement
     CommunicationModuleBaseInformationMantainPage
 
 
+# 运行管理→采集信道管理→通信模块管理→通信模块属性维护：通信模块基本信息维护
 @ddt
 class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModuleBaseInformationMantainPage):
 
@@ -99,10 +100,7 @@ class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModul
     @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulPropMain_para,
                                   CommunicationModuleManagement.commModulPropMain_tab_baseInf))
     def test_query(self, para):
-        """运行管理→采集信道管理→通信模块管理→通信模块属性维护(第一个tab页)
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        :return:
+        """运行管理→采集信道管理→通信模块管理→通信模块属性维护：通信模块基本信息维护
         """
         self.start_case(para, __file__)
         self.query(para)

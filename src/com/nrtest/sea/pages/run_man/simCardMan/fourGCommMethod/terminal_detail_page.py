@@ -39,7 +39,7 @@ class TerminalDetailPage(Page):
 
     # 终端规约
     def inputStr_tmnl_protocol(self, value):
-        self.input(value)
+        self.selectDropDown(value)
 
     # 终端厂家
     def inputSel_tmnl_factory(self, option):

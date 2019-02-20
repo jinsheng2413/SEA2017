@@ -28,7 +28,7 @@ class AllMeasureDataCountQueryPage(Page):
         self.selectDropDown(options)
 
     # 统计维度
-    def inputSel_stat_mode(self, options):
+    def inputSel_stat_type(self, options):
         self.selectDropDown(options)
 
     # 查询

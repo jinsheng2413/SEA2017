@@ -86,7 +86,6 @@ class TestMsgSubscriptionMan(TestCase, MsgSubscriptionManPage):
     @data(*DataAccess.getCaseData(MsgPushData.MsgSubscriptionMan_para))
     def test_query(self, para):
         """系统管理→信息定制→推送信息定制→手机订阅→短信订阅管理
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

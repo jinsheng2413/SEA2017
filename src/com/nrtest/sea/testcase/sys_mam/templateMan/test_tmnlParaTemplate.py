@@ -84,8 +84,6 @@ class TestTmnlParaTemplate(TestCase, TmnlParaTemplatePage):
     @data(*DataAccess.getCaseData(TemplateManData.TmnlParaTemplate_para))
     def test_query(self, para):
         """系统管理→模板管理→终端参数模板
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

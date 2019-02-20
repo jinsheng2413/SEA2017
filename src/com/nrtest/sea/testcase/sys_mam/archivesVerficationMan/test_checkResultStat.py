@@ -96,6 +96,8 @@ class TestCheckResultStat(TestCase, CheckResultStatPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkResultStat_para))
     def test_query(self, para):
+        """系统管理→档案核查管理→核查结果统计查询
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

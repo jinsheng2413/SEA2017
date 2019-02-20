@@ -18,6 +18,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.tmnlBuildQuery_page import TmnlBuildQueryPage
 
 
+# 统计查询--报表管理--国网报表--智能电能表及终端设备建设情况
 @ddt
 class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
 
@@ -26,7 +27,7 @@ class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
         # 打开菜单（需要传入对应的菜单编号,Ture的作用：利用中文名称点击菜单）
         menuPage = MenuPage.openMenu(TmnlBuildQuery_data.TmnlBuildQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-       #menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
+        # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
         menuPage.remove_dt_readonly()
 
     @classmethod
@@ -101,8 +102,6 @@ class TestTmnlBuildQuery(TestCase, TmnlBuildQueryPage):
     @data(*DataAccess.getCaseData(TmnlBuildQuery_data.TmnlBuildQuery_para))
     def test_query(self, para):
         """统计查询--报表管理--国网报表--智能电能表及终端设备建设情况
-        对查询结果有无、数据链接跳转等校验
-        :param para:用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

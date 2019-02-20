@@ -17,6 +17,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.lpConRunQuery_page import IpConRunQueryPage
 
 
+# 统计查询→报表管理→国网报表→低压用户运行指标
 @ddt
 class TestIpConRunQuery(TestCase, IpConRunQueryPage):
 
@@ -90,8 +91,6 @@ class TestIpConRunQuery(TestCase, IpConRunQueryPage):
     @data(*DataAccess.getCaseData(IpConRunQuery_data.IpConRunQuery_para))
     def test_query(self, para):
         """统计查询→报表管理→国网报表→低压用户运行指标
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

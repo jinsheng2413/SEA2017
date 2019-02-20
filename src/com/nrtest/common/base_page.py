@@ -581,17 +581,17 @@ class Page():
         el = self._find_displayed_element(locator, idx)
         el.send_keys(value.split(';')[1])
 
-    def _uncheck_all(self, option_name, unchecked_by):
+    def _uncheck_all(self, option_name, unchecked_cls):
         """
         判断元素是否被选中
         :param option_name:下拉复选中选项，其中一个中文名称
-        :param unchecked_by:True-通过src-->/checked.png；False-通过class-->-checked
+        :param unchecked_cls:True-通过src-->/checked.png；False-通过class-->-checked
         :return:
         """
-        if unchecked_by:
-            unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL, option_name)
-        else:
+        if unchecked_cls:
             unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL_CLS, option_name)
+        else:
+            unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL, option_name)
         print('所有选中项', unchek_all_path)
         elements = self._find_elements(unchek_all_path)
         for el in elements:
@@ -599,7 +599,7 @@ class Page():
             #     el.click()
             el.click()
 
-    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, unchecked_by=True):
+    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, unchecked_cls=True):
         """
         下拉复选框选择
         :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
@@ -625,7 +625,7 @@ class Page():
                 sleep(sleep_sec)
 
             # 清除已选项
-            self._uncheck_all(ls_option[1], unchecked_by)
+            self._uncheck_all(ls_option[1], unchecked_cls)
 
             if len(ls_option[2]) > 0 and ls_option[2] != '全部':
                 for option in ls_option[2].split(','):

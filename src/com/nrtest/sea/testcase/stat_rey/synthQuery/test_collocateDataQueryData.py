@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 李建方
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_collocateDataQueryData.py
 @time: 2019-02-15 16:15
@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.collocateDataQuery_page import CollcateDataQueryDataPage
 
 
-# 统计查询→综合查询→配变数据查询:基本档案
+# 统计查询→综合查询→配变数据查询:数据展示
 @ddt
 class TestCollcateDataQueryDoc(TestCase, CollcateDataQueryDataPage):
 
@@ -102,7 +102,7 @@ class TestCollcateDataQueryDoc(TestCase, CollcateDataQueryDataPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.CollcateDataQuery_para, SynthQuery_data.CollcateDataQuery_Data))
     def test_query(self, para):
-        """统计查询→综合查询→配变数据查询:基本档案
+        """统计查询→综合查询→配变数据查询:数据展示
         """
         self.start_case(para, __file__)
         self.query(para)

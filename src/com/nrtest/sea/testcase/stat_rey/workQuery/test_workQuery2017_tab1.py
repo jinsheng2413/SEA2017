@@ -2,7 +2,7 @@
 
 
 """
-@author: 卢炎炎
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_workQuery2017_tab1.py
 @time: 2018/11/1 15:17
@@ -20,6 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.workQuery.workQuery2017_page import WorkCount2017Page
 
 
+# 统计查询→工单查询→工单查询2017：工单统计
 @ddt
 class TestWorkQuery2017_tab1(TestCase, WorkCount2017Page):
 
@@ -63,7 +64,7 @@ class TestWorkQuery2017_tab1(TestCase, WorkCount2017Page):
         """
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 工单类型
         self.inputSel_app_type(para['APP_TYPE'])
@@ -89,9 +90,7 @@ class TestWorkQuery2017_tab1(TestCase, WorkCount2017Page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AppQuery_data.AppQuery2017_para, AppQuery_data.AppQuery2017_tab_count))
     def test_query(self, para):
-        """统计查询→工单查询→工单查询2017(第一个tab页)
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
+        """统计查询→工单查询→工单查询2017：工单统计
         """
         self.start_case(para, __file__)
         self.query(para)

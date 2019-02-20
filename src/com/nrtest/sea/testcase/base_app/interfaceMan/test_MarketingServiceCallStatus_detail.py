@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_otherServiceCallStatus_detail.py
+@file: test_MarketingServiceCallStatus_detail.py
 @time: 2018-10-31 9:14
 @desc:
 """
@@ -55,10 +55,10 @@ class test_otherServiceCallStatus_detail(TestCase, MarketingServiceCallStatus_de
         self.recoverLeftTree()
 
     def query(self, para):
+        # 服务名称
+        self.inputSel_service_name(para['SERVICE_NAME'])
         # 业务系统
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])
-        # #服务名称
-        self.inputSel_service_name(para['SERVICE_NAME'])
         # 开始时间
         self.inputDt_start_date(para['START_DATE'])
         # 结束时间

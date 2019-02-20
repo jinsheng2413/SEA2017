@@ -102,8 +102,6 @@ class TestTmnlTaskTemplate(TestCase, TmnlTaskTemplatePage):
     @data(*DataAccess.getCaseData(TemplateManData.TmnlTaskTemplate_para))
     def test_query(self, para):
         """系统管理→模板管理→终端任务模板
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -145,8 +145,8 @@ class Page():
 
             elif dlg_src == 5:
                 action = '01'
-                case_type = int(self.case_para['CASE_TYPE'])
-                if case_type == 2 and self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
+                # case_type = int(self.case_para['CASE_TYPE'])
+                if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
                     action = '03'
 
             elif dlg_src == 2:
@@ -581,20 +581,25 @@ class Page():
         el = self._find_displayed_element(locator, idx)
         el.send_keys(value.split(';')[1])
 
-    def _uncheck_all(self, option_name):
+    def _uncheck_all(self, option_name, unchecked_by):
         """
         判断元素是否被选中
         :param option_name:下拉复选中选项，其中一个中文名称
+        :param unchecked_by:True-通过src-->/checked.png；False-通过class-->-checked
         :return:
         """
-        unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL, option_name)
+        if unchecked_by:
+            unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL, option_name)
+        else:
+            unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL_CLS, option_name)
+        print('所有选中项', unchek_all_path)
         elements = self._find_elements(unchek_all_path)
         for el in elements:
             # if el.get_attribute('src').find('/checked.gif') > -1:
             #     el.click()
             el.click()
 
-    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False):
+    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, unchecked_by=True):
         """
         下拉复选框选择
         :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
@@ -620,7 +625,7 @@ class Page():
                 sleep(sleep_sec)
 
             # 清除已选项
-            self._uncheck_all(ls_option[1])
+            self._uncheck_all(ls_option[1], unchecked_by)
 
             if len(ls_option[2]) > 0 and ls_option[2] != '全部':
                 for option in ls_option[2].split(','):
@@ -1177,6 +1182,11 @@ class Page():
         """
         登录成功失败判断与清屏处理（如，告警提示框等）
         """
+        # 登录异常弹窗确认
+        el = self._direct_find_element(BaseLocators.BTN_CONFIRM)
+        if bool(el):
+            el.click()
+
         # 重要信息推出窗口关闭
         el = self._find_displayed_element(BaseLocators.DLG_IMPORT)
         if bool(el):

@@ -22,3 +22,12 @@ class RemoteCustControl_data:
 
     # 高级应用→费控管理→远程费控→专变用户远程费控执行
     CtrlExecutSpec_para = '99922220'
+
+    # 高级应用→费控管理→远程费控→新专变用户远程费控执行
+    para_NewSpecRemoteCtrlExecut = '99922240'
+    para_NewSpecRemoteCtrlExecut_high_sheet = '高压用户跳闸控制列表'
+    para_NewSpecRemoteCtrlExecut_high_info = '高压用户跳闸控制汇总信息'
+    # 高级应用→费控管理→远程费控→新低压用户远程费控执行
+    para_NewRemoteCtrlExecut = '99922250'
+    para_NewRemoteCtrlExecut_low_sheet = '低压用户费控列表'
+    para_NewRemoteCtrlExecut_low_info = '低压用户费控汇总信息'

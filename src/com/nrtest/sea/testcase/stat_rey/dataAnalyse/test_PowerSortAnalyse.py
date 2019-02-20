@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 郭春彪
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_PowerSortAnalyse.py
 @time: 2018/9/10 0010 9:21
@@ -16,18 +16,19 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.stat_rey.dataAnalyse.loadrankanalyse_data import LoadRankAnalyse_para
+from com.nrtest.sea.data.stat_rey.dataAnalyse.loadrankanalyse_data import LoadRankAnalyse_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.dataAnalyse.powerSortAnalyse_page import PowerSortAnalysePage
 
 
+# 统计查询→数据分析→电量分析→电量排名分析
 @ddt
 class TestPowerSortAnalyse(TestCase, PowerSortAnalysePage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(LoadRankAnalyse_para.powerSortAnalyse_para)
+        menuPage = MenuPage.openMenu(LoadRankAnalyse_data.powerSortAnalyse_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage(DataGatherMan_data.tmnlInstallDetail_tabOne)
@@ -96,11 +97,9 @@ class TestPowerSortAnalyse(TestCase, PowerSortAnalysePage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LoadRankAnalyse_para.powerSortAnalyse_para))
+    @data(*DataAccess.getCaseData(LoadRankAnalyse_data.powerSortAnalyse_para))
     def test_query(self, para):
-        """统计查询--数据分析--电量分析--电量排名分析
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
+        """统计查询→数据分析→电量分析→电量排名分析
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -108,7 +107,7 @@ class TestPowerSortAnalyse(TestCase, PowerSortAnalysePage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LoadRankAnalyse_para.powerSortAnalyse_para, valCheck=True))
+    @data(*DataAccess.getCaseData(LoadRankAnalyse_data.powerSortAnalyse_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

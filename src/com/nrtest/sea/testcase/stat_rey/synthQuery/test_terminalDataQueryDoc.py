@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 韩笑
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_terminalDataQueryPage.py
+@file: test_terminalDataQueryDoc.py
 @time: 2018/8/14 0002 10:30
 """
 

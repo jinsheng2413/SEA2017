@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_sectDataQuery.py
+@file: test_sectDataQueryShowData.py
 @time: 2018/9/29 16:13
 @desc:
 """

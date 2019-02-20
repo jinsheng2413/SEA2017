@@ -92,8 +92,6 @@ class TestOrgVoltageStationSet(TestCase, OrgVoltageStationSetPage):
     @data(*DataAccess.getCaseData(TemplateManData.OrgVoltageStationSet_para))
     def test_query(self, para):
         """系统管理→模板管理→供电电压测点设置
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

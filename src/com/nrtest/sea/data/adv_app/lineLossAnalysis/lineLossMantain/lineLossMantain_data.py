@@ -15,3 +15,8 @@ class LineLossMantain_data:
 
     # 高级应用→线损分析→线损模型维护→线损计算模型管理
     loseCountPowerMan_para = '99924160'
+    # 高级应用→线损分析→线损模型维护→线路线损模型
+    xlLineLossModel_para = '99924120'
+    xlLineLossModel_loss_tab = '变电站线损模型'
+    xlLineLossModel_main_tab = '主变线损模型'
+    xlLineLossModel_ele_tab = '母线电量平衡模型'

@@ -87,8 +87,6 @@ class TestTaskTemplateSet(TestCase, TaskTemplateSetPage):
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.taskTemplateSet_para))
     def test_query(self, para):
         """系统管理→档案核查管理→档案核查模板编制
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

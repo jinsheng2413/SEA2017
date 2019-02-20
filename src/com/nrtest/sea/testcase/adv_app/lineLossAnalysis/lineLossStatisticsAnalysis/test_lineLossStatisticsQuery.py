@@ -70,7 +70,6 @@ class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
             self.inputDt_query_date(para['QUERY_DATE'])
         else:
             self.inputDt_start_date(para['START_DATE'])
-            self.sleep_time(0.5)
             self.inputDt_end_date(para['END_DATE'])
             if qry_date_type == '月':
                 self.inputChk_read_value(para['READ_VALUE'])

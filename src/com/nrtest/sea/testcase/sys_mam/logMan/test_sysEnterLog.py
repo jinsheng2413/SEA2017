@@ -64,7 +64,6 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
 
         # 查询按钮
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -85,8 +84,6 @@ class TestSysEnterLog(TestCase, SysEnterLogPage):
     @data(*DataAccess.getCaseData(LogEdit_data.sysEnterLog_para))
     def test_query(self, para):
         """系统管理→日志管理→系统登录日志
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

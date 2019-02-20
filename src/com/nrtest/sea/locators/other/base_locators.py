@@ -96,9 +96,10 @@ class BaseLocators(Locators):
 
     #【下拉复选框相关】
     # 取消所有已选项
-    # SEL_UNCHECK_ALL = (By.XPATH, '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img')
     SEL_UNCHECK_ALL = (By.XPATH,
                        '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img[contains(@src, "/checked.gif")]')
+    SEL_UNCHECK_ALL_CLS = (By.XPATH,
+                           '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img[contains(@class,"-checked")]')
     # 选择指定复选项@class="ux-lovcombo-item-text" and
     # SEL_OPTION = (By.XPATH, '//div[@class="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img')
     SEL_OPTION = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/..//img')
@@ -142,14 +143,15 @@ class BaseLocators(Locators):
     # 数据加载中
     DATA_LOADING = (By.XPATH, '//div[@class="ext-el-mask-msg x-mask-loading"]')
     DATA_LOADING1 = (By.XPATH, '//div[@class="x-panel-bwrap  x-masked-relative x-masked"]')
-    # 左边树
-    POWER_SUPPLY_AREA = (By.XPATH, '//span[text()="供电区域"]')
 
     # 弹框处理
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
     POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
 
     # 【登录后清屏处理】
+    # 登录异常弹窗确认
+    DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
+
     # 账号异常信息弹窗确认
     DLG_EXCEPT = (By.XPATH, '//div[@id="index.loginExceptionWin"]//div[contains(@class, "x-tool-close")]')
     # 重要信息推出窗口关闭

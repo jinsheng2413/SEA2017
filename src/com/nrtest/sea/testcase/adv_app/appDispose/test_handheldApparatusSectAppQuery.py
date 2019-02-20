@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_sectFailedAppQuery.py
+@file: test_handheldApparatusSectAppQuery.py
 @time: 2019/02/18 18:24
 @desc:
 """

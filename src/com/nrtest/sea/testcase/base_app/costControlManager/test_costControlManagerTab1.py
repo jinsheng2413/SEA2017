@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_new_spec_remote_ctrl_execut.py
+@file: test_costControlManagerTab1.py
 @time: 2019-02-13 15:59:42
 @desc:
 """
@@ -14,7 +14,8 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.costControlManage.costControlManager_data import CostContrrolManager
+from com.nrtest.sea.data.adv_app.costControlManage.remoteCustControl.remoteCustControl_data import \
+    RemoteCustControl_data
 from com.nrtest.sea.pages.base_app.costControlManager.costControlManager_page import NewSpecRemoteCtrlExecutPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
@@ -26,10 +27,10 @@ class test_NewSpecRemoteCtrlExecut(TestCase, NewSpecRemoteCtrlExecutPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(CostContrrolManager.para_NewSpecRemoteCtrlExecut)
+        menuPage = MenuPage.openMenu(RemoteCustControl_data.para_NewSpecRemoteCtrlExecut)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(CostContrrolManager.para_NewSpecRemoteCtrlExecut_high_sheet)
+        menuPage.clickTabPage(RemoteCustControl_data.para_NewSpecRemoteCtrlExecut_high_sheet)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -119,8 +120,8 @@ class test_NewSpecRemoteCtrlExecut(TestCase, NewSpecRemoteCtrlExecutPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(CostContrrolManager.para_NewSpecRemoteCtrlExecut,
-                                  CostContrrolManager.para_NewSpecRemoteCtrlExecut_high_sheet))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.para_NewSpecRemoteCtrlExecut,
+                                  RemoteCustControl_data.para_NewSpecRemoteCtrlExecut_high_sheet))
     def test_query(self, para):
         """高级应用→费控管理→远程费控→新专变用户远程费控执行:高压用户跳闸控制列表
         """
@@ -130,8 +131,8 @@ class test_NewSpecRemoteCtrlExecut(TestCase, NewSpecRemoteCtrlExecutPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(CostContrrolManager.para_NewSpecRemoteCtrlExecut,
-                                  CostContrrolManager.para_NewSpecRemoteCtrlExecut_high_sheet, valCheck=True))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.para_NewSpecRemoteCtrlExecut,
+                                  RemoteCustControl_data.para_NewSpecRemoteCtrlExecut_high_sheet, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

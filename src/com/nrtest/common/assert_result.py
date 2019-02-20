@@ -12,7 +12,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.utils import Utils
@@ -23,7 +22,7 @@ from time import sleep
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class AssertResult(Page):
+class AssertResult():
     def __init__(self, call_from):
         # super().__init__(get_driver())
         self.tst_inst = call_from

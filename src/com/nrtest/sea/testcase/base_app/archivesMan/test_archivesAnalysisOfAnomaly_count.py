@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.archivesAnalysisOfAnomaly_page im
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→档案管理→档案异常分析：档案异常统计
+# 基本应用→档案管理→档案异常分析:档案异常统计
 @ddt
 class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOfAnomaly_count_page):
     @classmethod
@@ -85,7 +85,7 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
     @data(*DataAccess.getCaseData(ArchivesMan_data.archivesAnalysisOfAnomaly,
                                   ArchivesMan_data.archivesAnalysisOfAnomaly_count_tab))
     def test_query(self, para):
-        """基本应用→档案管理→档案异常分析：档案异常统计
+        """基本应用→档案管理→档案异常分析:档案异常统计
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_xl_line_loss_model.py
+@file: test_xlLineLossModel_loss.py
 @time: 2019-02-20 12:22:47
 @desc:
 """

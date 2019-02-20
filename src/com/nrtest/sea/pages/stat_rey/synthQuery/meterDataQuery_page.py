@@ -65,10 +65,6 @@ class MeterDataQueryCountPage(Page):
     def inputChk_day_freeze_curve_type(self, option):
         self.clickRadioBox(option, is_multi_tab=True, is_multi_elements=True)
 
-    # 用户类型
-    def inputSel_cons_type(self, option):
-        self.selectDropDown(option, is_multi_elements=True, is_multi_tab=True)
-
     # 查询日期
     def inputDt_query_date(self, value):
         self.inputDate(value)

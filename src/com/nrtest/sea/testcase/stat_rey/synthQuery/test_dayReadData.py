@@ -16,7 +16,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 # 统计查询→综合查询→专公变综合查询:日抄表数据
-from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery import DayReadDataPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page import DayReadDataPage
 
 
 @ddt
@@ -60,20 +60,24 @@ class test_DayReadData(TestCase, DayReadDataPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 用户编号
-        self.openLeftTree(para['TREE_CONS_NO'])
+        # 户号
+        self.openLeftTree(para['TREE_NODE'])
+
+        # 终端地址
+        self.inputSel_tmnl_addr(para['TMNL_ADDR'])
+
         # 显示方式
         self.inputChk_display_type(para['DISPLAY_TYPE'])
 
         # 从
         self.inputDt_from_date(para['FROM_DATE'])
 
-        # 到
-        self.inputDt_from_to(para['FROM_TO'])
-        valu = self.get_para_value(para['DISPLAY_ALL_TMNL_INFO'])
-        if '是否显示所有终端信息' == valu:
+        if self.get_para_value(para['DISPLAY_TYPE']) == '任意时段':
+            # 到
+            self.inputDt_to_date(para['TO_DATE'])
+
             # 是否显示所有终端信息
-            self.inputChk_display_all_tmnl_info(para['DISPLAY_ALL_TMNL_INFO'])
+            self.inputChk_disp_all(para['DISP_ALL'])
 
         # 查询
         self.btn_qry()

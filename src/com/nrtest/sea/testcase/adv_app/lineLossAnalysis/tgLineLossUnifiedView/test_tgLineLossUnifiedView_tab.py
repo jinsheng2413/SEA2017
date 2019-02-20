@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→线损分析→线损统计分析→台区线损统一视图
-# 月线损
+# 用户信息
 @ddt
 class TestTgLineLossUnifiedView_Tab(TestCase, TgLineLossUnifiedViewPage):
     @classmethod
@@ -31,7 +31,7 @@ class TestTgLineLossUnifiedView_Tab(TestCase, TgLineLossUnifiedViewPage):
         menuPage = MenuPage.openMenu(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_month)
+        menuPage.clickTabPage(TgLineLossUnifiedView_data.TgLineLossUnifiedView_cons_data)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -83,9 +83,9 @@ class TestTgLineLossUnifiedView_Tab(TestCase, TgLineLossUnifiedViewPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_month))
+    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_cons_data))
     def test_query(self, para):
-        """高级应用→线损分析→线损统计分析→台区线损统一视图:月线损
+        """高级应用→线损分析→线损统计分析→台区线损统一视图:用户信息
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -93,7 +93,7 @@ class TestTgLineLossUnifiedView_Tab(TestCase, TgLineLossUnifiedViewPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_tab_month,
+    @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_cons_data,
                                   valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

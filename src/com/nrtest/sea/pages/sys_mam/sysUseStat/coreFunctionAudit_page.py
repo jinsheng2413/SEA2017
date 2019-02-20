@@ -23,7 +23,7 @@ class CoreFunctionAuditPage(Page):
         self.inputDate(value)
 
     # 到
-    def inputDt_to(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)
 
     # 查询

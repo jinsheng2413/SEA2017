@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 运行管理→SIM卡管理→档案管理:01
+# 运行管理→SIM卡管理→档案管理
 class SimArchivesManPage(Page):
     # 待提交批次号
     def inputStr_batch_no(self, value):

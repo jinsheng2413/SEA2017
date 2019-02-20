@@ -9,7 +9,7 @@
 """
 
 # -*- coding: utf-8 -*-
-
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -18,7 +18,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery import TmnlEventPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page import TmnlEventPage
 
 
 # 统计查询→综合查询→专公变综合查询:终端事件
@@ -63,14 +63,22 @@ class test_TmnlEvent(TestCase, TmnlEventPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 节点名
-        self.openLeftTree(para['TREE_CONS_NO'])
+
+        # 用户编号
+        self.openLeftTree(para['TREE_NODE'])
+        sleep(1)
+
+        # 终端地址
+        self.inputSel_tmnl_addr(para['TMNL_ADDR'])
+
+        # 电能表
+        self.inputSel_meter(para['METER'])
 
         # 从
-        self.inputDt_time_from(para['TIME_FROM'])
+        self.inputDt_from_date(para['FROM_DATE'])
 
         # 到
-        self.inputDt_time_to(para['TIME_TO'])
+        self.inputDt_to_date(para['TO_DATE'])
 
         # 查询
         self.btn_qry()

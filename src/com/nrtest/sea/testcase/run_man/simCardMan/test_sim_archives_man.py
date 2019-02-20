@@ -29,7 +29,7 @@ class test_SimArchivesMan(TestCase, SimArchivesManPage):
         menuPage = MenuPage.openMenu(simCardMan_data.simArchivesMan_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage()
+        # menuPage.clickTabPage()
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -88,8 +88,7 @@ class test_SimArchivesMan(TestCase, SimArchivesManPage):
         查询条件校验
         :param para:
         """
-        result = self.check_query_criteria(para)
-        self.assertTrue(result)
+        self.assertTrue(self.check_query_criteria(para))
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(simCardMan_data.simArchivesMan_para))

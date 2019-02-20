@@ -31,7 +31,7 @@ class DeviceStaAnaly_count_Page(Page):
         self.clickRadioBox(option, is_multi_elements=True, is_multi_tab=True)
 
     # 参数指标项
-    def inputSel_para_tpitmnl__nape(self, option):
+    def inputSel_para_tpitmnl_nape(self, option):
         self.selectDropDown(option, is_multi_tab=True, is_multi_elements=True)
 
     # 结束日期

@@ -21,7 +21,7 @@ class LineLossSynthesizeAnalysisPage(Page):
         self.inputDate(content)
 
     # 按日期类型选择
-    def inputChk_by_date_type(self, tab_name):
+    def inputChk_qry_date_type(self, tab_name):
         self.clickDt_Tab(tab_name)
 
     # 季度选择

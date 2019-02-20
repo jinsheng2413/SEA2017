@@ -21,6 +21,17 @@ class ConsDataQueryPage(Page):
     def btn_search(self):
         self.btn_query()
 
+
+class ConsDataQueryDisplayPage(Page):
+
+    # 用户编号
+    def inputStr_cons_no(self, content):
+        self.input(content)
+
+    # 查询按钮
+    def btn_search(self):
+        self.btn_query()
+
     # tab页选择
     def inputChk_tab_name(self, tab_name):
         self.clickTabPage(tab_name)

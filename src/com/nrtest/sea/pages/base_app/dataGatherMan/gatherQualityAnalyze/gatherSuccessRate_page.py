@@ -22,8 +22,9 @@ class GatherSuccessRatePage(Page):
         self.clickRadioBox(options, is_multi_tab=True, is_multi_elements=True)
 
     # 用户类型
-    def inputSel_cons_type(self, index):
-        self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
+    def inputSel_cons_type(self, options):
+        # self.selectCheckBox(options, is_multi_tab=True, is_multi_elements=True)
+        self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
 
     # 通信方式
     def inputSel_comm_mode(self, option):
@@ -69,8 +70,9 @@ class GatherSuccessRateStatPage(Page):
         self.clickRadioBox(options, is_multi_tab=True, is_multi_elements=True)
 
     # 用户类型
-    def inputSel_cons_type(self, index):
-        self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
+    def inputSel_cons_type(self, options):
+        # self.selectCheckBox(options, is_multi_tab=True, is_multi_elements=True)
+        self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
 
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
@@ -100,11 +102,12 @@ class GatherSuccessRateStatPage(Page):
     def btn_search(self):
         self.btn_query(True)
 
-# 采集成功率→数据采集成功率明细
+
+# 采集成功率→采集成功率明细
 class GatherSuccessRateDetailPage(Page):
     # 用户类型
     def inputSel_cons_type(self, options):
-        self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.CONS_TYPE_CHECKED)
+        self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
 
     # 芯片厂家
     def inputSel_chip_factory(self, index):
@@ -137,7 +140,8 @@ class GatherSuccessRateDetailPage(Page):
 class ContinuousFalseDetailPage(Page):
     # 用户类型
     def inputSel_cons_type(self, options):
-        self.selectCheckBox(options)
+        # self.selectCheckBox(options)
+        self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
 
     # 运行状态
     def inputSel_run_status(self, option):
@@ -203,8 +207,9 @@ class GatherSuccessRateTimePage(Page):
         self.inputDate(content)
 
     # 用户类型
-    def inputSel_cons_type(self, index):
-        self.selectCheckBox(index, is_multi_tab=True, is_multi_elements=True)
+    def inputSel_cons_type(self, options):
+        self.selectCheckBox(options, is_multi_tab=True, is_multi_elements=True, unchecked_by=False)
+        # self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
 
     # 用户范围
     def inputSel_cons_range(self, index):
@@ -215,16 +220,18 @@ class GatherSuccessRateTimePage(Page):
         self.selectDropDown(index)
 
     # 终端类型
-    def inputSel_tmnl_type(self, index):
-        self.selectCheckBox(index, is_multi_tab=False, is_multi_elements=False)
+    def inputSel_tmnl_type(self, options):
+        self.selectCheckBox(options, is_multi_tab=False, is_multi_elements=False, unchecked_by=False)
+        # self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
 
     # 通信方式
     def inputSel_comm_mode(self, option):
         self.selectCheckBox(option, is_multi_tab=True, is_multi_elements=False)
 
     # 规约类型
-    def inputSel_protocol_type(self, index):
-        self.selectCheckBox(index, is_multi_tab=False, is_multi_elements=False)
+    def inputSel_protocol_type(self, options):
+        self.selectCheckBox(options, is_multi_tab=False, is_multi_elements=False, unchecked_by=False)
+        # self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
 
     # 计量方式
     def inputSel_meas_mode(self, index):

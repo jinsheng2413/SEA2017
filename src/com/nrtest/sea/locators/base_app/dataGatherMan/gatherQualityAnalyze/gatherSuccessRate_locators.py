@@ -83,7 +83,7 @@ class GatherSuccessRateStatLocators:
 
 # 采集成功率→数据采集成功率明细
 class GatherSuccessRateDetailLocators:
-    CONS_TYPE_CHECKED = (By.XPATH,
+    SEL_CHECKED = (By.XPATH,
                          '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//img[contains(@class,"-checked")]')
     # # 用户类型
     # CONS_TYPE = (By.XPATH, '(//label[text()="用户类型"])[2]/../div/div/img')

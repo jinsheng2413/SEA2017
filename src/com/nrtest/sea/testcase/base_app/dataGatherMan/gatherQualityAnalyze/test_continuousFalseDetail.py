@@ -75,7 +75,7 @@ class TestContinuousFalseDetail(TestCase, ContinuousFalseDetailPage):
             self.inputDt_query_date(para['QUERY_DATE'])
 
         else:
-            if tab_name == '连续N天抄表失败明细':  # , '应采集电表明细']:
+            if tab_name == '应采集电表明细':  # , '应采集电表明细']:
                 # 终端类型
                 self.inputSel_tmnl_type(para['TMNL_TYPE'])
                 # 计量方式

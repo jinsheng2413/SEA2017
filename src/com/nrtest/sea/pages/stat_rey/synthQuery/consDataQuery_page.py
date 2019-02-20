@@ -15,11 +15,10 @@ from com.nrtest.common.base_page import Page
 class ConsDataQueryPage(Page):
     # 用户编号
     def inputStr_cons_no(self, content):
-        self.input(content)  # ,*ConsDataQueryLocators.QRY_CONS_NO)
+        self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(ConsDataQueryLocators.BTN_SEARCH)
         self.btn_query()
 
     # tab页选择

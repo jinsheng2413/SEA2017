@@ -145,8 +145,8 @@ class Page():
 
             elif dlg_src == 5:
                 action = '01'
-                case_type = int(self.case_para['CASE_TYPE'])
-                if case_type == 2 and self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
+                # case_type = int(self.case_para['CASE_TYPE'])
+                if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
                     action = '03'
 
             elif dlg_src == 2:

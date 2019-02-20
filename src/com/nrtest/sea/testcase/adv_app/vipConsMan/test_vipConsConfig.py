@@ -95,9 +95,6 @@ class Test_VipConsConfig(TestCase, VipConsConfig_Page):
     @data(*DataAccess.getCaseData(VipConsMan.para_VipConsConfig))
     def test_query(self, para):
         """高级应用→重点用户监测→重点用户管理
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)

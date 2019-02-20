@@ -84,8 +84,6 @@ class TestIdCheckInfQuery(TestCase, IdCheckInfQueryPage):
     @data(*DataAccess.getCaseData(SecutityMan_data.IdCheckInfQuery_para))
     def test_query(self, para):
         """系统管理→权限密码管理→账号审核信息查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

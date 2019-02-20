@@ -60,7 +60,6 @@ class TestSysUpgradeLog(TestCase, SysUpgradeLogPage):
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -81,8 +80,6 @@ class TestSysUpgradeLog(TestCase, SysUpgradeLogPage):
     @data(*DataAccess.getCaseData(LogEdit_data.sysUpgradeLog_para))
     def test_query(self, para):
         """系统管理→日志管理→系统升级日志
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -84,8 +84,6 @@ class TestImportanceMsgPush(TestCase, ImportanceMsgPushPage):
     @data(*DataAccess.getCaseData(MsgPushData.ImportanceMsgPush_para))
     def test_query(self, para):
         """系统管理→信息定制→推送信息定制→重要信息推出
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

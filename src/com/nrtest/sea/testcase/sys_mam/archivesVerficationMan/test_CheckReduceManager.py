@@ -92,8 +92,6 @@ class TestCheckReduceManager(TestCase, CheckReduceManagerPage):
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReduceManager_para))
     def test_query(self, para):
         """系统管理→档案核查管理→考核减免管理
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

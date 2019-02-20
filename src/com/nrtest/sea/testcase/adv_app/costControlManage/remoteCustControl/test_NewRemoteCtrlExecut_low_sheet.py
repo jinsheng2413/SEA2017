@@ -1,35 +1,37 @@
-# -*- coding:utf-8 -*-
-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_dataCheckTaskSet.py
-@time: 2018/11/19 0019 14:23
+@file: test_meter_state_arr.py
+@time: 2019-02-20 09:33:13
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.data.adv_app.costControlManage.remoteCustControl.remoteCustControl_data import \
+    RemoteCustControl_data
+from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.newRemoteCtrlExecut_page import \
+    NewRemoteCtrlExecu_low_sheet_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.dataCheckTaskSet_page import DataCheckTaskSetPage
 
 
-# 系统管理→档案核查管理→档案核查任务编制
+# 高级应用→费控管理→远程费控→新低压用户远程费控执行:低压用户费控列表
 @ddt
-class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
+class test_NewRemoteCtrlExecutLow_sheet(TestCase, NewRemoteCtrlExecu_low_sheet_Page):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.dataCheckTaskSet_para)
+        menuPage = MenuPage.openMenu(RemoteCustControl_data.para_NewRemoteCtrlExecut)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(ArchivesVerficationMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(RemoteCustControl_data.para_NewRemoteCtrlExecut_low_sheet)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -47,7 +49,7 @@ class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         :return:
         """
 
@@ -61,20 +63,44 @@ class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 打开左边树并选择
+        # 供电单位
         self.openLeftTree(para['TREE_NODE'])
 
-        # 台区编号
-        self.inputStr_tg_no(para['TG_NO'])
+        # 催费控制批次号
+        self.inputStr_control_order_no(para['CONTROL_ORDER_NO'])
 
-        # 任务来源
-        self.inputSel_task_from(para['TASK_FROM'])
+        # 采集点编号
+        self.inputStr_cp_no(para['CP_NO'])
 
-        # 选择模板
-        # self.inputChk_SelectDemo(para)   此选项缺少选项内容
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+
+        # 用户名称
+        self.inputStr_cons_name(para['CONS_NAME'])
+
+        # 电表资产号
+        self.inputStr_meter_asst_no(para['METER_ASST_NO'])
+
+        # 控制类别
+        self.inputSel_control_type(para['CONTROL_TYPE'])
+
+        # 工单状态
+        self.inputSel_app_status(para['APP_STATUS'])
+
+        # 密文比对结果
+        self.inputSel_compare_result(para['COMPARE_RESULT'])
+
+        # 统计类型
+        self.inputChk_stat_type(para['STAT_TYPE'])
+
+        # 签发开始时间
+        self.inputDt_start_date(para['START_DATE'])
+
+        # 签发结束时间
+        self.inputDt_end_date(para['END_DATE'])
 
         # 查询
-        self.btn_query()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """
@@ -92,9 +118,10 @@ class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.dataCheckTaskSet_para))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.para_NewRemoteCtrlExecut,
+                                  RemoteCustControl_data.para_NewRemoteCtrlExecut_low_sheet))
     def test_query(self, para):
-        """系统管理→档案核查管理→档案核查任务编制
+        """高级应用→费控管理→远程费控→新低压用户远程费控执行:低压用户费控列表
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -102,7 +129,8 @@ class TestDataCheckTaskSet(TestCase, DataCheckTaskSetPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.dataCheckTaskSet_para))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.para_NewSpecRemoteCtrlExecut,
+                                  RemoteCustControl_data.para_NewRemoteCtrlExecut_low_sheet, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

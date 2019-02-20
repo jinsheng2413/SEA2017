@@ -92,8 +92,6 @@ class TestMsgSendQuery(TestCase, MsgSendQueryPage):
     @data(*DataAccess.getCaseData(MsgPushData.MsgSendQuery_para))
     def test_query(self, para):
         """系统管理→信息定制→推送信息定制→手机订阅→短信发送查询
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

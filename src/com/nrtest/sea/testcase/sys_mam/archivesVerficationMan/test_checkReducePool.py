@@ -95,6 +95,8 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReducePool_para)[0:1])
     def test_query(self, para):
+        """系统管理→档案核查管理→考核减免汇总
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

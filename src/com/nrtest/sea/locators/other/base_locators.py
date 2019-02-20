@@ -96,9 +96,10 @@ class BaseLocators(Locators):
 
     #【下拉复选框相关】
     # 取消所有已选项
-    # SEL_UNCHECK_ALL = (By.XPATH, '//div[@class ="x-combo-list-inner"]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img')
     SEL_UNCHECK_ALL = (By.XPATH,
                        '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img[contains(@src, "/checked.gif")]')
+    SEL_UNCHECK_ALL_CLS = (By.XPATH,
+                           '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img[contains(@class,"-checked")]')
     # 选择指定复选项@class="ux-lovcombo-item-text" and
     # SEL_OPTION = (By.XPATH, '//div[@class="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img')
     SEL_OPTION = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/..//img')

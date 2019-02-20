@@ -80,11 +80,11 @@ class TestTerminaldataquery(TestCase, TerminalDataQueryDataPage):
         self.inputSel_added_group(para['ADDED_GROUP'])
 
         # 查询日期
-        self.inputStr_start_date(para['START_DATE'])
+        self.inputDt_start_date(para['START_DATE'])
 
         if self.get_para_value(para['TAB_NAME']) == '电量':
             # 至
-            self.inputStr_end_date(para['END_DATE'])
+            self.inputDt_end_date(para['END_DATE'])
 
         # 查询
         self.btn_qry()

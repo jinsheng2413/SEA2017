@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 """
-@author: js
+@author: jinsheng
 @file:test_consDataQueryDisplay.py
 @time:2019/2/19 9:38
 @desc:

@@ -19,6 +19,7 @@ from com.nrtest.sea.pages.adv_app.newsanswer.news_page import News_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 高级应用→问题交流平台→问题在线交流
 @ddt
 class Test_News(TestCase, News_Page):
     @classmethod
@@ -103,9 +104,6 @@ class Test_News(TestCase, News_Page):
     @data(*DataAccess.getCaseData(NewsAnswer.para_News))
     def test_query(self, para):
         """高级应用→问题交流平台→问题在线交流
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)

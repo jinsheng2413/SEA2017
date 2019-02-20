@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-@author: 卢炎炎
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: test_stateGridReportQuery.py
 @time: 2018/11/8 11:41
@@ -17,6 +17,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.reportMan.stateGridReport.stateGridReportQuery_page import StateGridReportQueryPage
 
 
+# 统计查询→报表管理→国网报表→国网报表新
 @ddt
 class TestStateGridReportQuery(TestCase, StateGridReportQueryPage):
 
@@ -90,8 +91,6 @@ class TestStateGridReportQuery(TestCase, StateGridReportQueryPage):
     @data(*DataAccess.getCaseData(StateGridReportQuery_data.StateGridReportQuery_para))
     def test_query(self, para):
         """统计查询→报表管理→国网报表→国网报表新
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

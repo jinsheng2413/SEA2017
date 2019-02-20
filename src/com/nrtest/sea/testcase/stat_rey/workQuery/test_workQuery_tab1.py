@@ -20,6 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.workQuery.workQuery_page import WorkCountPage
 
 
+# 统计查询→工单查询→工单查询：工单统计
 @ddt
 class TestWorkCount(TestCase, WorkCountPage):
 
@@ -89,9 +90,7 @@ class TestWorkCount(TestCase, WorkCountPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AppQuery_data.AppQuery_para, AppQuery_data.AppQuery_tab_count))
     def test_query(self, para):
-        """统计查询→工单查询→工单查询（第一个tab页）
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
+        """统计查询→工单查询→工单查询：工单统计
         """
         self.start_case(para, __file__)
         self.query(para)

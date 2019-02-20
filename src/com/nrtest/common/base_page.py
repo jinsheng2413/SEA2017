@@ -585,21 +585,21 @@ class Page():
         """
         判断元素是否被选中
         :param option_name:下拉复选中选项，其中一个中文名称
-        :param unchecked_cls:True-通过src-->/checked.png；False-通过class-->-checked
+        :param unchecked_cls:True-通过class-->-checked；False-通过src-->/checked.png
         :return:
         """
         if unchecked_cls:
             unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL_CLS, option_name)
         else:
             unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL, option_name)
-        print('所有选中项', unchek_all_path)
+        # print('所有选中项', unchek_all_path)
         elements = self._find_elements(unchek_all_path)
         for el in elements:
             # if el.get_attribute('src').find('/checked.gif') > -1:
             #     el.click()
             el.click()
 
-    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, unchecked_cls=True):
+    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, unchecked_cls=False):
         """
         下拉复选框选择
         :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
@@ -607,6 +607,7 @@ class Page():
         :param sleep_sec:休眠n秒
         :param is_multi_elements:同一菜单是否存在重复元素
         :param is_equalText: True-下拉选择值需完全匹配，Fase-部分匹配
+        :param unchecked_cls:True-通过class-->-checked；False-通过src-->/checked.png
         """
         # print ('selectCheckBox', options, is_multi_tab)
         if (options.find(';') == -1):

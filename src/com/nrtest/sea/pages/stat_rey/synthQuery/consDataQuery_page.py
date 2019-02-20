@@ -38,7 +38,7 @@ class ConsDataQueryDisplayPage(Page):
 
     # 查询方式（实时或冻结）
     def inputChk_query_type(self, value):
-        self.clickRadioBox(value)
+        self.clickRadioBox(value, is_multi_tab=True, is_multi_elements=True)
 
     # 电表
     def inputSel_meter(self, value):

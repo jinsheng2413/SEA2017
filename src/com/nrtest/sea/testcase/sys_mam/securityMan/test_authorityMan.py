@@ -86,8 +86,6 @@ class TestAuthorityMan(TestCase, AuthorityManPage):
     @data(*DataAccess.getCaseData(SecutityMan_data.AuthorityMan_para))
     def test_query(self, para):
         """系统管理→权限密码管理→权限管理
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

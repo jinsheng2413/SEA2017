@@ -89,8 +89,6 @@ class TestSysBasicParaSet(TestCase, SysBasicParaSetPage):
     @data(*DataAccess.getCaseData(SysConfigManData.SysParameterMan_para, SysConfigManData.SysBasicParaSet_tabName))
     def test_query(self, para):
         """系统管理→系统配置管理→系统参数管理:系统基本参数设置
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

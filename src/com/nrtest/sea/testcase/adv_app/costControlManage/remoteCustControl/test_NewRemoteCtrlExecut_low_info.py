@@ -1,37 +1,39 @@
-# -*- coding:utf-8 -*-
-
+# -*- coding: utf-8 -*-
 
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_scriptCheckTaskSet.py
-@time: 2018/11/19 0019 14:59
+@file: test_meter_state_arr.py
+@time: 2019-02-20 09:35:53
 @desc:
 """
+
 from unittest import TestCase
 
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.sys_mam.archivesVerficationMan.archivesVerficationMan_data import ArchivesVerficationMan_data
+from com.nrtest.sea.data.adv_app.costControlManage.remoteCustControl.remoteCustControl_data import \
+    RemoteCustControl_data
+from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.newRemoteCtrlExecut_page import \
+    NewRemoteCtrlExecu_low_info_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.sys_mam.archivesVerficationMan.scriptCheckTaskSet_page import ScriptCheckTaskSetPage
 
 
-# 系统管理→档案核查管理→脚本核查任务编制
+# 高级应用→费控管理→远程费控→新低压用户远程费控执行:低压用户费控汇总信息
 @ddt
-class TestScriptCheckTaskSet(TestCase, ScriptCheckTaskSetPage):
+class test_NewRemoteCtrlExecutLow_info(TestCase, NewRemoteCtrlExecu_low_info_Page):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(ArchivesVerficationMan_data.scriptCheckTaskSet_para)
+        menuPage = MenuPage.openMenu(RemoteCustControl_data.para_NewRemoteCtrlExecut)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(ArchivesVerficationMan_data.tmnlInstallDetail_tabOne)
+        menuPage.clickTabPage(RemoteCustControl_data.para_NewRemoteCtrlExecut_low_info)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        # menuPage.remove_dt_readonly()
+        menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -47,7 +49,7 @@ class TestScriptCheckTaskSet(TestCase, ScriptCheckTaskSetPage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         :return:
         """
 
@@ -61,20 +63,20 @@ class TestScriptCheckTaskSet(TestCase, ScriptCheckTaskSetPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        # 催费控制批次号
+        self.inputStr_control_order_no(para['CONTROL_ORDER_NO'])
 
-        # 脚本类型
-        self.inputSel_script_type(para['SCRIPT_TYPE'])
+        # 签发开始时间
+        self.inputDt_start_type(para['START_TYPE'])
 
-        # 脚本名称
-        self.inputStr_script_name(para['SCRIPT_NAME'])
+        # 签发结束时间
+        self.inputDt_end_date(para['END_DATE'])
 
-        # 创建员工
-        self.inputStr_create_stall(para['CREATE_STALL'])
+        # 营销U1验签结果
+        self.inputSel_u1_result(para['U1_RESULT'])
 
-        # 任务状态
-        self.inputSel_task_status(para['TASK_STATUS'])
+        # 统计类型
+        self.inputChk_stat_type(para['STAT_TYPE'])
 
         # 查询
         self.btn_qry()
@@ -95,9 +97,10 @@ class TestScriptCheckTaskSet(TestCase, ScriptCheckTaskSetPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptCheckTaskSet_para))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.para_NewRemoteCtrlExecut,
+                                  RemoteCustControl_data.para_NewRemoteCtrlExecut_low_info))
     def test_query(self, para):
-        """系统管理→档案核查管理→脚本核查任务编制
+        """高级应用→费控管理→远程费控→新低压用户远程费控执行:低压用户费控汇总信息
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -105,7 +108,8 @@ class TestScriptCheckTaskSet(TestCase, ScriptCheckTaskSetPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.scriptCheckTaskSet_para))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.para_NewRemoteCtrlExecut,
+                                  RemoteCustControl_data.para_NewRemoteCtrlExecut_low_info, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

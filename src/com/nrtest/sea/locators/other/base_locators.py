@@ -96,10 +96,12 @@ class BaseLocators(Locators):
 
     #【下拉复选框相关】
     # 取消所有已选项
+    # 统计查询→综合查询→抄表成功率查询（河北）
     SEL_UNCHECK_ALL = (By.XPATH,
                        '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img[contains(@src, "/checked.gif")]')
+    # 基本应用→数据采集管理→采集质量分析→采集成功率:按时间统计
     SEL_UNCHECK_ALL_CLS = (By.XPATH,
-                           '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//div[@class="ux-lovcombo-item-text"]/img[contains(@class,"-checked")]')
+                           '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/../..//img[contains(@class,"-checked")]')
     # 选择指定复选项@class="ux-lovcombo-item-text" and
     # SEL_OPTION = (By.XPATH, '//div[@class="x-combo-list-inner"]//div[contains(text(),"{}")]/../div/img')
     SEL_OPTION = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/..//img')

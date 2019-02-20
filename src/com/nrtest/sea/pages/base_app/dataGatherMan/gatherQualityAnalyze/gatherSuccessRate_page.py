@@ -208,8 +208,8 @@ class GatherSuccessRateTimePage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, options):
-        self.selectCheckBox(options, is_multi_tab=True, is_multi_elements=True, unchecked_by=False)
-        # self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
+        self.selectCheckBox(options, is_multi_tab=True, is_multi_elements=True, unchecked_cls=True)
+        self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
 
     # 用户范围
     def inputSel_cons_range(self, index):
@@ -221,7 +221,7 @@ class GatherSuccessRateTimePage(Page):
 
     # 终端类型
     def inputSel_tmnl_type(self, options):
-        self.selectCheckBox(options, is_multi_tab=False, is_multi_elements=False, unchecked_by=False)
+        self.selectCheckBox(options, is_multi_tab=False, is_multi_elements=False, unchecked_cls=True)
         # self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
 
     # 通信方式
@@ -230,7 +230,7 @@ class GatherSuccessRateTimePage(Page):
 
     # 规约类型
     def inputSel_protocol_type(self, options):
-        self.selectCheckBox(options, is_multi_tab=False, is_multi_elements=False, unchecked_by=False)
+        self.selectCheckBox(options, is_multi_tab=False, is_multi_elements=False, unchecked_cls=True)
         # self.specialSelCheckBox(options, checked_loc=GatherSuccessRateDetailLocators.SEL_CHECKED)
 
     # 计量方式

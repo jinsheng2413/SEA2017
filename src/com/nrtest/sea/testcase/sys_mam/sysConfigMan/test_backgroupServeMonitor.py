@@ -92,7 +92,6 @@ class TestBackgroupServeMonitor(TestCase, BackgroupServeMonitorPage):
                                   SysConfigManData.BackgroupServeMonitor_tabName))
     def test_query(self, para):
         """系统管理→系统配置管理→后台服务监测:后台服务监测
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

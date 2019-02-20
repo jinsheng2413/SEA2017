@@ -71,7 +71,7 @@ class test_DeviceStaAnaly(TestCase, DeviceStaAnaly_count_Page):
         self.inputChk_instrument(para['INSTRUMENT'])
 
         # 参数指标项
-        self.inputSel_para_tpitmnl__nape(para['PARA_TPITMNL_NAPE'])
+        self.inputSel_para_tpitmnl_nape(para['PARA_TPITMNL_NAPE'])
 
         # 结束日期
         self.inputDt_end_date(para['END_DATE'])

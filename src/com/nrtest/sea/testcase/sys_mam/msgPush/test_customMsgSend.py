@@ -85,8 +85,6 @@ class TestCustomMsgSend(TestCase, CustomMsgSendPage):
     @data(*DataAccess.getCaseData(MsgPushData.CustomMsgSend_para))
     def test_query(self, para):
         """系统管理→信息定制→推送信息定制→手机订阅→自定义短信发送
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

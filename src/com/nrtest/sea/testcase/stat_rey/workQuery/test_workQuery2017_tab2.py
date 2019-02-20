@@ -63,7 +63,7 @@ class TestWorkQuery2017_tab2(TestCase, WorkQuery2017Page):
         """
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 工单编号
         self.inputStr_app_no(para['APP_NO'])

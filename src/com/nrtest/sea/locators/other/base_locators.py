@@ -142,14 +142,15 @@ class BaseLocators(Locators):
     # 数据加载中
     DATA_LOADING = (By.XPATH, '//div[@class="ext-el-mask-msg x-mask-loading"]')
     DATA_LOADING1 = (By.XPATH, '//div[@class="x-panel-bwrap  x-masked-relative x-masked"]')
-    # 左边树
-    POWER_SUPPLY_AREA = (By.XPATH, '//span[text()="供电区域"]')
 
     # 弹框处理
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
     POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
 
     # 【登录后清屏处理】
+    # 登录异常弹窗确认
+    DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
+
     # 账号异常信息弹窗确认
     DLG_EXCEPT = (By.XPATH, '//div[@id="index.loginExceptionWin"]//div[contains(@class, "x-tool-close")]')
     # 重要信息推出窗口关闭

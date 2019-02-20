@@ -75,7 +75,7 @@ class TestallMeasureDataCountQuery(TestCase, AllMeasureDataCountQueryPage):
         self.inputSel_protocol_item(para['PROTOCOL_ITEM'])
 
         # 统计维度
-        self.inputSel_stat_mode(para['STAT_MODE'])
+        self.inputSel_stat_type(para['STAT_TYPE'])
 
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
@@ -102,8 +102,6 @@ class TestallMeasureDataCountQuery(TestCase, AllMeasureDataCountQueryPage):
     @data(*DataAccess.getCaseData(AllMeasureDataCountQuery_data.AllMeasureDataCountQuery_para))
     def test_query(self, para):
         """统计查询→全量数据统计查询→全量数据统计查询
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

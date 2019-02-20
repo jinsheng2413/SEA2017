@@ -1177,6 +1177,11 @@ class Page():
         """
         登录成功失败判断与清屏处理（如，告警提示框等）
         """
+        # 登录异常弹窗确认
+        el = self._direct_find_element(BaseLocators.BTN_CONFIRM)
+        if bool(el):
+            el.click()
+
         # 重要信息推出窗口关闭
         el = self._find_displayed_element(BaseLocators.DLG_IMPORT)
         if bool(el):

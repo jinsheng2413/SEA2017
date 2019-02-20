@@ -60,7 +60,7 @@ class TestTgLineLossAnalysis(TestCase, PartialPressureLineLossAnalysisPage):
         self.inputSel_volt_code(para['VOLT_CODE'])
 
         # 按日期类型统计
-        self.inputChk_by_date_type(para['QRY_DATE_TYPE'])
+        self.inputChk_qry_date_type(para['QRY_DATE_TYPE'])
         if '按季统计' in para['QRY_DATE_TYPE']:
             # 季度选择
             self.inputChk_quarter_sel(para['QUARTER_SEL'])

@@ -3,7 +3,7 @@
 """
 @author: 吴竹筠
 @license: (C) Copyright 2018, Nari.
-@file: test_tmnlParamSetGroup2.py
+@file: test_TmnlParamSetGroup2.py
 @time: 2018/11/8 0008 13:50
 @desc:
 """

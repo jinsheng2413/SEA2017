@@ -15,11 +15,10 @@ from com.nrtest.common.base_page import Page
 class ConsDataQueryPage(Page):
     # 用户编号
     def inputStr_cons_no(self, content):
-        self.input(content)  # ,*ConsDataQueryLocators.QRY_CONS_NO)
+        self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(ConsDataQueryLocators.BTN_SEARCH)
         self.btn_query()
 
     # tab页选择
@@ -39,7 +38,7 @@ class ConsDataQueryPage(Page):
         self.inputDate(value)
 
     # 至
-    def inputDt_end_date(self, value):
+    def inputDt_end_time(self, value):
         self.inputDate(value)
 
     # 第二个查询按钮

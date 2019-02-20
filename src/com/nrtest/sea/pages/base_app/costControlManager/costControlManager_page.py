@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 class NewSpecRemoteCtrlExecutPage(Page):
     # 催费控制批次号
     def inputStr_control_order_no(self, value):
-        self.input(value)
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 采集点编号
     def inputStr_cp_no(self, value):
@@ -55,30 +55,30 @@ class NewSpecRemoteCtrlExecutPage(Page):
 
     # 签发开始时间
     def inputDt_start_date(self, value):
-        self.inputDate(value)
+        self.inputDate(value, is_multi_tab=True)
 
     # 签发结束时间
     def inputDt_end_date(self, value):
-        self.inputDate(value)
+        self.inputDate(value, is_multi_tab=True)
 
     # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)
 
 
 # 高级应用→费控管理→远程费控→新专变用户远程费控执行:高压用户跳闸控制汇总信息
 class NewSpecRemoteCtrlExecutPage_tab2(Page):
     # 催费控制批次号
     def inputStr_control_order_no(self, value):
-        self.input(value)
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 签发开始时间
     def inputDt_start_type(self, value):
-        self.inputDate(value)
+        self.inputDate(value, is_multi_tab=True)
 
     # 签发结束时间
     def inputDt_end_date(self, value):
-        self.inputDate(value)
+        self.inputDate(value, is_multi_tab=True)
 
     # 营销U1验签结果
 
@@ -87,8 +87,8 @@ class NewSpecRemoteCtrlExecutPage_tab2(Page):
 
     # 统计类型
     def inputChk_stat_type(self, option):
-        self.clickRadioBox(option)
+        self.clickRadioBox(option, is_multi_elements=True, is_multi_tab=True)
 
     # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)

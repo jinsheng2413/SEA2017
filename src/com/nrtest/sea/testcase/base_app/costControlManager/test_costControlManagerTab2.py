@@ -14,22 +14,22 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.costControlManage import costControlManager_data
-from com.nrtest.sea.pages.base_app.costControlManager.costControlManager_page import NewSpecRemoteCtrlExecutPage
+from com.nrtest.sea.data.base_app.costControlManage.costControlManager_data import CostContrrolManager
+from com.nrtest.sea.pages.base_app.costControlManager.costControlManager_page import NewSpecRemoteCtrlExecutPage_tab2
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→费控管理→远程费控→新专变用户远程费控执行:高压用户跳闸控制汇总信息
 @ddt
-class test_NewSpecRemoteCtrlExecut(TestCase, NewSpecRemoteCtrlExecutPage):
+class test_NewSpecRemoteCtrlExecut(TestCase, NewSpecRemoteCtrlExecutPage_tab2):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(costControlManager_data.CostContrrolManager)
+        menuPage = MenuPage.openMenu(CostContrrolManager.para_NewSpecRemoteCtrlExecut)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(costControlManager_data.CostContrrolManager)
+        menuPage.clickTabPage(CostContrrolManager.para_NewSpecRemoteCtrlExecut_high_info)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -95,8 +95,8 @@ class test_NewSpecRemoteCtrlExecut(TestCase, NewSpecRemoteCtrlExecutPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(costControlManager_data.CostContrrolManager,
-                                  costControlManager_data.CostContrrolManager))
+    @data(*DataAccess.getCaseData(CostContrrolManager.para_NewSpecRemoteCtrlExecut,
+                                  CostContrrolManager.para_NewSpecRemoteCtrlExecut_high_info))
     def test_query(self, para):
         """高级应用→费控管理→远程费控→新专变用户远程费控执行:高压用户跳闸控制汇总信息
         """
@@ -106,8 +106,8 @@ class test_NewSpecRemoteCtrlExecut(TestCase, NewSpecRemoteCtrlExecutPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(costControlManager_data.CostContrrolManager,
-                                  costControlManager_data.CostContrrolManager, valCheck=True))
+    @data(*DataAccess.getCaseData(CostContrrolManager.para_NewSpecRemoteCtrlExecut,
+                                  CostContrrolManager.para_NewSpecRemoteCtrlExecut_high_info, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

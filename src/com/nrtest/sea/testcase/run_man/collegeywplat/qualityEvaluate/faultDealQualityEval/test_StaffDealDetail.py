@@ -91,8 +91,6 @@ class TestStaffDealStatic(TestCase, StaffDealDetailPage):
     @data(*DataAccess.getCaseData(OperOrganManData.para_FaultDealQualityEval, OperOrganManData.para_FaultDealQualityEval_staff))
     def test_query(self, para):
         """运行管理→采集运维平台→故障处理质量评价:人员处理明细
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

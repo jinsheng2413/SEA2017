@@ -97,7 +97,6 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
     @data(*DataAccess.getCaseData(OperOrganManData.para_MeterQualityEval, OperOrganManData.para_MeterQualityEvalDetail))
     def test_query(self, para):
         """运行管理→采集运维平台→采集终端质量评价:电表质量评价明细
-        对查询结果有无、数据链接跳转等校验
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -93,8 +93,6 @@ class TestTmnlQualityEvalStatic(TestCase, TmnlQualityEvalStaticPage):
     @data(*DataAccess.getCaseData(OperOrganManData.para_CollTmnlQualityEval, OperOrganManData.para_TmnlQualityEval_static))
     def test_query(self, para):
         """运行管理→采集运维平台→采集终端质量评价:终端质量评价统计
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

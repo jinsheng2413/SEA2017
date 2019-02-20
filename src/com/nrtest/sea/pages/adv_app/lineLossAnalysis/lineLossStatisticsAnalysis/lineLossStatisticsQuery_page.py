@@ -43,8 +43,8 @@ class LineLossStatisticsQueryPage(Page):
         self.inputDate(name)
 
     # 止
-    def inputDt_to(self, name):
-        self.input(name)
+    def inputDt_end_date(self, name):
+        self.inputDate(name)
 
     # 按底码
     def inputChk_read_value(self, name):

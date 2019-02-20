@@ -21,13 +21,24 @@ class ConsDataQueryPage(Page):
     def btn_search(self):
         self.btn_query()
 
+
+class ConsDataQueryDisplayPage(Page):
+
+    # 用户编号
+    def inputStr_cons_no(self, content):
+        self.input(content)
+
+    # 查询按钮
+    def btn_search(self):
+        self.btn_query()
+
     # tab页选择
     def inputChk_tab_name(self, tab_name):
         self.clickTabPage(tab_name)
 
     # 查询方式（实时或冻结）
     def inputChk_query_type(self, value):
-        self.clickRadioBox(value)
+        self.clickRadioBox(value, is_multi_tab=True, is_multi_elements=True)
 
     # 电表
     def inputSel_meter(self, value):

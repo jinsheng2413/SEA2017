@@ -10,4 +10,5 @@
 
 
 class OrderHandledData:
+    # 高级应用→工单处理→掌机抄表工单统计（青海）
     para_HandledOrderInfoStat = '99957400'

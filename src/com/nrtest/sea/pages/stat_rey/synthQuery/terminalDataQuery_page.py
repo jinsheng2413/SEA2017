@@ -18,11 +18,12 @@ class TerminalDataQueryDocPage(Page):
 
     # 终端地址
     def inputStr_tmnl_addr(self, content):
+        # self.clean_label(content)
         self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        self.btn_query()
+        self.btn_query(True)
 
 
 # 统计查询→综合查询→终端数据查询:数据展示
@@ -41,15 +42,16 @@ class TerminalDataQueryDataPage(Page):
 
     # 总加组
     def inputSel_added_group(self, option):
-        self.selectDropDown(option)
+        self.specialDropdown(option, ('xpath', '//div[normalize-space(text())="总加组"]/../following-sibling::td//img'))
+        # self.selectDropDown(option)
 
     # 查询日期
-    def inputStr_start_date(self, value):
-        self.input(value)
+    def inputDt_start_date(self, value):
+        self.inputDate(value)
 
     # 至
-    def inputStr_end_date(self, value):
-        self.input(value)
+    def inputDt_end_date(self, value):
+        self.inputDate(value)
 
     # 父级查询
     def btn_search(self):

@@ -113,18 +113,8 @@ class MeterDataQueryFailDetailPage(Page):
     def inputDt_query_date(self, value):
         self.inputDate(value)
 
-    # 到
-    def inputDt_to_date(self, value):
-        self.inputDate(value)
 
 
-    # 电能表抄读状态
-    def inputSel_meter_read_status(self, option):
-        self.selectDropDown(option, is_multi_tab=True, is_multi_elements=True)
-
-    # 终端运行状态
-    def inputSel_tmnl_run_status(self, option):
-        self.selectDropDown(option, is_multi_elements=True, is_multi_tab=True)
 
     # 农排用户选择
     def inputSel_user_select(self, option):
@@ -141,6 +131,10 @@ class MeterDataQueryFailDetailPage(Page):
     # 反相采集结果
     def inputSel_recerse_collection_result(self, option):
         self.selectDropDown(option)
+
+    # 计量点状态
+    def inputSel_sto_point_status(self, value):
+        self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
 
     # 查询
     def btn_qry(self):

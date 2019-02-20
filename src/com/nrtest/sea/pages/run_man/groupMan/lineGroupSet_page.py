@@ -24,8 +24,8 @@ class LineGroupSetPage(Page):
 
     # 有效日期
     def inputChk_valid_date(self, item):
-        return self.clickSingleCheckBox(item)  # , True, True, LineGroupSetLocators.QRY_VALID_DATE)
-
+        # return self.clickSingleCheckBox(item)
+        self.clickSingleCheckBox(item, True, True, locator=("xpath", '//div/input[@type="checkbox"]'))
     # 查询日期，开始
     def inputDt_start_date(self, content):
         self.inputDate(content)

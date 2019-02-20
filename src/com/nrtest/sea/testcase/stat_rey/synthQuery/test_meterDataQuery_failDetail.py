@@ -83,30 +83,21 @@ class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
 
-        if val == '日冻结电能示值':
+        if is_uip_curve == False:
             # 反相采集结果
             self.inputSel_recerse_collection_result(para['RECERSE_COLLECTION_RESULT'])
             # # 数据类别
-            # self.inputChk_data_sort(para['DATA_SORT'])
+            self.inputChk_data_sort(para['DATA_SORT'])
 
         # 终端厂家
         self.inputSel_tmnl_manufacturer(para['TMNL_MANUFACTURER'])
+        # 计量点状态
+        self.inputSel_sto_point_status(para['STO_POINT_STATUS'])
 
-        # 终端运行状态
-        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
 
-        # 电能表抄读状态
-        self.inputSel_meter_read_status(para['METER_READ_STATUS'])
-
-        # 用户类别
-        self.inputSel_cons_sort(para['CONS_SORT'])
 
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
-
-        if is_uip_curve:
-            # 到
-            self.inputDt_to_date(para['TO_DATE'])
 
         # 农排用户选择
         self.inputSel_user_select(para['USER_SELECT'])

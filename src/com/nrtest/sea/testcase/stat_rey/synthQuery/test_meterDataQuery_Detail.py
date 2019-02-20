@@ -86,22 +86,16 @@ class test_MeterDataQueryDetail(TestCase, MeterDataQueryDetailPage):
         # 数据类别
         self.inputSel_data_sort(para['DATA_SORT'])
 
-        # 电能表抄读状态
-        self.inputSel_meter_read_status(para['METER_READ_STATUS'])
-
-        # 终端运行状态
-        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
-
-        # 用户类别
-        self.inputSel_cons_sort(para['CONS_SORT'])
 
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
+        # 计量点状态
+        self.inputSel_sto_point_status(para['STO_POINT_STATUS'])
 
         # 农排用户选择
         self.inputSel_user_select(para['USER_SELECT'])
 
-        if val == '日冻结电能示值':
+        if is_uip_curve == False:
             # 采集情况
             self.inputChk_read_status(para['READ_STATUS'])
 

@@ -192,7 +192,7 @@ class ContinuousFalseDetailPage(Page):
         self.btn_query()
 
 
-# 基本应用→数据采集管理→采集质量分析→采集成功率→按时间统计
+# 基本应用→数据采集管理→采集质量分析→采集成功率:按时间统计
 class GatherSuccessRateTimePage(Page):
     # 数据类型
     def inputChk_data_type(self, options):

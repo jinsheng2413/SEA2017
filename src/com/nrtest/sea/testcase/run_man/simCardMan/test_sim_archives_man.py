@@ -26,7 +26,7 @@ class test_SimArchivesMan(TestCase, SimArchivesManPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(simCardMan_data.simArchivesMan_para)
+        menuPage = MenuPage.openMenu(simCardMan_data.dataManage_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage()

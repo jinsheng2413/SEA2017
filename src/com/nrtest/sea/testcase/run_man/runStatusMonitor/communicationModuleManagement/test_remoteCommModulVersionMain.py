@@ -22,6 +22,7 @@ from com.nrtest.sea.pages.run_man.runStatusMonitor.communicationModuleManagement
     RemoteCommModulVersionMainPage
 
 
+# 运行管理→采集信道管理→通信模块管理→远程通信模块版本信息召测
 @ddt
 class TestRemoteCommModulVersionMain(TestCase, RemoteCommModulVersionMainPage):
 
@@ -103,9 +104,6 @@ class TestRemoteCommModulVersionMain(TestCase, RemoteCommModulVersionMainPage):
     @data(*DataAccess.getCaseData(CommunicationModuleManagement.remoteCommModulVersionMain_para))
     def test_query(self, para):
         """运行管理→采集信道管理→通信模块管理→远程通信模块版本信息召测
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        :return:
         """
         self.start_case(para, __file__)
         self.query(para)

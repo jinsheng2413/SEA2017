@@ -104,7 +104,7 @@ class BaseTreePage(Page):
         pass
 
     def _find_in_parent(self, item, idx, items):
-        return None
+        pass
 
     def _node_click(self, element, curr_idx, node_levels, is_chk_node=False):
         """

@@ -13,26 +13,27 @@ import time
 from com.nrtest.common.data_access import DataAccess
 
 # 作者
-author = '郭春彪'
+author = '李建方'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'meter_State_Arr'
+file_name = 'Tg_query_cp'
 
 # 存放菜单编号的数据文件类名
-# 路径
-data_file = r'D:\pythonworkspace\SEA2017\src\com\nrtest\sea\data\run_man\meterMan\meterClockMan_data'
+# 路径  com/nrtest/sea/data/stat_rey/synthQuery/synthQuery_data.SynthQueryData
+# 路径说明：-----------------所属package---------|---文件名-------|---类（class）名----
+data_file = r'com/nrtest/sea/data/stat_rey/synthQuery/synthQuery_data.SynthQueryData'
 
 # 菜单编号
-menu_no = '99936200'
+menu_no = '99941R00'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = ''
+tab_name = '采集点信息'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
-en_tab_name = ''
+en_tab_name = 'cp'
 
 # 生成文件存放路径
-filelistlog = r"D:\pythonworkspace\SEA2017\logs\filelistlog.log"
+filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
 
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
 page_type = '02'
@@ -155,7 +156,7 @@ class GenFile():
         data_import = data_import.replace('\r', '.r')
         data_import = data_import.replace('\f', '.f')
         if data_import.find('.') > 0:
-            if data_import.find('.src.'):
+            if data_import.find('.src.') > -1:
                 data_import = data_import.split('.src.')[-1]
             ls_data_import = data_import.split('.')
             return 'from ' + '.'.join(ls_data_import[:-1]) + ' import ' + ls_data_import[-1]

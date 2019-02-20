@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: 郭春彪
+@author: 李建方
 @license: (C) Copyright 2018, Nari.
-@file: test_paramAbnormal_detail.py
-@time: 2019-02-15 13:24:23
+@file: test_tg_query_cons_doc.py
+@time: 2019-02-19 09:17:09
 @desc:
 """
 
@@ -14,24 +14,24 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.equipmentInspection.equipmentInspection_data import EquipmentInspection_data
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-# 运行管理→设备巡检→参数档案异常反校:反校明细信息
-from com.nrtest.sea.pages.run_man.equipmentInspection.paramAbnormal_Page import ParamAbnormal_detail_Page
+from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page import TgQueryCpPage
 
 
+# 统计查询→综合查询→专公变综合查询:用户档案
 @ddt
-class test_ParamAbnormal(TestCase, ParamAbnormal_detail_Page):
+class test_TgQueryConsDoc(TestCase, TgQueryCpPage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(EquipmentInspection_data.paramAbnormal_para)
+        menuPage = MenuPage.openMenu(SynthQuery_data.onlyChangeSysthesisQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(EquipmentInspection_data.paramAbnormal_detail_tab)
+        menuPage.clickTabPage(SynthQuery_data.onlyChangeSysthesisQuery_cons_doc_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        # menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -61,29 +61,14 @@ class test_ParamAbnormal(TestCase, ParamAbnormal_detail_Page):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 节点名
+        # 户号
         self.openLeftTree(para['TREE_NODE'])
 
-        # 开始日期
-        self.inputDt_start_date(para['START_DATE'])
+        # 终端地址
+        self.inputSel_tmnl_addr(para['TMNL_ADDR'])
 
-        # 结束日期
-        self.inputDt_end_date(para['END_DATE'])
-
-        # 设备类型
-        self.inputSel_device_type(para['DEVICE_TYPE'])
-
-        # 异常类型
-        self.inputSel_except_type(para['EXCEPT_TYPE'])
-
-        # 电表资产号
-        self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
-
-        # 用户编号
-        self.inputStr_cons_no(para['CONS_NO'])
-
-        # 终端资产编号
-        self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
+        # 电能表
+        self.inputSel_meter(para['METER'])
 
         # 查询
         self.btn_qry()
@@ -104,10 +89,9 @@ class test_ParamAbnormal(TestCase, ParamAbnormal_detail_Page):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(EquipmentInspection_data.paramAbnormal_para,
-                                  EquipmentInspection_data.paramAbnormal_detail_tab))
+    @data(*DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para, SynthQuery_data.onlyChangeSysthesisQuery_cons_doc_tab))
     def test_query(self, para):
-        """运行管理→设备巡检→参数档案异常反校:反校明细信息
+        """统计查询→综合查询→专公变综合查询:用户档案
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -115,8 +99,8 @@ class test_ParamAbnormal(TestCase, ParamAbnormal_detail_Page):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(EquipmentInspection_data.paramAbnormal_para,
-                                  EquipmentInspection_data.paramAbnormal_detail_tab, valCheck=True))
+    @data(
+        *DataAccess.getCaseData(SynthQuery_data.onlyChangeSysthesisQuery_para, SynthQuery_data.onlyChangeSysthesisQuery_cons_doc_tab, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

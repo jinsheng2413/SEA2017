@@ -7,7 +7,7 @@
 @time: 2019-02-01 14:05:55
 @desc:
 """
-
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -16,10 +16,10 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page import SynthqueryDataPage
+
+
 # 统计查询→综合查询→专公变综合查询:实时抄表数据
-from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery import SynthqueryDataPage
-
-
 @ddt
 class test_RealTimeReadData(TestCase, SynthqueryDataPage):
 
@@ -62,16 +62,23 @@ class test_RealTimeReadData(TestCase, SynthqueryDataPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # 用户编号
-        self.openLeftTree(para['TREE_CONS_NO'])
+        self.openLeftTree(para['TREE_NODE'])
+        sleep(1)
+
+        # 终端地址
+        self.inputSel_tmnl_addr(para['TMNL_ADDR'])
+
+        # 电能表
+        self.inputSel_meter(para['METER'])
 
         # 查询日期从
-        self.inputDt_query_time_from(para['QUERY_TIME_FROM'])
+        self.inputDt_from_date(para['FROM_DATE'])
 
         # 到
-        self.inputDt_query_time_to(para['QUERY_TIME_TO'])
+        self.inputDt_to_date(para['TO_DATE'])
 
         # 是否显示正向有功电能量
-        self.inputChk_or_power(para['OR_POWER'])
+        self.inputChk_disp_all(para['DISP_ALL'])
 
         # 查询
         self.btn_qry()

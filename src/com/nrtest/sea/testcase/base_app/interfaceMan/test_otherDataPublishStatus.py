@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_mDataPublishStatus.py
+@file: test_otherDataPublishStatus.py
 @time: 2018-10-30 16:10
 @desc:
 """

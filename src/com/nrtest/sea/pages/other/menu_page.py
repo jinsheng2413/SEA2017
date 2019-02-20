@@ -18,7 +18,6 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.login import Login
-from com.nrtest.sea.locators.other.base_locators import BaseLocators
 from com.nrtest.sea.locators.other.menu_locators import *
 
 
@@ -356,11 +355,18 @@ class MenuPage(Page):
         else:
             print('省份选择错误')
 
+    def click_left_tree_tab(self, tab_name):
+        xpath = self.format_xpath(self.locator_class.TAB_PAGE, tab_name)
+        self.click(xpath)
+
+
     # 选择左边树
     def btn_left_tree(self, tree_no):
         self.sleep_time(2)
         tree = DataAccess.getLeftTree(tree_no)
-        self.click(BaseLocators.POWER_SUPPLY_AREA)
+        self.click_left_tree_tab('供电区域')
+        # self.click(BaseLocators.POWER_SUPPLY_AREA)
+
         # self.btn_suitable_arrow()
         items = tree.split(';')
         l = len(items)

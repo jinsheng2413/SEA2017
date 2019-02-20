@@ -81,7 +81,7 @@ class TestConsDataQuery(TestCase, ConsDataQueryPage):
         self.inputDt_start_time(para['START_TIME'])
 
         # 至
-        self.inputDt_end_date(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         # 查询
         self.btn_search_tab()
@@ -105,9 +105,7 @@ class TestConsDataQuery(TestCase, ConsDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.ConsDataQuery_para))
     def test_query(self, para):
-        """# 统计查询--综合查询--用户数据查询：电能示值
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
+        """统计查询--综合查询--用户数据查询：电能示值
         """
         self.start_case(para, __file__)
         self.query(para)

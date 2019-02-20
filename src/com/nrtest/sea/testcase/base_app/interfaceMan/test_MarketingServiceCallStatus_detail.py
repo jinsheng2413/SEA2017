@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_otherServiceCallStatus_detail.py
+@file: test_MarketingServiceCallStatus_detail.py
 @time: 2018-10-31 9:14
 @desc:
 """

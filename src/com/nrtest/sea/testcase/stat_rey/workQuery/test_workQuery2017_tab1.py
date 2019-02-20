@@ -63,7 +63,7 @@ class TestWorkQuery2017_tab1(TestCase, WorkCount2017Page):
         """
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 工单类型
         self.inputSel_app_type(para['APP_TYPE'])

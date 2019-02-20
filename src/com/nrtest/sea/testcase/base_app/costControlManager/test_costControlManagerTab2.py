@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_new_spec_remote_ctrl_execut.py
+@file: test_costControlManagerTab2.py
 @time: 2019-02-13 16:08:54
 @desc:
 """
@@ -72,7 +72,6 @@ class test_NewSpecRemoteCtrlExecut(TestCase, NewSpecRemoteCtrlExecutPage_tab2):
         self.inputDt_end_date(para['END_DATE'])
 
         # 营销U1验签结果
-
         self.inputSel_u1_result(para['U1_RESULT'])
 
         # 统计类型

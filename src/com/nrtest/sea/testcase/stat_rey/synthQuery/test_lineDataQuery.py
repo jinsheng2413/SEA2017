@@ -19,6 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.lineDataQuery_page import LineDataQueryPage
 
 
+# 统计查询→综合查询→线路数据查询
 @ddt
 class TestTmnlInstallDetai_debug(TestCase, LineDataQueryPage):
 

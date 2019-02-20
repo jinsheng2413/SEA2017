@@ -21,6 +21,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.dataAnalyse.powerSortAnalyse_page import PowerSortAnalysePage
 
 
+# 统计查询→数据分析→电量分析→电量排名分析
 @ddt
 class TestPowerSortAnalyse(TestCase, PowerSortAnalysePage):
 

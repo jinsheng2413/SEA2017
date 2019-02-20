@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: jinsheng
+@author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_MarketingServiceCallStatus_detail.py
-@time: 2018-10-31 9:14
+@file: test_xl_line_loss_model.py
+@time: 2019-02-20 12:27:21
 @desc:
 """
 
@@ -14,29 +14,29 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.interfaceMan.mServiceCallStatus_data import InterfaceMan_data
-from com.nrtest.sea.pages.base_app.interfaceMan.marketingServiceCallStatus_page import \
-    MarketingServiceCallStatus_detail_Page
+from com.nrtest.sea.data.adv_app.lineLossAnalysis.lineLossMantain.lineLossMantain_data import LineLossMantain_data
+from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossMantain.xlLineLossModel_page import XlLineLossModel_main_Page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→接口管理→营销业务接口→服务调用情况:服务调用明细
+# 高级应用→线损分析→线损模型维护→线路线损模型:主变线损模型
 @ddt
-class test_otherServiceCallStatus_detail(TestCase, MarketingServiceCallStatus_detail_Page):
+class test_XlLineLossModel(TestCase, XlLineLossModel_main_Page):
+
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(InterfaceMan_data.para_MarketingServiceCallStatus)
+        menuPage = MenuPage.openMenu(LineLossMantain_data.xlLineLossModel_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(InterfaceMan_data.para_MarketingServiceCallStatus_detail)
+        menuPage.clickTabPage(LineLossMantain_data.xlLineLossModel_main_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
-        print('执行结束')
-        # 刷新浏览器
+        print("执行结束")
+        # 关闭菜单页面
         cls.closePages(cls)
 
     def setUp(self):
@@ -47,7 +47,7 @@ class test_otherServiceCallStatus_detail(TestCase, MarketingServiceCallStatus_de
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         :return:
         """
 
@@ -55,19 +55,23 @@ class test_otherServiceCallStatus_detail(TestCase, MarketingServiceCallStatus_de
         self.recoverLeftTree()
 
     def query(self, para):
-        # 服务名称
-        self.inputSel_service_name(para['SERVICE_NAME'])
-        # 业务系统
-        self.inputSel_business_system(para['BUSINESS_SYSTEM'])
-        # 开始时间
-        self.inputDt_start_date(para['START_DATE'])
-        # 结束时间
-        self.inputDt_end_date(para['END_DATE'])
-        # 工单编号
-        self.inputStr_app_no(para['APP_NO'])
+        """
+
+        :param para: Dict类型的字典，不是dict
+        ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
+        key值要与tst_case_detail表中的XPATH_NAME的值保持一致
+        """
+        # 节点名
+        self.openLeftTree(para['TREE_NODE'])
+
+        # 变电站名称
+        self.inputSel_substation_name(para['SUBSTATION_NAME'])
+
+        # 主变
+        self.inputSel_miain_transformer(para['MIAIN_TRANSFORMER'])
+
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -85,10 +89,10 @@ class test_otherServiceCallStatus_detail(TestCase, MarketingServiceCallStatus_de
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MarketingServiceCallStatus,
-                                  InterfaceMan_data.para_MarketingServiceCallStatus_detail))
+    @data(*DataAccess.getCaseData(LineLossMantain_data.xlLineLossModel_para,
+                                  LineLossMantain_data.xlLineLossModel_main_tab))
     def test_query(self, para):
-        """基本应用→接口管理→营销业务接口→服务调用情况:服务调用明细
+        """高级应用→线损分析→线损模型维护→线路线损模型:主变线损模型
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -96,8 +100,8 @@ class test_otherServiceCallStatus_detail(TestCase, MarketingServiceCallStatus_de
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(InterfaceMan_data.para_MarketingServiceCallStatus,
-                                  InterfaceMan_data.para_MarketingServiceCallStatus_detail, valCheck=True))
+    @data(*DataAccess.getCaseData(LineLossMantain_data.xlLineLossModel_para,
+                                  LineLossMantain_data.xlLineLossModel_main_tab, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

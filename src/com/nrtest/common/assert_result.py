@@ -428,7 +428,14 @@ class AssertResult():
         :param version: 1为老版本，2为新版本
         :return: 返回校验结果
         """
-        esplain = {'11': '显示区未查询出结果', '12': '按条件查询出的结果与期望值不一致', '21': '跳转菜单页面不正确', '22': '跳转弹窗不正确', '23': '跳转tab页不正确'}
+        esplain = {
+            '11': '显示区未查询出结果',
+            '12': '按条件查询出的结果与期望值不一致',
+            '21': '跳转菜单页面不正确',
+            '22': '跳转弹窗不正确',
+            '23': '跳转tab页不正确',
+            '31': '查询详细信息的输入框的值与期望结果不一致'
+        }
         rslt = DataAccess.get_case_result(para['TST_CASE_ID'])
         display_tab = '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'  # 根据XPATH判断显示区是否有值
         ls_check_rslt = {}
@@ -445,6 +452,8 @@ class AssertResult():
                 assert_rslt = self.tst_inst.skip_windows_page(row[1:])
             elif assert_type == '23':
                 assert_rslt = self.skip_tab_page(row[1:], caseId=para['TST_CASE_ID'], caseData=para)
+            elif assert_type == '31':
+                assert_rslt = self.assertInput(row[1:], caseData=para)
 
             ls_check_rslt.update({assert_type: assert_rslt})
 
@@ -545,6 +554,16 @@ class AssertResult():
             print(loc)
         self.tst_inst.driver.find_element(*loc).click()
 
+    def assertInput(self, para, caseData=''):
+        xpath = AssertResultLocators.DISPLAY_RESULT[1].format(para[0], para[1])
+        val = self.get_text((By.XPATH, xpath))
+        if para[2] == val:
+            logger.info('查询详细信息的输入框的值与期望结果一样')
+            return True
+        else:
+            logger.info('查询详细信息的输入框的值与期望结果不一致')
+            return False
+
 
 class AssertResultLocators:
     # 弹窗的关闭xpath
@@ -573,6 +592,8 @@ class AssertResultLocators:
 
     # input输入框
     INPUT_BASE_GU = (By.XPATH, '//label[text()= "{}"]/../div[@class=\"x-form-element\"]//input')
+    # 查询结果非显示区，是输入框(第一个值代表是哪个区域的，第二个值是代表那个输入框)
+    DISPLAY_RESULT = (By.XPATH, '//span[text()="{}"]/../..//label[text()="{}"]/../..//input')
 
     # link 数据是否对应(显示区右下角查询的数据总量)
     LINK_DATA = (

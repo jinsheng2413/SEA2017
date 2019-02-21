@@ -23,7 +23,7 @@ class LogEditPage(Page):
           self.inputDate(value)
 
     # 结束时间
-    def inputDt_end_date(self, value):
+    def inputDt_end_time(self, value):
         self.inputDate(value)
 
     # 查询

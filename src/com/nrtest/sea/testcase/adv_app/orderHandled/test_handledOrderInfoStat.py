@@ -14,7 +14,7 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.adv_app.orderHandled import orderHandled_data
+from com.nrtest.sea.data.adv_app.orderHandled.orderHandled_data import OrderHandledData
 from com.nrtest.sea.pages.adv_app.orderHandled.handledOrderInfoStat_page import HandledOrderInfoStatPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
@@ -24,9 +24,9 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 class test_HandledOrderInfoStat(TestCase, HandledOrderInfoStatPage):
 
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(cls): 
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(orderHandled_data.OrderHandledData)
+        menuPage = MenuPage.openMenu(OrderHandledData.para_HandledOrderInfoStat)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage()
@@ -92,7 +92,7 @@ class test_HandledOrderInfoStat(TestCase, HandledOrderInfoStatPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(orderHandled_data.OrderHandledData))
+    @data(*DataAccess.getCaseData(OrderHandledData.para_HandledOrderInfoStat))
     def test_query(self, para):
         """高级应用→工单处理→掌机抄表工单统计（青海）
         """
@@ -102,7 +102,7 @@ class test_HandledOrderInfoStat(TestCase, HandledOrderInfoStatPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(orderHandled_data.OrderHandledData, valCheck=True))
+    @data(*DataAccess.getCaseData(OrderHandledData.para_HandledOrderInfoStat, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

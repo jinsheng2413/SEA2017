@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 统计查询→综合查询→采集建设情况→运行终端统计
+# 统计查询→采集建设情况→运行设备统计→运行终端统计:终端运行状态统计
 class RunTmnlStatisticsPage(Page):
     # 终端运行状态统计
     # 市、县直
@@ -26,12 +26,16 @@ class RunTmnlStatisticsPage(Page):
     def inputDt_query_date(self, content):
         self.inputDate(content)
 
+    # Tab页选项
+    def inputChk_tab_name(self, tab_name):
+        self.clickTabPage(tab_name)
+
     # 查询按钮
     def btn_search(self):
         self.btn_query()
 
 
-# 终端运行状态明细
+# 统计查询→采集建设情况→运行设备统计→运行终端统计:终端运行状态明细
 class RunTmnlStatDetailPage(Page):
     # 用户类型
     def inputSel_cons_type(self, index):

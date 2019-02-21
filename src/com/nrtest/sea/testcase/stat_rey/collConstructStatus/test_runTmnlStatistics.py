@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.collConstructStatus.runTmnlStatistics_page import RunTmnlStatisticsPage
 
 
-# 统计查询→采集建设情况→运行终端统计:运行终端统计
+# 统计查询→采集建设情况→运行设备统计→运行终端统计:终端运行状态统计
 @ddt
 class TestRunTmnlStatistics(TestCase, RunTmnlStatisticsPage):
     @classmethod
@@ -61,6 +61,10 @@ class TestRunTmnlStatistics(TestCase, RunTmnlStatisticsPage):
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 统计日期
         self.inputDt_query_date(para['QUERY_DATE'])
+
+        # Tab页选项
+        self.inputChk_tab_name(para['TAB_NAME'])
+
         # 查询按钮
         self.btn_search()
 
@@ -83,8 +87,7 @@ class TestRunTmnlStatistics(TestCase, RunTmnlStatisticsPage):
     @data(*DataAccess.getCaseData(CollConstructStatus_data.RunTmnlStatistics_para,
                                   CollConstructStatus_data.RunTmnlStatistics_tabName))
     def test_query(self, para):
-        """统计查询→采集建设情况→运行终端统计:运行终端统计
-
+        """统计查询→采集建设情况→运行设备统计→运行终端统计:终端运行状态统计
         :param para:
         """
         self.start_case(para, __file__)

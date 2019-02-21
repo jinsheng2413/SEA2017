@@ -219,6 +219,16 @@ class BasePbsLocators(Locators):
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
     POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
 
+
+class BaseSEA20Locators(Locators):
+    pass
+
+
+class BaseJLZDHLocators(Locators):
+    pass
+
+
+
 if __name__ == '__main__':
     # print(BaseLocators.OBJ % '/查\s{1,}询/')
     print(BaseLocators.CLEAN_BLANK)

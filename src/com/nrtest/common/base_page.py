@@ -13,7 +13,6 @@ from time import sleep
 
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidElementStateException
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
@@ -23,17 +22,11 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
-from com.nrtest.sea.locators.other.base_locators import BaseLocators
-from com.nrtest.sea.locators.other.menu_locators import MenuLocators
+from com.nrtest.sea.locators.other.base_locators import *
 
 # create a logger instance
 logger = Logger(logger='Page').getlog()
 
-
-# def func_info():
-#     info = inspect.stack()[1]
-#     clean_info = '{}.{}::{}'.format(info[1].split('src/')[1].split('.')[0], cls.__class__.__name__, info[3])
-#     print(clean_info)
 
 class MustGetUrl():
     """
@@ -77,6 +70,15 @@ class Page():
         self.tst_case_id = None
         self.class_name = ''
 
+        if self.project_no == 'SEA':
+            self.baseLocators = BaseLocators
+        elif self.project_no == 'SEA2.0':
+            self.baseLocators = BaseSEA20Locators
+        elif self.project_no in (['PBS5000', 'D5000']):
+            self.baseLocators = BasePbsLocators
+        elif self.project_no.endswith('JLZDH'):
+            self.baseLocators = BaseJLZDHLocators
+
     def save_img(self, img_path, img_name):
         """
             传入一个img_name, 并存储到默认的文件路径下
@@ -111,7 +113,7 @@ class Page():
             dlg_src = int(args[0])
         else:
             dlg_src = int(self.case_para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
-        el = self._direct_find_element(BaseLocators.POPUP_DLG)
+        el = self._direct_find_element(self.baseLocators.POPUP_DLG)
         if bool(el) and el.is_displayed():  # 有对话框，且显示
             info = ':'.join(el.text.replace(' ', '').split('\n')[:-2])
             # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
@@ -158,7 +160,7 @@ class Page():
             if action in ('01', '02'):
                 self.save_img(img_path, img_name)
 
-            btn_el = self._direct_find_element(BaseLocators.POPUP_DLG_CONFIRM)
+            btn_el = self._direct_find_element(self.baseLocators.POPUP_DLG_CONFIRM)
             if bool(btn_el):
                 btn_el.click()
 
@@ -340,8 +342,8 @@ class Page():
         """
         loc = xpath
         if is_multi_tab:
-            loc = (xpath[0], BaseLocators.MENU_PAGE_ID.format(self.menu_name) + \
-                   BaseLocators.MULTI_TAB + xpath[1])
+            loc = (xpath[0], self.baseLocators.MENU_PAGE_ID.format(self.menu_name) + \
+                   self.baseLocators.MULTI_TAB + xpath[1])
         return self.format_xpath(loc, format_val)
 
     def curr_input(self, values, is_multi_tab=False, is_multi_elements=False):
@@ -353,7 +355,7 @@ class Page():
         """
         try:
             ls_values = values.split(';')
-            loc = self.format_xpath_multi(BaseLocators.QRY_INPUT, ls_values[0], is_multi_tab)
+            loc = self.format_xpath_multi(self.baseLocators.QRY_INPUT, ls_values[0], is_multi_tab)
             if is_multi_elements:
                 el = self._find_displayed_element(loc)
             else:
@@ -374,7 +376,7 @@ class Page():
         try:
             ls_values = value.split(';')
             # print(ls_values)
-            loc = self.format_xpath_multi(BaseLocators.QRY_DT_INPUT, ls_values[0], is_multi_tab)
+            loc = self.format_xpath_multi(self.baseLocators.QRY_DT_INPUT, ls_values[0], is_multi_tab)
             tmp = ls_values[1].strip()
             idx = new_idx
             if new_idx == 0:
@@ -399,7 +401,7 @@ class Page():
         """
         try:
             btn_name = btn_name if bool(btn_name) else '查询'
-            loc = self.format_xpath_multi(BaseLocators.BTN_QRY, btn_name, is_multi_tab)
+            loc = self.format_xpath_multi(self.baseLocators.BTN_QRY, btn_name, is_multi_tab)
             if is_multi_tab:
                 el = self._find_displayed_element(loc, idx)
             else:
@@ -421,7 +423,7 @@ class Page():
             sleep(sec)
             try:
                 # 找到元素，并且该元素也可见
-                loc = locator if bool(locator) else BaseLocators.DATA_LOADING
+                loc = locator if bool(locator) else self.baseLocators.DATA_LOADING
                 WebDriverWait(self.driver, self.timeout_seconds - sec).until_not(EC.visibility_of_element_located(loc))
                 cost_seconds = round(time.time() - start_time, 2)
                 except_type = ''
@@ -473,9 +475,9 @@ class Page():
             if bool(item):
                 # 打开下拉框
                 if byImg:
-                    xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
+                    xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
                 else:
-                    xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
+                    xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
 
                 if is_multi_elements:
                     el = self._find_displayed_element(xpath)
@@ -488,12 +490,12 @@ class Page():
 
                 # 根据名称选择下拉框
                 if is_equalText:
-                    loc = self.format_xpath(BaseLocators.DROPDOWN_OPTION_EQUAL, item)
+                    loc = self.format_xpath(self.baseLocators.DROPDOWN_OPTION_EQUAL, item)
                 else:
-                    loc = self.format_xpath(BaseLocators.DROPDOWN_OPTION, item)
+                    loc = self.format_xpath(self.baseLocators.DROPDOWN_OPTION, item)
                 self.click(loc)
             else:  # 选择值为空时，表示选择全部
-                xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
+                xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
                 el = self._find_displayed_element(xpath)
                 self.driver.execute_script("arguments[0].value=arguments[1]", el, '')
 
@@ -512,7 +514,7 @@ class Page():
         el.click()
         # 根据名称选择下拉框
         if bool(item):
-            loc = self.format_xpath(BaseLocators.DROPDOWN_OPTION_EQUAL, item)
+            loc = self.format_xpath(self.baseLocators.DROPDOWN_OPTION_EQUAL, item)
             self.click(loc)
         else:  # 选择值为空时，表示选择全部
             if bool(locator_clean):
@@ -538,7 +540,7 @@ class Page():
             if bool(locator):
                 xpath = locator
             else:
-                xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], True)
+                xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX, ls_option[0], True)
             el_sel = self._find_displayed_element(xpath)
             el_sel.click()
 
@@ -553,9 +555,9 @@ class Page():
 
             if len(ls_option[2]) > 0 and ls_option[2] != '全部':
                 if is_equalText:
-                    img_chk_loc = BaseLocators.SEL_OPTION_EQUAL
+                    img_chk_loc = self.baseLocators.SEL_OPTION_EQUAL
                 else:
-                    img_chk_loc = BaseLocators.SEL_OPTION
+                    img_chk_loc = self.baseLocators.SEL_OPTION
                 for option in ls_option[2].split(','):
                     img_chk_xpath = self.format_xpath(img_chk_loc, option)
                     self.click(img_chk_xpath)
@@ -577,7 +579,7 @@ class Page():
         :param idx: 第idx个此类可见输入框
         """
         # 页面元素位置变动时，会存在定位错误问题，需人工调整
-        locator = self.format_xpath_multi(BaseLocators.QRY_INPUT_NOLABEL, idx, True)
+        locator = self.format_xpath_multi(self.baseLocators.QRY_INPUT_NOLABEL, idx, True)
         el = self._find_displayed_element(locator, idx)
         el.send_keys(value.split(';')[1])
 
@@ -585,21 +587,21 @@ class Page():
         """
         判断元素是否被选中
         :param option_name:下拉复选中选项，其中一个中文名称
-        :param unchecked_cls:True-通过src-->/checked.png；False-通过class-->-checked
+        :param unchecked_cls:True-通过class-->-checked；False-通过src-->/checked.png
         :return:
         """
         if unchecked_cls:
-            unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL_CLS, option_name)
+            unchek_all_path = self.format_xpath(self.baseLocators.SEL_UNCHECK_ALL_CLS, option_name)
         else:
-            unchek_all_path = self.format_xpath(BaseLocators.SEL_UNCHECK_ALL, option_name)
-        print('所有选中项', unchek_all_path)
+            unchek_all_path = self.format_xpath(self.baseLocators.SEL_UNCHECK_ALL, option_name)
+        # print('所有选中项', unchek_all_path)
         elements = self._find_elements(unchek_all_path)
         for el in elements:
             # if el.get_attribute('src').find('/checked.gif') > -1:
             #     el.click()
             el.click()
 
-    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, unchecked_cls=True):
+    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, unchecked_cls=False):
         """
         下拉复选框选择
         :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
@@ -607,13 +609,14 @@ class Page():
         :param sleep_sec:休眠n秒
         :param is_multi_elements:同一菜单是否存在重复元素
         :param is_equalText: True-下拉选择值需完全匹配，Fase-部分匹配
+        :param unchecked_cls:True-通过class-->-checked；False-通过src-->/checked.png
         """
         # print ('selectCheckBox', options, is_multi_tab)
         if (options.find(';') == -1):
             print('请配置查询条件的标签值。')
         else:
             ls_option = options.split(';')
-            xpath = self.format_xpath_multi(BaseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
+            xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
             # print('selectCheckBox', 'qry_path', xpath)
             if is_multi_elements:
                 el = self._find_displayed_element(xpath)
@@ -630,9 +633,9 @@ class Page():
             if len(ls_option[2]) > 0 and ls_option[2] != '全部':
                 for option in ls_option[2].split(','):
                     if is_equalText:
-                        img_chk_xpath = self.format_xpath(BaseLocators.SEL_OPTION_EQUAL, option)
+                        img_chk_xpath = self.format_xpath(self.baseLocators.SEL_OPTION_EQUAL, option)
                     else:
-                        img_chk_xpath = self.format_xpath(BaseLocators.SEL_OPTION, option)
+                        img_chk_xpath = self.format_xpath(self.baseLocators.SEL_OPTION, option)
                     self.click(img_chk_xpath)
 
             # 回收下拉框
@@ -645,7 +648,7 @@ class Page():
         :param attr: 对象名 (By.ID/NAME, xxx)
         :param obj_attr: 对象属性
         """
-        self.driver.execute_script(BaseLocators.JS_REMOVE_ATTR.format(attr[0].capitalize(), attr[1], obj_attr))
+        self.driver.execute_script(self.baseLocators.JS_REMOVE_ATTR.format(attr[0].capitalize(), attr[1], obj_attr))
 
     def remove_readonly(self, attr):
         """
@@ -662,11 +665,11 @@ class Page():
         """
 
         if is_multi_tab:
-            xpath = BaseLocators.MENU_PAGE_ID.format(self.menu_name) + BaseLocators.QRY_DT_INPUT[1]
+            xpath = self.baseLocators.MENU_PAGE_ID.format(self.menu_name) + self.baseLocators.QRY_DT_INPUT[1]
         else:
-            xpath = BaseLocators.QRY_DT_INPUT[1]
+            xpath = self.baseLocators.QRY_DT_INPUT[1]
         # 把xpath对象中的 “ 替换为 '
-        js_attr = BaseLocators.JS_DT % xpath.replace('"', '\'')
+        js_attr = self.baseLocators.JS_DT % xpath.replace('"', '\'')
         # print('*************js_attr', js_attr)
         self.driver.execute_script(js_attr)
 
@@ -681,8 +684,8 @@ class Page():
                      'span': "//span[contains(text(), '{}')]",
                      'dropdown': '//div[contains(@class,\'x-layer x-combo-list \') and contains(@style,\'visible;\')]'
                      }
-        clean_me = BaseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(tag_text[0])
-        script = BaseLocators.CLEAN_BLANK % clean_me
+        clean_me = self.baseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(tag_text[0])
+        script = self.baseLocators.CLEAN_BLANK % clean_me
         # print(script)
         self.exec_script(script)
 
@@ -718,7 +721,6 @@ class Page():
         el = self.driver.find_element(*locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", el)
 
-
     def clickRadioBox(self, option, is_multi_tab=False, is_multi_elements=False):
         """
         选择单选框
@@ -735,7 +737,7 @@ class Page():
 
             if len(item) == 0:
                 raise BaseException('单选框必须指定选择项：{}'.format(option))
-            xpath = self.format_xpath_multi(BaseLocators.RADIOBOX_LABEL2INPUT, item, is_multi_tab)
+            xpath = self.format_xpath_multi(self.baseLocators.RADIOBOX_LABEL2INPUT, item, is_multi_tab)
             if is_multi_elements:
                 el = self._find_displayed_element(xpath)
                 el.click()
@@ -755,7 +757,7 @@ class Page():
             item = ls_option[1]
             # 赋值选中，不赋值不选中
             is_select = bool(item)
-            loc = locator if bool(locator) else BaseLocators.SINGLE_CHECK_BOX
+            loc = locator if bool(locator) else self.baseLocators.SINGLE_CHECK_BOX
             xpath = self.format_xpath_multi(loc, ls_option[0], is_multi_tab)
             if is_multi_elements:
                 el = self._find_displayed_element(xpath)
@@ -777,7 +779,7 @@ class Page():
         """
         try:
             # 撤销已选项
-            xpath = self.format_xpath_multi(BaseLocators.CHKBOX_UNCHECK_ALL, attr, is_multi_tab)
+            xpath = self.format_xpath_multi(self.baseLocators.CHKBOX_UNCHECK_ALL, attr, is_multi_tab)
             elements = self._find_elements(xpath)
             for el in elements:
                 el.click()
@@ -790,7 +792,7 @@ class Page():
             if ls_items[0] != '':
                 for item in ls_items:
                     by_attr = (attr[0], attr[1], item)
-                    xpath = self.format_xpath_multi(BaseLocators.CHKBOX_INPUT2LABEL, by_attr, is_multi_tab)
+                    xpath = self.format_xpath_multi(self.baseLocators.CHKBOX_INPUT2LABEL, by_attr, is_multi_tab)
                     self.click(xpath)
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
@@ -807,7 +809,7 @@ class Page():
             ls_items = ls_option[2].split(',')
             data_dict = data_dict if bool(data_dict) else DataAccess.get_data_dictionary(ls_option[1])
             for data in data_dict:
-                xpath = self.format_xpath_multi(BaseLocators.SINGLE_CHECK_BOX, data, is_multi_tab=is_multi_tab)
+                xpath = self.format_xpath_multi(self.baseLocators.SINGLE_CHECK_BOX, data, is_multi_tab=is_multi_tab)
                 el = self._find_displayed_element(xpath)
                 is_select = data in ls_items
                 if is_select != el.is_selected():
@@ -829,7 +831,7 @@ class Page():
         else:
             tab = tab_name
 
-        xpath = self.format_xpath_multi(BaseLocators.TAB_PAGE, tab, is_multi_tab)
+        xpath = self.format_xpath_multi(self.baseLocators.TAB_PAGE, tab, is_multi_tab)
         if is_multi_elements:
             el = self._find_displayed_element(xpath)
             el.click()
@@ -1183,17 +1185,17 @@ class Page():
         登录成功失败判断与清屏处理（如，告警提示框等）
         """
         # 登录异常弹窗确认
-        el = self._direct_find_element(BaseLocators.BTN_CONFIRM)
+        el = self._direct_find_element(self.baseLocators.BTN_CONFIRM)
         if bool(el):
             el.click()
 
         # 重要信息推出窗口关闭
-        el = self._find_displayed_element(BaseLocators.DLG_IMPORT)
+        el = self._find_displayed_element(self.baseLocators.DLG_IMPORT)
         if bool(el):
             el.click()
 
         # 账号异常信息弹窗确认
-        el = self._find_displayed_element(BaseLocators.DLG_EXCEPT)
+        el = self._find_displayed_element(self.baseLocators.DLG_EXCEPT)
         if bool(el):
             el.click()
 
@@ -1291,8 +1293,8 @@ class Page():
         点击确认按钮
         """
         try:
-            self.commonWait(BaseLocators.BTN_CONFIRM)
-            self.driver.find_element(*BaseLocators.BTN_CONFIRM).click()
+            self.commonWait(self.baseLocators.BTN_CONFIRM)
+            self.driver.find_element(*self.baseLocators.BTN_CONFIRM).click()
         except Exception as e:
             print('')
 
@@ -1344,18 +1346,18 @@ class Page():
         else:  # 'abc{}' 格式
             return (xpath[0], xpath[1].format(format_val))
 
-    def displayTreeMenu(self):
-        """
-        打开左边树菜单栏
-        :return:
-        """
-        try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(MenuLocators.BTN_LEFT_MENU))
-            el = self.driver.find_element(*MenuLocators.BTN_LEFT_MENU)
-            if el.is_displayed():  # 左边树没显示时打开
-                el.click()
-        except:
-            print('左边树菜单栏已经打开')
+    # def displayTreeMenu(self):
+    #     """
+    #     打开左边树菜单栏
+    #     :return:
+    #     """
+    #     try:
+    #         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(MenuLocators.BTN_LEFT_MENU))
+    #         el = self.driver.find_element(*MenuLocators.BTN_LEFT_MENU)
+    #         if el.is_displayed():  # 左边树没显示时打开
+    #             el.click()
+    #     except:
+    #         print('左边树菜单栏已经打开')
 
     def delDropdownBoxHtml(self):
         """

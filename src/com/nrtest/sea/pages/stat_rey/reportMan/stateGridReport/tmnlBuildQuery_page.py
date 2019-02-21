@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-@author: 卢炎炎
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: tmnlBuildQuery_page.py
 @time: 2018/11/8 9:12
@@ -20,33 +20,23 @@ class TmnlBuildQueryPage(Page):
     # 查询日期
 
     def inputDt_start_date(self, value):
-        self.inputDate(value)  # , *TmnlBuildQueryLocators.QRY_DATE_S)
+        self.inputDate(value)
 
     def inputDt_end_date(self, value):
-        self.inputDate(value)  # , *TmnlBuildQueryLocators.QRY_DATE_E)
+        self.inputDate(value)
 
     # 终端类型
     def inputSel_tmnl_type(self, options):
-        # self.click(TmnlBuildQueryLocators.QRY_TMNL_TYPE)
-        # locator = self.get_select_locator(TmnlBuildQueryLocators.QRY_TMNL_TYPE_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(options)
 
     # 终端厂商
     def inputSel_tmnl_factory(self, options):
-        # self.click(TmnlBuildQueryLocators.QRY_TMNL_FACTORY)
-        # locator = self.get_select_locator(TmnlBuildQueryLocators.QRY_TMNL_FACTORY_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(options)
 
     # 统计口径
     def inputSel_stat_mode(self, options):
-        # self.click(TmnlBuildQueryLocators.QRY_STAT_SCOPE)
-        # locator = self.get_select_locator(TmnlBuildQueryLocators.QRY_STAT_SCOPE_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(options)
 
     # 查询
     def btn_qry(self):
-        # self.click(TmnlBuildQueryLocators.BTN_QRY)
         self.btn_query()

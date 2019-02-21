@@ -128,3 +128,8 @@ class SynthQuery_data:
     consDataQry_para = '99941110'
     consDataQry_file_tab = '基本档案'
     consDataQry_display_tab = '数据展示'
+    # 统计查询→综合查询→抄表数据查询(国网)
+    realTimeReadMeterQry_gw_para = '99941801'
+    realTimeReadMeterQry_gw_detail = '抄表明细'
+    realTimeReadMeterQry_gw_failstat = '抄表失败统计'
+    realTimeReadMeterQry_gw_faildetail = '抄表失败明细'

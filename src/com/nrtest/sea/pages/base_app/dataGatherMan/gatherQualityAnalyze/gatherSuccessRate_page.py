@@ -161,6 +161,7 @@ class ContinuousFalseDetailPage(Page):
 
     # 接线方式
     def inputSel_wiring_mode(self, option):
+        self.clean_label(option)
         self.selectDropDown(option)
 
     # 终端地址
@@ -181,15 +182,21 @@ class ContinuousFalseDetailPage(Page):
 
     # 终端类型
     def inputSel_tmnl_type(self, options):
-        self.selectCheckBox(options)
+        self.clean_label(options)
+        self.selectDropDown(options)
 
     # 计量方式
     def inputSel_meas_mode(self, option):
-        self.selectDropDown(option)
+        self.clean_label(option)
+        self.selectDropDown(option, is_multi_tab=True, is_multi_elements=True)
+
+    # 应采集
+    def inputChk_data_collect(self, item):
+        self.clickSingleCheckBox(item)
 
     # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)
 
 
 # 基本应用→数据采集管理→采集质量分析→采集成功率:按时间统计

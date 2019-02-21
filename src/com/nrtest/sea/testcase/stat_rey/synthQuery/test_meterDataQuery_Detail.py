@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_meterDataQuery_failDetail.py
+@file: test_meterDataQuery_Detail.py
 @time: 2019-02-12 15:59:56
 @desc:
 """

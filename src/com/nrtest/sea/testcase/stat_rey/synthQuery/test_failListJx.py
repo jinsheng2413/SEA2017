@@ -82,8 +82,6 @@ class TestDisassemblyTableDataQuery(TestCase, failListJxPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.FailListJx_para))
     def test_query(self, para):
         """统计查询→综合查询→专公变明细查询(江西)
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

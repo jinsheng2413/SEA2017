@@ -92,8 +92,6 @@ class TestDisassemblyTableDataQuery(TestCase, DisassemblyTableDataQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.DisassemblyTableDataQuery_para))
     def test_query(self, para):
         """统计查询→综合查询→销户和拆表数据查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

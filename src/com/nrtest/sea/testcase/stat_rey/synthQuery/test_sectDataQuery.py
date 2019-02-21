@@ -81,8 +81,6 @@ class TestSectDataQuery(TestCase, SectDataQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName))
     def test_query(self, para):
         """统计查询→综合查询→抄表段数据查询:基本档案
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

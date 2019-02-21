@@ -29,8 +29,13 @@ def add_case():
         # 要加载的testCase类列表，即每个菜单的Class名
         # suite.addTests(loader.loadTestsFromTestCase(test_class))
         # file_path格式：com/nrtest/sea/testcase/gt_for_menu_list.py
-        module = Utils.map_module_by_file_path(menu_path[0])
-        test_suite.addTests(loader.loadTestsFromModule(module))
+        try:
+            module = Utils.map_module_by_file_path(menu_path[0])
+            test_suite.addTests(loader.loadTestsFromModule(module))
+        except Exception as ex:
+            print('加载test模块失败：\r')
+            print(menu_path[0] + '\r')
+            print(ex.__str__())
     return test_suite
 
 

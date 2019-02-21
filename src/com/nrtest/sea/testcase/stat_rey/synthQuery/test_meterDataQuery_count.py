@@ -73,9 +73,6 @@ class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryCountPage):
             self.inputSel_phase_code(para['PHASE_CODE'])
 
 
-        # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
-
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 

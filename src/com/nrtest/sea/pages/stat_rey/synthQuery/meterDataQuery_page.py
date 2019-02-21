@@ -40,21 +40,16 @@ class MeterDataQueryDetailPage(Page):
     def inputSel_data_sort(self, option):
         self.selectDropDown(option)
 
-    # 电能表抄读状态
-    def inputSel_meter_read_status(self, index):
-        self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
-
-    # 终端运行状态
-    def inputSel_tmnl_run_status(self, index):
-        self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 农排用户选择
     def inputSel_user_select(self, index):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
-    # 用户类别
-    def inputSel_cons_sort(self, index):
-        self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
+    # 计量点状态
+    def inputSel_sto_point_status(self, value):
+        self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
+
+
 
     # 采集情况
     def inputChk_read_status(self, index):
@@ -69,10 +64,6 @@ class MeterDataQueryCountPage(Page):
     # 日冻结曲线类型
     def inputChk_day_freeze_curve_type(self, option):
         self.clickRadioBox(option, is_multi_tab=True, is_multi_elements=True)
-
-    # 用户类型
-    def inputSel_cons_type(self, option):
-        self.selectDropDown(option, is_multi_elements=True, is_multi_tab=True)
 
     # 查询日期
     def inputDt_query_date(self, value):

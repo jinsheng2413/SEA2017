@@ -453,7 +453,7 @@ class AssertResult():
             elif assert_type == '23':
                 assert_rslt = self.skip_tab_page(row[1:], caseId=para['TST_CASE_ID'], caseData=para)
             elif assert_type == '31':
-                assert_rslt = self.assertInput(row[1:], caseData=para)
+                assert_rslt = self.assertInput(row[1:], caseId=para['TST_CASE_ID'])
 
             ls_check_rslt.update({assert_type: assert_rslt})
 
@@ -554,14 +554,14 @@ class AssertResult():
             print(loc)
         self.tst_inst.driver.find_element(*loc).click()
 
-    def assertInput(self, para, caseData=''):
+    def assertInput(self, para, caseId=''):
         xpath = AssertResultLocators.DISPLAY_RESULT[1].format(para[0], para[1])
         val = self.get_text((By.XPATH, xpath))
         if para[2] == val:
             logger.info('查询详细信息的输入框的值与期望结果一样')
             return True
         else:
-            logger.info('查询详细信息的输入框的值与期望结果不一致')
+            logger.info('用例{}查询详细信息的输入框的值与期望结果不一致'.format(caseId))
             return False
 
 

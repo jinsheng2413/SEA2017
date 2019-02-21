@@ -83,6 +83,9 @@ class TestReadCompleteRate(TestCase, ReadCompleteRatePage):
         # 结束时间
         self.inputDt_end_time(para['END_TIME'])
 
+        # 通信规约
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)

@@ -37,10 +37,13 @@ class ReadCompleteRatePage(Page):
     def inputDt_end_time(self, value):
         self.inputDate(value)
 
+    # 通信方式
+    def inputSel_tmnl_protocol(self, name):
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
     # 查询
     def btn_qry(self):
         self.btn_query(True)
-
 
 # 基本应用→数据采集管理→采集质量分析→采集完整率:采集完整率统计
 class ReadCompleteRate_count_Page(Page):
@@ -62,6 +65,10 @@ class ReadCompleteRate_count_Page(Page):
 
     #  蕊片厂家
     def inputSel_chip_factory(self, name):
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
+
+    # 通信方式
+    def inputSel_tmnl_protocol(self, name):
         self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 查询

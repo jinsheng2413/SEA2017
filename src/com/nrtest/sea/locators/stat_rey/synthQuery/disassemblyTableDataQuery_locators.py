@@ -32,6 +32,8 @@ class DisassemblyTableDataQueryLocators:
     END_DATE = (By.XPATH, '//label[contains(text(),"止")]/../div/div/input')
     # 查询按钮
     BTN_SEARCH = (By.XPATH, '(//button[contains(text(),"查询")])[4]')
+    # 曲线类型
+    CURVE_TYPE = (By.XPATH, '//input[@name="powerCurTypeComboBox"]/../img')
 
     # 【JS属性】
     # 开始时间，删除readonly属性

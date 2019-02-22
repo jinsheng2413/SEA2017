@@ -32,21 +32,12 @@ class SynthQuery_data:
     MeterDataQuery_detail_tab = '抄表明细'
     MeterDataQuery_count_tab = '抄表失败统计'
     MeterDataQuery_fialDetail_tab = '抄表失败明细'
-
-
     # 统计查询→综合查询→抄表成功率查询（河北）
     MeterSuccessRateQuery_para = '99941930'
     MeterSuccessRateQuery_tabName = '按地区、厂家统计'
     MeterSuccessRateQuery_tabName_time = '按时间统计'
     MeterSuccessRateQuery_tabName_huaBei = '按华北要求统计'
     MeterSuccessRateQuery_tabName_failed = '连续抄表失败明细'
-
-    # MeterSuccessRateQuery_tabName1 = '按地区'
-    # MeterSuccessRateQuery_tabName2 = '按终端厂家'
-    # MeterSuccessRateQuery_tabName3 = '按芯片厂家'
-    # MeterSuccessRateQuery_tabName4 = '按电表芯片厂家'
-    # MeterSuccessRateQuery_tabName_failed1 = '连续抄表失败统计'
-    # MeterSuccessRateQuery_tabName_failed2 = '连续N天抄表失败明细'
     # 统计查询→综合查询→多表合一抄表数据查询
     MultipleTableDataQuery_para = '99941A00'
     MultipleTableDataQuery_tabName = '用户抄表数据'

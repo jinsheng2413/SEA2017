@@ -58,7 +58,7 @@ class TestDistributedEnergyElectricDetail(TestCase, DistributedEnergyElectricDet
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 统计方式
-        self.inputChk_stat_mode(para['STAT_MODE'])
+        self.inputChk_stat_scope(para['STAT_SCOPE'])
         # 电能表用途
         self.inputSel_meter_purpose(para['METER_PURPOSE'])
         # 发电量消纳方式

@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-@author: 卢炎炎
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: specTranRunQuery_page.py
 @time: 2018/11/7 10:47
@@ -15,16 +15,12 @@ class SpecTranRunQueryPage(Page):
 
     # 查询月份
     def inputDt_query_date(self, value):
-        self.inputDate(value)  # , *SpecTranRunQueryLocators.QRY_DATE)
+        self.inputDate(value)
 
     # 统计口径
     def inputSel_stat_mode(self, option):
-        # self.click(SpecTranRunQueryLocators.QRY_STAT_SCOPE)
-        # locator = self.get_select_locator(SpecTranRunQueryLocators.QRY_STAT_SCOPE_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(option)
 
     # 查询
     def btn_qry(self):
-        # self.click(SpecTranRunQueryLocators.BTN_QRY)
         self.btn_query()

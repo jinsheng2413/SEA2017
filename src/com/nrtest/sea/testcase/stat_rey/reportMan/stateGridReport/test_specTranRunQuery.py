@@ -70,7 +70,7 @@ class TestSpecTranRunQuery(TestCase, SpecTranRunQueryPage):
         self.inputDt_query_date(para['QUERY_DATE'])
 
         # 统计口径
-        self.inputSel_stat_mode(para['STAT_MODE'])
+        self.inputSel_stat_mode(para['STAT_SCOPE'])
 
         self.btn_qry()
         self.sleep_time(2)

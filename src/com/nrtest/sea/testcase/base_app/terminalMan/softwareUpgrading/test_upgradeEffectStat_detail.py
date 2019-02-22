@@ -16,7 +16,8 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
-from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEffectStatistics_page import UpgradeEffectStatisticsDetailPage
+from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.upgradeEffectStatistics_page import \
+    UpgradeEffectStatisticsDetailPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
@@ -81,24 +82,24 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsDetailPage):
         # 确认结果
         self.inputSel_confirm_result(para['CONFIRM_RESULT'])
         # 执行日期
-        self.inputSel_box_exec_date(para['BOX_EXEC_DATE'])
+        self.inputChk_box_exec_date(para['BOX_EXEC_DATE'])
         if para['BOX_EXEC_DATE'] == 'c':
             # 确认开始日期
             self.inputDt_affirm_start_date(para['AFFIRM_START_DATE'])
             # 确认结束日期
             self.inputDt_affirm_end_date(para['AFFIRM_END_DATE'])
         # 确认日期
-        self.inputSel_box_affirm_date(para['BOX_AFFIRM_DATE'])
+        self.inputChk_box_affirm_date(para['BOX_AFFIRM_DATE'])
         if para['BOX_AFFIRM_DATE'] == 'c':
             # 执行开始日期
-            self.inputDt_start_date(para['START_DATE'])
+            self.inputDt_detail_start_date(para['DETAIL_START_DATE'])
             # 执行结束日期
-            self.inputDt_end_date(para['END_DATE'])
+            self.inputDt_detail_end_date(para['DETAIL_END_DATE'])
         if para['BOX_AFFIRM_DATE'] != 'c' and para['BOX_EXEC_DATE'] != 'c':
             # 执行开始日期
-            self.inputDt_start_date(para['START_DATE'])
+            self.inputDt_detail_start_date(para['DETAIL_START_DATE'])
             # 执行结束日期
-            self.inputDt_end_date(para['END_DATE'])
+            self.inputDt_detail_end_date(para['DETAIL_END_DATE'])
             # 确认开始日期
             self.inputDt_affirm_start_date(para['AFFIRM_START_DATE'])
             # 确认结束日期

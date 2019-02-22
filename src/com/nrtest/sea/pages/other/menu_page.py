@@ -242,7 +242,11 @@ class MenuPage(Page):
                 else:
                     num[counter].click()
                 counter = counter - 1
-            self.click(self.locator_class.TREE_END)
+            num_end = self._find_elements(self.locator_class.TREE_END)
+            counter_end = len(num_end) - 1
+            while counter_end >= 0:
+                num_end[counter_end].click()
+                counter_end -= 1
 
     def closePages(self, page_name='工作台', isCurPage=True):
         """

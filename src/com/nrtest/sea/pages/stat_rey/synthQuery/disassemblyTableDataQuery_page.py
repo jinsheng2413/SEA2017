@@ -9,51 +9,60 @@
 """
 
 from com.nrtest.common.base_page import Page
-
+from com.nrtest.sea.locators.stat_rey.synthQuery.disassemblyTableDataQuery_locators import \
+    DisassemblyTableDataQueryLocators
 
 # 统计查询→综合查询→销户和拆表数据查询
 class DisassemblyTableDataQueryPage(Page):
     # 用户名称
     def inputStr_cons_name(self, content):
-        self.input(content)  # , *DisassemblyTableDataQueryLocators.CONS_NAME)
+        self.input(content)
 
     # 用户编号
     def inputStr_cons_no(self, content):
-        self.input(content)  # , *DisassemblyTableDataQueryLocators.CONS_NO)
+        self.input(content)
 
     # 用户类型
     def inputSel_cons_type(self, index):
-        # if index == 'c':
-        #     self._find_element(DisassemblyTableDataQueryLocators.CONS_TYPE)
-        # else:
-        #     self.click(DisassemblyTableDataQueryLocators.CONS_TYPE)
-        #     locator = self.get_select_locator(
-        #         DisassemblyTableDataQueryLocators.CONS_TYPE_VALUE, index)
-        #     self.click(locator)
-        #     self.click(DisassemblyTableDataQueryLocators.CONS_TYPE)
         self.selectCheckBox(index)
 
     # 终端地址
     def inputStr_tmnl_addr(self, content):
-        self.input(content)  #, *DisassemblyTableDataQueryLocators.TMNL_ADDR)
+        self.input(content)
 
     # 电能表资产号
     def inputStr_meter_asset_no(self, content):
-        self.input(content)  #, *DisassemblyTableDataQueryLocators.METER_ASSET_NO)
+        self.input(content)
 
     # 开始时间
     def inputDt_start_date(self, content):
-        # self.exec_script(DisassemblyTableDataQueryLocators.START_DATE_JS)
-        # self.input(content, *DisassemblyTableDataQueryLocators.START_DATE)
         self.inputDate(content)
 
     # 结束时间
     def inputDt_end_date(self, content):
-        # self.exec_script(DisassemblyTableDataQueryLocators.END_DATE_JS)
-        # self.input(content, *DisassemblyTableDataQueryLocators.END_DATE)
         self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(DisassemblyTableDataQueryLocators.BTN_SEARCH)
         self.btn_query()
+
+    # TAB页名称
+    def inputChk_tab_name(self, tabName):
+        self.clickTabPage(tabName)
+
+    # TAB页开始日期
+    def inputDt_tab_start_date(self, content):
+        self.inputDate(content)
+
+    # TAB页结束日期
+    def inputDt_tab_end_date(self, content):
+        self.inputDate(content)
+
+    # 曲线类型
+    def inputSel_curve_type(self, content):
+        self.click(DisassemblyTableDataQueryLocators.CURVE_TYPE)
+        self.selectDropDown(content)
+
+    # TAB页查询按钮
+    def btn_qry(self):
+        self.btn_query(True, idx=2)

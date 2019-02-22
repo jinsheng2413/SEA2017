@@ -15,13 +15,14 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
-from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_page import UpgradeTaskExecutionPage
+from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_page import \
+    CentralizePlanUpgradePage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→集中计划升级:集中计划升级
 @ddt
-class TestUpgradeTaskExecution(TestCase, UpgradeTaskExecutionPage):
+class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
     @classmethod
     def setUpClass(cls):
 

@@ -376,16 +376,19 @@ class AssertResult():
                                     else:
                                         try:
 
-                                            ta = DataAccess.get_xpath_menu_data(item[8], assertValues[2])
-                                            text = self.get_text(self.tst_inst.get_xpath(ta[0][0]), second=1)
+                                            ta = DataAccess.get_xpath_menu_data(item[8], assertValues[2], item[6])
+                                            v_xpath = self.get_xpath(ta[0][0])
+                                            self.tst_inst.commonWait(v_xpath)
+                                            text = self.get_text(v_xpath, second=1)
                                             new_page_list.append(text)
                                         except:
                                             logger.error('跳转的新页面时数据没有带过去')
                                             return False
 
                                 print('old:', new_page_list)
+
                                 # 关闭其他菜单页
-                                self.tst_inst._closePages(page_name=assertValues[2], isCurPage=False)
+                                self._closePages(page_name=assertValues[2], isCurPage=False)
                                 # 校验跳转传值是否正确
                                 res = False
                                 l = 0

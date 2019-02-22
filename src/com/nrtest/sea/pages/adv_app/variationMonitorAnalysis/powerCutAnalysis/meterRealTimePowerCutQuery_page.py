@@ -15,26 +15,22 @@ from com.nrtest.common.base_page import Page
 class MeterRealTimePowerCutQueryPage(Page):
     # 台区编号
     def inputStr_tg_no(self, content):
-        self.input(content)  # , *MeterRealTimePowerCutQueryLocators.QRY_TG_NO)
+        self.input(content)
 
     # 用户编号
     def inputStr_cons_no(self, content):
-        self.input(content)  #, *MeterRealTimePowerCutQueryLocators.QRY_CONS_NO)
+        self.input(content)
 
     # 电表资产号
     def inputStr_meter_asset_no(self, content):
-        self.input(content)  #, *MeterRealTimePowerCutQueryLocators.QRY_METER_ASSET_NO)
+        self.input(content)
 
     # 停电标志
-    def inputSel_power_cut_sign(self, index):
-        # self.click(MeterRealTimePowerCutQueryLocators.QRY_POWER_CUT_MARK)
-        # locator = self.get_select_locator(MeterRealTimePowerCutQueryLocators.QRY_POWER_CUT_MARK_VALUE, index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
+    def inputSel_power_cut_flag(self, index):
         self.selectDropDown(index)
 
     # 查询类型
-    def inputChk_qry_type(self, index):
+    def inputChk_qry_date_type(self, index):
         self.clickRadioBox(index)
 
     # 开始日期
@@ -47,5 +43,4 @@ class MeterRealTimePowerCutQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(MeterRealTimePowerCutQueryLocators.BTN_SEARCH)
         self.btn_query()

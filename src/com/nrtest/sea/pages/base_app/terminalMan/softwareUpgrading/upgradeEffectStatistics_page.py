@@ -16,7 +16,7 @@ from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEffec
 # 基本应用→终端管理→软件升级→升级效果统计:终端升级统计
 class UpgradeEffectStatisticsPage(Page):
     # 统计方式
-    def inputChk_stat_mode(self, index):
+    def inputChk_stat_scope(self, index):
         self.clickRadioBox(index)
 
     # 日期类型
@@ -156,7 +156,7 @@ class UpgradeEffectStatisticsDetailPage(Page):
         self.selectDropDown(index)
 
     # 执行日期
-    def inputSel_box_exec_date(self, index):
+    def inputChk_box_exec_date(self, index):
         # self.click(UpgradeEffectStatisticsLocators.BOX_EXECUTE_DATE)
         if index == 'c':
             self.click(UpgradeEffectStatisticsLocators.BOX_EXECUTE_DATE)
@@ -164,20 +164,20 @@ class UpgradeEffectStatisticsDetailPage(Page):
             pass
 
     # 确认日期
-    def inputSel_box_affirm_date(self, index):
+    def inputChk_box_affirm_date(self, index):
         if index == 'c':
             self.click(UpgradeEffectStatisticsLocators.BOX_AFFIRM_DATE)
         else:
             pass
 
     # 执行开始日期
-    def inputDt_start_date(self, content):
+    def inputDt_detail_start_date(self, content):
         # self.exec_script(UpgradeEffectStatisticsLocators.DETAIL_START_DATE_JS)
         # self.input(content, *UpgradeEffectStatisticsLocators.DETAIL_START_DATE)
         self.inputDate(content)
 
     # 执行结束日期
-    def inputDt_end_date(self, content):
+    def inputDt_detail_end_date(self, content):
         # self.exec_script(UpgradeEffectStatisticsLocators.DETAIL_END_DATE_JS)
         # self.input(content, *UpgradeEffectStatisticsLocators.DETAIL_END_DATE)
         self.inputDate(content)

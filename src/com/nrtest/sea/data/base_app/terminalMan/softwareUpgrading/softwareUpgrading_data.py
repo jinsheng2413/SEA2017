@@ -31,7 +31,7 @@ class SoftwareUpgrading_data:
     # 基本应用→终端管理→软件升级→集中计划升级
     CentralizedPlanUpgrade_para = '99912350'
     CentralizedPlanUpgrade_tabName = '集中计划升级'
-    CentralizedPlanUpgrade_tabName_plan = '制定计划'
+    CentralizedPlanUpgrade_tabName_tab = '制定计划'
 
     # 基本应用→终端管理→软件升级→升级效果统计
     UpgradeEffectStatistics_para = '99912380'

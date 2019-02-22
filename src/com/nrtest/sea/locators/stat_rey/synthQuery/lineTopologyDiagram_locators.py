@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 # 统计查询→综合查询→线路拓扑图
 class LineTopologyDiagramLocators:
     # 线路名称
-    LINE_NAME = (By.XPATH, '//label[contains(text(),"线路名称")]/../div/div/img')
+    LINE_NAME = (By.XPATH, '//label[contains(text(),"线路名称")]/..//input')
     # 线路名称→值
     LINE_NAME_VALUE = (By.XPATH, '//div[@class="x-combo-list-inner"]/div[%s]')
     # 查询按钮

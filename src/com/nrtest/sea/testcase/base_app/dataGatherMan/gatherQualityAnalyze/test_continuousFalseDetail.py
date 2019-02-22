@@ -82,6 +82,8 @@ class TestContinuousFalseDetail(TestCase, ContinuousFalseDetailPage):
                 self.inputSel_meas_mode(para['MEAS_MODE'])
                 # 终端地址
                 self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+                # 应采集
+                self.inputChk_data_collect(para['DATA_COLLECT'])
             else:
                 # 接线方式
                 self.inputSel_wiring_mode(para['WIRING_MODE'])

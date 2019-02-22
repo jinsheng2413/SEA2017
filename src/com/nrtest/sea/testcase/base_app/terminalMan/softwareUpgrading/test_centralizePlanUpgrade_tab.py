@@ -16,13 +16,13 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.softwareUpgrading.softwareUpgrading_data import SoftwareUpgrading_data
 from com.nrtest.sea.pages.base_app.terminalMan.softwareUpgrading.centralizePlanUpgrade_page import \
-    CentralizePlanUpgradePage
+    CentralizePlanUpgradeTabPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 基本应用→终端管理→软件升级→集中计划升级:制定计划
 @ddt
-class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
+class TestCentralizePlanUpgradeTab(TestCase, CentralizePlanUpgradeTabPage):
     @classmethod
     def setUpClass(cls):
 
@@ -30,7 +30,7 @@ class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
         menuPage = MenuPage.openMenu(SoftwareUpgrading_data.CentralizedPlanUpgrade_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_plan)
+        menuPage.clickTabPage(SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
 
@@ -88,7 +88,7 @@ class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.CentralizedPlanUpgrade_para,
-                                  SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_plan))
+                                  SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_tab))
     def test_query(self, para):
         """基本应用→终端管理→软件升级→集中计划升级:制定计划
 
@@ -101,7 +101,7 @@ class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.CentralizedPlanUpgrade_para,
-                                  SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_plan))
+                                  SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_tab))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

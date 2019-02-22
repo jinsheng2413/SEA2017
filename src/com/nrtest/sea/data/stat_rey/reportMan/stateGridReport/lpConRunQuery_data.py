@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-@author: 卢炎炎
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: lpConRunQuery_data.py
 @time: 2018/11/7 13:38

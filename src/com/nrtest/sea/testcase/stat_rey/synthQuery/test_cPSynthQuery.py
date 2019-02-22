@@ -55,22 +55,48 @@ class TestCPSynthQuery(TestCase, CPSynthQueryPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 终端状态
-        self.inputSel_tmnl_status(para['TMNL_STATUS'])
-        # 用户范围
-        self.inputSel_cons_range(para['CONS_RANGE'])
-        # 停电标志
-        self.inputSel_power_out_sign(para['POWER_OUT_SIGN'])
-        # 终端投运日期
-        self.inputChk_tmnl_comm_date(para['TMNL_COMM_DATE'])
-        # 开始日期
-        self.inputDt_start_date(para['START_DATE'])
-        # 结束日期
-        self.inputDt_end_date(para['END_DATE'])
         # 终端类型
         self.inputChk_tmnl_type(para['TMNL_TYPE'])
-        # 接线方式
-        self.inputSel_wiring_mode(para['WIRING_MODE'])
+        if self.get_para_value(para['TMNL_TYPE']) == '专变':
+            # 终端状态
+            self.inputSel_tmnl_status(para['TMNL_STATUS'])
+            # 用户范围
+            self.inputSel_cons_range(para['CONS_RANGE'])
+            # 停电标志
+            self.inputSel_power_cut_flag(para['POWER_CUT_FLAG'])
+            # 终端投运日期
+            self.inputChk_tmnl_comm_date(para['TMNL_COMM_DATE'])
+            # 开始日期
+            self.inputDt_start_date(para['START_DATE'])
+            # 结束日期
+            self.inputDt_end_date(para['END_DATE'])
+            # 接线方式
+            self.inputSel_wiring_mode(para['WIRING_MODE'])
+
+        if self.get_para_value(para['TMNL_TYPE']) == '公变':
+            # 终端状态
+            self.inputSel_tmnl_status(para['TMNL_STATUS'])
+            # 终端投运日期
+            self.inputChk_tmnl_comm_date(para['TMNL_COMM_DATE'])
+            # 开始日期
+            self.inputDt_start_date(para['START_DATE'])
+            # 结束日期
+            self.inputDt_end_date(para['END_DATE'])
+            # 接线方式
+            self.inputSel_wiring_mode(para['WIRING_MODE'])
+
+        if self.get_para_value(para['TMNL_TYPE']) == '关口':
+            # 终端状态
+            self.inputSel_tmnl_status(para['TMNL_STATUS'])
+            # 终端投运日期
+            self.inputChk_tmnl_comm_date(para['TMNL_COMM_DATE'])
+            # 开始日期
+            self.inputDt_start_date(para['START_DATE'])
+            # 结束日期
+            self.inputDt_end_date(para['END_DATE'])
+            # 接线方式
+            self.inputSel_wiring_mode(para['WIRING_MODE'])
+
         # 查询按钮
         self.btn_search()
 

@@ -55,9 +55,6 @@ class TestUpgradeEditionMan(TestCase, RegularSporadicUpgradePage):
         self.recoverLeftTree()
 
     def query(self, para):
-        # 忽略历史版本
-        self.inputChk_history_version(para['HISTORY_VERSION'])
-
         # 打开左边树选择供电单位
         self.openLeftTree(para['TREE_NODE'])
         # 终端厂家
@@ -74,6 +71,8 @@ class TestUpgradeEditionMan(TestCase, RegularSporadicUpgradePage):
         self.inputStr_tmnl_addr_end(para['TMNL_ADDR_END'])
         # 终端资产号
         self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
+        # 忽略历史版本
+        self.inputChk_history_version(para['HISTORY_VERSION'])
         # 点击查询按钮
         self.btn_qry()
 

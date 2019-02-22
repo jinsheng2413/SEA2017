@@ -64,13 +64,15 @@ class TestMeterRealTimePowerCutQuery(TestCase, MeterRealTimePowerCutQueryPage):
         # 电表资产号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 停电标志
-        self.inputSel_power_cut_sign(para['POWER_CUT_SIGN'])
+        self.inputSel_power_cut_flag(para['POWER_CUT_FLAG'])
         # 查询类型
-        self.inputChk_qry_type(para['QRY_TYPE'])
-        # 开始日期
-        self.inputDt_start_date(para['START_DATE'])
-        # 结束日期
-        self.inputDt_end_date(para['END_DATE'])
+        self.inputChk_qry_date_type(para['QRY_DATE_TYPE'])
+        val = self.get_para_value(para['QRY_DATE_TYPE'])
+        if val == '按时间段查询':
+            # 开始日期
+            self.inputDt_start_date(para['START_DATE'])
+            # 结束日期
+            self.inputDt_end_date(para['END_DATE'])
         # 查询按钮
         self.btn_search()
 

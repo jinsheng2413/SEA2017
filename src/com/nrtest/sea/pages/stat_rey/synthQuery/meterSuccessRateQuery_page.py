@@ -141,6 +141,7 @@ class MeterSuccessRateQueryFailedPage(Page):
 
     # 接线方式
     def inputSel_wiring_mode(self, index):
+        self.clean_label(index)
         self.selectDropDown(index)
 
     # 用户编号

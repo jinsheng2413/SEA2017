@@ -61,6 +61,8 @@ class CentralizePlanUpgradePage(Page):
         # self.click(CentralizePlanUpgradeLocators.BTN_SEARCH)
         self.btn_query()
 
+
+class CentralizePlanUpgradeTabPage(Page):
     # 制定计划
     # 忽略旧版本号
     def inputChk_history_version(self, index):
@@ -75,7 +77,7 @@ class CentralizePlanUpgradePage(Page):
         self.selectDropDown(index)
 
     # 终端用途
-    def inputSel_tab_tmnl_purpose(self, index):
+    def inputSel_tmnl_purpose(self, index):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 升级版本号

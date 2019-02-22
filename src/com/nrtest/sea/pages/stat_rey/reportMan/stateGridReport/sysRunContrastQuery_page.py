@@ -16,17 +16,13 @@ from com.nrtest.common.base_page import Page
 class SysRunContrastQueryPage(Page):
 
     def inputDt_query_date(self, value):
-        self.inputDate(value)  # , *SysRunContrastQueryLocators.QRY_DATE)
+        self.inputDate(value)
 
     # 统计口径
 
     def inputSel_stat_scope(self, option):
-        # self.click(SysRunContrastQueryLocators.QRY_STAT_SCOPE)
-        # locator = self.get_select_locator(SysRunContrastQueryLocators.QRY_STAT_SCOPE_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(option)
 
     # 查询
     def btn_qry(self):
-        # self.click(SysRunContrastQueryLocators.BTN_QRY)
         self.btn_query()

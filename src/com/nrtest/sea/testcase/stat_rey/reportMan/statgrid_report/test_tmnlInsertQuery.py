@@ -64,26 +64,29 @@ class TestTmnlInsertQuery(TestCase, TmnlInsertQueryPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        #打开左边树并选择
+        # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
         # 统计分类
         self.inputChk_stat_type(para['STAT_TYPE'])
 
-        #日期
+        # 日期
         self.inputDt_dt_from(para['DT_FROM'])
 
-        #到
+        # 到
         self.inputDt_dt_to(para['DT_TO'])
 
-        #终端类型
+        # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
 
-        #终端厂商
+        # 终端厂商
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
-        #统计口径
+        # 统计口径
         self.inputSel_stat_scope(para['STAT_SCOPE'])
+
+        # 选择tab页
+        self.inputChk_tab_name(para['TAB_NAME'])
 
         self.btn_qry()
         self.sleep_time(2)

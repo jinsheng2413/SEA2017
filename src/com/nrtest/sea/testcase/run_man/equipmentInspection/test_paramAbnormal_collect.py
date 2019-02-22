@@ -16,12 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.equipmentInspection.equipmentInspection_data import EquipmentInspection_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-# 运行管理→设备巡检→参数档案异常反校:反校汇总信息
 from com.nrtest.sea.pages.run_man.equipmentInspection.paramAbnormal_Page import ParamAbnormal_collect_Page
 
 
+# 运行管理→设备巡检→参数档案异常反校:反校汇总信息
 @ddt
-class test_ParamAbnormal(TestCase, ParamAbnormal_collect_Page):
+class TestParamAbnormalCollect(TestCase, ParamAbnormal_collect_Page):
 
     @classmethod
     def setUpClass(cls):

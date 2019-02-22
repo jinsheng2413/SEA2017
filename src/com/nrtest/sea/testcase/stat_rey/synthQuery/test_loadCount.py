@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page impo
 
 # 统计查询--综合查询--专公变综合查询：负荷统计
 @ddt
-class TestMeterDataQuery(TestCase, LoadCountPage):
+class TestLoadCount(TestCase, LoadCountPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）ljf

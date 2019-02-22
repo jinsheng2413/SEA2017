@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.run_man.simCardMan.sim_archives_man_page import SimArc
 
 # 运行管理→SIM卡管理→档案管理
 @ddt
-class test_SimArchivesMan(TestCase, SimArchivesManPage):
+class TestSimArchivesMan(TestCase, SimArchivesManPage):
 
     @classmethod
     def setUpClass(cls):

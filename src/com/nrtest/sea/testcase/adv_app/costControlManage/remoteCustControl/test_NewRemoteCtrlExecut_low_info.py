@@ -23,7 +23,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→费控管理→远程费控→新低压用户远程费控执行:低压用户费控汇总信息
 @ddt
-class test_NewRemoteCtrlExecutLow_info(TestCase, NewRemoteCtrlExecu_low_info_Page):
+class TestNewRemoteCtrlExecutLowInfo(TestCase, NewRemoteCtrlExecu_low_info_Page):
 
     @classmethod
     def setUpClass(cls):

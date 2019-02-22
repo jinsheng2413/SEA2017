@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.meterDataQuery_page import MeterDa
 
 # 统计查询→综合查询→抄表数据查询:抄表明细
 @ddt
-class test_MeterDataQueryDetail(TestCase, MeterDataQueryDetailPage):
+class TestMeterDataQueryDetail(TestCase, MeterDataQueryDetailPage):
 
     @classmethod
     def setUpClass(cls):

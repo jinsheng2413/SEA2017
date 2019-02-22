@@ -444,12 +444,12 @@ class AssertResult():
             if assert_type == '11':
                 assert_rslt = self.tst_inst.assert_context((By.XPATH, display_tab.format(row[1])))  # 判断是否有值
             elif assert_type == '12':
-                assert_rslt = self.tst_inst.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
+                assert_rslt = self.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
             elif assert_type == '21':
-                assert_rslt = self.tst_inst.clickSkip(row[1:], caseId=para['TST_CASE_ID'], caseData=para,
-                                                      version=version)  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
+                assert_rslt = self.clickSkip(row[1:], caseId=para['TST_CASE_ID'], caseData=para,
+                                             version=version)  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
             elif assert_type == '22':
-                assert_rslt = self.tst_inst.skip_windows_page(row[1:])
+                assert_rslt = self.skip_windows_page(row[1:])
             elif assert_type == '23':
                 assert_rslt = self.skip_tab_page(row[1:], caseId=para['TST_CASE_ID'], caseData=para)
             elif assert_type == '31':

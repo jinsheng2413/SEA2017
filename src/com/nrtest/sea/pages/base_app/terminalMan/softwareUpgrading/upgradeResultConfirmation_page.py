@@ -45,10 +45,7 @@ class UpgradeResultConfirmationPage(Page):
 
     # 升级号
     def inputChk_upgrade_no(self, index):
-        if index == '1':
-            self.click(UpgradeResultConfirmationLocator.UPGRADE_NO)
-        else:
-            pass
+        self.clickSingleCheckBox(index, locator=UpgradeResultConfirmationLocator.UPGRADE_NO)
 
     # 批次号
     def inputStr_batch_no(self, index):
@@ -60,17 +57,12 @@ class UpgradeResultConfirmationPage(Page):
 
     # 确认开始日期
     def inputDt_start_date(self, content):
-        # self.exec_script(UpgradeResultConfirmationLocator.START_DATE_JS)
-        # self.input(content, *UpgradeResultConfirmationLocator.START_DATE)
         self.inputDate(content)
 
     # 确认结束日期
     def inputDt_end_date(self, content):
-        # self.exec_script(UpgradeResultConfirmationLocator.END_DATE_JS)
-        # self.input(content, *UpgradeResultConfirmationLocator.END_DATE)
         self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(UpgradeResultConfirmationLocator.BTN_SEARCH)
         self.btn_query()

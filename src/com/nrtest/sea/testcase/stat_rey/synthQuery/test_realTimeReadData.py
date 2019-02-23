@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page impo
 
 # 统计查询→综合查询→专公变综合查询:实时抄表数据
 @ddt
-class test_RealTimeReadData(TestCase, SynthqueryDataPage):
+class TestRealTimeReadData(TestCase, SynthqueryDataPage):
 
     @classmethod
     def setUpClass(cls):

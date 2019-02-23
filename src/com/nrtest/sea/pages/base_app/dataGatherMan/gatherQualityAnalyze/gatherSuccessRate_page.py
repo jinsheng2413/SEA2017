@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: GatherSuccessRatePage.py
+@file: gatherSuccessRate_page.py
 @time: 2018-09-17 14:15
 @desc:
 """

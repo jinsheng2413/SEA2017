@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.meterDataQuery_page import MeterDa
 
 # 统计查询→综合查询→抄表数据查询:抄表失败统计
 @ddt
-class test_MeterDataQueryFailDetail(TestCase, MeterDataQueryCountPage):
+class TestMeterDataQueryCount(TestCase, MeterDataQueryCountPage):
 
     @classmethod
     def setUpClass(cls):

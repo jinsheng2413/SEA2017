@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: failListJx_page.py
+@file: failListJX_page.py
 @time: 2019/01/28 14:01
 @desc:
 """

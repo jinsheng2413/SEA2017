@@ -15,13 +15,14 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.lowVoltFixTimeMonitor.lowVoltFixTimeMonitor_data import LowVoltFixTimeMonitorData
-from com.nrtest.sea.pages.adv_app.lowVoltFixTimeMonitor.lowVoltMonitor.SusLowVoltAnaly_page import SusLowVoltAnalyDetailPage
+from com.nrtest.sea.pages.adv_app.lowVoltFixTimeMonitor.lowVoltMonitor.SusLowVoltAnaly_page import \
+    SusLowVoltAnalyDetailPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 # 高级应用→低压固定时间点电压电流监测→低电压监测→疑似低电压分析:疑似低电压用户明细
 @ddt
-class test_SusLowVoltAnaly(TestCase, SusLowVoltAnalyDetailPage):
+class TestSusLowVoltAnalyDetail(TestCase, SusLowVoltAnalyDetailPage):
 
     @classmethod
     def setUpClass(cls):

@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: lowUserMoneyCheck_Page.py
+@file: lowUserMoneyCheck_page.py
 @time: 2018/8/9 0009 13:55
 @desc:
 """

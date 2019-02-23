@@ -17,18 +17,18 @@ from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.runStatusMonitor.runStatusMonitor_data import RunStatusMonitor_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.sea.pages.run_man.runStatusMonitor.runStatusMonitor_page import TmnlOnlineDetailPage
+from com.nrtest.sea.pages.run_man.runStatusMonitor.runStatusMonitor_page import RunStatusMonitorDetailPage
 
 
 # 运行管理→采集信道管理→运行情况监测:终端在线明细
 
 @ddt
-class test_Tmnlonlinestat(TestCase, TmnlOnlineDetailPage):
+class TestRunStatusMonitorDetail(TestCase, RunStatusMonitorDetailPage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(RunStatusMonitor_data.tmnlOnlineStat_para)
+        menuPage = MenuPage.openMenu(RunStatusMonitor_data.runStatusMonitor__para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         menuPage.clickTabPage(RunStatusMonitor_data.runStatusMonitor_detail)
@@ -75,6 +75,9 @@ class test_Tmnlonlinestat(TestCase, TmnlOnlineDetailPage):
         # 采集方式
         self.inputSel_coll_mode(para['COLL_MODE'])
 
+        # 终端状态
+        self.inputSel_tmnl_status(para['TMNL_STATUS'])
+
         # 运营商
         self.inputSel_operator(para['OPERATOR'])
 
@@ -118,7 +121,7 @@ class test_Tmnlonlinestat(TestCase, TmnlOnlineDetailPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunStatusMonitor_data.tmnlOnlineStat_para,
+    @data(*DataAccess.getCaseData(RunStatusMonitor_data.runStatusMonitor__para,
                                   RunStatusMonitor_data.runStatusMonitor_detail))
     def test_query(self, para):
         """运行管理→采集信道管理→运行情况监测:终端在线明细
@@ -129,7 +132,7 @@ class test_Tmnlonlinestat(TestCase, TmnlOnlineDetailPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunStatusMonitor_data.tmnlOnlineStat_para,
+    @data(*DataAccess.getCaseData(RunStatusMonitor_data.runStatusMonitor__para,
                                   RunStatusMonitor_data.runStatusMonitor_detail, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: tTmnlCheckClock_page.py
+@file: faultDealQualityEval_page.py
 @time: 2018/11/12 9:20
 @desc:
 """

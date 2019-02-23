@@ -124,7 +124,7 @@ class TestMeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.MeterDataQuery_para, SynthQuery_data.MeterDataQuery_fialDetail_tab)[2:3])
+    @data(*DataAccess.getCaseData(SynthQuery_data.MeterDataQuery_para, SynthQuery_data.MeterDataQuery_fialDetail_tab))
     def test_query(self, para):
         """统计查询→综合查询→抄表数据查询:抄表失败明细
         """

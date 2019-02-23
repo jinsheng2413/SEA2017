@@ -148,11 +148,11 @@ class Page():
             elif dlg_src == 5:
                 action = '01'
                 # case_type = int(self.case_para['CASE_TYPE'])
-                if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
+                if 'EXPECTED_VAL' in self.case_para and self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
                     action = '03'
 
             elif dlg_src == 2:
-                if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
+                if 'EXPECTED_VAL' in self.case_para and self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
                     action = '03'
                 else:  # 有对话框，但与期望值不一致
                     action = '01'
@@ -172,7 +172,7 @@ class Page():
                 self.save_img(img_path, img_name)
 
         elif dlg_src == 2:
-            if bool(self.case_para['EXPECTED_VAL']):  # 期望异常对话框
+            if 'EXPECTED_VAL' in self.case_para and bool(self.case_para['EXPECTED_VAL']):  # 期望异常对话框
                 action = '04'
                 info = '期望有提示框，且提示信息为：\r' + self.case_para['EXPECTED_VAL']
                 self.save_img(img_path, img_name)

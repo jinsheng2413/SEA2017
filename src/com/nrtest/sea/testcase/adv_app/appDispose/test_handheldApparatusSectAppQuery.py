@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→工单处理→掌机抄表工单查询（青海）
 @ddt
-class TestSectFailedAppQuery(TestCase, HandheldApparatusSectAppQueryPage):
+class TestHandheldApparatusSectAppQuery(TestCase, HandheldApparatusSectAppQueryPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）

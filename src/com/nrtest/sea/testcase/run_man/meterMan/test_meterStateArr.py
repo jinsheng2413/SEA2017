@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.run_man.meterMan.meterStateArr_page import MeterStateA
 
 # 运行管理→电能表管理→电能表状态维护(蒙东)
 @ddt
-class test_MeterStateArr(TestCase, MeterStateArrPage):
+class TestMeterStateArr(TestCase, MeterStateArrPage):
 
     @classmethod
     def setUpClass(cls):

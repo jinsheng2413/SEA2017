@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page impo
 
 # 统计查询→综合查询→专公变综合查询:用户档案
 @ddt
-class test_TgQueryConsDoc(TestCase, TgQueryCpPage):
+class TestTgQueryConsDoc(TestCase, TgQueryCpPage):
 
     @classmethod
     def setUpClass(cls):

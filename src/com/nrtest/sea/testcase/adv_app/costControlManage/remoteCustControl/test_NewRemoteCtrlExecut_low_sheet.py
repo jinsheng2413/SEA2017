@@ -23,7 +23,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→费控管理→远程费控→新低压用户远程费控执行:低压用户费控列表
 @ddt
-class test_NewRemoteCtrlExecutLow_sheet(TestCase, NewRemoteCtrlExecu_low_sheet_Page):
+class TestNewRemoteCtrlExecutLowSheet(TestCase, NewRemoteCtrlExecu_low_sheet_Page):
 
     @classmethod
     def setUpClass(cls):

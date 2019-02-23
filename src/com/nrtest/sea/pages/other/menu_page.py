@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: menu_locators.py
+@file: menu_page.py
 @time: 2018/8/28 0028 13:45
 @desc:
 """

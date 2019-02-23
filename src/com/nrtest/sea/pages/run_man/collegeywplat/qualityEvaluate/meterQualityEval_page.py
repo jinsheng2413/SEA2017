@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: collTmnlQualityEval_page.py
+@file: meterQualityEval_page.py
 @time: 2018/11/13 9:20
 @desc:
 """

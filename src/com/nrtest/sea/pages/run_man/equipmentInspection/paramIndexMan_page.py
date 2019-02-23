@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: param_abnormal_page.py
+@file: paramIndexMan_page.py
 @time: 2019-02-15 14:37:05
 @desc:
 """

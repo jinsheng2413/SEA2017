@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→工单处理→掌机抄表工单统计（青海）
 @ddt
-class test_HandledOrderInfoStat(TestCase, HandledOrderInfoStatPage):
+class TestHandledOrderInfoStat(TestCase, HandledOrderInfoStatPage):
 
     @classmethod
     def setUpClass(cls): 

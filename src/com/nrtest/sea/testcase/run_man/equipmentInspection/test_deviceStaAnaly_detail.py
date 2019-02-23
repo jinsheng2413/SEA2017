@@ -16,12 +16,12 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.equipmentInspection.equipmentInspection_data import EquipmentInspection_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-# 运行管理→设备巡检→设备巡检合格情况统计:设备巡检指标参数明细
 from com.nrtest.sea.pages.run_man.equipmentInspection.deviceStaAnaly_page import DeviceStaAnaly_detail_Page
 
 
+# 运行管理→设备巡检→设备巡检合格情况统计:设备巡检指标参数明细
 @ddt
-class test_DeviceStaAnaly(TestCase, DeviceStaAnaly_detail_Page):
+class TestDeviceStaAnalyDetail(TestCase, DeviceStaAnaly_detail_Page):
 
     @classmethod
     def setUpClass(cls):

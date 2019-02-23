@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.run_man.equipmentInspection.paramIndexMan_page import 
 
 # 运行管理→设备巡检→参数指标管理
 @ddt
-class test_ParamAbnormal(TestCase, ParamIndexManPage):
+class TestParamIndexMan(TestCase, ParamIndexManPage):
 
     @classmethod
     def setUpClass(cls):

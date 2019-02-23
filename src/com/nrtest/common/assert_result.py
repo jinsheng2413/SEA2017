@@ -378,7 +378,8 @@ class AssertResult():
 
                                             ta = DataAccess.get_xpath_menu_data(item[8], assertValues[2], item[6])
                                             v_xpath = self.get_xpath(ta[0][0])
-                                            self.tst_inst.commonWait(v_xpath)
+                                            # self.tst_inst.commonWait(v_xpath)
+                                            self.tst_inst.sleep_time(2)
                                             text = self.get_text(v_xpath, second=1)
                                             new_page_list.append(text)
                                         except:

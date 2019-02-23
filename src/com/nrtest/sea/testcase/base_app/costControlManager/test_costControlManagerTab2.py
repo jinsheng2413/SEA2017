@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→费控管理→远程费控→新专变用户远程费控执行:高压用户跳闸控制汇总信息
 @ddt
-class test_NewSpecRemoteCtrlExecut(TestCase, NewSpecRemoteCtrlExecutPage_tab2):
+class TestNewSpecRemoteCtrlExecutTab2(TestCase, NewSpecRemoteCtrlExecutPage_tab2):
 
     @classmethod
     def setUpClass(cls):

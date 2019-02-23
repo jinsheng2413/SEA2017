@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page impo
 
 # 统计查询→综合查询→专公变综合查询:负荷日数据
 @ddt
-class test_LoadDayData(TestCase, LoadDayDataPage):
+class TestLoadDayData(TestCase, LoadDayDataPage):
 
     @classmethod
     def setUpClass(cls):

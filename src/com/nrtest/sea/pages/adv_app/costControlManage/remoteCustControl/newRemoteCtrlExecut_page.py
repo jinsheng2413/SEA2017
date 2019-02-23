@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: meter_state_arr_page.py
+@file: newRemoteCtrlExecut_page.py
 @time: 2019-02-20 09:32:14
 @desc:
 """

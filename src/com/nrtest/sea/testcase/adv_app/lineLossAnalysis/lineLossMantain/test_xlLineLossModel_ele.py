@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→线损分析→线损模型维护→线路线损模型:母线电量平衡模型
 @ddt
-class test_XlLineLossModel(TestCase, XlLineLossModel_ele_Page):
+class TestXlLineLossModelEle(TestCase, XlLineLossModel_ele_Page):
 
     @classmethod
     def setUpClass(cls):

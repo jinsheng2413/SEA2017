@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: archivesAnalysisOfAnomaly_locators.py
+@file: archivesAnalysisOfAnomaly_page.py
 @time: 2018/8/29 0029 15:56
 @desc:
 """

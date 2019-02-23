@@ -4,7 +4,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: baseStationManage_page.py
+@file: BaseStationMonitor_page.py
 @time: 2018/11/6 0006 15:59
 @desc:
 """

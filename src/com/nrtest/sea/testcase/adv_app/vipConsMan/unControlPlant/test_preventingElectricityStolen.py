@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→重点用户监测→双回路对比分析
 @ddt
-class test_PreventingElectricityStolen(TestCase, PreventingElectricityStolenPage):
+class TestPreventingElectricityStolen(TestCase, PreventingElectricityStolenPage):
 
     @classmethod
     def setUpClass(cls):

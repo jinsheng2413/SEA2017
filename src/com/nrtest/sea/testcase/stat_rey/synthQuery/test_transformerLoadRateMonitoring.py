@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page impo
 
 
 @ddt
-class test_TransformerLoadRateMonitoring(TestCase, TransformerLoadRateMonitoringPage):
+class TestTransformerLoadRateMonitoring(TestCase, TransformerLoadRateMonitoringPage):
 
     @classmethod
     def setUpClass(cls):

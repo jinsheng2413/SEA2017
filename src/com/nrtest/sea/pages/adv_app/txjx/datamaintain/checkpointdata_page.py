@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: lowUserBuyEleParaGiveOut_page.py
+@file: checkpointdata_page.py
 @time: 2018/8/22 0022 11:31
 @desc:
 """

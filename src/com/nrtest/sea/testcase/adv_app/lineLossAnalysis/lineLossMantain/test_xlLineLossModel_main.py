@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→线损分析→线损模型维护→线路线损模型:主变线损模型
 @ddt
-class test_XlLineLossModel(TestCase, XlLineLossModel_main_Page):
+class TestXlLineLossModelMain(TestCase, XlLineLossModel_main_Page):
 
     @classmethod
     def setUpClass(cls):

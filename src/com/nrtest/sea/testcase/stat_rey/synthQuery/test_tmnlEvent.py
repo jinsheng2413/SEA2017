@@ -23,7 +23,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.onlyChangeSysthesisQuery_page impo
 
 # 统计查询→综合查询→专公变综合查询:终端事件
 @ddt
-class test_TmnlEvent(TestCase, TmnlEventPage):
+class TestTmnlEvent(TestCase, TmnlEventPage):
 
     @classmethod
     def setUpClass(cls):

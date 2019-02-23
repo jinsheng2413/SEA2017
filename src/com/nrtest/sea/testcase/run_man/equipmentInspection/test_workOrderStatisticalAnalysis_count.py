@@ -16,13 +16,13 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.equipmentInspection.equipmentInspection_data import EquipmentInspection_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-# 运行管理→设备巡检→工单统计分析:工单统计
 from com.nrtest.sea.pages.run_man.equipmentInspection.workOrderStatisticalAnalysis_page import \
     WorkOrderStatisticalAnalysis_count_Page
 
 
+# 运行管理→设备巡检→工单统计分析:工单统计
 @ddt
-class test_WorkOrderStatisticalAnalysis_count(TestCase, WorkOrderStatisticalAnalysis_count_Page):
+class TestWorkOrderStatisticalAnalysisCount(TestCase, WorkOrderStatisticalAnalysis_count_Page):
 
     @classmethod
     def setUpClass(cls):

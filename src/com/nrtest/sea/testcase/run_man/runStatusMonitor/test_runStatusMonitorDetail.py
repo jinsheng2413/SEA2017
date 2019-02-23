@@ -75,6 +75,9 @@ class TestRunStatusMonitorDetail(TestCase, RunStatusMonitorDetailPage):
         # 采集方式
         self.inputSel_coll_mode(para['COLL_MODE'])
 
+        # 终端状态
+        self.inputSel_tmnl_status(para['TMNL_STATUS'])
+
         # 运营商
         self.inputSel_operator(para['OPERATOR'])
 

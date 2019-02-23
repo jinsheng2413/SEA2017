@@ -95,20 +95,20 @@ class UpgradeEffectStatisticsDetailPage(Page):
         self.selectDropDown(index)
 
     # 执行日期
-    def inputSel_box_exec_date(self, index):
     def inputChk_box_exec_date(self, index):
-        # self.click(UpgradeEffectStatisticsLocators.BOX_EXECUTE_DATE)
-        if index == 'c':
-            self.click(UpgradeEffectStatisticsLocators.BOX_EXECUTE_DATE)
-        else:
-            pass
+        # if index == 'c':
+        #     self.click(UpgradeEffectStatisticsLocators.BOX_EXECUTE_DATE)
+        # else:
+        #     pass
+        self.clickSingleCheckBox(index, locator=UpgradeEffectStatisticsLocators.BOX_EXECUTE_DATE)
 
     # 确认日期
     def inputChk_box_affirm_date(self, index):
-        if index == 'c':
-            self.click(UpgradeEffectStatisticsLocators.BOX_AFFIRM_DATE)
-        else:
-            pass
+        # if index == 'c':
+        #     self.click(UpgradeEffectStatisticsLocators.BOX_AFFIRM_DATE)
+        # else:
+        #     pass
+        self.clickSingleCheckBox(index, locator=UpgradeEffectStatisticsLocators.BOX_AFFIRM_DATE)
 
     # 执行开始日期
     def inputDt_start_date(self, content):

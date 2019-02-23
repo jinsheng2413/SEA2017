@@ -9,12 +9,12 @@
 """
 from unittest import TestCase
 
+from com.nrtest.sea.pages.adv_app.costControlManage.lowUserMoneyCheck_page import BalanceCheck_page
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.localCostControl.localCostControl_para import LocalCostContral_data
-from com.nrtest.sea.pages.adv_app.costControlManage.lowUserMoneyCheck_page import BalanceCheck_page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 

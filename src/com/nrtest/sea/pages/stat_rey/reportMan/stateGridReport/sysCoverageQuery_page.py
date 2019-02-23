@@ -11,7 +11,6 @@ from com.nrtest.common.base_page import Page
 
 
 # 统计查询→报表管理→国网报表→系统采集覆盖情况
-
 class SysCoverageQueryPage(Page):
 
     # 统计分类
@@ -27,7 +26,6 @@ class SysCoverageQueryPage(Page):
         self.selectDropDown(option)
 
     # 用户类型
-
     def inputSel_cons_type(self, options):
         self.selectCheckBox(options)
 

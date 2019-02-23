@@ -63,8 +63,8 @@ class TmnlClockDetailPage(Page):
         self.inputDate(value)
 
     # 是否历史
-    def inputChk_is_history(self, value):
-        self.clickSingleCheckBox(value)
+    # def inputChk_is_history(self, value):
+    #     self.clickSingleCheckBox(value)
 
     # 对时结果-打开并选择
     def inputSel_call_status(self, item):

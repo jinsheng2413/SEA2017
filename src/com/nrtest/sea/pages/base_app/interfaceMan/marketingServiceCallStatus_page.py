@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: mServiceCallStatus_page.py
+@file: marketingServiceCallStatus_page.py
 @time: 2018-10-15 14:40
 @desc:
 """
@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 基本应用→接口管理→营销业务接口→服务调用情况：服务调用统计
+# 基本应用→接口管理→营销业务接口→服务调用情况:服务调用统计
 class MarketingServiceCallStatusPage(Page):
 
     # 业务系统
@@ -34,7 +34,7 @@ class MarketingServiceCallStatusPage(Page):
         self.curr_click(btn_name='统计')
 
 
-# 基本应用→接口管理→营销业务接口→服务调用情况：服务调用明细
+# 基本应用→接口管理→营销业务接口→服务调用情况:服务调用明细
 class MarketingServiceCallStatus_detail_Page(Page):
     # 业务系统
     def inputSel_business_system(self, value):

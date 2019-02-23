@@ -256,12 +256,13 @@ class DataAccess:
         return dataSet
 
     @staticmethod
-    def get_xpath_menu_data(xpath, menuName):
+    def get_xpath_menu_data(xpath, menuName, tabName):
         sql = 'select ts.xpath_name from tst_menu_xpath_list ts \
                  where ts.xpath =:xpath \
+                 and ts.tab_name =:tabName \
                  and ts.menu_no in (select u.menu_no from tst_menu u where u.menu_name =:menuName)'
         pyoracle = PyOracle.getInstance()
-        dataSet = pyoracle.query(sql, [xpath, menuName])
+        dataSet = pyoracle.query(sql, [xpath, tabName, menuName])
         return dataSet
 
     @staticmethod
@@ -312,7 +313,7 @@ class DataAccess:
 
 
 if __name__ == '__main__':
-    pass
+
 
     # print(DataAccess.get_xpath_menu_data('CONS_NO', '用户数据查询'))
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
@@ -330,5 +331,5 @@ if __name__ == '__main__':
     # pass
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
-    print(DataAccess.get_data_dictionary('EXCEPT_DLG'))
+    print(DataAccess.get_xpath_menu_data('TMNL_ASSET_NO', '终端数据查询', '基本档案'))
     # print(DataAccess.get_menu_xpath_list('99912100','终端调试', '02'))

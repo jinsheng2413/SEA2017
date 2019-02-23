@@ -64,7 +64,7 @@ class TestUpgradeEffectStstistics(TestCase, UpgradeEffectStatisticsPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 统计方式
-        self.inputChk_stat_mode(para['STAT_MODE'])
+        self.inputChk_stat_scope(para['STAT_SCOPE'])
         # 日期类型
         self.inputChk_date_type(para['DATE_TYPE'])
         # 终端厂家

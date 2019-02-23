@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: grid_full_tpi_collection_onlychange_page.py
+@file: gridFullTPIcollectionPublicChange_page.py
 @time: 2019-02-12 11:25:31
 @desc:
 """

@@ -16,7 +16,7 @@ from com.nrtest.sea.locators.base_app.terminalMan.softwareUpgrading.upgradeEffec
 # 基本应用→终端管理→软件升级→升级效果统计:终端升级统计
 class UpgradeEffectStatisticsPage(Page):
     # 统计方式
-    def inputChk_stat_mode(self, index):
+    def inputChk_stat_scope(self, index):
         self.clickRadioBox(index)
 
     # 日期类型
@@ -96,13 +96,15 @@ class UpgradeEffectStatisticsDetailPage(Page):
 
     # 执行日期
     def inputSel_box_exec_date(self, index):
+    def inputChk_box_exec_date(self, index):
+        # self.click(UpgradeEffectStatisticsLocators.BOX_EXECUTE_DATE)
         if index == 'c':
             self.click(UpgradeEffectStatisticsLocators.BOX_EXECUTE_DATE)
         else:
             pass
 
     # 确认日期
-    def inputSel_box_affirm_date(self, index):
+    def inputChk_box_affirm_date(self, index):
         if index == 'c':
             self.click(UpgradeEffectStatisticsLocators.BOX_AFFIRM_DATE)
         else:

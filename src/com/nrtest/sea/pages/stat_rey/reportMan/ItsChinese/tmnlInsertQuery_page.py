@@ -42,3 +42,7 @@ class TmnlInsertQueryPage(Page):
     # 查询
     def btn_qry(self):
         self.btn_query()
+
+    # 小tab页名称
+    def inputChk_tab_name(self, value):
+        self.clickTabPage(value)

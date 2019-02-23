@@ -59,12 +59,13 @@ class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Pag
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])
         # #服务名称
         self.inputSel_service_name(para['SERVICE_NAME'])
+        # 工单编号
+        self.inputStr_app_no(para['APP_NO'])
         # 开始时间
         self.inputDt_start_date(para['START_DATE'])
         # 结束时间
         self.inputDt_end_date(para['END_DATE'])
-        # 工单编号
-        self.inputStr_app_no(para['APP_NO'])
+
         # 查询
         self.btn_qry()
         self.sleep_time(2)

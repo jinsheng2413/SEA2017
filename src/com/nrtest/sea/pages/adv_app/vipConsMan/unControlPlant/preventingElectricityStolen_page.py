@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: preventing_electricity_stolen_page.py
+@file: preventingElectricityStolen_page.py
 @time: 2019-02-20 13:05:23
 @desc:
 """

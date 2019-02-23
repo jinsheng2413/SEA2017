@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: lowUserBuyEleParaGiveOut_page.py
+@file: GatherTaskCompile_Page.py
 @time: 2018/8/22 0022 11:31
 @desc:
 """
@@ -50,10 +50,6 @@ class GatherTaskCompilePage(Page):
 
 # 基本应用→数据采集管理→定制任务管理:执行结果分析
 class GatherTaskCompile_result_Page(Page):
-
-    # 任务名称
-    def inputStr_task_name(self, value):
-        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 任务编号
     def inputStr_task_no(self, value):

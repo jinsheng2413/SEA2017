@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量→采集成功率趋势
 class SuccessRateTrendPage(Page):
     # 查询类型
-    def inputChk_qry_type(self, index):
+    def inputChk_qry_date_type(self, index):
         self.clickRadioBox(index)
 
     # 日期

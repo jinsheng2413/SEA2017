@@ -16,13 +16,13 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.grid68Tpi.grid68Tpi_data import Grid68Tpi_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-# 统计查询→综合查询→国网68项指标→国网指标全量采集低压单相
 from com.nrtest.sea.pages.stat_rey.synthQuery.grid68Tpi.gridFullTPIcollectionLowSinglePhase_page import \
     GridFullTpiCollectionLowSinglePhasePage
 
 
+# 统计查询→综合查询→国网68项指标→国网指标全量采集低压单相
 @ddt
-class test_GridFullTpiCollectionOnlychange(TestCase, GridFullTpiCollectionLowSinglePhasePage):
+class TestGridFullTPIcollectionLowSinglePhase(TestCase, GridFullTpiCollectionLowSinglePhasePage):
 
     @classmethod
     def setUpClass(cls):

@@ -4,7 +4,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: verficationResultDetail_page.py
+@file: checkResultDetail_page.py
 @time: 2018/11/16 0016 14:33
 @desc:
 """

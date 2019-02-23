@@ -376,16 +376,20 @@ class AssertResult():
                                     else:
                                         try:
 
-                                            ta = DataAccess.get_xpath_menu_data(item[8], assertValues[2])
-                                            text = self.get_text(self.tst_inst.get_xpath(ta[0][0]), second=1)
+                                            ta = DataAccess.get_xpath_menu_data(item[8], assertValues[2], item[6])
+                                            v_xpath = self.get_xpath(ta[0][0])
+                                            # self.tst_inst.commonWait(v_xpath)
+                                            self.tst_inst.sleep_time(2)
+                                            text = self.get_text(v_xpath, second=1)
                                             new_page_list.append(text)
                                         except:
                                             logger.error('跳转的新页面时数据没有带过去')
                                             return False
 
                                 print('old:', new_page_list)
+
                                 # 关闭其他菜单页
-                                self.tst_inst._closePages(page_name=assertValues[2], isCurPage=False)
+                                self._closePages(page_name=assertValues[2], isCurPage=False)
                                 # 校验跳转传值是否正确
                                 res = False
                                 l = 0
@@ -428,7 +432,14 @@ class AssertResult():
         :param version: 1为老版本，2为新版本
         :return: 返回校验结果
         """
-        esplain = {'11': '显示区未查询出结果', '12': '按条件查询出的结果与期望值不一致', '21': '跳转菜单页面不正确', '22': '跳转弹窗不正确', '23': '跳转tab页不正确'}
+        esplain = {
+            '11': '显示区未查询出结果',
+            '12': '按条件查询出的结果与期望值不一致',
+            '21': '跳转菜单页面不正确',
+            '22': '跳转弹窗不正确',
+            '23': '跳转tab页不正确',
+            '31': '查询详细信息的输入框的值与期望结果不一致'
+        }
         rslt = DataAccess.get_case_result(para['TST_CASE_ID'])
         display_tab = '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'  # 根据XPATH判断显示区是否有值
         ls_check_rslt = {}
@@ -437,14 +448,16 @@ class AssertResult():
             if assert_type == '11':
                 assert_rslt = self.tst_inst.assert_context((By.XPATH, display_tab.format(row[1])))  # 判断是否有值
             elif assert_type == '12':
-                assert_rslt = self.tst_inst.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
+                assert_rslt = self.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
             elif assert_type == '21':
-                assert_rslt = self.tst_inst.clickSkip(row[1:], caseId=para['TST_CASE_ID'], caseData=para,
-                                                      version=version)  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
+                assert_rslt = self.clickSkip(row[1:], caseId=para['TST_CASE_ID'], caseData=para,
+                                             version=version)  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
             elif assert_type == '22':
-                assert_rslt = self.tst_inst.skip_windows_page(row[1:])
+                assert_rslt = self.skip_windows_page(row[1:])
             elif assert_type == '23':
                 assert_rslt = self.skip_tab_page(row[1:], caseId=para['TST_CASE_ID'], caseData=para)
+            elif assert_type == '31':
+                assert_rslt = self.assertInput(row[1:], caseId=para['TST_CASE_ID'])
 
             ls_check_rslt.update({assert_type: assert_rslt})
 
@@ -545,6 +558,16 @@ class AssertResult():
             print(loc)
         self.tst_inst.driver.find_element(*loc).click()
 
+    def assertInput(self, para, caseId=''):
+        xpath = AssertResultLocators.DISPLAY_RESULT[1].format(para[0], para[1])
+        val = self.get_text((By.XPATH, xpath))
+        if para[2] == val:
+            logger.info('查询详细信息的输入框的值与期望结果一样')
+            return True
+        else:
+            logger.info('用例{}查询详细信息的输入框的值与期望结果不一致'.format(caseId))
+            return False
+
 
 class AssertResultLocators:
     # 弹窗的关闭xpath
@@ -573,6 +596,8 @@ class AssertResultLocators:
 
     # input输入框
     INPUT_BASE_GU = (By.XPATH, '//label[text()= "{}"]/../div[@class=\"x-form-element\"]//input')
+    # 查询结果非显示区，是输入框(第一个值代表是哪个区域的，第二个值是代表那个输入框)
+    DISPLAY_RESULT = (By.XPATH, '//span[text()="{}"]/../..//label[text()="{}"]/../..//input')
 
     # link 数据是否对应(显示区右下角查询的数据总量)
     LINK_DATA = (

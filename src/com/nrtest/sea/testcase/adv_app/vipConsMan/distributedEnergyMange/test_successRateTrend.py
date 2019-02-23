@@ -58,7 +58,7 @@ class TestSuccessRateTrend(TestCase, SuccessRateTrendPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 查询类型
-        self.inputChk_qry_type(para['QRY_TYPE'])
+        self.inputChk_qry_date_type(para['QRY_DATE_TYPE'])
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 本地通讯方式

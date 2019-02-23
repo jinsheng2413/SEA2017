@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 高级应用→低压固定时间点电压电流监测→低电压监测→电压电流查询
 @ddt
-class test_FixTimeVoltCurQuery(TestCase, CurVoltQueryPage):
+class TestCurVoltQuery(TestCase, CurVoltQueryPage):
 
     @classmethod
     def setUpClass(cls):

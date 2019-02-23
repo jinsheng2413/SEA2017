@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 # 高级应用→重点用户监测→分布式电源管理→分布式电源异常分析
 class DistributedEnergyAnomalyAnalysisPage(Page):
     # 查询类型
-    def inputChk_qry_type(self, index):
+    def inputChk_qry_date_type(self, index):
         self.clickRadioBox(index)
 
     # 日期
@@ -36,7 +36,7 @@ class DistributedEnergyAnomalyAnalysisPage(Page):
 # 高级应用→重点用户监测→分布式电源管理→分布式电源异常分析→分布式电源异常情况明细
 class DistributedEnergyAnomalyDetailPage(Page):
     # 查询类型
-    def inputChk_qry_type(self, index):
+    def inputChk_qry_date_type(self, index):
         self.clickRadioBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 日期
@@ -44,7 +44,7 @@ class DistributedEnergyAnomalyDetailPage(Page):
         self.inputDate(content)
 
     # 异常类型
-    def inputStr_except_type(self, index):
+    def inputStr_anomaly_type(self, index):
         self.selectDropDown(index)
 
     # 发电类型

@@ -75,8 +75,6 @@ class TestTmnlClockDetail(TestCase, TmnlClockDetailPage):
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
-        # 是否历史
-        self.inputChk_is_history(para['IS_HISTORY'])
         # 是否在线
         self.inputSel_is_online(para['IS_ONLINE'])
         # 查询日期

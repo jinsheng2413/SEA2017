@@ -3,7 +3,7 @@
 """
 @author: 陈越峰
 @license: (C) Copyright 2018, Nari.
-@file: tTmnlCheckClock_page.py
+@file: remoteBroadChkClock_page.py
 @time: 2018/11/2 16:40
 @desc:
 """

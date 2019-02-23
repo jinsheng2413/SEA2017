@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: lowUserBuyEleParaGiveOut_page.py
+@file: realData_page.py
 @time: 2018/8/22 0022 11:31
 @desc:
 """
@@ -87,11 +87,11 @@ class RealDataFailDetailPage(Page):
 
     # 抄表段号
     def inputStr_mr_sect_no(self, value):
-        self.input(value)
+        self.curr_input(value, True, True)
 
     # 电表资产号
     def inputStr_meter_asset_no(self, value):
-        self.input(value)
+        self.curr_input(value, True, True)
 
     # 查询时间
     def inputDt_query_time(self, value):

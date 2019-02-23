@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: elePricePara_pages.py
+@file: elePricePara_page.py
 @time: 2018/8/15 0015 14:36
 @desc:
 """

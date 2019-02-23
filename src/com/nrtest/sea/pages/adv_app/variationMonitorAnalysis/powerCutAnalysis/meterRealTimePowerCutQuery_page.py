@@ -26,11 +26,11 @@ class MeterRealTimePowerCutQueryPage(Page):
         self.input(content)
 
     # 停电标志
-    def inputSel_power_cut_sign(self, index):
+    def inputSel_power_cut_flag(self, index):
         self.selectDropDown(index)
 
     # 查询类型
-    def inputChk_qry_type(self, index):
+    def inputChk_qry_date_type(self, index):
         self.clickRadioBox(index)
 
     # 开始日期

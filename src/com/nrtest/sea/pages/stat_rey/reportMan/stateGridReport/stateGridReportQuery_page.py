@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-@author: 卢炎炎
+@author: jinsheng
 @license: (C) Copyright 2018, Nari.
 @file: stateGridReportQuery_page.py
 @time: 2018/11/8 11:38
@@ -21,7 +21,6 @@ class StateGridReportQueryPage(Page):
         self.clickRadioBox(option)
 
     # 查询日期
-
     def inputDt_query_date(self, value):
         self.inputDate(value)
 

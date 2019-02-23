@@ -4,7 +4,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: dataTableAnalysis_page.py
+@file: dataStructureComparison_page.py
 @time: 2018/11/20 0020 14:21
 @desc:
 """

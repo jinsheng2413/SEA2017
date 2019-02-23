@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.run_man.simCardMan.fourGCommMethod.terminal_detail_pag
 
 # 运行管理→SIM卡管理→4G通信方式→终端接入明细
 @ddt
-class test_TerminalDetail(TestCase, TerminalDetailPage):
+class TestTerminalDetail(TestCase, TerminalDetailPage):
 
     @classmethod
     def setUpClass(cls):

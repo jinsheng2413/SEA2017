@@ -3,7 +3,7 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: userCollectStatistics_page.py
+@file: userCollectStatistics2017_page.py
 @time: 2018/10/24 14:12
 @desc:
 """

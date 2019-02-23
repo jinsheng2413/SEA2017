@@ -4,7 +4,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: flowAnaly_page.py
+@file: simAlarmAnaly_page.py
 @time: 2018/11/9 0009 9:43
 @desc:
 """

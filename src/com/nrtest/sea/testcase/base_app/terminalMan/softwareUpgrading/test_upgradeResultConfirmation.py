@@ -56,7 +56,7 @@ class TestUpgradeResultConfirmation(TestCase, UpgradeResultConfirmationPage):
     def query(self, para):
         # 升级号
         self.inputChk_upgrade_no(para['UPGRADE_NO'])
-        if para['UPGRADE_NO'] != '1':
+        if self.get_para_value(para['UPGRADE_NO']) != '1':
             # 打开左边树选择供电单位
             self.openLeftTree(para['TREE_NODE'])
             # 终端厂家

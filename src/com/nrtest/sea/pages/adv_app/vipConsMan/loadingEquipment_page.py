@@ -14,9 +14,8 @@ from com.nrtest.common.base_page import Page
 class LoadingEquipment_Page(Page):
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value)  # , *LoadingEquipment_locators.QRY_TMNL_ADDR)
+        self.input(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(LoadingEquipment_locators.BTN_QUERY)
         self.btn_query()

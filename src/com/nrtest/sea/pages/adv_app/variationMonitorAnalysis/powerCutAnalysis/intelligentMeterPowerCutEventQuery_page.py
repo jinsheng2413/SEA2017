@@ -19,22 +19,14 @@ class IntelligentMeterPowerCutEventQueryPage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, index):
-        # self.click(IntelligentMeterPowerCutEventQueryLocators.QRY_CONS_TYPE)
-        # locator = self.get_select_locator(
-        #     IntelligentMeterPowerCutEventQueryLocators.QRY_CONS_TYPE_VALUE, index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 查询日期
     def inputDt_query_date(self, content):
-        # self.exec_script(IntelligentMeterPowerCutEventQueryLocators.DATE_JS)
-        # self.input(content, *IntelligentMeterPowerCutEventQueryLocators.QRY_DATE)
         self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(IntelligentMeterPowerCutEventQueryLocators.BTN_SEARCH)
         self.btn_query()
 
 # 高级应用→配变监测分析→停电分析→智能表停电事件查询→智能表停电明细
@@ -45,30 +37,14 @@ class IntelligentMeterPowerCutEventQueryDetailPage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, index):
-        # self.click(
-        #     *IntelligentMeterPowerCutEventQueryDetailLocators.QRY_CONS_TYPE)
-        # locator = self.get_select_locator(
-        #     IntelligentMeterPowerCutEventQueryDetailLocators.QRY_CONS_TYPE_VALUE, index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 查询日期
     def inputDt_query_date(self, content):
-        # self.exec_script
-        #     IntelligentMeterPowerCutEventQueryDetailLocators.DATE_JS)
-        # self.input(
-        #     content, *IntelligentMeterPowerCutEventQueryDetailLocators.QRY_DATE)
         self.inputDate(content)
 
     # 事件正确性
     def inputSel_event_correctness(self, index):
-        # self.click(
-        #     *IntelligentMeterPowerCutEventQueryDetailLocators.QRY_EVENT_CORRECTNESS)
-        # locator = self.get_select_locator(IntelligentMeterPowerCutEventQueryDetailLocators.QRY_EVENT_CORRECTNESS_VALUE,
-        #                                   index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 停电时长
@@ -76,19 +52,12 @@ class IntelligentMeterPowerCutEventQueryDetailPage(Page):
         self.input(content, *IntelligentMeterPowerCutEventQueryDetailLocators.QRY_POWER_CUT_START)
 
     def inputStr_power_cut_end(self, content):
-        self.input(content)  #, *IntelligentMeterPowerCutEventQueryDetailLocators.QRY_POWER_CUT_END)
+        self.input(content)
 
     # 电表厂家
     def inputSel_meter_factory(self, index):
-        # self.click(
-        #     *IntelligentMeterPowerCutEventQueryDetailLocators.QRY_METER_FACTORY)
-        # locator = self.get_select_locator(IntelligentMeterPowerCutEventQueryDetailLocators.QRY_METER_FACTORY_VALUE,
-        #                                   index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(IntelligentMeterPowerCutEventQueryDetailLocators.BTN_SEARCH)
         self.btn_query(True)

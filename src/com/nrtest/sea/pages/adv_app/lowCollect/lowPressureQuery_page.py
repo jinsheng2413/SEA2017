@@ -14,21 +14,19 @@ from com.nrtest.common.base_page import Page
 class LowPressureQuery_Page(Page):
     # 台区名称
     def inputStr_tg_name(self, value):
-        self.input(value)#, *LowPressureQuery_Locators.QRY_TG_NAME)
-
+        self.input(value)
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value)#, *LowPressureQuery_Locators.QRY_TMNL_ADDR)
+        self.input(value)
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value)#, *LowPressureQuery_Locators.QRY_CONS_NO)
+        self.input(value)
 
     # 日期
     def inputDt_query_date(self, value):
-        self.input(value)#, *LowPressureQuery_Locators.QRY_DATE)
+        self.input(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(LowPressureQuery_Locators.BTN_QUERY)
         self.btn_query()

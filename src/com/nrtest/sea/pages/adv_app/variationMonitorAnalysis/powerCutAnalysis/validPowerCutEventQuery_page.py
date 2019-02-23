@@ -21,84 +21,44 @@ class ValidPowerCutEventQueryPage(Page):
 
     # 用户类型
     def inputSel_cons_type(self, index):
-        # self.click(ValidPowerCutEventQueryLocators.QRY_CONS_TYPE)
-        # locator = self.get_select_locator(
-        #     ValidPowerCutEventQueryLocators.QRY_CONS_TYPE_VALUE, index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 查询日期
     def inputDt_query_date(self, content):
-        # self.exec_script(ValidPowerCutEventQueryLocators.DATE_JS)
-        # self.input(content, *ValidPowerCutEventQueryLocators.QRY_DATE)
         self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(ValidPowerCutEventQueryLocators.BTN_SEARCH)
         self.btn_query()
 
 # 高级应用→配变监测分析→停电分析→有效停电事件查询→有效停电明细
 class ValidPowerCutDetailPage(Page):
     # 用户类型
     def inputSel_cons_type(self, index):
-        # self.click(ValidPowerCutDetailLocators.QRY_CONS_TYPE)
-        # locator = self.get_select_locator(
-        #     ValidPowerCutDetailLocators.QRY_CONS_TYPE_VALUE, index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 终端类型
     def inputSel_tmnl_type(self, index):
-        # self.click(ValidPowerCutDetailLocators.QRY_TMNL_TYPE)
-        # locator = self.get_select_locator(
-        #     ValidPowerCutDetailLocators.QRY_TMNL_TYPE_VALUE, index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 日期
     def inputDt_query_date(self, content):
-        # self.exec_script(ValidPowerCutDetailLocators.DATE_JS)
-        # self.input(content, *ValidPowerCutDetailLocators.QRY_DATE)
         self.inputDate(content)
 
     # 当前是否停电
     def inputSel_whether_power_cut(self, index):
-        # self.click(ValidPowerCutDetailLocators.QRY_WHETHER_POWER_CUT)
-        # locator = self.get_select_locator(
-        #     ValidPowerCutDetailLocators.QRY_WHETHER_POWER_CUT_VALUE, index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 是否有效停电
     def inputSel_whether_power_cut_valid(self, index):
-        # self.click(ValidPowerCutDetailLocators.QRY_WHETHER_POWER_CUT_VALID)
-        # locator = self.get_select_locator(
-        #     ValidPowerCutDetailLocators.QRY_WHETHER_POWER_CUT_VALID_VALUE, index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 是否补全
     def inputSel_whether_complement(self, index):
-        # self.click(ValidPowerCutDetailLocators.QRY_COMPLEMENT)
-        # locator = self.get_select_locator(
-        #     ValidPowerCutDetailLocators.QRY_COMPLEMENT_VALUE, index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
-        # self.click(ValidPowerCutDetailLocators.QRY_TMNL_FACTORY)
-        # locator = self.get_select_locator(
-        #     ValidPowerCutDetailLocators.QRY_TMNL_FACTORY_VALUE, index)
-        # self.click(locator)
-        # self.delDropdownBoxHtml()
         self.selectDropDown(index)
 
     # 停电时长
@@ -110,9 +70,8 @@ class ValidPowerCutDetailPage(Page):
 
     # 终端地址
     def inputStr_tmnl_addr(self, content):
-        self.input(content)  #, *ValidPowerCutDetailLocators.QRY_TMNL_ADDR)
+        self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(ValidPowerCutDetailLocators.BTN_SEARCH)
         self.btn_query(True)

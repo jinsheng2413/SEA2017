@@ -15,28 +15,18 @@ from com.nrtest.common.base_page import Page
 class DistributedEnergyStatPage(Page):
     # 日期
     def inputDt_query_date(self, value):
-        # self.input(value, *DistributedEnergyStatLocators.QRY_DATE)
         self.inputDate(value)
 
     # 发电量消纳方式
     def inputSel_abso_type(self, name):
-        # self.click(*DistributedEnergyStatLocators.QRY_ABSO_TYPE)
-        # locator = self.get_select_locator(
-        #     DistributedEnergyStatLocators.QRY_ABSO_TYPE_VALUE, name)
-        # self.click(*locator)
         self.selectDropDown(name)
 
     # 发电方式
     def inputSel_gc_type(self, name):
-        # self.click(*DistributedEnergyStatLocators.QRY_GC_TYPE)
-        # locator = self.get_select_locator(
-        #     DistributedEnergyStatLocators.QRY_GC_TYPE_VALUE, name)
-        # self.click(*locator)
         self.selectDropDown(name)
 
     # 查询
     def btn_qry(self):
-        # self.click(*DistributedEnergyStatLocators.BTN_QRY)
         self.btn_query()
 
 

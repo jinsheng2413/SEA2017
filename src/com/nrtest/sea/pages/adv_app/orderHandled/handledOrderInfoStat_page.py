@@ -1,19 +1,8 @@
-# -*- coding:utf-8 -*-
-
-'''
-@author: jinsheng
-@license: (C) Copyright 2018, Nari.
-@file: handledOrderInfoStat_page.py
-@time: 2019-02-13 9:14
-@desc:
-'''
-
 # -*- coding: utf-8 -*-
-
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: handled_order_info_stat_page.py
+@file: handledOrderInfoStat_page.py
 @time: 2019-02-13 09:12:30
 @desc:
 """

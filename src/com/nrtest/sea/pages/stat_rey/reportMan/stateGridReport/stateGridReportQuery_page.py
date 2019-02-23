@@ -14,9 +14,6 @@ from com.nrtest.common.base_page import Page
 class StateGridReportQueryPage(Page):
     # 报表类型
     def inputSel_report_type(self, option):
-        # self.click(StateGridReportQueryLocators.QRY_REPORT_TYPE)
-        # locator = self.get_select_locator(StateGridReportQueryLocators.QRY_REPORT_TYPE_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(option)
 
     # 查询方式
@@ -26,9 +23,8 @@ class StateGridReportQueryPage(Page):
     # 查询日期
 
     def inputDt_query_date(self, value):
-        self.inputDate(value)  #, *StateGridReportQueryLocators.QRY_DATE)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(StateGridReportQueryLocators.BTN_QRY)
         self.btn_query()

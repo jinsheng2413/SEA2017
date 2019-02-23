@@ -37,7 +37,6 @@ class LosePowerManPage(Page):
     def inputStr_tg_no(self, value):
         loc = self.format_xpath(LosePowerManLocators.QRY_NO, value.split(';')[0])
         self.specialInput(loc, value)
-        # self.input(value)
 
     # 台区状态
     def inputSel_tg_status(self, option):
@@ -55,33 +54,3 @@ class LosePowerManPage(Page):
     # 查询
     def btn_qry(self):
         self.btn_query()
-    #
-    # # 考核单位状态
-    # def inputSel_chkunit_status(self, name):
-    #     self.selectDropDown(name)
-    #
-    # # 组合标志
-    # def inputSel_combination_sign(self, name):
-    #     self.clean_label(name)
-    #     self.selectDropDown(name)
-    #
-    #
-    # # 台区状态
-    # def inputSel_tg_status(self, name):
-    #     self.selectDropDown(name)
-    #
-    # # 考核单位名称
-    # def inputStr_chkunit_name(self, value):
-    #     self.input(value)
-    #
-    # # 考核单位分类
-    # def inputSel_chkunit_type(self, name):
-    #     self.selectDropDown(name)
-    #
-    # # 点击复选框
-    # def inputChk_uncover(self, name):
-    #     self.clickSingleCheckBox(name)
-    #
-    # # 查询
-    # def btn_qry(self):
-    #     self.btn_query()

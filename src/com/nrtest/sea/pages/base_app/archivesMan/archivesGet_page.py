@@ -20,21 +20,17 @@ class ArchivesGetPage(Page):
 
     # 用户类型
     def inputSel_userType(self, option):
-        # self.click(ArchivesGetLocators.QRY_CONS_TYPE)
-        # locator = self.get_select_locator(ArchivesGetLocators.QRY_CONS_TYPE_VALUE, option)
-        # self.click(locator)
         self.selectDropDown(option)
 
     # 终端资产号
     def inputStr_tmnlAssetNo(self, value):
-        self.input(value)  # , *ArchivesGetLocators.QRY_TMNL_ASSET_NO)
+        self.input(value)
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value)  # , *ArchivesGetLocators.QRY_TMNL_ADDR)
+        self.input(value)
 
         # 查询
 
     def btn_qry(self):
-        # self.click(ArchivesGetLocators.BTN_QRY)
         self.btn_query()

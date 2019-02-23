@@ -14,21 +14,20 @@ from com.nrtest.common.base_page import Page
 class DifferentialloopSetting_Page(Page):
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value)  # , *DifferentialloopSetting_locators.QRY_CONS_NO)
+        self.input(value)
 
     # 用户名称
     def inputStr_cons_name(self, value):
-        self.input(value)  #, *DifferentialloopSetting_locators.QRY_CONS_NAME)
+        self.input(value)
 
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value)  #, *DifferentialloopSetting_locators.QRY_TMNL_ADDR)
+        self.input(value)
 
     # 终端资产号
     def inputStr_tmnl_asset_no(self, value):
-        self.input(value)  # , *DifferentialloopSetting_locators.QRY_TMNL_ASSET_NO)
+        self.input(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(DifferentialloopSetting_locators.BTN_QUERY)
         self.btn_query()

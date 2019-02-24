@@ -108,7 +108,7 @@ class AssertResult():
         if page == 1:
             # 关闭菜单页
             # self.tst_inst.closePages(page_name=menuPage, isCurPage=False)
-            self.tst_inst.closePages(page_name=menuPage)
+            self.tst_inst.closePages(menuPage)
         elif page == 2:
             # 切换到另一个tab页
             self.tst_inst.clickTabPage(tab)
@@ -326,7 +326,7 @@ class AssertResult():
 
                             # self.tst_inst.menuPage.closePages(page_name=case_result[2], isCurPage=False)  # 关闭跳转菜单页
                             # self.tst_inst.closePages(page_name=case_result[2], isCurPage=False)  # 关闭跳转菜单页
-                            self.tst_inst.closePages(page_name=case_result[2])
+                            self.tst_inst.closePages(case_result[2])
                             if model == 1:
                                 return result
                             elif model == 2:
@@ -385,7 +385,7 @@ class AssertResult():
                             # 关闭其他菜单页
                             # 2019-02-24
                             # self._closePages(page_name=case_result[2], isCurPage=False)
-                            self.tst_inst.closePages(page_name=case_result[2])
+                            self.tst_inst.closePages(case_result[2])
                             # self.tst_inst.driver.find_element(*(By.XPATH, '//li[@id="maintab__{}"]/a[@class="x-tab-strip-close"]'.format(case_result[2]))).click()
                             sleep(2)
                             # 校验跳转传值是否正确

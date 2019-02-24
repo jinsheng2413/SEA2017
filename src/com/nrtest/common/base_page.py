@@ -1502,7 +1502,7 @@ class Page():
                             result = self.assert_context((By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
                             # if 1:
                             #     self.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
-                            self.closePages(page_name=assertValues[2])
+                            self.closePages(assertValues[2])
                             return result
                         except BaseException:
                             pass

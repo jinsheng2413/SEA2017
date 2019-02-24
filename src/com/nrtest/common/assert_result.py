@@ -20,7 +20,6 @@ from time import sleep
 
 class AssertResult():
     def __init__(self, call_from):
-        # super().__init__(get_driver())
         self.tst_inst = call_from
 
     def save_img(self, img_path, img_name):
@@ -75,8 +74,8 @@ class AssertResult():
             displayElement = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
                 skipValue[0])
             self.tst_inst.commonWait((By.XPATH, displayElement))
-            display_num = len(self.tst_inst._find_elements((By.XPATH, displayElement)))
-            if display_num > 0:
+            el_cnts = len(self.tst_inst._find_elements((By.XPATH, displayElement)))
+            if el_cnts > 0:
                 if 1:
                     lineName = self.tst_inst.checkBoxAssertLine(skipValue[1])  # 判断是那一列
                     displayLine = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//a'.format(

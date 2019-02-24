@@ -39,7 +39,7 @@ class TestTmnlInstallDetai_debug(TestCase, TmnlInstallDetaiPage):
     def tearDownClass(cls):
         print("执行结束")
         # 刷新浏览器
-        # cls.closePages(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """

@@ -38,8 +38,11 @@ class MenuLocators:
     # 当前活动菜单页面
     ACTIVE_MENU_PAGE = (By.XPATH, '//li[@id="maintab__{}"]')
 
+    # 当前菜单的关闭按钮
+    CURR_MENU = (By.XPATH, '//li[@id="maintab__{}"]/a[@class="x-tab-strip-close"]')
+
     # 当前正在操作的菜单页面
-    CURRENT_MENU = (By.XPATH, '//*[@class="x-tab-strip-inner"]//*[contains(text(),\'%s\')]')
+    CURRENT_MENU = (By.XPATH, '//*[@class="x-tab-strip-inner"]//*[contains(text(),"%s")]')
     CURRENT_MENU1 = (By.XPATH, '//span[contains(@class,"x-tab-strip-text") and text() = "%s"]')
     # '//span[contains(@class,"x-tab-strip-text" and text() = "%s"]')
     # 右键菜单：关闭当前页/关闭其他所有页

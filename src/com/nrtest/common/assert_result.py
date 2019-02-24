@@ -7,9 +7,7 @@
 @time: 2019/1/15 0015 9:32
 @desc:
 """
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
@@ -17,9 +15,7 @@ from com.nrtest.common.logger import Logger
 from com.nrtest.common.utils import Utils
 
 logger = Logger(logger='AssertResult').getlog()
-from com.nrtest.sea.locators.other.menu_locators import MenuLocators
 from time import sleep
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class AssertResult():
@@ -112,7 +108,8 @@ class AssertResult():
                 break
         if page == 1:
             # 关闭菜单页
-            self.tst_inst.closePages(page_name=menuPage, isCurPage=False)
+            # self.tst_inst.closePages(page_name=menuPage, isCurPage=False)
+            self.tst_inst.closePages(page_name=menuPage)
         elif page == 2:
             # 切换到另一个tab页
             self.tst_inst.clickTabPage(tab)
@@ -332,7 +329,9 @@ class AssertResult():
                                     value = self.tst_inst.assert_expect_value(AssertResultLocators.TAB_PAGE_TEXT,
                                                                               assertValues[3])
 
-                                self.tst_inst.menuPage.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
+                                # self.tst_inst.menuPage.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
+                                # self.tst_inst.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
+                                self.tst_inst.closePages(page_name=assertValues[2])
                                 if model == 1:
                                     return result
                                 elif model == 2:
@@ -389,7 +388,11 @@ class AssertResult():
                                 print('old:', new_page_list)
 
                                 # 关闭其他菜单页
-                                self._closePages(page_name=assertValues[2], isCurPage=False)
+                                # 2019-02-24
+                                # self._closePages(page_name=assertValues[2], isCurPage=False)
+                                self.tst_inst.closePages(page_name=assertValues[2])
+                                # self.tst_inst.driver.find_element(*(By.XPATH, '//li[@id="maintab__{}"]/a[@class="x-tab-strip-close"]'.format(assertValues[2]))).click()
+                                sleep(2)
                                 # 校验跳转传值是否正确
                                 res = False
                                 l = 0
@@ -412,16 +415,10 @@ class AssertResult():
                                 if l > 0:
                                     res = False
                                 return res
-
-
-
-
-
                         except BaseException:
                             pass
                     except:
                         print('跳转验证失败')
-
         except:
             print('验证失败')
 
@@ -530,33 +527,33 @@ class AssertResult():
         el = self.tst_inst._find_displayed_element(locator)
         return el.get_attribute('value')
 
-    def _closePages(self, page_name='工作台', isCurPage=True):
-        """
-        通过工作台或定位菜单页面，关闭当前页面或除当前页面外其他页面
-        :param page_name: 当“工作台”时相当于清屏操作：即关闭所有窗口
-        :param isCurPage:True-关闭其他所有页；False-关闭当前页
-        """
-
-        # ****定位到要右击的元素**
-        loc = self.tst_inst.format_xpath(MenuLocators.CURRENT_MENU, page_name)
-
-        right_click = self.tst_inst.driver.find_element(*loc)
-        # 鼠标右键操作
-        WebDriverWait(self.tst_inst.driver, 10).until(EC.element_to_be_clickable(loc))
-        sleep(2)
-        ActionChains(self.tst_inst.driver).context_click(right_click).perform()
-
-        # 待定位右键菜单
-        forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
-        loc = self.tst_inst.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
-        pe = self.tst_inst.format_xpath(MenuLocators.CLOSE_PAGES_SPE, forMenu)
-
-        try:
-            WebDriverWait(self.tst_inst.driver, 3).until(EC.element_to_be_clickable(loc))
-        except:
-            loc = pe
-            print(loc)
-        self.tst_inst.driver.find_element(*loc).click()
+    # def _closePages(self, page_name='工作台', isCurPage=True):
+    #     """
+    #     通过工作台或定位菜单页面，关闭当前页面或除当前页面外其他页面
+    #     :param page_name: 当“工作台”时相当于清屏操作：即关闭所有窗口
+    #     :param isCurPage:True-关闭其他所有页；False-关闭当前页
+    #     """
+    #
+    #     # ****定位到要右击的元素**
+    #     loc = self.tst_inst.format_xpath(MenuLocators.CURRENT_MENU, page_name)
+    #
+    #     right_click = self.tst_inst.driver.find_element(*loc)
+    #     # 鼠标右键操作
+    #     WebDriverWait(self.tst_inst.driver, 10).until(EC.element_to_be_clickable(loc))
+    #     sleep(2)
+    #     ActionChains(self.tst_inst.driver).context_click(right_click).perform()
+    #
+    #     # 待定位右键菜单
+    #     forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
+    #     loc = self.tst_inst.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
+    #     pe = self.tst_inst.format_xpath(MenuLocators.CLOSE_PAGES_SPE, forMenu)
+    #
+    #     try:
+    #         WebDriverWait(self.tst_inst.driver, 3).until(EC.element_to_be_clickable(loc))
+    #     except:
+    #         loc = pe
+    #         print(loc)
+    #     self.tst_inst.driver.find_element(*loc).click()
 
     def assertInput(self, para, caseId=''):
         xpath = AssertResultLocators.DISPLAY_RESULT[1].format(para[0], para[1])

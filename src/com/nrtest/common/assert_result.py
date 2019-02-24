@@ -116,18 +116,18 @@ class AssertResult():
         elif page == 3:
             self.tst_inst.click(AssertResultLocators.WINDOWS_CLOSE)
 
-    def skip_tab_page(self, para, caseId='', caseData=''):
+    def skip_tab_page(self, case_result, caseData):
         """
         # tab页跳转sxs
-        :param para: tst_case_result 校验数据
-        :param caseId:  用例编号
+        :param case_result: tst_case_result 校验数据
         :param caseData: 整个用例的数据
         :return:
         """
-        if para[len(para) - 1] == 'Y':
-            self.tst_inst.clean_empty_blank(para[1])
+        case_id = caseData['TST_CASE_ID']
+        if case_result[len(case_result) - 1] == 'Y':
+            self.tst_inst.clean_empty_blank(case_result[1])
         # 获取要截取的值
-        old_data = DataAccess.get_skip_data(caseId, para[1])
+        old_data = DataAccess.get_skip_data(case_id, case_result[1])
         old_page_list = []
         new_page_list = []
         for item in old_data:
@@ -137,17 +137,17 @@ class AssertResult():
                 old_page_list.append(item[9])
             # 获取查询条件输入框的值
             elif item[4] == '01':
-                locator_qry = self.get_xpath(DataAccess.get_xpath_tab_data(item[5], caseId, caseData['TAB_NAME'])[0][0])
+                locator_qry = self.get_xpath(DataAccess.get_xpath_tab_data(item[5], case_id, caseData['TAB_NAME'])[0][0])
                 old_page_list.append(self.get_text(locator_qry))
             else:
                 old_page_list.append(self.tst_inst.driver.find_element(*locator).text)
         pageRes = ''
         # 跳转到对应的页面
-        self.skip_to_page(para)
+        self.skip_to_page(case_result)
         # 校验页面的名称是否正确
-        name = self.assert_page_name(para[2])
+        name = self.assert_page_name(case_result[2])
         if name == False:
-            print('跳转{}到页面失败'.format(para[2]))
+            print('跳转{}到页面失败'.format(case_result[2]))
         # 判断文字是否正确
         for item in old_data:
             if item[8] == None and item[4] == '04':
@@ -162,7 +162,7 @@ class AssertResult():
 
             else:
                 try:
-                    ta = DataAccess.get_xpath_tab_data(item[8], caseId, para[2])
+                    ta = DataAccess.get_xpath_tab_data(item[8], case_id, case_result[2])
                     text = self.get_text(self.get_xpath(ta[0][0]), second=1)
                     new_page_list.append(text)
                 except:
@@ -174,23 +174,20 @@ class AssertResult():
         # 跳转传值验证是否正确
         res = False
         l = 0
-        line = self.tst_inst.checkBoxAssertLine(para[1])
+        line = self.tst_inst.checkBoxAssertLine(case_result[1])
         for x, y, item in zip(old_page_list, new_page_list, old_data):
             if x == y:
                 logger.info(
-                    '跳转坐标（{row}行,{col}列）element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                        row=para[3], col=line + 1, sn=item[11], xpath_old=item[5],
-                        xpath_old_value=x, xpath_new=item[8], xpath_new_value=y))
+                    '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                        case_result[3], line + 1, item[11],
+                        item[5], x, item[8], y))
                 res = True
             else:
-                logger.error(
-                    '跳转坐标（{row}行，{col}列）,跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                        row=para[3], col=line + 1, sn=item[11], xpath_old=item[5],
-                        xpath_old_value=x, xpath_new=item[8], xpath_new_value=y))
-                print(
-                    '\r\n跳转坐标（{row}行，{col}列）,跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                        row=para[3], col=line + 1, sn=item[11], xpath_old=item[5],
-                        xpath_old_value=x, xpath_new=item[8], xpath_new_value=y) + '\r\t')
+                err_info = '跳转坐标（{}行，{}列）,跳转传值错误error:element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                    case_result[3], line + 1, item[11],
+                    item[5], x, item[8], y)
+                logger.error(err_info)
+                print('</br>' + err_info + '</br>')
                 l += 1
         # if l > 0:
         #     res = False
@@ -208,15 +205,15 @@ class AssertResult():
         res2 = Utils.replace_chrs(res)
         return value in res2
 
-    def skip_windows_page(self, para):
+    def skip_windows_page(self, case_result):
         """
         窗口跳转
-        :param para: 以，为分隔符，第一位是显示区唯一列明，第二位是要校验值的列明，第三位是校验值
+        :param case_result: 以，为分隔符，第一位是显示区唯一列明，第二位是要校验值的列明，第三位是校验值
         :return:
         """
         try:
-            self.skip_to_page(para)
-            xpath = AssertResultLocators.WINDOWS_NAME[1].format(para[2])
+            self.skip_to_page(case_result)
+            xpath = AssertResultLocators.WINDOWS_NAME[1].format(case_result[2])
             self.tst_inst.commonWait((By.XPATH, xpath))
             is_skiped = True
         except:
@@ -226,9 +223,9 @@ class AssertResult():
 
         return is_skiped
 
-    def assertValue(self, assertValues):
+    def assertValue(self, case_result):
         """
-        assertValues ='手机,外包队伍名称,test'
+        case_result ='手机,外包队伍名称,test'
         :param assert_values:以，为分隔符，第一位是显示区唯一列明，第二位是要校验值的列明，第三位是校验值
         :return:
         """
@@ -236,7 +233,7 @@ class AssertResult():
         try:
             # 显示区是否有值
             xpath_table = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
-                assertValues[0])
+                case_result[0])
             self.tst_inst.commonWait((By.XPATH, xpath_table))
             # 显示区查询出多少结果数量
             displayNum = len(self.tst_inst._find_elements((By.XPATH, xpath_table)))
@@ -245,21 +242,21 @@ class AssertResult():
                 displayCheck = self.tst_inst.assert_context((By.XPATH, xpath_checker))
             except:
                 print('没有弹出确定按钮')
-            diplayName = self.tst_inst.checkBoxAssertLine(assertValues[1])  # 判断具体是哪一行
+            diplayName = self.tst_inst.checkBoxAssertLine(case_result[1])  # 判断具体是哪一行
             ringhtNum = 0
             displayLineElement = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//*[contains(text(),"{3}")]'
             if displayNum > 0:
                 if displayCheck:
                     for i in range(1, displayNum + 1):
                         # 显示区结果的每一行对应列的数据的xpath
-                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
-                                                                             assertValues[2])
+                        displayLineElement_index = displayLineElement.format(case_result[0], i, diplayName + 1,
+                                                                             case_result[2])
                         try:
                             assert_rslt = self.tst_inst.assert_context((By.XPATH, displayLineElement_index))
                             if assert_rslt:
                                 ringhtNum += 1
                             else:
-                                print('第{0}行，{1}列显示的值与{2}不一致'.format(i, assertValues[1], assertValues[2]))
+                                print('第{0}行，{1}列显示的值与{2}不一致'.format(i, case_result[1], case_result[2]))
                                 break
                         except:
                             print('校验失败')
@@ -269,14 +266,14 @@ class AssertResult():
                 else:
                     for i in range(1, displayNum + 1):
                         # 显示区结果的每一行对应列的数据的xpath
-                        displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
-                                                                             assertValues[2])
+                        displayLineElement_index = displayLineElement.format(case_result[0], i, diplayName + 1,
+                                                                             case_result[2])
                         try:
                             assert_rslt = self.tst_inst.assert_context((By.XPATH, displayLineElement_index))
                             if assert_rslt:
                                 ringhtNum += 1
                             else:
-                                print('第{0}行，{1}列显示的值与{2}不一致'.format(i, assertValues[1], assertValues[2]))
+                                print('第{0}行，{1}列显示的值与{2}不一致'.format(i, case_result[1], case_result[2]))
                                 break
                         except:
                             print('校验失败')
@@ -285,20 +282,20 @@ class AssertResult():
         except:
             print('显示区结果值校验失败')
 
-    def clickSkip(self, assertValues, caseId='', caseData='', model=1, version=1):
+    def clickSkip(self, case_result, caseData, model=1, version=1):
 
         """
 
-        :param assertValues: tst_case_result 验证数据
-        :param caseId: 用例id
+        :param case_result: tst_case_result 验证数据
         :param caseData: 用例所有数据
         :param model: 老版本校验期望值
         :param version: 1为老版本，2为新版本
         :return:
         """
         try:
+            case_id = caseData['TST_CASE_ID']
             displayElement = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
-                assertValues[0])
+                case_result[0])
             self.tst_inst.commonWait((By.XPATH, displayElement))
             display_num = len(self.tst_inst._find_elements((By.XPATH, displayElement)))
             if display_num > 0:
@@ -309,116 +306,113 @@ class AssertResult():
                 #     print('显示区有复选框')
                 # except:
                 #     print('显示区没有复选框')
-                if 1:
-                    lineName = self.tst_inst.checkBoxAssertLine(assertValues[1])  # 判断是那一列
-                    displayLine = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]'.format(
-                        assertValues[0], 1, lineName + 1)
+
+                lineName = self.tst_inst.checkBoxAssertLine(case_result[1])  # 判断是那一列
+                displayLine = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]'.format(
+                    case_result[0], 1, lineName + 1)
+                try:
                     try:
+                        if version == 1:
+                            self.tst_inst.click((By.XPATH, displayLine))
+                            # 把弹出的确定框点掉
 
-                        try:
-                            if version == 1:
-                                self.tst_inst.click((By.XPATH, displayLine))
-                                # 把弹出的确定框点掉
+                            self.tst_inst.btn_confirm()
+                            skipMenuName = "//span[@class=\"x-tab-strip-inner\"]/span[contains(text(),'{}')]".format(
+                                case_result[2])
+                            result = self.tst_inst.assert_context((By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
+                            if model == 2:
+                                # 校验期望值是否正确
+                                value = self.tst_inst.assert_expect_value(AssertResultLocators.TAB_PAGE_TEXT,
+                                                                          case_result[3])
 
-                                self.tst_inst.btn_confirm()
-                                skipMenuName = "//span[@class=\"x-tab-strip-inner\"]/span[contains(text(),'{}')]".format(
-                                    assertValues[2])
-                                result = self.tst_inst.assert_context((By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
-                                if model == 2:
-                                    # 校验期望值是否正确
-                                    value = self.tst_inst.assert_expect_value(AssertResultLocators.TAB_PAGE_TEXT,
-                                                                              assertValues[3])
+                            # self.tst_inst.menuPage.closePages(page_name=case_result[2], isCurPage=False)  # 关闭跳转菜单页
+                            # self.tst_inst.closePages(page_name=case_result[2], isCurPage=False)  # 关闭跳转菜单页
+                            self.tst_inst.closePages(page_name=case_result[2])
+                            if model == 1:
+                                return result
+                            elif model == 2:
+                                return True if result and value else False
+                        elif version == 2:
+                            # 获取要截取的值
+                            old_data = DataAccess.get_skip_data(case_id, case_result[1])
+                            old_page_list = []
+                            new_page_list = []
+                            for item in old_data:
+                                line = self.tst_inst.checkBoxAssertLine(item[5]) + 1
+                                locator = self.get_xpath(item[0], item[3], line, type=2)
+                                if item[10] == '1':
+                                    old_page_list.append(item[9])
+                                # 获取查询条件输入框的值
+                                elif item[4] == '01':
+                                    locator_qry = self.get_xpath(
+                                        DataAccess.get_xpath_tab_data(item[5], case_id, caseData['TAB_NAME'])[0][0])
+                                    old_page_list.append(self.tst_inst.get_text(locator_qry))
+                                else:
+                                    old_page_list.append(self.tst_inst.driver.find_element(*locator).text)
+                            pageRes = ''
+                            # 跳转到对应的页面
+                            self.skip_to_page(case_result)
+                            # 校验页面的名称是否正确
+                            name = self.assert_page_name(case_result[2])
+                            if name == False:
+                                print('跳转{}到页面失败'.format(case_result[2]))
+                            # 判断文字是否正确
+                            for item in old_data:
+                                if item[8] == None and item[4] == '04':
+                                    try:
+                                        resd = self.tst_inst.driver.find_element(
+                                            *AssertResultLocators.LINK_DATA).text
+                                        resd_new = resd[resd.index('/') + 1:len(resd)].strip()
+                                        new_page_list.append(resd_new)
+                                    except:
+                                        new_page_list.append('0')
+                                elif item[10] == '1':
+                                    new_page_list.append(item[9])
+                                else:
+                                    try:
 
-                                # self.tst_inst.menuPage.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
-                                # self.tst_inst.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
-                                self.tst_inst.closePages(page_name=assertValues[2])
-                                if model == 1:
-                                    return result
-                                elif model == 2:
-                                    return True if result and value else False
-                            elif version == 2:
-                                # 获取要截取的值
-                                old_data = DataAccess.get_skip_data(caseId, assertValues[1])
-                                old_page_list = []
-                                new_page_list = []
-                                for item in old_data:
-                                    line = self.tst_inst.checkBoxAssertLine(item[5]) + 1
-                                    locator = self.get_xpath(item[0], item[3], line, type=2)
-                                    if item[10] == '1':
-                                        old_page_list.append(item[9])
-                                    # 获取查询条件输入框的值
-                                    elif item[4] == '01':
-                                        locator_qry = self.get_xpath(
-                                            DataAccess.get_xpath_tab_data(item[5], caseId, caseData['TAB_NAME'])[0][0])
-                                        old_page_list.append(self.tst_inst.get_text(locator_qry))
-                                    else:
-                                        old_page_list.append(self.tst_inst.driver.find_element(*locator).text)
-                                pageRes = ''
-                                # 跳转到对应的页面
-                                self.skip_to_page(assertValues)
-                                # 校验页面的名称是否正确
-                                name = self.assert_page_name(assertValues[2])
-                                if name == False:
-                                    print('跳转{}到页面失败'.format(assertValues[2]))
-                                # 判断文字是否正确
-                                for item in old_data:
-                                    if item[8] == None and item[4] == '04':
-                                        try:
-                                            resd = self.tst_inst.driver.find_element(
-                                                *AssertResultLocators.LINK_DATA).text
-                                            resd_new = resd[resd.index('/') + 1:len(resd)].strip()
-                                            new_page_list.append(resd_new)
-                                        except:
-                                            new_page_list.append('0')
-                                    elif item[10] == '1':
-                                        new_page_list.append(item[9])
-                                    else:
-                                        try:
+                                        ta = DataAccess.get_xpath_menu_data(item[8], case_result[2], item[6])
+                                        v_xpath = self.get_xpath(ta[0][0])
+                                        # self.tst_inst.commonWait(v_xpath)
+                                        self.tst_inst.sleep_time(1)
+                                        text = self.get_text(v_xpath, second=1)
+                                        new_page_list.append(text)
+                                    except:
+                                        logger.error('跳转的新页面时数据没有带过去')
+                                        return False
 
-                                            ta = DataAccess.get_xpath_menu_data(item[8], assertValues[2], item[6])
-                                            v_xpath = self.get_xpath(ta[0][0])
-                                            # self.tst_inst.commonWait(v_xpath)
-                                            self.tst_inst.sleep_time(1)
-                                            text = self.get_text(v_xpath, second=1)
-                                            new_page_list.append(text)
-                                        except:
-                                            logger.error('跳转的新页面时数据没有带过去')
-                                            return False
+                            print('old:', new_page_list)
 
-                                print('old:', new_page_list)
-
-                                # 关闭其他菜单页
-                                # 2019-02-24
-                                # self._closePages(page_name=assertValues[2], isCurPage=False)
-                                self.tst_inst.closePages(page_name=assertValues[2])
-                                # self.tst_inst.driver.find_element(*(By.XPATH, '//li[@id="maintab__{}"]/a[@class="x-tab-strip-close"]'.format(assertValues[2]))).click()
-                                sleep(2)
-                                # 校验跳转传值是否正确
+                            # 关闭其他菜单页
+                            # 2019-02-24
+                            # self._closePages(page_name=case_result[2], isCurPage=False)
+                            self.tst_inst.closePages(page_name=case_result[2])
+                            # self.tst_inst.driver.find_element(*(By.XPATH, '//li[@id="maintab__{}"]/a[@class="x-tab-strip-close"]'.format(case_result[2]))).click()
+                            sleep(2)
+                            # 校验跳转传值是否正确
+                            res = False
+                            l = 0
+                            line = self.tst_inst.checkBoxAssertLine(case_result[1])
+                            for x, y, item in zip(old_page_list, new_page_list, old_data):
+                                if x == y:
+                                    logger.info(
+                                        '跳转坐标（{}行,{}列），element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                                            case_result[3], line + 1, item[11],
+                                            item[5], x, item[8], y))
+                                    res = True
+                                else:
+                                    logger.error(
+                                        '跳转坐标（{}行,{}列）跳转传值错误error:element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                                            case_result[3], line + 1, item[11],
+                                            item[5], x, item[8], y))
+                                    l += 1
+                            if l > 0:
                                 res = False
-                                l = 0
-                                line = self.tst_inst.checkBoxAssertLine(assertValues[1])
-                                for x, y, item in zip(old_page_list, new_page_list, old_data):
-                                    if x == y:
-                                        logger.info(
-                                            '跳转坐标（{row}行,{col列}），element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                                                row=assertValues[3], col=line + 1,
-                                                sn=item[11], xpath_old=item[5], xpath_old_value=x, xpath_new=item[8],
-                                                xpath_new_value=y))
-                                        res = True
-                                    else:
-                                        logger.error(
-                                            '跳转坐标（{row}行,{col列}）跳转传值错误error:element_sn:{sn}跳转前:xpath:{xpath_old}、值：{xpath_old_value}-----跳转后:xpath:{xpath_new}、值：{xpath_new_value}'.format(
-                                                row=assertValues[3], col=line + 1,
-                                                sn=item[11], xpath_old=item[5], xpath_old_value=x, xpath_new=item[8],
-                                                xpath_new_value=y))
-                                        l += 1
-                                if l > 0:
-                                    res = False
-                                return res
-                        except BaseException:
-                            pass
-                    except:
-                        print('跳转验证失败')
+                            return res
+                    except BaseException:
+                        pass
+                except:
+                    print('跳转验证失败')
         except:
             print('验证失败')
 
@@ -437,24 +431,24 @@ class AssertResult():
             '23': '跳转tab页不正确',
             '31': '查询详细信息的输入框的值与期望结果不一致'
         }
-        rslt = DataAccess.get_case_result(para['TST_CASE_ID'])
-        display_tab = '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'  # 根据XPATH判断显示区是否有值
+        case_id = para['TST_CASE_ID']
+        case_results = DataAccess.get_case_result(case_id)
+        display_tab = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'  # 根据XPATH判断显示区是否有值
         ls_check_rslt = {}
-        for row in rslt:  # 根据rslt有几个值来判断要做几次校验
-            assert_type = row[0]
+        for case_result in case_results:  # 根据rslt有几个值来判断要做几次校验
+            assert_type = case_result[0]
             if assert_type == '11':
-                assert_rslt = self.tst_inst.assert_context((By.XPATH, display_tab.format(row[1])))  # 判断是否有值
-            elif assert_type == '12':
-                assert_rslt = self.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
-            elif assert_type == '21':
-                assert_rslt = self.clickSkip(row[1:], caseId=para['TST_CASE_ID'], caseData=para,
-                                             version=version)  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
+                assert_rslt = self.tst_inst.assert_context((By.XPATH, display_tab.format(case_result[1])))  # 判断是否有值
+            elif assert_type == '12':  # 判断值是否准确,item截取字符串，在转换成列表
+                assert_rslt = self.assertValue(case_result[1:])
+            elif assert_type == '21':  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
+                assert_rslt = self.clickSkip(case_result[1:], para, version=version)
             elif assert_type == '22':
-                assert_rslt = self.skip_windows_page(row[1:])
+                assert_rslt = self.skip_windows_page(case_result[1:])
             elif assert_type == '23':
-                assert_rslt = self.skip_tab_page(row[1:], caseId=para['TST_CASE_ID'], caseData=para)
+                assert_rslt = self.skip_tab_page(case_result[1:], para)
             elif assert_type == '31':
-                assert_rslt = self.assertInput(row[1:], caseId=para['TST_CASE_ID'])
+                assert_rslt = self.assertInput(case_result[1:], case_id)
 
             ls_check_rslt.update({assert_type: assert_rslt})
 
@@ -462,10 +456,9 @@ class AssertResult():
         # 处理判断结果，具体那一步出错
         for item in ls_check_rslt.items():
             if item[1] == False:
-                logger.error(
-                    '用例编号:{case_id},错误类型:{type}'.format(case_id=para['TST_CASE_ID'], type=esplain[item[0]]))  # 出错具体原因
-
-                print('用例编号:{case_id},错误类型:{type}'.format(case_id=para['TST_CASE_ID'], type=esplain[item[0]]))
+                err_info = '用例编号:{},错误类型:{}'.format(case_id, esplain[item[0]])
+                logger.error(err_info)  # 出错具体原因
+                print(err_info)
                 result = item[1]
                 return result
         return result
@@ -555,14 +548,14 @@ class AssertResult():
     #         print(loc)
     #     self.tst_inst.driver.find_element(*loc).click()
 
-    def assertInput(self, para, caseId=''):
-        xpath = AssertResultLocators.DISPLAY_RESULT[1].format(para[0], para[1])
+    def assertInput(self, case_result, case_id):
+        xpath = AssertResultLocators.DISPLAY_RESULT[1].format(case_result[0], case_result[1])
         val = self.get_text((By.XPATH, xpath))
-        if para[2] == val:
+        if case_result[2] == val:
             logger.info('查询详细信息的输入框的值与期望结果一样')
             return True
         else:
-            logger.info('用例{}查询详细信息的输入框的值与期望结果不一致'.format(caseId))
+            logger.info('用例{}查询详细信息的输入框的值与期望结果不一致'.format(case_id))
             return False
 
 

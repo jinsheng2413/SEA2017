@@ -83,7 +83,6 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
         :param para:
         """
         self.assertTrue(AssertResult(self).check_query_result(para))
-        # self.assertTrue(self.check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

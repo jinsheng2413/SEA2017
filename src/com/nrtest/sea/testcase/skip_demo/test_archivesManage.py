@@ -85,7 +85,6 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
         :param para:
         """
         self.assertTrue(AssertResult(self).check_query_result(para, version=2))
-        # self.assertTrue(self.check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

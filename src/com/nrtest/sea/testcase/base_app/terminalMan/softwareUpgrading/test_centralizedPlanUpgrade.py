@@ -56,7 +56,6 @@ class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
         # 回收左边树
         self.recoverLeftTree()
 
-    # 集中计划升级
     def query(self, para):
         # 打开左边树选择供电单位
         self.openLeftTree(para['TREE_NODE'])

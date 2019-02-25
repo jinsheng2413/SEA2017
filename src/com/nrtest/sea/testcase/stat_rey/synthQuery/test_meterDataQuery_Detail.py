@@ -86,7 +86,6 @@ class TestMeterDataQueryDetail(TestCase, MeterDataQueryDetailPage):
         # 数据类别
         self.inputSel_data_sort(para['DATA_SORT'])
 
-
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 计量点状态

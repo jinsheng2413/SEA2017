@@ -61,6 +61,7 @@ class TestSectDataQuery(TestCase, SectDataQueryPage):
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 查询按钮
         self.btn_search()
+        self.sleep_time(10)
 
     def assert_query_result(self, para):
         """

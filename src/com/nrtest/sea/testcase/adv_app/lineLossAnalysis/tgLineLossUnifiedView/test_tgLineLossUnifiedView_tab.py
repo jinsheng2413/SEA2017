@@ -60,12 +60,6 @@ class TestTgLineLossUnifiedView_Tab(TestCase, TgLineLossUnifiedViewPage):
         self.inputStr_tg_no(para['TG_NO'])
         # 查询按钮
         self.btn_search()
-        # 查询日期，开始
-        self.inputDt_start_date_tab(para['START_DATE_TAB'])
-        # 查询日期，结束
-        self.inputDt_end_date_tab(para['END_DATE_TAB'])
-        # 月线损，查询按钮
-        self.btn_search_month()
 
     def assert_query_result(self, para):
         """

@@ -39,11 +39,12 @@ class TmnlSimFlowJB_1Page(Page):
 class TmnlSimFlowJB_2Page(Page):
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value)
+        # self.input(value)
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # Sim卡号
     def inputStr_sim_no(self, value):
-        self.input(value)
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 日期
     def inputDt_query_date(self, value):

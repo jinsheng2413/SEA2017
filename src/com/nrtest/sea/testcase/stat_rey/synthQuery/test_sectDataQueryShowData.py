@@ -1,10 +1,10 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_gatherSuccessRateTime.py
-@time: 2018/12/6 11:35
+@file: test_sectDataQueryShowData.py
+@time: 2018/9/29 16:13
 @desc:
 """
 
@@ -13,31 +13,30 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import \
-    GatherQualityAnalyze_data
-from com.nrtest.sea.pages.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_page import *
+from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.stat_rey.synthQuery.sectDataQuery_page import SectDataQueryPage
 
 
-# 基本应用→数据采集管理→采集质量分析→采集成功率:按时间统计
+# 统计查询→综合查询→抄表段数据查询:数据展示
 @ddt
-class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
+class TestSectDataQuery(TestCase, SectDataQueryPage):
     @classmethod
     def setUpClass(cls):
+        # *****************共享page类*****************
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.GatherSuccessRate_para)
+        menuPage = MenuPage.openMenu(SynthQuery_data.sectDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(GatherQualityAnalyze_data.GatherSuccessRate_tabName_time)
+        menuPage.clickTabPage(SynthQuery_data.sectDataQuery_tabName_data)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
-        # 刷新菜单页面
+        # 刷新浏览器
         cls.closePages(cls)
 
     def setUp(self):
@@ -55,37 +54,23 @@ class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
         self.recoverLeftTree()
 
     def query(self, para):
-        # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
-        # 数据类型
-        self.inputChk_data_type(para['DATA_TYPE'])
+        # 抄表段编号
+        self.inputStr_mr_sect_no(para['MR_SECT_NO'])
+        # 查询按钮
+        self.btn_search()
         # 查询日期，开始
         self.inputDt_start_date(para['START_DATE'])
         # 查询日期，结束
         self.inputDt_end_date(para['END_DATE'])
-        # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
-        # 用户范围
-        self.inputSel_cons_range(para['CONS_RANGE'])
-        # 停电标志
-        self.inputSel_power_cut_flag(para['POWER_CUT_FLAG'])
-        # 终端类型
-        self.inputSel_tmnl_type(para['TMNL_TYPE'])
-        # 规约类型
-        self.inputSel_protocol_type(para['PROTOCOL_TYPE'])
-        # 计量方式
-        self.inputSel_meas_mode(para['MEAS_MODE'])
-        # 相位
-        self.inputSel_phase_code(para['PHASE_CODE'])
-        # 点击查询按钮
-        self.btn_search()
+        # tab页查询按钮
+        self.btn_tab_search()
 
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(AssertResult(self).check_query_result(para))
+        self.assertTrue(self.check_query_result(para))
 
     def assert_query_criteria(self, para):
         """
@@ -96,10 +81,9 @@ class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.GatherSuccessRate_para,
-                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName_time))
+    @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName_data))
     def test_query(self, para):
-        """基本应用→数据采集管理→采集质量分析→采集成功率:按时间统计
+        """统计查询→综合查询→抄表段数据查询:数据展示
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -107,8 +91,8 @@ class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.GatherSuccessRate_para,
-                                  GatherQualityAnalyze_data.GatherSuccessRate_tabName_time, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName_data,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

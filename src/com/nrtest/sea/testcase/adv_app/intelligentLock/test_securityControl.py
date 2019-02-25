@@ -59,6 +59,12 @@ class TestSecurityControl(TestCase, SecurityControlPage):
         self.inputSel_key_no(para['KEY_NO'])
         # 供电单位，查询按钮
         self.btn_cons_search()
+        # 锁封编号
+        self.inputStr_lock_no(para['LOCK_NO'])
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+        # 查询按钮
+        self.btn_search()
 
     def assert_query_result(self, para):
         """

@@ -16,7 +16,6 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-# 统计查询→综合查询→抄表数据查询:抄表失败明细
 from com.nrtest.sea.pages.stat_rey.synthQuery.meterDataQuery_page import MeterDataQueryFailDetailPage
 
 

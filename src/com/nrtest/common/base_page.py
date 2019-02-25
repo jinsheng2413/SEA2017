@@ -148,11 +148,11 @@ class Page():
             elif dlg_src == 5:
                 action = '01'
                 # case_type = int(self.case_para['CASE_TYPE'])
-                if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
+                if 'EXPECTED_VAL' in self.case_para and self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
                     action = '03'
 
             elif dlg_src == 2:
-                if self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
+                if 'EXPECTED_VAL' in self.case_para and self.case_para['EXPECTED_VAL'] in info:  # 对话框信息与期望值一致
                     action = '03'
                 else:  # 有对话框，但与期望值不一致
                     action = '01'
@@ -172,7 +172,7 @@ class Page():
                 self.save_img(img_path, img_name)
 
         elif dlg_src == 2:
-            if bool(self.case_para['EXPECTED_VAL']):  # 期望异常对话框
+            if 'EXPECTED_VAL' in self.case_para and bool(self.case_para['EXPECTED_VAL']):  # 期望异常对话框
                 action = '04'
                 info = '期望有提示框，且提示信息为：\r' + self.case_para['EXPECTED_VAL']
                 self.save_img(img_path, img_name)
@@ -1306,28 +1306,6 @@ class Page():
         """
         self.menuPage.closePages(page_name, isCurPage)
 
-        # # ****定位到要右击的元素**
-        #
-        # loc = self.format_xpath(MenuLocators.CURRENT_MENU, page_name)
-        #
-        # right_click = self.driver.find_element(*loc)
-        # # 鼠标右键操作
-        # WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
-        # sleep(2)
-        # ActionChains(self.driver).context_click(right_click).perform()
-        #
-        # # 待定位右键菜单
-        # forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
-        # loc = self.format_xpath(MenuLocators.CLOSE_PAGES, forMenu)
-        # pe = self.format_xpath(MenuLocators.CLOSE_PAGES_SPE, forMenu)
-        #
-        # try:
-        #     WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
-        # except:
-        #     loc = pe
-        #     print(loc)
-        # self.driver.find_element(*loc).click()
-
     @staticmethod
     def format_xpath(xpath, format_val):
         """
@@ -1389,17 +1367,23 @@ class Page():
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
 
     def checkBoxAssertLine(self, value):
-        xp = '// *[text() =\'{}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td'.format(
+        xp = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td'.format(
             value)
-        el = self._find_elements((By.XPATH, xp))
-        dl = 0
-        l = 0
-        for i in el:
-            l += 1
-            if value in i.text:
-                dl = l - 1
+        elements = self._find_elements((By.XPATH, xp))
+        idx = 0
+        for i, el in enumerate(elements):
+            if value in el.text:
+                idx = i
                 break
-        return dl
+        return idx
+        # dl = 0
+        # l = 0
+        # for el in elements:
+        #     l += 1
+        #     if value in el.text:
+        #         dl = l - 1
+        #         break
+        # return dl
 
     def rightClick(self, locator):
         """
@@ -1516,8 +1500,9 @@ class Page():
                             skipMenuName = "//span[@class=\"x-tab-strip-inner\"]/span[contains(text(),'{}')]".format(
                                 assertValues[2])
                             result = self.assert_context((By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
-                            if 1:
-                                self.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
+                            # if 1:
+                            #     self.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
+                            self.closePages(assertValues[2])
                             return result
                         except BaseException:
                             pass

@@ -19,18 +19,16 @@ class SecurityControlPage(Page):
 
     # 供电单位，查询按钮
     def btn_cons_search(self):
-        # self.click(SecurityControlLocators.BTN_CONS_SEARCH)
         self.btn_query()
 
     # 锁封编号
     def inputStr_lock_no(self, content):
-        self.input(content)  # , *SecurityControlLocators.LOCK_NO)
+        self.input(content)
 
     # 用户编号
     def inputStr_cons_no(self, content):
-        self.input(content)  #, *SecurityControlLocators.CONS_NO)
+        self.input(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(SecurityControlLocators.BTN_SEARCH)
         self.btn_query()

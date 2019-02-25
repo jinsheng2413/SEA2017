@@ -64,8 +64,4 @@ class LoginPage(Page):
         """
         sleep(0.5)
         # # 登录异常弹窗确认
-        # el = self._find_displayed_element(self.locator_class.BTN_CONFIRM)
-        # if bool(el):
-        #     el.click()
-        # super().clean_screen(self.locator_class)
         super().clean_screen()

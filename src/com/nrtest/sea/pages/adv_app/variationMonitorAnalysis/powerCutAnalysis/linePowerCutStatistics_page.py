@@ -14,11 +14,8 @@ from com.nrtest.common.base_page import Page
 class LinePowerCutStatisticsPage(Page):
     # 查询日期
     def inputDt_query_date(self, content):
-        # self.exec_script(LinePowerCutStatisticsLocators.DATE_JS)
-        # self.input(content, *LinePowerCutStatisticsLocators.QRY_DATE)
         self.inputDate(content)
 
     # 查询按钮
     def btn_search(self):
-        # self.click(LinePowerCutStatisticsLocators.BTN_SEARCH)
         self.btn_query()

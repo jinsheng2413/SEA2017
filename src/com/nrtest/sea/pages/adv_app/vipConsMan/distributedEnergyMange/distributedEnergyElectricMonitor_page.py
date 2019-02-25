@@ -53,7 +53,6 @@ class DistributedEnergyElectricStatPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        # self.click(*DistributedEnergyElectricStatLocators.BTN_SEARCH)
         self.btn_query(True)
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测→分布式电源电量监测明细

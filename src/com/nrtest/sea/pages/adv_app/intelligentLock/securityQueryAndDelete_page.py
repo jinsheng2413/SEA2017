@@ -15,17 +15,16 @@ from com.nrtest.common.base_page import Page
 class SecurityQueryAndDeletePage(Page):
     # 电子钥匙编号
     def inputStr_key_no(self, content):
-        self.input(content)  # , *SecurityQueryAndDeleteLocators.KEY_NO)
+        self.input(content)
 
     # 锁封编号
     def inputStr_lock_no(self, content):
-        self.input(content)  #, *SecurityQueryAndDeleteLocators.LOCK_NO)
+        self.input(content)
 
     # 操作员编号
     def inputStr_staff_no(self, content):
-        self.input(content)  #, *SecurityQueryAndDeleteLocators.STAFF_NO)
+        self.input(content)
 
     # 查询按钮
     def btn_qry(self):
-        # self.click(SecurityQueryAndDeleteLocators.BTN_SEARCH)
         self.btn_query()

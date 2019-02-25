@@ -38,7 +38,7 @@ class TestDataTableAnalysis(TestCase, DataTableAnalysisPage):
     def tearDownClass(cls):
         print("执行结束")
         # 关闭菜单页面
-        # cls.closePages(cls)
+        cls.closePages(cls)
 
     def setUp(self):
         """

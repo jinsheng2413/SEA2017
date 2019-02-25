@@ -31,7 +31,6 @@ class MarketingServiceCallStatusPage(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click((By.XPATH, '//button[text()="统计"]'))
         self.curr_click(btn_name='统计')
 
 

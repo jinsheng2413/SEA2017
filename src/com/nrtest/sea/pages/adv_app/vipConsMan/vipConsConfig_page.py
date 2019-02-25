@@ -15,10 +15,6 @@ from com.nrtest.common.base_page import Page
 class VipConsConfig_Page(Page):
     # 运行容量等级
     def inputSel_run_level(self, options):
-        # self.click(VipConsConfig_locators.QRY_RUN_LEVEL)
-        # locator = self.get_select_locator(
-        #     VipConsConfig_locators.QRY_RUN_LEVEL_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(options)
 
     # 供电电压
@@ -35,13 +31,12 @@ class VipConsConfig_Page(Page):
 
     # 用户编号
     def inputStr_cons_no(self, value):
-        self.input(value)  # , *VipConsConfig_locators.QRY_CONS_NO)
+        self.input(value)
 
     # 用户名称
     def inputStr_cons_name(self, value):
-        self.input(value)  #, *VipConsConfig_locators.QRY_CONS_NAME)
+        self.input(value)
 
     # 查询
     def btn_qry(self):
-        # self.click(VipConsConfig_locators.BTN_QUERY)
         self.btn_query()

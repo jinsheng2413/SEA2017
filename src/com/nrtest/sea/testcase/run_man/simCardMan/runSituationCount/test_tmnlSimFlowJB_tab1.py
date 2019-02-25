@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.tmnlSimFlowJB_page import TmnlSimFlowJB_1Page
 
 
-# 运行管理→SIM卡管理→运行情况分析→终端流量统计（冀北）（第一个tab页）
+# 运行管理→SIM卡管理→运行情况分析→终端流量统计（冀北）：日流量统计
 @ddt
 class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
     @classmethod
@@ -54,7 +54,6 @@ class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
         self.recoverLeftTree()
 
     def query(self, para):
-        # sleep(4)
         # 打开左边树选择供电单位
         self.openLeftTree(para['TREE_NODE'])
         # 终端地址
@@ -67,7 +66,6 @@ class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
         self.inputDt_end_date(para['END_DATE'])
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -88,6 +86,8 @@ class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
     @data(*DataAccess.getCaseData(SimCardManData.para_TmnlSimFlowJB,
                                   SimCardManData.TmnlSimFlowJB_tab_count_day))
     def test_query(self, para):
+        """运行管理→SIM卡管理→运行情况分析→终端流量统计（冀北）：日流量统计
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

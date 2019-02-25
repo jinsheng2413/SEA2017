@@ -55,16 +55,14 @@ class TestBackgroupServeMonitor(TestCase, BackgroupServeMonitorPage):
     def query(self, para):
 
         # 日期类型选择
-        self.inputChk_by_date_type(para['BY_DATE_TYPE'])
+        self.inputChk_qry_date_type(para['QRY_DATE_TYPE'])
 
         # 查询日期/从
         self.inputDt_dt_start(para['DT_START'])
 
         # 到
-        if self.get_para_value(para['BY_DATE_TYPE']) == '按周统计':
+        if self.get_para_value(para['QRY_DATE_TYPE']) == '按周统计':
             self.inputDt_dt_end(para['DT_END'])
-            # sleep(0.5)
-            # self.remove_dt_readonly()
 
         # 运行状态
         self.inputSel_run_status(para['RUN_STATUS'])

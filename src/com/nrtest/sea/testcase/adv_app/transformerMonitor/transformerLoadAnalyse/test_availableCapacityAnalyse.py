@@ -73,7 +73,6 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
         self.inputStr_load_rate(para['LOAD_RATE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -91,7 +90,7 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_AvailableCapacityAnalyse)[1:2])
+    @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_AvailableCapacityAnalyse))
     def test_query(self, para):
         """高级应用→配变负载分析→报装可用容量分析
         """

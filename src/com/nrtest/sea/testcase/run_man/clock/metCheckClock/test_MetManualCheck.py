@@ -65,8 +65,6 @@ class TestMetManualCheck(TestCase,Page):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        self.sleep_time(2)
-
     def assert_query_result(self, para):
         """
         查询结果校验

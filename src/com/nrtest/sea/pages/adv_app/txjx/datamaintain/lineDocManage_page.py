@@ -27,7 +27,7 @@ class LineDocManagePage(Page):
         self.input(value)
 
     # 无负责人
-    def Chk_no_master(self, value):
+    def inputChk_no_master(self, value):
         self.clickSingleCheckBox(value)
 
     # 查询

@@ -62,7 +62,6 @@ class TestUserRegisterDetail(TestCase, UserRegisterDetailPage):
 
         # 查询按钮
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

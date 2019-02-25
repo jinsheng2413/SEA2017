@@ -83,7 +83,6 @@ class TestRemoteCommModulVersionMain(TestCase, RemoteCommModulVersionMainPage):
         self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

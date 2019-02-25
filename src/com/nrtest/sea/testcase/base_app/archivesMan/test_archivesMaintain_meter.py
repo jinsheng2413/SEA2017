@@ -42,7 +42,6 @@ class TestarchivesMaintain_meter(TestCase, ArchivesMaintain_meter_pages):
         :return:
         """
 
-        # self.sleep_time(2000)
 
     def tearDown(self):
         """

@@ -70,7 +70,6 @@ class TestAbnormalDetail(TestCase, AbnormalDetailPage):
         self.inputStr_except_type(para['EXCEPT_TYPE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

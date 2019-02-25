@@ -96,6 +96,9 @@ class MenuPage(Page):
         :param action:
         :return:
         """
+        print('国网2017标设菜单处理', items, action)
+        if items[-1] == '升级版本管理':
+            abcd = 'a'
         item_cnt = len(items)
         for i, item in enumerate(items):
             # MenuLocators

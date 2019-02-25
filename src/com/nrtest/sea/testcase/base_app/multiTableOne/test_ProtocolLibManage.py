@@ -79,7 +79,7 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
             self.inputDt_maintenance_time(para['MAINTENANCE_TIME'])
 
             # 到
-            self.inputDt_end_time(para['END_TIME'])
+            self.inputDt_end_time(para['END_DATE'])
 
         # 有效标志
         self.inputSel_effective_sign(para['EFFECTIVE_SIGN'])
@@ -92,7 +92,6 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

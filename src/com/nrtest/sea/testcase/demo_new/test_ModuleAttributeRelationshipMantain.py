@@ -81,7 +81,7 @@ class TestModuleAttributeRelationshipMantain(TestCase, ModuleAttributeRelationsh
         self.inputChk_mainten_status(para['MAINTEN_STATUS'])
 
         self.btn_qry()
-        self.sleep_time(2)
+
         # 校验
         # result = self.assert_context(
         #     *ModuleAttributeRelationshipMantainLocators.TAB_ONE)

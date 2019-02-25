@@ -51,7 +51,6 @@ class TestGeneralGroupSet(TestCase, GeneralGroupSetPage):
         :return:
         """
         # 回收左边树
-        self.sleep_time(3)
         self.recoverLeftTree()
 
     def query(self, para):

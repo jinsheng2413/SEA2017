@@ -132,7 +132,6 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
         #
         # # 打开左边树并选择
@@ -171,8 +170,8 @@ class TestTgLineLossAnalysisJibei(TestCase, TgLineLossAnalysisJibeiPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.TgLineLossAnalysisJibei_para)[0:1])
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.TgLineLossAnalysisJibei_para))
     def test_query(self, para):
         """高级应用→线损分析→线损统计分析→台区线损分析（冀北）
         """

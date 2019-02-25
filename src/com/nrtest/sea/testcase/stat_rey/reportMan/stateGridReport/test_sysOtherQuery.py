@@ -73,7 +73,6 @@ class TestSysOtherQuery(TestCase, SysOtherQueryPage):
         self.inputSel_stat_scope(para['STAT_SCOPE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

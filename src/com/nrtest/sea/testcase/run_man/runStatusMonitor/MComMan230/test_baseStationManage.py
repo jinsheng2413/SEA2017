@@ -12,11 +12,10 @@
 from unittest import TestCase
 
 from ddt import ddt, data
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.runStatusMonitor.MComMan230.mComMan230 import MComMan230
-from com.nrtest.sea.locators.run_man.runStatusMonitor.MComMan230.baseStationManage_locators import \
-    BaseStationManageLocators
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.runStatusMonitor.MComMan230.baseStationManage_page import BaseStationManagePage
 
@@ -68,7 +67,6 @@ class TestbaseStationManage(TestCase, BaseStationManagePage):
         self.inputStr_comm_addr(para['COMM_ADDR'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

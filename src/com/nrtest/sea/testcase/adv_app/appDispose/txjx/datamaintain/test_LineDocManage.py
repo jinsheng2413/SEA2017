@@ -18,8 +18,8 @@ from com.nrtest.sea.pages.adv_app.txjx.datamaintain.lineDocManage_page import Li
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-@ddt
 # 高级应用→台线系统→资料维护→线路资料维护
+@ddt
 class TestLineDocManage(TestCase, LineDocManagePage):
 
     @classmethod
@@ -71,7 +71,7 @@ class TestLineDocManage(TestCase, LineDocManagePage):
         self.inputStr_line_name(para['LINE_NAME'])
 
         # 无负责人
-        self.Chk_no_master(para['NO_MASTER'])
+        self.inputChk_no_master(para['NO_MASTER'])
 
         # 查询
         self.btn_qry()

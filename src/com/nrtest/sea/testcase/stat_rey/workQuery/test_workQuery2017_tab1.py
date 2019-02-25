@@ -70,7 +70,6 @@ class TestWorkQuery2017_tab1(TestCase, WorkCount2017Page):
         self.inputSel_app_type(para['APP_TYPE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

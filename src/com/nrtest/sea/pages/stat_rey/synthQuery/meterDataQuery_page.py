@@ -16,6 +16,7 @@ class MeterDataQueryDetailPage(Page):
     # 日冻结曲线类型
     def inputChk_day_freeze_curve_type(self, option):
         self.clickRadioBox(option, is_multi_elements=True, is_multi_tab=True)
+
     # 抄表段号
     def inputStr_mr_sect_no(self, content):
         self.curr_input(content, is_multi_tab=True, is_multi_elements=True)
@@ -40,7 +41,6 @@ class MeterDataQueryDetailPage(Page):
     def inputSel_data_sort(self, option):
         self.selectDropDown(option)
 
-
     # 农排用户选择
     def inputSel_user_select(self, index):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
@@ -49,8 +49,6 @@ class MeterDataQueryDetailPage(Page):
     def inputSel_sto_point_status(self, value):
         self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
 
-
-
     # 采集情况
     def inputChk_read_status(self, index):
         self.clickCheckBox_new(index, is_multi_tab=True)
@@ -58,6 +56,7 @@ class MeterDataQueryDetailPage(Page):
     # 查询按钮
     def btn_qry(self):
         self.btn_query(True)
+
 
 # 统计查询→综合查询→抄表数据查询:抄表失败统计
 class MeterDataQueryCountPage(Page):
@@ -83,6 +82,7 @@ class MeterDataQueryFailDetailPage(Page):
     # 规约类型
     def inputChk_protocol_type(self, value):
         self.selectCheckBox(value)
+
     # 日冻结曲线类型
     def inputChk_day_freeze_curve_type(self, option):
         self.clickRadioBox(option, is_multi_tab=True, is_multi_elements=True)
@@ -108,9 +108,6 @@ class MeterDataQueryFailDetailPage(Page):
     # 查询日期
     def inputDt_query_date(self, value):
         self.inputDate(value)
-
-
-
 
     # 农排用户选择
     def inputSel_user_select(self, option):
@@ -147,7 +144,6 @@ class MeterDataQueryFailDetailPage(Page):
         if line == 2 or line == 3:
             return 0
         self.clickRadioBox(value)
-
 
     # 查询
     def btn_qry(self):

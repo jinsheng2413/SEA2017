@@ -61,13 +61,13 @@ class TestBackgroupServeMonitorDetail(TestCase, BackgroupServeMonitorDetailPage)
         self.inputStr_service_name(para['SERVICE_NAME'])
 
         # 日期类型选择
-        self.inputChk_by_date_type(para['BY_DATE_TYPE'])
+        self.inputChk_qry_date_type(para['QRY_DATE_TYPE'])
 
         # 查询日期/从
         self.inputDt_dt_start(para['DT_START'])
 
         # 到
-        if self.get_para_value(para['BY_DATE_TYPE']) == '按周统计':
+        if self.get_para_value(para['QRY_DATE_TYPE']) == '按周统计':
             self.inputDt_dt_end(para['DT_END'])
 
         # 查询按钮

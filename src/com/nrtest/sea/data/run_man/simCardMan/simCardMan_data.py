@@ -7,6 +7,8 @@
 @time: 2018/11/8 0008 14:51
 @desc:
 """
+
+
 class SimCardManData:
     # 运行管理-->SIM卡管理-->档案管理
     dataManage_para = '99933100'
@@ -16,7 +18,7 @@ class SimCardManData:
     para_communMeter = '99933430'
     # 运行管理-->SIM卡管理-->4G通信方式-->终端接入明细
     para_terminalDetail = '99933410'
-    #运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
+    # 运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
     para_simInstallStat = '99933310'
     para_simInstallStat_static = '安装情况统计'
     para_simInstallStat_detail = '安装情况明细'

@@ -71,13 +71,8 @@ class TestGatherSuccessRateTime(TestCase, GatherSuccessRateTimePage):
         self.inputSel_power_cut_flag(para['POWER_CUT_FLAG'])
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
-
-        # 通信方式
-        # self.inputSel_comm_mode(para['COMM_MODE'])
-
         # 规约类型
         self.inputSel_protocol_type(para['PROTOCOL_TYPE'])
-
         # 计量方式
         self.inputSel_meas_mode(para['MEAS_MODE'])
         # 相位

@@ -19,8 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.clock.clockResult_page import ClockResultDetailPage
 
 
-# 运行管理→时钟管理→对时结果分析
-# 对时结果明细
+# 运行管理→时钟管理→对时结果分析：对时结果明细
 @ddt
 class TestClockResultDetail(TestCase, ClockResultDetailPage):
 
@@ -76,7 +75,6 @@ class TestClockResultDetail(TestCase, ClockResultDetailPage):
         self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

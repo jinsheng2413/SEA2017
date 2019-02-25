@@ -40,7 +40,6 @@ class TestElePricePara(TestCase, ElePricePages):
         :return:
         """
 
-        # self.sleep_time(2000)
 
     def tearDown(self):
         """

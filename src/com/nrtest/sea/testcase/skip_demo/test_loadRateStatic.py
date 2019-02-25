@@ -73,7 +73,6 @@ class TestLoadRateStatic(TestCase, LoadRateStaticPage):
         self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -92,7 +91,7 @@ class TestLoadRateStatic(TestCase, LoadRateStaticPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TradnsformerMonitorData.para_TradnsformerMonitor,
-                                  TradnsformerMonitorData.para_TradnsformerMonitor_static)[0:1])
+                                  TradnsformerMonitorData.para_TradnsformerMonitor_static))
     def test_query(self, para):
         """高级应用→配变负载分析→负载率分析:负载率统计
         对查询结果有无、数据链接跳转等校验

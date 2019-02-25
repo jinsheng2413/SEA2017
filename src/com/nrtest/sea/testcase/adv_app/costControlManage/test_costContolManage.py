@@ -42,7 +42,6 @@ class TestSpecialCostControlManage(TestCase, CostControlManagePage):
         :return:
         """
 
-        # self.sleep_time(2000)
 
     def tearDown(self):
         """

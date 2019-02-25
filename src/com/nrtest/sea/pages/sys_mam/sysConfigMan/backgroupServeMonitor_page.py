@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 class BackgroupServeMonitorPage(Page):
 
     # 日期类型选择
-    def inputChk_by_date_type(self, tab_name):
+    def inputChk_qry_date_type(self, tab_name):
         self.clickDt_Tab(tab_name, True, True)
 
     # 查询日期/从
@@ -45,7 +45,7 @@ class BackgroupServeMonitorDetailPage(Page):
         self.input(content)
 
     # 日期类型选择
-    def inputChk_by_date_type(self, tab_name):
+    def inputChk_qry_date_type(self, tab_name):
         self.clickDt_Tab(tab_name, True, True)
 
     # 查询日期/从

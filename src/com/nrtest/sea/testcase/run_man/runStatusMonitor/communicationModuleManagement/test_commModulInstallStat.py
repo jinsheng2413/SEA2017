@@ -80,7 +80,6 @@ class TestCommModulInstallStat(TestCase, CommModulInstallStatPage):
         self.inputSel_module_ver(para['MODULE_VER'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
             """

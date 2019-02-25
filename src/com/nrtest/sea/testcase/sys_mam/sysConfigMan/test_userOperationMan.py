@@ -53,9 +53,6 @@ class TestUserOperationMonitor(TestCase, UserOperationMonitorPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        # self.displayTreeMenu()
-        # sleep(2)
-
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 

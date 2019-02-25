@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.sectDataQuery_page import SectDataQueryPage
 
 
-# 统计查询→综合查询→抄表段数据查询
+# 统计查询→综合查询→抄表段数据查询:数据展示
 @ddt
 class TestSectDataQuery(TestCase, SectDataQueryPage):
     @classmethod
@@ -50,8 +50,6 @@ class TestSectDataQuery(TestCase, SectDataQueryPage):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-        # 去除查询干扰数据(要传入对应的page页面类)
-        # self.clear_values(SectDataQueryPage)
         # 回收左边树
         self.recoverLeftTree()
 
@@ -60,6 +58,12 @@ class TestSectDataQuery(TestCase, SectDataQueryPage):
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 查询按钮
         self.btn_search()
+        # 查询日期，开始
+        self.inputDt_start_date(para['START_DATE'])
+        # 查询日期，结束
+        self.inputDt_end_date(para['END_DATE'])
+        # tab页查询按钮
+        self.btn_tab_search()
 
     def assert_query_result(self, para):
         """
@@ -79,13 +83,16 @@ class TestSectDataQuery(TestCase, SectDataQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName_data))
     def test_query(self, para):
+        """统计查询→综合查询→抄表段数据查询:数据展示
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName_data, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.sectDataQuery_para, SynthQuery_data.sectDataQuery_tabName_data,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -9,7 +9,6 @@
 """
 
 import unittest
-from time import sleep
 
 from ddt import ddt, data
 
@@ -64,7 +63,6 @@ class TestTmnlParamSetGroup2(unittest.TestCase, TermParaSetGroup2Page):
         """
 
         # 打开左边树并选择
-        sleep(2)
         self.openLeftTree(para['TREE_NODE'])
 
         # 终端地址

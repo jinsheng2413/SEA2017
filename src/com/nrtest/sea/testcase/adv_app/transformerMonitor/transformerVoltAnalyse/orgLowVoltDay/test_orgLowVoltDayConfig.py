@@ -71,7 +71,6 @@ class TestOrgLowVoltDayConfig(TestCase, OrgLowVoltDayConfigPage):
         self.inputSel_is_volt_monitor(para['IS_VOLT_MONITOR'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

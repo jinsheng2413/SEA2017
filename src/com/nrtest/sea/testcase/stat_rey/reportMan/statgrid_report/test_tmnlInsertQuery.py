@@ -89,7 +89,6 @@ class TestTmnlInsertQuery(TestCase, TmnlInsertQueryPage):
         self.inputChk_tab_name(para['TAB_NAME'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

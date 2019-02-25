@@ -69,7 +69,6 @@ class TestStaticByFac(TestCase, StaticByFacPage):
         self.inputChk_stat_type(para['STAT_TYPE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

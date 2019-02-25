@@ -18,8 +18,8 @@ from com.nrtest.sea.pages.adv_app.txjx.datamaintain.lineDocManage_page import Li
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-@ddt
 # 高级应用→台线系统→资料维护→线路资料维护
+@ddt
 class TestLineDocManage(TestCase, LineDocManagePage):
 
     @classmethod

@@ -179,7 +179,10 @@ def checkParaWithDB(dirname):
                                 menu_tab.setdefault('TAB', tab[1])
 
                         temp = line.strip().replace(' ', '')
-                        if temp.startswith('self.') and temp.find('para') > 0 and temp.find('[') > 0:
+
+                        # if temp.startswith('self.') and temp.find('para') > 0 and temp.find('[') > 0:
+                        if (temp.find('openLeftTree') >= 0 or temp.find('self.input') >= 0) and temp.find('#') == -1 and temp.find(
+                                'para') > 0 and temp.find('[') > 0:
                             ls = temp.split('\'')
                             para = ls[1].split('\'')[0]
                             defs.append(para + '\r')

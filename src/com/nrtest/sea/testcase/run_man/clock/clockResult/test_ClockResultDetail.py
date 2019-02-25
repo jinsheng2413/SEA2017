@@ -19,8 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.clock.clockResult_page import ClockResultDetailPage
 
 
-# 运行管理→时钟管理→对时结果分析
-# 对时结果明细
+# 运行管理→时钟管理→对时结果分析：对时结果明细
 @ddt
 class TestClockResultDetail(TestCase, ClockResultDetailPage):
 

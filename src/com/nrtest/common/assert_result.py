@@ -426,6 +426,8 @@ class AssertResult():
             '21': '跳转菜单页面不正确',
             '22': '跳转弹窗不正确',
             '23': '跳转tab页不正确',
+            '24': '跳转弹窗的名称带的值不正确',
+            '25': '跳转到新的菜单页，但不携带值错误',
             '31': '查询详细信息的输入框的值与期望结果不一致'
         }
         case_id = para['TST_CASE_ID']
@@ -446,6 +448,8 @@ class AssertResult():
                 assert_rslt = self.skip_tab_page(case_result[1:], para)
             elif assert_type == '24':
                 assert_rslt = self.tab_skip_into_window(case_result[1:])
+            elif assert_type == '25':#跳转到新的菜单页，但不携带值
+                assert_rslt = self.skip_new_menu(case_result[1:])
             elif assert_type == '31':
                 assert_rslt = self.assertInput(case_result[1:], case_id)
 
@@ -587,8 +591,18 @@ class AssertResult():
         except:
             pass
 
+    def skip_new_menu(self,para):
+        self.skip_to_page(para)
+        xpath = AssertResultLocators.MENU_NAME[1].format(para[2])
+        res = self.tst_inst.assert_context((By.XPATH,xpath))
+        self.tst_inst.menuPage.closePage(page_name=para[2])
+        return res
+
+
+
 
 class AssertResultLocators:
+
     # 弹窗的关闭xpath
     WINDOWS_CLOSE = (By.XPATH,
                      '//*[@class=\" x-window x-window-plain x-resizable-pinned\"]/div[@class=\"x-window-tl\"]//div[@class=\"x-tool x-tool-close\"]')
@@ -606,6 +620,8 @@ class AssertResultLocators:
 
     # tab页面获取所有文字
     TAB_PAGE_TEXT = (By.XPATH, '//*[@id="maintab"]')
+    #菜单名称
+    MENU_NAME = (By.XPATH,'//li[id="maintab__{}"]')
 
     # 菜单页的名称
     MENU_NAME = (By.XPATH, "//span[@class=\"x-tab-strip-inner\"]/span[contains(text(),'{}')]")

@@ -7,7 +7,6 @@
 @time: 2018/11/6 0006 11:23
 @desc:
 """
-from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -63,7 +62,6 @@ class TestTerParaSet(TestCase, TermParaSetPage):
         """
 
         # 打开左边树并选择
-        sleep(2)
         self.openLeftTree(para['TREE_NODE'])
 
         # 终端地址
@@ -80,8 +78,6 @@ class TestTerParaSet(TestCase, TermParaSetPage):
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
-
 
     def assert_query_result(self, para):
         """

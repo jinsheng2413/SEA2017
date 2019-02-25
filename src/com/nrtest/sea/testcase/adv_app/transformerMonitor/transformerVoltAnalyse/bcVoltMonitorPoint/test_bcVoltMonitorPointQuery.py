@@ -71,7 +71,6 @@ class TestBcVoltMonitorPointQuery(TestCase, BcVoltMonitorPointQueryPage):
         self.inputStr_monitor_point_name(para['MONITOR_POINT_NAME'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

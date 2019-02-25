@@ -65,7 +65,7 @@ class TestAccountsAudit(TestCase, AccountsAuditPage):
 
         # 日期类型
         self.inputChk_date_type(para['DATE_TYPE'])
-        self.sleep_time(2)
+
         # 时间
         self.inputDt_query_date(para['QUERY_DATE'])
         # 账号状态
@@ -73,7 +73,6 @@ class TestAccountsAudit(TestCase, AccountsAuditPage):
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

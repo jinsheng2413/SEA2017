@@ -73,7 +73,6 @@ class TestAutoCheckPolicy(TestCase, AutoCheckPolicyPage):
         self.inputSel_auto_times(para['AUTO_TIMES'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

@@ -43,7 +43,6 @@ class test_archivesAnalysisOfAnomaly_count(unittest.TestCase, ArchivesAnalysisOf
         :return:
         """
 
-        # self.sleep_time(2000)
 
     def tearDown(self):
         """

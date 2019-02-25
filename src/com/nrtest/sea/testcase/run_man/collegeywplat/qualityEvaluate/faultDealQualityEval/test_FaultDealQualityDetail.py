@@ -72,7 +72,6 @@ class TestFaultDealQualityDetail(TestCase, FaultDealQualityDetailPage):
         self.inputSel_flow_status(para['FLOW_STATUS'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

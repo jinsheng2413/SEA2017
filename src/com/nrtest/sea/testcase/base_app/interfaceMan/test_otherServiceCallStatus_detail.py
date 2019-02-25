@@ -68,7 +68,6 @@ class test_otherServiceCallStatus_detail(TestCase, MServiceCallStatus_detail_Pag
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

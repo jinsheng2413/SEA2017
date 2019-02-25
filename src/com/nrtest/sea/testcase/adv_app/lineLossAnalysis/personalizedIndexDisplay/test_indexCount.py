@@ -80,7 +80,7 @@ class TestIndexDetailStat(TestCase, IndexDetailStatPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PersonalizedIndexDisplay_data.IndexDetail_para,
                                   tabName=PersonalizedIndexDisplay_data.IndexDetail_count_tab))
     def test_query(self, para):

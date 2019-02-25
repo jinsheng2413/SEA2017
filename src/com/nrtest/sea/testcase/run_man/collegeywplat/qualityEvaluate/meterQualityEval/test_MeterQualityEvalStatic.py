@@ -71,7 +71,6 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalStaticPage):
         self.inputSel_meter_factory(para['METER_FACTORY'])
 
         self.btn_qry()
-        self.sleep_time(4)
 
     def assert_query_result(self, para):
         """

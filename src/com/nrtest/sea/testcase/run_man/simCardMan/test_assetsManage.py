@@ -79,7 +79,6 @@ class TestAssetsManage(TestCase, AssetsManagePage):
         self.inputSel_subordinate_system(para['SUBORDINATE_SYSTEM'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

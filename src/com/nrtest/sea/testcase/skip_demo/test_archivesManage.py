@@ -43,7 +43,6 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
         :return:
         """
 
-        # self.sleep_time(2000)
 
     def tearDown(self):
         """
@@ -77,7 +76,6 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -95,7 +93,7 @@ class test_archivesManage(TestCase, ArchivesManage_pages):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesManage_para)[1:2])
+    @data(*DataAccess.getCaseData(ArchivesMan_data.archivesManage_para))
     def test_query(self, para):
         """基本应用→档案管理→档案同步
 

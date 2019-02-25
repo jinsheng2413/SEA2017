@@ -54,8 +54,6 @@ class Test_StrategicManualRecord(TestCase, StrategicManualRecordPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        self.sleep_time(2)
-
         self.openLeftTree(para['TREE_NODE'])
 
         # 采集点名
@@ -72,7 +70,6 @@ class Test_StrategicManualRecord(TestCase, StrategicManualRecordPage):
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

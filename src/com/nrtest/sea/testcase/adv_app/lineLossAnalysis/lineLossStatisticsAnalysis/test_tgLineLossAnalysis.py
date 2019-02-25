@@ -131,9 +131,7 @@ class TestTgLineLossAnalysis(TestCase, TgLineLossAnalysisPage):
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
-        # sleep(2)
         # # 打开左边树并选择
         # self.openLeftTree(para['TREE_NODE'])
         #
@@ -182,8 +180,8 @@ class TestTgLineLossAnalysis(TestCase, TgLineLossAnalysisPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.TgLineLossAnalysis_para)[0:1])
+    @BeautifulReport.add_test_img()
+    @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.TgLineLossAnalysis_para))
     def test_query(self, para):
         """高级应用→线损分析→线损统计分析→台区线损分析
         """

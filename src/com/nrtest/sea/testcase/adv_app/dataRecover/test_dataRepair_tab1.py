@@ -71,7 +71,6 @@ class Test_DataRepair_1(TestCase, DataRepair_1Page):
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

@@ -66,7 +66,6 @@ class TestLogStatAnalysis_fail(TestCase, LogStatAnalysis_fial_Page):
         self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

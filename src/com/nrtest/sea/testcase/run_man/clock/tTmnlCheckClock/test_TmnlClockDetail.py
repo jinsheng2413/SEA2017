@@ -83,7 +83,6 @@ class TestTmnlClockDetail(TestCase, TmnlClockDetailPage):
         self.inputSel_call_status(para['CALL_STATUS'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

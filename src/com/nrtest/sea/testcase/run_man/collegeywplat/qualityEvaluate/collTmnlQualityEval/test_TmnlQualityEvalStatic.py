@@ -72,7 +72,6 @@ class TestTmnlQualityEvalStatic(TestCase, TmnlQualityEvalStaticPage):
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

@@ -75,15 +75,6 @@ class TestMetclassfiy(TestCase, MetclassfiyPage):
         self.inputStr_operator(para['OPERATOR'])
 
         self.btn_qry()
-        self.sleep_time(2)
-        # 校验
-        # result = self.assert_context(MetclassfiyLocators.TAB_ONE)
-        # self.assertTrue(result)
-
-    # @BeautifulReport.add_test_img()
-    # @data(*DataAccess.getCaseData(DataGatherMan_data.metclassfiy_para))
-    # def test_query(self, para):
-    #     self.query(para)
 
     def assert_query_result(self, para):
         """

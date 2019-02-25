@@ -74,7 +74,6 @@ class TestTerminalOnlineSpied(TestCase, TerminalOnlineSpiedPage):
         self.inputStr_tmnl_type(para['TMNL_TYPE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

@@ -98,7 +98,6 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
         self.inputSel_exe_result_status(para['EXE_RESULT_STATUS'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

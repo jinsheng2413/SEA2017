@@ -43,7 +43,6 @@ class TestlocalFeiManageExeCount_dis_count(TestCase, LocalFeiManageExeCount_dis_
         :return:
         """
 
-        # self.sleep_time(2000)
 
     def tearDown(self):
         """

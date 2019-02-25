@@ -79,7 +79,6 @@ class TestOverFlowStatic(TestCase, OverFlowStaticPage):
         self.inputDt_static_time(para['STATIC_TIME'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

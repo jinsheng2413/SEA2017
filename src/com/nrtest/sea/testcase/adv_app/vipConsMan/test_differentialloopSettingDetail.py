@@ -60,7 +60,6 @@ class Test_DifferentialloopSettingDetail(TestCase, DifferentialloopSettingDetail
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

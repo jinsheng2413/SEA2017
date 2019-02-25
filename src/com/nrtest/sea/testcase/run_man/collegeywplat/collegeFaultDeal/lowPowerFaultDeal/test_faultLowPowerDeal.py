@@ -79,7 +79,6 @@ class TestFaultLowPowerDeal(TestCase, FaultLowPowerDealPage):
         self.inputChk_fault_type(para['FAULT_TYPE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

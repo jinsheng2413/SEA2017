@@ -8,7 +8,6 @@
 @desc:
 """
 
-from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -63,7 +62,6 @@ class TestImportanceMsgPush(TestCase, ImportanceMsgPushPage):
 
         # 查询按钮
         self.btn_search()
-        sleep(2)
 
     def assert_query_result(self, para):
         """

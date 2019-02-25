@@ -69,7 +69,6 @@ class TestTmnlInstallDetai_debug(TestCase, LineDataQueryPage):
         self.inputStr_line_no(para['LINE_NO'])
 
         self.btn_search()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

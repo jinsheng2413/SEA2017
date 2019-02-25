@@ -59,7 +59,6 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompilePage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # sleep(2)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 任务类型
@@ -78,7 +77,6 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompilePage):
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

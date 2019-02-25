@@ -70,7 +70,6 @@ class TestDataTransQurey(TestCase, DataTransQureyPage):
         self.inputDt_examine_date(para['EXAMINE_DATE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

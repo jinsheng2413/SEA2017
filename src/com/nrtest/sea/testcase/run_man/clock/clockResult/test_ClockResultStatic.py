@@ -66,10 +66,12 @@ class TestClockResultStatic(TestCase, ClockResultStaticPage):
         self.inputChk_stat_type(para['STAT_TYPE'])
 
         # 根据类别进行选择
-        if (para['STAT_TYPE'].split(';')[-1] == '采集终端'):
+
+        if self.get_para_value(para['STAT_TYPE']) == '采集终端':
             # 终端厂商
             self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
-        elif (para['STAT_TYPE'].split(';')[-1] == '电能表'):
+
+        elif self.get_para_value(para['STAT_TYPE']) == '电能表':
             # 电能表厂商
             self.inputSel_meter_factory(para['METER_FACTORY'])
 
@@ -77,7 +79,6 @@ class TestClockResultStatic(TestCase, ClockResultStaticPage):
         self.inputDt_query_date(para['QUERY_DATE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

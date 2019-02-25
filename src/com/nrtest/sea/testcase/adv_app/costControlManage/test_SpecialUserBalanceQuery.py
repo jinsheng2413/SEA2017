@@ -7,7 +7,6 @@
 @time: 2018/8/19 0019 9:26
 @desc:
 """
-from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -43,7 +42,6 @@ class TestSpecialUserBalanceQuery(TestCase, SpecialUserBalanceQueryPage):
         :return:
         """
 
-        # self.sleep_time(2000)
 
     def tearDown(self):
         """
@@ -75,7 +73,6 @@ class TestSpecialUserBalanceQuery(TestCase, SpecialUserBalanceQueryPage):
 
         # 查询
         self.btn_qry()
-        sleep(2)
 
     def assert_query_result(self, para):
         """

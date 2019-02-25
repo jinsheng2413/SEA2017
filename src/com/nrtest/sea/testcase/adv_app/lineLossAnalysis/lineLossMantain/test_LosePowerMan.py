@@ -106,7 +106,7 @@ class TestLosePowerMan(TestCase, LosePowerManPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossMantain_data.losePowerMan_para))
     def test_query(self, para):
         """高级应用→线损分析→线损模型维护→线损模型设计

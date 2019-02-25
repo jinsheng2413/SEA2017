@@ -54,7 +54,6 @@ class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
         self.recoverLeftTree()
 
     def query(self, para):
-        # sleep(4)
         # 打开左边树选择供电单位
         self.openLeftTree(para['TREE_NODE'])
         # 终端地址
@@ -67,7 +66,6 @@ class Test_TnmlSimFlowJB_1(TestCase, TmnlSimFlowJB_1Page):
         self.inputDt_end_date(para['END_DATE'])
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

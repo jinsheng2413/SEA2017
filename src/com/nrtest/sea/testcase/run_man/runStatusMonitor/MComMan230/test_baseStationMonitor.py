@@ -68,7 +68,6 @@ class TestBaseStationMonitor(TestCase, BaseStationMonitorPage):
         self.inputStr_comm_addr(para['COMM_ADDR'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

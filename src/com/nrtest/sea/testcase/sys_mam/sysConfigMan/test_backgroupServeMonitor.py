@@ -63,8 +63,6 @@ class TestBackgroupServeMonitor(TestCase, BackgroupServeMonitorPage):
         # 到
         if self.get_para_value(para['QRY_DATE_TYPE']) == '按周统计':
             self.inputDt_dt_end(para['DT_END'])
-            # sleep(0.5)
-            # self.remove_dt_readonly()
 
         # 运行状态
         self.inputSel_run_status(para['RUN_STATUS'])

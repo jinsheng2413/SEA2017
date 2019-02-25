@@ -78,7 +78,6 @@ class TestModuleAttributeRelationshipMantain(TestCase, ModuleAttributeRelationsh
         self.inputChk_mainten_status(para['MAINTEN_STATUS'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

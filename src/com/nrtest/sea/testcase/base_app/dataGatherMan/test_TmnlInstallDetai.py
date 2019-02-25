@@ -75,7 +75,6 @@ class TestTmnlInstallDetai(TestCase, TmnlInstallDetaiStatPage):
         self.inputDt_end_time(para['END_TIME'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

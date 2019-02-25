@@ -75,7 +75,6 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
         self.inputSel_app_status(para['APP_STATUS'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """
@@ -93,7 +92,7 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReducePool_para)[0:1])
+    @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReducePool_para))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)

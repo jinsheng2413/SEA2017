@@ -89,7 +89,7 @@ class TestLineLossSynthesizeAnalysis(TestCase, LineLossSynthesizeAnalysisPage):
         result = self.check_query_criteria(para)
         self.assertTrue(result)
 
-    # @BeautifulReport.add_test_img()
+    @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossSynthesizeAnalysis_para))
     def test_query(self, para):
         """高级应用→线损分析→线损统计分析→线损综合分析

@@ -77,7 +77,6 @@ class TestMeterQualityEvalDetail(TestCase, MeterQualityEvalDetailPage):
         self.inputDt_end_date(para['END_DATE'])
 
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

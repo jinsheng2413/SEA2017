@@ -83,7 +83,6 @@ class Test_News(TestCase, News_Page):
 
         # 查询
         self.btn_qry()
-        self.sleep_time(2)
 
     def assert_query_result(self, para):
         """

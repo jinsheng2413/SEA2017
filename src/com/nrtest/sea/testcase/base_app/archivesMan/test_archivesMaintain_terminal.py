@@ -42,7 +42,6 @@ class TestarchivesMaintain_terminal(TestCase, ArchivesMaintain_terminal_pages):
         :return:
         """
 
-        # self.sleep_time(2000)
 
     def tearDown(self):
         """

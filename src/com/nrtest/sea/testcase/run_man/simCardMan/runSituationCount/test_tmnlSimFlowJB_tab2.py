@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.tmnlSimFlowJB_page import TmnlSimFlowJB_2Page
 
 
-# 运行管理→SIM卡管理→运行情况分析→终端流量统计（冀北）（第一个tab页）
+# 运行管理→SIM卡管理→运行情况分析→终端流量统计（冀北）:月流量统计
 @ddt
 class Test_TnmlSimFlowJB_2(TestCase, TmnlSimFlowJB_2Page):
     @classmethod
@@ -66,9 +66,6 @@ class Test_TnmlSimFlowJB_2(TestCase, TmnlSimFlowJB_2Page):
         # 流量状态
         self.inputChk_flow_status(para['FLOW_STATUS'])
 
-        # # 点击零流量
-        # self.click(TmnlSimFlowJB_2Locators.QRY_ZERO_FLOW)
-
         # 查询
         self.btn_qry()
 
@@ -91,6 +88,8 @@ class Test_TnmlSimFlowJB_2(TestCase, TmnlSimFlowJB_2Page):
     @data(*DataAccess.getCaseData(SimCardManData.para_TmnlSimFlowJB,
                                   SimCardManData.TmnlSimFlowJB_tab_count_month))
     def test_query(self, para):
+        """运行管理→SIM卡管理→运行情况分析→终端流量统计（冀北）:月流量统计
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

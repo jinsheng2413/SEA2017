@@ -77,6 +77,8 @@ class TestReadIntimeRate(TestCase, ReadIntimeRatePage):
         # 日期时间
         self.inputDt_date_time(para['DATE_TIME'])
 
+        # 通讯规约
+        self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])
         # 查询
         self.btn_query()
 

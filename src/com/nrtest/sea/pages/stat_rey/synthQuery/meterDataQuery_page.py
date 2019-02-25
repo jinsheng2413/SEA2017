@@ -131,11 +131,11 @@ class MeterDataQueryFailDetailPage(Page):
     def inputSel_sto_point_status(self, value):
         self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
 
-    # 日冻结需量和市值曲线
+    # 日冻结需量和示值曲线
     def inputChk_day_freezing_demand_value_curve(self, value):
-        self.clickRadioBox(value)
+        self.clickRadioBox(value, is_multi_elements=True, is_multi_tab=True)
 
-    # 日冻结电能市值
+    # 日冻结电能示值
     def inputChk_day_freezing_ele_value(self, value):
         self.clickRadioBox(value, is_multi_elements=True, is_multi_tab=True)
 

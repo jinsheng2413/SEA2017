@@ -27,4 +27,4 @@ class RealtimeDataPage(Page):
 
     # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)

@@ -9,10 +9,6 @@
 """
 from time import sleep
 
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-
 from com.nrtest.common import global_drv
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.base_page import Page
@@ -248,68 +244,54 @@ class MenuPage(Page):
                 num_end[counter_end].click()
                 counter_end -= 1
 
+    def closePage(self, page_name=None):
+        """
+
+        :param page_name:
+        :return:
+        """
+        menu_name = page_name if bool(page_name) else self.menu_name
+        menu_loc = self.format_xpath(self.locator_class.CURR_MENU, menu_name)
+        try:
+            self.driver.find_element(*menu_loc).click()
+        except Exception as ex:
+            print('定位菜单：{} 报错，错误信息：{}\r'.format(menu_name, ex))
+
     def closePages(self, page_name='工作台', isCurPage=True):
         """
         通过工作台或定位菜单页面，关闭当前页面或除当前页面外其他页面
-        :param page_name: 当“工作台”时相当于清屏操作：即关闭所有窗口
-        :param isCurPage:True-关闭其他所有页；False-关闭当前页
+        :param page_name: 需关闭的菜单
+        :param isCurPage:True-关闭当前页；False-关闭其他所有页
         """
         if isCurPage:
-            menu_name = page_name if page_name != '工作台' else self.menu_name
-            menu_loc = self.format_xpath(self.locator_class.CURR_MENU, menu_name)
-            try:
-                self.driver.find_element(*menu_loc).click()
-            except Exception as ex:
-                print('定位菜单：{} 报错，错误信息：{}\r'.format(menu_name, ex))
+            page_name = None if page_name == '工作台' else page_name
+            self.closePage(page_name)
         else:
-            # ****定位到要右击的元素**  从BasePage类转来
-            loc = self.format_xpath(self.locator_class.CURRENT_MENU, page_name)
+            if page_name == '工作台':
+                menus = ('', page_name)
+            else:
+                menus = (self.locator_class.WORKBENCH, page_name)
+            loc = self.format_xpath(self.locator_class.CLOSE_OTHERS_MENU, menus)
 
-            right_click = self.driver.find_element(*loc)
-            # 鼠标右键操作
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
-            sleep(2)
-            ActionChains(self.driver).context_click(right_click).perform()
-
-            # 待定位右键菜单
-            forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
-            loc = self.format_xpath(self.locator_class.CLOSE_PAGES, forMenu)
-            pe = self.format_xpath(self.locator_class.CLOSE_PAGES_SPE, forMenu)
-
-            try:
-                WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
-            except:
-                loc = pe
-                print(loc)
+            # # 定位到要右击的元素
+            # loc = self.format_xpath(self.locator_class.CURRENT_MENU, page_name)
+            # right_click = self.driver.find_element(*loc)
+            # # WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
+            # # 鼠标右键操作
+            # ActionChains(self.driver).context_click(right_click).perform()
+            #
+            # # 定位右键菜单,并点击
+            # forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
+            # loc = self.format_xpath(self.locator_class.CLOSE_PAGES, forMenu)
+            # try:
+            #     WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
+            # except:
+            #     loc = self.format_xpath(self.locator_class.CLOSE_PAGES_SPE, forMenu)
+            #     print(loc)
             self.driver.find_element(*loc).click()
 
         if self.is_refresh == 'Y':
             self.refreshPage()
-
-        # # ****定位到要右击的元素**  从BasePage类转来
-        #
-        # loc = self.format_xpath(self.locator_class.CURRENT_MENU, page_name)
-        #
-        # right_click = self.driver.find_element(*loc)
-        # # 鼠标右键操作
-        # WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
-        # sleep(2)
-        # ActionChains(self.driver).context_click(right_click).perform()
-        #
-        # # 待定位右键菜单
-        # forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
-        # loc = self.format_xpath(self.locator_class.CLOSE_PAGES, forMenu)
-        # pe = self.format_xpath(self.locator_class.CLOSE_PAGES_SPE, forMenu)
-        #
-        # try:
-        #     WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
-        # except:
-        #     loc = pe
-        #     print(loc)
-        # self.driver.find_element(*loc).click()
-        #
-        # if self.is_refresh == 'Y':
-        #     self.refreshPage()
 
     def displayTreeMenu(self):
         """

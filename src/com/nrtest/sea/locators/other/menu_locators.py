@@ -40,6 +40,9 @@ class MenuLocators:
 
     # 当前菜单的关闭按钮
     CURR_MENU = (By.XPATH, '//li[@id="maintab__{}"]/a[@class="x-tab-strip-close"]')
+    # 当前菜单或工作台外的其他菜单关闭按钮
+    WORKBENCH = 'and @id != "maintab__工作台"'
+    CLOSE_OTHERS_MENU = (By.XPATH, '//li[starts-with(@id,"maintab") {} and @id != "maintab__{}"]/a[@class="x-tab-strip-close"]')
 
     # 当前正在操作的菜单页面
     CURRENT_MENU = (By.XPATH, '//*[@class="x-tab-strip-inner"]//*[contains(text(),"%s")]')

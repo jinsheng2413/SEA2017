@@ -15,7 +15,6 @@ from com.nrtest.common.logger import Logger
 from com.nrtest.common.utils import Utils
 
 logger = Logger(logger='AssertResult').getlog()
-from time import sleep
 
 
 class AssertResult():
@@ -385,9 +384,8 @@ class AssertResult():
                             # 关闭其他菜单页
                             # 2019-02-24
                             # self._closePages(page_name=case_result[2], isCurPage=False)
-                            self.tst_inst.closePages(case_result[2])
+                            self.tst_inst.menuPage.closePage(case_result[2])
                             # self.tst_inst.driver.find_element(*(By.XPATH, '//li[@id="maintab__{}"]/a[@class="x-tab-strip-close"]'.format(case_result[2]))).click()
-                            sleep(2)
                             # 校验跳转传值是否正确
                             res = False
                             l = 0

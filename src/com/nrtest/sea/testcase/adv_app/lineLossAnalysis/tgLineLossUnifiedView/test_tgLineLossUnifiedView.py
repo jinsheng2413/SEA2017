@@ -62,14 +62,28 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
         # 查询按钮
         self.btn_search()
 
-        # 查询日期，开始
-        self.inputDt_start_date(para['START_DATE'])
+        # TAB页名称
+        self.inputChk_tab_name(para['TAB_NAME'])
 
-        # 查询日期，结束
-        self.inputDt_end_date(para['END_DATE'])
+        if self.get_para_value(para['TAB_NAME']) == '日线损':
+            # 查询日期，开始
+            self.inputDt_start_date(para['START_DATE'])
 
-        # 日线损，查询按钮
-        self.btn_search_day()
+            # 查询日期，结束
+            self.inputDt_end_date(para['END_DATE'])
+
+            # 日线损，查询按钮
+            self.btn_search_day()
+
+        if self.get_para_value(para['TAB_NAME']) == '月线损':
+            # 查询日期，开始
+            self.inputDt_start_date(para['START_DATE'])
+
+            # 查询日期，结束
+            self.inputDt_end_date(para['END_DATE'])
+
+            # 月线损，查询按钮
+            self.btn_search_month()
 
     def assert_query_result(self, para):
         """

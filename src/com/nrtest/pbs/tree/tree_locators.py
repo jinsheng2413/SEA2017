@@ -71,6 +71,21 @@ class TreeLocators:
                   '07': (By.XPATH, '//div[@id="mainwest"]//div[@id="orgBackTree"]'),
                   '08': (By.XPATH, '//div[@id="mainwest"]//div[@id="controlTree"]')}
 
+
+class TreeSingleUserLocators:
+    NODE_LEVEL = (By.XPATH, '//div[@class="x-tree-root-node"]//span[text()="{}"]/../../a/preceding-sibling::img[contains(@class, "elbow")]')
+    LEEF_NODE = (By.XPATH, '//div[@class="x-tree-root-node"]//span[text()="{}"]')
+
+    # 【搜索】
+    # 查询条件
+    QRY_INPUT = (By.XPATH, '//img[@class="x-form-trigger x-form-search-trigger "]/../../span/preceding-sibling::input')
+    BTN_QUERY = (By.XPATH, '//img[@class="x-form-trigger x-form-search-trigger "]')
+    # 查找到的终端节点
+    TMNL_NODE = (By.XPATH, '//div[@class="x-grid-group-title"]/ancestor::div[starts-with(@class, "x-grid-group x-grid-group")]')
+
+    # 用户信息行
+    USER_LINE = (By.XPATH, '//div[contains(@id, "gp-TMNL_ASSET_NO") and @class="x-grid-group-body"]//div[text()="{}"]')
+
 class TreePBSLocators:
     # class = "panel layout-panel layout-panel-west layout-split-west"
     TREE_DIV = (By.XPATH, '//div[ends-with(@class, "split-west"]')

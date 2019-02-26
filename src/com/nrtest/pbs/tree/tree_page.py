@@ -13,7 +13,7 @@ from time import sleep
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
-from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators
+from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators, TreeSingleUserLocators
 
 
 class BaseTreePage(Page):
@@ -178,7 +178,7 @@ class TreePBSPage(BaseTreePage):
 class TreePage(BaseTreePage):
     def _click_node_tab(self, node_tab_idx):
         if self.tree_type[0] != '4':
-            node_tab = {'01': '供电区域', '02': '用户', '03': '终端', '04': '行业', '05': '电网结构', '06': '群组'}
+            node_tab = {'01': '供电区域', '02': '用户', '03': '终端', '04': '行业', '05': '电网结构', '06': '群组', '07': '单户综合'}
             loc = self.format_xpath(TreeLocators.NODE_TAB, node_tab[node_tab_idx])
             self.click(loc)
 
@@ -295,6 +295,60 @@ class TreePage(BaseTreePage):
         self.node_list = []
         self.tree_type = '50'
         self._operate_left_tree(node_info)
+
+
+class TreeSingleUserPage(BaseTreePage):
+    def _find_in_parent(self, item, idx, items):
+        """
+        在父节点范围内查找
+        :param item:
+        :param idx:
+        :param items:
+        :return:
+        """
+        levels = len(items) - 1  # 总层级数-1
+        locator = self.format_xpath(TreeSingleUserLocators.NODE_LEVEL, (item))
+        # 不带复选框的叶子节点只点击文本元素，不点击文本元素边上的图标元素
+        if idx == levels and self.tree_type[1] == '0':
+            locator = self.format_xpath(TreeSingleUserLocators.LEEF_NODE, item)
+        return locator
+
+    def _node_click(self, element, curr_idx, node_levels, is_chk_node=False):
+        """
+
+        :param element:
+        :param curr_idx:当前节点序号：0 开始
+        :param node_levels:当前节点层级数：n -1
+        :param is_chk_node: True-既有节点，同时带复选框；False-只有节点，没复选框
+        """
+        self.node_list.append(element)
+        attrs = element.get_attribute('class').strip()
+
+        # 关闭：class ="x-tree-ec-icon x-tree-elbow-end-plus"
+
+        # 打开：class ="x-tree-ec-icon x-tree-elbow-end-minus"
+        is_click = attrs.endswith('plus') or curr_idx == node_levels
+
+        # 状态不一致时点击
+        if is_click:
+            element.click()
+            sleep(0.3)
+
+    def user_query(self, node_value):
+        self.input(node_value, *TreeSingleUserLocators.QRY_INPUT)
+
+        # 点击查询按钮
+        self.click(TreeSingleUserLocators.BTN_QUERY)
+
+        self.timeout_seconds = 10
+        self.query_timeout()
+
+        elements = self._find_elements(TreeSingleUserLocators.TMNL_NODE)
+        for el in elements:
+            el.click()
+            xpath = self.format_xpath(TreeSingleUserLocators.USER_LINE, node_value)
+            self.click(xpath)
+
 
 
 # class TreePBSPage(Page):

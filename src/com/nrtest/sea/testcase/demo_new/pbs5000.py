@@ -16,7 +16,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-class TestPBS5000(TestCase, TreePage):
+class TestPBS5000(TestCase, TreeSingleUserPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
@@ -28,7 +28,8 @@ class TestPBS5000(TestCase, TreePage):
         # menuPage = MenuPage.openMenu('0000204')  # 带勾选--41
         # menuPage = MenuPage.openMenu('0001103')  # 电压等级树--40
 
-        menuPage = MenuPage.openMenu('99912100')  # 20
+        # menuPage = MenuPage.openMenu('99912100')  # 20
+        menuPage = MenuPage.openMenu('99941940')  # 20  统计查询	综合查询	单户综合查询
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # menuPage.goto_frame()
         # sleep(1)
@@ -63,5 +64,6 @@ class TestPBS5000(TestCase, TreePage):
         # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "010701"}'            # 带复选框
         # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "020301"}'  # 普通树
 
-        node_no = '{"NODE_FLAG": "01", "NODE_VALE": "134010112"}'
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "134010112"}'
+        node_no = '{"NODE_FLAG": "01", "NODE_VALE": "A02"}'
         self.openLeftTree(node_no)

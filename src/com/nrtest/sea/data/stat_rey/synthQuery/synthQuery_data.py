@@ -127,3 +127,6 @@ class SynthQuery_data:
 
     # 统计查询--综合查询--单户综合查询
     consIntrgratedQuery_para = '99941940'
+
+    consIntrgratedQuery_dayDataQry_tab = '日抄表数据'
+    consIntrgratedQuery_realTimeDataQry_tab = '实时抄表数据'

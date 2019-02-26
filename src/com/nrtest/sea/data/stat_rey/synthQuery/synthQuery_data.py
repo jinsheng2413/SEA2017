@@ -130,3 +130,8 @@ class SynthQuery_data:
 
     consIntrgratedQuery_dayDataQry_tab = '日抄表数据'
     consIntrgratedQuery_realTimeDataQry_tab = '实时抄表数据'
+    consIntrgratedQuery_eleMap_tab = '电量曲线图'
+    consIntrgratedQuery_tmnlEvent_tab = '终端事件'
+    consIntrgratedQuery_cons_doc_tab = '用户档案'
+    consIntrgratedQuery_cp_tab = '采集点信息'
+    consIntrgratedQuery_

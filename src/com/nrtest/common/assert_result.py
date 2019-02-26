@@ -180,6 +180,14 @@ class AssertResult():
                         case_result[3], line + 1, item[11],
                         item[5], x, item[8], y))
                 res = True
+            elif item[7] == '02':
+                if x in y :
+                    logger.info(
+                        '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                            case_result[3], line + 1, item[11],
+                            item[5], x, item[8], y))
+                    res = True
+
             else:
                 err_info = '跳转坐标（{}行，{}列）,跳转传值错误error:element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
                     case_result[3], line + 1, item[11],
@@ -397,6 +405,13 @@ class AssertResult():
                                             case_result[3], line + 1, item[11],
                                             item[5], x, item[8], y))
                                     res = True
+                                elif item[7] == '02':
+                                    if x in y:
+                                        logger.info(
+                                            '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                                                case_result[3], line + 1, item[11],
+                                                item[5], x, item[8], y))
+                                        res = True
                                 else:
                                     logger.error(
                                         '跳转坐标（{}行,{}列）跳转传值错误error:element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
@@ -690,6 +705,13 @@ class AssertResult():
                             para[3], line + 1, item[11],
                             item[5], x, item[8], y))
                     res = True
+                elif item[7] == '02':
+                    if x in y:
+                        logger.info(
+                            '跳转坐标（{}行,{}列），element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                                para[3], line + 1, item[11],
+                                item[5], x, item[8], y))
+                        res = True
                 else:
                     logger.error(
                         '跳转坐标（{}行,{}列）跳转传值错误error:element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(

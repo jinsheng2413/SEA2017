@@ -232,7 +232,8 @@ class AssertResult():
             is_skiped = False
         finally:
             close_xpath = AssertResultLocators.WINDOWS_CLOSE[1].format(case_result[2])
-            self.tst_inst.click()
+
+            self.tst_inst.click((By.XPATH, close_xpath))
 
         return is_skiped
 

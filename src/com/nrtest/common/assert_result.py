@@ -426,6 +426,8 @@ class AssertResult():
             '21': '跳转菜单页面不正确',
             '22': '跳转弹窗不正确',
             '23': '跳转tab页不正确',
+            '24': '跳转弹窗的名称带的值不正确',
+            '25': '跳转到新的菜单页，但不携带值错误',
             '31': '查询详细信息的输入框的值与期望结果不一致'
         }
         case_id = para['TST_CASE_ID']
@@ -444,6 +446,10 @@ class AssertResult():
                 assert_rslt = self.skip_windows_page(case_result[1:])
             elif assert_type == '23':
                 assert_rslt = self.skip_tab_page(case_result[1:], para)
+            elif assert_type == '24':
+                assert_rslt = self.tab_skip_into_window(case_result[1:])
+            elif assert_type == '25':#跳转到新的菜单页，但不携带值
+                assert_rslt = self.skip_new_menu(case_result[1:])
             elif assert_type == '31':
                 assert_rslt = self.assertInput(case_result[1:], case_id)
 
@@ -555,11 +561,53 @@ class AssertResult():
             logger.info('用例{}查询详细信息的输入框的值与期望结果不一致'.format(case_id))
             return False
 
+    def tab_skip_into_window(self, para):
+        """
+        弹窗为非固定值,跳转
+        :param para:
+        :return:
+        """
+
+        line = self.checkBoxAssertLine_up(para[2])
+        xpath = AssertResultLocators.DISPLAY_LINE[1].format(para[0], para[3], line)
+        content = self.tst_inst.driver.find_element(*(By.XPATH, xpath)).text
+        self.skip_to_page(para)
+        tab_xpath = AssertResultLocators.WINDOWS_NAME_24[1].format(content)
+        res = self.tst_inst.assert_context((By.XPATH, tab_xpath))
+        self.tst_inst.sleep_time(2)
+        con_xpath = tab_xpath + '/../div[1]'
+        el = self.tst_inst.click((By.XPATH, con_xpath))
+
+        return res
+
+    def checkBoxAssertLine_up(self, value):
+        l = self.tst_inst.checkBoxAssertLine(value)
+        try:
+            res = self.tst_inst.assert_context((By.XPATH, AssertResultLocators.DISPLAY_BLANK[1]))
+            if res == False:
+                return l + 1
+            else:
+                return l
+        except:
+            pass
+
+    def skip_new_menu(self,para):
+        self.skip_to_page(para)
+        xpath = AssertResultLocators.MENU_NAME[1].format(para[2])
+        res = self.tst_inst.assert_context((By.XPATH,xpath))
+        self.tst_inst.menuPage.closePage(page_name=para[2])
+        return res
+
+
+
 
 class AssertResultLocators:
+
     # 弹窗的关闭xpath
     WINDOWS_CLOSE = (By.XPATH,
                      '//*[@class=\" x-window x-window-plain x-resizable-pinned\"]/div[@class=\"x-window-tl\"]//div[@class=\"x-tool x-tool-close\"]')
+    WINDOWS_CLOSE_NEW = (
+        By.XPATH, '//div[@class=" x-window x-resizable-pinned"]//span[@class="x-window-header-text" and text()="{}"]')
 
     # 弹窗页面的
     WINDOWS_PAGE = (By.XPATH, '//*[@class=\" x-window x-window-plain x-resizable-pinned\"]')
@@ -567,9 +615,13 @@ class AssertResultLocators:
     # 弹窗标题
     WINDOWS_NAME = (By.XPATH,
                     '//div[@class=\" x-window x-window-plain x-resizable-pinned\"]//div[@class=\"x-window-header x-unselectable x-window-draggable\"]//*[text()="{}"]')
+    WINDOWS_NAME_24 = (
+        By.XPATH, '//div[@class=" x-window x-resizable-pinned"]//span[@class="x-window-header-text" and text()="{}"]')
 
     # tab页面获取所有文字
     TAB_PAGE_TEXT = (By.XPATH, '//*[@id="maintab"]')
+    #菜单名称
+    MENU_NAME = (By.XPATH,'//li[id="maintab__{}"]')
 
     # 菜单页的名称
     MENU_NAME = (By.XPATH, "//span[@class=\"x-tab-strip-inner\"]/span[contains(text(),'{}')]")
@@ -580,6 +632,8 @@ class AssertResultLocators:
     # 显示区
     DISPLAY_LINE = (By.XPATH,
                     '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]')
+    # 空格
+    DISPLAY_BLANK = (By.XPATH, '//div[@class="x-grid3-row-checker"]')
 
     # input输入框
     INPUT_BASE_GU = (By.XPATH, '//label[text()= "{}"]/../div[@class=\"x-form-element\"]//input')
@@ -591,13 +645,13 @@ class AssertResultLocators:
         By.XPATH, '(//*[@id="UserDistStat_DetailGrid"]//tr[@class="x-toolbar-right-row"]//div[@class="xtb-text"])[1]')
     # 删除空格
     CLEAN_BLANK = r'''var elements,el,txt;
-                    elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-                    for (var i = 0; i < elements.snapshotLength; i++) {
-                        el= elements.snapshotItem(i);
-                        txt = el.innerText.replace(new RegExp(/[\s:：\-\(\)（）]/,'g'), '');
-                        if (txt != el.innerText)
-                            el.innerText = txt
-                    }'''
+                        elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+                        for (var i = 0; i < elements.snapshotLength; i++) {
+                            el= elements.snapshotItem(i);
+                            txt = el.innerText.replace(new RegExp(/[\s:：\-\(\)（）]/,'g'), '');
+                            if (txt != el.innerText)
+                                el.innerText = txt
+                        }'''
 
 
 if __name__ == '__main__':

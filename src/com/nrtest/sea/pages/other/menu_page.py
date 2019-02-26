@@ -105,6 +105,7 @@ class MenuPage(Page):
             locators = getattr(self.locator_class, 'MENU_LEVEL' + str(i + 1))
             loc = (locators[0], locators[1] % item)
             if (item_cnt == 4 and i == 2) or (item_cnt == 5 and i in (2, 3)):
+                # loc = (By.XPATH, '//ul[@class="x-menu-list"]/li/a/span[text() = "{}"]/ancestor::li[@class="x-menu-list-item "]'.format(item))
                 self.hover(loc)
             else:
                 # 菜单太多需要滚屏处理,如：统计查询→综合查询→巡检仪综合查询

@@ -16,7 +16,6 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-# 统计查询→综合查询→抄表数据查询:抄表失败明细
 from com.nrtest.sea.pages.stat_rey.synthQuery.meterDataQuery_page import MeterDataQueryFailDetailPage
 
 
@@ -65,14 +64,14 @@ class TestMeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         l = 0
         # 节点名
         self.openLeftTree(para['TREE_NODE'])
-        # 日冻结电能市值
+        # 日冻结电能示值
         day_ele_value = self.get_para_value(para['DAY_FREEZING_ELE_VALUE'])
         if day_ele_value == '日冻结电能示值':
             l = 1
             self.inputChk_day_freezing_ele_value(para['DAY_FREEZING_ELE_VALUE'])
         # 日冻结需量和市值曲线
         day_fdv_curve = self.get_para_value(para['DAY_FREEZING_DEMAND_VALUE_CURVE'])
-        if day_fdv_curve in ['日冻结需量', '市值曲线']:
+        if day_fdv_curve in ['日冻结需量', '示值曲线']:
             l = 2
             self.inputChk_day_freezing_demand_value_curve(para['DAY_FREEZING_DEMAND_VALUE_CURVE'])
         # 日冻结曲线类型

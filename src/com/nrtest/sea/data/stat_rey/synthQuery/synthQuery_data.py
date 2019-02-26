@@ -124,3 +124,6 @@ class SynthQuery_data:
     realTimeReadMeterQry_gw_detail = '抄表明细'
     realTimeReadMeterQry_gw_failstat = '抄表失败统计'
     realTimeReadMeterQry_gw_faildetail = '抄表失败明细'
+
+    # 统计查询--综合查询--单户综合查询
+    consIntrgratedQuery_para = '99941940'

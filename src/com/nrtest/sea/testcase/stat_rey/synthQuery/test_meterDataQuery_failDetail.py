@@ -61,31 +61,21 @@ class TestMeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        l = 0
+
         # 节点名
         self.openLeftTree(para['TREE_NODE'])
-        # 日冻结电能示值
-        day_ele_value = self.get_para_value(para['DAY_FREEZING_ELE_VALUE'])
-        if day_ele_value == '日冻结电能示值':
-            l = 1
-            self.inputChk_day_freezing_ele_value(para['DAY_FREEZING_ELE_VALUE'])
-        # 日冻结需量和市值曲线
-        day_fdv_curve = self.get_para_value(para['DAY_FREEZING_DEMAND_VALUE_CURVE'])
-        if day_fdv_curve in ['日冻结需量', '示值曲线']:
-            l = 2
-            self.inputChk_day_freezing_demand_value_curve(para['DAY_FREEZING_DEMAND_VALUE_CURVE'])
-        # 日冻结曲线类型
-        day_curve_type = self.get_para_value(para['DAY_FREEZE_CURVE_TYPE'])
-        if day_curve_type in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线']:
-            l = 3
-            self.inputChk_day_freeze_curve_type(para['DAY_FREEZE_CURVE_TYPE'])
-        # 相位
-        self.inputSel_phase_code(para['PHASE_CODE'], line=l)
+        # 冻结数据类型
+        self.inputChk_freeze_data_type(para['FREEZE_DATA_TYPE'])
+        freeze_data_type = self.get_para_value(para['FREEZE_DATA_TYPE'])
+        if freeze_data_type == '日冻结电能示值':
+            # 正反是否有功
+            self.inputChk_power_type(para['POWER_TYPE'])
+            # 反相采集结果
+            self.inputSel_recerse_collection_result(para['RECERSE_COLLECTION_RESULT'])
 
-        # 正反是否有功
-        self.inputChk_power_type(para['POWER_TYPE'], line=l)
-        # 反相采集结果
-        self.inputSel_recerse_collection_result(para['RECERSE_COLLECTION_RESULT'], line=l)
+        elif freeze_data_type in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线']:
+            # 相位
+            self.inputSel_phase_code(para['PHASE_CODE'])
 
         # 抄表段号
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
@@ -105,7 +95,6 @@ class TestMeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         self.inputSel_user_select(para['USER_SELECT'])
         # 查询
         self.btn_qry()
-        print('------------')
 
     def assert_query_result(self, para):
         """

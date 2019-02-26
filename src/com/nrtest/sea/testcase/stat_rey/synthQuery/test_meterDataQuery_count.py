@@ -64,14 +64,13 @@ class TestMeterDataQueryCount(TestCase, MeterDataQueryCountPage):
         # 节点名
         self.openLeftTree(para['TREE_NODE'])
 
-        # 日冻结曲线类型
-        self.inputChk_day_freeze_curve_type(para['DAY_FREEZE_CURVE_TYPE'])
+        # 冻结数据类型
+        self.inputChk_freeze_data_type(para['FREEZE_DATA_TYPE'])
 
-        val = self.get_para_value(para['DAY_FREEZE_CURVE_TYPE'])
-        if val in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线']:
+        freeze_data_type = self.get_para_value(para['FREEZE_DATA_TYPE'])
+        if freeze_data_type in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线']:
             # 相位
             self.inputSel_phase_code(para['PHASE_CODE'])
-
 
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])

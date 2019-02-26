@@ -66,13 +66,8 @@ class TestMeterDataQueryDetail(TestCase, MeterDataQueryDetailPage):
         # 节点名
         self.openLeftTree(para['TREE_NODE'])
 
-        # 日冻结曲线类型
-        self.inputChk_day_freeze_curve_type(para['DAY_FREEZE_CURVE_TYPE'])
-        val = self.get_para_value(para['DAY_FREEZE_CURVE_TYPE'])
-        is_uip_curve = val in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线']
-        if is_uip_curve:
-            # 相位
-            self.inputSel_phase_code(para['PHASE_CODE'])
+        # 冻结数据类型
+        self.inputChk_freeze_data_type(para['FREEZE_DATA_TYPE'])
 
         # 抄表段号
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
@@ -94,7 +89,11 @@ class TestMeterDataQueryDetail(TestCase, MeterDataQueryDetailPage):
         # 农排用户选择
         self.inputSel_user_select(para['USER_SELECT'])
 
-        if is_uip_curve == False:
+        freeze_data_type = self.get_para_value(para['FREEZE_DATA_TYPE'])
+        if freeze_data_type in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线']:
+            # 相位
+            self.inputSel_phase_code(para['PHASE_CODE'])
+        elif freeze_data_type == '日冻结电能示值':
             # 采集情况
             self.inputChk_read_status(para['READ_STATUS'])
 

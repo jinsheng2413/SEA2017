@@ -231,7 +231,8 @@ class AssertResult():
         except:
             is_skiped = False
         finally:
-            self.tst_inst.click(AssertResultLocators.WINDOWS_CLOSE)
+            close_xpath = AssertResultLocators.WINDOWS_CLOSE[1].format(case_result[2])
+            self.tst_inst.click()
 
         return is_skiped
 
@@ -831,7 +832,7 @@ class AssertResultLocators:
 
     # 弹窗的关闭xpath
     WINDOWS_CLOSE = (By.XPATH,
-                     '//*[@class=\" x-window x-window-plain x-resizable-pinned\"]/div[@class=\"x-window-tl\"]//div[@class=\"x-tool x-tool-close\"]')
+                     '//*[text()="{}"]/../div[1]')
     WINDOWS_CLOSE_NEW = (
         By.XPATH, '//div[@class=" x-window x-resizable-pinned"]//span[@class="x-window-header-text" and text()="{}"]')
 
@@ -840,7 +841,7 @@ class AssertResultLocators:
 
     # 弹窗标题
     WINDOWS_NAME = (By.XPATH,
-                    '//div[@class=\" x-window x-window-plain x-resizable-pinned\"]//div[@class=\"x-window-header x-unselectable x-window-draggable\"]//*[text()="{}"]')
+                    '//span[text()="{}"]')
     WINDOWS_NAME_24 = (
         By.XPATH, '//div[@class=" x-window x-resizable-pinned"]//span[@class="x-window-header-text" and text()="{}"]')
 

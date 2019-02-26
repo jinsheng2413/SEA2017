@@ -1010,9 +1010,24 @@ class Page():
         :param locator: 元素的xpath
         """
         try:
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
-            above = self._find_element(locator)
-            ActionChains(self.driver).move_to_element(above).perform()
+            # WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
+            # hover_obj = self._find_element(locator)
+            # ActionChains(self.driver).move_to_element(hover_obj).perform()
+
+            js = 'var evObj = document.createEvent("MouseEvents"); \
+            evObj.initMouseEvent("mouseover", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null); \
+            arguments[0].dispatchEvent(evObj);'
+
+            # 请保留下面被注释的代码
+            # js = 'if(document.createEvent){ \
+            #         var evObj = document.createEvent("MouseEvents""); \
+            #         evObj.initEvent("mouseover", true, false); \
+            #         arguments[0].dispatchEvent(evObj);} \
+            #       else if(document.createEventObject) { \
+            #         arguments[0].fireEvent("onmouseover");}'
+
+            hover_obj = self._find_element(locator)
+            self.driver.execute_script(js, hover_obj)
         except NameError as ex:
             logger.error('悬停失败：{}'.format(ex))
 

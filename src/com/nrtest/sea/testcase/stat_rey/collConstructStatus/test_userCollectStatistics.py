@@ -82,6 +82,8 @@ class TestUserCollectStatistics(TestCase, UserCollectStatisticsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CollConstructStatus_data.UserCollectStatistics_para))
     def test_query(self, para):
+        """统计查询→综合查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
@@ -90,6 +92,8 @@ class TestUserCollectStatistics(TestCase, UserCollectStatisticsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CollConstructStatus_data.UserCollectStatistics_para, valCheck=True))
     def _test_checkValue(self, para):
+        """统计查询→综合查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)

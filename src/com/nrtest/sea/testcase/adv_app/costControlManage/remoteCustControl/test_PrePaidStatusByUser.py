@@ -94,7 +94,7 @@ class TestPrePaidStatusByUser(TestCase, PrePaidStatusByUserPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.NewTab_ByUser))
-    def test_userQuery(self, para):
+    def test_query(self, para):
         """高级应用→费控管理→远程费控→远程费控执行统计:按用户执行统计
         """
         self.query(para)

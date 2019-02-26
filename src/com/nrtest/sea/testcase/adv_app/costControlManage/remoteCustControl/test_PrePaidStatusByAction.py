@@ -92,7 +92,7 @@ class TestPrePaidStatusByAction(TestCase, PrePaidStatusByActionPage):
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_ByAction))
-    def test_InstructionQuery(self, para):
+    def test_query(self, para):
         """高级应用→费控管理→远程费控→远程费控执行统计:按指令执行统计
         """
         self.start_case(para, __file__)

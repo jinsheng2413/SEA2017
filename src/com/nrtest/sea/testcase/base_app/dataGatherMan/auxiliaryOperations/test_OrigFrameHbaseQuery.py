@@ -95,6 +95,8 @@ class TestOrigFrameHbaseQuery(TestCase, OrigFrameHbaseQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AuxiliaryOperationsData.origFrameHbaseQuery_para))
     def test_query(self, para):
+        """运行管理→采集运维平台→辅助运维→报文查询
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
@@ -103,6 +105,8 @@ class TestOrigFrameHbaseQuery(TestCase, OrigFrameHbaseQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AuxiliaryOperationsData.origFrameHbaseQuery_para, valCheck=True))
     def _test_checkValue(self, para):
+        """运行管理→采集运维平台→辅助运维→报文查询
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)

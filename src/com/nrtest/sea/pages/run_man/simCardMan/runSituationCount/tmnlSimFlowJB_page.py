@@ -16,11 +16,11 @@ from com.nrtest.common.base_page import Page
 class TmnlSimFlowJB_1Page(Page):
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value)  # , *TmnlSimFlowJB_1Locators.QRY_TMNL_ADDR)
+        self.input(value)
 
     # Sim卡号
     def inputStr_sim_no(self, value):
-        self.input(value)  # , *TmnlSimFlowJB_1Locators.QRY_SIM_NO)
+        self.input(value)
 
     # 日期
     def inputDt_start_date(self, value):
@@ -32,7 +32,6 @@ class TmnlSimFlowJB_1Page(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(TmnlSimFlowJB_1Locators.BTN_QUERY)
         self.btn_query(True)
 
 
@@ -40,15 +39,15 @@ class TmnlSimFlowJB_1Page(Page):
 class TmnlSimFlowJB_2Page(Page):
     # 终端地址
     def inputStr_tmnl_addr(self, value):
-        self.input(value)  # , *TmnlSimFlowJB_2Locators.QRY_TMNL_ADDR)
+        # self.input(value)
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # Sim卡号
     def inputStr_sim_no(self, value):
-        self.input(value)  # , *TmnlSimFlowJB_2Locators.QRY_SIM_NO)
+        self.curr_input(value, is_multi_tab=True, is_multi_elements=True)
 
     # 日期
     def inputDt_query_date(self, value):
-        # self.input(value, *TmnlSimFlowJB_2Locators.QRY_DATE)
         self.inputDate(value)
 
     # 流量状态
@@ -57,5 +56,4 @@ class TmnlSimFlowJB_2Page(Page):
 
     # 查询
     def btn_qry(self):
-        # self.click(TmnlSimFlowJB_2Locators.BTN_QUERY)
         self.btn_query(True)

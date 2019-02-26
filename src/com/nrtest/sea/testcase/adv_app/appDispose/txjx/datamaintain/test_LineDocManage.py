@@ -71,7 +71,7 @@ class TestLineDocManage(TestCase, LineDocManagePage):
         self.inputStr_line_name(para['LINE_NAME'])
 
         # 无负责人
-        self.Chk_no_master(para['NO_MASTER'])
+        self.inputChk_no_master(para['NO_MASTER'])
 
         # 查询
         self.btn_qry()

@@ -16,7 +16,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-# 统计查询→综合查询→抄表数据查询:抄表失败明细
+# 统计查询→综合查询→抄表数据查询:抄表明细
 from com.nrtest.sea.pages.stat_rey.synthQuery.meterDataQuery_page import MeterDataQueryDetailPage
 
 
@@ -86,7 +86,6 @@ class TestMeterDataQueryDetail(TestCase, MeterDataQueryDetailPage):
         # 数据类别
         self.inputSel_data_sort(para['DATA_SORT'])
 
-
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 计量点状态
@@ -120,7 +119,7 @@ class TestMeterDataQueryDetail(TestCase, MeterDataQueryDetailPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SynthQuery_data.MeterDataQuery_para, SynthQuery_data.MeterDataQuery_detail_tab))
     def test_query(self, para):
-        """统计查询→综合查询→抄表数据查询:抄表失败明细
+        """统计查询→综合查询→抄表数据查询:抄表明细
         """
         self.start_case(para, __file__)
         self.query(para)

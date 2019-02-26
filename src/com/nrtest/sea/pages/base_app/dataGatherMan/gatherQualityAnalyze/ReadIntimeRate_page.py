@@ -30,6 +30,10 @@ class ReadIntimeRatePage(Page):
     def inputDt_date_time(self, value):
         self.inputDate(value)
 
+    # 通讯规约
+    def inputSel_tmnl_protocol(self, value):
+        self.selectDropDown(value)
+
     # 查询
     def btn_qry(self):
         self.btn_query()

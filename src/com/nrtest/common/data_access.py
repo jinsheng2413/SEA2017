@@ -258,6 +258,16 @@ class DataAccess:
 
 
     @staticmethod
+    def get_xpath__tab_data(xpath, caseid, tab_name):
+        sql = 'select ts.xpath_name from tst_menu_xpath_list ts \
+                  where ts.xpath =:xpath \
+                  and ts.menu_no in (select u.menu_no from tst_case u where u.tst_case_id =:caseid)\
+                  and ts.tab_name =:tabName'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [xpath, caseid, tab_name])
+        return dataSet
+
+    @staticmethod
     def get_xpath_menu_data(xpath, menuName, tabName):
         sql = 'select ts.xpath_name from tst_menu_xpath_list ts \
                  where ts.xpath =:xpath \

@@ -284,6 +284,39 @@ def not_find_BeautifulReport(dirname):
                         else:
                             prior_temp = temp
 
+
+def not_find_test_comment(dirname):
+    """
+    test_query下没配置注释,或找不到test_query方法
+    """
+    filelistlog = Setting.LOG_PATH + "filelistlog.log"  # 保存文件路径
+    postfix = set(['py'])  # 设置要保存的文件格式
+    for maindir, subdir, file_name_list in os.walk(dirname):
+        for filename in file_name_list:
+            apath = os.path.join(maindir, filename)
+            if apath.split('\\')[-1].lower().startswith('test_') and apath.split('.')[-1] in postfix:  # 匹配后缀，只保存所选的文件格式。若要保存全部文件，则注释该句
+                package = apath.split('src\\')[-1]
+                with codecs.open(apath, 'r', 'utf-8') as file:
+                    lines = file.readlines()
+                    find_test_query = False
+                    for i, line in enumerate(lines):
+                        temp = line.strip().replace(' ', '')
+                        if temp.find('test_query') > 0:
+                            find_test_query = True
+                        elif find_test_query:
+                            if not temp.startswith('"""') or (temp.startswith('"""') and len(temp) == 3):
+                                with codecs.open(filelistlog, 'a+', encoding='utf-8') as fo:
+                                    fo.write('\r********')
+                                    fo.write(package + '\r')
+                                    fo.write('\r')
+                            break
+                    if not find_test_query:
+                        with codecs.open(filelistlog, 'a+', encoding='utf-8') as fo:
+                            fo.write('\r****test funName is not "test_query"****')
+                            fo.write(package + '\r')
+                            fo.write('\r')
+
+
 if __name__ == '__main__':
     # # 指定根目录
     # dirpath = os.path.dirname(os.path.realpath(__file__))
@@ -304,4 +337,7 @@ if __name__ == '__main__':
     checkParaWithDB(dirpath)
 
     append_remark(not_find_BeautifulReport)
+    not_find_BeautifulReport(dirpath)
+
+    append_remark(not_find_test_comment)
     not_find_BeautifulReport(dirpath)

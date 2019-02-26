@@ -180,6 +180,14 @@ class AssertResult():
                         case_result[3], line + 1, item[11],
                         item[5], x, item[8], y))
                 res = True
+            elif item[7] == '02':
+                if x in y :
+                    logger.info(
+                        '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                            case_result[3], line + 1, item[11],
+                            item[5], x, item[8], y))
+                    res = True
+
             else:
                 err_info = '跳转坐标（{}行，{}列）,跳转传值错误error:element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
                     case_result[3], line + 1, item[11],
@@ -397,6 +405,13 @@ class AssertResult():
                                             case_result[3], line + 1, item[11],
                                             item[5], x, item[8], y))
                                     res = True
+                                elif item[7] == '02':
+                                    if x in y:
+                                        logger.info(
+                                            '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                                                case_result[3], line + 1, item[11],
+                                                item[5], x, item[8], y))
+                                        res = True
                                 else:
                                     logger.error(
                                         '跳转坐标（{}行,{}列）跳转传值错误error:element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
@@ -428,6 +443,7 @@ class AssertResult():
             '23': '跳转tab页不正确',
             '24': '跳转弹窗的名称带的值不正确',
             '25': '跳转到新的菜单页，但不携带值错误',
+            '26': '单列数据有两个跳转',
             '31': '查询详细信息的输入框的值与期望结果不一致'
         }
         case_id = para['TST_CASE_ID']
@@ -450,6 +466,8 @@ class AssertResult():
                 assert_rslt = self.tab_skip_into_window(case_result[1:])
             elif assert_type == '25':#跳转到新的菜单页，但不携带值
                 assert_rslt = self.skip_new_menu(case_result[1:])
+            elif assert_type == '26':  # 单列数据有两个跳转
+                assert_rslt = self.skip_two_link(case_result[1:],para)
             elif assert_type == '31':
                 assert_rslt = self.assertInput(case_result[1:], case_id)
 
@@ -592,11 +610,120 @@ class AssertResult():
             pass
 
     def skip_new_menu(self,para):
+        """
+
+        :param para:
+        :return:
+        """
         self.skip_to_page(para)
         xpath = AssertResultLocators.MENU_NAME[1].format(para[2])
         res = self.tst_inst.assert_context((By.XPATH,xpath))
         self.tst_inst.menuPage.closePage(page_name=para[2])
         return res
+
+    def skip_two_link(self,para,caseData):
+        """
+
+        :param para:
+        :return:
+        """
+        if para[4] == 'Y':
+            change_value = para[1].split('-')
+            case_id = caseData['TST_CASE_ID']
+            # 获取要截取的值
+            old_data = DataAccess.get_skip_data(case_id, para[1])
+            old_page_list = []
+            new_page_list = []
+            for item in old_data:
+                line = self.checkBoxAssertLine_up(item[5])+1
+
+                locator = self.get_xpath(item[0], item[3], line, type=2)
+
+                if item[10] == '1':
+                    old_page_list.append(item[9])
+                # 获取查询条件输入框的值
+                elif item[4] == '01':
+                    locator_qry = self.get_xpath(
+                        DataAccess.get_xpath_tab_data(item[5], case_id, caseData['TAB_NAME'])[0][0])
+                    old_page_list.append(self.tst_inst.get_text(locator_qry))
+                else:
+                    old_page_list.append(self.tst_inst.driver.find_element(*locator).text)
+            l = self.tst_inst.checkBoxAssertLine(change_value[0],is_num=False)
+
+            xpath = AssertResultLocators.DISPLAY_NUM[1].format(para[0],l)
+            self.tst_inst.scrollTo((By.XPATH,xpath))
+            print('------')
+            line =  self.checkBoxAssertLine_up(change_value[0])+1
+            link_xpath = AssertResultLocators.DISPLAY_LINE[1].format(change_value[0],para[3],line)
+            link_xpath_new = link_xpath+'//*[contains(text(),"{}")]'.format(change_value[1])
+            self.tst_inst.click((By.XPATH,link_xpath_new))
+            # 校验页面的名称是否正确
+            name = self.assert_page_name(para[2])
+            if name == False:
+                print('跳转{}到页面失败'.format(para[2]))
+            # 判断文字是否正确
+            for item in old_data:
+                if item[8] == None and item[4] == '04':
+                    try:
+                        resd = self.tst_inst.driver.find_element(
+                            *AssertResultLocators.LINK_DATA).text
+                        resd_new = resd[resd.index('/') + 1:len(resd)].strip()
+                        new_page_list.append(resd_new)
+                    except:
+                        new_page_list.append('0')
+                elif item[10] == '1':
+                    new_page_list.append(item[9])
+                else:
+                    try:
+
+                        ta = DataAccess.get_xpath_menu_data(item[8], para[2], item[6])
+                        v_xpath = self.get_xpath(ta[0][0])
+                        # self.tst_inst.commonWait(v_xpath)
+                        self.tst_inst.sleep_time(1)
+                        text = self.get_text(v_xpath, second=1)
+                        new_page_list.append(text)
+                    except:
+                        logger.error('跳转的新页面时数据没有带过去')
+                        return False
+            print('old:', new_page_list)
+            xpath = AssertResultLocators.DISPLAY_NUM[1].format(para[0], 1)
+            self.tst_inst.scrollTo((By.XPATH, xpath))
+
+            # 关闭其他菜单页
+            # 2019-02-24
+            # self._closePages(page_name=case_result[2], isCurPage=False)
+            self.tst_inst.menuPage.closePage(para[2])
+            # self.tst_inst.driver.find_element(*(By.XPATH, '//li[@id="maintab__{}"]/a[@class="x-tab-strip-close"]'.format(case_result[2]))).click()
+            # 校验跳转传值是否正确
+            res = False
+            l = 0
+            line = self.tst_inst.checkBoxAssertLine(para[1])
+            for x, y, item in zip(old_page_list, new_page_list, old_data):
+                if x == y:
+                    logger.info(
+                        '跳转坐标（{}行,{}列），element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                            para[3], line + 1, item[11],
+                            item[5], x, item[8], y))
+                    res = True
+                elif item[7] == '02':
+                    if x in y:
+                        logger.info(
+                            '跳转坐标（{}行,{}列），element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                                para[3], line + 1, item[11],
+                                item[5], x, item[8], y))
+                        res = True
+                else:
+                    logger.error(
+                        '跳转坐标（{}行,{}列）跳转传值错误error:element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'.format(
+                            para[3], line + 1, item[11],
+                            item[5], x, item[8], y))
+                    l += 1
+            if l > 0:
+                res = False
+            return res
+
+
+
 
 
 
@@ -628,10 +755,12 @@ class AssertResultLocators:
 
     DISPLAY_ELEMENT = (
         By.XPATH, '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]')
+    DISPLAY_NUM  = (By.XPATH,'(//*[text()="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[1]/td[{}]')
 
     # 显示区
     DISPLAY_LINE = (By.XPATH,
                     '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]')
+    DISPLAY_LINE_NEW = (By.XPATH,'// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td//*[text()="{}"]')
     # 空格
     DISPLAY_BLANK = (By.XPATH, '//div[@class="x-grid3-row-checker"]')
 

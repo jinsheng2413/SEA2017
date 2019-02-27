@@ -12,10 +12,6 @@ from com.nrtest.common.base_page import Page
 
 # 测量点电压统计
 class ConsIntrgratedQueryMeasurementPointVoltagePage(Page):
-    # 户号
-    def inputStr_cons_no(self, value):
-        self.input(value)
-
     # 查询方式
     def inputChk_query_type(self, value):
         self.clickRadioBox(value)
@@ -28,13 +24,13 @@ class ConsIntrgratedQueryMeasurementPointVoltagePage(Page):
     def inputDt_end_time(self, value):
         self.inputDate(value)
 
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
+
 
 # 测量点电流越限统计
 class ConsIntrgratedQueryMeasurementPointCurrentOverLimitPage(Page):
-    # 户号
-    def inputStr_cons_no(self, value):
-        self.input(value)
-
     # 查询方式
     def inputChk_query_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True)
@@ -46,14 +42,14 @@ class ConsIntrgratedQueryMeasurementPointCurrentOverLimitPage(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
 
 # 测量点不平衡度越限累计时间统计
 class ConsIntrgratedQueryMeasurementPointTotalTimePage(Page):
-    # 户号
-    def inputStr_cons_no(self, value):
-        self.input(value)
-
     # 查询方式
     def inputChk_query_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True)
@@ -65,14 +61,14 @@ class ConsIntrgratedQueryMeasurementPointTotalTimePage(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
 
 # 测量点功率因数区段累计时间统计
 class ConsIntrgratedQueryMeasurementPointTotalTime2Page(Page):
-    # 户号
-    def inputStr_cons_no(self, value):
-        self.input(value)
-
     # 查询方式
     def inputChk_query_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True)
@@ -84,14 +80,14 @@ class ConsIntrgratedQueryMeasurementPointTotalTime2Page(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
 
 # 测量点总及分相有功功率统计
 class ConsIntrgratedQueryMeasurementPointTotalActivePowerPage(Page):
-    # 户号
-    def inputStr_cons_no(self, value):
-        self.input(value)
-
     # 查询方式
     def inputChk_query_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True)
@@ -103,14 +99,14 @@ class ConsIntrgratedQueryMeasurementPointTotalActivePowerPage(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
 
 # 测量点直流模拟量越限统计
 class ConsIntrgratedQueryMeasurementPointDcSimulationPage(Page):
-    # 户号
-    def inputStr_cons_no(self, value):
-        self.input(value)
-
     # 查询方式
     def inputChk_query_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True)
@@ -122,14 +118,14 @@ class ConsIntrgratedQueryMeasurementPointDcSimulationPage(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
 
 # 测量点最大需量及发生时间统计
 class ConsIntrgratedQueryMeasurementPointMaxNumAndTimePage(Page):
-    # 户号
-    def inputStr_cons_no(self, value):
-        self.input(value)
-
     # 查询方式
     def inputChk_query_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True)
@@ -141,14 +137,14 @@ class ConsIntrgratedQueryMeasurementPointMaxNumAndTimePage(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
 
 # 终端统计数据
 class ConsIntrgratedQueryMeasurementPointTmnlStatPage(Page):
-    # 户号
-    def inputStr_cons_no(self, value):
-        self.input(value)
-
     # 查询方式
     def inputChk_query_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True)
@@ -160,14 +156,14 @@ class ConsIntrgratedQueryMeasurementPointTmnlStatPage(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
 
 # 总加组统计数据
 class ConsIntrgratedQueryMeasurementPointSumGroupStatPage(Page):
-    # 户号
-    def inputStr_cons_no(self, value):
-        self.input(value)
-
     # 查询方式
     def inputChk_query_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True)
@@ -179,3 +175,7 @@ class ConsIntrgratedQueryMeasurementPointSumGroupStatPage(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)

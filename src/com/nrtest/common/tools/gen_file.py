@@ -13,27 +13,26 @@ import time
 from com.nrtest.common.data_access import DataAccess
 
 # 作者
-author = '李建方'
+author = '韩笑'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'Tg_query_cp'
+file_name = 'cons_intrgrated_query_other_data'
 
 # 存放菜单编号的数据文件类名
-# 路径  com/nrtest/sea/data/stat_rey/synthQuery/synthQuery_data.SynthQueryData
-# 路径说明：-----------------所属package---------|---文件名-------|---类（class）名----
-data_file = r'com/nrtest/sea/data/stat_rey/synthQuery/synthQuery_data.SynthQueryData'
+# 路径
+data_file = 'SynthQuery_data'
 
 # 菜单编号
-menu_no = '99941R00'
+menu_no = '99941940'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = '采集点信息'
+tab_name = '测量点日电容器累计补偿的无功电能量'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
-en_tab_name = 'cp'
+en_tab_name = 'dayCapacitor_tab'
 
 # 生成文件存放路径
-filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
+filelistlog = r"D:\develop\workspace\SEA2017\src\com\nrtest\sea\testcase\stat_rey\synthQuery\test_consIntrgratedQueryDayCapacitor.py"
 
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
 page_type = '02'
@@ -156,7 +155,7 @@ class GenFile():
         data_import = data_import.replace('\r', '.r')
         data_import = data_import.replace('\f', '.f')
         if data_import.find('.') > 0:
-            if data_import.find('.src.') > -1:
+            if data_import.find('.src.'):
                 data_import = data_import.split('.src.')[-1]
             ls_data_import = data_import.split('.')
             return 'from ' + '.'.join(ls_data_import[:-1]) + ' import ' + ls_data_import[-1]
@@ -227,7 +226,6 @@ class GenFile():
 
         with open(filelistlog, 'a+', encoding='utf-8') as fo:
             fo.writelines(lines)
-
 
 if __name__ == '__main__':
     genPageFile = GenFile(page_type)

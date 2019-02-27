@@ -308,7 +308,7 @@ class AssertResult():
         """
         try:
             case_id = caseData['TST_CASE_ID']
-            displayElement = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
+            displayElement = '//*[@id="manualAllUserGrid"]// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
                 case_result[0])
             self.tst_inst.commonWait((By.XPATH, displayElement))
             display_num = len(self.tst_inst._find_elements((By.XPATH, displayElement)))

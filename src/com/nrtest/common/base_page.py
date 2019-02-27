@@ -1384,16 +1384,21 @@ class Page():
         """
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
 
-    def checkBoxAssertLine(self, value,is_num = True):
-        xp = '//*[@id="manualAllUserGrid"]// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td'.format(
+    def checkBoxAssertLine(self, value,is_num = True,isMenu=False):
+        xp = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td'.format(
             value)
-        elements = self._find_elements((By.XPATH, xp))
+        if isMenu :
+           xp = self.format_xpath_multi((By.XPATH,xp),value,True)
+           elements = self._find_elements((By.XPATH, xp[1]))
+        else:
+            elements = self._find_elements((By.XPATH, xp))
+
         if is_num == False:
             return len(elements)
 
         idx = 0
         for i, el in enumerate(elements):
-            if value in el.text:
+            if value == el.text:
                 idx = i
                 break
         return idx
@@ -1416,7 +1421,7 @@ class Page():
         el = self.driver.find_element(*locator)
         ActionChains(self.driver).context_click(el).perform()
 
-    def assert_context(self, locators):
+    def assert_context(self, locators,isDisplay=False):
         """
         断言
         :param locators: 校验的值
@@ -1425,6 +1430,15 @@ class Page():
         # 02-没查询结果的提示弹窗；
         if self.case_para['POPUP_TYPE'] == '02':
             return True
+        elif isDisplay :
+          try:
+            els = self._find_elements(locators)
+            for item in els:
+             res = item.is_displayed()
+             if res:
+                 return res
+          except:
+              print('11类型校验失败')
         else:
             el = self._direct_find_element(locators)
             return el.is_displayed() if bool(el) else False

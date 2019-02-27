@@ -2,7 +2,7 @@
 
 """
 @author: js
-@file:test_measurementPointVoltage.py
+@file:test_consIntrgratedQueryMeasurementPointVoltage.py
 @time:2019/2/27 10:41
 @desc:
 """
@@ -103,7 +103,7 @@ class TestMeansurementPointVoltage(TestCase, ConsIntrgratedQueryMeasurementPoint
     @data(*DataAccess.getCaseData(SynthQuery_data.consIntrgratedQuery_para,
                                   SynthQuery_data.consIntrgratedQueryMeasurementPointVoltage_tab))
     def test_query(self, para):
-        """统计查询→综合查询→单户综合查询:实时抄表数据
+        """统计查询→综合查询→单户综合查询:测量点电压统计
         """
         self.start_case(para, __file__)
         self.query(para)

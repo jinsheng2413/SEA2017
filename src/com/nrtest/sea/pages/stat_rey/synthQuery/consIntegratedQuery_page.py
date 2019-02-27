@@ -28,6 +28,10 @@ class ConsIntrgratedQueryMeasurementPointVoltagePage(Page):
     def inputDt_end_time(self, value):
         self.inputDate(value)
 
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
+
 
 # 测量点电流越限统计
 class ConsIntrgratedQueryMeasurementPointCurrentOverLimitPage(Page):
@@ -46,6 +50,10 @@ class ConsIntrgratedQueryMeasurementPointCurrentOverLimitPage(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
 
 # 测量点不平衡度越限累计时间统计
@@ -66,6 +74,10 @@ class ConsIntrgratedQueryMeasurementPointTotalTimePage(Page):
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
 
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
+
 
 # 测量点功率因数区段累计时间统计
 class ConsIntrgratedQueryMeasurementPointTotalTime2Page(Page):
@@ -84,6 +96,10 @@ class ConsIntrgratedQueryMeasurementPointTotalTime2Page(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
 
 # 测量点总及分相有功功率统计
@@ -104,6 +120,10 @@ class ConsIntrgratedQueryMeasurementPointTotalActivePowerPage(Page):
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
 
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
+
 
 # 测量点直流模拟量越限统计
 class ConsIntrgratedQueryMeasurementPointDcSimulationPage(Page):
@@ -122,6 +142,10 @@ class ConsIntrgratedQueryMeasurementPointDcSimulationPage(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
 
 
 # 测量点最大需量及发生时间统计
@@ -142,6 +166,10 @@ class ConsIntrgratedQueryMeasurementPointMaxNumAndTimePage(Page):
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
 
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
+
 
 # 终端统计数据
 class ConsIntrgratedQueryMeasurementPointTmnlStatPage(Page):
@@ -161,6 +189,10 @@ class ConsIntrgratedQueryMeasurementPointTmnlStatPage(Page):
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
 
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)
+
 
 # 总加组统计数据
 class ConsIntrgratedQueryMeasurementPointSumGroupStatPage(Page):
@@ -179,3 +211,7 @@ class ConsIntrgratedQueryMeasurementPointSumGroupStatPage(Page):
     # 到
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
+
+    # 查询
+    def btn_qry(self):
+        self.btn_query(True)

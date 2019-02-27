@@ -127,3 +127,13 @@ class SynthQuery_data:
 
     # 统计查询--综合查询--单户综合查询
     consIntrgratedQuery_para = '99941940'
+
+    consIntrgratedQuery_dayDataQry_tab = '日抄表数据'
+    consIntrgratedQuery_realTimeDataQry_tab = '实时抄表数据'
+    consIntrgratedQuery_eleMap_tab = '电量曲线图'
+    consIntrgratedQuery_tmnlEvent_tab = '终端事件'
+    consIntrgratedQuery_cons_doc_tab = '用户档案'
+    consIntrgratedQuery_cp_tab = '采集点信息'
+    consIntrgratedQuery_dayCapacitor_tab = '测量点日电容器累计补偿的无功电能量'
+    consIntrgratedQuery_monthFreeze_tab = '测量点月冻结视在功率越限及负载率'
+    consIntrgratedQuery_phaseAngle_tab = '测量点电流电压相位角'

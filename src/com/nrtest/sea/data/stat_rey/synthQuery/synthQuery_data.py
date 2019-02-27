@@ -144,7 +144,7 @@ class SynthQuery_data:
     consIntrgratedQueryMeasurementPointVoltage_tab = '测量点电压统计'
     consIntrgratedQueryMeasurementPointCurrentOverLimit_tab = '测量点电流越限统计'
     consIntrgratedQueryMeasurementPointTotalTime_tab = '测量点不平衡度越限累计时间统计'
-    ConsIntrgratedQueryMeasurementPointTotalTime2_tab = '测量点功率因数区段累计时间统计'
+    consIntrgratedQueryMeasurementPointTotalTime2_tab = '测量点功率因数区段累计时间统计'
     consIntrgratedQueryMeasurementPointTotalActivePower_tab = '测量点总及分相有功功率统计'
     consIntrgratedQueryMeasurementPointDcSimulation_tab = '测量点直流模拟量越限统计'
     consIntrgratedQueryMeasurementPointMaxNumAndTime_tab = '测量点最大需量及发生时间统计'

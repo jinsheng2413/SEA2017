@@ -19,7 +19,7 @@ from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators, Tre
 
 
 class BaseTreePage(Page):
-    def __init__(self, parent_class):
+    def __init__(self, parent_class, menu_page=None):
         """
 
         :param driver:
@@ -29,9 +29,16 @@ class BaseTreePage(Page):
                 30-厂站档案设备树   21-并且带复选框
                 40-普通树         41-并且带复选框；采集运维-->手动对时
         """
-        super().__init__(parent_class.driver, parent_class.menuPage)
-        if bool(parent_class.menuPage):
-            self.tree_type = parent_class.menuPage.tree_type
+        if bool(menu_page):  # 通过testCase子类基础初始化：com/nrtest/sea/testcase/demo_new/pbs5000.py
+            driver = parent_class
+            super().__init__(self, driver, menu_page)
+        else:  # 通过实例化BaseTreePage子类对象初始化：test_consIntrgratedQuery_realTimeDataQry.py
+            menu_page = parent_class.menuPage
+            driver = parent_class.driver
+            super().__init__(driver, menu_page)
+
+        if bool(menu_page):
+            self.tree_type = menu_page.tree_type
         else:
             self.tree_type = '20'
 
@@ -300,6 +307,9 @@ class TreePage(BaseTreePage):
 
 
 class TreeSingleUserPage(BaseTreePage):
+    """
+    目前应用于统计查询-->综合查询-->单户综合查询菜单
+    """
     def _find_in_parent(self, item, idx, items):
         """
         在父节点范围内查找

@@ -103,7 +103,7 @@ class TestMeansurementPointVoltage(TestCase, ConsIntrgratedQueryMeasurementPoint
     @data(*DataAccess.getCaseData(SynthQuery_data.consIntrgratedQuery_para,
                                   SynthQuery_data.consIntrgratedQueryMeasurementPointCurrentOverLimit_tab))
     def test_query(self, para):
-        """统计查询→综合查询→单户综合查询:实时抄表数据
+        """统计查询→综合查询→单户综合查询:测量点电流越限统计
         """
         self.start_case(para, __file__)
         self.query(para)

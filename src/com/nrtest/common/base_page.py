@@ -1398,7 +1398,7 @@ class Page():
 
         idx = 0
         for i, el in enumerate(elements):
-            if value in el.text:
+            if value == el.text:
                 idx = i
                 break
         return idx

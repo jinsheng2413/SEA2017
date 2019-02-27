@@ -127,3 +127,6 @@ class SynthQuery_data:
 
     # 统计查询--综合查询--单户综合查询
     consIntrgratedQuery_para = '99941940'
+    consIntrgratedQuery_LoadDay_tab = '负荷日数据'
+    consIntrgratedQuery_LoadCurve_tab = '负荷曲线数据'
+    consIntrgratedQuery_LoadStat_tab = '负荷统计'

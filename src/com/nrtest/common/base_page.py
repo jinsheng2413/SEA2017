@@ -1434,7 +1434,7 @@ class Page():
           try:
             els = self._find_elements(locators)
             for item in els:
-             res = el.is_displayed()
+             res = item.is_displayed()
              if res:
                  return res
           except:

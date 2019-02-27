@@ -11,7 +11,6 @@ import re
 from time import sleep
 
 from selenium.webdriver import ActionChains
-from selenium.webdriver.common.by import By
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
@@ -309,6 +308,7 @@ class TreeSingleUserPage(BaseTreePage):
         :param items:
         :return:
         """
+
         levels = len(items) - 1  # 总层级数-1
         locator = self.format_xpath(TreeSingleUserLocators.NODE_LEVEL, (item))
         # 不带复选框的叶子节点只点击文本元素，不点击文本元素边上的图标元素
@@ -343,18 +343,20 @@ class TreeSingleUserPage(BaseTreePage):
         split_line_loc = self.format_xpath_multi(TreeSingleUserLocators.SPLIT_LINE, is_multi_tab=True)
         el_src = self._find_element(split_line_loc)
 
-        target_loc = self.format_xpath_multi((By.XPATH, '//div[text()="终端地址"]'))
+        target_loc = self.format_xpath_multi(TreeSingleUserLocators.DROP_TARGET, '终端地址', True)
         el_target = self._find_elements(target_loc)[0]
 
         ActionChains(self.driver).drag_and_drop(el_src, el_target).perform()
         sleep(2)
         elements = self._find_elements(TreeSingleUserLocators.TMNL_NODE)
         for el in elements:
-            el.click()
+            class_info = el.get_attribute('class')
+            if class_info.endswith('collapsed'):
+                el.click()
             xpath = self.format_xpath(TreeSingleUserLocators.USER_LINE, value)
             self.click(xpath)
         sleep(1)
-        target_loc = self.format_xpath_multi((By.XPATH, '//div[text()="表资产号"]'))
+        target_loc = self.format_xpath_multi(TreeSingleUserLocators.DROP_TARGET, '表资产号', True)
         el_target = self._find_elements(target_loc)[0]
         ActionChains(self.driver).drag_and_drop(el_src, el_target).perform()
         sleep(2)

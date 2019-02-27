@@ -1421,7 +1421,7 @@ class Page():
         el = self.driver.find_element(*locator)
         ActionChains(self.driver).context_click(el).perform()
 
-    def assert_context(self, locators):
+    def assert_context(self, locators,isDisplay=False):
         """
         断言
         :param locators: 校验的值
@@ -1430,6 +1430,15 @@ class Page():
         # 02-没查询结果的提示弹窗；
         if self.case_para['POPUP_TYPE'] == '02':
             return True
+        elif isDisplay :
+          try:
+            els = self._find_elements(locators)
+            for item in els:
+             res = el.is_displayed()
+             if res:
+                 return res
+          except:
+              print('11类型校验失败')
         else:
             el = self._direct_find_element(locators)
             return el.is_displayed() if bool(el) else False

@@ -444,7 +444,7 @@ class AssertResult():
         except:
             print('验证失败')
 
-    def check_query_result(self, para, version=2):
+    def check_query_result(self, para, version=2,isDisplay=False):
         """
 
         :param para: 用例数据
@@ -470,7 +470,7 @@ class AssertResult():
         for case_result in case_results:  # 根据rslt有几个值来判断要做几次校验
             assert_type = case_result[0]
             if assert_type == '11':
-                assert_rslt = self.tst_inst.assert_context((By.XPATH, display_tab.format(case_result[1])))  # 判断是否有值
+                assert_rslt = self.tst_inst.assert_context((By.XPATH, display_tab.format(case_result[1])),isDisplay=isDisplay)  # 判断是否有值
             elif assert_type == '12':  # 判断值是否准确,item截取字符串，在转换成列表
                 assert_rslt = self.assertValue(case_result[1:])
             elif assert_type == '21':  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表

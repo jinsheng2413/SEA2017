@@ -82,7 +82,7 @@ class AssertResult():
                       line_name = skipValue[1]
 
 
-                    lineName = self.tst_inst.checkBoxAssertLine(line_name)  # 判断是那一列
+                    lineName = self.tst_inst.checkBoxAssertLine(line_name,isMenu=True)  # 判断是那一列
                     displayLine = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//a'.format(
                         skipValue[0], skipValue[3], lineName + 1)
                     try:
@@ -224,6 +224,10 @@ class AssertResult():
         :return:
         """
         try:
+            l = self.tst_inst.checkBoxAssertLine(case_result[1], is_num=False)
+
+            xpath = AssertResultLocators.DISPLAY_NUM[1].format(case_result[0], l)
+            self.tst_inst.scrollTo((By.XPATH, xpath))
             self.skip_to_page(case_result)
             xpath = AssertResultLocators.WINDOWS_NAME[1].format(case_result[2])
             self.tst_inst.commonWait((By.XPATH, xpath))
@@ -234,6 +238,9 @@ class AssertResult():
             close_xpath = AssertResultLocators.WINDOWS_CLOSE[1].format(case_result[2])
 
             self.tst_inst.click((By.XPATH, close_xpath))
+            back_xpath = AssertResultLocators.DISPLAY_NUM[1].format(case_result[0], 2)
+            self.tst_inst.sleep_time(1)
+            self.tst_inst.scrollTo((By.XPATH, back_xpath))
 
         return is_skiped
 
@@ -308,7 +315,7 @@ class AssertResult():
         """
         try:
             case_id = caseData['TST_CASE_ID']
-            displayElement = '//*[@id="manualAllUserGrid"]// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
+            displayElement = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
                 case_result[0])
             self.tst_inst.commonWait((By.XPATH, displayElement))
             display_num = len(self.tst_inst._find_elements((By.XPATH, displayElement)))
@@ -320,8 +327,9 @@ class AssertResult():
                 #     print('显示区有复选框')
                 # except:
                 #     print('显示区没有复选框')
-
-                lineName = self.tst_inst.checkBoxAssertLine(case_result[1])  # 判断是那一列
+                # xp = (By.XPATH,'//*[@id="manualAllUserGrid"]// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td')
+                # lo = self.tst_inst.format_xpath_multi(xp,True)
+                lineName = self.tst_inst.checkBoxAssertLine(case_result[1],isMenu=True)  # 判断是那一列
                 displayLine = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]'.format(
                     case_result[0], 1, lineName + 1)
                 try:
@@ -352,7 +360,7 @@ class AssertResult():
                             old_page_list = []
                             new_page_list = []
                             for item in old_data:
-                                line = self.tst_inst.checkBoxAssertLine(item[5]) + 1
+                                line = self.tst_inst.checkBoxAssertLine(item[5],isMenu=True) + 1
                                 locator = self.get_xpath(item[0], item[3], line, type=2)
                                 if item[10] == '1':
                                     old_page_list.append(item[9])
@@ -405,7 +413,7 @@ class AssertResult():
                             # 校验跳转传值是否正确
                             res = False
                             l = 0
-                            line = self.tst_inst.checkBoxAssertLine(case_result[1])
+                            line = self.tst_inst.checkBoxAssertLine(case_result[1],isMenu=True)
                             for x, y, item in zip(old_page_list, new_page_list, old_data):
                                 if x == y:
                                     logger.info(

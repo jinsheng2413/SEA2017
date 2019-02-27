@@ -308,11 +308,12 @@ def not_find_test_comment(dirname):
                                 with codecs.open(filelistlog, 'a+', encoding='utf-8') as fo:
                                     fo.write('\r********')
                                     fo.write(package + '\r')
+                                    fo.write(line)
                                     fo.write('\r')
                             break
                     if not find_test_query:
                         with codecs.open(filelistlog, 'a+', encoding='utf-8') as fo:
-                            fo.write('\r****test funName is not "test_query"****')
+                            fo.write('\r****test funName is not "test_query"****\r')
                             fo.write(package + '\r')
                             fo.write('\r')
 
@@ -340,4 +341,4 @@ if __name__ == '__main__':
     not_find_BeautifulReport(dirpath)
 
     append_remark(not_find_test_comment)
-    not_find_BeautifulReport(dirpath)
+    not_find_test_comment(dirpath)

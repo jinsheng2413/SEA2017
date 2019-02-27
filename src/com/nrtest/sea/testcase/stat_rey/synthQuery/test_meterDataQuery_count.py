@@ -107,6 +107,8 @@ class TestMeterDataQueryCount(TestCase, MeterDataQueryCountPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.MeterDataQuery_para, SynthQuery_data.MeterDataQuery_count_tab,
                                   valCheck=True))
     def _test_checkValue(self, para):
+        """统计查询→综合查询→抄表数据查询:抄表失败统计
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)

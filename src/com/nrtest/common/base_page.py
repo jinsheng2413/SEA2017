@@ -717,8 +717,11 @@ class Page():
         """
         self._clean_blank(tag_text, 'dropdown')
 
-    def scrollTo(self, locator):
-        el = self.driver.find_element(*locator)
+    def scrollTo(self, obj):
+        if isinstance(obj, tuple):
+            el = self.driver.find_element(*obj)
+        else:
+            el = obj
         self.driver.execute_script("arguments[0].scrollIntoView();", el)
 
     def clickRadioBox(self, option, is_multi_tab=False, is_multi_elements=False):

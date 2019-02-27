@@ -87,6 +87,8 @@ class TestHandheldApparatusSectAppQuery(TestCase, HandheldApparatusSectAppQueryP
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AppDispose_data.HandheldApparatusSectAppQuery_para))
     def test_query(self, para):
+        """高级应用→工单处理→掌机抄表工单查询（青海）
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
@@ -95,6 +97,8 @@ class TestHandheldApparatusSectAppQuery(TestCase, HandheldApparatusSectAppQueryP
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AppDispose_data.HandheldApparatusSectAppQuery_para, valCheck=True))
     def _test_checkValue(self, para):
+        """高级应用→工单处理→掌机抄表工单查询（青海）
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)

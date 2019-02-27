@@ -71,6 +71,24 @@ class TreeLocators:
                   '07': (By.XPATH, '//div[@id="mainwest"]//div[@id="orgBackTree"]'),
                   '08': (By.XPATH, '//div[@id="mainwest"]//div[@id="controlTree"]')}
 
+
+class TreeSingleUserLocators:
+    NODE_LEVEL = (By.XPATH, '//div[@class="x-tree-root-node"]//span[text()="{}"]/../../a/preceding-sibling::img[contains(@class, "elbow")]')
+    LEEF_NODE = (By.XPATH, '//div[@class="x-tree-root-node"]//span[text()="{}"]')
+
+    # 【搜索】
+    # 查询条件
+    QRY_INPUT = (By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-search-trigger")]/../../span/preceding-sibling::input')
+    BTN_QUERY = (By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-search-trigger")]')
+    # 查找到的终端节点
+    TMNL_NODE = (By.XPATH, '//div[@class="x-grid-group-title" and contains(text(),"终端资产号:")]/ancestor::div[starts-with(@class, "x-grid-group ")]')
+    # TMNL_NODE = (By.XPATH, '//div[@class="x-grid-group-title" and contains(text(),"终端资产号:")]')
+    SPLIT_LINE = (By.XPATH, '//div[@class="x-layout-split x-layout-split-west x-splitbar-h"]')
+    # 用户信息行
+    USER_LINE = (By.XPATH, '//div[contains(@id, "gp-TMNL_ASSET_NO") and @class="x-grid-group-body"]//div[text()="{}"]')
+
+    DROP_TARGET = (By.XPATH, '//div[text()="{}"]')
+
 class TreePBSLocators:
     # class = "panel layout-panel layout-panel-west layout-split-west"
     TREE_DIV = (By.XPATH, '//div[ends-with(@class, "split-west"]')

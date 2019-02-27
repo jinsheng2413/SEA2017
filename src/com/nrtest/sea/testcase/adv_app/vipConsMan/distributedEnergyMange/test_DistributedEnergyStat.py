@@ -93,6 +93,8 @@ class TestDistributedEnergyStat(TestCase, DistributedEnergyStatPage):
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyStat_para,
                                   DistributedEnergyMange_data.DistributedEnergyStat_tabName))
     def test_query(self, para):
+        """高级应用→重点用户检测→分布式电源管理→分布式电源接入统计
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
@@ -102,6 +104,8 @@ class TestDistributedEnergyStat(TestCase, DistributedEnergyStatPage):
     @data(*DataAccess.getCaseData(DistributedEnergyMange_data.DistributedEnergyStat_para,
                                   DistributedEnergyMange_data.DistributedEnergyStat_tabName, valCheck=True))
     def _test_checkValue(self, para):
+        """高级应用→重点用户检测→分布式电源管理→分布式电源接入统计
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)

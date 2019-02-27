@@ -69,14 +69,6 @@ class TesterminalOnlineMonitor(TestCase, TerminalOnlineMonitorPage):
 
         self.btn_qry()
 
-        # 校验
-        # result = self.assert_context()
-        # self.assertTrue(result)
-
-    # @data(*DataAccess.getCaseData(DataGatherMan_data.terminalOnlineMonitor_para))
-    # def test_query(self, para):
-    #     self.query(para)
-
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

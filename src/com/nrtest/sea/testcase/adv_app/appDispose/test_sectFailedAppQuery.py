@@ -87,6 +87,8 @@ class TestSectFailedAppQuery(TestCase, SectfailedAppQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AppDispose_data.SectFailedAppQuery_para))
     def test_query(self, para):
+        """高级应用→工单处理→抄表失败工单查询
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

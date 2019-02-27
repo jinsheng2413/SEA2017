@@ -83,6 +83,8 @@ class TestSectFaliedAppStatistics(TestCase, SectfailedAppStatisticsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AppDispose_data.SectFaliedAppStatistics_para))
     def test_query(self, para):
+        """高级应用→工单处理→抄表失败工单统计
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)
@@ -91,6 +93,8 @@ class TestSectFaliedAppStatistics(TestCase, SectfailedAppStatisticsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(AppDispose_data.SectFaliedAppStatistics_para, valCheck=True))
     def _test_checkValue(self, para):
+        """高级应用→工单处理→抄表失败工单统计
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_criteria(para)

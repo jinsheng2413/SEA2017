@@ -78,11 +78,15 @@ class TreeSingleUserLocators:
 
     # 【搜索】
     # 查询条件
-    QRY_INPUT = (By.XPATH, '//img[@class="x-form-trigger x-form-search-trigger "]/../../span/preceding-sibling::input')
-    BTN_QUERY = (By.XPATH, '//img[@class="x-form-trigger x-form-search-trigger "]')
+    QRY_INPUT = (By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-search-trigger")]/../../span/preceding-sibling::input')
+    BTN_QUERY = (By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-search-trigger")]')
     # 查找到的终端节点
-    TMNL_NODE = (By.XPATH, '//div[@class="x-grid-group-title"]/ancestor::div[starts-with(@class, "x-grid-group x-grid-group")]')
-
+    # TMNL_NODE = (By.XPATH, '//div[@class="x-grid-group-title"]/ancestor::div[starts-with(@class, "x-grid-group x-grid-group")]')
+    TMNL_NODE = (By.XPATH, '//div[@class="x-grid-group-title" and contains(text(),"终端资产号:")]')
+    SPLIT_LINE = (By.XPATH, '//div[@class="x-layout-split x-layout-split-west x-splitbar-h"]')
+    TMNL_NODE1 = (
+        By.XPATH, '//div[@class="x-grid-group-title"]/ancestor::div[contains(@id, "gp-TMNL_ASSET_NO")  and starts-with(@class, "x-grid-group ")]')
+    TMNL_NODE2 = (By.XPATH, '//div[@class="x-grid-group-title"]/ancestor::div[@class="x-grid3-body"]')
     # 用户信息行
     USER_LINE = (By.XPATH, '//div[contains(@id, "gp-TMNL_ASSET_NO") and @class="x-grid-group-body"]//div[text()="{}"]')
 

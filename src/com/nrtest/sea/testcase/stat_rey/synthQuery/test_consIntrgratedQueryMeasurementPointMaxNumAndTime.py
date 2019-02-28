@@ -72,8 +72,10 @@ class TestMeansurementPointVoltage(TestCase, ConsIntrgratedQueryMeasurementPoint
         self.openLeftTree(para['TREE_NODE'])
         sleep(1)
 
-        # 筛选用户信息
-        user_page.user_query(para['USER_INFO'])
+        user_info = self.get_para_value(para['USER_INFO'])
+        if bool(user_info):
+            # 筛选用户信息
+            user_page.user_query(para['USER_INFO'])
 
         # 统计方式
         self.inputChk_query_type(para['QUERY_TYPE'])

@@ -72,6 +72,12 @@ class TestMeansurementPointVoltage(TestCase, ConsIntrgratedQueryMeasurementPoint
         self.openLeftTree(para['TREE_NODE'])
         sleep(1)
 
+        # 总加组
+        self.inputChk_sum_group()
+
+        # 筛选用户信息
+        user_page.user_query(para['USER_INFO'])
+
         # 统计方式
         self.inputChk_query_type(para['QUERY_TYPE'])
 

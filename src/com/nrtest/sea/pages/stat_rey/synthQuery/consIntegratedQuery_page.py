@@ -164,6 +164,11 @@ class ConsIntrgratedQueryMeasurementPointTmnlStatPage(Page):
 
 # 总加组统计数据
 class ConsIntrgratedQueryMeasurementPointSumGroupStatPage(Page):
+
+    # 总加组
+    def inputChk_sum_group(self, value=''):
+        self.click(("xpath", '//button[contains(text(),"总加组")]'))
+
     # 查询方式
     def inputChk_query_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True)

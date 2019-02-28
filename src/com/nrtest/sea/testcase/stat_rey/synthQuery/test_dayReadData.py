@@ -73,10 +73,10 @@ class TestDayReadData(TestCase, DayReadDataPage):
         # 从
         self.inputDt_from_date(para['FROM_DATE'])
 
-        if self.get_para_value(para['DISPLAY_TYPE']) == '任意时段':
-            # 到
-            self.inputDt_to_date(para['TO_DATE'])
+        # 到
+        self.inputDt_to_date(para['TO_DATE'])
 
+        if self.get_para_value(para['DISPLAY_TYPE']) == '区间查询':
             # 是否显示所有终端信息
             self.inputChk_disp_all(para['DISP_ALL'])
 

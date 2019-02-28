@@ -236,13 +236,13 @@ class DataAccess:
         return dataSet
 
     @staticmethod
-    def get_skip_data(case_id, colu_name):
+    def get_skip_data(case_id, col_name):
         sql = 'select tres.tab_column_name,lr.tab_name ,tres.column_name,tres.row_num,lr.xpath_type,lr.xpath ,lr.target_tab_name,lr.trans_type,' \
               'lr.target_xpath,lr.trans_value, lr.is_trans,lr.element_sn ' \
               'from tst_case_result tres,TST_COL_LINK_RELA  lr,tst_case case ' \
               'where tres.tst_case_id = case.tst_case_id and tres.column_name = lr.col_name and case.menu_no = lr.menu_no and case.tab_name = lr.tab_name and tres.tst_case_id =:case_id  and tres.assert_type in (\'21\',\'23\',\'26\',\'27\') and tres.column_name =:col_name order by lr.element_sn'
         pyoracle = PyOracle.getInstance()
-        dataSet = pyoracle.query(sql, [case_id, colu_name])
+        dataSet = pyoracle.query(sql, [case_id, col_name])
         return dataSet
 
     @staticmethod
@@ -255,17 +255,15 @@ class DataAccess:
         dataSet = pyoracle.query(sql, [xpath, caseid, tab_name])
         return dataSet
 
-
-
-    @staticmethod
-    def get_xpath__tab_data(xpath, caseid, tab_name):
-        sql = 'select ts.xpath_name from tst_menu_xpath_list ts \
-                  where ts.xpath =:xpath \
-                  and ts.menu_no in (select u.menu_no from tst_case u where u.tst_case_id =:caseid)\
-                  and ts.tab_name =:tabName'
-        pyoracle = PyOracle.getInstance()
-        dataSet = pyoracle.query(sql, [xpath, caseid, tab_name])
-        return dataSet
+    # @staticmethod
+    # def get_xpath__tab_data(xpath, caseid, tab_name):
+    #     sql = 'select ts.xpath_name from tst_menu_xpath_list ts \
+    #               where ts.xpath =:xpath \
+    #               and ts.menu_no in (select u.menu_no from tst_case u where u.tst_case_id =:caseid)\
+    #               and ts.tab_name =:tabName'
+    #     pyoracle = PyOracle.getInstance()
+    #     dataSet = pyoracle.query(sql, [xpath, caseid, tab_name])
+    #     return dataSet
 
     @staticmethod
     def get_xpath_menu_data(xpath, menuName, tabName):

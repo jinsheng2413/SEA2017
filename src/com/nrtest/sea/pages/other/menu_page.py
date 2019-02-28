@@ -355,10 +355,6 @@ class MenuPage(Page):
         lr = self.get_select_locator(self.locator_class.BTN_COUNTY, index)
         self.click(lr)
 
-    def page_assert_body(self):
-        op = self.assert_body('电网结构')
-        return op
-
     def btn_select_user(self, index):
         """
         选供电所
@@ -368,10 +364,9 @@ class MenuPage(Page):
         self.click(lr)
 
     def btn_suitable_arrow(self):
-        hp = self.page_assert_body()
-        if hp is True:
-            print('------------------------------------')
-        elif hp is False:
+        txt = self._find_element((By.TAG_NAME, 'body')).text
+        hp = '电网结构' in txt
+        if hp is False:
             self.btn_left_arrow()
         else:
             print('省份选择错误')

@@ -100,7 +100,7 @@ class MenuLocators:
     NODE_USER_TAB_RSLT_DEFAULT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[1]')
     # 2019-02-18
     # NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[%s]//td[1]/div/div')
-    NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table//span[text()={}]')
+    NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table//span[text()="{}"]')
     NODE_USER = (By.XPATH, '//*[@class="x-tab-strip-text " and text()=\'用户\']')
     NODE_GROUP = (By.XPATH, '//*[@class="x-tab-strip-text " and text()=\'群组\']')
     NODE_GROUP_RSLT = {'05': (By.XPATH, '//div[@id="backTree"]//span[text()="%s"]'),

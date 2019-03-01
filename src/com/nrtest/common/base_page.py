@@ -296,7 +296,7 @@ class Page():
         info = '用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}</br>'.format(self.tst_case_id, self.menu_no, self.menu_path, para['TAB_NAME'])
         print(info)
 
-        logger('开始执行...\r')
+        logger.info('开始执行...\r')
         logger.info(info)
 
     def end_case(self):

@@ -48,10 +48,9 @@ class TestSkipError(Exception):
     def __str__(self):
         return self.error_info
 
-
 class AssertError(Exception):
     """
-    查询结果校验结束前抛出的弹窗异常
+    AssertResult类查询结果校验异常
     """
 
     def __init__(self, error_info):

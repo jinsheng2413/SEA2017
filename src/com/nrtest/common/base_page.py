@@ -10,7 +10,7 @@
 import os
 import time
 from time import sleep
-
+from com.nrtest.common.user_except import AssertError
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidElementStateException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,6 +18,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResultLocators
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
@@ -1384,24 +1385,50 @@ class Page():
         """
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
 
-    def checkBoxAssertLine(self, value,is_num = True,isMenu=False):
-        xp = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td'.format(
-            value)
-        if isMenu :
-           xp = self.format_xpath_multi((By.XPATH,xp),value,True)
-           elements = self._find_elements((By.XPATH, xp[1]))
-        else:
-            elements = self._find_elements((By.XPATH, xp))
+    def calc_col_idx(self, col_name, is_num = True, idx=1):
+        """
 
+        :param col_name:
+        :param is_num:
+        :param idx:
+        :return:
+        """
+        table_head =(By.XPATH,AssertResultLocators.TABLE_HEAD[1].format(col_name))
+        loc = self.format_xpath_multi(table_head, col_name, True)
+        el_tr = self._find_displayed_element(loc, idx=idx)
+
+        # 查找表头所有列名元素
+        el_tds = el_tr.find_elements_by_xpath('./td')
+        # if isMenu :
+        #    xp = self.format_xpath_multi((By.XPATH,xp),value,True)
+        #    elements = self._find_elements((By.XPATH, xp[1]))
+        # else:
+        #     elements = self._find_elements((By.XPATH, xp))
+        #返回所有列明
         if is_num == False:
-            return len(elements)
+            return len(el_tds)
+        if bool(el_tds):
+            # col_name 对应列位置（含该列前的隐藏列）
+            col_idx = 0
+            # 隐藏列个数
+            hide_cols = 0
+            for i, el in enumerate(el_tds):
+                if el.text == '':
+                    hide_cols += 1
+                elif col_name == el.text:
+                    # xpath元素下表以1开始，故+1
+                    col_idx = i + 1
+                    break
+            return col_idx#, hide_cols
+        else:
+            raise AssertError('定位列{}在表格中的位置时报错！'.format(col_name))
 
-        idx = 0
-        for i, el in enumerate(elements):
-            if value == el.text:
-                idx = i
-                break
-        return idx
+        # idx = 0
+        # for i, el in enumerate(el_tds):
+        #     if value == el.text:
+        #         idx = i
+        #         break
+        # return idx
         # dl = 0
         # l = 0
         # for el in elements:
@@ -1437,8 +1464,10 @@ class Page():
              res = item.is_displayed()
              if res:
                  return res
+            False
           except:
               print('11类型校验失败')
+              return False
         else:
             el = self._direct_find_element(locators)
             return el.is_displayed() if bool(el) else False
@@ -1461,7 +1490,7 @@ class Page():
                 displayCheck = self.assert_context((By.XPATH, xpath_checker))
             except:
                 print('没有弹出确定按钮')
-            diplayName = self.checkBoxAssertLine(assertValues[1])  # 判断具体是哪一行
+            diplayName = self.calc_col_idx(assertValues[1])  # 判断具体是哪一行
             ringhtNum = 0
             displayLineElement = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//*[contains(text(),"{3}")]'
             if displayNum > 0:
@@ -1522,7 +1551,7 @@ class Page():
                 # except:
                 #     print('显示区没有复选框')
                 if 1:
-                    lineName = self.checkBoxAssertLine(assertValues[1])  # 判断是那一列
+                    lineName = self.calc_col_idx(assertValues[1])  # 判断是那一列
                     displayLine = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]'.format(
                         assertValues[0], 1, lineName + 1)
                     try:
@@ -1545,7 +1574,7 @@ class Page():
                         print('跳转验证失败')
 
                 # elif displayCheckbox == False:
-                #     gl = self.checkBoxAssertLine(va[1])
+                #     gl = self.calc_col_idx(va[1])
                 #     for i in range(1, num + 1):
                 #         val2 = "(//*[text()=\'{0}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
                 #             va[0], i, gl + 1, va[2])

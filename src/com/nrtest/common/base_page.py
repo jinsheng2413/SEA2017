@@ -10,7 +10,7 @@
 import os
 import time
 from time import sleep
-from com.nrtest.common.user_except import AssertError
+
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidElementStateException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
@@ -23,6 +23,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
+from com.nrtest.common.user_except import AssertError
 from com.nrtest.sea.locators.other.base_locators import *
 
 # create a logger instance
@@ -292,16 +293,19 @@ class Page():
         self.timeout_seconds = int(para['TIMEOUT_SECONDS'])
 
         print('开始执行... </br>')
-        print('用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}</br>'.format(self.tst_case_id, self.menu_no,
-                                                              self.menu_path, para['TAB_NAME']))
+        info = '用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}</br>'.format(self.tst_case_id, self.menu_no, self.menu_path, para['TAB_NAME'])
+        print(info)
+
+        logger('开始执行...\r')
+        logger.info(info)
 
     def end_case(self):
         """
         测试用例执行结束
         :param para:
         """
-        # print('结束... \n用例ID：{}'.format(self.tst_case_id))
-        print('结束... \n')
+        print('结束... </br>')
+        logger.info('结束... \r')
 
     def _direct_find_element(self, locator):
         """

@@ -76,14 +76,16 @@ class TestContinuousFalseDetail(TestCase, ContinuousFalseDetailPage):
 
         else:
             if tab_name == '应采集电表明细':  # , '应采集电表明细']:
+                # 用户类型
+                self.inputSel_cons_type(para['CONS_TYPE'])
                 # 终端类型
                 self.inputSel_tmnl_type(para['TMNL_TYPE'])
                 # 计量方式
                 self.inputSel_meas_mode(para['MEAS_MODE'])
                 # 终端地址
                 self.inputStr_tmnl_addr(para['TMNL_ADDR'])
-                # 应采集
-                self.inputChk_data_collect(para['DATA_COLLECT'])
+                # # 应采集
+                # self.inputChk_data_collect(para['DATA_COLLECT'])
             else:
                 # 接线方式
                 self.inputSel_wiring_mode(para['WIRING_MODE'])

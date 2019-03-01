@@ -16,7 +16,7 @@ from com.nrtest.common.utils import Utils
 
 logger = Logger(logger='AssertResult').getlog()
 
-
+#校验新方法
 class AssertResult():
     def __init__(self, call_from):
         self.tst_inst = call_from
@@ -133,8 +133,7 @@ class AssertResult():
         new_page_list = []
         # 获取跳转前页面所要携带的值
         for item in old_data:
-            line = self.tst_inst.calc_col_idx(item[5])
-            locator = self.get_xpath(item[0], item[3], line, type=2)
+
             if item[10] == '1':
                 old_page_list.append(item[9])
             # 获取查询条件输入框的值
@@ -143,6 +142,8 @@ class AssertResult():
                     DataAccess.get_xpath_tab_data(item[5], case_id, caseData['TAB_NAME'])[0][0])
                 old_page_list.append(self.get_text(locator_qry))
             else:
+                line = self.tst_inst.calc_col_idx(item[5])
+                locator = self.get_xpath(item[0], item[3], line, type=2)
                 old_page_list.append(self.tst_inst.driver.find_element(*locator).text)
         pageRes = ''
         # 跳转到对应的页面
@@ -292,8 +293,7 @@ class AssertResult():
                 old_page_list = []
                 new_page_list = []
                 for item in old_data:
-                    line = self.tst_inst.calc_col_idx(item[5])
-                    locator = self.get_xpath(item[0], item[3], line, type=2)
+
                     if item[10] == '1':
                         old_page_list.append(item[9])
                     # 获取查询条件输入框的值
@@ -302,6 +302,8 @@ class AssertResult():
                             DataAccess.get_xpath_tab_data(item[5], case_id, caseData['TAB_NAME'])[0][0])
                         old_page_list.append(self.tst_inst.get_text(locator_qry))
                     else:
+                        line = self.tst_inst.calc_col_idx(item[5])
+                        locator = self.get_xpath(item[0], item[3], line, type=2)
                         old_page_list.append(self.tst_inst.driver.find_element(*locator).text)
                 pageRes = ''
                 # 跳转到对应的页面
@@ -478,13 +480,19 @@ class AssertResult():
         return el.get_attribute('value')
 
     def assertInput(self, case_result, case_id):
+        """
+        获取单个
+        :param case_result:
+        :param case_id:
+        :return:
+        """
         xpath = AssertResultLocators.DISPLAY_RESULT[1].format(case_result[0], case_result[1])
         val = self.get_text((By.XPATH, xpath))
         if case_result[2] == val:
             logger.info('查询详细信息的输入框的值与期望结果一样')
             return True
         else:
-            logger.info('用例{}查询详细信息的输入框的值与期望结果不一致'.format(case_id))
+            logger.error('查询详细信息的输入框的值与期望结果不一致')
             return False
 
     def tab_skip_into_window(self, para):
@@ -543,9 +551,7 @@ class AssertResult():
             old_page_list = []
             new_page_list = []
             for item in old_data:
-                line = self.checkBoxAssertLine_up(item[5]) + 1
 
-                locator = self.get_xpath(item[0], item[3], line, type=2)
 
                 if item[10] == '1':
                     old_page_list.append(item[9])
@@ -555,6 +561,9 @@ class AssertResult():
                         DataAccess.get_xpath_tab_data(item[5], case_id, caseData['TAB_NAME'])[0][0])
                     old_page_list.append(self.tst_inst.get_text(locator_qry))
                 else:
+                    line = self.calc_col_idx(item[5])
+
+                    locator = self.get_xpath(item[0], item[3], line, type=2)
                     old_page_list.append(self.tst_inst.driver.find_element(*locator).text)
             l = self.tst_inst.calc_col_idx(change_value[0], is_num=False)
 
@@ -632,8 +641,7 @@ class AssertResult():
         old_page_list = []
         new_page_list = []
         for item in old_data:
-            line = self.tst_inst.calc_col_idx(item[5])
-            locator = self.get_xpath(item[0], item[3], line, type=2)
+
             if item[10] == '1':
                 old_page_list.append(item[9])
             # 获取查询条件输入框的值
@@ -642,6 +650,8 @@ class AssertResult():
                     DataAccess.get_xpath_tab_data(item[5], case_id, caseData['TAB_NAME'])[0][0])
                 old_page_list.append(self.get_text(locator_qry))
             else:
+                line = self.tst_inst.calc_col_idx(item[5])
+                locator = self.get_xpath(item[0], item[3], line, type=2)
                 old_page_list.append(self.tst_inst.driver.find_element(*locator).text)
         pageRes = ''
         # 跳转到对应的页面

@@ -187,6 +187,11 @@ class AssertResult():
             elif item[7] == '02':
                 if x in y:
                     logger.info(info_rlt)
+                elif item[7] == '03':
+                    if (x == '全部') & (y == ''):
+                        logger.info(info_rlt)
+                    elif x == y:
+                        logger.info(info_rlt)
             else:
                 err_info = '跳转传值错误:' + info_rlt
                 logger.error(err_info)
@@ -301,7 +306,7 @@ class AssertResult():
                     elif item[4] == '01':
                         locator_qry = self.get_xpath(
                             DataAccess.get_xpath_tab_data(item[5], case_id, caseData['TAB_NAME'])[0][0])
-                        old_page_list.append(self.tst_inst.get_text(locator_qry))
+                        old_page_list.append(self.get_text(locator_qry))
                     else:
                         line = self.tst_inst.calc_col_idx(item[5])
                         locator = self.get_xpath(item[0], item[3], line, type=2)
@@ -348,6 +353,11 @@ class AssertResult():
                         logger.info(info_rlt)
                     elif item[7] == '02':
                         if x in y:
+                            logger.info(info_rlt)
+                    elif item[7] == '03':
+                        if (x == '全部') & (y == ''):
+                            logger.info(info_rlt)
+                        elif x == y:
                             logger.info(info_rlt)
                     else:
                         err_info = '跳转传值错误:' + info_rlt
@@ -621,6 +631,11 @@ class AssertResult():
                 elif item[7] == '02':
                     if x in y:
                         logger.info(info_rlt)
+                elif item[7] == '03':
+                    if (x == '全部') & (y == ''):
+                        logger.info(info_rlt)
+                    elif x == y:
+                        logger.info(info_rlt)
                 else:
                     err_info = '跳转传值错误:' + info_rlt
                     logger.error(err_info)
@@ -697,6 +712,11 @@ class AssertResult():
             elif item[7] == '02':
                 if x in y:
                     logger.info(info_rlt)
+                elif item[7] == '03':
+                    if (x == '全部') & (y == ''):
+                        logger.info(info_rlt)
+                    elif x == y:
+                        logger.info(info_rlt)
             else:
                 err_info = '跳转传值错误:' + info_rlt
                 logger.error(err_info)

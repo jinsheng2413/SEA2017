@@ -46,6 +46,10 @@ class DisassemblyTableDataQueryPage(Page):
     def btn_search(self):
         self.btn_query()
 
+    # 选择第一个结果
+    def inputChk_first_result(self):
+        self.click(DisassemblyTableDataQueryLocators.FIRST_RESULT)
+
     # TAB页名称
     def inputChk_tab_name(self, tabName):
         self.clickTabPage(tabName)

@@ -44,3 +44,6 @@ class DisassemblyTableDataQueryLocators:
     # 【校验区】
     # 第一行数据
     CHECK_FIRST = (By.XPATH, '(//div[@class="x-grid3-body"])[1]/div[1]')
+
+    # 第一行的结果
+    FIRST_RESULT = (By.XPATH, '(//div[@class="x-grid3-row-checker"])[1]')

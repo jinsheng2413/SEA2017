@@ -20,6 +20,7 @@ logger = Logger(logger='AssertResult').getlog()
 class AssertResult():
     def __init__(self, call_from):
         self.tst_inst = call_from
+        logger('This test ({}) is exec new assert func.'.format(call_from.menu_no))
 
     def save_img(self, img_path, img_name):
         self.tst_inst.save_img(img_path, img_name)

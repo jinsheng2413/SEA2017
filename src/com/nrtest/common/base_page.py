@@ -1606,7 +1606,7 @@ class Page():
         :param para:
         :return:item
         """
-        logger('This test ({}) is exec old assert func!!!'.format(self.menu_no))
+        logger.info('This test ({}) is exec old assert func!!!'.format(self.menu_no))
 
         esplain = {'11': '显示区未查询出结果', '12': '按条件查询出的结果与期望值不一致', '21': '跳转页面不正确'}
         rslt = DataAccess.get_case_result(para['TST_CASE_ID'])

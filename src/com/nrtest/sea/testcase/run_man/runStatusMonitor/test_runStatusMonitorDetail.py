@@ -28,7 +28,7 @@ class TestRunStatusMonitorDetail(TestCase, RunStatusMonitorDetailPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(RunStatusMonitor_data.runStatusMonitor__para)
+        menuPage = MenuPage.openMenu(RunStatusMonitor_data.runStatusMonitor_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         menuPage.clickTabPage(RunStatusMonitor_data.runStatusMonitor_detail)
@@ -121,7 +121,7 @@ class TestRunStatusMonitorDetail(TestCase, RunStatusMonitorDetailPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunStatusMonitor_data.runStatusMonitor__para,
+    @data(*DataAccess.getCaseData(RunStatusMonitor_data.runStatusMonitor_para,
                                   RunStatusMonitor_data.runStatusMonitor_detail))
     def test_query(self, para):
         """运行管理→采集信道管理→运行情况监测:终端在线明细
@@ -132,7 +132,7 @@ class TestRunStatusMonitorDetail(TestCase, RunStatusMonitorDetailPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RunStatusMonitor_data.runStatusMonitor__para,
+    @data(*DataAccess.getCaseData(RunStatusMonitor_data.runStatusMonitor_para,
                                   RunStatusMonitor_data.runStatusMonitor_detail, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)

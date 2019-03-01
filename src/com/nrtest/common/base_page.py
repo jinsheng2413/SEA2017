@@ -1595,7 +1595,7 @@ class Page():
 
         except:
             print('验证失败')
-
+    #校验老方法
     def check_query_result(self, para):
         """
         查询结果校验

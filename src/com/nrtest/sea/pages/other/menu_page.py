@@ -433,7 +433,7 @@ class MenuPage(Page):
             self.click(self.locator_class.NODE_USER)
             # 选用户查询类型
             if node_flag in ('02', '03', '04'):
-                self.specialDropdown('用户查询类型;;', self.locator_class.SEL_USER_TYPE)
+                self.specialDropdown('用户查询类型;;', self.locator_class.SEL_USER_TYPE, locator_clean=self.locator_class.SEL_USER_TYPE)
             elif node_flag in ('12', '13', '14'):
                 self.specialDropdown('用户查询类型;;台区', self.locator_class.SEL_USER_TYPE)
 

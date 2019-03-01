@@ -441,7 +441,7 @@ class MenuPage(Page):
             print(xpath)
 
             self.click(xpath)
-            print('------------')
+            # print('------------')
 
         elif (node_flag in ('05', '06', '07')):
             # 点击群组标签页
@@ -459,7 +459,7 @@ class MenuPage(Page):
             # print(xpath)
 
             self.click(xpath)
-            print('------------')
+            # print('------------')
 
     def clickAllMenu(self):
         menus = DataAccess.getAllMenu()

@@ -285,7 +285,7 @@ class TreePage(BaseTreePage):
         print(xpath)
 
         self.click(xpath)
-        print('------------')
+        # print('------------')
 
     def group_tab_query(self, node_flag, node_value, number=1):
         # 点击群组标签页

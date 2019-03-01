@@ -54,7 +54,7 @@ class TestLoadRateStatic(TestCase, AvailableCapacityAnalysePage):
         # 去除查询干扰数据(要传入对应的page页面类)
         # self.clear_values(SysDictManPage)
         # 回收左边树
-        print('----------------------')
+        # print('----------------------')
         self.recoverLeftTree()
 
     def query(self, para):

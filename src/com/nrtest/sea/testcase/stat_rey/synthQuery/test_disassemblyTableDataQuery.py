@@ -7,7 +7,7 @@
 @time: 2018/10/9 14:21
 @desc:
 """
-
+from asyncio import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -72,6 +72,21 @@ class TestDisassemblyTableDataQuery(TestCase, DisassemblyTableDataQueryPage):
         self.inputDt_end_date(para['END_DATE'])
         # 查询按钮
         self.btn_search()
+        val = self.get_para_value(para['TAB_NAME'])
+        if bool(val):
+            # 选择第一个结果
+            self.inputChk_first_result()
+            sleep(2)
+            # TAB页名称
+            self.inputChk_tab_name(para['TAB_NAME'])
+            # TAB页开始日期
+            self.inputDt_tab_start_date(para['TAB_START_DATE'])
+            # TAB页结束日期
+            self.inputDt_tab_end_date(para['TAB_END_DATE'])
+            if val == '负荷曲线类数据':
+                # 曲线类型
+                self.inputSel_curve_type(para['CURVE_TYPE'])
+            self.btn_qry()
 
     def assert_query_result(self, para):
         """

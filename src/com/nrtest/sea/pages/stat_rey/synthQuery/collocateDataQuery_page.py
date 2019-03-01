@@ -16,7 +16,7 @@ class CollcateDataQueryDocPage(Page):
 
     # 配变表号
     def inputSel_meter_asset_no(self, value):
-        self.input(value)
+        self.selectDropDown(value)
 
     def btn_qry(self):
         self.btn_query()

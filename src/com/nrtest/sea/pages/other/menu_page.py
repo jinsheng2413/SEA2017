@@ -424,13 +424,24 @@ class MenuPage(Page):
         # {02:代表用户编号，03：代表终端逻辑地址，04：电能表资产号}
         # {05:普通群组，06：重点用户群组，07：控制群组}
 
-        if (node_flag in ('02', '03', '04')):
+        if node_flag in (
+                # 选用户
+                '02', '03', '04',
+                #  选台区
+                '12', '13', '14'):
             # 点击用户标签页
             self.click(self.locator_class.NODE_USER)
+            # 选用户查询类型
+            if node_flag in ('02', '03', '04'):
+                self.specialDropdown('用户查询类型;;', self.locator_class.SEL_USER_TYPE)
+            elif node_flag in ('12', '13', '14'):
+                self.specialDropdown('用户查询类型;;台区', self.locator_class.SEL_USER_TYPE)
+
             self.input(node_value, *self.locator_class.NODE[node_flag])
 
             # 点击查询按钮
-            self.click(self.locator_class.USER_TAB_BTN_QRY)
+            el = self._find_displayed_element(self.locator_class.USER_TAB_BTN_QRY)
+            el.click()
 
             # 等待查询结果，最好通过其他途径判断查询已返回
             self.commonWait(self.locator_class.NODE_USER_TAB_RSLT_DEFAULT)

@@ -85,13 +85,24 @@ class MenuLocators:
 
 
     # 【用户TAB页】
-    NODE = {'02': (By.XPATH, '//*[@name="consNo"]'), '03': (By.XPATH, '//*[@name="terminalAddr"]'), '04': (By.XPATH, '//*[@name="meterAssetNo"]')}
+    NODE = {'02': (By.XPATH, '//*[@name="consNo"]'), '03': (By.XPATH, '//*[@name="terminalAddr"]'), '04': (By.XPATH, '//*[@name="meterAssetNo"]'),
+            # 台区编号
+            '12': (By.XPATH, '//input[@name="tgNo"]'),
+            # 集中器地址
+            '13': (By.XPATH, '//input[@name="terminalId"]'),
+            # 集中器下电表资产号
+            '14': (By.XPATH, '//*[@name="meterAssetNo"]')}
+
+    # 不同用户类型下拉选择时点下拉操作
+    SEL_USER_TYPE = (By.XPATH, '//div[text()="用户查询类型"]/../following-sibling::td//input')
+
     # 【群组TAB页】
     GROUP_NODE = {'05': (By.XPATH, '//*[@id="mainPanel.operate"]//*[text()=\'普通群组\']'),
                   '06': (By.XPATH, '//*[@id="mainPanel.operate"]//*[text()=\'重点用户群组\']'),
                   '07': (By.XPATH, '//*[@id="mainPanel.operate"]//*[text()=\'控制群组\']')}
     # 用户TAB页的查询按钮
-    USER_TAB_BTN_QRY = (By.XPATH, '(//*[@id="indexUserPanel"]//*[text()="查询"])[5]')
+    # USER_TAB_BTN_QRY = (By.XPATH, '(//*[@id="indexUserPanel"]//*[text()="查询"])[5]')
+    USER_TAB_BTN_QRY = (By.XPATH, '//div[@id="indexUserPanel"]//button[text()="查询"]')
     # 打开群组
     GROUP_PLUS = {'05': (By.XPATH, '//div[@id="backTree"]//span[text()="群组"]/../../*[@class="x-tree-ec-icon x-tree-elbow-end-plus"]'),
                   '06': (By.XPATH, '//div[@id="impoUserGroupTree"]//span[text()="群组"]/../../*[@class="x-tree-ec-icon x-tree-elbow-end-plus"]'),

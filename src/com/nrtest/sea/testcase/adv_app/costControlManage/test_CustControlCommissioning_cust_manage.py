@@ -13,6 +13,7 @@ from ddt import data
 from ddt import ddt
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.adv_app.costControlManage.costControlManage_data import CostControlManage_data
 from com.nrtest.sea.pages.adv_app.costControlManage.custControlCommissioning_page import CustControlCommissioning_page
@@ -89,7 +90,7 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult(self).check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

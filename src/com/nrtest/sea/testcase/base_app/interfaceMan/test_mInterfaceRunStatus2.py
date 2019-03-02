@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.interfaceMan.mInterfaceRunStatus2_data import InterfaceMan_data
 from com.nrtest.sea.pages.base_app.interfaceMan.mInterfaceRunStauts2_page import MInterfaceRunStatus2Page
@@ -68,7 +69,7 @@ class Test_MInterfaceRunStatus2(TestCase, MInterfaceRunStatus2Page):
         查询结果校验（包括跳转）
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult(self).check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

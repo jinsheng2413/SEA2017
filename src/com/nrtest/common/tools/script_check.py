@@ -318,27 +318,59 @@ def not_find_test_comment(dirname):
                             fo.write('\r')
 
 
+def insert_import(dirname):
+    """
+    test_query下没配置注释,或找不到test_query方法
+    """
+    postfix = set(['py'])  # 设置要保存的文件格式
+    for maindir, subdir, file_name_list in os.walk(dirname):
+        for filename in file_name_list:
+            apath = os.path.join(maindir, filename)
+            if apath.split('\\')[-1].lower().startswith('test_') and apath.split('.')[-1] in postfix:  # 匹配后缀，只保存所选的文件格式。若要保存全部文件，则注释该句
+                with codecs.open(apath, 'r', 'utf-8') as file:
+                    lines = file.readlines()
+                    idx = 0
+                    is_imported = False
+                    is_called = False
+                    for i, line in enumerate(lines):
+                        is_imported = line.find('common.assert_result') > 0
+                        if is_imported:
+                            break
+                        else:
+                            if line.find('common.BeautifulReport') > 0:
+                                idx = i + 1
+                            elif line.strip().find('AssertResult(self).check_query_result') > 0:
+                                is_called = True
+                                break
+
+                if idx > 0 and is_imported == False and is_called:
+                    lines.insert(idx, 'from com.nrtest.common.assert_result import AssertResult\r\n')
+                    with codecs.open(apath, 'w', encoding='utf-8') as fo:
+                        fo.writelines(lines)
+
+
 if __name__ == '__main__':
     # # 指定根目录
     # dirpath = os.path.dirname(os.path.realpath(__file__))
     dirpath = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase'
-    append_remark(find_not_equal_input)
-    find_not_equal_input(dirpath)
-
-    append_remark(find_atail_file_not_equal_file_name)
-    find_atail_file_not_equal_file_name(dirpath)
-
-    append_remark(find_not_standard_input)
-    find_not_standard_input(dirpath)
-
-    append_remark(find_not_startwith_test)
-    find_not_startwith_test(dirpath)
-
-    append_remark(checkParaWithDB)
-    checkParaWithDB(dirpath)
-
-    append_remark(not_find_BeautifulReport)
-    not_find_BeautifulReport(dirpath)
-
-    append_remark(not_find_test_comment)
-    not_find_test_comment(dirpath)
+    insert_import(dirpath)
+    # append_remark(find_not_equal_input)
+    # find_not_equal_input(dirpath)
+    #
+    # append_remark(find_atail_file_not_equal_file_name)
+    # find_atail_file_not_equal_file_name(dirpath)
+    #
+    # append_remark(find_not_standard_input)
+    # find_not_standard_input(dirpath)
+    #
+    # append_remark(find_not_startwith_test)
+    # find_not_startwith_test(dirpath)
+    #
+    # append_remark(checkParaWithDB)
+    # checkParaWithDB(dirpath)
+    #
+    # append_remark(not_find_BeautifulReport)
+    # not_find_BeautifulReport(dirpath)
+    #
+    # append_remark(not_find_test_comment)
+    # not_find_test_comment(dirpath)

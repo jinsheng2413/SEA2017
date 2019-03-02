@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.run_man.simCardMan.simCardMan_data import SimCardManData
 from com.nrtest.sea.pages.other.menu_page import MenuPage
@@ -75,7 +76,7 @@ class TestAbnormalCount(TestCase, AbnoralStaticPage):
         查询结果校验
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        self.assertTrue(AssertResult(self).check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

@@ -121,8 +121,6 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsDetailPage):
                                   SoftwareUpgrading_data.UpgradeEffectStatistics_tabName_detail))
     def test_query(self, para):
         """基本应用→终端管理→软件升级→升级效果统计:终端升级明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

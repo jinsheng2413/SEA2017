@@ -91,8 +91,6 @@ class TestPatrolDataCurrentStatusQuery(TestCase, PatrolDataQueryCurrentStatusPag
         *DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para, SynthQuery_data.PatrolDataQuery_tabName_current))
     def test_query(self, para):
         """统计查询→综合查询→巡检仪数据查询:电流回路状态
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

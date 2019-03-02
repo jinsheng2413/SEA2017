@@ -90,7 +90,6 @@ class TestAutomatedMeterAvailability_Failed(TestCase, FourTableMeterReadFailedDe
                                   SynthQuery_data.FourTableMeterReadSuccessRate_tabName_failed))
     def test_query(self, para):
         """统计查询→综合查询→自动化抄表可用率:四表合一抄表失败明细
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

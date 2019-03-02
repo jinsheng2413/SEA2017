@@ -86,8 +86,6 @@ class TestSuspectePowerCutObjectQuery(TestCase, SuspectePowerCutObjectQueryPage)
                                   PowerCutAnalysis_data.SuspectedObjectPowerCutMonitor_tabName))
     def test_query(self, para):
         """高级应用→配变监测分析→停电分析→停电监测→疑似区域停电监测:疑似停电对象查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

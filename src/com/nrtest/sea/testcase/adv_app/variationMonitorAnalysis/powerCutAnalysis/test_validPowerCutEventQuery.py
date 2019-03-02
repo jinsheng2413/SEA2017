@@ -87,8 +87,6 @@ class TestValidPowerCutEventQuery(TestCase, ValidPowerCutEventQueryPage):
                                   PowerCutAnalysis_data.ValidPowerCutEventQuery_tabName))
     def test_query(self, para):
         """高级应用→配变监测分析→停电分析→有效停电事件查询:有效停电事件查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

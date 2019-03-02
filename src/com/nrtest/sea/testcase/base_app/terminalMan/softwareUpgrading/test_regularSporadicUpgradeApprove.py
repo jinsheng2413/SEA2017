@@ -93,8 +93,6 @@ class TestRegularSporadicUpgradeApprove(TestCase, RegularSporadicUpgradeApproveP
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.RegularSporadicUpgradeApprove_para))
     def test_query(self, para):
         """基本应用→终端管理→软件升级→常规零星升级审批
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

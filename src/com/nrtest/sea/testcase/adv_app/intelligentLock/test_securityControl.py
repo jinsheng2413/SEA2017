@@ -86,8 +86,6 @@ class TestSecurityControl(TestCase, SecurityControlPage):
     @data(*DataAccess.getCaseData(IntelligentLock_data.SecurityControl_para))
     def test_query(self, para):
         """高级应用→智能锁具→权限控制
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

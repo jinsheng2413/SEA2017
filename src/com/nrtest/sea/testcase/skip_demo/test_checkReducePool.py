@@ -94,6 +94,8 @@ class TestCheckReducePool(TestCase, CheckReducePoolPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(ArchivesVerficationMan_data.checkReducePool_para))
     def test_query(self, para):
+        """test
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

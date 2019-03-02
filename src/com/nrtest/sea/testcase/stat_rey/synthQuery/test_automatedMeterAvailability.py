@@ -83,8 +83,6 @@ class TestAutomatedMeterAvailability(TestCase, AutomatedMeterAvailabilityPage):
                                   SynthQuery_data.AutomatedMeterAvailability_tabName))
     def test_query(self, para):
         """统计查询→综合查询→自动化抄表可用率:全项采集成功率
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

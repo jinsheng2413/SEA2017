@@ -96,8 +96,6 @@ class TestHistoryPowerCutEventQuery_Intelligent(TestCase, IntelligentMeterPowerC
                                   PowerCutAnalysis_data.HistoryPowerCutEventQuery_tabName_Intelligent))
     def test_query(self, para):
         """高级应用→配变监测分析→停电分析→历史停电事件查询:智能表停电事件查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

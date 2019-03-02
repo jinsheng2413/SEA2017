@@ -106,8 +106,6 @@ class TestRealData_Faildetail(TestCase, RealDataFailDetailPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.realData_para, SynthQuery_data.realData_fdetail_tab))
     def test_query(self, para):
         """统计查询→综合查询→抄表数据查询（冀北）:抄表失败明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

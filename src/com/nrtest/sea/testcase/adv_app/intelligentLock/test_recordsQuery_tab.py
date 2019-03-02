@@ -90,8 +90,6 @@ class TestRecordsQuery(TestCase, RecordsQueryStaffPage):
                                   IntelligentLock_data.RecordsQuery_tabName_asset))
     def test_query(self, para):
         """高级应用→智能锁具→记录查询:资产管理记录查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

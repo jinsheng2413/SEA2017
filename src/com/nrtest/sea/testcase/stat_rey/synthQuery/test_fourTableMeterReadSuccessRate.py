@@ -88,8 +88,6 @@ class TestAutomatedMeterAvailability(TestCase, FourTableMeterReadSuccessRatePage
                                   SynthQuery_data.FourTableMeterReadSuccessRate_tabName))
     def test_query(self, para):
         """统计查询→综合查询→四表合一抄表成功率:四表合一抄表成功率
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -107,10 +107,7 @@ class TestModuleAttributeRelationshipMantain(TestCase, ModuleAttributeRelationsh
     @data(*DataAccess.getCaseData(CommunicationModuleManagement.commModulPropMain_para,
                                   CommunicationModuleManagement.commModulPropMain_tab_relationship))
     def test_query(self, para):
-        """
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
-        :return:
+        """对查询结果有无、数据链接跳转等校验
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -85,8 +85,6 @@ class TestTgTopologyDiagram(TestCase, TgTopologyDiagramPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.TgTopologyDiagram_para))
     def test_query(self, para):
         """统计查询→综合查询→台区拓扑图
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

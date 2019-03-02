@@ -83,9 +83,7 @@ class TestRecordsQuery(TestCase, ZoneAreaSameGoodStandard_page):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossCount_data.lineLossCount_para))
     def test_query(self, para):
-        """# 高级应用 → 台线系统 →线损统计 →台区同期月优秀达标查询
-
-        :param para:
+        """# 高级应用→台线系统→线损统计→台区同期月优秀达标查询
         """
         self.start_case(para, __file__)
         self.query(para)

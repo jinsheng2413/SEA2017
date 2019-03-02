@@ -101,7 +101,6 @@ class TestDistributedEnergyStatDetail(TestCase, DistributedEnergyStatDetailPage)
                                   DistributedEnergyMange_data.DistributedEnergyStat_tabName_Detail))
     def test_query(self, para):
         """高级应用--》重点用户检测--》分布式电源管理:分布式电源接入明细
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

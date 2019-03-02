@@ -85,8 +85,6 @@ class TestAutomatedMeterAvailability_Failed(TestCase, AutomatedMeterAvailability
                                   SynthQuery_data.AutomatedMeterAvailability_tabName_detail))
     def test_query(self, para):
         """统计查询→综合查询→自动化抄表可用率:全项失败明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

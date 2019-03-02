@@ -80,7 +80,7 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
             self.inputDt_maintenance_time(para['MAINTENANCE_TIME'])
 
             # 到
-            self.inputDt_end_time(para['END_DATE'])
+            self.inputDt_end_date(para['END_DATE'])
 
         # 有效标志
         self.inputSel_effective_sign(para['EFFECTIVE_SIGN'])
@@ -113,7 +113,6 @@ class TestProtocolLibManage(TestCase, ProtocolLibManageLocatorsPage):
     @data(*DataAccess.getCaseData(MultiTableOne.protocolLibManage_para))
     def test_query(self, para):
         """基本应用→多表合→协议库管理
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

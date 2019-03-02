@@ -97,6 +97,8 @@ class TestGatherTaskCompile(TestCase, GatherTaskCompilePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.gatherTaskCompile_para, DataGatherMan_data.gatherTaskCompile_tab_query_task))
     def test_query(self, para):
+        """test
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

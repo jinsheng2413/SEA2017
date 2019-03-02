@@ -91,8 +91,6 @@ class TestRunMeterStatistics_Detail(TestCase, RunMeterDetailPage):
                                   CollConstructStatus_data.RunMeterStatistics_tabName_detail))
     def test_query(self, para):
         """统计查询→采集建设情况→运行电能表统计:运行电能表明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

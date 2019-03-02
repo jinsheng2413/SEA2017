@@ -80,8 +80,6 @@ class TestOrgNoDataQuery(TestCase, OrgNoDataPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.OrgNoDataQuery_para))
     def test_query(self, para):
         """统计查询→综合查询→供电单位数据查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

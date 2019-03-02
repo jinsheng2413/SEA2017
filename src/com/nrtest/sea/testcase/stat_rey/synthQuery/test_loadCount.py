@@ -110,8 +110,6 @@ class TestLoadCount(TestCase, LoadCountPage):
                                   SynthQuery_data.onlyChangeSysthesisQuery_loadCount_tab))
     def test_query(self, para):
         """# 统计查询--综合查询--专公变综合查询：负荷统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

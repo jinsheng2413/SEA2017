@@ -104,8 +104,6 @@ class TestMeterSuccessRateFailedQuery(TestCase, MeterSuccessRateQueryFailedPage)
                                   SynthQuery_data.MeterSuccessRateQuery_tabName_failed))
     def test_query(self, para):
         """统计查询→综合查询→抄表成功率查询（河北）:连续抄表失败明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

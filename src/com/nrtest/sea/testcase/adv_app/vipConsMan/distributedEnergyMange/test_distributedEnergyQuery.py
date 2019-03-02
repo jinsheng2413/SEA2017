@@ -91,8 +91,6 @@ class TestDistributedEnergyQuery(TestCase, DistributedEnergyQueryPage):
                                   DistributedEnergyMange_data.DistributedEnergyElectricMonitor_tabName_Query))
     def test_query(self, para):
         """高级应用→重点用户监测→分布式电源管理→分布式电源电量监测:分布式电源抄表示数查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -94,6 +94,8 @@ class TestTerminalOnlineSpied(TestCase, TerminalOnlineSpiedPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.terminalOnlineSpied_para))
     def test_query(self, para):
+        """test
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

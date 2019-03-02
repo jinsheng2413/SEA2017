@@ -87,8 +87,6 @@ class TestHistoryPowerCutEventQuery(TestCase, HistoryPowerCutEventQueryPage):
                                   PowerCutAnalysis_data.HistoryPowerCutEventQuery_tabName))
     def test_query(self, para):
         """高级应用→配变监测分析→停电分析→历史停电事件查询:停电事件统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

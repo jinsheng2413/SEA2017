@@ -118,8 +118,7 @@ class TestCtrlExecut(TestCase, CtrlExecutPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(CustMan_data.ctrlExecut_para))
     def test_query(self, para):
-        """
-        对查询结果有无、数据链接跳转等校验
+        """对查询结果有无、数据链接跳转等校验
         """
         self.start_case(para, __file__)
         self.query(para)

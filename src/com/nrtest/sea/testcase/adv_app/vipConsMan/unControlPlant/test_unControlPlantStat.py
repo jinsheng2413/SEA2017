@@ -84,8 +84,6 @@ class TestUnControlPlantStat(TestCase, UnControlPlantStatPage):
     @data(*DataAccess.getCaseData(UnControlPlant.UnControlPlantStat_para, UnControlPlant.UnControlPlantStat_tabName))
     def test_query(self, para):
         """高级应用→重点用户监测→非统调电厂管理:非统调电厂接入统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

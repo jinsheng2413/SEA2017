@@ -88,8 +88,6 @@ class TestAllEventMeterEventQuery(TestCase, AllEventMeterEventQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.AllEventMeterEventQuery_para))
     def test_query(self, para):
         """统计查询→综合查询→全事件电表事件查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

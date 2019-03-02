@@ -96,8 +96,6 @@ class TestUpgradeEditionMan(TestCase, RegularSporadicUpgradePage):
     @data(*DataAccess.getCaseData(RegularSporadicUpgrade_data.para_RegularSporadicUpgrade))
     def test_query(self, para):
         """基本应用→终端升级→常规零星升级
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

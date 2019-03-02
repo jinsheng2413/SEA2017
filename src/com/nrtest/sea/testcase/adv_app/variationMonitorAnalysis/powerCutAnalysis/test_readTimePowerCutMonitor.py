@@ -85,8 +85,6 @@ class TestReadTimePowerCutMonitor(TestCase, ReadTimePowerCutMonitorPage):
                                   PowerCutAnalysis_data.ReadTimePowerCutMonitor_tabName))
     def test_query(self, para):
         """高级应用→配变监测分析→停电分析→实时停电监测:实时停电监测
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -85,8 +85,6 @@ class TestImportantClientRealTimePowerCutMonitor(TestCase, ImportantClientRealTi
                                   PowerCutAnalysis_data.ImportantClientRealTimePowerCutMonitor_tabName))
     def test_query(self, para):
         """高级应用→配变监测分析→停电分析→停电监测→重要客户实时停电监测:重要客户实时停电监测
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

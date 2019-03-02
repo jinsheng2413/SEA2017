@@ -94,8 +94,6 @@ class TestLoadRateStatic(TestCase, LoadRateStaticPage):
                                   TradnsformerMonitorData.para_TradnsformerMonitor_static))
     def test_query(self, para):
         """高级应用→配变负载分析→负载率分析:负载率统计
-        对查询结果有无、数据链接跳转等校验
-        :param para: 用例数据
         """
         self.start_case(para, __file__)
         self.query(para)

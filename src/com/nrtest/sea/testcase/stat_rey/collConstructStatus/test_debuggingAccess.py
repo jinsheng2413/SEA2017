@@ -84,8 +84,6 @@ class TestDebuggingAccess(TestCase, DebuggingAccessPage):
     @data(*DataAccess.getCaseData(CollConstructStatus_data.DebuggingAccess_para))
     def test_query(self, para):
         """统计查询→采集建设情况→调试接入情况
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

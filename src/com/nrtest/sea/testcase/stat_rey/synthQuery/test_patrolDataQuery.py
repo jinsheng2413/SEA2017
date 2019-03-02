@@ -80,8 +80,6 @@ class TestPatrolDataQuery(TestCase, PatrolDataQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para, SynthQuery_data.PatrolDataQuery_tabName))
     def test_query(self, para):
         """统计查询→综合查询→巡检仪数据查询:基本档案
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

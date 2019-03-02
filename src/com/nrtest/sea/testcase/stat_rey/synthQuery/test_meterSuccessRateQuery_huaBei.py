@@ -91,8 +91,6 @@ class TestMeterSuccessRateHuaBeiQuery(TestCase, MeterSuccessRateQueryHuaBeiPage)
                                   SynthQuery_data.MeterSuccessRateQuery_tabName_huaBei))
     def test_query(self, para):
         """统计查询→综合查询→抄表成功率查询（河北）:按华北要求统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

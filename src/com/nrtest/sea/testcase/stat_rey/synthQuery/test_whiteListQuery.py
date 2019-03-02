@@ -93,8 +93,6 @@ class TestWhiteListQuery(TestCase, WhiteListQueryPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.WhiteListQuery_para))
     def test_query(self, para):
         """统计查询→综合查询→白名单查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

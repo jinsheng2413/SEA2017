@@ -108,8 +108,6 @@ class TestMeterClockMan(TestCase, MeterClockManPage):
     @data(*DataAccess.getCaseData(MeterClockMan_data.meterClockMan_para))
     def test_query(self, para):
         """运行管理→电能表管理→电能表状态查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -83,8 +83,6 @@ class TestAllEventDistributionRateStatistics(TestCase, AllEventDistributionRateD
                                   SynthQuery_data.AllEventDistributionRateStatistics_tabName_detail))
     def test_query(self, para):
         """统计查询→综合查询→全事件配置率统计:全事件未配置明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

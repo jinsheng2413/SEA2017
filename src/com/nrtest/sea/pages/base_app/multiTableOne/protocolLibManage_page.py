@@ -35,7 +35,7 @@ class ProtocolLibManageLocatorsPage(Page):
         self.inputDate(value)
 
     # 到
-    def inputDt_end_time(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)
 
     # 有效标志

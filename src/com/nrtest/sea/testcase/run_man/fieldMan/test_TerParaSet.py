@@ -99,8 +99,6 @@ class TestTerParaSet(TestCase, TermParaSetPage):
     @data(*DataAccess.getCaseData(TermParaSet_data.TermParaSet_para))
     def test_query(self, para):
         """运行管理→现场管理→终端运行参数设置
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

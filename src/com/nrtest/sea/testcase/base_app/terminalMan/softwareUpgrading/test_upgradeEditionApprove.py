@@ -91,8 +91,6 @@ class TestUpgradeEditionApprove(TestCase, UpgradeEditionApprovePage):
     @data(*DataAccess.getCaseData(SoftwareUpgrading_data.UpgradeEditionApprove_para))
     def test_query(self, para):
         """基本应用→终端管理→软件升级→升级版本审批
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

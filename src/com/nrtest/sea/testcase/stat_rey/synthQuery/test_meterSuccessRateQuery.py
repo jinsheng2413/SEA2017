@@ -100,8 +100,6 @@ class TestMeterSuccessRateQuery(TestCase, MeterSuccessRateQueryPage):
                                   SynthQuery_data.MeterSuccessRateQuery_tabName))
     def test_query(self, para):
         """统计查询→综合查询→抄表成功率查询（河北）:按地区、厂家统计
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

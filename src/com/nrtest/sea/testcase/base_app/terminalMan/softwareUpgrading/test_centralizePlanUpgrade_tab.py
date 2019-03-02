@@ -92,8 +92,6 @@ class TestCentralizePlanUpgradeTab(TestCase, CentralizePlanUpgradeTabPage):
                                   SoftwareUpgrading_data.CentralizedPlanUpgrade_tabName_tab))
     def test_query(self, para):
         """基本应用→终端管理→软件升级→集中计划升级:制定计划
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -82,8 +82,6 @@ class TestAssetManTab(TestCase, AssetManTabPage):
     @data(*DataAccess.getCaseData(IntelligentLock_data.AssetMan_para, IntelligentLock_data.AssetMan_tabName_key))
     def test_query(self, para):
         """高级应用→智能锁具→资产管理:已增电子钥匙列表
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

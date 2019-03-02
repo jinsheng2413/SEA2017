@@ -85,8 +85,6 @@ class TestUserCollectStatistics2017(TestCase, UserCollectStatistics2017Page):
     @data(*DataAccess.getCaseData(CollConstructStatus_data.UserCollectStatistics2017_para))
     def test_query(self, para):
         """统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计2017
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -91,8 +91,6 @@ class TestPatrolDataAnomalousEventQuery(TestCase, PatrolDataQueryAnomalousEventP
                                   SynthQuery_data.PatrolDataQuery_tabName_anomalous))
     def test_query(self, para):
         """统计查询→综合查询→巡检仪数据查询:异常事件查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

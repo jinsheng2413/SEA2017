@@ -83,7 +83,6 @@ class TestPatrolIntegratedQuery(TestCase, PatrolIntegratedQueryPage):
                                   SynthQuery_data.PatrolIntegratedQuery_tabName))
     def test_query(self, para):
         """统计查询→综合查询→巡检仪综合查询:巡检仪运行指标
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

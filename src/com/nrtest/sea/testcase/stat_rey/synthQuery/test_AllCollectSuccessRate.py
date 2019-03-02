@@ -96,8 +96,6 @@ class TestAllCollectSuccessRate(TestCase, AllCollectSuccessRatePage):
     @data(*DataAccess.getCaseData(SynthQuery_data.allCollectSuccessRate_para))
     def test_query(self, para):
         """统计查询→综合查询→掌机工单查询
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

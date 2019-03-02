@@ -85,8 +85,6 @@ class TestMultipleTableDataQuery(TestCase, MultipleTableDataQueryPage):
                                   SynthQuery_data.MultipleTableDataQuery_tabName))
     def test_query(self, para):
         """统计查询→综合查询→多表合一抄表数据查询:用户抄表数据
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

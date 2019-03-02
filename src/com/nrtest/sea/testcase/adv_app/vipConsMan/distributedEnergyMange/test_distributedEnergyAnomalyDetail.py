@@ -91,8 +91,6 @@ class TestDistributedEnergyAnomalyDetail(TestCase, DistributedEnergyAnomalyDetai
                                   DistributedEnergyMange_data.DistributedEnergyAnomalyAnalysis_tabName_Detail))
     def test_query(self, para):
         """高级应用→重点用户监测→分布式电源管理→分布式电源异常分析:分布式电源异常情况明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

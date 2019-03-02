@@ -79,8 +79,6 @@ class TestLineTopologyDiagram(TestCase, LineTopoLogyDiagramPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.LineTopologyDiagram_para))
     def test_query(self, para):
         """统计查询→综合查询→线路拓扑图
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

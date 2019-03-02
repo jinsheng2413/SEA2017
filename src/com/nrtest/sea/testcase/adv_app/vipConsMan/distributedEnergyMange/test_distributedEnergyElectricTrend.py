@@ -90,8 +90,6 @@ class TestDistributedEnergyElectricTrend(TestCase, DistributedEnergyElectricTren
                                 DistributedEnergyMange_data.DistributedEnergyElectricMonitor_tabName_Trend))
     def test_query(self, para):
         """高级应用→重点用户监测→分布式电源管理→分布式电源电量监测:分布式电源电量趋势
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

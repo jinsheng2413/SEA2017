@@ -86,8 +86,6 @@ class TestPatrolDataCurveDataQuery(TestCase, PatrolDataQueryCurveDataPage):
     @data(*DataAccess.getCaseData(SynthQuery_data.PatrolDataQuery_para, SynthQuery_data.PatrolDataQuery_tabName_curve))
     def test_query(self, para):
         """统计查询→综合查询→巡检仪数据查询:曲线数据
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

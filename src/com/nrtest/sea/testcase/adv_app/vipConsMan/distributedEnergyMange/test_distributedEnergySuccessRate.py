@@ -86,8 +86,6 @@ class TestDistributedEnergySuccessRate(TestCase, DistributedEnergySuccessRatePag
                                   DistributedEnergyMange_data.DistributedEnergyMonitor_tabName_Success))
     def test_query(self, para):
         """高级应用→重点用户监测→分布式电源管理→分布式电源采集监测:分布式电源采集成功率
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

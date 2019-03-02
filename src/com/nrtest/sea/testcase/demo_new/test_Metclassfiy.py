@@ -95,6 +95,8 @@ class TestMetclassfiy(TestCase, MetclassfiyPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(DataGatherMan_data.metclassfiy_para))
     def test_query(self, para):
+        """test
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

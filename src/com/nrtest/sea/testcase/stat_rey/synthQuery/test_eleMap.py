@@ -97,8 +97,6 @@ class TestEleMap(TestCase, EleMapPage):
                                   SynthQuery_data.onlyChangeSysthesisQuery_eleMap_tab))
     def test_query(self, para):
         """# 统计查询--综合查询--专公变综合查询：电量曲线图
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

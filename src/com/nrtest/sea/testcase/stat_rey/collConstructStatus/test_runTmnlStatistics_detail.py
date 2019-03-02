@@ -91,8 +91,6 @@ class TestRunTmnlStatistics_Detail(TestCase, RunTmnlStatDetailPage):
                                   CollConstructStatus_data.RunTmnlStatistics_tabName_detail))
     def test_query(self, para):
         """统计查询→采集建设情况→运行设备统计→运行终端统计:终端运行状态明细
-
-        :param para:
         """
         self.start_case(para, __file__)
         self.query(para)

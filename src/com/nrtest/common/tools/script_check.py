@@ -318,9 +318,42 @@ def not_find_test_comment(dirname):
                             fo.write('\r')
 
 
+def check_test_comment(dirname):
+    """
+    test_query下有冗余注释 :param， return
+    """
+    filelistlog = Setting.LOG_PATH + "filelistlog.log"  # 保存文件路径
+    postfix = set(['py'])  # 设置要保存的文件格式
+    for maindir, subdir, file_name_list in os.walk(dirname):
+        for filename in file_name_list:
+            apath = os.path.join(maindir, filename)
+            if apath.split('\\')[-1].lower().startswith('test_') and apath.split('.')[-1] in postfix:  # 匹配后缀，只保存所选的文件格式。若要保存全部文件，则注释该句
+                package = apath.split('src\\')[-1]
+                with codecs.open(apath, 'r', 'utf-8') as file:
+                    lines = file.readlines()
+                    find_test_query = False
+                    find_comment = False
+                    for i, line in enumerate(lines):
+                        temp = line.strip().replace(' ', '')
+                        if temp.find('test_query') > 0:
+                            find_test_query = True
+                        elif find_test_query:
+                            if find_comment:
+                                if temp.find(":param") >= 0:
+                                    with codecs.open(filelistlog, 'a+', encoding='utf-8') as fo:
+                                        fo.write('\r********')
+                                        fo.write(package + '\r')
+                                        fo.write(line)
+                                        fo.write('\r')
+                                    break
+                                if temp.startswith('"""'):
+                                    break
+                            elif temp.startswith('"""'):
+                                find_comment = True
+
 def insert_import(dirname):
     """
-    test_query下没配置注释,或找不到test_query方法
+    查询结果校验统一采用新版调用后，增加import AssertResult：AssertResult(self).check_query_result(para)
     """
     postfix = set(['py'])  # 设置要保存的文件格式
     for maindir, subdir, file_name_list in os.walk(dirname):
@@ -354,23 +387,26 @@ if __name__ == '__main__':
     # dirpath = os.path.dirname(os.path.realpath(__file__))
     dirpath = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase'
     insert_import(dirpath)
-    # append_remark(find_not_equal_input)
-    # find_not_equal_input(dirpath)
-    #
-    # append_remark(find_atail_file_not_equal_file_name)
-    # find_atail_file_not_equal_file_name(dirpath)
-    #
-    # append_remark(find_not_standard_input)
-    # find_not_standard_input(dirpath)
-    #
-    # append_remark(find_not_startwith_test)
-    # find_not_startwith_test(dirpath)
-    #
+    append_remark(find_not_equal_input)
+    find_not_equal_input(dirpath)
+
+    append_remark(find_atail_file_not_equal_file_name)
+    find_atail_file_not_equal_file_name(dirpath)
+
+    append_remark(find_not_standard_input)
+    find_not_standard_input(dirpath)
+
+    append_remark(find_not_startwith_test)
+    find_not_startwith_test(dirpath)
+
     # append_remark(checkParaWithDB)
     # checkParaWithDB(dirpath)
-    #
-    # append_remark(not_find_BeautifulReport)
-    # not_find_BeautifulReport(dirpath)
-    #
-    # append_remark(not_find_test_comment)
-    # not_find_test_comment(dirpath)
+
+    append_remark(not_find_BeautifulReport)
+    not_find_BeautifulReport(dirpath)
+
+    append_remark(not_find_test_comment)
+    not_find_test_comment(dirpath)
+
+    append_remark(check_test_comment)
+    check_test_comment(dirpath)

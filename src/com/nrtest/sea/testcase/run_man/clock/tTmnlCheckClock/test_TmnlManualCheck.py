@@ -52,7 +52,7 @@ class TestTmnlManualCheck(TestCase,Page):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
-
+        self.sleep_time(2)
         # 回收左边树
         self.recoverLeftTree()
 

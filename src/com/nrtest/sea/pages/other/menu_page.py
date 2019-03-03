@@ -233,6 +233,8 @@ class MenuPage(Page):
         num = self._find_elements(self.locator_class.TREE_MINUS)
 
         el = self._direct_find_element(self.locator_class.TREE_END)
+        if len(num) == 0 and el == None:
+            return 0
         is_exists = el.is_displayed() if bool(el) else False
         if is_exists:
             counter = len(num) - 1

@@ -19,7 +19,7 @@ class CollcateDataQueryDocPage(Page):
         self.selectDropDown(value)
 
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)
 
 
 # 统计查询→综合查询→配变数据查询:数据展示

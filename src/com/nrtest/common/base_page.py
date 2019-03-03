@@ -397,12 +397,13 @@ class Page():
         except Exception as ex:
             logger.error('输入错误:{}\n{}'.format(value, ex))
 
-    def curr_click(self, is_multi_tab=False, btn_name='', idx=1):
+    def curr_click(self, is_multi_tab=False, btn_name='', idx=1, is_by_js=False):
         """
         新版点击方法
         :param is_multi_tab:菜单面内是否有多个TAB页
         :param btn_name:按钮元素文本值
         :param idx:第idx个可见按钮
+        :param is_by_js:True-通过js触发click操作；False-用传统方法click
         """
         try:
             btn_name = btn_name if bool(btn_name) else '查询'
@@ -411,7 +412,15 @@ class Page():
                 el = self._find_displayed_element(loc, idx)
             else:
                 el = self._find_element(loc)
-            el.click()
+
+            if is_by_js:
+                js = '''var event1 = document.createEvent("HTMLEvents"); 
+                      event1.initEvent("click", true, true); 
+                      event1.eventType = "message"; /*这行代码可能能删除*/ 
+                      arguments[0].dispatchEvent(event1);'''
+                self.driver.execute_script(js, el)
+            else:
+                el.click()
 
             logger.info('点击元素：{}'.format(loc))
         except BaseException as e:
@@ -424,7 +433,7 @@ class Page():
         """
         if self.timeout_seconds > 0:
             start_time = time.time()
-            sec = 0.5
+            sec = 2
             sleep(sec)
             try:
                 # 找到元素，并且该元素也可见
@@ -968,7 +977,7 @@ class Page():
         else:
             self._open(self.base_url, self.main_page_title)
 
-    def click(self, locator):
+    def click(self, locator, is_by_js=False):
         """
         点击(click)元素,如图标、按钮等
         :param locator: 元素的位置
@@ -976,7 +985,7 @@ class Page():
         # locator参数值为None或带None的元组或元组长度为0
         if locator is None or locator[0] is None or len(locator) == 0:
             # print ('curr_click')
-            self.curr_click(is_multi_tab=True)
+            self.curr_click(is_multi_tab=True, is_by_js=is_by_js)
         else:
             try:
                 element = self._find_element(locator)

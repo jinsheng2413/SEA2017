@@ -1647,6 +1647,38 @@ class Page():
         locators = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-plus"]')
 
         WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
+    def double_click(self,locator):
+        el = self._find_element(locator)
+        ActionChains(self.driver).double_click(el).perform()
+
+    def intoIframe(self,value):
+        """
+        进入iframe层
+        :param value:
+        :return:
+        """
+        self.driver.switch_to.frame(value)
+
+    def iframe_back(self,num=1):
+        """
+        1:返回主目录
+        2:返回上一层
+        :param num:
+        :return:
+        """
+        if num == 1:
+         self.driver.switch_to.default_content()
+        elif num == 2:
+          self.driver.switch_to.parent_frame()
+
+    def ele_display(self,locator):
+        try:
+            return self.driver.find_element(*locator).is_displayed()
+        except:
+            return False
+
+
+
 
 
 if __name__ == '__main__':

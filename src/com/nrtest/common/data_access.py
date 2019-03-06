@@ -93,6 +93,7 @@ class DataAccess:
         :return: 返回用例数据
         """
         pyoracle = PyOracle.getInstance()
+        print(Setting.GROUP_USER,Setting.GROUP_NO,menuNo,tabName,Setting.PROJECT_NO)
         qry = [Setting.GROUP_USER,
                Setting.GROUP_NO,
                menuNo,
@@ -101,7 +102,49 @@ class DataAccess:
 
         funName = 'pkg_nrtest.get_tst_case_for_valid' if valCheck else 'pkg_nrtest.get_tst_case'
         tst_case = pyoracle.callFCur(funName, qry)
+        print('-----------------')
         print(tst_case)
+        print('-----------------')
+
+        [(
+         '{"TST_CASE_ID":"000010301","MENU_NO":"0000103","TAB_NAME":"01","MENU_NAME":"计算公式","SPECIAL_DEF":"1","POPUP_TYPE":"00","TIMEOUT_SECONDS":"10","BY_LOADING":"Y","CASE_TYPE":"1","EXPECTED_RST":""}',)]
+
+        [{'TST_CASE_ID': '999131001', 'MENU_NO': '99913100', 'TAB_NAME': '任务查询', 'MENU_NAME': '定制任务管理',
+          'SPECIAL_DEF': '1', 'POPUP_TYPE': '00', 'TIMEOUT_SECONDS': '10', 'BY_LOADING': 'Y', 'CASE_TYPE': '1',
+          'EXPECTED_RST': '', 'CP_NAME': '采集点名称;', 'TREE_NODE': '{"NODE_FLAG":"01", "NODE_VALE":"1340101"}',
+          'TASK_NAME': '任务名称;', 'TASK_NO': '任务编号;', 'TASK_STATUS': '任务状态;;全部', 'TASK_TYPE': '任务类型;;电压类',
+          'TMNL_ADDR': '终端地址;', 'TMNL_TYPE': '终端类型;负荷控制终端'},
+         {'TST_CASE_ID': '999131002', 'MENU_NO': '99913100', 'TAB_NAME': '任务查询', 'MENU_NAME': '定制任务管理',
+          'SPECIAL_DEF': '1', 'POPUP_TYPE': '00', 'TIMEOUT_SECONDS': '10', 'BY_LOADING': 'Y', 'CASE_TYPE': '1',
+          'EXPECTED_RST': '', 'CP_NAME': '采集点名称;', 'TREE_NODE': '{"NODE_FLAG":"01", "NODE_VALE":"1340101"}',
+          'TASK_NAME': '任务名称;', 'TASK_NO': '任务编号;11', 'TASK_STATUS': '任务状态;;全部', 'TASK_TYPE': '任务类型;;全部',
+          'TMNL_ADDR': '终端地址;', 'TMNL_TYPE': '终端类型;负荷控制终端'},
+         {'TST_CASE_ID': '999131003', 'MENU_NO': '99913100', 'TAB_NAME': '任务查询', 'MENU_NAME': '定制任务管理',
+          'SPECIAL_DEF': '1', 'POPUP_TYPE': '00', 'TIMEOUT_SECONDS': '10', 'BY_LOADING': 'Y', 'CASE_TYPE': '1',
+          'EXPECTED_RST': '', 'CP_NAME': '采集点名称;', 'TREE_NODE': '{"NODE_FLAG":"01", "NODE_VALE":"1340101"}',
+          'TASK_NAME': '任务名称;日冻结日电压统计数据', 'TASK_NO': '任务编号;', 'TASK_STATUS': '任务状态;;全部', 'TASK_TYPE': '任务类型;;全部',
+          'TMNL_ADDR': '终端地址;', 'TMNL_TYPE': '终端类型;负荷控制终端'},
+         {'TST_CASE_ID': '999131004', 'MENU_NO': '99913100', 'TAB_NAME': '任务查询', 'MENU_NAME': '定制任务管理',
+          'SPECIAL_DEF': '1', 'POPUP_TYPE': '00', 'TIMEOUT_SECONDS': '10', 'BY_LOADING': 'Y', 'CASE_TYPE': '1',
+          'EXPECTED_RST': '', 'CP_NAME': '采集点名称;', 'TREE_NODE': '{"NODE_FLAG":"01", "NODE_VALE":"1340101"}',
+          'TASK_NAME': '任务名称;', 'TASK_NO': '任务编号;', 'TASK_STATUS': '任务状态;;启动', 'TASK_TYPE': '任务类型;;全部',
+          'TMNL_ADDR': '终端地址;', 'TMNL_TYPE': '终端类型;负荷控制终端'},
+         {'TST_CASE_ID': '999131005', 'MENU_NO': '99913100', 'TAB_NAME': '任务查询', 'MENU_NAME': '定制任务管理',
+          'SPECIAL_DEF': '1', 'POPUP_TYPE': '00', 'TIMEOUT_SECONDS': '10', 'BY_LOADING': 'Y', 'CASE_TYPE': '1',
+          'EXPECTED_RST': '', 'CP_NAME': '采集点名称;', 'TREE_NODE': '{"NODE_FLAG":"01", "NODE_VALE":"1340101"}',
+          'TASK_NAME': '任务名称;', 'TASK_NO': '任务编号;', 'TASK_STATUS': '任务状态;;全部', 'TASK_TYPE': '任务类型;;全部',
+          'TMNL_ADDR': '终端地址;130741568', 'TMNL_TYPE': '终端类型;负荷控制终端'},
+         {'TST_CASE_ID': '999131006', 'MENU_NO': '99913100', 'TAB_NAME': '任务查询', 'MENU_NAME': '定制任务管理',
+          'SPECIAL_DEF': '1', 'POPUP_TYPE': '00', 'TIMEOUT_SECONDS': '10', 'BY_LOADING': 'Y', 'CASE_TYPE': '1',
+          'EXPECTED_RST': '', 'CP_NAME': '采集点名称;平泉县台头山乡塔子山村盆窑设施菜园区',
+          'TREE_NODE': '{"NODE_FLAG":"01", "NODE_VALE":"1340101"}', 'TASK_NAME': '任务名称;', 'TASK_NO': '任务编号;',
+          'TASK_STATUS': '任务状态;;全部', 'TASK_TYPE': '任务类型;;全部', 'TMNL_ADDR': '终端地址;', 'TMNL_TYPE': '终端类型;负荷控制终端'},
+         {'TST_CASE_ID': '999131007', 'MENU_NO': '99913100', 'TAB_NAME': '任务查询', 'MENU_NAME': '定制任务管理',
+          'SPECIAL_DEF': '1', 'POPUP_TYPE': '00', 'TIMEOUT_SECONDS': '10', 'BY_LOADING': 'Y', 'CASE_TYPE': '1',
+          'EXPECTED_RST': '', 'CP_NAME': '采集点名称;', 'TREE_NODE': '{"NODE_FLAG":"01", "NODE_VALE":"1340101"}',
+          'TASK_NAME': '任务名称;', 'TASK_NO': '任务编号;', 'TASK_STATUS': '任务状态;;全部', 'TASK_TYPE': '任务类型;;全部',
+          'TMNL_ADDR': '终端地址;', 'TMNL_TYPE': '终端类型;负荷控制终端'}]
+
         try:
             rslt = []
             for row in tst_case:
@@ -341,5 +384,5 @@ if __name__ == '__main__':
     # pass
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
-    print(DataAccess.get_skip_data('999121003','备注-报文查询'))
+    print(DataAccess.getCaseData('0000103',tabName='01'))
     # print(DataAccess.get_menu_xpath_list('99912100','终端调试', '02'))

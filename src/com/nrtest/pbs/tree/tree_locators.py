@@ -13,6 +13,7 @@ class TreeLocators:
     # 左边树不同Tab选择: 用户、终端、供电区域、行业、电网结构、群组
     NODE_TAB = (By.XPATH, '//li//span[@class ="x-tab-strip-text " and text()="{}"]')
     # 当前活动的TAB页内容
+
     # class =" x-panel x-panel-noborder  x-hide-display 隐藏
     # class =" x-panel x-panel-noborder  活动
     ACTIVE_TAB_PAGE = '//div[@class=" x-panel x-panel-noborder "]'
@@ -154,3 +155,26 @@ class TreePBSLocators:
     # 不选中'//span[@class="button chk checkbox_false_full"'
     # 选中'//span[@class="button chk checkbox_true_full"'
     NODE_CHK = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/../span[starts-with(@class,"button chk checkbox")]')
+
+
+
+class LeftTreeLocators:
+    ID = 'myIframe'
+    #判断有没有展开
+    TREE_ELEMENT_LOCATOR = (By.XPATH,'//*[@class="tabs-panels"]//*[text()="{}" and contains(@id,"tree")]')
+    #点击选中的目标
+    TREE_ELEMENT_OPEN_LOCATOR = (By.XPATH, '//*[@class="tabs-panels"]//*[text()="{}" and contains(@id,"tree")]/../span[contains(@class,"open")]')
+
+    CLOSE_LFET_TREE = (By.XPATH,'//*[contains(@class,"center_open") and contains(@id,"tr")]')
+
+    # 返回首页
+    MAIN_PAGE = (By.XPATH, '//li[@class="nav_header"]')
+class PBSLocators:
+    #输入框
+    QRY_LOCATORS = (By.XPATH,'//*[text()="{}"]/..//input')
+    #按钮
+    QRY_BUTTON = (By.XPATH,'//*[text()="{}"]')
+    #打开下拉框图标
+    QRY_SELECT_DROP_DOWN = (By.XPATH,'//span[text()="{}"]/..//a')
+    #选中下拉框
+    QRY_SELECT_DROP_DOWN_ELE = (By.XPATH,'//*[@class="panel combo-p" and contains(@style,"block")]//div[text()="{}"]')

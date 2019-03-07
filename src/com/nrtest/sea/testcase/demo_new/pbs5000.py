@@ -22,7 +22,7 @@ class TestPBS5000(TestCase, CountFormula_page):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu('0000302')  # 厂站设备--30
+        menuPage = MenuPage.openMenu(count_formula)  # 厂站设备--30
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
 
 
@@ -44,7 +44,7 @@ class TestPBS5000(TestCase, CountFormula_page):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.closeLeftTree_double()
+        self.colseLeftTree()
     def query(self, para):
         """
 
@@ -55,7 +55,7 @@ class TestPBS5000(TestCase, CountFormula_page):
         self.into_iframe()
 
         # 打开左边树并选择
-        # self.openLeftTree_double(para['TREE_NODE'])
+        self.openLeftTree(Page['TREE_NODE'])
         # 公式名
         self.inputStr_formula_name(para['FORMULA_NAME'])
         #公式别名
@@ -109,18 +109,4 @@ class TestPBS5000(TestCase, CountFormula_page):
         self.end_case()
 
 
-    # def test_query(self):
-    #     """PBS500菜单及左边树功能测试
-    #
-    #     :return:
-    #     """
-    #     # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "01070110203"}'       # 电压等级树
-    #     # node_no = '{"NODE_FLAG": "08", "NODE_VALE": "01070120106"}'     # 厂站档案
-    #     # node_no = '{"NODE_FLAG": "0
-    #     # \1", "NODE_VALE": "010701"}'            # 带复选框
-    #     # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "020301"}'  # 普通树
-    #
-    #     # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "134010112"}'
-    #     # self.into_iframe()
-    #     # self.openLeftTree_double(node_no)
 

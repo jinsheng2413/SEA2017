@@ -22,7 +22,7 @@ class TestPBS5000(TestCase, CountFormula_page):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(count_formula)  # 厂站设备--30
+        menuPage = MenuPage.openMenu('0000302')  # 厂站设备--30
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
 
 
@@ -53,6 +53,7 @@ class TestPBS5000(TestCase, CountFormula_page):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         self.into_iframe()
+
         # 打开左边树并选择
         # self.openLeftTree_double(para['TREE_NODE'])
         # 公式名

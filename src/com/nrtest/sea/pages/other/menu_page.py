@@ -14,6 +14,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.login import Login
+from com.nrtest.pbs.tree.tree_page import TreePBSPage
 from com.nrtest.sea.locators.other.menu_locators import *
 
 
@@ -33,8 +34,10 @@ class MenuPage(Page):
             self.locator_class = MenuSEA20Locators
         elif self.project_no in (['PBS5000', 'D5000']):
             self.locator_class = MenuPBSLocators
+            self.leftTree = TreePBSPage(self)
         elif self.project_no.endswith('JLZDH'):
             self.locator_class = MenuJLZDHLocators
+
         print('执行【{}】项目的菜单元素'.format(self.project_no))
 
     @staticmethod

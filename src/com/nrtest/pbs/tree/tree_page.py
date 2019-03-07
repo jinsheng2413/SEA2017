@@ -17,7 +17,7 @@ from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators, TreeSingleUserLocators, LeftTreeLocators, \
-    PBSLocators
+    BasePBSLocators
 from com.nrtest.common.logger import Logger
 # create a logger instance
 logger = Logger(logger='BaseTreePage').getlog()
@@ -172,7 +172,7 @@ class BaseTreePage(Page):
         try:
             ls_values = value.split(';')
             # print(ls_values)
-            loc = self.format_xpath(PBSLocators.QRY_LOCATORS, ls_values[0])
+            loc = self.format_xpath(BasePBSLocators.QRY_LOCATORS, ls_values[0])
             tmp = ls_values[1].strip()
             idx = new_idx
             if new_idx == 0:
@@ -197,7 +197,7 @@ class BaseTreePage(Page):
         """
         try:
             ls_values = values.split(';')
-            loc = self.format_xpath(PBSLocators.QRY_LOCATORS,ls_values[0])
+            loc = self.format_xpath(BasePBSLocators.QRY_LOCATORS, ls_values[0])
             if is_multi_elements:
                 el = self._find_displayed_element(loc,idx=idx)
             else:
@@ -238,7 +238,7 @@ class BaseTreePage(Page):
         """
         try:
             btn_name = btn_name if bool(btn_name) else '查询'
-            loc = self.format_xpath(PBSLocators.QRY_BUTTON, btn_name)
+            loc = self.format_xpath(BasePBSLocators.QRY_BUTTON, btn_name)
             if is_multi_eles:
                 el = self._find_displayed_element(loc, idx)
             else:
@@ -269,9 +269,9 @@ class BaseTreePage(Page):
             if bool(item):
                 # 打开下拉框
                 if byImg:
-                    xpath = self.format_xpath(PBSLocators.QRY_SELECT_DROP_DOWN, ls_option[0])
+                    xpath = self.format_xpath(BasePBSLocators.QRY_SELECT_DROP_DOWN, ls_option[0])
                 else:
-                    xpath = self.format_xpath(PBSLocators.QRY_SELECT_DROP_DOWN_ELE, ls_option[0])
+                    xpath = self.format_xpath(BasePBSLocators.QRY_SELECT_DROP_DOWN_ELE, ls_option[0])
 
                 if is_multi_elements:
                     el = self._find_displayed_element(xpath,idx=idx)
@@ -284,9 +284,9 @@ class BaseTreePage(Page):
 
                 # 根据名称选择下拉框
                 if is_equalText:
-                    loc = self.format_xpath(PBSLocators.QRY_SELECT_DROP_DOWN_ELE, item)
+                    loc = self.format_xpath(BasePBSLocators.QRY_SELECT_DROP_DOWN_ELE, item)
                 else:
-                    loc = self.format_xpath(PBSLocators.QRY_SELECT_DROP_DOWN_ELE, item)
+                    loc = self.format_xpath(BasePBSLocators.QRY_SELECT_DROP_DOWN_ELE, item)
                 self.click(loc)
             else:  # 选择值为空时，表示选择全部
                 xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0])
@@ -302,7 +302,42 @@ class BaseTreePage(Page):
         :param idx:第idx个可见按钮
         """
         self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx)
+    def clickCheckBox(self, items):
+        """
+        选择多个复选框【checkBox的name或id一致时调用此方法】
+        :param items: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
+        :param attr: 属性值
+        :param is_multi_tab: 页面是否有多Tab页
+        """
+        try:
+            # 撤销已选项
+            elements = self._find_elements(BasePBSLocators.UNCHECK_BOX)
+            for el in elements:
+                 if el.is_selected():
+                        el.click()
+            if len(items.split(';')) > 2:
+                is_group_check_box = items.split(';')[1]
+            else:
+                is_group_check_box = ''
+            if items.find(';') >= 0:
 
+                ls_items = (items.split(';')[2]).split(',')
+
+            else:
+                ls_items = items.split(',')
+
+            if ls_items[0] != '':
+                for item in ls_items:
+
+
+                    if is_group_check_box != '':
+                        xpath = (BasePBSLocators.CHECK_BOX[0],"//*[@class = "+ '"'+is_group_check_box+'"'+"]" +BasePBSLocators.CHECK_BOX[1])
+                        loc = self.format_xpath(xpath, item)
+                    else:
+                        loc = self.format_xpath(BasePBSLocators.CHECK_BOX, item)
+                    self.click(loc)
+        except BaseException as ex:
+            print('点击复选框失败：{}'.format(ex))
 
 
 

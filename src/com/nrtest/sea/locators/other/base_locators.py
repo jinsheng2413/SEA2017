@@ -218,6 +218,19 @@ class BasePbsLocators(Locators):
     # 弹框处理
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
     POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
+    #--------------------------------------
+    # 输入框
+    QRY_LOCATORS = (By.XPATH, '//*[text()="{}"]/..//input')
+    # 按钮
+    QRY_BUTTON = (By.XPATH, '//*[text()="{}"]')
+    # 打开下拉框图标
+    QRY_SELECT_DROP_DOWN = (By.XPATH, '//span[text()="{}"]/..//a')
+    # 选中下拉框
+    QRY_SELECT_DROP_DOWN_ELE = (By.XPATH, '//*[@class="panel combo-p" and contains(@style,"block")]//div[text()="{}"]')
+    # 选中复选框
+    CHECK_BOX = (By.XPATH, '//label[text()="{}"]')
+    # 清楚复选框
+    UNCHECK_BOX = (By.XPATH, '//input[@type="checkbox"]')
 
 
 class BaseSEA20Locators(Locators):

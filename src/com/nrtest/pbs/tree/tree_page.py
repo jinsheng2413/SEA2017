@@ -17,8 +17,8 @@ from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
-from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators, TreeSingleUserLocators, LeftTreeLocators, \
-    BasePBSLocators
+from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators, TreeSingleUserLocators, LeftTreeLocators
+
 
 # create a logger instance
 logger = Logger(logger='BaseTreePage').getlog()
@@ -128,34 +128,8 @@ class BaseTreePage(Page):
         :param is_chk_node: True-既有节点，同时带复选框；False-只有节点，没复选框
         """
         pass
-    def openLeftTree_double(self,node_no):
-        try:
-            node = Dict(eval(node_no))
-            node_vale = node['NODE_VALE']
-        except:
-            # 不是数组时的默认处理
-            node = {'NODE_FLAG': '01', 'NODE_VALUE': node_no}
-            node_vale = node_no
 
-        node['NODE_VALE'] = DataAccess.getTreeNode(node_vale).split(';')
-        for  i,item in enumerate(node['NODE_VALE']):
-            loc_open = self.format_xpath(LeftTreeLocators.TREE_ELEMENT_OPEN_LOCATOR,item)
-            res = self.ele_display(loc_open)
-            if res==False:
 
-             loc = self.format_xpath(LeftTreeLocators.TREE_ELEMENT_LOCATOR,item)
-             if i == len(node['NODE_VALE']) -1:
-                 self.click(loc)
-             else:
-               self.double_click(loc)
-
-    def closeLeftTree_double(self):
-        loc = LeftTreeLocators.CLOSE_LFET_TREE
-        els = self._find_elements(loc)
-        l = len(els)-1
-        while l>=0:
-            els[l].click()
-            l -=1
 
     def into_iframe(self):
         self.intoIframe(LeftTreeLocators.ID)
@@ -173,7 +147,7 @@ class BaseTreePage(Page):
         try:
             ls_values = value.split(';')
             # print(ls_values)
-            loc = self.format_xpath(BasePBSLocators.QRY_LOCATORS, ls_values[0])
+            loc = self.format_xpath(self.baseLocators.QRY_LOCATORS, ls_values[0])
             tmp = ls_values[1].strip()
             idx = new_idx
             if new_idx == 0:
@@ -198,14 +172,14 @@ class BaseTreePage(Page):
         """
         try:
             ls_values = values.split(';')
-            loc = self.format_xpath(BasePBSLocators.QRY_LOCATORS, ls_values[0])
+            loc = self.format_xpath(self.baseLocators.QRY_LOCATORS, ls_values[0])
             if is_multi_elements:
                 el = self._find_displayed_element(loc,idx=idx)
             else:
                 el = self._find_element(loc)
             el.clear()
             el.send_keys(ls_values[1])
-            # logger.info('list index out of range文本框输入:{}'.format(values))
+            logger.info('list index out of range文本框输入:{}'.format(values))
         except AttributeError as ex:
             logger.error('输入错误:{}\n{}'.format(values, ex))
 
@@ -239,7 +213,7 @@ class BaseTreePage(Page):
         """
         try:
             btn_name = btn_name if bool(btn_name) else '查询'
-            loc = self.format_xpath(BasePBSLocators.QRY_BUTTON, btn_name)
+            loc = self.format_xpath(self.baseLocators.QRY_BUTTON, btn_name)
             if is_multi_eles:
                 el = self._find_displayed_element(loc, idx)
             else:
@@ -270,9 +244,9 @@ class BaseTreePage(Page):
             if bool(item):
                 # 打开下拉框
                 if byImg:
-                    xpath = self.format_xpath(BasePBSLocators.QRY_SELECT_DROP_DOWN, ls_option[0])
+                    xpath = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN, ls_option[0])
                 else:
-                    xpath = self.format_xpath(BasePBSLocators.QRY_SELECT_DROP_DOWN_ELE, ls_option[0])
+                    xpath = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN_ELE, ls_option[0])
 
                 if is_multi_elements:
                     el = self._find_displayed_element(xpath,idx=idx)
@@ -285,9 +259,9 @@ class BaseTreePage(Page):
 
                 # 根据名称选择下拉框
                 if is_equalText:
-                    loc = self.format_xpath(BasePBSLocators.QRY_SELECT_DROP_DOWN_ELE, item)
+                    loc = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN_ELE, item)
                 else:
-                    loc = self.format_xpath(BasePBSLocators.QRY_SELECT_DROP_DOWN_ELE, item)
+                    loc = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN_ELE, item)
                 self.click(loc)
             else:  # 选择值为空时，表示选择全部
                 xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0])

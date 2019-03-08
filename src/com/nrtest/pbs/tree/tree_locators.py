@@ -169,16 +169,3 @@ class LeftTreeLocators:
 
     # 返回首页
     MAIN_PAGE = (By.XPATH, '//li[@class="nav_header"]')
-class BasePBSLocators:
-    #输入框
-    QRY_LOCATORS = (By.XPATH,'//*[text()="{}"]/..//input')
-    #按钮
-    QRY_BUTTON = (By.XPATH,'//*[text()="{}"]')
-    #打开下拉框图标
-    QRY_SELECT_DROP_DOWN = (By.XPATH,'//span[text()="{}"]/..//a')
-    #选中下拉框
-    QRY_SELECT_DROP_DOWN_ELE = (By.XPATH,'//*[@class="panel combo-p" and contains(@style,"block")]//div[text()="{}"]')
-    #选中复选框
-    CHECK_BOX = (By.XPATH,'//label[text()="{}"]')
-    #清楚复选框
-    UNCHECK_BOX = (By.XPATH,'//input[@type="checkbox"]')

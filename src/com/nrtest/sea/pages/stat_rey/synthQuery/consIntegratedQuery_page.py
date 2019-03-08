@@ -130,6 +130,13 @@ class ConsIntrgratedQueryMeasurementPointMaxNumAndTimePage(Page):
     def inputChk_query_type(self, value):
         self.clickRadioBox(value, is_multi_tab=True)
 
+    # 显示分相最大需量
+    def inputChk_phase_demand(self, option):
+        self.clickSingleCheckBox(option)
+
+    # 显示四费率最大需量
+    def inputChk_four_demand(self, option):
+        self.clickSingleCheckBox(option, True, True)
     # 从
     def inputDt_start_time(self, value):
         self.inputDate(value, is_multi_tab=True)

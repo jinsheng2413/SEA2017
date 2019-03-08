@@ -11,14 +11,15 @@ import re
 from time import sleep
 
 from selenium.webdriver import ActionChains
-from com.nrtest.common.BeautifulReport import BeautifulReport
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
+from com.nrtest.common.logger import Logger
 from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators, TreeSingleUserLocators, LeftTreeLocators, \
     BasePBSLocators
-from com.nrtest.common.logger import Logger
+
 # create a logger instance
 logger = Logger(logger='BaseTreePage').getlog()
 class BaseTreePage(Page):
@@ -72,7 +73,7 @@ class BaseTreePage(Page):
         """
         pass
 
-    def colseLeftTree(self):
+    def closeLeftTree(self):
         # node = deepcopy(self.tree_node)
         # node['NODE_VALE'].reverse()
         # self._operate_left_tree(node, False)

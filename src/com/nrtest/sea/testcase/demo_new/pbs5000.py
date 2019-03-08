@@ -9,13 +9,13 @@
 """
 from unittest import TestCase
 
-from ddt import ddt
+from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.page.countFormula_page import CountFormula_page
 from com.nrtest.pbs.tree.tree_page import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from ddt import ddt,data
+
 count_formula = '0000103'
 @ddt
 class TestPBS5000(TestCase, CountFormula_page):
@@ -46,7 +46,7 @@ class TestPBS5000(TestCase, CountFormula_page):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.colseLeftTree()
+        self.closeLeftTree()
     def query(self, para):
         """
 

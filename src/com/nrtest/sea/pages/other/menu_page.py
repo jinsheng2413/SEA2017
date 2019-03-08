@@ -7,13 +7,11 @@
 @time: 2018/8/28 0028 13:45
 @desc:
 """
-from time import sleep
 
 from com.nrtest.common import global_drv
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.base_page import Page
-from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.login import Login
+from com.nrtest.pbs.tree.tree_page import *
 from com.nrtest.sea.locators.other.menu_locators import *
 
 
@@ -29,10 +27,12 @@ class MenuPage(Page):
         # D5000--电能量采集系统（D5000/PBS5000)
         if self.project_no == 'SEA':
             self.locator_class = MenuLocators
+            self.leftTree = TreePage(self)
         elif self.project_no == 'SEA2.0':
             self.locator_class = MenuSEA20Locators
         elif self.project_no in (['PBS5000', 'D5000']):
             self.locator_class = MenuPBSLocators
+            self.leftTree = TreePBSPage(self)
         elif self.project_no.endswith('JLZDH'):
             self.locator_class = MenuJLZDHLocators
         print('执行【{}】项目的菜单元素'.format(self.project_no))
@@ -230,25 +230,26 @@ class MenuPage(Page):
         从BasePage类转来 MenuLocators
         :return:
         """
-        num = self._find_elements(self.locator_class.TREE_MINUS)
-
-        el = self._direct_find_element(self.locator_class.TREE_END)
-        if len(num) == 0 and el == None:
-            return 0
-        is_exists = el.is_displayed() if bool(el) else False
-        if is_exists:
-            counter = len(num) - 1
-            while counter >= 0:
-                if num[counter] is self.locator_class.TREE_END:
-                    self.click(self.locator_class.TREE_END)
-                else:
-                    num[counter].click()
-                counter = counter - 1
-            num_end = self._find_elements(self.locator_class.TREE_END)
-            counter_end = len(num_end) - 1
-            while counter_end >= 0:
-                num_end[counter_end].click()
-                counter_end -= 1
+        self.leftTree.colseLeftTree()
+        # num = self._find_elements(self.locator_class.TREE_MINUS)
+        #
+        # el = self._direct_find_element(self.locator_class.TREE_END)
+        # if len(num) == 0 and el == None:
+        #     return 0
+        # is_exists = el.is_displayed() if bool(el) else False
+        # if is_exists:
+        #     counter = len(num) - 1
+        #     while counter >= 0:
+        #         if num[counter] is self.locator_class.TREE_END:
+        #             self.click(self.locator_class.TREE_END)
+        #         else:
+        #             num[counter].click()
+        #         counter = counter - 1
+        #     num_end = self._find_elements(self.locator_class.TREE_END)
+        #     counter_end = len(num_end) - 1
+        #     while counter_end >= 0:
+        #         num_end[counter_end].click()
+        #         counter_end -= 1
 
     def closePage(self, page_name=None):
         """
@@ -259,7 +260,10 @@ class MenuPage(Page):
         menu_name = page_name if bool(page_name) else self.menu_name
         menu_loc = self.format_xpath(self.locator_class.CURR_MENU, menu_name)
         try:
+            sleep(1.5)
+            print('closing menu window {}'.format(menu_loc[1]))
             self.driver.find_element(*menu_loc).click()
+            print('closed menu window {}'.format(menu_loc[1]))
         except Exception as ex:
             print('定位菜单：{} 报错，错误信息：{}\r'.format(menu_name, ex))
 
@@ -379,38 +383,45 @@ class MenuPage(Page):
 
 
     # 选择左边树
-    def btn_left_tree(self, tree_no):
-        self.sleep_time(2)
-        tree = DataAccess.getLeftTree(tree_no)
-        self.click_left_tree_tab('供电区域')
-        # self.click(BaseLocators.POWER_SUPPLY_AREA)
-
-        # self.btn_suitable_arrow()
-        items = tree.split(';')
-        l = len(items)
-
-        if l == 2:
-            self.btn_plus(1)
-            self.btn_select_company(int(items[1]))
-            # print(int(items[1]))
-        elif l in (3, 4):
-            self.btn_plus(1)  # 点击省公司加号
-            if int(items[1]) == 5:  # 承德供电公司的加号xpath与前4个有所区别需要做特殊处理
-                self.btn_plus(1)
-            else:
-                self.waitLeftTree()
-                self.btn_company_plus(items[1])
-            if l == 3:
-                self.waitLeftTree()
-                self.btn_select_county(int(items[2]) + 1)  # 点击公司加号
-            else:
-                self.waitLeftTree()
-                self.btn_company_plus(int(items[2]) + int(items[1]))  # 点击公司加号
-                self.waitLeftTree()
-                self.btn_select_user(int(items[3]) + 1)
-        elif l == 1:
-            self.btn_select_province()
-
+    # def btn_left_tree(self, tree_no):
+    #     self.sleep_time(2)
+    #     tree = DataAccess.getLeftTree(tree_no)
+    #     self.click_left_tree_tab('供电区域')
+    #     # self.click(BaseLocators.POWER_SUPPLY_AREA)
+    #
+    #     # self.btn_suitable_arrow()
+    #     items = tree.split(';')
+    #     l = len(items)
+    #
+    #     if l == 2: # 选市公司
+    #         self.btn_plus(1)
+    #         self.btn_select_company(int(items[1]))
+    #         # print(int(items[1]))
+    #     elif l in (3, 4): # 选县公司、供电所
+    #         self.btn_plus(1)  # 点击省公司加号
+    #         if int(items[1]) == 5:  # 承德供电公司的加号xpath与前4个有所区别需要做特殊处理
+    #             self.btn_plus(1)
+    #         else:
+    #             self.waitLeftTree()
+    #             self.btn_company_plus(items[1])
+    #         if l == 3:
+    #             self.waitLeftTree()
+    #             # self.btn_select_county(int(items[2]) + 1)  # 点击公司加号 ljf 2019-03-06
+    #             self.btn_select_county(int(items[2]))  # 点击公司加号
+    #         else:
+    #             self.waitLeftTree()
+    #             # self.btn_company_plus(int(items[2]) + int(items[1]))  # 点击公司加号 ljf 2019-03-06
+    #             self.btn_company_plus(int(items[2]))
+    #             self.waitLeftTree()
+    #             # self.btn_select_user(int(items[3]) + 1)  # ljf 2019-03-06
+    #             self.btn_select_user(int(items[3]))
+    #     elif l == 1:  # 选省公司
+    #         self.btn_select_province()
+    #
+    #     return self.driver
+    def btn_left_tree(self, node_no):
+        # self.sleep_time(2)
+        self.leftTree.openLeftTree(node_no)
         return self.driver
 
     def btn_user_nodes(self, node_flag, node_value, number=1):
@@ -438,19 +449,31 @@ class MenuPage(Page):
                 self.specialDropdown('用户查询类型;;', self.locator_class.SEL_USER_TYPE, locator_clean=self.locator_class.SEL_USER_TYPE)
             elif node_flag in ('12', '13', '14'):
                 self.specialDropdown('用户查询类型;;台区', self.locator_class.SEL_USER_TYPE)
+            if node_value.find(';') > 0:
+                ls = node_value.split(';')
+                org_no = ls[0]
+                usr_info = ls[1]
+                loc_org = self.format_xpath(self.locator_class.SEL_USER_CHECKBOX, '供电单位')
+                self.scrollTo(loc_org)
+                self.specialDropdown('供电单位;;{}'.format(org_no), loc_org)
+            else:
+                usr_info = node_value
 
-            self.input(node_value, *self.locator_class.NODE[node_flag])
+            self.scrollTo(self.locator_class.NODE[node_flag])
+            self.input(usr_info, *self.locator_class.NODE[node_flag])
 
             # 点击查询按钮
             el = self._find_displayed_element(self.locator_class.USER_TAB_BTN_QRY)
             el.click()
+            # 左边树查询60秒超时等待
+            self.query_timeout(self.locator_class.LEFT_TREE_LOADING, 60)  # @TODO 60秒不建议写死，建议后续改为可配置
 
-            # 等待查询结果，最好通过其他途径判断查询已返回
-            self.commonWait(self.locator_class.NODE_USER_TAB_RSLT_DEFAULT)
+            # 等待查询结果，最好通过其他途径判断查询已返回 @TODO 需增加是否有查询结果判断处理
+            # self.commonWait(self.locator_class.NODE_USER_TAB_RSLT_DEFAULT)
             self.clear(self.locator_class.NODE[node_flag])
 
             # 定位查询结果，默认选择第一行记录
-            xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, node_value)
+            xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, usr_info)
             print(xpath)
 
             self.click(xpath)

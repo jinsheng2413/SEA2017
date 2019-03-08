@@ -18,26 +18,31 @@ class TreeLocators:
     ACTIVE_TAB_PAGE = '//div[@class=" x-panel x-panel-noborder "]'
 
     TREE_DIV = '//div[@id="mainwest"]'
-    #
-    # ROOT_NODE = '//div[@id="areaTree"]'
 
-    # NODE_LEVEL = (By.XPATH, '//div[@class=" x-panel x-panel-noborder "]//span[text()="{}"]/../preceding-sibling::img[2]')
-    # NODE_LEVEL = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]/../preceding-sibling::img[2]')
-    # NODE_LEVEL = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]/../preceding-sibling::img[2]')
-    NODE_LEVEL = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]/../preceding-sibling::img[2]')
-    # '//div[@class="x-tab-panel-body x-tab-panel-body-noborder x-tab-panel-body-top"]/div[not(contains(@class,"x-hide-display"))]'
-    LEEF_NODE = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]')
+    # 省公司
+    # 关：x-tree-ec-icon x-tree-elbow-end-plus
+    # 开：class="x-tree-ec-icon x-tree-elbow-end-minus"
+    NODE_PROVINCE = (By.XPATH,
+                     '//div[@class="x-tree-root-node"]//li[@class="x-tree-node"]//span[text()="{}"]/../preceding-sibling::img[starts-with(@class,"x-tree-ec-icon")]')
+    # 省公司下属局（市县所及用户均可）选择：
+    # 【非叶子节点】
+    # 关：class="x-tree-ec-icon x-tree-elbow-plus"
+    # 开：class="x-tree-ec-icon x-tree-elbow-minus"
+    # 【叶子节点】
+    # class="x-tree-ec-icon x-tree-elbow"
+    NODE_LEVEL = (By.XPATH,
+                  '//div[@class="x-tree-root-node"]//ul[contains(@style, "visibility: visible; position: static;")]/li[@class="x-tree-node"]//span[text()="{}"]/../preceding-sibling::img[starts-with(@class,"x-tree-ec-icon")]')
+    NODE_LEVEL_IN_PARENT = (By.XPATH,
+                            '//div[@class="x-tree-root-node"]//ul[contains(@style, "visibility: visible; position: static;")]//li[@class="x-tree-node"]//span[text()="{}"]/ancestor::li[@class="x-tree-node"]/ul[contains(@style, "visibility: visible; position: static;")]/li[@class="x-tree-node"]//span[text()="{}"]/../preceding-sibling::img[starts-with(@class,"x-tree-ec-icon")]')
 
-    # $x('//div[@id="mainwest"]//div[@id="areaTree"]//span[text()="国网冀北电力有限公司"]/../preceding-sibling::img[2]/..')
-    # $x('//div[@id="mainwest"]//div[@id="areaTree"]//span[text()="国网冀北电力有限公司"]/../preceding-sibling::img[2]/parent::div')
-    #
-    # class ="x-tree-node-el x-unselectable x-tree-node-collapsed "  已关闭
-    #
-    # class ="x-tree-node-el x-unselectable x-tree-node-expanded"    已打开
+    LEEF_NODE = (By.XPATH,
+                 '//div[@class="x-tree-root-node"]//ul[contains(@style, "visibility: visible; position: static;")]/li[@class="x-tree-node"]//span[text()="{}"]')
+    LEEF_NODE_IN_PARENT = (By.XPATH,
+                           '//div[@class="x-tree-root-node"]//ul[contains(@style, "visibility: visible; position: static;")]//li[@class="x-tree-node"]//span[text()="{}"]/ancestor::li[@class="x-tree-node"]/ul[contains(@style, "visibility: visible; position: static;")]/li[@class="x-tree-node"]//span[text()="{}"]')
 
     # 选择节点范围内搜索节点：如，某供电局内搜索相关节点：
     # $x('//div[@id="mainwest"]//div[@id="areaTree"]//span[text()="唐山供电公司"]/../../..//span[text()="直属用户"]/../preceding-sibling::img[2]')
-    NODE_LEVEL_IN_PARENT = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]/../../..//span[text()="{}"]/../preceding-sibling::img[2]')
+    # NODE_LEVEL_IN_PARENT = (By.XPATH, '//div[@id="mainwest"]//span[text()="{}"]/../../..//span[text()="{}"]/../preceding-sibling::img[2]')
 
     # 【搜索TAB】
 
@@ -73,6 +78,9 @@ class TreeLocators:
 
 
 class TreeSingleUserLocators:
+    """
+    SEA2017单户综合查询
+    """
     NODE_LEVEL = (By.XPATH, '//div[@class="x-tree-root-node"]//span[text()="{}"]/../../a/preceding-sibling::img[contains(@class, "elbow")]')
     LEEF_NODE = (By.XPATH, '//div[@class="x-tree-root-node"]//span[text()="{}"]')
 

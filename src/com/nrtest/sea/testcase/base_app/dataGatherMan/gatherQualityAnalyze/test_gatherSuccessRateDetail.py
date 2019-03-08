@@ -64,7 +64,7 @@ class TestGatherSuccessRateDetail(TestCase, GatherSuccessRateDetailPage):
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 通信方式
-        # self.inputSel_comm_mode(para['COMM_MODE'])
+        self.inputSel_comm_mode(para['COMM_MODE'])
         # 用户编号
         self.inputStr_cons_no(para['CONS_NO'])
         # 终端地址

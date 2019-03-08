@@ -28,7 +28,8 @@ class TestPBS5000(TestCase, TreePage):
         # menuPage = MenuPage.openMenu('0000204')  # 带勾选--41
         # menuPage = MenuPage.openMenu('0001103')  # 电压等级树--40
 
-        menuPage = MenuPage.openMenu('99912100')  # 20
+        # menuPage = MenuPage.openMenu('99912100')  # 20
+        menuPage = MenuPage.openMenu('99911400')
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # menuPage.goto_frame()
         # sleep(1)
@@ -58,10 +59,12 @@ class TestPBS5000(TestCase, TreePage):
 
         :return:
         """
-        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "01070110203"}'       # 电压等级树
-        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "0107012010301"}'     # 厂站档案
-        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "010701"}'            # 带复选框
-        # node_no = '{"NODE_FLAG": "01", "NODE_VALE": "020301"}'  # 普通树
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALUE": "01070110203"}'       # 电压等级树
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALUE": "0107012010301"}'     # 厂站档案
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALUE": "010701"}'            # 带复选框
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALUE": "020301"}'  # 普通树
 
-        node_no = '{"NODE_FLAG": "01", "NODE_VALE": "134010112"}'
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALUE": "134010112"}'
+        # node_no = '{"NODE_FLAG": "01", "NODE_VALUE": "3640103"}'
+        node_no = '{"NODE_FLAG": "01", "NODE_VALUE": "36403020"}'
         self.openLeftTree(node_no)

@@ -37,6 +37,11 @@ class LoginPage(Page):
     def input_identifying(self, code):
         self.input(code, *self.locator_class.INPUT_IDENTIFYING)
 
+    def close_tip(self):
+        el = self._direct_find_element(self.locator_class.TIP)
+        if bool(el):
+            el.click()
+
     # 点击登录按钮
     def btn_login(self):
         self.click(self.locator_class.BTN_LOGIN)

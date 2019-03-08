@@ -33,6 +33,9 @@ class Setting():
     # 是否校验码验证
     VALID_MASK = parse.get('Base', 'Valid_Mask')
 
+    #  登陆时，验证码是否需要加偏移量
+    DEMAND_OFFSET = parse.get('Base', 'demand_offset')
+
     # 登录后是否需清屏
     CLEAN_SCREEN = parse.get('Base', 'clean_screen')
 

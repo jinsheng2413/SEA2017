@@ -32,6 +32,9 @@ class LoginLocators:
     # 登录异常弹窗确认
     BTN_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
 
+    # 登陆页弹出的tip对话框
+    TIP = (By.XPATH, '//a[@class="astyle" and text()="关闭"]')
+
 
 class LoginPBSLocators:
     # 【输入框】

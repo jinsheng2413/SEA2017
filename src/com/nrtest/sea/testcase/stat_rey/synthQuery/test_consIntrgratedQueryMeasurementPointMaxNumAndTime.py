@@ -80,12 +80,22 @@ class TestMeansurementPointVoltage(TestCase, ConsIntrgratedQueryMeasurementPoint
 
         # 统计方式
         self.inputChk_query_type(para['QUERY_TYPE'])
+        query_type = self.get_para_value(para['QUERY_TYPE'])
 
         # 从
         self.inputDt_start_time(para['START_TIME'])
 
         # 到
         self.inputDt_end_time(para['END_TIME'])
+
+        # 显示四费率最大需量
+        self.inputChk_four_demand(para['FOUR_DEMAND'])
+
+        if query_type == '月冻结':
+            # 显示分相最大需量
+            self.inputChk_phase_demand(para['PHASE_DEMAND'])
+
+
 
         # 查询
         self.btn_qry()

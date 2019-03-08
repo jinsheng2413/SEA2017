@@ -21,6 +21,16 @@ os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 # 或者os.environ['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
 
 class DataAccess:
+    @staticmethod
+    def get_province():
+        """
+        提取项目所属现场版本
+        :return:
+        """
+        pyoracle = PyOracle.getInstance()
+        fun_name = 'pkg_nrtest.get_province'
+        menu_path = pyoracle.callfunc(fun_name, 'str', [Setting.PROJECT_NO])
+        return menu_path
 
     @staticmethod
     def getMenu(menuNo):
@@ -73,14 +83,16 @@ class DataAccess:
         return org_path
 
     @staticmethod
-    def getTreeNode(node_no):
+    def getTreeNode(node):
         """
         应用于PBS等左边树管理
         :param node_no:
         :return:
         """
+        node_value = node['NODE_VALUE']
+        by_tree_node = 'N' if node['NODE_FLAG'] == '01' else 'Y'
         pyoracle = PyOracle.getInstance()
-        node_path = pyoracle.callfunc('pkg_nrtest.get_tree_node_path', 'str', [node_no, Setting.PROJECT_NO])
+        node_path = pyoracle.callfunc('pkg_nrtest.get_tree_node_path', 'str', [node_value, Setting.PROJECT_NO, by_tree_node])
         return node_path
 
     @staticmethod
@@ -154,7 +166,7 @@ class DataAccess:
         """
         # tab确定哪个显示区、列明、点击的那一列
         sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value,row_num,is_special \
-                      from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type'
+                      from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type, exec_order'
         # sql = 'select assert_type,tab_column_name , column_name, expected_value ,row_num,is_space\
         #       from tst_case_result where tst_case_id = :id order by assert_type'
         pyoracle = PyOracle.getInstance()
@@ -239,21 +251,29 @@ class DataAccess:
     def get_skip_data(case_id, col_name):
         sql = 'select tres.tab_column_name,lr.tab_name ,tres.column_name,tres.row_num,lr.xpath_type,lr.xpath ,lr.target_tab_name,lr.trans_type,' \
               'lr.target_xpath,lr.trans_value, lr.is_trans,lr.element_sn ' \
-              'from tst_case_result tres,TST_COL_LINK_RELA  lr,tst_case case ' \
-              'where tres.tst_case_id = case.tst_case_id and tres.column_name = lr.col_name and case.menu_no = lr.menu_no and case.tab_name = lr.tab_name and tres.tst_case_id =:case_id  and tres.assert_type in (\'21\',\'23\',\'26\',\'27\') and tres.column_name =:col_name order by lr.element_sn'
+              'from tst_case_result tres,TST_COL_LINK_RELA  lr,tst_case ca ' \
+              'where tres.tst_case_id = ca.tst_case_id and tres.column_name = lr.col_name and ca.menu_no = lr.menu_no and ca.tab_name = lr.tab_name and tres.tst_case_id =:case_id  and tres.assert_type in (\'21\',\'23\',\'26\',\'27\') and tres.column_name =:col_name order by lr.element_sn'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [case_id, col_name])
         return dataSet
 
     @staticmethod
     def get_xpath_tab_data(xpath, caseid, tab_name):
+        """
+        把用例xpath转换为对应的xpath名称
+        :param xpath:
+        :param caseid: 用例ID
+        :param tab_name:
+        :return:
+        """
         sql = 'select ts.xpath_name from tst_menu_xpath_list ts \
               where ts.xpath =:xpath \
               and ts.menu_no in (select u.menu_no from tst_case u where u.tst_case_id =:caseid)\
               and ts.tab_name =:tabName'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [xpath, caseid, tab_name])
-        return dataSet
+        # return dataSet
+        return dataSet[0][0]
 
     # @staticmethod
     # def get_xpath__tab_data(xpath, caseid, tab_name):
@@ -267,13 +287,20 @@ class DataAccess:
 
     @staticmethod
     def get_xpath_menu_data(xpath, menuName, tabName):
+        """
+        xpath转换为对应xpath中文名
+        :param xpath:
+        :param menuName: 菜单名称
+        :param tabName:
+        :return:
+        """
         sql = 'select ts.xpath_name from tst_menu_xpath_list ts \
                  where ts.xpath =:xpath \
                  and ts.tab_name =:tabName \
                  and ts.menu_no in (select u.menu_no from tst_menu u where u.menu_name =:menuName)'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [xpath, tabName, menuName])
-        return dataSet
+        return dataSet[0][0]
 
     @staticmethod
     def get_menu_xpath_list(menu_no, tab_name='01', script_type='01'):
@@ -330,16 +357,17 @@ if __name__ == '__main__':
     # print(DataAccess.getCaseData("99926400", tabName='01'))
     # print(DataAccess.refresh_all())
     # print(type(str))
-    # print(DataAccess.get_case_result('999111003'))
+    print(DataAccess.get_case_result('999121003'))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
     # DataAccess.refresh_all()
     # for i in  str[4:10]:
     #     print(i)
-    # print(DataAccess.getAllMenu())
+    # print(DataAccess.getTreeNode('364101038'))
     # DataAccess.getMenu('99913210')
+    # print(DataAccess.get_province())
     # pass
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
-    print(DataAccess.get_skip_data('999121003','备注-报文查询'))
+    # print(DataAccess.get_skip_data('999121003','备注-报文查询'))
     # print(DataAccess.get_menu_xpath_list('99912100','终端调试', '02'))

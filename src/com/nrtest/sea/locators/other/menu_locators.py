@@ -63,6 +63,8 @@ class MenuLocators:
 
     # 长时间加载页面中:Loading
     LOADING = (By.XPATH, '//div[@class ="loading-indicator" and text()="Loading..."]')
+    # 左边树查询超时等待
+    LEFT_TREE_LOADING = (By.XPATH, '(//div[@id="indexUserPanel"]//div[@class="ext-el-mask-msg x-mask-loading"])[2]')
 
     # 【左边树】
     # 左边树按钮
@@ -95,6 +97,7 @@ class MenuLocators:
 
     # 不同用户类型下拉选择时点下拉操作
     SEL_USER_TYPE = (By.XPATH, '//div[text()="用户查询类型"]/../following-sibling::td//input')
+    SEL_USER_CHECKBOX = (By.XPATH, '//div[@id="indexUserPanel"]//label[normalize-space(text())="{}"]/..//img')
 
     # 【群组TAB页】
     GROUP_NODE = {'05': (By.XPATH, '//*[@id="mainPanel.operate"]//*[text()=\'普通群组\']'),

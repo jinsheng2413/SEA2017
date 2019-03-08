@@ -45,8 +45,8 @@ class Login:
         element_Height = top + imageMask.size['height']
 
         with Image.open(Setting.SCREENSHOTS_PATH + 'photo.png') as img_file:  # type: Image.Image
-            img_sizes = img_file.size
-            if img_sizes[0] == 1920:
+            # img_sizes = img_file.size
+            if Setting.DEMAND_OFFSET == 'yes':
                 img_code = img_file.crop((left + 285, top + 130, element_Width + 290, element_Height + 130))
             else:
                 img_code = img_file.crop((left, top, element_Width, element_Height))
@@ -68,6 +68,8 @@ class Login:
 
         is_failed = True
         while is_failed:
+            #  关闭登陆页面的TIP窗口 2019-03-05
+            loginPage.close_tip()
             loginPage.input_username(self.username)
             loginPage.input_password(self.password)
             if self.is_valid_mask:  # 是否需要验证码判断 yes是；no否
@@ -78,7 +80,6 @@ class Login:
             # 确认是否登录成功
             is_logined = loginPage.is_login_success()
             if is_logined:
-                sleep(1)
                 # 登录清屏处理
                 if self.is_clean_screen:
                     loginPage.clean_screen()
@@ -89,6 +90,7 @@ class Login:
                 loginPage.refresh_valid_mask()
                 sleep(1)
                 logger.info('%s登陆失败!!' % self.username)
+
         return loginPage.driver
 
     @classmethod

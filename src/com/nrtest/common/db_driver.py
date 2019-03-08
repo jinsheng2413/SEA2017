@@ -45,7 +45,7 @@ class ConnPool():
             dbMaxConns = int(parse.get('Db_setup', 'DbMaxConnections'))
 
             if self._database == 'oracle':
-                dsn = ip + '/' + db
+                dsn = ip + ':' + port + '/' + db
                 self.__pool = PooledDB(creator=cx_Oracle, mincached=1, maxcached=maxcache,
                                        maxconnections=dbMaxConns,
                                        user=user, password=pwd,

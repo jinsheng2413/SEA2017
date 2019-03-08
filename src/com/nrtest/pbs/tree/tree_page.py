@@ -49,13 +49,13 @@ class BaseTreePage(Page):
         """
         try:
             node = Dict(eval(node_no))
-            node_vale = node['NODE_VALE']
+            node_value = node['NODE_VALUE']
         except:
             # 不是数组时的默认处理
             node = {'NODE_FLAG': '01', 'NODE_VALUE': node_no}
-            node_vale = node_no
+            node_value = node_no
 
-        node['NODE_VALE'] = DataAccess.getTreeNode(node_vale).split(';')
+        node['NODE_VALUE'] = DataAccess.getTreeNode(node).split(';')
 
         self._click_node_tab(node['NODE_FLAG'])
         self.node_list = []  # 用于左边树整体收起压栈
@@ -71,7 +71,7 @@ class BaseTreePage(Page):
 
     def colseLeftTree(self):
         # node = deepcopy(self.tree_node)
-        # node['NODE_VALE'].reverse()
+        # node['NODE_VALUE'].reverse()
         # self._operate_left_tree(node, False)
         if self.tree_type[-1] == 0:  # 非复选框节点，最后一个叶子节点不处理
             self.node_list.pop()
@@ -87,8 +87,8 @@ class BaseTreePage(Page):
         :return:
         """
         node_flag = node_info['NODE_FLAG']
-        if node_flag == '01':  # 选择全模型
-            items = node_info['NODE_VALE']
+        if node_flag in ['01', '10']:  # 选择全模型
+            items = node_info['NODE_VALUE']
             levels = len(items) - 1  # 总层级数-1
             for idx, item in enumerate(items):
                 # 厂站间有重复节点名，如电压等级、厂站设备等
@@ -206,16 +206,24 @@ class TreePage(BaseTreePage):
         is_step_into = False
         if self.tree_type[0] == '2':
             is_step_into = item == '直属用户'
+            # TreeLocators.NODE_PROVINCE_DIRECT
 
         levels = len(items) - 1  # 总层级数-1
         if is_step_into:
-            locator = self.format_xpath(TreeLocators.NODE_LEVEL_IN_PARENT, (items[idx - 1], item))
+            if idx == levels and self.tree_type[1] == '0':
+                locator = self.format_xpath(TreeLocators.LEEF_NODE_IN_PARENT, (items[idx - 1], item))
+            else:
+                locator = self.format_xpath(TreeLocators.NODE_LEVEL_IN_PARENT, (items[idx - 1], item))
             # *********带复选框的叶子节点，除勾选外，是否还需再点击一下
         else:
-            locator = self.format_xpath(TreeLocators.NODE_LEVEL, (item))
-            # 不带复选框的叶子节点只点击文本元素，不点击文本元素边上的图标元素
-            if idx == levels and self.tree_type[1] == '0':
-                locator = self.format_xpath(TreeLocators.LEEF_NODE, item)
+            if idx == 0:
+                locator = self.format_xpath(TreeLocators.NODE_PROVINCE, item)
+            else:
+                # 不带复选框的叶子节点只点击文本元素，不点击文本元素边上的图标元素
+                if idx == levels and self.tree_type[1] == '0':
+                    locator = self.format_xpath(TreeLocators.LEEF_NODE, item)
+                else:
+                    locator = self.format_xpath(TreeLocators.NODE_LEVEL, (item))
 
         # 对群组类型元素定位做特殊处理
         if self.tree_type == '50':
@@ -247,14 +255,14 @@ class TreePage(BaseTreePage):
         # 状态不一致时点击
         if is_click:
             element.click()
-            sleep(0.3)
+            sleep(1)
 
     def _other_left_tree(self, node_info):
         node_flag = node_info['NODE_FLAG']
-        if node_flag in ('02', '03', '04'):
-            self.user_tab_query(node_flag, node_info['NODE_VALE'])
+        if node_flag in ('02', '03', '04', '12', '13', '14'):
+            self.user_tab_query(node_flag, node_info['NODE_VALUE'])
         elif node_flag in ('05', '06', '07'):
-            self.group_tab_query(node_flag, node_info['NODE_VALE'])
+            self.group_tab_query(node_flag, node_info['NODE_VALUE'])
 
     def user_tab_query(self, node_flag, node_value, number=1):
 
@@ -300,7 +308,7 @@ class TreePage(BaseTreePage):
             el.click()
 
         node_info = {'NODE_FLAG': '01'}
-        node_info.setdefault('NODE_VALE', node_value.split(','))
+        node_info.setdefault('NODE_VALUE', node_value.split(','))
         self.node_list = []
         self.tree_type = '50'
         self._operate_left_tree(node_info)

@@ -165,7 +165,10 @@ class MenuPage(Page):
         flag = action[-1]
         if flag in ('1', '3'):  # 1-点击/3-新窗口
             if isinstance(object, tuple):
-                self.click(object)
+
+                or_T = self._direct_find_element(object)
+                if or_T != None:
+                   self.click(object)
             else:
                 object.click()
             if flag == '3':  # 新窗口

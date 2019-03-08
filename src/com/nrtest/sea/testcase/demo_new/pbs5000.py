@@ -22,8 +22,10 @@ class TestPBS5000(TestCase, CountFormula_page):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(count_formula)  # 厂站设备--30
+        menuPage = MenuPage.openMenu('0000202')  # 厂站设备--30
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
+        menuPage.intoIframe(LeftTreeLocators.ID)
+        menuPage.clickTabPage('通道状态查询')
 
 
     @classmethod
@@ -52,8 +54,7 @@ class TestPBS5000(TestCase, CountFormula_page):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        self.into_iframe()
-
+        self.clickCheckBox(para['CHEC'],number=True)
         # 打开左边树并选择
         self.openLeftTree(Page['TREE_NODE'])
         # 公式名

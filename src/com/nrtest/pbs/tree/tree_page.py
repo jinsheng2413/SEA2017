@@ -302,7 +302,7 @@ class BaseTreePage(Page):
         :param idx:第idx个可见按钮
         """
         self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx)
-    def clickCheckBox(self, items):
+    def clickCheckBox(self, items,name=False,number=False):
         """
         选择多个复选框【checkBox的name或id一致时调用此方法】
         :param items: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
@@ -310,34 +310,75 @@ class BaseTreePage(Page):
         :param is_multi_tab: 页面是否有多Tab页
         """
         try:
-            # 撤销已选项
-            elements = self._find_elements(BasePBSLocators.UNCHECK_BOX)
-            for el in elements:
-                 if el.is_selected():
-                        el.click()
             if len(items.split(';')) > 2:
                 is_group_check_box = items.split(';')[1]
             else:
                 is_group_check_box = ''
+            loc1 = (BasePBSLocators.UNCHECK_BOX[0],
+                     "//*[@class = " + '"' + is_group_check_box + '"' + "]" + BasePBSLocators.UNCHECK_BOX[1])
+
+            # 撤销已选项
+            elements = self._find_elements(loc1)
+            for el in elements:
+                 if el.is_selected():
+                        el.click()
             if items.find(';') >= 0:
 
                 ls_items = (items.split(';')[2]).split(',')
 
             else:
                 ls_items = items.split(',')
+            if name:
 
-            if ls_items[0] != '':
-                for item in ls_items:
+                if ls_items[0] != '':
+                    for item in ls_items:
 
 
-                    if is_group_check_box != '':
-                        xpath = (BasePBSLocators.CHECK_BOX[0],"//*[@class = "+ '"'+is_group_check_box+'"'+"]" +BasePBSLocators.CHECK_BOX[1])
-                        loc = self.format_xpath(xpath, item)
-                    else:
-                        loc = self.format_xpath(BasePBSLocators.CHECK_BOX, item)
-                    self.click(loc)
+                        if is_group_check_box != '':
+                            name_xpath = (BasePBSLocators.CHECK_BOX[0],"//*[@class = "+ '"'+is_group_check_box+'"'+"]" +BasePBSLocators.CHECK_BOX[1])
+                            loc = self.format_xpath(name_xpath, item)
+                        else:
+                            loc = self.format_xpath(BasePBSLocators.CHECK_BOX, item)
+                        self.click(loc)
+            if number:
+                if ls_items[0] != '':
+                    for item in ls_items:
+
+                        if is_group_check_box != '':
+                            number_xpath = (BasePBSLocators.UNCHECK_BOX[0],
+                                     "(//*[@class = " + '"' + is_group_check_box + '"' + "]" + BasePBSLocators.UNCHECK_BOX[
+                                         1]+")[{}]")
+                            loc = self.format_xpath(number_xpath, item)
+                        else:
+                            loc = self.format_xpath(BasePBSLocators.CHECK_BOX, item)
+                        self.click(loc)
+
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
+    def clickRadioBox(self, option, is_multi_tab=False, is_multi_elements=False):
+        """
+        选择单选框
+        :param option: 被选择项名称
+        :param is_multi_tab:
+        :param is_multi_elements:
+        """
+        try:
+            if (option.find(';') == -1):
+                item = option
+            else:
+                ls_option = option.split(';')
+                item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
+
+            if len(item) == 0:
+                raise BaseException('单选框必须指定选择项：{}'.format(option))
+            xpath = self.format_xpath_multi(self.baseLocators.RADIOBOX_LABEL2INPUT, item, is_multi_tab)
+            if is_multi_elements:
+                el = self._find_displayed_element(xpath)
+                el.click()
+            else:
+                self.click(xpath)
+        except BaseException as ex:
+            print('点击单选框失败：{}'.format(ex))
 
 
 

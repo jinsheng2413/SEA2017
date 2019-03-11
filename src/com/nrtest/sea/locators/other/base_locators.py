@@ -224,7 +224,7 @@ class BasePbsLocators(Locators):
     # 按钮
     QRY_BUTTON = (By.XPATH, '//*[text()="{}"]')
     # 打开下拉框图标
-    QRY_SELECT_DROP_DOWN = (By.XPATH, '//span[text()="{}"]/..//a')
+    QRY_SELECT_DROP_DOWN = (By.XPATH, '//*[text()="{}"]/..//a')
     # 选中下拉框
     QRY_SELECT_DROP_DOWN_ELE = (By.XPATH, '//*[@class="panel combo-p" and contains(@style,"block")]//div[text()="{}"]')
     # 选中复选框

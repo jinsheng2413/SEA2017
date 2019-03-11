@@ -16,3 +16,6 @@ class CollOperMain_data:
     collDetail_para = '0000203'
     collSuccRate_tab = '采集成功率'
     collDetail_tab = '采集详情'
+    # 采集运维--采集通道监视
+    collPortMonitor_para = '0000202'
+    portState_tab = '通道状态查询'

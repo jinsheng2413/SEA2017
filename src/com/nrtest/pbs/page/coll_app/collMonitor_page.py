@@ -7,7 +7,7 @@
 @time: 2019-03-06 14:38:37
 @desc:
 """
-from com.nrtest.pbs.locators.coll_app.collOperMain_locators import CollOperMain_locators
+from com.nrtest.pbs.locators.coll_app.collApp_locators import CollOperMain_locators
 from com.nrtest.pbs.tree.tree_page import TreePBSPage
 
 

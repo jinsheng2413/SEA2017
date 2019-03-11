@@ -68,6 +68,9 @@ class TestMeterDataQueryCount(TestCase, MeterDataQueryCountPage):
         # 冻结数据类型
         self.inputChk_freeze_data_type(para['FREEZE_DATA_TYPE'])
 
+        # 用户类别--江西新增
+        self.inputSel_cons_type(para['CONS_TYPE'])
+
         freeze_data_type = self.get_para_value(para['FREEZE_DATA_TYPE'])
         if freeze_data_type in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线']:
             # 相位

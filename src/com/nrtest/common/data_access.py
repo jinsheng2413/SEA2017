@@ -167,8 +167,9 @@ class DataAccess:
         # tab确定哪个显示区、列明、点击的那一列
         sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value,row_num,is_special \
                       from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type, exec_order'
-        # sql = 'select assert_type,tab_column_name , column_name, expected_value ,row_num,is_space\
-        #       from tst_case_result where tst_case_id = :id order by assert_type'
+        # # @TOsDO 记得把下面的代码注释掉，并替换为上面代码
+        # sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value,row_num,is_special \
+        #                       from tst_case_result where tst_case_id = :id order by assert_type, exec_order'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [tst_case_id])
         return dataSet
@@ -357,7 +358,7 @@ if __name__ == '__main__':
     # print(DataAccess.getCaseData("99926400", tabName='01'))
     # print(DataAccess.refresh_all())
     # print(type(str))
-    print(DataAccess.get_case_result('999121003'))
+    # print(DataAccess.get_case_result('999121003'))
     # val = Dict(eval(str[4]['ORG_NO']))
     # print(val['FLAG'], val['VALUE'])
     # DataAccess.refresh_all()
@@ -365,7 +366,7 @@ if __name__ == '__main__':
     #     print(i)
     # print(DataAccess.getTreeNode('364101038'))
     # DataAccess.getMenu('99913210')
-    # print(DataAccess.get_province())
+    print(DataAccess.get_province())
     # pass
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')

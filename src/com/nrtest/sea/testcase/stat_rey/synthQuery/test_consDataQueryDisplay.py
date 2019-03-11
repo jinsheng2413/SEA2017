@@ -58,9 +58,11 @@ class TestConsDataQuery(TestCase, ConsDataQueryDisplayPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
-        # 用户编号
-        self.inputStr_cons_no(para['CONS_NO'])
+        if self.is_tree_node_first():
+            self.openLeftTree(para['TREE_NODE'])
+        else:
+            # 用户编号
+            self.inputStr_cons_no(para['CONS_NO'])
 
         # 点击查询按钮
         self.btn_search()

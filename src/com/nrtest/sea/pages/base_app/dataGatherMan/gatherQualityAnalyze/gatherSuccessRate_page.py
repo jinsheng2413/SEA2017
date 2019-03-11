@@ -10,9 +10,9 @@
 
 from com.nrtest.common.base_page import Page
 
-
 # 基本应该→数据采集管理→采集质量分析→采集成功率
-from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_locators import GatherSuccessRateDetailLocators
+from com.nrtest.sea.locators.base_app.dataGatherMan.gatherQualityAnalyze.gatherSuccessRate_locators import \
+    GatherSuccessRateDetailLocators
 
 
 # 采集成功率→采集成功率
@@ -28,7 +28,8 @@ class GatherSuccessRatePage(Page):
 
     # 通信方式
     def inputSel_comm_mode(self, option):
-        self.selectCheckBox(option, is_multi_tab=True, is_multi_elements=False)
+        # self.selectCheckBox(option, is_multi_tab=True, is_multi_elements=False)
+        self.selectDropDown(option, is_multi_tab=True, is_multi_elements=True)
 
     # 终端厂家
     def inputSel_tmnl_factory(self, index):
@@ -128,6 +129,7 @@ class GatherSuccessRateDetailPage(Page):
     # 终端地址
     def inputStr_tmnl_addr(self, content):
         self.input(content)
+
     # 查询日期
     def inputDt_query_date(self, content):
         self.inputDate(content)
@@ -135,6 +137,7 @@ class GatherSuccessRateDetailPage(Page):
     # 查询按钮
     def btn_search(self):
         self.btn_query(True)
+
 
 # 采集成功率→连续抄表失败明细
 class ContinuousFalseDetailPage(Page):

@@ -52,7 +52,7 @@ class TestCollcateDataQueryDoc(TestCase, CollcateDataQueryDataPage):
         """
 
         # 回收左边树
-        self.recoverLeftTree()
+        # self.recoverLeftTree()
 
     def query(self, para):
         """
@@ -66,7 +66,7 @@ class TestCollcateDataQueryDoc(TestCase, CollcateDataQueryDataPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 配变表号
-        self.inputSel_meter_asset_no(para['METER_ASSET_NO'])
+        # self.inputSel_meter_asset_no(para['METER_ASSET_NO'])
 
         # 父级查询
         self.btn_search()
@@ -74,12 +74,13 @@ class TestCollcateDataQueryDoc(TestCase, CollcateDataQueryDataPage):
         # Tab页名称
         self.inputChk_tab_name(para['TAB_NAME'])
 
-        # 查询日期
-        self.inputStr_query_date(para['QUERY_DATE'])
-
-        if self.get_para_value(para['TAB_NAME']) != '功率因数曲线':
+        tab_name = self.get_para_value(para['TAB_NAME'])
+        if tab_name != '功率因数曲线':
             # 一二次测量值
             self.inputSel_meas_value(para['MEAS_VALUE'])
+
+        # 查询日期
+        self.inputDt_query_date(para['QUERY_DATE'])
 
         # 查询
         self.btn_qry()
@@ -110,7 +111,8 @@ class TestCollcateDataQueryDoc(TestCase, CollcateDataQueryDataPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(SynthQuery_data.CollcateDataQuery_para, SynthQuery_data.CollcateDataQuery_Data, valCheck=True))
+    @data(*DataAccess.getCaseData(SynthQuery_data.CollcateDataQuery_para, SynthQuery_data.CollcateDataQuery_Data,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

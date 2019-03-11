@@ -69,8 +69,8 @@ class TestMeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         self.inputChk_freeze_data_type(para['FREEZE_DATA_TYPE'])
         freeze_data_type = self.get_para_value(para['FREEZE_DATA_TYPE'])
         if freeze_data_type == '日冻结电能示值':
-            # 正反是否有功
-            self.inputChk_power_type(para['POWER_TYPE'])
+            # # 正反是否有功--江西没有
+            # self.inputChk_power_type(para['POWER_TYPE'])
             # 反相采集结果
             self.inputSel_recerse_collection_result(para['RECERSE_COLLECTION_RESULT'])
 
@@ -78,18 +78,34 @@ class TestMeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
             # 相位
             self.inputSel_phase_code(para['PHASE_CODE'])
 
+        # 江西新增
+        elif freeze_data_type in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线', '日冻结需量']:
+            # 到
+            self.inputDt_end_date(para['END_DATE'])
+
         # 抄表段号
         self.inputStr_mr_sect_no(para['MR_SECT_NO'])
         # 电表资产号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 用户类型
-        self.inputSel_cons_type(para['CONS_TYPE'])
+        self.inputSel_cons_sort(para['CONS_TYPE'])
         # 终端厂家
         self.inputSel_tmnl_manufacturer(para['TMNL_MANUFACTURER'])
-        # 计量点状态
-        self.inputSel_sto_point_status(para['STO_POINT_STATUS'])
-        # 规约类型
-        self.inputChk_protocol_type(para['PROTOCOL_TYPE'])
+
+        # 电能表抄读状态--江西新增
+        self.inputSel_meter_read_status(para['METER_READ_STATUS'])
+
+        # 终端运行状态--江西新增
+        self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
+
+        # # 计量点状态--江西没有，冀北有
+        # self.inputSel_sto_point_status(para['STO_POINT_STATUS'])
+        # # 规约类型--江西没有，冀北有
+        # self.inputChk_protocol_type(para['PROTOCOL_TYPE'])
+
+        # 用户类别--江西新增
+        self.inputSel_cons_type(para['CONS_TYPE'])
+
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 农排用户选择

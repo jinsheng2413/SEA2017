@@ -261,9 +261,9 @@ class MenuPage(Page):
         menu_loc = self.format_xpath(self.locator_class.CURR_MENU, menu_name)
         try:
             sleep(1.5)
-            print('closing menu window {}'.format(menu_loc[1]))
+            # print('closing menu window {}'.format(menu_loc[1]))
             self.driver.find_element(*menu_loc).click()
-            print('closed menu window {}'.format(menu_loc[1]))
+            # print('closed menu window {}'.format(menu_loc[1]))
         except Exception as ex:
             print('定位菜单：{} 报错，错误信息：{}\r'.format(menu_name, ex))
 
@@ -438,12 +438,25 @@ class MenuPage(Page):
         # {05:普通群组，06：重点用户群组，07：控制群组}
 
         if node_flag in (
-                # 选用户
+                # 选用户Tab页的用户
                 '02', '03', '04',
-                #  选台区
-                '12', '13', '14'):
-            # 点击用户标签页
-            self.click(self.locator_class.NODE_USER)
+                #  选用户Tab页的台区
+                '12', '13', '14',
+                # 选终端Tab页的采集点编号/终端地址
+                '22', '23'
+        ):
+            if node_flag.startswith('2'):  # 点终端Tab页
+                self.click_left_tree_tab('终端')
+                loc_org = self.format_xpath(self.locator_class.SEL_TMNL_CHECKBOX, '供电单位')
+                loc_btn_qry = self.locator_class.USER_TMNL_BTN_QRY
+                table_rslt_id = 'leftcollGrid'
+            else:  # 点用户Tab页
+                self.click_left_tree_tab('用户')
+                loc_org = self.format_xpath(self.locator_class.SEL_USER_CHECKBOX, '供电单位')
+                loc_btn_qry = self.locator_class.USER_TAB_BTN_QRY
+                table_rslt_id = 'leftUserGrid'
+
+                # self.click(self.locator_class.NODE_USER)
             # 选用户查询类型
             if node_flag in ('02', '03', '04'):
                 self.specialDropdown('用户查询类型;;', self.locator_class.SEL_USER_TYPE, locator_clean=self.locator_class.SEL_USER_TYPE)
@@ -453,7 +466,6 @@ class MenuPage(Page):
                 ls = node_value.split(';')
                 org_no = ls[0]
                 usr_info = ls[1]
-                loc_org = self.format_xpath(self.locator_class.SEL_USER_CHECKBOX, '供电单位')
                 self.scrollTo(loc_org)
                 self.specialDropdown('供电单位;;{}'.format(org_no), loc_org)
             else:
@@ -463,7 +475,7 @@ class MenuPage(Page):
             self.input(usr_info, *self.locator_class.NODE[node_flag])
 
             # 点击查询按钮
-            el = self._find_displayed_element(self.locator_class.USER_TAB_BTN_QRY)
+            el = self._find_displayed_element(loc_btn_qry)
             el.click()
             # 左边树查询60秒超时等待
             self.query_timeout(self.locator_class.LEFT_TREE_LOADING, 60)  # @TODO 60秒不建议写死，建议后续改为可配置
@@ -473,7 +485,7 @@ class MenuPage(Page):
             self.clear(self.locator_class.NODE[node_flag])
 
             # 定位查询结果，默认选择第一行记录
-            xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, usr_info)
+            xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, (table_rslt_id, usr_info))
             print(xpath)
 
             self.click(xpath)
@@ -481,7 +493,8 @@ class MenuPage(Page):
 
         elif (node_flag in ('05', '06', '07')):
             # 点击群组标签页
-            self.click(self.locator_class.NODE_GROUP)
+            self.click_left_tree_tab('群组')
+            # self.click(self.locator_class.NODE_GROUP)
 
             # 选择群组类型
             if (node_flag != '05'):

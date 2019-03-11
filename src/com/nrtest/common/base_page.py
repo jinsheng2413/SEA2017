@@ -56,6 +56,7 @@ class Page():
         self.main_page_title = Setting.PAGE_TILE
         self.project_no = Setting.PROJECT_NO
         self.menuPage = menu_page
+        self.province_no = DataAccess.get_province()
         if bool(menu_page):
             self.menu_no = menu_page.menu_no
             self.menu_name = menu_page.menu_name
@@ -287,6 +288,13 @@ class Page():
         开始执行测试用例
         :param para:
         """
+        # 江西现场存在整点web服务无反应情况 2019-03-11
+        if self.province_no == 'JX':
+            date_time = time.localtime()
+            print(date_time)
+            if date_time.tm_min > 58:
+                sleep(60 * 4)  # 休眠4分钟
+
         # print(class_path)
         self.class_name = class_path.split('src')[1][1:]
         self.case_para = para
@@ -986,13 +994,13 @@ class Page():
             # 不是数组时的默认处理
             node_flag = '01'
             node_value = treeNo
-
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~node_flag', node_flag)
         if node_flag in ['01', '10']:  # 01-选择供电单位tst_org；10-选择节点（tst_tree_node)
             # self.menuPage.btn_left_tree(node_value)  # 2019-03-06
             self.is_call_left_tree = True
             self.menuPage.btn_left_tree(treeNo)
         else:  # 选择其他节点
-            self.menuPage.btn_user_nodes(node_flag, node_value)  # 该方法细节待实现
+            self.menuPage.btn_user_nodes(node_flag, node_value)
 
     # def exists_menu(self, active_page_loc):
     #     """
@@ -1402,6 +1410,8 @@ class Page():
         return element
 
     def recoverLeftTree(self):
+        print('~~~~~~~~~~~~~~~~is_call_left_tree', self.is_call_left_tree)
+        sleep(10)
         if self.is_call_left_tree:
             self.is_call_left_tree = False
             self.menuPage.recoverLeftTree()

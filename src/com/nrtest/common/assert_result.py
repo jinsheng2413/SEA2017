@@ -479,12 +479,13 @@ class AssertResult():
 
     def tab_skip_into_window(self, case_result, col_pos_info):
         """
-        弹窗为非固定值,跳转
+        弹窗为非固定值的跳转，窗口名为所在行某一列的值
         :param case_result:
         :return:
         """
         if self.query_records(case_result[0]) > 0:
-            xpath = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (case_result[0], case_result[3], col_pos_info['COL_IDX']))
+            col_idx = self.calc_col_idx(case_result[0], case_result[2])['COL_IDX']
+            xpath = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (case_result[0], case_result[3], col_idx))
             dlg_title = self.tst_inst.driver.find_element(*xpath).text
 
             self.skip_to_page(case_result, col_pos_info)

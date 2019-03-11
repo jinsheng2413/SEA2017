@@ -85,6 +85,7 @@ class MenuLocators:
     # 县和用户
     BTN_COUNTY_AND_USER = (By.XPATH, "(//span[contains(text(),'直属用户')])[2]/../../../../li[%s]")
 
+    LEFT_TREE_PANEL = '//div[@id="mainwest"]'
 
     # 【用户TAB页】
     NODE = {'02': (By.XPATH, '//*[@name="consNo"]'), '03': (By.XPATH, '//*[@name="terminalAddr"]'), '04': (By.XPATH, '//*[@name="meterAssetNo"]'),
@@ -93,11 +94,20 @@ class MenuLocators:
             # 集中器地址
             '13': (By.XPATH, '//input[@name="terminalId"]'),
             # 集中器下电表资产号
-            '14': (By.XPATH, '//*[@name="meterAssetNo"]')}
+            '14': (By.XPATH, '//*[@name="meterAssetNo"]'),
+            # 【终端Tab页】
+            #  采集点编号
+            '22': (By.XPATH, '//input[@name="cp_no"]'),
+            #  终端地址
+            '23': (By.XPATH, '//input[@name="tmnl_addr"]')}
 
     # 不同用户类型下拉选择时点下拉操作
     SEL_USER_TYPE = (By.XPATH, '//div[text()="用户查询类型"]/../following-sibling::td//input')
     SEL_USER_CHECKBOX = (By.XPATH, '//div[@id="indexUserPanel"]//label[normalize-space(text())="{}"]/..//img')
+    # 【终端Tab页】
+    SEL_TMNL_CHECKBOX = (By.XPATH, '//div[@id="mainwest"]//label[normalize-space(text())="{}"]/..//img')
+    USER_TMNL_BTN_QRY = (By.XPATH, '//div[@id="mainwest"]//button[text()="查询"]')
+
 
     # 【群组TAB页】
     GROUP_NODE = {'05': (By.XPATH, '//*[@id="mainPanel.operate"]//*[text()=\'普通群组\']'),
@@ -114,7 +124,8 @@ class MenuLocators:
     NODE_USER_TAB_RSLT_DEFAULT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[1]')
     # 2019-02-18
     # NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[%s]//td[1]/div/div')
-    NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table//span[text()="{}"]')
+    NODE_USER_TAB_RSLT = (By.XPATH, '//*[@id="{}"]//div[@class="x-grid3-scroller"]//table//span[text()="{}"]')
+
     NODE_USER = (By.XPATH, '//*[@class="x-tab-strip-text " and text()=\'用户\']')
     NODE_GROUP = (By.XPATH, '//*[@class="x-tab-strip-text " and text()=\'群组\']')
     NODE_GROUP_RSLT = {'05': (By.XPATH, '//div[@id="backTree"]//span[text()="%s"]'),

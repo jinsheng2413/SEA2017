@@ -2,7 +2,7 @@
 
 """
 @author: 邵茜
-@license: (C) Copyright 2018, Nari.
+@license: (C) Copyright 2019, Nari.
 @file: collOperMain_data.py
 @time: 2019/3/6 0028 14:31
 @desc:
@@ -19,3 +19,5 @@ class CollOperMain_data:
     # 采集运维--采集通道监视
     collPortMonitor_para = '0000202'
     portState_tab = '通道状态查询'
+    # 采集运维--历史报文
+    hisMessage_para = '0000205'

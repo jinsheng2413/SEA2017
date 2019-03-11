@@ -290,10 +290,11 @@ class BaseTreePage(Page):
         self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx)
     def clickCheckBox(self, items,name=False,number=False):
         """
-        选择多个复选框【checkBox的name或id一致时调用此方法】
-        :param items: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
-        :param attr: 属性值
-        :param is_multi_tab: 页面是否有多Tab页
+        选择多个复选框
+        :param items: “xpath的说明;确定一组复选框的class;复选框的值比如：'1,2'”
+        :param name: 以名称来确定复选框'选中,未选中'
+        :param number: 以编号来确定复选框'1，2'
+        :return:
         """
         try:
             if len(items.split(';')) > 2:

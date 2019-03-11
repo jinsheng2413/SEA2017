@@ -1663,7 +1663,7 @@ class Page():
         """
         1:返回主目录
         2:返回上一层
-        :param num:
+        :param num:默认是返回主目录
         :return:
         """
         if num == 1:

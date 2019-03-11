@@ -166,6 +166,7 @@ class LeftTreeLocators:
     TREE_ELEMENT_OPEN_LOCATOR = (By.XPATH, '//*[@class="tabs-panels"]//*[text()="{}" and contains(@id,"tree")]/../span[contains(@class,"open")]')
 
     CLOSE_LFET_TREE = (By.XPATH,'//*[contains(@class,"center_open") and contains(@id,"tr")]')
+    CLOSE_LFET_ROOT_TREE = (By.XPATH, '//*[contains(@class,"root_open") and contains(@id,"tr")]')
 
     # 返回首页
     MAIN_PAGE = (By.XPATH, '//li[@class="nav_header"]')

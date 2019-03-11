@@ -289,8 +289,8 @@ class BaseTreePage(Page):
                 is_group_check_box = items.split(';')[1]
             else:
                 is_group_check_box = ''
-            loc1 = (BasePBSLocators.UNCHECK_BOX[0],
-                     "//*[@class = " + '"' + is_group_check_box + '"' + "]" + BasePBSLocators.UNCHECK_BOX[1])
+            loc1 = (self.baseLocators.UNCHECK_BOX[0],
+                     "//*[@class = " + '"' + is_group_check_box + '"' + "]" + self.baseLocators.UNCHECK_BOX[1])
 
             # 撤销已选项
             elements = self._find_elements(loc1)
@@ -310,27 +310,27 @@ class BaseTreePage(Page):
 
 
                         if is_group_check_box != '':
-                            name_xpath = (BasePBSLocators.CHECK_BOX[0],"//*[@class = "+ '"'+is_group_check_box+'"'+"]" +BasePBSLocators.CHECK_BOX[1])
+                            name_xpath = (self.baseLocators.CHECK_BOX[0],"//*[@class = "+ '"'+is_group_check_box+'"'+"]" +self.baseLocators.CHECK_BOX[1])
                             loc = self.format_xpath(name_xpath, item)
                         else:
-                            loc = self.format_xpath(BasePBSLocators.CHECK_BOX, item)
+                            loc = self.format_xpath(self.baseLocators.CHECK_BOX, item)
                         self.click(loc)
             if number:
                 if ls_items[0] != '':
                     for item in ls_items:
 
                         if is_group_check_box != '':
-                            number_xpath = (BasePBSLocators.UNCHECK_BOX[0],
-                                     "(//*[@class = " + '"' + is_group_check_box + '"' + "]" + BasePBSLocators.UNCHECK_BOX[
+                            number_xpath = (self.baseLocators.UNCHECK_BOX[0],
+                                     "(//*[@class = " + '"' + is_group_check_box + '"' + "]" + self.baseLocators.UNCHECK_BOX[
                                          1]+")[{}]")
                             loc = self.format_xpath(number_xpath, item)
                         else:
-                            loc = self.format_xpath(BasePBSLocators.CHECK_BOX, item)
+                            loc = self.format_xpath(self.baseLocators.CHECK_BOX, item)
                         self.click(loc)
 
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
-    def clickRadioBox(self, option, is_multi_tab=False, is_multi_elements=False):
+    def clickRadioBox(self, option,is_multi_elements=False):
         """
         选择单选框
         :param option: 被选择项名称
@@ -346,7 +346,7 @@ class BaseTreePage(Page):
 
             if len(item) == 0:
                 raise BaseException('单选框必须指定选择项：{}'.format(option))
-            xpath = self.format_xpath_multi(self.baseLocators.RADIOBOX_LABEL2INPUT, item, is_multi_tab)
+            xpath = self.format_xpath(self.baseLocators.RADIOBOX_LABEL2INPUT, item)
             if is_multi_elements:
                 el = self._find_displayed_element(xpath)
                 el.click()
@@ -355,7 +355,20 @@ class BaseTreePage(Page):
         except BaseException as ex:
             print('点击单选框失败：{}'.format(ex))
 
+    def click_button(self,value,is_multi_eles=False,idx=1):
 
+       try:
+           ls_option = value.split(';')
+           loc = self.format_xpath(self.baseLocators.QRY_BUTTON, ls_option[2])
+           if is_multi_eles:
+               el = self._find_displayed_element(loc, idx)
+           else:
+               el = self._find_element(loc)
+           el.click()
+
+           logger.info('点击元素：{}'.format(loc))
+       except BaseException as e:
+           logger.error('点击元素失败:{}\n{}'.format(loc, e))
 
 
 

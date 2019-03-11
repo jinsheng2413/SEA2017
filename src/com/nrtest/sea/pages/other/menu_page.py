@@ -14,6 +14,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.login import Login
+from com.nrtest.pbs.tree.tree_locators import LeftTreeLocators
 from com.nrtest.pbs.tree.tree_page import TreePBSPage
 from com.nrtest.sea.locators.other.menu_locators import *
 
@@ -493,6 +494,10 @@ class MenuPage(Page):
                 self.closePages(menu[1])
             except Exception as e:
                 print('该菜单定位报错：', menu, e)
+    @staticmethod
+    def intoPBSIframe():
+        dr =global_drv.get_driver()
+        dr.switch_to.frame(LeftTreeLocators.ID)
 
 
 if __name__ == '__main__':

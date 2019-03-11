@@ -191,7 +191,7 @@ class BasePbsLocators(Locators):
 
     # 【单选框】
     # 根据标签找input
-    RADIOBOX_LABEL2INPUT = (By.XPATH, '//label[@class="x-form-cb-label"and text()="{}"]/preceding-sibling::input')
+    RADIOBOX_LABEL2INPUT = (By.XPATH, '//label[text()="{}"]/preceding-sibling::input[1]')
 
     RADIOBOX_INPUT2LABEL = (By.XPATH, '//input[@type="radio" and @{}="{}"]/../label[@text()="{}"')
 

@@ -21,7 +21,7 @@ class LineDataQueryPage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(LineDataQueryLocators.BTN_SEARCH)
-        self.btn_query()
+        self.btn_query(idx=1)
 
     # 电网结构
     def inputNode_electricpower(self):
@@ -46,13 +46,13 @@ class LineDataQueryPage(Page):
     # 数据展示
     # 查询日期_开始
     def inputdt_starttime(self, value):
-        self.input(value)#, *LineDataQueryLocators.INPUTDT_STARTTIME)
+        self.inputDate(value)  # , *LineDataQueryLocators.INPUTDT_STARTTIME)
 
     # 查询日期_结束
     def inputdt_endtime(self, value):
-        self.input(value)#, *LineDataQueryLocators.INPUTDT_ENDTIME)
+        self.inputDate(value)  # , *LineDataQueryLocators.INPUTDT_ENDTIME)
 
     # 查询按钮
     def btn_data_search(self):
         # self.click(LineDataQueryLocators.BTN_DATA_SEARCH)
-        self.btn_query()
+        self.btn_query(idx=2)

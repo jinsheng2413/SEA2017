@@ -73,7 +73,7 @@ class BaseTreePage(Page):
         # node = deepcopy(self.tree_node)
         # node['NODE_VALUE'].reverse()
         # self._operate_left_tree(node, False)
-        if self.tree_type[-1] == 0:  # 非复选框节点，最后一个叶子节点不处理
+        if self.tree_type[-1] == '0':  # 非复选框节点，最后一个叶子节点不处理
             self.node_list.pop()
 
         self.node_list.reverse()
@@ -209,21 +209,41 @@ class TreePage(BaseTreePage):
             # TreeLocators.NODE_PROVINCE_DIRECT
 
         levels = len(items) - 1  # 总层级数-1
-        if is_step_into:
-            if idx == levels and self.tree_type[1] == '0':
+        if idx == levels and self.tree_type[1] == '0':
+            if is_step_into:
                 locator = self.format_xpath(TreeLocators.LEEF_NODE_IN_PARENT, (items[idx - 1], item))
+                # *********带复选框的叶子节点，除勾选外，是否还需再点击一下
             else:
-                locator = self.format_xpath(TreeLocators.NODE_LEVEL_IN_PARENT, (items[idx - 1], item))
-            # *********带复选框的叶子节点，除勾选外，是否还需再点击一下
-        else:
-            if idx == 0:
-                locator = self.format_xpath(TreeLocators.NODE_PROVINCE, item)
-            else:
-                # 不带复选框的叶子节点只点击文本元素，不点击文本元素边上的图标元素
-                if idx == levels and self.tree_type[1] == '0':
-                    locator = self.format_xpath(TreeLocators.LEEF_NODE, item)
+                if idx == 0:
+                    locator = self.format_xpath(TreeLocators.LEEF_PROVINCE, item)
                 else:
+                    # 不带复选框的叶子节点只点击文本元素，不点击文本元素边上的图标元素
+                    locator = self.format_xpath(TreeLocators.LEEF_NODE, item)
+        else:
+            if is_step_into:
+                locator = self.format_xpath(TreeLocators.NODE_LEVEL_IN_PARENT, (items[idx - 1], item))
+                # *********带复选框的叶子节点，除勾选外，是否还需再点击一下
+            else:
+                if idx == 0:
+                    locator = self.format_xpath(TreeLocators.NODE_PROVINCE, item)
+                else:
+                    # 不带复选框的叶子节点只点击文本元素，不点击文本元素边上的图标元素
                     locator = self.format_xpath(TreeLocators.NODE_LEVEL, (item))
+        # if is_step_into:
+        #     if idx == levels and self.tree_type[1] == '0':
+        #         locator = self.format_xpath(TreeLocators.LEEF_NODE_IN_PARENT, (items[idx - 1], item))
+        #     else:
+        #         locator = self.format_xpath(TreeLocators.NODE_LEVEL_IN_PARENT, (items[idx - 1], item))
+        #     # *********带复选框的叶子节点，除勾选外，是否还需再点击一下
+        # else:
+        #     if idx == 0:
+        #         locator = self.format_xpath(TreeLocators.NODE_PROVINCE, item)
+        #     else:
+        #         # 不带复选框的叶子节点只点击文本元素，不点击文本元素边上的图标元素
+        #         if idx == levels and self.tree_type[1] == '0':
+        #             locator = self.format_xpath(TreeLocators.LEEF_NODE, item)
+        #         else:
+        #             locator = self.format_xpath(TreeLocators.NODE_LEVEL, (item))
 
         # 对群组类型元素定位做特殊处理
         if self.tree_type == '50':

@@ -302,11 +302,11 @@ class Page():
         self.timeout_seconds = int(para['TIMEOUT_SECONDS'])
 
         print('开始执行... </br>')
-        info = '用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}</br>'.format(self.tst_case_id, self.menu_no, self.menu_path, para['TAB_NAME'])
-        print(info)
+        info = '用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}'.format(self.tst_case_id, self.menu_no, self.menu_path, para['TAB_NAME'])
+        print(info + '</br>')
 
         logger.info('开始执行...\r')
-        logger.info(info)
+        logger.info(info + '\r')
 
     def end_case(self):
         """
@@ -994,7 +994,7 @@ class Page():
             # 不是数组时的默认处理
             node_flag = '01'
             node_value = treeNo
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~node_flag', node_flag)
+        # print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~node_flag', node_flag)
         if node_flag in ['01', '10']:  # 01-选择供电单位tst_org；10-选择节点（tst_tree_node)
             # self.menuPage.btn_left_tree(node_value)  # 2019-03-06
             self.is_call_left_tree = True
@@ -1410,7 +1410,7 @@ class Page():
         return element
 
     def recoverLeftTree(self):
-        print('~~~~~~~~~~~~~~~~is_call_left_tree', self.is_call_left_tree)
+        # print('~~~~~~~~~~~~~~~~is_call_left_tree', self.is_call_left_tree)
         # sleep(10)
         if self.is_call_left_tree:
             self.is_call_left_tree = False

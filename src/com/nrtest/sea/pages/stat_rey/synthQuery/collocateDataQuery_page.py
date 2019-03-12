@@ -33,7 +33,7 @@ class CollcateDataQueryDataPage(Page):
         self.selectDropDown(value)
 
     def btn_search(self):
-        self.btn_query(is_multi_tab=True, idx=2)
+        self.btn_query(is_multi_tab=True, idx=1)
 
     # Tab页名称
     def inputChk_tab_name(self, tab_name):
@@ -48,4 +48,4 @@ class CollcateDataQueryDataPage(Page):
         self.inputDate(value, is_multi_tab=True)
 
     def btn_qry(self):
-        self.btn_query(True, idx=3)
+        self.btn_query(True, idx=2)

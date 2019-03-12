@@ -7,6 +7,7 @@
 @time: 2018/10/30 13:46
 @desc:
 """
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -64,6 +65,7 @@ class TestMetManualCheck(TestCase,Page):
 
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
+        sleep(1)
 
     def assert_query_result(self, para):
         """

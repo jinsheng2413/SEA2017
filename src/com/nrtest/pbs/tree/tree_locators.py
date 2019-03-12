@@ -39,6 +39,8 @@ class TreeLocators:
                  '//div[@class="x-tree-root-node"]//ul[contains(@style, "visibility: visible; position: static;")]/li[@class="x-tree-node"]//span[text()="{}"]')
     LEEF_NODE_IN_PARENT = (By.XPATH,
                            '//div[@class="x-tree-root-node"]//ul[contains(@style, "visibility: visible; position: static;")]//li[@class="x-tree-node"]//span[text()="{}"]/ancestor::li[@class="x-tree-node"]/ul[contains(@style, "visibility: visible; position: static;")]/li[@class="x-tree-node"]//span[text()="{}"]')
+    LEEF_PROVINCE = (By.XPATH,
+                     '//div[@class="x-tree-root-node"]//li[@class="x-tree-node"]//span[text()="{}"]')
 
     # 选择节点范围内搜索节点：如，某供电局内搜索相关节点：
     # $x('//div[@id="mainwest"]//div[@id="areaTree"]//span[text()="唐山供电公司"]/../../..//span[text()="直属用户"]/../preceding-sibling::img[2]')

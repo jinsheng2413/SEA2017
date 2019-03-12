@@ -70,6 +70,12 @@ class TestTmnlInstallDetai_debug(TestCase, LineDataQueryPage):
         self.inputStr_line_no(para['LINE_NO'])
 
         self.btn_search()
+        # 查询日期
+        self.inputdt_starttime(para['START_TIME'])
+        # 至
+        self.inputdt_endtime(para['END_TIME'])
+
+        self.btn_data_search()
 
     def assert_query_result(self, para):
         """

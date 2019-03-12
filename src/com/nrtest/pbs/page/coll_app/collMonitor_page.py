@@ -2,8 +2,8 @@
 
 """
 @author: 邵茜
-@license: (C) Copyright 2018, Nari.
-@file: coll_monitor_page.py
+@license: (C) Copyright 2019, Nari.
+@file: collMonitor_page.py
 @time: 2019-03-06 14:38:37
 @desc:
 """

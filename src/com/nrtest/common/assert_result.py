@@ -380,9 +380,9 @@ class AssertResult():
             '31': '查询详细信息的输入框的值与期望结果不一致'
         }
         # @TODO
-        print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$请删除我')
-        if True:
-            return True
+        # print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$请删除我')
+        # if True:
+        #     return True
 
         case_id = para['TST_CASE_ID']
         ls_check_rslt = {}

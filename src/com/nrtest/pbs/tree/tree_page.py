@@ -389,6 +389,13 @@ class BaseTreePage(Page):
        except BaseException as e:
            logger.error('点击元素失败:{}\n{}'.format(loc, e))
     def click_xpath(self,value,is_multi_eles=False,idx=1):
+        """
+        页面按钮是图片需要在处理xpath，在数据库配置xpath，来实现操作
+        :param value: 配置的值'查询按钮;//*[@id='search_btn']'
+        :param is_multi_eles:当有多个是，传入True来确定唯一值
+        :param idx:来确认是第几个，默认是第一个
+        :return:
+        """
         try:
             ls_option = value.split(';')
             # loc = self.format_xpath(self.baseLocators.QRY_BUTTON, ls_option[1])

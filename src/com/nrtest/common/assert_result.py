@@ -15,7 +15,6 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.user_except import AssertError
-from com.nrtest.common.utils import Utils
 
 logger = Logger(logger='AssertResult').getlog()
 
@@ -199,7 +198,7 @@ class AssertResult():
 
     def calc_col_idx(self, loc_col_name, col_name, idx=1):
         """
-        计算所给列名（col_name）在表格中的所处位置
+        计算所给列名（col_name）在表格中的所处位置【该函数已移至base_page】
         --------------------loc_col_name[0]-----------------|-col_name[1]-|----[2]-------|--要定位的行号[3]--|-----[4]-----
         nvl(tab_column_name, column_name) AS tab_column_name, column_name, expected_value, row_num,          is_special
         :param loc_col_name: 能唯一定位表头的关键列名
@@ -207,40 +206,42 @@ class AssertResult():
         :param idx: 第idx个可见对象
         :return: 返回：列位置，列是否可见以及第一列带标签的列
         """
-        loc = self.tst_inst.format_xpath_multi(AssertResultLocators.TABLE_HEAD, loc_col_name, True)
-        el_tr = self.tst_inst._find_displayed_element(loc, idx=idx)
-
-        # print('表格列名清单', el_tr.text)
-
-        col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HID_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True}
-        # 查找表头所有列名元素
-        el_tds = el_tr.find_elements_by_xpath('./td')
-        if bool(el_tds):
-            # 隐藏列个数
-            hide_cols = 0
-            for i, el in enumerate(el_tds):
-                # el_label = el.text
-                el_label = self.tst_inst.get_el_text(el)
-                el_label = Utils.replace_chrs(el_label, ' \r\n\t')
-                if self.tst_inst.el_is_hided(el):
-                    hide_cols += 1
-                else:
-                    if col_pos_info['EL_FIRST'] is None and el.is_displayed():
-                        # 第一个带标签，且显示的列
-                        col_pos_info['EL_FIRST'] = el
-                        col_pos_info['FIRST_COL_IDX'] = i + 1
-                    if el_label == col_name:
-                        col_pos_info['COL_IS_HIDED'] = not el.is_displayed()
-                        col_pos_info['EL_COL'] = el
-                        # 表头列名位置，xpath元素下表以1开始，故+1
-                        col_pos_info['COL_IDX'] = i + 1
-                        break
-            col_pos_info['HID_COLS'] = hide_cols
-            logger.info('\r“{}”在表格中计算结果：第{}列（其中隐藏列{}列），且{}。\r'.format(col_name, col_pos_info['COL_IDX'], hide_cols,
-                                                                      ('不可见' if col_pos_info['COL_IS_HIDED'] else '可见')))
-            return col_pos_info
-        else:
-            raise AssertError('定位列{}在表格中的位置时报错！'.format(col_name))
+        return self.tst_inst.calc_col_idx(loc_col_name, col_name, idx)
+        #
+        # loc = self.tst_inst.format_xpath_multi(AssertResultLocators.TABLE_HEAD, loc_col_name, True)
+        # el_tr = self.tst_inst._find_displayed_element(loc, idx=idx)
+        #
+        # # print('表格列名清单', el_tr.text)
+        #
+        # col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HID_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True}
+        # # 查找表头所有列名元素
+        # el_tds = el_tr.find_elements_by_xpath('./td')
+        # if bool(el_tds):
+        #     # 隐藏列个数
+        #     hide_cols = 0
+        #     for i, el in enumerate(el_tds):
+        #         # el_label = el.text
+        #         el_label = self.tst_inst.get_el_text(el)
+        #         el_label = Utils.replace_chrs(el_label, ' \r\n\t')
+        #         if self.tst_inst.el_is_hided(el):
+        #             hide_cols += 1
+        #         else:
+        #             if col_pos_info['EL_FIRST'] is None and el.is_displayed():
+        #                 # 第一个带标签，且显示的列
+        #                 col_pos_info['EL_FIRST'] = el
+        #                 col_pos_info['FIRST_COL_IDX'] = i + 1
+        #             if el_label == col_name:
+        #                 col_pos_info['COL_IS_HIDED'] = not el.is_displayed()
+        #                 col_pos_info['EL_COL'] = el
+        #                 # 表头列名位置，xpath元素下表以1开始，故+1
+        #                 col_pos_info['COL_IDX'] = i + 1
+        #                 break
+        #     col_pos_info['HID_COLS'] = hide_cols
+        #     logger.info('\r“{}”在表格中计算结果：第{}列（其中隐藏列{}列），且{}。\r'.format(col_name, col_pos_info['COL_IDX'], hide_cols,
+        #                                                               ('不可见' if col_pos_info['COL_IS_HIDED'] else '可见')))
+        #     return col_pos_info
+        # else:
+        #     raise AssertError('定位列{}在表格中的位置时报错！'.format(col_name))
 
     def skip_windows_page(self, case_result, col_pos_info):
         """
@@ -853,7 +854,7 @@ class AssertResultLocators:
     DISPLAY_NUM = (By.XPATH, '(//*[text()="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[1]/td[{}]')
 
     # 【显示区】
-    # 显示区显示表头
+    # 显示区显示表头，
     TABLE_HEAD = (By.XPATH, '//div[text()="{}"]/ancestor::div[@class="x-grid3-viewport"]//tr[@class="x-grid3-hd-row"]')
 
     # 判断是否有查询结果

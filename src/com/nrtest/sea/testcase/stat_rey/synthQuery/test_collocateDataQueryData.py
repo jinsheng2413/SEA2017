@@ -66,7 +66,7 @@ class TestCollcateDataQueryDoc(TestCase, CollcateDataQueryDataPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 配变表号
-        # self.inputSel_meter_asset_no(para['METER_ASSET_NO'])
+        self.inputSel_meter_asset_no(para['METER_ASSET_NO'])
 
         # 父级查询
         self.btn_search()

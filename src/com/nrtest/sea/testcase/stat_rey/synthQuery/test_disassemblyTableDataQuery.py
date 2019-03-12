@@ -74,11 +74,11 @@ class TestDisassemblyTableDataQuery(TestCase, DisassemblyTableDataQueryPage):
         self.btn_search()
         val = self.get_para_value(para['TAB_NAME'])
         if bool(val):
-            # 选择第一个结果
-            self.inputChk_first_result()
-            sleep(2)
+            #  选择指定行
+            self.inputRow_select_row(para['SELECT_ROW'])
             # TAB页名称
             self.inputChk_tab_name(para['TAB_NAME'])
+            sleep(0.5)
             # TAB页开始日期
             self.inputDt_tab_start_date(para['TAB_START_DATE'])
             # TAB页结束日期

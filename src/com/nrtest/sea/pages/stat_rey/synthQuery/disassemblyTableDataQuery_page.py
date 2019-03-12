@@ -46,9 +46,9 @@ class DisassemblyTableDataQueryPage(Page):
     def btn_search(self):
         self.btn_query()
 
-    # 选择第一个结果
-    def inputChk_first_result(self):
-        self.click(DisassemblyTableDataQueryLocators.FIRST_RESULT)
+    # 选择指定行
+    def inputRow_select_row(self, row_item):
+        self.select_row(row_item)
 
     # TAB页名称
     def inputChk_tab_name(self, tabName):
@@ -64,8 +64,7 @@ class DisassemblyTableDataQueryPage(Page):
 
     # 曲线类型
     def inputSel_curve_type(self, content):
-        self.click(DisassemblyTableDataQueryLocators.CURVE_TYPE)
-        self.selectDropDown(content)
+        self.specialDropdown(content, DisassemblyTableDataQueryLocators.CURVE_TYPE)
 
     # TAB页查询按钮
     def btn_qry(self):

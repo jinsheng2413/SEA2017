@@ -18,12 +18,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.common.assert_result import AssertResultLocators
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
 from com.nrtest.common.user_except import AssertError
+from com.nrtest.common.utils import Utils
 from com.nrtest.sea.locators.other.base_locators import *
 
 # create a logger instance
@@ -291,9 +291,9 @@ class Page():
         # 江西现场存在整点web服务无反应情况 2019-03-11
         if self.province_no == 'JX':
             date_time = time.localtime()
-            print(date_time)
-            if date_time.tm_min > 58:
-                sleep(60 * 4)  # 休眠4分钟
+            # print(date_time)
+            if date_time.tm_min > 57:
+                sleep(60 * 5)  # 休眠4分钟
 
         # print(class_path)
         self.class_name = class_path.split('src')[1][1:]
@@ -460,7 +460,7 @@ class Page():
         """
         if timeout_seconds == 0:
             timeout_seconds = self.timeout_seconds
-        print('start time out waiting', timeout_seconds)
+        # print('start time out waiting', timeout_seconds)
         if timeout_seconds > 0:
             start_time = time.time()
             sec = 2
@@ -485,7 +485,7 @@ class Page():
                 # print(info)
                 if bool(except_type):
                     DataAccess.el_operate_log(self.menu_no, self.tst_case_id, '', self.class_name, except_type, info)
-            print('end time out waiting', timeout_seconds)
+            # print('end time out waiting', timeout_seconds)
             return cost_seconds
 
     @BeautifulReport.add_popup_img()
@@ -1411,7 +1411,7 @@ class Page():
 
     def recoverLeftTree(self):
         print('~~~~~~~~~~~~~~~~is_call_left_tree', self.is_call_left_tree)
-        sleep(10)
+        # sleep(10)
         if self.is_call_left_tree:
             self.is_call_left_tree = False
             self.menuPage.recoverLeftTree()
@@ -1515,57 +1515,80 @@ class Page():
         """
         WebDriverWait(self.driver, seconds).until(EC.element_to_be_clickable(locator))
 
-    def calc_col_idx(self, col_name, is_num=True, idx=1):
+    def calc_col_idx(self, loc_col_name, col_name='', idx=1):
         """
-
-        :param col_name:
-        :param is_num:
-        :param idx:
-        :return:
+        计算所给列名（col_name）在表格中的所处位置
+        --------------------loc_col_name[0]-----------------|-col_name[1]-|----[2]-------|--要定位的行号[3]--|-----[4]-----
+        nvl(tab_column_name, column_name) AS tab_column_name, column_name, expected_value, row_num,          is_special
+        :param loc_col_name: 能唯一定位表头的关键列名
+        :param col_name: 计算列位置的列名, 如果col_name值为'', 则用loc_col_name替代
+        :param idx: 第idx个可见对象
+        :return: 返回：列位置，列是否可见以及第一列带标签的列
         """
-        loc = self.format_xpath_multi(AssertResultLocators.TABLE_HEAD, col_name, True)
+        loc = self.format_xpath_multi(self.baseLocators.TABLE_HEAD, loc_col_name, True)
         el_tr = self._find_displayed_element(loc, idx=idx)
-
+        # 如果col_name值为'', 则用loc_col_name替代
+        if col_name == '':
+            col_name = loc_col_name
+        col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HID_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True}
         # 查找表头所有列名元素
         el_tds = el_tr.find_elements_by_xpath('./td')
-        # if isMenu :
-        #    xp = self.format_xpath_multi((By.XPATH,xp),value,True)
-        #    elements = self._find_elements((By.XPATH, xp[1]))
-        # else:
-        #     elements = self._find_elements((By.XPATH, xp))
-        # 返回所有列明
-        if is_num == False:
-            return len(el_tds)
         if bool(el_tds):
-            # col_name 对应列位置（含该列前的隐藏列）
-            col_idx = 0
             # 隐藏列个数
             hide_cols = 0
             for i, el in enumerate(el_tds):
-                if el.text == '':
+                el_label = self.get_el_text(el)
+                el_label = Utils.replace_chrs(el_label, ' \r\n\t')
+                if self.el_is_hided(el):
                     hide_cols += 1
-                elif col_name == el.text:
-                    # xpath元素下表以1开始，故+1
-                    col_idx = i + 1
-                    break
-            return col_idx  # , hide_cols
+                else:
+                    if col_pos_info['EL_FIRST'] is None and el.is_displayed():
+                        # 第一个带标签，且显示的列
+                        col_pos_info['EL_FIRST'] = el
+                        col_pos_info['FIRST_COL_IDX'] = i + 1
+                    if el_label == col_name:
+                        col_pos_info['COL_IS_HIDED'] = not el.is_displayed()
+                        col_pos_info['EL_COL'] = el
+                        # 表头列名位置，xpath元素下表以1开始，故+1
+                        col_pos_info['COL_IDX'] = i + 1
+                        break
+            col_pos_info['HID_COLS'] = hide_cols
+            logger.info('\r“{}”在表格中计算结果：第{}列（其中隐藏列{}列），且{}。\r'.format(col_name, col_pos_info['COL_IDX'], hide_cols,
+                                                                      ('不可见' if col_pos_info['COL_IS_HIDED'] else '可见')))
+            return col_pos_info
         else:
             raise AssertError('定位列{}在表格中的位置时报错！'.format(col_name))
 
-        # idx = 0
-        # for i, el in enumerate(el_tds):
-        #     if value == el.text:
-        #         idx = i
-        #         break
-        # return idx
-        # dl = 0
-        # l = 0
-        # for el in elements:
-        #     l += 1
-        #     if value in el.text:
-        #         dl = l - 1
-        #         break
-        # return dl
+    def select_row(self, row_item):
+        """
+        定位查询结果行, 不指定row_item，则默认为第一行
+        :param row_item: 数据格式：能唯一定位表头的关键列名;要定位的列名;要定位的所在列值
+        :return:
+        """
+        row_item = row_item.split(';')[1]
+        if bool(row_item):  # 指定选择行内容
+            ls_row_items = row_item.split('-')
+            loc_col_name = ls_row_items[0]
+            if len(ls_row_items) == 2:
+                col_name = loc_col_name
+                col_val = ls_row_items[1]
+            else:
+                col_name = ls_row_items[1]
+                col_val = ls_row_items[2]
+
+            col_idx = self.calc_col_idx(loc_col_name, col_name)['COL_IDX']
+            xpath = self.format_xpath_multi(self.baseLocators.SELECT_ROW, (loc_col_name, col_idx, col_val))
+            el = self._find_displayed_element(xpath)
+            if bool(el):
+                el.click()
+        else:
+            xpath = self.format_xpath_multi(self.baseLocators.SELECT_FIRST_ROW)
+            el = self._find_displayed_element(xpath)
+            if bool(el):
+                el.click()
+
+        if el is None:
+            raise RuntimeError('定位不到指定行：{}'.format(row_item if bool(row_item) else '第1行'))
 
     def rightClick(self, locator):
         """

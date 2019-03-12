@@ -28,7 +28,8 @@ class TestConsDataQuery(TestCase, ConsDataQueryDisplayPage):
         menuPage = MenuPage.openMenu(SynthQuery_data.ConsDataQuery_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(SynthQuery_data.consDataQry_display_tab)
+        # menuPage.clickTabPage(SynthQuery_data.consDataQry_display_tab)  # 2019-03-12
+        menuPage.clickTabPage(SynthQuery_data.ConsDataQuery_tab_display)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 

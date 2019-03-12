@@ -12,6 +12,9 @@ from com.nrtest.common.base_page import Page
 
 
 # 统计查询→综合查询→配变数据查询:基本档案
+from com.nrtest.sea.locators.stat_rey.synthQuery.publicDataQuery_locators import PublicDataQueryLocators
+
+
 class CollcateDataQueryDocPage(Page):
 
     # 配变表号
@@ -38,8 +41,8 @@ class CollcateDataQueryDataPage(Page):
 
     # 一二次测量值
     def inputSel_meas_value(self, option):
-        # self.selectDropDown(option)
-        self.click(self, )
+        self.specialDropdown(option, PublicDataQueryLocators.MEAS_VALUE)
+
     # 查询日期
     def inputDt_query_date(self, value):
         self.inputDate(value, is_multi_tab=True)

@@ -88,7 +88,7 @@ class TestMeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         # 电表资产号
         self.inputStr_meter_asset_no(para['METER_ASSET_NO'])
         # 用户类型
-        self.inputSel_cons_sort(para['CONS_TYPE'])
+        self.inputSel_cons_sort(para['CONS_SORT'])
         # 终端厂家
         self.inputSel_tmnl_manufacturer(para['TMNL_MANUFACTURER'])
 

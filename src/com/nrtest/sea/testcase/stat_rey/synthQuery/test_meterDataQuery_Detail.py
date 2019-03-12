@@ -92,7 +92,7 @@ class TestMeterDataQueryDetail(TestCase, MeterDataQueryDetailPage):
         self.inputSel_tmnl_run_status(para['TMNL_RUN_STATUS'])
 
         # 计量点状态--冀北有，江西无
-        # self.inputSel_sto_point_status(para['STO_POINT_STATUS'])
+        # self.inputSel_mp_status(para['MP_STATUS'])
 
         # 农排用户选择
         self.inputSel_user_select(para['USER_SELECT'])

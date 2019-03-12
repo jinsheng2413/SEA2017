@@ -58,7 +58,7 @@ class MeterDataQueryDetailPage(Page):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
 
     # 计量点状态
-    # def inputSel_sto_point_status(self, value):
+    # def inputSel_mp_status(self, value):
     #     self.selectDropDown(value, is_multi_elements=True, is_multi_tab=True)
 
     # 采集情况
@@ -129,10 +129,6 @@ class MeterDataQueryFailDetailPage(Page):
     # 农排用户选择
     def inputSel_user_select(self, option):
         self.selectDropDown(option, is_multi_elements=True, is_multi_tab=True)
-
-    # 用户类型
-    def inputSel_cons_sort(self, option):
-        self.selectDropDown(option, is_multi_tab=True, is_multi_elements=True)
 
     # 终端厂家
     def inputSel_tmnl_manufacturer(self, option):

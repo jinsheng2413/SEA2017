@@ -342,12 +342,13 @@ class BaseTreePage(Page):
 
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
-    def clickRadioBox(self, option,is_multi_elements=False):
+    def clickRadioBox(self, option,is_multi_elements=False,is_group_elements = False):
         """
         选择单选框
-        :param option: 被选择项名称
-        :param is_multi_tab:
-        :param is_multi_elements:
+        :param option:
+        :param is_multi_elements: 当有多个元素时，找到当前页面显示的
+        :param is_group_elements: 当页面有不同的分组的单选框，通过在数据库配置class来进行分组
+        :return:
         """
         try:
             if (option.find(';') == -1):
@@ -358,7 +359,13 @@ class BaseTreePage(Page):
 
             if len(item) == 0:
                 raise BaseException('单选框必须指定选择项：{}'.format(option))
-            xpath = self.format_xpath(self.baseLocators.RADIOBOX_LABEL2INPUT, item)
+            if is_group_elements:
+                    group_xpath = (self.baseLocators.CHECK_BOX[0],
+                                  "//*[@class = " + '"' + ls_option[1] + '"' + "]" + self.baseLocators.RADIOBOX_LABEL2INPUT[
+                                      1])
+                    xpath = self.format_xpath(group_xpath, item)
+            else:
+             xpath = self.format_xpath(self.baseLocators.RADIOBOX_LABEL2INPUT, item)
             if is_multi_elements:
                 el = self._find_displayed_element(xpath)
                 el.click()
@@ -371,7 +378,7 @@ class BaseTreePage(Page):
 
        try:
            ls_option = value.split(';')
-           loc = self.format_xpath(self.baseLocators.QRY_BUTTON, ls_option[2])
+           loc = self.format_xpath(self.baseLocators.QRY_BUTTON, ls_option[1])
            if is_multi_eles:
                el = self._find_displayed_element(loc, idx)
            else:
@@ -381,6 +388,20 @@ class BaseTreePage(Page):
            logger.info('点击元素：{}'.format(loc))
        except BaseException as e:
            logger.error('点击元素失败:{}\n{}'.format(loc, e))
+    def click_xpath(self,value,is_multi_eles=False,idx=1):
+        try:
+            ls_option = value.split(';')
+            # loc = self.format_xpath(self.baseLocators.QRY_BUTTON, ls_option[1])
+            loc = (self.baseLocators.QRY_BUTTON[0],ls_option[1])
+            if is_multi_eles:
+                el = self._find_displayed_element(loc, idx)
+            else:
+                el = self._find_element(loc)
+            el.click()
+
+            logger.info('点击元素：{}'.format(loc))
+        except BaseException as e:
+            logger.error('点击元素失败:{}\n{}'.format(loc, e))
 
 
 

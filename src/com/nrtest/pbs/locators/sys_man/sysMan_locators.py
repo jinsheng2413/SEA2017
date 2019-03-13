@@ -29,3 +29,9 @@ class SysMan_locators:
     INPUT_NAME2 = (By.XPATH, '/html/body/div[1]/div[1]/div/div/div/div/div/div[1]/span/input[1]')
     # 查询
     BTN_QUERY2 = (By.XPATH, '/html/body/div[1]/div[1]/div/div/div/div/div/div[1]/span/span/a')
+
+    # 系统管理--用户定义
+    # 输入框
+    INPUT_NAME3 = (By.XPATH, '/html/body/div[1]/div/div/div/div/div[1]/span/input[1]')
+    # 查询
+    BTN_QUERY3 = (By.XPATH, '/html/body/div[1]/div/div/div/div/div[1]/span/span/a')

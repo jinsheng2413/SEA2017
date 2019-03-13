@@ -19,7 +19,7 @@ from com.nrtest.pbs.page.sys_man.sysMenu_page import SysMenuPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 数据查询→谣测值
+# 系统管理--系统菜单
 
 @ddt
 class test_CollSuccRate(TestCase, SysMenuPage):

@@ -3,8 +3,8 @@
 """
 @author: 邵茜
 @license: (C) Copyright 2019, Nari.
-@file: test_departManage.py
-@time: 2019/3/13 11:24
+@file: test_paperManage.py
+@time: 2019/3/13 11:40
 @desc:
 """
 
@@ -15,19 +15,19 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.pbs.data.sys_man.sysman_data import Sysman_data
-from com.nrtest.pbs.page.sys_man.departManage_page import DepartManagePage
+from com.nrtest.pbs.page.sys_man.paperManage_page import PaperManagePage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 系统管理--部门管理
+# 系统管理--页面管理
 
 @ddt
-class test_CollSuccRate(TestCase, DepartManagePage):
+class test_CollSuccRate(TestCase, PaperManagePage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(Sysman_data.departManage_para)
+        menuPage = MenuPage.openMenu(Sysman_data.paperManage_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         menuPage.intoPBSIframe()
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
@@ -87,7 +87,7 @@ class test_CollSuccRate(TestCase, DepartManagePage):
         self.assertTrue(self.check_query_criteria(para))
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(Sysman_data.departManage_para))
+    @data(*DataAccess.getCaseData(Sysman_data.paperManage_para))
     def test_query(self, para):
         """ 数据查询→谣测值
  """
@@ -97,7 +97,7 @@ class test_CollSuccRate(TestCase, DepartManagePage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(Sysman_data.departManage_para, valCheck=True))
+    @data(*DataAccess.getCaseData(Sysman_data.paperManage_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

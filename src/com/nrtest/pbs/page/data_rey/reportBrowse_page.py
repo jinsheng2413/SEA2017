@@ -28,3 +28,11 @@ class ReportBrowsePage(TreePBSPage):
     # 时间
     def inputDt_query_date(self, value):
         self.inputDate(value)
+
+    # 生成报表
+    def inputChk_generate_list(self, option):
+        self.click_button(option)
+
+    # 导出报表
+    def inputChk_export_list(self, option):
+        self.click_button(option)

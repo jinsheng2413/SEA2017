@@ -14,15 +14,14 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.pbs.data.coll_app.collOperMain_data import CollOperMain_data
-from com.nrtest.pbs.page.coll_app.collDetail_page import CollSuccRatePage
-from com.nrtest.pbs.page.data_query.calculated_amount_page import Calcluteamount_page
+from com.nrtest.pbs.data.data_rey.data_query_data import Data_query
+from com.nrtest.pbs.page.data_rey.calculated_amount_page import Calcluteamount_page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from com.nrtest.pbs.data.data_query.data_query_data import Data_query
+
 
 # 采集运维--采集详情--采集成功率
 @ddt
-class test_CollSuccRate(TestCase,Calcluteamount_page):
+class test_CollSuccRate(TestCase, Calcluteamount_page):
 
     @classmethod
     def setUpClass(cls):
@@ -70,9 +69,8 @@ class test_CollSuccRate(TestCase,Calcluteamount_page):
 
         # 时间
         self.inputDt_query_time(para['QUERY_TIME'])
-        #电量单位计算方式
+        # 电量单位计算方式
         self.inputChk_ele_unit(para['ELE_UNIT'])
-
 
         # 查询
         self.btn_qry(para['BTN_QUERY'])
@@ -108,4 +106,3 @@ class test_CollSuccRate(TestCase,Calcluteamount_page):
         self.query(para)
         self.assert_query_criteria(para)
         self.end_case()
-

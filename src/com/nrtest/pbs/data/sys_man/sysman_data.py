@@ -13,7 +13,7 @@ class Sysman_data:
     # 系统管理--系统菜单
     sysMenu_para = '0001102'
     # 系统管理--部门管理
-    deparManage_para = '0001105'
+    departManage_para = '0001105'
     # 系统管理--页面管理
     paperManage_para = '0001107'
     # 系统管理--用户定义

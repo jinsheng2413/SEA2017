@@ -88,7 +88,7 @@ class Login:
             elif self.is_valid_mask:
                 # 登录失败后，刷新验证码
                 loginPage.refresh_valid_mask()
-                sleep(1)
+                sleep(2)
                 logger.info('%s登陆失败!!' % self.username)
 
         return loginPage.driver

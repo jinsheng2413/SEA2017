@@ -3,7 +3,7 @@
 """
 @author: 郭春彪
 @license: (C) Copyright 2018, Nari.
-@file: test_zoneAreaSameGoodStandard.py
+@file: linelossCount_data.py
 @time: 2019/1/28 0028 14:31
 @desc:
 """

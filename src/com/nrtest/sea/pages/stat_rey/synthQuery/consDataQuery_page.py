@@ -19,7 +19,7 @@ class ConsDataQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.btn_query()
+        self.btn_query(True)
 
 
 class ConsDataQueryDisplayPage(Page):
@@ -30,7 +30,7 @@ class ConsDataQueryDisplayPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.btn_query()
+        self.btn_query(True)
 
     # tab页选择
     def inputChk_tab_name(self, tab_name):

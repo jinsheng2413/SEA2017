@@ -7,7 +7,7 @@
 @time: 2018/10/9 14:21
 @desc:
 """
-
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -54,6 +54,7 @@ class TestDisassemblyTableDataQuery(TestCase, failListJxPage):
         self.recoverLeftTree()
 
     def query(self, para):
+        sleep(2)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 查询日期

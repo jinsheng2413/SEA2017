@@ -83,7 +83,7 @@ class TestUpgradeResultConfirmation(TestCase, UpgradeResultConfirmationPage):
         # 前置下发状态
         self.inputSel_preposition_down_status(para['PREPOSITION_DOWN_STATUS'])
         # 点击查询按钮
-        self.btn_query()
+        self.btn_search()
 
     def assert_query_result(self, para):
         """

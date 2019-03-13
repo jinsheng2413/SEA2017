@@ -50,19 +50,23 @@ class AssertResult():
         :return:
         """
         try:
-            # 查询结果行数
-            locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT, case_result[0])
-            els = self.tst_inst._find_elements(locator)
-            rows = len(els) if bool(els) else 0
-            if rows > 0:
+            is_find, first_row_idx, row_cnt = self.query_records(case_result[0])
+            if is_find:
+                # col_pos_info['HIDE_ROWS'] = first_row_idx
+                # # 查询结果行数
+                # locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT, case_result[0])
+                # els = self.tst_inst._find_elements(locator)
+                # row_cnt = len(els) if bool(els) else 0
+                # if row_cnt > 0:
                 match_cnt = 0
                 # col_pos_info = self.calc_col_idx(case_result[0], case_result[1])
                 displayLineElement = (By.XPATH,
                                       '(//*[text()="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{}]/td[{}]//*[contains(text(),"{}")]')
-                for i in range(1, rows + 1):
+                for i in range(1, row_cnt + 1):
                     try:
                         # 显示区结果的每一行对应列的数据的xpath
-                        locator = self.tst_inst.format_xpath(displayLineElement, (case_result[0], i, col_pos_info['COL_IDX'], case_result[2]))
+                        locator = self.tst_inst.format_xpath(displayLineElement,
+                                                             (case_result[0], i + first_row_idx, col_pos_info['COL_IDX'], case_result[2]))
                         assert_rslt = self.assert_context(locator)
                         if assert_rslt:
                             match_cnt += 1
@@ -71,7 +75,7 @@ class AssertResult():
                             break
                     except:
                         print('校验失败')
-                return match_cnt == rows
+                return match_cnt == row_cnt
             else:
                 raise AssertError('查询没记录，校验失败！')
         except:
@@ -80,7 +84,7 @@ class AssertResult():
 
     def assert_page_name(self, page_name):
         """
-        判断跳转的页面的名称是否正确
+        判断跳转的页面的菜单名是否正确
         :param page_name:
         :return:
         """
@@ -102,7 +106,8 @@ class AssertResult():
             # el_link = el_data_rows[int(case_result[3])].find_elements_by_xpath('./td[{}]//a'.format(col_pos_info['COL_IDX']))
             if link_xpath is None:
                 link_xpath = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL,
-                                                              (case_result[0], case_result[3], col_pos_info['COL_IDX']), True)
+                                                              (case_result[0], int(case_result[3]) + col_pos_info['HIDE_ROWS'],
+                                                               col_pos_info['COL_IDX']), True)
             el_link = self.tst_inst._find_displayed_element(link_xpath)
             self.tst_inst.scrollTo(el_link)
             el_link.click()
@@ -175,7 +180,7 @@ class AssertResult():
     #     # 跳转传值验证是否正确
     #     return self.check_skip_data(col_pos_info, map_rela_rslt, case_result[3], skip_data_before, skip_data_after)
     #     # Error_res = True
-    #     # col_idx = col_pos_info['COL_IDX'] - col_pos_info['HID_COLS']
+    #     # col_idx = col_pos_info['COL_IDX'] - col_pos_info['HIDE_COLS']
     #     # info = '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'
     #     # for x, y, map_rela in zip(old_page_list, new_page_list, map_rela_rslt):
     #     #     info_rlt = info.format(case_result[3], col_idx, map_rela[11], map_rela[5], x, map_rela[8], y)
@@ -213,7 +218,7 @@ class AssertResult():
         #
         # # print('表格列名清单', el_tr.text)
         #
-        # col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HID_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True}
+        # col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HIDE_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True}
         # # 查找表头所有列名元素
         # el_tds = el_tr.find_elements_by_xpath('./td')
         # if bool(el_tds):
@@ -236,7 +241,7 @@ class AssertResult():
         #                 # 表头列名位置，xpath元素下表以1开始，故+1
         #                 col_pos_info['COL_IDX'] = i + 1
         #                 break
-        #     col_pos_info['HID_COLS'] = hide_cols
+        #     col_pos_info['HIDE_COLS'] = hide_cols
         #     logger.info('\r“{}”在表格中计算结果：第{}列（其中隐藏列{}列），且{}。\r'.format(col_name, col_pos_info['COL_IDX'], hide_cols,
         #                                                               ('不可见' if col_pos_info['COL_IS_HIDED'] else '可见')))
         #     return col_pos_info
@@ -253,8 +258,9 @@ class AssertResult():
         # 【滚动到链接列名所在位置】
         # 计算链接列名列序号（包括隐藏列）  --【终端信息维护】  【终端调试信息】
         # 定位列名；校验列名；期望值；定位行号;是否特殊处理
-
-        if self.query_records(case_result[0]) > 0:
+        is_find, first_row_idx, row_cnt = self.query_records(case_result[0])
+        if is_find:
+            col_pos_info['HIDE_ROWS'] = first_row_idx
             self.tst_inst.scrollTo(col_pos_info['EL_COL'])
             # 跳转到目标页
             is_skiped = self.skip_to_page(case_result, col_pos_info)
@@ -334,7 +340,7 @@ class AssertResult():
     #             self.tst_inst.menuPage.closePage(case_result[2])
     #             # 校验跳转传值是否正确
     #             # Error_res = True
-    #             # col_idx = col_pos_info['COL_IDX'] - col_pos_info['HID_COLS']
+    #             # col_idx = col_pos_info['COL_IDX'] - col_pos_info['HIDE_COLS']
     #             # info = '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'
     #             # for x, y, map_rela in zip(skip_data_before, skip_data_after, map_rela_rslt):
     #             #     formated_info = info.format(case_result[3], col_idx, map_rela[11], map_rela[5], x, map_rela[8], y)
@@ -390,10 +396,10 @@ class AssertResult():
         for i, row in enumerate(case_results):  # 根据rslt有几个值来判断要做几次校验
             assert_type = row[0]
             case_result = row[1:]
-            col_and_link_tag = self.special_deal(case_result[4], case_result[1])
-            col_pos_info = self.calc_col_idx(case_result[0], col_and_link_tag[0])
+            if assert_type not in ['11', '31']:
+                col_and_link_tag = self.special_deal(case_result[4], case_result[1])
+                col_pos_info = self.calc_col_idx(case_result[0], col_and_link_tag[0])
             logger.info('*******' + case_id + '*********校验类别：{}；定位列名：{}；校验列名：{}；期望值：{}；定位行号：{};是否特殊处理：{}\r'.format(*row))
-
             if assert_type == '11':  # 【OK】
                 locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT, case_result[0])
                 assert_rslt = self.assert_context(locator)
@@ -430,7 +436,7 @@ class AssertResult():
         for item in ls_check_rslt_values:
             for key, value in item.items():
                 if value == False:
-                    err_info = '用例编号:{},错误类型:{}'.format(case_id, esplain[key])
+                    err_info = '错误类型:{}'.format(esplain[key])
                     logger.error(err_info)  # 出错具体原因
                     print(err_info)
                     result = value
@@ -447,8 +453,10 @@ class AssertResult():
         if type == 1:
             xpath = self.tst_inst.format_xpath(AssertResultLocators.INPUT_BASE_GU, agrs[0])
         elif type == 2:
-            xpath = self.tst_inst.format_xpath(AssertResultLocators.DISPLAY_LINE, (agrs[0], agrs[1], agrs[2]))
+            # xpath = self.tst_inst.format_xpath(AssertResultLocators.DISPLAY_LINE, (agrs[0], agrs[1], agrs[2]))
+            xpath = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (agrs[0], agrs[1], agrs[2]))
         return xpath
+
 
     # def clean_empty_blank(self, tag_text, tag_name='div'):
     #     """
@@ -489,14 +497,16 @@ class AssertResult():
         :param case_result:
         :return:
         """
-        if self.query_records(case_result[0]) > 0:
+        is_find, first_row_idx, row_cnt = self.query_records(case_result[0])
+        if is_find:
+            col_pos_info['HIDE_ROWS'] = first_row_idx
             col_idx = self.calc_col_idx(case_result[0], case_result[2])['COL_IDX']
             xpath = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (case_result[0], case_result[3], col_idx))
             dlg_title = self.tst_inst.driver.find_element(*xpath).text
 
             self.skip_to_page(case_result, col_pos_info)
 
-            tab_xpath = self.tst_inst.format_xpath(AssertResultLocators.WINDOWS_NAME_24, dlg_title)
+            tab_xpath = self.tst_inst.format_xpath(AssertResultLocators.DLG_TITLE, dlg_title)
             res = self.assert_context(tab_xpath)
             self.tst_inst.sleep_time(2)
 
@@ -511,10 +521,13 @@ class AssertResult():
         :param case_result:
         :return:
         """
-        if self.query_records(case_result[0]) > 0:
+        is_find, first_row_idx, row_cnt = self.query_records(case_result[0])
+        if is_find:
+            col_pos_info['HIDE_ROWS'] = first_row_idx
             self.skip_to_page(case_result, col_pos_info)
-            xpath = self.tst_inst.format_xpath(AssertResultLocators.MENU_NAME, case_result[2])
-            res = self.assert_context(xpath)
+            # xpath = self.tst_inst.format_xpath(AssertResultLocators.MENU_NAME, case_result[2])
+            # res = self.assert_context(xpath)
+            res = self.assert_page_name(case_result[2])
             self.tst_inst.menuPage.closePage(page_name=case_result[2])
         else:
             raise AssertError('没查询结果， 跳转验证失败！！')
@@ -545,7 +558,7 @@ class AssertResult():
         for map_rela in map_rela_rslt:
             if map_rela[8] == None and map_rela[4] == '04':
                 try:
-                    resd = self.tst_inst.driver.find_element(*AssertResultLocators.LINK_DATA).text
+                    resd = self.tst_inst.driver.find_element(*AssertResultLocators.LINK_TOTAL_ROW_INFO).text
                     resd_new = resd[resd.index('/') + 1:len(resd)].strip()
                     skip_data_after.append(resd_new)
                 except:
@@ -566,7 +579,7 @@ class AssertResult():
 
     def check_skip_data(self, col_pos_info, map_rela_rslt, row_idx, skip_data_before, skip_data_after):
         is_skip_correct = True
-        col_idx = col_pos_info['COL_IDX'] - col_pos_info['HID_COLS']
+        col_idx = col_pos_info['COL_IDX'] - col_pos_info['HIDE_COLS']
         info = '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'
         for x, y, map_rela in zip(skip_data_before, skip_data_after, map_rela_rslt):
             info_rlt = info.format(row_idx, col_idx, map_rela[11], map_rela[5], x, map_rela[8], y)
@@ -606,7 +619,18 @@ class AssertResult():
         # 查询结果行数
         locator = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT, loc_col_name, True)
         els = self.tst_inst._find_elements(locator)
-        return len(els) if bool(els) else 0
+        is_find = False
+        first_row_idx = -1
+        row_cnt = 0
+        if bool(els):
+            for i, el in enumerate(els):
+                if el.is_displayed():
+                    row_cnt += 1
+                    if first_row_idx == -1:
+                        first_row_idx = i
+                        is_find = True
+
+        return is_find, first_row_idx, row_cnt
 
     def skip_menu_tab_page(self, assert_type, case_data, case_result, col_pos_info, is_menu=True, link_xpath=None):
         """
@@ -615,7 +639,9 @@ class AssertResult():
         :return:
         """
         # 查询结果行数
-        if self.query_records(case_result[0]) > 0:
+        is_find, first_row_idx, row_cnt = self.query_records(case_result[0])
+        if is_find:
+            col_pos_info['HIDE_ROWS'] = first_row_idx
             # 获取跳转映射对应关系
             map_rela_rslt = DataAccess.get_skip_data(case_data['TST_CASE_ID'], case_result[1])
             """
@@ -815,7 +841,7 @@ class AssertResult():
     #     self.tst_inst.menuPage.closePage(case_result[2])
     #     # 跳转传值验证是否正确
     #     # Error_res = True
-    #     # col_idx = col_pos_info['COL_IDX'] - col_pos_info['HID_COLS']
+    #     # col_idx = col_pos_info['COL_IDX'] - col_pos_info['HIDE_COLS']
     #     # info = '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'
     #     # for x, y, map_rela in zip(skip_data_before, skip_data_after, map_rela_rslt):
     #     #     info_rlt = info.format(case_result[3], col_idx, map_rela[11], map_rela[5], x, map_rela[8], y)
@@ -840,63 +866,65 @@ class AssertResult():
 class AssertResultLocators:
     # 弹窗的关闭xpath
     WINDOWS_CLOSE = (By.XPATH, '//*[text()="{}"]/../div[1]')
-    WINDOWS_CLOSE_NEW = (By.XPATH, '//div[@class=" x-window x-resizable-pinned"]//span[@class="x-window-header-text" and text()="{}"]')
+    # WINDOWS_CLOSE_NEW = (By.XPATH, '//div[@class=" x-window x-resizable-pinned"]//span[@class="x-window-header-text" and text()="{}"]')
 
     # 弹窗页面的
-    WINDOWS_PAGE = (By.XPATH, '//*[@class=" x-window x-window-plain x-resizable-pinned"]')
+    # WINDOWS_PAGE = (By.XPATH, '//*[@class=" x-window x-window-plain x-resizable-pinned"]')
 
     # 弹窗标题
     # WINDOWS_NAME = (By.XPATH,  '//span[text()="{}"]')
-    WINDOWS_NAME_24 = (By.XPATH, '//div[@class=" x-window x-resizable-pinned"]//span[@class="x-window-header-text" and text()="{}"]')
+    DLG_TITLE = (By.XPATH, '//div[@class=" x-window x-resizable-pinned"]//span[@class="x-window-header-text" and text()="{}"]')
 
     # 菜单页的名称
     MENU_NAME = (By.XPATH, '//span[@class="x-tab-strip-inner"]/span[contains(text(),"{}")]')
 
-    DISPLAY_ELEMENT = (
-        By.XPATH, '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]')
+    # DISPLAY_ELEMENT = (
+    #     By.XPATH, '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]')
 
     # 要滚动到的目标位置
-    DISPLAY_NUM = (By.XPATH, '(//*[text()="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[1]/td[{}]')
+    # DISPLAY_NUM = (By.XPATH, '(//*[text()="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[1]/td[{}]')
 
     # 【显示区】
     # 显示区显示表头，
-    TABLE_HEAD = (By.XPATH, '//div[text()="{}"]/ancestor::div[@class="x-grid3-viewport"]//tr[@class="x-grid3-hd-row"]')
+    # TABLE_HEAD = (By.XPATH, '//div[text()="{}"]/ancestor::div[contains(@class,"x-grid-with-col-lines") and not(contains(@class, "x-hide-display"))]//div[@class="x-grid3-viewport"]//tr[@class="x-grid3-hd-row"]')
 
     # 判断是否有查询结果
-    QUERY_RESULT = (By.XPATH, '(//div[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)')
+    QUERY_RESULT = (By.XPATH,
+                    '(//div[text() ="{}"]/ancestor::div[contains(@class,"x-grid-with-col-lines") and not(contains(@class, "x-hide-display"))]//div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)')
 
     # 定位查询结果的某行某列
     QUERY_RESULT_ROW_COL = (
-        By.XPATH, '(//div[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{}]//td[{}]')
+        By.XPATH,
+        '(//div[text() ="{}"]/ancestor::div[contains(@class,"x-grid-with-col-lines") and not(contains(@class, "x-hide-display"))]//div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{}]//td[{}]')
 
     QUERY_RESULT_ROW_COL_LINKS = (By.XPATH,
-                                  '(//div[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{}]//td[{}]//*[contains(text(),"{}")]')
+                                  '(//div[text() ="{}"]/ancestor::div[contains(@class,"x-grid-with-col-lines") and not(contains(@class, "x-hide-display"))]//div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{}]//td[{}]//*[contains(text(),"{}")]')
 
     # 查询结果非显示区，是输入框(第一个值代表是哪个区域的，第二个值是代表那个输入框)
     QUERY_RESULT_BY_INPUT = (By.XPATH, '//span[text()="{}"]/../..//label[text()="{}"]/../..//input')
 
-    DISPLAY_LINE = (By.XPATH,
-                    '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]')
-    DISPLAY_LINE_NEW = (By.XPATH,
-                        '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td//*[text()="{}"]')
+    # DISPLAY_LINE = (By.XPATH,
+    #                 '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]')
+    # DISPLAY_LINE_NEW = (By.XPATH,
+    #                     '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td//*[text()="{}"]')
 
     # 空格
-    DISPLAY_BLANK = (By.XPATH, '//div[@class="x-grid3-row-checker"]')
+    # DISPLAY_BLANK = (By.XPATH, '//div[@class="x-grid3-row-checker"]')
 
     # input输入框
     INPUT_BASE_GU = (By.XPATH, '//label[text()= "{}"]/../div[@class=\"x-form-element\"]//input')
 
     # link 数据是否对应(显示区右下角查询的数据总量)
-    LINK_DATA = (By.XPATH, '(//*[@id="UserDistStat_DetailGrid"]//tr[@class="x-toolbar-right-row"]//div[@class="xtb-text"])[1]')
+    LINK_TOTAL_ROW_INFO = (By.XPATH, '(//*[@id="UserDistStat_DetailGrid"]//tr[@class="x-toolbar-right-row"]//div[@class="xtb-text"])[1]')
     # 删除空格
-    CLEAN_BLANK = r'''var elements,el,txt;
-                        elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-                        for (var i = 0; i < elements.snapshotLength; i++) {
-                            el= elements.snapshotItem(i);
-                            txt = el.innerText.replace(new RegExp(/[\s:：\-\(\)（）]/,'g'), '');
-                            if (txt != el.innerText)
-                                el.innerText = txt
-                        }'''
+    # CLEAN_BLANK = r'''var elements,el,txt;
+    #                     elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+    #                     for (var i = 0; i < elements.snapshotLength; i++) {
+    #                         el= elements.snapshotItem(i);
+    #                         txt = el.innerText.replace(new RegExp(/[\s:：\-\(\)（）]/,'g'), '');
+    #                         if (txt != el.innerText)
+    #                             el.innerText = txt
+    #                     }'''
 
 
 if __name__ == '__main__':

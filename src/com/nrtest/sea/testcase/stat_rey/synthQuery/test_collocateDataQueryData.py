@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.collocateDataQuery_page import Col
 
 # 统计查询→综合查询→配变数据查询:数据展示
 @ddt
-class TestCollcateDataQueryDoc(TestCase, CollcateDataQueryDataPage):
+class TestCollocateDataQueryData(TestCase, CollcateDataQueryDataPage):
 
     @classmethod
     def setUpClass(cls):

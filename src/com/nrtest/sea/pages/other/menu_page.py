@@ -486,7 +486,7 @@ class MenuPage(Page):
 
             # 定位查询结果，默认选择第一行记录
             xpath = self.format_xpath(self.locator_class.NODE_USER_TAB_RSLT, (table_rslt_id, usr_info))
-            print(xpath)
+            # print(xpath)
 
             self.click(xpath)
             # print('------------')

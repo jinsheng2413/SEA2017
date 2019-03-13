@@ -54,8 +54,12 @@ class TestMultipleTableDataQuery(TestCase, MultipleTableDataQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        # 用户编号
-        self.inputStr_cons_no(para['CONS_NO'])
+        if self.is_tree_node_first():
+            self.openLeftTree(para['TREE_NODE'])
+        else:
+            self.inputStr_cons_no(para['CONS_NO'])
+        # # 用户编号
+        # self.inputStr_cons_no(para['CONS_NO'])
         # 开始时间
         self.inputDt_start_date(para['START_DATE'])
         # 结束时间

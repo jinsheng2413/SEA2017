@@ -7,6 +7,7 @@
 @time: 2019/1/28 0028 14:31
 @desc:
 """
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -54,6 +55,7 @@ class TestRecordsQuery(TestCase, ZoneAreaSameGoodStandard_page):
         self.recoverLeftTree()
 
     def query(self, para):
+        sleep(2)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 选择人员

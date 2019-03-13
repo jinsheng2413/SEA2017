@@ -161,12 +161,15 @@ class BaseLocators(Locators):
 
     # 【查询结果显示区】
     # 显示区显示表头
-    TABLE_HEAD = (By.XPATH, '//div[text()="{}"]/ancestor::div[@class="x-grid3-viewport"]//tr[@class="x-grid3-hd-row"]')
+    TABLE_HEAD = (By.XPATH,
+                  '//div[text()="{}"]/ancestor::div[contains(@class,"x-grid-with-col-lines") and not(contains(@class, "x-hide-display"))]//div[@class="x-grid3-viewport"]//tr[@class="x-grid3-hd-row"]')
     #  选择查询结果的指定行  范例菜单： menu_no = '99941704'
     SELECT_ROW = (
-    By.XPATH, '//div[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr/td[{}]//*[text()="{}"]')
+        By.XPATH,
+        '//div[text() ="{}"]/ancestor::div[contains(@class,"x-grid-with-col-lines") and not(contains(@class, "x-hide-display"))]//div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr/td[{}]//*[text()="{}"]')
     # 选查询结果第一行，且text长度大于2的列
-    SELECT_FIRST_ROW = (By.XPATH, '//div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr/td//div[string-length(text())>2]')
+    SELECT_FIRST_ROW = (By.XPATH,
+                        '//div[contains(@class,"x-grid-with-col-lines") and not(contains(@class, "x-hide-display"))]//div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr/td//div[string-length(text())>2]')
 
 class BasePbsLocators(Locators):
     # 多个TAB页情况下的元素定位附加内容: '//div[@class =" x-panel x-panel-noborder  x-hide-display"]'

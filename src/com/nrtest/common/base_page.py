@@ -295,6 +295,9 @@ class Page():
             if date_time.tm_min > 57:
                 sleep(60 * 5)  # 休眠4分钟
 
+        # 关闭用例执行过程中账号异常弹窗
+        self.account_except()
+
         # print(class_path)
         self.class_name = class_path.split('src')[1][1:]
         self.case_para = para
@@ -452,6 +455,7 @@ class Page():
             logger.info('点击元素：{}'.format(loc))
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
+        return el
 
     def query_timeout(self, locator=None, timeout_seconds=0):
         """
@@ -519,6 +523,7 @@ class Page():
                 item = ls_option[1]
             else:
                 item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
+
             if bool(item):
                 # 打开下拉框
                 if byImg:
@@ -530,7 +535,7 @@ class Page():
                     el = self._find_displayed_element(xpath)
                     el.click()
                 else:
-                    self.click(xpath)
+                    el = self.click(xpath)
 
                 if bool(sleep_sec):
                     sleep(sleep_sec)
@@ -540,11 +545,14 @@ class Page():
                     loc = self.format_xpath(self.baseLocators.DROPDOWN_OPTION_EQUAL, item)
                 else:
                     loc = self.format_xpath(self.baseLocators.DROPDOWN_OPTION, item)
-                self.click(loc)
+                el_option = self.click(loc)
+                if not bool(el_option):
+                    el.click()
+
             else:  # 选择值为空时，表示选择全部
-                xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
-                el = self._find_displayed_element(xpath)
-                self.driver.execute_script("arguments[0].value=arguments[1]", el, '')
+                loc_all = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
+                el_all = self._find_displayed_element(loc_all)
+                self.driver.execute_script("arguments[0].value=arguments[1]", el_all, '')
 
     def specialDropdown(self, option, locator, idx=1, locator_clean=None):
         """
@@ -564,14 +572,17 @@ class Page():
         # 根据名称选择下拉框
         if bool(item):
             loc = self.format_xpath(self.baseLocators.DROPDOWN_OPTION_EQUAL, item)
-            self.click(loc)
+            el_option = self.click(loc)
+            if not bool(el_option):
+                el.click()
         else:  # 选择值为空时，表示选择全部
             if bool(locator_clean):
                 loc = locator_clean
             else:
                 loc = (locator[0], locator[1] + '/preceding-sibling::input')
-            el = self._find_displayed_element(loc, idx)
-            self.driver.execute_script("arguments[0].value=arguments[1]", el, '')
+            el_all = self._find_displayed_element(loc, idx)
+            self.driver.execute_script("arguments[0].value=arguments[1]", el_all, '')
+            el.click()
 
     def specialSelCheckBox(self, options, locator=None, sleep_sec=0, checked_loc=None, is_equalText=False):
         """
@@ -1023,7 +1034,7 @@ class Page():
             return
         try:
             if value.find(';') > -1:
-                self.curr_input(value)
+                self.curr_input(value, True, True)
             else:
                 element = self._find_element(locators)
                 # 输入前清空文本框
@@ -1073,7 +1084,7 @@ class Page():
         # locator参数值为None或带None的元组或元组长度为0
         if locator is None or locator[0] is None or len(locator) == 0:
             # print ('curr_click')
-            self.curr_click(is_multi_tab=True, is_by_js=is_by_js)
+            element = self.curr_click(is_multi_tab=True, is_by_js=is_by_js)
         else:
             try:
                 element = self._find_element(locator)
@@ -1082,6 +1093,7 @@ class Page():
                 logger.info('点击元素：{}'.format(locator))
             except BaseException as e:
                 logger.error('点击元素失败:{}\n{}'.format(locator, e))
+        return element
 
     def goto_window(self, switch_mode=True):
         """
@@ -1321,6 +1333,15 @@ class Page():
         """
         self.driver.implicitly_wait(Setting.WAIT_TIME)
 
+    def account_except(self):
+        """
+         账号异常信息弹窗确认：处理用例执行过程中临时弹出
+        """
+        #
+        el = self._direct_find_element(self.baseLocators.DLG_EXCEPT)
+        if bool(el):
+            el.click()
+
     def clean_screen(self):
         """
         登录成功失败判断与清屏处理（如，告警提示框等）
@@ -1530,7 +1551,7 @@ class Page():
         # 如果col_name值为'', 则用loc_col_name替代
         if col_name == '':
             col_name = loc_col_name
-        col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HID_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True}
+        col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HIDE_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True, 'HIDE_ROWS': 0}
         # 查找表头所有列名元素
         el_tds = el_tr.find_elements_by_xpath('./td')
         if bool(el_tds):
@@ -1552,7 +1573,7 @@ class Page():
                         # 表头列名位置，xpath元素下表以1开始，故+1
                         col_pos_info['COL_IDX'] = i + 1
                         break
-            col_pos_info['HID_COLS'] = hide_cols
+            col_pos_info['HIDE_COLS'] = hide_cols
             logger.info('\r“{}”在表格中计算结果：第{}列（其中隐藏列{}列），且{}。\r'.format(col_name, col_pos_info['COL_IDX'], hide_cols,
                                                                       ('不可见' if col_pos_info['COL_IS_HIDED'] else '可见')))
             return col_pos_info

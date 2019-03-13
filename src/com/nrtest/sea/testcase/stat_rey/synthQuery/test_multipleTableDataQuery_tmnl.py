@@ -54,8 +54,13 @@ class TestMultipleTableDataQuery(TestCase, MultipleTableDataQueryTmnlPage):
         self.recoverLeftTree()
 
     def query(self, para):
+        if self.is_tree_node_first():
+            self.openLeftTree(para['TREE_NODE'])
+        else:
+            self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+
         # 终端地址
-        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
+        # self.inputStr_tmnl_addr(para['TMNL_ADDR'])
         # 用户状态
         self.inputSel_cons_status(para['CONS_STATUS'])
         # 查询日期

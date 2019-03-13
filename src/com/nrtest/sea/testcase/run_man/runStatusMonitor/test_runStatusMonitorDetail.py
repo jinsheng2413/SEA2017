@@ -85,7 +85,7 @@ class TestRunStatusMonitorDetail(TestCase, RunStatusMonitorDetailPage):
         self.inputSel_cur_status(para['CUR_STATUS'])
 
         # 终端逻辑地址
-        self.inputStr_tmnl_logic_addr(para['TMNL_LOGIC_ADDR'])
+        self.inputStr_tmnl_addr(para['TMNL_ADDR'])
 
         # 终端规约
         self.inputSel_tmnl_protocol(para['TMNL_PROTOCOL'])

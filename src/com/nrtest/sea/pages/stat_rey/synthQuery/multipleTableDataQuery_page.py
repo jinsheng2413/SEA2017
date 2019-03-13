@@ -41,7 +41,7 @@ class MultipleTableDataQueryPage(Page):
     # 查询按钮
     def btn_search(self):
         # self.click(MultipleTableDataQueryLocators.BTN_SEARCH)
-        self.btn_query()
+        self.btn_query(True)
 
 
 # 终端抄表数据

@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.stat_rey.synthQuery.consDataQuery_page import *
 
 # 统计查询--综合查询--用户数据查询：数据展示
 @ddt
-class TestConsDataQuery(TestCase, ConsDataQueryDisplayPage):
+class TestConsDataQueryDisplay(TestCase, ConsDataQueryDisplayPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）

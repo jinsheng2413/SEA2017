@@ -19,7 +19,6 @@ from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators, TreeSingleUserLocators, LeftTreeLocators
 
-
 # create a logger instance
 logger = Logger(logger='BaseTreePage').getlog()
 class BaseTreePage(Page):
@@ -148,7 +147,7 @@ class BaseTreePage(Page):
     def main_page(self):
         self.driver.find_element(*LeftTreeLocators.MAIN_PAGE).click()
 
-    def inputDate(self, value, is_multi_tab=False, new_idx=0):
+    def inputDate(self, value, is_multi_tab=False, new_idx=0, is_line=False):
         """
         新版日期输入框操作：没标签、没定义name或id时对可见日期选择框进行定位
         :param value:要输入的值:自定义标签名;第n个日期选择框;日期值【该值不填默认为1】：开始日期;1;2018-12-24
@@ -158,7 +157,10 @@ class BaseTreePage(Page):
         try:
             ls_values = value.split(';')
             # print(ls_values)
-            loc = self.format_xpath(self.baseLocators.QRY_LOCATORS, ls_values[0])
+            if is_line:
+                loc = self.format_xpath(self.baseLocators.QRY_LINE_LOCATORS, ls_values[0])
+            else:
+                loc = self.format_xpath(self.baseLocators.QRY_LOCATORS, ls_values[0])
             tmp = ls_values[1].strip()
             idx = new_idx
             if new_idx == 0:
@@ -234,7 +236,8 @@ class BaseTreePage(Page):
             logger.info('点击元素：{}'.format(loc))
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
-    def selectDropDown(self, option,sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True,idx=1):
+
+    def selectDropDown(self, option, sleep_sec=0, is_multi_elements=False, is_equalText=False, is_line=False, idx=1):
         """
         下拉单选框选择
         :param option: 参数格式：查询条件标签名;查询条件
@@ -254,10 +257,10 @@ class BaseTreePage(Page):
                 item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
             if bool(item):
                 # 打开下拉框
-                if byImg:
-                    xpath = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN, ls_option[0])
+                if is_line:
+                    xpath = self.format_xpath(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
                 else:
-                    xpath = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN_ELE, ls_option[0])
+                    xpath = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN, ls_option[0])
 
                 if is_multi_elements:
                     el = self._find_displayed_element(xpath,idx=idx)

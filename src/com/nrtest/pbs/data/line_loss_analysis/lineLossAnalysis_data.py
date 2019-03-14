@@ -14,3 +14,8 @@ class LineLossAnalysis_data:
     lineLossBrowse_para = '0000701'
     lineLossBrowse_tab_collect = '线损汇总'
     lineLossBrowse_tab_query = '线损查询'
+
+    # 线损分析→变损浏览
+    changeLossBrowse_para = '0000702'
+    changeLossBrowse_tab_collect = '变损汇总'
+    changeLossBrowse_tab_query = '变损查询'

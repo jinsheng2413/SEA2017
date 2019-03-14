@@ -1,11 +1,30 @@
 from com.nrtest.common.db_driver import PyOracle
 import time
+author = '郭春彪'
+#生成文件路径
+filePath = 'D:/pythonworkspace/SEA2017/src/com/nrtest/common/tools/'
+#文件名称
+name = 'test_re'
+#pageName
+PageName = 'cdsc'
+PagePath= 'D:/pythonworkspace/SEA2017/src/com/nrtest/common/tools/'
+
+#tab页名称，默认是01
+tabName = '01'
+#菜单编号
+menuNo= '0000304'
+#菜单编号名称
+data_para = 'sdfdsffdsfds'
+PageName = name.split('_')[1]+'_page'
+
+
+
 def  get_data(menuNo,tab='01'):
     sql = 'select l.tab_name,l.xpath,l.use_share_xpath,l.xpath_name from tst_menu_xpath_list l where l.menu_no = :menuNo and l.tab_name =:tab order by l.use_share_xpath'
     pyoracle = PyOracle.getInstance()
     dataSet = pyoracle.query(sql, [menuNo,tab])
     return dataSet
-def head(autor='郭春彪',name="puiu",menNo=''):
+def head(autor=author,name="puiu",menNo=''):
     str = '# -*- coding: utf-8 -*-\n\n'+'"""\n'+ "@author:{}\n" \
            "@license: (C) Copyright 2019, Nari.\n" \
            "@file: {}.py\n" \
@@ -20,7 +39,7 @@ def head(autor='郭春彪',name="puiu",menNo=''):
 
     str_new = str.format(autor,name,time.strftime("%Y-%m-%d %H:%M", time.localtime()),name)
     return str_new
-def testHead(autor='郭春彪',name="puiu",menNo=''):
+def testHead(autor=author,name="puiu",menNo=''):
     str = '# -*- coding: utf-8 -*-\n\n'+'"""\n'+ "@author:{}\n" \
            "@license: (C) Copyright 2019, Nari.\n" \
            "@file: {}.py\n" \
@@ -38,6 +57,18 @@ def testHead(autor='郭春彪',name="puiu",menNo=''):
 
 
     str_new = str.format(autor,name,time.strftime("%Y-%m-%d %H:%M", time.localtime()),name.capitalize())
+    return str_new
+def PageHead(autor=author,name="puiu",menNo=''):
+    str = '# -*- coding: utf-8 -*-\n\n'+'"""\n'+ "@author:{}\n" \
+           "@license: (C) Copyright 2019, Nari.\n" \
+           "@file: {}.py\n" \
+           "@time: {}\n" \
+           "@desc:\n"\
+           '"""\n'\
+           'from com.nrtest.pbs.tree.tree_page import TreePBSPage\n\n'\
+           + getPath(menNo)+'\n'+\
+           "class {}(TreePBSPage):\n\n"
+    str_new = str.format(autor, name, time.strftime("%Y-%m-%d %H:%M", time.localtime()), name.capitalize())
     return str_new
 def getPath(menuNo):
     sql = 'select o.level1,o.level2,o.level3,o.level4,o.level5 from tst_menu o where o.menu_no = :menuNo'
@@ -63,23 +94,21 @@ def  getPage(menuNO,tab='01',path ='',name=''):
         '01': 'def inputStr_{}(self,value):\n\t  self.input(value)',
         '03': 'def inputSel_{}(self,option):\n\t  self.selectDropDown(option)',
         '04': 'def inputChk_{}(self,option):\n\t   self.selectCheckBox(option)',
-        '06': 'def inputDt_{}(self,value):\n\t   self.inputdate(value)',
+        '06': 'def inputDt_{}(self,value):\n\t   self.inputDate(value)',
         '07': 'def inputChk_{}(self,value):\n\t   self.selectCheckBox(option)',
         '09': 'def inputBt_{}(self,value):\n\t   self.click_button(value)',
         '10': 'def inputXp_{}(self,value):\n\t   self.click_xpath(value)'
     }
   data = get_data(menuNO,tab=tab)
   lis = []
-  lis.append(testHead(menNo=menuNO))
+  lis.append(PageHead(menNo=menuNO))
 
 
 
-  for a,b,c in data:
+  for a,b,c,d in data:
 
       str  = b.lower()
-      lis.append('\t'+dic[c].format(str)+'\n\n\n')
-  for item in lis:
-      print(item)
+      lis.append('\t#'+d+'\n\t'+dic[c].format(str)+'\n\n\n')
   ph = path+'/'+name+'.py'
   with open(ph,'w',encoding='utf-8') as file:
       file.writelines(lis)
@@ -181,5 +210,6 @@ def  getTestCase(menuNO,tab='01',path ='',name='',para=''):
 
 
 if __name__=='__main__':
-    getTestCase('0000304',tab='01',path='D:/pythonworkspace/SEA2017/src/com/nrtest/common/tools/',name='op',para='data.para')
+    getPage(menuNO=menuNo,tab=tabName,path=PagePath,name=PageName)
+    getTestCase(menuNO=menuNo,tab=tabName,path=filePath,name=name,para=data_para)
 

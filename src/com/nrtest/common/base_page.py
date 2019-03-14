@@ -825,7 +825,7 @@ class Page():
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
-    def clickTabPage(self, tab_name, is_multi_tab=False, is_multi_elements=False):
+    def clickTabPage(self, tab_name, is_multi_tab=False, is_multi_elements=False,double=False):
         """
         打开Tab页
         :param tab_name:
@@ -843,6 +843,8 @@ class Page():
         if is_multi_elements:
             el = self._find_displayed_element(xpath)
             el.click()
+        elif double:
+            self.double_click(xpath)
         else:
             self.click(xpath)
 

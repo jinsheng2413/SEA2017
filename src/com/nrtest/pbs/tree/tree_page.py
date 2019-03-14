@@ -345,7 +345,8 @@ class BaseTreePage(Page):
 
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
-    def clickRadioBox(self, option,is_multi_elements=False,is_group_elements = False):
+
+    def clickRadioBox(self, option, is_multi_elements=False, name=False, number=False):
         """
         选择单选框
         :param option:
@@ -362,18 +363,43 @@ class BaseTreePage(Page):
 
             if len(item) == 0:
                 raise BaseException('单选框必须指定选择项：{}'.format(option))
-            if is_group_elements:
+            if name:
                     group_xpath = (self.baseLocators.CHECK_BOX[0],
-                                  "//*[@class = " + '"' + ls_option[1] + '"' + "]" + self.baseLocators.RADIOBOX_LABEL2INPUT[
+                                   "//*[@class = " + '"' + ls_option[1] + '"' + "]" +
+                                   self.baseLocators.RADIOBOX_INPUT2LABEL[
                                       1])
-                    xpath = self.format_xpath(group_xpath, item)
+                    lis_item = item.split(',')
+                    for it in lis_item:
+                        xpath = self.format_xpath(group_xpath, item)
+                        if is_multi_elements:
+                            el = self._find_displayed_element(xpath)
+                            el.click()
+                        else:
+                            self.click(xpath)
+            elif number:
+                group_xpath = (self.baseLocators.CHECK_BOX[0],
+                               "//*[@class = " + '"' + ls_option[1] + '"' + "]" +
+                               self.baseLocators.RADIOBOX_INPUT2LABEL_NUM[
+                                   1])
+                lis_item = item.split(',')
+                for it in lis_item:
+                    xpath = self.format_xpath(group_xpath, it)
+                    if is_multi_elements:
+                        el = self._find_displayed_element(xpath)
+                        el.click()
+                    else:
+                        self.click(xpath)
+
             else:
              xpath = self.format_xpath(self.baseLocators.RADIOBOX_LABEL2INPUT, item)
-            if is_multi_elements:
-                el = self._find_displayed_element(xpath)
-                el.click()
-            else:
-                self.click(xpath)
+             if is_multi_elements:
+                 el = self._find_displayed_element(xpath)
+                 el.click()
+             else:
+                 self.click(xpath)
+
+
+
         except BaseException as ex:
             print('点击单选框失败：{}'.format(ex))
 

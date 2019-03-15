@@ -2,20 +2,20 @@ from com.nrtest.common.db_driver import PyOracle
 import time
 author = '郭春彪'
 #生成文件路径
-filePath = 'D:/pythonworkspace/SEA2017/src/com/nrtest/common/tools/'
+filePath = r'D:\pythonworkspace\SEA2017\src\com\nrtest\pbs\testcase\smart_T0/'
 #文件名称
-name = 'test_re'
+name = 'test_eleQuantity'
 #pageName
-PageName = 'cdsc'
-PagePath= 'D:/pythonworkspace/SEA2017/src/com/nrtest/common/tools/'
+PageName = 'eleQuantity_page'
+PagePath= r'D:\pythonworkspace\SEA2017\src\com\nrtest\pbs\page\smart_T0/'
 
 #tab页名称，默认是01
 tabName = '01'
 #菜单编号
-menuNo= '0000304'
+menuNo= '0000902'
 #菜单编号名称
-data_para = 'sdfdsffdsfds'
-PageName = name.split('_')[1]+'_page'
+data_para = 'SmartTo_data.EleQuantity_para'
+
 
 
 
@@ -52,13 +52,13 @@ def testHead(autor=author,name="puiu",menNo=''):
            'from unittest import TestCase\n'\
            'from ddt import ddt, data\n\n'\
            + getPath(menNo)+'\n'+\
-           "class {}(TestCase):\n\n"
+           "@ddt\nclass {}(TestCase):\n\n"
 
 
 
     str_new = str.format(autor,name,time.strftime("%Y-%m-%d %H:%M", time.localtime()),name.capitalize())
     return str_new
-def PageHead(autor=author,name=PageName,menNo=''):
+def PageHead(autor=author,name='',menNo=''):
     str = '# -*- coding: utf-8 -*-\n\n'+'"""\n'+ "@author:{}\n" \
            "@license: (C) Copyright 2019, Nari.\n" \
            "@file: {}.py\n" \
@@ -68,7 +68,8 @@ def PageHead(autor=author,name=PageName,menNo=''):
            'from com.nrtest.pbs.tree.tree_page import TreePBSPage\n\n'\
            + getPath(menNo)+'\n'+\
            "class {}(TreePBSPage):\n\n"
-    str_new = str.format(autor, name, time.strftime("%Y-%m-%d %H:%M", time.localtime()), name.capitalize())
+    name_new = name[0].upper()+name[1:]
+    str_new = str.format(autor, name, time.strftime("%Y-%m-%d %H:%M", time.localtime()), name_new)
     return str_new
 def getPath(menuNo):
     sql = 'select o.level1,o.level2,o.level3,o.level4,o.level5 from tst_menu o where o.menu_no = :menuNo'
@@ -89,7 +90,7 @@ def getPath(menuNo):
 
     return str
 
-def  getPage(menuNO,tab='01',path ='',name=''):
+def  getPage(menuNO,tab='01',path ='',name=PageName):
   dic = {
         '01': 'def inputStr_{}(self,value):\n\t\t  self.input(value)',
         '03': 'def inputSel_{}(self,option):\n\t\t  self.selectDropDown(option)',
@@ -101,7 +102,7 @@ def  getPage(menuNO,tab='01',path ='',name=''):
     }
   data = get_data(menuNO,tab=tab)
   lis = []
-  lis.append(PageHead(menNo=menuNO))
+  lis.append(PageHead(menNo=menuNO,name=PageName))
 
 
 
@@ -211,5 +212,5 @@ def  getTestCase(menuNO,tab='01',path ='',name='',para=''):
 
 if __name__=='__main__':
     getPage(menuNO=menuNo,tab=tabName,path=PagePath,name=PageName)
-    getTestCase(menuNO=menuNo,tab=tabName,path=filePath,name=name,para=data_para)
+    # getTestCase(menuNO=menuNo,tab=tabName,path=filePath,name=name,para=data_para)
 

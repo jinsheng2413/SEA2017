@@ -3,7 +3,7 @@
 """
 @author: 邵茜
 @license: (C) Copyright 2019, Nari.
-@file: test_archivesman.py
+@file: test_collHitch.py
 @time: 2019/3/15 14:18
 @desc:
 """
@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
 @ddt
-class test_UserDefind(TestCase, CollHitchPage):
+class test_CollHitch(TestCase, CollHitchPage):
 
     @classmethod
     def setUpClass(cls):
@@ -65,6 +65,8 @@ class test_UserDefind(TestCase, CollHitchPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        # 查询对象
+        self.openLeftTree(para['TREE_NODE'])
 
         # 输入框
         self.input_name(para['INPUT_NAME'])

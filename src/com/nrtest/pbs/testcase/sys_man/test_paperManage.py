@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 # 系统管理--页面管理
 
 @ddt
-class test_CollSuccRate(TestCase, PaperManagePage):
+class test_PaperManage(TestCase, PaperManagePage):
 
     @classmethod
     def setUpClass(cls):

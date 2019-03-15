@@ -18,10 +18,10 @@ from com.nrtest.pbs.page.sys_man.logQuery_page import LogQueryPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 系统管理--页面管理
+# 系统管理--日志查询
 
 @ddt
-class test_CollSuccRate(TestCase, LogQueryPage):
+class test_LogQuery(TestCase, LogQueryPage):
 
     @classmethod
     def setUpClass(cls):

@@ -10,6 +10,8 @@
 from com.nrtest.pbs.tree.tree_page import TreePBSPage
 
 
+# 数据查询--计算量
+
 class Calcluteamount_page(TreePBSPage):
     # 时间方案
     def inputBtn_time_blue_print(self, value):

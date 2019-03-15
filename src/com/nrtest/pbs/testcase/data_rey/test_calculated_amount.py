@@ -19,9 +19,9 @@ from com.nrtest.pbs.page.data_rey.calculated_amount_page import Calcluteamount_p
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 采集运维--采集详情--采集成功率
+# 数据查询--计算量
 @ddt
-class test_CollSuccRate(TestCase, Calcluteamount_page):
+class test_CalculatedAmount(TestCase, Calcluteamount_page):
 
     @classmethod
     def setUpClass(cls):

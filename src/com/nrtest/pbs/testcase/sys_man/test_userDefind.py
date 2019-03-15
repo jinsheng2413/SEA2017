@@ -20,10 +20,10 @@ from com.nrtest.pbs.page.sys_man.userDefind_page import UserDefindPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 系统管理--系统菜单
+# 系统管理--用户定义
 
 @ddt
-class test_CollSuccRate(TestCase, UserDefindPage):
+class test_UserDefind(TestCase, UserDefindPage):
 
     @classmethod
     def setUpClass(cls):

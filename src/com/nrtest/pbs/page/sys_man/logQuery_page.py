@@ -11,6 +11,7 @@ from com.nrtest.pbs.locators.sys_man.sysMan_locators import SysMan_locators
 from com.nrtest.pbs.tree.tree_page import TreePBSPage
 
 
+# 系统管理--日志查询
 class LogQueryPage(TreePBSPage):
 
     # 日志类型

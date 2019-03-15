@@ -11,3 +11,5 @@ class AuxiliaryOperationsData:
     # 运行管理→采集运维平台→辅助运维→报文查询
     origFrameHbaseQuery_para = '99934430'
 
+    # 运行运行管理→采集运维平台→辅助运维→报文分析工具
+    messageAnalysisTool_para = '99934410'

@@ -58,3 +58,6 @@ class DataGatherMan_data:
 
     # 基本应用→数据采集管理→数据发布(江西)
     synDayReadData_JX_para = '99913801'
+
+    # 基本应用--数据采集管理--采集质量检查（new）
+    gatherQualityCheck_para = '99913400'

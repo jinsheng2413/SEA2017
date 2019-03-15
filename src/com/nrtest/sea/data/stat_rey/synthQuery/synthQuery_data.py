@@ -152,3 +152,12 @@ class SynthQuery_data:
     consIntrgratedQueryMeasurementPointMaxNumAndTime_tab = '测量点最大需量及发生时间统计'
     consIntrgratedQueryMeasurementPointTmnlStat_tab = '终端统计数据'
     consIntrgratedQueryMeasurementPointSumGroupStat_tab = '总加组统计数据'
+
+    # 统计查询→综合查询→多表合一综合查询
+    fourMeterGeneralQuery_para = '99941A01'
+    fourMeterGeneralQuery_doc = '档案数据'
+    fourMeterGeneralQuery_meter_data = '抄表数据'
+    fourMeterGeneralQuery_col_succ = '采集成功率'
+    fourMeterGeneralQuery_col_fail = '抄表失败列表'
+    fourMeterGeneralQuery_ab_data = '异常数据明细'
+    fourMeterGeneralQuery_tg_succ = '台区抄表成功率'

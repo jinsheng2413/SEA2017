@@ -39,3 +39,5 @@ class DistributedEnergyMange_data:
     DistributedEnergyLoadMonitor_para = '99926160'
     DistributedEnergyLoadMonitor_tabName = '分布式电源负荷监测统计'
     DistributedEnergyLoadMonitor_tabName_Detail = '分布式电源负荷监测明细'
+    # 高级应用→重点用户监测→分布式电源管理--分布式电源用户冻结曲线
+    distributedConsDataCurve_para = '99926130'

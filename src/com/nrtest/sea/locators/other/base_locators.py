@@ -147,8 +147,23 @@ class BaseLocators(Locators):
     DATA_LOADING1 = (By.XPATH, '//div[@class="x-panel-bwrap  x-masked-relative x-masked"]')
 
     # 弹框处理
-    POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
-    POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
+    # POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
+    # POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
+    # 弹窗对话框
+    # 不同弹窗对话框的class属性
+    # class=" x-window x-window-plain"
+    # class=" x-window" and contains(@style, "visibility: visible;")
+    # class=" x-window x-resizable-pinned"
+    # class=" x-window x-window-plain x-window-dlg"
+    #
+    # 弹窗对话框的title属性
+    # //span[@class="x-window-header-text" and text()="{}"]
+    POPUP_DLG = (By.XPATH, '//div[starts-with(@class," x-window") and contains(@style, "visibility: visible;")]')
+    # 弹窗确定按钮[待作废]
+    POPUP_DLG_CONFIRM = (By.XPATH, '//div[starts-with(@class," x-window") and contains(@style, "visibility: visible;")]//button[text()="确定"]')
+    # 弹窗 X 按钮  div[@class="x-tool x-tool-close"]
+    POPUP_DLG_PLUS = (By.XPATH,
+                      '//div[starts-with(@class," x-window") and contains(@style, "visibility: visible;")]//span[@class="x-window-header-text"]/../div[@class="x-tool x-tool-close"]')
 
     # 【登录后清屏处理】
     # 登录异常弹窗确认

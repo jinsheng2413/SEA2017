@@ -22,7 +22,6 @@ class EleParaMan_rate_Page(Page):
     def inputSel_come_into_para(self, name):
         self.selectDropDown(name)
 
-
     # 结束时间
     def inputDt_end_time(self, value):
         self.inputDate(value, is_multi_tab=True)
@@ -44,7 +43,7 @@ class EleParaMan_step_Page(Page):
         # 是否已生成参数
 
     def inputSel_come_into_para(self, name):
-        self.selectDropDown(name)
+        self.selectDropDown(name, is_multi_tab=True, is_multi_elements=True)
 
     # 结束时间
     def inputDt_end_time(self, value):

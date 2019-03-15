@@ -119,22 +119,16 @@ class Page():
             dlg_src = int(self.case_para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
         el = self._direct_find_element(self.baseLocators.POPUP_DLG)
         if bool(el) and el.is_displayed():  # 有对话框，且显示
-            info = ':'.join(el.text.replace(' ', '').split('\n')[:-2])
-            # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
-            if dlg_src in (1, 3, 4, 6):
+            info = '\r'.join(el.text.replace(' ', '').split('\n')[:-2])
+            if '账号异常信息' in info:  # 测试用例执行过程中的“账号异常信息”弹窗属正常情况，不予处理
+                action = '03'
+            elif dlg_src in (1, 3, 4, 6):  # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
                 # action：00-没弹窗,正确结果；01-截图，且抛异常；02-只截图，不抛异常；
                 #         03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
                 # 01-针对普通用例、不符合期望值的弹窗有效性判断、点击菜单异常；02-有弹窗，但不想抛异常；
                 # 03-针对符合期望值的弹窗有效性判断；
                 action = '01'
                 if dlg_src == 1:
-                    # # 弹窗是共性报错弹窗
-                    # is_find = False
-                    # for dlg in self.except_dlgs:
-                    #     is_find = dlg in info
-                    #     if is_find:
-                    #         break
-
                     if not find_except_dlg(info):
                         popup_type = self.case_para['POPUP_TYPE']
                         if popup_type > '00':
@@ -147,7 +141,7 @@ class Page():
                 elif dlg_src == 6:
                     action = '02'
                     key = '01' if find_except_dlg(info) else '02'
-                    self.skip_except_dlg.append({key, info})
+                    self.skip_except_dlg.append([key, info])
 
             elif dlg_src == 5:
                 action = '01'
@@ -164,7 +158,8 @@ class Page():
             if action in ('01', '02'):
                 self.save_img(img_path, img_name)
 
-            btn_el = self._direct_find_element(self.baseLocators.POPUP_DLG_CONFIRM)
+            # btn_el = self._direct_find_element(self.baseLocators.POPUP_DLG_CONFIRM)
+            btn_el = self._direct_find_element(self.baseLocators.POPUP_DLG_PLUS)
             if bool(btn_el):
                 btn_el.click()
 
@@ -183,14 +178,19 @@ class Page():
 
         return dlg_src, action, info
 
-    def get_skip_except_info(self):
+    def get_skip_except_info(self, info_format='00'):
         """
         获取skip跳转弹窗异常信息
         :return: None-没弹窗异常发生；否则有弹窗异常，返回数据是个字典，格式如下：
                 key：01-明确为异常弹窗；02-其他未知弹窗
                 value：弹窗信息
         """
-        return self.skip_except_dlg.pop() if bool(self.skip_except_dlg) else None
+        dlg_info = self.skip_except_dlg.pop() if bool(self.skip_except_dlg) else None
+        info = dlg_info
+        if bool(dlg_info):
+            if info_format == '01':  # 只返回弹窗标题
+                info = dlg_info[1].split('\r')[0]
+        return info
 
     def fail_on_screenshot(self, func):
         """
@@ -350,7 +350,7 @@ class Page():
                     pos += 1
         return element
 
-    def format_xpath_multi(self, xpath, format_val='', is_multi_tab=True):
+    def format_xpath_multi(self, xpath, format_val='', is_multi_tab=True, menu_name=''):
         """
         应用于多Tab页情况下的xpath格式化
         :param xpath:
@@ -359,7 +359,8 @@ class Page():
         """
         loc = xpath
         if is_multi_tab:
-            xpath_str = self.baseLocators.MENU_PAGE_ID.format(self.menu_name) + self.baseLocators.MULTI_TAB
+            menu_name = menu_name if bool(menu_name) else self.menu_name
+            xpath_str = self.baseLocators.MENU_PAGE_ID.format(menu_name) + self.baseLocators.MULTI_TAB
             if xpath[1].startswith('('):
                 loc = (xpath[0], xpath[1][:1] + xpath_str + xpath[1][1:])
             else:
@@ -457,6 +458,33 @@ class Page():
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
         return el
 
+    def get_input_val(self, values, use_share_xpath='01', option_name='', menu_name='', idx=1):
+        """
+        获取查询条件值
+        :param values:要输入的值
+        :param use_share_xpath:
+        :param option_name:
+        :param menu_name: 填跳转后的菜单名
+        """
+        if self.ignore_op(values):
+            return None
+        try:
+            label_name = values.split(';')[0]
+            if use_share_xpath == '06':  # 日期
+                loc = self.format_xpath_multi(self.baseLocators.QRY_DT_INPUT, label_name, True, menu_name)
+                idx = int(option_name) if bool(option_name) else 1
+            else:
+                loc = self.format_xpath_multi(self.baseLocators.QRY_INPUT, label_name, True, menu_name)
+
+            el = self._find_displayed_element(loc, idx)
+            value_of_el = self.driver.execute_script("return arguments[0].value", el)  # self.get_el_text(el)
+            print('******** values:{}, use_share_xpath:{}, option_name:{}, idx:{}, 查询条件值{}\r'.format(values, use_share_xpath, option_name, idx,
+                                                                                                     value_of_el))
+            return value_of_el
+        except AttributeError as ex:
+            logger.error('提取元素内容失败:{}\n{}'.format(values, ex))
+            return None
+
     def query_timeout(self, locator=None, timeout_seconds=0):
         """
         查询超时判断,当用例不配置超时时间或值为0时，不做等待超时判断
@@ -493,14 +521,14 @@ class Page():
             return cost_seconds
 
     @BeautifulReport.add_popup_img()
-    def btn_query(self, is_multi_tab=False, btn_name='', idx=1):
+    def btn_query(self, is_multi_tab=False, btn_name='', idx=1, is_by_js=False):
         """
         通用页面查询按钮
         :param is_multi_tab: 多Tab页时，如果查询按钮名有重复，则该值填True
         :param btn_name:按钮元素文本值
         :param idx:第idx个可见按钮
         """
-        self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx)
+        self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx, is_by_js=is_by_js)
         self.query_timeout()
 
     def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True):
@@ -1337,10 +1365,12 @@ class Page():
         """
          账号异常信息弹窗确认：处理用例执行过程中临时弹出
         """
-        #
-        el = self._direct_find_element(self.baseLocators.DLG_EXCEPT)
-        if bool(el):
-            el.click()
+        try:
+            el = self._direct_find_element(self.baseLocators.DLG_EXCEPT)
+            if bool(el):
+                el.click()
+        except:
+            pass
 
     def clean_screen(self):
         """

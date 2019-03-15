@@ -18,3 +18,6 @@ class TerminalMan_data:
 
     # 基本应用→终端管理→采集方案编制
     schemeTemplateConfig_para = '99912600'
+
+    # 基本应用--终端管理--采集规则维护
+    gatherRuleMaintain_para = '99912800'

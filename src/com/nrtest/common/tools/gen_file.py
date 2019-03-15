@@ -68,7 +68,8 @@ class GenFile():
         return ''.join(items)
 
     def _get_test_class_name(self, file=''):
-        return 'test_' + self._format_name(file)
+        # return 'test_' + self._format_name(file)
+        return 'Test' + self._format_name(file)
 
     # 04	test&page的class名
     def get_test_class(self, line, file=''):

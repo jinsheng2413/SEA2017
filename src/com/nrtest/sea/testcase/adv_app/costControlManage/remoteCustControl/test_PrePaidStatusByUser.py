@@ -78,6 +78,8 @@ class TestPrePaidStatusByUser(TestCase, PrePaidStatusByUserPage):
         # 查询
         self.btn_qry()
 
+        # sleep(5)
+
     def assert_query_result(self, para):
         """
         查询结果校验（包括跳转）

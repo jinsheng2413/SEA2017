@@ -12,7 +12,6 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.business_change.businessChange_data import BusinessChange_data
 from com.nrtest.pbs.page.business_change.fullSizeProcess_page import FullSizeProcessRecordPage
 from com.nrtest.pbs.tree.tree_page import *
@@ -21,7 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 业务变更→满码处理:满码记录查询
 @ddt
-class TestChangeTableOperate(TestCase, FullSizeProcessRecordPage):
+class TestFullSizeProcess_record(TestCase, FullSizeProcessRecordPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）

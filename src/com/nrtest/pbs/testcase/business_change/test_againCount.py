@@ -3,8 +3,8 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_againDispose.py
-@time: 2019-03-13 16:23
+@file: test_againCount.py
+@time: 2019-03-14 14:02
 @desc:
 """
 
@@ -13,18 +13,18 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.pbs.data.business_change.businessChange_data import BusinessChange_data
-from com.nrtest.pbs.page.business_change.againDispose_page import AgainDisposePage
+from com.nrtest.pbs.page.business_change.againCount_page import AgainCountPage
 from com.nrtest.pbs.tree.tree_page import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 业务变更→重处理
+# 业务变更→重计算
 @ddt
-class TestAgainDispose(TestCase, AgainDisposePage):
+class TestAgainCount(TestCase, AgainCountPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(BusinessChange_data.AgainDispose_para)
+        menuPage = MenuPage.openMenu(BusinessChange_data.AgainCount_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         menuPage.intoPBSIframe()
@@ -60,27 +60,16 @@ class TestAgainDispose(TestCase, AgainDisposePage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 处理方式
-        self.inputChk_dispose_type(para['DISPOSE_TYPE'])
-        val = self.get_para_value(para['DISPOSE_TYPE'])
-        if val in ['4']:
-            # 电表
-            # self.openLeftTree(para['TREE_NODE'])
-            # 开始时间
-            self.inputDt_start_date(para['START_DATE'])
-            # 结束时间
-            self.inputDt_end_date(para['END_DATE'])
-        else:
-            # 电表
-            # self.openLeftTree(para['TREE_NODE'])
-            # 开始时间
-            self.inputDt_start_date(para['START_DATE'])
-            # 结束时间
-            self.inputDt_end_date(para['END_DATE'])
-            # Tab页名称
-            self.inputChk_tab_name(para['TAB_NAME'])
-            # 提交按钮
-            self.btn_commit()
+        # 计算公式名称
+        self.openLeftTree(para['TREE_NODE'])
+        # 开始时间
+        self.inputDt_start_date(para['START_DATE'])
+        # 结束时间
+        self.inputDt_end_date(para['END_DATE'])
+        # Tab页名称
+        self.inputChk_tab_name(para['TAB_NAME'])
+        # 提交按钮
+        self.btn_commit()
 
         self.iframe_back(num=1)
 
@@ -100,7 +89,7 @@ class TestAgainDispose(TestCase, AgainDisposePage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(BusinessChange_data.AgainDispose_para))
+    @data(*DataAccess.getCaseData(BusinessChange_data.AgainCount_para))
     def test_query(self, para):
         self.start_case(para, __file__)
         self.query(para)
@@ -108,7 +97,7 @@ class TestAgainDispose(TestCase, AgainDisposePage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(BusinessChange_data.AgainDispose_para, valCheck=True))
+    @data(*DataAccess.getCaseData(BusinessChange_data.AgainCount_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

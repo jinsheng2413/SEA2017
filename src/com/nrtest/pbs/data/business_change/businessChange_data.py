@@ -31,3 +31,6 @@ class BusinessChange_data:
 
     # 业务变更→重处理
     AgainDispose_para = '0000505'
+
+    # 业务变更→重计算
+    AgainCount_para = '0000506'

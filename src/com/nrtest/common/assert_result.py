@@ -53,7 +53,14 @@ class AssertResult():
         try:
             is_find, first_row_idx, row_cnt = self.query_records(case_result[0])
             if is_find:
+                # col_pos_info['HIDE_ROWS'] = first_row_idx
+                # # 查询结果行数
+                # locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT, case_result[0])
+                # els = self.tst_inst._find_elements(locator)
+                # row_cnt = len(els) if bool(els) else 0
+                # if row_cnt > 0:
                 match_cnt = 0
+                # col_pos_info = self.calc_col_idx(case_result[0], case_result[1])
                 displayLineElement = (By.XPATH,
                                       '(//*[text()="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{}]/td[{}]//*[contains(text(),"{}")]')
                 for i in range(1, row_cnt + 1):
@@ -211,6 +218,41 @@ class AssertResult():
         :return: 返回：列位置，列是否可见以及第一列带标签的列
         """
         return self.tst_inst.calc_col_idx(loc_col_name, col_name, idx)
+        #
+        # loc = self.tst_inst.format_xpath_multi(AssertResultLocators.TABLE_HEAD, loc_col_name, True)
+        # el_tr = self.tst_inst._find_displayed_element(loc, idx=idx)
+        #
+        # # print('表格列名清单', el_tr.text)
+        #
+        # col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HIDE_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True}
+        # # 查找表头所有列名元素
+        # el_tds = el_tr.find_elements_by_xpath('./td')
+        # if bool(el_tds):
+        #     # 隐藏列个数
+        #     hide_cols = 0
+        #     for i, el in enumerate(el_tds):
+        #         # el_label = el.text
+        #         el_label = self.tst_inst.get_el_text(el)
+        #         el_label = Utils.replace_chrs(el_label, ' \r\n\t')
+        #         if self.tst_inst.el_is_hided(el):
+        #             hide_cols += 1
+        #         else:
+        #             if col_pos_info['EL_FIRST'] is None and el.is_displayed():
+        #                 # 第一个带标签，且显示的列
+        #                 col_pos_info['EL_FIRST'] = el
+        #                 col_pos_info['FIRST_COL_IDX'] = i + 1
+        #             if el_label == col_name:
+        #                 col_pos_info['COL_IS_HIDED'] = not el.is_displayed()
+        #                 col_pos_info['EL_COL'] = el
+        #                 # 表头列名位置，xpath元素下表以1开始，故+1
+        #                 col_pos_info['COL_IDX'] = i + 1
+        #                 break
+        #     col_pos_info['HIDE_COLS'] = hide_cols
+        #     logger.info('\r“{}”在表格中计算结果：第{}列（其中隐藏列{}列），且{}。\r'.format(col_name, col_pos_info['COL_IDX'], hide_cols,
+        #                                                               ('不可见' if col_pos_info['COL_IS_HIDED'] else '可见')))
+        #     return col_pos_info
+        # else:
+        #     raise AssertError('定位列{}在表格中的位置时报错！'.format(col_name))
 
     # def clickSkip(self, case_result, case_data):
     #     """
@@ -323,6 +365,11 @@ class AssertResult():
             '28': '供电单位下钻错误',
             '31': '查询详细信息的输入框的值与期望结果不一致'
         }
+        # @TODO
+        # print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$请删除我')
+        # if True:
+        #     return True
+
         case_id = para['TST_CASE_ID']
         ls_check_rslt = {}
         case_results = DataAccess.get_case_result(case_id)
@@ -458,6 +505,10 @@ class AssertResult():
             skiped_values = self.skip_to_page(case_result, col_pos_info)
             if skiped_values[0]:  # if is_skiped:
                 sleep(2)
+                # 关闭窗口 已在base_page模块下的popup方法中统一处理弹窗关闭处理
+                # close_xpath = self.tst_inst.format_xpath(AssertResultLocators.WINDOWS_CLOSE, case_result[2])
+                # el = self.tst_inst._direct_find_element(close_xpath)
+                # el.click()
                 # 弹窗信息
                 self.dlg_info = self.tst_inst.get_skip_except_info('01')
                 is_skiped = dlg_title in self.dlg_info if bool(self.dlg_info) else False
@@ -611,6 +662,7 @@ class AssertResult():
             all_val = '全部'
             for data_before, data_after, map_rela in zip(skip_data_before, skip_data_after, map_rela_rslt):
                 trans_type = map_rela[7]  # 转换类型(TRANS_TYPE)：00-不转换；01-直接转换为对应值;02-包含关系;03-月时间转换为日时间
+
                 if trans_type == '01':
                     data_before = map_rela[9]
 

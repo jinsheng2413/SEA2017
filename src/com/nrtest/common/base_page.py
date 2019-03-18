@@ -686,6 +686,7 @@ class Page():
         # 页面元素位置变动时，会存在定位错误问题，需人工调整
         locator = self.format_xpath_multi(self.baseLocators.QRY_INPUT_NOLABEL, idx, True)
         el = self._find_displayed_element(locator, idx)
+        el.clear()
         el.send_keys(value.split(';')[1])
 
     def _uncheck_all(self, option_name, unchecked_cls):

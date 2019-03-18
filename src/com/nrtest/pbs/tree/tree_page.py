@@ -366,7 +366,7 @@ class BaseTreePage(Page):
             if name:
                     group_xpath = (self.baseLocators.CHECK_BOX[0],
                                    "//*[@class = " + '"' + ls_option[1] + '"' + "]" +
-                                   self.baseLocators.RADIOBOX_INPUT2LABEL[
+                                   self.baseLocators.RADIOBOX_LABEL2INPUT[
                                       1])
                     lis_item = item.split(',')
                     for it in lis_item:

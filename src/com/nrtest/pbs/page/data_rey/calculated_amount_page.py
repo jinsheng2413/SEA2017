@@ -23,7 +23,7 @@ class Calcluteamount_page(TreePBSPage):
 
     # 电量计算单位
     def inputChk_ele_unit(self, value):
-        self.clickRadioBox(value, is_group_elements=True)
+        self.clickRadioBox(value, name=True)
 
     def btn_qry(self, value):
         self.click_xpath(value)

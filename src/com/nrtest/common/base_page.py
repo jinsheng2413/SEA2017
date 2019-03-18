@@ -466,20 +466,25 @@ class Page():
         :param option_name:
         :param menu_name: 填跳转后的菜单名
         """
+        # print('SETUP-6-1', values, use_share_xpath, option_name, menu_name)
         if self.ignore_op(values):
             return None
         try:
             label_name = values.split(';')[0]
+            # print('SETUP-6-2 label_name:{}'.format(label_name))
             if use_share_xpath == '06':  # 日期
                 loc = self.format_xpath_multi(self.baseLocators.QRY_DT_INPUT, label_name, True, menu_name)
                 idx = int(option_name) if bool(option_name) else 1
+                # print('SETUP-6-3-1', loc)
             else:
                 loc = self.format_xpath_multi(self.baseLocators.QRY_INPUT, label_name, True, menu_name)
-
+                # print('SETUP-6-3-2', loc)
+            # print('菜单', self._direct_find_element((By.XPATH, '//li[@id="maintab__报文分析工具"]')))
             el = self._find_displayed_element(loc, idx)
+            # print('SETUP-6-4', el)
             value_of_el = self.driver.execute_script("return arguments[0].value", el)  # self.get_el_text(el)
-            print('******** values:{}, use_share_xpath:{}, option_name:{}, idx:{}, 查询条件值{}\r'.format(values, use_share_xpath, option_name, idx,
-                                                                                                     value_of_el))
+            print('******** 查询条件（values）：{}, use_share_xpath：{}, option_name：{}, idx：{}, 查询条件值：{}\r'.format(values, use_share_xpath, option_name, idx,
+                                                                                                            value_of_el))
             return value_of_el
         except AttributeError as ex:
             logger.error('提取元素内容失败:{}\n{}'.format(values, ex))

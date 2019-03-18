@@ -7,7 +7,9 @@
 @time: 2018-12-28 11:34
 @desc:
 """
+import calendar
 import re
+import time
 
 
 class Utils:
@@ -108,3 +110,25 @@ class Utils:
         else:
             # 只导入对象
             return getattr(module, class_name)
+
+    @staticmethod
+    def get_day_range_of_month(month=None):
+        """
+        获取指定月份的最后一天（字符串）
+        :param month: 不指定，则用当月
+        :return: 指定月最后一天
+        """
+        if bool(month):
+            mon = month.split(('/' if month.find('/') > 0 else '-'))
+            day_now = time.strptime('-'.join(mon[:2]) + '-01', '%Y-%m-%d')
+        else:
+            day_now = time.localtime()
+        day_begin = '%d-%02d-01' % (day_now.tm_year, day_now.tm_mon)
+        # 得到本月的天数，第一返回为月第一日为星期几（0-6），第二返回为此月天数
+        wday, monthRange = calendar.monthrange(day_now.tm_year, day_now.tm_mon)
+        day_end = '%d-%02d-%02d' % (day_now.tm_year, day_now.tm_mon, monthRange)
+        return day_begin, day_end
+
+
+if __name__ == '__main__':
+    Utils.get_day_range_of_month('2018/06/23')

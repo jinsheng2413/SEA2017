@@ -174,7 +174,7 @@ class DataAccess:
         :return:
         """
         # tab确定哪个显示区、列明、点击的那一列
-        sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value,row_num,is_special \
+        sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value, row_num, is_special, wait_for_target \
                       from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type, exec_order'
         # # @TOsDO 记得把下面的代码注释掉，并替换为上面代码
         # sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value,row_num,is_special \
@@ -317,13 +317,15 @@ class DataAccess:
         :param tab_name:
         :return:
         """
-        sql = 'select ts.xpath_name, ts.use_share_xpath, ts.option_name from tst_menu_xpath_list ts  \
-               where ts.project_no = :project_no \
-                 and ts.menu_no = :menu_no \
-                 and ts.tab_name = :tab_name \
-                 and ts.xpath = :xpath'
+        sql = '''select ts.xpath_name, ts.use_share_xpath, ts.option_name from tst_menu_xpath_list ts  
+               where ts.project_no = :project_no 
+                and ts.menu_no = :menu_no 
+                and ts.tab_name = :tab_name 
+                and ts.xpath = :xpath'''
+        # print('sql', sql)
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, menu_no, tab_name, xpath])
+        # print(dataSet)
         return dataSet[0]
 
     @staticmethod

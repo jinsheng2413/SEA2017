@@ -94,6 +94,8 @@ class TestPartitionNetLossQry(TestCase, PartitionNetLossQryPage):
     @data(*DataAccess.getCaseData(NetLossAnalysis_data.partitionNetLossQry_para,
                                   NetLossAnalysis_data.partitionNetLossQry_tab_qry))
     def test_query(self, para):
+        """网损分析→分区网损查询:网损查询
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

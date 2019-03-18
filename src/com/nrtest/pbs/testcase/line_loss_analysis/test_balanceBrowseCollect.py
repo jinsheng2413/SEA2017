@@ -89,6 +89,8 @@ class TestBalanceBrowseCollect(TestCase, BalanceBrowseCollectPage):
     @data(*DataAccess.getCaseData(LineLossAnalysis_data.balanceBrowse_para,
                                   LineLossAnalysis_data.balanceBrowse_tab_collect))
     def test_query(self, para):
+        """线损分析→母平浏览:母平汇总
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

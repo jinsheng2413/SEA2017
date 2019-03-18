@@ -90,6 +90,8 @@ class TestFullSizeProcess_qry(TestCase, FullSizeProcessQryPage):
     @data(*DataAccess.getCaseData(BusinessChange_data.FullSizeProcess_para,
                                   BusinessChange_data.FullSizeProcess_tabName_qry))
     def test_query(self, para):
+        """业务变更→换表操作:换表操作
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

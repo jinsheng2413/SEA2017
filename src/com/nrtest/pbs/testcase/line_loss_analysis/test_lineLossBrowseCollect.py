@@ -89,6 +89,8 @@ class TestLineLossBrowseCollect(TestCase, LineLossBrowseCollectPage):
     @data(*DataAccess.getCaseData(LineLossAnalysis_data.lineLossBrowse_para,
                                   LineLossAnalysis_data.lineLossBrowse_tab_collect))
     def test_query(self, para):
+        """线损分析→线损浏览:线损汇总
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

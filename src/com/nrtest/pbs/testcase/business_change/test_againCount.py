@@ -91,6 +91,8 @@ class TestAgainCount(TestCase, AgainCountPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(BusinessChange_data.AgainCount_para))
     def test_query(self, para):
+        """业务变更→重计算
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

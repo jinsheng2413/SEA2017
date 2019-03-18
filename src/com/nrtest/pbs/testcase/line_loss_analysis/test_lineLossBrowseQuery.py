@@ -93,6 +93,8 @@ class TestLineLossBrowseQuery(TestCase, LineLossBrowseQueryPage):
     @data(*DataAccess.getCaseData(LineLossAnalysis_data.lineLossBrowse_para,
                                   LineLossAnalysis_data.lineLossBrowse_tab_query))
     def test_query(self, para):
+        """线损分析→线损浏览:线损查询
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

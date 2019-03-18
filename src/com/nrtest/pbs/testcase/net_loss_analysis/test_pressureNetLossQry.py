@@ -95,6 +95,8 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
     @data(*DataAccess.getCaseData(NetLossAnalysis_data.pressureNetLossQry_para,
                                   NetLossAnalysis_data.pressureNetLossQry_tab_qry))
     def test_query(self, para):
+        """网损分析→分压网损查询:网损查询
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

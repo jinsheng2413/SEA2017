@@ -102,6 +102,8 @@ class TestAgainDispose(TestCase, AgainDisposePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(BusinessChange_data.AgainDispose_para))
     def test_query(self, para):
+        """业务变更→重处理
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

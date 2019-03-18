@@ -92,6 +92,8 @@ class Setting():
     GROUP_USER = parse.get('Login', 'user_group')
     GROUP_NO = parse.get('Login', 'group_no')
 
+    # 根据下面分组配置执行：gt_for_menu_list.py
+    GROUP_BY_MENU_LIST = parse.get('Login', 'group_by_menu_list')
 
 if __name__ == '__main__':
     p = Setting()

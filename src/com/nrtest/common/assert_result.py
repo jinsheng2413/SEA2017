@@ -640,13 +640,17 @@ class AssertResult():
         col_idx = col_pos_info['COL_IDX'] - col_pos_info['HIDE_COLS']
         info = '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'
         try:
+            all_val = '全部'
             for x, y, map_rela in zip(skip_data_before, skip_data_after, map_rela_rslt):
                 info_rlt = info.format(row_idx, col_idx, map_rela[11], map_rela[5], x, map_rela[8], y)  # ELEMENT_SN / XPATH / TARGET_XPATH
 
                 trans_type = map_rela[7]  # 转换类型(TRANS_TYPE)：00-不转换；01-直接转换为对应值;02-包含关系;03-月时间转换为日时间
+
                 if trans_type == '01':
                     x = map_rela[9]
-                if x == y:
+                if (all_val in x and all_val in y) or (x == '' and all_val in y) or (all_val in x and y == ''):  # 处理全部选项
+                    logger.info(info_rlt)
+                elif x == y:
                     logger.info(info_rlt)
                 elif trans_type == '02':
                     if x in y:

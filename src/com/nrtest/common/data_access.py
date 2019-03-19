@@ -280,23 +280,23 @@ class DataAccess:
         dataSet = pyoracle.query(sql, [case_id, col_name])
         return dataSet
 
-    @staticmethod
-    def get_xpath_tab_data(xpath, caseid, tab_name):
-        """
-        把用例xpath转换为对应的xpath名称
-        :param xpath:
-        :param caseid: 用例ID
-        :param tab_name:
-        :return:
-        """
-        sql = 'select ts.xpath_name, ts.use_share_xpath, ts.option_name from tst_menu_xpath_list ts \
-              where ts.project_no = :project_no \
-              and ts.xpath =:xpath \
-              and ts.menu_no in (select u.menu_no from tst_case u where u.tst_case_id =:caseid)\
-              and ts.tab_name =:tabName'
-        pyoracle = PyOracle.getInstance()
-        dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, xpath, caseid, tab_name])
-        return dataSet[0]
+    # @staticmethod
+    # def get_xpath_tab_data(xpath, caseid, tab_name):
+    #     """
+    #     把用例xpath转换为对应的xpath名称
+    #     :param xpath:
+    #     :param caseid: 用例ID
+    #     :param tab_name:
+    #     :return:
+    #     """
+    #     sql = 'select ts.xpath_name, ts.use_share_xpath, ts.option_name from tst_menu_xpath_list ts \
+    #           where ts.project_no = :project_no \
+    #           and ts.xpath =:xpath \
+    #           and ts.menu_no in (select u.menu_no from tst_case u where u.tst_case_id =:caseid)\
+    #           and ts.tab_name =:tabName'
+    #     pyoracle = PyOracle.getInstance()
+    #     dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, xpath, caseid, tab_name])
+    #     return dataSet[0]
 
     # @staticmethod
     # def get_xpath__tab_data(xpath, caseid, tab_name):
@@ -309,7 +309,7 @@ class DataAccess:
     #     return dataSet
 
     @staticmethod
-    def get_xpath_menu_data(menu_no, tab_name, xpath):
+    def get_menu_xpath_data(menu_no, tab_name, xpath):
         """
         xpath转换为对应xpath中文名
         :param xpath:

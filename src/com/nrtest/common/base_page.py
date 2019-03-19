@@ -483,8 +483,9 @@ class Page():
             el = self._find_displayed_element(loc, idx)
             # print('SETUP-6-4', el)
             value_of_el = self.driver.execute_script("return arguments[0].value", el)  # self.get_el_text(el)
-            print('******** 查询条件（values）：{}, use_share_xpath：{}, option_name：{}, idx：{}, 查询条件值：{}\r'.format(values, use_share_xpath, option_name, idx,
-                                                                                                            value_of_el))
+            logger.info(
+                '******** 查询条件（values）：{}, use_share_xpath：{}, option_name：{}, idx：{}, 查询条件值：{}\r'.format(values, use_share_xpath, option_name, idx,
+                                                                                                          value_of_el))
             return value_of_el
         except AttributeError as ex:
             logger.error('提取元素内容失败:{}\n{}'.format(values, ex))

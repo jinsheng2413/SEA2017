@@ -139,7 +139,7 @@ class AssertResult():
             '22': '跳转弹窗不正确',
             '23': '跳转tab页不正确',
             '24': '跳转弹窗的名称带的值不正确',
-            '25': '跳转到新的菜单页，但不携带值错误',
+            '25': '跳转到新的菜单页，但不携带值错误',  # 这里的菜单是指没有menu_no的菜单 ？？？？  tst_case_id = 9993110012
             '26': '单列数据有两个跳转',
             '27': 'tab页套多个tab页',
             '28': '供电单位下钻错误',
@@ -200,7 +200,7 @@ class AssertResult():
         for item in ls_check_rslt_values:
             for key, value in item.items():
                 if value == False:
-                    err_info = '校验类别：{}，错误类型:{}'.format(assert_type, esplain[key])
+                    err_info = '校验类别：{}，错误类型:{}'.format(key, esplain[key])
                     logger.error(err_info)  # 出错具体原因
                     print(err_info)
                     result = value
@@ -304,8 +304,9 @@ class AssertResult():
             xpath_type = map_rela[4]
             if xpath_type == '01':  # 页面元素类型：XPATH_TYPE 【01-查询条件（XPATH)】;02-表格列对应值;03-表格列名;04-读取统计数与明细对比
                 # 把查询条件的xpath转换为对应查询条件中文名
-                menu_xpath_list = DataAccess.get_xpath_tab_data(map_rela[5], case_data['TST_CASE_ID'], case_data['TAB_NAME'])  # XPATH
-                val = self.tst_inst.get_input_val(menu_xpath_list[0], menu_xpath_list[1], menu_xpath_list[2])
+                # menu_xpath_data = DataAccess.get_xpath_tab_data(map_rela[5], case_data['TST_CASE_ID'], case_data['TAB_NAME'])  # XPATH
+                menu_xpath_data = DataAccess.get_menu_xpath_data(case_data['MENU_NO'], case_data['TAB_NAME'], map_rela[5])
+                val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2])
                 skip_data_before.append(val)
                 # locator_qry = self.get_xpath(menu_xpath_list[0])
                 # skip_data_before.append(self.get_text(locator_qry))
@@ -320,13 +321,14 @@ class AssertResult():
                 skip_data_before.append(case_result[1])
         return skip_data_before
 
-    def get_skip_data_after(self, case_result, map_rela_rslt):
+    def get_skip_data_after(self, case_result, map_rela_rslt, is_menu):
         """
         -------0--------|----1----|----2-------|----3---|----4-----|--5---|--------6-------|----7-----|------8-----|-----9-----|---10---|----11-----|-----12--------|------13-------|
         *TAB_COLUMN_NAME TAB_NAME  *COLUMN_NAME *ROW_NUM XPATH_TYPE XPATH   TARGET_TAB_NAME TRANS_TYPE TARGET_XPATH TRANS_VALUE IS_TRANS ELEMENT_SN  TARGET_MENU_NO  TARGET_MENU_NAME
            是否在线   终端版本召测	查看报文	  1	       02	   终端地址	     01	            00	   TMNL_ADDR		           0	    3         99934410
         :param case_result:
         :param map_rela_rslt:
+        :param menu_name: True-跳转目标为菜单；False-跳转目标为Tab页
         :return:
         """
         # 休眠2秒，等待跳转页面加载:WAIT_FOR_TARGET
@@ -335,12 +337,16 @@ class AssertResult():
         skip_data_after = []
         for map_rela in map_rela_rslt:
             # print('STEP-1', map_rela)
-            if map_rela[8] == None and map_rela[4] == '04':  # 读取跳转页的查询结果总数  TARGET_XPATH / XPATH_TYPE
+            xpath_type = map_rela[4]  # XPATH_TYPE
+            if xpath_type == '04' and map_rela[8] is None:  # 读取跳转页的查询结果总数  TARGET_XPATH
                 try:
                     # print('STEP-2')
-                    resd = self.tst_inst.driver.find_element(*AssertResultLocators.LINK_TOTAL_ROW_INFO).text
-                    resd_new = resd[resd.index('/') + 1:len(resd)].strip()
-                    skip_data_after.append(resd_new)
+                    # ********************************************@TODO 弹窗窗口的记录总数需验证测试******
+                    loc = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_TOTAL_ROW,
+                                                     (case_result[2] if is_menu else self.tst_inst.menu_name))
+                    total_text = Utils.replace_chrs(self.tst_inst._find_displayed_element(loc).text, ' \r\n\t')
+                    val = total_text.split('/')[-1]
+                    skip_data_after.append(val)
                     # print('STEP-3')
                 except:
                     skip_data_after.append('0')
@@ -350,13 +356,13 @@ class AssertResult():
                     # print('SETUP-5 MENU_NO:{}'.format(map_rela[12]))
                     # print('SETUP-5 TAB_NAME:{}'.format(map_rela[6]))
                     # print('SETUP-5 XPATH:{}'.format(map_rela[8]))
-                    menu_xpath_list = DataAccess.get_xpath_menu_data(map_rela[12], map_rela[6],
+                    menu_xpath_data = DataAccess.get_menu_xpath_data(map_rela[12], map_rela[6],
                                                                      map_rela[8])  # TARGET_MENU_NO / TARGET_TAB_NAME/  TARGET_XPATH
                     # print('SETUP-6 xpath_name:{}'.format(menu_xpath_list[0]))
                     # print('SETUP-6 use_share_xpath:{}'.format(menu_xpath_list[1]))
                     # print('SETUP-6 option_name:{}'.format(menu_xpath_list[2]))
                     # print('SETUP-6  menu_name{}'.format(map_rela[13]))
-                    val = self.tst_inst.get_input_val(menu_xpath_list[0], menu_xpath_list[1], menu_xpath_list[2], map_rela[13])
+                    val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
                     # print('STEP_7')
                     skip_data_after.append(val)
                     # print('STEP_8')
@@ -373,14 +379,15 @@ class AssertResult():
         return skip_data_after
 
     def check_skip_data(self, col_pos_info, map_rela_rslt, row_idx, skip_data_before, skip_data_after):
-        is_skip_correct = False
+
         col_idx = col_pos_info['COL_IDX'] - col_pos_info['HIDE_COLS']
         info = '跳转坐标（{}行,{}列）element_sn:{}跳转前:xpath:{}、值：{}-----跳转后:xpath:{}、值：{}'
         try:
             all_val = '全部'
+            is_pass = True
             for data_before, data_after, map_rela in zip(skip_data_before, skip_data_after, map_rela_rslt):
                 trans_type = map_rela[7]  # 转换类型(TRANS_TYPE)：00-不转换；01-直接转换为对应值;02-包含关系;03-月时间转换为日时间
-
+                is_skip_correct = False
                 if trans_type == '01':
                     data_before = map_rela[9]
 
@@ -403,13 +410,14 @@ class AssertResult():
                 if is_skip_correct:
                     logger.info(info_rlt)
                 else:
+                    is_pass = False
                     err_info = '跳转传值错误:' + info_rlt
                     logger.error(err_info)
                     print('</br>' + err_info + '</br>')
         except Exception as ex:
             print('\r跳转数据比对：跳转前--', skip_data_before, '--\r跳转后--', skip_data_after, '--\r跳转关系', map_rela_rslt)
             raise ex
-        return is_skip_correct
+        return is_pass
 
     def special_deal(self, is_special, col_name):
         """
@@ -475,7 +483,7 @@ class AssertResult():
                 print('跳转{}到页面失败'.format(case_result[2]))
 
             # 获取跳转目标页面相关元素值
-            skip_data_after = self.get_skip_data_after(case_result, map_rela_rslt)
+            skip_data_after = self.get_skip_data_after(case_result, map_rela_rslt, is_menu)
 
             if is_menu:  # 关闭菜单页
                 self.tst_inst.menuPage.closePage(case_result[2])
@@ -577,7 +585,8 @@ class AssertResultLocators:
     INPUT_BASE_GU = (By.XPATH, '//label[text()= "{}"]/../div[@class=\"x-form-element\"]//input')
 
     # link 数据是否对应(显示区右下角查询的数据总量)
-    LINK_TOTAL_ROW_INFO = (By.XPATH, '(//*[@id="UserDistStat_DetailGrid"]//tr[@class="x-toolbar-right-row"]//div[@class="xtb-text"])[1]')
+    # LINK_TOTAL_ROW_INFO = (By.XPATH, '(//*[@id="UserDistStat_DetailGrid"]//tr[@class="x-toolbar-right-row"]//div[@class="xtb-text"])[1]')
+    QUERY_RESULT_TOTAL_ROW = (By.XPATH, '//div[@id="{}"]//tr[@class="x-toolbar-right-row"]//div[@class="xtb-text"]')
     # 删除空格
     # CLEAN_BLANK = r'''var elements,el,txt;
     #                     elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);

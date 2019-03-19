@@ -176,9 +176,6 @@ class DataAccess:
         # tab确定哪个显示区、列明、点击的那一列
         sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value, row_num, is_special, wait_for_target \
                       from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type, exec_order'
-        # # @TOsDO 记得把下面的代码注释掉，并替换为上面代码
-        # sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value,row_num,is_special \
-        #                       from tst_case_result where tst_case_id = :id order by assert_type, exec_order'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [tst_case_id])
         return dataSet
@@ -262,12 +259,6 @@ class DataAccess:
 
     @staticmethod
     def get_skip_data(case_id, col_name):
-        # sql = 'select tres.tab_column_name,lr.tab_name ,tres.column_name,tres.row_num,lr.xpath_type,lr.xpath ,lr.target_tab_name,lr.trans_type,' \
-        #       'lr.target_xpath,lr.trans_value, lr.is_trans,lr.element_sn, lr.target_menu_no, m.menu_name as target_menu_name ' \
-        #       'from tst_case_result tres,TST_COL_LINK_RELA  lr,tst_case ca, tst_menu m  ' \
-        #       'where tres.tst_case_id = ca.tst_case_id and tres.column_name = lr.col_name ' \
-        #       'and ca.menu_no = lr.menu_no and ca.tab_name = lr.tab_name and lr.target_menu_no = m.menu_no ' \
-        #       'and tres.tst_case_id =:case_id  and tres.assert_type in (\'21\',\'23\',\'26\',\'27\') and tres.column_name =:col_name order by lr.element_sn'
         sql = 'select tres.tab_column_name,lr.tab_name ,tres.column_name,tres.row_num,lr.xpath_type,lr.xpath ,lr.target_tab_name,lr.trans_type, ' \
               'lr.target_xpath,lr.trans_value, lr.is_trans,lr.element_sn, lr.target_menu_no, m.menu_name as target_menu_name   ' \
               'from tst_case_result tres,TST_COL_LINK_RELA  lr,tst_case ca, tst_menu m    ' \
@@ -279,34 +270,6 @@ class DataAccess:
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [case_id, col_name])
         return dataSet
-
-    # @staticmethod
-    # def get_xpath_tab_data(xpath, caseid, tab_name):
-    #     """
-    #     把用例xpath转换为对应的xpath名称
-    #     :param xpath:
-    #     :param caseid: 用例ID
-    #     :param tab_name:
-    #     :return:
-    #     """
-    #     sql = 'select ts.xpath_name, ts.use_share_xpath, ts.option_name from tst_menu_xpath_list ts \
-    #           where ts.project_no = :project_no \
-    #           and ts.xpath =:xpath \
-    #           and ts.menu_no in (select u.menu_no from tst_case u where u.tst_case_id =:caseid)\
-    #           and ts.tab_name =:tabName'
-    #     pyoracle = PyOracle.getInstance()
-    #     dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, xpath, caseid, tab_name])
-    #     return dataSet[0]
-
-    # @staticmethod
-    # def get_xpath__tab_data(xpath, caseid, tab_name):
-    #     sql = 'select ts.xpath_name from tst_menu_xpath_list ts \
-    #               where ts.xpath =:xpath \
-    #               and ts.menu_no in (select u.menu_no from tst_case u where u.tst_case_id =:caseid)\
-    #               and ts.tab_name =:tabName'
-    #     pyoracle = PyOracle.getInstance()
-    #     dataSet = pyoracle.query(sql, [xpath, caseid, tab_name])
-    #     return dataSet
 
     @staticmethod
     def get_menu_xpath_data(menu_no, tab_name, xpath):

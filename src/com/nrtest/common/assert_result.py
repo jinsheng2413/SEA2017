@@ -333,7 +333,15 @@ class AssertResult():
         :return:
         """
         # 休眠2秒，等待跳转页面加载:WAIT_FOR_TARGET
-        sleep(case_result[5])
+        seconds = case_result[5]
+        if seconds > 0:  # 按loading元素等待，超时不抛异常
+            try:
+                self.tst_inst.query_timeout(timeout_seconds=seconds)
+            except:
+                pass
+        else:
+            sleep(abs(seconds))
+
         # print('STEP-0')
         skip_data_after = []
         for map_rela in map_rela_rslt:

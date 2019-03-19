@@ -1048,14 +1048,6 @@ class Page():
         else:  # 选择其他节点
             self.menuPage.btn_user_nodes(node_flag, node_value)
 
-    # def exists_menu(self, active_page_loc):
-    #     """
-    #     判断菜单是否已打开，
-    #     :return: True-已打开
-    #     """
-    #     locator = self.format_xpath(active_page_loc, self.menu_name)
-    #     return bool(self._find_element(locator, seconds=0.5, ec_mode=1))
-
     def input(self, value, *locators):
         """
         方法名：input
@@ -1236,16 +1228,6 @@ class Page():
         """
         self.driver.execute_script(src)
 
-    # def invisible_element(self,wait_time =Setting.WAIT_TIME, *locator):
-    #     """
-    #     方法名：invisible_element
-    #     确认元素是否可见
-    #     :param locator:
-    #     :param wait_time:
-    #     :return:返回布尔值
-    #     """
-    #     return WebDriverWait(self.driver, wait_time).until(EC.invisibility_of_element_located(*locator))
-
     def get_titile(self):
         """
         方法名：get_titile
@@ -1261,24 +1243,6 @@ class Page():
         :return:返回页面当前url地址
         """
         return self.driver.current_url()
-
-    # def exists_element(self, locator, ec_mode=0):
-    #     """
-    #     方法名：exists_element
-    #     判断元素是否存在,
-    #     :param locator:元祖形式的xpath
-    #     :return:布尔返回值
-    #     """
-    #     return bool(self._find_element(locator, ec_mode))
-
-    # def checkbox_is_selected(self, locator):
-    #     """
-    #     方法名：checkbox_is_selected
-    #     判断checkBox元素是否被选择
-    #     :param locator:元祖形式的xpath
-    #     :return:布尔返回值
-    #     """
-    #     return True if (self._find_element(locator).is_selected()) else False
 
     def open_url(self):
         """
@@ -1302,28 +1266,6 @@ class Page():
         """
         logger.info('休眠 %s 秒', times)
         sleep(times)
-
-    #
-    # def select(self, idx_or_text, locators):
-    #     """
-    #     选择下拉框
-    #     :param locators: 元祖存放元素的xpath
-    #     :param idx_or_text: 内容或下标
-    #     :return:
-    #     """
-    #     try:
-    #         # if type(idx_or_text) == int:
-    #         if isinstance(idx_or_text, int):  # 数据类型判断新方法：isinstance
-    #             Select(self._find_element(locators)).select_by_index(idx_or_text)
-    #             logger.info('按下标选择下拉框,选中第:%s', idx_or_text)
-    #         else:
-    #             Select(self._find_element(locators)).select_by_visible_text(idx_or_text)
-    #             logger.info('按内容选择元素，选中内容为:%s', idx_or_text)
-    #
-    #     except NameError as e:
-    #         logger.error('选择下拉框失败')
-    #
-    #     # 保存图片
 
     def get_windows_img(self, name):
         """
@@ -1420,10 +1362,6 @@ class Page():
         """
         self._find_element(locator).clear()
 
-    # def assert_body(self, value):
-    #     txt = self._find_element((By.TAG_NAME, 'body')).text
-    #     return value in txt
-
     def clear_values(self, cv):
         """
         inputSel_XXX    下拉选择框 --
@@ -1473,27 +1411,6 @@ class Page():
         if self.is_call_left_tree:
             self.is_call_left_tree = False
             self.menuPage.recoverLeftTree()
-
-        # num = self._find_elements(MenuLocators.TREE_MINUS)
-        # if self.assert_context(MenuLocators.TREE_END) is False:
-        #     pass
-        #
-        # else:
-        #     counter = len(num) - 1
-        #     while counter >= 0:
-        #         if num[counter] is MenuLocators.TREE_END:
-        #             self.click(MenuLocators.TREE_END)
-        #         else:
-        #             num[counter].click()
-        #         counter = counter - 1
-        #     self.click(MenuLocators.TREE_END)
-
-    # def assertTableOne(self):
-    #     try:
-    #         return self.assert_context((By.XPATH, '(//*[@class="x-grid3-row-table"])[1]'))
-    #     except NameError as e:
-    #         print('获取显示区第一个列数据失败')
-    #         return False
 
     def btn_confirm(self):
         """
@@ -1657,186 +1574,6 @@ class Page():
         WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locator))
         el = self.driver.find_element(*locator)
         ActionChains(self.driver).context_click(el).perform()
-
-    # def assert_context(self, locators, isDisplay=False):
-    #     """
-    #     断言
-    #     :param locators: 校验的值
-    #     :return: 布尔返回值
-    #     """
-    #     # 02-没查询结果的提示弹窗；
-    #     if self.case_para['POPUP_TYPE'] == '02':
-    #         return True
-    #     elif isDisplay:
-    #         try:
-    #             els = self._find_elements(locators)
-    #             for item in els:
-    #                 res = item.is_displayed()
-    #                 if res:
-    #                     return res
-    #         except:
-    #             print('11类型校验失败')
-    #             return False
-    #     else:
-    #         el = self._direct_find_element(locators)
-    #         return el.is_displayed() if bool(el) else False
-
-    # def assertValue(self, assertValues):
-    #     """
-    #     assertValues ='手机,外包队伍名称,test'
-    #     :param assert_values:以，为分隔符，第一位是显示区唯一列明，第二位是要校验值的列明，第三位是校验值
-    #     :return:
-    #     """
-    #     print('-------------------')
-    #     try:
-    #         # 显示区是否有值
-    #         xpath_table = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(assertValues[0])
-    #         self.commonWait((By.XPATH, xpath_table))
-    #         # 显示区查询出多少结果数量
-    #         displayNum = len(self._find_elements((By.XPATH, xpath_table)))
-    #         try:
-    #             xpath_checker = '//*[@class="x-grid3-row-checker"]'
-    #             displayCheck = self.assert_context((By.XPATH, xpath_checker))
-    #         except:
-    #             print('没有弹出确定按钮')
-    #         diplayName = self.calc_col_idx(assertValues[1])  # 判断具体是哪一行
-    #         ringhtNum = 0
-    #         displayLineElement = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//*[contains(text(),"{3}")]'
-    #         if displayNum > 0:
-    #             if displayCheck:
-    #
-    #                 for i in range(1, displayNum + 1):
-    #                     # 显示区结果的每一行对应列的数据的xpath
-    #                     displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
-    #                                                                          assertValues[2])
-    #                     try:
-    #                         assert_rslt = self.assert_context((By.XPATH, displayLineElement_index))
-    #                         if assert_rslt:
-    #                             ringhtNum += 1
-    #                         else:
-    #                             print('第{0}行，{1}列显示的值与{2}不一致'.format(i, assertValues[1], assertValues[2]))
-    #                             break
-    #                     except:
-    #                         print('校验失败')
-    #                 return ringhtNum == displayNum
-    #
-    #             elif not displayCheck:  # 非带有复选框显示区
-    #                 for i in range(1, displayNum + 1):
-    #                     # 显示区结果的每一行对应列的数据的xpath
-    #                     displayLineElement_index = displayLineElement.format(assertValues[0], i, diplayName + 1,
-    #                                                                          assertValues[2])
-    #                     try:
-    #                         assert_rslt = self.assert_context((By.XPATH, displayLineElement_index))
-    #                         if assert_rslt:
-    #                             ringhtNum += 1
-    #                         else:
-    #                             print('第{0}行，{1}列显示的值与{2}不一致'.format(i, assertValues[1], assertValues[2]))
-    #                             break
-    #                     except:
-    #                         print('校验失败')
-    #
-    #                 return ringhtNum == displayNum
-    #     except:
-    #         print('显示区结果值校验失败')
-    #
-    # def clickSkip(self, assertValues):
-    #     """
-    #     AssertValues ='手机,外包队伍名称,test'
-    #     :param assertValues:
-    #     以，为分隔符，第一位是显示区唯一列明，第二位是要校验值的列明，第三位是校验值
-    #     :return:
-    #    """
-    #     try:
-    #         displayElement = '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]'.format(
-    #             assertValues[0])
-    #         self.commonWait((By.XPATH, displayElement))
-    #         display_num = len(self._find_elements((By.XPATH, displayElement)))
-    #         if display_num > 0:
-    #             # try:
-    #             #     sel = '//*[@class="x-grid3-row-checker"]'
-    #             #
-    #             #     displayCheckbox = self.assert_context((By.XPATH, sel))  # 判断显示区是有复选框的还是没有复选框的
-    #             #     print('显示区有复选框')
-    #             # except:
-    #             #     print('显示区没有复选框')
-    #             if 1:
-    #                 lineName = self.calc_col_idx(assertValues[1])  # 判断是那一列
-    #                 displayLine = '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]'.format(
-    #                     assertValues[0], 1, lineName + 1)
-    #                 try:
-    #                     self.click((By.XPATH, displayLine))
-    #                     # 把弹出的确定框点掉
-    #
-    #                     self.btn_confirm()
-    #
-    #                     try:
-    #                         skipMenuName = "//span[@class=\"x-tab-strip-inner\"]/span[contains(text(),'{}')]".format(
-    #                             assertValues[2])
-    #                         result = self.assert_context((By.XPATH, skipMenuName))  # 判断跳转菜单页是否存在
-    #                         # if 1:
-    #                         #     self.closePages(page_name=assertValues[2], isCurPage=False)  # 关闭跳转菜单页
-    #                         self.closePages(assertValues[2])
-    #                         return result
-    #                     except BaseException:
-    #                         pass
-    #                 except:
-    #                     print('跳转验证失败')
-    #
-    #             # elif displayCheckbox == False:
-    #             #     gl = self.calc_col_idx(va[1])
-    #             #     for i in range(1, num + 1):
-    #             #         val2 = "(//*[text()=\'{0}\']/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]//*[contains(text(),'{3}')]".format(
-    #             #             va[0], i, gl + 1, va[2])
-    #             #         try:
-    #             #             hl = self.assert_context((By.XPATH, val2))
-    #             #             if hl == True:
-    #             #                 num2 += 1
-    #             #             else:
-    #             #                 print('第{0}行，{1}列显示的值与{2}不一致'.format(i, va[1], va[2]))
-    #             #                 break
-    #             #         except:
-    #             #             print('校验失败')
-    #             #
-    #             #     if num2 == num:
-    #             #         return True
-    #             #     else:
-    #             #         return False
-    #
-    #     except:
-    #         print('验证失败')
-
-    # def check_query_result(self, para):
-    #     """
-    #     查询结果校验
-    #     :param para:
-    #     :return:item
-    #     """
-    #     logger.info('This test ({}) is exec old assert func!!!'.format(self.menu_no))
-    #
-    #     esplain = {'11': '显示区未查询出结果', '12': '按条件查询出的结果与期望值不一致', '21': '跳转页面不正确'}
-    #     rslt = DataAccess.get_case_result(para['TST_CASE_ID'])
-    #     # 根据XPATH判断显示区是否有值
-    #     display_tab = (By.XPATH, '//div[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]')
-    #     ls_check_rslt = {}
-    #     for row in rslt:  # 根据rslt有几个值来判断要做几次校验
-    #         assert_type = row[0]
-    #         if assert_type == '11':
-    #             assert_rslt = self.assert_context(self.format_xpath(display_tab, row[1]))  # 判断是否有值
-    #         elif assert_type == '12':
-    #             assert_rslt = self.assertValue(row[1:])  # 判断值是否准确,item截取字符串，在转换成列表
-    #         elif assert_type == '21':
-    #             assert_rslt = self.clickSkip(row[1:])  # 判断跳转的页面是否是指定页面,item截取字符串，在转换成列表
-    #         ls_check_rslt.update({assert_type: assert_rslt})
-    #
-    #     result = True
-    #     # 处理判断结果，具体那一步出错
-    #     for item in ls_check_rslt.items():
-    #         if item[1] == False:
-    #             print(esplain[item[0]])  # 出错具体原因
-    #             result = item[1]
-    #             break
-    #
-    #     return result
 
     def check_query_criteria(self, para):
         """

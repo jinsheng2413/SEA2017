@@ -85,13 +85,15 @@ class AssertResult():
         return self.assert_context(xpath)
 
     @BeautifulReport.add_popup_img(6)
-    def skip_to_page(self, case_result, col_pos_info, link_xpath=None, draw_el_attr=False):
+    def skip_to_page(self, case_result, col_pos_info, link_xpath=None):
         """
         链接跳转:跳转到另一个页面
         :param case_result: 查询结果校验列表内容：定位列名；校验列名；期望值；定位行号;是否特殊处理
         :param col_pos_info:  数据内容{'COL_IDX':0, 'EL_COL':None, 'EL_FIRST':None, 'COL_IS_HIDED':True}
         :return:
         """
+        #  IS_SKIPED：能点击，但不一定会跳转（没link时）；CLICKABLE：可点击，且不会报错
+        skip_info = {'IS_SKIPED': True, 'LINK_TEXT': None, 'EL_A': None, 'CLICKABLE': False}
         try:
             # 检查查询结果是否有数据
             is_skiped = True
@@ -102,17 +104,16 @@ class AssertResult():
                                                               (case_result[0], int(case_result[3]) + col_pos_info['HIDE_ROWS'],
                                                                col_pos_info['COL_IDX']), True)
             el_link = self.tst_inst._find_displayed_element(link_xpath)
-            el_a = None
-            link_text = None
-            if bool(el_link) and draw_el_attr:
-                el_a = el_link.find_elements_by_xpath('.//a')
-                link_text = el_link.text
+            skip_info['EL_A'] = el_link.find_elements_by_xpath('.//a')
+            skip_info['LINK_TEXT'] = el_link.text
+            skip_info['CLICKABLE'] = bool(skip_info['EL_A'])
             self.tst_inst.scrollTo(el_link)
             el_link.click()
         except Exception as ex:
             print('跳转验证失败:' + ex.__str__())
-            is_skiped = False
-        return is_skiped, link_text, el_a
+            skip_info['IS_SKIPED'] = False
+
+        return skip_info
 
     def calc_col_idx(self, loc_col_name, col_name, idx=1):
         """
@@ -192,19 +193,18 @@ class AssertResult():
             elif assert_type == '31':
                 assert_rslt = self.assertInput(case_id, case_result)
 
-            ls_check_rslt[i] = {assert_type: assert_rslt}
+            ls_check_rslt[i] = {assert_type: [assert_rslt, case_result[1]]}
 
         result = True
         # 处理判断结果，具体那一步出错
         ls_check_rslt_values = ls_check_rslt.values()
         for item in ls_check_rslt_values:
             for key, value in item.items():
-                if value == False:
-                    err_info = '校验类别：{}，错误类型:{}'.format(key, esplain[key])
+                if not value[0]:
+                    err_info = '校验列【{}】时报错，校验类别为：{}，错误信息：{}'.format(value[1], key, esplain[key])
                     logger.error(err_info)  # 出错具体原因
                     print(err_info)
-                    result = value
-                    return result
+                    result = False
         return result
 
     def assertInput(self, case_id, case_result):
@@ -251,8 +251,8 @@ class AssertResult():
                 dlg_title = case_result[2]
 
             # 跳转到目标页
-            skiped_values = self.skip_to_page(case_result, col_pos_info)
-            if skiped_values[0]:  # if is_skiped:
+            skip_info = self.skip_to_page(case_result, col_pos_info)
+            if skip_info['CLICKABLE']:
                 sleep(2)
                 # 关闭窗口 已在base_page模块下的popup方法中统一处理弹窗关闭处理
                 # close_xpath = self.tst_inst.format_xpath(AssertResultLocators.WINDOWS_CLOSE, case_result[2])
@@ -261,7 +261,8 @@ class AssertResult():
                 # 弹窗信息
                 self.dlg_info = self.tst_inst.get_skip_except_info('01')
                 is_skiped = dlg_title in self.dlg_info if bool(self.dlg_info) else False
-
+            else:
+                is_skiped = False
             self.tst_inst.scrollTo(col_pos_info['EL_FIRST'])
         else:
             raise AssertError('没查询结果， 跳转验证失败！！')
@@ -475,27 +476,28 @@ class AssertResult():
             """
             skip_data_before = self.get_skip_data_before(case_data, case_result, map_rela_rslt)
             # 定位列名；校验列名；期望值(校验值)；定位行号;是否特殊处理
-            self.skip_to_page(case_result, col_pos_info, link_xpath)
+            skip_info = self.skip_to_page(case_result, col_pos_info, link_xpath)
 
             # 校验页面的名称是否正确
-            is_skiped = self.assert_page_name(case_result[2])
-            if is_skiped == False:
-                print('跳转{}到页面失败'.format(case_result[2]))
+            is_skiped = skip_info['CLICKABLE'] and self.assert_page_name(case_result[2])
+            if is_skiped:
+                # 获取跳转目标页面相关元素值
+                skip_data_after = self.get_skip_data_after(case_result, map_rela_rslt, is_menu)
 
-            # 获取跳转目标页面相关元素值
-            skip_data_after = self.get_skip_data_after(case_result, map_rela_rslt, is_menu)
+                if is_menu:  # 关闭菜单页
+                    self.tst_inst.menuPage.closePage(case_result[2])
+                else:  # 返回前一个tab页
+                    self.tst_inst.clickTabPage(case_data['TAB_NAME'])
 
-            if is_menu:  # 关闭菜单页
-                self.tst_inst.menuPage.closePage(case_result[2])
-            else:  # 返回前一个tab页
-                self.tst_inst.clickTabPage(case_data['TAB_NAME'])
+                first_col_idx = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL,
+                                                                 (case_result[0], case_result[3], col_pos_info['FIRST_COL_IDX']), True)
+                self.tst_inst.scrollTo(first_col_idx)
 
-            first_col_idx = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL,
-                                                             (case_result[0], case_result[3], col_pos_info['FIRST_COL_IDX']), True)
-            self.tst_inst.scrollTo(first_col_idx)
-
-            # 校验跳转传值是否正确
-            return self.check_skip_data(col_pos_info, map_rela_rslt, case_result[3], skip_data_before, skip_data_after)
+                # 校验跳转传值是否正确
+                return self.check_skip_data(col_pos_info, map_rela_rslt, case_result[3], skip_data_before, skip_data_after)
+            else:
+                logger.error('跳转“{}”到页面失败'.format(case_result[2]))
+                return False
         else:
             raise AssertError('没查询结果， 跳转验证失败！！')
 
@@ -510,14 +512,15 @@ class AssertResult():
             is_skiped = True
             while True:
                 # 定位列名；校验列名；期望值(校验值)；定位行号;是否特殊处理
-                skiped_values = self.skip_to_page(case_result, col_pos_info, draw_el_attr=True)
+                skip_info = self.skip_to_page(case_result, col_pos_info)
+                link_text = skip_info['LINK_TEXT']
                 org_name = self.tst_inst.get_input_val(case_result[2])
-                if skiped_values[0]:
-                    if not bool(skiped_values[2]) or skiped_values[1].endswith('所'):  # 校验列没有链接或到供电所时，停止跳转
+                if skip_info['IS_SKIPED']:
+                    if not bool(skip_info['EL_A']) or link_text.endswith('所'):  # 校验列没有链接或到供电所时，停止跳转
                         break
-                    if org_name == original_org_name or skiped_values[1] != org_name:  # 校验下钻传值是否正确
-                        raise AssertError('当前供电单位“{}”下钻失败， “{}”不是期望的供电单位！'.format(skiped_values[1], org_name))
-                elif skiped_values[2] is None:
+                    if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确
+                        raise AssertError('当前供电单位“{}”下钻失败， “{}”不是期望的供电单位！'.format(link_text, org_name))
+                elif not bool(skip_info['EL_A']):
                     DataAccess.el_operate_log(self.tst_inst.menu_no, self.tst_inst.tst_case_id, None, self.tst_inst.class_name, '跳转失败' + assert_type,
                                               '该供电单位“{}”没查询结果，故对下属单位下钻失败！'.format(org_name))
                     is_skiped = False

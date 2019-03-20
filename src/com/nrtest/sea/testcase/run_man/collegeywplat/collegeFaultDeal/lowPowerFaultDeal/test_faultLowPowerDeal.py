@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.run_man.collegeywplat.lowPowerFaultDeal.lowPowerFaultD
 
 
 # 运行管理-->采集运维平台-->采集故障处理-->低压故障处理
-# 我的待办低压
+# 故障处理低压
 @ddt
 class TestFaultLowPowerDeal(TestCase, FaultLowPowerDealPage):
 
@@ -66,18 +66,20 @@ class TestFaultLowPowerDeal(TestCase, FaultLowPowerDealPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        #故障开始日期
+        # 故障开始日期
         self.inputDt_fault_start_date(para['FAULT_START_DATE'])
-        #故障结束日期
+        # 故障结束日期
         self.inputDt_fault_end_date(para['FAULT_END_DATE'])
-        #流程状态
+        # 流程状态
         self.inputSel_flow_status(para['FLOW_STATUS'])
-        #故障来源
+        # 故障来源
         self.inputDt_fault_from(para['FAULT_FROM'])
-        #故障严重程度
+        # 故障严重程度
         self.inputSel_fault_severity(para['FAULT_SEVERITY'])
-        # 故障类型
-        self.inputChk_fault_type(para['FAULT_TYPE'])
+
+        if self.get_para_value(para['FAULT_FROM']) == '终端异常':
+            # 故障类型
+            self.inputChk_fault_type(para['FAULT_TYPE'])
 
         self.btn_qry()
 
@@ -97,7 +99,8 @@ class TestFaultLowPowerDeal(TestCase, FaultLowPowerDealPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_lowPowerFaultDeal, AcquistionFaultHandling_data.para_lowPowerFaultDeal_deal))
+    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_lowPowerFaultDeal,
+                                  AcquistionFaultHandling_data.para_lowPowerFaultDeal_deal))
     def test_query(self, para):
         """运行管理-->采集运维平台-->采集故障处理-->低压故障处理:故障处理低压
         """
@@ -107,7 +110,8 @@ class TestFaultLowPowerDeal(TestCase, FaultLowPowerDealPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_lowPowerFaultDeal, AcquistionFaultHandling_data.para_lowPowerFaultDeal_deal, valCheck=True))
+    @data(*DataAccess.getCaseData(AcquistionFaultHandling_data.para_lowPowerFaultDeal,
+                                  AcquistionFaultHandling_data.para_lowPowerFaultDeal_deal, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

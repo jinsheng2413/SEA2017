@@ -43,7 +43,7 @@ class SuccessRateTrendPage(Page):
 
     # 成功率类型
     def inputChk_success_type(self, index):
-        self.clickRadioBox(index)
+        self.clickRadioBox(index, is_multi_elements=True, is_multi_tab=True)
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量→采集成功率统计
 class SuccessRateStatisticsPage(Page):

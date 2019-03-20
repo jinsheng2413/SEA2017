@@ -1,13 +1,13 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
-@author: 韩笑
+@author: 李建方
 @license: (C) Copyright 2018, Nari.
-@file: test_generalGroupSet.py
-@time: 2018/11/12 15:18
+@file: test_ReadIntimeRateNew.py
+@time: 2019/03/19  15:35:35
 @desc:
 """
-
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -15,28 +15,30 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.sea.data.run_man.groupMan.groupMan_data import GroupMan_data
-from com.nrtest.sea.pages.other.menu_page import MenuPage, sleep
-from com.nrtest.sea.pages.run_man.groupMan.generalGroupSet_page import *
+from com.nrtest.pbs.tree.tree_page import TreeSingleUserPage
+from com.nrtest.sea.data.base_app.dataGatherMan.gatherQualityAnalyze.gather_quality_analyze_data import GatherQualityAnalyze_data
+from com.nrtest.sea.pages.base_app.dataGatherMan.ReadIntimeRate_new_page import ReadIntimeRateNewPage
+from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 运行管理→群组管理→普通群组设置
+# 基本应用→数据采集管理→采集质量检查(new):采集及时率
 @ddt
-class TestGeneralGroupSet(TestCase, GeneralGroupSetPage):
+class TestReadIntimeRateNew(TestCase, ReadIntimeRateNewPage):
+
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(GroupMan_data.GeneralGroupSet_para)
+        menuPage = MenuPage.openMenu(GatherQualityAnalyze_data.dataGatherQualityAnalyze_new_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        # menuPage.clickTabPage(SysConfigManData.SysAbnormalParaSet_tabName)
+        # menuPage.clickTabPage(GatherQualityAnalyze_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
-        # 关闭菜单页面
+        # 刷新浏览器
         cls.closePages(cls)
 
     def setUp(self):
@@ -50,6 +52,7 @@ class TestGeneralGroupSet(TestCase, GeneralGroupSetPage):
         测试结束后的操作，这里基本上都是关闭浏览器
         :return:
         """
+
         # 回收左边树
         self.recoverLeftTree()
 
@@ -60,28 +63,27 @@ class TestGeneralGroupSet(TestCase, GeneralGroupSetPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        user_page = TreeSingleUserPage(self)
+        user_page.openLeftTree(para['NODE'])
+        sleep(2)
 
-        # 群组操作处理
-        self.inputChk_group_deal(para['GROUP_DEAL'])
-        if self.get_para_value(para['GROUP_DEAL']) == '管理群组':
-            # 名称  群组名称
-            self.inputStr_group_name(para['GROUP_NAME'])
-            # 类别  群组类别
-            self.inputChk_group_type(para['GROUP_TYPE'])
-            # 有效日期
-            self.inputChk_valid_date(para['VALID_DATE'])
+        # 打开左边树并选择
+        self.openLeftTree(para['TREE_NODE'])
 
-            # 是否勾选有效日期
-            if bool(self.get_para_value(para['VALID_DATE'])):
-                # 开始日期
-                self.inputDt_start_date(para['START_DATE'])
-                # 至
-                self.inputDt_end_date(para['END_DATE'])
-            # 查询按钮
-            self.btn_search()
-        else:
-            self.openLeftTree(para['TREE_NODE'])
-            sleep(20)
+        # 用户类型
+        self.inputSel_cons_type(para['CONS_TYPE'])
+
+        # 终端厂家
+        self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
+
+        # 芯片厂家
+        self.inputSel_chip_factory(para['CHIP_FACTORY'])
+
+        # 日期时间
+        self.inputDt_query_date(para['QUERY_DATE'])
+
+        # 查询
+        self.btn_query()
 
     def assert_query_result(self, para):
         """
@@ -99,9 +101,10 @@ class TestGeneralGroupSet(TestCase, GeneralGroupSetPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para))
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.dataGatherQualityAnalyze_new_para,
+                                  GatherQualityAnalyze_data.dataGatherQualityAnalyze_new_Intime))
     def test_query(self, para):
-        """运行管理→群组管理→普通群组设置
+        """基本应用→数据采集管理→采集质量检查(new):采集及时率
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -109,7 +112,8 @@ class TestGeneralGroupSet(TestCase, GeneralGroupSetPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(GroupMan_data.GeneralGroupSet_para, valCheck=True))
+    @data(*DataAccess.getCaseData(GatherQualityAnalyze_data.dataGatherQualityAnalyze_new_para,
+                                  GatherQualityAnalyze_data.dataGatherQualityAnalyze_new_Intime))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

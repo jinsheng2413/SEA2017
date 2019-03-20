@@ -60,11 +60,41 @@ class TestTgLineLossDetail(TestCase, TgLineLossDetailPage):
         # 采集覆盖率
         self.inputSel_collect_cover_rate(para['COLLECT_COVER_RATE'])
 
+        # 采集覆盖率值
+        self.inputStr_collect_cover_rate_input(para['COLLECT_COVER_RATE_INPUT'])
+
         # 采集成功率
         self.inputSel_collect_success_rate(para['COLLECT_SUCCESS_RATE'])
 
+        # 采集成功率值
+        self.inputStr_collect_success_rate_input(para['COLLECT_SUCCESS_RATE_INPUT'])
+
         # 同期线损率
         self.inputSel_collecline_loss_rate(para['COLLECLINE_LOSS_RATE'])
+
+        # 同期线损率值
+        self.inputStr_collecline_loss_rate_input(para['COLLECLINE_LOSS_RATE_INPUT'])
+
+        if self.get_para_value(para['COLLECT_COVER_RATE']).startswith('大于'):
+            # 采集覆盖率TO
+            self.inputSel_collect_cover_rate_to(para['COLLECT_COVER_RATE_TO'])
+
+            # 采集覆盖率TO值
+            self.inputStr_collect_cover_rate_to_input(para['COLLECT_COVER_RATE_TO_INPUT'])
+
+        if self.get_para_value(para['COLLECT_SUCCESS_RATE']).startswith('大于'):
+            # 采集成功率TO
+            self.inputSel_collect_success_rate_to(para['COLLECT_SUCCESS_RATE_TO'])
+
+            # 采集成功率TO值
+            self.inputStr_collect_success_rate_to_input(para['COLLECT_SUCCESS_RATE_TO_INPUT'])
+
+        if self.get_para_value(para['COLLECLINE_LOSS_RATE']).startswith('大于'):
+            # 同期线损率TO
+            self.inputSel_collecline_loss_rate_to(para['COLLECLINE_LOSS_RATE_TO'])
+
+            # 同期线损率TO值
+            self.inputStr_collecline_loss_rate_to_input(para['COLLECLINE_LOSS_RATE_TO_INPUT'])
 
         # 日期类型
         self.inputChk_date_type(para['DATE_TYPE'])

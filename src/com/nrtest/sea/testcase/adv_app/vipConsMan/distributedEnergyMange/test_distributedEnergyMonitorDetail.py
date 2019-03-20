@@ -56,7 +56,7 @@ class TestDistributedEnergyMonitorDetail(TestCase, DistributedEnergyMonitorDetai
 
     def query(self, para):
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
         # 数据类型
         self.inputChk_data_type(para['DATA_TYPE'])
         # 户号

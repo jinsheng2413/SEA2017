@@ -10,9 +10,9 @@
 
 from com.nrtest.common.base_page import Page
 
-
 # 高级应用→线损分析→线损统计分析→线路线损分析
-from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.lineLossAnalysis_locators import LineLossAnalysisLocators
+from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.lineLossAnalysis_locators import \
+    LineLossAnalysisLocators
 
 
 class LineLossAnalysisPage(Page):
@@ -47,7 +47,8 @@ class LineLossAnalysisPage(Page):
 
     # 按日期类型
     def inputChk_qry_date_type(self, option):
-        self.clickRadioBox(option)
+        # self.clickRadioBox(option)
+        self.clickTabPage(option)
 
     # 查询日期
     def inputDt_query_date(self, value):

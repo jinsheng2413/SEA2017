@@ -57,7 +57,7 @@ class TestDistributedEnergyUserFailed(TestCase, DistributedEnergyUserFailedPage)
 
     def query(self, para):
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 电能表资产编号

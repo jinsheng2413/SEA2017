@@ -76,10 +76,12 @@ class TestFaultSpecificPowerFeedback(TestCase,FaultSpecificPowerFeedbackPage):
         self.inputSel_flow_status(para['FLOW_STATUS'])
         #故障来源
         self.inputDt_fault_from(para['FAULT_FROM'])
-        #故障严重程度
+        val = self.get_para_value(para['FAULT_FROM'])
+        if val == '终端异常':
+            # 故障类型
+            self.inputChk_fault_type(para['FAULT_TYPE'])
+        # 故障严重程度
         self.inputSel_fault_severity(para['FAULT_SEVERITY'])
-        # 故障类型
-        self.inputChk_fault_type(para['FAULT_TYPE'])
 
         self.btn_qry()
 

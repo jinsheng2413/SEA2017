@@ -31,7 +31,7 @@ class DistributedEnergyLoadMonitorPage(Page):
 
     # 负荷类型
     def inputChk_load_type(self, index):
-        self.clickRadioBox(index)
+        self.clickRadioBox(index, True, True)
 
     # 查询按钮
     def btn_search(self):

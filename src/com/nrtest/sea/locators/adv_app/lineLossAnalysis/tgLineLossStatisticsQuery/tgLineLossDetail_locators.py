@@ -13,6 +13,10 @@ from selenium.webdriver.common.by import By
 
 # 高级应用→线损分析→台区线损统计查询→台区线损明细
 class TgLineLossDetailLocators:
+    # %前，输入框
+    QRY_INPUT = (By.XPATH, '//label[text()="%"]/../../../../preceding-sibling::td[1]//input')
+    # %后，下拉选择按钮
+    QRY_SEL = (By.XPATH, '//label[text()="%"]/../../../../following-sibling::td[1]//img')
     # 台区编号
     QRY_TG_NO = (By.XPATH, '//label[contains(text(),"台区编号")]/../div/input')
     # 台区名称

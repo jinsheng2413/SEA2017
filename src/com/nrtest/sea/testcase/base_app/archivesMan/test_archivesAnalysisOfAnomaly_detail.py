@@ -62,7 +62,7 @@ class test_archivesAnalysisOfAnomaly_detail(TestCase, ArchivesAnalysisOfAnomaly_
         self.inputSel_cons_type(para['CONS_TYPE'])
 
         # 日期
-        self.inputDt_date_time(para['DATE_TIME'])
+        # self.inputDt_date_time(para['DATE_TIME'])
 
         # 查询
         self.btn_qry()

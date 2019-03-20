@@ -52,7 +52,7 @@ class PatrolDataQueryCurveDataPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.btn_query(True)
+        self.btn_query(True, idx=2)
 
 
 # 曲线对比
@@ -87,7 +87,7 @@ class PatrolDataQueryCurveContrastPage(Page):
 
     # 查询按钮
     def btn_qry(self):
-        self.btn_query(True)
+        self.btn_query(True, idx=2)
 
 
 # 电流回路状态
@@ -102,7 +102,9 @@ class PatrolDataQueryCurrentStatusPage(Page):
 
     # 相别
     def inputChk_phase_code(self, index):
-        self.clickCheckBox_new(index)
+        # self.clickCheckBox_new(index)
+        self.clickCheckBox(index, True, True)
+
 
     # 日期
     def inputDt_query_date(self, index):
@@ -118,7 +120,7 @@ class PatrolDataQueryCurrentStatusPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.btn_query(True)
+        self.btn_query(True, idx=2)
 
 
 # 异常事件查询
@@ -149,4 +151,4 @@ class PatrolDataQueryAnomalousEventPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.btn_query(True)
+        self.btn_query(True, idx=2)

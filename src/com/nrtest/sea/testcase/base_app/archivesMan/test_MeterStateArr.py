@@ -70,6 +70,9 @@ class TestMeterStateArr(TestCase, MeterStateArrPage):
         # 是否包含下级供电单位
         self.inputChk_contain_org(para['CONTAIN_ORG'])
 
+        # 终端状态--江西有
+        self.inputSel_tmnl_status(para['TMNL_STATUS'])
+
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
 

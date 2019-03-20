@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossUnifiedView.tgLineL
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损统计分析→台区线损统一视图
+# 高级应用→线损分析→台区线损统一视图→台区线损统一视图
 # 用户信息
 @ddt
 class TestTgLineLossUnifiedView_Tab(TestCase, TgLineLossUnifiedViewPage):

@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossUnifiedView.tgLineL
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损统计分析→台区线损统一视图
+# 高级应用→线损分析→台区线损统一视图→台区线损统一视图
 # 首页
 @ddt
 class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
@@ -63,28 +63,28 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
         # 查询按钮
         self.btn_search()
 
-        # TAB页名称
-        self.inputChk_tab_name(para['TAB_NAME'])
-
-        if self.get_para_value(para['TAB_NAME']) == '日线损':
-            # 查询日期，开始
-            self.inputDt_start_date(para['START_DATE'])
-
-            # 查询日期，结束
-            self.inputDt_end_date(para['END_DATE'])
-
-            # 日线损，查询按钮
-            self.btn_search_day()
-
-        if self.get_para_value(para['TAB_NAME']) == '月线损':
-            # 查询日期，开始
-            self.inputDt_start_date(para['START_DATE'])
-
-            # 查询日期，结束
-            self.inputDt_end_date(para['END_DATE'])
-
-            # 月线损，查询按钮
-            self.btn_search_month()
+        # # TAB页名称
+        # self.inputChk_tab_name(para['TAB_NAME'])
+        #
+        # if self.get_para_value(para['TAB_NAME']) == '日线损':
+        #     # 查询日期，开始
+        #     self.inputDt_start_date(para['START_DATE'])
+        #
+        #     # 查询日期，结束
+        #     self.inputDt_end_date(para['END_DATE'])
+        #
+        #     # 日线损，查询按钮
+        #     self.btn_search_day()
+        #
+        # if self.get_para_value(para['TAB_NAME']) == '月线损':
+        #     # 查询日期，开始
+        #     self.inputDt_start_date(para['START_DATE'])
+        #
+        #     # 查询日期，结束
+        #     self.inputDt_end_date(para['END_DATE'])
+        #
+        #     # 月线损，查询按钮
+        #     self.btn_search_month()
 
     def assert_query_result(self, para):
         """

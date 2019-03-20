@@ -43,4 +43,4 @@ class MeterRealTimePowerCutQueryPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.btn_query()
+        self.btn_query(idx=2)

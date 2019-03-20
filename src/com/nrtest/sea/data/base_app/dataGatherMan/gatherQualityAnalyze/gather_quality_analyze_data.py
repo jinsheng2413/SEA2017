@@ -46,3 +46,7 @@ class GatherQualityAnalyze_data:
     stratCollQualityAnalyze_para = '99913250'
     stratCollQualityAnalyze_tabName_rate = '采集成功率'
     stratCollQualityAnalyze_tabName_detail = '采集失败列表明细'
+
+    # 基本应用→数据采集管理→采集质量检查(new)
+    dataGatherQualityAnalyze_new_para = '99913400'
+    dataGatherQualityAnalyze_new_Intime = '采集及时率'

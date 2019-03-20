@@ -470,22 +470,56 @@ class Page():
         if self.ignore_op(values):
             return None
         try:
-            label_name = values.split(';')[0]
-            # print('SETUP-6-2 label_name:{}'.format(label_name))
-            if use_share_xpath == '06':  # 日期
-                loc = self.format_xpath_multi(self.baseLocators.QRY_DT_INPUT, label_name, True, menu_name)
-                idx = int(option_name) if bool(option_name) else 1
-                # print('SETUP-6-3-1', loc)
+            if use_share_xpath in ('04', '05', '07'):
+                return self.get_chk_val(values, use_share_xpath, menu_name, idx)
             else:
-                loc = self.format_xpath_multi(self.baseLocators.QRY_INPUT, label_name, True, menu_name)
-                # print('SETUP-6-3-2', loc)
-            # print('菜单', self._direct_find_element((By.XPATH, '//li[@id="maintab__报文分析工具"]')))
-            el = self._find_displayed_element(loc, idx)
-            # print('SETUP-6-4', el)
-            value_of_el = self.driver.execute_script("return arguments[0].value", el)  # self.get_el_text(el)
-            logger.info(
-                '******** 查询条件（values）：{}, use_share_xpath：{}, option_name：{}, idx：{}, 查询条件值：{}\r'.format(values, use_share_xpath, option_name, idx,
-                                                                                                          value_of_el))
+                label_name = values.split(';')[0]
+                # print('SETUP-6-2 label_name:{}'.format(label_name))
+                if use_share_xpath == '06':  # 日期
+                    loc = self.format_xpath_multi(self.baseLocators.QRY_DT_INPUT, label_name, True, menu_name)
+                    idx = int(option_name) if bool(option_name) else 1
+                    # print('SETUP-6-3-1', loc)
+                else:
+                    loc = self.format_xpath_multi(self.baseLocators.QRY_INPUT, label_name, True, menu_name)
+                    # print('SETUP-6-3-2', loc)
+                # print('菜单', self._direct_find_element((By.XPATH, '//li[@id="maintab__报文分析工具"]')))
+                el = self._find_displayed_element(loc, idx)
+                # print('SETUP-6-4', el)
+                value_of_el = self.driver.execute_script("return arguments[0].value", el)  # self.get_el_text(el)
+                logger.info(
+                    '******** 查询条件（values）：{}, use_share_xpath：{}, option_name：{}, idx：{}, 查询条件值：{}\r'.format(values, use_share_xpath, option_name,
+                                                                                                              idx,
+                                                                                                              value_of_el))
+                return value_of_el
+        except AttributeError as ex:
+            logger.error('提取元素内容失败:{}\n{}'.format(values, ex))
+            return None
+
+    def get_chk_val(self, values, use_share_xpath='01', menu_name='', idx=1):
+        """
+        获取查询条件值
+        :param values:要输入的值
+        :param use_share_xpath:
+        :param menu_name: 填跳转后的菜单名
+        """
+        # print('SETUP-6-1', values, use_share_xpath, option_name, menu_name)
+        if self.ignore_op(values):
+            return None
+        try:
+            if use_share_xpath == '04':  # 单选框
+                loc = self.format_xpath_multi(self.baseLocators.QRY_RADIO_CHECKED, values, True, menu_name)
+                el = self._find_displayed_element(loc, idx)
+                value_of_el = values if bool(el) else ''
+            elif use_share_xpath in ('05', '07'):  # 复选框
+                ls_values = values.split(',')
+                value_of_el = ''
+                for value in ls_values:
+                    loc = self.format_xpath_multi(self.baseLocators.QRY_CHK_CHECKED, value, True, menu_name)
+                    el = self._find_displayed_element(loc, idx)
+                    value_of_el += ',' + (value if bool(el) else '')
+                value_of_el = value_of_el[1:]
+            # logger.info(
+            #     '******** 查询条件（values）：{}, use_share_xpath：{}, option_name：{}, idx：{}, 查询条件值：{}\r'.format(values, use_share_xpath, option_name, idx,                                                                                    value_of_el))
             return value_of_el
         except AttributeError as ex:
             logger.error('提取元素内容失败:{}\n{}'.format(values, ex))

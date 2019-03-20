@@ -17,6 +17,10 @@ class LineLossStatisticsQueryPage(Page):
     def inputSel_line_loss_type(self, index):
         self.selectDropDown(index)
 
+    # tab选择
+    def inputChk_tab_name(self, value):
+        self.clickTabPage(value)
+
     # 线损率
     def inputSel_line_loss_rate(self, index):
         self.selectDropDown(index)
@@ -24,6 +28,7 @@ class LineLossStatisticsQueryPage(Page):
     # 线损率值
     def inputStr_line_loss_rate_input(self, value):
         self.noLabelInput(value)
+        # self.input(value)
 
     # 日期查询方式
     def inputChk_qry_date_type(self, value):
@@ -44,7 +49,6 @@ class LineLossStatisticsQueryPage(Page):
     # 按底码
     def inputChk_read_value(self, name):
         self.clickSingleCheckBox(name)
-
 
     # 查询按钮
     def btn_search(self):

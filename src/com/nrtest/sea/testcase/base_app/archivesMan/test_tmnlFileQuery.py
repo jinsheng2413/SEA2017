@@ -65,7 +65,7 @@ class TestStrategicArchivesMaintain(TestCase, TmnlFileQueryPage):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 
-        # 输入中地址
+        # 输入終端地址
         self.inputStr_terminal_addr(para['TERMINAL_ADDR'])
 
         # 输入终端资产号

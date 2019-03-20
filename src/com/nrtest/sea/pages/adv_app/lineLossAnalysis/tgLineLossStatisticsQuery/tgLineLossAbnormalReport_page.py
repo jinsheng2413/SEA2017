@@ -17,6 +17,10 @@ class TgLineLossAbnormalReportPage(Page):
     def inputSel_line_loss_dimension(self, index):
         self.selectDropDown(index)
 
+    # 责任人工号
+    def inputStr_emp_no(self, content):
+        self.input(content)
+
     # 查询日期
     def inputDt_query_date(self, content):
         self.inputDate(content)

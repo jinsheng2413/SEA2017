@@ -246,6 +246,12 @@ class BasePbsLocators(Locators):
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
     POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
 
+    # 【跳转校验用】
+    # 被选中的单选框
+    QRY_RADIO_CHECKED = (By.XPATH, '//label[@class="x-form-cb-label"and text()="{}"]/preceding-sibling::input[@type="radio" and @checked=""]')
+    # 被选中的复选框
+    QRY_CHK_CHECKED = (By.XPATH, '//label[text()="{}"]/..//input[@type="checkbox" and @checked=""]')
+
 
 class BaseSEA20Locators(Locators):
     pass

@@ -59,6 +59,10 @@ class TestTgLineLossAbnormalReport(TestCase, TgLineLossAbnormalReportPage):
 
         # 线损维度
         self.inputSel_line_loss_dimension(para['LINE_LOSS_DIMENSION'])
+        val = self.get_para_value(para['LINE_LOSS_DIMENSION'])
+        if val == '责任人':
+            # 责任人工号
+            self.inputStr_emp_no(para['EMP_NO'])
 
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])

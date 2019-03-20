@@ -31,7 +31,7 @@ class TestPrePaidStatusByUser(TestCase, PrePaidStatusByUserPage):
         menuPage = MenuPage.openMenu(RemoteCustControl_data.prePaidStatus_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(RemoteCustControl_data.NewTab_ByUser)
+        menuPage.clickTabPage(RemoteCustControl_data.Tab_ByUser)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
 
@@ -96,7 +96,7 @@ class TestPrePaidStatusByUser(TestCase, PrePaidStatusByUserPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.NewTab_ByUser))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_ByUser))
     def test_query(self, para):
         """高级应用→费控管理→远程费控→远程费控执行统计:按用户执行统计
         """
@@ -106,7 +106,8 @@ class TestPrePaidStatusByUser(TestCase, PrePaidStatusByUserPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.NewTab_ByUser, valCheck=True))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_ByUser,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

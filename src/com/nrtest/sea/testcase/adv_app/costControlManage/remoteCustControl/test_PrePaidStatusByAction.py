@@ -34,6 +34,7 @@ class TestPrePaidStatusByAction(TestCase, PrePaidStatusByActionPage):
         menuPage.clickTabPage(RemoteCustControl_data.Tab_ByAction)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
+
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
@@ -104,7 +105,8 @@ class TestPrePaidStatusByAction(TestCase, PrePaidStatusByActionPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_ByAction, valCheck=True))
+    @data(*DataAccess.getCaseData(RemoteCustControl_data.prePaidStatus_para, RemoteCustControl_data.Tab_ByAction,
+                                  valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

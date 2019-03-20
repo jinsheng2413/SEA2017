@@ -17,7 +17,7 @@ class SpVoltAnalyseStaticPage(Page):
 
     # 用户类型--打开并选择
     def inputSel_cons_type(self, item):
-        self.selectDropDown(item)
+        self.selectDropDown(item, is_multi_tab=True, is_multi_elements=True)
 
     # 日期类型
     def inputChk_date_type(self, option):
@@ -29,7 +29,7 @@ class SpVoltAnalyseStaticPage(Page):
 
     # 点击查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)
 
 # 专/公变电压质量明细
 class SpVoltAnalyseDetailPage(Page):

@@ -158,7 +158,8 @@ class AssertResult():
             self.dlg_info = None
             assert_type = row[0]
             case_result = row[1:]
-            if assert_type not in ['11', '31']:
+            is_calc_col_idx = assert_type not in ['11', '31']
+            if is_calc_col_idx:
                 col_and_link_tag = self.special_deal(case_result[4], case_result[1])
                 col_pos_info = self.calc_col_idx(case_result[0], col_and_link_tag[0])
             logger.info('*******' + case_id + '*********校验类别：{}；定位列名：{}；校验列名：{}；期望值：{}；定位行号：{};是否特殊处理：{}\r'.format(*row))
@@ -201,9 +202,12 @@ class AssertResult():
         for item in ls_check_rslt_values:
             for key, value in item.items():
                 if not value[0]:
-                    err_info = '校验列【{}】时报错，校验类别为：{}，错误信息：{}'.format(value[1], key, esplain[key])
-                    logger.error(err_info)  # 出错具体原因
-                    print(err_info)
+                    if is_calc_col_idx:
+                        err_info = '校验列【{}】时报错，校验类别为：{}，错误信息：{}'.format(value[1], key, esplain[key])
+                    else:
+                        err_info = '校验类别为：{}，错误信息：{}'.format(key, esplain[key])
+                    logger.error(err_info + '\r')  # 出错具体原因
+                    print(err_info + '</br>')
                     result = False
         return result
 
@@ -307,7 +311,10 @@ class AssertResult():
                 # 把查询条件的xpath转换为对应查询条件中文名
                 # menu_xpath_data = DataAccess.get_xpath_tab_data(map_rela[5], case_data['TST_CASE_ID'], case_data['TAB_NAME'])  # XPATH
                 menu_xpath_data = DataAccess.get_menu_xpath_data(case_data['MENU_NO'], case_data['TAB_NAME'], map_rela[5])
-                val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2])
+                if menu_xpath_data[1] in ('04', '05', '07'):
+                    val = self.tst_inst.get_para_value(case_data[map_rela[5]])
+                else:
+                    val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2])
                 skip_data_before.append(val)
                 # locator_qry = self.get_xpath(menu_xpath_list[0])
                 # skip_data_before.append(self.get_text(locator_qry))
@@ -322,7 +329,7 @@ class AssertResult():
                 skip_data_before.append(case_result[1])
         return skip_data_before
 
-    def get_skip_data_after(self, case_result, map_rela_rslt, is_menu):
+    def get_skip_data_after(self, case_result, map_rela_rslt, is_menu, skip_data_before):
         """
         -------0--------|----1----|----2-------|----3---|----4-----|--5---|--------6-------|----7-----|------8-----|-----9-----|---10---|----11-----|-----12--------|------13-------|
         *TAB_COLUMN_NAME TAB_NAME  *COLUMN_NAME *ROW_NUM XPATH_TYPE XPATH   TARGET_TAB_NAME TRANS_TYPE TARGET_XPATH TRANS_VALUE IS_TRANS ELEMENT_SN  TARGET_MENU_NO  TARGET_MENU_NAME
@@ -344,7 +351,7 @@ class AssertResult():
 
         # print('STEP-0')
         skip_data_after = []
-        for map_rela in map_rela_rslt:
+        for i, map_rela in enumerate(map_rela_rslt):
             # print('STEP-1', map_rela)
             xpath_type = map_rela[4]  # XPATH_TYPE
             if xpath_type == '04' and map_rela[8] is None:  # 读取跳转页的查询结果总数  TARGET_XPATH
@@ -371,7 +378,10 @@ class AssertResult():
                     # print('SETUP-6 use_share_xpath:{}'.format(menu_xpath_list[1]))
                     # print('SETUP-6 option_name:{}'.format(menu_xpath_list[2]))
                     # print('SETUP-6  menu_name{}'.format(map_rela[13]))
-                    val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
+                    if menu_xpath_data[1] in ('04', '05', '07'):  # 单选框/复选框处理
+                        val = self.tst_inst.get_input_val(skip_data_before[i], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
+                    else:
+                        val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
                     # print('STEP_7')
                     skip_data_after.append(val)
                     # print('STEP_8')
@@ -490,7 +500,7 @@ class AssertResult():
             is_skiped = skip_info['CLICKABLE'] and self.assert_page_name(case_result[2])
             if is_skiped:
                 # 获取跳转目标页面相关元素值
-                skip_data_after = self.get_skip_data_after(case_result, map_rela_rslt, is_menu)
+                skip_data_after = self.get_skip_data_after(case_result, map_rela_rslt, is_menu, skip_data_before)
 
                 if is_menu:  # 关闭菜单页
                     self.tst_inst.menuPage.closePage(case_result[2])

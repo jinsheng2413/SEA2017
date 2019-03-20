@@ -93,10 +93,8 @@ class AssertResult():
         :return:
         """
         #  IS_SKIPED：能点击，但不一定会跳转（没link时）；CLICKABLE：可点击，且不会报错
-        skip_info = {'IS_SKIPED': True, 'LINK_TEXT': None, 'EL_A': None, 'CLICKABLE': False}
+        skip_info = {'IS_SKIPED': True, 'LINK_TEXT': None, 'EL_A': None, 'CLICKABLE': False, 'EL_AFTER_A': None, 'AFTER_TEXT': ''}
         try:
-            # 检查查询结果是否有数据
-            is_skiped = True
             # 按下面代码执行会报这个错：'FirefoxWebElement' object does not support indexing
             # el_link = el_data_rows[int(case_result[3])].find_elements_by_xpath('./td[{}]//a'.format(col_pos_info['COL_IDX']))
             if link_xpath is None:
@@ -109,6 +107,21 @@ class AssertResult():
             skip_info['CLICKABLE'] = bool(skip_info['EL_A'])
             self.tst_inst.scrollTo(el_link)
             el_link.click()
+
+            el_after_click = self.tst_inst._find_displayed_element(link_xpath)
+            if bool(el_after_click):
+                skip_info['EL_AFTER_A'] = el_after_click.find_elements_by_xpath('.//a')
+                skip_info['AFTER_TEXT'] = el_after_click.text if bool(el_after_click) else ''
+
+            # 休眠N秒，等待跳转页面加载:WAIT_FOR_TARGET
+            seconds = case_result[5]
+            if seconds > 0:  # 按loading元素等待，超时不抛异常
+                try:
+                    self.tst_inst.query_timeout(timeout_seconds=seconds)
+                except:
+                    pass
+            else:
+                sleep(abs(seconds))
         except Exception as ex:
             print('跳转验证失败:' + ex.__str__())
             skip_info['IS_SKIPED'] = False
@@ -340,14 +353,14 @@ class AssertResult():
         :return:
         """
         # 休眠2秒，等待跳转页面加载:WAIT_FOR_TARGET
-        seconds = case_result[5]
-        if seconds > 0:  # 按loading元素等待，超时不抛异常
-            try:
-                self.tst_inst.query_timeout(timeout_seconds=seconds)
-            except:
-                pass
-        else:
-            sleep(abs(seconds))
+        # seconds = case_result[5]
+        # if seconds > 0:  # 按loading元素等待，超时不抛异常
+        #     try:
+        #         self.tst_inst.query_timeout(timeout_seconds=seconds)
+        #     except:
+        #         pass
+        # else:
+        #     sleep(abs(seconds))
 
         # print('STEP-0')
         skip_data_after = []
@@ -405,6 +418,7 @@ class AssertResult():
             all_val = '全部'
             is_pass = True
             for data_before, data_after, map_rela in zip(skip_data_before, skip_data_after, map_rela_rslt):
+                xpath_type = map_rela[4]
                 trans_type = map_rela[7]  # 转换类型(TRANS_TYPE)：00-不转换；01-直接转换为对应值;02-包含关系;03-月时间转换为日时间
                 is_skip_correct = False
                 if trans_type == '01':
@@ -423,6 +437,11 @@ class AssertResult():
                     data_before = day_begin if trans_type == '10' else day_end
                     if data_before == data_after:
                         is_skip_correct = True
+                elif trans_type == '14' and data_before != '0' and data_after != '没有数据':  # 基本应用→数据采集管理→采集质量分析→采集成功率:采集成功率统计  经“采集成功率”列跳转到明细页面
+                    is_skip_correct = True
+                elif xpath_type == '04' and data_before == '0' and data_after == '没有数据':  # 取所在跳转的统计数据值
+                    data_after = '0'
+                    is_skip_correct = True
 
                 info_rlt = info.format(row_idx, col_idx, map_rela[11], map_rela[5], data_before, map_rela[8],
                                        data_after)  # ELEMENT_SN / XPATH / TARGET_XPATH
@@ -533,19 +552,46 @@ class AssertResult():
                 skip_info = self.skip_to_page(case_result, col_pos_info)
                 link_text = skip_info['LINK_TEXT']
                 org_name = self.tst_inst.get_input_val(case_result[2])
-                if skip_info['IS_SKIPED']:
-                    if not bool(skip_info['EL_A']) or link_text.endswith('所'):  # 校验列没有链接或到供电所时，停止跳转
+                if skip_info['CLICKABLE']:
+                    if skip_info['IS_SKIPED']:
+                        if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确
+                            raise AssertError('当前供电单位“{}”下钻失败， “{}”不是期望的供电单位！'.format(link_text, org_name))
+
+                        # 跳转后的相关判断处理
+                        after_text = skip_info['AFTER_TEXT']
+                        if after_text.endswith('所'):  # 跳转后没值或到供电所时，停止跳转
+                            break
+                        elif not bool(skip_info['EL_AFTER_A']):  # 校验列没有链接；
+                            raise AssertError('“{}”没查询结果，无法继续下钻，请检查是否合理！'.format(link_text))
+                    else:
+                        is_skiped = False
                         break
-                    if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确
-                        raise AssertError('当前供电单位“{}”下钻失败， “{}”不是期望的供电单位！'.format(link_text, org_name))
-                elif not bool(skip_info['EL_A']):
-                    DataAccess.el_operate_log(self.tst_inst.menu_no, self.tst_inst.tst_case_id, None, self.tst_inst.class_name, '跳转失败' + assert_type,
-                                              '该供电单位“{}”没查询结果，故对下属单位下钻失败！'.format(org_name))
-                    is_skiped = False
-                    break
                 else:
+                    DataAccess.el_operate_log(self.tst_inst.menu_no, self.tst_inst.tst_case_id, None, self.tst_inst.class_name, '跳转失败' + assert_type,
+                                              '“{}”没查询结果，故对下属单位下钻失败！'.format(org_name))
                     is_skiped = False
                     break
+
+            # while True:
+            #     # 定位列名；校验列名；期望值(校验值)；定位行号;是否特殊处理
+            #     skip_info = self.skip_to_page(case_result, col_pos_info)
+            #     link_text = skip_info['LINK_TEXT']
+            #     org_name = self.tst_inst.get_input_val(case_result[2])
+            #     if skip_info['IS_SKIPED']:
+            #         # 跳转后的链接值
+            #         after_text = skip_info['AFTER_TEXT']
+            #         if not bool(skip_info['EL_A']) or after_text is None or after_text.endswith('所'):  # 校验列没有链接；跳转后没值或到供电所时，停止跳转
+            #             break
+            #         if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确
+            #             raise AssertError('当前供电单位“{}”下钻失败， “{}”不是期望的供电单位！'.format(link_text, org_name))
+            #     elif not bool(skip_info['EL_A']):
+            #         DataAccess.el_operate_log(self.tst_inst.menu_no, self.tst_inst.tst_case_id, None, self.tst_inst.class_name, '跳转失败' + assert_type,
+            #                                   '“{}”没查询结果，故对下属单位下钻失败！'.format(org_name))
+            #         is_skiped = False
+            #         break
+            #     else:
+            #         is_skiped = False
+            #         break
 
             org_node = DataAccess.get_org_node_by_name(original_org_name)
             self.tst_inst.openLeftTree(org_node)

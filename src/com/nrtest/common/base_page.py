@@ -473,13 +473,13 @@ class Page():
             if use_share_xpath in ('04', '05', '07'):
                 return self.get_chk_val(values, use_share_xpath, menu_name, idx)
             else:
-                label_name = values.split(';')[0]
                 # print('SETUP-6-2 label_name:{}'.format(label_name))
                 if use_share_xpath == '06':  # 日期
-                    loc = self.format_xpath_multi(self.baseLocators.QRY_DT_INPUT, label_name, True, menu_name)
+                    loc = self.format_xpath_multi(self.baseLocators.QRY_DT_INPUT, '', True, menu_name)
                     idx = int(option_name) if bool(option_name) else 1
                     # print('SETUP-6-3-1', loc)
                 else:
+                    label_name = values.split(';')[0]
                     loc = self.format_xpath_multi(self.baseLocators.QRY_INPUT, label_name, True, menu_name)
                     # print('SETUP-6-3-2', loc)
                 # print('菜单', self._direct_find_element((By.XPATH, '//li[@id="maintab__报文分析工具"]')))
@@ -506,7 +506,7 @@ class Page():
         if self.ignore_op(values):
             return None
         try:
-            if use_share_xpath == '04':  # 单选框
+            if use_share_xpath == '04':  # 单选框              QRY_RADIO_CHECKED
                 loc = self.format_xpath_multi(self.baseLocators.QRY_RADIO_CHECKED, values, True, menu_name)
                 el = self._find_displayed_element(loc, idx)
                 value_of_el = values if bool(el) else ''

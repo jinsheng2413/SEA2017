@@ -117,12 +117,17 @@ class Page():
             dlg_src = int(args[0])
         else:
             dlg_src = int(self.case_para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
+
+        # 账号异常信息弹窗属正常临时弹窗，不许特殊处理，发现时关闭即可
+        self.close_account_except_dlg()
+
         el = self._direct_find_element(self.baseLocators.POPUP_DLG)
         if bool(el) and el.is_displayed():  # 有对话框，且显示
             info = '\r'.join(el.text.replace(' ', '').split('\n')[:-2])
-            if '账号异常信息' in info:  # 测试用例执行过程中的“账号异常信息”弹窗属正常情况，不予处理
-                action = '03'
-            elif dlg_src in (1, 3, 4, 6):  # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
+            # if '账号异常信息' in info:  # 测试用例执行过程中的“账号异常信息”弹窗属正常情况，不予处理
+            #     action = '03'
+            # elif dlg_src in (1, 3, 4, 6):  # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
+            if dlg_src in (1, 3, 4, 6):  # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
                 # action：00-没弹窗,正确结果；01-截图，且抛异常；02-只截图，不抛异常；
                 #         03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
                 # 01-针对普通用例、不符合期望值的弹窗有效性判断、点击菜单异常；02-有弹窗，但不想抛异常；
@@ -142,7 +147,6 @@ class Page():
                     action = '02'
                     key = '01' if find_except_dlg(info) else '02'
                     self.skip_except_dlg.append([key, info])
-
             elif dlg_src == 5:
                 action = '01'
                 # case_type = int(self.case_para['CASE_TYPE'])
@@ -296,7 +300,7 @@ class Page():
                 sleep(60 * 5)  # 休眠4分钟
 
         # 关闭用例执行过程中账号异常弹窗
-        self.account_except()
+        self.close_account_except_dlg()
 
         # print(class_path)
         self.class_name = class_path.split('src')[1][1:]
@@ -1344,7 +1348,7 @@ class Page():
         """
         self.driver.implicitly_wait(Setting.WAIT_TIME)
 
-    def account_except(self):
+    def close_account_except_dlg(self):
         """
          账号异常信息弹窗确认：处理用例执行过程中临时弹出
         """

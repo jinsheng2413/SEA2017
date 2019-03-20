@@ -85,15 +85,18 @@ class AssertResult():
         return self.assert_context(xpath)
 
     @BeautifulReport.add_popup_img(6)
-    def skip_to_page(self, case_result, col_pos_info, link_xpath=None):
+    def skip_to_page(self, case_result, col_pos_info, link_xpath=None, is_deal_after=False):
         """
         链接跳转:跳转到另一个页面
         :param case_result: 查询结果校验列表内容：定位列名；校验列名；期望值；定位行号;是否特殊处理
         :param col_pos_info:  数据内容{'COL_IDX':0, 'EL_COL':None, 'EL_FIRST':None, 'COL_IS_HIDED':True}
+        :param link_xpath: 定位链接的xpath：用于一列有多个链接情况
+        :param is_deal_after: 是否对跳转后的表格查询结果进行判断处理
         :return:
         """
         #  IS_SKIPED：能点击，但不一定会跳转（没link时）；CLICKABLE：可点击，且不会报错
-        skip_info = {'IS_SKIPED': True, 'LINK_TEXT': None, 'EL_A': None, 'CLICKABLE': False, 'EL_AFTER_A': None, 'AFTER_TEXT': ''}
+        skip_info = {'IS_SKIPED': True, 'LINK_TEXT': None, 'EL_A': None, 'CLICKABLE': False, 'EL_AFTER_A': None, 'AFTER_TEXT': '',
+                     'AFTER_ACTION': '01'}
         try:
             # 按下面代码执行会报这个错：'FirefoxWebElement' object does not support indexing
             # el_link = el_data_rows[int(case_result[3])].find_elements_by_xpath('./td[{}]//a'.format(col_pos_info['COL_IDX']))
@@ -108,11 +111,6 @@ class AssertResult():
             self.tst_inst.scrollTo(el_link)
             el_link.click()
 
-            el_after_click = self.tst_inst._find_displayed_element(link_xpath)
-            if bool(el_after_click):
-                skip_info['EL_AFTER_A'] = el_after_click.find_elements_by_xpath('.//a')
-                skip_info['AFTER_TEXT'] = el_after_click.text if bool(el_after_click) else ''
-
             # 休眠N秒，等待跳转页面加载:WAIT_FOR_TARGET
             seconds = case_result[5]
             if seconds > 0:  # 按loading元素等待，超时不抛异常
@@ -122,6 +120,19 @@ class AssertResult():
                     pass
             else:
                 sleep(abs(seconds))
+
+            if is_deal_after:
+                # sleep(2)
+                el_after_click = self.tst_inst._find_displayed_element(link_xpath)
+                # if bool(el_after_click):
+                #     skip_info['EL_AFTER_A'] = el_after_click.find_elements_by_xpath('.//a')
+                #     skip_info['AFTER_TEXT'] = el_after_click.text if bool(el_after_click) else ''
+                if bool(el_after_click):
+                    el_a = el_after_click.find_elements_by_xpath('.//a')
+                    # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
+                    skip_info['AFTER_ACTION'] = '02' if bool(el_a) else '03'
+                    skip_info['EL_AFTER_A'] = el_a
+                    skip_info['AFTER_TEXT'] = el_after_click.text
         except Exception as ex:
             print('跳转验证失败:' + ex.__str__())
             skip_info['IS_SKIPED'] = False
@@ -174,7 +185,7 @@ class AssertResult():
             is_calc_col_idx = assert_type not in ['11', '31']
             if is_calc_col_idx:
                 col_and_link_tag = self.special_deal(case_result[4], case_result[1])
-                col_pos_info = self.calc_col_idx(case_result[0], col_and_link_tag[0])
+                col_pos_info = self.calc_col_idx(case_result[0], col_and_link_tag[0], int(case_result[6]))
             logger.info('*******' + case_id + '*********校验类别：{}；定位列名：{}；校验列名：{}；期望值：{}；定位行号：{};是否特殊处理：{}\r'.format(*row))
             if assert_type == '11':  # 【OK】
                 locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT, case_result[0])
@@ -549,9 +560,10 @@ class AssertResult():
             is_skiped = True
             while True:
                 # 定位列名；校验列名；期望值(校验值)；定位行号;是否特殊处理
-                skip_info = self.skip_to_page(case_result, col_pos_info)
+                skip_info = self.skip_to_page(case_result, col_pos_info, is_deal_after=True)
                 link_text = skip_info['LINK_TEXT']
                 org_name = self.tst_inst.get_input_val(case_result[2])
+                print('link_text:', link_text, org_name)
                 if skip_info['CLICKABLE']:
                     if skip_info['IS_SKIPED']:
                         if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确
@@ -559,17 +571,26 @@ class AssertResult():
 
                         # 跳转后的相关判断处理
                         after_text = skip_info['AFTER_TEXT']
-                        if after_text.endswith('所'):  # 跳转后没值或到供电所时，停止跳转
+                        # if after_text.endswith('所'):  # 跳转后没值或到供电所时，停止跳转
+                        #     break
+                        # elif not bool(skip_info['EL_AFTER_A']):  # 校验列没有链接；
+                        #     raise AssertError('“{}”没查询结果，无法继续下钻，请检查是否合理！'.format(link_text))
+
+                        # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
+                        after_action = skip_info['AFTER_ACTION']
+                        if after_text.endswith('所') or after_action == '03':  # 跳转后没值或到供电所时，停止跳转
                             break
-                        elif not bool(skip_info['EL_AFTER_A']):  # 校验列没有链接；
+                        elif after_action == '01':  # 校验列没有链接；
                             raise AssertError('“{}”没查询结果，无法继续下钻，请检查是否合理！'.format(link_text))
                     else:
                         is_skiped = False
+                        print('STEP-1')
                         break
                 else:
                     DataAccess.el_operate_log(self.tst_inst.menu_no, self.tst_inst.tst_case_id, None, self.tst_inst.class_name, '跳转失败' + assert_type,
                                               '“{}”没查询结果，故对下属单位下钻失败！'.format(org_name))
                     is_skiped = False
+                    print('STEP-2')
                     break
 
             # while True:

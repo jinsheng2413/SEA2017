@@ -174,7 +174,7 @@ class DataAccess:
         :return:
         """
         # tab确定哪个显示区、列明、点击的那一列
-        sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value, row_num, is_special, wait_for_target \
+        sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value, row_num, is_special, wait_for_target, head_row \
                       from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type, exec_order'
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [tst_case_id])

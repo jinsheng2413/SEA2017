@@ -73,7 +73,7 @@ class TestSuccessRateTrend(TestCase, SuccessRateTrendPage):
         # 成功率类型
         self.inputChk_success_type(para['SUCCESS_TYPE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
 
 

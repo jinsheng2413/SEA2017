@@ -30,7 +30,7 @@ class DistributedEnergyElectricTrendPage(Page):
         self.clickRadioBox(index)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query()
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测→分布式电源电量监测统计

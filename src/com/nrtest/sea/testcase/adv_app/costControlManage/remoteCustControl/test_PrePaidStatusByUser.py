@@ -18,7 +18,7 @@ from com.nrtest.sea.data.adv_app.costControlManage.remoteCustControl.remoteCustC
     RemoteCustControl_data
 from com.nrtest.sea.pages.adv_app.costControlManage.remoteCustControl.PrePaidStatus_page import \
     PrePaidStatusByUserPage
-from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.other.menu_page import MenuPage, sleep
 
 
 # 高级应用→费控管理→远程费控→远程费控执行统计:按用户执行统计
@@ -78,7 +78,7 @@ class TestPrePaidStatusByUser(TestCase, PrePaidStatusByUserPage):
         # 查询
         self.btn_qry()
 
-        # sleep(5)
+        sleep(15)
 
     def assert_query_result(self, para):
         """

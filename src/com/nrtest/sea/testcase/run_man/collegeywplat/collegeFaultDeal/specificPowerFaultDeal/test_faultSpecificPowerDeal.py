@@ -8,6 +8,7 @@
 @time: 2018/11/12 0012 9:31
 @desc:
 """
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -65,6 +66,7 @@ class TestFaultSpecificPowerDeal(TestCase,FaultSpecificPowerDealPage):
         """
 
         # 打开左边树并选择
+        sleep(4)
         self.openLeftTree(para['TREE_NODE'])
 
         #故障开始日期

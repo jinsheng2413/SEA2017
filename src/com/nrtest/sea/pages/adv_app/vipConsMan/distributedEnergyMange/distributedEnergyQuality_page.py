@@ -68,7 +68,7 @@ class SuccessRateStatisticsPage(Page):
         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query(True)
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集质量→采集成功率明细

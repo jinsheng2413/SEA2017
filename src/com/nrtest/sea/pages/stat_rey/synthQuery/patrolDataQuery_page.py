@@ -102,8 +102,8 @@ class PatrolDataQueryCurrentStatusPage(Page):
 
     # 相别
     def inputChk_phase_code(self, index):
-        # self.clickCheckBox_new(index)
-        self.clickCheckBox(index, True, True)
+        self.clickCheckBox_new(index, is_multi_tab=True)
+        # self.clickCheckBox(index, True, True)
 
 
     # 日期

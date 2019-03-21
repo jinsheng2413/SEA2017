@@ -65,7 +65,7 @@ class TestValidPowerCutEventQuery(TestCase, ValidPowerCutEventQueryPage):
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

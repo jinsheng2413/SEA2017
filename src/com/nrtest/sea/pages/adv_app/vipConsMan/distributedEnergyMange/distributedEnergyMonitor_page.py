@@ -27,8 +27,9 @@ class DistributedEnergyMonitorStatisticsPage(Page):
         self.selectDropDown(index)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query()
+
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测→分布式电源采集监测明细
 class DistributedEnergyMonitorDetailPage(Page):
@@ -60,6 +61,7 @@ class DistributedEnergyMonitorDetailPage(Page):
     def btn_search(self):
         self.btn_query(True)
 
+
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测→分布式电源采集成功率
 class DistributedEnergySuccessRatePage(Page):
     # 用户类型
@@ -75,8 +77,9 @@ class DistributedEnergySuccessRatePage(Page):
         self.inputDate(content)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query(True)
+
 
 # 高级应用→重点用户监测→分布式电源管理→分布式电源采集监测→分布式电源用户抄表失败明细
 class DistributedEnergyUserFailedPage(Page):

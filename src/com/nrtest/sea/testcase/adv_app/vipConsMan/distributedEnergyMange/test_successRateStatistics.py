@@ -68,7 +68,7 @@ class TestSuccessRateStatistics(TestCase, SuccessRateStatisticsPage):
         # 发电类型
         self.inputSel_gc_type(para['GC_TYPE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

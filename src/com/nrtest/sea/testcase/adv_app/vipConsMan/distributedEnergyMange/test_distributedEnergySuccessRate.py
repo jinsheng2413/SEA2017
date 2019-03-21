@@ -64,7 +64,7 @@ class TestDistributedEnergySuccessRate(TestCase, DistributedEnergySuccessRatePag
         # 结束日期
         self.inputDt_end_date(para['END_DATE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

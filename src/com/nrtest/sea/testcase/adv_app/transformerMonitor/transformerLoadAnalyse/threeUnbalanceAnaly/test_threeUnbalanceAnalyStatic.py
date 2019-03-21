@@ -7,7 +7,7 @@
 @time: 2018/9/24 20:42
 @desc:
 """
-
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -63,7 +63,7 @@ class TestLoadRateStatic(TestCase, ThreeUnbalanceAnalyStaticPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
+        sleep(2)
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
 

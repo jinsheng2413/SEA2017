@@ -67,7 +67,7 @@ class TestDistributedEnergyElectricTrend(TestCase, DistributedEnergyElectricTren
         # 电量方式
         self.inputChk_elec_mode(para['ELEC_MODE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

@@ -85,7 +85,7 @@ class AssertResult():
         return self.assert_context(xpath)
 
     @BeautifulReport.add_popup_img(6)
-    def skip_to_page(self, case_result, col_pos_info, link_xpath=None, is_deal_after=False):
+    def skip_to_page(self, case_result, col_pos_info, link_xpath=None, is_deal_after=False, dlg_title=''):
         """
         链接跳转:跳转到另一个页面
         :param case_result: 查询结果校验列表内容：定位列名；校验列名；期望值；定位行号;是否特殊处理
@@ -96,7 +96,7 @@ class AssertResult():
         """
         #  IS_SKIPED：能点击，但不一定会跳转（没link时）；CLICKABLE：可点击，且不会报错
         skip_info = {'IS_SKIPED': True, 'LINK_TEXT': None, 'EL_A': None, 'CLICKABLE': False, 'EL_AFTER_A': None, 'AFTER_TEXT': '',
-                     'AFTER_ACTION': '01', 'DLG_TITLE': case_result[2]}
+                     'AFTER_ACTION': '01', 'DLG_TITLE': dlg_title}
         try:
             # 按下面代码执行会报这个错：'FirefoxWebElement' object does not support indexing
             # el_link = el_data_rows[int(case_result[3])].find_elements_by_xpath('./td[{}]//a'.format(col_pos_info['COL_IDX']))
@@ -280,7 +280,7 @@ class AssertResult():
                 dlg_title = case_result[2]
 
             # 跳转到目标页
-            skip_info = self.skip_to_page(case_result, col_pos_info)
+            skip_info = self.skip_to_page(case_result, col_pos_info, dlg_title=dlg_title)
             if skip_info['CLICKABLE']:
                 # sleep(2)
                 # 弹窗信息

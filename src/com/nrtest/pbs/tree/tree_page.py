@@ -336,7 +336,7 @@ class TreePage(BaseTreePage):
 
 class TreeSingleUserPage(BaseTreePage):
     """
-    目前应用于统计查询-->综合查询-->单户综合查询菜单
+    应用于 统计查询-->综合查询-->单户综合查询菜单
     """
     def _find_in_parent(self, item, idx, items):
         """
@@ -438,6 +438,9 @@ class TreeSingleUserPage(BaseTreePage):
 
 
 class TreeQualityPage(BaseTreePage):
+    """
+    应用于 基本应用→数据采集管理→采集质量检查(new)
+    """
     def _find_in_parent(self, item, idx, items):
         """
         在父节点范围内查找

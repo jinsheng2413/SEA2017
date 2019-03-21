@@ -529,7 +529,7 @@ class Page():
             logger.error('提取元素内容失败:{}\n{}'.format(values, ex))
             return None
 
-    def query_timeout(self, locator=None, timeout_seconds=0):
+    def query_timeout(self, locator=None, timeout_seconds=0, is_from_btn=False):
         """
         查询超时判断,当用例不配置超时时间或值为0时，不做等待超时判断
         :return: 查询耗时时间（单位：秒）
@@ -538,6 +538,7 @@ class Page():
             timeout_seconds = self.timeout_seconds
         # print('start time out waiting', timeout_seconds)
         if timeout_seconds > 0:
+            start_dt = Utils.now_str()
             start_time = time.time()
             sec = 2
             sleep(sec)
@@ -545,10 +546,13 @@ class Page():
                 # 找到元素，并且该元素也可见
                 loc = locator if bool(locator) else self.baseLocators.DATA_LOADING
                 WebDriverWait(self.driver, timeout_seconds - sec).until_not(EC.visibility_of_element_located(loc))
-                cost_seconds = round(time.time() - start_time, 2)
+                end_time = time.time()
+                end_dt = Utils.now_str()
+                cost_seconds = round(end_time - start_time, 2)
                 except_type = ''
             except TimeoutException as te:
-                cost_seconds = round(time.time() - start_time, 2)
+                end_time = time.time()
+                cost_seconds = timeout_seconds  # round(time.time() - start_time, 2)
                 except_type = '用例超时'
                 info = '用例要求<={}秒，实际耗时>{}秒。'.format(timeout_seconds, cost_seconds)
                 raise te
@@ -561,6 +565,9 @@ class Page():
                 # print(info)
                 if bool(except_type):
                     DataAccess.el_operate_log(self.menu_no, self.tst_case_id, '', self.class_name, except_type, info)
+                if is_from_btn and except_type != '用例异常':
+                    DataAccess.case_exec_log(self.tst_case_id, start_dt, end_dt, timeout_seconds, cost_seconds)
+
             # print('end time out waiting', timeout_seconds)
             return cost_seconds
 
@@ -573,7 +580,7 @@ class Page():
         :param idx:第idx个可见按钮
         """
         self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx, is_by_js=is_by_js)
-        self.query_timeout()
+        self.query_timeout(is_from_btn=True)
 
     def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True):
         """
@@ -1572,7 +1579,7 @@ class Page():
         else:
             raise AssertError('定位列{}在表格中的位置时报错！'.format(col_name))
 
-    def select_row(self, row_item):
+    def select_row(self, row_item, idx=1):
         """
         定位查询结果行, 不指定row_item，则默认为第一行
         :param row_item: 数据格式：能唯一定位表头的关键列名;要定位的列名;要定位的所在列值
@@ -1589,7 +1596,7 @@ class Page():
                 col_name = ls_row_items[1]
                 col_val = ls_row_items[2]
 
-            col_idx = self.calc_col_idx(loc_col_name, col_name)['COL_IDX']
+            col_idx = self.calc_col_idx(loc_col_name, col_name, idx)['COL_IDX']
             xpath = self.format_xpath_multi(self.baseLocators.SELECT_ROW, (loc_col_name, col_idx, col_val))
             el = self._find_displayed_element(xpath)
             if bool(el):

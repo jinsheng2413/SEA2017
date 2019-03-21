@@ -242,6 +242,20 @@ class DataAccess:
         pyoracle.insert(sql, para)
 
     @staticmethod
+    def case_exec_log(tst_case_id, start_time, end_time, config_seconds, actual_seconds):
+        pyoracle = PyOracle.getInstance()
+        sql = "insert into tst_case_exec (tst_case_id, computer_name, start_time, end_time, config_seconds, actual_seconds, project_no) " \
+              "  values (:1, :2, to_date(:3, 'yyyy-mm-dd hh24:mi:ss'), to_date(:4, 'yyyy-mm-dd hh24:mi:ss'), :5, :6, :7)"
+        para = (tst_case_id,
+                os.environ['COMPUTERNAME'],
+                start_time,
+                end_time,
+                config_seconds,
+                actual_seconds,
+                Setting.PROJECT_NO)
+        pyoracle.insert(sql, para)
+    
+    @staticmethod
     def load_tests_ByMenuList():
         """
         指定菜单用例清单

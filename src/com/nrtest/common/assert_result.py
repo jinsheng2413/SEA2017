@@ -273,7 +273,7 @@ class AssertResult():
             # 获取弹窗标题名
             if is_dynamic:
                 # 获取弹窗的动态窗口标题名
-                col_idx = self.calc_col_idx(case_result[0], case_result[2])['COL_IDX']
+                col_idx = self.calc_col_idx(case_result[0], case_result[2], int(case_result[6]))['COL_IDX']
                 xpath = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (case_result[0], case_result[3], col_idx))
                 dlg_title = self.tst_inst.driver.find_element(*xpath).text
             else:  # 固定窗口标题名
@@ -341,7 +341,7 @@ class AssertResult():
                 # skip_data_before.append(self.get_text(locator_qry))
             elif xpath_type in ['02', '04']:
                 loc_col_name = case_result[0]
-                col_idx = self.calc_col_idx(loc_col_name, map_rela[5])['COL_IDX']  # XPATH
+                col_idx = self.calc_col_idx(loc_col_name, map_rela[5], int(case_result[6]))['COL_IDX']  # XPATH
                 # locator = self.get_xpath(loc_col_name, case_result[3], col_idx, type=2)
                 locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (loc_col_name, case_result[3], col_idx))
                 val = self.tst_inst.driver.find_element(*locator).text

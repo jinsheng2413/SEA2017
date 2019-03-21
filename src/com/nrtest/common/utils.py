@@ -129,6 +129,12 @@ class Utils:
         day_end = '%d-%02d-%02d' % (day_now.tm_year, day_now.tm_mon, monthRange)
         return day_begin, day_end
 
+    @staticmethod
+    def now_str():
+        day_now = time.localtime()
+        str_dt = '%d-%02d-%02d %02d:%02d:%02d' % (day_now.tm_year, day_now.tm_mon, day_now.tm_mday, day_now.tm_hour, day_now.tm_min, day_now.tm_sec)
+        return str_dt
+
 
 if __name__ == '__main__':
-    Utils.get_day_range_of_month('2018/06/23')
+    print(Utils.now_str())

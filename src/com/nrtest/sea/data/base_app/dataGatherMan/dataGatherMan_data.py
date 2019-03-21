@@ -59,5 +59,12 @@ class DataGatherMan_data:
     # 基本应用→数据采集管理→数据发布(江西)
     synDayReadData_JX_para = '99913801'
 
-    # 基本应用--数据采集管理--采集质量检查（new）
-    gatherQualityCheck_para = '99913400'
+    # 基本应用→数据采集管理→采集质量检查(new)
+    dataGatherQualityAnalyze_new_para = '99913400'
+    dataGatherQualityAnalyze_new_Intime = '采集及时率'
+    dataGatherQualityAnalyze_new_readSuccess = '采集成功率'
+    dataGatherQualityAnalyze_new_readComplete = '采集完整率'
+    dataGatherQualityAnalyze_new_lowCurveCheck = '低压采集质量检查'
+    dataGatherQualityAnalyze_new_specialTransformerCheck = '专变采集质量检查'
+    dataGatherQualityAnalyze_new_backgroundTaskQuery = '后台任务查询'
+    dataGatherQualityAnalyze_new_taskSuccess = '采集任务成功率'

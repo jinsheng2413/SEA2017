@@ -164,3 +164,16 @@ class TreePBSLocators:
     # 不选中'//span[@class="button chk checkbox_false_full"'
     # 选中'//span[@class="button chk checkbox_true_full"'
     NODE_CHK = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/../span[starts-with(@class,"button chk checkbox")]')
+
+
+class TreeQualityLocators:
+    ROOT_IDS = {'指标类': "indexTreePanel", '采集质量类': 'collectionQualityTreePanel', '任务查询类': 'taskQueryTreePanel'}
+    # 根节点
+    # 关：class=" x-panel x-tree  x-panel-collapsed"
+    # 开：class=" x-panel x-tree "
+    NODE_ROOT = (By.XPATH, '//div[@id="{}"]')
+    # 关：class="x-tree-ec-icon x-tree-elbow-end-plus"
+    # 开：class="x-tree-ec-icon x-tree-elbow-end-minus"
+    NODE_LEVEL = (By.XPATH, '//div[@id="{}"]//span[text()="{}"]/../../a/preceding-sibling::img[contains(@class, "elbow")]')
+
+    LEEF_NODE = (By.XPATH, '//div[@id="{}"]//span[text()="{}"]')

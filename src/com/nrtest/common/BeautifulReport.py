@@ -429,7 +429,7 @@ class BeautifulReport(ReportTestResult, PATH):
                     # 页面弹窗判断处理
                     img_name = time.strftime('%Y%m%d%H%M%S') + '_' + func.__name__ + '.png'
                     popup = getattr(args[0], 'popup')
-                    dlg_src, action, info = popup(img_path, img_name, 4)
+                    dlg_src, action, info = popup(img_path, img_name, '', 4)
                     # action：00-没弹窗；01-截图，且抛异常；02-只截图，不抛异常；
                     #         03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
                     if action in ('01', '02', '04'):
@@ -480,10 +480,18 @@ class BeautifulReport(ReportTestResult, PATH):
             def __wrap(*args, **kwargs):
                 img_path = Setting.IMG_PATH
                 result = func(*args, **kwargs)
+
+                dlg_title = ''
+                if isinstance(result, dict):
+                    try:
+                        dlg_title = result['DLG_TITLE']
+                    except:
+                        pass
+
                 # 页面弹窗判断处理
                 popup = getattr(args[0], 'popup')
                 img_name = time.strftime('%Y%m%d%H%M%S') + '_' + func.__name__ + '.png'
-                dlg_src, action, info = popup(img_path, img_name, *pargs)
+                dlg_src, action, info = popup(img_path, img_name, dlg_title, *pargs)
                 # action：00-没弹窗；01-截图，且抛异常；02-只截图，不抛异常；
                 #        03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
                 if action in ('01', '02', '04'):
@@ -492,6 +500,10 @@ class BeautifulReport(ReportTestResult, PATH):
                     print(HTML_IMG_TEMPLATE.format(data))
                 if action in ['01', '04']:
                     raise PopupError(action, info if action == '04' else '对话框信息：{}'.format(info))
+
+                if dlg_src == 6 and action == '03':  # 来自跳转，且有符合期望的弹窗：高级应用→问题交流平台→知识库管理  能点击弹窗，但tag_name不是链接（a）的情况
+                    result['CLICKABLE'] = True
+
                 return result
 
             return __wrap

@@ -15,7 +15,7 @@ from selenium.webdriver import ActionChains
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
-from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators, TreeSingleUserLocators
+from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators, TreeSingleUserLocators, TreeQualityLocators
 
 
 class BaseTreePage(Page):
@@ -435,3 +435,56 @@ class TreeSingleUserPage(BaseTreePage):
         self.query_timeout()
 
         self.find_user_line(value)
+
+
+class TreeQualityPage(BaseTreePage):
+    def _find_in_parent(self, item, idx, items):
+        """
+        在父节点范围内查找
+        :param item:
+        :param idx:
+        :param items:
+        :return:
+        """
+        # 20-供电区域； 11-并且带复选框
+        # 30-行业；    31-并且带复选框
+        # 40-普通树；   41-并且带复选框；
+        # 50-群组
+
+        root_id = TreeQualityLocators.ROOT_IDS[items[0]]
+        levels = len(items) - 1  # 总层级数-1
+        if idx == levels:
+            locator = self.format_xpath(TreeQualityLocators.LEEF_NODE, (root_id, item))
+        else:
+            if idx == 0:
+                locator = self.format_xpath(TreeQualityLocators.NODE_ROOT, root_id)
+            else:
+                # 不带复选框的叶子节点只点击文本元素，不点击文本元素边上的图标元素
+                locator = self.format_xpath(TreeQualityLocators.NODE_LEVEL, (root_id, item))
+        return locator
+
+    def _node_click(self, element, curr_idx, node_levels, is_chk_node=False):
+        """
+
+        :param element:
+        :param curr_idx:当前节点序号：0 开始
+        :param node_levels:当前节点层级数：n -1
+        :param is_chk_node: True-既有节点，同时带复选框；False-只有节点，没复选框
+        """
+        self.node_list.append(element)
+        attrs = element.get_attribute('class').strip()
+
+        if is_chk_node:
+            # is_click = attrs.endswith(('full' if is_open else 'part')) or curr_idx == node_levels
+            # @TODO 含复选框的树在此处理
+            is_click = True
+        else:
+            # 关闭：class ="x-tree-ec-icon x-tree-elbow-end-plus"
+
+            # 打开：class ="x-tree-ec-icon x-tree-elbow-end-minus"
+            is_click = attrs.endswith('plus') or attrs.endswith('collapsed') or curr_idx == node_levels
+
+        # 状态不一致时点击
+        if is_click:
+            element.click()
+            sleep(1)

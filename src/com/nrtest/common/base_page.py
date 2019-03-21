@@ -92,7 +92,7 @@ class Page():
         """
         self.driver.get_screenshot_as_file(img_path + img_name)
 
-    def popup(self, img_path, img_name, *args):
+    def popup(self, img_path, img_name, dlg_title='', *args):
         """
         捕获弹窗信息，并判断处理
         :param img_path:截图存放路径
@@ -123,7 +123,7 @@ class Page():
 
         el = self._direct_find_element(self.baseLocators.POPUP_DLG)
         if bool(el) and el.is_displayed():  # 有对话框，且显示
-            info = '\r'.join(el.text.replace(' ', '').split('\n')[:-2])
+            info = '\r'.join(el.text.replace(' ', '').split('\n')[:6])  # [:-2])  # 有些正常弹窗数据太多
             # if '账号异常信息' in info:  # 测试用例执行过程中的“账号异常信息”弹窗属正常情况，不予处理
             #     action = '03'
             # elif dlg_src in (1, 3, 4, 6):  # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
@@ -144,7 +144,7 @@ class Page():
                             else:
                                 info = '期望提示框信息：' + dlg_info + '\r实际提示信息' + info
                 elif dlg_src == 6:
-                    action = '02'
+                    action = '03' if bool(dlg_title) and dlg_title in info.split('\r')[0] else '02'  # 处理符合期望的正常弹窗不要截图
                     key = '01' if find_except_dlg(info) else '02'
                     self.skip_except_dlg.append([key, info])
             elif dlg_src == 5:

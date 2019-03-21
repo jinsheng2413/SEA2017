@@ -28,8 +28,8 @@ class AssertResult():
     def save_img(self, img_path, img_name):
         self.tst_inst.save_img(img_path, img_name)
 
-    def popup(self, img_path, img_name, *args):
-        return self.tst_inst.popup(img_path, img_name, *args)
+    def popup(self, img_path, img_name, dlg_title='', *args):
+        return self.tst_inst.popup(img_path, img_name, dlg_title, *args)
 
     def assert_context(self, locator):
         """
@@ -96,10 +96,11 @@ class AssertResult():
         """
         #  IS_SKIPED：能点击，但不一定会跳转（没link时）；CLICKABLE：可点击，且不会报错
         skip_info = {'IS_SKIPED': True, 'LINK_TEXT': None, 'EL_A': None, 'CLICKABLE': False, 'EL_AFTER_A': None, 'AFTER_TEXT': '',
-                     'AFTER_ACTION': '01'}
+                     'AFTER_ACTION': '01', 'DLG_TITLE': case_result[2]}
         try:
             # 按下面代码执行会报这个错：'FirefoxWebElement' object does not support indexing
             # el_link = el_data_rows[int(case_result[3])].find_elements_by_xpath('./td[{}]//a'.format(col_pos_info['COL_IDX']))
+            is_multi_link = bool(link_xpath)  # 判断某列是否有多个链接
             if link_xpath is None:
                 link_xpath = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL,
                                                               (case_result[0], int(case_result[3]) + col_pos_info['HIDE_ROWS'],
@@ -107,7 +108,7 @@ class AssertResult():
             el_link = self.tst_inst._find_displayed_element(link_xpath)
             skip_info['EL_A'] = el_link.find_elements_by_xpath('.//a')
             skip_info['LINK_TEXT'] = el_link.text
-            skip_info['CLICKABLE'] = bool(skip_info['EL_A'])
+            skip_info['CLICKABLE'] = True if is_multi_link else bool(skip_info['EL_A'])
             self.tst_inst.scrollTo(el_link)
             el_link.click()
 
@@ -281,11 +282,7 @@ class AssertResult():
             # 跳转到目标页
             skip_info = self.skip_to_page(case_result, col_pos_info)
             if skip_info['CLICKABLE']:
-                sleep(2)
-                # 关闭窗口 已在base_page模块下的popup方法中统一处理弹窗关闭处理
-                # close_xpath = self.tst_inst.format_xpath(AssertResultLocators.WINDOWS_CLOSE, case_result[2])
-                # el = self.tst_inst._direct_find_element(close_xpath)
-                # el.click()
+                # sleep(2)
                 # 弹窗信息
                 self.dlg_info = self.tst_inst.get_skip_except_info('01')
                 is_skiped = dlg_title in self.dlg_info if bool(self.dlg_info) else False
@@ -563,7 +560,7 @@ class AssertResult():
                 skip_info = self.skip_to_page(case_result, col_pos_info, is_deal_after=True)
                 link_text = skip_info['LINK_TEXT']
                 org_name = self.tst_inst.get_input_val(case_result[2])
-                print('link_text:', link_text, org_name)
+                # print('link_text:', link_text, org_name)
                 if skip_info['CLICKABLE']:
                     if skip_info['IS_SKIPED']:
                         if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确

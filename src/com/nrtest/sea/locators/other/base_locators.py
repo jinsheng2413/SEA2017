@@ -143,8 +143,8 @@ class BaseLocators(Locators):
     TAB_PAGE = (By.XPATH, '//span[@class="x-tab-strip-text " and text()="{}"]')
 
     # 数据加载中
-    DATA_LOADING = (By.XPATH, '//div[@class="ext-el-mask-msg x-mask-loading"]')
-    DATA_LOADING1 = (By.XPATH, '//div[@class="x-panel-bwrap  x-masked-relative x-masked"]')
+    # DATA_LOADING = (By.XPATH, '//div[@class="ext-el-mask-msg x-mask-loading"]')
+    DATA_LOADING = (By.XPATH, '//div[starts-with(@class, "ext-el-mask-msg")]//div[contains(text(),"...")]')
 
     # 弹框处理
     # POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')

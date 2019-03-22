@@ -65,7 +65,7 @@ class MenuPage(Page):
         # PBS5000，用于区分每个菜单用到的左边树类型
         self.tree_type = ls_menu[2] if bool(ls_menu[2]) else '20'
         self.is_refresh = ls_menu[3]  # 关闭菜单时是否需要刷新页面
-
+        out_seconds = float(ls_menu[4])  # 菜单加载等待
         items = menu_path.split(';')
 
         # 菜单编号、菜单名
@@ -80,6 +80,7 @@ class MenuPage(Page):
             self._click_sea2017(items, action)
         else:
             self._click_common_menu(items, action)
+        sleep(out_seconds)
 
     def driver_action(self, menu_level, menu_levels):
         #     {'ACTION': '02', 'FIRST_LEVEL': 'N', 'LEVELS': ['2', '3']}

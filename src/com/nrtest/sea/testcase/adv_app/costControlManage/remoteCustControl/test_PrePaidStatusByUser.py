@@ -100,8 +100,8 @@ class TestPrePaidStatusByUser(TestCase, PrePaidStatusByUserPage):
     def test_query(self, para):
         """高级应用→费控管理→远程费控→远程费控执行统计:按用户执行统计
         """
-        self.query(para)
         self.start_case(para, __file__)
+        self.query(para)
         self.assert_query_result(para)
         self.end_case()
 

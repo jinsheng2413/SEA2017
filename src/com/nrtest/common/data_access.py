@@ -317,6 +317,25 @@ class DataAccess:
         return dataSet
 
     @staticmethod
+    def get_data_trans(trans_type, data_before):
+        """
+        # 15 - 终端地址转资产号；16 - 终端资产号转地址
+        """
+        if trans_type in ['15']:
+            sql = 'select asset_no from tst_asset_info \
+                    where asset_type = :1 \
+                      and asset_addr = :2'
+        else:
+            sql = 'select asset_addr from tst_asset_info \
+                                where asset_type = :1 \
+                                  and asset_no = :2'
+        asset_type = '01' if trans_type in ['15', '16'] else '02'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [asset_type, data_before])
+        # print(dataSet)
+        return dataSet[0][0]
+
+    @staticmethod
     def get_el_script_setup(script_type='01'):
         sql = 'select el_type, script_line, script \
                 from tst_element_script_setup t \
@@ -370,7 +389,7 @@ if __name__ == '__main__':
     # DataAccess.getMenu('99913210')
     # print(DataAccess.get_xpath_tab_data('DATE_TIME', '999132207', '采集完整率统计'))
     # pass
-    print(DataAccess.load_tests_ByMenuList())
+    print(DataAccess.get_data_trans('16', '8000000000010308'))
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
     # print(DataAccess.get_skip_data('999121003','备注-报文查询'))

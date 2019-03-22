@@ -445,6 +445,8 @@ class AssertResult():
                     data_before = day_begin if trans_type == '10' else day_end
                     if data_before == data_after:
                         is_skip_correct = True
+                elif trans_type in ('15', '16'):  # 15 - 终端地址转资产号；16 - 终端资产号转地址
+                    data_before = self.data_trans(trans_type, data_before)
                 elif trans_type == '14' and data_before != '0' and data_after != '没有数据':  # 基本应用→数据采集管理→采集质量分析→采集成功率:采集成功率统计  经“采集成功率”列跳转到明细页面
                     is_skip_correct = True
                 elif xpath_type == '04' and data_before == '0' and data_after == '没有数据':  # 取所在跳转的统计数据值
@@ -464,6 +466,17 @@ class AssertResult():
             print('\r跳转数据比对：跳转前--', skip_data_before, '--\r跳转后--', skip_data_after, '--\r跳转关系', map_rela_rslt)
             raise ex
         return is_pass
+
+    def data_trans(self, trans_type, data_before):
+        """
+        资产编号与地址之间互转
+        :param trans_type: 转换类型：15 - 终端地址转资产号；16 - 终端资产号转地址
+        :param data_before:
+        :param asset_type: 01-终端；02-电表
+        :return:
+        """
+        #
+        return DataAccess.get_data_trans(trans_type, data_before)
 
     def special_deal(self, is_special, col_name):
         """

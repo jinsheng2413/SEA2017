@@ -73,8 +73,6 @@ class TestPartitionNetLossQry(TestCase, PartitionNetLossQryPage):
         # 查询按钮
         self.btn_qry()
 
-        self.iframe_back(num=1)
-
     def assert_query_result(self, para):
         """
         查询结果校验

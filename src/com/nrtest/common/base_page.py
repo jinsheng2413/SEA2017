@@ -1632,10 +1632,10 @@ class Page():
         result = True
         return result
 
-    def waitLeftTree(self):
-        locators = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-plus"]')
-
-        WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
+    # def waitLeftTree(self):
+    #     locators = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-plus"]')
+    #
+    #     WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
 
     def double_click(self, locator):
         el = self._find_element(locator)

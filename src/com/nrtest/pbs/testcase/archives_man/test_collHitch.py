@@ -56,7 +56,7 @@ class test_CollHitch(TestCase, CollHitchPage):
 
         # 回收左边树
 
-        # self.closeLeftTree()
+        self.closeLeftTree()
 
     def query(self, para):
         """

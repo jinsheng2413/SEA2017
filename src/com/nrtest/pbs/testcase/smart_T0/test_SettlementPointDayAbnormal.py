@@ -7,13 +7,16 @@
 @time: 2019-03-15 09:44
 @desc:
 """
+from unittest import TestCase
+
+from ddt import ddt, data
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.pbs.data.smart_T0.smartTo_data import SmartTo_data
 from com.nrtest.pbs.page.smart_T0.settlementPointDayAbnormal_page import SettlementPointDayAbnormal_page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from unittest import TestCase
-from ddt import ddt, data
+
 
 @ddt
 # 智能研判-->结算点日异常
@@ -76,7 +79,7 @@ class Test_settlementpointdayabnormal(TestCase, SettlementPointDayAbnormal_page)
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SmartTo_data.SettlementPointDayAbnormal_para))
-    def test_query(self,para):
+    def test_query(self, para):
         """#智能研判-->结算点日异常
         """
         self.start_case(para, __file__)

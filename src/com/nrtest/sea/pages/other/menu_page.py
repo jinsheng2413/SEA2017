@@ -7,12 +7,9 @@
 @time: 2018/8/28 0028 13:45
 @desc:
 """
-from time import sleep
 from com.nrtest.common import global_drv
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.login import Login
 from com.nrtest.pbs.tree.tree_page import *
-from com.nrtest.pbs.tree.tree_locators import LeftTreeLocators
 from com.nrtest.pbs.tree.tree_page import TreePBSPage
 from com.nrtest.sea.locators.other.menu_locators import *
 
@@ -237,7 +234,7 @@ class MenuPage(Page):
         从BasePage类转来 MenuLocators
         :return:
         """
-        self.leftTree.colseLeftTree()
+        self.leftTree.closeLeftTree()
         # num = self._find_elements(self.locator_class.TREE_MINUS)
         #
         # el = self._direct_find_element(self.locator_class.TREE_END)
@@ -530,10 +527,11 @@ class MenuPage(Page):
                 self.closePages(menu[1])
             except Exception as e:
                 print('该菜单定位报错：', menu, e)
-    @staticmethod
-    def intoPBSIframe():
-        dr =global_drv.get_driver()
-        dr.switch_to.frame(LeftTreeLocators.ID)
+
+    # @staticmethod
+    # def intoPBSIframe():
+    #     dr =global_drv.get_driver()
+    #     dr.switch_to.frame(LeftTreeLocators.ID)
 
 
 if __name__ == '__main__':

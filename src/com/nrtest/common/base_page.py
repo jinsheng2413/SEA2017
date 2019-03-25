@@ -1006,7 +1006,7 @@ class Page():
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
-    def clickTabPage(self, tab_name, is_multi_tab=False, is_multi_elements=False,double=False):
+    def clickTabPage(self, tab_name, is_multi_tab=False, is_multi_elements=False, double=False):
         """
         打开Tab页
         :param tab_name:
@@ -1636,11 +1636,12 @@ class Page():
         locators = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-plus"]')
 
         WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
-    def double_click(self,locator):
+
+    def double_click(self, locator):
         el = self._find_element(locator)
         ActionChains(self.driver).double_click(el).perform()
 
-    def intoIframe(self,value):
+    def intoIframe(self, value):
         """
         进入iframe层
         :param value:
@@ -1648,7 +1649,7 @@ class Page():
         """
         self.driver.switch_to.frame(value)
 
-    def iframe_back(self,num=1):
+    def iframe_back(self, num=1):
         """
         1:返回主目录
         2:返回上一层
@@ -1656,18 +1657,15 @@ class Page():
         :return:
         """
         if num == 1:
-         self.driver.switch_to.default_content()
+            self.driver.switch_to.default_content()
         elif num == 2:
-          self.driver.switch_to.parent_frame()
+            self.driver.switch_to.parent_frame()
 
-    def ele_display(self,locator):
+    def ele_display(self, locator):
         try:
             return self.driver.find_element(*locator).is_displayed()
         except:
             return False
-
-
-
 
 
 if __name__ == '__main__':

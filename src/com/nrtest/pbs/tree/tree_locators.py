@@ -166,14 +166,15 @@ class TreePBSLocators:
     # 选中'//span[@class="button chk checkbox_true_full"'
     NODE_CHK = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/../span[starts-with(@class,"button chk checkbox")]')
 
+
 class LeftTreeLocators:
     ID = 'myIframe'
-    #判断有没有展开
-    TREE_ELEMENT_LOCATOR = (By.XPATH,'//*[@class="tabs-panels"]//*[text()="{}" and contains(@id,"tree")]')
-    #点击选中的目标
+    # 判断有没有展开
+    TREE_ELEMENT_LOCATOR = (By.XPATH, '//*[@class="tabs-panels"]//*[text()="{}" and contains(@id,"tree")]')
+    # 点击选中的目标
     TREE_ELEMENT_OPEN_LOCATOR = (By.XPATH, '//*[@class="tabs-panels"]//*[text()="{}" and contains(@id,"tree")]/../span[contains(@class,"open")]')
 
-    CLOSE_LFET_TREE = (By.XPATH,'//*[contains(@class,"center_open") and contains(@id,"tr")]')
+    CLOSE_LFET_TREE = (By.XPATH, '//*[contains(@class,"center_open") and contains(@id,"tr")]')
     CLOSE_LFET_ROOT_TREE = (By.XPATH, '//*[contains(@class,"root_open") and contains(@id,"tr")]')
 
     # 返回首页

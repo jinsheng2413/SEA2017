@@ -16,6 +16,7 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
+from com.nrtest.common.logger import Logger
 from com.nrtest.pbs.tree.tree_locators import TreePBSLocators, TreeLocators, TreeSingleUserLocators, TreeQualityLocators, LeftTreeLocators
 
 # create a logger instance
@@ -71,7 +72,7 @@ class BaseTreePage(Page):
         """
         pass
 
-    def colseLeftTree(self):
+    def closeLeftTree(self):
         # node = deepcopy(self.tree_node)
         # node['NODE_VALUE'].reverse()
         # self._operate_left_tree(node, False)
@@ -86,10 +87,10 @@ class BaseTreePage(Page):
         loc = LeftTreeLocators.CLOSE_LFET_TREE
         loc_root = LeftTreeLocators.CLOSE_LFET_ROOT_TREE
         els = self._find_elements(loc)
-        l = len(els)-1
-        while l>=0:
+        l = len(els) - 1
+        while l >= 0:
             els[l].click()
-            l -=1
+            l -= 1
         el = self._direct_find_element(loc_root)
         if el:
             el.click()
@@ -139,8 +140,6 @@ class BaseTreePage(Page):
         """
         pass
 
-
-
     def into_iframe(self):
         self.intoIframe(LeftTreeLocators.ID)
 
@@ -176,7 +175,7 @@ class BaseTreePage(Page):
         except Exception as ex:
             logger.error('输入错误:{}\n{}'.format(value, ex))
 
-    def curr_input(self, values,is_multi_elements=False,idx=1):
+    def curr_input(self, values, is_multi_elements=False, idx=1):
         """
         新版输入查询条件操作
         :param values:要输入的值
@@ -187,7 +186,7 @@ class BaseTreePage(Page):
             ls_values = values.split(';')
             loc = self.format_xpath(self.baseLocators.QRY_LOCATORS, ls_values[0])
             if is_multi_elements:
-                el = self._find_displayed_element(loc,idx=idx)
+                el = self._find_displayed_element(loc, idx=idx)
             else:
                 el = self._find_element(loc)
             el.clear()
@@ -263,7 +262,7 @@ class BaseTreePage(Page):
                     xpath = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN, ls_option[0])
 
                 if is_multi_elements:
-                    el = self._find_displayed_element(xpath,idx=idx)
+                    el = self._find_displayed_element(xpath, idx=idx)
                     el.click()
                 else:
                     self.click(xpath)
@@ -291,7 +290,8 @@ class BaseTreePage(Page):
         :param idx:第idx个可见按钮
         """
         self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx)
-    def clickCheckBox(self, items,name=False,number=False):
+
+    def clickCheckBox(self, items, name=False, number=False):
         """
         选择多个复选框
         :param items: “xpath的说明;确定一组复选框的class;复选框的值比如：'1,2'”
@@ -305,13 +305,13 @@ class BaseTreePage(Page):
             else:
                 is_group_check_box = ''
             loc1 = (self.baseLocators.UNCHECK_BOX[0],
-                     "//*[@class = " + '"' + is_group_check_box + '"' + "]" + self.baseLocators.UNCHECK_BOX[1])
+                    "//*[@class = " + '"' + is_group_check_box + '"' + "]" + self.baseLocators.UNCHECK_BOX[1])
 
             # 撤销已选项
             elements = self._find_elements(loc1)
             for el in elements:
-                 if el.is_selected():
-                        el.click()
+                if el.is_selected():
+                    el.click()
             if items.find(';') >= 0:
 
                 ls_items = (items.split(';')[2]).split(',')
@@ -323,9 +323,10 @@ class BaseTreePage(Page):
                 if ls_items[0] != '':
                     for item in ls_items:
 
-
                         if is_group_check_box != '':
-                            name_xpath = (self.baseLocators.CHECK_BOX[0],"//*[@class = "+ '"'+is_group_check_box+'"'+"]" +self.baseLocators.CHECK_BOX[1])
+                            name_xpath = (
+                                self.baseLocators.CHECK_BOX[0],
+                                "//*[@class = " + '"' + is_group_check_box + '"' + "]" + self.baseLocators.CHECK_BOX[1])
                             loc = self.format_xpath(name_xpath, item)
                         else:
                             loc = self.format_xpath(self.baseLocators.CHECK_BOX, item)
@@ -336,8 +337,8 @@ class BaseTreePage(Page):
 
                         if is_group_check_box != '':
                             number_xpath = (self.baseLocators.UNCHECK_BOX[0],
-                                     "(//*[@class = " + '"' + is_group_check_box + '"' + "]" + self.baseLocators.UNCHECK_BOX[
-                                         1]+")[{}]")
+                                            "(//*[@class = " + '"' + is_group_check_box + '"' + "]" + self.baseLocators.UNCHECK_BOX[
+                                                1] + ")[{}]")
                             loc = self.format_xpath(number_xpath, item)
                         else:
                             loc = self.format_xpath(self.baseLocators.CHECK_BOX, item)
@@ -364,18 +365,18 @@ class BaseTreePage(Page):
             if len(item) == 0:
                 raise BaseException('单选框必须指定选择项：{}'.format(option))
             if name:
-                    group_xpath = (self.baseLocators.CHECK_BOX[0],
-                                   "//*[@class = " + '"' + ls_option[1] + '"' + "]" +
-                                   self.baseLocators.RADIOBOX_LABEL2INPUT[
-                                      1])
-                    lis_item = item.split(',')
-                    for it in lis_item:
-                        xpath = self.format_xpath(group_xpath, item)
-                        if is_multi_elements:
-                            el = self._find_displayed_element(xpath)
-                            el.click()
-                        else:
-                            self.click(xpath)
+                group_xpath = (self.baseLocators.CHECK_BOX[0],
+                               "//*[@class = " + '"' + ls_option[1] + '"' + "]" +
+                               self.baseLocators.RADIOBOX_LABEL2INPUT[
+                                   1])
+                lis_item = item.split(',')
+                for it in lis_item:
+                    xpath = self.format_xpath(group_xpath, item)
+                    if is_multi_elements:
+                        el = self._find_displayed_element(xpath)
+                        el.click()
+                    else:
+                        self.click(xpath)
             elif number:
                 group_xpath = (self.baseLocators.CHECK_BOX[0],
                                "//*[@class = " + '"' + ls_option[1] + '"' + "]" +
@@ -391,33 +392,34 @@ class BaseTreePage(Page):
                         self.click(xpath)
 
             else:
-             xpath = self.format_xpath(self.baseLocators.RADIOBOX_LABEL2INPUT, item)
-             if is_multi_elements:
-                 el = self._find_displayed_element(xpath)
-                 el.click()
-             else:
-                 self.click(xpath)
+                xpath = self.format_xpath(self.baseLocators.RADIOBOX_LABEL2INPUT, item)
+                if is_multi_elements:
+                    el = self._find_displayed_element(xpath)
+                    el.click()
+                else:
+                    self.click(xpath)
 
 
 
         except BaseException as ex:
             print('点击单选框失败：{}'.format(ex))
 
-    def click_button(self,value,is_multi_eles=False,idx=1):
+    def click_button(self, value, is_multi_eles=False, idx=1):
 
-       try:
-           ls_option = value.split(';')
-           loc = self.format_xpath(self.baseLocators.QRY_BUTTON, ls_option[1])
-           if is_multi_eles:
-               el = self._find_displayed_element(loc, idx)
-           else:
-               el = self._find_element(loc)
-           el.click()
+        try:
+            ls_option = value.split(';')
+            loc = self.format_xpath(self.baseLocators.QRY_BUTTON, ls_option[1])
+            if is_multi_eles:
+                el = self._find_displayed_element(loc, idx)
+            else:
+                el = self._find_element(loc)
+            el.click()
 
-           logger.info('点击元素：{}'.format(loc))
-       except BaseException as e:
-           logger.error('点击元素失败:{}\n{}'.format(loc, e))
-    def click_xpath(self,value,is_multi_eles=False,idx=1):
+            logger.info('点击元素：{}'.format(loc))
+        except BaseException as e:
+            logger.error('点击元素失败:{}\n{}'.format(loc, e))
+
+    def click_xpath(self, value, is_multi_eles=False, idx=1):
         """
         页面按钮是图片需要在处理xpath，在数据库配置xpath，来实现操作
         :param value: 配置的值'查询按钮;//*[@id='search_btn']'
@@ -428,7 +430,7 @@ class BaseTreePage(Page):
         try:
             ls_option = value.split(';')
             # loc = self.format_xpath(self.baseLocators.QRY_BUTTON, ls_option[1])
-            loc = (self.baseLocators.QRY_BUTTON[0],ls_option[1])
+            loc = (self.baseLocators.QRY_BUTTON[0], ls_option[1])
             if is_multi_eles:
                 el = self._find_displayed_element(loc, idx)
             else:

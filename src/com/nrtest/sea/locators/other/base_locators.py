@@ -253,7 +253,7 @@ class BasePbsLocators(Locators):
     # 弹框处理
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
     POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
-    #--------------------------------------
+    # --------------------------------------
     # 输入框
     QRY_LOCATORS = (By.XPATH, '//*[text()="{}"]/..//input')
     QRY_LINE_LOCATORS = (By.XPATH, '//*[text()="{}"]/following-sibling::td[1]//input')

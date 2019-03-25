@@ -7,18 +7,20 @@
 @time: 2019-03-15 10:52
 @desc:
 """
+from unittest import TestCase
+
+from ddt import ddt, data
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.pbs.data.smart_T0.smartTo_data import SmartTo_data
 from com.nrtest.pbs.page.smart_T0.eleQuantity_page import EleQuantity_page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
-from unittest import TestCase
-from ddt import ddt, data
 
 
 # 智能研判-->电量短信
 @ddt
-class Test_ele_quantity(TestCase,EleQuantity_page):
+class Test_ele_quantity(TestCase, EleQuantity_page):
 
     @classmethod
     def setUpClass(cls):

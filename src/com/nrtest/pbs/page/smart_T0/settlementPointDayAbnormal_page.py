@@ -9,11 +9,10 @@
 """
 from com.nrtest.pbs.tree.tree_page import TreePBSPage
 
-#智能研判-->结算点日异常
+
+# 智能研判-->结算点日异常
 class SettlementPointDayAbnormal_page(TreePBSPage):
 
-	#日期
-	def inputDt_query_date(self,value):
-	   self.inputDate(value)
-
-
+    # 日期
+    def inputDt_query_date(self, value):
+        self.inputDate(value)

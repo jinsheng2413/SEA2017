@@ -8,39 +8,40 @@
 @desc:
 """
 from com.nrtest.pbs.tree.tree_page import TreePBSPage
+
+
 class CountFormula_page(TreePBSPage):
-    #计算公式
-    def inputStr_formula_name(self,value):
+    # 计算公式
+    def inputStr_formula_name(self, value):
         self.input(value)
 
-    #公式别名
-    def inputStr_formula_alias(self,value):
+    # 公式别名
+    def inputStr_formula_alias(self, value):
         self.curr_input(value)
 
-    #计算时间间隔
+    # 计算时间间隔
     def inoutSel_conputer_Interval(self, value):
         self.selectDropDown(value)
 
+    # 所属对象
+    def inputStr_object(self, value):
+        self.curr_input(value, is_multi_elements=True)
 
-    #所属对象
-    def inputStr_object(self,value):
-        self.curr_input(value,is_multi_elements=True)
-
-    #分时时标
-    def inputStr_minute_scale(self,value):
+    # 分时时标
+    def inputStr_minute_scale(self, value):
         self.inputDate(value)
 
-    #开始时
-    def inputStr_day_time(self,value):
+    # 开始时
+    def inputStr_day_time(self, value):
         self.inputDate(value)
 
     # 开始时
     def inputStr_month_time(self, value):
-            self.inputDate(value)
+        self.inputDate(value)
 
-    #公式类型
-    def inoutSel_formula_type(self,value):
-         self.selectDropDown(value)
+    # 公式类型
+    def inoutSel_formula_type(self, value):
+        self.selectDropDown(value)
 
     def btn_qry(self):
-        self.btn_query(is_multi_tab=True,btn_name='确认')
+        self.btn_query(is_multi_tab=True, btn_name='确认')

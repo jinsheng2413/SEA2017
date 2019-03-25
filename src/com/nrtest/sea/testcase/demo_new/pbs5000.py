@@ -9,10 +9,8 @@
 """
 from unittest import TestCase
 
-from ddt import ddt, data
+from ddt import ddt
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
-from com.nrtest.pbs.page.countFormula_page import CountFormula_page
 from com.nrtest.pbs.tree.tree_page import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
@@ -54,7 +52,7 @@ class TestPBS5000(TestCase, TreePage):
         测试结束后的操作，这里基本上都是关闭浏览器
         """
         sleep(5)
-        self.colseLeftTree()
+        self.closeLeftTree()
 
     def test_query(self):
         """PBS500菜单及左边树功能测试

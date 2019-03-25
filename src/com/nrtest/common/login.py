@@ -69,7 +69,8 @@ class Login:
         is_failed = True
         while is_failed:
             #  关闭登陆页面的TIP窗口 2019-03-05
-            loginPage.close_tip()
+            if Setting.CLOSE_TIP == 'yes':
+               loginPage.close_tip()
             loginPage.input_username(self.username)
             loginPage.input_password(self.password)
             if self.is_valid_mask:  # 是否需要验证码判断 yes是；no否
@@ -104,7 +105,7 @@ class Login:
 
 if __name__ == '__main__':
     login = Login()
-    drv = login.login()
+    login.login()
     # cookie = drv.get_cookies()
     # for i in cookie:
     #     print(i)

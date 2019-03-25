@@ -24,7 +24,7 @@ class Test_settlementpointdayabnormal(TestCase, SettlementPointDayAbnormal_page)
         # 打开菜单（需要传入对应的菜单编号）
         menuPage = MenuPage.openMenu(SmartTo_data.SettlementPointDayAbnormal_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
-        menuPage.intoPBSIframe()
+        cls.goto_frame(cls)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         # menuPage.clickTabPage()
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码

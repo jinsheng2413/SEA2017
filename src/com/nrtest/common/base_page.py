@@ -1242,7 +1242,7 @@ class Page():
         except NameError as ex:
             logger.error('悬停失败：{}'.format(ex))
 
-    def goto_frame(self, frame_obj=0):
+    def goto_frame(self, frame_obj='myIframe'):
         """
         进入iframe层
         :param frame_obj:frame序号，name， id or (By.TAG_NAME, '')

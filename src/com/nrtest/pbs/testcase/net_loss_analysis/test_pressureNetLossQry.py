@@ -27,7 +27,7 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
         menuPage = MenuPage.openMenu(NetLossAnalysis_data.pressureNetLossQry_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.intoPBSIframe()
+        cls.goto_frame(cls)
         menuPage.clickTabPage(NetLossAnalysis_data.pressureNetLossQry_tab_qry)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
@@ -50,7 +50,7 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.closeLeftTree_double()
+        self.closeLeftTree()
 
     def query(self, para):
         """

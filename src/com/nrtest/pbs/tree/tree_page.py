@@ -236,50 +236,50 @@ class BaseTreePage(Page):
         except BaseException as e:
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
 
-    def selectDropDown(self, option, sleep_sec=0, is_multi_elements=False, is_equalText=False, is_line=False, idx=1):
-        """
-        下拉单选框选择
-        :param option: 参数格式：查询条件标签名;查询条件
-        :param is_multi_tab: 多Tab页时，如果查询条件有重复，则该值填True
-        :param sleep_sec:休眠n秒
-        :param is_multi_elements:是否存在重复元素
-        :param is_equalText: True-下拉选择值需完全匹配，Fase-部分匹配
-        :param byImg: 存在点下拉框下拉图标时，不能弹出下拉选择的问题，True-下拉框下拉图标，False-下拉框的INPUT
-        """
-        if (option.find(';') == -1):
-            print('............请配置查询条件的标签值............')
-        else:
-            ls_option = option.split(';')
-            if len(ls_option) == 2:
-                item = ls_option[1]
-            else:
-                item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
-            if bool(item):
-                # 打开下拉框
-                if is_line:
-                    xpath = self.format_xpath(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
-                else:
-                    xpath = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN, ls_option[0])
-
-                if is_multi_elements:
-                    el = self._find_displayed_element(xpath, idx=idx)
-                    el.click()
-                else:
-                    self.click(xpath)
-
-                if bool(sleep_sec):
-                    sleep(sleep_sec)
-
-                # 根据名称选择下拉框
-                if is_equalText:
-                    loc = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN_ELE, item)
-                else:
-                    loc = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN_ELE, item)
-                self.click(loc)
-            else:  # 选择值为空时，表示选择全部
-                xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0])
-                el = self._find_displayed_element(xpath)
-                self.driver.execute_script("arguments[0].value=arguments[1]", el, '')
+    # def selectDropDown(self, option, sleep_sec=0, is_multi_elements=False, is_equalText=False, is_line=False, idx=1):
+    #     """
+    #     下拉单选框选择
+    #     :param option: 参数格式：查询条件标签名;查询条件
+    #     :param is_multi_tab: 多Tab页时，如果查询条件有重复，则该值填True
+    #     :param sleep_sec:休眠n秒
+    #     :param is_multi_elements:是否存在重复元素
+    #     :param is_equalText: True-下拉选择值需完全匹配，Fase-部分匹配
+    #     :param byImg: 存在点下拉框下拉图标时，不能弹出下拉选择的问题，True-下拉框下拉图标，False-下拉框的INPUT
+    #     """
+    #     if (option.find(';') == -1):
+    #         print('............请配置查询条件的标签值............')
+    #     else:
+    #         ls_option = option.split(';')
+    #         if len(ls_option) == 2:
+    #             item = ls_option[1]
+    #         else:
+    #             item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
+    #         if bool(item):
+    #             # 打开下拉框
+    #             if is_line:
+    #                 xpath = self.format_xpath(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
+    #             else:
+    #                 xpath = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN, ls_option[0])
+    #
+    #             if is_multi_elements:
+    #                 el = self._find_displayed_element(xpath,idx=idx)
+    #                 el.click()
+    #             else:
+    #                 self.click(xpath)
+    #
+    #             if bool(sleep_sec):
+    #                 sleep(sleep_sec)
+    #
+    #             # 根据名称选择下拉框
+    #             if is_equalText:
+    #                 loc = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN_ELE, item)
+    #             else:
+    #                 loc = self.format_xpath(self.baseLocators.QRY_SELECT_DROP_DOWN_ELE, item)
+    #             self.click(loc)
+    #         else:  # 选择值为空时，表示选择全部
+    #             xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0])
+    #             el = self._find_displayed_element(xpath)
+    #             self.driver.execute_script("arguments[0].value=arguments[1]", el, '')
 
     @BeautifulReport.add_popup_img()
     def btn_query(self, is_multi_tab=False, btn_name='', idx=1):

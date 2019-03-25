@@ -93,6 +93,8 @@ class TestChangeLossBrowseQuery(TestCase, ChangeLossBrowseQueryPage):
     @data(*DataAccess.getCaseData(LineLossAnalysis_data.changeLossBrowse_para,
                                   LineLossAnalysis_data.changeLossBrowse_tab_query))
     def test_query(self, para):
+        """线损分析→变损浏览:变损查询
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

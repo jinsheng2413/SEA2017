@@ -12,7 +12,6 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
-from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.business_change.businessChange_data import BusinessChange_data
 from com.nrtest.pbs.page.business_change.changeTableOperate_page import ChangeTableOperatePage
 from com.nrtest.pbs.tree.tree_page import *
@@ -93,6 +92,8 @@ class TestChangeTableOperate(TestCase, ChangeTableOperatePage):
     @data(*DataAccess.getCaseData(BusinessChange_data.ChangeTableOperate_para,
                                   BusinessChange_data.ChangeTableOperate_tabName_operate))
     def test_query(self, para):
+        """业务变更→换表操作:换表操作
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -3,8 +3,8 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_fullSizeProcess_qry.py
-@time: 2019-03-12 15:41
+@file: test_pressureNetLossQry.py
+@time: 2019-03-15 14:38
 @desc:
 """
 
@@ -12,23 +12,23 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
-from com.nrtest.pbs.data.business_change.businessChange_data import BusinessChange_data
-from com.nrtest.pbs.page.business_change.fullSizeProcess_page import FullSizeProcessQryPage
+from com.nrtest.pbs.data.net_loss_analysis.netLossAnalysis_data import NetLossAnalysis_data
+from com.nrtest.pbs.page.net_loss_analysis.pressureNetLossQry_page import PressureNetLossQryPage
 from com.nrtest.pbs.tree.tree_page import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 业务变更→满码处理:满码处理查询
+# 网损分析→分压网损查询:网损查询
 @ddt
-class TestFullSizeProcess_qry(TestCase, FullSizeProcessQryPage):
+class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(BusinessChange_data.FullSizeProcess_para)
+        menuPage = MenuPage.openMenu(NetLossAnalysis_data.pressureNetLossQry_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         menuPage.intoPBSIframe()
-        menuPage.clickTabPage(BusinessChange_data.FullSizeProcess_tabName_qry)
+        menuPage.clickTabPage(NetLossAnalysis_data.pressureNetLossQry_tab_qry)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
 
@@ -60,12 +60,17 @@ class TestFullSizeProcess_qry(TestCase, FullSizeProcessQryPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
 
-        # 当前位置
-        self.openLeftTree(para['TREE_NODE'])
+        self.sleep_time(2)
+        # 区域
+        self.inputSel_area(para['AREA'])
+        # 时间方案
+        self.inputChk_date_type(para['DATE_TYPE'])
         # 开始时间
         self.inputDt_start_date(para['START_DATE'])
         # 结束时间
         self.inputDt_end_date(para['END_DATE'])
+        # TAB页名称
+        self.inputChk_tab_name(para['TAB_NAME'])
         # 查询按钮
         self.btn_qry()
 
@@ -87,10 +92,10 @@ class TestFullSizeProcess_qry(TestCase, FullSizeProcessQryPage):
         self.assertTrue(result)
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(BusinessChange_data.FullSizeProcess_para,
-                                  BusinessChange_data.FullSizeProcess_tabName_qry))
+    @data(*DataAccess.getCaseData(NetLossAnalysis_data.pressureNetLossQry_para,
+                                  NetLossAnalysis_data.pressureNetLossQry_tab_qry))
     def test_query(self, para):
-        """业务变更→换表操作:换表操作
+        """网损分析→分压网损查询:网损查询
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -98,8 +103,8 @@ class TestFullSizeProcess_qry(TestCase, FullSizeProcessQryPage):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(BusinessChange_data.FullSizeProcess_para,
-                                  BusinessChange_data.FullSizeProcess_tabName_qry, valCheck=True))
+    @data(*DataAccess.getCaseData(NetLossAnalysis_data.pressureNetLossQry_para,
+                                  NetLossAnalysis_data.pressureNetLossQry_tab_qry, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

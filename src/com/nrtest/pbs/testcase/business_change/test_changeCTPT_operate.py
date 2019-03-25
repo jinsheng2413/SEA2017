@@ -87,6 +87,8 @@ class TestChangeCTPT_operate(TestCase, ChangeCTPTOperatePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(BusinessChange_data.ChangeCTPT_para, BusinessChange_data.ChangeCTPT_tabName_operate))
     def test_query(self, para):
+        """业务变更→换CT/PT:换CTPT操作
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

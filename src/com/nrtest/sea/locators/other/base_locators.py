@@ -176,7 +176,7 @@ class BasePbsLocators(Locators):
 
     # 【下拉框】
     # 下拉选择点击按钮
-    SEL_CHECKBOX = (By.XPATH, '//label[normalize-space(text())="{}"]/..//img')
+    SEL_CHECKBOX = (By.XPATH, '//*[text()="{}"]/..//a[1]')
 
     # 【下拉复选框相关】
     # 取消所有已选项
@@ -187,7 +187,7 @@ class BasePbsLocators(Locators):
 
     # 【下拉单选框相关】
     # 下拉单选项选择
-    DROPDOWN_OPTION = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]')
+    DROPDOWN_OPTION = (By.XPATH, '//*[@class="panel combo-p" and contains(@style,"block")]//div[text()="{}"]')
 
     # 【单选框】
     # 根据标签找input

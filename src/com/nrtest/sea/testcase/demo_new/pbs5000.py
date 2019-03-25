@@ -9,8 +9,10 @@
 """
 from unittest import TestCase
 
-from ddt import ddt
+from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.pbs.page.countFormula_page import CountFormula_page
 from com.nrtest.pbs.tree.tree_page import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 

@@ -97,7 +97,7 @@ class Setting():
 
 if __name__ == '__main__':
     p = Setting()
-    print(p.PROJECT_PATH)
+    print(p.PROJECT_NO)
     print(Setting.BASE_PATH)
     print(Setting.IMG_PATH)
     print(Setting.REPORT_PATH)

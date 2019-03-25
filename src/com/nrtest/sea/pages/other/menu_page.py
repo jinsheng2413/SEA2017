@@ -7,11 +7,13 @@
 @time: 2018/8/28 0028 13:45
 @desc:
 """
-
+from time import sleep
 from com.nrtest.common import global_drv
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.login import Login
 from com.nrtest.pbs.tree.tree_page import *
+from com.nrtest.pbs.tree.tree_locators import LeftTreeLocators
+from com.nrtest.pbs.tree.tree_page import TreePBSPage
 from com.nrtest.sea.locators.other.menu_locators import *
 
 
@@ -35,6 +37,7 @@ class MenuPage(Page):
             self.leftTree = TreePBSPage(self)
         elif self.project_no.endswith('JLZDH'):
             self.locator_class = MenuJLZDHLocators
+
         print('执行【{}】项目的菜单元素'.format(self.project_no))
 
     @staticmethod
@@ -164,6 +167,9 @@ class MenuPage(Page):
         if flag in ('1', '3'):  # 1-点击/3-新窗口
             if isinstance(object, tuple):
                 self.click(object)
+                # or_T = self._direct_find_element(object)
+                # if or_T != None:
+                #    self.click(object)
             else:
                 object.click()
             if flag == '3':  # 新窗口
@@ -524,6 +530,10 @@ class MenuPage(Page):
                 self.closePages(menu[1])
             except Exception as e:
                 print('该菜单定位报错：', menu, e)
+    @staticmethod
+    def intoPBSIframe():
+        dr =global_drv.get_driver()
+        dr.switch_to.frame(LeftTreeLocators.ID)
 
 
 if __name__ == '__main__':

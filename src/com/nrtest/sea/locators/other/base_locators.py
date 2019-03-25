@@ -225,7 +225,8 @@ class BasePbsLocators(Locators):
 
     # 【单选框】
     # 根据标签找input
-    RADIOBOX_LABEL2INPUT = (By.XPATH, '//label[@class="x-form-cb-label"and text()="{}"]/preceding-sibling::input')
+    RADIOBOX_LABEL2INPUT = (By.XPATH, '//label[text()="{}"]/preceding-sibling::input[1]')
+    RADIOBOX_INPUT2LABEL_NUM = (By.XPATH, '//input[{}]')
 
     RADIOBOX_INPUT2LABEL = (By.XPATH, '//input[@type="radio" and @{}="{}"]/../label[@text()="{}"')
 
@@ -247,11 +248,26 @@ class BasePbsLocators(Locators):
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 
     # 定位一个菜单页面内的某一Tab页
-    TAB_PAGE = (By.XPATH, '//span[@class="x-tab-strip-text " and text()="{}"]')
+    TAB_PAGE = (By.XPATH, '//span[@class="tabs-title" and text()="{}"]')
 
     # 弹框处理
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')
     POPUP_DLG_CONFIRM = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]//button[text()="确定"]')
+    #--------------------------------------
+    # 输入框
+    QRY_LOCATORS = (By.XPATH, '//*[text()="{}"]/..//input')
+    QRY_LINE_LOCATORS = (By.XPATH, '//*[text()="{}"]/following-sibling::td[1]//input')
+    # 按钮
+    QRY_BUTTON = (By.XPATH, '//*[text()="{}"]')
+    # 打开下拉框图标
+    QRY_SELECT_DROP_DOWN = (By.XPATH, '//*[text()="{}"]/..//a[1]')
+    QRY_LINE_SELECT_DROP_DOWD = (By.XPATH, '//*[text()="{}"]//following-sibling::td[1]//a')
+    # 选中下拉框
+    QRY_SELECT_DROP_DOWN_ELE = (By.XPATH, '//*[@class="panel combo-p" and contains(@style,"block")]//div[text()="{}"]')
+    # 选中复选框
+    CHECK_BOX = (By.XPATH, '//label[text()="{}"]')
+    # 清楚复选框
+    UNCHECK_BOX = (By.XPATH, '//input[@type="checkbox"]')
 
 
 

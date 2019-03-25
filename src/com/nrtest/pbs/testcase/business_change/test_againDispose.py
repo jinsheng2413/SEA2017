@@ -82,8 +82,6 @@ class TestAgainDispose(TestCase, AgainDisposePage):
             # 提交按钮
             self.btn_commit()
 
-        self.iframe_back(num=1)
-
     def assert_query_result(self, para):
         """
         查询结果校验

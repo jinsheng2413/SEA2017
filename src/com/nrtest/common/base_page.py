@@ -984,7 +984,7 @@ class Page():
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
-    def clickCheckBox_new(self, options, is_multi_tab=False, data_dict=None):
+    def clickCheckBox_new(self, options, is_multi_tab=False, data_dict=None, by_order=False):
         """
         选择多个复选框【checkBox的name或id不一致时调用此方法】
         :param options: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
@@ -998,7 +998,11 @@ class Page():
             ls_items = ls_option[2].split(',')
             data_dict = data_dict if bool(data_dict) else DataAccess.get_data_dictionary(ls_option[1])
             for data in data_dict:
-                xpath = self.format_xpath_multi(self.baseLocators.SINGLE_CHECK_BOX, data, is_multi_tab=is_multi_tab)
+                if by_order:
+                    xpath = self.format_xpath_multi(self.baseLocators.CHECK_BOX_BY_ORDER, (ls_option[0], int(data_dict[data])),
+                                                    is_multi_tab=is_multi_tab)
+                else:
+                    xpath = self.format_xpath_multi(self.baseLocators.SINGLE_CHECK_BOX, data, is_multi_tab=is_multi_tab)
                 el = self._find_displayed_element(xpath)
                 is_select = data in ls_items
                 if is_select != el.is_selected():

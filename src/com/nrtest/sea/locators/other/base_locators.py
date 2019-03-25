@@ -125,6 +125,9 @@ class BaseLocators(Locators):
     # 单个复选框
     SINGLE_CHECK_BOX = (By.XPATH, '//label[text()="{}"]/..//input[@type="checkbox"]')
 
+    # 根据复选框顺序定位
+    CHECK_BOX_BY_ORDER = (By.XPATH, '//label[text()="{}"]/..//input[{}]')
+
     # 被选择的复选框
     CHKBOX_UNCHECK_ALL = (By.XPATH, '//input[@type="checkbox" and @{}="{}" and @checked=""]')
 
@@ -233,6 +236,9 @@ class BasePbsLocators(Locators):
     # 【复选框】
     # 单个复选框
     SINGLE_CHECK_BOX = (By.XPATH, '//label[text()="{}"]/..//input[@type="checkbox"]')
+
+    # 根据复选框顺序定位
+    CHECK_BOX_BY_ORDER = (By.XPATH, '//label[text()="{}"]/..//input[{}]')
 
     # 被选择的复选框
     CHKBOX_UNCHECK_ALL = (By.XPATH, '//input[@type="checkbox" and @{}="{}" and @checked=""]')

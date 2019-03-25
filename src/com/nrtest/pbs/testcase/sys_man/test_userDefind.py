@@ -91,7 +91,7 @@ class test_UserDefind(TestCase, UserDefindPage):
     @data(*DataAccess.getCaseData(Sysman_data.userDefind_para))
     def test_query(self, para):
         """ 数据查询→谣测值
- """
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -201,7 +201,7 @@ class DataAccess:
         else:
             rslt = {}
             for row in dataSet:
-                rslt.setdefault(row[0], row[1])
+                rslt.setdefault(row[1], row[0])
         return rslt
 
     @staticmethod

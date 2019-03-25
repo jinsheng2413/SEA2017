@@ -37,7 +37,7 @@ class test_CollHitch(TestCase, CollHitchPage):
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
-        cls.iframe_back(cls, num=1)
+        cls.goto_home_iframe(cls)
 
         # 关闭菜单页面
         cls.main_page(cls)

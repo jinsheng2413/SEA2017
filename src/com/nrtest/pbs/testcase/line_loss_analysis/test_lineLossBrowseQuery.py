@@ -37,7 +37,7 @@ class TestLineLossBrowseQuery(TestCase, LineLossBrowseQueryPage):
         print('执行结束')
         # 刷新浏览器
         # cls.closePages(cls)
-        # cls.goto_home_iframe(cls)
+        cls.goto_home_iframe(cls)
         cls.main_page(cls)
 
     def setUp(self):
@@ -73,12 +73,13 @@ class TestLineLossBrowseQuery(TestCase, LineLossBrowseQueryPage):
         self.btn_qry()
 
 
+
     def assert_query_result(self, para):
         """
         查询结果校验
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        # self.assertTrue(AssertResult(self).check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

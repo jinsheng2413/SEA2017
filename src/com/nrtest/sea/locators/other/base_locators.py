@@ -198,6 +198,7 @@ class BaseLocators(Locators):
 
 class BasePbsLocators(Locators):
     # 多个TAB页情况下的元素定位附加内容: '//div[@class =" x-panel x-panel-noborder  x-hide-display"]'
+    MENU_PAGE_ID = ''
     # 预留
     MULTI_TAB = ''
 
@@ -247,9 +248,9 @@ class BasePbsLocators(Locators):
     CHKBOX_INPUT2LABEL = (By.XPATH, '//input[@type="checkbox" and @{}="{}"]/../label[text()="{}"]')
 
     # 【按钮类元素】，如：查询按钮
-    BTN_QRY = (By.XPATH, '//button[normalize-space(text())="{}"]')
-    BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
-
+    # BTN_QRY = (By.XPATH, '//button[normalize-space(@title)="{}"]')
+    # BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
+    BTN_QRY = (By.XPATH, '//button[starts-with(@class, "but icon-search serach_btn_xy")]')
     # 确定
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 

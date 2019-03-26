@@ -12,6 +12,7 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.line_loss_analysis.lineLossAnalysis_data import LineLossAnalysis_data
 from com.nrtest.pbs.page.line_loss_analysis.lineLossBrowse_page import LineLossBrowseCollectPage
 from com.nrtest.pbs.tree.tree_page import *
@@ -28,7 +29,7 @@ class TestLineLossBrowseCollect(TestCase, LineLossBrowseCollectPage):
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         cls.goto_frame(cls)
-        # menuPage.clickTabPage()
+        menuPage.clickTabPage(LineLossAnalysis_data.lineLossBrowse_tab_collect)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
 
@@ -38,7 +39,7 @@ class TestLineLossBrowseCollect(TestCase, LineLossBrowseCollectPage):
         # 刷新浏览器
         # cls.closePages(cls)
         cls.goto_home_iframe(cls)
-        cls.main_page(cls)
+        # cls.main_page(cls)
 
     def setUp(self):
         """
@@ -50,7 +51,7 @@ class TestLineLossBrowseCollect(TestCase, LineLossBrowseCollectPage):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.closeLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
         """
@@ -59,16 +60,17 @@ class TestLineLossBrowseCollect(TestCase, LineLossBrowseCollectPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        id = 'external-frame'
-        self.intoIframe(id)
+        # self.goto_frame(para['IFRAME'])
+        self.goto_frame()
+
+        # id = 'external-frame'
+        # self.intoIframe(id)
         # 区域
-        self.inputSel_area(para['AREA'])
-        # 时间方案
-        self.inputChk_date_type(para['DATE_TYPE'])
+        # self.inputSel_area(para['AREA'])
+        # # 时间方案
+        # self.inputChk_date_type(para['DATE_TYPE'])
         # 查询按钮
         self.btn_qry()
-
-
 
     def assert_query_result(self, para):
         """

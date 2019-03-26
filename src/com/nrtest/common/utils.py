@@ -130,10 +130,9 @@ class Utils:
         return day_begin, day_end
 
     @staticmethod
-    def now_str():
-        day_now = time.localtime()
-        str_dt = '%d-%02d-%02d %02d:%02d:%02d' % (day_now.tm_year, day_now.tm_mon, day_now.tm_mday, day_now.tm_hour, day_now.tm_min, day_now.tm_sec)
-        return str_dt
+    def now_str(now=None):
+        now = now if bool(now) else time.time()
+        return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(now))
 
 
 if __name__ == '__main__':

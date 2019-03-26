@@ -154,11 +154,11 @@ class MenuPBSLocators:
     MENU_LEVEL1 = (By.XPATH, '//div[@id="project_head"]//p[@class="menu_p" and text()="{}"]')
 
     # 选择二级菜单	 @class="nav-item selectMenu active"
-    MENU_LEVEL2 = (By.XPATH, '//div[@id="project_head"]//li[@class="nav-item selectMenu"]//p[text()="{}"]')
-
+    # MENU_LEVEL2 = (By.XPATH, '//div[@id="project_head"]//li[@class="nav-item selectMenu"]//p[text()="{}"]')
+    MENU_LEVEL2 = (By.XPATH, '//div[@id="menu_nav_div"]//li[starts-with(@class, "nav-item selectMenu")]//p[text()="{}"]')
     # 当前活动菜单页面
-    # ACTIVE_MENU_PAGE = (By.XPATH, '//div[@id="project_head"]//li[@class="nav-item selectMenu active"]//p[text()="{}"]')
-    ACTIVE_MENU_PAGE = (By.XPATH, '//div[@id="project_head"]//li[@class="nav-item selectMenu active"]')
+    # ACTIVE_MENU_PAGE = (By.XPATH, '//div[@id="project_head"]//li[@class="nav-item selectMenu active"]')
+    ACTIVE_MENU_PAGE = (By.XPATH, '//div[@id="menu_nav_div"]//li[@class="nav-item selectMenu active"]')
 
     # 返回首页:
     # //div[@id="project_head"]//li[@title="返回首页"]

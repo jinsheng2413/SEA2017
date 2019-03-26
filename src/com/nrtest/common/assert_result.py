@@ -5,7 +5,7 @@
 @license: (C) Copyright 2018, Nari.
 @file: assert_result.py
 @time: 2019/1/15 0015 9:32
-@desc:江西期间整改调试，并优化
+@desc:江西期间整改调试，并优化--ljf
 """
 from time import sleep
 
@@ -125,9 +125,6 @@ class AssertResult():
             if is_deal_after:
                 # sleep(2)
                 el_after_click = self.tst_inst._find_displayed_element(link_xpath)
-                # if bool(el_after_click):
-                #     skip_info['EL_AFTER_A'] = el_after_click.find_elements_by_xpath('.//a')
-                #     skip_info['AFTER_TEXT'] = el_after_click.text if bool(el_after_click) else ''
                 if bool(el_after_click):
                     el_a = el_after_click.find_elements_by_xpath('.//a')
                     # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
@@ -244,7 +241,6 @@ class AssertResult():
         :return:
         """
         xpath = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_BY_INPUT, (case_result[0], case_result[1]))
-        # val = self.get_text(xpath)
         el = self.tst_inst._find_displayed_element(xpath)
         val = el.get_attribute('value')
         if case_result[2] == val:
@@ -304,8 +300,6 @@ class AssertResult():
         if is_find:
             col_pos_info['HIDE_ROWS'] = first_row_idx
             self.skip_to_page(case_result, col_pos_info)
-            # xpath = self.tst_inst.format_xpath(AssertResultLocators.MENU_NAME, case_result[2])
-            # res = self.assert_context(xpath)
             res = self.assert_page_name(case_result[2])
             self.tst_inst.menuPage.closePage(page_name=case_result[2])
         else:
@@ -330,19 +324,15 @@ class AssertResult():
             xpath_type = map_rela[4]
             if xpath_type == '01':  # 页面元素类型：XPATH_TYPE 【01-查询条件（XPATH)】;02-表格列对应值;03-表格列名;04-读取统计数与明细对比
                 # 把查询条件的xpath转换为对应查询条件中文名
-                # menu_xpath_data = DataAccess.get_xpath_tab_data(map_rela[5], case_data['TST_CASE_ID'], case_data['TAB_NAME'])  # XPATH
                 menu_xpath_data = DataAccess.get_menu_xpath_data(case_data['MENU_NO'], case_data['TAB_NAME'], map_rela[5])
                 if menu_xpath_data[1] in ('04', '05', '07'):
                     val = self.tst_inst.get_para_value(case_data[map_rela[5]])
                 else:
                     val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2])
                 skip_data_before.append(val)
-                # locator_qry = self.get_xpath(menu_xpath_list[0])
-                # skip_data_before.append(self.get_text(locator_qry))
             elif xpath_type in ['02', '04']:
                 loc_col_name = case_result[0]
                 col_idx = self.calc_col_idx(loc_col_name, map_rela[5], int(case_result[6]))['COL_IDX']  # XPATH
-                # locator = self.get_xpath(loc_col_name, case_result[3], col_idx, type=2)
                 locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (loc_col_name, case_result[3], col_idx))
                 val = self.tst_inst.driver.find_element(*locator).text
                 skip_data_before.append(val)
@@ -360,62 +350,32 @@ class AssertResult():
         :param menu_name: True-跳转目标为菜单；False-跳转目标为Tab页
         :return:
         """
-        # 休眠2秒，等待跳转页面加载:WAIT_FOR_TARGET
-        # seconds = case_result[5]
-        # if seconds > 0:  # 按loading元素等待，超时不抛异常
-        #     try:
-        #         self.tst_inst.query_timeout(timeout_seconds=seconds)
-        #     except:
-        #         pass
-        # else:
-        #     sleep(abs(seconds))
-
-        # print('STEP-0')
         skip_data_after = []
         for i, map_rela in enumerate(map_rela_rslt):
-            # print('STEP-1', map_rela)
             xpath_type = map_rela[4]  # XPATH_TYPE
             if xpath_type == '04' and map_rela[8] is None:  # 读取跳转页的查询结果总数  TARGET_XPATH
                 try:
-                    # print('STEP-2')
                     # ********************************************@TODO 弹窗窗口的记录总数需验证测试******
                     loc = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_TOTAL_ROW,
                                                      (case_result[2] if is_menu else self.tst_inst.menu_name))
                     total_text = Utils.replace_chrs(self.tst_inst._find_displayed_element(loc).text, ' \r\n\t')
                     val = total_text.split('/')[-1]
                     skip_data_after.append(val)
-                    # print('STEP-3')
                 except:
                     skip_data_after.append('0')
-                    # print('STEP-4')
             else:
                 try:
-                    # print('SETUP-5 MENU_NO:{}'.format(map_rela[12]))
-                    # print('SETUP-5 TAB_NAME:{}'.format(map_rela[6]))
-                    # print('SETUP-5 XPATH:{}'.format(map_rela[8]))
                     menu_xpath_data = DataAccess.get_menu_xpath_data(map_rela[12], map_rela[6],
                                                                      map_rela[8])  # TARGET_MENU_NO / TARGET_TAB_NAME/  TARGET_XPATH
-                    # print('SETUP-6 xpath_name:{}'.format(menu_xpath_list[0]))
-                    # print('SETUP-6 use_share_xpath:{}'.format(menu_xpath_list[1]))
-                    # print('SETUP-6 option_name:{}'.format(menu_xpath_list[2]))
-                    # print('SETUP-6  menu_name{}'.format(map_rela[13]))
                     if menu_xpath_data[1] in ('04', '05', '07'):  # 单选框/复选框处理
                         val = self.tst_inst.get_input_val(skip_data_before[i], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
                     else:
                         val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
-                    # print('STEP_7')
+
                     skip_data_after.append(val)
-                    # print('STEP_8')
-                    # v_xpath = self.get_xpath(menu_xpath_list[0])
-                    # self.tst_inst.sleep_time(1)
-                    # text = self.get_text(v_xpath)
-                    # skip_data_after.append(text)
                 except:
-                    # print('STEP-9')
                     logger.error('跳转的新页面/窗口需配置等待加载时间或TST_COL_LINK_RELA.TARGET_XPATH={}配置错误！'.format(map_rela[8]))
-                    # print('STEP-10')
                     return None
-        # print('skip_data_after:', skip_data_after)
         return skip_data_after
 
     def check_skip_data(self, col_pos_info, map_rela_rslt, row_idx, skip_data_before, skip_data_after):
@@ -581,10 +541,6 @@ class AssertResult():
 
                         # 跳转后的相关判断处理
                         after_text = skip_info['AFTER_TEXT']
-                        # if after_text.endswith('所'):  # 跳转后没值或到供电所时，停止跳转
-                        #     break
-                        # elif not bool(skip_info['EL_AFTER_A']):  # 校验列没有链接；
-                        #     raise AssertError('“{}”没查询结果，无法继续下钻，请检查是否合理！'.format(link_text))
 
                         # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
                         after_action = skip_info['AFTER_ACTION']
@@ -603,27 +559,6 @@ class AssertResult():
                     print('STEP-2')
                     break
 
-            # while True:
-            #     # 定位列名；校验列名；期望值(校验值)；定位行号;是否特殊处理
-            #     skip_info = self.skip_to_page(case_result, col_pos_info)
-            #     link_text = skip_info['LINK_TEXT']
-            #     org_name = self.tst_inst.get_input_val(case_result[2])
-            #     if skip_info['IS_SKIPED']:
-            #         # 跳转后的链接值
-            #         after_text = skip_info['AFTER_TEXT']
-            #         if not bool(skip_info['EL_A']) or after_text is None or after_text.endswith('所'):  # 校验列没有链接；跳转后没值或到供电所时，停止跳转
-            #             break
-            #         if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确
-            #             raise AssertError('当前供电单位“{}”下钻失败， “{}”不是期望的供电单位！'.format(link_text, org_name))
-            #     elif not bool(skip_info['EL_A']):
-            #         DataAccess.el_operate_log(self.tst_inst.menu_no, self.tst_inst.tst_case_id, None, self.tst_inst.class_name, '跳转失败' + assert_type,
-            #                                   '“{}”没查询结果，故对下属单位下钻失败！'.format(org_name))
-            #         is_skiped = False
-            #         break
-            #     else:
-            #         is_skiped = False
-            #         break
-
             org_node = DataAccess.get_org_node_by_name(original_org_name)
             self.tst_inst.openLeftTree(org_node)
             self.tst_inst.btn_qry()
@@ -635,27 +570,14 @@ class AssertResult():
 class AssertResultLocators:
     # 弹窗的关闭xpath
     WINDOWS_CLOSE = (By.XPATH, '//*[text()="{}"]/../div[1]')
-    # WINDOWS_CLOSE_NEW = (By.XPATH, '//div[@class=" x-window x-resizable-pinned"]//span[@class="x-window-header-text" and text()="{}"]')
-
-    # 弹窗页面的
-    # WINDOWS_PAGE = (By.XPATH, '//*[@class=" x-window x-window-plain x-resizable-pinned"]')
 
     # 弹窗标题
-    # WINDOWS_NAME = (By.XPATH,  '//span[text()="{}"]')
     DLG_TITLE = (By.XPATH, '//div[@class=" x-window x-resizable-pinned"]//span[@class="x-window-header-text" and text()="{}"]')
 
     # 菜单页的名称
     MENU_NAME = (By.XPATH, '//span[@class="x-tab-strip-inner"]/span[contains(text(),"{}")]')
 
-    # DISPLAY_ELEMENT = (
-    #     By.XPATH, '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]')
-
-    # 要滚动到的目标位置
-    # DISPLAY_NUM = (By.XPATH, '(//*[text()="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[1]/td[{}]')
-
     # 【显示区】
-    # 显示区显示表头，
-    # TABLE_HEAD = (By.XPATH, '//div[text()="{}"]/ancestor::div[contains(@class,"x-grid-with-col-lines") and not(contains(@class, "x-hide-display"))]//div[@class="x-grid3-viewport"]//tr[@class="x-grid3-hd-row"]')
 
     # 判断是否有查询结果
     QUERY_RESULT = (By.XPATH,
@@ -671,29 +593,11 @@ class AssertResultLocators:
     # 查询结果非显示区，是输入框(第一个值代表是哪个区域的，第二个值是代表那个输入框)
     QUERY_RESULT_BY_INPUT = (By.XPATH, '//span[text()="{}"]/../..//label[text()="{}"]/../..//input')
 
-    # DISPLAY_LINE = (By.XPATH,
-    #                 '(//*[text()="{0}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]//tr)[{1}]/td[{2}]')
-    # DISPLAY_LINE_NEW = (By.XPATH,
-    #                     '// *[text() ="{}"]/ancestor::div[@class="x-grid3-viewport"]//table[@class="x-grid3-row-table"]/ancestor::div[@class="x-grid3-viewport"]//*[@class="x-grid3-header"]//td//*[text()="{}"]')
-
-    # 空格
-    # DISPLAY_BLANK = (By.XPATH, '//div[@class="x-grid3-row-checker"]')
-
     # input输入框
     INPUT_BASE_GU = (By.XPATH, '//label[text()= "{}"]/../div[@class=\"x-form-element\"]//input')
 
     # link 数据是否对应(显示区右下角查询的数据总量)
-    # LINK_TOTAL_ROW_INFO = (By.XPATH, '(//*[@id="UserDistStat_DetailGrid"]//tr[@class="x-toolbar-right-row"]//div[@class="xtb-text"])[1]')
     QUERY_RESULT_TOTAL_ROW = (By.XPATH, '//div[@id="{}"]//tr[@class="x-toolbar-right-row"]//div[@class="xtb-text"]')
-    # 删除空格
-    # CLEAN_BLANK = r'''var elements,el,txt;
-    #                     elements= document.evaluate("%s", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-    #                     for (var i = 0; i < elements.snapshotLength; i++) {
-    #                         el= elements.snapshotItem(i);
-    #                         txt = el.innerText.replace(new RegExp(/[\s:：\-\(\)（）]/,'g'), '');
-    #                         if (txt != el.innerText)
-    #                             el.innerText = txt
-    #                     }'''
 
 
 if __name__ == '__main__':

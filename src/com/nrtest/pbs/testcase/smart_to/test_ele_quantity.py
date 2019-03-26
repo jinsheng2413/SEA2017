@@ -13,8 +13,8 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.pbs.data.smart_T0.smartTo_data import SmartTo_data
-from com.nrtest.pbs.page.smart_T0.eleQuantity_page import EleQuantity_page
+from com.nrtest.pbs.data.smart_to.smartTo_data import SmartTo_data
+from com.nrtest.pbs.page.smart_to.eleQuantity_page import EleQuantity_page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 

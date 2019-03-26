@@ -536,9 +536,7 @@ class Page():
         """
         if timeout_seconds == 0:
             timeout_seconds = self.timeout_seconds
-        # print('start time out waiting', timeout_seconds)
         if timeout_seconds > 0:
-            start_dt = Utils.now_str()
             start_time = time.time()
             sec = 2
             sleep(sec)
@@ -547,28 +545,23 @@ class Page():
                 loc = locator if bool(locator) else self.baseLocators.DATA_LOADING
                 WebDriverWait(self.driver, timeout_seconds - sec).until_not(EC.visibility_of_element_located(loc))
                 end_time = time.time()
-                end_dt = Utils.now_str()
                 cost_seconds = round(end_time - start_time, 2)
                 except_type = ''
             except TimeoutException as te:
                 end_time = time.time()
-                cost_seconds = timeout_seconds  # round(time.time() - start_time, 2)
+                cost_seconds = timeout_seconds
                 except_type = '用例超时'
                 info = '用例要求<={}秒，实际耗时>{}秒。'.format(timeout_seconds, cost_seconds)
                 raise te
             except Exception as ex:
-                # cost_seconds = round(time.time() - start_time, 2)
                 except_type = '用例异常'
                 info = ex.__str__()
                 raise ex
             finally:
-                # print(info)
                 if bool(except_type):
                     DataAccess.el_operate_log(self.menu_no, self.tst_case_id, '', self.class_name, except_type, info)
                 if is_from_btn and except_type != '用例异常':
-                    DataAccess.case_exec_log(self.tst_case_id, start_dt, end_dt, timeout_seconds, cost_seconds)
-
-            # print('end time out waiting', timeout_seconds)
+                    DataAccess.case_exec_log(self.tst_case_id, Utils.now_str(start_time), Utils.now_str(end_time), timeout_seconds, cost_seconds)
             return cost_seconds
 
     @BeautifulReport.add_popup_img()
@@ -1184,7 +1177,7 @@ class Page():
         if switch_mode:
             for handle in all_handles[:-1]:
                 self.driver.switch_to.window(handle)
-                print(self.driver.title)
+                # print(self.driver.title)
                 self.driver.close()  # 关闭窗口
         self.driver.switch_to.window(all_handles[-1])
 
@@ -1193,7 +1186,7 @@ class Page():
 
     def goto_main_window(self, close_others=True):
         """
-        关闭除首页外的其他窗口
+        返回到首页过程中的操作处理
         :param close_others: True-关闭其他窗口，False-保留其他窗口
         """
         # 获取所有窗口句柄
@@ -1246,15 +1239,26 @@ class Page():
         except NameError as ex:
             logger.error('悬停失败：{}'.format(ex))
 
-    def goto_frame(self, frame_obj='myIframe'):
+    def goto_frame(self, frame_obj=0):
         """
         进入iframe层
         :param frame_obj:frame序号，name， id or (By.TAG_NAME, '')
         """
         logger.info('进入 %s 的iframe层', frame_obj)
-        object = frame_obj
-        if isinstance(frame_obj, tuple):
+        # object = frame_obj
+        # if isinstance(frame_obj, tuple):
+        #     object = self._find_element(frame_obj)
+        if isinstance(frame_obj, str) and frame_obj.find(';') > 0:
+
+            try:
+                object = frame_obj.split(';')[1]
+                object = int(object)
+            except:
+                object = 0
+        elif isinstance(frame_obj, tuple):
             object = self._find_element(frame_obj)
+        else:
+            object = frame_obj
         return self.driver.switch_to.frame(object)
 
     def goto_parent_iframe(self):
@@ -1471,7 +1475,7 @@ class Page():
             self.commonWait(self.baseLocators.BTN_CONFIRM)
             self.driver.find_element(*self.baseLocators.BTN_CONFIRM).click()
         except Exception as e:
-            print('')
+            pass
 
     def closePages(self, page_name='工作台', isCurPage=True):
         """
@@ -1645,31 +1649,31 @@ class Page():
         el = self._find_element(locator)
         ActionChains(self.driver).double_click(el).perform()
 
-    def intoIframe(self, value):
-        """
-        进入iframe层
-        :param value:
-        :return:
-        """
-        self.driver.switch_to.frame(value)
-
-    def iframe_back(self, num=1):
-        """
-        1:返回主目录
-        2:返回上一层
-        :param num:默认是返回主目录
-        :return:
-        """
-        if num == 1:
-            self.driver.switch_to.default_content()
-        elif num == 2:
-            self.driver.switch_to.parent_frame()
-
-    def ele_display(self, locator):
-        try:
-            return self.driver.find_element(*locator).is_displayed()
-        except:
-            return False
+    # def intoIframe(self, value):
+    #     """
+    #     进入iframe层 goto_frame
+    #     :param value:
+    #     :return:
+    #     """
+    #     self.driver.switch_to.frame(value)
+    #
+    # def iframe_back(self, num=1):
+    #     """
+    #     1:返回主目录
+    #     2:返回上一层
+    #     :param num:默认是返回主目录:1-goto_home_iframe;2-goto_parent_iframe
+    #     :return:
+    #     """
+    #     if num == 1:
+    #         self.driver.switch_to.default_content()
+    #     elif num == 2:
+    #         self.driver.switch_to.parent_frame()
+    #
+    # def ele_display(self, locator):
+    #     try:
+    #         return self.driver.find_element(*locator).is_displayed()
+    #     except:
+    #         return False
 
 
 if __name__ == '__main__':

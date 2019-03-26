@@ -8,9 +8,9 @@
 @desc:
 """
 from com.nrtest.common import global_drv
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.login import Login
 from com.nrtest.pbs.tree.tree_page import *
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
 from com.nrtest.sea.locators.other.menu_locators import *
 
 
@@ -46,7 +46,6 @@ class MenuPage(Page):
         """
         menuPage = MenuPage(global_drv.get_driver())
         menuPage.click_menu(menuNo)
-        sleep(1)
         return menuPage
 
     @BeautifulReport.add_popup_img(3)
@@ -65,7 +64,7 @@ class MenuPage(Page):
         # PBS5000，用于区分每个菜单用到的左边树类型
         self.tree_type = ls_menu[2] if bool(ls_menu[2]) else '20'
         self.is_refresh = ls_menu[3]  # 关闭菜单时是否需要刷新页面
-        out_seconds = float(ls_menu[4])  # 菜单加载等待
+        timeout_sec = float(ls_menu[4])  # 菜单加载等待
         items = menu_path.split(';')
 
         # 菜单编号、菜单名
@@ -75,20 +74,11 @@ class MenuPage(Page):
         self.menu_path = ls_menu[-1] + '-->' + '-->'.join(items[1:])
         print('开始执行：{} 相关用例....\r'.format(self.menu_path))
 
-        # self.menu_para = DataAccess.get_menu_setup(self.project_no)
         if self.project_no == 'SEA':
             self._click_sea2017(items, action)
         else:
             self._click_common_menu(items, action)
-        sleep(out_seconds)
-
-    def driver_action(self, menu_level, menu_levels):
-        #     {'ACTION': '02', 'FIRST_LEVEL': 'N', 'LEVELS': ['2', '3']}
-        if self.menu_para['FIRST_LEVEL'] == 'Y':
-            is_pass = menu_level < menu_levels and menu_level >= self.menu_para['LEVELS']
-        else:
-            is_pass = menu_level < menu_levels and str(menu_level) in self.menu_para['LEVELS']
-        return self.menu_para['ACTION'] if is_pass else '01'
+        sleep(timeout_sec)
 
     def _click_sea2017(self, items, action='01'):
         """
@@ -164,9 +154,6 @@ class MenuPage(Page):
         if flag in ('1', '3'):  # 1-点击/3-新窗口
             if isinstance(object, tuple):
                 self.click(object)
-                # or_T = self._direct_find_element(object)
-                # if or_T != None:
-                #    self.click(object)
             else:
                 object.click()
             if flag == '3':  # 新窗口
@@ -212,7 +199,7 @@ class MenuPage(Page):
         curr_page_title = self.get_titile()
 
         # 判断是否是首页
-        is_home_page = curr_page_title == self.main_page_title  # Setting.PAGE_TILE
+        is_home_page = curr_page_title == self.main_page_title
         if is_home_page:
             return is_home_page
 
@@ -235,25 +222,6 @@ class MenuPage(Page):
         :return:
         """
         self.leftTree.closeLeftTree()
-        # num = self._find_elements(self.locator_class.TREE_MINUS)
-        #
-        # el = self._direct_find_element(self.locator_class.TREE_END)
-        # if len(num) == 0 and el == None:
-        #     return 0
-        # is_exists = el.is_displayed() if bool(el) else False
-        # if is_exists:
-        #     counter = len(num) - 1
-        #     while counter >= 0:
-        #         if num[counter] is self.locator_class.TREE_END:
-        #             self.click(self.locator_class.TREE_END)
-        #         else:
-        #             num[counter].click()
-        #         counter = counter - 1
-        #     num_end = self._find_elements(self.locator_class.TREE_END)
-        #     counter_end = len(num_end) - 1
-        #     while counter_end >= 0:
-        #         num_end[counter_end].click()
-        #         counter_end -= 1
 
     def closePage(self, page_name=None):
         """
@@ -265,9 +233,7 @@ class MenuPage(Page):
         menu_loc = self.format_xpath(self.locator_class.CURR_MENU, menu_name)
         try:
             sleep(1.5)
-            # print('closing menu window {}'.format(menu_loc[1]))
             self.driver.find_element(*menu_loc).click()
-            # print('closed menu window {}'.format(menu_loc[1]))
         except Exception as ex:
             print('定位菜单：{} 报错，错误信息：{}\r'.format(menu_name, ex))
 
@@ -286,22 +252,6 @@ class MenuPage(Page):
             else:
                 menus = (self.locator_class.WORKBENCH, page_name)
             loc = self.format_xpath(self.locator_class.CLOSE_OTHERS_MENU, menus)
-
-            # # 定位到要右击的元素
-            # loc = self.format_xpath(self.locator_class.CURRENT_MENU, page_name)
-            # right_click = self.driver.find_element(*loc)
-            # # WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
-            # # 鼠标右键操作
-            # ActionChains(self.driver).context_click(right_click).perform()
-            #
-            # # 定位右键菜单,并点击
-            # forMenu = '关闭其他所有页' if isCurPage or page_name == '工作台' else '关闭当前页'
-            # loc = self.format_xpath(self.locator_class.CLOSE_PAGES, forMenu)
-            # try:
-            #     WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(loc))
-            # except:
-            #     loc = self.format_xpath(self.locator_class.CLOSE_PAGES_SPE, forMenu)
-            #     print(loc)
             self.driver.find_element(*loc).click()
 
         if self.is_refresh == 'Y':
@@ -316,117 +266,12 @@ class MenuPage(Page):
         if bool(el) and el.is_displayed():
             el.click()
 
-        # try:
-        #     # MenuLocators
-        #     WebDriverWait(self.driver, 2).until(EC.element_to_be_clickable(self.locator_class.BTN_LEFT_MENU))
-        #     el = self.driver.find_element(*self.locator_class.BTN_LEFT_MENU)
-        #     if el.is_displayed():  # 左边树没显示时打开
-        #         el.click()
-        # except:
-        #     # print('左边树菜单栏已经打开')
-        #     pass
-
-    # 左边树
-    def btn_plus(self, index):
-        locator = self.get_select_locator(self.locator_class.BTN_LEFT_PLUS, index)
-        self.click(locator)
-
-    def btn_company_plus(self, index):
-        locator = self.get_select_locator(self.locator_class.BTN_COMPANY_PLUS, index)
-        # print(locator)
-        self.click(locator)
-
-    def btn_select_province(self):
-        """
-        选择省份
-        """
-        self.click(self.locator_class.BTN_LEFT_MENU_ELETRIC)
-
-    def btn_select_company(self, number):
-        """
-        选择公司
-        :param number:
-        """
-        nb = number + 1
-        lr = self.get_select_locator(self.locator_class.BTN_COMPANY, nb)
-        self.click(lr)
-
-    def btn_left_arrow(self):
-        """
-        点击双向箭头
-        """
-        self.click(self.locator_class.BTN_LEFT_MENU)
-
-    def btn_select_county(self, index):
-        """
-        选择县
-        :param index:
-        """
-        lr = self.get_select_locator(self.locator_class.BTN_COUNTY, index)
-        self.click(lr)
-
-    def btn_select_user(self, index):
-        """
-        选供电所
-        :param index:
-        """
-        lr = self.get_select_locator(self.locator_class.BTN_COUNTY_AND_USER, index)
-        self.click(lr)
-
-    def btn_suitable_arrow(self):
-        txt = self._find_element((By.TAG_NAME, 'body')).text
-        hp = '电网结构' in txt
-        if hp is False:
-            self.btn_left_arrow()
-        else:
-            print('省份选择错误')
-
     def click_left_tree_tab(self, tab_name):
         xpath = self.format_xpath(self.locator_class.TAB_PAGE, tab_name)
         self.click(xpath)
 
-
-    # 选择左边树
-    # def btn_left_tree(self, tree_no):
-    #     self.sleep_time(2)
-    #     tree = DataAccess.getLeftTree(tree_no)
-    #     self.click_left_tree_tab('供电区域')
-    #     # self.click(BaseLocators.POWER_SUPPLY_AREA)
-    #
-    #     # self.btn_suitable_arrow()
-    #     items = tree.split(';')
-    #     l = len(items)
-    #
-    #     if l == 2: # 选市公司
-    #         self.btn_plus(1)
-    #         self.btn_select_company(int(items[1]))
-    #         # print(int(items[1]))
-    #     elif l in (3, 4): # 选县公司、供电所
-    #         self.btn_plus(1)  # 点击省公司加号
-    #         if int(items[1]) == 5:  # 承德供电公司的加号xpath与前4个有所区别需要做特殊处理
-    #             self.btn_plus(1)
-    #         else:
-    #             self.waitLeftTree()
-    #             self.btn_company_plus(items[1])
-    #         if l == 3:
-    #             self.waitLeftTree()
-    #             # self.btn_select_county(int(items[2]) + 1)  # 点击公司加号 ljf 2019-03-06
-    #             self.btn_select_county(int(items[2]))  # 点击公司加号
-    #         else:
-    #             self.waitLeftTree()
-    #             # self.btn_company_plus(int(items[2]) + int(items[1]))  # 点击公司加号 ljf 2019-03-06
-    #             self.btn_company_plus(int(items[2]))
-    #             self.waitLeftTree()
-    #             # self.btn_select_user(int(items[3]) + 1)  # ljf 2019-03-06
-    #             self.btn_select_user(int(items[3]))
-    #     elif l == 1:  # 选省公司
-    #         self.btn_select_province()
-    #
-    #     return self.driver
     def btn_left_tree(self, node_no):
-        # self.sleep_time(2)
         self.leftTree.openLeftTree(node_no)
-        return self.driver
 
     def btn_user_nodes(self, node_flag, node_value, number=1):
 
@@ -444,7 +289,7 @@ class MenuPage(Page):
         if node_flag in (
                 # 选用户Tab页的用户
                 '02', '03', '04',
-                #  选用户Tab页的台区
+                # 选用户Tab页的台区
                 '12', '13', '14',
                 # 选终端Tab页的采集点编号/终端地址
                 '22', '23'
@@ -460,7 +305,6 @@ class MenuPage(Page):
                 loc_btn_qry = self.locator_class.USER_TAB_BTN_QRY
                 table_rslt_id = 'leftUserGrid'
 
-                # self.click(self.locator_class.NODE_USER)
             # 选用户查询类型
             if node_flag in ('02', '03', '04'):
                 self.specialDropdown('用户查询类型;;', self.locator_class.SEL_USER_TYPE, locator_clean=self.locator_class.SEL_USER_TYPE)
@@ -485,7 +329,6 @@ class MenuPage(Page):
             self.query_timeout(self.locator_class.LEFT_TREE_LOADING, 60)  # @TODO 60秒不建议写死，建议后续改为可配置
 
             # 等待查询结果，最好通过其他途径判断查询已返回 @TODO 需增加是否有查询结果判断处理
-            # self.commonWait(self.locator_class.NODE_USER_TAB_RSLT_DEFAULT)
             self.clear(self.locator_class.NODE[node_flag])
 
             # 定位查询结果，默认选择第一行记录

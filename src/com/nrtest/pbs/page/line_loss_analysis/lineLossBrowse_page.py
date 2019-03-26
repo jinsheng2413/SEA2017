@@ -7,13 +7,12 @@
 @time: 2019-03-14 15:12
 @desc:
 """
-
+from com.nrtest.common.base_page import Page
 from com.nrtest.pbs.locators.line_loss_analysis.lineLossBrowse_locators import *
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
 
 
 # 线损分析→线损浏览:线损汇总
-class LineLossBrowseCollectPage(TreePBSPage):
+class LineLossBrowseCollectPage(Page):
     # 区域
     def inputSel_area(self, value):
         self.selectDropDown(value)
@@ -24,11 +23,12 @@ class LineLossBrowseCollectPage(TreePBSPage):
 
     # 查询按钮
     def btn_qry(self):
-        self.click(LineLossBrowseCollectLocators.BTN_QRY)
+        # self.click(LineLossBrowseCollectLocators.BTN_QRY)
+        self.btn_query()
 
 
 # 线损分析→线损浏览:线损查询
-class LineLossBrowseQueryPage(TreePBSPage):
+class LineLossBrowseQueryPage(Page):
     # 电压
     def inputSel_voltage(self, value):
         self.selectDropDown(value)

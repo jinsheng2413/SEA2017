@@ -23,7 +23,7 @@ class AgainCountPage(TreePBSPage):
 
     # Tab页名称
     def inputChk_tab_name(self, value):
-        self.click_button(value, is_multi_eles=True)
+        self.clickTabPage(value,double=True)
 
     # 提交按钮
     def btn_commit(self):

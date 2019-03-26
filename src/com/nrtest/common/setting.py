@@ -39,6 +39,9 @@ class Setting():
     # 登录后是否需清屏
     CLEAN_SCREEN = parse.get('Base', 'clean_screen')
 
+    # 是否关闭TIP，yes-是；no-否*
+    CLOSE_TIP = parse.get('Base','close_tip')
+
     # 默认网址
     TEST_URL = parse.get('Base', 'Test_URL')  # 'http://testerlife.com'
     # 网址标题

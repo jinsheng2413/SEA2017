@@ -203,13 +203,13 @@ class BasePbsLocators(Locators):
 
     # 【输入框】
     # 按标签定位input normalize-space:去除换行\空格 \r\n\t
-    QRY_INPUT = (By.XPATH, '//div[@class="x-form-item "]/label[normalize-space(text())="{}"]/..//input[@type!="hidden"]')
+    QRY_INPUT = (By.XPATH, '//*[text()="{}"]/..//input')
 
     # 按id或name对input直接定位
     QRY_INPUT_BY = (By.XPATH, '//input[@{}="{}"]')  # 如：'//input[@name="{}"]'
 
     # 缺少标签或id、name情况下的日期元素定位
-    QRY_DT_INPUT = (By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-date-trigger")]/../input')
+    QRY_DT_INPUT = (By.XPATH, '//*[text()="{}"]/..//input')
 
     # 【下拉框】
     # 下拉选择点击按钮

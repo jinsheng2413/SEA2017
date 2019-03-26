@@ -35,9 +35,7 @@ class TestAgainCount(TestCase, AgainCountPage):
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
-        # 刷新浏览器
-        # cls.closePages(cls)
-        # cls.goto_home_iframe(cls)
+        cls.goto_home_iframe(cls)
         cls.main_page(cls)
 
     def setUp(self):
@@ -50,7 +48,7 @@ class TestAgainCount(TestCase, AgainCountPage):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.closeLeftTree()
+        # self.closeLeftTree()
 
     def query(self, para):
         """
@@ -71,14 +69,14 @@ class TestAgainCount(TestCase, AgainCountPage):
         # 提交按钮
         self.btn_commit()
 
-        self.iframe_back(num=1)
+
 
     def assert_query_result(self, para):
         """
         查询结果校验
         :param para:
         """
-        self.assertTrue(self.check_query_result(para))
+        # self.assertTrue(AssertResult(self).check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

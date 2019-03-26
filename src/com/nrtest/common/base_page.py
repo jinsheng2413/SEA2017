@@ -1242,6 +1242,7 @@ class Page():
     def goto_frame(self, frame_obj=0):
         """
         进入iframe层
+        当一个iframe层内有多个iframe时，通过配置para['IFRAME']确认进入
         :param frame_obj:frame序号，name， id or (By.TAG_NAME, '')
         """
         logger.info('进入 %s 的iframe层', frame_obj)
@@ -1484,6 +1485,15 @@ class Page():
         :param isCurPage:True-关闭其他所有页；False-关闭当前页
         """
         self.menuPage.closePages(page_name, isCurPage)
+
+    def goto_home_page(self, menu_name=''):
+        """
+        PBS5000专用，退回到一级菜单
+        :param menu_name:
+        :return:
+        """
+        self.goto_home_iframe(self)
+        self.menuPage.goto_home_page(menu_name)
 
     @staticmethod
     def format_xpath(xpath, format_val):

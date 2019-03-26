@@ -35,11 +35,8 @@ class TestLineLossBrowseCollect(TestCase, LineLossBrowseCollectPage):
 
     @classmethod
     def tearDownClass(cls):
+        cls.goto_home_page(cls)
         print('执行结束')
-        # 刷新浏览器
-        # cls.closePages(cls)
-        cls.goto_home_iframe(cls)
-        # cls.main_page(cls)
 
     def setUp(self):
         """
@@ -49,9 +46,12 @@ class TestLineLossBrowseCollect(TestCase, LineLossBrowseCollectPage):
 
     def tearDown(self):
         """
-        测试结束后的操作，这里基本上都是关闭浏览器
+        每个测试用例测试结束后的操作，在这里做相关清理工作
         """
+
+        # 回收左边树
         self.recoverLeftTree()
+
 
     def query(self, para):
         """
@@ -63,11 +63,9 @@ class TestLineLossBrowseCollect(TestCase, LineLossBrowseCollectPage):
         # self.goto_frame(para['IFRAME'])
         self.goto_frame()
 
-        # id = 'external-frame'
-        # self.intoIframe(id)
         # 区域
         # self.inputSel_area(para['AREA'])
-        # # 时间方案
+        # # # 时间方案
         # self.inputChk_date_type(para['DATE_TYPE'])
         # 查询按钮
         self.btn_qry()

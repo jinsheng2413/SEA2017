@@ -250,7 +250,7 @@ class BasePbsLocators(Locators):
     # 【按钮类元素】，如：查询按钮
     # BTN_QRY = (By.XPATH, '//button[normalize-space(@title)="{}"]')
     # BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
-    BTN_QRY = (By.XPATH, '//button[starts-with(@class, "but icon-search serach_btn_xy")]')
+    BTN_QRY = (By.XPATH, '//*[contains(@id,"sear")] | //*[contains(@class,"sear")]|//*[contains(@title,"{}")]')
     # 确定
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 

@@ -37,10 +37,10 @@ class test_CollHitch(TestCase, CollHitchPage):
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
-        cls.goto_home_iframe(cls)
+        cls.goto_home_page(cls)
 
         # 关闭菜单页面
-        cls.main_page(cls)
+        # cls.main_page(cls)
 
     def setUp(self):
         """
@@ -56,7 +56,7 @@ class test_CollHitch(TestCase, CollHitchPage):
 
         # 回收左边树
 
-        self.closeLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
         """

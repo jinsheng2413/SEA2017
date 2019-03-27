@@ -14,7 +14,7 @@ from com.nrtest.common.base_page import Page
 class AgainDisposePage(Page):
     # 处理方式
     def inputChk_dispose_type(self, value):
-        self.clickRadioBox(value, number=True)
+        self.clickCheckBox_by_order(value)
 
     # 开始时间
     def inputDt_start_date(self, value):

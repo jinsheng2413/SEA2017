@@ -1038,7 +1038,7 @@ class Page():
         try:
             ls_option = options.split(';')
             ls_items = ls_option[2].split(',')
-            data_dict = DataAccess.get_data_dictionary(ls_option[1])
+            data_dict = DataAccess.get_data_dictionary(ls_option[1], '02')
             if tag_type == '03':
                 loc = self.baseLocators.CHECK_BOX_BY_ORDER_TXT
                 obj = ls_option[0]

@@ -254,9 +254,9 @@ class BasePbsLocators(Locators):
     CHKBOX_INPUT2LABEL = (By.XPATH, '//input[@type="checkbox" and @{}="{}"]/../label[text()="{}"]')
 
     # 【按钮类元素】，如：查询按钮 【OK 待完善？？？】
-    BTN_QRY = (By.XPATH,
-               '//button[contains(normalize-space(@class),"but icon-search serach_btn_xy") or @title="查询" or @iconcls="icon-search" or starts-with(@onclick, "search")]')
-    # BTN_QRY = (By.XPATH, '//*[contains(@id,"sear")] | //*[contains(@class,"sear")]|//*[contains(@title,"{}")]')
+    # BTN_QRY = (By.XPATH,
+    #            '//button[contains(normalize-space(@class),"but icon-search serach_btn_xy") or @title="查询" or @iconcls="icon-search" or starts-with(@onclick, "search")]')
+    BTN_QRY = (By.XPATH, '//*[contains(@id,"sear")] | //*[contains(@class,"sear")]|//*[contains(@title,"{}")]')
     # 确定
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 

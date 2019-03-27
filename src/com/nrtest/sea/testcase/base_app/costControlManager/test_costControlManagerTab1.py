@@ -94,7 +94,7 @@ class TestNewSpecRemoteCtrlExecutTab1(TestCase, NewSpecRemoteCtrlExecutPage):
         self.inputSel_compare_result(para['COMPARE_RESULT'])
 
         # 统计类型
-        # self.inputChk_stat_type(para['STAT_TYPE'])
+        self.inputChk_stat_type(para['STAT_TYPE'])
 
         # 签发开始时间
         self.inputDt_start_date(para['START_DATE'])

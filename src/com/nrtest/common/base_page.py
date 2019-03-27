@@ -552,6 +552,16 @@ class Page():
         查询超时判断,当用例不配置超时时间或值为0时，不做等待超时判断
         :return: 查询耗时时间（单位：秒）
         """
+        # @TODO 删除我。。。
+        try:
+            el = self._find_displayed_element(self.baseLocators.DATA_LOADING)
+            print('loading...', el.text)
+            print(el.get_attribute('class'))
+            print(el.get_attribute('style'))
+            print(el.get_attribute('tag_name'))
+        except:
+            pass
+
         if timeout_seconds == 0:
             timeout_seconds = self.timeout_seconds
         if timeout_seconds > 0:
@@ -995,7 +1005,7 @@ class Page():
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
-    def clickCheckBox_new(self, options, is_multi_tab=False, data_dict=None, by_order=False):
+    def clickCheckBox_new(self, options, is_multi_tab=False, data_dict=None):
         """
         选择多个复选框【checkBox的name或id不一致时调用此方法】
         :param options: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
@@ -1009,11 +1019,7 @@ class Page():
             ls_items = ls_option[2].split(',')
             data_dict = data_dict if bool(data_dict) else DataAccess.get_data_dictionary(ls_option[1])
             for data in data_dict:
-                if by_order:
-                    xpath = self.format_xpath_multi(self.baseLocators.CHECK_BOX_BY_ORDER, (ls_option[0], int(data_dict[data])),
-                                                    is_multi_tab=is_multi_tab)
-                else:
-                    xpath = self.format_xpath_multi(self.baseLocators.SINGLE_CHECK_BOX, data, is_multi_tab=is_multi_tab)
+                xpath = self.format_xpath_multi(self.baseLocators.SINGLE_CHECK_BOX, data, is_multi_tab=is_multi_tab)
                 el = self._find_displayed_element(xpath)
                 is_select = data in ls_items
                 if is_select != el.is_selected():
@@ -1021,7 +1027,35 @@ class Page():
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
-    def clickTabPage(self, tab_name, is_multi_tab=False, is_multi_elements=False, is_by_js=False):
+    def clickCheckBox_by_order(self, options, tag_type='01'):
+        """
+        选择多个复选框无法用clickCheckBox_new的一种替代
+        :param options: 以逗号隔开，来实现点击多个复选框，eg:CheckBoxName='选中,未选中'
+        :param tag_type: 01-span 02-label;03-text
+        """
+        if self.ignore_op(options):
+            return
+        try:
+            ls_option = options.split(';')
+            ls_items = ls_option[2].split(',')
+            data_dict = DataAccess.get_data_dictionary(ls_option[1])
+            if tag_type == '03':
+                loc = self.baseLocators.CHECK_BOX_BY_ORDER_TXT
+                obj = ls_option[0]
+            else:
+                obj = 'span' if tag_type == '01' else 'label'
+                loc = self.baseLocators.CHECK_BOX_BY_ORDER
+
+            for data in data_dict:
+                xpath = self.format_xpath_multi(loc, (obj, int(data_dict[data])), is_multi_tab=True)
+                el = self._find_displayed_element(xpath)
+                is_select = data in ls_items
+                if is_select != el.is_selected():
+                    el.click()
+        except BaseException as ex:
+            print('点击复选框失败：{}'.format(ex))
+
+    def clickTabPage(self, tab_name, is_multi_tab=False, is_multi_elements=False, tab_loc=None, is_by_js=False):
         """
         打开Tab页
         :param tab_name:
@@ -1034,8 +1068,8 @@ class Page():
                 tab = ls_items[2] if bool(ls_items[2]) else ls_items[1]
         else:
             tab = tab_name
-
-        xpath = self.format_xpath_multi(self.baseLocators.TAB_PAGE, tab, is_multi_tab)
+        loc = tab_loc if bool(tab_loc) else self.baseLocators.TAB_PAGE
+        xpath = self.format_xpath_multi(loc, tab, is_multi_tab)
         if is_by_js:
             self.click_by_js(xpath)
         elif is_multi_elements:
@@ -1062,7 +1096,10 @@ class Page():
             tab = tab if len(tab) > 0 else ls_items[1]
         else:
             tab = tab_name
-        self.clickTabPage(tab, is_multi_tab, is_multi_elements)
+        if self.project_no == 'PBS5000':  # pbs5000的loc不能与页面Tab页选择共用2019-03-27
+            self.clickTabPage(tab, is_multi_tab, is_multi_elements, tab_loc=self.baseLocators.DT_TAB)
+        else:
+            self.clickTabPage(tab, is_multi_tab, is_multi_elements)
         sleep(0.2)
 
     def get_para_value(self, para):

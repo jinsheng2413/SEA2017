@@ -187,18 +187,17 @@ class TreePBSPage(BaseTreePage):
     def openLeftTree(self, node_no):
         super().openLeftTree(node_no, True)
 
-
-    def closeLeftTree_double(self):
-        loc = LeftTreeLocators.CLOSE_LFET_TREE
-        loc_root = LeftTreeLocators.CLOSE_LFET_ROOT_TREE
-        els = self._find_elements(loc)
-        l = len(els) - 1
-        while l >= 0:
-            els[l].click()
-            l -= 1
-        el = self._direct_find_element(loc_root)
-        if el:
-            el.click()
+    # def closeLeftTree_double(self):
+    #     loc = LeftTreeLocators.CLOSE_LFET_TREE
+    #     loc_root = LeftTreeLocators.CLOSE_LFET_ROOT_TREE
+    #     els = self._find_elements(loc)
+    #     l = len(els) - 1
+    #     while l >= 0:
+    #         els[l].click()
+    #         l -= 1
+    #     el = self._direct_find_element(loc_root)
+    #     if el:
+    #         el.click()
 
 
 class TreePage(BaseTreePage):

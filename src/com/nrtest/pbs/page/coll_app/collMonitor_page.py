@@ -23,4 +23,4 @@ class CollMonitorPage(TreePBSPage):
 
     # 查询
     def btn_qry(self):
-        self.click(CollOperMain_locators.BTN_SEARCH)
+        self.btn_query(is_multi_tab=True)

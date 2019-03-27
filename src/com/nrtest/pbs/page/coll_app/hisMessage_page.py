@@ -19,4 +19,4 @@ class HisMessagePage(TreePBSPage):
 
     # 查询
     def btn_qry(self):
-        self.click(CollOperMain_locators.BTN_SEARCH4)
+        self.btn_query(is_multi_tab=True)

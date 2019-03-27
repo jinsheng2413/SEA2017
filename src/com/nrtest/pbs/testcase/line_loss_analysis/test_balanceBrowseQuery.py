@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.pbs.data.line_loss_analysis.lineLossAnalysis_data import LineLossAnalysis_data
 from com.nrtest.pbs.page.line_loss_analysis.balanceBrowse_page import BalanceBrowseQueryPage
 from com.nrtest.pbs.tree.tree_page import *
@@ -80,7 +81,7 @@ class TestBalanceBrowseQuery(TestCase, BalanceBrowseQueryPage):
         查询结果校验
         :param para:
         """
-        # self.assertTrue(AssertResult(self).check_query_result(para))
+        self.assertTrue(AssertResult(self).check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

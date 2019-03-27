@@ -13,6 +13,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.pbs.data.data_rey.data_query_data import Data_query
 from com.nrtest.pbs.page.data_rey.calculated_amount_page import Calcluteamount_page
@@ -51,7 +52,7 @@ class test_CalculatedAmount(TestCase, Calcluteamount_page):
         """
 
         # 回收左边树
-        self.closeLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
         """
@@ -77,7 +78,7 @@ class test_CalculatedAmount(TestCase, Calcluteamount_page):
         查询结果校验（包括跳转）
         :param para:
         """
-        # self.assertTrue(AssertResult(self).check_query_result(para))
+        self.assertTrue(AssertResult(self).check_query_result(para))
 
     def assert_query_criteria(self, para):
         """

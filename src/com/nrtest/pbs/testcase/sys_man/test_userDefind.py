@@ -55,7 +55,7 @@ class test_UserDefind(TestCase, UserDefindPage):
 
         # 回收左边树
 
-    # self.closeLeftTree()
+        # self.closeLeftTree()
 
     def query(self, para):
         """

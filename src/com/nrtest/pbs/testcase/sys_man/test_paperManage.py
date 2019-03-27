@@ -54,7 +54,7 @@ class test_PaperManage(TestCase, PaperManagePage):
 
         # 回收左边树
 
-    # self.closeLeftTree()
+        # self.closeLeftTree()
 
     def query(self, para):
         """

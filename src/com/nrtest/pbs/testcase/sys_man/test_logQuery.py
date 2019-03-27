@@ -52,8 +52,7 @@ class test_LogQuery(TestCase, LogQueryPage):
         """
 
         # 回收左边树
-
-    # self.closeLeftTree()
+        # self.closeLeftTree()
 
     def query(self, para):
         """

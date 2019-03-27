@@ -23,7 +23,7 @@ class BalanceCount_page(Page):
 
 
 # 高级应用→费控管理→本地费控→低压用户余额查看:余额查看
-class BalanceCount_page(Page):
+class BalanceCheck_page(Page):
 
     # 工单编号
     def inputStr_app_no(self, value):

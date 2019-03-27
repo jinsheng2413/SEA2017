@@ -7,11 +7,11 @@
 @time: 2019-03-15 09:44
 @desc:
 """
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 智能研判-->结算点日异常
-class SettlementPointDayAbnormal_page(TreePBSPage):
+class SettlementPointDayAbnormal_page(Page):
 
     # 日期
     def inputDt_query_date(self, value):

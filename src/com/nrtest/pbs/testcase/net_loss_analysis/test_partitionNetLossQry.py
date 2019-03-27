@@ -12,6 +12,7 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.net_loss_analysis.netLossAnalysis_data import NetLossAnalysis_data
 from com.nrtest.pbs.page.net_loss_analysis.partitionNetLossQry_page import PartitionNetLossQryPage
 from com.nrtest.pbs.tree.tree_page import *
@@ -59,7 +60,7 @@ class TestPartitionNetLossQry(TestCase, PartitionNetLossQryPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-
+        self.sleep_time(2)
         # 区域
         self.inputSel_area(para['AREA'])
         # 时间方案

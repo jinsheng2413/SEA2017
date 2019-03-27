@@ -8,12 +8,10 @@
 @desc:
 """
 
-from com.nrtest.pbs.locators.business_change.changeCTPT_locators import *
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
-
+from com.nrtest.common.base_page import Page
 
 # 业务变更→换CT/PT:换CTPT操作
-class ChangeCTPTOperatePage(TreePBSPage):
+class ChangeCTPTOperatePage(Page):
     # 更换时间
     def inputDt_query_date(self, value):
         self.inputDate(value)
@@ -24,7 +22,7 @@ class ChangeCTPTOperatePage(TreePBSPage):
 
 
 # 业务变更→换CT/PT:换CTPT记录
-class ChangeCTPTRecordPage(TreePBSPage):
+class ChangeCTPTRecordPage(Page):
     # 时间类型
     def inputChk_date_type(self, value):
         self.selectDropDown(value)

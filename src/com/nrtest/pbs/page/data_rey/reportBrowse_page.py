@@ -9,10 +9,10 @@
 """
 # 数据管理--报表浏览
 
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
-class ReportBrowsePage(TreePBSPage):
+class ReportBrowsePage(Page):
     # 时间方案
     def inputChk_time_type(self, option):
         self.clickTabPage(option, is_by_js=True)

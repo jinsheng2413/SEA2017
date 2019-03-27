@@ -8,12 +8,11 @@
 @desc:
 """
 
-from com.nrtest.pbs.locators.line_loss_analysis.balanceBrowse_locators import *
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 线损分析→母平浏览:母平汇总
-class BalanceBrowseCollectPage(TreePBSPage):
+class BalanceBrowseCollectPage(Page):
     # 区域
     def inputSel_area(self, value):
         self.selectDropDown(value)

@@ -8,7 +8,6 @@
 @desc:
 """
 from com.nrtest.common.base_page import Page
-from com.nrtest.pbs.locators.line_loss_analysis.lineLossBrowse_locators import *
 
 
 # 线损分析→线损浏览:线损汇总

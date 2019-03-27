@@ -7,12 +7,11 @@
 @time: 2019-03-06 14:38:37
 @desc:
 """
-from com.nrtest.pbs.locators.coll_app.collApp_locators import CollOperMain_locators
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 采集运维→采集监视
-class CollMonitorPage(TreePBSPage):
+class CollMonitorPage(Page):
     # 查询日期
     def inputDt_query_date(self, value):
         self.inputDate(value)

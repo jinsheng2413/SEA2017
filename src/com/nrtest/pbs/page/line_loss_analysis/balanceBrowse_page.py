@@ -20,11 +20,11 @@ class BalanceBrowseCollectPage(TreePBSPage):
 
     # 时间方案
     def inputChk_date_type(self, value):
-        self.click_button(value)
+        self.clickTabPage(value)
 
     # 查询按钮
     def btn_qry(self):
-        self.click(BalanceBrowseCollectLocators.BTN_QRY)
+        self.btn_query(is_multi_tab=True)
 
 
 # 线损分析→母平浏览:母平查询
@@ -43,8 +43,8 @@ class BalanceBrowseQueryPage(TreePBSPage):
 
     # 时间类型
     def inputChk_date_type(self, value):
-        self.click_button(value)
+        self.clickTabPage(value)
 
     # 查询按钮
     def btn_qry(self):
-        self.click(BalanceBrowseQueryLocators.BTN_QRY)
+        self.btn_query(is_multi_tab=True)

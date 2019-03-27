@@ -259,7 +259,7 @@ class BasePbsLocators(Locators):
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 
     # 定位一个菜单页面内的某一Tab页
-    TAB_PAGE = (By.XPATH, '//span[@class="tabs-title" and text()="{}"]')
+    TAB_PAGE = (By.XPATH, '//span[(@class="tabs-title" or @class="l-btn-text") and text()="{}"]')
 
     # 弹框处理
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')

@@ -11,7 +11,7 @@
 from unittest import TestCase
 
 from ddt import ddt, data
-
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.line_loss_analysis.lineLossAnalysis_data import LineLossAnalysis_data
 from com.nrtest.pbs.page.line_loss_analysis.changeLossBrowse_page import ChangeLossBrowseCollectPage
 from com.nrtest.pbs.tree.tree_page import *
@@ -38,7 +38,7 @@ class TestChangeLossBrowseCollect(TestCase, ChangeLossBrowseCollectPage):
         # 刷新浏览器
         # cls.closePages(cls)
         cls.goto_home_page(cls)
-        cls.main_page(cls)
+
 
     def setUp(self):
         """
@@ -50,7 +50,7 @@ class TestChangeLossBrowseCollect(TestCase, ChangeLossBrowseCollectPage):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.closeLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
         """

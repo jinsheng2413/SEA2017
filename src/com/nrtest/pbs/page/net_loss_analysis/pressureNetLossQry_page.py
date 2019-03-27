@@ -35,4 +35,4 @@ class PressureNetLossQryPage(TreePBSPage):
 
     # 查询按钮
     def btn_qry(self):
-        self.click(PressureNetLossQryLocators.BTN_QRY)
+        self.btn_query(is_multi_tab=True)

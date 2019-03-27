@@ -38,7 +38,7 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
         # 刷新浏览器
         # cls.closePages(cls)
         cls.goto_home_page(cls)
-        cls.main_page(cls)
+
 
     def setUp(self):
         """
@@ -50,7 +50,7 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.closeLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
         """

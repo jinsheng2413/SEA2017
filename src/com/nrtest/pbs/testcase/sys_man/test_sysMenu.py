@@ -37,10 +37,7 @@ class test_SysMenu(TestCase, SysMenuPage):
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
-        cls.iframe_back(cls, num=1)
-
-        # 关闭菜单页面
-        cls.main_page(cls)
+        cls.goto_home_page(cls)
 
     def setUp(self):
         """

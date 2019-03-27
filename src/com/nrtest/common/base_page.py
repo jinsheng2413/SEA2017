@@ -1508,7 +1508,7 @@ class Page():
 
     def goto_home_page(self, menu_name=''):
         """
-        PBS5000专用，退回到一级菜单
+        PBS5000专用，回退到一级菜单
         :param menu_name:
         :return:
         """

@@ -8,12 +8,11 @@
 @desc:
 """
 
-from com.nrtest.pbs.locators.line_loss_analysis.changeLossBrowse_locators import *
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 线损分析→变损浏览:变损汇总
-class ChangeLossBrowseCollectPage(TreePBSPage):
+class ChangeLossBrowseCollectPage(Page):
     # 区域
     def inputSel_area(self, value):
         self.selectDropDown(value)
@@ -24,7 +23,7 @@ class ChangeLossBrowseCollectPage(TreePBSPage):
 
     # 查询按钮
     def btn_qry(self):
-        self.click(ChangeLossBrowseCollectLocators.BTN_QRY)
+        self.btn_query(is_multi_tab=True)
 
 
 # 线损分析→变损浏览:变损查询
@@ -47,4 +46,4 @@ class ChangeLossBrowseQueryPage(TreePBSPage):
 
     # 查询按钮
     def btn_qry(self):
-        self.click(ChangeLossBrowseQueryLocators.BTN_QRY)
+        self.btn_query(is_multi_tab=True)

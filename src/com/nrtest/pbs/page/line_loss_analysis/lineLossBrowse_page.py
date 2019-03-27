@@ -8,7 +8,6 @@
 @desc:
 """
 from com.nrtest.common.base_page import Page
-from com.nrtest.pbs.locators.line_loss_analysis.lineLossBrowse_locators import *
 
 
 # 线损分析→线损浏览:线损汇总
@@ -24,7 +23,7 @@ class LineLossBrowseCollectPage(Page):
     # 查询按钮
     def btn_qry(self):
         # self.click(LineLossBrowseCollectLocators.BTN_QRY)
-        self.btn_query()
+        self.btn_query(is_multi_tab=True)
 
 
 # 线损分析→线损浏览:线损查询
@@ -47,4 +46,4 @@ class LineLossBrowseQueryPage(Page):
 
     # 查询按钮
     def btn_qry(self):
-        self.click(LineLossBrowseQueryLocators.BTN_QRY)
+        self.btn_query(is_multi_tab=True)

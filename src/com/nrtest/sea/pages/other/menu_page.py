@@ -127,7 +127,8 @@ class MenuPage(Page):
                         action = '01'
                 except:
                     action = '01'
-                self._menu_action(loc, action)
+                if action != '00':  # 00-不做任何操作（如PBS的线损分析→线损浏览，它为二级菜单的第一个菜单, 进去时相关内容已加载，不需要其他操作）'
+                    self._menu_action(loc, action)
 
     def _speical_deal(self, items, idx):
         """

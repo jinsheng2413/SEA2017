@@ -7,7 +7,6 @@
 @time: 2019-03-15 14:37
 @desc:
 """
-from com.nrtest.pbs.locators.net_loss_analysis.pressureNetLossQry_locators import PressureNetLossQryLocators
 from com.nrtest.pbs.tree.tree_page import TreePBSPage
 
 
@@ -19,7 +18,7 @@ class PressureNetLossQryPage(TreePBSPage):
 
     # 时间方案
     def inputChk_date_type(self, value):
-        self.click_button(value)
+        self.clickTabPage(value)
 
     # 开始时间
     def inputDt_start_date(self, value):
@@ -31,8 +30,8 @@ class PressureNetLossQryPage(TreePBSPage):
 
     # TAB页名称
     def inputChk_tab_name(self, value):
-        self.click_button(value)
+        self.clickTabPage(value)
 
     # 查询按钮
     def btn_qry(self):
-        self.click(PressureNetLossQryLocators.BTN_QRY)
+        self.btn_query(is_multi_tab=True)

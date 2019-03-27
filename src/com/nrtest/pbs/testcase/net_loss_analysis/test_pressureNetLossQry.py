@@ -12,6 +12,7 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.net_loss_analysis.netLossAnalysis_data import NetLossAnalysis_data
 from com.nrtest.pbs.page.net_loss_analysis.pressureNetLossQry_page import PressureNetLossQryPage
 from com.nrtest.pbs.tree.tree_page import *
@@ -37,8 +38,8 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
         print('执行结束')
         # 刷新浏览器
         # cls.closePages(cls)
-        cls.goto_home_iframe(cls)
-        cls.main_page(cls)
+        cls.goto_home_page(cls)
+
 
     def setUp(self):
         """
@@ -50,7 +51,7 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.closeLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
         """

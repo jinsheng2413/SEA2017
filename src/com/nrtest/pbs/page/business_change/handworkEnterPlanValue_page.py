@@ -8,16 +8,15 @@
 @desc:
 """
 
-from com.nrtest.pbs.locators.business_change.handworkEnterPlanValue_locators import HandworkEnterPlanValueLocators
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 业务变更→手工录入计划值
-class HandworkEnterPlanValuePage(TreePBSPage):
+class HandworkEnterPlanValuePage(Page):
     # 时间
     def inputDt_query_date(self, value):
         self.inputDate(value)
 
-    # 查询按钮
+    # 提交按钮
     def btn_qry(self):
-        self.click(HandworkEnterPlanValueLocators.BTN_QUERY)
+        self.btn_query(is_multi_tab=True)

@@ -12,6 +12,7 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.business_change.businessChange_data import BusinessChange_data
 from com.nrtest.pbs.page.business_change.againCount_page import AgainCountPage
 from com.nrtest.pbs.tree.tree_page import *
@@ -35,8 +36,8 @@ class TestAgainCount(TestCase, AgainCountPage):
     @classmethod
     def tearDownClass(cls):
         print('执行结束')
-        cls.goto_home_iframe(cls)
-        cls.main_page(cls)
+        cls.goto_home_page(cls)
+
 
     def setUp(self):
         """
@@ -67,7 +68,7 @@ class TestAgainCount(TestCase, AgainCountPage):
         # Tab页名称
         self.inputChk_tab_name(para['TAB_NAME'])
         # 提交按钮
-        self.btn_commit()
+        self.btn_qry()
 
 
 

@@ -12,6 +12,7 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.business_change.businessChange_data import BusinessChange_data
 from com.nrtest.pbs.page.business_change.changeTableOperate_page import ChangeTableOperatePage
 from com.nrtest.pbs.tree.tree_page import *
@@ -36,8 +37,8 @@ class TestChangeTableOperate(TestCase, ChangeTableOperatePage):
     def tearDownClass(cls):
         print('执行结束')
 
-        cls.goto_home_iframe(cls)
-        cls.main_page(cls)
+        cls.goto_home_page(cls)
+
 
     def setUp(self):
         """
@@ -49,7 +50,7 @@ class TestChangeTableOperate(TestCase, ChangeTableOperatePage):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.closeLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
         """

@@ -92,14 +92,18 @@ class DataAccess:
         return '{"NODE_FLAG":"01", "NODE_VALUE":"%s"}' % dataSet[0][0]
 
     @staticmethod
-    def getTreeNode(node):
+    def getTreeNode(node, by_tree_node=False):
         """
         应用于PBS等左边树管理
         :param node_no:
+        :param by_tree_node:True-经tst_tree_node表提取节点；False-经tst_org表提取节点
         :return:
         """
         node_value = node['NODE_VALUE']
-        by_tree_node = 'N' if node['NODE_FLAG'] == '01' else 'Y'
+        if by_tree_node:
+            by_tree_node = 'Y'
+        else:
+            by_tree_node = 'N' if node['NODE_FLAG'] == '01' else 'Y'
         pyoracle = PyOracle.getInstance()
         node_path = pyoracle.callfunc('pkg_nrtest.get_tree_node_path', 'str', [node_value, Setting.PROJECT_NO, by_tree_node])
         return node_path

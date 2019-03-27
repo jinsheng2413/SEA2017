@@ -46,7 +46,7 @@ class BaseTreePage(Page):
         else:
             self.tree_type = '20'
 
-    def openLeftTree(self, node_no, op_mode=True):
+    def openLeftTree(self, node_no, by_tree_node=False):
         """
         打开左边树
         :param node_no:
@@ -59,7 +59,7 @@ class BaseTreePage(Page):
             node = {'NODE_FLAG': '01', 'NODE_VALUE': node_no}
             node_value = node_no
 
-        node['NODE_VALUE'] = DataAccess.getTreeNode(node).split(';')
+        node['NODE_VALUE'] = DataAccess.getTreeNode(node, by_tree_node).split(';')
 
         self._click_node_tab(node['NODE_FLAG'])
         self.node_list = []  # 用于左边树整体收起压栈
@@ -130,7 +130,7 @@ class BaseTreePage(Page):
 class TreePBSPage(BaseTreePage):
     def _click_node_tab(self, node_tab_idx):
         if self.tree_type[0] != '4':
-            node_tab = {'01': '全模型', '02': '搜索', '03': '收藏夹'}
+            node_tab = {'01': '全模型', '02': '搜索', '03': '收藏夹', '10': '全模型'}
             loc = self.format_xpath(TreePBSLocators.NODE_TAB, node_tab[node_tab_idx])
             self.click(loc)
 
@@ -184,17 +184,20 @@ class TreePBSPage(BaseTreePage):
             element.click()
             sleep(0.3)
 
-    def closeLeftTree_double(self):
-        loc = LeftTreeLocators.CLOSE_LFET_TREE
-        loc_root = LeftTreeLocators.CLOSE_LFET_ROOT_TREE
-        els = self._find_elements(loc)
-        l = len(els) - 1
-        while l >= 0:
-            els[l].click()
-            l -= 1
-        el = self._direct_find_element(loc_root)
-        if el:
-            el.click()
+    def openLeftTree(self, node_no):
+        super().openLeftTree(node_no, True)
+
+    # def closeLeftTree_double(self):
+    #     loc = LeftTreeLocators.CLOSE_LFET_TREE
+    #     loc_root = LeftTreeLocators.CLOSE_LFET_ROOT_TREE
+    #     els = self._find_elements(loc)
+    #     l = len(els) - 1
+    #     while l >= 0:
+    #         els[l].click()
+    #         l -= 1
+    #     el = self._direct_find_element(loc_root)
+    #     if el:
+    #         el.click()
 
 
 class TreePage(BaseTreePage):

@@ -8,17 +8,16 @@
 @desc:
 """
 
+from com.nrtest.common.base_page import Page
 # 系统管理--部门管理
-
 from com.nrtest.pbs.locators.sys_man.sysMan_locators import SysMan_locators
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
 
 
-class DepartManagePage(TreePBSPage):
+class DepartManagePage(Page):
     # 输入框
     def input_name(self, value):
         self.input(value, *SysMan_locators.INPUT_NAME1)
 
     # 查询
     def btn_qry(self):
-        self.click(SysMan_locators.BTN_QUERY1)
+        self.btn_query(is_multi_tab=True)

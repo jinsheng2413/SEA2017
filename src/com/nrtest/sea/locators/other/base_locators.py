@@ -135,7 +135,6 @@ class BaseLocators(Locators):
     CHKBOX_INPUT2LABEL = (By.XPATH, '//input[@type="checkbox" and @{}="{}"]/../label[text()="{}"]')
 
     # 【按钮类元素】，如：查询按钮
-    # BTN_QRY = (By.XPATH, '//button[@class =" x-btn-text" and contains(text(),"{}")]')
     BTN_QRY = (By.XPATH, '//button[normalize-space(text())="{}"]')
     BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
 
@@ -204,17 +203,21 @@ class BasePbsLocators(Locators):
 
     # 【输入框】
     # 按标签定位input normalize-space:去除换行\空格 \r\n\t
-    QRY_INPUT = (By.XPATH, '//*[text()="{}"]/..//input')
+    QRY_INPUT = (By.XPATH, '//*[text()="{}"]/..//input')  # OK
 
     # 按id或name对input直接定位
     QRY_INPUT_BY = (By.XPATH, '//input[@{}="{}"]')  # 如：'//input[@name="{}"]'
 
-    # 缺少标签或id、name情况下的日期元素定位
-    QRY_DT_INPUT = (By.XPATH, '//*[text()="{}"]/..//input')
+    # 缺少标签或id、name情况下的日期元素定位  OK
+    QRY_DT_INPUT = (By.XPATH, '//span[@class="textbox combo datebox"]//input[@type="text"]')
+    # 数据加载中  已部分确定待完善【OK？？？】
+    # DATA_LOADING = (By.XPATH, '//div[@class="ext-el-mask-msg x-mask-loading"]')
+    DATA_LOADING = (By.XPATH, '//*[contains(text(),"正在处理")] | //div[@id="load_bg"]')
 
     # 【下拉框】
     # 下拉选择点击按钮
-    SEL_CHECKBOX = (By.XPATH, '//*[text()="{}"]/..//a[1]')
+    SEL_CHECKBOX = (By.XPATH, '//label[text()="{}"]/..//a')
+    SEL_CHECKBOX_CLEAN = (By.XPATH, '//label[text()="{}"]/..//input[@type="text"]')
 
     # 【下拉复选框相关】
     # 取消所有已选项
@@ -224,8 +227,9 @@ class BasePbsLocators(Locators):
     SEL_OPTION = (By.XPATH, '//div[contains(@class,"x-layer x-combo-list ") and contains(@style,"visible;")]//div[contains(text(),"{}")]/..//img')
 
     # 【下拉单选框相关】
-    # 下拉单选项选择
-    DROPDOWN_OPTION = (By.XPATH, '//*[@class="panel combo-p" and contains(@style,"block")]//div[text()="{}"]')
+    # 下拉单选项选择  【OK】
+    DROPDOWN_OPTION = (By.XPATH, '//div[@class="panel combo-p" and contains(@style,"display: block;")]//div[contains(text(),"{}")]')
+    DROPDOWN_OPTION_EQUAL = (By.XPATH, '//div[@class="panel combo-p" and contains(@style,"display: block;")]//div[text()="{}"]')
 
     # 【单选框】
     # 根据标签找input
@@ -239,7 +243,9 @@ class BasePbsLocators(Locators):
     SINGLE_CHECK_BOX = (By.XPATH, '//label[text()="{}"]/..//input[@type="checkbox"]')
 
     # 根据复选框顺序定位
-    CHECK_BOX_BY_ORDER = (By.XPATH, '//label[text()="{}"]/..//input[{}]')
+    CHECK_BOX_BY_ORDER = (By.XPATH, '//{}[@class="checkbox_bg_xy"]/input[{}]')
+    # 采集运维--采集通道监视：
+    CHECK_BOX_BY_ORDER_TXT = (By.XPATH, '//label[text()="{}"]/following-sibling::input[{}]')
 
     # 被选择的复选框
     CHKBOX_UNCHECK_ALL = (By.XPATH, '//input[@type="checkbox" and @{}="{}" and @checked=""]')
@@ -247,15 +253,18 @@ class BasePbsLocators(Locators):
     # 根据INPUT的name找标签 checkbox/radio
     CHKBOX_INPUT2LABEL = (By.XPATH, '//input[@type="checkbox" and @{}="{}"]/../label[text()="{}"]')
 
-    # 【按钮类元素】，如：查询按钮
-    # BTN_QRY = (By.XPATH, '//button[normalize-space(@title)="{}"]')
-    # BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
-    BTN_QRY = (By.XPATH, '//button[starts-with(@class, "but icon-search serach_btn_xy")]')
+    # 【按钮类元素】，如：查询按钮 【OK 待完善？？？】
+    BTN_QRY = (By.XPATH,
+               '//button[contains(normalize-space(@class),"but icon-search serach_btn_xy") or @title="查询" or @iconcls="icon-search" or starts-with(@onclick, "search")]')
+    # BTN_QRY = (By.XPATH, '//*[contains(@id,"sear")] | //*[contains(@class,"sear")]|//*[contains(@title,"{}")]')
     # 确定
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 
-    # 定位一个菜单页面内的某一Tab页
+    # 定位一个菜单页面内的某一Tab页 OK
     TAB_PAGE = (By.XPATH, '//span[@class="tabs-title" and text()="{}"]')
+
+    # 定位时间方案Tab选项【PBS专有】
+    DT_TAB = (By.XPATH, '//label/following-sibling::span//button[text()="{}"]')
 
     # 弹框处理
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')

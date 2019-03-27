@@ -101,16 +101,23 @@ class AssertResult():
             # 按下面代码执行会报这个错：'FirefoxWebElement' object does not support indexing
             # el_link = el_data_rows[int(case_result[3])].find_elements_by_xpath('./td[{}]//a'.format(col_pos_info['COL_IDX']))
             is_multi_link = bool(link_xpath)  # 判断某列是否有多个链接
-            if link_xpath is None:
+            # if link_xpath is None:
+            if is_multi_link:
                 link_xpath = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL,
                                                               (case_result[0], int(case_result[3]) + col_pos_info['HIDE_ROWS'],
                                                                col_pos_info['COL_IDX']), True)
             el_link = self.tst_inst._find_displayed_element(link_xpath)
-            skip_info['EL_A'] = el_link.find_elements_by_xpath('.//a')
+            if is_multi_link:
+                skip_info['EL_A'] = el_link
+            else:
+                skip_info['EL_A'] = el_link.find_elements_by_xpath('.//a')
             skip_info['LINK_TEXT'] = el_link.text
-            skip_info['CLICKABLE'] = True if is_multi_link else bool(skip_info['EL_A'])
+            # skip_info['CLICKABLE'] = True if is_multi_link else bool(skip_info['EL_A'])
+            skip_info['CLICKABLE'] = bool(skip_info['EL_A'])
             self.tst_inst.scrollTo(el_link)
-            el_link.click()
+            # el_link.click()
+            if bool(skip_info['EL_A']):
+                skip_info['EL_A'].click()
 
             # 休眠N秒，等待跳转页面加载:WAIT_FOR_TARGET
             seconds = case_result[5]

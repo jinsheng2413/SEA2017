@@ -11,6 +11,7 @@
 from unittest import TestCase
 
 from ddt import ddt, data
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.line_loss_analysis.lineLossAnalysis_data import LineLossAnalysis_data
 from com.nrtest.pbs.page.line_loss_analysis.balanceBrowse_page import BalanceBrowseQueryPage

@@ -7,7 +7,6 @@
 @time: 2019-03-15 14:37
 @desc:
 """
-from com.nrtest.pbs.locators.net_loss_analysis.pressureNetLossQry_locators import PressureNetLossQryLocators
 from com.nrtest.pbs.tree.tree_page import TreePBSPage
 
 

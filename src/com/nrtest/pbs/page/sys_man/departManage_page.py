@@ -8,9 +8,9 @@
 @desc:
 """
 
+from com.nrtest.common.base_page import Page
 # 系统管理--部门管理
 from com.nrtest.pbs.locators.sys_man.sysMan_locators import SysMan_locators
-from com.nrtest.common.base_page import Page
 
 
 class DepartManagePage(Page):

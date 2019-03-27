@@ -8,7 +8,6 @@
 @desc:
 """
 
-from com.nrtest.pbs.locators.net_loss_analysis.partitionNetLossQry_locators import PartitionNetLossQryLocators
 from com.nrtest.pbs.tree.tree_page import TreePBSPage
 
 

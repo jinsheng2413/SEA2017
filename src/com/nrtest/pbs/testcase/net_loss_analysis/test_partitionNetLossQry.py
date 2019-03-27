@@ -11,6 +11,7 @@
 from unittest import TestCase
 
 from ddt import ddt, data
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.net_loss_analysis.netLossAnalysis_data import NetLossAnalysis_data
 from com.nrtest.pbs.page.net_loss_analysis.partitionNetLossQry_page import PartitionNetLossQryPage

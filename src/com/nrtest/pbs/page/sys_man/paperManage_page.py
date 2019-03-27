@@ -7,9 +7,9 @@
 @time: 2019/3/13 11:40
 @desc:
 """
+from com.nrtest.common.base_page import Page
 # 系统管理--页面管理
 from com.nrtest.pbs.locators.sys_man.sysMan_locators import SysMan_locators
-from com.nrtest.common.base_page import Page
 
 
 class PaperManagePage(Page):

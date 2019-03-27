@@ -18,6 +18,6 @@ class HandworkEnterPlanValuePage(TreePBSPage):
     def inputDt_query_date(self, value):
         self.inputDate(value)
 
-    # 查询按钮
+    # 提交按钮
     def btn_qry(self):
-        self.click(HandworkEnterPlanValueLocators.BTN_QUERY)
+        self.btn_query(is_multi_tab=True)

@@ -37,7 +37,7 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
         print('执行结束')
         # 刷新浏览器
         # cls.closePages(cls)
-        cls.goto_home_iframe(cls)
+        cls.goto_home_page(cls)
         cls.main_page(cls)
 
     def setUp(self):

@@ -18,9 +18,9 @@ class ChangeCTPTOperatePage(TreePBSPage):
     def inputDt_query_date(self, value):
         self.inputDate(value)
 
-    # 查询按钮
+    # 提交按钮
     def btn_qry(self):
-        self.click(ChangeCTPTOperateLocators.BTN_QUERY)
+        self.btn_query(is_multi_tab=True)
 
 
 # 业务变更→换CT/PT:换CTPT记录
@@ -37,6 +37,6 @@ class ChangeCTPTRecordPage(TreePBSPage):
     def inputDt_end_date(self, value):
         self.inputDate(value)
 
-    # 查询按钮
+    # 提交按钮
     def btn_qry(self):
-        self.click(ChangeCTPTRecordLocators.BTN_QUERY)
+        self.btn_query(is_multi_tab=True)

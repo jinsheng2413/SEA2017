@@ -26,5 +26,5 @@ class AgainCountPage(TreePBSPage):
         self.clickTabPage(value, is_by_js=True)
 
     # 提交按钮
-    def btn_commit(self):
-        self.click(AgainCountLocators.BTN_COMMIT)
+    def btn_qry(self):
+        self.btn_query(is_multi_tab=True)

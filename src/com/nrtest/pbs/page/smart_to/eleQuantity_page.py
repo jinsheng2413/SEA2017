@@ -7,11 +7,11 @@
 @time: 2019-03-15 11:05
 @desc:
 """
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 智能研判-->电量短信
-class EleQuantity_page(TreePBSPage):
+class EleQuantity_page(Page):
 
     # 用户列表
     def inputSel_user_list(self, option):

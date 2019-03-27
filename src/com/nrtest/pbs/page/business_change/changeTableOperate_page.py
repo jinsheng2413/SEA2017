@@ -8,12 +8,11 @@
 @desc:
 """
 
-from com.nrtest.pbs.locators.business_change.changeTableOperate_locators import ChangeTableOperateLocators
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 业务变更→换表操作:换表操作
-class ChangeTableOperatePage(TreePBSPage):
+class ChangeTableOperatePage(Page):
     # 电表
     def inputStr_meter(self, value):
         self.input(value)
@@ -36,7 +35,7 @@ class ChangeTableOperatePage(TreePBSPage):
 
 
 # 业务变更→换表操作:换表记录
-class ChangeTableRecordPage(TreePBSPage):
+class ChangeTableRecordPage(Page):
     # 时间类型
     def inputChk_date_type(self, value):
         self.selectDropDown(value)

@@ -7,10 +7,10 @@
 @time: 2019/3/5 0005 15:17
 @desc:
 """
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
-class CountFormula_page(TreePBSPage):
+class CountFormula_page(Page):
     # 计算公式
     def inputStr_formula_name(self, value):
         self.input(value)

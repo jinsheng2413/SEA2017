@@ -10,10 +10,10 @@
 # 系统管理--系统菜单
 
 from com.nrtest.pbs.locators.sys_man.sysMan_locators import SysMan_locators
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
-class SysMenuPage(TreePBSPage):
+class SysMenuPage(Page):
 
     # 输入框
     def input_name(self, value):
@@ -21,4 +21,4 @@ class SysMenuPage(TreePBSPage):
 
     # 查询
     def btn_qry(self):
-        self.click(SysMan_locators.BTN_QUERY)
+        self.btn_query(is_multi_tab=True)

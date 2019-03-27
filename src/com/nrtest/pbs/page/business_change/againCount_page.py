@@ -7,12 +7,12 @@
 @time: 2019-03-14 13:59
 @desc:
 """
-from com.nrtest.pbs.locators.business_change.againCount_locators import AgainCountLocators
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
+
 
 
 # 业务变更→重计算
-class AgainCountPage(TreePBSPage):
+class AgainCountPage(Page):
     # 开始时间
     def inputDt_start_date(self, value):
         self.inputDate(value)

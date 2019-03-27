@@ -7,12 +7,11 @@
 @time: 2019/3/13 14:14
 @desc:
 """
-from com.nrtest.pbs.locators.sys_man.sysMan_locators import SysMan_locators
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 系统管理--日志查询
-class LogQueryPage(TreePBSPage):
+class LogQueryPage(Page):
 
     # 日志类型
     def inputSel_log_type(self, option):
@@ -32,4 +31,4 @@ class LogQueryPage(TreePBSPage):
 
     # 查询
     def btn_qry(self):
-        self.click(SysMan_locators.BTN_QUERY4)
+        self.btn_query(is_multi_tab=True)

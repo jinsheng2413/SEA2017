@@ -19,7 +19,7 @@ class PressureNetLossQryPage(TreePBSPage):
 
     # 时间方案
     def inputChk_date_type(self, value):
-        self.click_button(value)
+        self.clickTabPage(value)
 
     # 开始时间
     def inputDt_start_date(self, value):
@@ -31,7 +31,7 @@ class PressureNetLossQryPage(TreePBSPage):
 
     # TAB页名称
     def inputChk_tab_name(self, value):
-        self.click_button(value)
+        self.clickTabPage(value)
 
     # 查询按钮
     def btn_qry(self):

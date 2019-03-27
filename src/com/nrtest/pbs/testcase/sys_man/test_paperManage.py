@@ -88,7 +88,7 @@ class test_PaperManage(TestCase, PaperManagePage):
     @data(*DataAccess.getCaseData(Sysman_data.paperManage_para))
     def test_query(self, para):
         """ 数据查询→谣测值
- """
+        """
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

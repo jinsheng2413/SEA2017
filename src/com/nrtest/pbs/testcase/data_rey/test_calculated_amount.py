@@ -15,7 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.pbs.data.data_rey.data_query_data import Data_query
+from com.nrtest.pbs.data.data_rey.data_query_data import DataQuery_data
 from com.nrtest.pbs.page.data_rey.calculated_amount_page import Calcluteamount_page
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
@@ -27,7 +27,7 @@ class test_CalculatedAmount(TestCase, Calcluteamount_page):
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(Data_query.calculated_amount_para)
+        menuPage = MenuPage.openMenu(DataQuery_data.calcAmount_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         cls.goto_frame(cls)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
@@ -88,7 +88,7 @@ class test_CalculatedAmount(TestCase, Calcluteamount_page):
         self.assertTrue(self.check_query_criteria(para))
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(Data_query.calculated_amount_para))
+    @data(*DataAccess.getCaseData(DataQuery_data.calcAmount_para))
     def test_query(self, para):
         """采集运维→采集监视
         """
@@ -98,7 +98,7 @@ class test_CalculatedAmount(TestCase, Calcluteamount_page):
         self.end_case()
 
     @BeautifulReport.add_test_img()
-    @data(*DataAccess.getCaseData(Data_query.calculated_amount_para, valCheck=True))
+    @data(*DataAccess.getCaseData(DataQuery_data.calcAmount_para, valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

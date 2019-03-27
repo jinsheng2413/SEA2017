@@ -68,7 +68,7 @@ class GuoProgram(object):
 
     def modifyTestcase(self, pathName=''):
         newModelList = []
-        with open(Setting.BASE_PATH + '/src/com/nrtest/sea/testcase/demo_new/test_TmnlInstallDetai_debug.py', 'rt',
+        with open(Setting.BASE_PATH + '/src/com/nrtest/sea/testcase/demo/test_TmnlInstallDetai_debug.py', 'rt',
                   encoding='utf-8') as rdata:
             line = 0
             for index, nlVlaue in enumerate(rdata.readlines(), 1):

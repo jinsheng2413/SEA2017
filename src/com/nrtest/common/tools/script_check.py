@@ -112,7 +112,7 @@ def find_not_startwith_test(dirname):
     """
     filelistlog = Setting.LOG_PATH + "filelistlog.log"  # 保存文件路径
     postfix = set(['py'])  # 设置要保存的文件格式
-    exclude_files = ['bg.py', 'demo.py', 'gt.py', 'pbs5000.py', '__init__.py', 'gt_for_menu_list.py', 'test.py']
+    exclude_files = ['bg.py', 'gt.py', 'pbs5000.py', '__init__.py', 'gt_for_menu_list.py', 'test.py']
     find_file_list = []
     for maindir, subdir, file_name_list in os.walk(dirname):
         if 'testcase' in maindir:

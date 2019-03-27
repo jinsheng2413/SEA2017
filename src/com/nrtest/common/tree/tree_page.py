@@ -33,7 +33,7 @@ class BaseTreePage(Page):
                 30-厂站档案设备树   21-并且带复选框
                 40-普通树         41-并且带复选框；采集运维-->手动对时
         """
-        if bool(menu_page):  # 通过testCase子类基础初始化：com/nrtest/sea/testcase/demo_new/pbs5000.py
+        if bool(menu_page):  # 通过testCase子类基础初始化：com/nrtest/sea/testcase/demo/pbs5000.py
             driver = parent_class
             super().__init__(self, driver, menu_page)
         else:  # 通过实例化BaseTreePage子类对象初始化：test_consIntrgratedQuery_realTimeDataQry.py

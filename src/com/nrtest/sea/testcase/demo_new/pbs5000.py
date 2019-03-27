@@ -7,10 +7,12 @@
 @time: 2019/01/08 16:41
 @desc:
 """
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt
 
+from com.nrtest.common.tree.tree_page import TreePage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 

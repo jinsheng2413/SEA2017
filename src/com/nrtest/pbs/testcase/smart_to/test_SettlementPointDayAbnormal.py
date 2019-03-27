@@ -12,6 +12,7 @@ from unittest import TestCase
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
+from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.pbs.data.smart_to.smartTo_data import SmartTo_data
 from com.nrtest.pbs.page.smart_to.settlementPointDayAbnormal_page import SettlementPointDayAbnormal_page
@@ -65,15 +66,15 @@ class Test_settlementpointdayabnormal(TestCase, SettlementPointDayAbnormal_page)
         查询结果校验（包括跳转）
         :param para:
         """
+        self.assertTrue(AssertResult(self).check_query_result(para))
 
-    # self.assertTrue(AssertResult(self).check_query_result(para))
     def assert_query_criteria(self, para):
         """
         查询条件校验
         :param para:
         """
 
-    # self.assertTrue(self.check_query_criteria(para))
+        self.assertTrue(self.check_query_criteria(para))
 
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(SmartTo_data.SettlementPointDayAbnormal_para))

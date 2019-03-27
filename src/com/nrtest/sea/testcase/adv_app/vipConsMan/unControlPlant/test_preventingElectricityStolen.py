@@ -63,21 +63,17 @@ class TestPreventingElectricityStolen(TestCase, PreventingElectricityStolenPage)
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 用户编号
-        self.inputStr_cons_no(para['CONS_NO'])
-
-        # 选择要显示点数
-        self.inputChk_display_num(para['DISPLAY_NUM'])
 
         # 节点名
         self.openLeftTree(para['TREE_NODE'])
-
+        # 用户编号
+        self.inputStr_cons_no(para['CONS_NO'])
+        # 选择要显示点数
+        self.inputChk_display_num(para['DISPLAY_NUM'])
         # 统计日期从
         self.inputDt_start_time(para['START_TIME'])
-
         # 到
         self.inputDt_end_time(para['END_TIME'])
-
         # 查询
         self.btn_qry()
 

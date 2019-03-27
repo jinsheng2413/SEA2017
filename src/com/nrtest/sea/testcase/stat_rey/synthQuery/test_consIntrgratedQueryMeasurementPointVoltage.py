@@ -15,7 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.pbs.tree.tree_page import TreeSingleUserPage
+from com.nrtest.common.tree.tree_page import TreeSingleUserPage
 from com.nrtest.sea.data.stat_rey.synthQuery.synthQuery_data import SynthQuery_data
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.stat_rey.synthQuery.consIntegratedQuery_page import \
@@ -35,6 +35,7 @@ class TestMeansurementPointVoltage(TestCase, ConsIntrgratedQueryMeasurementPoint
         # menuPage.clickTabPage(SynthQuery_data.consIntrgratedQuery_realTimeDataQry_tab)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
+        cls.user_page = TreeSingleUserPage(cls)
 
     @classmethod
     def tearDownClass(cls):
@@ -65,8 +66,8 @@ class TestMeansurementPointVoltage(TestCase, ConsIntrgratedQueryMeasurementPoint
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         sleep(2)
-        user_page = TreeSingleUserPage(self)
-        user_page.openLeftTree(para['NODE'])
+
+        self.user_page.openLeftTree(para['NODE'])
         sleep(2)
 
         # 打开左边树并选择
@@ -76,7 +77,7 @@ class TestMeansurementPointVoltage(TestCase, ConsIntrgratedQueryMeasurementPoint
         user_info = self.get_para_value(para['USER_INFO'])
         if bool(user_info):
             # 筛选用户信息
-            user_page.user_query(para['USER_INFO'])
+            self.user_page.user_query(para['USER_INFO'])
 
         # 统计方式
         self.inputChk_query_type(para['QUERY_TYPE'])

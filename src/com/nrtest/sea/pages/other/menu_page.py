@@ -10,7 +10,7 @@
 from com.nrtest.common import global_drv
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.login import Login
-from com.nrtest.pbs.tree.tree_page import *
+from com.nrtest.common.tree.tree_page import *
 from com.nrtest.sea.locators.other.menu_locators import *
 
 

@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
-from com.nrtest.pbs.tree.tree_locators import *
+from com.nrtest.common.tree.tree_locators import *
 
 # create a logger instance
 logger = Logger(logger='BaseTreePage').getlog()
@@ -186,18 +186,6 @@ class TreePBSPage(BaseTreePage):
 
     def openLeftTree(self, node_no):
         super().openLeftTree(node_no, True)
-
-    # def closeLeftTree_double(self):
-    #     loc = LeftTreeLocators.CLOSE_LFET_TREE
-    #     loc_root = LeftTreeLocators.CLOSE_LFET_ROOT_TREE
-    #     els = self._find_elements(loc)
-    #     l = len(els) - 1
-    #     while l >= 0:
-    #         els[l].click()
-    #         l -= 1
-    #     el = self._direct_find_element(loc_root)
-    #     if el:
-    #         el.click()
 
 
 class TreePage(BaseTreePage):

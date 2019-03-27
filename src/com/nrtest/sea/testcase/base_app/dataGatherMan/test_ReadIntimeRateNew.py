@@ -15,7 +15,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.pbs.tree.tree_page import TreeQualityPage
+from com.nrtest.common.tree.tree_page import TreeQualityPage
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.ReadIntimeRate_new_page import ReadIntimeRateNewPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
@@ -34,6 +34,7 @@ class TestReadIntimeRateNew(TestCase, ReadIntimeRateNewPage):
         # menuPage.clickTabPage(GatherQualityAnalyze_data.tmnlInstallDetail_tabOne)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
+        cls.user_page = TreeQualityPage(cls)
 
     @classmethod
     def tearDownClass(cls):
@@ -63,8 +64,8 @@ class TestReadIntimeRateNew(TestCase, ReadIntimeRateNewPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        user_page = TreeQualityPage(self)
-        user_page.openLeftTree(para['NODE'])
+
+        self.user_page.openLeftTree(para['NODE'])
         sleep(2)
 
         # 打开左边树并选择

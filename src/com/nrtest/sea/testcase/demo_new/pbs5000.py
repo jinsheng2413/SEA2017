@@ -11,7 +11,6 @@ from unittest import TestCase
 
 from ddt import ddt
 
-from com.nrtest.pbs.tree.tree_page import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 

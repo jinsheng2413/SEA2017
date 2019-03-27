@@ -35,7 +35,7 @@ def head(autor=author, name="puiu", menNo=''):
                                                     '"""\n' \
                                                     "from com.nrtest.pbs.tree.tree_page import TreePBSPage\n\n" \
           + getPath(menNo) + '\n' + \
-          "class {}(TreePBSPage):\n"
+          "class {}(Page):\n"
 
     str_new = str.format(autor, name, time.strftime("%Y-%m-%d %H:%M", time.localtime()), name)
     return str_new
@@ -69,7 +69,7 @@ def PageHead(autor=author, name='', menNo=''):
                                                     '"""\n' \
                                                     'from com.nrtest.pbs.tree.tree_page import TreePBSPage\n\n' \
           + getPath(menNo) + '\n' + \
-          "class {}(TreePBSPage):\n\n"
+          "class {}(Page):\n\n"
     name_new = name[0].upper() + name[1:]
     str_new = str.format(autor, name, time.strftime("%Y-%m-%d %H:%M", time.localtime()), name_new)
     return str_new

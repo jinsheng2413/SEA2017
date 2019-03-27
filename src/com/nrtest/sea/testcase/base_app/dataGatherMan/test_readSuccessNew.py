@@ -16,7 +16,7 @@ from ddt import ddt, data
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
-from com.nrtest.pbs.tree.tree_page import TreeQualityPage
+from com.nrtest.common.tree.tree_page import TreeQualityPage
 from com.nrtest.sea.data.base_app.dataGatherMan.dataGatherMan_data import DataGatherMan_data
 from com.nrtest.sea.pages.base_app.dataGatherMan.readSuccessNew_page import GatherSuccessRatePageNew
 from com.nrtest.sea.pages.other.menu_page import MenuPage
@@ -35,6 +35,7 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePageNew):
         # menuPage.clickTabPage(DataGatherMan_data.dataGatherQualityAnalyze_new_readSuccess_tab_readSuccess)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         menuPage.remove_dt_readonly()
+        cls.user_page = TreeQualityPage(cls)
 
     @classmethod
     def tearDownClass(cls):
@@ -57,8 +58,8 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePageNew):
         self.recoverLeftTree()
 
     def query(self, para):
-        user_page = TreeQualityPage(self)
-        user_page.openLeftTree(para['NODE'])
+
+        self.user_page.openLeftTree(para['NODE'])
         sleep(2)
         # 选择tab页
         self.inputChk_tab_name(para['TAB_NAME'])

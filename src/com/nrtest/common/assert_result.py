@@ -116,6 +116,7 @@ class AssertResult():
             skip_info['CLICKABLE'] = bool(skip_info['EL_A'])
             self.tst_inst.scrollTo(el_link)
             # el_link.click()
+            # 高级应用→问题交流平台→知识库管理:“查看”链接没有a这个tag_name
             if bool(skip_info['EL_A']):
                 skip_info['EL_A'].click()
 

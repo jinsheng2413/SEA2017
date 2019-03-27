@@ -211,6 +211,9 @@ class BasePbsLocators(Locators):
 
     # 缺少标签或id、name情况下的日期元素定位
     QRY_DT_INPUT = (By.XPATH, '//*[text()="{}"]/..//input')
+    # 数据加载中
+    # DATA_LOADING = (By.XPATH, '//div[@class="ext-el-mask-msg x-mask-loading"]')
+    DATA_LOADING = (By.XPATH, '//div[starts-with(@class, "ext-el-mask-msg")]//div[contains(text(),"...")]')
 
     # 【下拉框】
     # 下拉选择点击按钮

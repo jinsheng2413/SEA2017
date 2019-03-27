@@ -8,12 +8,11 @@
 @desc:
 """
 
-from com.nrtest.pbs.locators.business_change.changeTableOperate_locators import ChangeTableOperateLocators
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 业务变更→换表操作:换表操作
-class ChangeTableOperatePage(TreePBSPage):
+class ChangeTableOperatePage(Page):
     # 电表
     def inputStr_meter(self, value):
         self.input(value)
@@ -30,13 +29,13 @@ class ChangeTableOperatePage(TreePBSPage):
     def inputStr_asset_no(self, value):
         self.input(value)
 
-    # 查询按钮
+    # 提交按钮
     def btn_qry(self):
-        self.click(ChangeTableOperateLocators.BTN_QUERY)
+        self.btn_query(is_multi_tab=True)
 
 
 # 业务变更→换表操作:换表记录
-class ChangeTableRecordPage(TreePBSPage):
+class ChangeTableRecordPage(Page):
     # 时间类型
     def inputChk_date_type(self, value):
         self.selectDropDown(value)
@@ -49,6 +48,6 @@ class ChangeTableRecordPage(TreePBSPage):
     def inputDt_end_date(self, value):
         self.inputDate(value)
 
-    # 查询按钮
+    # 提交按钮
     def btn_qry(self):
-        self.btn_query(True)
+        self.btn_query(is_multi_tab=True)

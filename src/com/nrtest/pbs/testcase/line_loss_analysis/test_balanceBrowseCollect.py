@@ -11,7 +11,7 @@
 from unittest import TestCase
 
 from ddt import ddt, data
-
+from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.pbs.data.line_loss_analysis.lineLossAnalysis_data import LineLossAnalysis_data
 from com.nrtest.pbs.page.line_loss_analysis.balanceBrowse_page import BalanceBrowseCollectPage
 from com.nrtest.pbs.tree.tree_page import *
@@ -37,8 +37,8 @@ class TestBalanceBrowseCollect(TestCase, BalanceBrowseCollectPage):
         print('执行结束')
         # 刷新浏览器
         # cls.closePages(cls)
-        cls.goto_home_iframe(cls)
-        cls.main_page(cls)
+        cls.goto_home_page(cls)
+
 
     def setUp(self):
         """
@@ -50,7 +50,7 @@ class TestBalanceBrowseCollect(TestCase, BalanceBrowseCollectPage):
         """
         测试结束后的操作，这里基本上都是关闭浏览器
         """
-        self.closeLeftTree()
+        self.recoverLeftTree()
 
     def query(self, para):
         """
@@ -59,8 +59,7 @@ class TestBalanceBrowseCollect(TestCase, BalanceBrowseCollectPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        id = 'external-frame'
-        self.intoIframe(id)
+        self.goto_frame()
         # 区域
         self.inputSel_area(para['AREA'])
         # 时间方案

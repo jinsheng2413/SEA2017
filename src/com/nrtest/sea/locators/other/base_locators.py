@@ -136,7 +136,7 @@ class BaseLocators(Locators):
 
     # 【按钮类元素】，如：查询按钮
     BTN_QRY = (By.XPATH, '//button[normalize-space(text())="{}"]')
-    # BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
+    BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
 
     # 确定
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")

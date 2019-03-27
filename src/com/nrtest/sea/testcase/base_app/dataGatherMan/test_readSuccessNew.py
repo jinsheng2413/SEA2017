@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_gatherSuccessRate.py
+@file: test_readSuccessNew.py
 @time: 2018-09-17 16:30
 @desc:
 """

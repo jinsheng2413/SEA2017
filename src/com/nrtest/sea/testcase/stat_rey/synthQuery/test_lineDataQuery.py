@@ -71,9 +71,9 @@ class TestTmnlInstallDetai_debug(TestCase, LineDataQueryPage):
 
         self.btn_search()
         # 查询日期
-        self.inputdt_starttime(para['START_TIME'])
+        self.inputDt_start_time(para['START_TIME'])
         # 至
-        self.inputdt_endtime(para['END_TIME'])
+        self.inputDt_end_time(para['END_TIME'])
 
         self.btn_data_search()
 

@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_load_curve_analysis.py
+@file: test_loadCurveAnalysisDetail.py
 @time: 2019-03-14 16:40:05
 @desc:
 """

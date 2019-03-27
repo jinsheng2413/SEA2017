@@ -70,7 +70,7 @@ class test_CollHitch(TestCase, CollHitchPage):
         self.openLeftTree(para['TREE_NODE'])
 
         # 输入框
-        self.input_name(para['INPUT_NAME'])
+        self.inputStr_input_name(para['INPUT_NAME'])
 
         # 查询
         self.btn_qry()

@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_ReadCompleteRate.py
+@file: test_backgroundTaskQuery.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """

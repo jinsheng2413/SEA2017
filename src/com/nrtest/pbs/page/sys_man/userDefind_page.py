@@ -16,7 +16,7 @@ from com.nrtest.pbs.locators.sys_man.sysMan_locators import SysMan_locators
 
 class UserDefindPage(Page):
     # 输入框
-    def input_name(self, value):
+    def inputStr_input_name(self, value):
         self.input(value, *SysMan_locators.INPUT_NAME3)
 
     # 查询

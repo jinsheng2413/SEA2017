@@ -7,8 +7,8 @@
 @time: 2019/3/15 14:18
 @desc:
 """
-from com.nrtest.pbs.locators.archives_man.collHitch_locators import CollHitch_locators
 from com.nrtest.common.base_page import Page
+from com.nrtest.pbs.locators.archives_man.collHitch_locators import CollHitch_locators
 
 
 # 档案管理--采集点挂接
@@ -16,7 +16,7 @@ from com.nrtest.common.base_page import Page
 
 class CollHitchPage(Page):
     # 输入框
-    def input_name(self, value):
+    def inputStr_input_name(self, value):
         self.input(value, *CollHitch_locators.INPUT_NAME)
 
     # 查询

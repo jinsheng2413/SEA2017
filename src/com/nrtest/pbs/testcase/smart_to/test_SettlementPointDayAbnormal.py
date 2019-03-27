@@ -59,7 +59,7 @@ class Test_settlementpointdayabnormal(TestCase, SettlementPointDayAbnormal_page)
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # 日期
-        self.inputDt_query_date(para["QUERY_DATE"])
+        self.inputDt_query_date(para['QUERY_DATE'])
 
     def assert_query_result(self, para):
         """

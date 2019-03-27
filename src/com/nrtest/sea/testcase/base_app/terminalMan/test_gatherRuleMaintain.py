@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_gather_rule_maintain.py
+@file: test_gatherRuleMaintain.py
 @time: 2019-03-14 16:40:05
 @desc:
 """

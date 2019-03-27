@@ -18,7 +18,7 @@ class LineLossBrowseCollectPage(Page):
 
     # 时间方案
     def inputChk_date_type(self, value):
-        self.click_button(value)
+        self.clickDt_Tab(value)
 
     # 查询按钮
     def btn_qry(self):
@@ -42,7 +42,7 @@ class LineLossBrowseQueryPage(Page):
 
     # 时间类型
     def inputChk_date_type(self, value):
-        self.click_button(value)
+        self.clickDt_Tab(value)
 
     # 查询按钮
     def btn_qry(self):

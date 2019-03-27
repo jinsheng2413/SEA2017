@@ -35,7 +35,7 @@ class SpecialTransformerCheckPage(Page):
         self.selectDropDown(value)
 
     # 百分比
-    def inputStr_no_label_input(self, value):
+    def inputStr_persent(self, value):
         self.noLabelInput(value)
 
     # 查询

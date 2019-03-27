@@ -3,7 +3,7 @@
 """
 @author: jinsheng
 @license: (C) Copyright 2018, Nari.
-@file: test_ReadCompleteRate.py
+@file: test_lowCurveCheck.py
 @time: 2018/9/10 0010 9:21
 @desc:
 """
@@ -80,7 +80,7 @@ class TestReadCompleteRate(TestCase, LowCurveCheckPage):
         # 当天抄读成功率
         self.inputSel_read_success(para['READ_SUCCESS'])
         # 百分比
-        self.inputStr_no_label_input(para['PERSENT'])
+        self.inputStr_persent(para['PERSENT'])
         # 终端厂商
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 规约类型

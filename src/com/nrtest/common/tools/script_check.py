@@ -96,7 +96,8 @@ def find_not_standard_input(dirname):
                             if not (temp.startswith('self.inputDt') \
                                     or temp.startswith('self.inputChk') \
                                     or temp.startswith('self.inputSel') \
-                                    or temp.startswith('self.inputStr')):
+                                    or temp.startswith('self.inputStr') \
+                                    or temp.startswith('self.inputRow')):
                                 defs.append(temp.split('(')[0].split('.')[1] + '\r')
                 if bool(defs):
                     with codecs.open(filelistlog, 'a+', encoding='utf-8') as fo:
@@ -114,11 +115,12 @@ def find_not_startwith_test(dirname):
     exclude_files = ['bg.py', 'demo.py', 'gt.py', 'pbs5000.py', '__init__.py', 'gt_for_menu_list.py', 'test.py']
     find_file_list = []
     for maindir, subdir, file_name_list in os.walk(dirname):
-        for filename in file_name_list:
-            if not filename.startswith('test_') \
-                    and filename not in exclude_files \
-                    and filename.split('.')[-1] in postfix:  # 匹配后缀，只保存所选的文件格式。若要保存全部文件，则注释该句
-                find_file_list.append(os.path.join(maindir, filename) + '\r')
+        if 'testcase' in maindir:
+            for filename in file_name_list:
+                if not filename.startswith('test_') \
+                        and filename not in exclude_files \
+                        and filename.split('.')[-1] in postfix:  # 匹配后缀，只保存所选的文件格式。若要保存全部文件，则注释该句
+                    find_file_list.append(os.path.join(maindir, filename) + '\r')
 
     if bool(find_file_list):
         with codecs.open(filelistlog, 'a+', encoding='utf-8') as fo:
@@ -385,7 +387,7 @@ def insert_import(dirname):
 if __name__ == '__main__':
     # # 指定根目录
     # dirpath = os.path.dirname(os.path.realpath(__file__))
-    dirpath = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase'
+    dirpath = r'D:\PycharmProjects\SEA2017\src\com\nrtest'
     insert_import(dirpath)
     append_remark(find_not_equal_input)
     find_not_equal_input(dirpath)

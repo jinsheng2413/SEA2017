@@ -65,7 +65,7 @@ class test_SysMenu(TestCase, SysMenuPage):
         """
 
         # 输入框
-        self.input_name(para['INPUT_NAME'])
+        self.inputStr_input_name(para['INPUT_NAME'])
 
         # 查询
         self.btn_qry()

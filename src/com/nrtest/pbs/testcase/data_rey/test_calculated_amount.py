@@ -63,7 +63,7 @@ class test_CalculatedAmount(TestCase, Calcluteamount_page):
         """
         self.openLeftTree(para['TREE_NODE'])
         # 时间方案
-        self.inputBtn_time_blue_print(para['TIME_BLUE_PRINT'])
+        self.inputChk_time_blue_print(para['TIME_BLUE_PRINT'])
 
         # 时间
         self.inputDt_query_time(para['QUERY_TIME'])

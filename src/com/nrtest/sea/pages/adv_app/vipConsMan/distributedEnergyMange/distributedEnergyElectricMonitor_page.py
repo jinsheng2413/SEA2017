@@ -58,7 +58,7 @@ class DistributedEnergyElectricStatPage(Page):
 # 高级应用→重点用户监测→分布式电源管理→分布式电源电量监测→分布式电源电量监测明细
 class DistributedEnergyElectricDetailPage(Page):
     # 统计方式
-    def inputChk_stat_scope(self, index):
+    def inputChk_query_mode(self, index):
         self.clickRadioBox(index, is_multi_tab=True, is_multi_elements=True)
 
     # 电能表用途

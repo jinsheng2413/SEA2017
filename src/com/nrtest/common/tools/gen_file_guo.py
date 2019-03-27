@@ -102,7 +102,7 @@ def getPage(menuNO, tab='01', path='', name=PageName):
         '04': 'def inputChk_{}(self,option):\n\t\t   self.selectCheckBox(option)',
         '06': 'def inputDt_{}(self,value):\n\t\t   self.inputDate(value)',
         '07': 'def inputChk_{}(self,value):\n\t\t   self.selectCheckBox(option)',
-        '09': 'def inputBt_{}(self,value):\n\t\t   self.click_button(value)',
+        '09': 'def inputChk_{}(self,value):\n\t\t   self.clickDt_Tab(value)',
         '10': 'def inputXp_{}(self,value):\n\t\t   self.click_xpath(value)'
     }
     data = get_data(menuNO, tab=tab)

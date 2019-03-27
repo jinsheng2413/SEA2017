@@ -14,9 +14,9 @@ from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
+from com.nrtest.common.data_access import DataAccess
 from com.nrtest.pbs.data.business_change.businessChange_data import BusinessChange_data
 from com.nrtest.pbs.page.business_change.againCount_page import AgainCountPage
-from com.nrtest.pbs.tree.tree_page import *
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 

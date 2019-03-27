@@ -7,11 +7,11 @@
 @time: 2019-03-15 14:37
 @desc:
 """
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 网损分析→分压网损查询:网损查询
-class PressureNetLossQryPage(TreePBSPage):
+class PressureNetLossQryPage(Page):
     # 区域
     def inputSel_area(self, value):
         self.selectDropDown(value)

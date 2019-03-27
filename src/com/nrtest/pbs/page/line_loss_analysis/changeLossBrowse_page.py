@@ -27,7 +27,7 @@ class ChangeLossBrowseCollectPage(Page):
 
 
 # 线损分析→变损浏览:变损查询
-class ChangeLossBrowseQueryPage(TreePBSPage):
+class ChangeLossBrowseQueryPage(Page):
     # 电压
     def inputSel_voltage(self, value):
         self.selectDropDown(value)

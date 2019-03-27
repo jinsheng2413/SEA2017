@@ -27,7 +27,7 @@ class BalanceBrowseCollectPage(Page):
 
 
 # 线损分析→母平浏览:母平查询
-class BalanceBrowseQueryPage(TreePBSPage):
+class BalanceBrowseQueryPage(Page):
     # 电压
     def inputSel_voltage(self, value):
         self.selectDropDown(value)

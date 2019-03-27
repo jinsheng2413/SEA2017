@@ -8,11 +8,11 @@
 @desc:
 """
 
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 网损分析→分区网损查询:网损查询
-class PartitionNetLossQryPage(TreePBSPage):
+class PartitionNetLossQryPage(Page):
     # 区域
     def inputSel_area(self, value):
         self.selectDropDown(value)

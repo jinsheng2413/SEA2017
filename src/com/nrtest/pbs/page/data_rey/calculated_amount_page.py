@@ -26,4 +26,4 @@ class Calcluteamount_page(TreePBSPage):
         self.clickRadioBox(value, name=True)
 
     def btn_qry(self, value):
-        self.click_xpath(value)
+        self.btn_query(is_multi_tab=True)

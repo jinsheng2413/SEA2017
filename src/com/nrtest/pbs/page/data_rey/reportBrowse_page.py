@@ -15,7 +15,7 @@ from com.nrtest.pbs.tree.tree_page import TreePBSPage
 class ReportBrowsePage(TreePBSPage):
     # 时间方案
     def inputChk_time_type(self, option):
-        self.clickTabPage(value,double=True)
+        self.clickTabPage(option, is_by_js=True)
 
     # 结束
     def inputDt_end_date(self, value):
@@ -31,8 +31,8 @@ class ReportBrowsePage(TreePBSPage):
 
     # 生成报表
     def inputChk_generate_list(self, option):
-        self.clickTabPage(value,double=True)
+        self.clickTabPage(option, is_by_js=True)
 
     # 导出报表
     def inputChk_export_list(self, option):
-        self.clickTabPage(value,double=True)
+        self.clickTabPage(option, is_by_js=True)

@@ -36,10 +36,7 @@ class test_CalculatedAmount(TestCase, Calcluteamount_page):
     @classmethod
     def tearDownClass(cls):
         print("执行结束")
-        cls.iframe_back(cls, num=1)
-
-        # 关闭菜单页面
-        cls.main_page(cls)
+        cls.goto_home_page(cls)
 
     def setUp(self):
         """
@@ -73,7 +70,7 @@ class test_CalculatedAmount(TestCase, Calcluteamount_page):
         self.inputChk_ele_unit(para['ELE_UNIT'])
 
         # 查询
-        self.btn_qry(para['BTN_QUERY'])
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

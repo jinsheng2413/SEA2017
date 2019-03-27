@@ -24,7 +24,7 @@ class ChangeLossBrowseCollectPage(TreePBSPage):
 
     # 查询按钮
     def btn_qry(self):
-        self.click(ChangeLossBrowseCollectLocators.BTN_QRY)
+        self.btn_query(is_multi_tab=True)
 
 
 # 线损分析→变损浏览:变损查询
@@ -47,4 +47,4 @@ class ChangeLossBrowseQueryPage(TreePBSPage):
 
     # 查询按钮
     def btn_qry(self):
-        self.click(ChangeLossBrowseQueryLocators.BTN_QRY)
+        self.btn_query(is_multi_tab=True)

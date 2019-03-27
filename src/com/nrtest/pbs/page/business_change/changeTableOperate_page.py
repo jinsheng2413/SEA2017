@@ -30,9 +30,9 @@ class ChangeTableOperatePage(TreePBSPage):
     def inputStr_asset_no(self, value):
         self.input(value)
 
-    # 查询按钮
+    # 提交按钮
     def btn_qry(self):
-        self.click(ChangeTableOperateLocators.BTN_QUERY)
+        self.btn_query(is_multi_tab=True)
 
 
 # 业务变更→换表操作:换表记录
@@ -49,6 +49,6 @@ class ChangeTableRecordPage(TreePBSPage):
     def inputDt_end_date(self, value):
         self.inputDate(value)
 
-    # 查询按钮
+    # 提交按钮
     def btn_qry(self):
-        self.btn_query(True)
+        self.btn_query(is_multi_tab=True)

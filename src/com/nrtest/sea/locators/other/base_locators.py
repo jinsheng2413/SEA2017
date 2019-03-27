@@ -211,6 +211,9 @@ class BasePbsLocators(Locators):
 
     # 缺少标签或id、name情况下的日期元素定位
     QRY_DT_INPUT = (By.XPATH, '//*[text()="{}"]/..//input')
+    # 数据加载中
+    # DATA_LOADING = (By.XPATH, '//div[@class="ext-el-mask-msg x-mask-loading"]')
+    DATA_LOADING = (By.XPATH, '//div[starts-with(@class, "ext-el-mask-msg")]//div[contains(text(),"...")]')
 
     # 【下拉框】
     # 下拉选择点击按钮
@@ -250,12 +253,13 @@ class BasePbsLocators(Locators):
     # 【按钮类元素】，如：查询按钮
     # BTN_QRY = (By.XPATH, '//button[normalize-space(@title)="{}"]')
     # BTN_QRY_BLANK = (By.XPATH, '//button[contains(normalize-space(text()),"{}")]')
-    BTN_QRY = (By.XPATH, '//button[starts-with(@class, "but icon-search serach_btn_xy")]')
+    # BTN_QRY = (By.XPATH, '//button[starts-with(@class, "but icon-search serach_btn_xy")]')
+    BTN_QRY = (By.XPATH, '//*[contains(@id,"sear")] | //*[contains(@class,"sear")]|//*[contains(@title,"{}")]')
     # 确定
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 
     # 定位一个菜单页面内的某一Tab页
-    TAB_PAGE = (By.XPATH, '//span[@class="tabs-title" and text()="{}"]')
+    TAB_PAGE = (By.XPATH, '//span[(@class="tabs-title" or @class="l-btn-text") and text()="{}"]')
 
     # 弹框处理
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')

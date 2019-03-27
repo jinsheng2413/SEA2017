@@ -432,6 +432,23 @@ class Page():
         except Exception as ex:
             logger.error('输入错误:{}\n{}'.format(value, ex))
 
+    def click_by_js(self, obj, idx=1):
+        """
+        通过JavaScript单击（click）元素
+        :param obj:
+        :param idx:
+        """
+        if isinstance(obj, WebElement):
+            el = obj
+        else:
+            el = self._find_displayed_element(obj, idx)
+
+        js = '''var event1 = document.createEvent("HTMLEvents"); 
+                              event1.initEvent("click", true, true); 
+                              event1.eventType = "message"; /*这行代码可能能删除*/ 
+                              arguments[0].dispatchEvent(event1);'''
+        self.driver.execute_script(js, el)
+
     def curr_click(self, is_multi_tab=False, btn_name='', idx=1, is_by_js=False):
         """
         新版点击方法
@@ -449,11 +466,12 @@ class Page():
                 el = self._find_element(loc)
 
             if is_by_js:
-                js = '''var event1 = document.createEvent("HTMLEvents"); 
-                      event1.initEvent("click", true, true); 
-                      event1.eventType = "message"; /*这行代码可能能删除*/ 
-                      arguments[0].dispatchEvent(event1);'''
-                self.driver.execute_script(js, el)
+                # js = '''var event1 = document.createEvent("HTMLEvents");
+                #       event1.initEvent("click", true, true);
+                #       event1.eventType = "message"; /*这行代码可能能删除*/
+                #       arguments[0].dispatchEvent(event1);'''
+                # self.driver.execute_script(js, el)
+                self.click_by_js(el)
             else:
                 el.click()
 
@@ -1003,7 +1021,7 @@ class Page():
         except BaseException as ex:
             print('点击复选框失败：{}'.format(ex))
 
-    def clickTabPage(self, tab_name, is_multi_tab=False, is_multi_elements=False, double=False):
+    def clickTabPage(self, tab_name, is_multi_tab=False, is_multi_elements=False, is_by_js=False):
         """
         打开Tab页
         :param tab_name:
@@ -1018,11 +1036,13 @@ class Page():
             tab = tab_name
 
         xpath = self.format_xpath_multi(self.baseLocators.TAB_PAGE, tab, is_multi_tab)
-        if is_multi_elements:
+        if is_by_js:
+            self.click_by_js(xpath)
+        elif is_multi_elements:
             el = self._find_displayed_element(xpath)
             el.click()
-        elif double:
-            self.double_click(xpath)
+        # elif double:
+        #     self.double_click(xpath)
         else:
             self.click(xpath)
 
@@ -1242,6 +1262,7 @@ class Page():
     def goto_frame(self, frame_obj=0):
         """
         进入iframe层
+        当一个iframe层内有多个iframe时，通过配置para['IFRAME']确认进入
         :param frame_obj:frame序号，name， id or (By.TAG_NAME, '')
         """
         logger.info('进入 %s 的iframe层', frame_obj)
@@ -1485,6 +1506,15 @@ class Page():
         """
         self.menuPage.closePages(page_name, isCurPage)
 
+    def goto_home_page(self, menu_name=''):
+        """
+        PBS5000专用，回退到一级菜单
+        :param menu_name:
+        :return:
+        """
+        self.goto_home_iframe(self)
+        self.menuPage.goto_home_page(menu_name)
+
     @staticmethod
     def format_xpath(xpath, format_val):
         """
@@ -1640,41 +1670,9 @@ class Page():
         result = True
         return result
 
-    # def waitLeftTree(self):
-    #     locators = (By.XPATH, '//*[@class="x-tree-ec-icon x-tree-elbow-plus"]')
-    #
-    #     WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locators))
-
     def double_click(self, locator):
         el = self._find_element(locator)
         ActionChains(self.driver).double_click(el).perform()
-
-    # def intoIframe(self, value):
-    #     """
-    #     进入iframe层 goto_frame
-    #     :param value:
-    #     :return:
-    #     """
-    #     self.driver.switch_to.frame(value)
-    #
-    # def iframe_back(self, num=1):
-    #     """
-    #     1:返回主目录
-    #     2:返回上一层
-    #     :param num:默认是返回主目录:1-goto_home_iframe;2-goto_parent_iframe
-    #     :return:
-    #     """
-    #     if num == 1:
-    #         self.driver.switch_to.default_content()
-    #     elif num == 2:
-    #         self.driver.switch_to.parent_frame()
-    #
-    # def ele_display(self, locator):
-    #     try:
-    #         return self.driver.find_element(*locator).is_displayed()
-    #     except:
-    #         return False
-
 
 if __name__ == '__main__':
     # dr = webdriver.Chrome()

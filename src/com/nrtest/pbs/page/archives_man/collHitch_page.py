@@ -8,17 +8,17 @@
 @desc:
 """
 from com.nrtest.pbs.locators.archives_man.collHitch_locators import CollHitch_locators
-from com.nrtest.pbs.tree.tree_page import TreePBSPage
+from com.nrtest.common.base_page import Page
 
 
 # 档案管理--采集点挂接
 
 
-class CollHitchPage(TreePBSPage):
+class CollHitchPage(Page):
     # 输入框
     def input_name(self, value):
         self.input(value, *CollHitch_locators.INPUT_NAME)
 
     # 查询
     def btn_qry(self):
-        self.click(CollHitch_locators.BTN_QUERY)
+        self.btn_query(is_multi_tab=True,idx=2)

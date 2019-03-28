@@ -65,7 +65,7 @@ class TestAgainDispose(TestCase, AgainDisposePage):
         # 处理方式
         self.inputChk_dispose_type(para['DISPOSE_TYPE'])
         val = self.get_para_value(para['DISPOSE_TYPE'])
-        if val in ['4']:
+        if val in ['反转']:
             # 电表
             # self.openLeftTree(para['TREE_NODE'])
             # 开始时间
@@ -81,8 +81,8 @@ class TestAgainDispose(TestCase, AgainDisposePage):
             self.inputDt_end_date(para['END_DATE'])
             # Tab页名称
             self.inputChk_tab_name(para['TAB_NAME'])
-            # 提交按钮
-            self.btn_qry()
+        # 提交按钮
+        self.btn_qry()
 
 
 

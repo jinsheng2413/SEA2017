@@ -549,6 +549,7 @@ class AssertResult():
 
                         # 跳转后的相关判断处理
                         after_text = skip_info['AFTER_TEXT']
+                        # 获取供电单位类别
                         org_type = DataAccess.get_org_type(after_text)
 
                         # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；

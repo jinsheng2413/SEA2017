@@ -556,7 +556,7 @@ class Page():
         try:
             el = self._find_displayed_element(self.baseLocators.DATA_LOADING)
 
-            logger.info('loading...', el.text)
+            logger.info('loading...' + el.text)
             logger.info(el.get_attribute('class'))
             logger.info(el.get_attribute('style'))
             logger.info(el.get_attribute('tag_name'))

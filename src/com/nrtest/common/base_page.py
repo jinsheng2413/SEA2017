@@ -511,7 +511,7 @@ class Page():
                 # print('菜单', self._direct_find_element((By.XPATH, '//li[@id="maintab__报文分析工具"]')))
                 el = self._find_displayed_element(loc, idx)
                 # print('SETUP-6-4', el)
-                value_of_el = self.driver.execute_script("return arguments[0].value", el)  # self.get_el_text(el)
+                value_of_el = self.driver.execute_script("return arguments[0].value;", el)  # self.get_el_text(el)
                 logger.info(
                     '******** 查询条件（values）：{}, use_share_xpath：{}, option_name：{}, idx：{}, 查询条件值：{}\r'.format(values, use_share_xpath, option_name,
                                                                                                               idx,
@@ -560,7 +560,7 @@ class Page():
         try:
             el = self._find_displayed_element(self.baseLocators.DATA_LOADING)
 
-            logger.info('loading...', el.text)
+            logger.info('loading...' + el.text)
             logger.info(el.get_attribute('class'))
             logger.info(el.get_attribute('style'))
             logger.info(el.get_attribute('tag_name'))

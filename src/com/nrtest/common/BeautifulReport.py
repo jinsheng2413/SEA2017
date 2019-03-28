@@ -210,6 +210,10 @@ class ReportTestResult(unittest.TestResult):
         :return:
         """
         FIELDS['testPass'] = self.success_counter
+
+        # 增加点查询按钮后，到结果出来的耗时（秒） 2019-03-28
+        if len(self.result_list) != len(CASE_COSTS):
+            raise RuntimeError('用例结果与用例耗时列表长度不一致！！')
         # for item in self.result_list:
         for item, case_cost in zip(self.result_list, CASE_COSTS):
             item = json.loads(str(MakeResultJson(item, case_cost[1])))

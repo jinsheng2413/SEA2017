@@ -110,7 +110,7 @@ class AssertResult():
             if is_multi_link:
                 skip_info['EL_A'] = el_link
             else:
-                skip_info['EL_A'] = el_link.find_elements_by_xpath('.//a')
+                skip_info['EL_A'] = el_link.find_element_by_xpath('.//a')
             skip_info['LINK_TEXT'] = el_link.text
             # skip_info['CLICKABLE'] = True if is_multi_link else bool(skip_info['EL_A'])
             skip_info['CLICKABLE'] = bool(skip_info['EL_A'])
@@ -134,7 +134,7 @@ class AssertResult():
                 # sleep(2)
                 el_after_click = self.tst_inst._find_displayed_element(link_xpath)
                 if bool(el_after_click):
-                    el_a = el_after_click.find_elements_by_xpath('.//a')
+                    el_a = el_after_click.find_element_by_xpath('.//a')
                     # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
                     skip_info['AFTER_ACTION'] = '02' if bool(el_a) else '03'
                     skip_info['EL_AFTER_A'] = el_a
@@ -549,6 +549,7 @@ class AssertResult():
 
                         # 跳转后的相关判断处理
                         after_text = skip_info['AFTER_TEXT']
+                        # 获取供电单位类别
                         org_type = DataAccess.get_org_type(after_text)
 
                         # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；

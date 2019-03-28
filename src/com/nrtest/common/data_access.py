@@ -340,6 +340,18 @@ class DataAccess:
         return dataSet[0][0]
 
     @staticmethod
+    def get_org_type(org_name):
+        """
+        获取供电单位的org_type
+        """
+        sql = 'SELECT org_type FROM tst_org WHERE project_no = :1 \
+                  AND org_name = :2 AND ROWNUM = 1'
+
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, org_name])
+        return dataSet[0][0]
+
+    @staticmethod
     def get_el_script_setup(script_type='01'):
         sql = 'select el_type, script_line, script \
                 from tst_element_script_setup t \

@@ -89,7 +89,7 @@ class GatherSuccessRatePageNew(Page):
         self.input(value)
 
     # 终端生产厂家
-    def inputSel_tmnl_ScFactory(self, option):
+    def inputSel_tmnl_scfactory(self, option):
         self.selectDropDown(option)
 
     # 终端类型

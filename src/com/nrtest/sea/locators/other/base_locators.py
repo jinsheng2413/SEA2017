@@ -264,7 +264,7 @@ class BasePbsLocators(Locators):
     TAB_PAGE = (By.XPATH, '//span[@class="tabs-title" and text()="{}"]')
 
     # 定位时间方案Tab选项【PBS专有】
-    DT_TAB = (By.XPATH, '//label/following-sibling::span//button[text()="{}"]')
+    DT_TAB = (By.XPATH, '//label/following-sibling::span//*[text()="{}"]')
 
     # 弹框处理
     POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')

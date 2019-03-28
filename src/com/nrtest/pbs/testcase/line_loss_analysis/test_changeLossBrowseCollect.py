@@ -61,8 +61,7 @@ class TestChangeLossBrowseCollect(TestCase, ChangeLossBrowseCollectPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        id = 'external-frame'
-        self.intoIframe(id)
+        self.goto_frame()
         # 区域
         self.inputSel_area(para['AREA'])
         # 时间方案

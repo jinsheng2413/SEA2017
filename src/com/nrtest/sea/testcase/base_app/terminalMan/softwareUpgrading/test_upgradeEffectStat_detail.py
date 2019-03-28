@@ -83,7 +83,7 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsDetailPage):
         self.inputSel_confirm_result(para['CONFIRM_RESULT'])
         # 执行日期
         self.inputChk_box_exec_date(para['BOX_EXEC_DATE'])
-        if self.get_para_value(para['BOX_EXEC_DATE']) == 'c':
+        if bool(self.get_para_value(para['BOX_EXEC_DATE'])):
             # 执行开始日期
             self.inputDt_start_date(para['START_DATE'])
             # 执行结束日期
@@ -91,7 +91,7 @@ class TestUpgradeEffectStst_detail(TestCase, UpgradeEffectStatisticsDetailPage):
 
         # 确认日期
         self.inputChk_box_affirm_date(para['BOX_AFFIRM_DATE'])
-        if self.get_para_value(para['BOX_AFFIRM_DATE']) == 'c':
+        if bool(self.get_para_value(para['BOX_AFFIRM_DATE'])):
             # 确认开始日期
             self.inputDt_affirm_start_date(para['AFFIRM_START_DATE'])
             # 确认结束日期

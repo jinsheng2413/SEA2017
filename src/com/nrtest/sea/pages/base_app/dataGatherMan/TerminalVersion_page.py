@@ -24,6 +24,10 @@ class TerminalVersionPage(Page):
     def inputDt_query_date(self, value):
         self.inputDate(value)
 
+    # 是否选终端在线
+    def inputChk_tmnl_online(self, item):
+        self.clickSingleCheckBox(item)
+
     # 查询
     def btn_qry(self):
         self.btn_query()

@@ -53,7 +53,7 @@ class UpgradeEffectStatisticsPage(Page):
 
     # 查询按钮
     def btn_search(self):
-        self.btn_query()
+        self.btn_query(True)
 
 
 # 基本应用→终端管理→软件升级→升级效果统计：终端升级明细

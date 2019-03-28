@@ -102,7 +102,7 @@ class AssertResult():
             # el_link = el_data_rows[int(case_result[3])].find_elements_by_xpath('./td[{}]//a'.format(col_pos_info['COL_IDX']))
             is_multi_link = bool(link_xpath)  # 判断某列是否有多个链接
             # if link_xpath is None:
-            if is_multi_link:
+            if not is_multi_link:
                 link_xpath = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL,
                                                               (case_result[0], int(case_result[3]) + col_pos_info['HIDE_ROWS'],
                                                                col_pos_info['COL_IDX']), True)

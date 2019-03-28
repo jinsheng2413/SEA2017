@@ -59,3 +59,21 @@ class AssertError(Exception):
 
     def __str__(self):
         return self.error_info
+
+
+class BtnQueryError(Exception):
+    def __init__(self, qry_cost_sec, error_info):
+        super().__init__(self)  # 初始化父类
+        self.qry_cost_sec = qry_cost_sec  # 数据类型：tuple （case_id, cost_seconds）
+        self.error_info = error_info
+
+    def __str__(self):
+        return self.error_info
+
+    @property
+    def get_qry_cost_sec(self):
+        """
+        btn_query查询耗时时间
+        :return: 秒
+        """
+        return self.qry_cost_sec

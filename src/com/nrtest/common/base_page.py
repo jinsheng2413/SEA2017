@@ -22,7 +22,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
-from com.nrtest.common.user_except import AssertError
+from com.nrtest.common.user_except import AssertError, BtnQueryError
 from com.nrtest.common.utils import Utils
 from com.nrtest.sea.locators.other.base_locators import *
 
@@ -555,10 +555,11 @@ class Page():
         # @TODO 删除我。。。
         try:
             el = self._find_displayed_element(self.baseLocators.DATA_LOADING)
-            print('loading...', el.text)
-            print(el.get_attribute('class'))
-            print(el.get_attribute('style'))
-            print(el.get_attribute('tag_name'))
+
+            logger.info('loading...', el.text)
+            logger.info(el.get_attribute('class'))
+            logger.info(el.get_attribute('style'))
+            logger.info(el.get_attribute('tag_name'))
         except:
             pass
 
@@ -580,16 +581,23 @@ class Page():
                 cost_seconds = timeout_seconds
                 except_type = '用例超时'
                 info = '用例要求<={}秒，实际耗时>{}秒。'.format(timeout_seconds, cost_seconds)
-                raise te
+                raise BtnQueryError((self.tst_case_id, cost_seconds), te.__str__())
+                # raise te
             except Exception as ex:
                 except_type = '用例异常'
                 info = ex.__str__()
-                raise ex
+                cost_seconds = -1
+                raise BtnQueryError((self.tst_case_id, cost_seconds), info)
+                # raise ex
             finally:
                 if bool(except_type):
                     DataAccess.el_operate_log(self.menu_no, self.tst_case_id, '', self.class_name, except_type, info)
-                if is_from_btn and except_type != '用例异常':
-                    DataAccess.case_exec_log(self.tst_case_id, Utils.now_str(start_time), Utils.now_str(end_time), timeout_seconds, cost_seconds)
+                if is_from_btn:
+                    if except_type == '用例异常':
+                        pass
+                    else:
+                        DataAccess.case_exec_log(self.tst_case_id, Utils.now_str(start_time), Utils.now_str(end_time), timeout_seconds, cost_seconds)
+
             return cost_seconds
 
     @BeautifulReport.add_popup_img()
@@ -601,7 +609,9 @@ class Page():
         :param idx:第idx个可见按钮
         """
         self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx, is_by_js=is_by_js)
-        self.query_timeout(is_from_btn=True)
+        cost_seconds = self.query_timeout(is_from_btn=True)
+        return (self.tst_case_id, cost_seconds)
+
 
     def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True):
         """
@@ -1724,7 +1734,6 @@ if __name__ == '__main__':
     #
     # print(loc1)
     page = Page(None)
-    page._clean_blank('查询')
     # print(page.format_xpath_multi((By.XPATH, 'adad{}'), 'c', False))
     # pg = Page(None)
     # pg.clickSingleCheckBox('忽略历史版本;')

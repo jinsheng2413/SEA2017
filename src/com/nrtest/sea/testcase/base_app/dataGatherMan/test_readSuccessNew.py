@@ -175,7 +175,7 @@ class TestGatherSuccessRate(TestCase, GatherSuccessRatePageNew):
                 # 查询条件
                 self.inputSel_query_condition(para['QUERY_CONDITION'])
                 # 终端生产厂家
-                self.inputSel_tmnl_ScFactory(para['TMNL_ScFACTORY'])
+                self.inputSel_tmnl_scfactory(para['TMNL_ScFACTORY'])
             # 查询
             self.btn_qry()
         if tab_name == '按时间统计':

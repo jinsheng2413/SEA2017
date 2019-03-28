@@ -20,7 +20,7 @@ from functools import wraps
 from io import StringIO
 
 from com.nrtest.common.setting import Setting
-from com.nrtest.common.user_except import PopupError, TestImgError, TestSkipError
+from com.nrtest.common.user_except import PopupError, TestImgError, TestSkipError, BtnQueryError
 
 __all__ = ['BeautifulReport']
 
@@ -71,6 +71,7 @@ FIELDS = {
     'testSkip': 0
 }
 
+CASE_COSTS = []
 
 class PATH:
     """ all file PATH meta """
@@ -83,12 +84,13 @@ class PATH:
 class MakeResultJson:
     """ make html table tags """
 
-    def __init__(self, datas: tuple):
+    def __init__(self, datas: tuple, qry_cost):
         """
         init self object
         :param datas: 拿到所有返回数据结构
         """
         self.datas = datas
+        self.qry_cost = qry_cost
         self.result_schema = {}
 
     def __setitem__(self, key, value):
@@ -115,6 +117,8 @@ class MakeResultJson:
             'log',
         )
         for key, data in zip(keys, self.datas):
+            if key == 'spendTime':
+                data = str(self.qry_cost) + '/' + data
             self.result_schema.setdefault(key, data)
         return json.dumps(self.result_schema)
 
@@ -206,8 +210,9 @@ class ReportTestResult(unittest.TestResult):
         :return:
         """
         FIELDS['testPass'] = self.success_counter
-        for item in self.result_list:
-            item = json.loads(str(MakeResultJson(item)))
+        # for item in self.result_list:
+        for item, case_cost in zip(self.result_list, CASE_COSTS):
+            item = json.loads(str(MakeResultJson(item, case_cost[1])))
             FIELDS.get('testResult').append(item)
         FIELDS['testAll'] = len(self.result_list)
         FIELDS['testName'] = title if title else self.default_report_name
@@ -375,8 +380,10 @@ class BeautifulReport(ReportTestResult, PATH):
         self.suites.run(result=self)
         self.stopTestRun(self.title)
         self.output_report()
-        text = '\n测试已全部完成, 可前往“{}”查看测试报告'.format(self.log_path)
-        print(text)
+        # print('TOTAL_CASES:', len(CASE_COSTS))
+        # text = '\n测试已全部完成, 可前往“{}”查看测试报告'.format(self.log_path)
+        # print(text)
+        print('\n测试已全部完成, 可前往“{}”查看测试报告'.format(self.log_path))
 
     def output_report(self):
         """
@@ -440,6 +447,9 @@ class BeautifulReport(ReportTestResult, PATH):
                             raise TestImgError(info)
                 except (PopupError, TestImgError, TestSkipError) as pe:
                     raise pe
+                except BtnQueryError as bqe:
+                    CASE_COSTS.append(bqe.get_qry_cost_sec)
+                    raise bqe
                 except Exception as ex:
                     img_name = func.__name__ + '_' + time.strftime('%Y%m%d%H%M%S') + '.png'
                     if 'save_img' in dir(args[0]):
@@ -480,6 +490,9 @@ class BeautifulReport(ReportTestResult, PATH):
             def __wrap(*args, **kwargs):
                 img_path = Setting.IMG_PATH
                 result = func(*args, **kwargs)
+
+                if func.__name__ == 'btn_query':
+                    CASE_COSTS.append(result)
 
                 dlg_title = ''
                 if isinstance(result, dict):

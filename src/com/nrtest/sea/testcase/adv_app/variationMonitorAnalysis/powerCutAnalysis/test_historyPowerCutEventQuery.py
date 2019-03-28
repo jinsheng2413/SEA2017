@@ -65,7 +65,7 @@ class TestHistoryPowerCutEventQuery(TestCase, HistoryPowerCutEventQueryPage):
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

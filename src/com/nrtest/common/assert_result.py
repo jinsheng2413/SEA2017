@@ -134,7 +134,7 @@ class AssertResult():
                 # sleep(2)
                 el_after_click = self.tst_inst._find_displayed_element(link_xpath)
                 if bool(el_after_click):
-                    el_a = el_after_click.find_elements_by_xpath('.//a')
+                    el_a = el_after_click.find_element_by_xpath('.//a')
                     # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
                     skip_info['AFTER_ACTION'] = '02' if bool(el_a) else '03'
                     skip_info['EL_AFTER_A'] = el_a

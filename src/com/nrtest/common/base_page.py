@@ -404,19 +404,23 @@ class Page():
         except AttributeError as ex:
             logger.error('输入错误:{}\n{}'.format(values, ex))
 
-    def inputDate(self, value, is_multi_tab=False, new_idx=0):
+    def inputDate(self, value, is_multi_tab=False, new_idx=0, is_line=False):
         """
         新版日期输入框操作：没标签、没定义name或id时对可见日期选择框进行定位
         :param value:要输入的值:自定义标签名;第n个日期选择框;日期值【该值不填默认为1】：开始日期;1;2018-12-24
         :param is_multi_tab:菜单面内是否有多个TAB页
         :param new_idx:配置的idx因页面查询条件有变化时，替换为当前参数值
+        :param is_line=False:PBS5000 特殊情况
         """
         if self.ignore_op(value):
             return
         try:
             ls_values = value.split(';')
             # print(ls_values)
-            loc = self.format_xpath_multi(self.baseLocators.QRY_DT_INPUT, ls_values[0], is_multi_tab)
+            if is_line:
+                loc = self.format_xpath(self.baseLocators.QRY_LINE_LOCATORS, ls_values[0])
+            else:
+                loc = self.format_xpath_multi(self.baseLocators.QRY_DT_INPUT, ls_values[0], is_multi_tab)
             tmp = ls_values[1].strip()
             idx = new_idx
             if new_idx == 0:
@@ -613,7 +617,7 @@ class Page():
         return (self.tst_case_id, cost_seconds)
 
 
-    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True):
+    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True,is_line=False):
         """
         下拉单选框选择
         :param option: 参数格式：查询条件标签名;查询条件
@@ -622,6 +626,7 @@ class Page():
         :param is_multi_elements:是否存在重复元素
         :param is_equalText: True-下拉选择值需完全匹配，Fase-部分匹配
         :param byImg: 存在点下拉框下拉图标时，不能弹出下拉选择的问题，True-下拉框下拉图标，False-下拉框的INPUT
+        :param is_line=False:PBS5000 特殊情况
         """
         if self.ignore_op(option):
             return
@@ -636,10 +641,13 @@ class Page():
 
             if bool(item):
                 # 打开下拉框
-                if byImg:
-                    xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
+                if is_line:
+                  xpath = self.format_xpath_multi(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
                 else:
-                    xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
+                    if byImg:
+                        xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
+                    else:
+                        xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
 
                 if is_multi_elements:
                     el = self._find_displayed_element(xpath)

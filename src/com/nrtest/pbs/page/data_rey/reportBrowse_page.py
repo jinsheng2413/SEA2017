@@ -15,7 +15,7 @@ from com.nrtest.common.base_page import Page
 class ReportBrowsePage(Page):
     # 时间方案
     def inputChk_time_type(self, option):
-        self.clickTabPage(option, is_by_js=True)
+        self.clickDt_Tab(option)
 
     # 结束
     def inputDt_end_date(self, value):
@@ -31,7 +31,7 @@ class ReportBrowsePage(Page):
 
     # 生成报表
     def inputChk_generate_list(self, option):
-        self.clickTabPage(option, is_by_js=True)
+        self.clickTabPage(option)
 
     # 导出报表
     def inputChk_export_list(self, option):

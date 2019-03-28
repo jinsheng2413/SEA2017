@@ -38,7 +38,7 @@ class LineLossBrowseQueryPage(Page):
 
     # 损耗率
     def inputSel_attrition_rate(self, value):
-        self.selectDropDown(value)
+        self.selectDropDown(value,is_line=True)
 
     # 时间类型
     def inputChk_date_type(self, value):

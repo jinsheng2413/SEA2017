@@ -110,7 +110,7 @@ class AssertResult():
             if is_multi_link:
                 skip_info['EL_A'] = el_link
             else:
-                skip_info['EL_A'] = el_link.find_elements_by_xpath('.//a')
+                skip_info['EL_A'] = el_link.find_element_by_xpath('.//a')
             skip_info['LINK_TEXT'] = el_link.text
             # skip_info['CLICKABLE'] = True if is_multi_link else bool(skip_info['EL_A'])
             skip_info['CLICKABLE'] = bool(skip_info['EL_A'])

@@ -72,6 +72,9 @@ class TestTerminalVersion(TestCase, TerminalVersionPage):
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 
+        # 是否选终端在线
+        self.inputChk_tmnl_online(para['TMNL_ONLINE'])
+
         self.btn_qry()
 
     def assert_query_result(self, para):

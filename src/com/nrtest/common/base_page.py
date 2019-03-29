@@ -617,7 +617,7 @@ class Page():
         return (self.tst_case_id, cost_seconds)
 
 
-    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True,is_line=False):
+    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True,is_line=False,is_tag_special=False,tag_name=''):
         """
         下拉单选框选择
         :param option: 参数格式：查询条件标签名;查询条件
@@ -627,6 +627,8 @@ class Page():
         :param is_equalText: True-下拉选择值需完全匹配，Fase-部分匹配
         :param byImg: 存在点下拉框下拉图标时，不能弹出下拉选择的问题，True-下拉框下拉图标，False-下拉框的INPUT
         :param is_line=False:PBS5000 特殊情况
+        :param is_tag_special=False:tag特殊情况
+        :param tag_name:标签名称
         """
         if self.ignore_op(option):
             return
@@ -643,6 +645,10 @@ class Page():
                 # 打开下拉框
                 if is_line:
                   xpath = self.format_xpath_multi(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
+
+                elif is_tag_special:
+                    xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_TAG,(tag_name,ls_option[0]))
+
                 else:
                     if byImg:
                         xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)

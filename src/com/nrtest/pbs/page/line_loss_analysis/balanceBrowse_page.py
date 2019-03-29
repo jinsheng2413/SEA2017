@@ -15,11 +15,11 @@ from com.nrtest.common.base_page import Page
 class BalanceBrowseCollectPage(Page):
     # 区域
     def inputSel_area(self, value):
-        self.selectDropDown(value)
+        self.selectDropDown(value,is_tag_special=True,tag_name='span')
 
     # 时间方案
     def inputChk_date_type(self, value):
-        self.clickTabPage(value)
+        self.clickDt_Tab(value)
 
     # 查询按钮
     def btn_qry(self):
@@ -42,7 +42,7 @@ class BalanceBrowseQueryPage(Page):
 
     # 时间类型
     def inputChk_date_type(self, value):
-        self.clickTabPage(value)
+        self.clickDt_Tab(value)
 
     # 查询按钮
     def btn_qry(self):

@@ -39,7 +39,8 @@ class BalanceCheck_page(Page):
 
     # 执行状态
     def inputSel_execute_status(self, value):
-        self.input(value)
+        self.clean_label(value)
+        self.selectDropDown(value)
 
     # 终端地址
     def inputStr_terminal_addr(self, value):

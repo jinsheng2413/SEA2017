@@ -313,7 +313,6 @@ class Page():
 
         logger.info('开始执行...\r')
         logger.info(info + '\r')
-        return {self.tst_case_id: '--'}
 
     def end_case(self):
         """

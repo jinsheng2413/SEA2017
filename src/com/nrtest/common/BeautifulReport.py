@@ -486,7 +486,7 @@ class BeautifulReport(ReportTestResult):
                 img_path = Setting.IMG_PATH
                 fun_name = func.__name__
                 if fun_name == 'start_case':
-                    CASE_COSTS.update({args[1]['TST_CASE_ID']: '-'})
+                    CASE_COSTS.update({args[1]['TST_CASE_ID']: '--'})
 
                 result = func(*args, **kwargs)
                 if fun_name == 'btn_query':  # 来自查询按钮

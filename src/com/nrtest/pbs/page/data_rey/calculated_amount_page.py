@@ -24,7 +24,7 @@ class Calcluteamount_page(Page):
 
     # 电量计算单位
     def inputChk_ele_unit(self, value):
-        self.clickRadioBox(value, name=True)
+        self.clickCheckBox_by_order(value,tag_type='02')
 
-    def btn_qry(self, value):
+    def btn_qry(self):
         self.btn_query(is_multi_tab=True)

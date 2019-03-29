@@ -62,6 +62,7 @@ class TestBalanceBrowseCollect(TestCase, BalanceBrowseCollectPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         self.goto_frame()
+        self.sleep_time(2)
         # 区域
         self.inputSel_area(para['AREA'])
         # 时间方案

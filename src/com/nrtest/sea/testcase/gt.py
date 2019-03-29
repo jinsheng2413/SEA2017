@@ -17,7 +17,7 @@ from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.setting import Setting
 
 
-def add_case(case_path='', rule='test_*.py'):
+def add_case(case_path=r'D:\pythonworkspace\SEA2017\src\com\nrtest\pbs\testcase', rule='test_*.py'):
     if len(case_path) == 0:
         case_path = os.path.dirname(os.path.realpath(__file__))
     # 加载所有的测试用例

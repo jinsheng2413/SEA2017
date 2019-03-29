@@ -580,13 +580,11 @@ class AssertResult():
                             raise AssertError('“{}”没查询结果，无法继续下钻，请检查是否合理！'.format(link_text))
                     else:
                         is_skiped = False
-                        print('STEP-1')
                         break
                 else:
                     DataAccess.el_operate_log(self.tst_inst.menu_no, self.tst_inst.tst_case_id, None, self.tst_inst.class_name, '跳转失败' + assert_type,
                                               '“{}”没查询结果，故对下属单位下钻失败！'.format(org_name))
                     is_skiped = False
-                    print('STEP-2')
                     break
 
             org_node = DataAccess.get_org_node_by_name(original_org_name)

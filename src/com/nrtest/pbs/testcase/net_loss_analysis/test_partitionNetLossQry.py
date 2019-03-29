@@ -31,6 +31,7 @@ class TestPartitionNetLossQry(TestCase, PartitionNetLossQryPage):
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         cls.goto_frame(cls)
         menuPage.clickTabPage(NetLossAnalysis_data.partitionNetLossQry_tab_qry)
+
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
 
@@ -61,7 +62,7 @@ class TestPartitionNetLossQry(TestCase, PartitionNetLossQryPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        self.sleep_time(2)
+        self.sleep_time(5)
         # 区域
         self.inputSel_area(para['AREA'])
         # 时间方案

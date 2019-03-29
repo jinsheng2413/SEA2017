@@ -166,7 +166,8 @@ class AssertResult():
 
     def split_double_column(self, column_idx):
         """
-        # 定位列名时，表头存在多个重复列名处理：COLMUN_NAME - EXCEPTED_VALUE
+        表头存在多个重复列名时的定位处理：COLMUN_NAME - EXCEPTED_VALUE
+        用例 ID：999262101 菜单名--非统调电厂接入统计
         :return:
         """
         ls_col_idx = [1, 1]

@@ -84,13 +84,14 @@ class AssertResult():
         xpath = self.tst_inst.format_xpath(AssertResultLocators.MENU_NAME, page_name)
         return self.assert_context(xpath)
 
+    # def skip_to_page(self, case_result, col_pos_info, link_xpath=None, is_deal_after=False, dlg_title=''):
     @BeautifulReport.add_popup_img(6)
-    def skip_to_page(self, case_result, col_pos_info, link_xpath=None, is_deal_after=False, dlg_title=''):
+    def skip_to_page(self, case_result, col_pos_info, link_tag=None, is_deal_after=False, dlg_title=''):
         """
         链接跳转:跳转到另一个页面
         :param case_result: 查询结果校验列表内容：定位列名；校验列名；期望值；定位行号;是否特殊处理
         :param col_pos_info:  数据内容{'COL_IDX':0, 'EL_COL':None, 'EL_FIRST':None, 'COL_IS_HIDED':True}
-        :param link_xpath: 定位链接的xpath：用于一列有多个链接情况
+        :param link_tag: 一个单元格多个链接时的链接名
         :param is_deal_after: 是否对跳转后的表格查询结果进行判断处理
         :return:
         """
@@ -100,9 +101,13 @@ class AssertResult():
         try:
             # 按下面代码执行会报这个错：'FirefoxWebElement' object does not support indexing
             # el_link = el_data_rows[int(case_result[3])].find_elements_by_xpath('./td[{}]//a'.format(col_pos_info['COL_IDX']))
-            is_multi_link = bool(link_xpath)  # 判断某列是否有多个链接
+            is_multi_link = bool(link_tag)  # 判断某列是否有多个链接
             # if link_xpath is None:
-            if not is_multi_link:
+            if is_multi_link:
+                link_xpath = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL_LINKS,
+                                                              (case_result[0], case_result[3], col_pos_info['COL_IDX'], link_tag), True)
+            # if not is_multi_link:
+            else:
                 link_xpath = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL,
                                                               (case_result[0], int(case_result[3]) + col_pos_info['HIDE_ROWS'],
                                                                col_pos_info['COL_IDX']), True)
@@ -110,7 +115,7 @@ class AssertResult():
             if is_multi_link:
                 skip_info['EL_A'] = el_link
             else:
-                skip_info['EL_A'] = el_link.find_element_by_xpath('.//a')
+                skip_info['EL_A'] = el_link.find_element_by_xpath('.//a|.//font')
             skip_info['LINK_TEXT'] = el_link.text
             # skip_info['CLICKABLE'] = True if is_multi_link else bool(skip_info['EL_A'])
             skip_info['CLICKABLE'] = bool(skip_info['EL_A'])
@@ -131,10 +136,12 @@ class AssertResult():
                 sleep(abs(seconds))
 
             if is_deal_after:
-                # sleep(2)
                 el_after_click = self.tst_inst._find_displayed_element(link_xpath)
                 if bool(el_after_click):
-                    el_a = el_after_click.find_element_by_xpath('.//a')
+                    try:
+                        el_a = el_after_click.find_element_by_xpath('.//a|.//font')
+                    except:
+                        el_a = None
                     # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
                     skip_info['AFTER_ACTION'] = '02' if bool(el_a) else '03'
                     skip_info['EL_AFTER_A'] = el_a
@@ -145,7 +152,7 @@ class AssertResult():
 
         return skip_info
 
-    def calc_col_idx(self, loc_col_name, col_name, idx=1):
+    def calc_col_idx(self, loc_col_name, col_name, head_idx=1, idx=1):
         """
         计算所给列名（col_name）在表格中的所处位置【该函数已移至base_page】
         --------------------loc_col_name[0]-----------------|-col_name[1]-|----[2]-------|--要定位的行号[3]--|-----[4]-----
@@ -155,7 +162,22 @@ class AssertResult():
         :param idx: 第idx个可见对象
         :return: 返回：列位置，列是否可见以及第一列带标签的列
         """
-        return self.tst_inst.calc_col_idx(loc_col_name, col_name, idx)
+        return self.tst_inst.calc_col_idx(loc_col_name, col_name, head_idx, idx)
+
+    def split_double_column(self, column_idx):
+        """
+        表头存在多个重复列名时的定位处理：COLMUN_NAME - EXCEPTED_VALUE
+        用例 ID：999262101 菜单名--非统调电厂接入统计
+        :return:
+        """
+        ls_col_idx = [1, 1]
+        if column_idx:
+            ls_col_idx = column_idx.split('-')
+            if not bool(ls_col_idx[0]):
+                ls_col_idx[0] = 1
+            elif len(ls_col_idx) == 1:
+                ls_col_idx.append(1)
+        return ls_col_idx
 
     def check_query_result(self, para):
         """
@@ -170,7 +192,7 @@ class AssertResult():
             '22': '跳转弹窗不正确',
             '23': '跳转tab页不正确',
             '24': '跳转弹窗的名称带的值不正确',
-            '25': '跳转到新的菜单页，但不携带值错误',  # 这里的菜单是指没有menu_no的菜单 ？？？？  tst_case_id = 9993110012
+            '25': '跳转到新的菜单页，但不携带值错误',  # 这里的菜单是指没有menu_no的菜单 tst_case_id = 9993110012
             '26': '单列数据有两个跳转',
             '27': 'tab页套多个tab页',
             '28': '供电单位下钻后没查询结果或下钻出错',
@@ -188,37 +210,43 @@ class AssertResult():
             self.dlg_info = None
             assert_type = row[0]
             case_result = row[1:]
+
+            ls_col_idx = self.split_double_column(case_result[8])
+
             is_calc_col_idx = assert_type not in ['11', '31']
             if is_calc_col_idx:
                 col_and_link_tag = self.special_deal(case_result[4], case_result[1])
-                col_pos_info = self.calc_col_idx(case_result[0], col_and_link_tag[0], int(case_result[6]))
+                col_pos_info = self.calc_col_idx(case_result[0], col_and_link_tag[0], int(case_result[6]), int(ls_col_idx[0]))
             logger.info('*******' + case_id + '*********校验类别：{}；定位列名：{}；校验列名：{}；期望值：{}；定位行号：{};是否特殊处理：{}\r'.format(*row))
             if assert_type == '11':  # 【OK】
                 locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT, case_result[0])
                 assert_rslt = self.assert_context(locator)
             elif assert_type == '12':  # 判断值是否准确,item截取字符串，在转换成列表
                 assert_rslt = self.assertValue(case_result, col_pos_info)
-            elif assert_type == '21':  # 跳转菜单
+            elif assert_type in ('21', '23', '26', '27'):  # 跳转菜单或Tab页; 23-Tab页；其他-菜单页
                 # assert_rslt = self.clickSkip(case_result, para)
-                assert_rslt = self.skip_menu_tab_page(assert_type, para, case_result, col_pos_info)
-            elif assert_type == '22':  # 跳转弹窗
-                assert_rslt = self.skip_windows_page(case_result, col_pos_info)
-            elif assert_type == '23':  # 跳转tab页
-                # assert_rslt = self.skip_tab_page(case_result, para)
-                assert_rslt = self.skip_menu_tab_page(assert_type, para, case_result, col_pos_info, is_menu=False)
-            elif assert_type == '24':
-                # assert_rslt = self.tab_skip_into_window(case_result, col_pos_info)
-                assert_rslt = self.skip_windows_page(case_result, col_pos_info, True)
+                # assert_rslt = self.skip_menu_tab_page(assert_type, para, case_result, col_pos_info)
+                assert_rslt = self.skip_menu_tab_page(assert_type, para, case_result, col_pos_info, col_and_link_tag)
+            elif assert_type in ('22', '24'):  # 跳转弹窗
+                assert_rslt = self.skip_windows_page(assert_type, case_result, col_pos_info)
+            # elif assert_type == '23':  # 跳转tab页
+            #     # assert_rslt = self.skip_tab_page(case_result, para)
+            #     assert_rslt = self.skip_menu_tab_page(assert_type, para, case_result, col_pos_info)
+            # elif assert_type == '24':
+            #     # assert_rslt = self.tab_skip_into_window(case_result, col_pos_info)
+            #     assert_rslt = self.skip_windows_page(assert_type, case_result, col_pos_info, True)
             elif assert_type == '25':  # 【OK】 # 跳转到新的菜单页，但不携带值
                 assert_rslt = self.skip_new_menu(case_result, col_pos_info)
-            elif assert_type == '26':  # 【OK】 # 单列数据有两个跳转
-                # assert_rslt = self.skip_two_link(case_result, para)
-                link_xpath = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL_LINKS,
-                                                              (case_result[0], case_result[3], col_pos_info['COL_IDX'], col_and_link_tag[1]), True)
-                assert_rslt = self.skip_menu_tab_page(assert_type, para, case_result, col_pos_info, True, link_xpath=link_xpath)
-            elif assert_type == '27':  # 【OK】
-                # assert_rslt = self.skip_more_tab_link(case_result, para)
-                assert_rslt = self.skip_menu_tab_page(assert_type, para, case_result, col_pos_info)
+            # elif assert_type == '26':  # 【OK】 # 单列数据有两个跳转
+            #     # assert_rslt = self.skip_two_link(case_result, para)
+            #
+            #     # link_xpath = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL_LINKS,
+            #     #                                               (case_result[0], case_result[3], col_pos_info['COL_IDX'], col_and_link_tag[1]), True)
+            #     # assert_rslt = self.skip_menu_tab_page(assert_type, para, case_result, col_pos_info, True, link_xpath=link_xpath)
+            #     assert_rslt = self.skip_menu_tab_page(assert_type, para, case_result, col_pos_info, col_and_link_tag)
+            # elif assert_type == '27':  # 【OK】
+            #     # assert_rslt = self.skip_more_tab_link(case_result, para)
+            #     assert_rslt = self.skip_menu_tab_page(assert_type, para, case_result, col_pos_info)
             elif assert_type == '28':  # 供电单位层层下钻
                 assert_rslt = self.skip_into_child_org(assert_type, case_result, col_pos_info)
             elif assert_type == '31':
@@ -258,12 +286,11 @@ class AssertResult():
             logger.error('查询详细信息的输入框的值与期望结果不一致')
             return False
 
-    def skip_windows_page(self, case_result, col_pos_info, is_dynamic=False):
+    def skip_windows_page(self, assert_type, case_result, col_pos_info):
         """
         窗口跳转
         :param case_result: 以，为分隔符，定位列名；校验列名；期望值(校验值)；定位行号;是否特殊处理；等待目标跳转对象时间
         :param col_pos_info:
-        :param is_dynamic:
         :return:
         """
 
@@ -275,9 +302,9 @@ class AssertResult():
             col_pos_info['HIDE_ROWS'] = first_row_idx
             self.tst_inst.scrollTo(col_pos_info['EL_COL'])
             # 获取弹窗标题名
-            if is_dynamic:
-                # 获取弹窗的动态窗口标题名
-                col_idx = self.calc_col_idx(case_result[0], case_result[2], int(case_result[6]))['COL_IDX']
+            if assert_type == '24':  # 获取弹窗的动态窗口标题名
+                ls_col_idx = self.split_double_column(case_result[8])
+                col_idx = self.calc_col_idx(case_result[0], case_result[2], int(case_result[6]), int(ls_col_idx[1]))['COL_IDX']
                 xpath = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (case_result[0], case_result[3], col_idx))
                 dlg_title = self.tst_inst.driver.find_element(*xpath).text
             else:  # 固定窗口标题名
@@ -302,6 +329,7 @@ class AssertResult():
         """
         跳转到新的菜单，但不需要校验值
         :param case_result:
+        :param col_pos_info:
         :return:
         """
         is_find, first_row_idx, row_cnt = self.query_records(case_result[0])
@@ -317,8 +345,8 @@ class AssertResult():
 
     def get_skip_data_before(self, case_data, case_result, map_rela_rslt):
         """
-        -------0--------|----1----|----2-------|----3---|----4-----|--5---|--------6-------|----7-----|------8-----|-----9-----|---10---|----11-----|-----12-----
-        *TAB_COLUMN_NAME TAB_NAME  *COLUMN_NAME *ROW_NUM XPATH_TYPE XPATH   TARGET_TAB_NAME TRANS_TYPE TARGET_XPATH TRANS_VALUE IS_TRANS ELEMENT_SN  TARGET_MENU_NO
+        -------0--------|----1----|----2-------|----3---|----4-----|--5---|--------6-------|----7-----|------8-----|-----9-----|---10---|----11-----|-----12-------|-------13--------|----14----
+        *TAB_COLUMN_NAME TAB_NAME  *COLUMN_NAME *ROW_NUM XPATH_TYPE XPATH   TARGET_TAB_NAME TRANS_TYPE TARGET_XPATH TRANS_VALUE IS_TRANS ELEMENT_SN  TARGET_MENU_NO  target_menu_name  column_idx
            是否在线   终端版本召测	查看报文	  1	       02	   终端地址	     01	            00	   TMNL_ADDR		           0	    3         99934410
 
         :param case_data:
@@ -338,9 +366,10 @@ class AssertResult():
                 else:
                     val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2])
                 skip_data_before.append(val)
-            elif xpath_type in ['02', '04']:
+            elif xpath_type in ['02', '04']:  # 提取跳转前的表格列对应值
                 loc_col_name = case_result[0]
-                col_idx = self.calc_col_idx(loc_col_name, map_rela[5], int(case_result[6]))['COL_IDX']  # XPATH
+                column_idx = int(map_rela[14]) if bool(map_rela[14]) else 1
+                col_idx = self.calc_col_idx(loc_col_name, map_rela[5], int(case_result[6]), column_idx)['COL_IDX']  # XPATH
                 locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (loc_col_name, case_result[3], col_idx))
                 val = self.tst_inst.driver.find_element(*locator).text
                 skip_data_before.append(val)
@@ -456,9 +485,11 @@ class AssertResult():
         if is_special == 'Y':
             col_and_link_tag = col_name.split('-')
         else:
-            col_and_link_tag = []
-            col_and_link_tag.append(col_name)
-            col_and_link_tag.append('')
+            # col_and_link_tag = []
+            # col_and_link_tag.append(col_name)
+            # col_and_link_tag.append('')
+            col_and_link_tag = [col_name]
+
         return col_and_link_tag
 
     def query_records(self, loc_col_name):
@@ -478,12 +509,16 @@ class AssertResult():
 
         return is_find, first_row_idx, row_cnt
 
-    def skip_menu_tab_page(self, assert_type, case_data, case_result, col_pos_info, is_menu=True, link_xpath=None):
+    def skip_menu_tab_page(self, assert_type, case_data, case_result, col_pos_info, col_and_link_tag):  # , is_menu=True, link_xpath=None):
         """
-        :param case_result: 查询结果校验列表内容：定位列名；校验列名；期望值；定位行号;是否特殊处理
+        :param assert_type:
         :param case_data:
+        :param case_result: 查询结果校验列表内容：定位列名；校验列名；期望值；定位行号;是否特殊处理
+        :param col_pos_info:
+        :param col_and_link_tag:用于处理一个单元格，多链接情况
         :return:
         """
+
         # 查询结果行数
         is_find, first_row_idx, row_cnt = self.query_records(case_result[0])
         if is_find:
@@ -501,12 +536,17 @@ class AssertResult():
             用户编号          终端调试    备注-报文查询    1         02             终端地址    01                  01          TMNL_ADDR                      0           3
             """
             skip_data_before = self.get_skip_data_before(case_data, case_result, map_rela_rslt)
-            # 定位列名；校验列名；期望值(校验值)；定位行号;是否特殊处理
-            skip_info = self.skip_to_page(case_result, col_pos_info, link_xpath)
+
+            # 定位列名；          校验列名；    期望值(校验值)；   定位行号;  是否特殊处理 跳转超时等待      表头行号   跳转是否为Tab页：1-是
+            # TAB_COLUMN_NAME	COLUMN_NAME	EXPECTED_VALUE	ROW_NUM	 IS_SPECIAL	WAIT_FOR_TARGET	HEAD_ROW IS_TAB
+            link_tag = col_and_link_tag[1] if assert_type == '26' else None
+            skip_info = self.skip_to_page(case_result, col_pos_info, link_tag)
 
             # 校验页面的名称是否正确
             is_skiped = skip_info['CLICKABLE'] and self.assert_page_name(case_result[2])
             if is_skiped:
+                # is_menu = assert_type != '23'  # 23-跳转目标为tab页，其他为菜单
+                is_menu = case_result[7] == '0'  # is_tab：0-菜单；1-Tab页
                 # 获取跳转目标页面相关元素值
                 skip_data_after = self.get_skip_data_after(case_result, map_rela_rslt, is_menu, skip_data_before)
 
@@ -541,7 +581,6 @@ class AssertResult():
                 skip_info = self.skip_to_page(case_result, col_pos_info, is_deal_after=True)
                 link_text = skip_info['LINK_TEXT']
                 org_name = self.tst_inst.get_input_val(case_result[2])
-                # print('link_text:', link_text, org_name)
                 if skip_info['CLICKABLE']:
                     if skip_info['IS_SKIPED']:
                         if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确
@@ -554,20 +593,18 @@ class AssertResult():
 
                         # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
                         after_action = skip_info['AFTER_ACTION']
-                        # if after_text.endswith('所') or after_action == '03':  # 跳转后没值或到供电所时，停止跳转
-                        if org_type > '04' or after_action == '03':  # 跳转后没值或到供电所时，停止跳转
+                        # if after_text.endswith('所') or after_action == '03':
+                        if org_type > '04' or after_action == '03':  # 跳转后没值或到县级以下供电单位（如：供电所）时，停止跳转
                             break
                         elif after_action == '01':  # 校验列没有链接；
                             raise AssertError('“{}”没查询结果，无法继续下钻，请检查是否合理！'.format(link_text))
                     else:
                         is_skiped = False
-                        print('STEP-1')
                         break
                 else:
                     DataAccess.el_operate_log(self.tst_inst.menu_no, self.tst_inst.tst_case_id, None, self.tst_inst.class_name, '跳转失败' + assert_type,
                                               '“{}”没查询结果，故对下属单位下钻失败！'.format(org_name))
                     is_skiped = False
-                    print('STEP-2')
                     break
 
             org_node = DataAccess.get_org_node_by_name(original_org_name)

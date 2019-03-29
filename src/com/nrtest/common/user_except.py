@@ -28,6 +28,9 @@ class PopupError(Exception):
 
 
 class TestImgError(Exception):
+    """
+    add_test_img期间有弹窗异常
+    """
     def __init__(self, error_info):
         super().__init__(self)  # 初始化父类
         self.error_info = error_info
@@ -62,6 +65,9 @@ class AssertError(Exception):
 
 
 class BtnQueryError(Exception):
+    """
+    btn_query查询等待超时或等待异常
+    """
     def __init__(self, qry_cost_sec, error_info):
         super().__init__(self)  # 初始化父类
         self.qry_cost_sec = qry_cost_sec

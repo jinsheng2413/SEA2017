@@ -46,4 +46,4 @@ class LineLossBrowseQueryPage(Page):
 
     # 查询按钮
     def btn_qry(self):
-        self.btn_query(is_multi_tab=True)
+        self.btn_query(is_multi_tab=True,is_by_js=True)

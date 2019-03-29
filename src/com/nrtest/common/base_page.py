@@ -112,21 +112,19 @@ class Page():
 
         action = '00'
         info = ''
-        # dlg_src:1-一般用例；2-查询条件有效性用例;3-点菜单时报错；4-add_test_img弹窗处理;5-左边树选择弹窗;6-查询结果跳转异常
+        # dlg_src:1-一般用例；2-查询条件有效性用例;3-点菜单时报错；4-add_test_img弹窗处理;
+        # 5-左边树选择弹窗;6-查询结果跳转异常;7-start_case用例耗时初始化
         if len(args) > 0:  # 带参弹窗处理优先级高于用例优先级
             dlg_src = int(args[0])
         else:
             dlg_src = int(self.case_para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
 
-        # 账号异常信息弹窗属正常临时弹窗，不许特殊处理，发现时关闭即可
+        # 账号异常信息弹窗属正常临时弹窗，不做特殊处理，发现时关闭即可
         self.close_account_except_dlg()
 
         el = self._direct_find_element(self.baseLocators.POPUP_DLG)
         if bool(el) and el.is_displayed():  # 有对话框，且显示
             info = '\r'.join(el.text.replace(' ', '').split('\n')[:6])  # [:-2])  # 有些正常弹窗数据太多
-            # if '账号异常信息' in info:  # 测试用例执行过程中的“账号异常信息”弹窗属正常情况，不予处理
-            #     action = '03'
-            # elif dlg_src in (1, 3, 4, 6):  # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
             if dlg_src in (1, 3, 4, 6):  # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
                 # action：00-没弹窗,正确结果；01-截图，且抛异常；02-只截图，不抛异常；
                 #         03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
@@ -287,6 +285,7 @@ class Page():
             DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type, except_info)
         return element
 
+    @BeautifulReport.add_popup_img(7)
     def start_case(self, para, class_path=''):
         """
         开始执行测试用例
@@ -314,6 +313,7 @@ class Page():
 
         logger.info('开始执行...\r')
         logger.info(info + '\r')
+        return {self.tst_case_id: '--'}
 
     def end_case(self):
         """
@@ -585,13 +585,13 @@ class Page():
                 cost_seconds = timeout_seconds
                 except_type = '用例超时'
                 info = '用例要求<={}秒，实际耗时>{}秒。'.format(timeout_seconds, cost_seconds)
-                raise BtnQueryError((self.tst_case_id, cost_seconds), te.__str__())
+                raise BtnQueryError({self.tst_case_id: cost_seconds}, te.__str__())
                 # raise te
             except Exception as ex:
                 except_type = '用例异常'
                 info = ex.__str__()
                 cost_seconds = -1
-                raise BtnQueryError((self.tst_case_id, cost_seconds), info)
+                raise BtnQueryError({self.tst_case_id: cost_seconds}, info)
                 # raise ex
             finally:
                 if bool(except_type):
@@ -601,7 +601,6 @@ class Page():
                         pass
                     else:
                         DataAccess.case_exec_log(self.tst_case_id, Utils.now_str(start_time), Utils.now_str(end_time), timeout_seconds, cost_seconds)
-
             return cost_seconds
 
     @BeautifulReport.add_popup_img()
@@ -614,10 +613,9 @@ class Page():
         """
         self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx, is_by_js=is_by_js)
         cost_seconds = self.query_timeout(is_from_btn=True)
-        return (self.tst_case_id, cost_seconds)
+        return {self.tst_case_id: cost_seconds}
 
-
-    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True,is_line=False):
+    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True, is_line=False):
         """
         下拉单选框选择
         :param option: 参数格式：查询条件标签名;查询条件
@@ -642,7 +640,7 @@ class Page():
             if bool(item):
                 # 打开下拉框
                 if is_line:
-                  xpath = self.format_xpath_multi(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
+                    xpath = self.format_xpath_multi(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
                 else:
                     if byImg:
                         xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
@@ -1728,6 +1726,7 @@ class Page():
     def double_click(self, locator):
         el = self._find_element(locator)
         ActionChains(self.driver).double_click(el).perform()
+
 
 if __name__ == '__main__':
     # dr = webdriver.Chrome()

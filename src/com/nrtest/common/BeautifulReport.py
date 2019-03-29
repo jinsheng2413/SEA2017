@@ -71,26 +71,21 @@ FIELDS = {
     'testSkip': 0
 }
 
-CASE_COSTS = []
+CASE_COSTS = {}
 
 class PATH:
     """ all file PATH meta """
-    # config_tmp_path = SITE_PAKAGE_PATH + '\\BeautifulReport\\template\\template'
-    # config_tmp_path = SITE_PAKAGE_PATH + '/BeautifulReport/template/template'
     config_tmp_path = os.path.dirname(__file__) + '{}template'.format('/' if platform.system() != 'Windows' else '\\')
-    # print('template file path is \'{}\''.format(config_tmp_path))
-
 
 class MakeResultJson:
     """ make html table tags """
 
-    def __init__(self, datas: tuple, qry_cost):
+    def __init__(self, datas: tuple):
         """
         init self object
         :param datas: 拿到所有返回数据结构
         """
         self.datas = datas
-        self.qry_cost = qry_cost
         self.result_schema = {}
 
     def __setitem__(self, key, value):
@@ -117,8 +112,6 @@ class MakeResultJson:
             'log',
         )
         for key, data in zip(keys, self.datas):
-            if key == 'spendTime':
-                data = str(self.qry_cost) + '/' + data
             self.result_schema.setdefault(key, data)
         return json.dumps(self.result_schema)
 
@@ -184,10 +177,10 @@ class ReportTestResult(unittest.TestResult):
 
     def stopTest(self, test) -> None:
         """
-            当测试用力执行完成后进行调用
+            当测试用例执行完成后进行调用
         :return:
         """
-        self.end_time = '{0:.3} s'.format((time.time() - self.start_time))
+        self.end_time = '{0:.3}s'.format((time.time() - self.start_time))
         self.result_list.append(self.get_all_result_info_tuple(test))
         self.complete_output()
 
@@ -210,13 +203,8 @@ class ReportTestResult(unittest.TestResult):
         :return:
         """
         FIELDS['testPass'] = self.success_counter
-
-        # 增加点查询按钮后，到结果出来的耗时（秒） 2019-03-28
-        if len(self.result_list) != len(CASE_COSTS):
-            raise RuntimeError('用例结果与用例耗时列表长度不一致！！')
-        # for item in self.result_list:
-        for item, case_cost in zip(self.result_list, CASE_COSTS):
-            item = json.loads(str(MakeResultJson(item, case_cost[1])))
+        for item in self.result_list:
+            item = json.loads(str(MakeResultJson(item)))
             FIELDS.get('testResult').append(item)
         FIELDS['testAll'] = len(self.result_list)
         FIELDS['testName'] = title if title else self.default_report_name
@@ -237,7 +225,13 @@ class ReportTestResult(unittest.TestResult):
         :param test:
         :return:
         """
-        return tuple([*self.get_testcase_property(test), self.end_time, self.status, self.case_log])
+
+        try:
+            # 点查询按钮到查询结果出来时之间的耗时时长
+            cost_seconds = str(CASE_COSTS[test.tst_case_id])
+        except:
+            cost_seconds = '**'
+        return tuple([*self.get_testcase_property(test), cost_seconds + '/' + self.end_time, self.status, self.case_log])
 
     @staticmethod
     def error_or_failure_text(err) -> str:
@@ -351,19 +345,18 @@ class ReportTestResult(unittest.TestResult):
         """
         class_name = test.__class__.__qualname__
         method_name = test.__dict__['_testMethodName']
-        method_doc = test.__dict__['_testMethodDoc']
+        method_doc = test.__dict__['_testMethodDoc'].replace(' ', '')
         return class_name, method_name, method_doc
 
 
-class BeautifulReport(ReportTestResult, PATH):
-    # img_path = 'img/' if platform.system() != 'Windows' else 'img\\'
-
+class BeautifulReport(ReportTestResult):
     def __init__(self, suites):
         super(BeautifulReport, self).__init__(suites)
         self.suites = suites
         self.log_path = None
         self.title = '自动化测试报告'
         self.filename = 'report.html'
+        self.case_id = ''
 
     def report(self, description, filename: str = None):
         """
@@ -384,9 +377,6 @@ class BeautifulReport(ReportTestResult, PATH):
         self.suites.run(result=self)
         self.stopTestRun(self.title)
         self.output_report()
-        # print('TOTAL_CASES:', len(CASE_COSTS))
-        # text = '\n测试已全部完成, 可前往“{}”查看测试报告'.format(self.log_path)
-        # print(text)
         print('\n测试已全部完成, 可前往“{}”查看测试报告'.format(self.log_path))
 
     def output_report(self):
@@ -394,7 +384,8 @@ class BeautifulReport(ReportTestResult, PATH):
             生成测试报告到指定路径下
         :return:
         """
-        template_path = self.config_tmp_path
+        # template_path = self.config_tmp_path
+        template_path = os.path.dirname(__file__) + '{}template'.format('/' if platform.system() != 'Windows' else '\\')
         report_path = Setting.REPORT_PATH
 
         with open(template_path, 'rb') as file:
@@ -452,7 +443,7 @@ class BeautifulReport(ReportTestResult, PATH):
                 except (PopupError, TestImgError, TestSkipError) as pe:
                     raise pe
                 except BtnQueryError as bqe:
-                    CASE_COSTS.append(bqe.get_qry_cost_sec)
+                    CASE_COSTS.update(bqe.get_qry_cost_sec)
                     raise bqe
                 except Exception as ex:
                     img_name = func.__name__ + '_' + time.strftime('%Y%m%d%H%M%S') + '.png'
@@ -493,10 +484,13 @@ class BeautifulReport(ReportTestResult, PATH):
             @wraps(func)
             def __wrap(*args, **kwargs):
                 img_path = Setting.IMG_PATH
-                result = func(*args, **kwargs)
+                fun_name = func.__name__
+                if fun_name == 'start_case':
+                    CASE_COSTS.update({args[1]['TST_CASE_ID']: '-'})
 
-                if func.__name__ == 'btn_query':
-                    CASE_COSTS.append(result)
+                result = func(*args, **kwargs)
+                if fun_name == 'btn_query':  # 来自查询按钮
+                    CASE_COSTS.update(result)
 
                 dlg_title = ''
                 if isinstance(result, dict):

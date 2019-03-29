@@ -63,12 +63,12 @@ class TestLineLossBrowseQuery(TestCase, LineLossBrowseQueryPage):
         """
         # 电压
         # self.inputSel_voltage(para['VOLTAGE'])
-        self.sleep_time(2)
+        self.sleep_time(5)
         # 类型
         self.inputSel_type(para['TYPE'])
 
         # 损耗率
-        self.inputSel_attrition_rate(para['ATTRITION_RATE'])
+        # self.inputSel_attrition_rate(para['ATTRITION_RATE'])
         # 时间方案
         self.inputChk_date_type(para['DATE_TYPE'])
         # 查询按钮

@@ -30,7 +30,8 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
         cls.goto_frame(cls)
-        menuPage.clickTabPage(NetLossAnalysis_data.pressureNetLossQry_tab_qry)
+        cls.sleep_time(cls,2)
+        menuPage.clickTabPage(NetLossAnalysis_data.pressureNetLossQry_tab_qry,is_by_js=True)
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
         # menuPage.remove_dt_readonly()
 

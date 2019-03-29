@@ -65,9 +65,9 @@ class TestLineLossBrowseCollect(TestCase, LineLossBrowseCollectPage):
         self.goto_frame()
 
         # 区域
-        # self.inputSel_area(para['AREA'])
+        self.inputSel_area(para['AREA'])
         # # # 时间方案
-        # self.inputChk_date_type(para['DATE_TYPE'])
+        self.inputChk_date_type(para['DATE_TYPE'])
         # 查询按钮
         self.btn_qry()
 

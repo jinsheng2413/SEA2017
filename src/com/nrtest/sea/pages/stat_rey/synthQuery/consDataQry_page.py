@@ -19,7 +19,7 @@ class ConsdataqryFilePage(Page):
 
     # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)
 
 
 # 统计查询→综合查询→用户数据:数据展示

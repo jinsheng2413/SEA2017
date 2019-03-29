@@ -217,6 +217,7 @@ class BasePbsLocators(Locators):
     # 【下拉框】
     # 下拉选择点击按钮
     SEL_CHECKBOX = (By.XPATH, '//label[text()="{}"]/..//a')
+    SEL_CHECKBOX_TAG = (By.XPATH, '//{}[text()="{}"]/..//a')
     SEL_CHECKBOX_CLEAN = (By.XPATH, '//label[text()="{}"]/..//input[@type="text"]')
 
     # 【下拉复选框相关】

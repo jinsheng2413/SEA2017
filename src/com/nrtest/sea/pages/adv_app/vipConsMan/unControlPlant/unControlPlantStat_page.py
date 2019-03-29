@@ -26,7 +26,7 @@ class UnControlPlantStatPage(Page):
         self.inputDate(content)
 
     # 查询
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query()
 
 # 高级应用→重点用户监测→非统调电厂管理→非统调电厂接入统计→非统调电厂接入明细

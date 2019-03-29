@@ -19,7 +19,7 @@ class PartitionNetLossQryPage(Page):
 
     # 时间方案
     def inputChk_date_type(self, value):
-        self.clickTabPage(value)
+        self.clickDt_Tab(value)
 
     # 开始时间
     def inputDt_start_date(self, value):

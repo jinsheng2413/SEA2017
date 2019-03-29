@@ -68,6 +68,7 @@ class TestFullSizeProcess_record(TestCase, FullSizeProcessRecordPage):
         self.inputDt_start_date(para['START_DATE'])
         # 结束时间
         self.inputDt_end_date(para['END_DATE'])
+        self.sleep_time(2)
         # 查询按钮
         self.btn_qry()
 

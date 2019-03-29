@@ -152,7 +152,7 @@ class AssertResult():
 
         return skip_info
 
-    def calc_col_idx(self, loc_col_name, col_name, idx=1):
+    def calc_col_idx(self, loc_col_name, col_name, head_idx=1, idx=1):
         """
         计算所给列名（col_name）在表格中的所处位置【该函数已移至base_page】
         --------------------loc_col_name[0]-----------------|-col_name[1]-|----[2]-------|--要定位的行号[3]--|-----[4]-----
@@ -162,7 +162,21 @@ class AssertResult():
         :param idx: 第idx个可见对象
         :return: 返回：列位置，列是否可见以及第一列带标签的列
         """
-        return self.tst_inst.calc_col_idx(loc_col_name, col_name, idx)
+        return self.tst_inst.calc_col_idx(loc_col_name, col_name, head_idx, idx)
+
+    def split_double_column(self, column_idx):
+        """
+        # 定位列名时，表头存在多个重复列名处理：COLMUN_NAME - EXCEPTED_VALUE
+        :return:
+        """
+        ls_col_idx = [1, 1]
+        if column_idx:
+            ls_col_idx = column_idx.split('-')
+            if not bool(ls_col_idx[0]):
+                ls_col_idx[0] = 1
+            elif len(ls_col_idx) == 1:
+                ls_col_idx.append(1)
+        return ls_col_idx
 
     def check_query_result(self, para):
         """
@@ -195,10 +209,13 @@ class AssertResult():
             self.dlg_info = None
             assert_type = row[0]
             case_result = row[1:]
+
+            ls_col_idx = self.split_double_column(case_result[8])
+
             is_calc_col_idx = assert_type not in ['11', '31']
             if is_calc_col_idx:
                 col_and_link_tag = self.special_deal(case_result[4], case_result[1])
-                col_pos_info = self.calc_col_idx(case_result[0], col_and_link_tag[0], int(case_result[6]))
+                col_pos_info = self.calc_col_idx(case_result[0], col_and_link_tag[0], int(case_result[6]), int(ls_col_idx[0]))
             logger.info('*******' + case_id + '*********校验类别：{}；定位列名：{}；校验列名：{}；期望值：{}；定位行号：{};是否特殊处理：{}\r'.format(*row))
             if assert_type == '11':  # 【OK】
                 locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT, case_result[0])
@@ -285,7 +302,8 @@ class AssertResult():
             self.tst_inst.scrollTo(col_pos_info['EL_COL'])
             # 获取弹窗标题名
             if assert_type == '24':  # 获取弹窗的动态窗口标题名
-                col_idx = self.calc_col_idx(case_result[0], case_result[2], int(case_result[6]))['COL_IDX']
+                ls_col_idx = self.split_double_column(case_result[8])
+                col_idx = self.calc_col_idx(case_result[0], case_result[2], int(case_result[6]), int(ls_col_idx[1]))['COL_IDX']
                 xpath = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (case_result[0], case_result[3], col_idx))
                 dlg_title = self.tst_inst.driver.find_element(*xpath).text
             else:  # 固定窗口标题名
@@ -326,8 +344,8 @@ class AssertResult():
 
     def get_skip_data_before(self, case_data, case_result, map_rela_rslt):
         """
-        -------0--------|----1----|----2-------|----3---|----4-----|--5---|--------6-------|----7-----|------8-----|-----9-----|---10---|----11-----|-----12-----
-        *TAB_COLUMN_NAME TAB_NAME  *COLUMN_NAME *ROW_NUM XPATH_TYPE XPATH   TARGET_TAB_NAME TRANS_TYPE TARGET_XPATH TRANS_VALUE IS_TRANS ELEMENT_SN  TARGET_MENU_NO
+        -------0--------|----1----|----2-------|----3---|----4-----|--5---|--------6-------|----7-----|------8-----|-----9-----|---10---|----11-----|-----12-------|-------13--------|----14----
+        *TAB_COLUMN_NAME TAB_NAME  *COLUMN_NAME *ROW_NUM XPATH_TYPE XPATH   TARGET_TAB_NAME TRANS_TYPE TARGET_XPATH TRANS_VALUE IS_TRANS ELEMENT_SN  TARGET_MENU_NO  target_menu_name  column_idx
            是否在线   终端版本召测	查看报文	  1	       02	   终端地址	     01	            00	   TMNL_ADDR		           0	    3         99934410
 
         :param case_data:
@@ -347,9 +365,10 @@ class AssertResult():
                 else:
                     val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2])
                 skip_data_before.append(val)
-            elif xpath_type in ['02', '04']:
+            elif xpath_type in ['02', '04']:  # 提取跳转前的表格列对应值
                 loc_col_name = case_result[0]
-                col_idx = self.calc_col_idx(loc_col_name, map_rela[5], int(case_result[6]))['COL_IDX']  # XPATH
+                column_idx = int(map_rela[14]) if bool(map_rela[14]) else 1
+                col_idx = self.calc_col_idx(loc_col_name, map_rela[5], int(case_result[6]), column_idx)['COL_IDX']  # XPATH
                 locator = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (loc_col_name, case_result[3], col_idx))
                 val = self.tst_inst.driver.find_element(*locator).text
                 skip_data_before.append(val)

@@ -280,7 +280,7 @@ class DataAccess:
     @staticmethod
     def get_skip_data(case_id, col_name):
         sql = 'select tres.tab_column_name,lr.tab_name ,tres.column_name,tres.row_num,lr.xpath_type,lr.xpath ,lr.target_tab_name,lr.trans_type, ' \
-              'lr.target_xpath,lr.trans_value, lr.is_trans,lr.element_sn, lr.target_menu_no, m.menu_name as target_menu_name   ' \
+              'lr.target_xpath,lr.trans_value, lr.is_trans,lr.element_sn, lr.target_menu_no, m.menu_name as target_menu_name, lr.column_idx   ' \
               'from tst_case_result tres,TST_COL_LINK_RELA  lr,tst_case ca, tst_menu m    ' \
               'where tres.tst_case_id = ca.tst_case_id and tres.column_name = lr.col_name   ' \
               'and ca.menu_no = lr.menu_no and ca.tab_name = lr.tab_name and lr.target_menu_no = m.menu_no  ' \

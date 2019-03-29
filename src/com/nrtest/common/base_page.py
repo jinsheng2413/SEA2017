@@ -614,7 +614,8 @@ class Page():
         cost_seconds = self.query_timeout(is_from_btn=True)
         return {self.tst_case_id: cost_seconds}
 
-    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True,is_line=False,is_tag_special=False,tag_name=''):
+    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True, is_line=False,
+                       is_tag_special=False, tag_name=''):
         """
         下拉单选框选择
         :param option: 参数格式：查询条件标签名;查询条件
@@ -641,10 +642,10 @@ class Page():
             if bool(item):
                 # 打开下拉框
                 if is_line:
-                  xpath = self.format_xpath_multi(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
+                    xpath = self.format_xpath_multi(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
 
                 elif is_tag_special:
-                    xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_TAG,(tag_name,ls_option[0]))
+                    xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_TAG, (tag_name, ls_option[0]))
 
                 else:
                     if byImg:
@@ -1633,18 +1634,19 @@ class Page():
         """
         WebDriverWait(self.driver, seconds).until(EC.element_to_be_clickable(locator))
 
-    def calc_col_idx(self, loc_col_name, col_name='', idx=1):
+    def calc_col_idx(self, loc_col_name, col_name='', head_idx=1, idx=1):
         """
         计算所给列名（col_name）在表格中的所处位置
-        --------------------loc_col_name[0]-----------------|-col_name[1]-|----[2]-------|--要定位的行号[3]--|-----[4]-----
-        nvl(tab_column_name, column_name) AS tab_column_name, column_name, expected_value, row_num,          is_special
+        -loc_col_name[0]--|col_name[1]-|----[2]-------|--要定位的行号[3]--|-是否特殊处理[4]--|---跳转超时等待[5]--|-----取表头第N行[6]--|-----跳转目标[7]|-----表头第N个重复列[8]---
+        tab_column_name,   column_name, expected_value, row_num,        is_special        wait_for_target   head_row             is_tab          column_idx
         :param loc_col_name: 能唯一定位表头的关键列名
         :param col_name: 计算列位置的列名, 如果col_name值为'', 则用loc_col_name替代
-        :param idx: 第idx个可见对象
+        :param head_idx: 取第head_idx行的可见表头对象
+        :param idx: 取第idx列的重复列名
         :return: 返回：列位置，列是否可见以及第一列带标签的列
         """
         loc = self.format_xpath_multi(self.baseLocators.TABLE_HEAD, loc_col_name, True)
-        el_tr = self._find_displayed_element(loc, idx=idx)
+        el_tr = self._find_displayed_element(loc, idx=head_idx)
         # 如果col_name值为'', 则用loc_col_name替代
         if col_name == '':
             col_name = loc_col_name
@@ -1654,6 +1656,7 @@ class Page():
         if bool(el_tds):
             # 隐藏列个数
             hide_cols = 0
+            pos = 1
             for i, el in enumerate(el_tds):
                 el_label = self.get_el_text(el)
                 el_label = Utils.replace_chrs(el_label, ' \r\n\t')
@@ -1665,11 +1668,14 @@ class Page():
                         col_pos_info['EL_FIRST'] = el
                         col_pos_info['FIRST_COL_IDX'] = i + 1
                     if el_label == col_name:
-                        col_pos_info['COL_IS_HIDED'] = not el.is_displayed()
-                        col_pos_info['EL_COL'] = el
-                        # 表头列名位置，xpath元素下表以1开始，故+1
-                        col_pos_info['COL_IDX'] = i + 1
-                        break
+                        if pos == idx:
+                            col_pos_info['COL_IS_HIDED'] = not el.is_displayed()
+                            col_pos_info['EL_COL'] = el
+                            # 表头列名位置，xpath元素下表以1开始，故+1
+                            col_pos_info['COL_IDX'] = i + 1
+                            break
+                        else:
+                            pos += 1
             col_pos_info['HIDE_COLS'] = hide_cols
             logger.info('\r“{}”在表格中计算结果：第{}列（其中隐藏列{}列），且{}。\r'.format(col_name, col_pos_info['COL_IDX'], hide_cols,
                                                                       ('不可见' if col_pos_info['COL_IS_HIDED'] else '可见')))
@@ -1731,6 +1737,7 @@ class Page():
     def double_click(self, locator):
         el = self._find_element(locator)
         ActionChains(self.driver).double_click(el).perform()
+
 
 if __name__ == '__main__':
     # dr = webdriver.Chrome()

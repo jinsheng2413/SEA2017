@@ -32,7 +32,7 @@ class LogStatAnalysis_list_Page(Page):
         self.inputDate(value)
 
     # 结束时间
-    def inputDt_to(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)
 
     # 查询
@@ -48,7 +48,7 @@ class LogStatAnalysis_man_Page(Page):
         self.inputDate(value)
 
     # 结束时间
-    def inputDt_to(self, value):
+    def inputDt_end_date(self, value):
         self.inputDate(value)
 
     # 查询

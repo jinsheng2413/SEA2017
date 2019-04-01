@@ -29,7 +29,7 @@ class HistoryPowerCutEventQueryPage(Page):
 
     # 查询按钮
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(True)
 
 # 高级应用→配变监测分析→停电分析→历史停电事件查询→终端停电事件查询
 class TmnlPowerCutEventQueryPage(Page):

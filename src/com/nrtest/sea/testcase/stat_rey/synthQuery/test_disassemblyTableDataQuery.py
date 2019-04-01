@@ -72,8 +72,8 @@ class TestDisassemblyTableDataQuery(TestCase, DisassemblyTableDataQueryPage):
         self.inputDt_end_date(para['END_DATE'])
         # 查询按钮
         self.btn_search()
-        val = self.get_para_value(para['TAB_NAME'])
-        if bool(val):
+        tab_name = self.get_para_value(para['TAB_NAME'])
+        if bool(tab_name):
             #  选择指定行
             self.inputRow_select_row(para['SELECT_ROW'])
             # TAB页名称
@@ -83,7 +83,7 @@ class TestDisassemblyTableDataQuery(TestCase, DisassemblyTableDataQueryPage):
             self.inputDt_tab_start_date(para['TAB_START_DATE'])
             # TAB页结束日期
             self.inputDt_tab_end_date(para['TAB_END_DATE'])
-            if val == '负荷曲线类数据':
+            if tab_name == '负荷曲线类数据':
                 # 曲线类型
                 self.inputSel_curve_type(para['CURVE_TYPE'])
             self.btn_qry()

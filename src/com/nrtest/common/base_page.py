@@ -1651,6 +1651,7 @@ class Page():
         if col_name == '':
             col_name = loc_col_name
         col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HIDE_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True, 'HIDE_ROWS': 0}
+        col_pos_info.setdefault('COL_NAME', col_name + ('[' + idx + ']*' if idx > 1 else ''))
         # 查找表头所有列名元素
         el_tds = el_tr.find_elements_by_xpath('./td')
         if bool(el_tds):
@@ -1752,6 +1753,7 @@ if __name__ == '__main__':
     #
     # print(loc1)
     page = Page(None)
+    page.abc()
     # print(page.format_xpath_multi((By.XPATH, 'adad{}'), 'c', False))
     # pg = Page(None)
     # pg.clickSingleCheckBox('忽略历史版本;')

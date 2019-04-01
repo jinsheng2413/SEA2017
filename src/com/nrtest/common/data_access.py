@@ -187,27 +187,40 @@ class DataAccess:
         return dataSet
 
     @staticmethod
-    def get_data_dictionary(dict_catalog, rsltType='01'):
+    def get_data_dictionary(dict_catalog, rsltType='01', is_public=False):
         """
         提取数据字典的查询条件类别
         :param dict_catalog: 查询条件分类编码
-        :param rsltType:01-dict_name List；02-dict
+        :param rsltType:01-dict_name List；02-dict key值为dict_name; 03-dict key值为dict_no
         :return:
         """
-        sql = 'SELECT dict_no, dict_name FROM tst_dictionary t \
-                WHERE project_no = :1  \
-                  AND dict_catalog = :2 \
-                ORDER BY t.dict_no'
+        if is_public:
+            sql = 'SELECT dict_no, dict_name FROM tst_dictionary t \
+                                            WHERE project_no is null \
+                                              AND dict_catalog = :1 \
+                                            ORDER BY t.dict_no'
+            qry = [dict_catalog]
+        else:
+            sql = 'SELECT dict_no, dict_name FROM tst_dictionary t \
+                                WHERE project_no = :1  \
+                                  AND dict_catalog = :2 \
+                                ORDER BY t.dict_no'
+            qry = [Setting.PROJECT_NO, dict_catalog]
+
         pyoracle = PyOracle.getInstance()
-        dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, dict_catalog])
+        dataSet = pyoracle.query(sql, qry)
         if rsltType == '01':
             rslt = []
             for idx, row in enumerate(dataSet):
                 rslt.append(row[1])
-        else:
+        elif rsltType == '02':
             rslt = {}
             for row in dataSet:
                 rslt.setdefault(row[1], row[0])
+        elif rsltType == '03':
+            rslt = {}
+            for row in dataSet:
+                rslt.setdefault(row[0], row[1])
         return rslt
 
     @staticmethod
@@ -407,7 +420,7 @@ if __name__ == '__main__':
     # DataAccess.getMenu('99913210')
     # print(DataAccess.get_xpath_tab_data('DATE_TIME', '999132207', '采集完整率统计'))
     # pass
-    print(DataAccess.get_case_result('999343303'))
+    print(DataAccess.get_data_dictionary('TRANS_TYPE', '03', True))
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
     # print(DataAccess.get_skip_data('999121003','备注-报文查询'))

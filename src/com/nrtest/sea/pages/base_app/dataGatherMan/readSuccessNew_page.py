@@ -167,7 +167,7 @@ class GatherSuccessRatePageNew(Page):
 #         self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 #
 #     # 查询按钮
-#     def btn_search(self):
+#     def btn_qry(self):
 #         self.btn_query(True)
 
 
@@ -202,7 +202,7 @@ class GatherSuccessRatePageNew(Page):
 #         self.inputDate(content)
 #
 #     # 查询按钮
-#     def btn_search(self):
+#     def btn_qry(self):
 #         self.btn_query(True)
 
 
@@ -315,5 +315,5 @@ class GatherSuccessRatePageNew(Page):
 #     self.selectDropDown(index, is_multi_elements=True, is_multi_tab=True)
 #
 # # 查询按钮
-# def btn_search(self):
+# def btn_qry(self):
 #     self.btn_query(True)

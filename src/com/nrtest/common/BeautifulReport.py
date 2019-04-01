@@ -414,12 +414,25 @@ class BeautifulReport(ReportTestResult):
             data = file.read()
         return base64.b64encode(data).decode()
 
+    @staticmethod
+    def get_screenshot(obj, img_path=None, fun_name=''):
+        if not bool(img_path):
+            img_path = Setting.IMG_PATH
+        img_name = fun_name + '_' + time.strftime('%Y%m%d%H%M%S') + '.png'
+        if 'save_img' in dir(obj):
+            save_img = getattr(obj, 'save_img')
+            save_img(img_path, img_name)
+            print('<h3><font face="verdana">页面截图：</font></h3></br>')
+            data = BeautifulReport.img2base(img_path, img_name)
+            print(HTML_IMG_TEMPLATE.format(data))
+
     def add_test_img(*pargs):
         """
             接受若干个图片元素, 并展示在测试报告中
         :param pargs:
         :return:
         """
+
 
         def _wrap(func):
             @wraps(func)
@@ -435,7 +448,7 @@ class BeautifulReport(ReportTestResult):
                     # action：00-没弹窗；01-截图，且抛异常；02-只截图，不抛异常；
                     #         03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
                     if action in ('01', '02', '04'):
-                        print('<h3><font face="verdana">页面截图：</font></h3><br/>')
+                        print('<h3><font face="verdana">页面截图：</font></h3></br>')
                         data = BeautifulReport.img2base(img_path, img_name)
                         print(HTML_IMG_TEMPLATE.format(data))
                         if action in ['01', '04']:
@@ -444,15 +457,17 @@ class BeautifulReport(ReportTestResult):
                     raise pe
                 except BtnQueryError as bqe:
                     CASE_COSTS.update(bqe.get_qry_cost_sec)
+                    BeautifulReport.get_screenshot(args[0], img_path, func.__name__)
                     raise bqe
                 except Exception as ex:
-                    img_name = func.__name__ + '_' + time.strftime('%Y%m%d%H%M%S') + '.png'
-                    if 'save_img' in dir(args[0]):
-                        save_img = getattr(args[0], 'save_img')
-                        save_img(img_path, img_name)
-                        print('<h3><font face="verdana">页面截图：</font></h3><br/>')
-                        data = BeautifulReport.img2base(img_path, img_name)
-                        print(HTML_IMG_TEMPLATE.format(data))
+                    BeautifulReport.get_screenshot(args[0], img_path, func.__name__)
+                    # img_name = func.__name__ + '_' + time.strftime('%Y%m%d%H%M%S') + '.png'
+                    # if 'save_img' in dir(args[0]):
+                    #     save_img = getattr(args[0], 'save_img')
+                    #     save_img(img_path, img_name)
+                    #     print('<h3><font face="verdana">页面截图：</font></h3></br>')
+                    #     data = BeautifulReport.img2base(img_path, img_name)
+                    #     print(HTML_IMG_TEMPLATE.format(data))
 
                     # sys.exit(0)
                     raise ex
@@ -463,7 +478,7 @@ class BeautifulReport(ReportTestResult):
                     for parg in pargs:
                         file = img_path + parg + '.png'
                         if os.path.isfile(file):
-                            print('<h3><font face="verdana"><b>' + parg + '：</b></font></h3><br/>')
+                            print('<h3><font face="verdana"><b>' + parg + '：</b></font></h3></br>')
                             data = BeautifulReport.img2base(img_path, parg + '.png')
                             print(HTML_IMG_TEMPLATE.format(data))
                     return result
@@ -489,11 +504,12 @@ class BeautifulReport(ReportTestResult):
                     CASE_COSTS.update({args[1]['TST_CASE_ID']: '--'})
 
                 result = func(*args, **kwargs)
+
                 if fun_name == 'btn_query':  # 来自查询按钮
                     CASE_COSTS.update(result)
 
                 dlg_title = ''
-                if isinstance(result, dict):
+                if isinstance(result, dict):  # skip_to/skip_to_page的返回值
                     try:
                         dlg_title = result['DLG_TITLE']
                     except:
@@ -506,7 +522,7 @@ class BeautifulReport(ReportTestResult):
                 # action：00-没弹窗；01-截图，且抛异常；02-只截图，不抛异常；
                 #        03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
                 if action in ('01', '02', '04'):
-                    print('<h3><font face="verdana">对话框截图：</font></h3><br/>')
+                    print('<h3><font face="verdana">对话框截图：</font></h3></br>')
                     data = BeautifulReport.img2base(img_path, img_name)
                     print(HTML_IMG_TEMPLATE.format(data))
                 if action in ['01', '04']:

@@ -70,7 +70,7 @@ class TestUnControlPlantDetail(TestCase, UnControlPlantDetailPage):
         # 终端资产编号
         self.inputStr_tmnl_asset_no(para['TMNL_ASSET_NO'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

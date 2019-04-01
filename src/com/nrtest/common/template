@@ -7,6 +7,7 @@
     <link href="font-awesome.min.css" rel="stylesheet">
     <link href="animate.min.css" rel="stylesheet">
     <link href="chosen.css" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
     <base target="_blank">
     <style type="text/css">
         h1,h2,h3,h4,h5,h6 {

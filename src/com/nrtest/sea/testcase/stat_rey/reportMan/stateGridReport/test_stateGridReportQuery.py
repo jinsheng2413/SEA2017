@@ -67,9 +67,13 @@ class TestStateGridReportQuery(TestCase, StateGridReportQueryPage):
         # 查询方式
         self.inputChk_stat_type(para['STAT_TYPE'])
 
+        # 切换tab页
+        self.inputChk_tab_name(para['TAB_NAME'])
+
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
 
+        # 查询
         self.btn_qry()
 
     def assert_query_result(self, para):

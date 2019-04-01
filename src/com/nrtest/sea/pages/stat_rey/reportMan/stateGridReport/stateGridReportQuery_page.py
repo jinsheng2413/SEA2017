@@ -24,6 +24,10 @@ class StateGridReportQueryPage(Page):
     def inputDt_query_date(self, value):
         self.inputDate(value)
 
+    # 切换tab页
+    def inputChk_tab_name(self, option):
+        self.clickTabPage(option)
+
     # 查询
     def btn_qry(self):
         self.btn_query()

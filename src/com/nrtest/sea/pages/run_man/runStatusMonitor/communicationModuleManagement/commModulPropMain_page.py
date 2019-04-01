@@ -34,6 +34,10 @@ class CommunicationModuleBaseInformationMantainPage(Page):
     def inputSel_module_type(self, item):
         self.selectDropDown(item)
 
+    # 选择指定行
+    def inputRow_select_row(self, row_item):
+        self.select_row(row_item)
+
     # 查询
     def btn_qry(self):
         self.btn_query(True)
@@ -51,8 +55,15 @@ class ModuleAttributeRelationshipMantainPage(Page):
 
     # 维护状态
     def inputChk_mainten_status(self, items):
-        self.clickCheckBox_new(items,
-                               is_multi_tab=True)  # , ModuleAttributeRelationshipMantainLocators.QRY_MAINTEN_STATUS)
+        self.clickCheckBox_new(items, is_multi_tab=True)
+
+    # 表计类型
+    def inputChk_meter_type(self, index):
+        self.clickRadioBox(index)
+
+    # 选择指定行
+    def inputRow_select_row(self, row_item):
+        self.select_row(row_item)
 
     # 查询
     def btn_qry(self):

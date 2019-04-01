@@ -12,6 +12,9 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
+from com.nrtest.pbs.locators.line_loss_analysis.lineLossAnalysis_locators import LineLossAnalysis_locators
+
+
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
@@ -68,7 +71,7 @@ class TestLineLossBrowseQuery(TestCase, LineLossBrowseQueryPage):
         self.inputSel_type(para['TYPE'])
 
         # 损耗率
-        # self.inputSel_attrition_rate(para['ATTRITION_RATE'])
+        self.inputSel_attrition_rate(para['ATTRITION_RATE'])
         # 时间方案
         self.inputChk_date_type(para['DATE_TYPE'])
         # 查询按钮

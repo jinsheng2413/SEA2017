@@ -28,7 +28,7 @@ class HistoryPowerCutEventQueryPage(Page):
         self.selectDropDown(index)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query()
 
 # 高级应用→配变监测分析→停电分析→历史停电事件查询→终端停电事件查询
@@ -52,6 +52,10 @@ class TmnlPowerCutEventQueryPage(Page):
     # 停复电标识
     def inputSel_power_cut_identifying(self, index):
         self.selectDropDown(index)
+
+    # 月停电次数>
+    def inputStr_shut_nums(self, content):
+        self.input(content)
 
     # 终端厂家
     def inputSel_tmnl_factory(self, index):

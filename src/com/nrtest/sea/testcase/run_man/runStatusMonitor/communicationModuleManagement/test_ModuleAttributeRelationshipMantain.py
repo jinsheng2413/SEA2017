@@ -78,7 +78,13 @@ class TestModuleAttributeRelationshipMantain(TestCase, ModuleAttributeRelationsh
         # 维护状态
         self.inputChk_mainten_status(para['MAINTEN_STATUS'])
 
+        # 表计类型
+        self.inputChk_meter_type(para['METER_TYPE'])
+
         self.btn_qry()
+
+        #  选择指定行
+        self.inputRow_select_row(para['SELECT_ROW'])
 
     def assert_query_result(self, para):
         """

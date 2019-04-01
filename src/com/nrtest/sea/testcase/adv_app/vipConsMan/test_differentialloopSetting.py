@@ -7,7 +7,7 @@
 @time: 2018-11-06 11:00
 @desc:
 """
-
+from time import sleep
 from unittest import TestCase
 
 from ddt import ddt, data
@@ -72,6 +72,11 @@ class Test_DifferentialloopSetting(TestCase, DifferentialloopSetting_Page):
 
         # 查询
         self.btn_qry()
+
+        sleep(1)
+
+        #  选择指定行
+        self.inputRow_select_row(para['SELECT_ROW'])
 
     def assert_query_result(self, para):
         """

@@ -63,7 +63,7 @@ class TestDebuggingAccess(TestCase, DebuggingAccessPage):
         # 日期
         self.inputDt_query_date(para['QUERY_DATE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

@@ -31,7 +31,7 @@ class RunTmnlStatisticsPage(Page):
         self.clickTabPage(tab_name)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query()
 
 
@@ -62,5 +62,5 @@ class RunTmnlStatDetailPage(Page):
         self.selectCheckBox(index)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query(True)

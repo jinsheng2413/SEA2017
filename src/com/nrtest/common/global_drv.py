@@ -31,7 +31,7 @@ def get_driver():
     try:
         return __driver
     except Exception as e:
-        print('starting global webdriver init...')
+        print('初始化...webdriver')
         __init()
         return __driver
 

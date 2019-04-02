@@ -28,6 +28,10 @@ class DifferentialloopSetting_Page(Page):
     def inputStr_tmnl_asset_no(self, value):
         self.input(value)
 
+    # 选择指定行
+    def inputRow_select_row(self, row_item):
+        self.select_row(row_item)
+
     # 查询
     def btn_qry(self):
         self.btn_query()

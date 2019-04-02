@@ -64,7 +64,7 @@ class TestCoreFunctionAudit(TestCase, CoreFunctionAuditPage):
         """
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
         # 操作员
         self.inputStr_operator(para['OPERATOR'])
         # 访问时间

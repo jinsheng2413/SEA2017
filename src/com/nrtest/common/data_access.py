@@ -173,17 +173,15 @@ class DataAccess:
     def get_case_result(tst_case_id):
         """
         用于默认刷新admin用户下的‘00000’用户组的测试用例
-        :param tst_case_id: 测试用例ID
+        :param user_no: 测试用例用户
+        :param group_no: 测试用例组
         :return:
         """
         # tab确定哪个显示区、列明、点击的那一列
-        # sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value, row_num, is_special, wait_for_target, head_row \
-        #               from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type, exec_order'
-        # pyoracle = PyOracle.getInstance()
-        # dataSet = pyoracle.query(sql, [tst_case_id])
-
+        sql = 'select assert_type, nvl(tab_column_name, column_name) AS tab_column_name , column_name, expected_value, row_num, is_special, wait_for_target, head_row \
+                      from tst_case_result where IS_VALID = \'Y\' and tst_case_id = :id order by assert_type, exec_order'
         pyoracle = PyOracle.getInstance()
-        dataSet = pyoracle.callFCur('pkg_nrtest.get_case_result', [tst_case_id])
+        dataSet = pyoracle.query(sql, [tst_case_id])
         return dataSet
 
     @staticmethod
@@ -280,7 +278,7 @@ class DataAccess:
     @staticmethod
     def get_skip_data(case_id, col_name):
         sql = 'select tres.tab_column_name,lr.tab_name ,tres.column_name,tres.row_num,lr.xpath_type,lr.xpath ,lr.target_tab_name,lr.trans_type, ' \
-              'lr.target_xpath,lr.trans_value, lr.is_trans,lr.element_sn, lr.target_menu_no, m.menu_name as target_menu_name, lr.column_idx   ' \
+              'lr.target_xpath,lr.trans_value, lr.is_trans,lr.element_sn, lr.target_menu_no, m.menu_name as target_menu_name   ' \
               'from tst_case_result tres,TST_COL_LINK_RELA  lr,tst_case ca, tst_menu m    ' \
               'where tres.tst_case_id = ca.tst_case_id and tres.column_name = lr.col_name   ' \
               'and ca.menu_no = lr.menu_no and ca.tab_name = lr.tab_name and lr.target_menu_no = m.menu_no  ' \
@@ -407,7 +405,7 @@ if __name__ == '__main__':
     # DataAccess.getMenu('99913210')
     # print(DataAccess.get_xpath_tab_data('DATE_TIME', '999132207', '采集完整率统计'))
     # pass
-    print(DataAccess.get_case_result('999343303'))
+    print(DataAccess.get_data_trans('16', '8000000000010308'))
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
     # print(DataAccess.get_skip_data('999121003','备注-报文查询'))

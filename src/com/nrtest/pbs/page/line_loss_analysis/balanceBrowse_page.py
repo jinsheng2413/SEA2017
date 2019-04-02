@@ -40,24 +40,42 @@ class BalanceBrowseQueryPage(Page):
         self.selectDropDown(value)
 
     # 损耗率
-    def inputSel_attrition_rate(self,input):
-        input_text = input.split(';')[2].split(',')
-        # 第一个
-        self.click(LineLossAnalysis_locators.A_DOWN_FIRST)
-        xpath1 = self.format_xpath(LineLossAnalysis_locators.DROP_DOWN_TEXT, input_text[0])
-        self.click(xpath1)
-        # 第二个
-        self.input(input_text[1], *LineLossAnalysis_locators.INPUT_SECOND)
-        # 第三个
-        self.click(LineLossAnalysis_locators.A_DOWN_SECOND)
-        xpath2 = self.format_xpath(LineLossAnalysis_locators.DROP_DOWN_TEXT, input_text[2])
-        self.click(xpath2)
-        # 第四个
-        self.click(LineLossAnalysis_locators.A_DOWN_THIRD)
-        xpath3 = self.format_xpath(LineLossAnalysis_locators.DROP_DOWN_TEXT, input_text[3])
-        self.click(xpath3)
-        # 第五个
-        self.input(input_text[4], *LineLossAnalysis_locators.INPUT_FIFTH)
+    def inputSel_attrition_rate_first(self,option):
+        self.specialDropdown(option,locator=LineLossAnalysis_locators.A_DOWN_FIRST)
+        # input_text = input.split(';')[2].split(',')
+        # # 第一个
+        # self.click(LineLossAnalysis_locators.A_DOWN_FIRST)
+        # xpath1 = self.format_xpath(LineLossAnalysis_locators.DROP_DOWN_TEXT, input_text[0])
+        # self.click(xpath1)
+        # # 第二个
+        # self.input(input_text[1], *LineLossAnalysis_locators.INPUT_SECOND)
+        # # 第三个
+        # self.click(LineLossAnalysis_locators.A_DOWN_SECOND)
+        # xpath2 = self.format_xpath(LineLossAnalysis_locators.DROP_DOWN_TEXT, input_text[2])
+        # self.click(xpath2)
+        # # 第四个
+        # self.click(LineLossAnalysis_locators.A_DOWN_THIRD)
+        # xpath3 = self.format_xpath(LineLossAnalysis_locators.DROP_DOWN_TEXT, input_text[3])
+        # self.click(xpath3)
+        # # 第五个
+        # self.input(input_text[4], *LineLossAnalysis_locators.INPUT_FIFTH)
+        # 损耗率
+
+    def inputStr_attrition_rate_second(self, option):
+        value = self.get_para_value(option)
+        self.input(value, *LineLossAnalysis_locators.INPUT_SECOND)
+
+    def inputSel_attrition_rate_third(self, option):
+        self.specialDropdown(option, locator=LineLossAnalysis_locators.A_DOWN_SECOND)
+
+    # 损耗率
+    def inputSel_attrition_rate_fourth(self, option):
+        self.specialDropdown(option, locator=LineLossAnalysis_locators.A_DOWN_THIRD)
+
+    # 损耗率
+    def inputStr_attrition_rate_fifth(self, option):
+        value = self.get_para_value(option)
+        self.input(value, *LineLossAnalysis_locators.INPUT_SECOND)
 
     # 时间类型
     def inputChk_date_type(self, value):

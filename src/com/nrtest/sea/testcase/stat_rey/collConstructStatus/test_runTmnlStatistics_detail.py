@@ -69,7 +69,7 @@ class TestRunTmnlStatistics_Detail(TestCase, RunTmnlStatDetailPage):
         # 终端状态
         self.inputSel_tmnl_status(para['TMNL_STATUS'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

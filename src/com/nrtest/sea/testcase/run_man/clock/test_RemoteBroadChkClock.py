@@ -19,7 +19,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.clock.remoteBroadChkClock_page import RemoteBroadChkClockPage
 
 
-# 运行管理→时钟管理→本地广播校时设置
+# 运行管理→时钟管理→远程广播校时设置
 @ddt
 class TestRemoteBroadChkClock(TestCase, RemoteBroadChkClockPage):
 

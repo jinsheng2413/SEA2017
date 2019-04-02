@@ -83,7 +83,7 @@ class TestCustControlCommissioning_cust_manage(TestCase, CustControlCommissionin
         self.inputSel_send_status(para['SEND_STATUS'])
         
         #电量下发成功自动发送短信
-        self.inputChk_auto_message(para['AUTO_MESSAGE'])
+        # self.inputChk_auto_message(para['AUTO_MESSAGE'])
 
         # 查询
         self.btn_qry()

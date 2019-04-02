@@ -51,6 +51,10 @@ class CustControlCommissioning_page(Page):
     def inputSel_send_status(self, option):
         self.selectDropDown(option)
 
+    #
+    def inputChk_auto_message(self,value):
+        self.clickCheckBox(value)
+
     # 点击查询按钮
     def btn_qry(self):
         self.btn_query()

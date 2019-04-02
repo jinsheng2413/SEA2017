@@ -18,7 +18,7 @@ class TmnlEventSendingFunctionPage(Page):
         self.inputDate(content)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query()
 
 # 高级应用→配变监测分析→停电分析→终端是否具备停上电事件上送功能→终端是否具备停上电事件上送功能明细

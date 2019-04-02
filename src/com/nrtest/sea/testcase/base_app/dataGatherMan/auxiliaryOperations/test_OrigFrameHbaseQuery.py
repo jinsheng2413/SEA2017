@@ -67,10 +67,10 @@ class TestOrigFrameHbaseQuery(TestCase, OrigFrameHbaseQueryPage):
 
         #终端地址
         self.inputStr_tmnl_addr(para['TMNL_ADDR'])
-        #查询时间
-        self.inputStr_query_time(para['QUERY_TIME'])
         #报文类型
         self.inputSel_message_type(para['MESSAGE_TYPE'])
+        # 查询日期
+        self.inputDt_query_time(para['QUERY_TIME'])
         # 从
         self.inputDt_start_date(para['START_DATE'])
         # 到

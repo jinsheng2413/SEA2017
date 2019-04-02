@@ -23,8 +23,8 @@ class OrigFrameHbaseQueryPage(Page):
         self.selectDropDown(name)
 
     # 查询时间
-    def inputStr_query_time(self, value):
-        self.input(value)
+    def inputDt_query_time(self, value):
+        self.inputDate(value)
 
     # 从
     def inputDt_start_date(self, value):

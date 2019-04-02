@@ -28,10 +28,10 @@ class OrigFrameHbaseQueryPage(Page):
 
     # 从
     def inputDt_start_date(self, value):
-        self.inputDate(value)
+        self.selectDropDown(value,byImg=False)
      # 到
     def inputDt_end_date(self, value):
-        self.inputDate(value)
+        self.selectDropDown(value, byImg=False)
 
     # 查询
     def btn_qry(self):

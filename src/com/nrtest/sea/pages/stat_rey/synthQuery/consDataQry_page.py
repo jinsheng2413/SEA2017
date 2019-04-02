@@ -28,34 +28,43 @@ class ConsdataqryDisplayPage(Page):
     def inputStr_cons_no(self, value):
         self.input(value)
 
+    # 查询按钮
+    def btn_search(self):
+        self.btn_query(True)
+
     # TAB页名称
     def inputChk_tab_name(self, tab_name):
         self.clickTabPage(tab_name)
 
+    # 实时负荷查询tab页
     # 曲线类型
     def inputChk_curve_type(self, option):
         self.clickRadioBox(option)
 
     # 电表
     def inputSel_meter_no(self, option):
-        self.selectDropDown(option)
+        self.selectDropDown(option, is_multi_elements=True)
 
     # 查询日期
     def inputDt_query_date(self, value):
         self.inputDate(value)
 
-    # 开始日期
+    # 负荷极值tab页
+    # 日期
     def inputDt_stat_date(self, value):
         self.inputDate(value)
 
-    # 结束日期
+    # 至
     def inputDt_end_date(self, value):
         self.inputDate(value)
+
+    # 电能示值tab页
+
 
     # 日期类型
     def inputChk_date_type(self, option):
         self.clickRadioBox(option)
 
-    # 查询
-    def btn_qry(self):
-        self.btn_query()
+    # 第二个查询按钮
+    def btn_search_tab(self):
+        self.btn_query(True, idx=2)

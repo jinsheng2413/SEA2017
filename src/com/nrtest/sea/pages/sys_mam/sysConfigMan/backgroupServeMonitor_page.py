@@ -37,8 +37,8 @@ class BackgroupServeMonitorPage(Page):
 # 系统管理→系统配置管理→后台服务监测:后台服务监测明细
 class BackgroupServeMonitorDetailPage(Page):
     # JOB名称
-    def inputStr_job_name(self, content):
-        self.input(content)
+    # def inputStr_job_name(self, content):
+    #     self.input(content)
 
     # 服务名称
     def inputStr_service_name(self, content):
@@ -47,6 +47,10 @@ class BackgroupServeMonitorDetailPage(Page):
     # 日期类型选择
     def inputChk_qry_date_type(self, tab_name):
         self.clickDt_Tab(tab_name, True, True)
+
+    # 查询日期/从
+    def inputDt_dt_date(self, value):
+        self.inputDate(value)
 
     # 查询日期/从
     def inputDt_dt_start(self, value):

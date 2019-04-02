@@ -20,8 +20,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 from com.nrtest.sea.pages.run_man.simCardMan.runSituationCount.simInstallStat_page import SimInstallStatPageStatic
 
 
-# 运行管理-->SIM卡管理-->运行情况分析-->安装情况统计
-# 安装情况统计
+# 运行管理-->采集信道管理-->SIM卡管理-->SIM卡运行情况分析-->安装情况统计:安装情况统计
 @ddt
 class TestSimInstallStat(TestCase, SimInstallStatPageStatic):
 
@@ -89,7 +88,7 @@ class TestSimInstallStat(TestCase, SimInstallStatPageStatic):
     @data(*DataAccess.getCaseData(SimCardManData.para_simInstallStat,
                                   SimCardManData.para_simInstallStat_static))
     def test_query(self, para):
-        """运行管理-->SIM卡管理-->运行情况分析-->安装情况统计:安装情况统计
+        """运行管理-->采集信道管理-->SIM卡管理-->SIM卡运行情况分析-->安装情况统计:安装情况统计
         """
         self.start_case(para, __file__)
         self.query(para)

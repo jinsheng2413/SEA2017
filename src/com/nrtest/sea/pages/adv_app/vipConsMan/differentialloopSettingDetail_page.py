@@ -17,6 +17,10 @@ class DifferentialloopSettingDetail_Page(Page):
         self.clean_label(value)
         self.input(value)
 
+    # 选择指定行
+    def inputRow_select_row(self, row_item):
+        self.select_row(row_item)
+
     # 查询
     def btn_qry(self):
         self.btn_query()

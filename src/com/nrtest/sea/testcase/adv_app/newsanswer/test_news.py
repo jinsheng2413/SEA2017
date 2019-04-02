@@ -56,7 +56,7 @@ class Test_News(TestCase, News_Page):
 
     def query(self, para):
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'],is_closed=True)
+        self.openLeftTree(para['TREE_NODE'])
 
         # 问题标题
         self.inputStr_question_title(para['QUESTION_TITLE'])

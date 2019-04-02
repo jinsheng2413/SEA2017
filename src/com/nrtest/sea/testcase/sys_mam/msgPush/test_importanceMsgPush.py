@@ -56,7 +56,7 @@ class TestImportanceMsgPush(TestCase, ImportanceMsgPushPage):
     def query(self, para):
         # self.displayTreeMenu()
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 角色名称
         self.inputStr_role_name(para['ROLE_NAME'])

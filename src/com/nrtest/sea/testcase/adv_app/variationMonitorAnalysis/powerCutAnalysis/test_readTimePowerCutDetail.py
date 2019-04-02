@@ -58,14 +58,22 @@ class TestReadTimePowerCutDetail(TestCase, ReadTimePowerCutDetailPage):
     def query(self, para):
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
-        # 日期
-        self.inputDt_query_date(para['QUERY_DATE'])
+
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
+
+        # 停电范围
+        if (self.get_para_value(para['CONS_TYPE']) == '低压'):
+            self.inputSel_power_cut_scope(para['POWER_CUT_SCOPE'])
+
         # 信息推送
         self.inputSel_information_push(para['INFORMATION_PUSH'])
+
+        # 日期
+        self.inputDt_query_date(para['QUERY_DATE'])
+
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

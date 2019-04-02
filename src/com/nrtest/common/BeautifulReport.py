@@ -231,6 +231,16 @@ class ReportTestResult(unittest.TestResult):
             cost_seconds = str(CASE_COSTS[test.tst_case_id])
         except:
             cost_seconds = '**'
+
+        rows = []
+        ln = 180  # 长度超过过时截断
+        for i, log in enumerate(self.case_log):
+            if log.startswith('File ') and len(log) > ln:
+                rows.append([i, log])
+        for row in rows:
+            self.case_log[row[0]] = row[1][:ln] + ' \\'
+            self.case_log.insert(row[0] + 1, row[1][ln:])
+
         return tuple([*self.get_testcase_property(test), cost_seconds + '/' + self.end_time, self.status, self.case_log])
 
     @staticmethod

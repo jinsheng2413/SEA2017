@@ -12,9 +12,6 @@ from unittest import TestCase
 
 from ddt import ddt, data
 
-from com.nrtest.pbs.locators.line_loss_analysis.lineLossAnalysis_locators import LineLossAnalysis_locators
-
-
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess

@@ -24,7 +24,6 @@ from com.nrtest.common.logger import Logger
 from com.nrtest.common.setting import Setting
 from com.nrtest.common.user_except import AssertError, BtnQueryError
 from com.nrtest.common.utils import Utils
-from com.nrtest.pbs.locators.data_rey.datarey_locators import DataRey_locators
 from com.nrtest.sea.locators.other.base_locators import *
 
 # create a logger instance
@@ -617,8 +616,8 @@ class Page():
         cost_seconds = self.query_timeout(is_from_btn=True)
         return (self.tst_case_id, cost_seconds)
 
-
-    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True,is_line=False,is_tag_special=False,tag_name=''):
+    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True, is_line=False):
+        # is_tag_special=False, tag_name=''):
         """
         下拉单选框选择
         :param option: 参数格式：查询条件标签名;查询条件
@@ -645,10 +644,10 @@ class Page():
             if bool(item):
                 # 打开下拉框
                 if is_line:
-                  xpath = self.format_xpath_multi(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
-
-                elif is_tag_special:
-                    xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_TAG,(tag_name,ls_option[0]))
+                    xpath = self.format_xpath_multi(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
+                #
+                # elif is_tag_special:
+                #     xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_TAG, (tag_name, ls_option[0]))
 
                 else:
                     if byImg:
@@ -679,7 +678,7 @@ class Page():
                 el_all = self._find_displayed_element(loc_all)
                 self.driver.execute_script("arguments[0].value=arguments[1]", el_all, '')
 
-    def specialDropdown(self, option, locator='', idx=1, locator_clean=None,pbs_sel =False):
+    def specialDropdown(self, option, locator='', idx=1, locator_clean=None):
         """
         无法通过通用定位方法定位元素时，通过特殊locator定位选择
         :param option: 要选择的选项
@@ -687,41 +686,26 @@ class Page():
         :param idx:选择定位到的第idx个元素
         :param locator_clean:全选时的清空处理
         """
-        if pbs_sel:
-            option_text = option.split(';')[2].split(',')
-            # self.click(DataRey_locators.A_FIRST_DROP_DOWN)
-            # xpath1 = self.format_xpath(DataRey_locators.DROP_DOWN_TEXT,option_text[0])
-            # self.click(xpath1)
-
-            els = self._find_elements(DataRey_locators.A_FIRST_DROP_DOWN)
-            for i in range(len(els)):
-                d =i+1
-                el_xpath = self.format_xpath(DataRey_locators.A_SECOND_DROP_DOWN,d)
-                self.click(el_xpath)
-                xpath = self.format_xpath(DataRey_locators.DROP_DOWN_TEXT, option_text[i])
-                self.click(xpath)
-
-        else:
-            if self.ignore_op(option):
-                return
-            ls_option = option.split(';')
-            item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
-            el = self._find_displayed_element(locator, idx)
-            el.click()
-            # 根据名称选择下拉框
-            if bool(item):
-                loc = self.format_xpath(self.baseLocators.DROPDOWN_OPTION_EQUAL, item)
-                el_option = self.click(loc)
-                if not bool(el_option):
-                    el.click()
-            else:  # 选择值为空时，表示选择全部
-                if bool(locator_clean):
-                    loc = locator_clean
-                else:
-                    loc = (locator[0], locator[1] + '/preceding-sibling::input')
-                el_all = self._find_displayed_element(loc, idx)
-                self.driver.execute_script("arguments[0].value=arguments[1]", el_all, '')
+        if self.ignore_op(option):
+            return
+        ls_option = option.split(';')
+        item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
+        el = self._find_displayed_element(locator, idx)
+        el.click()
+        # 根据名称选择下拉框
+        if bool(item):
+            loc = self.format_xpath(self.baseLocators.DROPDOWN_OPTION_EQUAL, item)
+            el_option = self.click(loc)
+            if not bool(el_option):
                 el.click()
+        else:  # 选择值为空时，表示选择全部
+            if bool(locator_clean):
+                loc = locator_clean
+            else:
+                loc = (locator[0], locator[1] + '/preceding-sibling::input')
+            el_all = self._find_displayed_element(loc, idx)
+            self.driver.execute_script("arguments[0].value=arguments[1]", el_all, '')
+            el.click()
 
     def specialSelCheckBox(self, options, locator=None, sleep_sec=0, checked_loc=None, is_equalText=False):
         """

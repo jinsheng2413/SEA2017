@@ -8,8 +8,6 @@
 """
 
 from com.nrtest.common.base_page import Page
-from com.nrtest.sea.locators.run_man.runStatusMonitor.communicationModuleManagement.commModulPropMain_locators import \
-    ModuleAttributeRelationshipMantainLocators
 
 
 # 运行管理→采集信道管理→通信模块管理→通信模块属性维护

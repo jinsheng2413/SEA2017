@@ -1001,50 +1001,51 @@ class AssertResult():
             # 下钻前的供电单位名称
             original_org_name = self.tst_inst.get_input_val(case_result[2])
             compare_result = ['--', original_org_name, '', '', self.assert_info, []]
+            try:
+                is_skiped = True
+                while True:
+                    # 定位列名；校验列名；期望值(校验值)；定位行号;是否特殊处理
+                    skip_info = self.skip_to(case_result, col_pos_info, is_deal_after=True)
+                    link_text = skip_info['LINK_TEXT']
+                    org_name = self.tst_inst.get_input_val(case_result[2])
+                    if skip_info['CLICKABLE'] and skip_info['IS_SKIPED']:
+                        if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确
+                            raise AssertError('“{}”下钻失败， “{}”不是期望的供电单位！'.format(link_text, org_name))
+                            # compare_result[-1].append([link_text, org_name, '不通过'])
+                            # break
+                        # 跳转后的相关判断处理
+                        after_text = skip_info['AFTER_TEXT']
+                        # 获取供电单位类别
+                        org_type = DataAccess.get_org_type(after_text)
 
-            is_skiped = True
-            while True:
-                # 定位列名；校验列名；期望值(校验值)；定位行号;是否特殊处理
-                skip_info = self.skip_to(case_result, col_pos_info, is_deal_after=True)
-                link_text = skip_info['LINK_TEXT']
-                org_name = self.tst_inst.get_input_val(case_result[2])
-                if skip_info['CLICKABLE'] and skip_info['IS_SKIPED']:
-                    if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确
-                        raise AssertError('“{}”下钻失败， “{}”不是期望的供电单位！'.format(link_text, org_name))
-                        # compare_result[-1].append([link_text, org_name, '不通过'])
+                        # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
+                        after_action = skip_info['AFTER_ACTION']
+                        if org_type > '04' or after_action == '03':  # 跳转后没值或到县级以下供电单位（如：供电所）时，停止跳转
+                            # is_skiped = True
+                            break
+                        elif after_action == '01':  # 校验列没有链接；
+                            raise AssertError('“{}”下钻后没查询结果，没法下钻！'.format(link_text))
+                            # compare_result[-1].append([link_text, '没查询结果，没法下钻', '不通过'])
+                            # break
+                        elif after_action == '02' and link_text == skip_info['EL_AFTER_A'].text:
+                            raise AssertError('“{}”下钻不了！'.format(link_text))
+                            # compare_result[-1].append([link_text, '下钻不了', '不通过'])
+                            # break
+                    else:
+                        # DataAccess.el_operate_log(self.tst_inst.menu_no, self.tst_inst.tst_case_id, None, self.tst_inst.class_name, '跳转失败' + assert_type,
+                        #                           '“{}”没查询结果，无法继续下钻！'.format(org_name))
+                        # is_skiped = False
+                        # compare_result[-1].append([org_name, '没查询结果或其他原因，没法下钻', '不通过'])
                         # break
-                    # 跳转后的相关判断处理
-                    after_text = skip_info['AFTER_TEXT']
-                    # 获取供电单位类别
-                    org_type = DataAccess.get_org_type(after_text)
-
-                    # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
-                    after_action = skip_info['AFTER_ACTION']
-                    if org_type > '04' or after_action == '03':  # 跳转后没值或到县级以下供电单位（如：供电所）时，停止跳转
-                        # is_skiped = True
-                        break
-                    elif after_action == '01':  # 校验列没有链接；
-                        raise AssertError('“{}”下钻后没查询结果，没法下钻！'.format(link_text))
-                        # compare_result[-1].append([link_text, '没查询结果，没法下钻', '不通过'])
-                        # break
-                    elif after_action == '02' and link_text == skip_info['EL_AFTER_A'].text:
-                        raise AssertError('“{}”下钻不了！'.format(link_text))
-                        # compare_result[-1].append([link_text, '下钻不了', '不通过'])
-                        # break
-                else:
-                    # DataAccess.el_operate_log(self.tst_inst.menu_no, self.tst_inst.tst_case_id, None, self.tst_inst.class_name, '跳转失败' + assert_type,
-                    #                           '“{}”没查询结果，无法继续下钻！'.format(org_name))
-                    # is_skiped = False
-                    # compare_result[-1].append([org_name, '没查询结果或其他原因，没法下钻', '不通过'])
-                    # break
-                    raise AssertError('“{}”没查询结果或其他原因，没法下钻！'.format(org_name))
-
-            # if not is_skiped:
-            #     BeautifulReport.get_screenshot(self.tst_inst, fun_name='org_drill_down')
-
-            org_node = DataAccess.get_org_node_by_name(original_org_name)
-            self.tst_inst.openLeftTree(org_node)
-            self.tst_inst.btn_qry()
+                        raise AssertError('“{}”没查询结果或其他原因，没法下钻！'.format(org_name))
+            except AssertError as ae:
+                raise ae
+            except Exception as ec:
+                raise ec
+            finally:
+                org_node = DataAccess.get_org_node_by_name(original_org_name)
+                self.tst_inst.openLeftTree(org_node)
+                self.tst_inst.btn_qry()
 
             return is_skiped
         else:

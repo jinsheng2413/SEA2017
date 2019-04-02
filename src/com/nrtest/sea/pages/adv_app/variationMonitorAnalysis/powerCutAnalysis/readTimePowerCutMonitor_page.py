@@ -38,6 +38,10 @@ class ReadTimePowerCutDetailPage(Page):
     def inputSel_information_push(self, index):
         self.selectDropDown(index)
 
+    # 停电范围
+    def inputSel_power_cut_scope(self, index):
+        self.selectDropDown(index)
+
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query(True)

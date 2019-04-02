@@ -328,9 +328,10 @@ class AssertResult():
             trans = {'11': '011', '12': '012', '28': '013', '31': '031',
                      '22': '100', '24': '101', '21': '200',
                      '25': '201', '26': '210', '23': '300', '27': '310'}
-            assert_type = trans[assert_type]
-            if case_id == '999241501':
-                assert_type = '110'
+            try:
+                assert_type = trans[assert_type]
+            except:
+                pass
 
             self.assert_info = assert_type + '-' + ASSERT_TYPES[assert_type]
 
@@ -641,9 +642,9 @@ class AssertResult():
                     logger.error(err_info)
                     print('</br>' + err_info + '</br>')
         except Exception as ex:
-            print('\r跳转数据比对：跳转前--', skip_data_before)
-            print('--\r跳转后--', skip_data_after)
-            print('--\r跳转关系', map_rela_rslt)
+            print('</br>跳转数据比对：跳转前--', skip_data_before)
+            print('</br>--跳转后--', skip_data_after)
+            print('</br>--跳转关系', map_rela_rslt)
             raise ex
         return is_pass
 

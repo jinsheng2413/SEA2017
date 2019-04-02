@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→线损统计分析→分压线损分析
+# 高级应用→线损管理→线损统计分析→分压线损分析
 class PartialPressureLineLossAnalysisLocators:
     # 电压等级
     QRY_VOLT_CODE = (

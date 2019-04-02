@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→台区线损统计查询→台区线损异常报表
+# 高级应用→线损管理→台区线损统计查询→台区线损异常报表
 class TgLineLossAbnormalReportPage(Page):
     # 线损维度
     def inputSel_line_loss_dimension(self, index):

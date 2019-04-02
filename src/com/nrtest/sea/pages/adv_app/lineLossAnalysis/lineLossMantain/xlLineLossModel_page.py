@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→线损模型维护→线路线损模型:变电站线损模型
+# 高级应用→线损管理→线损模型维护→线路线损模型:变电站线损模型
 class XlLineLossModel_loss_Page(Page):
     # 变电站名称
     def inputSel_substation_name(self, option):
@@ -22,7 +22,7 @@ class XlLineLossModel_loss_Page(Page):
         self.btn_query(True)
 
 
-# 高级应用→线损分析→线损模型维护→线路线损模型:主变线损模型
+# 高级应用→线损管理→线损模型维护→线路线损模型:主变线损模型
 class XlLineLossModel_main_Page(Page):
     # 变电站名称
     def inputSel_substation_name(self, option):
@@ -50,7 +50,7 @@ class XlLineLossModel_main_Page(Page):
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→线损模型维护→线路线损模型:母线电量平衡模型
+# 高级应用→线损管理→线损模型维护→线路线损模型:母线电量平衡模型
 class XlLineLossModel_ele_Page(Page):
     # 变电站名称
     def inputSel_substation_name(self, option):

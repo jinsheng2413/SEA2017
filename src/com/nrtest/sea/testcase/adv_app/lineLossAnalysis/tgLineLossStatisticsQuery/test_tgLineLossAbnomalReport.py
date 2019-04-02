@@ -21,7 +21,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgL
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→台区线损统计查询→台区线损异常报表
+# 高级应用→线损管理→台区线损统计查询→台区线损异常报表
 @ddt
 class TestTgLineLossAbnormalReport(TestCase, TgLineLossAbnormalReportPage):
     @classmethod
@@ -88,7 +88,7 @@ class TestTgLineLossAbnormalReport(TestCase, TgLineLossAbnormalReportPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TgLineLossStatisticsQuery_data.TgLineLossAbnormalReport_para))
     def test_query(self, para):
-        """高级应用→线损分析→台区线损统计查询→台区线损异常报表
+        """高级应用→线损管理→台区线损统计查询→台区线损异常报表
         """
         self.start_case(para, __file__)
         self.query(para)

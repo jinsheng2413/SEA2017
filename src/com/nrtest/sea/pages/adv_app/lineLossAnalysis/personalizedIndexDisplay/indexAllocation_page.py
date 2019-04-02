@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→同期线损→指标配置
+# 高级应用→线损管理→同期线损→指标配置
 class IndexAllocationPage(Page):
     # 台区编号
     def inputStr_tg_no(self, content):

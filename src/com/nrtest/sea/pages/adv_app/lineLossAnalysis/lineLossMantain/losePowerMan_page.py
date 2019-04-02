@@ -11,7 +11,7 @@
 
 from com.nrtest.common.base_page import Page
 
-# 高级应用→线损分析→线损模型维护→线损模型设计
+# 高级应用→线损管理→线损模型维护→线损模型设计
 from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossMantain.losePowerMan_locators import LosePowerManLocators
 
 

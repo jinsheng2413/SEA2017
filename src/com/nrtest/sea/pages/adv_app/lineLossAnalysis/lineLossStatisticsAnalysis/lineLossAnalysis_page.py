@@ -10,7 +10,7 @@
 
 from com.nrtest.common.base_page import Page
 
-# 高级应用→线损分析→线损统计分析→线路线损分析
+# 高级应用→线损管理→线损统计分析→线路线损分析
 from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.lineLossAnalysis_locators import \
     LineLossAnalysisLocators
 

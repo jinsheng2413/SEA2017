@@ -10,7 +10,8 @@
 
 from com.nrtest.common.base_page import Page
 
-# 高级应用→线损分析→线损统计分析→分压线损分析
+
+# 高级应用→线损管理→线损统计分析→分压线损分析
 class PartialPressureLineLossAnalysisPage(Page):
     # 电压等级
     def inputSel_volt_code(self, index):

@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.tg
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损统计分析→台区线损监测
+# 高级应用→线损管理→线损统计分析→台区线损监测
 @ddt
 class TestTgLineLossMonitor(TestCase, TgLineLossMonitorPage):
     @classmethod
@@ -86,7 +86,7 @@ class TestTgLineLossMonitor(TestCase, TgLineLossMonitorPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.TgLineLossMonitor_para))
     def test_query(self, para):
-        """高级应用→线损分析→线损统计分析→台区线损监测
+        """高级应用→线损管理→线损统计分析→台区线损监测
         """
         self.start_case(para, __file__)
         self.query(para)

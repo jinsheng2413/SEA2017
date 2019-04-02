@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.pa
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损统计分析→分压线损分析
+# 高级应用→线损管理→线损统计分析→分压线损分析
 @ddt
 class TestTgLineLossAnalysis(TestCase, PartialPressureLineLossAnalysisPage):
     @classmethod
@@ -90,7 +90,7 @@ class TestTgLineLossAnalysis(TestCase, PartialPressureLineLossAnalysisPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.PartialPressureLineLossAnalysis_para))
     def test_query(self, para):
-        """高级应用→线损分析→线损统计分析→分压线损分析
+        """高级应用→线损管理→线损统计分析→分压线损分析
         """
         self.start_case(para, __file__)
         self.query(para)

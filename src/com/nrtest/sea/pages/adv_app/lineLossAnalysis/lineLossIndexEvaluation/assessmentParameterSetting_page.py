@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→线损指标考核→考核参数设置
+# 高级应用→线损管理→线损指标考核→考核参数设置
 class AssessmentParameterSettingPage(Page):
     # 台区/线路名称
     def inputStr_tg_name(self, content):

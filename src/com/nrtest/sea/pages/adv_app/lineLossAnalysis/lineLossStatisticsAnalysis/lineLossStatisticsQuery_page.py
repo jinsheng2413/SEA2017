@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→线损统计分析→线损统计查询
+# 高级应用→线损管理→线损统计分析→线损统计查询
 class LineLossStatisticsQueryPage(Page):
     # 线损分类
     def inputSel_line_loss_type(self, index):

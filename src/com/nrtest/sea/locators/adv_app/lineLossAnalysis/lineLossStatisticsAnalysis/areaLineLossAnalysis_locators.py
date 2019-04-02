@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→线损统计分析→区域线损分析
+# 高级应用→线损管理→线损统计分析→区域线损分析
 class AreaLineLossAnalysisLocators:
     # 查询日期
     QRY_DATE = (By.XPATH, '//label[contains(text(),"查询日期")]/../div/div/input')

@@ -10,7 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→线损统计分析→线损综合分析
+# 高级应用→线损管理→线损统计分析→线损综合分析
 class LineLossSynthesizeAnalysisPage(Page):
     # 线损类别
     def inputSel_line_loss_type(self, index):

@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→线损统计分析→线路线损分析
+# 高级应用→线损管理→线损统计分析→线路线损分析
 class LineLossAnalysisLocators:
     # %前，输入框
     QRY_INPUT = (By.XPATH, '//label[text()="%"]/../../../../preceding-sibling::td[1]//input')

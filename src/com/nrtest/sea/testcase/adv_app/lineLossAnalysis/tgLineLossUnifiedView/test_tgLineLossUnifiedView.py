@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossUnifiedView.tgLineL
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→台区线损统一视图→台区线损统一视图
+# 高级应用→线损管理→台区线损统一视图→台区线损统一视图
 # 首页
 @ddt
 class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
@@ -104,7 +104,7 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(TgLineLossUnifiedView_data.TgLineLossUnifiedView_para, TgLineLossUnifiedView_data.TgLineLossUnifiedView_home_page))
     def test_query(self, para):
-        """高级应用→线损分析→线损统计分析→台区线损统一视图:首页
+        """高级应用→线损管理→线损统计分析→台区线损统一视图:首页
         """
         self.start_case(para, __file__)
         self.query(para)

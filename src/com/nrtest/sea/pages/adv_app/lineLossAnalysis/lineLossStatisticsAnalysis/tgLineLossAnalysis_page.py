@@ -13,7 +13,7 @@ from com.nrtest.sea.locators.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis
     TgLineLossAnalysisLocators
 
 
-# 高级应用→线损分析→线损统计分析→台区线损分析
+# 高级应用→线损管理→线损统计分析→台区线损分析
 class TgLineLossAnalysisPage(Page):
     # 安装率
     def inputSel_install_rate(self, option):

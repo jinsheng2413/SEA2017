@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossMantain.xlLineLossMod
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损模型维护→线路线损模型:主变线损模型
+# 高级应用→线损管理→线损模型维护→线路线损模型:主变线损模型
 @ddt
 class TestXlLineLossModelMain(TestCase, XlLineLossModel_main_Page):
 
@@ -93,7 +93,7 @@ class TestXlLineLossModelMain(TestCase, XlLineLossModel_main_Page):
     @data(*DataAccess.getCaseData(LineLossMantain_data.xlLineLossModel_para,
                                   LineLossMantain_data.xlLineLossModel_main_tab))
     def test_query(self, para):
-        """高级应用→线损分析→线损模型维护→线路线损模型:主变线损模型
+        """高级应用→线损管理→线损模型维护→线路线损模型:主变线损模型
         """
         self.start_case(para, __file__)
         self.query(para)

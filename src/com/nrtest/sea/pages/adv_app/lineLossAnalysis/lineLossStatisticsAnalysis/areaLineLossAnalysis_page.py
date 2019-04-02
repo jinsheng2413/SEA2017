@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→线损统计分析→区域线损分析
+# 高级应用→线损管理→线损统计分析→区域线损分析
 class AreaLineLossAnalysisPage(Page):
     # 查询日期
     def inputDt_query_date(self, content):

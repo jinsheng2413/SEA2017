@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.personalizedIndexDisplay.inde
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→同期线损→指标配置
+# 高级应用→线损管理→同期线损→指标配置
 @ddt
 class TestIndexAllocation(TestCase, IndexAllocationPage):
     @classmethod
@@ -86,7 +86,7 @@ class TestIndexAllocation(TestCase, IndexAllocationPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(PersonalizedIndexDisplay_data.IndexAllocation_para))
     def test_query(self, para):
-        """高级应用→线损分析→同期线损→指标配置
+        """高级应用→线损管理→同期线损→指标配置
         """
         self.start_case(para, __file__)
         self.query(para)

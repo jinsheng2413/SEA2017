@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→线损统计分析→台区线损监测
+# 高级应用→线损管理→线损统计分析→台区线损监测
 class TgLineLossMonitorLocators:
     # 指标类型
     QRY_INDEX_TYPE = (

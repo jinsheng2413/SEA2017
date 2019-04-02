@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→线损指标考核→考核参数设置
+# 高级应用→线损管理→线损指标考核→考核参数设置
 class AssessmentParameterSettingLocators:
     # 台区/线路名称
     QRY_TG_NAME = (

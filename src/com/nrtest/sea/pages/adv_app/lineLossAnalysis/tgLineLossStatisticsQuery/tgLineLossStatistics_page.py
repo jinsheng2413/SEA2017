@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→台区线损统计查询→台区线损统计
+# 高级应用→线损管理→台区线损统计查询→台区线损统计
 class TgLineLossStatisticsPage(Page):
     # 查询维度
     def inputChk_date_type(self, index):

@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→同期线损→指标配置
+# 高级应用→线损管理→同期线损→指标配置
 class IndexAllocationLocators:
     # 台区编号
     QRY_TG_NO = (By.XPATH, '//label[contains(text(),"台区编号")]/../div/input')

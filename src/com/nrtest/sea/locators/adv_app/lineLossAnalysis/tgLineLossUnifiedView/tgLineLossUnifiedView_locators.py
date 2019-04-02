@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→台区线损统一视图→台区线损统一视图
+# 高级应用→线损管理→台区线损统一视图→台区线损统一视图
 class TgLineLossUnifiedViewLocators:
     # 台区编号
     QRY_TG_NO = (By.XPATH, '//label[contains(text(),"台区编号")]/../div/input')

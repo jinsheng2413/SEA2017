@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→线损统计分析→台区线损分析（冀北）
+# 高级应用→线损管理→线损统计分析→台区线损分析（冀北）
 class TgLineLossAnalysisJibeiLocators:
     # %前，输入框
     QRY_INPUT = (By.XPATH, '//label[text()="%"]/../../../../preceding-sibling::td[1]//input')

@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→线损统计分析→线损统计查询
+# 高级应用→线损管理→线损统计分析→线损统计查询
 class LineLossStatisticsQueryLocators:
     # 线损分类
     QRY_LINE_LOSS_TYPE = (

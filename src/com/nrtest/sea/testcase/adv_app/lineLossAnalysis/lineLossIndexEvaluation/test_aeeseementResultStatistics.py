@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossIndexEvaluation.aeese
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损指标考核→考核结果统计
+# 高级应用→线损管理→线损指标考核→考核结果统计
 @ddt
 class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
     @classmethod
@@ -94,7 +94,7 @@ class TestAeeseementResultStatistics(TestCase, AeeseementResultStatisticsPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossIndexEvaluation_data.AssessmentResultStatistics_para))
     def test_query(self, para):
-        """高级应用→线损分析→线损指标考核→考核结果统计
+        """高级应用→线损管理→线损指标考核→考核结果统计
         """
         self.start_case(para, __file__)
         self.query(para)

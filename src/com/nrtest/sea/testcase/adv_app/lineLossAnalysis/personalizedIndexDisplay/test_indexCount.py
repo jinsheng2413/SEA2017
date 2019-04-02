@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.personalizedIndexDisplay.inde
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→个性化指标展示→指标明细:指标统计
+# 高级应用→线损管理→个性化指标展示→指标明细:指标统计
 @ddt
 class TestIndexDetailStat(TestCase, IndexDetailStatPage):
     @classmethod
@@ -85,7 +85,7 @@ class TestIndexDetailStat(TestCase, IndexDetailStatPage):
     @data(*DataAccess.getCaseData(PersonalizedIndexDisplay_data.IndexDetail_para,
                                   tabName=PersonalizedIndexDisplay_data.IndexDetail_count_tab))
     def test_query(self, para):
-        """高级应用→线损分析→个性化指标展示→指标明细:指标统计
+        """高级应用→线损管理→个性化指标展示→指标明细:指标统计
         """
         self.start_case(para, __file__)
         self.query(para)

@@ -10,7 +10,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→台区线损统一视图→台区线损统一视图
+# 高级应用→线损管理→台区线损统一视图→台区线损统一视图
 class TgLineLossUnifiedViewPage(Page):
     # 台区编号
     def inputStr_tg_no(self, content):

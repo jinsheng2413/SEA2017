@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 高级应用→线损分析→同期线损→指标明细
+# 高级应用→线损管理→同期线损→指标明细
 class IndexDetailPage(Page):
     # 台区编号
     def inputStr_tg_no(self, content):
@@ -33,7 +33,7 @@ class IndexDetailPage(Page):
         self.btn_query(True)
 
 
-# 高级应用→线损分析→个性化指标展示→指标明细：指标统计
+# 高级应用→线损管理→个性化指标展示→指标明细：指标统计
 class IndexDetailStatPage(Page):
     # 工号
     def inputStr_staff_no(self, name):

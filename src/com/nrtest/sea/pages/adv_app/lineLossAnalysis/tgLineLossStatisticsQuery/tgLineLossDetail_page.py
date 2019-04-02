@@ -10,7 +10,9 @@
 from com.nrtest.common.base_page import Page
 from com.nrtest.sea.locators.adv_app.lineLossAnalysis.tgLineLossStatisticsQuery.tgLineLossDetail_locators import \
     TgLineLossDetailLocators
-# 高级应用→线损分析→台区线损统计查询→台区线损明细
+
+
+# 高级应用→线损管理→台区线损统计查询→台区线损明细
 
 class TgLineLossDetailPage(Page):
     # 台区编号

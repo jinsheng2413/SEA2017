@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossIndexEvaluation.asses
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损指标考核→考核参数设置
+# 高级应用→线损管理→线损指标考核→考核参数设置
 @ddt
 class TestAssessmentParameterSetting(TestCase, AssessmentParameterSettingPage):
     @classmethod
@@ -88,7 +88,7 @@ class TestAssessmentParameterSetting(TestCase, AssessmentParameterSettingPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossIndexEvaluation_data.AssessmentParameterSetting_para))
     def test_query(self, para):
-        """高级应用→线损分析→线损指标考核→考核参数设置
+        """高级应用→线损管理→线损指标考核→考核参数设置
         """
         self.start_case(para, __file__)
         self.query(para)

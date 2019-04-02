@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→线损指标考核→考核结果统计
+# 高级应用→线损管理→线损指标考核→考核结果统计
 class AeeseementResultStatisticsLocators:
     # 责任人
     QRY_PERSON_RESP_NO = (

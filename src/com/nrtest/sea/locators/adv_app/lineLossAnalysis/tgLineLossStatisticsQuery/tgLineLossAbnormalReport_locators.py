@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→台区线损统计查询→台区线损异常报表
+# 高级应用→线损管理→台区线损统计查询→台区线损异常报表
 class TgLineLossAbnormalReportLocators:
     # 线损维度
     QRY_LINE_LOSS_DIMENSION = (

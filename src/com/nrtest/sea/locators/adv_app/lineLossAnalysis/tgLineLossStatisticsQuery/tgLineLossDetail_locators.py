@@ -11,7 +11,7 @@
 from selenium.webdriver.common.by import By
 
 
-# 高级应用→线损分析→台区线损统计查询→台区线损明细
+# 高级应用→线损管理→台区线损统计查询→台区线损明细
 class TgLineLossDetailLocators:
     # %前，输入框
     QRY_INPUT = (By.XPATH, '//label[text()="%"]/../../../../preceding-sibling::td[1]//input')

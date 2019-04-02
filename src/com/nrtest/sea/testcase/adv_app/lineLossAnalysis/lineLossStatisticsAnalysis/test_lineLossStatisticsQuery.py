@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.adv_app.lineLossAnalysis.lineLossStatisticsAnalysis.li
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 高级应用→线损分析→线损统计分析→线损统计查询
+# 高级应用→线损管理→线损统计分析→线损统计查询
 @ddt
 class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
 
@@ -98,7 +98,7 @@ class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(LineLossStatisticsAnalysis_data.LineLossStatisticsQuery_para))
     def test_query(self, para):
-        """高级应用→线损分析→线损统计分析→线损统计查询
+        """高级应用→线损管理→线损统计分析→线损统计查询
         """
         print(para)
         self.start_case(para, __file__)

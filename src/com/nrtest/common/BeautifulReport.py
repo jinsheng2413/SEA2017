@@ -433,7 +433,6 @@ class BeautifulReport(ReportTestResult):
         :return:
         """
 
-
         def _wrap(func):
             @wraps(func)
             def __wrap(*args, **kwargs):

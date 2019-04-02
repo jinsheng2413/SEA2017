@@ -14,7 +14,7 @@ class SysUseStat_date:
     UserDistributionStat_para = '99956100'
     UserDistributionStat_stat = '用户分布统计'
     UserDistributionStat_detail = '注册用户明细'
-    # 系统管理→系统使用情况统计→系统使用情况统计
+    # 系统管理→系统使用情况统计→核心功能审计
     coreFunctionAudit_para = '99956400'
     # 系统管理→系统使用情况统计→账号审计
     accountsAudit_para = '99956300'

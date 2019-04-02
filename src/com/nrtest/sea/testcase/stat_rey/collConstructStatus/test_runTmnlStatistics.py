@@ -67,7 +67,7 @@ class TestRunTmnlStatistics(TestCase, RunTmnlStatisticsPage):
         self.inputChk_tab_name(para['TAB_NAME'])
 
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

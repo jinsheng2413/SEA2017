@@ -55,7 +55,7 @@ class TestUserOperationMonitor(TestCase, UserOperationMonitorPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 日期
         self.inputDt_stat_date(para['STAT_DATE'])

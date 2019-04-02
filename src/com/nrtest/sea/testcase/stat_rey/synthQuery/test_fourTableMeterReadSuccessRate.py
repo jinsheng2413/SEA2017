@@ -66,7 +66,7 @@ class TestAutomatedMeterAvailability(TestCase, FourTableMeterReadSuccessRatePage
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

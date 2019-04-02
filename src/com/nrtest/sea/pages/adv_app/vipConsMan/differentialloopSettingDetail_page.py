@@ -14,6 +14,7 @@ from com.nrtest.common.base_page import Page
 class DifferentialloopSettingDetail_Page(Page):
     # 用户名称
     def inputStr_cons_name(self, value):
+        self.clean_label(value)
         self.input(value)
 
     # 查询

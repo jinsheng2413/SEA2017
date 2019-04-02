@@ -81,6 +81,9 @@ class TestCommunicationModuleBaseInformationMantain(TestCase, CommunicationModul
 
         self.btn_qry()
 
+        #  选择指定行
+        self.inputRow_select_row(para['SELECT_ROW'])
+
     def assert_query_result(self, para):
         """
         查询结果校验

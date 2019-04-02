@@ -56,18 +56,25 @@ class TestHistoryPowerCutEventQuery_Tmnl(TestCase, TmnlPowerCutEventQueryPage):
         self.recoverLeftTree()
 
     def query(self, para):
-        # 日期类型
-        self.inputChk_date_type(para['DATE_TYPE'])
+
         # 打开左边树并选择
         self.openLeftTree(para['TREE_NODE'])
         # 用户类型
         self.inputSel_cons_type(para['CONS_TYPE'])
         # 终端类型
         self.inputSel_tmnl_type(para['TMNL_TYPE'])
+        # 日期类型
+        self.inputChk_date_type(para['DATE_TYPE'])
+        val = self.get_para_value(para['DATE_TYPE'])
+        if val == '日期':
+            # 停复电标识
+            self.inputSel_power_cut_identifying(para['POWER_CUT_IDENTIFYING'])
+        elif val == '月份':
+            # 月停电次数>
+            self.inputStr_shut_nums(para['SHUT_NUMS'])
+
         # 查询日期
         self.inputDt_query_date(para['QUERY_DATE'])
-        # 停复电标识
-        self.inputSel_power_cut_identifying(para['POWER_CUT_IDENTIFYING'])
         # 终端厂家
         self.inputSel_tmnl_factory(para['TMNL_FACTORY'])
         # 是否有效

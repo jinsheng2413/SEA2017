@@ -55,7 +55,7 @@ class TestMsgSet(TestCase, MsgSetPage):
 
     def query(self, para):
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'])
+        self.openLeftTree(para['TREE_NODE'], is_closed=True)
 
         # 重要性级别
         self.inputSel_importance_level(para['IMPORTANCE_LEVEL'])

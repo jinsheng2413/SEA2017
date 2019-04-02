@@ -38,11 +38,11 @@ class News_Page(Page):
 
     # 开始日期
     def inputDt_start_date(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 结束日期
     def inputDt_end_date(self, value):
-        self.input(value)
+        self.inputDate(value)
 
     # 查询
     def btn_qry(self):

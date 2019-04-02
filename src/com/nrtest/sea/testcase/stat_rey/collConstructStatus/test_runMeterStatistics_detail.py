@@ -69,7 +69,7 @@ class TestRunMeterStatistics_Detail(TestCase, RunMeterDetailPage):
         # 电能表状态
         self.inputSel_meter_status(para['METER_STATUS'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

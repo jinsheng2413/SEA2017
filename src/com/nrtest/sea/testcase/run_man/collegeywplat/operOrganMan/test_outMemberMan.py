@@ -22,7 +22,7 @@ from com.nrtest.sea.pages.run_man.collegeywplat.outMemberMan_page import OutMemb
 
 
 # 运行管理-->采集运维平台-->组织运维管理
-# 外包队伍管理
+# 外包队伍成员管理
 @ddt
 class TestOutMemberMan(TestCase, OutMemberManPage):
 

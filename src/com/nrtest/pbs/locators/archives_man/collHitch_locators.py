@@ -14,6 +14,5 @@ from selenium.webdriver.common.by import By
 
 class CollHitch_locators:
     # 输入框
-    INPUT_NAME = (By.XPATH, '/html/body/div[1]/div[2]/div/div/div[2]/div/div/div/div[1]/span/input[1]')
-    # 查询
-    BTN_QUERY = (By.XPATH, '/html/body/div[1]/div[2]/div/div/div[2]/div/div/div/div[1]/span/span/a')
+    INPUT_NAME = (By.XPATH, '//input[@placeholder="请输入采集点名称..."]')
+

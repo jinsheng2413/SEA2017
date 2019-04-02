@@ -58,7 +58,7 @@ class TestSectFailedAppQuery(TestCase, SectfailedAppQueryPage):
         self.openLeftTree(para['TREE_NODE'])
         # 时间范围
         self.inputChk_date_range(para['DATE_RANGE'])
-        if para['DATE_RANGE'] != '当月':
+        if self.get_para_value(para['DATE_RANGE']) != '当月':
             # 开始日期
             self.inputDt_start_date(para['START_DATE'])
             # 结束日期

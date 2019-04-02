@@ -112,21 +112,19 @@ class Page():
 
         action = '00'
         info = ''
-        # dlg_src:1-一般用例；2-查询条件有效性用例;3-点菜单时报错；4-add_test_img弹窗处理;5-左边树选择弹窗;6-查询结果跳转异常
+        # dlg_src:1-一般用例；2-查询条件有效性用例;3-点菜单时报错；4-add_test_img弹窗处理;
+        # 5-左边树选择弹窗;6-查询结果跳转异常;7-start_case用例耗时初始化
         if len(args) > 0:  # 带参弹窗处理优先级高于用例优先级
             dlg_src = int(args[0])
         else:
             dlg_src = int(self.case_para['CASE_TYPE'])  # 用例类型：1-一般用例；2-查询条件有效性检查用例
 
-        # 账号异常信息弹窗属正常临时弹窗，不许特殊处理，发现时关闭即可
+        # 账号异常信息弹窗属正常临时弹窗，不做特殊处理，发现时关闭即可
         self.close_account_except_dlg()
 
         el = self._direct_find_element(self.baseLocators.POPUP_DLG)
         if bool(el) and el.is_displayed():  # 有对话框，且显示
             info = '\r'.join(el.text.replace(' ', '').split('\n')[:6])  # [:-2])  # 有些正常弹窗数据太多
-            # if '账号异常信息' in info:  # 测试用例执行过程中的“账号异常信息”弹窗属正常情况，不予处理
-            #     action = '03'
-            # elif dlg_src in (1, 3, 4, 6):  # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
             if dlg_src in (1, 3, 4, 6):  # 对info信息解析处理，如，对查询条件有效性判断处理，有效时不需要抛异常
                 # action：00-没弹窗,正确结果；01-截图，且抛异常；02-只截图，不抛异常；
                 #         03-既不截图，也不抛异常; 04-没弹窗时，也截图，抛异常
@@ -287,6 +285,7 @@ class Page():
             DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type, except_info)
         return element
 
+    @BeautifulReport.add_popup_img(7)
     def start_case(self, para, class_path=''):
         """
         开始执行测试用例
@@ -585,13 +584,13 @@ class Page():
                 cost_seconds = timeout_seconds
                 except_type = '用例超时'
                 info = '用例要求<={}秒，实际耗时>{}秒。'.format(timeout_seconds, cost_seconds)
-                raise BtnQueryError((self.tst_case_id, cost_seconds), te.__str__())
+                raise BtnQueryError({self.tst_case_id: cost_seconds}, te.__str__())
                 # raise te
             except Exception as ex:
                 except_type = '用例异常'
                 info = ex.__str__()
                 cost_seconds = -1
-                raise BtnQueryError((self.tst_case_id, cost_seconds), info)
+                raise BtnQueryError({self.tst_case_id: cost_seconds}, info)
                 # raise ex
             finally:
                 if bool(except_type):
@@ -601,7 +600,6 @@ class Page():
                         pass
                     else:
                         DataAccess.case_exec_log(self.tst_case_id, Utils.now_str(start_time), Utils.now_str(end_time), timeout_seconds, cost_seconds)
-
             return cost_seconds
 
     @BeautifulReport.add_popup_img()
@@ -614,7 +612,7 @@ class Page():
         """
         self.curr_click(is_multi_tab, btn_name=btn_name, idx=idx, is_by_js=is_by_js)
         cost_seconds = self.query_timeout(is_from_btn=True)
-        return (self.tst_case_id, cost_seconds)
+        return {self.tst_case_id: cost_seconds}
 
     def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True, is_line=False):
         # is_tag_special=False, tag_name=''):
@@ -678,7 +676,7 @@ class Page():
                 el_all = self._find_displayed_element(loc_all)
                 self.driver.execute_script("arguments[0].value=arguments[1]", el_all, '')
 
-    def specialDropdown(self, option, locator='', idx=1, locator_clean=None):
+    def specialDropdown(self, option, locator, idx=1, locator_clean=None):
         """
         无法通过通用定位方法定位元素时，通过特殊locator定位选择
         :param option: 要选择的选项
@@ -690,6 +688,7 @@ class Page():
             return
         ls_option = option.split(';')
         item = ls_option[2] if len(ls_option[2]) > 0 else ls_option[1]
+
         el = self._find_displayed_element(locator, idx)
         el.click()
         # 根据名称选择下拉框
@@ -1637,18 +1636,19 @@ class Page():
         """
         WebDriverWait(self.driver, seconds).until(EC.element_to_be_clickable(locator))
 
-    def calc_col_idx(self, loc_col_name, col_name='', idx=1):
+    def calc_col_idx(self, loc_col_name, col_name='', head_idx=1, idx=1):
         """
         计算所给列名（col_name）在表格中的所处位置
-        --------------------loc_col_name[0]-----------------|-col_name[1]-|----[2]-------|--要定位的行号[3]--|-----[4]-----
-        nvl(tab_column_name, column_name) AS tab_column_name, column_name, expected_value, row_num,          is_special
+        -loc_col_name[0]--|col_name[1]-|----[2]-------|--要定位的行号[3]--|-是否特殊处理[4]--|---跳转超时等待[5]--|-----取表头第N行[6]--|-----跳转目标[7]|-----表头第N个重复列[8]---
+        tab_column_name,   column_name, expected_value, row_num,        is_special        wait_for_target   head_row             is_tab          column_idx
         :param loc_col_name: 能唯一定位表头的关键列名
         :param col_name: 计算列位置的列名, 如果col_name值为'', 则用loc_col_name替代
-        :param idx: 第idx个可见对象
+        :param head_idx: 取第head_idx行的可见表头对象
+        :param idx: 取第idx列的重复列名
         :return: 返回：列位置，列是否可见以及第一列带标签的列
         """
         loc = self.format_xpath_multi(self.baseLocators.TABLE_HEAD, loc_col_name, True)
-        el_tr = self._find_displayed_element(loc, idx=idx)
+        el_tr = self._find_displayed_element(loc, idx=head_idx)
         # 如果col_name值为'', 则用loc_col_name替代
         if col_name == '':
             col_name = loc_col_name
@@ -1659,6 +1659,7 @@ class Page():
         if bool(el_tds):
             # 隐藏列个数
             hide_cols = 0
+            pos = 1
             for i, el in enumerate(el_tds):
                 el_label = self.get_el_text(el)
                 el_label = Utils.replace_chrs(el_label, ' \r\n\t')
@@ -1670,11 +1671,14 @@ class Page():
                         col_pos_info['EL_FIRST'] = el
                         col_pos_info['FIRST_COL_IDX'] = i + 1
                     if el_label == col_name:
-                        col_pos_info['COL_IS_HIDED'] = not el.is_displayed()
-                        col_pos_info['EL_COL'] = el
-                        # 表头列名位置，xpath元素下表以1开始，故+1
-                        col_pos_info['COL_IDX'] = i + 1
-                        break
+                        if pos == idx:
+                            col_pos_info['COL_IS_HIDED'] = not el.is_displayed()
+                            col_pos_info['EL_COL'] = el
+                            # 表头列名位置，xpath元素下表以1开始，故+1
+                            col_pos_info['COL_IDX'] = i + 1
+                            break
+                        else:
+                            pos += 1
             col_pos_info['HIDE_COLS'] = hide_cols
             logger.info('\r“{}”在表格中计算结果：第{}列（其中隐藏列{}列），且{}。\r'.format(col_name, col_pos_info['COL_IDX'], hide_cols,
                                                                       ('不可见' if col_pos_info['COL_IS_HIDED'] else '可见')))
@@ -1736,6 +1740,7 @@ class Page():
     def double_click(self, locator):
         el = self._find_element(locator)
         ActionChains(self.driver).double_click(el).perform()
+
 
 if __name__ == '__main__':
     # dr = webdriver.Chrome()

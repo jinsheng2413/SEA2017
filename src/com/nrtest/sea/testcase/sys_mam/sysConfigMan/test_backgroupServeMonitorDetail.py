@@ -57,19 +57,21 @@ class TestBackgroupServeMonitorDetail(TestCase, BackgroupServeMonitorDetailPage)
 
     def query(self, para):
         # JOB名称
-        self.inputStr_job_name(para['JOB_NAME'])
+        # self.inputStr_job_name(para['JOB_NAME'])
         # 服务名称
         self.inputStr_service_name(para['SERVICE_NAME'])
 
         # 日期类型选择
         self.inputChk_qry_date_type(para['QRY_DATE_TYPE'])
 
-        # 查询日期/从
-        self.inputDt_dt_start(para['DT_START'])
-
         # 到
         if self.get_para_value(para['QRY_DATE_TYPE']) == '按周统计':
+            self.inputDt_dt_start(para['DT_START'])
             self.inputDt_dt_end(para['DT_END'])
+        else:
+            # 查询日期
+            self.inputDt_dt_date(para['DT_DATE'])
+
 
         # 查询按钮
         self.btn_search()

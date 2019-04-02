@@ -68,7 +68,11 @@ class TestChangeLossBrowseQuery(TestCase, ChangeLossBrowseQueryPage):
         self.inputSel_type(para['TYPE'])
 
         # 损耗率
-        self.inputSel_attrition_rate(para['ATTRITION_RATE'])
+        self.inputSel_attrition_rate_first(para['ATTRITION_RATE_FIRST'])
+        self.inputStr_attrition_rate_second(para['ATTRITION_RATE_SECOND'])
+        self.inputSel_attrition_rate_third(para['ATTRITION_RATE_THIRD'])
+        self.inputSel_attrition_rate_fourth(para['ATTRITION_RATE_FOURTH'])
+        self.inputStr_attrition_rate_fifth(para['ATTRITION_RATE_FIFTH'])
         # 时间方案
         self.inputChk_date_type(para['DATE_TYPE'])
         # 查询按钮

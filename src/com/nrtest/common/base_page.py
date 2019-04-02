@@ -1134,8 +1134,6 @@ class Page():
             ls_items = para.split(';')
             if len(ls_items) == 2:
                 value = ls_items[1]
-            elif len(ls_items)==3:
-                value = ls_items[0]
             else:
                 value = ls_items[2]
                 value = value if len(value) > 0 else ls_items[1]

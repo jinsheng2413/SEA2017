@@ -798,7 +798,10 @@ class AssertResult():
             #     self.output_compare_list(compare_result)
 
         except Exception as ex:
-            print('\r跳转数据比对：跳转前--', skip_data_before, '--\r跳转后--', skip_data_after, '--\r跳转关系', map_rela_rslt)
+            # print('\r跳转数据比对：跳转前--', skip_data_before, '--\r跳转后--', skip_data_after, '--\r跳转关系', map_rela_rslt)
+            print('</br>跳转数据比对--跳转前：', skip_data_before)
+            print('</br>跳转后：', skip_data_after)
+            print('</br>跳转关系：', map_rela_rslt)
             raise ex
         return is_pass, compare_result, True
 

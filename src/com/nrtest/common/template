@@ -7188,7 +7188,7 @@ body.skin-3 {
                         "<td align='center'>" + (i + 1) + "</td>" +
                         "<td>" + n["className"] + "</td>" +
                         "<td>" + n["methodName"] + "</td>" +
-                        "<td>"+n["description"] + "</td>" +
+                        "<td style='word-break:break-all;word-wrap:break-word;'>"+n["description"] + "</td>" +
                         "<td align='center'>" + n["spendTime"] + "</td>" +
                         status + "<td align='center'><button type='button' onclick='details(this)' buttonIndex='" + i + "' class='btn btn-primary btn-xs' style='margin-bottom: 0px'>展开</button></td></tr>"
                     $("#detailBody").append(tr);

@@ -138,7 +138,7 @@ class Utils:
     def split_log(log, ln):
         # log = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\adv_app\costControlManage\remoteCustControl\test_NewPrePaidStatusByAction.py", line 104, in test_query self.assert_query_result(para)'
         tmp = log[:ln]
-        patterns = [' ', r'.', ',', ')', ']']
+        patterns = [' ', r'.', ',', ')', ']', '(', '[']
         pos = []
         if tmp[-1] not in patterns:
             for pattern in patterns:

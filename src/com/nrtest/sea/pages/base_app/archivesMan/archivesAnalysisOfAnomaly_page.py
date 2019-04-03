@@ -37,9 +37,6 @@ class ArchivesAnalysisOfAnomaly_detail_pages(Page):
     def inputSel_cons_type(self, option):
         self.selectDropDown(option, is_multi_elements=True, is_multi_tab=True)
 
-    # 日期
-    def inputDt_date_time(self, value):
-        self.inputDate(value)
 
     # 档案类型
     def inputSel_archives_type(self, index):

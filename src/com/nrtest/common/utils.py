@@ -142,8 +142,11 @@ class Utils:
         pos = []
         if tmp[-1] not in patterns:
             for pattern in patterns:
-                idx = tmp.rindex(pattern)
-                pos.append(idx)
+                try:
+                    idx = tmp.rindex(pattern)
+                    pos.append(idx)
+                except:
+                    pass
         idx = max(pos) + 1
         return log[:idx] + ' \\', log[idx:]
 

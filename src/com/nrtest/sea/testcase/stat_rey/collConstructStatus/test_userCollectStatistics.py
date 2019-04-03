@@ -63,7 +63,7 @@ class TestUserCollectStatistics(TestCase, UserCollectStatisticsPage):
         # 统计口径
         self.inputSel_stat_scope(para['STAT_SCOPE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

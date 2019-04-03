@@ -19,8 +19,6 @@ class UserCollectStatisticsPage(Page):
 
     # 统计月份
     def inputDt_query_date(self, content):
-        # self.exec_script(UserCollectStatisticsLocators.DATE_JS)
-        # self.input(content, *UserCollectStatisticsLocators.DATE)
         self.inputDate(content)
 
     # 统计口径
@@ -28,6 +26,5 @@ class UserCollectStatisticsPage(Page):
         self.selectDropDown(options)
 
     # 查询按钮
-    def btn_search(self):
-        # self.click(UserCollectStatisticsLocators.BTN_SEARCH)
+    def btn_qry(self):
         self.btn_query()

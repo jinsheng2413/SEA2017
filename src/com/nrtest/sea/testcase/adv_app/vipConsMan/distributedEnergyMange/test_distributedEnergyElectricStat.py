@@ -67,7 +67,7 @@ class TestDistributedEnergyElectricStat(TestCase, DistributedEnergyElectricStatP
         # 发电量消纳方式
         self.inputSel_abso_type(para['ABSO_TYPE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

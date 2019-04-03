@@ -16,31 +16,16 @@ class DebuggingAccess2017Page(Page):
     # 页面元素
     # 管理方式
     def inputSel_manage_style(self, index):
-        # self.click(DebuggingAccess2017Locators.MANAGE_STYLE)
-        # locator = self.get_select_locator(
-        #     DebuggingAccess2017Locators.MANAGE_STYLE_VALUE, index)
-        # self.click(locator)
         self.selectDropDown(index)
 
     # 装接方式
     def inputSel_install_mode(self, index):
-        # if index == 'c':
-        #     self._find_element(DebuggingAccess2017Locators.INSTALL_MODE)
-        # else:
-        #     self.click(DebuggingAccess2017Locators.INSTALL_MODE)
-        #     locator = self.get_select_locator(
-        #         DebuggingAccess2017Locators.INSTALL_MODE_VALUE, index)
-        #     self.click(locator)
-        #     self.click(DebuggingAccess2017Locators.INSTALL_MODE)
         self.selectCheckBox(index)
 
     # 日期
     def inputDt_query_date(self, content):
-        # self.exec_script(DebuggingAccess2017Locators.DATE_JS)
-        # self.input(content, *DebuggingAccess2017Locators.DATE)
         self.inputDate(content)
 
     # 查询按钮
-    def btn_search(self):
-        # self.click(DebuggingAccess2017Locators.BTN_SEARCH)
+    def btn_qry(self):
         self.btn_query()

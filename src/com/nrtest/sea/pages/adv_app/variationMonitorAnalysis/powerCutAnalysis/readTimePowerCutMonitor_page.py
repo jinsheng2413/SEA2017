@@ -21,7 +21,7 @@ class ReadTimePowerCutMonitorPage(Page):
         self.inputDate(content)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query()
 
 # 高级应用→配变监测分析→停电分析→实时停电监测→实时停电明细

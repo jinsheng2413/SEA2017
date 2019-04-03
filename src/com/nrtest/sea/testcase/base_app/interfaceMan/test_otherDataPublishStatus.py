@@ -57,7 +57,7 @@ class Test_otherDataPublishStatus(TestCase, OtherDataPublishStatusPage):
     def query(self, para):
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'], is_closed=True)
+        self.openLeftTree(para['TREE_NODE'])
 
         # 业务系统
         self.inputSel_business_system(para['BUSINESS_SYSTEM'])

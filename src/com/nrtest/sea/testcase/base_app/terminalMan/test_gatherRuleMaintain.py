@@ -16,11 +16,11 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.terminalMan.terminalMan_data import TerminalMan_data
-# 基本应用--终端管理--采集规则维护
 from com.nrtest.sea.pages.base_app.terminalMan.gatherRuleMaintain_page import GatherRuleMaintainPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
+# 基本应用--终端管理--采集规则维护
 @ddt
 class TestLoadCurveAnalysis(TestCase, GatherRuleMaintainPage):
 

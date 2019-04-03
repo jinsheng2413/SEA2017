@@ -1,0 +1,117 @@
+
+.style0 {
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: middle;
+    white-space: nowrap;
+    mso-rotate: 0;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: ����;
+    mso-generic-font-family: auto;
+    mso-font-charset: 134;
+    border: none;
+    mso-protection: locked visible;
+    mso-style-name: ����;
+    mso-style-id: 0;
+}
+
+.font6 {
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+}
+
+.font7 {
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: ����;
+    mso-generic-font-family: auto;
+    mso-font-charset: 134;
+}
+
+td {
+    mso-style-parent: style0;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: ����;
+    mso-generic-font-family: auto;
+    mso-font-charset: 134;
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: middle;
+    border: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    mso-protection: locked visible;
+    white-space: nowrap;
+    mso-rotate: 0;
+}
+
+.xl65 {
+    mso-style-parent: style0;
+    color: black;
+    font-weight: 700;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    text-align: center;
+    border: .5pt solid windowtext;
+    background: #F5F5F6;
+    mso-pattern: black none;
+    white-space: normal;
+}
+
+.xl67 {
+    mso-style-parent: style0;
+    color: black;
+    font-weight: 700;
+    text-align: left;
+    border-top: .5pt solid windowtext;
+    border-right: none;
+    border-bottom: .5pt solid windowtext;
+    border-left: .5pt solid windowtext;
+}
+
+.xl70 {
+    mso-style-parent: style0;
+    color: black;
+    font-weight: 700;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    text-align: center;
+    border-top: .5pt solid windowtext;
+    border-right: none;
+    border-bottom: .5pt solid windowtext;
+    border-left: .5pt solid windowtext;
+    background: #F5F5F6;
+    mso-pattern: black none;
+    white-space: normal;
+}
+
+.xl72 {
+    mso-style-parent: style0;
+    color: black;
+    border: .5pt solid windowtext;
+    white-space: normal;
+    word-break: break-all;
+    word-wrap: break-word;
+}

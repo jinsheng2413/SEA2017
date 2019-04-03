@@ -21,6 +21,7 @@ from io import StringIO
 
 from com.nrtest.common.setting import Setting
 from com.nrtest.common.user_except import PopupError, TestImgError, TestSkipError, BtnQueryError
+from com.nrtest.common.utils import Utils
 
 __all__ = ['BeautifulReport']
 
@@ -234,12 +235,19 @@ class ReportTestResult(unittest.TestResult):
 
         rows = []
         ln = 180  # 长度超过过时截断
+        split_it = False
         for i, log in enumerate(self.case_log):
-            if log.startswith('File ') and len(log) > ln:
+            if split_it and len(log) > ln:
                 rows.append([i, log])
+            if log.startswith('Traceback'):
+                split_it = True
+
+        j = 0
         for row in rows:
-            self.case_log[row[0]] = row[1][:ln] + ' \\'
-            self.case_log.insert(row[0] + 1, row[1][ln:])
+            log = Utils.split_log(row[1], 180)
+            self.case_log[row[0] + j] = log[0]
+            self.case_log.insert(row[0] + j + 1, log[1])
+            j += 1
 
         return tuple([*self.get_testcase_property(test), cost_seconds + '/' + self.end_time, self.status, self.case_log])
 

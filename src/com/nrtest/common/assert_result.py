@@ -538,7 +538,7 @@ class AssertResult():
                 if menu_xpath_data[1] in ('04', '05', '07'):
                     val = self.tst_inst.get_para_value(case_data[map_rela[5]])
                 else:
-                    val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2])
+                    val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2], menu_xpath_data[3])
                 skip_data_before.append([val, xpath_name])
             elif xpath_type in ['02', '04']:  # 提取跳转前的表格列对应值
                 xpath_name = map_rela[5] + '(C)'
@@ -587,9 +587,10 @@ class AssertResult():
                         else:
                             value = skip_data_before[i][0]
                         # val = self.tst_inst.get_input_val(skip_data_before[i][0], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
-                        val = self.tst_inst.get_input_val(value, menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
+                        val = self.tst_inst.get_input_val(value, menu_xpath_data[1], menu_xpath_data[2], menu_xpath_data[3], map_rela[13])
                     else:
-                        val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
+                        val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2], menu_xpath_data[3],
+                                                          map_rela[13])
 
                     skip_data_after.append([val, menu_xpath_data[0] + '(Q)'])
                 except:
@@ -1022,8 +1023,8 @@ class AssertResult():
             col_pos_info['HIDE_ROWS'] = first_row_idx
 
             # 下钻前的供电单位名称
-            original_org_name = self.tst_inst.get_input_val(case_result[2])
-            compare_result = ['--', original_org_name, '', '', self.assert_info, []]
+            original_org_name = self.tst_inst.get_input_val(case_result[2], tag_blank_type='01')
+            # compare_result = ['--', original_org_name, '', '', self.assert_info, []]
             try:
                 is_skiped = True
                 while True:

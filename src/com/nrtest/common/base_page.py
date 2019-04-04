@@ -483,7 +483,7 @@ class Page():
             logger.error('点击元素失败:{}\n{}'.format(loc, e))
         return el
 
-    def get_input_val(self, values, use_share_xpath='01', option_name='', menu_name='', idx=1):
+    def get_input_val(self, values, use_share_xpath='01', option_name='', tag_blank_type='00', menu_name='', idx=1):
         """
         获取查询条件值
         :param values:要输入的值
@@ -495,6 +495,14 @@ class Page():
         if self.ignore_op(values):
             return None
         try:
+            if tag_blank_type != '00':  # 00-无需取空处理；01-LABEL标签有空格；02-SPAN标签；03-DROPDOWN标签
+                if tag_blank_type == '01':
+                    self.clean_label(values)
+                elif tag_blank_type == '02':
+                    self.clean_span(values)
+                elif tag_blank_type == '03':
+                    self.clean_dropdown(values)
+
             if use_share_xpath in ('04', '05', '07'):
                 return self.get_chk_val(values, use_share_xpath, menu_name, idx)
             else:

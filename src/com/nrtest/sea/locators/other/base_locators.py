@@ -179,7 +179,7 @@ class BaseLocators(Locators):
     # 【查询结果显示区】
     # 显示区显示表头
     TABLE_HEAD = (By.XPATH,
-                  '//div[text()="{}"]/ancestor::div[contains(@class,"x-grid-with-col-lines") and not(contains(@class, "x-hide-display"))]//div[@class="x-grid3-viewport"]//tr[@class="x-grid3-hd-row"]')
+                  '//div[normalize-space(text())="{}"]/ancestor::div[contains(@class,"x-grid-with-col-lines") and not(contains(@class, "x-hide-display"))]//div[@class="x-grid3-viewport"]//tr[@class="x-grid3-hd-row"]')
     #  选择查询结果的指定行  范例菜单： menu_no = '99941704'
     SELECT_ROW = (
         By.XPATH,

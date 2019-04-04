@@ -817,8 +817,12 @@ class AssertResult():
 
         except Exception as ex:
             # print('\r跳转数据比对：跳转前--', skip_data_before, '--\r跳转后--', skip_data_after, '--\r跳转关系', map_rela_rslt)
-            print('</br>跳转数据比对--跳转前：', skip_data_before)
-            print('</br>跳转后：', skip_data_after)
+            print('</br>跳转数据比对--跳转前：')
+            for i, before in enumerate(skip_data_before):
+                print(('</br>' if i % 2 == 0 else '') + str(before))
+            print('</br>跳转后：')
+            for i, after in enumerate(skip_data_after):
+                print(('</br>' if i % 2 == 0 else '') + str(after))
             print('</br>跳转关系：')
             for i, rslt in enumerate(map_rela_rslt):
                 print(('</br>' if i % 2 == 0 else '') + str(rslt))

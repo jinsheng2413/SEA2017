@@ -355,7 +355,7 @@ class DataAccess:
         return dataSet[0][0]
 
     @staticmethod
-    def get_org_type(org_name, by_name=True):
+    def get_org_type(org, by_name=True):
         """
         供电单位下钻用：获取供电单位的org_type
         """
@@ -366,7 +366,7 @@ class DataAccess:
             sql = 'SELECT org_type FROM tst_org WHERE project_no = :1 \
                                   AND org_no = :2 AND ROWNUM = 1'
         pyoracle = PyOracle.getInstance()
-        dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, org_name])
+        dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, org])
         return dataSet[0][0]
 
     @staticmethod

@@ -244,7 +244,7 @@ class ReportTestResult(unittest.TestResult):
 
         j = 0
         for row in rows:
-            log = Utils.split_log(row[1], 180)
+            log = Utils.split_log(row[1], ln)
             self.case_log[row[0] + j] = log[0]
             self.case_log.insert(row[0] + j + 1, log[1])
             j += 1

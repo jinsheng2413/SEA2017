@@ -147,6 +147,8 @@ class Utils:
                     pos.append(idx)
                 except:
                     pass
+        else:
+            pos.append(ln - 2)
         idx = max(pos) + 1
         return log[:idx] + ' \\', log[idx:]
 

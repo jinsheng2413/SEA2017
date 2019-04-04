@@ -11,7 +11,10 @@
 
 class Dict(dict):
     def __missing__(self, key):
-        print('该KEY值“{}”不存在，原因：元素没配置或元素名错误！！</br>'.format(key))
-        # raise RuntimeError('该KEY值“{}”不存在！！'.format(key))
-        # 找不到KEY值是未配置元素，或元素名错误，与Page.ignore_op函数配套用
-        return 'IGNORE_VAL'
+        if key.endswith('_TRANS'):  # AssertResult.get_data_of_skip_after配套，此类key需剔除
+            return ''
+        else:
+            print('该KEY值“{}”不存在，原因：元素没配置或元素名错误！！</br>'.format(key))
+            # raise RuntimeError('该KEY值“{}”不存在！！'.format(key))
+            # 找不到KEY值是未配置元素，或元素名错误，与Page.ignore_op函数配套用
+            return 'IGNORE_VAL'

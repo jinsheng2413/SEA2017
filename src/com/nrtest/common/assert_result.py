@@ -581,7 +581,13 @@ class AssertResult():
                     menu_xpath_data = DataAccess.get_menu_xpath_data(map_rela[12], map_rela[6],
                                                                      map_rela[8])  # TARGET_MENU_NO / TARGET_TAB_NAME/  TARGET_XPATH
                     if menu_xpath_data[1] in ('04', '05', '07'):  # 单选框/复选框处理 [i][0]:值/xpath_name
-                        val = self.tst_inst.get_input_val(skip_data_before[i][0], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
+                        trans_to_val = self.tst_inst.case_para[map_rela[8] + '_TRANS']
+                        if bool(trans_to_val):
+                            value = trans_to_val
+                        else:
+                            value = skip_data_before[i][0]
+                        # val = self.tst_inst.get_input_val(skip_data_before[i][0], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
+                        val = self.tst_inst.get_input_val(value, menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
                     else:
                         val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2], map_rela[13])
 
@@ -727,58 +733,69 @@ class AssertResult():
                 trans_type = map_rela[
                     7]  # 转换类型(TRANS_TYPE)：00-不转换；01-直接转换为对应值;10-月时间转换为月初；11--月时间转换为月末；12-跳转前包含跳转后的；13-跳转后包含跳转前的；14-跳转对象有记录即可（采集成功率-->明细）；15-终端地址转资产号；16-终端资产号转地址';
                 is_skip_correct = False
+                xpath_trans = self.tst_inst.case_para[map_rela[5] + '_TRANS']
                 if trans_type == '01':
                     bef = data_before
                     data_before = map_rela[9]
-
-                if all_val in data_before and all_val in data_after:  # 处理“全部”选项
+                    aft = data_after
+                elif bool(xpath_trans):
+                    bef = data_before
+                    data_before = xpath_trans
+                    aft = data_after
+                else:
                     bef = data_before
                     aft = data_after
+
+                if all_val in data_before and all_val in data_after:  # 处理“全部”选项
+                    # bef = data_before
+                    # aft = data_after
                     is_skip_correct = True
                 elif (data_before == '' and all_val in data_after):  # 处理“全部”选项
                     bef = '\'\'→' + all_val
-                    aft = data_after
+                    # aft = data_after
                     is_skip_correct = True
                 elif (all_val in data_before and data_after == ''):  # 处理“全部”选项
-                    bef = data_before
+                    # bef = data_before
                     aft = '\'\'→' + all_val
                     is_skip_correct = True
 
                 elif data_before == data_after:
                     if trans_type == '01':
                         bef += '→' + map_rela[9]
-                    else:
-                        bef = data_before
-                    aft = data_after
+                    elif bool(xpath_trans):
+                        bef += '→' + xpath_trans
+                    # else:
+                    #     bef = data_before
+                    # aft = data_after
                     is_skip_correct = True
                 elif (trans_type == '12' and data_after in data_before) \
                         or (trans_type == '13' and data_before in data_after):  # 包含关系：12-跳转前包含跳转后的；13-跳转后包含跳转前的
-                    bef = data_before
-                    aft = data_after
+                    # bef = data_before
+                    # aft = data_after
                     is_skip_correct = True
                 elif trans_type in ('10', '11'):  # 月时间转换为月初/月末日期
                     day_begin, day_end = Utils.get_day_range_of_month(data_before)
-                    bef = data_before
+                    # bef = data_before
                     data_before = day_begin if trans_type == '10' else day_end
                     bef += '→' + data_before
-                    aft = data_after
+                    # aft = data_after
                     if data_before == data_after:
                         is_skip_correct = True
                 elif trans_type in ('15', '16'):  # 15 - 终端地址转资产号；16 - 终端资产号转地址
-                    bef = data_before
+                    # bef = data_before
                     data_before = self.data_trans(trans_type, data_before)
                     bef += '→' + data_before
-                    aft = data_after
+                    # aft = data_after
                     if data_before == data_after:
                         is_skip_correct = True
                 elif trans_type == '14' and ((data_before == '0' and data_after == '没有数据') \
                                              or (data_before != '0' and data_after != '没有数据')):  # 基本应用→数据采集管理→采集质量分析→采集成功率:采集成功率统计  经“采集成功率”列跳转到明细页面
                     bef = data_before + '%'
-                    aft = data_after
+                    # aft = data_after
                     is_skip_correct = True
                 elif xpath_type == '04' and data_before == '0' and data_after == '没有数据':  # 取所在跳转的统计数据值
                     data_after = '0'
-                    bef = data_before
+                    # bef = data_before
                     aft = data_after + '→0'
                     is_skip_correct = True
 
@@ -801,7 +818,9 @@ class AssertResult():
             # print('\r跳转数据比对：跳转前--', skip_data_before, '--\r跳转后--', skip_data_after, '--\r跳转关系', map_rela_rslt)
             print('</br>跳转数据比对--跳转前：', skip_data_before)
             print('</br>跳转后：', skip_data_after)
-            print('</br>跳转关系：', map_rela_rslt)
+            print('</br>跳转关系：')
+            for i, rslt in enumerate(map_rela_rslt):
+                print(('</br>' if i % 2 == 0 else '') + str(rslt))
             raise ex
         return is_pass, compare_result, True
 

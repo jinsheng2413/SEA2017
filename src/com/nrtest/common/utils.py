@@ -134,6 +134,25 @@ class Utils:
         now = now if bool(now) else time.time()
         return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(now))
 
+    @staticmethod
+    def split_log(log, ln):
+        # log = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\adv_app\costControlManage\remoteCustControl\test_NewPrePaidStatusByAction.py", line 104, in test_query self.assert_query_result(para)'
+        tmp = log[:ln]
+        patterns = [' ', r'.', ',', ')', ']', '(', '[']
+        pos = []
+        if tmp[-1] not in patterns:
+            for pattern in patterns:
+                try:
+                    idx = tmp.rindex(pattern)
+                    pos.append(idx)
+                except:
+                    pass
+        else:
+            pos.append(ln - 2)
+        idx = max(pos) + 1
+        return log[:idx] + ' \\', log[idx:]
+
 
 if __name__ == '__main__':
-    print(Utils.now_str())
+    a = Utils.tes('', 180)
+    print(a)

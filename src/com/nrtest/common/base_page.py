@@ -308,7 +308,7 @@ class Page():
         self.timeout_seconds = int(para['TIMEOUT_SECONDS'])
 
         print('开始执行... </br>')
-        info = '用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}'.format(self.tst_case_id, self.menu_no, self.menu_path, para['TAB_NAME'])
+        info = '用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}'.format(self.tst_case_id, self.menu_no, self.menu_path, para['PAGE_TAB_NAME'])
         print(info + '</br>')
 
         logger.info('开始执行...\r')

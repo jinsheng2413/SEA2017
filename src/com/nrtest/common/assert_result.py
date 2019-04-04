@@ -533,7 +533,7 @@ class AssertResult():
             xpath_type = map_rela[4]
             if xpath_type == '01':  # 页面元素类型：XPATH_TYPE 【01-查询条件（XPATH)】;02-表格列对应值;03-表格列名;04-读取统计数与明细对比
                 # 把查询条件的xpath转换为对应查询条件中文名
-                menu_xpath_data = DataAccess.get_menu_xpath_data(case_data['MENU_NO'], case_data['TAB_NAME'], map_rela[5])
+                menu_xpath_data = DataAccess.get_menu_xpath_data(case_data['MENU_NO'], case_data['PAGE_TAB_NAME'], map_rela[5])
                 xpath_name = menu_xpath_data[0] + '(Q)'
                 if menu_xpath_data[1] in ('04', '05', '07'):
                     val = self.tst_inst.get_para_value(case_data[map_rela[5]])
@@ -914,7 +914,7 @@ class AssertResult():
                 if is_menu:  # 关闭菜单页
                     self.tst_inst.menuPage.closePage(case_result[2])
                 else:  # 返回前一个tab页
-                    self.tst_inst.clickTabPage(case_data['TAB_NAME'])
+                    self.tst_inst.clickTabPage(case_data['PAGE_TAB_NAME'])
 
                 # 滚动到表格起始列
                 row_num = case_result[3]
@@ -978,7 +978,7 @@ class AssertResult():
                 if is_menu:  # 关闭跳转的菜单页
                     self.tst_inst.menuPage.closePage(case_result[2])
                 else:  # 返回跳转前的源tab页
-                    self.tst_inst.clickTabPage(case_data['TAB_NAME'])
+                    self.tst_inst.clickTabPage(case_data['PAGE_TAB_NAME'])
 
                 # 滚动到表格起始列
                 row_num = case_result[3]

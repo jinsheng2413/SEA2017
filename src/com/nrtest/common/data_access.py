@@ -313,7 +313,7 @@ class DataAccess:
         :param tab_name:
         :return:
         """
-        sql = '''select ts.xpath_name, ts.use_share_xpath, ts.option_name from tst_menu_xpath_list ts  
+        sql = '''select ts.xpath_name, ts.use_share_xpath, ts.option_name, ts.tag_blank_type from tst_menu_xpath_list ts  
                where ts.project_no = :project_no 
                 and ts.menu_no = :menu_no 
                 and ts.tab_name = :tab_name 

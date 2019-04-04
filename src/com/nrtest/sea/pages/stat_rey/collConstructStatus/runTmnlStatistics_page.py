@@ -12,11 +12,20 @@ from com.nrtest.common.base_page import Page
 
 
 # 统计查询→采集建设情况→运行设备统计→运行终端统计:终端运行状态统计
+from com.nrtest.common.data_access import DataAccess
+from com.nrtest.common.dictionary import Dict
+
+
 class RunTmnlStatisticsPage(Page):
     # 终端运行状态统计
     # 市、县直
     def inputChk_area_type(self, index):
         self.clickSingleCheckBox(index)
+
+    def is_valid(self, treeNo):
+        node = Dict(eval(treeNo))
+        org_type = DataAccess.get_org_type(node['NODE_VALUE'], False)
+        return org_type in ['03', '04']
 
     # 用户类型
     def inputSel_cons_type(self, index):

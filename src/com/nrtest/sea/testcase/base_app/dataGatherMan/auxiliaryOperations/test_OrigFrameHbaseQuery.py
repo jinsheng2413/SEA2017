@@ -72,9 +72,9 @@ class TestOrigFrameHbaseQuery(TestCase, OrigFrameHbaseQueryPage):
         # 查询日期
         self.inputDt_query_time(para['QUERY_TIME'])
         # 从
-        self.inputDt_start_date(para['START_DATE'])
+        self.inputSel_start_date(para['START_DATE'])
         # 到
-        self.inputDt_end_date(para['END_DATE'])
+        self.inputSel_end_date(para['END_DATE'])
 
         self.btn_qry()
 

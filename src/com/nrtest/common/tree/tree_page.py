@@ -74,7 +74,7 @@ class BaseTreePage(Page):
         pass
 
     def closeLeftTree(self):
-        if self.tree_type[-1] == '0' and len(self.node_list) !=0:  # 非复选框节点，最后一个叶子节点不处理
+        if self.tree_type[-1] == '0' and bool(self.node_list):  # 非复选框节点，最后一个叶子节点不处理
             self.node_list.pop()
 
         self.node_list.reverse()

@@ -1549,8 +1549,6 @@ class Page():
         return element
 
     def recoverLeftTree(self):
-        # print('~~~~~~~~~~~~~~~~is_call_left_tree', self.is_call_left_tree)
-        # sleep(10)
         if self.is_call_left_tree:
             self.is_call_left_tree = False
             self.menuPage.recoverLeftTree()

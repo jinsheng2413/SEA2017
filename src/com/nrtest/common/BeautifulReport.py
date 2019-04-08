@@ -210,7 +210,7 @@ class ReportTestResult(unittest.TestResult):
         FIELDS['testAll'] = len(self.result_list)
         FIELDS['testName'] = title if title else self.default_report_name
         FIELDS['testFail'] = self.failure_count
-        FEILDS['testError'] = self.error_count
+        FIELDS['testError'] = self.error_count
         FIELDS['beginTime'] = self.begin_time
         end_time = int(time.time())
         start_time = int(time.mktime(time.strptime(self.begin_time, '%Y-%m-%d %H:%M:%S')))

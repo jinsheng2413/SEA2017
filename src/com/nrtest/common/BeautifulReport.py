@@ -62,11 +62,11 @@ stderr_redirector = OutputRedirector(sys.stderr)
 
 FIELDS = {
     'testPass': 0,
-    'testResult': [
-    ],
+    'testResult': [],
     'testName': '',
     'testAll': 0,
     'testFail': 0,
+    'testError': 0,
     'beginTime': '',
     'totalTime': '',
     'testSkip': 0
@@ -210,10 +210,10 @@ class ReportTestResult(unittest.TestResult):
         FIELDS['testAll'] = len(self.result_list)
         FIELDS['testName'] = title if title else self.default_report_name
         FIELDS['testFail'] = self.failure_count
+        FEILDS['testError'] = self.error_count
         FIELDS['beginTime'] = self.begin_time
         end_time = int(time.time())
-        start_time = int(time.mktime(time.strptime(
-            self.begin_time, '%Y-%m-%d %H:%M:%S')))
+        start_time = int(time.mktime(time.strptime(self.begin_time, '%Y-%m-%d %H:%M:%S')))
         FIELDS['totalTime'] = str(end_time - start_time) + 's'
         FIELDS['testError'] = self.error_count
         FIELDS['testSkip'] = self.skipped
@@ -291,14 +291,18 @@ class ReportTestResult(unittest.TestResult):
         output = self.complete_output()
         logs.append(output)
         logs.extend(self.error_or_failure_text(err))
-        self.failure_count += 1
-        self.add_test_type('失败', logs)
+        # self.failure_count += 1
+        self.error_count += 1
+        # self.add_test_type('失败', logs)
+        self.add_test_type('错误', logs)
         if self.verbosity > 1:
-            sys.stderr.write('F  ')
+            # sys.stderr.write('F  ')
+            sys.stderr.write('E  ')
             sys.stderr.write(str(test))
             sys.stderr.write('\n')
         else:
-            sys.stderr.write('F')
+            # sys.stderr.write('F')
+            sys.stderr.write('E')
 
         self._mirrorOutput = True
 
@@ -478,17 +482,7 @@ class BeautifulReport(ReportTestResult):
                     raise bqe
                 except Exception as ex:
                     BeautifulReport.get_screenshot(args[0], img_path, func.__name__)
-                    # img_name = func.__name__ + '_' + time.strftime('%Y%m%d%H%M%S') + '.png'
-                    # if 'save_img' in dir(args[0]):
-                    #     save_img = getattr(args[0], 'save_img')
-                    #     save_img(img_path, img_name)
-                    #     print('<h3><font face="verdana">页面截图：</font></h3></br>')
-                    #     data = BeautifulReport.img2base(img_path, img_name)
-                    #     print(HTML_IMG_TEMPLATE.format(data))
-
-                    # sys.exit(0)
                     raise ex
-
                 print('<br></br>')
 
                 if len(pargs) > 1:

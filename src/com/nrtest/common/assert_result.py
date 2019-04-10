@@ -1023,14 +1023,14 @@ class AssertResult():
                         # 跳转后的相关判断处理
                         after_text = skip_info['AFTER_TEXT']
                         # 获取供电单位类别
-                        org_type = DataAccess.get_org_type(after_text)
+                        org_type = DataAccess.get_org_type(after_text) if bool(after_text) else '00'  #
 
                         # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
                         after_action = skip_info['AFTER_ACTION']
-                        if org_type > '04' or after_action == '03':  # 跳转后没值或到县级以下供电单位（如：供电所）时，停止跳转
+                        if org_type > '04' or after_action == '03':  # 跳转后有查询结果没链接或到县级以下供电单位（如：供电所）时，停止跳转
                             # is_skiped = True
                             break
-                        elif after_action == '01':  # 校验列没有链接；
+                        elif after_action == '01':  # 校验列没查询结果；
                             raise AssertError('“{}”下钻后没查询结果，没法下钻！'.format(link_text))
                             # compare_result[-1].append([link_text, '没查询结果，没法下钻', '不通过'])
                             # break

@@ -335,7 +335,7 @@ class AssertResult():
 
             self.assert_info = assert_type + '-' + ASSERT_TYPES[assert_type]
 
-            ls_col_idx = self.split_double_column(case_result[8])
+            ls_col_idx = self.split_double_column(case_result[7])
 
             is_calc_col_idx = assert_type not in ['011', '031']
             if is_calc_col_idx:
@@ -472,7 +472,7 @@ class AssertResult():
 
             # 获取弹窗标题名
             if assert_type[2] == '1':  # 获取弹窗的动态窗口标题名【24】
-                ls_col_idx = self.split_double_column(case_result[8])  # 重复列名时，取重复列中的第idx个列
+                ls_col_idx = self.split_double_column(case_result[7])  # 重复列名时，取重复列中的第idx个列
 
                 col_idx = self.calc_col_idx(case_result[0], case_result[2], int(case_result[6]), int(ls_col_idx[1]))['COL_IDX']
                 xpath = self.tst_inst.format_xpath(AssertResultLocators.QUERY_RESULT_ROW_COL, (case_result[0], case_result[3], col_idx))

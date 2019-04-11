@@ -12,3 +12,5 @@
 class HPLCChipMan_data:
     # 基本应用→档案管理→HPLC芯片管理→停上电分析
     powerCutAnalyse_para = '99911D40'
+    powerCutAnalyse_tabName_stat = '停电统计'
+    powerCutAnalyse_tabName_detail = '停电明细'

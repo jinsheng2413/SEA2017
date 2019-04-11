@@ -21,6 +21,10 @@ class BaseStationManagePage(Page):
     def inputStr_comm_addr(self, value):
         self.input(value, *BaseStationManageLocators.QRY_COMMUNICATION_ADDR)
 
+    # 选择指定行
+    def inputRow_select_row(self, row_item):
+        self.select_row(row_item)
+
     # 查询
     def btn_qry(self):
         self.btn_query()

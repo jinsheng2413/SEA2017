@@ -57,7 +57,7 @@ class TestMenuUseStat(TestCase, MenuUseStatPage):
     def query(self, para):
 
         # 打开左边树并选择
-        self.openLeftTree(para['TREE_NODE'], is_closed=True)
+        self.openLeftTree(para['TREE_NODE'])
         # 菜单
         self.inputSel_menu(para['MENU'])
         # 操作员

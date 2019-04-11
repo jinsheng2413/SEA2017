@@ -25,3 +25,6 @@ class HPLCChipMan_data:
     hplcChipCoverDetail_tab = 'HPLC芯片覆盖明细'
     hplcChipMixStat_tab = 'HPLC芯片混装度统计'
     hplcChipMixAnalyse_tab = 'HPLC芯片混装度分析'
+
+    # 基本应用→档案管理→HPLC芯片管理→阻抗识别
+    impedanceIdent_para = '99911D70'

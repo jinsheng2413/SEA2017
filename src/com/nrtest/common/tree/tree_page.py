@@ -446,6 +446,16 @@ class TreeQualityPage(BaseTreePage):
     应用于 基本应用→数据采集管理→采集质量检查(new)
     """
 
+    def __init__(self, parent_class, is_need_node=False):
+        super().__init__(parent_class)
+        self.is_need_node = is_need_node
+
+    def _click_node_tab(self, node_tab_idx):
+        if self.is_need_node:
+            node_tab = {'01': '供电区域', '02': '用户', '03': '终端', '04': '行业', '05': '电网结构', '06': '群组', '07': '单户综合'}
+            loc = self.format_xpath(TreeLocators.NODE_TAB, node_tab['05'])
+            self.click(loc)
+
     def _find_in_parent(self, item, idx, items):
         """
         在父节点范围内查找

@@ -3751,6 +3751,10 @@ table.table-mail tr td {
 	color: #ed5565
 }
 
+.text-error {
+	color: #ff00ff
+}
+
 .text-muted {
 	color: #888
 }
@@ -4456,6 +4460,14 @@ ul.notes li div {
 
 .category-list li a .text-danger {
 	color: #EF5352
+}
+
+.category-list li a .text-error {
+	color: #ff00ff
+}
+
+.text-error {
+	color: #ee4000
 }
 
 .category-list li a .text-warning {
@@ -7036,9 +7048,9 @@ body.skin-3 {
                                 </div>
                                 <!--0404 新增-->
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label text-danger">用例错误:</label>
+                                    <label class="col-sm-2 control-label text-error">用例报错:</label>
                                     <div class="col-sm-5">
-                                        <span class="form-control text-danger" id="testError"></span>
+                                        <span class="form-control text-error" id="testError"></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -7098,7 +7110,7 @@ body.skin-3 {
                                 <span class="text-navy">测试用例数: &nbsp;</span><span class="text-navy b-r" id="filterAll">3</span><span> | </span>
                                 <span style="color: green">成功: &nbsp;</span><span style="color: green" id="filterOk">3</span><span> | </span>
                                 <span class="text-danger">失败: &nbsp;</span><span class="text-danger" id="filterFail">3</span><span> | </span>
-                                <span class="text-danger">错误: &nbsp;</span><span class="text-danger" id="filterError">3</span><span> | </span>
+                                <span class="text-error">报错: &nbsp;</span><span class="text-error" id="filterError">3</span><span> | </span>
                                 <span class="text-warning">跳过: &nbsp;</span><span class="text-warning" id="filterSkip">3</span>
                             </label>
                         </div>
@@ -7154,6 +7166,7 @@ body.skin-3 {
         $("#testName").text(resultData["testName"]);
         $("#testPass").text(resultData["testPass"]);
         $("#testFail").text(resultData["testFail"]);
+        $("#testError").text(resultData["testError"]);
         $("#testSkip").text(resultData["testSkip"]);
         $("#testAll").text(resultData["testAll"]);
         $("#beginTime").text(resultData["beginTime"]);
@@ -7197,9 +7210,9 @@ body.skin-3 {
                         filterFail += 1;
                         status = "<td align='center'><span class='text-danger'>失败</span></td>";
 
-                    } else if (n["status"] == '错误') {
+                    } else if (n["status"] == '报错') {
                         filterError += 1;
-                        status = "<td align='center'><span class='text-danger'>错误</span></td>";
+                        status = "<td align='center'><span class='text-error'>报错</span></td>";
                     } else if (n["status"] == '跳过') {
                         filterSkip += 1;
                         status = "<td align='center'><span class='text-warning'>跳过</span></td>";
@@ -7253,7 +7266,7 @@ body.skin-3 {
                 legend: {
                     orient: 'vertical',
                     left: 'left',
-                    data: ['失败', '错误', '跳过', '成功']
+                    data: ['失败', '跳过', '成功', '报错']
                 },
                 series: [
                     {
@@ -7263,9 +7276,9 @@ body.skin-3 {
                         center: ['50%', '60%'],
                         data: [
                             {value: resultData["testFail"], name: '失败'},
-                            {value: resultData["testError"], name: '错误'},
                             {value: resultData["testSkip"], name: '跳过'},
-                            {value: resultData["testPass"], name: '成功'}
+                            {value: resultData["testPass"], name: '成功'},
+                            {value: resultData["testError"], name: '报错'}
                         ],
                         itemStyle: {
                             emphasis: {

@@ -17,7 +17,7 @@ from selenium.webdriver.common.by import By
 from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.logger import Logger
-from com.nrtest.common.user_except import AssertError
+from com.nrtest.common.user_except import AssertError, DrillDownError
 from com.nrtest.common.utils import Utils
 
 logger = Logger(logger='AssertResult').getlog()
@@ -1007,6 +1007,7 @@ class AssertResult():
 
             # 下钻前的供电单位名称
             original_org_name = self.tst_inst.get_input_val(case_result[2], tag_blank_type='01')
+            org_node = DataAccess.get_org_node_by_name(original_org_name)
             # compare_result = ['--', original_org_name, '', '', self.assert_info, []]
             try:
                 is_skiped = True
@@ -1017,7 +1018,7 @@ class AssertResult():
                     org_name = self.tst_inst.get_input_val(case_result[2])
                     if skip_info['CLICKABLE'] and skip_info['IS_SKIPED']:
                         if org_name == original_org_name or link_text != org_name:  # 校验下钻传值是否正确
-                            raise AssertError('“{}”下钻失败， “{}”不是期望的供电单位！'.format(link_text, org_name))
+                            raise DrillDownError(self.tst_inst, org_node, '“{}”下钻失败， “{}”不是期望的供电单位！'.format(link_text, org_name))
                             # compare_result[-1].append([link_text, org_name, '不通过'])
                             # break
                         # 跳转后的相关判断处理
@@ -1031,11 +1032,11 @@ class AssertResult():
                             # is_skiped = True
                             break
                         elif after_action == '01':  # 校验列没查询结果；
-                            raise AssertError('“{}”下钻后没查询结果，没法下钻！'.format(link_text))
+                            raise DrillDownError(self.tst_inst, org_node, '“{}”下钻后没查询结果，没法下钻！'.format(link_text))
                             # compare_result[-1].append([link_text, '没查询结果，没法下钻', '不通过'])
                             # break
                         elif after_action == '02' and link_text == skip_info['EL_AFTER_A'].text:
-                            raise AssertError('“{}”下钻不了！'.format(link_text))
+                            raise DrillDownError(self.tst_inst, org_node, '“{}”下钻不了！'.format(link_text))
                             # compare_result[-1].append([link_text, '下钻不了', '不通过'])
                             # break
                     else:
@@ -1044,15 +1045,14 @@ class AssertResult():
                         # is_skiped = False
                         # compare_result[-1].append([org_name, '没查询结果或其他原因，没法下钻', '不通过'])
                         # break
-                        raise AssertError('“{}”没查询结果或其他原因，没法下钻！'.format(org_name))
-            except AssertError as ae:
-                raise ae
+                        raise DrillDownError(self.tst_inst, org_node, '“{}”没查询结果或其他原因，没法下钻！'.format(org_name))
+            except DrillDownError as dde:
+                raise dde
             except Exception as ec:
                 raise ec
-            finally:
-                org_node = DataAccess.get_org_node_by_name(original_org_name)
-                self.tst_inst.openLeftTree(org_node)
-                self.tst_inst.btn_qry()
+            # finally:
+            #     self.tst_inst.openLeftTree(org_node)
+            #     self.tst_inst.btn_qry()
 
             return is_skiped
         else:

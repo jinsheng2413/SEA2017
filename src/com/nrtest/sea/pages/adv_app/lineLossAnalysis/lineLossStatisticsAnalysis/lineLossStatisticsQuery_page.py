@@ -51,6 +51,6 @@ class LineLossStatisticsQueryPage(Page):
         self.clickSingleCheckBox(name)
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.clean_btn('查')
         self.btn_query(True)

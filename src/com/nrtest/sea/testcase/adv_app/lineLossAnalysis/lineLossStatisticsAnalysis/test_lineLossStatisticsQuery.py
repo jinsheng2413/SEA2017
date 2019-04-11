@@ -78,7 +78,7 @@ class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
                 self.inputChk_read_value(para['READ_VALUE'])
 
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """
@@ -100,7 +100,6 @@ class TestLineLossStatisticsQuery(TestCase, LineLossStatisticsQueryPage):
     def test_query(self, para):
         """高级应用→线损管理→线损统计分析→线损统计查询
         """
-        print(para)
         self.start_case(para, __file__)
         self.query(para)
         self.assert_query_result(para)

@@ -20,7 +20,7 @@ from functools import wraps
 from io import StringIO
 
 from com.nrtest.common.setting import Setting
-from com.nrtest.common.user_except import PopupError, TestImgError, TestSkipError, BtnQueryError
+from com.nrtest.common.user_except import *
 from com.nrtest.common.utils import Utils
 
 __all__ = ['BeautifulReport']
@@ -294,7 +294,7 @@ class ReportTestResult(unittest.TestResult):
         # self.failure_count += 1
         self.error_count += 1
         # self.add_test_type('失败', logs)
-        self.add_test_type('错误', logs)
+        self.add_test_type('报错', logs)
         if self.verbosity > 1:
             # sys.stderr.write('F  ')
             sys.stderr.write('E  ')
@@ -480,6 +480,12 @@ class BeautifulReport(ReportTestResult):
                     CASE_COSTS.update(bqe.get_qry_cost_sec)
                     BeautifulReport.get_screenshot(args[0], img_path, func.__name__)
                     raise bqe
+                except DrillDownError as dde:
+                    BeautifulReport.get_screenshot(args[0], img_path, func.__name__)
+                    tst_inst = dde.tst_inst
+                    tst_inst.openLeftTree(dde.org_node)
+                    tst_inst.btn_qry()
+                    raise dde
                 except Exception as ex:
                     BeautifulReport.get_screenshot(args[0], img_path, func.__name__)
                     raise ex

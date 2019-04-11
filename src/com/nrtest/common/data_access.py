@@ -170,6 +170,11 @@ class DataAccess:
         pyoracle.callproc('pkg_nrtest.refresh_all_case', para)
 
     @staticmethod
+    def refresh_dynamic_date():
+        pyoracle = PyOracle.getInstance()
+        para = [Setting.PROJECT_NO]
+        pyoracle.callproc('pkg_nrtest.refresh_dynamic_date', para)
+    @staticmethod
     def get_case_result(tst_case_id):
         """
         用于默认刷新admin用户下的‘00000’用户组的测试用例
@@ -423,7 +428,7 @@ if __name__ == '__main__':
     # DataAccess.getMenu('99913210')
     # print(DataAccess.get_xpath_tab_data('DATE_TIME', '999132207', '采集完整率统计'))
     # pass
-    print(DataAccess.get_case_result('999343303'))
+    DataAccess.refresh_dynamic_date()
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
     # print(DataAccess.get_skip_data('999121003','备注-报文查询'))

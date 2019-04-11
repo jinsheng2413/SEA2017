@@ -41,6 +41,7 @@ class LoginPage(Page):
         el = self._direct_find_element(self.locator_class.TIP)
         if bool(el):
             el.click()
+            # self.click_by_js(el)
 
     # 点击登录按钮
     def btn_login(self):

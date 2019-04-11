@@ -182,6 +182,9 @@ class LeftTreeLocators:
 
 
 class TreeQualityLocators:
+    # 左边树不同Tab选择: 用户、终端、供电区域、行业、电网结构、群组
+    NODE_TAB = (By.XPATH, '//li//span[@class ="x-tab-strip-text " and text()="{}"]')
+
     ROOT_IDS = {'指标类': "indexTreePanel", '采集质量类': 'collectionQualityTreePanel', '任务查询类': 'taskQueryTreePanel'}
     # 根节点
     # 关：class=" x-panel x-tree  x-panel-collapsed"

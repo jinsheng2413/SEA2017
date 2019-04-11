@@ -19,8 +19,7 @@ suite = TestSuite()
 suite.addTests(TestLoader().loadTestsFromTestCase(TestLoadRateStatic))
 suite.addTests(TestLoader().loadTestsFromTestCase(TestRegularSporadicUpgradeApprove))
 # tests = [TestGatherSuccessRate('test_epp_task_type')]
-# suite.addTests(tests)
-
+# suite.addTests(tests)#pppppp
 
 if __name__ == '__main__':
     runner = TextTestRunner(verbosity=2)

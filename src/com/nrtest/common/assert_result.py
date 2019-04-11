@@ -152,7 +152,7 @@ class AssertResult():
                 skip_info['EL_A'] = el_link
             else:
                 # font为没有链接(下划线）的跳转项
-                skip_info['EL_A'] = el_link.find_element_by_xpath('.//a | .//font')
+                skip_info['EL_A'] = el_link.find_element_by_xpath('.//a | .//font | .//span')
 
             skip_info['LINK_TEXT'] = el_link.text
             skip_info['CLICKABLE'] = bool(skip_info['EL_A'])
@@ -174,7 +174,7 @@ class AssertResult():
                 el_after_click = self.tst_inst._find_displayed_element(link_xpath)
                 if bool(el_after_click):
                     try:
-                        el_a = el_after_click.find_element_by_xpath('.//a | .//font')
+                        el_a = el_after_click.find_element_by_xpath('.//a | .//font | .//span')
                     except:
                         el_a = None
                     # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；

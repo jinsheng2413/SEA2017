@@ -19,5 +19,5 @@ class ImportanceMsgPushPage(Page):
 
 
     # 查询按钮
-    def btn_search(self):
+    def btn_qry(self):
         self.btn_query()

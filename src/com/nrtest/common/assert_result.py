@@ -23,10 +23,10 @@ from com.nrtest.common.utils import Utils
 logger = Logger(logger='AssertResult').getlog()
 
 # assert_type值共有3位：第1位：0-杂项校验；1-弹窗校验；2-菜单校验；3-Tab页校验
-#                     第2位：针对杂项校验没意义，弹窗、菜单：0-普通校验；   1-多链接；      2-业务操作；
-#                                              Tab页：0-普通Tab页；  1-Tab页内套Tab；2-业务操作
-#                     第3位：针对杂项校验没意义，   弹窗类：0-固定弹窗标题；1-动态弹窗标题
-#                                              菜单类：0-普通菜单；   1-TST_MENU中不存在的菜单页
+#                     第2位：针对杂项校验没意义，弹窗、菜单：0-普通校验；    1-多链接；      3-业务操作；
+#                                                     Tab页：0-普通Tab页；   2-Tab页内套Tab；3-业务操作
+#                     第3位：针对杂项校验没意义，    弹窗类：0-固定弹窗标题；1-动态弹窗标题   3-业务操作
+#                                                    菜单类：0-普通菜单；   1-TST_MENU中不存在的菜单页
 ASSERT_TYPES = {
     # 【杂项校验】, '没查询结果', '【{}】查询条件与查询结果【{}】值不一致', '【{}】供电单位下钻出错', '目标页面元素【{}】值与期望值【{}】不一致'
     #     , '弹窗标题【{}】与期望值【{}】不一致', '菜单标题【{}】与期望值【{}】不一致'
@@ -39,17 +39,18 @@ ASSERT_TYPES = {
     '101': '动态标题弹窗校验',
     '110': '一列多链接弹窗校验（固定）',
     '111': '一列多链接弹窗校验（动态）',
-    '120': '弹窗业务操作校验（固定）',
-    '121': '弹窗业务操作校验（动态）',
+    '130': '弹窗业务操作校验（固定）',
+    '131': '弹窗业务操作校验（动态）',
     # 【菜单校验】
     '200': '跳转至菜单校验]',
     '201': '跳转至类菜单校验',  # TST_MENU中不存在的菜单页
     '210': '一列多链接菜单校验',
-    '220': '菜单业务操作校验',
+    '220': 'Tab页内套多个Tab页校验',
+    '230': '菜单业务操作校验',
     # 【Tab页校验】
     '300': 'Tab页校验',
-    '310': 'Tab页内套多个Tab页校验',
-    '320': 'Tab页业务操作校验'}
+    '320': 'Tab页内套多个Tab页校验',
+    '330': 'Tab页业务操作校验'}
 
 
 # 校验新方法
@@ -138,6 +139,7 @@ class AssertResult():
             # 按下面代码执行会报这个错：'FirefoxWebElement' object does not support indexing
             # el_link = el_data_rows[int(case_result[3])].find_elements_by_xpath('./td[{}]//a'.format(col_pos_info['COL_IDX']))
 
+            is_select_row = bool(case_result[8])  # tst_case_result.row_num 没有链接，通过选择随机某一行跳转，配置特点，该值配为负值
             is_multi_link = bool(link_tag)  # 判断某列是否有多个链接
             if is_multi_link:
                 link_xpath = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL_LINKS,
@@ -148,7 +150,7 @@ class AssertResult():
                                                                col_pos_info['COL_IDX']), True)
             el_link = self.tst_inst._find_displayed_element(link_xpath)
 
-            if is_multi_link:
+            if is_multi_link or is_select_row:
                 skip_info['EL_A'] = el_link
             else:
                 # font为没有链接(下划线）的跳转项
@@ -327,7 +329,7 @@ class AssertResult():
             # @TODO 临时转换，后续需删除
             trans = {'11': '011', '12': '012', '28': '013', '31': '031',
                      '22': '100', '24': '101', '21': '200',
-                     '25': '201', '26': '210', '23': '300', '27': '310'}
+                     '25': '201', '26': '210', '23': '300', '27': '220'}
             try:
                 assert_type = trans[assert_type]
             except:
@@ -481,7 +483,7 @@ class AssertResult():
                 dlg_title = case_result[2]
 
             # 跳转到目标页
-            link_tag = col_and_link_tag[1] if assert_type[1] == '1' else None  # 多链接【26】
+            # link_tag = col_and_link_tag[1] if assert_type[1] == '1' else None  # 多链接【26】
             skip_info = self.skip_to(case_result, col_pos_info, link_tag, dlg_title=dlg_title)
             if skip_info['CLICKABLE']:
                 # 取得弹窗信息，并判断是否与期望值相符
@@ -937,7 +939,7 @@ class AssertResult():
             map_rela_rslt = DataAccess.get_skip_data(case_data['TST_CASE_ID'], case_result[1])
             # /*带*字段来自tst_case_result， 其余来自tst_col_link_rela
             # xpath_type:页面元素类型：01-查询条件（XPATH);02-表格列对应值;03-表格列名;04-读取统计数与明细对比
-            # 0源:列定位字段     1Tab页名称  2源:跳转字段名    3取值行号   4页面元素类型  5页面元素  6目标页面Tab页名称     7转换类型    8目标页面元素   9转换后的值   10是否转换   11源xpath序号
+            # 0源:列定位字段   1Tab页名称  2源:跳转字段名  3取值行号 4页面元素类型  5页面元素  6目标页面Tab页名称     7转换类型    8目标页面元素   9转换后的值   10是否转换   11源xpath序号
             # TAB_COLUMN_NAME*  TAB_NAME   COLUMN_NAME*    ROW_NUM*  XPATH_TYPE     XPATH    TARGET_TAB_NAME     TRANS_TYPE  TARGET_XPATH  TRANS_VALUE  IS_TRANS    ELEMENT_SN
             #                              同col_name
             # 用户编号          终端调试    备注-报文查询    1         02             用户编号    01                  01          CONS_NO                        0           1
@@ -948,9 +950,10 @@ class AssertResult():
 
             # 定位列名；          校验列名；    期望值(校验值)；   定位行号;  是否特殊处理 跳转超时等待      表头行号   跳转是否为Tab页：1-是
             # TAB_COLUMN_NAME	COLUMN_NAME	EXPECTED_VALUE	ROW_NUM	 IS_SPECIAL	WAIT_FOR_TARGET	HEAD_ROW IS_TAB
+            # link_tag = col_and_link_tag[1] if assert_type[1] == '1' and assert_type[0] != '3' else None  # 一列多链接【26】
             link_tag = col_and_link_tag[1] if assert_type[1] == '1' else None  # 一列多链接【26】
             skip_info = self.skip_to(case_result, col_pos_info, link_tag)
-
+            row_num = case_result[3]
             # 校验页面的名称是否正确 @TODO Tab页跳转校验有待优化
             is_skiped = skip_info['CLICKABLE'] and self.assert_page_name(case_result[2])
             if is_skiped:  # 跳转成功
@@ -964,7 +967,6 @@ class AssertResult():
                     self.tst_inst.clickTabPage(case_data['PAGE_TAB_NAME'])
 
                 # 滚动到表格起始列
-                row_num = case_result[3]
                 loc_first_visiable_col = self.tst_inst.format_xpath_multi(AssertResultLocators.QUERY_RESULT_ROW_COL,
                                                                           (case_result[0], row_num, col_pos_info['FIRST_COL_IDX']), True)
                 self.tst_inst.scrollTo(loc_first_visiable_col)
@@ -972,7 +974,7 @@ class AssertResult():
                 # 校验跳转传值是否正确
                 if assert_type == '201':  # 201-TST_MENU中不存在的菜单页； # 跳转到新的菜单页, 但该菜单页在tst_menu中不存在
                     col_name = col_pos_info['COL_NAME']
-                    link_tag = col_and_link_tag[1] if assert_type[1] == '1' else None  # 一列多链接【26】
+                    # link_tag = col_and_link_tag[1] if assert_type[1] == '1' and assert_type[0] != '3' else None  # 一列多链接【26】
                     link = ('链接：', link_tag) if bool(link_tag) else ('', '')
                     compare_result = [row_num, col_name, *link, self.assert_info, []]
                     compare_result[-1].append([case_result[2], case_result[2], '通过'])
@@ -984,9 +986,9 @@ class AssertResult():
                 logger.error('跳转到“{}”页面/TAB页失败！'.format(case_result[2]))
 
                 col_name = col_pos_info['COL_NAME']
-                link_tag = col_and_link_tag[1] if assert_type[1] == '1' else None  # 一列多链接【26】
+                # link_tag = col_and_link_tag[1] if assert_type[1] == '1' and assert_type[0] != '3' else None  # 一列多链接【26】
                 link = ('链接：', link_tag) if bool(link_tag) else ('', '')
-                compare_result = [case_result[3], col_name, *link, self.assert_info, []]
+                compare_result = [row_num, col_name, *link, self.assert_info, []]
                 compare_result[-1].append([case_result[2], '页面/TAB页跳转失败', '不通过'])
                 return (False, compare_result, False)
         else:
@@ -1028,7 +1030,8 @@ class AssertResult():
 
                         # AFTER_ACTION：01-没查询结果；02-查询结果有链接；03-有查询结果，但没链接；
                         after_action = skip_info['AFTER_ACTION']
-                        if org_type > '04' or after_action == '03':  # 跳转后有查询结果没链接或到县级以下供电单位（如：供电所）时，停止跳转
+                        if org_type > '04' or after_action == '03' or (
+                                org_type == '04' and '直属' in after_text):  # 跳转后有查询结果没链接、到县级以下供电单位（如：供电所）、实际直属时，停止跳转
                             # is_skiped = True
                             break
                         elif after_action == '01':  # 校验列没查询结果；

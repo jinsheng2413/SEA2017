@@ -11,6 +11,7 @@ import re
 from time import sleep
 
 from selenium.webdriver import ActionChains
+from selenium.webdriver.remote.webelement import WebElement
 
 from com.nrtest.common.base_page import Page
 from com.nrtest.common.data_access import DataAccess
@@ -125,7 +126,6 @@ class BaseTreePage(Page):
         :param is_chk_node: True-既有节点，同时带复选框；False-只有节点，没复选框
         """
         pass
-
 
 class TreePBSPage(BaseTreePage):
     def _click_node_tab(self, node_tab_idx):
@@ -336,6 +336,15 @@ class TreePage(BaseTreePage):
         self.tree_type = '50'
         self._operate_left_tree(node_info)
 
+    def move_split(self, obj=None, xoffset=100):
+        if isinstance(obj, WebElement):
+            el = obj
+        elif bool(obj):
+            el = self._find_displayed_element(obj)
+        else:
+            el = self._find_displayed_element(TreeLocators.XSPLIT)
+        ActionChains(self.driver).drag_and_drop_by_offset(el, xoffset, 0).perform()
+
 
 class TreeSingleUserPage(BaseTreePage):
     """
@@ -401,6 +410,7 @@ class TreeSingleUserPage(BaseTreePage):
         target_loc = self.format_xpath_multi(TreeSingleUserLocators.DROP_TARGET, '表资产号', True)
         el_target = self._find_elements(target_loc)[0]
         ActionChains(self.driver).drag_and_drop(el_src, el_target).perform()
+
         sleep(2)
 
     # def el_click(self, el):

@@ -370,9 +370,14 @@ class DataAccess:
         else:
             sql = 'SELECT org_type FROM tst_org WHERE project_no = :1 \
                                   AND org_no = :2 AND ROWNUM = 1'
-        pyoracle = PyOracle.getInstance()
-        dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, org])
-        return dataSet[0][0]
+        try:
+            pyoracle = PyOracle.getInstance()
+            dataSet = pyoracle.query(sql, [Setting.PROJECT_NO, org])
+            return dataSet[0][0]
+        except Exception as ex:
+            print('获取"{}"--by_name:{}的org_type报错！'.format(org, by_name))
+            raise ex
+
 
     @staticmethod
     def get_el_script_setup(script_type='01'):

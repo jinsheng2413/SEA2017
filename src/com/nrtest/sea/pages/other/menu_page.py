@@ -224,6 +224,9 @@ class MenuPage(Page):
         """
         self.leftTree.closeLeftTree()
 
+    def move_split(self, xoffset=100):
+        self.leftTree.move_split(xoffset=xoffset)
+
     def closePage(self, page_name=None):
         """
 

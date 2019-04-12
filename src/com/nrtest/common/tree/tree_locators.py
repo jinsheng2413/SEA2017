@@ -79,6 +79,9 @@ class TreeLocators:
                   '07': (By.XPATH, '//div[@id="mainwest"]//div[@id="orgBackTree"]'),
                   '08': (By.XPATH, '//div[@id="mainwest"]//div[@id="controlTree"]')}
 
+    # 【左边树SPLIT】
+    XSPLIT = (By.XPATH, '//div[@id="mainwest-xsplit"]')
+
 
 class TreeSingleUserLocators:
     """

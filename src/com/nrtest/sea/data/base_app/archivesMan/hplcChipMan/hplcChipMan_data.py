@@ -28,6 +28,8 @@ class HPLCChipMan_data:
 
     # 基本应用→档案管理→HPLC芯片管理→阻抗识别
     impedanceIdent_para = '99911D70'
+    # 基本应用→档案管理→HPLC芯片管理→芯片档案查询功能
+    chipArchivesQuery_para = '99911D10'
 
     # 基本应用→档案管理→HPLC芯片管理→相位识别
     phaseIdent_para = '99911D60'

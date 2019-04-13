@@ -302,9 +302,11 @@ class DataAccess:
               'from tst_case_result tres,TST_COL_LINK_RELA  lr,tst_case ca, tst_menu m    ' \
               'where tres.tst_case_id = ca.tst_case_id and tres.column_name = lr.col_name   ' \
               'and ca.menu_no = lr.menu_no and ca.tab_name = lr.tab_name and lr.target_menu_no = m.menu_no  ' \
-              'and tres.assert_type in (\'21\',\'23\',\'26\',\'27\') ' \
+              'and (tres.assert_type like \'2%\' or tres.assert_type like \'3%\')' \
               'and tres.tst_case_id =:case_id    ' \
               'and tres.column_name =:col_name order by lr.element_sn'
+
+        # 'and tres.assert_type in (\'21\',\'23\',\'26\',\'27\') ' \
         pyoracle = PyOracle.getInstance()
         dataSet = pyoracle.query(sql, [case_id, col_name])
         return dataSet
@@ -367,6 +369,7 @@ class DataAccess:
         if by_name:
             sql = 'SELECT org_type FROM tst_org WHERE project_no = :1 \
                       AND org_name = :2 AND ROWNUM = 1'
+            org = org.replace('（直属）', '(直属)')
         else:
             sql = 'SELECT org_type FROM tst_org WHERE project_no = :1 \
                                   AND org_no = :2 AND ROWNUM = 1'

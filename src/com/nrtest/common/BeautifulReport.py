@@ -215,7 +215,7 @@ class ReportTestResult(unittest.TestResult):
         end_time = int(time.time())
         start_time = int(time.mktime(time.strptime(self.begin_time, '%Y-%m-%d %H:%M:%S')))
         FIELDS['totalTime'] = str(end_time - start_time) + 's'
-        FIELDS['testError'] = self.error_count
+        # FIELDS['testError'] = self.error_count
         FIELDS['testSkip'] = self.skipped
         self.FIELDS = FIELDS
         return FIELDS

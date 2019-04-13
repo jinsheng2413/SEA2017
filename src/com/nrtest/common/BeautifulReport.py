@@ -61,6 +61,7 @@ stderr_redirector = OutputRedirector(sys.stderr)
 # SITE_PAKAGE_PATH = get_python_lib()
 
 FIELDS = {
+    'computername': '',
     'testPass': 0,
     'testResult': [],
     'testName': '',
@@ -203,6 +204,7 @@ class ReportTestResult(unittest.TestResult):
         :param title:
         :return:
         """
+        FIELDS['computername'] = os.environ['COMPUTERNAME']
         FIELDS['testPass'] = self.success_counter
         for item in self.result_list:
             item = json.loads(str(MakeResultJson(item)))

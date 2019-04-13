@@ -23,7 +23,7 @@ from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 # 基本应用→终端管理→软件升级→集中计划升级:集中计划升级
 @ddt
-class TestUpgradeTaskExecution(TestCase, CentralizePlanUpgradePage):
+class TestCentralizedPlanUpgrade(TestCase, CentralizePlanUpgradePage):
     @classmethod
     def setUpClass(cls):
 

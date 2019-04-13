@@ -64,7 +64,7 @@ class TestTgTopologyDiagram(TestCase, TgTopologyDiagramPage):
         # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

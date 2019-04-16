@@ -28,6 +28,7 @@ def add_case(case_path=r'D:\pythonworkspace\SEA2017\src\com\nrtest\pbs\testcase'
 
 
 # @threads(2)
+#======
 def run(test_suit):
     result = BeautifulReport(test_suit)
     result.report(filename='report.html', description='测试deafult报告')

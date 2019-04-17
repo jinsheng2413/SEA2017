@@ -19,7 +19,7 @@ from com.nrtest.sea.data.adv_app.lineLossAnalysis.tgLineLossUnifiedView.tgLineLo
     TgLineLossUnifiedView_data
 from com.nrtest.sea.pages.adv_app.lineLossAnalysis.tgLineLossUnifiedView.tgLineLossUnifiedView_page import \
     TgLineLossUnifiedViewPage
-from com.nrtest.sea.pages.other.menu_page import MenuPage
+from com.nrtest.sea.pages.other.menu_page import MenuPage, sleep
 
 
 # 高级应用→线损管理→台区线损统一视图→台区线损统一视图
@@ -62,7 +62,7 @@ class TestTgLineLossUnifiedView(TestCase, TgLineLossUnifiedViewPage):
 
         # 查询按钮
         self.btn_search()
-
+        sleep(2)
         # # TAB页名称
         # self.inputChk_tab_name(para['TAB_NAME'])
         #

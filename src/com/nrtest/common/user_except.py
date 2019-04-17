@@ -61,6 +61,28 @@ class AssertError(Exception):
         return self.error_info
 
 
+class DrillDownError(Exception):
+    """
+    供电单位下钻报错
+    """
+
+    def __init__(self, tst_inst, org_node, error_info):
+        super().__init__(self)  # 初始化父类
+        self.tst_inst = tst_inst  # 用例实例
+        self.error_info = error_info
+        self.org_node = org_node  # 跳转前的供电单位节点信息
+
+    def __str__(self):
+        return self.error_info
+
+    @property
+    def get_tst_inst(self):
+        return self.tst_inst
+
+    @property
+    def get_org_node(self):
+        return self.org_node
+
 class BtnQueryError(Exception):
     def __init__(self, qry_cost_sec, error_info):
         super().__init__(self)  # 初始化父类

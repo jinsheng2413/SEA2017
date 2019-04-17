@@ -35,4 +35,4 @@ class DistributedConsDataCurvePage(Page):
 
     # 查询
     def btn_qry(self):
-        self.btn_query()
+        self.btn_query(is_multi_tab=True)

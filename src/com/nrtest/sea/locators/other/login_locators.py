@@ -34,6 +34,8 @@ class LoginLocators:
 
     # 登陆页弹出的tip对话框
     TIP = (By.XPATH, '//a[@class="astyle" and text()="关闭"]')
+    #     $x('//div[@id="notice" and starts-with(@style, "display: block;")]//a[@class="astyle" and text()="关闭"]')
+    # div id="notice"  style="display: none;
 
 
 class LoginPBSLocators:

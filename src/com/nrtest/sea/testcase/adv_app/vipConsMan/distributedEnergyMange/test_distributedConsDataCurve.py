@@ -79,7 +79,7 @@ class TestLoadCurveAnalysis(TestCase, DistributedConsDataCurvePage):
         # tab
         self.inputChk_tab_name(para['TAB_NAME'])
         # 查询
-        self.btn_query()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

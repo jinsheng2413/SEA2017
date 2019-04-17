@@ -17,12 +17,12 @@ class TaskTemplateSetPage(Page):
 
     # 选择模板
     def inputSel_select_module(self, option):
-        # self.click(TaskTemplateSetLocators.QRY_SELECT_MODULE)
-        # locator = self.get_select_locator(TaskTemplateSetLocators.QRY_SELECT_MODULE, option)
-        # self.click(locator)
         self.selectDropDown(option)
+
+    # 选择指定行
+    def inputRow_select_row(self, row_item):
+        self.select_row(row_item)
 
     # 查询
     def btn_qry(self):
-        # self.click(TaskTemplateSetLocators.BTN_QRY)
         self.btn_query()

@@ -64,7 +64,7 @@ class TestTmnlPowerCutEventQuery(TestCase, TmnlPowerCutEventQueryPage):
         # 统计类型
         self.inputChk_stat_type(para['STAT_TYPE'])
         # 查询按钮
-        self.btn_search()
+        self.btn_qry()
 
     def assert_query_result(self, para):
         """

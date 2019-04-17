@@ -1549,8 +1549,6 @@ class Page():
         return element
 
     def recoverLeftTree(self):
-        # print('~~~~~~~~~~~~~~~~is_call_left_tree', self.is_call_left_tree)
-        # sleep(10)
         if self.is_call_left_tree:
             self.is_call_left_tree = False
             self.menuPage.recoverLeftTree()
@@ -1645,8 +1643,8 @@ class Page():
     def calc_col_idx(self, loc_col_name, col_name='', head_idx=1, idx=1):
         """
         计算所给列名（col_name）在表格中的所处位置
-        -loc_col_name[0]--|col_name[1]-|----[2]-------|--要定位的行号[3]--|-是否特殊处理[4]--|---跳转超时等待[5]--|-----取表头第N行[6]--|-----跳转目标[7]|-----表头第N个重复列[8]---
-        tab_column_name,   column_name, expected_value, row_num,        is_special        wait_for_target   head_row             is_tab          column_idx
+        -loc_col_name[0]--|col_name[1]-|----[2]-------|--要定位的行号[3]--|-是否特殊处理[4]--|---跳转超时等待[5]--|-----取表头第N行[6]--|-----表头第N个重复列[7]---
+        tab_column_name,   column_name, expected_value, row_num,          is_special             wait_for_target      head_row           column_idx
         :param loc_col_name: 能唯一定位表头的关键列名
         :param col_name: 计算列位置的列名, 如果col_name值为'', 则用loc_col_name替代
         :param head_idx: 取第head_idx行的可见表头对象
@@ -1659,7 +1657,7 @@ class Page():
         if col_name == '':
             col_name = loc_col_name
         col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HIDE_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True, 'HIDE_ROWS': 0}
-        col_pos_info.setdefault('COL_NAME', col_name + ('[' + idx + ']*' if idx > 1 else ''))
+        col_pos_info.setdefault('COL_NAME', col_name + ('[' + str(idx) + ']*' if idx > 1 else ''))
         # 查找表头所有列名元素
         el_tds = el_tr.find_elements_by_xpath('./td')
         if bool(el_tds):

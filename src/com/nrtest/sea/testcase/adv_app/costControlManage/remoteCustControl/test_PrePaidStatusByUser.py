@@ -78,7 +78,7 @@ class TestPrePaidStatusByUser(TestCase, PrePaidStatusByUserPage):
         # 查询
         self.btn_qry()
 
-        sleep(15)
+        sleep(30)
 
     def assert_query_result(self, para):
         """

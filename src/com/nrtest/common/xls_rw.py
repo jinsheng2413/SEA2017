@@ -30,6 +30,8 @@
 """
 from openpyxl import load_workbook
 
+from com.nrtest.common.db_driver import PyOracle
+
 
 class XlsRw(object):
     def __init__(self, filename):
@@ -125,5 +127,18 @@ class XlsRw(object):
 
 
 if __name__ == '__main__':
-    p = XlsRw('D:/excel/text.xlsx')
-    print(p.write(4, 5, '测试电视剧覅'))
+    p = XlsRw(r'C:\Users\Administrator\Desktop\ou.xlsx')
+    s = PyOracle()
+    st = s.query("select t.module_of_tab from tst_menu_tabs t  where t.group_no in ('00002')")
+    for item in st:
+      if item[0] != None:
+        lis_v = item[0].split('/')
+        value = lis_v[len(lis_v)-1]
+        lv = value.lower().replace('_','')
+
+        for i in range(1,p.r_row):
+            l = p.read_row_out(i)
+            s =  l[1]
+            ls = s.lower().replace('_','')
+            if ls in lv:
+                print(s)

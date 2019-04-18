@@ -21,7 +21,7 @@ class TmnlInsertQueryPage(Page):
 
     # 终端厂家
     def inputSel_tmnl_factory(self, options):
-        self.selectDropDown(options)
+        self.selectCheckBox(options)
 
     # 统计口径
     def inputSel_stat_scope(self, option):
@@ -29,7 +29,7 @@ class TmnlInsertQueryPage(Page):
 
     # 终端类型
     def inputSel_tmnl_type(self, options):
-        self.selectDropDown(options)
+        self.selectCheckBox(options)
 
     # 日期
     def inputDt_dt_from(self, value):

@@ -32,7 +32,7 @@ tab_name = '测量点日电容器累计补偿的无功电能量'
 en_tab_name = 'dayCapacitor_tab'
 
 # 生成文件存放路径
-filelistlog = r"D:\develop\workspace\SEA2017\src\com\nrtest\sea\testcase\stat_rey\synthQuery\test_consIntrgratedQueryDayCapacitor.py"
+filelistlog = r"D:PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\stat_rey\synthQuery\test_consIntrgratedQueryDayCapacitor.py"
 
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
 page_type = '02'

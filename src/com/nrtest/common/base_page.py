@@ -564,15 +564,16 @@ class Page():
         :return: 查询耗时时间（单位：秒）
         """
         # @TODO 删除我。。。
-        try:
-            el = self._find_displayed_element(self.baseLocators.DATA_LOADING)
-
-            logger.info('loading...' + el.text)
-            logger.info(el.get_attribute('class'))
-            logger.info(el.get_attribute('style'))
-            logger.info(el.get_attribute('tag_name'))
-        except:
-            pass
+        # try:
+        #
+        #     el = self._find_displayed_element(self.format_xpath_multi(self.baseLocators.DATA_LOADING, is_multi_tab=True))
+        #
+        #     logger.info('loading...' + el.text)
+        #     logger.info(el.get_attribute('class'))
+        #     logger.info(el.get_attribute('style'))
+        #     logger.info(el.get_attribute('tag_name'))
+        # except:
+        #     pass
 
         if timeout_seconds == 0:
             timeout_seconds = self.timeout_seconds
@@ -582,7 +583,7 @@ class Page():
             sleep(sec)
             try:
                 # 找到元素，并且该元素也可见
-                loc = locator if bool(locator) else self.baseLocators.DATA_LOADING
+                loc = locator if bool(locator) else self.format_xpath_multi(self.baseLocators.DATA_LOADING, is_multi_tab=True)
                 WebDriverWait(self.driver, timeout_seconds - sec).until_not(EC.visibility_of_element_located(loc))
                 end_time = time.time()
                 cost_seconds = round(end_time - start_time, 2)
@@ -816,7 +817,7 @@ class Page():
         """
         if self.ignore_op(options):
             return
-        if (options.find(';') == -1):
+        if options.find(';') == -1:
             print('请配置查询条件的标签值。')
         else:
             ls_option = options.split(';')
@@ -1162,6 +1163,7 @@ class Page():
         # 打开左边树
         if is_closed:
             self.menuPage.displayTreeMenu()
+
         try:
             node = Dict(eval(treeNo))
             # print(node)
@@ -1387,20 +1389,6 @@ class Page():
         """
         return self.driver.current_url()
 
-    def open_url(self):
-        """
-        方法名：open_url
-        打开被测服务地址
-        :return:
-        """
-        try:
-            self.driver.maximize_window()
-            self.driver.get(self.base_url)
-            logger.info('打开被测试服务地址：%s', self.base_url)
-            return self.driver
-        except NameError as e:
-            logger.error('%s打开网址失败', self.base_url)
-
     def sleep_time(self, times):
         """
         休眠
@@ -1597,34 +1585,6 @@ class Page():
             return (xpath[0], xpath[1].format(*format_val))
         else:  # 'abc{}' 格式
             return (xpath[0], xpath[1].format(format_val))
-
-    # def displayTreeMenu(self):
-    #     """
-    #     打开左边树菜单栏
-    #     :return:
-    #     """
-    #     try:
-    #         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(MenuLocators.BTN_LEFT_MENU))
-    #         el = self.driver.find_element(*MenuLocators.BTN_LEFT_MENU)
-    #         if el.is_displayed():  # 左边树没显示时打开
-    #             el.click()
-    #     except:
-    #         print('左边树菜单栏已经打开')
-
-    def delDropdownBoxHtml(self):
-        """
-        删除下拉框的html标签
-        :return:
-        """
-        try:
-            js = "var elem = document.getElementsByClassName('xst')[0];" + \
-                 'elem.parentNode.removeChild(elem);'
-            self.exec_script(js)
-            js2 = "var elem = document.getElementsByClassName('x-combo-list-inner')[0];" + \
-                  'elem.parentNode.removeChild(elem);'
-            self.exec_script(js2)
-        except NoSuchElementException:
-            print('删除下拉框的html标签失败')
 
     def clickAlert(self):
         self.driver.switch_to.alert.accept()

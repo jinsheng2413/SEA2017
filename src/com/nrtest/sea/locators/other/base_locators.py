@@ -146,7 +146,9 @@ class BaseLocators(Locators):
 
     # 数据加载中
     # DATA_LOADING = (By.XPATH, '//div[@class="ext-el-mask-msg x-mask-loading"]')
-    DATA_LOADING = (By.XPATH, '//div[starts-with(@class, "ext-el-mask-msg")]//div[contains(text(),"...")]')
+    # DATA_LOADING = (By.XPATH, '//div[starts-with(@class, "ext-el-mask-msg")]//div[contains(text(),"...")]')
+    DATA_LOADING = (
+    By.XPATH, '//div[normalize-space(@class) = "x-panel x-panel-noborder"]//div[starts-with(@class, "ext-el-mask-msg")]//div[contains(text(),"...")]')
 
     # 弹框处理
     # POPUP_DLG = (By.XPATH, '//div[@class=" x-window x-window-plain x-window-dlg"]')

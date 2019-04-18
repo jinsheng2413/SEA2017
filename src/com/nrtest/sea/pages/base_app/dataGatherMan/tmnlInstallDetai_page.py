@@ -58,7 +58,6 @@ class TmnlInstallDetaiPage(Page):
     def inputSel_tmnl_factory(self, options):
         self.selectCheckBox(options, sleep_sec=2)
 
-
     # 终端类型
     def inputSel_tmnl_type(self, options):
         self.selectCheckBox(options, is_multi_tab=True, sleep_sec=2,

@@ -764,6 +764,8 @@ class AssertResult():
                         if org_type > '04' or after_action == '03' or (
                                 org_type == '04' and '直属' in after_text):  # 跳转后有查询结果没链接、到县级以下供电单位（如：供电所）、实际直属时，停止跳转
                             # is_skiped = True
+                            self.tst_inst.openLeftTree(org_node)
+                            self.tst_inst.btn_qry()
                             break
                         elif after_action == '01':  # 校验列没查询结果；
                             raise DrillDownError(self.tst_inst, org_node, '“{}”下钻后没查询结果，没法下钻！'.format(link_text))

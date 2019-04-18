@@ -439,7 +439,7 @@ class AssertResult():
                         if bool(trans_to_val):
                             value = trans_to_val
                         else:
-                            value = skip_data_before[i][0]
+                            value = map_rela[9] if map_rela[7] == '01' else skip_data_before[i][0]  # 用例ID：999121002
                         val = self.tst_inst.get_input_val(value, menu_xpath_data[1], menu_xpath_data[2], menu_xpath_data[3], map_rela[13])
                     else:
                         val = self.tst_inst.get_input_val(menu_xpath_data[0], menu_xpath_data[1], menu_xpath_data[2], menu_xpath_data[3],
@@ -534,11 +534,11 @@ class AssertResult():
                 is_skip_correct = False
                 xpath_trans = self.tst_inst.case_para[map_rela[5] + '_TRANS']
                 if trans_type == '01':
-                    bef = data_before
+                    bef = data_before + '→' + map_rela[9]
                     data_before = map_rela[9]
                     aft = data_after
                 elif bool(xpath_trans):
-                    bef = data_before
+                    bef = data_before + '→' + xpath_trans
                     data_before = xpath_trans
                     aft = data_after
                 else:
@@ -555,10 +555,10 @@ class AssertResult():
                     is_skip_correct = True
 
                 elif data_before == data_after:
-                    if trans_type == '01':
-                        bef += '→' + map_rela[9]
-                    elif bool(xpath_trans):
-                        bef += '→' + xpath_trans
+                    # if trans_type == '01':
+                    #     bef += '→' + map_rela[9]
+                    # elif bool(xpath_trans):
+                    #     bef += '→' + xpath_trans
                     is_skip_correct = True
                 elif (trans_type == '12' and data_after in data_before) \
                         or (trans_type == '13' and data_before in data_after):  # 包含关系：12-跳转前包含跳转后的；13-跳转后包含跳转前的

@@ -146,6 +146,10 @@ class MeterDataQueryFailDetailPage(Page):
     def inputSel_recerse_collection_result(self, option):
         self.selectDropDown(option, is_multi_tab=True, is_multi_elements=True)
 
+    # 是否是面向对象终端
+    def inputChk_is_oop(self, item):
+        self.clickSingleCheckBox(item)
+
     # 用户类别--江西新增
     def inputSel_cons_type(self, index):
         self.selectDropDown(index, is_multi_tab=True, is_multi_elements=True)
@@ -157,8 +161,8 @@ class MeterDataQueryFailDetailPage(Page):
 
 
     # 正反是否有功
-    # def inputChk_power_type(self, value):
-    #     self.clickRadioBox(value)
+    def inputChk_power_type(self, value):
+        self.clickRadioBox(value)
 
     # 查询
     def btn_qry(self):

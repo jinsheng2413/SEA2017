@@ -69,10 +69,12 @@ class TestMeterDataQueryFailDetail(TestCase, MeterDataQueryFailDetailPage):
         self.inputChk_freeze_data_type(para['FREEZE_DATA_TYPE'])
         freeze_data_type = self.get_para_value(para['FREEZE_DATA_TYPE'])
         if freeze_data_type == '日冻结电能示值':
-            # # 正反是否有功--江西没有
-            # self.inputChk_power_type(para['POWER_TYPE'])
+            # 正反是否有功--江西没有
+            self.inputChk_power_type(para['POWER_TYPE'])
             # 反相采集结果
             self.inputSel_recerse_collection_result(para['RECERSE_COLLECTION_RESULT'])
+            # 是否是面向对象终端
+            self.inputChk_is_oop(para['IS_OOP'])
 
         elif freeze_data_type in ['日冻结电压曲线', '日冻结电流曲线', '日冻结功率曲线']:
             # 相位

@@ -24,9 +24,9 @@ logger = Logger(logger='AssertResult').getlog()
 
 # assert_type值共有3位：第1位：0-杂项校验；1-弹窗校验；2-菜单校验；3-Tab页校验
 #                     第2位：针对杂项校验没意义，弹窗、菜单：0-普通校验；    1-多链接；      3-业务操作；
-#                                                     Tab页：0-普通Tab页；   2-Tab页内套Tab；3-业务操作
-#                     第3位：针对杂项校验没意义，    弹窗类：0-固定弹窗标题；1-动态弹窗标题   3-业务操作
-#                                                    菜单类：0-普通菜单；   1-TST_MENU中不存在的菜单页
+#                                              Tab页：0-普通Tab页；   2-Tab页内套Tab；3-业务操作
+#                     第3位：针对杂项校验没意义，   弹窗类：0-固定弹窗标题； 1-动态弹窗标题   3-业务操作
+#                                              菜单类：0-普通菜单；    1-TST_MENU中不存在的菜单页
 ASSERT_TYPES = {
     # 【杂项校验】, '没查询结果', '【{}】查询条件与查询结果【{}】值不一致', '【{}】供电单位下钻出错', '目标页面元素【{}】值与期望值【{}】不一致'
     #     , '弹窗标题【{}】与期望值【{}】不一致', '菜单标题【{}】与期望值【{}】不一致'
@@ -278,11 +278,12 @@ class AssertResult():
             ls_check_rslt.append([assert_type, assert_rslt, case_result[1]])
 
         result = True
-        for check_rslt in ls_check_rslt:
+        for i, check_rslt in enumerate(ls_check_rslt):
             assert_type = check_rslt[0]
             if isinstance(check_rslt[1], tuple):
                 if not check_rslt[1][0]:
-                    self.output_compare_list(*check_rslt[1][1:])
+                    # self.output_compare_list(i, *check_rslt[1][1:])
+                    self.output_compare_list(i, *check_rslt[1])
                     result = False
             elif not check_rslt[1]:  # 校验不通过
                 if is_calc_col_idx:
@@ -452,51 +453,51 @@ class AssertResult():
                     return None
         return skip_data_after
 
-    def trans_to_trs(self, skip_map_rela, is_menu_or_tab=True):
+    def trans_to_trs(self, compare_result, is_menu_or_tab=True):
         tr6 = "<tr style='height:20.0pt'>" \
-              "<td class=xl72 style='width: 15%;'>{}</td>" \
-              "<td class=xl72 style='width: 15%;'>{}</td>" \
-              "<td class=xl72 style='width: 15%;'>{}</td>" \
-              "<td class=xl72 style='width: 15%;'>{}</td>" \
-              "<td class=xl72 style='width: 30%;'>{}</td>" \
-              "<td class=xl72 style='width: 10%;text-align: center'>{}</td>" \
+              "<td class='xl72' style='width: 15%;'>{}</td>" \
+              "<td class='xl72' style='width: 15%;'>{}</td>" \
+              "<td class='xl72' style='width: 15%;'>{}</td>" \
+              "<td class='xl72' style='width: 15%;'>{}</td>" \
+              "<td class='xl72' style='width: 30%;'>{}</td>" \
+              "<td class='xl72' style='width: 10%;text-align: center;{}'>{}</td>" \
               "</tr>"
         tr3 = "<tr style='height:20.0pt'>" \
-              "<td class=xl72 style='width: 40%;'>{}</td>" \
-              "<td class=xl72 style='width: 40%;'>{}</td>" \
-              "<td class=xl72 style='width: 20%;text-align: center'>{}</td>" \
+              "<td class='xl72' style='width: 40%;'>{}</td>" \
+              "<td class='xl72' style='width: 40%;'>{}</td>" \
+              "<td class='xl72' style='width: 20%;text-align: center;{}'>{}</td>" \
               "</tr>"
         trs = []
         tr = tr6 if is_menu_or_tab else tr3
-        for row in skip_map_rela:
+        for row in compare_result:
+            row.insert(-1, 'color:red;' if row[-1] == '不通过' else '')
             trs.append(tr.format(*row))
         return trs
 
-    def output_compare_list(self, compare_result, is_menu_or_tab=True):
+    def output_compare_list(self, idx, is_pass, compare_result, is_menu_or_tab=True):
         """
         输出跳转比对清单
         :param compare_result: 跳转比对结果
         """
+        if is_pass:
+            compare_result.insert(-1, '')
+            compare_result.insert(-1, '通过')
+        else:
+            compare_result.insert(-1, 'color:red;')
+            compare_result.insert(-1, '不通过')
+
         template_file = 'compare_list' if is_menu_or_tab else 'expect_popup_or_value'
         compare_list_path = os.path.dirname(__file__) + '{}{}'.format(('/' if platform.system() != 'Windows' else '\\'), template_file)
 
         with codecs.open(compare_list_path, 'r', 'utf-8') as file:
             body = file.readlines()
 
-        i = 0
-        for row_idx, item in enumerate(body):
-            item = item.replace('\r\n', '')
-            if item.find('{}') >= 0:
-                body[row_idx] = item.format(compare_result[i])
-                i += 1
-            else:
-                body[row_idx] = item
-
-        body += self.trans_to_trs(compare_result[-1], is_menu_or_tab)
-        if compare_result[1][-1] == '*':
-            body.append('<tr style=\'height:20.0pt\'><td colspan={}>说明：*--取第n个重复列</td></tr>'.format(6 if is_menu_or_tab else 3))
-        body.append('</table>')
-        print('\n'.join(body))
+        output_lins = '\n'.join(body).format(*compare_result[:-1])
+        output_lins += '\n'.join(self.trans_to_trs(compare_result[-1], is_menu_or_tab))
+        # if compare_result[1][-1] == '*':
+        #     output_lins += '<tr style=\'height:20.0pt\'><td colspan={}>说明：*--取第n个重复列</td></tr>'.format(6 if is_menu_or_tab else 3)
+        output_lins += '</tbody></table>'
+        print(output_lins)
 
     def skip_data_compare(self, col_pos_info, link_tag, map_rela_rslt, row_num, skip_data_before, skip_data_after):
         """

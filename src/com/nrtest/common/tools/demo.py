@@ -191,10 +191,10 @@ def train():
     files = os.listdir(CAPT_PATH)
     train_table = []
     train_labels = []
-    for f in files:
-        if f.endswith('.jpg') and f[0] != '_':
-            train_labels += list(f.split("_")[0])
-            capt = Image.open(CAPT_PATH + f)
+    for file in files:
+        if file.endswith('.jpg') and file[0] != '_':
+            train_labels += list(file.split("_")[0])
+            capt = Image.open(CAPT_PATH + file)
             capt_per_char_list = capt_process(capt)
             for capt_per_char in capt_per_char_list:
                 char_features = capt_inference(capt_per_char)

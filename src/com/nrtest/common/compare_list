@@ -6,20 +6,23 @@
  </tr>
  <tr style='height:25.0pt'>
  <td colspan=6>
-    <table>
-        <tr>
-          <td style='width:30pt;text-align:right;font-weight:700;font-family:Arial, sans-serif;'>行：</td>
-          <td style='width:15pt;text-align:left'>{}</td>
-          <td style='width:30;text-align:right;font-weight:700;font-family:Arial, sans-serif;'>列：</td>
-          <td style='width:15pt;text-align:left'>{}</td>
-          <td style='width:50pt;text-align:right;font-weight:700;font-family:Arial, sans-serif;'>{}</td>
-          <td style='width:50pt;text-align:left'>{}</td>
-          <td style='width:50pt;text-align:right;font-weight:700;font-family:Arial, sans-serif;'>检验类别：</td>
-          <td style='text-align:left'>{}</td>
-        </tr>
-    </table>
+    <table style="border-collapse:collapse;width:800;">
+      <tr style="height:23.0pt">
+        <td class="x181" style="width:7pt;">行：</td>
+        <td class="x182" style="width:7pt;">{}</td>
+        <td class="x181" style="width:7pt;">列：</td>
+        <td class="x182" style="width:60pt;">{}</td>
+        <td class="x181" style="width:40pt;text-align:right;">{}</td>
+        <td class="x182" style="width:50pt;">{}</td>
+        <td class="x181" style="width:40pt;text-align:right;">检验类别：</td>
+        <td class="x182" style="width:65pt;">{}</td>
+        <td class="x181" style='width:25pt;text-align:right;'>校验结果：</td>
+        <td class="x182" style='width:25pt;text-align:center;{}'>{}</td>
+        <td class="xl83" style="width:25pt;text-align:center;" ><button style='width:100%;' onclick='showDetail(this)'>明细</button></td>
+     </tr></table>
  </td>
  </tr>
+ <tbody style='display: none;'>
  <tr style='height:20.0pt'>
     <td colspan=2 class=xl70 style='width: 30%;border-right:.5pt solid black;'>跳转前</td>
     <td colspan=2 class=xl70 style='width: 30%;border-right:.5pt solid black;'>跳转后</td>

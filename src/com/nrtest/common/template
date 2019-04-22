@@ -7168,6 +7168,21 @@ body.skin-3 {
         }
 
     }
+
+    function showDetail(obj) {
+         el_obj = $(obj)
+         el = $($(el_obj.parents('table')[1]).children()[1]);  //第二个table下的第二个子节点
+         if (el_obj.text() == "明细") {
+             el_obj.text("隐藏");
+             //el.fadeIn();//show();
+         }
+         else {
+             el_obj.text('明细');
+             //el.fadeOut(); //hide();
+         }
+         el.fadeToggle()
+    }
+
     $(function () {
         $("#testName").text(resultData["testName"]);
         $("#computername").text(resultData["computername"]);

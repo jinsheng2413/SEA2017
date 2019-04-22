@@ -28,7 +28,6 @@ class GatherSuccessRatePage(Page):
 
     # 通信方式
     def inputSel_comm_mode(self, option):
-        # self.selectCheckBox(option, is_multi_tab=True, is_multi_elements=False)
         self.selectDropDown(option, is_multi_tab=True, is_multi_elements=True)
 
     # 终端厂家
@@ -89,7 +88,7 @@ class GatherSuccessRateStatPage(Page):
 
     # 通信方式
     def inputSel_comm_mode(self, option):
-        self.selectCheckBox(option, is_multi_tab=True, is_multi_elements=False)
+        self.selectDropDown(option, is_multi_tab=True, is_multi_elements=True)
 
     # 查询日期
     def inputDt_query_date(self, content):

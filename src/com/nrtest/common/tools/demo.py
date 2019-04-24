@@ -102,32 +102,33 @@ def capt_inference(capt_per_char):
     return char_features.tolist()
 
 
-def train():
-    """
-    将预分类的验证码图片集转化为字符特征训练集
-
-    :require Image: from PIL import Image
-    :require os: import os
-
-    :require capt_process(): 图像预处理
-    :require capt_inference(): 提取图像特征
-
-    :param:
-    :return train_table: 验证码字符特征训练集
-    :return train_labels: 验证码字符预分类结果
-    """
-    files = os.listdir(CAPT_PATH)
-    train_table = []
-    train_labels = []
-    for f in files:
-        if f.endswith('.jpg') and f[0] != '_':
-            train_labels += list(f.split("_")[0])
-            capt = Image.open(CAPT_PATH + f)
-            capt_per_char_list = capt_process(capt)
-            for capt_per_char in capt_per_char_list:
-                char_features = capt_inference(capt_per_char)
-                train_table.append(char_features)
-    return train_table, train_labels
+#
+# def train():
+#     """
+#     将预分类的验证码图片集转化为字符特征训练集
+#
+#     :require Image: from PIL import Image
+#     :require os: import os
+#
+#     :require capt_process(): 图像预处理
+#     :require capt_inference(): 提取图像特征
+#
+#     :param:
+#     :return train_table: 验证码字符特征训练集
+#     :return train_labels: 验证码字符预分类结果
+#     """
+#     files = os.listdir(CAPT_PATH)
+#     train_table = []
+#     train_labels = []
+#     for f in files:
+#         if f.endswith('.jpg') and f[0] != '_':
+#             train_labels += list(f.split("_")[0])
+#             capt = Image.open(CAPT_PATH + f)
+#             capt_per_char_list = capt_process(capt)
+#             for capt_per_char in capt_per_char_list:
+#                 char_features = capt_inference(capt_per_char)
+#                 train_table.append(char_features)
+#     return train_table, train_labels
 
 
 def nnc(train_table, test_vec, train_labels):

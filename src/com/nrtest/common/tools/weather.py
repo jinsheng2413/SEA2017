@@ -9,6 +9,7 @@
 """
 
 import csv
+import datetime
 import http.client  # 用做异常处理
 import random
 import socket  # 用做异常处理
@@ -17,7 +18,9 @@ import time
 import requests  # 用来抓取网页的html源代码
 # 抓取天气网站最近7天的天气情况，写入文件并在控制台显示
 from bs4 import BeautifulSoup  # 用来代替正则表达式取源码中相应标签的内容
-from pandas import json
+from pandas.io import json
+
+from com.nrtest.common.utils import Utils
 
 
 def get_html(url, data=None):
@@ -56,7 +59,7 @@ def get_html(url, data=None):
     return rep.text
 
 
-def get_data(html_txt):
+def get_day_weather(html_txt, city_no, city_name):
     final = []
     bs = BeautifulSoup(html_txt, "html.parser")  # 创建BeautifulSoup对象
     body = bs.body  # 获取body部分
@@ -65,9 +68,16 @@ def get_data(html_txt):
     li = ul.find_all("li")  # 获取所有的li
 
     for day in li:  # 对每个标签中的内容进行遍历
-        temp = []
-        date = day.find("h1").string  # 获取日期
+        temp = [city_no, city_name]
+        date = day.find("h1").string[:2]  # 获取日期
+        if date < Utils.now_str().replace('-', '')[:8][-2:]:
+            dt = Utils.str2date(Utils.get_day_range_of_month()[1].replace('-', '')) + datetime.timedelta(days=1)
+            date = Utils.date2str(dt)[:6] + date
+        else:
+            date = Utils.now_str().replace('-', '')[:6] + date
+
         temp.append(date)  # 将日期添加到temp 中
+
         inf = day.find_all("p")  # 找到li中的所有p标签
         temp.append(inf[0].string)  # 将第一个p标签中的内容添加到temp列表中红
         if inf[1].find("span") is None:
@@ -84,7 +94,7 @@ def get_data(html_txt):
     return final
 
 
-def get_data1(html_txt):
+def get_hour_weather(html_txt, city_no):
     final = []
     bs = BeautifulSoup(html_txt, "html.parser")  # 创建BeautifulSoup对象
     body = bs.body  # 获取body部分
@@ -93,7 +103,20 @@ def get_data1(html_txt):
         if script.get_text().find('var observe24h_data') > 0:
             data = script.get_text().strip().replace(' ', '').split('=')[-1][:-1]
             weather = json.loads(data)
-            print(weather)
+            is_next_day = True
+            for hour_weather in weather['od']['od2']:
+                hw = list(hour_weather.values())
+                day = weather['od']['od0'][:8]
+                if is_next_day:
+                    dt = Utils.str2date(day) + datetime.timedelta(days=1)
+                    day = Utils.date2str(dt)
+                    is_next_day = not hw[0] == '00'
+
+                hw[0] = day + hw[0] + '0000'
+                hw.insert(0, weather['od']['od1'])
+                hw.insert(0, city_no)
+                final.append(hw)
+            final.reverse()
             # '''
             # 'od21' = '23'    23时
             # 'od22' = '18'    温度
@@ -104,11 +127,11 @@ def get_data1(html_txt):
             # 'od27' = '98'    相对湿度
             # 'od28' = '36'    空气质量
             # '''
-
+    return final[1:]
 
 def write_data(data, name):
     file_name = name
-    with open(file_name, 'a', errors='ignore', newline='') as f:
+    with open(file_name, 'a', errors='ignore', newline='', encoding='utf-8') as f:
         f_csv = csv.writer(f)
         f_csv.writerows(data)
 
@@ -141,10 +164,11 @@ $x('//script[contains(text(),"var observe24h_data")]')
 
 def get_url():
     city = {
-        "海口": "101310101",
-        "三亚": "101310201",
-        "苏州": "101190401",
-        "郑州": "101180101"
+        '唐山': '101090501',
+        '秦皇岛': '101091101',
+        '廊坊': '101090601',
+        '承德': '101090402',
+        '张家口': '101090301'
     }
     for k in city:
         print(k)
@@ -155,11 +179,17 @@ def get_url():
 
 
 if __name__ == "__main__":
-    # url="http://www.weather.com.cn/weather/101190401.shtml"
-    url = get_url()
-    html = get_html(url)
-    result = get_data(html)
-    get_data1(html)
-    write_data(result, "weather.csv")
-    for i in result:
-        print(i)  # 打印天气情况
+    city = {
+        '唐山': '101090501',
+        '秦皇岛': '101091101',
+        '廊坊': '101090601',
+        '承德': '101090402',
+        '张家口': '101090301'
+    }
+    for city_name, city_no in city.items():
+        weather_url = "http://www.weather.com.cn/weather/%s.shtml" % city_no
+        html = get_html(weather_url)
+        result = get_day_weather(html, city_no, city_name)
+        hws = get_hour_weather(html, city_no)
+        write_data(result, "weather.csv")
+        write_data(hws, "weather.csv")

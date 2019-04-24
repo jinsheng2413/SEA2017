@@ -13,26 +13,26 @@ import time
 from com.nrtest.common.data_access import DataAccess
 
 # 作者
-author = '韩笑'
+author = '李建方'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'cons_intrgrated_query_other_data'
+file_name = 'hplc_Gather_Integrity_Rate'
 
 # 存放菜单编号的数据文件类名
 # 路径
-data_file = 'SynthQuery_data'
+data_file = 'com/nrtest/sea/data/base_app/archivesMan/hplcChipMan/hplcChipMan_data.HPLCChipMan_data'
 
 # 菜单编号
-menu_no = '99941940'
+menu_no = '99911DB0'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = '测量点日电容器累计补偿的无功电能量'
+tab_name = '01'
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
-en_tab_name = 'dayCapacitor_tab'
+en_tab_name = ''
 
 # 生成文件存放路径
-filelistlog = r"D:PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\stat_rey\synthQuery\test_consIntrgratedQueryDayCapacitor.py"
+filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
 
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
 page_type = '02'
@@ -71,7 +71,7 @@ class GenFile():
         # return 'test_' + self._format_name(file)
         return 'Test' + self._format_name(file)
 
-    # 04	test&page的class名
+    # 04	get_check_code&page的class名
     def get_test_class(self, line, file=''):
         return line.format(self._get_test_class_name(file), self.get_page_class_name(file))
 
@@ -181,7 +181,7 @@ class GenFile():
                 # 03	时间
                 elif line_flag == '03':
                     line = self.get_dt(script)
-                # 04	test&page的class名
+                # 04	get_check_code&page的class名
                 elif line_flag == '04':
                     line = self.get_test_class(script)
                 # 05	菜单编号
@@ -195,7 +195,7 @@ class GenFile():
                 elif line_flag == '06':
                     line, tab = self.get_tab_name()
                     line = script.format(line)
-                    if not bool(tab_name):
+                    if not bool(tab_name) or tab_name == '01':
                         pos = line.find('menuPage')
                         line = line[:pos] + '# ' + line[pos:]
                     print(' ' * 4 + tab)

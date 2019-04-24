@@ -8,6 +8,7 @@
 @desc:
 """
 import calendar
+import datetime
 import re
 import time
 
@@ -135,6 +136,14 @@ class Utils:
         return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(now))
 
     @staticmethod
+    def str2date(str):
+        return datetime.datetime.strptime(str, '%Y%m%d')
+
+    @staticmethod
+    def date2str(dt):
+        return dt.strftime("%Y%m%d")  # date形式转化为str
+
+    @staticmethod
     def split_log(log, ln):
         # log = r'D:\PycharmProjects\SEA2017\src\com\nrtest\sea\testcase\adv_app\costControlManage\remoteCustControl\test_NewPrePaidStatusByAction.py", line 104, in test_query self.assert_query_result(para)'
         tmp = log[:ln]
@@ -154,5 +163,8 @@ class Utils:
 
 
 if __name__ == '__main__':
-    a = Utils.tes('', 180)
-    print(a)
+    date = '02'
+    if date < Utils.now_str().replace('-', '')[:8][-2:]:
+        dt = Utils.str2date(Utils.get_day_range_of_month()[1].replace('-', '')) + datetime.timedelta(days=1)
+        date = Utils.date2str(dt)[:6] + date
+        print(date)

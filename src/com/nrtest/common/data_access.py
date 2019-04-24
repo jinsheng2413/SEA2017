@@ -436,7 +436,7 @@ if __name__ == '__main__':
     # DataAccess.getMenu('99913210')
     # print(DataAccess.get_xpath_tab_data('DATE_TIME', '999132207', '采集完整率统计'))
     # pass
-    DataAccess.refresh_dynamic_date()
+    print(DataAccess.get_menu_xpath_list('99911DB0', '01', '01'))
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
     # print(DataAccess.get_skip_data('999121003','备注-报文查询'))

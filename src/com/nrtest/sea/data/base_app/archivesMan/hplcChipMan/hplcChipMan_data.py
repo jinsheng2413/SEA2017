@@ -36,3 +36,6 @@ class HPLCChipMan_data:
     phaseIdent_para = '99911D60'
     phaseIdent_tabName_stat = '相位统计'
     phaseIdent_tabName_detail = '相位明细'
+
+    # 基本应用→档案管理→HPLC芯片管理→户变异常处理情况
+    hplcGatherIntegrityRate_para = '99911DB0'

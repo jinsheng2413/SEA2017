@@ -37,6 +37,7 @@ class TestTerParaSet(TestCase, TermParaSetPage):
     def tearDownClass(cls):
         print("执行结束")
         # 关闭菜单页面
+        cls.sleep_time(cls,10)
         cls.closePages(cls)
 
     def setUp(self):

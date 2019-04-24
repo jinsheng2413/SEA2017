@@ -17,7 +17,7 @@ class HPLCChipMan_data:
 
     # 基本应用→档案管理→HPLC芯片管理→台户关系识别
     tgRelationIdent_para = '99911D50'
-    tgRelationIdent_tabName_stat = '台户关系统计'
+    tgRelationIdent_tabName_stat = '台区关系统计'
     tgRelationIdent_tabName_detail = '台户关系明细'
 
     # 基本应用→档案管理→HPLC芯片管理→hplc建设情况
@@ -31,6 +31,7 @@ class HPLCChipMan_data:
     impedanceIdent_para = '99911D70'
     # 基本应用→档案管理→HPLC芯片管理→芯片档案查询功能
     chipArchivesQuery_para = '99911D10'
+    chipArchivesQuery_tab_count = 'HPLC芯片档案统计'
 
     # 基本应用→档案管理→HPLC芯片管理→相位识别
     phaseIdent_para = '99911D60'

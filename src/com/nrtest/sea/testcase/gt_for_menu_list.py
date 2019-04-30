@@ -7,7 +7,9 @@
 @time: 2019-01-31 23:34
 @desc:
 """
-
+import os,sys
+run_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))
+sys.path.append(run_path)
 from unittest import TestSuite, TestLoader
 
 from com.nrtest.common import global_drv
@@ -15,7 +17,6 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.setting import Setting
 from com.nrtest.common.utils import Utils
-
 
 def add_case():
     # 测试用例清单，带package的类文件路径（以“.”分割）
@@ -58,3 +59,4 @@ if __name__ == '__main__':
     # for case in test_suite:
     #     run(case)
     global_drv.quit()
+

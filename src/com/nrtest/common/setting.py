@@ -56,7 +56,7 @@ class Setting():
     PATTERN = parse.pattern()
 
     # 基础路径
-    # BASE_PATH = r'D:\\PycharmProjects\\MyPython\\' if platform.system() == 'Windows' else r'/PycharmProjects/MyPython/'
+    # BASE_PATH = r'D:\\PycharmProjects\\MyPython\\' if platform.system() == 'Windows' else response'/PycharmProjects/MyPython/'
     PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
 
     BASE_PATH = PROJECT_PATH.split(PATTERN + 'src')[0]

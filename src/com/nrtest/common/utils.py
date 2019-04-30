@@ -48,6 +48,7 @@ class Utils:
     def map_module_by_file_path(file_path):
         """
         根据package与类文件，引入模块
+        del sys.modules['a']  #unimport
         :param file_path: 用例文件路径：package + file_name, 中间用.分割
         :return:
         """
@@ -163,8 +164,10 @@ class Utils:
 
 
 if __name__ == '__main__':
-    date = '02'
-    if date < Utils.now_str().replace('-', '')[:8][-2:]:
-        dt = Utils.str2date(Utils.get_day_range_of_month()[1].replace('-', '')) + datetime.timedelta(days=1)
-        date = Utils.date2str(dt)[:6] + date
-        print(date)
+    # date = '02'
+    # if date < Utils.now_str().replace('-', '')[:8][-2:]:
+    #     dt = Utils.str2date(Utils.get_day_range_of_month()[1].replace('-', '')) + datetime.timedelta(days=1)
+    #     date = Utils.date2str(dt)[:6] + date
+    #     print(date)
+    # ts = Utils.map_module_by_file_path(r'com/nrtest/locust/locustfiles/abc.py')
+    pass

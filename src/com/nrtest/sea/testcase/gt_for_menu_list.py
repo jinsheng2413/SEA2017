@@ -7,9 +7,10 @@
 @time: 2019-01-31 23:34
 @desc:
 """
-import os,sys
-run_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))
-sys.path.append(run_path)
+import sys
+
+sys.path.append(__file__.split('/com')[0])
+
 from unittest import TestSuite, TestLoader
 
 from com.nrtest.common import global_drv
@@ -59,4 +60,3 @@ if __name__ == '__main__':
     # for case in test_suite:
     #     run(case)
     global_drv.quit()
-

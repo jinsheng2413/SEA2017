@@ -7,6 +7,9 @@
 @time: 2019-01-31 23:34
 @desc:
 """
+import sys
+
+sys.path.append(__file__.split('/com')[0])
 
 from unittest import TestSuite, TestLoader
 
@@ -15,7 +18,6 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.common.setting import Setting
 from com.nrtest.common.utils import Utils
-
 
 def add_case():
     # 测试用例清单，带package的类文件路径（以“.”分割）

@@ -10,6 +10,8 @@
 
 import os
 
+import execjs
+
 from com.nrtest.common.db_driver import PyOracle
 from com.nrtest.common.dictionary import Dict
 from com.nrtest.common.setting import Setting
@@ -174,6 +176,7 @@ class DataAccess:
         pyoracle = PyOracle.getInstance()
         para = [Setting.PROJECT_NO]
         pyoracle.callproc('pkg_nrtest.refresh_dynamic_date', para)
+
     @staticmethod
     def get_case_result(tst_case_id):
         """
@@ -278,7 +281,7 @@ class DataAccess:
                 actual_seconds,
                 Setting.PROJECT_NO)
         pyoracle.insert(sql, para)
-    
+
     @staticmethod
     def load_tests_ByMenuList():
         """
@@ -381,7 +384,6 @@ class DataAccess:
             print('获取"{}"--by_name:{}的org_type报错！'.format(org, by_name))
             raise ex
 
-
     @staticmethod
     def get_el_script_setup(script_type='01'):
         sql = 'select el_type, script_line, script \
@@ -417,10 +419,168 @@ class DataAccess:
 
         return dataSet
 
+    @staticmethod
+    def get_account_of_sea():
+        sql = 'SELECT encode_no, encode_pwd, staff_no, staff_name FROM tst_account WHERE encode_no IS NOT NULL'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql)
+        user_accounts = []
+        for account in dataSet:
+            user_accounts.append({'username': account[0], 'password': account[1],
+                                  'staff_no': account[2], 'staff_name': account[3]})
+            # print(user_accounts[-1], ',')
+        # return user_accounts
+        return [
+            {'username': 'MTAwNzI4NzI=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10072872', 'staff_name': '郑伟仁'},
+            {'username': 'Z2xt', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'glm', 'staff_name': '缑工'},
+            {'username': 'YWRtaW4=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'admin', 'staff_name': 'administrator'},
+            {'username': 'anVoYW5qaQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'juhanji', 'staff_name': '巨汉基'},
+            {'username': 'Y3lm', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'cyf', 'staff_name': '陈越峰'},
+            {'username': 'emhvdWh1aQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'zhouhui', 'staff_name': '周晖'},
+            {'username': 'MTEw', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '110', 'staff_name': '张延生'},
+            {'username': 'MDgxNw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '0817', 'staff_name': '孙玉涛'},
+            {'username': 'd3Nkeg==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'wsdz', 'staff_name': '万胜'},
+            {'username': 'emhhbmd5YW5saQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'zhangyanli', 'staff_name': '张艳丽'},
+            {'username': 'MTAwNDUwMTU=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10045015', 'staff_name': '徐臣'},
+            {'username': 'bGl1eGlhb3RpYW4=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'liuxiaotian', 'staff_name': '刘晓天'},
+            {'username': 'bGloYWl5YW5n', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'lihaiyang', 'staff_name': '李海洋'},
+            {'username': 'bmluZ2Jv', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'ningbo', 'staff_name': '宁卜'},
+            {'username': 'dHh4', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'txx', 'staff_name': '田晓溪'},
+            {'username': 'eXh5ZF93aHk=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'yxyd_why', 'staff_name': '王海燕'},
+            {'username': 'd3M=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'ws', 'staff_name': 'ws'},
+            {'username': 'MTAwNDU2MDI=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10045602', 'staff_name': '岳虎'},
+            {'username': 'YW15bGVl', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'amylee', 'staff_name': '李斯琪'},
+            {'username': 'dXNlcmFkbWlu', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'useradmin', 'staff_name': '国网检查账户'},
+            {'username': 'MTAwODY=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10086', 'staff_name': '测试人员'},
+            {'username': 'emhlamlhbmd3YW5zaGVuZw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'zhejiangwansheng', 'staff_name': 'zhejiangwansheng'},
+            {'username': 'emhhbmdqaWU=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'zhangjie', 'staff_name': 'zhangjie'},
+            {'username': 'Z2pjeDIwMTI=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'gjcx2012', 'staff_name': '高级查询用户'},
+            {'username': 'OTAwMTA=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '90010', 'staff_name': '部门领导'},
+            {'username': 'YWRtaW5feXc=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'admin_yw', 'staff_name': '业务配置管理员'},
+            {'username': 'Y2hheHVuMQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'chaxun1', 'staff_name': 'chaxun'},
+            {'username': 'MTAwMTE4NTI=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10011852', 'staff_name': '张翼鸣'},
+            {'username': 'Y2hheHVuNA==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'chaxun4', 'staff_name': 'chaxun'},
+            {'username': 'a2VmdXpob25neGlu', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'kefuzhongxin', 'staff_name': '客服中心'},
+            {'username': 'bGlsaWFuZ2hhbw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'lilianghao', 'staff_name': '李良浩'},
+            {'username': 'MTAwMDAxMDI=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10000102', 'staff_name': '李红武'},
+            {'username': 'MTAwNDMyMTA=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10043210', 'staff_name': '殷庆铎'},
+            {'username': 'MTAwMTc2ODQ=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10017684', 'staff_name': '汤佩霖'},
+            {'username': 'MTAwNjE0MTA=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10061410', 'staff_name': '葛剑'},
+            {'username': 'MTAwMTYwNDE=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10016041', 'staff_name': '张凌宇'},
+            {'username': 'MTAwMDU1NDA=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10005540', 'staff_name': '陈洪涛'},
+            {'username': 'MTAwNDUyNTI=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10045252', 'staff_name': '刘洋'},
+            {'username': 'MTAwNDQ4OTY=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10044896', 'staff_name': '孙贝贝'},
+            {'username': 'MTAwNDMzNTY=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10043356', 'staff_name': '谢枫'},
+            {'username': 'c3Vpc2hpd2Vp', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'suishiwei', 'staff_name': 'suishiwei'},
+            {'username': 'eXh5ZF90aHQ=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'yxyd_tht', 'staff_name': '田海亭'},
+            {'username': 'MTAwNDMyMDk=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10043209', 'staff_name': '王莉'},
+            # {'username': 'MTAwMTE4NDk=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10011849', 'staff_name': '张艳丽'},
+            # {'username': 'MTAwMzczMTI=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10037312', 'staff_name': '孙志杰'},
+            # {'username': 'ZG5mdw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'dnfw', 'staff_name': '电能服务'},
+            # {'username': 'emNqenl5aA==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'zcjzyyh', 'staff_name': '掌抄机专用用户'},
+            # {'username': 'eXps', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'yzl', 'staff_name': '易忠林'},
+            # {'username': 'Y2hheHVuMg==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'chaxun2', 'staff_name': 'chaxun'},
+            # {'username': 'MTAwMzcyOTI=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10037292', 'staff_name': '余志森'},
+            # {'username': 'MTIzNDU2Nzg5', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '123456789', 'staff_name': '临时测试'},
+            # {'username': 'eXJt', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'yrm', 'staff_name': '袁瑞铭'},
+            # {'username': 'Y2hheHVuMw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'chaxun3', 'staff_name': 'chaxun'},
+            # {'username': 'OTAwMDA=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '90000', 'staff_name': '殷庆铎'},
+            # {'username': 'eGl0b25nY2VzaGk=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'xitongceshi', 'staff_name': '系统测试'},
+            # {'username': 'YWRtaW5fc2o=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'admin_sj', 'staff_name': '审计管理员'},
+            # {'username': 'bHBw', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'lpp', 'staff_name': 'lv'},
+            # {'username': 'ZGlhb2R1', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'diaodu', 'staff_name': '调度'},
+            # {'username': 'c2hlbmppMg==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'shenji2', 'staff_name': '审计2'},
+            # {'username': 'bGl1Y2hpY2hhbw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'liuchichao', 'staff_name': '刘池超'},
+            # {'username': 'c3VwZXJfYWRtaW4=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'super_admin', 'staff_name': '超级管理员'},
+            # {'username': 'cXE=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'qq', 'staff_name': 'qiqi'},
+            # {'username': 'bGtfYWRtaW4=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'lk_admin', 'staff_name': 'likai'},
+            # {'username': 'MTIz', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '123', 'staff_name': 'qiqi'},
+            # {'username': 'emhlbmd0YW8=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'zhengtao', 'staff_name': '郑涛'},
+            # {'username': 'enN0aWNiYw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'zsticbc', 'staff_name': 'zst'},
+            # {'username': 'ZnVzaW1pbg==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'fusimin', 'staff_name': 'fusimin'},
+            # {'username': 'c3VuYmlhbw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'sunbiao', 'staff_name': 'sunbiao'},
+            # {'username': 'MTEwMDEyMDA=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '11001200', 'staff_name': 'zhang'},
+            # {'username': 'ano=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'jz', 'staff_name': 'jz'},
+            # {'username': 'd2pi', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'wjb', 'staff_name': '王进保'},
+            # {'username': 'bHk=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'ly', 'staff_name': 'ly'},
+            # {'username': 'Z3Vkcw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'guds', 'staff_name': '顾东生'},
+            # {'username': 'eXVzaGVuZw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'yusheng', 'staff_name': 'yusheng'},
+            # {'username': 'bHh5', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'lxy', 'staff_name': 'lxy'},
+            # {'username': 'c2VhMjAxNg==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'sea2016', 'staff_name': 'sea2016'},
+            # {'username': 'dHNk', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'tsd', 'staff_name': 'tsd'},
+            # {'username': 'c2hlbmppMQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'shenji1', 'staff_name': '审计'},
+            # {'username': 'MjAxNTA4MjU=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '20150825', 'staff_name': '负荷监测'},
+            # {'username': 'V1RKXzE=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'WTJ_1', 'staff_name': '查询用户'},
+            # {'username': 'dGlhbnll', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'tianye', 'staff_name': '田野'},
+            # {'username': 'YWRtaW5feHQ=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'admin_xt', 'staff_name': '系统管理员'},
+            # {'username': 'bGRjeA==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'ldcx', 'staff_name': '欢迎领导莅临'},
+            # {'username': 'bGpmMQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'ljf1', 'staff_name': '李建方'},
+            # {'username': 'cGFpc2Vu', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'paisen', 'staff_name': 'paisen'},
+            # {'username': 'bGpm', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'ljf', 'staff_name': '李建方'},
+            {'username': 'eXl6eA==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'yyzx', 'staff_name': '运行监测'},
+            {'username': 'eWl6aG9uZ2xpbg==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'yizhonglin', 'staff_name': '易忠林'},
+            {'username': 'aGJ3ag==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'hbwj', 'staff_name': '华北网局'},
+            {'username': 'amlhemhpcWlhbmc=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'jiazhiqiang', 'staff_name': 'jiazhiqiang'},
+            {'username': 'bHlkeg==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'lydz', 'staff_name': '林洋电子'},
+            {'username': 'Z2FubGlu', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'ganlin', 'staff_name': 'ganlin'},
+            {'username': 'c3hkcQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'sxdq', 'staff_name': '三星电气'},
+            {'username': 'd2VpemhlaHVh', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'weizhehua', 'staff_name': '卫哲华'},
+            {'username': 'eHVjaGVu', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'xuchen', 'staff_name': '徐晨'},
+            {'username': 'MTAwMDAwMDg=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '10000008', 'staff_name': 'dy'},
+            {'username': 'dGh0', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'tht', 'staff_name': '田海亭'},
+            {'username': 'd3Rq', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'wtj', 'staff_name': 'wtj'},
+            {'username': 'bGl1emloYW4=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'liuzihan', 'staff_name': '刘子寒'},
+            {'username': 'Y2pnazIwMTU=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'cjgk2015', 'staff_name': 'cjgk2015'},
+            {'username': 'bGluX3RvcA==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'lin_top', 'staff_name': '林李平'},
+            {'username': 'ODAwMDE=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '80001', 'staff_name': '杜蜀薇'},
+            {'username': 'c3Vpc2hpd2VpMQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'suishiwei1', 'staff_name': '采集系统运维项目组'},
+            {'username': 'dGh0X3Rlc3Q=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'tht_test', 'staff_name': '田海亭'},
+            {'username': 'eXVlaHU=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'yuehu', 'staff_name': '部门领导'},
+            {'username': 'c2hpeW9uZ2Jv', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'shiyongbo', 'staff_name': '师永博'},
+            {'username': 'eXVhbmZlbmdndWFuZw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'yuanfengguang', 'staff_name': '部门领导_袁总'},
+            {'username': 'c2VhMjAxNQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'sea2015', 'staff_name': 'sea2015'},
+            {'username': 'eHVnYW95dQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'xugaoyu', 'staff_name': '许高宇'},
+            {'username': 'dHhm', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'txf', 'staff_name': '陶晓峰'},
+            {'username': 'Y2hlbmhvbmd0YW8=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'chenhongtao', 'staff_name': '陈洪涛'}
+            # {'username': 'c3VuZ2FuZw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'sungang', 'staff_name': '孙刚'},
+            # {'username': 'VmluY2VudDAxMjE=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'Vincent0121', 'staff_name': '陈宁飞'},
+            # {'username': 'YWRtaW5p', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'admini', 'staff_name': '有序用电测试用户'},
+            # {'username': 'bGNj', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'lcc', 'staff_name': 'lcc'},
+            # {'username': 'ZnVmZW5n', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'fufeng', 'staff_name': '付峰'},
+            # {'username': 'MDAwMTIzNDU=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '00012345', 'staff_name': '陆洋'},
+            # {'username': 'MTIzNDI1NDY=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '12342546', 'staff_name': 'zhengxiaodong'},
+            # {'username': 'aHlm', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'hyf', 'staff_name': 'hyf'},
+            # {'username': 'Z3VvY2h1bmJpYW8wNDE2', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'guochunbiao0416', 'staff_name': '郭春彪'},
+            # {'username': 'eGlheWluZw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'xiaying', 'staff_name': '夏迎'},
+            # {'username': 'd2VpdG9uZ2ppYQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'weitongjia', 'staff_name': '魏彤珈'},
+            # {'username': 'emhhbmdwZW5n', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'zhangpeng', 'staff_name': '张鹏'},
+            # {'username': 'MjAxNTEyMTU=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '20151215', 'staff_name': '四表集抄省级管理'},
+            # {'username': 'bGl6aGVuZ2d1YW5n', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'lizhengguang', 'staff_name': '李征光'},
+            # {'username': 'dHk=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'ty', 'staff_name': '田野'},
+            # {'username': 'bGl1eWFu', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'liuyan', 'staff_name': '刘岩'},
+            # {'username': 'd3V6aHV5dW4=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'wuzhuyun', 'staff_name': '吴竹筠'},
+            # {'username': 'eGlvbmdnYW4=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'xionggan', 'staff_name': '熊敢'},
+            # {'username': 'Y2pnaw==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'cjgk', 'staff_name': 'cjgk'},
+            # {'username': 'MDMwNDUx', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': '030451', 'staff_name': '刘啸'},
+            # {'username': 'cGdiX2RyaA==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'pgb_drh', 'staff_name': '杜瑞红'},
+            # {'username': 'bGl1bmluZ25pbmc=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'liuningning', 'staff_name': '刘宁宁'},
+            # {'username': 'dGVzdF9neWs=', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'test_gyk', 'staff_name': 'jj'},
+            # {'username': 'bG9seTMyMQ==', 'password': 'NOzIzJv2mQTdZwfDP+jc0A==', 'staff_no': 'loly321', 'staff_name': 'loly'}
+        ]
+
+    @staticmethod
+    def encode_account(js):
+        sql = 'SELECT staff_no FROM tst_account WHERE encode_no IS NULL'
+        pyoracle = PyOracle.getInstance()
+        dataSet = pyoracle.query(sql)
+        fun_base64 = execjs.compile(js)  # 执行JavaScript脚本
+        for account in dataSet:
+            encode_no = fun_base64.call('encode_base64', account[0])
+            pyoracle.update('UPDATE tst_account SET encode_no = :1 WHERE staff_no = :2', [encode_no, account[0]])
+        return dataSet
+
 
 if __name__ == '__main__':
-
-
     # print(DataAccess.get_xpath_menu_data('CONS_NO', '用户数据查询'))
     # 统计查询→采集建设情况→采集覆盖情况→用户采集覆盖率统计【下拉复选、单选选择】
     # print(DataAccess.getCaseData("99926400", tabName='01'))
@@ -436,7 +596,8 @@ if __name__ == '__main__':
     # DataAccess.getMenu('99913210')
     # print(DataAccess.get_xpath_tab_data('DATE_TIME', '999132207', '采集完整率统计'))
     # pass
-    print(DataAccess.get_menu_xpath_list('99911DB0', '01', '01'))
+    # print(DataAccess.get_menu_xpath_list('99911DB0', '01', '01'))
+    DataAccess.get_account_of_sea()
     # 刷新菜单/tab对应的元素
     # DataAccess.refresh_menu_xapth('填写要刷新的菜单编号')
     # print(DataAccess.get_skip_data('999121003','备注-报文查询'))

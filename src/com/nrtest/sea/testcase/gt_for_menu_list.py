@@ -7,9 +7,10 @@
 @time: 2019-01-31 23:34
 @desc:
 """
-import sys
+import os,sys
+PATH = os.path.dirname(__file__).split('com')[0]
+sys.path.append(PATH)
 
-sys.path.append(__file__.split('/com')[0])
 
 from unittest import TestSuite, TestLoader
 

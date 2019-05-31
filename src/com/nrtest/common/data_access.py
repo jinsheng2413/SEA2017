@@ -10,7 +10,7 @@
 
 import os
 
-import execjs
+
 
 from com.nrtest.common.db_driver import PyOracle
 from com.nrtest.common.dictionary import Dict

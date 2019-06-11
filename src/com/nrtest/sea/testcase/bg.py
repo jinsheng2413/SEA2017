@@ -24,6 +24,6 @@
 # if __name__ == '__main__':
 #     runner = TextTestRunner(verbosity=2)
 #     runner.run(suite)
-i = 100
-while i == 100:
+i = 20
+while i == 20:
  print('-----------------')

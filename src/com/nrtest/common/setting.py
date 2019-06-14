@@ -97,10 +97,11 @@ class Setting():
 
     # 根据下面分组配置执行：gt_for_menu_list.py
     GROUP_BY_MENU_LIST = parse.get('Login', 'group_by_menu_list')
+    #jenkins的jop配置文件村长路径
+    DEFAULT_CONFIG = BASE_DIR + '\common\default_config.xml'
 
 if __name__ == '__main__':
     p = Setting()
-    print(p.PROJECT_NO)
-    print(Setting.BASE_PATH)
-    print(Setting.IMG_PATH)
-    print(Setting.REPORT_PATH)
+
+    print(Setting.DEFAULT_CONFIG)
+

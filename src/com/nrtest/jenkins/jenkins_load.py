@@ -27,10 +27,19 @@ class JzPythonJenkins(object):
         timeout = 1
         self.server = self.Connect(url, username, password, timeout)
 
-    def Used(self):
-        self.get_version()
+    def get_jenkins_version(self):
+        """
+
+        :return: 返回jenkins的版本信息
+        """
+        return self.get_version()
+
 
     def read_jop_config(self):
+        """
+
+        :return: 获取jop配置xml信息
+        """
         with open(Setting.DEFAULT_CONFIG, 'r', encoding='utf-8') as file:
             str = file.read()
             return str
@@ -47,6 +56,12 @@ class JzPythonJenkins(object):
         print(version)
 
     def create_project(self, name, config_xml=''):
+        """
+
+        :param name: 新建jop的名称
+        :param config_xml: jop的配置信息
+        :return:
+        """
         try:
             if self.assert_jop_exist(name):
                 return
@@ -84,6 +99,11 @@ class JzPythonJenkins(object):
 
     # 构建项目
     def build_project(self, name):
+        """
+
+        :param name: jop的名称
+        :return:
+        """
         self.server.build_job(name)
 
     # 复制jop的配置
@@ -101,6 +121,12 @@ class JzPythonJenkins(object):
 
 
     def get_output(self, name, num):
+        """
+
+        :param name: jop名称
+        :param num: 第几次构建
+        :return:
+        """
         contetn = self.server.get_build_console_output(name, num)
         print(contetn)
         return contetn

@@ -19,7 +19,7 @@ class HPLCChipMan_data:
     tgRelationIdent_para = '99911D50'
     tgRelationIdent_tabName_auto  = '台区自动识别'
     tgRelationIdent_tabName_stat = '台区关系统计'
-    tgRelationIdent_tabName_detail = '台户关系明细'
+    tgRelationIdent_tabName_detail = '台户关系异常档案明细'
 
     # 基本应用→档案管理→HPLC芯片管理→hplc建设情况
     hplcConstructionSituation_para = '99911D80'
@@ -42,3 +42,7 @@ class HPLCChipMan_data:
 
     # 基本应用→档案管理→HPLC芯片管理→户变异常处理情况
     hplcGatherIntegrityRate_para = '99911DB0'
+
+    # 基本应用-->档案管理-->HPLC管理-->HPLC采集成功率
+    hplcCollectSuccessRate_para = '99911DC0'
+

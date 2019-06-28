@@ -45,4 +45,9 @@ class HPLCChipMan_data:
 
     # 基本应用-->档案管理-->HPLC管理-->HPLC采集成功率
     hplcCollectSuccessRate_para = '99911DC0'
+    # 基本应用-->档案管理-->HPLC管理-->HPLC采集完整率
+    hplcCollectFullRate_para = '99911D90'
+    hplcCollectFullRate_count_tab = '采集完整率统计'
+    hplcCollectFullRate_detail_tab = '采集完整率明细'
+
 

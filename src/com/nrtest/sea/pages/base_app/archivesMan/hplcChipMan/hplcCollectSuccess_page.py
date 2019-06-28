@@ -18,7 +18,6 @@ class HplcCollectSuccess_page(Page):
     def inputDt_query_date(self, value):
         self.inputDate(value)
 
-        # 查询
-
+    # 查询
     def btn_qry(self):
         self.btn_query()

@@ -58,4 +58,7 @@ class HPLCChipMan_data:
     tgtopology_info_tab = '台区网络拓扑信息'
     tgtopology_more_info_tab = '台区多网信息'
 
+    # 基本应用→档案管理→HPLC管理→载波芯片白名单管理功能
+    CarrierChipWhiteListmManager_para = '99911D30'
+
 

@@ -3,8 +3,8 @@
 """
 @author: 韩笑
 @license: (C) Copyright 2018, Nari.
-@file: test_checkTaskManageHistory.py
-@time: 2019-06-28 16:40:50
+@file: test_checkResult.py
+@time: 2019-07-01 10:13:50
 @desc:
 """
 
@@ -16,23 +16,23 @@ from com.nrtest.common.BeautifulReport import BeautifulReport
 from com.nrtest.common.assert_result import AssertResult
 from com.nrtest.common.data_access import DataAccess
 from com.nrtest.sea.data.base_app.archivesMan.hplcChipMan.hplcChipMan_data import HPLCChipMan_data
-from com.nrtest.sea.pages.base_app.archivesMan.hplcChipMan.checkTaskManage_page import CheckTaskManageHistoryPage
+from com.nrtest.sea.pages.base_app.archivesMan.hplcChipMan.checkResult_page import CheckResultPage
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→档案管理→HPLC管理→户变关系档案校核→户变校核任务管理:历史户变校核任务信息查询
+# 基本应用→档案管理→HPLC管理→户变关系档案校核→户变关系校核结果
 @ddt
-class TestCheckTaskManageHistory(TestCase, CheckTaskManageHistoryPage):
+class TestCheckTaskManagePMS(TestCase, CheckResultPage):
 
     @classmethod
     def setUpClass(cls):
         # 打开菜单（需要传入对应的菜单编号）
-        menuPage = MenuPage.openMenu(HPLCChipMan_data.checkTaskManage_para)
+        menuPage = MenuPage.openMenu(HPLCChipMan_data.checkResult_para)
         super(TestCase, cls).__init__(cls, menuPage.driver, menuPage)
         # 菜单页面没多个Tab页时，请注释clickTabPage所在行代码
-        menuPage.clickTabPage(HPLCChipMan_data.checkTaskManage_tabName_history)
+        #menuPage.clickTabPage()
         # 菜单页面上如果没日期型的查询条件时，请注释下面代码
-        menuPage.remove_dt_readonly()
+        #menuPage.remove_dt_readonly()
 
     @classmethod
     def tearDownClass(cls):
@@ -62,20 +62,11 @@ class TestCheckTaskManageHistory(TestCase, CheckTaskManageHistoryPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        # 供电单位
-        self.openLeftTree(para['TREE_NODE'])
-
         # 台区编号
         self.inputStr_tg_no(para['TG_NO'])
 
         # 台区名称
         self.inputStr_tg_name(para['TG_NAME'])
-
-        # 校核日期
-        self.inputDt_query_date(para['QUERY_DATE'])
-
-        #存在异常
-        self.inputChk_exist_abnormal(para['EXIST_ABNORMAL'])
 
         # 查询
         self.btn_qry()
@@ -96,9 +87,9 @@ class TestCheckTaskManageHistory(TestCase, CheckTaskManageHistoryPage):
 
     @BeautifulReport.add_test_img()
     @data(
-        *DataAccess.getCaseData(HPLCChipMan_data.checkTaskManage_para, HPLCChipMan_data.checkTaskManage_tabName_history))
+        *DataAccess.getCaseData(HPLCChipMan_data.checkResult_para))
     def test_query(self, para):
-        """基本应用→档案管理→HPLC管理→户变关系档案校核→户变校核任务管理:历史户变校核任务信息查询
+        """基本应用→档案管理→HPLC管理→户变关系档案校核→户变关系校核结果
         """
         self.start_case(para, __file__)
         self.query(para)
@@ -107,8 +98,7 @@ class TestCheckTaskManageHistory(TestCase, CheckTaskManageHistoryPage):
 
     @BeautifulReport.add_test_img()
     @data(
-        *DataAccess.getCaseData(HPLCChipMan_data.checkTaskManage_para, HPLCChipMan_data.checkTaskManage_tabName_history,
-                                valCheck=True))
+        *DataAccess.getCaseData(HPLCChipMan_data.checkResult_para,valCheck=True))
     def _test_checkValue(self, para):
         self.start_case(para, __file__)
         self.query(para)

@@ -20,7 +20,7 @@ from com.nrtest.sea.pages.base_app.archivesMan.hplcChipMan.hplc_gather_integrity
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 基本应用→档案管理→HPLC芯片管理→户变异常处理情况:01
+# 基本应用→档案管理→HPLC管理→户变关系档案校核→台户异常处理情况
 @ddt
 class TestHplcGatherIntegrityRate(TestCase, HplcGatherIntegrityRatePage):
 
@@ -91,7 +91,7 @@ class TestHplcGatherIntegrityRate(TestCase, HplcGatherIntegrityRatePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(HPLCChipMan_data.hplcGatherIntegrityRate_para))
     def test_query(self, para):
-        """基本应用→档案管理→HPLC芯片管理→户变异常处理情况:01
+        """ 基本应用→档案管理→HPLC管理→户变关系档案校核→台户异常处理情况
         """
         self.start_case(para, __file__)
         self.query(para)

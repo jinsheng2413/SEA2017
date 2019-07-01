@@ -11,7 +11,7 @@
 from com.nrtest.common.base_page import Page
 
 
-# 基本应用→档案管理→HPLC芯片管理→户变异常处理情况:01
+# 基本应用→档案管理→HPLC管理→户变关系档案校核→台户异常处理情况
 class HplcGatherIntegrityRatePage(Page):
     # 日期
     def inputDt_query_date(self, value):

@@ -20,3 +20,6 @@ class DataQuery_data:
     calcAmount_para = '0000304'
     # 数据管理--报表浏览
     reportBrowse_para = '0000305'
+    # 数据管理--设备时间
+    equipmentThing_para = '0000306'
+

@@ -9,7 +9,7 @@
 """
 
 from unittest import TestCase
-
+from selenium.webdriver.common.by import By
 from ddt import ddt, data
 
 from com.nrtest.common.BeautifulReport import BeautifulReport
@@ -61,7 +61,9 @@ class test_CalculatedAmount(TestCase, Calcluteamount_page):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
-        self.openLeftTree(para['TREE_NODE'])
+        self.click((By.XPATH,'//*[@id="treeDemo_6_switch"]'))
+        # self.openLeftTree(para['TREE_NODE'])
+        self.click((By.XPATH,"//*[text()='松原地调220kV一次关口输入—>松原地调分量']"))
         # 时间方案
         self.inputChk_time_blue_print(para['TIME_BLUE_PRINT'])
 

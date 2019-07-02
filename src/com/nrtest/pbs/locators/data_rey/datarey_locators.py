@@ -19,4 +19,7 @@ class DataRey_locators:
     By.XPATH, '(//div[starts-with(@id, "tb") and contains(@style, "display: block;")]/span[@class="combox1_xy"]//a)[4]')
     # 下拉文本
     DROP_DOWN_TEXT = (By.XPATH, '//div[contains(@style,"block")]//div[contains(@class,"combobox-item") and text()="{}"]')
+   #遥测值
+    #日期
+    TEST_DATE = (By.XPATH,'//*[@class=\"bg_fff search_xy panel-body panel-body-noheader layout-body\"]//input[@class="textbox-text validatebox-text"]')
 

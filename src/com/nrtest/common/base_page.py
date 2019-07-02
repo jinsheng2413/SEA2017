@@ -401,7 +401,7 @@ class Page():
         except AttributeError as ex:
             logger.error('输入错误:{}\n{}'.format(values, ex))
 
-    def inputDate(self, value, is_multi_tab=False, new_idx=0, is_line=False):
+    def inputDate(self, value, is_multi_tab=False, new_idx=0, is_line=False,locators=''):
         """
         新版日期输入框操作：没标签、没定义name或id时对可见日期选择框进行定位
         :param value:要输入的值:自定义标签名;第n个日期选择框;日期值【该值不填默认为1】：开始日期;1;2018-12-24
@@ -416,6 +416,8 @@ class Page():
             # print(ls_values)
             if is_line:
                 loc = self.format_xpath(self.baseLocators.QRY_LINE_LOCATORS, ls_values[0])
+            elif locators != '':
+                loc = locators
             else:
                 loc = self.format_xpath_multi(self.baseLocators.QRY_DT_INPUT, ls_values[0], is_multi_tab)
             tmp = ls_values[1].strip()

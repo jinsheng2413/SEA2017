@@ -258,13 +258,13 @@ class BasePbsLocators(Locators):
 
     # 【按钮类元素】，如：查询按钮 【OK 待完善？？？】
     BTN_QRY = (By.XPATH,
-               '//button[contains(normalize-space(@class),"but icon-search serach_btn_xy") or @title="{}" or @iconcls="icon-search" or contains(@onclick, "search")] | //a[contains(@id,"sear") or @title="查询" or contains(@class,"sear")]|//span[contains(@id,"sear") or @title="查询" or contains(@class,"sear")]')
+               '//button[contains(@id,"sear")or contains(normalize-space(@class),"but icon-search serach_btn_xy") or @title="{}" or @iconcls="icon-search" or contains(@onclick, "search")] | //a[contains(@id,"sear") or @title="查询" or contains(@class,"sear")]|//span[contains(@id,"sear") or @title="查询" or contains(@class,"sear")]')
     # BTN_QRY = (By.XPATH, '//*[contains(@id,"sear")] | //*[contains(@class,"sear")]|//*[contains(@title,"{}")]')
     # 确定
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 
     # 定位一个菜单页面内的某一Tab页 OK
-    TAB_PAGE = (By.XPATH, '//span[@class="tabs-title" and text()="{}"]')
+    TAB_PAGE = (By.XPATH, '//span[@class="tabs-title" and text()="{}"|text()=""]')
 
     # 定位时间方案Tab选项【PBS专有】
     DT_TAB = (By.XPATH, '//label/following-sibling::span//*[text()="{}"]')

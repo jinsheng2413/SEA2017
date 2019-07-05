@@ -61,8 +61,9 @@ class TestChangeLossBrowseQuery(TestCase, ChangeLossBrowseQueryPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        self.sleep_time(5)
         # 电压
-        # self.inputSel_voltage(para['VOLTAGE'])
+        self.inputSel_voltage(para['VOLTAGE'])
         self.sleep_time(2)
         # 类型
         self.inputSel_type(para['TYPE'])
@@ -75,6 +76,7 @@ class TestChangeLossBrowseQuery(TestCase, ChangeLossBrowseQueryPage):
         self.inputStr_attrition_rate_fifth(para['ATTRITION_RATE_FIFTH'])
         # 时间方案
         self.inputChk_date_type(para['DATE_TYPE'])
+        self.openLeftTree(para['TREE_NODE'])
         # 查询按钮
         self.btn_qry()
 

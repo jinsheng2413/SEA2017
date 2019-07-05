@@ -66,6 +66,7 @@ class TestChangeLossBrowseCollect(TestCase, ChangeLossBrowseCollectPage):
         self.inputSel_area(para['AREA'])
         # 时间方案
         self.inputChk_date_type(para['DATE_TYPE'])
+        self.inputDt_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_qry()
 

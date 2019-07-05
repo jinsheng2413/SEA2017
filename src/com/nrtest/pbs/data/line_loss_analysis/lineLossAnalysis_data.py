@@ -30,3 +30,6 @@ class LineLossAnalysis_data:
 
     # 线损平衡→平衡设置
     balanceSetting_para = '0000709'
+
+    # 线损平衡→损耗率设置
+    lossRateSetting_para = '0000710'

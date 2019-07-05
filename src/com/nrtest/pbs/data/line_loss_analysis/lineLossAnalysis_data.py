@@ -24,3 +24,9 @@ class LineLossAnalysis_data:
     balanceBrowse_para = '0000703'
     balanceBrowse_tab_collect = '母平汇总'
     balanceBrowse_tab_query = '母平查询'
+
+    # 线损平衡→变损模型
+    changeModel_para = '0000705'
+
+    # 线损平衡→平衡设置
+    balanceSetting_para = '0000709'

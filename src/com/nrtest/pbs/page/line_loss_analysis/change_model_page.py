@@ -1,0 +1,1 @@
+# -*- coding: utf-8 -*-"""@author: 郭春彪@license: (C) Copyright 2018, Nari.@file: change_model_page.py@time: 2019-07-05 15:54:23@desc:"""from com.nrtest.common.base_page import Page# 线损平衡→变损模型class ChangeModelPage(Page):    # 查询    def btn_qry(self):        self.btn_query()

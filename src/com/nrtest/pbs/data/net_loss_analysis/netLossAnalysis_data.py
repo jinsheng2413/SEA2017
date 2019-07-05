@@ -19,3 +19,6 @@ class NetLossAnalysis_data:
     pressureNetLossQry_para = '0000802'
     pressureNetLossQry_tab_collect = '网损汇总'
     pressureNetLossQry_tab_qry = '网损查询'
+
+    # 线损平衡→母平模型
+    motherFlat_para = '0000706'

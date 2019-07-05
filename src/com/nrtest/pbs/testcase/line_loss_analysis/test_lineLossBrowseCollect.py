@@ -62,12 +62,14 @@ class TestLineLossBrowseCollect(TestCase, LineLossBrowseCollectPage):
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
         # self.goto_frame(para['IFRAME'])
+        self.sleep_time(3)
         self.goto_frame()
 
         # 区域
         self.inputSel_area(para['AREA'])
         # # # 时间方案
         self.inputChk_date_type(para['DATE_TYPE'])
+        self.inputDt_date(para['QUERY_DATE'])
         # 查询按钮
         self.btn_qry()
 

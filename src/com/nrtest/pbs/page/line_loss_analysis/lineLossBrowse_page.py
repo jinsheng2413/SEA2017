@@ -23,6 +23,9 @@ class LineLossBrowseCollectPage(Page):
     def inputChk_date_type(self, value):
         self.clickDt_Tab(value)
 
+
+    def inputDt_date(self,value):
+        self.inputDate(value)
     # 查询按钮
     def btn_qry(self):
         # self.click(LineLossBrowseCollectLocators.BTN_QRY)

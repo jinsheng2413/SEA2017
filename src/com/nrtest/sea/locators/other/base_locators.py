@@ -264,7 +264,7 @@ class BasePbsLocators(Locators):
     BTN_CONFIRM = (By.XPATH, "//*[text()='确定']")
 
     # 定位一个菜单页面内的某一Tab页 OK
-    TAB_PAGE = (By.XPATH, '//span[@class="tabs-title" and text()="{}"|text()=""]')
+    TAB_PAGE = (By.XPATH, '//span[(@class="tabs-title" and text()="{}") or text() ="{}"]')
 
     # 定位时间方案Tab选项【PBS专有】
     DT_TAB = (By.XPATH, '//label/following-sibling::span//*[text()="{}"]')

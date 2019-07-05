@@ -1100,7 +1100,7 @@ class Page():
         else:
             tab = tab_name
         loc = tab_loc if bool(tab_loc) else self.baseLocators.TAB_PAGE
-        xpath = self.format_xpath_multi(loc, tab, is_multi_tab)
+        xpath = self.format_xpath_multi(loc, (tab,tab),is_multi_tab)
         if is_by_js:
             self.click_by_js(xpath)
         elif is_multi_elements:

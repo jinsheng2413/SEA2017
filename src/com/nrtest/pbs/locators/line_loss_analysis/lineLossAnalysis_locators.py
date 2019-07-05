@@ -23,3 +23,10 @@ class LineLossAnalysis_locators:
     A_DOWN_THIRD = (By.XPATH, '(//span[contains(text(),"损耗率")]//a)[3]')
     # 下拉文本
     DROP_DOWN_TEXT = (By.XPATH, '//div[contains(@style,"block")]//div[contains(@class,"combobox-item") and text()="{}"]')
+
+
+    #下拉区域
+    DROP_DOWN_AREA = (By.XPATH,'(//*[text()="区域"]/..)[1]//a')
+
+    #时间
+    TIME_LOCATORS = (By.XPATH,'(//*[@id="search"]//input[@class="textbox-text validatebox-text"])[2]')

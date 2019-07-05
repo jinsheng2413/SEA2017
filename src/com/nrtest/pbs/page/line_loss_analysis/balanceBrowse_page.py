@@ -18,11 +18,14 @@ from com.nrtest.pbs.locators.line_loss_analysis.lineLossAnalysis_locators import
 class BalanceBrowseCollectPage(Page):
     # 区域
     def inputSel_area(self, value):
-        self.selectDropDown(value,is_tag_special=True,tag_name='span')
+        self.specialDropdown(value,locator=LineLossAnalysis_locators.DROP_DOWN_AREA)
 
     # 时间方案
     def inputChk_date_type(self, value):
         self.clickDt_Tab(value)
+
+    def inputDt_date(self,value):
+        self.inputDate(value)
 
     # 查询按钮
     def btn_qry(self):

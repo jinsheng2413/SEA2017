@@ -10,3 +10,5 @@
 class NetLossMan_data:
     # 网损管理→分区模型
     partitionModel_para = '00001301'
+    # 网损管理→分压模型
+    pressureModel_para = '00001302'

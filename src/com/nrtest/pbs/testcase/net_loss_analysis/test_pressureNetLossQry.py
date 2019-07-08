@@ -66,6 +66,7 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
         self.sleep_time(2)
         # 区域
         self.inputSel_area(para['AREA'])
+        self.sleep_time(2)
         # 时间方案
         self.inputChk_date_type(para['DATE_TYPE'])
         # 开始时间
@@ -74,6 +75,8 @@ class TestPressureNetLossQry(TestCase, PressureNetLossQryPage):
         self.inputDt_end_date(para['END_DATE'])
         # TAB页名称
         self.inputChk_tab_name(para['TAB_NAME'])
+        # 电压等级
+        self.inputChk_ele_level(para['ELE_LEVEL'])
         # 查询按钮
         self.btn_qry()
 

@@ -32,6 +32,10 @@ class PressureNetLossQryPage(Page):
     def inputChk_tab_name(self, value):
         self.clickTabPage(value)
 
+    #电压等级
+    def inputChk_ele_level(self,value):
+        self.selectDropDown(value)
+
     # 查询按钮
     def btn_qry(self):
         self.btn_query(is_multi_tab=True)

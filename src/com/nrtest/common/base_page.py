@@ -623,7 +623,7 @@ class Page():
         cost_seconds = self.query_timeout(is_from_btn=True)
         return {self.tst_case_id: cost_seconds}
 
-    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True, is_line=False):
+    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True, is_line=False,is_tag_special=False,tag_name=''):
         # is_tag_special=False, tag_name=''):
         """
         下拉单选框选择
@@ -652,9 +652,9 @@ class Page():
                 # 打开下拉框
                 if is_line:
                     xpath = self.format_xpath_multi(self.baseLocators.QRY_LINE_SELECT_DROP_DOWD, ls_option[0])
-                #
-                # elif is_tag_special:
-                #     xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_TAG, (tag_name, ls_option[0]))
+
+                elif is_tag_special:
+                    xpath = self.format_xpath(self.baseLocators.SEL_CHECKBOX_TAG, (tag_name, ls_option[0]))
 
                 else:
                     if byImg:

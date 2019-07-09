@@ -12,3 +12,5 @@ class NetLossMan_data:
     partitionModel_para = '00001301'
     # 网损管理→分压模型
     pressureModel_para = '00001302'
+    # 网损管理→地区购电量查询
+    areaBuyEle_para = '00001305'

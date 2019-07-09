@@ -67,20 +67,20 @@ class TestAgainDispose(TestCase, AgainDisposePage):
         val = self.get_para_value(para['DISPOSE_TYPE'])
         if val in ['反转']:
             # 电表
-            # self.openLeftTree(para['TREE_NODE'])
+            self.openLeftTree(para['TREE_NODE'])
             # 开始时间
             self.inputDt_start_date(para['START_DATE'])
             # 结束时间
             self.inputDt_end_date(para['END_DATE'])
         else:
             # 电表
-            # self.openLeftTree(para['TREE_NODE'])
+            self.openLeftTree(para['TREE_NODE'])
             # 开始时间
             self.inputDt_start_date(para['START_DATE'])
             # 结束时间
             self.inputDt_end_date(para['END_DATE'])
             # Tab页名称
-            self.inputChk_tab_name(para['TAB_NAME'])
+            #self.inputChk_tab_name(para['TAB_NAME'])
         # 提交按钮
         self.btn_qry()
 

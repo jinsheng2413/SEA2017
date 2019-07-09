@@ -20,7 +20,7 @@ from com.nrtest.pbs.page.business_change.changeTableOperate_page import ChangeTa
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 业务变更→换表操作:换表操作
+# 业务变更→更换电表:换表操作
 @ddt
 class TestChangeTableOperate(TestCase, ChangeTableOperatePage):
     @classmethod
@@ -92,7 +92,7 @@ class TestChangeTableOperate(TestCase, ChangeTableOperatePage):
     @data(*DataAccess.getCaseData(BusinessChange_data.ChangeTableOperate_para,
                                   BusinessChange_data.ChangeTableOperate_tabName_operate))
     def test_query(self, para):
-        """业务变更→换表操作:换表操作
+        """业务变更→更换电表:换表操作
         """
         self.start_case(para, __file__)
         self.query(para)

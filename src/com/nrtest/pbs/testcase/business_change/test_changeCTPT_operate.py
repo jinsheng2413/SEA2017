@@ -20,7 +20,7 @@ from com.nrtest.pbs.page.business_change.changeCTPT_page import ChangeCTPTOperat
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 业务变更→换CT/PT:换CTPT操作
+# 业务变更→更换CTPT:换CTPT操作
 @ddt
 class TestChangeCTPT_operate(TestCase, ChangeCTPTOperatePage):
     @classmethod
@@ -88,7 +88,7 @@ class TestChangeCTPT_operate(TestCase, ChangeCTPTOperatePage):
     @BeautifulReport.add_test_img()
     @data(*DataAccess.getCaseData(BusinessChange_data.ChangeCTPT_para, BusinessChange_data.ChangeCTPT_tabName_operate))
     def test_query(self, para):
-        """业务变更→换CT/PT:换CTPT操作
+        """业务变更→更换CTPT:换CTPT操作
         """
         self.start_case(para, __file__)
         self.query(para)

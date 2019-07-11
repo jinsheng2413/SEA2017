@@ -42,6 +42,8 @@ class BusinessChange_data:
 
     # 业务变更→实用工具
     PracticalTool_para = '0000508'
+    PracticalTool_tabName_stat = '统计相关电表配置'
+    PracticalTool_tabName_query = '计算公式手动查询'
 
     # 业务变更→电量追补
     PowerRepair_para = '0000509'

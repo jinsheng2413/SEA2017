@@ -39,3 +39,9 @@ class BusinessChange_data:
     DataAmend_para = '0000507'
     DataAmend_tabName_operate = '数据修正操作'
     DataAmend_tabName_record = '数据修正记录'
+
+    # 业务变更→实用工具
+    PracticalTool_para = '0000508'
+
+    # 业务变更→电量追补
+    PowerRepair_para = '0000509'

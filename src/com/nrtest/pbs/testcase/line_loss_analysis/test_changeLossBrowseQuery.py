@@ -77,6 +77,7 @@ class TestChangeLossBrowseQuery(TestCase, ChangeLossBrowseQueryPage):
         # 时间方案
         self.inputChk_date_type(para['DATE_TYPE'])
         self.openLeftTree(para['TREE_NODE'])
+        self.inputDt_query_time(para['QUERY_TIME'])
         # 查询按钮
         self.btn_qry()
 

@@ -20,7 +20,7 @@ from com.nrtest.pbs.page.line_loss_analysis.balanceBrowse_page import BalanceBro
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 线损分析→母平浏览:母平汇总
+# 线损平衡→母平浏览:母平汇总
 @ddt
 class TestBalanceBrowseCollect(TestCase, BalanceBrowseCollectPage):
     @classmethod

@@ -20,7 +20,7 @@ from com.nrtest.pbs.page.line_loss_analysis.balanceBrowse_page import BalanceBro
 from com.nrtest.sea.pages.other.menu_page import MenuPage
 
 
-# 线损分析→母平浏览:母平查询
+# 线损平衡→母平浏览:母平查询
 @ddt
 class TestBalanceBrowseQuery(TestCase, BalanceBrowseQueryPage):
     @classmethod
@@ -61,8 +61,9 @@ class TestBalanceBrowseQuery(TestCase, BalanceBrowseQueryPage):
         ddt实现参数化（tst_case_detail数据表），通过key值，出入对应的值
         key值要与tst_case_detail表中的XPATH_NAME的值保持一致
         """
+        self.sleep_time(4)
         # 电压
-        # self.inputSel_voltage(para['VOLTAGE'])
+        self.inputSel_voltage(para['VOLTAGE'])
         self.sleep_time(2)
         # 类型
         self.inputSel_type(para['TYPE'])
@@ -74,6 +75,7 @@ class TestBalanceBrowseQuery(TestCase, BalanceBrowseQueryPage):
         self.inputStr_attrition_rate_fifth(para['ATTRITION_RATE_FIFTH'])
         # 时间方案
         self.inputChk_date_type(para['DATE_TYPE'])
+        self.inputDt_query_time(para['QUERY_TIME'])
         # 查询按钮
         self.btn_qry()
 

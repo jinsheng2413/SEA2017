@@ -13,29 +13,29 @@ import time
 from com.nrtest.common.data_access import DataAccess
 
 # 作者
-author = '李建方'
+author = '郭春彪'
 
 # 文件名，不同单词之间用下划线隔开
-file_name = 'hplc_Gather_Integrity_Rate'
+file_name = 'area_buy_ele'
 
 # 存放菜单编号的数据文件类名
 # 路径
-data_file = 'com/nrtest/sea/data/base_app/archivesMan/hplcChipMan/hplcChipMan_data.HPLCChipMan_data'
+data_file = 'D:\pythonworkspace\SEA2017\src\com\nrtest\pbs\data\net_loss_man\netLossMan_data'
 
 # 菜单编号
-menu_no = '99911DB0'
+menu_no = '00001305'
 
 # Tab页名【中文】，没Tab页时，填空串：''
-tab_name = '01'
+tab_name = ''
 
 # Tab页名【英文】 ，不填时，名称格式与存放菜单编号的变量名类同
 en_tab_name = ''
 
 # 生成文件存放路径
-filelistlog = r"D:\PycharmProjects\SEA2017\logs\filelistlog.log"
+filelistlog = r"D:\pythonworkspace\SEA2017\src\com\nrtest\pbs\page\net_loss_man\area_buy_ele._page.py"
 
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
-page_type = '02'
+page_type = '01'
 
 
 class GenFile():

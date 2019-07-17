@@ -6,17 +6,17 @@ author = '郭春彪'
 # 生成文件路径
 filePath = r'D:\pythonworkspace\SEA2017\src\com\nrtest\sea\testcase\base_app\archivesMan\hplcChipMan/'
 # 文件名称
-name = 'test_hplcCollectSuccess'
+name = 'test_hplcCollectFullRate_detail'
 # pageName
-PageName = 'hplcCollectSuccess_page'
+PageName = 'hplcCollectFullRate_detail_page'
 PagePath = r'D:\pythonworkspace\SEA2017\src\com\nrtest\sea\pages\base_app\archivesMan\hplcChipMan/'
 
 # tab页名称，默认是01
-tabName = '01'
+tabName = '采集完整率明细'
 # 菜单编号
-menuNo = '99911DC0'
+menuNo = '99911D90'
 # 菜单编号名称
-data_para = 'HPLCChipMan_data.hplcCollectSuccess_para'
+data_para = 'HPLCChipMan_data.hplcCollectFullRate_para'
 # 当前执行想要生成的文件：01-生成Page文件；02-生成test文件
 
 
@@ -35,7 +35,7 @@ def head(autor=author, name="puiu", menNo=''):
                                                     "@time: {}\n" \
                                                     "@desc:\n" \
                                                     '"""\n' \
-                                                    "from com.nrtest.pbs.tree.tree_page import TreePBSPage\n\n" \
+                                                    "from com.nrtest.common.base_page import Page\n\n" \
           + getPath(menNo) + '\n' + \
           "class {}(Page):\n"
 
@@ -125,16 +125,16 @@ def getTesth(data='', tabName=''):
           '\t\t# 打开菜单（需要传入对应的菜单编号）\n' \
           '\t\tmenuPage = MenuPage.openMenu({})\n' \
           '\t\tsuper(TestCase, cls).__init__(cls, menuPage.driver, menuPage)\n' \
-          '\t\tmenuPage.intoPBSIframe()\n' \
+          '\t\t\n' \
           '\t\t# 菜单页面没多个Tab页时，请注释clickTabPage所在行代码\n' \
           '\t\tmenuPage.clickTabPage({})\n' \
           '\t\t# 菜单页面上如果没日期型的查询条件时，请注释下面代码\n\n' \
           '    @classmethod\n' \
           '    def tearDownClass(cls):\n' \
           '\t\tprint("执行结束")\n' \
-          '\t\tcls.iframe_back(cls, num=1)\n' \
+          '\t\t\n' \
           '\t\t# 关闭菜单页面\n' \
-          '\t\tcls.main_page(cls)\n\n' \
+          '\t\tcls.closePages(cls)\n\n' \
           '    def setUp(self):\n' \
           '\t\t"""\n' \
           '\t\t测试固件的setUp()的代码，主要是测试的前提准备工作\n' \
@@ -146,7 +146,7 @@ def getTesth(data='', tabName=''):
           '\t\t:return:\n' \
           '\t\t"""\n' \
           '\t\t# 回收左边树\n' \
-          '\t\tself.closeLeftTree()\n\n' \
+          '\t\tself.recoverLeftTree()\n\n' \
           '    def query(self, para):\n' \
           '\t\t"""\n' \
           '\t\t:param para: Dict类型的字典，不是dict\n' \
@@ -201,7 +201,7 @@ def getTestCase(menuNO, tab='01', path='', name='', para=''):
         '10': 'self.inputXp_{}(para["{}"])'
     }
     data = get_data(menuNO, tab=tab)
-    lis = []
+    lis = ['\t\t打开左边书\t\t\nself.openLeftTree(para["TREE_NODE"])']
     lis.append(testHead(menNo=menuNO, name=name))
     lis.append(getTesth(data=para))
 
@@ -215,5 +215,5 @@ def getTestCase(menuNO, tab='01', path='', name='', para=''):
 
 
 if __name__ == '__main__':
-    # getPage(menuNO=menuNo, tab=tabName, path=PagePath, name=PageName)
+    getPage(menuNO=menuNo, tab=tabName, path=PagePath, name=PageName)
     getTestCase(menuNO=menuNo,tab=tabName,path=filePath,name=name,para=data_para)

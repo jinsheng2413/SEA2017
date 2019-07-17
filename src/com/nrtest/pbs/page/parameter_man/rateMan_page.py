@@ -1,1 +1,1 @@
-# -*- coding: utf-8 -*-"""@author: 郭春彪@license: (C) Copyright 2018, Nari.@file: test_rate_man.py@time: 2019-07-02 16:02:57@desc:"""from com.nrtest.common.base_page import Page# 数据查询→费率管理class RateManPage(Page):    # 查询    def btn_qry(self):        self.btn_query()
+# -*- coding: utf-8 -*-"""@author: 郭春彪@license: (C) Copyright 2018, Nari.@file: test_rate_man.py@time: 2019-07-02 16:02:57@desc:"""from com.nrtest.common.base_page import Page# 参数管理→费率管理class RateManPage(Page):    # 查询    def btn_qry(self):        self.btn_query()

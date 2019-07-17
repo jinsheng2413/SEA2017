@@ -8,15 +8,15 @@
 @desc:
 """
 class ParameterMan_data:
-    # 数据查询→计算公式
+    # 参数管理→计算公式
     calulateFormule_para = '00001201'
-    # 数据查询→采集模型管理
+    # 参数管理→采集模型管理
     collectModelMan_para = '00001202'
-    # 数据查询→电网模型
+    # 参数管理→电网模型
     powerGrid_para = '00001203'
-    # 数据查询--》采集参数配置
+    # 参数管理--》采集参数配置
     collect_para_configuration_para = '00001204'
-    # 数据查询→费率管理
+    # 参数管理→费率管理
     rateMan_para = '00001205'
-    # 数据查询→设备台账
+    # 参数管理→设备台账
     configStandingBook_para = '00001206'

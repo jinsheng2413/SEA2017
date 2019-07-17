@@ -23,3 +23,8 @@ class DataRey_locators:
     #日期
     TEST_DATE = (By.XPATH,'//*[@class=\"bg_fff search_xy panel-body panel-body-noheader layout-body\"]//input[@class="textbox-text validatebox-text"]')
 
+   #遥测值
+    FIRST_DROP = (By.XPATH,'(//*[@id="substation"]//a[@class="textbox-icon combo-arrow"])[1]')
+    SECOND_DROP = (By.XPATH, '(//*[@id="substation"]//a[@class="textbox-icon combo-arrow"])[2]')
+    THIRD_DROP = (By.XPATH, '//*[@id="tpanel"]//a[3]')
+

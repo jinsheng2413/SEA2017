@@ -33,3 +33,7 @@ class LineLossAnalysis_locators:
 
     #线损查询时间
     LINE_LOSS_TIME = (By.XPATH,'//span[@id="time2"]/span/input[1]')
+
+
+
+

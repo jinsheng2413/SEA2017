@@ -83,6 +83,9 @@ class LineLossBrowseQueryPage(Page):
     def inputChk_date_type(self, value):
         self.clickDt_Tab(value)
 
+    def inputDt_query_time(self,value):
+        self.inputDate(value,locators=LineLossAnalysis_locators.LINE_LOSS_TIME)
+
     # 查询按钮
     def btn_qry(self):
         self.btn_query(is_multi_tab=True,is_by_js=True)

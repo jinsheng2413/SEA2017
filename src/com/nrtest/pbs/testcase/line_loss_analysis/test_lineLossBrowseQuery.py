@@ -76,6 +76,7 @@ class TestLineLossBrowseQuery(TestCase, LineLossBrowseQueryPage):
         self.inputStr_attrition_rate_fifth(para['ATTRITION_RATE_FIFTH'])
         # 时间方案
         self.inputChk_date_type(para['DATE_TYPE'])
+        self.inputDt_query_time(para['QUERY_TIME'])
         # 查询按钮
         self.btn_qry()
 

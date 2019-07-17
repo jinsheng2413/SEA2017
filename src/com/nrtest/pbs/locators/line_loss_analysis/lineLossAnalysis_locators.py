@@ -30,3 +30,6 @@ class LineLossAnalysis_locators:
 
     #时间
     TIME_LOCATORS = (By.XPATH,'(//*[@id="search"]//input[@class="textbox-text validatebox-text"])[2]')
+
+    #线损查询时间
+    LINE_LOSS_TIME = (By.XPATH,'//span[@id="time2"]/span/input[1]')

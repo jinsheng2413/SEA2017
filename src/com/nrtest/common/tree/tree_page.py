@@ -127,6 +127,7 @@ class BaseTreePage(Page):
         """
         pass
 
+
 class TreePBSPage(BaseTreePage):
     def _click_node_tab(self, node_tab_idx):
         if self.tree_type[0] != '4':

@@ -30,7 +30,7 @@ from com.nrtest.sea.locators.other.base_locators import *
 logger = Logger(logger='Page').getlog()
 
 
-class MustGetUrl():
+class MustGetUrl:
     """
     必须到达的URL
        参数：
@@ -45,7 +45,7 @@ class MustGetUrl():
         return self.url == driver.current_url
 
 
-class Page():
+class Page:
     """
     本项目所有页面菜单的基类
     """
@@ -282,7 +282,8 @@ class Page():
             except_info = ex
             logger.error(u'其他查找元素错误-->  {}\n{}'.format(locator, ex))
         if except_type != '':
-            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type, except_info)
+            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type,
+                                      except_info)
         return element
 
     @BeautifulReport.add_popup_img(7)
@@ -306,7 +307,8 @@ class Page():
         self.case_para = para
         self.tst_case_id = para['TST_CASE_ID']
         self.timeout_seconds = int(para['TIMEOUT_SECONDS'])
-        info = '用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}'.format(self.tst_case_id, self.menu_no, self.menu_path, para['PAGE_TAB_NAME'])
+        info = '用例ID：{}；菜单编号：{}；菜单路径：{}；Tab页名称：{}'.format(self.tst_case_id, self.menu_no, self.menu_path,
+                                                          para['PAGE_TAB_NAME'])
         logger.info('开始执行...\r')
         logger.info(info + '\r')
         print('开始执行... </br>')
@@ -401,7 +403,7 @@ class Page():
         except AttributeError as ex:
             logger.error('输入错误:{}\n{}'.format(values, ex))
 
-    def inputDate(self, value, is_multi_tab=False, new_idx=0, is_line=False,locators=''):
+    def inputDate(self, value, is_multi_tab=False, new_idx=0, is_line=False, locators=''):
         """
         新版日期输入框操作：没标签、没定义name或id时对可见日期选择框进行定位
         :param value:要输入的值:自定义标签名;第n个日期选择框;日期值【该值不填默认为1】：开始日期;1;2018-12-24
@@ -520,7 +522,9 @@ class Page():
                 # print('SETUP-6-4', el)
                 value_of_el = self.driver.execute_script("return arguments[0].value;", el)  # self.get_el_text(el)
                 logger.info(
-                    '******** 查询条件（values）：{}, use_share_xpath：{}, option_name：{}, idx：{}, 查询条件值：{}\r'.format(values, use_share_xpath, option_name,
+                    '******** 查询条件（values）：{}, use_share_xpath：{}, option_name：{}, idx：{}, 查询条件值：{}\r'.format(values,
+                                                                                                              use_share_xpath,
+                                                                                                              option_name,
                                                                                                               idx,
                                                                                                               value_of_el))
                 return value_of_el
@@ -583,7 +587,8 @@ class Page():
             sleep(sec)
             try:
                 # 找到元素，并且该元素也可见
-                loc = locator if bool(locator) else self.format_xpath_multi(self.baseLocators.DATA_LOADING, is_multi_tab=True)
+                loc = locator if bool(locator) else self.format_xpath_multi(self.baseLocators.DATA_LOADING,
+                                                                            is_multi_tab=True)
                 WebDriverWait(self.driver, timeout_seconds - sec).until_not(EC.visibility_of_element_located(loc))
                 end_time = time.time()
                 cost_seconds = round(end_time - start_time, 2)
@@ -608,7 +613,8 @@ class Page():
                     if except_type == '用例异常':
                         pass
                     else:
-                        DataAccess.case_exec_log(self.tst_case_id, Utils.now_str(start_time), Utils.now_str(end_time), timeout_seconds, cost_seconds)
+                        DataAccess.case_exec_log(self.tst_case_id, Utils.now_str(start_time), Utils.now_str(end_time),
+                                                 timeout_seconds, cost_seconds)
             return cost_seconds
 
     @BeautifulReport.add_popup_img()
@@ -623,7 +629,8 @@ class Page():
         cost_seconds = self.query_timeout(is_from_btn=True)
         return {self.tst_case_id: cost_seconds}
 
-    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, byImg=True, is_line=False,is_tag_special=False,tag_name=''):
+    def selectDropDown(self, option, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False,
+                       byImg=True, is_line=False, is_tag_special=False, tag_name=''):
         # is_tag_special=False, tag_name=''):
         """
         下拉单选框选择
@@ -660,7 +667,8 @@ class Page():
                     if byImg:
                         xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX, ls_option[0], is_multi_tab)
                     else:
-                        xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0], is_multi_tab)
+                        xpath = self.format_xpath_multi(self.baseLocators.SEL_CHECKBOX_CLEAN, ls_option[0],
+                                                        is_multi_tab)
 
                 if is_multi_elements:
                     el = self._find_displayed_element(xpath)
@@ -805,7 +813,8 @@ class Page():
             #     el.click()
             el.click()
 
-    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False, unchecked_cls=False):
+    def selectCheckBox(self, options, is_multi_tab=False, sleep_sec=0, is_multi_elements=False, is_equalText=False,
+                       unchecked_cls=False):
         """
         下拉复选框选择
         :param options: 参数格式：查询条件标签名;下拉选择项定位值;一组以,隔开的查询条件
@@ -889,7 +898,8 @@ class Page():
                      'span': "//span[contains(text(), '{}')]",
                      'dropdown': '//div[contains(@class,\'x-layer x-combo-list \') and contains(@style,\'visible;\')]'
                      }
-        clean_me = self.baseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[tag_name].format(tag_text[0])
+        clean_me = self.baseLocators.MENU_PAGE_ID.format(self.menu_name).replace('"', '\'') + clean_obj[
+            tag_name].format(tag_text[0])
         script = self.baseLocators.CLEAN_BLANK % clean_me
         # print(script)
         self.exec_script(script)
@@ -1100,7 +1110,7 @@ class Page():
         else:
             tab = tab_name
         loc = tab_loc if bool(tab_loc) else self.baseLocators.TAB_PAGE
-        xpath = self.format_xpath_multi(loc, (tab,tab),is_multi_tab)
+        xpath = self.format_xpath_multi(loc, (tab, tab), is_multi_tab)
         if is_by_js:
             self.click_by_js(xpath)
         elif is_multi_elements:
@@ -1431,7 +1441,8 @@ class Page():
             except_type = '其他错误'
             except_info = ex
         if except_type != '':
-            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type, except_info)
+            DataAccess.el_operate_log(self.menu_no, self.tst_case_id, locator, self.class_name, except_type,
+                                      except_info)
         return elements
 
     def wait(self):
@@ -1616,7 +1627,8 @@ class Page():
         # 如果col_name值为'', 则用loc_col_name替代
         if col_name == '':
             col_name = loc_col_name
-        col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HIDE_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None, 'COL_IS_HIDED': True, 'HIDE_ROWS': 0}
+        col_pos_info = {'COL_IDX': 0, 'EL_COL': None, 'HIDE_COLS': 0, 'FIRST_COL_IDX': 0, 'EL_FIRST': None,
+                        'COL_IS_HIDED': True, 'HIDE_ROWS': 0}
         col_pos_info.setdefault('COL_NAME', col_name + ('[' + str(idx) + ']*' if idx > 1 else ''))
         # 查找表头所有列名元素
         el_tds = el_tr.find_elements_by_xpath('./td')
@@ -1645,7 +1657,8 @@ class Page():
                             pos += 1
             col_pos_info['HIDE_COLS'] = hide_cols
             logger.info('\r“{}”在表格中计算结果：第{}列（其中隐藏列{}列），且{}。\r'.format(col_name, col_pos_info['COL_IDX'], hide_cols,
-                                                                      ('不可见' if col_pos_info['COL_IS_HIDED'] else '可见')))
+                                                                      ('不可见' if col_pos_info[
+                                                                          'COL_IS_HIDED'] else '可见')))
             return col_pos_info
         else:
             raise AssertError('定位列{}在表格中的位置时报错！'.format(col_name))

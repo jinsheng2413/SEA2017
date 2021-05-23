@@ -8,7 +8,7 @@
 @desc:
 """
 import os,sys
-PATH = os.path.dirname(__file__).split('com')[0]
+PATH = os.path.dirname(__file__).split('/nrtest')[0]
 sys.path.append(PATH)
 
 

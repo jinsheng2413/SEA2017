@@ -1,4 +1,3 @@
-
 import os
 import time
 from io import BytesIO
@@ -201,6 +200,7 @@ def train():
                 char_features = capt_inference(capt_per_char)
                 train_table.append(char_features)
     return train_table, train_labels
+
 
 if __name__ == '__main__':
     # 下载120张图片到本地

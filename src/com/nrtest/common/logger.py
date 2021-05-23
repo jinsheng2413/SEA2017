@@ -37,8 +37,9 @@ class Logger(object):
         sh.setLevel(logging.INFO)
 
         # 定义handler的输出格式
-        formatter = logging.Formatter('[%(asctime)s] %(levelname)s: %(name)s - %(funcName)s [line：%(lineno)d]-> %(message)s',
-                                      '%Y-%m-%d %H:%M:%S')
+        formatter = logging.Formatter(
+            '[%(asctime)s] %(levelname)s: %(name)s - %(funcName)s [line：%(lineno)d]-> %(message)s',
+            '%Y-%m-%d %H:%M:%S')
         fh.setFormatter(formatter)
         sh.setFormatter(formatter)
 

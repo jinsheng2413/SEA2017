@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'com'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 
-class Setting():
+class Setting:
     def __init__(self):
         pass
 
@@ -40,7 +40,7 @@ class Setting():
     CLEAN_SCREEN = parse.get('Base', 'clean_screen')
 
     # 是否关闭TIP，yes-是；no-否*
-    CLOSE_TIP = parse.get('Base','close_tip')
+    CLOSE_TIP = parse.get('Base', 'close_tip')
 
     # 默认网址
     TEST_URL = parse.get('Base', 'Test_URL')  # 'http://testerlife.com'
@@ -97,11 +97,11 @@ class Setting():
 
     # 根据下面分组配置执行：gt_for_menu_list.py
     GROUP_BY_MENU_LIST = parse.get('Login', 'group_by_menu_list')
-    #jenkins的jop配置文件村长路径
+    # jenkins的jop配置文件村长路径
     DEFAULT_CONFIG = BASE_DIR + '\common\default_config.xml'
+
 
 if __name__ == '__main__':
     p = Setting()
 
     print(Setting.DEFAULT_CONFIG)
-

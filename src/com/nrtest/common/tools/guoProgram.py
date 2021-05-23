@@ -59,8 +59,10 @@ class GuoProgram(object):
             for it in index_list:
                 for j in range(it[0], it[1]):
                     fileList[j] = fileList[j][0:self.strEmpty(fileList[j])] + '#' + fileList[j][
-                                                                                    self.strEmpty(fileList[j]):len(fileList[j]) - 1] + '\n'
-                fileList.insert(it[1] + 1, fileList[it[0] + 1][0:self.strEmpty(fileList[it[0] + 1])] + 'self.selectDropDown(options)' + '\n')
+                                                                                    self.strEmpty(fileList[j]):len(
+                                                                                        fileList[j]) - 1] + '\n'
+                fileList.insert(it[1] + 1, fileList[it[0] + 1][0:self.strEmpty(
+                    fileList[it[0] + 1])] + 'self.selectDropDown(options)' + '\n')
 
             with open(pathName, 'wt', encoding='utf-8') as wdata:
                 for item in fileList:
@@ -118,7 +120,8 @@ class GuoProgram(object):
         le = int(op[0])
 
         se = fileList[le][0:fileList[le].index('#')] + '# 注册菜单' + '\n' + fileList[le][
-                                                                         0:fileList[le].index('#')] + "self.menu_name = para['MENU_NAME']" + '\n'
+                                                                         0:fileList[le].index(
+                                                                             '#')] + "self.menu_name = para['MENU_NAME']" + '\n'
         fileList.insert(le, se)
 
         with open(pathName, 'wt', encoding='utf-8') as wdata:

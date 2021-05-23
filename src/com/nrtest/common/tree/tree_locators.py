@@ -9,6 +9,7 @@
 """
 from selenium.webdriver.common.by import By
 
+
 class TreeLocators:
     # 左边树不同Tab选择: 用户、终端、供电区域、行业、电网结构、群组
     NODE_TAB = (By.XPATH, '//li//span[@class ="x-tab-strip-text " and text()="{}"]')
@@ -55,8 +56,6 @@ class TreeLocators:
     INPUT_SEARCH = (By.XPATH, '//span[@class="textbox searchbox"]//input[@placeholder="请输入关键字"]')
     RREE_INPUT = (By.XPATH, '//label[normalize-space(text())="{}"]/..//input[@type!="hidden"]')
 
-
-
     # 带复选框的树节点
     # 不选中'//span[@class="button chk checkbox_false_full"'
     # 选中'//span[@class="button chk checkbox_true_full"'
@@ -67,10 +66,13 @@ class TreeLocators:
                       '03': (By.XPATH, '//div[@id="mainwest"]//div[@id="indexUserPanel"]//input[@name="terminalAddr"]'),
                       '04': (By.XPATH, '//div[@id="mainwest"]//div[@id="indexUserPanel"]//input[@name="meterAssetNo"]')}
     # 查询按钮：
-    USER_BTN_QUERY = (By.XPATH, '//div[@id="mainwest"]//div[@id="indexUserPanel"]//button[@class =" x-btn-text query" and text()="查询"]')
+    USER_BTN_QUERY = (
+    By.XPATH, '//div[@id="mainwest"]//div[@id="indexUserPanel"]//button[@class =" x-btn-text query" and text()="查询"]')
 
-    NODE_USER_TAB_RSLT_DEFAULT = (By.XPATH, '//div[@id="mainwest"]//div[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[1]')
-    NODE_USER_TAB_RSLT = (By.XPATH, '//div[@id="mainwest"]//div[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[%s]//td[1]/div/div')
+    NODE_USER_TAB_RSLT_DEFAULT = (
+    By.XPATH, '//div[@id="mainwest"]//div[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[1]')
+    NODE_USER_TAB_RSLT = (By.XPATH,
+                          '//div[@id="mainwest"]//div[@id="leftUserGrid"]//div[@class="x-grid3-scroller"]//table[%s]//td[1]/div/div')
 
     # 【群组Tab页】
     # 普通群组/重点用户群组/按单位展示/控制群组
@@ -87,21 +89,25 @@ class TreeSingleUserLocators:
     """
     SEA2017单户综合查询
     """
-    NODE_LEVEL = (By.XPATH, '//div[@class="x-tree-root-node"]//span[text()="{}"]/../../a/preceding-sibling::img[contains(@class, "elbow")]')
+    NODE_LEVEL = (By.XPATH,
+                  '//div[@class="x-tree-root-node"]//span[text()="{}"]/../../a/preceding-sibling::img[contains(@class, "elbow")]')
     LEEF_NODE = (By.XPATH, '//div[@class="x-tree-root-node"]//span[text()="{}"]')
 
     # 【搜索】
     # 查询条件
-    QRY_INPUT = (By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-search-trigger")]/../../span/preceding-sibling::input')
+    QRY_INPUT = (
+    By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-search-trigger")]/../../span/preceding-sibling::input')
     BTN_QUERY = (By.XPATH, '//img[starts-with(@class,"x-form-trigger x-form-search-trigger")]')
     # 查找到的终端节点
-    TMNL_NODE = (By.XPATH, '//div[@class="x-grid-group-title" and contains(text(),"终端资产号:")]/ancestor::div[starts-with(@class, "x-grid-group ")]')
+    TMNL_NODE = (By.XPATH,
+                 '//div[@class="x-grid-group-title" and contains(text(),"终端资产号:")]/ancestor::div[starts-with(@class, "x-grid-group ")]')
     # TMNL_NODE = (By.XPATH, '//div[@class="x-grid-group-title" and contains(text(),"终端资产号:")]')
     SPLIT_LINE = (By.XPATH, '//div[@class="x-layout-split x-layout-split-west x-splitbar-h"]')
     # 用户信息行
     USER_LINE = (By.XPATH, '//div[contains(@id, "gp-TMNL_ASSET_NO") and @class="x-grid-group-body"]//div[text()="{}"]')
 
     DROP_TARGET = (By.XPATH, '//div[text()="{}"]')
+
 
 class TreePBSLocators:
     # class = "panel layout-panel layout-panel-west layout-split-west"
@@ -150,7 +156,8 @@ class TreePBSLocators:
     # 			class="button level4 switch bottom_docu"  --最后一个节点
 
     # 选择某变电站范围内搜索节点：如，某变电站下第n层的XXX节点: 省级用户level是2，市级用户level是1
-    NODE_LEVEL_IN_PARENT = (By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/..//li[@class="level{}"]/a[@title="{}"]/../span')
+    NODE_LEVEL_IN_PARENT = (
+    By.XPATH, '//li[@class="level{}"]/a[@title="{}"]/..//li[@class="level{}"]/a[@title="{}"]/../span')
 
     # 左边树: 全模型/搜索/收藏夹
     NODE_TAB = (By.XPATH, '//div[@class="tabs-wrap"]//span[text()="{}"]')
@@ -175,7 +182,8 @@ class LeftTreeLocators:
     # 判断有没有展开
     TREE_ELEMENT_LOCATOR = (By.XPATH, '//*[@class="tabs-panels"]//*[text()="{}" and contains(@id,"tree")]')
     # 点击选中的目标
-    TREE_ELEMENT_OPEN_LOCATOR = (By.XPATH, '//*[@class="tabs-panels"]//*[text()="{}" and contains(@id,"tree")]/../span[contains(@class,"open")]')
+    TREE_ELEMENT_OPEN_LOCATOR = (
+    By.XPATH, '//*[@class="tabs-panels"]//*[text()="{}" and contains(@id,"tree")]/../span[contains(@class,"open")]')
 
     CLOSE_LFET_TREE = (By.XPATH, '//*[contains(@class,"center_open") and contains(@id,"tr")]')
     CLOSE_LFET_ROOT_TREE = (By.XPATH, '//*[contains(@class,"root_open") and contains(@id,"tr")]')
@@ -195,6 +203,7 @@ class TreeQualityLocators:
     NODE_ROOT = (By.XPATH, '//div[@id="{}"]')
     # 关：class="x-tree-ec-icon x-tree-elbow-end-plus"
     # 开：class="x-tree-ec-icon x-tree-elbow-end-minus"
-    NODE_LEVEL = (By.XPATH, '//div[@id="{}"]//span[text()="{}"]/../../a/preceding-sibling::img[contains(@class, "elbow")]')
+    NODE_LEVEL = (
+    By.XPATH, '//div[@id="{}"]//span[text()="{}"]/../../a/preceding-sibling::img[contains(@class, "elbow")]')
 
     LEEF_NODE = (By.XPATH, '//div[@id="{}"]//span[text()="{}"]')
